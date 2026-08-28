@@ -1,0 +1,20 @@
+{
+  "stage": "P3 Prior Work Kill Search (~200 -> ~50)",
+  "generated_by": "P3-state-reader",
+  "generated_at": "2026-08-28T17:26:00Z",
+  "blocked": true,
+  "windows_id": null,
+  "windows_path": null,
+  "stage2_survivor_source": null,
+  "stage2_survivor_count": null,
+  "partition_strategy": null,
+  "partition_strategy_note": "Planned strategy when unblocked: partition Stage 2 survivors loaded from <windows_path> using cluster/priority/uncertainty fields if present in survivor records, else contiguous idea-ID ranges; target batch sizes suitable for parallel Exact/Semantic/Adjacent literature hunters. Not applied in this run because no valid windows_path or survivor set exists.",
+  "batch_count": 0,
+  "batches": [],
+  "blocked_reason": [
+    "window.lock.json missing everywhere (working tree + all 35 origin branch trees)",
+    "research_state.json four-way conflict (Windows9/10/11/12 on unmerged branches); selection forbidden",
+    "no Stage 2 survivors exist for any candidate window (all at Stage 1 with 0 ideas)"
+  ],
+  "recommended_next_task_type": "P3_BLOCKED_NEED_P0"
+}

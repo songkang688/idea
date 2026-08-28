@@ -1,0 +1,19 @@
+{
+  "stage": "P3 Prior Work Kill Search (~200 -> ~50)",
+  "wave": "A",
+  "generated_by": "P3-state-reader",
+  "generated_at": "2026-08-28T17:26:00Z",
+  "blocked": true,
+  "blocked_reason": "p0_lock_ok=false: no window.lock.json exists anywhere in the repository (working tree + all 35 origin branches); four conflicting research_state.json (Windows9/10/11/12) on divergent unmerged P0 branches forbid selecting a windows_path; additionally no Stage 2 survivor set exists for any candidate window (all report Stage 1, total_ideas=0, survivors=0), so there is nothing to partition into search batches.",
+  "recommended_next_task_type": "P3_BLOCKED_NEED_P0",
+  "windows_id": null,
+  "windows_path": null,
+  "stage2_survivor_count": null,
+  "batch_count": 0,
+  "hunter_roles_planned_for_wave_a": [
+    "exact_match_hunter",
+    "semantic_match_hunter",
+    "adjacent_field_hunter"
+  ],
+  "items": []
+}

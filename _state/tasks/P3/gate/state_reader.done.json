@@ -1,0 +1,54 @@
+{
+  "task_id": "P3-state-reader",
+  "role": "P3 State Reader / Batch Planner (parent: WindowsX; Stage: P3 Prior Work Kill Search ~200 -> ~50)",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P3/gate/state_reader.md",
+    "/workspace/_state/tasks/P3/gate/state_reader.done.json",
+    "/workspace/_state/tasks/P3/gate/task_queue.json",
+    "/workspace/_state/tasks/P3/gate/batches_manifest.json"
+  ],
+  "unresolved_items": [
+    "ZERO window.lock.json files exist anywhere: working tree of /workspace and the trees of all 35 origin branches (after git fetch --prune) contain no file with that exact name. No authoritative windows_id/windows_path exists for P3 to bind to.",
+    "FOUR conflicting research_state.json files exist on four divergent, unmerged P0-init branches: Windows9/_state/research_state.json (origin/cursor/windows9-p0-init-3045), Windows10/_state/research_state.json (origin/cursor/windows10-p0-init-26ec), Windows11/_state/research_state.json (origin/cursor/windows11-p0-init-c0c1), Windows12/_state/research_state.json (origin/cursor/windows12-p0-init-a095). Rules forbid guessing/selecting a winner.",
+    "None of the four candidate states is merged to main (base branch tree contains only README.md).",
+    "No Stage 2 survivor set exists for the current round: all four candidate states report current_stage='Stage 1', total_ideas=0, survivors=0, empty ideas_index. P1 and P2 have not run for the current window. Stage-2-named artifacts on Windows4/6/8 branches belong to older unrelated rounds and were not loaded.",
+    "Therefore no survivor partitioning was possible; task_queue.json is emitted blocked with zero Wave A search tasks and batches_manifest.json records batch_count=0.",
+    "Prerequisite chain before P3 can run: (1) P0 emits exactly one authoritative WindowsN/_state/window.lock.json (window_locked=true) consistent with sibling research_state.json, discoverable from main; (2) P1 generates the 1000+ idea pool; (3) P2 cuts to ~200 survivors recorded under <windows_path>."
+  ],
+  "recommended_next_task_type": "P3_BLOCKED_NEED_P0",
+  "p0_lock_ok": false,
+  "windows_id": null,
+  "windows_path": null,
+  "stage2_survivor_count": null,
+  "batch_count": 0,
+  "evidence": {
+    "searched_filenames_only": ["window.lock.json", "research_state.json"],
+    "search_scope": [
+      "working tree /workspace (outputs branch cursor/p3-gate-state-reader-29bc off origin/main @ 990f3ebc75d7ab03a8960cf0d1e5621cbb29194a)",
+      "all refs/remotes/origin/* after git fetch --prune (35 branches), via git ls-tree -r per branch"
+    ],
+    "window_lock_json_found": [],
+    "research_state_json_found": [
+      {"branch": "origin/cursor/windows9-p0-init-3045", "path": "Windows9/_state/research_state.json", "windows_id": "Windows9", "current_stage": "Stage 1", "total_ideas": 0, "survivors": 0},
+      {"branch": "origin/cursor/windows10-p0-init-26ec", "path": "Windows10/_state/research_state.json", "windows_id": "Windows10", "current_stage": "Stage 1", "total_ideas": 0, "survivors": 0},
+      {"branch": "origin/cursor/windows11-p0-init-c0c1", "path": "Windows11/_state/research_state.json", "windows_id": "Windows11", "current_stage": "Stage 1", "total_ideas": 0, "survivors": 0},
+      {"branch": "origin/cursor/windows12-p0-init-a095", "path": "Windows12/_state/research_state.json", "windows_id": "Windows12", "current_stage": "Stage 1", "total_ideas": 0, "survivors": 0}
+    ],
+    "window_locked": false,
+    "stage2_artifacts_in_unrelated_old_windows_not_loaded": [
+      "Windows4/selection_history/* on origin/cursor/windows4-research-idea-evolution-2962",
+      "Windows6/selection_history/* on origin/cursor/windows6-research-idea-evolution-b55d",
+      "Windows8/selection_history/* on origin/cursor/windows8-research-idea-evolution-cd91"
+    ],
+    "prior_p1_gate_result": "blocked (same root cause) at _state/tasks/P1/gate/ on origin/cursor/p1-gate-state-reader-e933"
+  },
+  "constraints_respected": {
+    "no_windows_number_scan_or_increment": true,
+    "no_windows_dir_created": true,
+    "no_window_lock_modified": true,
+    "no_literature_search": true,
+    "no_novelty_or_keep_kill_judgment": true,
+    "no_fabricated_citations": true
+  }
+}
