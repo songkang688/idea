@@ -1,0 +1,44 @@
+{
+  "task_id": "P1-genA-12-contrarian",
+  "role": "Generator",
+  "status": "complete",
+  "window": "Windows16",
+  "territory": "Contrarian vision/ML bets: simpler-is-better, anti-scaling, anti-foundation-model, revive-old-methods, with falsifiable claims. Academic ML only.",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-12_contrarian.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-12-contrarian.done.json"
+  ],
+  "candidate_count": 80,
+  "target_band": "80-120",
+  "candidate_id_range": "ctrn-0001..ctrn-0080",
+  "clusters": {
+    "simpler_baselines_beat_deep": 8,
+    "anti_scaling": 8,
+    "anti_foundation_model": 8,
+    "revive_classical": 8,
+    "architecture_contrarian": 8,
+    "training_recipe_contrarian": 8,
+    "ssl_skepticism": 8,
+    "data_centric_contrarian": 8,
+    "eval_metric_contrarian": 8,
+    "efficiency_contrarian": 8
+  },
+  "evidence_labels": {
+    "HYPOTHESIS": 70,
+    "MODEL SPECULATION": 10
+  },
+  "schema_notes": "Each JSONL line carries the parent-mandated fields in order (candidate_id, territory, title, one_line_idea, cluster, problem, core_hypothesis, core_claim, method_sketch, falsifiable_prediction, why_important, why_possibly_novel, novelty_hook, minimal_falsification_experiment, main_risk, kill_risk, community_default_belief, why_it_might_be_wrong, fastest_falsifying_experiment, evidence_label). Following the convention of earlier Wave A shards (genA-11), alias fields mirror their counterparts: core_claim mirrors core_hypothesis, minimal_falsification_experiment mirrors method_sketch, novelty_hook mirrors why_possibly_novel, kill_risk mirrors main_risk. Every candidate states the community default belief, why it might be wrong, and a cheapest/fastest falsifying experiment, per the contrarian-territory mandate.",
+  "compliance": {
+    "forbid_fiction": "No fabricated papers, citations, benchmark numbers, dataset facts, or experimental results; all quantitative statements are phrased as falsifiable predictions under HYPOTHESIS or MODEL SPECULATION labels, and datasets/models are referenced generically as proposed experiment subjects.",
+    "novelty_claims": "All novelty statements are hedged as possibly-novel and explicitly marked unverified; no verified novelty claimed.",
+    "protected_files": "window.lock.json, research_state.json, ideas_master.jsonl untouched; no Windows directories created; no Windows numbers changed; only the two mandated files written under Windows16/_state/tasks/P1/."
+  },
+  "unresolved_items": [
+    "Novelty of all 80 candidates is unverified against the literature; Wave B dedup plus any novelty-checking stage must vet before promotion.",
+    "Intra-shard conceptual neighbors were minimized but remain for dedup review: ctrn-0009/ctrn-0016/ctrn-0057/ctrn-0064 (curation-versus-scale and curation-versus-alternatives budget exchanges), ctrn-0017/ctrn-0019/ctrn-0024/ctrn-0054 (from-scratch or in-domain training versus foundation/web transfer under domain shift), ctrn-0018/ctrn-0050 (human-hours exchange-rate designs), ctrn-0044/ctrn-0053 (weight-decay-suffices arguments in supervised and self-supervised contexts), ctrn-0073/ctrn-0079 (distillation dispensability from compute-matching and mechanism angles), ctrn-0021/ctrn-0073 (foundation-teacher and classic distillation compute-matched nulls).",
+    "Cross-territory overlap likely with genA-11 negative-results (equal-budget refutation designs generally, especially ctrn-0037, ctrn-0039, ctrn-0042, ctrn-0047, ctrn-0058, ctrn-0075), genA-07 benchmark weaknesses (eval_metric_contrarian cluster, especially ctrn-0059, ctrn-0065, ctrn-0068, ctrn-0070, ctrn-0071), genA-09 synthetic data (ctrn-0064), and genA-10 domain shift (ctrn-0020, ctrn-0024, ctrn-0069); dedup should treat these as high-collision zones.",
+    "Several candidates presuppose reproducing published-style methods locally under matched budgets (ctrn-0058, ctrn-0060, ctrn-0065, ctrn-0070, ctrn-0075, ctrn-0080); feasibility depends on public availability of the relevant implementations.",
+    "Candidates with human-subject components (ctrn-0018, ctrn-0022, ctrn-0050, ctrn-0061, ctrn-0067) require annotator recruitment and cost accounting that exceed a purely computational minimal experiment; their fastest-falsifying experiments are scoped-down single-annotator pilots."
+  ],
+  "recommended_next_task_type": "P1-genA-13-sr-restoration"
+}
