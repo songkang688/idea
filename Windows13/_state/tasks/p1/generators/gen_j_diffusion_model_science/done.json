@@ -1,0 +1,68 @@
+{
+  "task_id": "p1_gen_j_diffusion_model_science",
+  "role": "generator",
+  "generator_id": "gen_j_diffusion_model_science",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "ok",
+  "branch": "cursor/p1-gen-j-diffusion-science-3470",
+  "completed_at_utc": "2026-08-28T20:24:11Z",
+  "queue_source": "origin/cursor/p1-diversity-audit-consolidator-w1-25a0 Windows13/_state/tasks/p1/diversity_audit_w1/decision.json (priority 2 entry)",
+  "territory": "Generative/diffusion models as scientific subject: representations, guidance/inversion pathologies, memorization in generators, diffusion-as-feature-extractor and diffusion-for-perception, uncertainty priors for dense prediction",
+  "idea_count": 104,
+  "id_seed_range": "W13-P1-J-001..W13-P1-J-104",
+  "clusters": {
+    "diffusion-representations": 9,
+    "diffusion-for-perception": 10,
+    "guidance-science": 9,
+    "inversion-editing-pathologies": 9,
+    "generator-memorization": 9,
+    "sampling-dynamics": 9,
+    "diffusion-priors-for-ambiguity": 8,
+    "conditioning-binding": 8,
+    "distillation-fewstep-science": 8,
+    "latent-space-vae-effects": 8,
+    "noise-schedule-frequency": 8,
+    "video-temporal-diffusion": 9
+  },
+  "genre_counts": {
+    "characterization_law": 57,
+    "audit_debunk": 10,
+    "constructive_capability": 37
+  },
+  "guard_self_audit": {
+    "sam_mentions_records": 0,
+    "sam_share": 0.0,
+    "synthetic_training_data_records": 1,
+    "generative_eval_metric_broken_framings": 0,
+    "scattering_media_examples": 0,
+    "calibration_uncertainty_primary_cluster": false,
+    "distinct_subclusters": 12,
+    "max_cluster_share": 0.0962,
+    "constructive_share": 0.3558,
+    "pure_debunk_share": 0.0962,
+    "non_segmentation_metric_falsification_share": 0.9712,
+    "numeric_kill_threshold_coverage": 1.0,
+    "structured_evidence_label_coverage": 1.0,
+    "family_fingerprint_coverage": 1.0,
+    "needs_special_resources_records": 1
+  },
+  "novelty_status": "unverified (generation only; Wave B dedup + novelty verification pending)",
+  "no_fake_citations": true,
+  "files": [
+    "Windows13/_state/tasks/p1/generators/gen_j_diffusion_model_science/ideas_shard.jsonl",
+    "Windows13/_state/tasks/p1/generators/gen_j_diffusion_model_science/ideas_shard.md",
+    "Windows13/_state/tasks/p1/generators/gen_j_diffusion_model_science/done.json"
+  ],
+  "scope_compliance": {
+    "ideas_master_jsonl_untouched": true,
+    "research_state_json_untouched": true,
+    "window_lock_json_untouched": true,
+    "wrote_only_own_shard_directory": true,
+    "own_branch": "cursor/p1-gen-j-diffusion-science-3470",
+    "force_push": false,
+    "gen_i_restoration_not_generated": "confirmed deferred per dispatch (gen_h SR/restoration in flight)"
+  },
+  "recommended_next_task_type": "p1_wave_b_dedup"
+}
