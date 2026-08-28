@@ -1,0 +1,42 @@
+{
+  "task_id": "p1_diversity_audit_1_B",
+  "role": "diversity_auditor_B_permutation",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "input": {
+    "file": "Windows15/_state/ideas_master.jsonl",
+    "branch": "origin/cursor/p1-wave-b-batch001-consolidator-7c96",
+    "head_sha": "b8d60bce42ab0a9f0f7b35278454d65d59f01331",
+    "ideas_reviewed": 271
+  },
+  "audit_focus": "architecture permutation / SAM+X / LoRA+X / loss+X pseudo-innovation without a real scientific hypothesis",
+  "headline_findings": {
+    "tier1_archetype_dominant": {"count": 6, "fraction": 0.0221, "all_already_mutation_gated": true},
+    "tier1_plus_tier1_5_must_fix": {"count": 11, "fraction": 0.0406},
+    "tier2_full_permutation_surface": {"count": 43, "fraction": 0.1587},
+    "worst_offenders_ranked": [
+      "W15-B001-A-100", "W15-B001-A-052", "W15-B001-A-084", "W15-B001-C-028",
+      "W15-B001-A-056", "W15-B001-A-060", "W15-B001-B-097", "W15-B001-A-096",
+      "W15-B001-B-098", "W15-B001-C-087", "W15-B001-A-064"
+    ],
+    "template_monoculture_families": 4,
+    "underweighted_axes": [
+      "language/VLM-grounded segmentation", "video/temporal outside smoke",
+      "security/adversarial/spoofing", "efficiency/scaling laws",
+      "continual/lifelong deployment", "fairness/population bias",
+      "theory/identifiability in T01-T02", "human factors outside T02",
+      "instance/panoptic/amodal formulation outside media"
+    ],
+    "recommendation": "No removals warranted; enforce mutation gate on the 6 tier-1 ideas, re-center 5 tier-1.5 ideas on their diagnostics, cap claim-skeleton repetition (<=5 per batch), and add a negative-control requirement to the generation contract."
+  },
+  "canonical_files_modified": [],
+  "lock_touched": false,
+  "output_files": [
+    "Windows15/_state/tasks/p1/diversity_audit_1/auditor_B/report.md",
+    "Windows15/_state/tasks/p1/diversity_audit_1/auditor_B/findings.json",
+    "Windows15/_state/tasks/p1/diversity_audit_1/auditor_B/done.json",
+    "Windows15/_state/tasks/p1/diversity_audit_1/auditor_B/build_findings.py"
+  ],
+  "recommended_next_task_type": "p1_diversity_audit_consolidator",
+  "created_at": "2026-08-28T19:55:00Z"
+}

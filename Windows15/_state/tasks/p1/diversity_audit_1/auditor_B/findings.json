@@ -1,0 +1,360 @@
+{
+  "task_id": "p1_diversity_audit_1_B",
+  "auditor": "auditor_B",
+  "audit_focus": "SAM+X / LoRA+X / loss+X / architecture-permutation pseudo-innovation",
+  "windows_path": "Windows15",
+  "input": {
+    "file": "Windows15/_state/ideas_master.jsonl",
+    "branch": "origin/cursor/p1-wave-b-batch001-consolidator-7c96",
+    "head_sha": "b8d60bce42ab0a9f0f7b35278454d65d59f01331",
+    "ideas_reviewed": 271
+  },
+  "method": "Independent full-text re-read of all 271 accepted ideas (title + core_hypothesis). Three-tier grading: tier1 = permutation archetype dominates and the stated hypothesis is thin, borrowed, or lives in another idea (must be rewritten before Stage-2 promotion); tier1_5 = archetype-forward, a genuine diagnostic exists but the permutation payoff is still the load-bearing claim (re-center before Stage 2); tier2_surface = any idea whose vehicle is a method/recipe/component permutation even when a genuine falsifiable hypothesis rides it (kept; tracked for portfolio balance). Cross-checked post-hoc against judge_B's in-batch permutation_flag rubric for calibration; tier assignments were made independently.",
+  "fraction_estimates": {
+    "tier1_archetype_dominant": {
+      "count": 6,
+      "fraction": 0.0221,
+      "note": "All 6 already carry mutation_required from batch_001 consolidation; the gate held. None should be promoted as written."
+    },
+    "tier1_plus_tier1_5": {
+      "count": 11,
+      "fraction": 0.0406,
+      "note": "Adds 5 archetype-forward ideas judge_B flag-kept where the permutation payoff (not the diagnostic) is still the headline claim."
+    },
+    "tier2_full_permutation_surface": {
+      "count": 43,
+      "fraction": 0.1587,
+      "note": "37 surviving judge_B permutation flags plus 6 auditor-B additions (B-012, B-037, B-047, C-003, C-075, C-076). Most are redeemed by a real hypothesis; tracked for balance, not for removal."
+    },
+    "clean_of_archetype": {
+      "count": 228,
+      "fraction": 0.8413,
+      "note": "The corpus is unusually hypothesis-first; naked SAM+X/LoRA+X/loss+X pseudo-innovation is rare."
+    }
+  },
+  "worst_offenders_ranked": [
+    {
+      "rank": 1,
+      "idea_id": "W15-B001-A-100",
+      "archetype": "router_assembly",
+      "tier": "tier1",
+      "rationale": "Nearest-centroid LoRA routing over frozen features. Standard embedding-gating engineering; the premise (domain linear separability) is assumed true and the deliverable is a deployment assembly, not a finding."
+    },
+    {
+      "rank": 2,
+      "idea_id": "W15-B001-A-052",
+      "archetype": "known_method_transplant",
+      "tier": "tier1",
+      "rationale": "k-center / core-set active learning applied verbatim to SAM-LoRA. 'Coverage selection beats random' is the original core-set claim; no segmentation-specific mechanism is load-bearing."
+    },
+    {
+      "rank": 3,
+      "idea_id": "W15-B001-A-084",
+      "archetype": "known_method_transplant",
+      "tier": "tier1",
+      "rationale": "Self-consistency test-time adaptation (TENT/MEMO family) bolted onto SAM. The only scientific content (inconsistency localizes errors) is explicitly borrowed from A-009."
+    },
+    {
+      "rank": 4,
+      "idea_id": "W15-B001-C-028",
+      "archetype": "module_a_plus_b",
+      "tier": "tier1",
+      "rationale": "Motion-sparsity router dispatching to specialist media models. Module A+B assembly; the two-sided motion signature is asserted, and the deliverable is the router."
+    },
+    {
+      "rank": 5,
+      "idea_id": "W15-B001-A-056",
+      "archetype": "workflow_assembly",
+      "tier": "tier1",
+      "rationale": "SAM-proposes / human-verifies annotation workflow. Cost-efficiency workflow permutation; its falsifiable core (error incoherence unlearnable at low rank) already lives in A-053."
+    },
+    {
+      "rank": 6,
+      "idea_id": "W15-B001-A-060",
+      "archetype": "known_method_transplant",
+      "tier": "tier1",
+      "rationale": "Query-by-committee active learning with SAM's multimask heads as the committee. The AL race is the deliverable; the informational claim belongs to the A-061/A-089 family."
+    },
+    {
+      "rank": 7,
+      "idea_id": "W15-B001-B-097",
+      "archetype": "training_recipe_permutation",
+      "tier": "tier1_5",
+      "rationale": "Agreement-ordered curriculum for multi-organ training. The 'transferable boundary policy' mechanism is under-specified and hard to isolate from generic curriculum effects; as written the payoff is a curriculum recipe."
+    },
+    {
+      "rank": 8,
+      "idea_id": "W15-B001-A-096",
+      "archetype": "known_method_transplant",
+      "tier": "tier1_5",
+      "rationale": "Label-free adaptation via inter-slice consistency training. Self-supervised-consistency family applied to SAM+CT; the 'beats 10-20-image supervised LoRA' benchmark race is the load-bearing claim."
+    },
+    {
+      "rank": 9,
+      "idea_id": "W15-B001-B-098",
+      "archetype": "training_recipe_permutation",
+      "tier": "tier1_5",
+      "rationale": "Gradient-surgery (PCGrad/CAGrad family) for multi-organ interference. The directional-conflict diagnostic is real science; the headline payoff 'conflict-aware update surgery outperforms any reweighting' is a method permutation."
+    },
+    {
+      "rank": 10,
+      "idea_id": "W15-B001-C-087",
+      "archetype": "pretraining_swap",
+      "tier": "tier1_5",
+      "rationale": "Matting-vs-segmentation pretraining swap. Comparative objective permutation whose inductive-bias attribution is confounded by corpus content unless the binarized-label control is made primary."
+    },
+    {
+      "rank": 11,
+      "idea_id": "W15-B001-A-064",
+      "archetype": "component_permutation",
+      "tier": "tier1_5",
+      "rationale": "Adapt-the-uncertainty-pathway-only. A value-proposition permutation over which component to retrain; needs decomposition into measurable calibration-transfer claims before Stage 2."
+    }
+  ],
+  "auditor_additions_to_permutation_surface": [
+    {
+      "idea_id": "W15-B001-B-012",
+      "archetype": "training_recipe_permutation",
+      "tier": "tier2_surface",
+      "rationale": "Per-structure early stopping. Staged-learning (interior-early / boundary-noise-late) hypothesis is genuine; the vehicle is a stopping-schedule recipe."
+    },
+    {
+      "idea_id": "W15-B001-B-037",
+      "archetype": "architecture_swap",
+      "tier": "tier2_surface",
+      "rationale": "Native-grid anisotropy-aware operators vs resample-then-segment. Information-destruction hypothesis is genuine; the vehicle is an operator swap."
+    },
+    {
+      "idea_id": "W15-B001-B-047",
+      "archetype": "architecture_swap",
+      "tier": "tier2_surface",
+      "rationale": "Per-site label heads vs pooled training. Label-shift-masquerading-as-image-shift is a real finding; the vehicle is a multi-head architecture permutation."
+    },
+    {
+      "idea_id": "W15-B001-C-003",
+      "archetype": "head_swap",
+      "tier": "tier2_surface",
+      "rationale": "Matting-style head on a mask-trained backbone. The probing claim (internal soft-density estimate survives until the binarizing head) is genuine; the vehicle is a head swap."
+    },
+    {
+      "idea_id": "W15-B001-C-075",
+      "archetype": "output_space_permutation",
+      "tier": "tier2_surface",
+      "rationale": "Nested iso-density level-set output head. Held-out-strictness generalization is a real prediction; the vehicle is an output-head redesign."
+    },
+    {
+      "idea_id": "W15-B001-C-076",
+      "archetype": "known_method_transplant",
+      "tier": "tier2_surface",
+      "rationale": "Distribution-over-masks modeling (Probabilistic-U-Net family) for ambiguous boundaries. Established method family; the residual novelty is the likelihood-based evaluation reranking claim."
+    }
+  ],
+  "judge_B_cross_check": {
+    "in_batch_flags": 40,
+    "flags_surviving_into_master": 37,
+    "flags_removed_as_duplicates": [
+      "W15-B001-A-063",
+      "W15-B001-A-093",
+      "W15-B001-C-078"
+    ],
+    "mutation_required_in_master": [
+      "W15-B001-A-052",
+      "W15-B001-A-056",
+      "W15-B001-A-060",
+      "W15-B001-A-084",
+      "W15-B001-A-100",
+      "W15-B001-C-028"
+    ],
+    "agreement": "Auditor B independently converged on the same 6 mutation-required ideas as archetype-dominant and confirms judge_B's flag-but-keep calls, with 5 upgrades to tier1_5 and 6 additions to the surface list.",
+    "surviving_flag_ids": [
+      "W15-B001-A-008",
+      "W15-B001-A-015",
+      "W15-B001-A-016",
+      "W15-B001-A-019",
+      "W15-B001-A-028",
+      "W15-B001-A-032",
+      "W15-B001-A-052",
+      "W15-B001-A-056",
+      "W15-B001-A-057",
+      "W15-B001-A-060",
+      "W15-B001-A-064",
+      "W15-B001-A-078",
+      "W15-B001-A-079",
+      "W15-B001-A-081",
+      "W15-B001-A-082",
+      "W15-B001-A-083",
+      "W15-B001-A-084",
+      "W15-B001-A-092",
+      "W15-B001-A-096",
+      "W15-B001-A-098",
+      "W15-B001-A-100",
+      "W15-B001-B-007",
+      "W15-B001-B-063",
+      "W15-B001-B-093",
+      "W15-B001-B-095",
+      "W15-B001-B-096",
+      "W15-B001-B-097",
+      "W15-B001-B-098",
+      "W15-B001-C-008",
+      "W15-B001-C-028",
+      "W15-B001-C-031",
+      "W15-B001-C-054",
+      "W15-B001-C-057",
+      "W15-B001-C-061",
+      "W15-B001-C-062",
+      "W15-B001-C-077",
+      "W15-B001-C-087"
+    ]
+  },
+  "template_families_diversity_risk": {
+    "note": "Not pseudo-innovation (each instance has genuine content), but four claim skeletons are heavily repeated; at the 1000+ -> 200 Stage-2 cut these families should compete internally, not each send every member forward.",
+    "families": {
+      "adapt_only_component": {
+        "skeleton": "domain gap lives in {component}; tuning only {component} matches LoRA",
+        "count": 8,
+        "idea_ids": [
+          "W15-B001-A-008",
+          "W15-B001-A-015",
+          "W15-B001-A-016",
+          "W15-B001-A-032",
+          "W15-B001-A-064",
+          "W15-B001-A-081",
+          "W15-B001-A-082",
+          "W15-B001-A-083"
+        ]
+      },
+      "frozen_signal_as_free_sensor": {
+        "skeleton": "{frozen-model byproduct signal} is a free {sensor/label/detector} for {quantity}",
+        "count": 14,
+        "idea_ids": [
+          "W15-B001-A-009",
+          "W15-B001-A-050",
+          "W15-B001-A-061",
+          "W15-B001-A-062",
+          "W15-B001-A-066",
+          "W15-B001-A-067",
+          "W15-B001-C-011",
+          "W15-B001-C-030",
+          "W15-B001-C-031",
+          "W15-B001-C-034",
+          "W15-B001-C-057",
+          "W15-B001-C-060",
+          "W15-B001-C-062",
+          "W15-B001-C-063"
+        ]
+      },
+      "metric_audit_reranking": {
+        "skeleton": "metric/benchmark artifact X hides Y; re-evaluation flips published rankings",
+        "count": 23,
+        "idea_ids": [
+          "W15-B001-A-068",
+          "W15-B001-A-069",
+          "W15-B001-A-070",
+          "W15-B001-A-071",
+          "W15-B001-A-073",
+          "W15-B001-A-074",
+          "W15-B001-A-075",
+          "W15-B001-B-013",
+          "W15-B001-B-015",
+          "W15-B001-B-016",
+          "W15-B001-B-017",
+          "W15-B001-B-018",
+          "W15-B001-B-020",
+          "W15-B001-B-021",
+          "W15-B001-B-022",
+          "W15-B001-B-023",
+          "W15-B001-C-039",
+          "W15-B001-C-041",
+          "W15-B001-C-044",
+          "W15-B001-C-045",
+          "W15-B001-C-046",
+          "W15-B001-C-047",
+          "W15-B001-C-048"
+        ]
+      },
+      "annotator_artifact_inheritance": {
+        "skeleton": "models learn the annotator/protocol artifact, not the anatomy/medium",
+        "count": 14,
+        "idea_ids": [
+          "W15-B001-A-036",
+          "W15-B001-A-039",
+          "W15-B001-A-041",
+          "W15-B001-B-002",
+          "W15-B001-B-003",
+          "W15-B001-B-004",
+          "W15-B001-B-008",
+          "W15-B001-B-010",
+          "W15-B001-B-011",
+          "W15-B001-B-073",
+          "W15-B001-C-001",
+          "W15-B001-C-004",
+          "W15-B001-C-015",
+          "W15-B001-C-016"
+        ]
+      }
+    }
+  },
+  "territory_balance": {
+    "counts": {
+      "T01 SAM / Foundation Model adaptation / PEFT": 93,
+      "T02 Medical segmentation": 89,
+      "T03 Smoke / fire / ambiguous segmentation": 89
+    },
+    "note": "Territory-level balance is fine (93/89/89). The imbalance is method-orbit concentration inside T01: 42/93 T01 ideas orbit LoRA/PEFT mechanics (clusters: peft_mechanism, counterintuitive_peft, capability_erosion, data_efficiency, peft_lifecycle)."
+  },
+  "underweighted_territories_and_axes": [
+    {
+      "axis": "Language/text-prompted and VLM-grounded segmentation",
+      "current_coverage": "~2 ideas (B-086, C-032)",
+      "suggestion": "Proceed with planned T05; require mechanism-level claims about grounding, not CLIP+SAM assemblies."
+    },
+    {
+      "axis": "Video / temporal / streaming segmentation outside smoke (memory architectures, temporal consistency science)",
+      "current_coverage": "T03 temporal_dynamics only (7 ideas, all media-specific)",
+      "suggestion": "Add a video-segmentation territory or sub-quota; SAM-2-style memory behavior is untouched."
+    },
+    {
+      "axis": "Security, adversarial robustness, spoofing",
+      "current_coverage": "1 idea (C-099)",
+      "suggestion": "Explicit sub-quota in T06 failure mining."
+    },
+    {
+      "axis": "Efficiency, distillation, compute/data scaling laws",
+      "current_coverage": "~2 ideas (A-091; A-079 tangentially)",
+      "suggestion": "Underweighted relative to the field; scaling-law-style measurement ideas fit the corpus's metrology strength."
+    },
+    {
+      "axis": "Continual / lifelong deployment (adapter lifecycle, sequential domains)",
+      "current_coverage": "3 ideas (peft_lifecycle)",
+      "suggestion": "Thin for a deployment-relevant axis; extend beyond LoRA bookkeeping."
+    },
+    {
+      "axis": "Fairness / equity / population bias",
+      "current_coverage": "2 ideas (B-079, B-091; B-049 tangentially)",
+      "suggestion": "Medical territory especially warrants demographic-stratification hypotheses."
+    },
+    {
+      "axis": "Theory: identifiability, sample complexity, formal limits",
+      "current_coverage": "3 ideas, all T03 physics-identifiability (C-019, C-020, C-027)",
+      "suggestion": "No formal-analysis ideas exist in T01/T02; invite information-theoretic or PAC-style claims."
+    },
+    {
+      "axis": "Interactive segmentation / human factors outside the medical territory",
+      "current_coverage": "T02 human_ai_interaction (7); T01 has only A-005/A-029 touching interaction",
+      "suggestion": "Interaction science generalizes; port the T02 question style to T01/T03."
+    },
+    {
+      "axis": "Instance/panoptic/amodal problem formulation outside media",
+      "current_coverage": "C-046, A-033 only",
+      "suggestion": "Formulation-level ontology questions proved fertile in T03; apply to solid-object territories."
+    }
+  ],
+  "recommendations_for_generators": [
+    "Add a negative-control requirement to the generation contract: each idea must state the control or dissociation that separates its mechanism claim from 'the new combination just works better'.",
+    "Cap per-batch instances of a single claim skeleton (suggest max 5) at generation time; the four families listed here reached 8-23 instances each.",
+    "For any idea whose minimal experiment is 'method A vs method B on benchmark C', require the predicted mechanism signature that would distinguish the win from generic capacity/tuning effects (per A-068's own finding).",
+    "Enforce the existing mutation_required gate: the 6 tier1 ideas must be reformulated per judge_B salvage notes before Stage-2 promotion; tier1_5 ideas should have their diagnostic promoted to the headline claim at the same checkpoint."
+  ],
+  "canonical_files_modified": [],
+  "created_at": "2026-08-28T19:55:00Z"
+}
