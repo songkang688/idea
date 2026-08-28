@@ -1,0 +1,277 @@
+{
+  "task_id": "p1_diversity_audit_w2",
+  "role": "auditor_A_mode_collapse",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "audited_set": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w2-3111",
+    "source_commit": "929445dd130fa6b094024e7b00df42b7af6b04c6",
+    "records": 494,
+    "waves": ["p1_wave_b_w1", "p1_wave_b_w2"],
+    "shards": {
+      "gen_a_sam_foundation_peft": 94,
+      "gen_b_hard_domain_dense_prediction": 85,
+      "gen_c_contrarian_eval": 69,
+      "gen_d_object_detection": 79,
+      "gen_e_vlm_dense_prediction": 79,
+      "gen_f_synthetic_data": 88
+    }
+  },
+  "audited_at_utc": "2026-08-28T20:40:40Z",
+  "method": "deterministic regex/count analysis over all idea text fields of all 494 records; full pairwise one-liner token-Jaccard (121771 pairs); tallies of judge_A permutation flags and judge_C template-family fingerprints attached to records; judge metadata never counted as idea text; prior w1 audit read for baseline deltas only; no records modified",
+  "timeline_note": "KNOWN FACT: wave2 shards D-F were generated before the w1 diversity audit existed, so w1 guards could not have shaped them; guard compliance is enforceable only from gen_h onward. Findings distinguish 'guard violated' from 'guard predates shard'.",
+  "mode_collapse": {
+    "surface_level": "LOW",
+    "surface_evidence": [
+      "EVIDENCE: max pairwise one-liner token-Jaccard 0.282 (W13-P1-E-034 vs W13-P1-E-047); 0 pairs >= 0.33 across 121771 pairs",
+      "EVIDENCE: 65 distinct clusters; largest cluster = 13/494 (2.6%)"
+    ],
+    "structural_level": "MEDIUM_improved_from_HIGH",
+    "structural_evidence": [
+      "EVIDENCE: SAM/SAM2 subject share fell 35.1% -> 17.6% (87/494, all wave1; wave2 added ~0) — already below the w1 25% running-share target",
+      "EVIDENCE: eval/measurement cluster-share fell 43.5% -> 31.4% (155/494 by cluster-name classification)",
+      "EVIDENCE: annotation/convention pathology mention-share rose to 39.3% (194/494, 6/6 shards); largest judge_C fingerprint cell annotation_ceiling_conventions = 13 vs cap 6",
+      "EVIDENCE: 14 judge_C template families exceed the <=6 fingerprint cap (top: annotation_ceiling_conventions 13, realism_not_the_active_ingredient 12, tf03_silent_capability_erosion 10, tf04_sam_plus_x_ports 10, equalization_null_hidden_budget 9)"
+    ],
+    "genre_level": "HIGH_persisting_worse_in_wave2",
+    "genre_evidence": [
+      "EVIDENCE: 494/494 records carry the contrarian schema (community_default_belief + why_it_might_be_wrong)",
+      "EVIDENCE: constructive-phrased one-liners 1/494 by strict regex",
+      "EVIDENCE: wave2 loose-constructive 12/246 (4.9%) [W13-P1-D-043, D-050, D-054, D-082, E-038, E-040, E-100, F-009, F-019, F-055, F-071, F-095] vs wave1 loose 46/248 (18.5%, auditor B w1 criterion)",
+      "HYPOTHESIS: debunk monoculture is the dominant collapse axis at the 1000+ scale; wave2 worsened it because it predates the w1 genre quota"
+    ]
+  },
+  "crowded_clusters": [
+    {
+      "name": "annotation_convention_pathology",
+      "scope": "cross-shard 6/6",
+      "share": "194/494 (39.3%) mention-share; wave2 added 92 (gen_d 35, gen_e 31, gen_f 26); largest fingerprint cell annotation_ceiling_conventions 13",
+      "evidence_label": "EVIDENCE",
+      "action": "ESCALATE_stop_feeding_to_hard_ban_as_primary_subject"
+    },
+    {
+      "name": "eval_measurement_super_cluster",
+      "scope": "portfolio macro-genre",
+      "share": "155/494 (31.4%) by cluster name (was 43.5%); wave2 added 40 (gen_d 13, gen_f 25, gen_e 2); 72.1% mention benchmark/eval/metric anywhere",
+      "evidence_label": "EVIDENCE",
+      "action": "keep_no_new_eval_critique_generator; <=20% eval-critique per shard"
+    },
+    {
+      "name": "detection_subject",
+      "scope": "gen_d mandate, now saturated",
+      "share": "151/494 (30.6%) mention detection; 76/79 of gen_d; small-dense-objects 13 + fm-failure-modes 13 are joint-largest clusters",
+      "evidence_label": "EVIDENCE",
+      "action": "saturated_no_more_detection_generators"
+    },
+    {
+      "name": "open_vocab_vlm_dense",
+      "scope": "gen_e mandate, now saturated",
+      "share": "111/494 (22.5%); 70/79 of gen_e",
+      "evidence_label": "EVIDENCE",
+      "action": "saturated; in-flight gen_l must target the LLM/agent loop, not the VLM"
+    },
+    {
+      "name": "synthetic_data_engines",
+      "scope": "gen_f mandate, owned-and-closed",
+      "share": "121/494 (24.5%) mention synthetic; 74/88 in gen_f; realism_not_the_active_ingredient fingerprint 12 vs cap 6",
+      "evidence_label": "EVIDENCE",
+      "action": "closed_to_new_shards; gen_n anti-overlap guard critical; ban realism-not-active-ingredient framing outside gen_f"
+    },
+    {
+      "name": "calibration_uncertainty",
+      "scope": "cross-shard 6/6",
+      "share": "102/494 (20.6%) mention-share; wave2 added 36 pre-guard (gen_d 14, gen_e 13, gen_f 9); 31 direct wave1 cluster ideas",
+      "evidence_label": "EVIDENCE",
+      "action": "keep_w1_primary_cluster_ban"
+    },
+    {
+      "name": "small_dense_crowded_counting",
+      "scope": "NEW cross-shard convergence 6/6",
+      "share": "68/494 (13.8%); gen_d 27, gen_e 13, gen_f 12; density_crowding_counting fingerprint 7",
+      "evidence_label": "EVIDENCE",
+      "action": "watch; cap as primary cluster <=5 per new shard"
+    },
+    {
+      "name": "cheap_free_predictor_of_outcome_genre",
+      "scope": "NEW cross-shard template, all 6 shards (successor of w1 F3 internal-score-as-free-detector)",
+      "share": "27/494 (5.5%) by regex (E 7, A 6, D 5, F 5, B 3, C 1); judge_A proximity_predicts_performance 7; judge_C cheap_predictor_of_outcome 7",
+      "evidence_label": "EVIDENCE",
+      "action": "watch; cap <=3 per new shard"
+    },
+    {
+      "name": "equalization_matched_budget_null_family",
+      "scope": "NEW judge-fingerprinted template",
+      "share": "judge_C equalization_null_hidden_budget 9 + tf10_hidden_variance_term 7 (both exceed cap 6); strict regex catches only 2, so crowding is template-level not phrasing-level",
+      "evidence_label": "EVIDENCE",
+      "action": "cap gains-vanish-under-matched-budget primary framing <=3 per new shard"
+    }
+  ],
+  "permutation_flags": {
+    "sam_plus_x": {
+      "volume": "87/494 (17.6%) mention SAM/SAM2 — identical 87 wave1 records (86 gen_a, 1 gen_b); wave2 added zero; tf04_sam_plus_x_ports 10 accepted (all gen_a); judge_A sam_plus_x_ports flags 9 (all W13-P1-A-*)",
+      "assessment": "EVIDENCE: SAM+X mass is frozen; running master share already below the 25% target set at w1",
+      "flag": "guard_held_keep_5pct_cap_10pct_gen_k_only"
+    },
+    "lora_plus_x": {
+      "volume": "25/494 (5.1%) mention LoRA, all gen_a; PEFT/adapter/fine-tuning mentions 87/494 (17.6%), mostly incidental outside gen_a",
+      "assessment": "EVIDENCE: zero wave2 growth",
+      "flag": "contained_no_action"
+    },
+    "loss_plus_x": {
+      "volume": "4 accepted with judge_A loss_plus_x_family flags (W13-P1-A-101, B-003, B-018, B-034), all wave1; zero wave2 growth",
+      "assessment": "EVIDENCE: objective-function territory remains empty and guard-protected for queued gen_m",
+      "flag": "clear_and_underexplored"
+    },
+    "wave1_template_ports": {
+      "volume": "judge_A permutation_family flags on 73/246 (29.7%) of accepted wave2; wave1_family_adjacent on 39/246 (15.9%); top families: convention_scoring_template 9, proximity_predicts_performance 7, teacher_bias_inheritance 6, oracle_decomposition_template 6, hidden_budget_confound 5, scaling_law_template 5",
+      "assessment": "EVIDENCE: cross-wave template reuse is the NEW dominant permutation axis; accepted as distinct hypotheses but top novelty/prior-art risk",
+      "flag": "novelty_gate_priority_73_ids; new-shard guard: wave1-template ports require a subject-native mechanism claim"
+    }
+  },
+  "missing_contrarian_vs_missing_constructive": {
+    "verdict": "missing_constructive_is_the_larger_deficit_and_worsened_in_wave2",
+    "constructive_evidence": [
+      "EVIDENCE: strict constructive-phrased 1/494; wave2 loose-constructive 12/246 (4.9%) vs wave1 loose 46/248 (18.5%)",
+      "EVIDENCE: 494/494 contrarian-schema; 57/494 carry judge dissents (w1 25, w2 32)"
+    ],
+    "constructive_action": "elevate queued gen_p_constructive_capability from priority 8 to first dispatch of the remaining queue; if wave3 audit still shows <10% loose-constructive, commission a second constructive shard",
+    "missing_contrarian_targets_still_unchallenged": [
+      { "target": "scaling orthodoxy", "coverage": "0.6%", "owned_by": "queued gen_n", "evidence_label": "EVIDENCE (count) / HYPOTHESIS (unchallenged-belief claim)" },
+      { "target": "emergence claims in vision FMs", "coverage": "0.4%", "owned_by": "queued gen_n (add explicitly)", "evidence_label": "EVIDENCE / HYPOTHESIS" },
+      { "target": "optimizer/schedule/training folklore", "coverage": "2.8% mentions, no dedicated cluster", "owned_by": "queued gen_m", "evidence_label": "EVIDENCE / HYPOTHESIS" },
+      { "target": "memorization/privacy", "coverage": "1.2%", "owned_by": "queued gen_n", "evidence_label": "EVIDENCE / HYPOTHESIS" },
+      { "target": "3D-consistency of 2D foundation features", "coverage": "0.8%", "owned_by": "in-flight gen_k", "evidence_label": "EVIDENCE / HYPOTHESIS" },
+      { "target": "human-vision / psychophysics contrasts", "coverage": "1.6%", "owned_by": "UNOWNED -> fold into proposed gen_q", "evidence_label": "EVIDENCE / HYPOTHESIS" },
+      { "target": "test-time compute/adaptation orthodoxy", "coverage": "0.2%", "owned_by": "UNOWNED -> proposed gen_q", "evidence_label": "EVIDENCE / HYPOTHESIS" },
+      { "target": "active-learning / data-acquisition folklore", "coverage": "0.6%", "owned_by": "UNOWNED -> fold into proposed gen_q", "evidence_label": "EVIDENCE / HYPOTHESIS" },
+      { "target": "cross-field transfer claims (audio/time-series/graphs)", "coverage": "0.0%", "owned_by": "UNOWNED -> proposed gen_r (w1 deferral revisit-rule triggers)", "evidence_label": "EVIDENCE / HYPOTHESIS" },
+      { "target": "underwater 0.0% / microscopy 0.4% / document-OCR 0.2% / remote sensing 1.8%", "coverage": "near-zero", "owned_by": "queued gen_o", "evidence_label": "EVIDENCE" }
+    ]
+  },
+  "letters_not_reused": {
+    "in_flight_do_not_reuse": ["gen_g", "gen_h", "gen_j", "gen_k", "gen_l"],
+    "in_flight_verified_on_origin": {
+      "gen_g": "origin/cursor/p1-gen-g-domain-shift-0165 (100 ideas off-master, judges pending)",
+      "gen_h": "origin/cursor/p1-gen-h-sr-restoration-1829 (restoration mandate — fills what w1 queued as gen_i)",
+      "gen_j": "origin/cursor/p1-gen-j-diffusion-science-3470"
+    },
+    "gen_i_status": "remains deferred: gen_h filled the restoration/low-level territory",
+    "burned": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f"]
+  },
+  "recommended_next_territories": [
+    {
+      "territory_id": "gen_p_constructive_capability",
+      "status": "existing w1-queue letter, RE-PRIORITIZED",
+      "priority": 1,
+      "was_priority": 8,
+      "fills": "loose-constructive fell to 4.9% in wave2; dominant collapse axis is genre",
+      "guards": [">=80% constructive/capability, 0% pure-audit", "<=10% SAM", "annotation-pathology hard ban", "all w1 global guards + w2 deltas"]
+    },
+    {
+      "territory_id": "gen_o_hard_domain_diversifier",
+      "status": "existing w1-queue letter, RE-PRIORITIZED",
+      "priority": 2,
+      "was_priority": 7,
+      "fills": "underwater 0.0%, microscopy 0.4%, document/OCR 0.2%, remote sensing 1.8%, agriculture ~0.2% at 494; medical 11.1% leaves cap headroom",
+      "guards": ["smoke/fire/transparent HARD BAN", "<=25% medical beyond-ambiguity lens", "<=5% SAM", "add explicit document/OCR emphasis", "all w1 global guards + w2 deltas"]
+    },
+    {
+      "territory_id": "gen_m_training_dynamics_objectives",
+      "status": "existing w1-queue letter, confirmed",
+      "priority": 3,
+      "was_priority": 5,
+      "fills": "training dynamics 4.0%; loss+X permutation volume still zero",
+      "guards": ["HARD ban add-loss-term-X-to-task-Y", "<=5% SAM", "all w1 global guards + w2 deltas"]
+    },
+    {
+      "territory_id": "gen_n_scaling_memorization_data_laws",
+      "status": "existing w1-queue letter, guard STRENGTHENED",
+      "priority": 4,
+      "was_priority": 6,
+      "fills": "scaling laws 0.8%, memorization 1.2%; add emergence-claims audit (0.4%)",
+      "guards": ["STRENGTHENED anti-overlap: gen_f owns 60 synthetic-engine records incl. realism_not_the_active_ingredient (12) and scaling-and-economics clusters; gen_n frames data/scale-level interventions only, never generation pipelines", "<=5% SAM", "all w1 global guards + w2 deltas"]
+    },
+    {
+      "territory_id": "gen_q_test_time_compute_adaptation",
+      "status": "NEW letter proposed toward 1000",
+      "priority": 5,
+      "fills": "test-time compute/adaptation 0.2%, active learning 0.6%, psychophysics contrasts 1.6% — all unowned by in-flight or queued letters",
+      "mandate": "test-time training/adaptation/augmentation laws, inference-time compute scaling for perception, test-time search/ensembling, TTA failure modes under real shift; fold in active-learning folklore and psychophysics-style human-model contrast designs",
+      "guards": ["ANTI-OVERLAP: in-flight gen_l owns LLM/agent-orchestrated loops; gen_q owns non-LLM test-time mechanisms for dense/detection models", "<=5% SAM", "annotation-pathology hard ban", "all global guards"]
+    },
+    {
+      "territory_id": "gen_r_cross_field_transfer",
+      "status": "NEW letter proposed toward 1000 (w1-deferred territory, revisit rule triggered: coverage still 0.0% and in-flight h/j/k/l leave it untouched)",
+      "priority": 6,
+      "fills": "cross-field transfer 0.0%",
+      "mandate": "vision <-> audio/time-series/graphs/scientific-imaging transfer science",
+      "guards": ["each idea names both fields AND the specific transferred invariance/structure", "hard ban on bare apply-architecture-X-to-field-Y permutations", "all global guards"]
+    },
+    {
+      "territory_id": "gen_s_embodied_interactive_perception",
+      "status": "NEW letter, RESERVE",
+      "priority": 7,
+      "fills": "embodied/robotics 3.2% loose mentions with no dedicated cluster; interaction_loops_human_factors cluster only 5",
+      "mandate": "embodied/robotic/active perception + interactive human-in-the-loop vision",
+      "guards": ["commission after gen_q/gen_r if acceptance holds", "all global guards"]
+    },
+    {
+      "territory_id": "gen_t_efficiency_deployment_science",
+      "status": "NEW letter, RESERVE",
+      "priority": 8,
+      "fills": "~5 dedicated records (distillation_efficiency) despite 9.7% loose mentions",
+      "mandate": "quantization/pruning/distillation/latency laws as science, non-SAM",
+      "guards": ["commission only if 1000-margin erodes (acceptance < ~70%)", "all global guards"]
+    }
+  ],
+  "capacity_math_toward_1000": {
+    "evidence_label": "HYPOTHESIS (arithmetic on EVIDENCE inputs)",
+    "master_now": 494,
+    "in_flight_raw": "~500 (gen_g 100 generated, judges pending; gen_h, gen_j, gen_k, gen_l ~100 each)",
+    "observed_blended_acceptance": "494/604 = 81.8%",
+    "projection_after_in_flight": "~903",
+    "projection_after_queue_m_n_o_p": "~1230 (clears 1000 with ~230 margin)",
+    "projection_with_gen_q_r": "~1394",
+    "conclusion": "1000 target reachable with the existing queue alone; gen_q/gen_r recommended for diversity margin; gen_s/gen_t reserved against acceptance dips below ~70%"
+  },
+  "guard_updates_delta_to_w1": [
+    "ESCALATE: annotation/convention/label-noise pathology from stop_feeding to HARD BAN as primary subject",
+    "ADD: cap X-is-a-free/cheap-predictor-of-Y ideas at <=3 per shard",
+    "ADD: cap equalization/matched-budget-null primary framing at <=3 per shard",
+    "ADD: ban realism/fidelity-is-not-the-active-ingredient framing outside gen_f",
+    "ADD: wave1-template-port rule — re-instantiating a wave1 critique template on a new subject requires a subject-native mechanism claim",
+    "KEEP: SAM <=5% (10% gen_k), calibration primary-cluster ban, smoke/fire/transparent hard ban, >=8 sub-clusters none >15% (gen_d hit 16.5% pre-guard, flagged not sanctioned), >=25% constructive floor, <=40% pure-debunk ceiling",
+    "ENFORCE: fingerprint cap <=6 at judge time from gen_g/h onward AND at Stage-2 selection (14 families already exceed it)"
+  ],
+  "quality_gate_status_wave2": {
+    "numeric_kill_thresholds": "EVIDENCE: ~0/246 clean numeric thresholds (8 records contain any digit in falsifiable_prediction); gate predates wave2 generation",
+    "structured_evidence_label_dict": "EVIDENCE: 0/246 wave2 vs 94/248 wave1 (gen_a only)",
+    "action": "gen_h onward must comply; wave2 records need schema backfill before Stage 2 ranking"
+  },
+  "citation_integrity": {
+    "citation_like_strings_in_master": 13,
+    "all_in": "wave1 gen_a prior_work_basis fields, all real well-known papers (verified at w1)",
+    "wave2_added": 0,
+    "fake_citations_found": 0,
+    "this_audit_adds_citations": false,
+    "evidence_label": "EVIDENCE"
+  },
+  "scope_compliance": {
+    "canonical_files_untouched": [
+      "Windows13/_state/ideas_master.jsonl",
+      "Windows13/_state/research_state.json",
+      "Windows13/_state/research_ledger.md",
+      "Windows13/_state/window.lock.json"
+    ],
+    "files_written": [
+      "Windows13/_state/tasks/p1/diversity_audit_w2/auditor_A.md",
+      "Windows13/_state/tasks/p1/diversity_audit_w2/auditor_A.json",
+      "Windows13/_state/tasks/p1/diversity_audit_w2/done_auditor_A.json"
+    ],
+    "windows_id_unchanged": true,
+    "own_branch": "cursor/p1-diversity-audit-w2-auditor-a-7ef7",
+    "force_push": false
+  }
+}
