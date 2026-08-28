@@ -1,0 +1,40 @@
+{
+  "task_id": "p1_diversity_audit_w2",
+  "role": "auditor_C_adversary",
+  "round": 2,
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "completed",
+  "branch": "cursor/p1-diversity-audit-w2-auditor-c-32c6",
+  "completed_at_utc": "2026-08-28T21:05:00Z",
+  "audited_master": {
+    "records": 494,
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w2-3111",
+    "source_commit": "929445dd130fa6b094024e7b00df42b7af6b04c6"
+  },
+  "outputs": [
+    "Windows13/_state/tasks/p1/diversity_audit_w2/auditor_C.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w2/auditor_C.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w2/done_auditor_C.json"
+  ],
+  "headline_findings": [
+    "surface duplication LOW (max Jaccard 0.246); collapse is family-level: 4 cross-shard families survived consolidation (metric/harness critique 88, calibration/uncertainty 56 despite ban, convention mismatch 49, annotation-noise floor 44; union of 18 families = 55.9% mention-level)",
+    "genre collapse persists: debunk 51.4% + mixed 23.9% vs constructive 7.7%; eval super-genre 45.5% of one-liners; gen_p to first dispatch",
+    "w1 quality gates unenforced: 23/494 numeric kill thresholds, evidence_label gen_a-only; off-master compliance bimodal (gen_j 104/104 full, gen_k partial+schema drift, gen_h 2/100, gen_g 0/100); demand judge-time repair/remand + schema normalization",
+    "SR/diffusion/3D/domain-shift gaps FILLED off-master (gen_h 100, gen_j 104, gen_k 105, gen_g 100); gen_l in flight unpushed; 509 raw ideas await wave-3 judging - judging is the bottleneck, projection ~910 accepted after in-flight, ~1235 after gen_m/n/o/p",
+    "collision catch vs auditor A: proposed gen_q TTA mandate overlaps off-master gen_g's 14 TTA ideas (G-001..G-014); narrow gen_q to inference-time compute or defer",
+    "letter hygiene: retire gen_i permanently (dangling after gen_h took the restoration mandate)",
+    "NEW territory gen_u_adversarial_security_fairness (attack science 0.4%, fairness 0.2%, unowned by any queue)",
+    "citation audit clean: 14 real citations (all gen_a prior_work_basis), 0 in off-master shards, no fake citations anywhere, none added"
+  ],
+  "recommended_queue_summary": ["gen_p(1)", "gen_o(2)", "gen_m(3, +continual/open-world)", "gen_n(4, +emergence)", "gen_u(5, NEW)", "gen_q(6, narrowed, after gen_g judged)", "gen_r(7)", "gen_s(reserve)", "gen_t(reserve)"],
+  "no_fake_citations": true,
+  "scope_compliance": {
+    "ideas_master_jsonl_untouched": true,
+    "research_state_json_untouched": true,
+    "window_lock_json_untouched": true,
+    "force_push": false
+  },
+  "recommended_next_task_type": "p1_diversity_audit_w2_consolidator"
+}

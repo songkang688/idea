@@ -1,0 +1,181 @@
+{
+  "task_id": "p1_diversity_audit_w2",
+  "role": "auditor_C_adversary",
+  "round": 2,
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "branch": "cursor/p1-diversity-audit-w2-auditor-c-32c6",
+  "audited_at_utc": "2026-08-28T21:05:00Z",
+  "audited_set": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "records": 494,
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w2-3111",
+    "source_commit": "929445dd130fa6b094024e7b00df42b7af6b04c6",
+    "shards": {"gen_a": 94, "gen_b": 85, "gen_c": 69, "gen_d": 79, "gen_e": 79, "gen_f": 88}
+  },
+  "independence": {
+    "own_pass_before_reading_auditor_A": true,
+    "auditor_A_w2_branch_read_after_own_pass": "origin/cursor/p1-diversity-audit-w2-auditor-a-7ef7",
+    "auditor_B_w2_status": "ABSENT: done_auditor_B.json not found on any origin branch at audit time (all-branch git ls-tree sweep)"
+  },
+  "method": "deterministic regex/count analysis over all descriptive fields of 494 master records and 409 off-master shard records; full pairwise one-liner+hypothesis token-Jaccard (121771 pairs); manual spot-check of family members; commit-timestamp timeline for guard-applicability fairness",
+  "timeline_fairness": {
+    "w1_audit_landed_utc": "2026-08-28T19:44:04Z",
+    "gen_g_pushed": "19:26Z (pre-audit)",
+    "gen_h_pushed": "19:57Z (concurrent)",
+    "gen_j_pushed": "20:24Z (post-audit)",
+    "gen_k_pushed": "20:38Z (post-audit)",
+    "implication": "pre/concurrent shards could not comply at generation time; enforcement point is wave-3 judging"
+  },
+  "attacks": [
+    {
+      "id": "A1_surviving_permutation_families",
+      "evidence_label": "EVIDENCE (counts; regex mention-level upper bound, top families spot-checked at primary level)",
+      "surface_duplication": "LOW: max pairwise token-Jaccard 0.246 (E-029 vs E-054); 2 pairs >= 0.18 of 121771",
+      "families_mention_level": {
+        "P4_metric_harness_critique": {"count": 88, "share": "17.8%", "by_shard": {"A": 16, "B": 12, "C": 25, "D": 19, "E": 5, "F": 11}},
+        "P9_calibration_uncertainty_BANNED_cluster": {"count": 56, "share": "11.3%", "by_shard": {"A": 10, "B": 13, "C": 11, "D": 9, "E": 8, "F": 5}, "note": "grew 31 -> 56 via pre-guard wave2"},
+        "P10_convention_mismatch": {"count": 49, "share": "9.9%", "by_shard": {"A": 8, "B": 6, "C": 6, "D": 10, "E": 8, "F": 11}},
+        "P1_annotation_noise_floor": {"count": 44, "share": "8.9%", "by_shard": {"A": 7, "B": 8, "C": 5, "D": 11, "E": 5, "F": 8}},
+        "P2_name_synonym_prompt_sensitivity": {"count": 19, "primary": 12},
+        "P3_context_cooccurrence_shortcut": {"count": 16},
+        "P8_reported_gaps_are_noise": {"count": 16},
+        "P7_contamination_seen_shot": {"count": 15},
+        "P15_head_tail_credit": {"count": 14},
+        "P6_oracle_loc_vs_recognition": {"count": 11, "primary": 5},
+        "union_of_18_families": {"count": 276, "share": "55.9%"}
+      },
+      "p1_primary_members_all_6_shards": ["W13-P1-A-027", "W13-P1-B-001", "W13-P1-B-002", "W13-P1-B-008", "W13-P1-B-069", "W13-P1-B-075", "W13-P1-B-084", "W13-P1-C-010", "W13-P1-C-025", "W13-P1-C-067", "W13-P1-C-069", "W13-P1-D-045", "W13-P1-D-083", "W13-P1-D-093", "W13-P1-D-096", "W13-P1-D-097", "W13-P1-D-098", "W13-P1-F-038"],
+      "demand": "Stage-2 selection-time family caps extending w1 F1-F5: P4<=10, P9<=8, P10<=8, P1<=6, P2<=5, P6<=3 of 200 survivors (slot counts HYPOTHESIS; cap mechanism is the demand); wave-3 judges treat family membership as a merge trigger, not only pairwise duplication"
+    },
+    {
+      "id": "A2_genre_collapse_persists",
+      "evidence_label": "EVIDENCE (heuristic 4-way genre regex, spot-checked)",
+      "master_genre": {"debunk_audit": "254 (51.4%)", "mixed_debunk_plus_fix": "118 (23.9%)", "characterization_law": "84 (17.0%)", "constructive": "38 (7.7%)"},
+      "wave2_constructive_by_shard": {"gen_d": "10/79 (12.7%)", "gen_e": "4/79 (5.1%)", "gen_f": "9/88 (10.2%)", "note": "all below the >=25% floor; pre-guard timing acknowledged"},
+      "eval_super_genre_one_liner_share": "225/494 = 45.5% (was 43.5% at 248); gen_d worst at 66%",
+      "strict_constructive_ids_protect_from_culling": ["W13-P1-A-011", "W13-P1-A-026", "W13-P1-A-043", "W13-P1-A-056", "W13-P1-A-063", "W13-P1-A-093", "W13-P1-B-003", "W13-P1-B-004", "W13-P1-B-040", "W13-P1-B-056", "W13-P1-C-004", "W13-P1-C-037", "W13-P1-C-054", "W13-P1-C-061", "W13-P1-D-020", "W13-P1-D-031", "W13-P1-D-059", "W13-P1-D-072", "W13-P1-D-073", "W13-P1-D-074", "W13-P1-D-077", "W13-P1-D-086", "W13-P1-D-089", "W13-P1-E-007", "W13-P1-E-046", "W13-P1-E-050", "W13-P1-E-052", "W13-P1-F-010", "W13-P1-F-040", "W13-P1-F-043", "W13-P1-F-045", "W13-P1-F-050", "W13-P1-F-054", "W13-P1-F-055", "W13-P1-F-070", "W13-P1-F-071", "W13-P1-F-073", "W13-P1-F-100"],
+      "demand": "gen_p_constructive_capability to first dispatch (was priority 8)"
+    },
+    {
+      "id": "A3_quality_gates_are_dead_letters",
+      "evidence_label": "EVIDENCE",
+      "numeric_kill_threshold_in_falsifiable_prediction": "23/494 (4.7%); gate demanded 100%",
+      "structured_evidence_label_present": "94/494 (gen_a only)",
+      "off_master_compliance_bimodal": {
+        "gen_j": "104/104 kill thresholds + 104/104 evidence_label + family_fingerprint/genre/needs_special_resources/seg_metric_dependent fields (FULL COMPLIANCE - gates are satisfiable)",
+        "gen_k": "98/105 numeric in separate kill_threshold field (schema drift; evidence_labels plural)",
+        "gen_h": "2/100 numeric, 0 evidence_label",
+        "gen_g": "0/100 numeric, 0 evidence_label (pre-audit, excusable at generation time)"
+      },
+      "demand": "wave-3 judges attach kill_threshold + evidence_label per record at judge time or remand the shard; wave-3 consolidator normalizes schema (single evidence_label dict, threshold inside falsifiable_prediction) before append; gate-compliance line added to consolidator done-file checklist"
+    },
+    {
+      "id": "A4_off_master_prejudging_strike",
+      "evidence_label": "EVIDENCE",
+      "shards": {
+        "gen_g": {"n": 100, "kill_thresholds": "0/100", "constructive_phrasing": "14%", "pure_debunk": "41%", "eval_genre": "42%", "family_recycling": "P4 x15", "note": "test-time-adaptation cluster holds 14 ideas G-001..G-014"},
+        "gen_h": {"n": 100, "kill_thresholds": "2/100", "constructive_phrasing": "8% (floor >=25% VIOLATED)", "pure_debunk": "48% (ceiling <=40% VIOLATED)", "eval_genre": "37%", "family_recycling": "P4 x11, P1 x8, P9 x8 (banned calibration family re-imported)", "guards_held": "0 SAM, 0 PSNR/SSIM-only falsifications, ~56% restoration-native"},
+        "gen_j": {"n": 104, "kill_thresholds": "104/104", "constructive_phrasing": "7% vs self-declared 35.6%", "pure_debunk_phrasing": "47% vs self-declared 9.6%", "eval_genre": "31%", "family_recycling": "P4 x9"},
+        "gen_k": {"n": 105, "kill_thresholds": "98/105 separate field", "constructive_phrasing": "9% vs self-declared 32.4%", "pure_debunk_phrasing": "49%", "eval_genre": "57% (eval-critique recycled into 3D)", "family_recycling": "P9 x10, P4 x9", "guard_held": "2D-seg-metric falsification only 7/105"}
+      },
+      "self_declared_genre_inflation": "EVIDENCE of divergence between genre self-labels and claim phrasing in gen_j/gen_k; HYPOTHESIS on cause; judges must audit genre labels against claims, not trust self-certification"
+    },
+    {
+      "id": "A5_letter_registry_hazard_gen_i",
+      "evidence_label": "EVIDENCE",
+      "finding": "w1 queue assigned gen_i_restoration_lowlevel but dispatcher commissioned the territory as gen_h (origin/cursor/p1-gen-h-sr-restoration-1829); gen_i is a dangling letter with a stale mandate in a canonical decision file",
+      "demand": "mark gen_i permanently RETIRED (never reassign) in the next consolidator decision; letter registry is append-only"
+    },
+    {
+      "id": "A6_auditor_A_gen_q_collision_with_gen_g",
+      "evidence_label": "EVIDENCE",
+      "finding": "Auditor A w2 proposes gen_q_test_time_compute_adaptation incl. 'TTA failure modes under real shift', citing master coverage 0.2% as unowned; off-master gen_g already holds 14 dedicated TTA ideas (G-001..G-014: entropy-minimization critique, batch-statistics artifacts, hyperparameter circularity, stream collapse, do-no-harm gating, test-time prompt tuning)",
+      "demand": "narrow gen_q to inference-time compute-scaling laws for perception (test-time search/ensembling/TTT-for-dense) + psychophysics fold-in, with hard anti-overlap banning TTA-method critique as primary subject; or defer gen_q until gen_g is judged"
+    },
+    {
+      "id": "A7_citation_audit_clean",
+      "evidence_label": "EVIDENCE",
+      "master": "14 records with citation-like strings, all gen_a prior_work_basis, all real well-known works (SAM Kirillov 2023, LoRA Hu 2021, CKA Kornblith 2019, BitFit Ben Zaken 2022, model soups Wortsman 2022, task arithmetic Ilharco 2022, VPT Jia 2022, MAE He 2022, Geirhos 2019, registers Darcet 2023, HQ-SAM Ke 2023, DETR Carion 2020, SAM2 Ravi 2024, ToMe Bolya, typographic Goh)",
+      "off_master_shards": "0 citation strings in gen_g/h/j/k (409 ideas)",
+      "verdict": "no fake citations found; this audit adds none"
+    },
+    {
+      "id": "A8_1000_goal_arithmetic",
+      "evidence_label": "EVIDENCE (counts) / HYPOTHESIS (projection)",
+      "stage1_target": "1000+",
+      "master": 494,
+      "off_master_raw": {"gen_g": 100, "gen_h": 100, "gen_j": 104, "gen_k": 105, "total": 409},
+      "in_flight_unpushed": "gen_l (~100 expected; verified absent from all origin branches)",
+      "observed_acceptance": "494/604 = 81.8% (wave2 246/302 = 81.5%)",
+      "projection": "~910 after in-flight judging; queued gen_m/n/o/p (~400 raw ~= +325) lands ~1235 without any new letter",
+      "implication": "new letters are diversity plays, not volume plays; wave-3 judging (5 shards x 3 judges + consolidator) is the bottleneck - schedule it before/alongside new generation"
+    }
+  ],
+  "missing_territories": [
+    {"territory": "constructive_capability_genre", "master_primary": "7.7%", "owned_by": "queued gen_p (elevate to priority 1)"},
+    {"territory": "underwater_sonar", "master_primary": "0.0%", "owned_by": "queued gen_o"},
+    {"territory": "microscopy_histology", "master_primary": "0.2%", "owned_by": "queued gen_o"},
+    {"territory": "document_ocr", "master_primary": "0.4%", "owned_by": "queued gen_o"},
+    {"territory": "remote_sensing_aerial", "master_primary": "1.0%", "owned_by": "queued gen_o"},
+    {"territory": "training_dynamics_objectives", "master_primary": "0.8%", "owned_by": "queued gen_m"},
+    {"territory": "continual_open_world_learning", "master_primary": "0.2%", "owned_by": "fold into gen_m (new sub-mandate, this auditor)"},
+    {"territory": "scaling_laws_and_emergence", "master_primary": "0.2% / ~0.4%", "owned_by": "queued gen_n"},
+    {"territory": "memorization_privacy", "master_primary": "0.8%", "owned_by": "queued gen_n"},
+    {"territory": "adversarial_security_attack_science_backdoors_poisoning", "master_primary": "0.4%", "owned_by": "UNOWNED -> NEW gen_u (this auditor)"},
+    {"territory": "fairness_demographic_robustness", "master_primary": "0.2%", "owned_by": "UNOWNED -> NEW gen_u (this auditor)"},
+    {"territory": "inference_time_compute_scaling", "master_primary": "~0.2%", "owned_by": "NEW gen_q NARROWED (anti-gen_g guard mandatory)"},
+    {"territory": "cross_field_transfer", "master_primary": "0.0%", "owned_by": "NEW gen_r (w1-deferred; revisit trigger met)"},
+    {"territory": "human_psychophysics_contrasts", "master_primary": "0.0%", "owned_by": "fold into gen_q (per auditor A)"},
+    {"territory": "embodied_active_perception", "master_primary": "1.0%", "owned_by": "gen_s reserve"},
+    {"territory": "efficiency_deployment_science", "master_primary": "~1% dedicated", "owned_by": "gen_t reserve"},
+    {"territory": "super_resolution_restoration", "master_primary": "3.0%", "owned_by": "FILLED off-master gen_h (100)"},
+    {"territory": "diffusion_generative_science", "master_primary": "0.0%", "owned_by": "FILLED off-master gen_j (104)"},
+    {"territory": "threed_depth_flow_video", "master_primary": "~5%", "owned_by": "FILLED off-master gen_k (105)"},
+    {"territory": "domain_shift_tta", "master_primary": "~1%", "owned_by": "FILLED off-master gen_g (100)"},
+    {"territory": "llm_agent_vision_loops", "master_primary": "2.4%", "owned_by": "IN-FLIGHT gen_l (unpushed)"}
+  ],
+  "recommended_next_queue": [
+    {"priority": 1, "task_id": "p1_gen_p_constructive_capability", "letter": "gen_p", "status": "w1 letter re-prioritized from 8", "guards": [">=80% constructive, 0% pure audit", "gen_j-style full gate schema mandatory (numeric kill threshold inside falsifiable_prediction + evidence_label + family_fingerprint + genre)", "annotation-pathology hard ban", "<=10% SAM", "all w1 global guards"]},
+    {"priority": 2, "task_id": "p1_gen_o_hard_domain_diversifier", "letter": "gen_o", "status": "w1 letter re-prioritized from 7", "guards": ["explicit document/OCR + underwater + microscopy emphasis", "smoke/fire/transparent hard ban", "<=25% medical beyond-ambiguity lens", "<=5% SAM", "full gate schema", "all w1 global guards"]},
+    {"priority": 3, "task_id": "p1_gen_m_training_dynamics_objectives", "letter": "gen_m", "status": "w1 letter, mandate extended", "guards": ["EXTENDED: continual/open-world learning sub-mandate", "HARD ban add-loss-term-X-to-task-Y", "<=5% SAM", "full gate schema", "all w1 global guards"]},
+    {"priority": 4, "task_id": "p1_gen_n_scaling_memorization_data_laws", "letter": "gen_n", "status": "w1 letter, guard strengthened", "guards": ["add emergence-claims audit", "STRENGTHENED anti-overlap vs gen_f synthetic-engine clusters", "<=5% SAM", "full gate schema", "all w1 global guards"]},
+    {"priority": 5, "task_id": "p1_gen_u_adversarial_security_fairness", "letter": "gen_u", "status": "NEW letter (this auditor)", "territory": "attack science: adversarial patches/perturbations as mechanism claims, backdoor/poisoning of vision FMs and auto-label pipelines, jailbreak-style attacks on VLM-grounded perception; fairness/demographic robustness with falsifiable mechanism claims", "guards": ["<=20% eval-critique", "<=5% SAM", "each idea names an attack/bias mechanism + numeric kill threshold", "no survey-style records", "full gate schema", "all w1 global guards"]},
+    {"priority": 6, "task_id": "p1_gen_q_inference_time_compute", "letter": "gen_q", "status": "NARROWED from auditor A proposal; commission only after gen_g judged", "territory": "test-time search/ensembling/compute-scaling laws for perception, test-time training for dense prediction, psychophysics-style human-model contrasts", "guards": ["HARD anti-overlap: TTA-method critique banned as primary subject (off-master gen_g owns G-001..G-014)", "<=5% SAM", "full gate schema", "all w1 global guards"]},
+    {"priority": 7, "task_id": "p1_gen_r_cross_field_transfer", "letter": "gen_r", "status": "w1-deferred, revisit trigger met (coverage 0.0%, in-flight leaves untouched)", "guards": ["each idea names both fields AND the transferred invariance/structure", "hard ban bare apply-architecture-X-to-field-Y", "full gate schema", "all w1 global guards"]},
+    {"priority": 8, "task_id": "p1_gen_s_embodied_interactive_perception", "letter": "gen_s", "status": "RESERVE (concur with auditor A)"},
+    {"priority": 9, "task_id": "p1_gen_t_efficiency_deployment_science", "letter": "gen_t", "status": "RESERVE (concur with auditor A)"}
+  ],
+  "letter_registry_updates": {
+    "burned": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f"],
+    "off_master_judging_pending": ["gen_g", "gen_h", "gen_j", "gen_k"],
+    "in_flight_unpushed": ["gen_l"],
+    "retired_never_reassign": ["gen_i"],
+    "queued": ["gen_m", "gen_n", "gen_o", "gen_p", "gen_q", "gen_r", "gen_s", "gen_t", "gen_u"],
+    "next_fresh_letter": "gen_v"
+  },
+  "stage2_selection_demands": [
+    "family caps at the 200-cut: P4<=10, P9<=8, P10<=8, P1<=6, P2<=5, P6<=3 (extends w1 F1-F5 caps; slot counts HYPOTHESIS)",
+    "protect the 38 strict-constructive ids (union with auditor B w1's 46-id list) from genre-blind culling",
+    "normalize gate schema across all shards before Stage-2 ranking",
+    "audit self-declared genre fields against claim phrasing before applying genre quotas"
+  ],
+  "auditor_A_cross_check": {
+    "read_after_own_pass": true,
+    "agreements": ["SAM guard held (~17%, below 25% target)", "genre collapse is dominant axis; gen_p first", "annotation/convention pathology largest surviving family", "gen_i not reused", "letters g/h/j/k/l burned", "no fake citations", "eval-critique super-genre still large (instrument delta: 31.4% cluster-name vs 45.5% one-liner phrasing)"],
+    "adversarial_deltas": ["gen_q collides with off-master gen_g TTA cluster (A counted master-only coverage)", "gate enforcement mechanism missing; gen_h itself non-compliant; demand judge-time repair/remand + schema normalization", "self-declared genre inflation in gen_j/gen_k", "NEW territory gen_u adversarial-security/fairness absent from all prior queues", "retire gen_i permanently rather than defer"]
+  },
+  "no_fake_citations": true,
+  "status": "completed",
+  "recommended_next_task_type": "p1_diversity_audit_w2_consolidator",
+  "scope_compliance": {
+    "ideas_master_jsonl_untouched": true,
+    "research_state_json_untouched": true,
+    "research_ledger_md_untouched": true,
+    "window_lock_json_untouched": true,
+    "writes_confined_to": "Windows13/_state/tasks/p1/diversity_audit_w2/auditor_C.{md,json} + done_auditor_C.json",
+    "own_branch": "cursor/p1-diversity-audit-w2-auditor-c-32c6",
+    "force_push": false
+  }
+}
