@@ -1,0 +1,37 @@
+{
+  "task_id": "p1_wave2_judge_B_worker_C",
+  "role": "judge_B_permutation_filter",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "ideas_reviewed": 130,
+  "keep_count": 128,
+  "kill_count": 0,
+  "mutate_count": 2,
+  "per_shard": {
+    "worker_C": {"total": 130, "keep": 128, "mutate": 2, "kill": 0, "branch": "cursor/windows14-p1-wave2-worker-c-9388"}
+  },
+  "filter_criteria": [
+    "mere_architecture_permutations",
+    "module_A_plus_B_pairings",
+    "sam_plus_loss_or_backbone_swaps",
+    "mechanical_domain_transfers",
+    "parameter_only_scaling"
+  ],
+  "mutate_ids": ["w14w2c-059", "w14w2c-062"],
+  "keep_with_note_ids": ["w14w2c-005", "w14w2c-006", "w14w2c-010", "w14w2c-034", "w14w2c-037", "w14w2c-050", "w14w2c-058", "w14w2c-084", "w14w2c-092"],
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave2/judge_B_worker_C.md",
+    "Windows14/_state/tasks/p1/wave2/judge_B_worker_C.flags.jsonl",
+    "Windows14/_state/tasks/p1/wave2/judge_B_worker_C.done.json"
+  ],
+  "unresolved_items": [
+    "Cross-shard and cross-wave near-duplicates were NOT deduped here (out of judge_B scope); consolidator must merge/cross-link the families listed in judge_B_worker_C.md, notably: negation (w14w2c-120 with wave2 w14E-029/w14E-036 and wave1 w14_p1b_122 / w14p1c-092), leakage/contamination channels (w14w2c-064 / w14w2c-103 / w14w2c-110 vs w14w2a-008/-112, w14w2b-077/084/085/086/115), worker_A adjacency (w14w2c-022 / w14w2c-055 / w14w2c-096).",
+    "w14w2c-122 self-flags overlap with wave-3 LLM/agent territory; deduplicate against wave-3 shards when they exist.",
+    "2 mutate verdicts carry explicit 'mutation' re-framing instructions in judge_B_worker_C.flags.jsonl; consolidator should apply them at merge time rather than dropping the ideas.",
+    "Judge A and Judge C verdicts were not consulted (independence requirement); conflicts between judges must be resolved by the consolidator.",
+    "Novelty remains unverified for all 130 worker_C ideas; no citations or numbers were invented or checked.",
+    "This pass completes judge_B coverage of wave2 (A/B/D/E in judge_B.flags.jsonl on origin/cursor/windows14-p1-wave2-judge-b-cfb9; worker_C here); the three prior judge_B files were not modified."
+  ],
+  "recommended_next_task_type": "p1_wave2_consolidator",
+  "judged_at_utc": "2026-08-28T20:55Z"
+}

@@ -2,10 +2,10 @@
   "windows_id": "Windows14",
   "windows_path": "Windows14",
   "window_locked": true,
-  "current_accepted_ideas": 366,
+  "current_accepted_ideas": 989,
   "target_accepted_ideas": 1000,
   "next_wave": "P1_wave_A_generators",
-  "wave_number": 2,
+  "wave_number": 3,
   "slots": 3,
   "territory_rotation_status": {
     "covered_wave1": [
@@ -13,58 +13,72 @@
       "Medical segmentation",
       "Smoke / fire / ambiguous segmentation + failure mining"
     ],
-    "over_represented_cap": [
-      "uncertainty/calibration (26+ wave-1 ideas plus 18-idea confidence-inversion family per judge_C JC-MC-04; capped, top-up only in wave 3 if under-represented after Stage 2 dedup)"
+    "covered_wave2": [
+      "Synthetic data + domain shift",
+      "SR/restoration + diffusion",
+      "Negative results + contrarian",
+      "Object detection",
+      "VLM dense prediction"
     ],
-    "still_missing_after_wave1": [
-      "synthetic data",
-      "domain shift",
-      "negative results",
-      "contrarian",
-      "SR/restoration",
-      "diffusion",
-      "LLM/agent",
-      "cross-field"
+    "over_represented_cap": [
+      "uncertainty/calibration (judge_C JC2-MC-04: ~87 wave-2 mentions plus wave-1's 34-idea family; the wave-3 conditional top-up is NOT issued because the theme is over-represented, per the wave-1 'top-up only if under-represented' rule)",
+      "contamination/leakage (judge_C JC2-MC-04 / JC2-CV-09: ~57 wave-2 ideas plus existing canonical family; generators must not add more)",
+      "audit/diagnose genre (judge_C JC2-MC-01: constructive contributions are ~30 of 638 wave-2 ideas; each wave-3 shard carries a constructive-genre quota)",
+      "forecasting template 'X is predictable from Y before training' (judge_C JC2-MC-02: ~162 wave-2 ideas; use sparingly)",
+      "diffusion-anchored and CLIP-contrastive-anchored framings (judge_C JC2-MC-05: anchor diversity required)"
+    ],
+    "still_missing_after_wave2": [
+      "LLM/agent (planned wave-3 territory from wave-1 queue)",
+      "cross-field transfer (planned wave-3 territory from wave-1 queue)",
+      "3D beyond LiDAR-driving (JC2-MT-01)",
+      "interactive / human-in-the-loop segmentation science (JC2-MT-02)",
+      "constructive-genre contributions (JC2-MT-03)",
+      "embodied / closed-loop perception (JC2-MT-04)",
+      "multimodal sensor-fusion dense prediction (JC2-MT-05)",
+      "document / diagram / UI / text-dense imagery (JC2-MT-06)",
+      "instance/panoptic task-formulation science and multi-task interference (JC2-MT-07)",
+      "continual / lifelong deployment adaptation (JC2-MT-08)",
+      "theory and formal analysis of dense prediction (JC2-MT-09)",
+      "human perception and annotation science (JC2-MT-10)"
     ]
   },
   "tasks": [
     {
-      "task_id": "p1_gen_w2_a",
-      "territory": "Synthetic data + domain shift (generation-for-segmentation, sim-to-real, distribution shift science)",
+      "task_id": "p1_gen_w3_a",
+      "territory": "LLM/agent (language-driven segmentation and detection, agentic vision pipelines, tool-use, VLM-agent loops, reasoning-mediated dense prediction)",
       "shard": "worker_A",
-      "output_shard": "Windows14/_state/tasks/p1/wave2/worker_A.ideas.jsonl",
-      "notes": "Judge_C missing-territory hints usable as sub-domains: remote sensing/SAR (JC-MT-01), driving/3D LiDAR (JC-MT-02), industrial/agriculture/underwater (JC-MT-04)."
+      "output_shard": "Windows14/_state/tasks/p1/wave3/worker_A.ideas.jsonl",
+      "id_seed_prefix": "w14w3a-",
+      "notes": "Planned wave-3 territory carried from the wave-1 queue. Constructive-genre quota per JC2-MC-01/JC2-MT-03: at least ~1/3 of ideas propose methods, objectives, task formulations, or dataset/benchmark artifacts with falsifiable design hypotheses, not audits. Avoid the forecasting template (JC2-MC-02), avoid anchoring every idea on one model family (JC2-MC-05), and do not add contamination/leakage or uncertainty/calibration ideas (JC2-MC-04 cap). w14w2c-122 self-flagged overlap with this territory: dedup against it."
     },
     {
-      "task_id": "p1_gen_w2_b",
-      "territory": "Super-resolution / restoration + diffusion models (restoration-segmentation coupling, generative priors, diffusion segmentation science)",
+      "task_id": "p1_gen_w3_b",
+      "territory": "Cross-field transfer (segmentation/detection science exported to or imported from other fields), plus judge_C missing territories JC2-MT-01 (3D beyond LiDAR: indoor point clouds, meshes, NeRF/Gaussian-splatting segmentation), JC2-MT-04 (embodied/closed-loop perception), JC2-MT-05 (multimodal sensor fusion: RGB-D, thermal, event, multispectral), JC2-MT-09 (theory and formal analysis of dense prediction)",
       "shard": "worker_B",
-      "output_shard": "Windows14/_state/tasks/p1/wave2/worker_B.ideas.jsonl",
-      "notes": "Judge_C missing-territory hints: microscopy/gigapixel WSI (JC-MT-03), video/streaming segmentation (JC-MT-05)."
+      "output_shard": "Windows14/_state/tasks/p1/wave3/worker_B.ideas.jsonl",
+      "id_seed_prefix": "w14w3b-",
+      "notes": "Planned wave-3 territory carried from the wave-1 queue, widened with judge_C missing-territory flags. Same constructive-genre quota and anti-template constraints as worker_A. Do not state absence-of-prior-work as fact without literature search (JC2-QA-02)."
     },
     {
-      "task_id": "p1_gen_w2_c",
-      "territory": "Negative results + contrarian (things the community believes that may be false; published-method non-replication hypotheses; anti-scaling claims)",
+      "task_id": "p1_gen_w3_c",
+      "territory": "Judge_C missing territories replacing the capped uncertainty/calibration top-up: JC2-MT-02 (interactive / human-in-the-loop segmentation science: correction economics, interaction protocols, mixed-initiative labeling), JC2-MT-06 (document / diagram / UI / text-dense imagery layout science), JC2-MT-07 (instance/panoptic task-formulation science, multi-task interference), JC2-MT-08 (continual / lifelong deployment adaptation), JC2-MT-10 (human perception and annotation science as measurement instrument)",
       "shard": "worker_C",
-      "output_shard": "Windows14/_state/tasks/p1/wave2/worker_C.ideas.jsonl",
-      "notes": "Per judge_C JC-MC-01, avoid pure diagnostics/audit genre saturation; constructive contrarian claims preferred. Fairness/bias (JC-MT-07) and adversarial robustness (JC-MT-08) welcome as contrarian substrates."
+      "output_shard": "Windows14/_state/tasks/p1/wave3/worker_C.ideas.jsonl",
+      "id_seed_prefix": "w14w3c-",
+      "notes": "The wave-1 queue reserved this slot for an uncertainty/calibration top-up ONLY if under-represented; judge_C JC2-MC-04 found the theme over-represented (~87 wave-2 mentions plus wave-1's 34-idea family), so the slot is mechanically redirected to unfilled judge_C missing territories. Same constructive-genre quota and anti-template constraints as the other shards."
     }
   ],
-  "wave3_planned_territories": [
-    "LLM/agent (language-driven segmentation, agentic pipelines, tool-use)",
-    "cross-field (transfer of segmentation science to/from other fields)",
-    "uncertainty/calibration capped top-up only if under-represented after Stage 2 dedup (JC-MC-04)"
-  ],
-  "wave_output_dir": "Windows14/_state/tasks/p1/wave2/",
+  "wave_output_dir": "Windows14/_state/tasks/p1/wave3/",
+  "do_not_overwrite": "Windows14/_state/tasks/p1/wave2/ shards are canonical inputs of the wave-2 consolidation; wave-3 workers write only their own new shards under wave3/",
   "shard_rules": {
     "write_independent_jsonl_shards_only": true,
     "do_not_write_ideas_master_jsonl": true,
     "do_not_modify_window_lock": true,
     "do_not_modify_research_state": true,
-    "id_seed_prefix_rule": "use shard-unique id_seed prefixes (e.g. w14w2a-, w14w2b-, w14w2c-) per judge_C JC-QA-01",
-    "novelty_claims": "do not state absence-of-prior-work as fact without literature search (judge_C JC-QA-02)"
+    "id_seed_prefix_rule": "use the assigned shard-unique id_seed prefixes (w14w3a-, w14w3b-, w14w3c-) per judge_C JC2-QA-01 (wave-2 shards used three inconsistent schemes; wave-3 must not)",
+    "novelty_claims": "do not state absence-of-prior-work as fact without literature search (judge_C JC2-QA-02)"
   },
-  "base_branch": "cursor/windows14-p1-wave1-consolidator-13bd",
-  "queue_written_by": "p1_wave1_consolidator",
-  "queue_written_at_utc": "2026-08-28T19:08:14Z"
+  "base_branch": "cursor/windows14-p1-wave2-consolidator-91d5",
+  "queue_written_by": "p1_wave2_consolidator",
+  "queue_written_at_utc": "2026-08-28T20:42:57Z"
 }

@@ -1,0 +1,50 @@
+{
+  "task_id": "p1_gen_w2_b",
+  "role": "worker_B",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "windows_id": "Windows14",
+  "territory": "Super-resolution / restoration + diffusion models (restoration-segmentation coupling, generative priors, diffusion segmentation science)",
+  "sub_domain_hints_used": ["microscopy/gigapixel WSI (JC-MT-03)", "video/streaming segmentation (JC-MT-05)"],
+  "idea_count": 126,
+  "id_seed_range": "w14w2b-001..w14w2b-126",
+  "id_seed_prefix": "w14w2b-",
+  "clusters": {
+    "restoration_segmentation_coupling": 14,
+    "hallucination_fabrication": 12,
+    "degradation_physics": 12,
+    "diffusion_priors_features": 14,
+    "diffusion_segmentation_models": 14,
+    "perception_distortion_downstream": 10,
+    "synthetic_loops_contamination": 10,
+    "microscopy_wsi": 14,
+    "video_streaming": 14,
+    "evaluation_science": 12
+  },
+  "evidence_status_all": "HYPOTHESIS",
+  "validation": "all 126 lines parse as JSON; all 15 required fields present and non-empty; no extra fields; id_seed unique and sequential with correct prefix; territory and evidence_status uniform",
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave2/worker_B.ideas.jsonl",
+    "Windows14/_state/tasks/p1/wave2/worker_B.md",
+    "Windows14/_state/tasks/p1/wave2/worker_B.done.json"
+  ],
+  "did_not_touch": [
+    "Windows14/_state/ideas_master.jsonl",
+    "Windows14/_state/window.lock.json",
+    "Windows14/_state/research_state.json",
+    "Windows14/_state/tasks/p1/wave2/worker_A.*",
+    "Windows14/_state/tasks/p1/wave2/worker_C.*",
+    "Windows14/_state/tasks/p1/wave2/worker_D.*",
+    "Windows14/_state/tasks/p1/wave2/worker_E.*"
+  ],
+  "unresolved_items": [
+    "all why_possibly_novel fields are unverified hypotheses; literature verification pending in dedup/verification wave",
+    "possible cross-shard overlap with wave2 worker_A (synthetic data + domain shift) in synthetic_loops_contamination and degradation_physics clusters",
+    "possible cross-shard overlap with wave2 worker_C (negative results + contrarian) in evaluation_science cluster (benchmark-validity ideas w14w2b-115..126)",
+    "possible overlap with wave1 medical shard on microscopy/WSI annotation-provenance ideas (w14w2b-095, w14w2b-096)",
+    "several ideas depend on scarce data types: paired raw/global-shutter video (w14w2b-108), multi-annotator degraded-image labels (w14w2b-122), raw-capable multi-ISP datasets (w14w2b-028), pathologist re-annotation (w14w2b-096)",
+    "two ideas touch confidence/variance (w14w2b-009, w14w2b-063); framed as restoration information-routing and diffusion-methodology defects, flag for judge review against the uncertainty/calibration cap"
+  ],
+  "recommended_next_task_type": "p1_wave_B_dedup",
+  "completed_at_utc": "2026-08-28T19:55Z"
+}

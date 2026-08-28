@@ -1,0 +1,53 @@
+{
+  "task_id": "p1_wave2_consolidator",
+  "role": "consolidator",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "windows_id": "Windows14",
+  "window_locked": true,
+  "completed_at_utc": "2026-08-28T20:42:57Z",
+  "raw_count": 638,
+  "raw_by_shard": {"worker_A": 133, "worker_B": 126, "worker_C": 130, "worker_D": 124, "worker_E": 125},
+  "accepted_count": 623,
+  "dropped_count": 15,
+  "dropped_breakdown": {"judge_A_near_dup_drop": 15, "judge_B_kill": 0},
+  "conflicts_recorded": 22,
+  "current_accepted_ideas": 989,
+  "target": 1000,
+  "recommended_next_task_type": "p1_wave_A_generators",
+  "resolution_rules": {
+    "drop_iff": "judge_A recommendation drop OR judge_B verdict kill",
+    "a_keep_b_mutate": "keep with mutate_recommended flag (prefer keep+flag over silent kill)",
+    "judge_C": "advisory flags only, never drop; deeper convergence merges deferred to Stage 2"
+  },
+  "accepted_id_range": ["w14-0367", "w14-0989"],
+  "flag_counts": {
+    "mutate_recommended": 7,
+    "keep_with_note": 20,
+    "cross_wave_near_dup": 5,
+    "high_value": 44,
+    "convergence_family": 55,
+    "canonical_overlap": 21,
+    "novelty_claim_unverified": 48
+  },
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave2/accepted.jsonl",
+    "Windows14/_state/ideas_master.jsonl",
+    "Windows14/_state/research_state.json",
+    "Windows14/_state/research_ledger.md",
+    "Windows14/_state/tasks/p1/generator_task_queue.json",
+    "Windows14/_state/tasks/p1/wave2/consolidator.md",
+    "Windows14/_state/tasks/p1/wave2/consolidator.done.json"
+  ],
+  "unresolved_items": [
+    "Judge_C convergence families JC2-CV-01..12 recommend deeper merging beyond judge_A's 15 drops; 55 accepted ideas carry convergence_family flags; merge deferred to Stage 2 dedup (1000 -> 200)",
+    "Judge_C canonical-overlap families JC2-DX-01..08: 21 accepted wave-2 ideas overlap wave-1 canonical families; restructuring into canonical programs deferred to Stage 2; wave-1 rows not rewritten",
+    "Judge_A cross-wave near-dups (5 flagged; w14D2-012 vs w14-0202 strongest): explicit cross-wave dedup deferred to Stage 2; cross_wave_near_dup flags attached to the wave-2 rows",
+    "w14w2a-112 and w14w2c-110 dropped by judge_A although judge_C JC2-CV-09 named them mechanistically distinct; hypotheses survive via kept family members (w14w2b-077 primary, w14w2b-084/085/086/115, w14w2c-103, w14D2-060, w14E-101); Stage 2 may resurrect their framings from preserved worker shards",
+    "Uncertainty/calibration and contamination over-representation (JC2-MC-04) handled prospectively via wave-3 queue caps (uncertainty top-up NOT issued because over-represented), not retroactive drops",
+    "48 accepted ideas carry novelty_claim_unverified (JC2-QA-02); literature check required before Stage 2 promotion",
+    "7 accepted ideas carry mutate_recommended (judge_B); mutation to be executed by a generator/mutator task, not the consolidator",
+    "Judge_C collapse risks JC2-MC-01 (audit-genre monoculture), JC2-MC-02 (forecasting template), JC2-MC-05 (diffusion/CLIP anchoring) encoded as wave-3 generator constraints",
+    "w14w2c-122 self-flags overlap with wave-3 LLM/agent territory; wave-3 worker_A must dedup against it"
+  ]
+}

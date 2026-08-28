@@ -1,0 +1,87 @@
+{
+  "task_id": "p1_wave2_judge_C",
+  "role": "judge_C_value_diversity",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "inputs": {
+    "worker_A": {
+      "branch": "origin/cursor/windows14-p1-wave2-worker-a-cc54",
+      "path": "Windows14/_state/tasks/p1/wave2/worker_A.ideas.jsonl",
+      "ideas": 133,
+      "territory": "synthetic data + domain shift"
+    },
+    "worker_B": {
+      "branch": "origin/cursor/windows14-p1-wave2-worker-b-8795",
+      "path": "Windows14/_state/tasks/p1/wave2/worker_B.ideas.jsonl",
+      "ideas": 126,
+      "territory": "SR/restoration + diffusion"
+    },
+    "worker_C": {
+      "branch": "origin/cursor/windows14-p1-wave2-worker-c-9388",
+      "path": "Windows14/_state/tasks/p1/wave2/worker_C.ideas.jsonl",
+      "ideas": 130,
+      "territory": "negative results + contrarian"
+    },
+    "worker_D": {
+      "branch": "origin/cursor/windows14-p1-wave2-worker-d-a7e5",
+      "path": "Windows14/_state/tasks/p1/wave2/worker_D.ideas.jsonl",
+      "ideas": 124,
+      "territory": "object detection"
+    },
+    "worker_E": {
+      "branch": "origin/cursor/windows14-p1-wave2-worker-e-e584",
+      "path": "Windows14/_state/tasks/p1/wave2/worker_E.ideas.jsonl",
+      "ideas": 125,
+      "territory": "VLM dense prediction"
+    },
+    "diversity_reference_read_only": {
+      "branch": "origin/cursor/windows14-p1-wave1-consolidator-13bd",
+      "path": "Windows14/_state/ideas_master.jsonl",
+      "ideas": 366,
+      "modified": false
+    }
+  },
+  "ideas_reviewed": 638,
+  "high_value_count": 45,
+  "collapse_flags": 25,
+  "flag_breakdown": {
+    "high_value": 45,
+    "convergence_dedup": 12,
+    "canonical_overlap": 8,
+    "mode_collapse_risk": 5,
+    "missing_territory": 10,
+    "qa": 3,
+    "total": 83
+  },
+  "collapse_flags_definition": "convergence_dedup (12) + canonical_overlap (8) + mode_collapse_risk (5) = 25",
+  "headline_findings": [
+    "Wave1 SAM+X / LoRA+X / loss+X collapse axes eliminated (1 / 0 / ~3 hits across 638 ideas).",
+    "Wave1's ten missing territories substantially consumed by wave2 shards.",
+    "Surface diversity excellent: exactly one one-line pair above 0.30 Jaccard in ~203k pairs (w14w2c-113 / w14E-106, itself a flagged convergence).",
+    "Audit/diagnose genre monoculture persists (~30 of 638 ideas constructive); this is the top remaining collapse axis.",
+    "Model anchoring migrated rather than removed: Worker B diffusion-anchored, Worker E CLIP-contrastive-anchored."
+  ],
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave2/judge_C.md",
+    "Windows14/_state/tasks/p1/wave2/judge_C.flags.jsonl",
+    "Windows14/_state/tasks/p1/wave2/judge_C.done.json"
+  ],
+  "unresolved_items": [
+    "Novelty of all flagged ideas is unverified: no literature search was performed; 27 ideas carry 'never been / nobody has' phrasing plus 6 absence-of-practice one-lines and 17 unhedged why_possibly_novel claims (flag JC2-QA-02) that the consolidator must downgrade before any canonical merge.",
+    "Independent Judge A and Judge B wave2 outputs not read by design; cross-judge reconciliation is the consolidator's job.",
+    "Twelve wave2 cross-shard convergence families (JC2-CV-01..12) require merge decisions at consolidation.",
+    "Eight canonical-overlap families (JC2-DX-01..08) require dedup against wave1 ideas_master.jsonl, not just within-wave dedup.",
+    "Inconsistent id_seed schemes across shards with a wave1-parallel provenance hazard (JC2-QA-01) require normalization at merge.",
+    "Ten missing-territory flags (JC2-MT-01..10) require a dispatcher decision on any wave3 generator quotas; a constructive-genre quota (JC2-MC-01/JC2-MT-03) is the top steering recommendation.",
+    "Theme caps needed at consolidation for contamination/leakage and calibration/confidence overcrowding (JC2-MC-04)."
+  ],
+  "recommended_next_task_type": "p1_wave2_consolidator",
+  "canonical_files_untouched": [
+    "Windows14/_state/window.lock.json",
+    "Windows14/_state/research_state.json",
+    "Windows14/_state/ideas_master.jsonl",
+    "Windows14/_state/research_ledger.md"
+  ],
+  "advisory_only": true,
+  "ideas_dropped": 0
+}

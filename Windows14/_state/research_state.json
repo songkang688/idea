@@ -13,9 +13,9 @@
   "base_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
   "created_at": "2026-08-28T17:44:30Z",
   "supervisor": "Windows14",
-  "current_stage": "Stage 1 in progress (P1 idea generation; wave 1 consolidated 2026-08-28T19:08:14Z: raw 382 -> accepted 366 of target 1000; wave 2 generator queue issued)",
-  "total_ideas": 366,
-  "survivors": 366,
+  "current_stage": "Stage 1 in progress (P1 idea generation; wave 1 consolidated 2026-08-28T19:08:14Z: raw 382 -> accepted 366; wave 2 consolidated 2026-08-28T20:42:57Z: raw 638 -> accepted 623; canonical 989 of target 1000; wave 3 generator queue issued)",
+  "total_ideas": 989,
+  "survivors": 989,
   "final_target": 3,
   "status": "stage1_in_progress",
   "numbering": {

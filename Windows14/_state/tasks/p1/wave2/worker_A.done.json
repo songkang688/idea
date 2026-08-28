@@ -1,0 +1,18 @@
+{
+  "task_id": "p1_gen_w2_a",
+  "role": "worker_A",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "idea_count": 133,
+  "recommended_next_task_type": "p1_wave_B_dedup",
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave2/worker_A.ideas.jsonl",
+    "Windows14/_state/tasks/p1/wave2/worker_A.md",
+    "Windows14/_state/tasks/p1/wave2/worker_A.done.json"
+  ],
+  "unresolved_items": [
+    "Within-shard near-duplicate candidates for Wave B dedup: (w14w2a-013, w14w2a-022), (w14w2a-041, w14w2a-126), (w14w2a-006, w14w2a-094), (w14w2a-003, w14w2a-111) — kept separate because falsification designs differ",
+    "Cross-shard overlap check needed against worker_C (contrarian territory) for null-model/mechanism-decomposition ideas w14w2a-096, w14w2a-097, w14w2a-098",
+    "No literature search performed; all why_possibly_novel fields are unverified hypotheses per task constraints (JC-QA-02)"
+  ]
+}
