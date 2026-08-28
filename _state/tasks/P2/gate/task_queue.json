@@ -1,0 +1,15 @@
+{
+  "stage": "P2",
+  "generated_by": "P2-state-reader",
+  "generated_at_utc": "2026-08-28T17:25Z",
+  "status": "blocked",
+  "p0_lock_ok": false,
+  "window_locked": false,
+  "windows_id": null,
+  "windows_path": null,
+  "accepted_idea_count": 0,
+  "batch_count": 0,
+  "blocked_reason": "No window.lock.json exists anywhere in the repository; research_state.json exists only on 4 unmerged, mutually conflicting P0 branches; no Stage 1 canonical state or idea corpus exists. P2 Wave A reviewer tasks cannot be enqueued.",
+  "recommended_next_task_type": "P0/P1 repair; P2 BLOCKED",
+  "tasks": []
+}

@@ -1,0 +1,27 @@
+{
+  "task_id": "P2-state-reader",
+  "role": "P2 State Reader Agent",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P2/gate/state_reader.md",
+    "/workspace/_state/tasks/P2/gate/state_reader.done.json",
+    "/workspace/_state/tasks/P2/gate/task_queue.json",
+    "/workspace/_state/tasks/P2/gate/batches_manifest.json"
+  ],
+  "unresolved_items": [
+    "window.lock.json does not exist in the working tree and does not exist on ANY of the 35 remote branches (verified read-only via git ls-tree)",
+    "research_state.json does not exist in the working tree; it exists only on 4 unmerged, mutually conflicting P0 branches (Windows9/_state, Windows10/_state, Windows11/_state, Windows12/_state on branches cursor/windows9-p0-init-3045, cursor/windows10-p0-init-26ec, cursor/windows11-p0-init-c0c1, cursor/windows12-p0-init-a095) - none merged to main, none accompanied by a window.lock.json",
+    "No Windows* directory exists in the canonical checkout; no windows_path can be derived without inferring window numbering, which is forbidden",
+    "No Stage 1 canonical state or idea corpus (e.g. ideas_master.jsonl) exists anywhere in the working tree; accepted_idea_count = 0",
+    "Prior P1 gates (lock_verifier, gate_auditor) already reported blocked/p0_lock_ok=false; P1 has not run",
+    "Conflicting unmerged P0 states must be resolved by P0/parent, then P1 completed, before P2 triage can start"
+  ],
+  "recommended_next_task_type": "P0/P1 repair; P2 BLOCKED",
+  "windows_id": null,
+  "windows_path": null,
+  "window_locked": false,
+  "p0_lock_ok": false,
+  "accepted_idea_count": 0,
+  "batch_count": 0,
+  "stage1_incomplete": true
+}
