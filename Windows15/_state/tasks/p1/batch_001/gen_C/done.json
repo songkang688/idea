@@ -1,0 +1,19 @@
+{
+  "task_id": "p1_wave_a_batch001_gen_C",
+  "role": "generator",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "territory": "T03 Smoke / fire / ambiguous segmentation",
+  "idea_count": 100,
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_001/gen_C/ideas.jsonl",
+    "Windows15/_state/tasks/p1/batch_001/gen_C/report.md",
+    "Windows15/_state/tasks/p1/batch_001/gen_C/done.json"
+  ],
+  "unresolved_items": [
+    "Novelty of all 100 ideas is hypothesized, not verified; literature check deferred to later stages per generator contract.",
+    "Closest intra-shard pairs flagged for Wave B dedup: C-001/C-043/C-075 (annotator-threshold family), C-010/C-040 (fractal boundary family), C-030/C-034 (prompt-perturbation family), C-017/C-080 (layer-counting family).",
+    "Ideas C-011, C-015, C-019, C-020, C-047, C-081, C-095 share controlled fog-machine capture infrastructure and should be batched into one capture campaign if advanced past Stage 1."
+  ],
+  "recommended_next_task_type": "p1_wave_b_dedup"
+}
