@@ -1,0 +1,17 @@
+{
+  "task_id": "P0-waveA-workerB",
+  "role": "Safety Inspector",
+  "status": "complete",
+  "output_files": ["_state/tasks/P0/wave_A/worker_B.md", "_state/tasks/P0/wave_A/done_B.json"],
+  "unresolved_items": [
+    "Pipeline identity: this wave (_state/tasks/P0/wave_A/) may be the same dispatcher as the 'Windows14' sibling wave (_state/tasks/p0/windows_init/); if judge confirms shared identity the number is 14, otherwise 15",
+    "Race on 13: sibling _p0_dispatch wave holds two completed unanimous judge verdicts for Windows13 (17:18-17:19Z) with implementation imminent; treat 13 as spent",
+    "Any chosen number must be re-verified with git fetch --prune immediately before the init commit and bumped upward on collision; remote changed 3 times during this scan",
+    "Ratify that staging/Windows3_supervisor/ counts as number 3 so gaps 1/5/7/3 are never back-filled (matches both sibling waves' rulings)",
+    "Hygiene: Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is invalid JSON (independently verified); Windows8 branch carries a committed binary artifact density_head.pt"
+  ],
+  "recommended_next_task_type": "Wave B Judge for Windows numbering",
+  "recommended_windows_number": 15,
+  "overwrite_risk": "low",
+  "secret_risks_found": false
+}
