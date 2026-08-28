@@ -1,0 +1,59 @@
+{
+  "windows_id": "Windows9",
+  "windows_path": "Windows9",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows9-p0-init-3045",
+  "base_branch": "main",
+  "created_at": "2026-08-28T16:49:21Z",
+  "supervisor": "Windows9",
+  "current_stage": "Stage 1",
+  "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "total_ideas": 0,
+  "survivors": 0,
+  "final_target": 3,
+  "status": "initialized",
+  "numbering": {
+    "scan_scope": [
+      "worktree_top_level",
+      "origin_heads"
+    ],
+    "existing_windows_found": [
+      {
+        "id": "Windows2",
+        "evidence": "top-level dir on origin/cursor/research-idea-evolution-windows2-c2c9 and related branches"
+      },
+      {
+        "id": "Windows3",
+        "evidence": "staging/Windows3_supervisor on origin/cursor/idea-evolution-windows3-b534"
+      },
+      {
+        "id": "Windows4",
+        "evidence": "top-level dir on origin/cursor/windows4-research-idea-evolution-2962"
+      },
+      {
+        "id": "Windows6",
+        "evidence": "top-level dir on origin/cursor/windows6-research-idea-evolution-b55d"
+      },
+      {
+        "id": "Windows8",
+        "evidence": "top-level dir on origin/cursor/windows8-research-idea-evolution-cd91"
+      }
+    ],
+    "max_n": 8,
+    "this_round": "Windows9",
+    "overwrite_check": "passed_no_prior_windows_in_this_worktree"
+  },
+  "git_safety": {
+    "pre_init_branch": "main",
+    "pre_init_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+    "working_tree": "clean",
+    "force_push": false,
+    "push_status": "pending"
+  },
+  "ideas_index": [],
+  "current_ranking": [],
+  "agent_slots": {
+    "max_concurrent": 3,
+    "required_model": "claude-fable-5-thinking-xhigh"
+  }
+}
