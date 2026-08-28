@@ -4,20 +4,18 @@
 
 1042 → 190 → 50 → 20 → 5 → **3**.
 
-## Final 3 (Stage 6 closed)
+## Final 3
 
-1. **C-0306** conformal vs NMS + coverage-preserving suppression
-2. **A-0028** SAM2/SAM3 teleport / arbitration probe
-3. **B-0114** 4-arm dense VPT-as-registers (+B-0001 arm)
+1. C-0306  2. A-0028  3. B-0114
 
-First GPU-day: **C-0306 blind-spot census** on real detectors.
+All three synthetic prototypes exist. Full packages drafting under `_wip/package_draft_{C0306,A0028,B0114}/`.
 
 | Agent | Status |
 | --- | --- |
-| S | COMPLETE — final 3 |
-| U | RUNNING — C-0306 full package |
-| T | RUNNING — B-0114 proto |
-| V | DISPATCHING — A-0028 full package |
+| T | COMPLETE — B-0114 proto |
+| U | RUNNING — C-0306 package |
+| V | RUNNING — A-0028 package |
+| W | DISPATCHING — B-0114 package |
 
 ## Git safety
 

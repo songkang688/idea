@@ -39,6 +39,7 @@
 
 - P COMPLETE: `Windows2/_wip/stage7_proto_C0306/` (synthetic conformal vs NMS; not COCO results).
 - R COMPLETE: `Windows2/_wip/stage7_proto_A0028/` (synthetic teleport probe; not SAM2 weights).
+- T COMPLETE: `Windows2/_wip/stage7_proto_B0114/` (4-arm dense VPT sandbox; not a DINOv2 finding).
 
 ## Eliminated (confirmed, do not revive without new evidence)
 
