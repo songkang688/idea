@@ -89,3 +89,16 @@ register micro-field ships one paper or two.
    HU (C-0338's census may fire with no package owner; the PI decides under that scenario); the A-0206
    corpus-commissioning decision remains due this quarter on its own merits (unanimous, inherited from
    Rounds 3–4).
+
+## Addendum — prototypes landed mid-run (post-decision review)
+
+The Stage-7 prototype directories (`stage7_proto_C0306` by Agent P, `stage7_proto_A0028` by Agent R) did
+not exist when this battle's inputs were read; they were pushed to the branch while this cut was in
+progress and appeared on rebase before this report's push. Reviewed post-hoc: both are **synthetic-only
+machinery prototypes** — explicit labeling rules state no real-data (COCO/LVIS/SAM2) number appears
+anywhere; C-0306's prototype demonstrates the blind-spot measurement + CPS method end-to-end on synthetic
+scenes with a provable coverage-transfer argument, and A-0028's validates the probe instrument (including
+the placebo arm) on a surrogate tracker with known ground-truth arbitration. Neither contains a fatal
+finding; both de-risk the engineering of the #1 and #2 seats. **The decision is unaffected** — both
+prototyped projects were seated 8–0 before the prototypes were seen, and the prototypes only lower their
+execution risk.
