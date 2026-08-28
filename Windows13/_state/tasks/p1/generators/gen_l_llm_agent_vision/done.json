@@ -1,0 +1,81 @@
+{
+  "task_id": "p1_gen_l_llm_agent_vision",
+  "role": "generator",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "branch": "cursor/p1-gen-l-llm-agent-vision-c11e",
+  "territory": "LLM/agent loops around vision: tool use, self-verification, visual programs, test-time compute for perception, LLM-orchestrated segmentation pipelines, self-correcting annotation agents, VLM-as-judge reliability as a capability question",
+  "status": "done",
+  "idea_count": 100,
+  "id_seed_range": "W13-P1-L-001..W13-P1-L-100",
+  "clusters": {
+    "active-viewing-loops": 10,
+    "agentic-annotation": 10,
+    "loop-reliability-economics": 10,
+    "multi-agent-vision": 10,
+    "self-verification-revision": 10,
+    "test-time-compute-perception": 10,
+    "text-interface-bottleneck": 10,
+    "tool-orchestration-policy": 10,
+    "visual-program-synthesis": 10,
+    "vlm-judge-capability": 10
+  },
+  "genre_mix": {
+    "constructive-capability": 47,
+    "characterization": 48,
+    "debunk": 3,
+    "eval-critique": 2
+  },
+  "anti_crowding_compliance": {
+    "eval_critique_share_pct": 2,
+    "eval_critique_cap_pct": 20,
+    "pure_debunk_plus_eval_critique_pct": 5,
+    "pure_debunk_cap_pct": 40,
+    "constructive_share_pct": 47,
+    "constructive_floor_pct": 25,
+    "sam_mention_records": 0,
+    "sam_cap_records": 5,
+    "banned_media_examples": 0,
+    "calibration_primary_cluster": false,
+    "distinct_clusters": 10,
+    "max_cluster_share_pct": 10,
+    "segmentation_metric_bound_experiments": 0,
+    "segmentation_metric_independent_experiments": 100,
+    "claims_target_loop_or_system": true,
+    "template_families_F1_F5": "none"
+  },
+  "quality_gates": {
+    "numeric_kill_threshold_in_every_prediction": true,
+    "structured_evidence_label_with_prior_work_basis": true,
+    "family_fingerprint_all_records": true,
+    "fastest_experiment_time_cost_bounded": true,
+    "needs_special_resources_true_count": 0
+  },
+  "outputs": [
+    "Windows13/_state/tasks/p1/generators/gen_l_llm_agent_vision/ideas_shard.jsonl",
+    "Windows13/_state/tasks/p1/generators/gen_l_llm_agent_vision/ideas_shard.md",
+    "Windows13/_state/tasks/p1/generators/gen_l_llm_agent_vision/done.json"
+  ],
+  "guarantees": {
+    "candidates_only": true,
+    "novelty_verified": false,
+    "evidence_labels_present": true,
+    "no_fabricated_papers_numbers_datasets_results": true,
+    "canonical_state_untouched": [
+      "Windows13/_state/ideas_master.jsonl",
+      "Windows13/_state/research_state.json",
+      "Windows13/_state/window.lock.json"
+    ],
+    "other_generator_shards_untouched": true,
+    "force_push": false
+  },
+  "validation": {
+    "jsonl_lines_parse": true,
+    "required_fields_complete": true,
+    "id_sequence_contiguous": true,
+    "duplicate_ids": 0
+  },
+  "recommended_next_task_type": "p1_wave_b_dedup",
+  "completed_at_utc": "2026-08-28T21:10:30Z"
+}
