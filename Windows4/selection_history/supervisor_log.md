@@ -19,16 +19,19 @@ Wave-0 (FAILED, activity timeout, empty transcripts — no ideas recovered):
 
 Cause: 340 long-form ideas / agent exceeded cloud activity limit. Mitigation: compact 120-row tables, no web browse.
 
-Wave-1 (IN FLIGHT, compact):
-| Role | Agent ID | Target |
+Wave-1 (DONE catalogs):
+| Role | Agent ID | Result |
 |------|----------|--------|
-| A1 | `bc-cf0d6dad-8d99-5cf2-8493-40753ec2897c` | 120 ideas A1-001+ |
-| B1 | `bc-6d41759b-58e9-50f4-9910-f625336d6f29` | 120 ideas B1-001+ |
-| C1 | `bc-3d8edeb8-ca72-58ae-b909-4ff5a13e209b` | 120 ideas C1-001+ |
+| A1 | `bc-cf0d6dad-8d99-5cf2-8493-40753ec2897c` | 120 ideas → `stage1_A1.md` |
+| B1 | `bc-6d41759b-58e9-50f4-9910-f625336d6f29` | 120 ideas → `stage1_B1.md` |
+| C1 | `bc-3d8edeb8-ca72-58ae-b909-4ff5a13e209b` | 120 ideas on branch `cursor/stage1-c1-idea-catalog-209b`; copied to `stage1_C1.md` |
 
-Supervisor seed written locally: S-001–S-720 in `stage1_supervisor_seed.md` + `stage1_supervisor_seed_2.md` (includes kill/protect/mutate/merge tags). Combined with Wave-1 this exceeds 1000 raw IDs before dedup.
+Raw pool before dedup: S-001–S-720 + A1 + B1 + C1 ≈ 1080 IDs.
 
-Policy: keep ≤3 sub-agents. After Wave-1: Reviewer 1000→200, Meta-Auditor, Prior-work kill.
+Stage 2 IN FLIGHT (3 reviewers, compact keep-lists):
+- Novelty assassin on S-series: `bc-8d9055cc-7185-56e7-9375-4b6a9fa5eeda`
+- Feasibility on A1+B1: `bc-616dd955-2a7d-5b08-a53b-5ea8d7531a29`
+- C1 + meta-audit: `bc-20f7911c-f82e-5689-8138-448cf5a6f2c1`
 
 ## Idea Pool / Top Candidates
 
