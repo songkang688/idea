@@ -2,38 +2,69 @@
   "windows_id": "Windows14",
   "windows_path": "Windows14",
   "window_locked": true,
-  "current_accepted_ideas": 0,
+  "current_accepted_ideas": 366,
   "target_accepted_ideas": 1000,
   "next_wave": "P1_wave_A_generators",
+  "wave_number": 2,
   "slots": 3,
+  "territory_rotation_status": {
+    "covered_wave1": [
+      "SAM / Foundation Model adaptation / PEFT",
+      "Medical segmentation",
+      "Smoke / fire / ambiguous segmentation + failure mining"
+    ],
+    "over_represented_cap": [
+      "uncertainty/calibration (26+ wave-1 ideas plus 18-idea confidence-inversion family per judge_C JC-MC-04; capped, top-up only in wave 3 if under-represented after Stage 2 dedup)"
+    ],
+    "still_missing_after_wave1": [
+      "synthetic data",
+      "domain shift",
+      "negative results",
+      "contrarian",
+      "SR/restoration",
+      "diffusion",
+      "LLM/agent",
+      "cross-field"
+    ]
+  },
   "tasks": [
     {
-      "task_id": "p1_gen_w1_a",
-      "territory": "SAM / Foundation Model adaptation / PEFT",
+      "task_id": "p1_gen_w2_a",
+      "territory": "Synthetic data + domain shift (generation-for-segmentation, sim-to-real, distribution shift science)",
       "shard": "worker_A",
-      "output_shard": "Windows14/_state/tasks/p1/wave1/worker_A.ideas.jsonl"
+      "output_shard": "Windows14/_state/tasks/p1/wave2/worker_A.ideas.jsonl",
+      "notes": "Judge_C missing-territory hints usable as sub-domains: remote sensing/SAR (JC-MT-01), driving/3D LiDAR (JC-MT-02), industrial/agriculture/underwater (JC-MT-04)."
     },
     {
-      "task_id": "p1_gen_w1_b",
-      "territory": "Medical segmentation",
+      "task_id": "p1_gen_w2_b",
+      "territory": "Super-resolution / restoration + diffusion models (restoration-segmentation coupling, generative priors, diffusion segmentation science)",
       "shard": "worker_B",
-      "output_shard": "Windows14/_state/tasks/p1/wave1/worker_B.ideas.jsonl"
+      "output_shard": "Windows14/_state/tasks/p1/wave2/worker_B.ideas.jsonl",
+      "notes": "Judge_C missing-territory hints: microscopy/gigapixel WSI (JC-MT-03), video/streaming segmentation (JC-MT-05)."
     },
     {
-      "task_id": "p1_gen_w1_c",
-      "territory": "Smoke / fire / ambiguous segmentation + failure mining",
+      "task_id": "p1_gen_w2_c",
+      "territory": "Negative results + contrarian (things the community believes that may be false; published-method non-replication hypotheses; anti-scaling claims)",
       "shard": "worker_C",
-      "output_shard": "Windows14/_state/tasks/p1/wave1/worker_C.ideas.jsonl"
+      "output_shard": "Windows14/_state/tasks/p1/wave2/worker_C.ideas.jsonl",
+      "notes": "Per judge_C JC-MC-01, avoid pure diagnostics/audit genre saturation; constructive contrarian claims preferred. Fairness/bias (JC-MT-07) and adversarial robustness (JC-MT-08) welcome as contrarian substrates."
     }
   ],
-  "wave_output_dir": "Windows14/_state/tasks/p1/wave1/",
+  "wave3_planned_territories": [
+    "LLM/agent (language-driven segmentation, agentic pipelines, tool-use)",
+    "cross-field (transfer of segmentation science to/from other fields)",
+    "uncertainty/calibration capped top-up only if under-represented after Stage 2 dedup (JC-MC-04)"
+  ],
+  "wave_output_dir": "Windows14/_state/tasks/p1/wave2/",
   "shard_rules": {
     "write_independent_jsonl_shards_only": true,
     "do_not_write_ideas_master_jsonl": true,
     "do_not_modify_window_lock": true,
-    "do_not_modify_research_state": true
+    "do_not_modify_research_state": true,
+    "id_seed_prefix_rule": "use shard-unique id_seed prefixes (e.g. w14w2a-, w14w2b-, w14w2c-) per judge_C JC-QA-01",
+    "novelty_claims": "do not state absence-of-prior-work as fact without literature search (judge_C JC-QA-02)"
   },
-  "base_branch": "cursor/windows14-p0-init-implementation-46a8",
-  "queue_written_by": "p1_state_reader",
-  "queue_written_at_utc": "2026-08-28T18:05Z"
+  "base_branch": "cursor/windows14-p1-wave1-consolidator-13bd",
+  "queue_written_by": "p1_wave1_consolidator",
+  "queue_written_at_utc": "2026-08-28T19:08:14Z"
 }

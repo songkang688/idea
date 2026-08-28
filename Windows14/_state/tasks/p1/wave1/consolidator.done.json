@@ -1,0 +1,38 @@
+{
+  "task_id": "p1_wave1_consolidator",
+  "role": "consolidator",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "windows_id": "Windows14",
+  "window_locked": true,
+  "completed_at_utc": "2026-08-28T19:08:14Z",
+  "raw_count": 382,
+  "raw_by_shard": {"worker_A": 132, "worker_B": 126, "worker_C": 124},
+  "accepted_count": 366,
+  "dropped_count": 16,
+  "dropped_breakdown": {"judge_A_near_dup_drop": 15, "judge_B_kill": 1},
+  "conflicts_recorded": 37,
+  "current_accepted_ideas": 366,
+  "target": 1000,
+  "recommended_next_task_type": "p1_wave_A_generators",
+  "resolution_rules": {
+    "drop_iff": "judge_A recommendation drop OR judge_B verdict kill",
+    "a_keep_b_mutate": "keep with mutate_recommended flag (prefer keep+flag over silent kill)",
+    "judge_C": "advisory flags only, never drop; deeper convergence merges deferred to Stage 2"
+  },
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave1/accepted.jsonl",
+    "Windows14/_state/ideas_master.jsonl",
+    "Windows14/_state/research_state.json",
+    "Windows14/_state/research_ledger.md",
+    "Windows14/_state/tasks/p1/generator_task_queue.json",
+    "Windows14/_state/tasks/p1/wave1/consolidator.md",
+    "Windows14/_state/tasks/p1/wave1/consolidator.done.json"
+  ],
+  "unresolved_items": [
+    "Judge_C convergence families JC-CV-01..08 recommend deeper merging beyond judge_A's 15 drops; 54 accepted ideas carry convergence_family flags; merge deferred to Stage 2 dedup (1000 -> 200)",
+    "Uncertainty/calibration over-representation (JC-MC-04) handled prospectively via wave 2/3 queue cap, not retroactive drops",
+    "19 accepted ideas carry novelty_claim_unverified (JC-QA-02); literature check required before Stage 2 promotion",
+    "21 accepted ideas carry mutate_recommended (judge_B); mutation to be executed by a generator/mutator task, not the consolidator"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "task_id": "p1_wave1_judge_A",
+  "role": "judge_A_dedup_cluster",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "windows_id": "Windows14",
+  "input_idea_counts": {
+    "worker_A": 132,
+    "worker_B": 126,
+    "worker_C": 124,
+    "total": 382
+  },
+  "cluster_count": 81,
+  "cluster_breakdown": {
+    "hypothesis_overlap": 52,
+    "distinct_theme_group": 29,
+    "cross_shard": 46
+  },
+  "duplicate_mark_count": 78,
+  "duplicate_mark_breakdown": {
+    "drop_duplicate": 15,
+    "near_duplicate_kept": 63
+  },
+  "keep_count": 367,
+  "drop_count": 15,
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave1/judge_A.md",
+    "Windows14/_state/tasks/p1/wave1/judge_A.clusters.jsonl",
+    "Windows14/_state/tasks/p1/wave1/judge_A.done.json"
+  ],
+  "did_not_touch": [
+    "Windows14/_state/ideas_master.jsonl",
+    "Windows14/_state/window.lock.json",
+    "Windows14/_state/research_state.json"
+  ],
+  "unresolved_items": [
+    "7 tension pairs kept unresolved (listed in judge_A.md); consolidator should pair each into one decisive experiment",
+    "near_duplicate members are kept, not merged; consolidator decides final merges per cluster",
+    "no novelty verification performed; all clustering is over unverified HYPOTHESIS-status ideas",
+    "clustering is judgment-based on hypothesis text only; borderline general-vs-domain-instantiation calls documented in member notes"
+  ],
+  "recommended_next_task_type": "p1_wave1_consolidator"
+}

@@ -1,0 +1,23 @@
+{
+  "task_id": "p1_gen_w1_c",
+  "role": "worker_C",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "territory": "Smoke / fire / ambiguous (transparent) object segmentation + failure mining",
+  "idea_count": 124,
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave1/worker_C.ideas.jsonl",
+    "Windows14/_state/tasks/p1/wave1/worker_C.md",
+    "Windows14/_state/tasks/p1/wave1/worker_C.done.json"
+  ],
+  "unresolved_items": [
+    "No novelty verification performed; all why_possibly_novel fields are unverified hypotheses (evidence_status=HYPOTHESIS on every idea)",
+    "Potential cross-shard overlap with worker_A (SAM/PEFT ideas w14p1c-001..011) and worker_B (uncertainty/inter-annotator ideas w14p1c-060..067); flag for Wave B dedup",
+    "Intra-shard near-neighbors flagged in worker_C.md section 'Unresolved items' item 3 for dedup review",
+    "Several minimal experiments share infrastructure prerequisites (multi-annotator smoke labels, alpha-composite pipeline) that could be factored out once by a consolidator"
+  ],
+  "recommended_next_task_type": "p1_wave_B_dedup",
+  "wrote_ideas_master": false,
+  "window_lock_verified": true,
+  "completed_at_utc": "2026-08-28T18:30Z"
+}
