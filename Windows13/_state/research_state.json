@@ -1,0 +1,85 @@
+{
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "window_defined_by": "P0",
+  "window_definition_status": "canonical",
+  "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows13-p0-init-implementation-d93f",
+  "base_branch": "main",
+  "base_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+  "created_at": "2026-08-28T17:31:30Z",
+  "supervisor": "Windows13",
+  "current_stage": "Stage 1",
+  "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "total_ideas": 0,
+  "survivors": 0,
+  "final_target": 3,
+  "status": "initialized",
+  "numbering": {
+    "decided_by": "P0 Wave B consolidator decision.json (origin/cursor/p0-init-consolidator-9302, decided 2026-08-28T17:24:30Z)",
+    "decided_windows_id": "Windows13",
+    "bumped": false,
+    "scan_scope": [
+      "all_origin_heads_trees",
+      "all_origin_branch_names",
+      "all_commit_messages"
+    ],
+    "pre_mkdir_refetch": {
+      "command": "git fetch origin --prune",
+      "fetched_at_utc": "2026-08-28T17:30:52Z"
+    },
+    "existing_windows_found": [
+      {"id": "Windows2", "evidence": "top-level dir on origin/cursor/research-idea-evolution-windows2-c2c9 and windows2-stage1-agent-{a,b,c} branches"},
+      {"id": "Windows3", "evidence": "nested legacy staging/Windows3_supervisor on origin/cursor/idea-evolution-windows3-b534 and w3s1-cluster-b-7ea7; number 3 burned"},
+      {"id": "Windows4", "evidence": "top-level dir on origin/cursor/windows4-research-idea-evolution-2962"},
+      {"id": "Windows6", "evidence": "top-level dir on origin/cursor/windows6-research-idea-evolution-b55d"},
+      {"id": "Windows8", "evidence": "top-level dir on origin/cursor/windows8-research-idea-evolution-cd91"},
+      {"id": "Windows9", "evidence": "top-level dir on origin/cursor/windows9-p0-init-3045"},
+      {"id": "Windows10", "evidence": "top-level dir on origin/cursor/windows10-p0-init-26ec"},
+      {"id": "Windows11", "evidence": "top-level dir on origin/cursor/windows11-p0-init-c0c1"},
+      {"id": "Windows12", "evidence": "top-level dir on origin/cursor/windows12-p0-init-a095"}
+    ],
+    "occupied_numbers": [2, 3, 4, 6, 8, 9, 10, 11, 12],
+    "never_gap_fill": [1, 5, 7],
+    "max_windows_number_observed": 12,
+    "windows13_found_anywhere_at_pre_mkdir_scan": false,
+    "window_lock_json_found_anywhere_at_pre_mkdir_scan": false,
+    "numbering_decision": "Windows13 per canonical decision.json; pre-mkdir re-fetch + re-scan at 2026-08-28T17:30:52Z confirmed Windows13 absent from every origin tip, so no bump was needed.",
+    "overwrite_check": "passed_no_windows13_on_any_origin_head_tree_branch_name_or_commit_message"
+  },
+  "git_safety": {
+    "pre_init_branch": "main",
+    "pre_init_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+    "working_tree_at_pre_init": "clean",
+    "force_push": false,
+    "init_commit": null,
+    "push_status": "pending",
+    "push_verified_at": null,
+    "push_remote_sha": null,
+    "push_failure_reason": null
+  },
+  "ideas_index": [],
+  "current_ranking": [],
+  "evidence_policy": {
+    "labels": [
+      "KNOWN FACT",
+      "VERIFIED PRIOR WORK",
+      "EVIDENCE",
+      "HYPOTHESIS",
+      "MODEL SPECULATION",
+      "EXPECTED RESULT",
+      "ACTUAL EXPERIMENTAL RESULT"
+    ],
+    "forbid_fiction": [
+      "paper_or_citation",
+      "benchmark_number",
+      "dataset_information",
+      "claimed_ran_experiments",
+      "experimental_results",
+      "false_git_push_success"
+    ]
+  }
+}

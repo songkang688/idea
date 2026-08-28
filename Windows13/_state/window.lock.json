@@ -1,0 +1,19 @@
+{
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows13-p0-init-implementation-d93f",
+  "created_at": "2026-08-28T17:31:30Z",
+  "locked": true,
+  "defined_by": "P0",
+  "definition_status": "canonical",
+  "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "lock_basis": {
+    "decided_by": "_p0_dispatch/tasks/p0_init/decision.json on origin/cursor/p0-init-consolidator-9302",
+    "decided_windows_id": "Windows13",
+    "bumped": false,
+    "pre_mkdir_refetch_at_utc": "2026-08-28T17:30:52Z",
+    "pre_mkdir_scan_result": "Windows13 absent from all origin head trees, branch names, and commit messages; zero window.lock.json files on any origin head; occupied numbers {2,3,4,6,8,9,10,11,12}"
+  }
+}
