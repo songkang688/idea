@@ -40,11 +40,12 @@
 - `_dispatcher/p0/wave_b/decision.json` + `_dispatcher/p0/wave_b/consolidator/{report.md,done.json}` (copied verbatim from consolidator branch).
 - `_dispatcher/p0/wave_c/implementation/report.md` (this file) + `done.json`.
 
-## Push verification (finalized in follow-up commit)
+## Push verification (KNOWN FACT, finalized in this follow-up commit)
 
-- init_commit: PENDING — filled with the real SHA by the follow-up commit only after actual push verification
-- push_status: PENDING — set to `verified_success` only after `git ls-remote origin cursor/windows15-p0-init-implementation-4708` == local SHA
-- push_failure_reason: PENDING
+- init_commit: `0ad99d59e33184ae8efcf93985dcaa1eab16cf27` (14 files, 837 insertions, message exactly `Research Idea Evolution - Windows15 - Initialization`)
+- push_status: `verified_success` @ 2026-08-28T17:54:18Z — `git ls-remote origin refs/heads/cursor/windows15-p0-init-implementation-4708` returned `0ad99d59e33184ae8efcf93985dcaa1eab16cf27`, identical to local HEAD
+- push_failure_reason: none
+- This follow-up commit (recording git_safety) is itself pushed without force after done.json was finalized; its SHA cannot be self-recorded — the branch head IS the follow-up commit (confirm via ls-remote).
 
 ## Recommended next task
 

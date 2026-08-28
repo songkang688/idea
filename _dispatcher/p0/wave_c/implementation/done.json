@@ -5,10 +5,10 @@
   "windows_id": "Windows15",
   "windows_number": 15,
   "windows_path": "Windows15",
-  "commit_hash": null,
+  "commit_hash": "0ad99d59e33184ae8efcf93985dcaa1eab16cf27",
   "branch": "cursor/windows15-p0-init-implementation-4708",
-  "push_status": "pending_verification",
-  "push_remote_sha": null,
+  "push_status": "verified_success",
+  "push_remote_sha": "0ad99d59e33184ae8efcf93985dcaa1eab16cf27",
   "push_failure_reason": null,
   "output_files": [
     "Windows15/README.md",
@@ -28,7 +28,7 @@
   ],
   "overwrote_historical_window": false,
   "unresolved_items": [
-    "commit_hash / push_status / push_remote_sha are finalized by the follow-up git_safety commit only after real ls-remote verification (never fabricated)"
+    "this follow-up git_safety commit cannot self-record its own SHA; the branch head is the follow-up commit — verifier should confirm via git ls-remote origin cursor/windows15-p0-init-implementation-4708"
   ],
   "recommended_next_task_type": "wave_c_verification"
 }

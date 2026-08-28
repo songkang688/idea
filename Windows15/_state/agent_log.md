@@ -58,3 +58,10 @@ max_n = 16. This round = **Windows15** per decision.json (no bump needed; bump r
 - No origin head contained any Windows15 path, branch, or lock/state claim before this commit (verified at both lock-protocol phases)
 - Only new files under `Windows15/` and this pipeline's `_dispatcher/p0/` shard were added; root README.md untouched
 - overwrote_historical_window = false
+
+## 2026-08-28T17:54Z — Push verification follow-up (KNOWN FACT)
+
+- Init commit: `0ad99d59e33184ae8efcf93985dcaa1eab16cf27` (message exactly `Research Idea Evolution - Windows15 - Initialization`; 14 files, all new)
+- Push: `git push -u origin cursor/windows15-p0-init-implementation-4708` exit 0, no force
+- Verification @ 2026-08-28T17:54:18Z: `git ls-remote origin refs/heads/cursor/windows15-p0-init-implementation-4708` → `0ad99d59e33184ae8efcf93985dcaa1eab16cf27` == local HEAD → push_status = verified_success (recorded in research_state.json.git_safety only after this real comparison)
+- This follow-up commit records the verified SHA in git_safety and finalizes `_dispatcher/p0/wave_c/implementation/{done.json,report.md}`; it is itself pushed without force and verified via ls-remote (branch head = this follow-up commit)
