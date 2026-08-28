@@ -1,0 +1,42 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "worker_A_repository_inspector",
+  "status": "complete",
+  "output_files": ["_state/tasks/p0/windows_init/worker_A.md"],
+  "unresolved_items": [
+    "Numbering race: a sibling P0 dispatch pushed shards at 17:12-17:13 UTC (branches cursor/p0-init-repo-inspector-1ccf, cursor/p0-init-worker-b-safety-8ad3, cursor/p0-init-worker-c-ce9b) recommending Windows13; Wave B judge must re-fetch origin immediately before locking any number",
+    "Windows3 exists only as staging/Windows3_supervisor/ (nested naming anomaly), never top-level Windows3/; judge must decide whether it counts as canonical",
+    "Windows1, Windows5, Windows7 are absent on all scanned refs; cause unknown; all prior runs extended monotonically upward rather than reusing gaps",
+    "Dispatcher name 'Windows14' appears nowhere in any ref, tree, blob, or commit message; it is parent-process identity only and must not be assumed as the directory number without a fresh scan at lock time",
+    "Remote is under active concurrent modification (windows6 tip and 2 new branches appeared between two fetches minutes apart); any scan result is perishable"
+  ],
+  "recommended_next_task_type": "wave_B_judge",
+  "max_windows_candidate": 12,
+  "windows_candidates": [
+    {"numeric_id": 2, "path": "Windows2/", "variant": "WindowsN top-level", "branch": "origin/cursor/research-idea-evolution-windows2-c2c9", "commit": "3c0ab0aee45659c2ee7f452243e1d0bd14e83cb0", "also_on_branches": ["origin/cursor/windows2-stage1-agent-a-778d@9b4645c", "origin/cursor/windows2-stage1-agent-b-8950@83d2be9", "origin/cursor/windows2-stage1-agent-c-70ca@57db2bc"]},
+    {"numeric_id": 3, "path": "staging/Windows3_supervisor/", "variant": "nested naming anomaly", "branch": "origin/cursor/idea-evolution-windows3-b534", "commit": "ea2a921ec4f1e04407106db3c56e35cb8e958f34", "also_on_branches": ["origin/cursor/w3s1-cluster-b-7ea7@468ee32"]},
+    {"numeric_id": 4, "path": "Windows4/", "variant": "WindowsN top-level", "branch": "origin/cursor/windows4-research-idea-evolution-2962", "commit": "7c750b23e0448317f979343ce3b9d126a20e0ebc", "also_on_branches": []},
+    {"numeric_id": 6, "path": "Windows6/", "variant": "WindowsN top-level", "branch": "origin/cursor/windows6-research-idea-evolution-b55d", "commit": "6152f0cebd8fafa9fb0b6c88efd71a2f8e75a1c4", "also_on_branches": []},
+    {"numeric_id": 8, "path": "Windows8/", "variant": "WindowsN top-level", "branch": "origin/cursor/windows8-research-idea-evolution-cd91", "commit": "049cce254e8966d5cf44d81f8724f8df7e75fbf0", "also_on_branches": []},
+    {"numeric_id": 9, "path": "Windows9/", "variant": "WindowsN top-level", "branch": "origin/cursor/windows9-p0-init-3045", "commit": "bc7ab44bac3a1ee05afcf68d29d9f9bf4edbacf9", "also_on_branches": []},
+    {"numeric_id": 10, "path": "Windows10/", "variant": "WindowsN top-level", "branch": "origin/cursor/windows10-p0-init-26ec", "commit": "46a39dcc573d19d53f0fd0274356c0ec377ce4bc", "also_on_branches": []},
+    {"numeric_id": 11, "path": "Windows11/", "variant": "WindowsN top-level", "branch": "origin/cursor/windows11-p0-init-c0c1", "commit": "9b23183a745338d41ac8335f6018e8a890c7fac1", "also_on_branches": []},
+    {"numeric_id": 12, "path": "Windows12/", "variant": "WindowsN top-level", "branch": "origin/cursor/windows12-p0-init-a095", "commit": "7f9d62a01c16dddcf81442d468eadc3334e9d529", "also_on_branches": []}
+  ],
+  "git_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+  "git_branch": "cursor/p0-windows-init-worker-a-fd36",
+  "dirty": false,
+  "remote": "origin",
+  "repo": "songkang688/idea",
+  "notes": {
+    "git_head_meaning": "inspected base HEAD at scan time (local main == origin/main); the shard commit hash is reported in the dispatcher chat message",
+    "origin_main_has_windows_dirs": false,
+    "absent_windows_numbers": [1, 5, 7],
+    "windows13_status": "no directory on any ref; recommended (not created) by sibling dispatch shards on cursor/p0-init-* branches",
+    "windows14_status": "appears nowhere in the repository; dispatcher process name only",
+    "fetch_attempts": 2,
+    "fetch_failures": 0,
+    "prs_observed": "refs/pull/1..9+ present on remote",
+    "secrets": "origin URL embeds x-access-token credential (not printed, not in tracked files); no secret files in git status"
+  }
+}
