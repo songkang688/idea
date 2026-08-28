@@ -1,0 +1,16 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "judge_A_numbering",
+  "status": "complete",
+  "output_files": ["_state/tasks/p0/windows_init/judge_A.md"],
+  "unresolved_items": [
+    "Residual race window: verdict Windows14 rests on the sibling _p0_dispatch pipeline holding its unanimous Wave B verdict for Windows13 (three judge shards pushed 17:19-17:22 UTC on cursor/p0-init-judge-{a,b,c}-* branches); consolidator MUST re-fetch origin --prune and re-verify no origin/* head contains a Windows14 path or a window.lock.json claiming 14 immediately before locking, bumping to smallest unused N>14 (never 13) on collision.",
+    "Sibling dispatcher identity is unconfirmed (HYPOTHESIS: a Windows13-equivalent parent); not decision-critical since its unanimous timestamped claim on 13 is what matters.",
+    "Number 3 is burned by nested staging/Windows3_supervisor/ (never top-level Windows3/); consolidator should record in decision.json that gaps {1,5,7,3-as-nested, and 13 if the sibling stalls} are never gap-filled.",
+    "Hygiene (non-blocking): Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is malformed JSON; all new JSON state files must pass a parser check before commit."
+  ],
+  "recommended_next_task_type": "wave_B_consolidator",
+  "recommended_windows_id": "Windows14",
+  "recommended_windows_number": 14,
+  "conflicts_with_other_shards": false
+}
