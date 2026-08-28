@@ -1,0 +1,24 @@
+%% A-0028 single-trial probe pipeline (package draft, Agent V)
+%% Basis of paper Figure F1 (roadmap.md Section 27).
+sequenceDiagram
+  participant G as Stimulus generator
+  participant M as Subject model (memory tracker)
+  participant S as Scorer
+
+  Note over G: build trial for grid cell (d, g, s)
+  G->>M: frame 0 + positive point prompt on target
+  Note over M: memory bank initialized (the "click")
+  loop prefix frames (smooth motion)
+    G->>M: frame t
+    M->>M: memory update (appearance + location)
+  end
+  Note over G,M: temporal gap g - frames WITHHELD,<br/>world keeps moving, memory goes stale
+  G->>M: MANIPULATION frame<br/>(swap / jump / appearance_flip / placebo)
+  M->>S: predicted mask at manipulation frame
+  S->>S: IoU vs target-at-new-location (A)<br/>IoU vs old-location occupant (B)
+  Note over S: trichotomy:<br/>follow-object (A>=0.5, B<0.1)<br/>follow-place (B>=0.5, A<0.1)<br/>lost (near-empty) / other
+  loop post frames (persistence window)
+    G->>M: frame t
+    M->>S: mask -> persistence / recovery
+  end
+  S->>S: aggregate cell: Wilson CIs ->  psychometric fit -> location-prior index
