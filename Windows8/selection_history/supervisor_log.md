@@ -31,4 +31,4 @@ Cloud batch A/B/C all ERROR (`request is required and could not be loaded from c
 
 - C retry (cloud): `bc-7a636a75-321a-50bf-bd04-7ae953ed578d` → succeeded; 350 ideas in `batch_C.md` (prior grid saved as `batch_C_prior.md`)
 - A local file-writer: produced 350 ideas in `batch_A.md` (prior grid saved as `batch_A_prior.md`)
-- B local file-writer: still outstanding at ingest time; grid `batch_B.md` retained
+- B local file-writer: `bc-fb91c4d2-b3c2-5ef7-bb3f-59ac95cf0894` → succeeded; 350 ideas in `batch_B.md` (prior grid saved as `batch_B_prior.md`)
