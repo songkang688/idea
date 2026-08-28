@@ -1,0 +1,44 @@
+{
+ "task_id": "p1_wave_b_w2",
+ "role": "judge_B_feasibility",
+ "status": "complete",
+ "recommended_next_task_type": "p1_wave_b_w2_judge_C_or_consolidator",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "branch": "cursor/p1-wave-b-w2-judge-b-feasibility-64ff",
+ "generated_at_utc": "2026-08-28T20:05:00Z",
+ "outputs": [
+  "Windows13/_state/tasks/p1/wave_b_w2/judge_B.md",
+  "Windows13/_state/tasks/p1/wave_b_w2/judge_B.json",
+  "Windows13/_state/tasks/p1/wave_b_w2/accepted_shard_B.jsonl",
+  "Windows13/_state/tasks/p1/wave_b_w2/done_judge_B.json"
+ ],
+ "counts": {
+  "input_total": 302,
+  "input_by_shard": {
+   "D": 100,
+   "E": 100,
+   "F": 102
+  },
+  "keep": 255,
+  "keep_by_shard": {
+   "D": 83,
+   "E": 83,
+   "F": 89
+  },
+  "merge": 44,
+  "kill": 3,
+  "merge_in_wave": 34,
+  "merge_cross_wave_into_wave1": 10,
+  "anomalies": 20,
+  "tier_T1_keep": 175,
+  "tier_T2_keep": 79,
+  "tier_T3_keep": 1,
+  "score5_keeps": 76,
+  "duplicate_groups": 29,
+  "co_run_clusters": 10,
+  "disagreements_vs_judge_A": 19
+ },
+ "notes": "Independent feasibility pass over all 302 wave-2 ideas (D:100, E:100, F:102). Keep 255 (D:83, E:83, F:89), merge 44 (34 in-wave, 10 cross-wave into accepted wave-1 ids), kill 3, anomalies 20, 29 duplicate groups, 10 co-run infrastructure clusters, 19 recorded disagreements vs Judge A (informational; Consolidator resolves). Canonical state (ideas_master.jsonl, research_state.json, window.lock.json) untouched."
+}

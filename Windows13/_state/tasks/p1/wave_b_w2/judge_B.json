@@ -1,0 +1,4352 @@
+{
+ "task_id": "p1_wave_b_w2",
+ "role": "judge_B_feasibility",
+ "wave": "wave2_gen_DEF",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "branch": "cursor/p1-wave-b-w2-judge-b-feasibility-64ff",
+ "generated_at_utc": "2026-08-28T20:05:00Z",
+ "inputs": {
+  "gen_d": {
+   "branch": "origin/cursor/p1-gen-d-object-detection-07a3",
+   "shard": "Windows13/_state/tasks/p1/generators/gen_d_object_detection/ideas_shard.jsonl",
+   "ideas": 100
+  },
+  "gen_e": {
+   "branch": "origin/cursor/w13-p1-gen-e-vlm-dense-9412",
+   "shard": "Windows13/_state/tasks/p1/generators/gen_e_vlm_dense_prediction/ideas_shard.jsonl",
+   "ideas": 100
+  },
+  "gen_f": {
+   "branch": "origin/cursor/w13-p1-gen-f-synthetic-data-3a94",
+   "shard": "Windows13/_state/tasks/p1/generators/gen_f_synthetic_data/ideas_shard.jsonl",
+   "ideas": 102
+  },
+  "wave1_master_read_only": {
+   "branch": "origin/cursor/p1-wave-b-consolidator-w1-7a58",
+   "file": "Windows13/_state/ideas_master.jsonl",
+   "records": 248,
+   "use": "cross-wave collision notes only; NOT modified"
+  },
+  "judge_A_reference_only": {
+   "branch": "origin/cursor/p1-wave-b-w2-judge-a-dedup-13e5",
+   "use": "consulted AFTER independent verdicts were formed; disagreements recorded for the Consolidator"
+  }
+ },
+ "method": "Independent feasibility judging of all 302 wave-2 ideas, re-read from the generator shards. Each idea tiered on the cost of its DECISIVE falsification: T1 = frozen public models / cached predictions / synthetic or photographed stimuli / small annotation audits (hours-to-days); T2 = short training runs, probes, resample-retrain grids, small human pilots (one GPU plus modest labor); T3 = gated data/hardware/orgs or pretraining-scale compute. feasibility_score 5 = cheapest decisive kill (afternoon on cached predictions) down to 1 = gated. Additional axes: runnable_as_stated (do the required public assets exist?), permutation/template flags (schema stamped across substrates with no belief at risk), too-vague (no crisp failure criterion). Duplicate/co-run structure assessed independently of Judge A; wave-1 master consulted only for collision notes.",
+ "epistemic_status": "NO verified novelty claims. All prior-art and known-result remarks are unverified judge hypotheses. No citations asserted or invented.",
+ "counts": {
+  "input_total": 302,
+  "input_by_shard": {
+   "D": 100,
+   "E": 100,
+   "F": 102
+  },
+  "keep": 255,
+  "keep_by_shard": {
+   "D": 83,
+   "E": 83,
+   "F": 89
+  },
+  "merge": 44,
+  "kill": 3,
+  "merge_in_wave": 34,
+  "merge_cross_wave_into_wave1": 10,
+  "anomalies": 20,
+  "tier_T1_keep": 175,
+  "tier_T2_keep": 79,
+  "tier_T3_keep": 1,
+  "score5_keeps": 76,
+  "duplicate_groups": 29,
+  "co_run_clusters": 10,
+  "disagreements_vs_judge_A": 19
+ },
+ "keep_ids": [
+  "W13-P1-D-001",
+  "W13-P1-D-002",
+  "W13-P1-D-003",
+  "W13-P1-D-009",
+  "W13-P1-D-010",
+  "W13-P1-D-011",
+  "W13-P1-D-013",
+  "W13-P1-D-015",
+  "W13-P1-D-018",
+  "W13-P1-D-019",
+  "W13-P1-D-020",
+  "W13-P1-D-021",
+  "W13-P1-D-022",
+  "W13-P1-D-023",
+  "W13-P1-D-024",
+  "W13-P1-D-025",
+  "W13-P1-D-026",
+  "W13-P1-D-027",
+  "W13-P1-D-028",
+  "W13-P1-D-029",
+  "W13-P1-D-030",
+  "W13-P1-D-031",
+  "W13-P1-D-032",
+  "W13-P1-D-034",
+  "W13-P1-D-036",
+  "W13-P1-D-037",
+  "W13-P1-D-038",
+  "W13-P1-D-039",
+  "W13-P1-D-041",
+  "W13-P1-D-043",
+  "W13-P1-D-044",
+  "W13-P1-D-045",
+  "W13-P1-D-046",
+  "W13-P1-D-047",
+  "W13-P1-D-048",
+  "W13-P1-D-049",
+  "W13-P1-D-050",
+  "W13-P1-D-051",
+  "W13-P1-D-052",
+  "W13-P1-D-053",
+  "W13-P1-D-054",
+  "W13-P1-D-055",
+  "W13-P1-D-057",
+  "W13-P1-D-058",
+  "W13-P1-D-059",
+  "W13-P1-D-060",
+  "W13-P1-D-061",
+  "W13-P1-D-062",
+  "W13-P1-D-063",
+  "W13-P1-D-064",
+  "W13-P1-D-065",
+  "W13-P1-D-066",
+  "W13-P1-D-067",
+  "W13-P1-D-068",
+  "W13-P1-D-069",
+  "W13-P1-D-070",
+  "W13-P1-D-071",
+  "W13-P1-D-072",
+  "W13-P1-D-073",
+  "W13-P1-D-074",
+  "W13-P1-D-075",
+  "W13-P1-D-076",
+  "W13-P1-D-077",
+  "W13-P1-D-078",
+  "W13-P1-D-079",
+  "W13-P1-D-080",
+  "W13-P1-D-081",
+  "W13-P1-D-082",
+  "W13-P1-D-083",
+  "W13-P1-D-084",
+  "W13-P1-D-085",
+  "W13-P1-D-086",
+  "W13-P1-D-088",
+  "W13-P1-D-089",
+  "W13-P1-D-090",
+  "W13-P1-D-091",
+  "W13-P1-D-093",
+  "W13-P1-D-094",
+  "W13-P1-D-095",
+  "W13-P1-D-096",
+  "W13-P1-D-097",
+  "W13-P1-D-098",
+  "W13-P1-D-099",
+  "W13-P1-E-001",
+  "W13-P1-E-002",
+  "W13-P1-E-003",
+  "W13-P1-E-004",
+  "W13-P1-E-006",
+  "W13-P1-E-007",
+  "W13-P1-E-008",
+  "W13-P1-E-009",
+  "W13-P1-E-010",
+  "W13-P1-E-011",
+  "W13-P1-E-012",
+  "W13-P1-E-013",
+  "W13-P1-E-017",
+  "W13-P1-E-018",
+  "W13-P1-E-019",
+  "W13-P1-E-022",
+  "W13-P1-E-023",
+  "W13-P1-E-024",
+  "W13-P1-E-027",
+  "W13-P1-E-028",
+  "W13-P1-E-029",
+  "W13-P1-E-030",
+  "W13-P1-E-031",
+  "W13-P1-E-032",
+  "W13-P1-E-033",
+  "W13-P1-E-034",
+  "W13-P1-E-036",
+  "W13-P1-E-038",
+  "W13-P1-E-039",
+  "W13-P1-E-040",
+  "W13-P1-E-041",
+  "W13-P1-E-042",
+  "W13-P1-E-043",
+  "W13-P1-E-044",
+  "W13-P1-E-045",
+  "W13-P1-E-046",
+  "W13-P1-E-047",
+  "W13-P1-E-048",
+  "W13-P1-E-049",
+  "W13-P1-E-050",
+  "W13-P1-E-051",
+  "W13-P1-E-052",
+  "W13-P1-E-053",
+  "W13-P1-E-054",
+  "W13-P1-E-055",
+  "W13-P1-E-056",
+  "W13-P1-E-057",
+  "W13-P1-E-058",
+  "W13-P1-E-059",
+  "W13-P1-E-060",
+  "W13-P1-E-061",
+  "W13-P1-E-062",
+  "W13-P1-E-063",
+  "W13-P1-E-065",
+  "W13-P1-E-068",
+  "W13-P1-E-069",
+  "W13-P1-E-072",
+  "W13-P1-E-074",
+  "W13-P1-E-075",
+  "W13-P1-E-076",
+  "W13-P1-E-077",
+  "W13-P1-E-078",
+  "W13-P1-E-079",
+  "W13-P1-E-080",
+  "W13-P1-E-081",
+  "W13-P1-E-082",
+  "W13-P1-E-083",
+  "W13-P1-E-084",
+  "W13-P1-E-085",
+  "W13-P1-E-086",
+  "W13-P1-E-087",
+  "W13-P1-E-088",
+  "W13-P1-E-090",
+  "W13-P1-E-091",
+  "W13-P1-E-092",
+  "W13-P1-E-093",
+  "W13-P1-E-094",
+  "W13-P1-E-095",
+  "W13-P1-E-096",
+  "W13-P1-E-097",
+  "W13-P1-E-098",
+  "W13-P1-E-099",
+  "W13-P1-E-100",
+  "W13-P1-F-001",
+  "W13-P1-F-002",
+  "W13-P1-F-003",
+  "W13-P1-F-005",
+  "W13-P1-F-007",
+  "W13-P1-F-008",
+  "W13-P1-F-009",
+  "W13-P1-F-010",
+  "W13-P1-F-012",
+  "W13-P1-F-014",
+  "W13-P1-F-015",
+  "W13-P1-F-017",
+  "W13-P1-F-018",
+  "W13-P1-F-019",
+  "W13-P1-F-020",
+  "W13-P1-F-021",
+  "W13-P1-F-022",
+  "W13-P1-F-024",
+  "W13-P1-F-026",
+  "W13-P1-F-027",
+  "W13-P1-F-028",
+  "W13-P1-F-030",
+  "W13-P1-F-031",
+  "W13-P1-F-034",
+  "W13-P1-F-035",
+  "W13-P1-F-036",
+  "W13-P1-F-037",
+  "W13-P1-F-038",
+  "W13-P1-F-040",
+  "W13-P1-F-041",
+  "W13-P1-F-042",
+  "W13-P1-F-043",
+  "W13-P1-F-044",
+  "W13-P1-F-045",
+  "W13-P1-F-046",
+  "W13-P1-F-047",
+  "W13-P1-F-048",
+  "W13-P1-F-049",
+  "W13-P1-F-050",
+  "W13-P1-F-051",
+  "W13-P1-F-052",
+  "W13-P1-F-054",
+  "W13-P1-F-055",
+  "W13-P1-F-056",
+  "W13-P1-F-057",
+  "W13-P1-F-058",
+  "W13-P1-F-059",
+  "W13-P1-F-060",
+  "W13-P1-F-061",
+  "W13-P1-F-062",
+  "W13-P1-F-063",
+  "W13-P1-F-064",
+  "W13-P1-F-065",
+  "W13-P1-F-066",
+  "W13-P1-F-067",
+  "W13-P1-F-068",
+  "W13-P1-F-069",
+  "W13-P1-F-070",
+  "W13-P1-F-071",
+  "W13-P1-F-072",
+  "W13-P1-F-073",
+  "W13-P1-F-074",
+  "W13-P1-F-075",
+  "W13-P1-F-076",
+  "W13-P1-F-077",
+  "W13-P1-F-078",
+  "W13-P1-F-080",
+  "W13-P1-F-081",
+  "W13-P1-F-082",
+  "W13-P1-F-083",
+  "W13-P1-F-084",
+  "W13-P1-F-085",
+  "W13-P1-F-086",
+  "W13-P1-F-087",
+  "W13-P1-F-088",
+  "W13-P1-F-089",
+  "W13-P1-F-090",
+  "W13-P1-F-091",
+  "W13-P1-F-092",
+  "W13-P1-F-093",
+  "W13-P1-F-094",
+  "W13-P1-F-095",
+  "W13-P1-F-096",
+  "W13-P1-F-097",
+  "W13-P1-F-098",
+  "W13-P1-F-099",
+  "W13-P1-F-100",
+  "W13-P1-F-101",
+  "W13-P1-F-102"
+ ],
+ "merge_ids": [
+  {
+   "id": "W13-P1-D-004",
+   "merge_target": "W13-P1-D-071",
+   "reason": "Same oracle decomposition (naming vs localization) on cached predictions; D-071 states the general foundation-scale claim and the novel-class split is one stratification of the same run."
+  },
+  {
+   "id": "W13-P1-D-005",
+   "merge_target": "W13-P1-E-047",
+   "reason": "Same hypothesis (text-tower geometry bounds detector confusions); E-047's correlational forecast plus D-005's renaming intervention are two arms of one study - keep the renaming intervention as arm 2 under E-047."
+  },
+  {
+   "id": "W13-P1-D-006",
+   "merge_target": "W13-P1-E-063",
+   "reason": "Same claim (renaming classes to correct synonyms reranks methods), boxes vs pixels; one renaming harness scores both substrates. Wave-1 C-052 is the classification ancestor - flag carried on E-063."
+  },
+  {
+   "id": "W13-P1-D-007",
+   "merge_target": "W13-P1-D-057",
+   "reason": "If attribute words are ignored (D-007), swapped-attribute instance selection (D-057) lands at chance; D-057's composite stimuli measure both readouts in one inference pass."
+  },
+  {
+   "id": "W13-P1-D-008",
+   "merge_target": "W13-P1-E-079",
+   "reason": "Identical part-query-returns-whole claim, boxes vs masks; E-079's part-annotated-benchmark version has ground truth and yields the box readout for free."
+  },
+  {
+   "id": "W13-P1-D-012",
+   "merge_target": "W13-P1-E-054",
+   "reason": "Same multilingual-degradation hypothesis; E-054's label-free cross-language mask-agreement audit is cheaper and extends to detection by boxing masks."
+  },
+  {
+   "id": "W13-P1-D-014",
+   "merge_target": "W13-P1-E-028",
+   "reason": "Manual granularity-acceptability review is a subset of E-028's hierarchy-aware error accounting on the same confusion tables."
+  },
+  {
+   "id": "W13-P1-D-016",
+   "merge_target": "W13-P1-D-003",
+   "reason": "Absence certification and none-of-the-above are one abstention harness: withheld-vocabulary relabeling and present/absent score-overlap are two readouts of the same runs."
+  },
+  {
+   "id": "W13-P1-D-017",
+   "merge_target": "W13-P1-D-096",
+   "reason": "Both measure inter-annotator box-IoU floors against benchmark thresholds; one double-annotation sprint stratified by object size answers both."
+  },
+  {
+   "id": "W13-P1-D-033",
+   "merge_target": "W13-P1-D-093",
+   "reason": "Same false-positive re-audit protocol; D-093 generalizes it and D-033 is the tail/federated stratum of the same audit."
+  },
+  {
+   "id": "W13-P1-D-035",
+   "merge_target": "wave1:W13-P1-C-047",
+   "reason": "WAVE1 COLLISION: support-set variance exceeding reported method gaps is accepted C-047 verbatim; the detection substrate is a stratification, not a new hypothesis."
+  },
+  {
+   "id": "W13-P1-D-040",
+   "merge_target": "W13-P1-D-013",
+   "reason": "Per-class threshold incomparability and no-usable-operating-point are the same cached-prediction analysis; the long-tail frequency axis is a stratification of D-013's plot."
+  },
+  {
+   "id": "W13-P1-D-042",
+   "merge_target": "W13-P1-E-029",
+   "reason": "Same synonym-spread measurement; tail-vs-head instability is one stratification of E-029's per-class synonym spread audit."
+  },
+  {
+   "id": "W13-P1-D-056",
+   "merge_target": "wave1:W13-P1-A-102",
+   "reason": "WAVE1 COLLISION: student inheritance of pseudo-mask geometric bias restates accepted A-102's pseudo-label bias-amplification law; convexity is a sub-measurement of the same audit."
+  },
+  {
+   "id": "W13-P1-D-087",
+   "merge_target": "wave1:W13-P1-C-077",
+   "reason": "WAVE1 COLLISION: evaluation-harness variance as an unbudgeted error term is accepted C-077; detection toolkits are one harness family within it."
+  },
+  {
+   "id": "W13-P1-D-092",
+   "merge_target": "wave1:W13-P1-C-028",
+   "reason": "WAVE1 COLLISION: corruption-suite vs natural-shift decorrelation is accepted C-028; this adds only the detection substrate."
+  },
+  {
+   "id": "W13-P1-D-100",
+   "merge_target": "wave1:W13-P1-C-069",
+   "reason": "WAVE1 COLLISION: model-assisted annotation contaminating ground truth is accepted C-069 near-verbatim; detector-in-the-loop is its instantiation."
+  },
+  {
+   "id": "W13-P1-E-005",
+   "merge_target": "W13-P1-D-001",
+   "reason": "Identical caption-frequency-governs-performance claim, pixels vs boxes; one frequency-stratified analysis with two readouts."
+  },
+  {
+   "id": "W13-P1-E-014",
+   "merge_target": "W13-P1-E-013",
+   "reason": "Distractor-count stratification is exactly the readout that decides whether head-noun-plus-salience solves the benchmark; same study as E-013."
+  },
+  {
+   "id": "W13-P1-E-015",
+   "merge_target": "W13-P1-E-013",
+   "reason": "The location-and-size blind prior is the null model inside E-013's baseline battery; scoring it is one hour of the same evaluation."
+  },
+  {
+   "id": "W13-P1-E-016",
+   "merge_target": "W13-P1-E-052",
+   "reason": "Referring-negation behavior is the dense readout of E-052's embedding negation-invariance claim; E-052 adds the predictive text-side metric."
+  },
+  {
+   "id": "W13-P1-E-020",
+   "merge_target": "W13-P1-E-013",
+   "reason": "Bimodality by head-noun uniqueness is the same stratified scoring pass as E-013/E-014; one aggregate hides it, one strat table shows it."
+  },
+  {
+   "id": "W13-P1-E-021",
+   "merge_target": "wave1:W13-P1-C-020",
+   "reason": "WAVE1 COLLISION: paraphrase instability as a free error detector is accepted C-020; referring segmentation is the dense substrate of the same audit."
+  },
+  {
+   "id": "W13-P1-E-025",
+   "merge_target": "W13-P1-D-002",
+   "reason": "Identical distractor-vocabulary collapse claim, pixels vs boxes; one query-list manipulation harness covers both."
+  },
+  {
+   "id": "W13-P1-E-026",
+   "merge_target": "W13-P1-D-003",
+   "reason": "Identical withheld-class abstention protocol at pixel level; same harness, second substrate."
+  },
+  {
+   "id": "W13-P1-E-037",
+   "merge_target": "wave1:W13-P1-B-046",
+   "reason": "WAVE1 COLLISION: texture-over-shape bias measured densely at boundaries is accepted B-046's exact design."
+  },
+  {
+   "id": "W13-P1-E-064",
+   "merge_target": "W13-P1-E-002",
+   "reason": "Oracle-mask/oracle-label decomposition and proposal-swap deltas are the same oracle-protocol study on the same models."
+  },
+  {
+   "id": "W13-P1-E-066",
+   "merge_target": "wave1:W13-P1-C-045",
+   "reason": "WAVE1 COLLISION: no-peek prompt/template protocols deflating zero-shot numbers is accepted C-045's hidden-budget claim on the dense substrate."
+  },
+  {
+   "id": "W13-P1-E-067",
+   "merge_target": "W13-P1-D-047",
+   "reason": "Identical boundary-weighted-metric reranking claim; one boundary-weighted re-scoring script covers instance masks and dense masks."
+  },
+  {
+   "id": "W13-P1-E-070",
+   "merge_target": "wave1:W13-P1-C-024",
+   "reason": "WAVE1 COLLISION: contamination-stratified scoring is accepted C-024's seen-shot design applied to dense benchmarks."
+  },
+  {
+   "id": "W13-P1-E-071",
+   "merge_target": "W13-P1-D-068",
+   "reason": "Same vocabulary-narrowing-under-fine-tuning claim; D-068's checkpoint-curve design measures E-071's before/after coverage audit directly."
+  },
+  {
+   "id": "W13-P1-E-073",
+   "merge_target": "W13-P1-E-010",
+   "reason": "Context-only scenes and object-erased scenes are the same counterfactual-evidence stimuli; one battery answers both. E-073's training-attribution angle (caption supervision learns co-occurrence) survives as a note for the study design."
+  },
+  {
+   "id": "W13-P1-E-089",
+   "merge_target": "W13-P1-E-085",
+   "reason": "Ordinal and comparative queries both allege a missing explicit cross-instance comparison operation; one candidate-comparison stimulus battery plus wrapper test decides both."
+  },
+  {
+   "id": "W13-P1-F-004",
+   "merge_target": "W13-P1-F-077",
+   "reason": "Depth-specific layout matching is one instantiation of F-077's layout-over-appearance factorial; run as a task arm, not a separate program."
+  },
+  {
+   "id": "W13-P1-F-006",
+   "merge_target": "W13-P1-F-066",
+   "reason": "Generator-internals pseudo-labels for real images are one arm of F-066's labels-for-real-images vs images-for-synthetic-labels comparison."
+  },
+  {
+   "id": "W13-P1-F-011",
+   "merge_target": "W13-P1-F-090",
+   "reason": "The ontology/definition mismatch audit is a component of F-090's renderer-label-vs-guideline divergence catalog."
+  },
+  {
+   "id": "W13-P1-F-013",
+   "merge_target": "W13-P1-F-019",
+   "reason": "Depth-sensor noise calibration is one factor inside F-019's low-level pipeline-statistics program; F-019's residual-classifier check gates it for hours, not days."
+  },
+  {
+   "id": "W13-P1-F-016",
+   "merge_target": "W13-P1-F-090",
+   "reason": "Convention-harmonized gap re-measurement is the intervention arm of F-090's convention-divergence audit (wave-1 B-085 is the medical relative - flag carried on F-090)."
+  },
+  {
+   "id": "W13-P1-F-025",
+   "merge_target": "W13-P1-F-097",
+   "reason": "The sim-to-real gap exponent is one term of F-097's joint real-synthetic scaling law; one fitting program, one pilot grid."
+  },
+  {
+   "id": "W13-P1-F-029",
+   "merge_target": "W13-P1-E-077",
+   "reason": "Recaptioned-corpus bias inheritance is the training-side confirmation of E-077's captioner mention-statistics ceiling; E-077's training-free correlational check comes first."
+  },
+  {
+   "id": "W13-P1-F-032",
+   "merge_target": "W13-P1-F-028",
+   "reason": "Injected-vs-organic noise leaderboard fragility and structured auto-label noise defeating LNL methods are the same flagship-methods-on-real-noise experiment."
+  },
+  {
+   "id": "W13-P1-F-033",
+   "merge_target": "W13-P1-D-060",
+   "reason": "Same correlated-errors-defeat-ensembling claim rooted in shared web pretraining; one pairwise error-overlap analysis covers foundation detectors and teacher-labelers."
+  },
+  {
+   "id": "W13-P1-F-039",
+   "merge_target": "wave1:W13-P1-C-058",
+   "reason": "WAVE1 COLLISION: pruning-scores-reduce-to-dedup restates accepted C-058 (curation adds little beyond dedup) on synthetic pools; the residual correlation check belongs under C-058."
+  },
+  {
+   "id": "W13-P1-F-079",
+   "merge_target": "W13-P1-F-019",
+   "reason": "Device-ISP calibration is another factor inside F-019's pipeline-statistics program; the same residual-classifier gate applies."
+  }
+ ],
+ "kill_ids": [
+  {
+   "id": "W13-P1-E-035",
+   "reason": "KNOWN-RESULT RESTATEMENT RISK (unverified judge assessment): high-norm global outlier patch tokens in ViT-family towers and register-style fixes are an actively published line; 'filter/reassign outliers, get dense gains across methods' likely re-runs it. Cheap (T1) but low expected information per unit work; killed for wave-2 triage. Novelty judge may resurrect with a differentiated design (e.g. reassignment-vs-registers head-to-head on frozen towers)."
+  },
+  {
+   "id": "W13-P1-F-023",
+   "reason": "KNOWN-RESULT RESTATEMENT RISK (unverified judge assessment): recomputing normalization statistics on unlabeled target data is an established test-time adaptation technique; the residual claim ('a large share of the sim-to-real gap lives in normalization statistics') is a magnitude measurement with no community belief at risk. Killed for triage; resurrect if reframed as one decomposition bound inside F-094."
+  },
+  {
+   "id": "W13-P1-F-053",
+   "reason": "KNOWN-RESULT RESTATEMENT (unverified judge assessment): accumulate-vs-replace resolving model collapse in the practical regime restates a result this judge assesses as already established; re-running it on one small image model adds little information. Independent agreement with Judge A's standalone kill."
+  }
+ ],
+ "anomaly_ids": [
+  "W13-P1-D-029",
+  "W13-P1-D-051",
+  "W13-P1-D-066",
+  "W13-P1-D-069",
+  "W13-P1-D-083",
+  "W13-P1-D-097",
+  "W13-P1-D-099",
+  "W13-P1-E-010",
+  "W13-P1-E-041",
+  "W13-P1-E-055",
+  "W13-P1-E-084",
+  "W13-P1-E-095",
+  "W13-P1-E-099",
+  "W13-P1-F-027",
+  "W13-P1-F-040",
+  "W13-P1-F-060",
+  "W13-P1-F-069",
+  "W13-P1-F-089",
+  "W13-P1-F-091",
+  "W13-P1-F-096"
+ ],
+ "duplicate_groups": [
+  {
+   "group": "jbw2_01",
+   "primary": "W13-P1-D-001",
+   "members": [
+    "W13-P1-D-001",
+    "W13-P1-E-005"
+   ],
+   "note": "Identical caption-frequency-governs-performance claim, pixels vs boxes; one frequency-stratified analysis with two reado"
+  },
+  {
+   "group": "jbw2_02",
+   "primary": "W13-P1-D-002",
+   "members": [
+    "W13-P1-D-002",
+    "W13-P1-E-025"
+   ],
+   "note": "Identical distractor-vocabulary collapse claim, pixels vs boxes; one query-list manipulation harness covers both."
+  },
+  {
+   "group": "jbw2_03",
+   "primary": "W13-P1-D-003",
+   "members": [
+    "W13-P1-D-003",
+    "W13-P1-D-016",
+    "W13-P1-E-026"
+   ],
+   "note": "Absence certification and none-of-the-above are one abstention harness: withheld-vocabulary relabeling and present/absen"
+  },
+  {
+   "group": "jbw2_04",
+   "primary": "W13-P1-D-013",
+   "members": [
+    "W13-P1-D-013",
+    "W13-P1-D-040"
+   ],
+   "note": "Per-class threshold incomparability and no-usable-operating-point are the same cached-prediction analysis; the long-tail"
+  },
+  {
+   "group": "jbw2_05",
+   "primary": "W13-P1-D-047",
+   "members": [
+    "W13-P1-D-047",
+    "W13-P1-E-067"
+   ],
+   "note": "Identical boundary-weighted-metric reranking claim; one boundary-weighted re-scoring script covers instance masks and de"
+  },
+  {
+   "group": "jbw2_06",
+   "primary": "W13-P1-D-057",
+   "members": [
+    "W13-P1-D-007",
+    "W13-P1-D-057"
+   ],
+   "note": "If attribute words are ignored (D-007), swapped-attribute instance selection (D-057) lands at chance; D-057's composite "
+  },
+  {
+   "group": "jbw2_07",
+   "primary": "W13-P1-D-060",
+   "members": [
+    "W13-P1-D-060",
+    "W13-P1-F-033"
+   ],
+   "note": "Same correlated-errors-defeat-ensembling claim rooted in shared web pretraining; one pairwise error-overlap analysis cov"
+  },
+  {
+   "group": "jbw2_08",
+   "primary": "W13-P1-D-068",
+   "members": [
+    "W13-P1-D-068",
+    "W13-P1-E-071"
+   ],
+   "note": "Same vocabulary-narrowing-under-fine-tuning claim; D-068's checkpoint-curve design measures E-071's before/after coverag"
+  },
+  {
+   "group": "jbw2_09",
+   "primary": "W13-P1-D-071",
+   "members": [
+    "W13-P1-D-004",
+    "W13-P1-D-071"
+   ],
+   "note": "Same oracle decomposition (naming vs localization) on cached predictions; D-071 states the general foundation-scale clai"
+  },
+  {
+   "group": "jbw2_10",
+   "primary": "W13-P1-D-093",
+   "members": [
+    "W13-P1-D-033",
+    "W13-P1-D-093"
+   ],
+   "note": "Same false-positive re-audit protocol; D-093 generalizes it and D-033 is the tail/federated stratum of the same audit."
+  },
+  {
+   "group": "jbw2_11",
+   "primary": "W13-P1-D-096",
+   "members": [
+    "W13-P1-D-017",
+    "W13-P1-D-096"
+   ],
+   "note": "Both measure inter-annotator box-IoU floors against benchmark thresholds; one double-annotation sprint stratified by obj"
+  },
+  {
+   "group": "jbw2_12",
+   "primary": "W13-P1-E-002",
+   "members": [
+    "W13-P1-E-002",
+    "W13-P1-E-064"
+   ],
+   "note": "Oracle-mask/oracle-label decomposition and proposal-swap deltas are the same oracle-protocol study on the same models."
+  },
+  {
+   "group": "jbw2_13",
+   "primary": "W13-P1-E-010",
+   "members": [
+    "W13-P1-E-010",
+    "W13-P1-E-073"
+   ],
+   "note": "Context-only scenes and object-erased scenes are the same counterfactual-evidence stimuli; one battery answers both. E-0"
+  },
+  {
+   "group": "jbw2_14",
+   "primary": "W13-P1-E-013",
+   "members": [
+    "W13-P1-E-013",
+    "W13-P1-E-014",
+    "W13-P1-E-015",
+    "W13-P1-E-020"
+   ],
+   "note": "Distractor-count stratification is exactly the readout that decides whether head-noun-plus-salience solves the benchmark"
+  },
+  {
+   "group": "jbw2_15",
+   "primary": "W13-P1-E-028",
+   "members": [
+    "W13-P1-D-014",
+    "W13-P1-E-028"
+   ],
+   "note": "Manual granularity-acceptability review is a subset of E-028's hierarchy-aware error accounting on the same confusion ta"
+  },
+  {
+   "group": "jbw2_16",
+   "primary": "W13-P1-E-029",
+   "members": [
+    "W13-P1-D-042",
+    "W13-P1-E-029"
+   ],
+   "note": "Same synonym-spread measurement; tail-vs-head instability is one stratification of E-029's per-class synonym spread audi"
+  },
+  {
+   "group": "jbw2_17",
+   "primary": "W13-P1-E-047",
+   "members": [
+    "W13-P1-D-005",
+    "W13-P1-E-047"
+   ],
+   "note": "Same hypothesis (text-tower geometry bounds detector confusions); E-047's correlational forecast plus D-005's renaming i"
+  },
+  {
+   "group": "jbw2_18",
+   "primary": "W13-P1-E-052",
+   "members": [
+    "W13-P1-E-016",
+    "W13-P1-E-052"
+   ],
+   "note": "Referring-negation behavior is the dense readout of E-052's embedding negation-invariance claim; E-052 adds the predicti"
+  },
+  {
+   "group": "jbw2_19",
+   "primary": "W13-P1-E-054",
+   "members": [
+    "W13-P1-D-012",
+    "W13-P1-E-054"
+   ],
+   "note": "Same multilingual-degradation hypothesis; E-054's label-free cross-language mask-agreement audit is cheaper and extends "
+  },
+  {
+   "group": "jbw2_20",
+   "primary": "W13-P1-E-063",
+   "members": [
+    "W13-P1-D-006",
+    "W13-P1-E-063"
+   ],
+   "note": "Same claim (renaming classes to correct synonyms reranks methods), boxes vs pixels; one renaming harness scores both sub"
+  },
+  {
+   "group": "jbw2_21",
+   "primary": "W13-P1-E-077",
+   "members": [
+    "W13-P1-E-077",
+    "W13-P1-F-029"
+   ],
+   "note": "Recaptioned-corpus bias inheritance is the training-side confirmation of E-077's captioner mention-statistics ceiling; E"
+  },
+  {
+   "group": "jbw2_22",
+   "primary": "W13-P1-E-079",
+   "members": [
+    "W13-P1-D-008",
+    "W13-P1-E-079"
+   ],
+   "note": "Identical part-query-returns-whole claim, boxes vs masks; E-079's part-annotated-benchmark version has ground truth and "
+  },
+  {
+   "group": "jbw2_23",
+   "primary": "W13-P1-E-085",
+   "members": [
+    "W13-P1-E-085",
+    "W13-P1-E-089"
+   ],
+   "note": "Ordinal and comparative queries both allege a missing explicit cross-instance comparison operation; one candidate-compar"
+  },
+  {
+   "group": "jbw2_24",
+   "primary": "W13-P1-F-019",
+   "members": [
+    "W13-P1-F-013",
+    "W13-P1-F-019",
+    "W13-P1-F-079"
+   ],
+   "note": "Depth-sensor noise calibration is one factor inside F-019's low-level pipeline-statistics program; F-019's residual-clas"
+  },
+  {
+   "group": "jbw2_25",
+   "primary": "W13-P1-F-028",
+   "members": [
+    "W13-P1-F-028",
+    "W13-P1-F-032"
+   ],
+   "note": "Injected-vs-organic noise leaderboard fragility and structured auto-label noise defeating LNL methods are the same flags"
+  },
+  {
+   "group": "jbw2_26",
+   "primary": "W13-P1-F-066",
+   "members": [
+    "W13-P1-F-006",
+    "W13-P1-F-066"
+   ],
+   "note": "Generator-internals pseudo-labels for real images are one arm of F-066's labels-for-real-images vs images-for-synthetic-"
+  },
+  {
+   "group": "jbw2_27",
+   "primary": "W13-P1-F-077",
+   "members": [
+    "W13-P1-F-004",
+    "W13-P1-F-077"
+   ],
+   "note": "Depth-specific layout matching is one instantiation of F-077's layout-over-appearance factorial; run as a task arm, not "
+  },
+  {
+   "group": "jbw2_28",
+   "primary": "W13-P1-F-090",
+   "members": [
+    "W13-P1-F-011",
+    "W13-P1-F-016",
+    "W13-P1-F-090"
+   ],
+   "note": "The ontology/definition mismatch audit is a component of F-090's renderer-label-vs-guideline divergence catalog."
+  },
+  {
+   "group": "jbw2_29",
+   "primary": "W13-P1-F-097",
+   "members": [
+    "W13-P1-F-025",
+    "W13-P1-F-097"
+   ],
+   "note": "The sim-to-real gap exponent is one term of F-097's joint real-synthetic scaling law; one fitting program, one pilot gri"
+  }
+ ],
+ "co_run_clusters": [
+  {
+   "cluster": "compositing_counterfactual_harness",
+   "members": [
+    "W13-P1-D-010",
+    "W13-P1-D-023",
+    "W13-P1-D-037",
+    "W13-P1-D-057",
+    "W13-P1-E-010"
+   ],
+   "note": "One paste/inpaint counterfactual-stimulus pipeline (objects into atypical scenes, objects removed, attributes swapped) serves all five."
+  },
+  {
+   "cluster": "vocabulary_sweep_harness",
+   "members": [
+    "W13-P1-D-002",
+    "W13-P1-D-003",
+    "W13-P1-D-011",
+    "W13-P1-E-034"
+   ],
+   "note": "One query-list manipulation harness (distractor composition, withheld classes, scale sweep, text-neighborhood regression) covers all four."
+  },
+  {
+   "cluster": "bootstrap_eval_harness",
+   "members": [
+    "W13-P1-D-032",
+    "W13-P1-D-043",
+    "W13-P1-D-085"
+   ],
+   "note": "One bootstrap/resampling evaluator over cached predictions answers tail-AP vacuity, intra-tail regression, and volatile-minority ranking."
+  },
+  {
+   "cluster": "density_array_stimuli",
+   "members": [
+    "W13-P1-D-021",
+    "W13-P1-D-029",
+    "W13-P1-D-079",
+    "W13-P1-D-080",
+    "W13-P1-D-081",
+    "W13-P1-E-086"
+   ],
+   "note": "One controlled repeated-object photography/rendering set (counts 2..100+) serves NMS crossover, pattern completion, routing, subitizing, crowding, and bias-inversion."
+  },
+  {
+   "cluster": "synonym_phrasing_harness",
+   "members": [
+    "W13-P1-D-009",
+    "W13-P1-E-029",
+    "W13-P1-E-030",
+    "W13-P1-E-063"
+   ],
+   "note": "One synonym/paraphrase substitution pipeline over class lists scores all four claims."
+  },
+  {
+   "cluster": "annotation_repool",
+   "members": [
+    "W13-P1-D-093",
+    "W13-P1-D-095",
+    "W13-P1-D-096",
+    "W13-P1-D-097",
+    "W13-P1-D-098",
+    "W13-P1-D-099",
+    "W13-P1-E-065",
+    "W13-P1-F-038"
+   ],
+   "note": "One multi-annotator re-annotation pool (a few hundred instances, size- and ambiguity-stratified) feeds all eight audits; amortizes the single largest labor cost in the wave."
+  },
+  {
+   "cluster": "text_geometry_toolkit",
+   "members": [
+    "W13-P1-E-047",
+    "W13-P1-E-048",
+    "W13-P1-E-049",
+    "W13-P1-E-051",
+    "W13-P1-E-052",
+    "W13-P1-E-053"
+   ],
+   "note": "One text-tower geometry toolkit (similarity matrices, hubness, token-length stats, edit displacement) computed once serves all six; no images needed for the text half."
+  },
+  {
+   "cluster": "layer_probe_toolkit",
+   "members": [
+    "W13-P1-E-001",
+    "W13-P1-E-041",
+    "W13-P1-E-046"
+   ],
+   "note": "One layer-wise dense-probing rig over frozen towers answers layer choice, query-adaptive selection, and probe-vs-verbalization."
+  },
+  {
+   "cluster": "resample_retrain_grid",
+   "members": [
+    "W13-P1-F-003",
+    "W13-P1-F-008",
+    "W13-P1-F-009",
+    "W13-P1-F-021"
+   ],
+   "note": "One resample-then-short-retrain harness over an existing synthetic dataset (motion, occlusion, pose, class-frequency axes) runs all four as one grid."
+  },
+  {
+   "cluster": "retrieval_contamination_harness",
+   "members": [
+    "W13-P1-F-047",
+    "W13-P1-F-086",
+    "W13-P1-F-093"
+   ],
+   "note": "One embedding nearest-neighbor retrieval stack between synthetic pools, real train/test sets, and generator training corpora serves dedup, benchmark leakage, and privacy probes."
+  }
+ ],
+ "deliberate_tensions": [
+  {
+   "pair": [
+    "W13-P1-D-063",
+    "W13-P1-E-074"
+   ],
+   "note": "Frozen features lack sub-patch precision vs a shallow decoder recovers most of the dense gap; adjudicate with the same frozen-backbone protocol."
+  },
+  {
+   "pair": [
+    "W13-P1-F-005",
+    "W13-P1-D-039"
+   ],
+   "note": "Cut-and-paste sufficiency vs paste-artifact inflation; the same paste-vs-natural evaluation settles both directions."
+  },
+  {
+   "pair": [
+    "W13-P1-F-052",
+    "W13-P1-F-096"
+   ],
+   "note": "Distillation ceiling vs students exceeding teachers through multi-view fusion; a regime-mapping pair, not redundancy."
+  },
+  {
+   "pair": [
+    "W13-P1-D-071",
+    "W13-P1-D-044"
+   ],
+   "note": "Recognition dominates residual error vs objectness binds for geometrically atypical classes; one oracle decomposition stratified by shape decides."
+  },
+  {
+   "pair": [
+    "W13-P1-D-077",
+    "W13-P1-D-020"
+   ],
+   "note": "Objectness saturates early (favor classification pretraining) vs dense pretraining wins on small/dense strata; matched-compute comparison required."
+  },
+  {
+   "pair": [
+    "W13-P1-F-074",
+    "W13-P1-F-064"
+   ],
+   "note": "Infinite procedural streams beat fixed datasets vs generator-support ceilings; the plateau measurements are shared infrastructure."
+  }
+ ],
+ "disagreements_vs_judge_A": [
+  {
+   "id": "W13-P1-D-006",
+   "judge_A": "merge->W13-P1-E-029",
+   "judge_B": "merge->W13-P1-E-063",
+   "why": "Same removal direction, target differs: I fold into the in-wave renaming-reranks primary E-063 (which I keep); A points at E-029 citing the wave-1 C-052 ancestor. Either target preserves the content; Consolidator picks."
+  },
+  {
+   "id": "W13-P1-D-009",
+   "judge_A": "merge->W13-P1-E-029",
+   "judge_B": "keep",
+   "why": "A merged into E-029; I keep: multi-word/phrase-composition degradation is a tokenization/composition claim with a paraphrase-recovery design, not a synonym-spread audit. Distinct kill, equally cheap."
+  },
+  {
+   "id": "W13-P1-D-014",
+   "judge_A": "merge->W13-P1-D-038+W13-P1-E-028",
+   "judge_B": "merge->W13-P1-E-028",
+   "why": "Same direction; A names a dual primary (D-038+E-028), I name E-028 alone. No content difference."
+  },
+  {
+   "id": "W13-P1-D-016",
+   "judge_A": "keep",
+   "judge_B": "merge->W13-P1-D-003",
+   "why": "A kept; I merge into D-003: withheld-vocabulary relabeling and present/absent score-overlap are two readouts of one abstention harness. Consolidator may keep separate for claim granularity."
+  },
+  {
+   "id": "W13-P1-D-032",
+   "judge_A": "merge->W13-P1-D-085",
+   "judge_B": "keep",
+   "why": "A merged into D-085; I keep: tail-CI vacuity has its own decision consequence (long-tail leaderboard conclusions are noise) and its own stratification. Shared bootstrap harness flagged as co-run instead."
+  },
+  {
+   "id": "W13-P1-D-035",
+   "judge_A": "merge->W13-P1-D-085",
+   "judge_B": "merge->wave1:W13-P1-C-047",
+   "why": "Both remove as the wave-1 C-047 port; A folds into D-085, I record the wave-1 target directly. Target choice is the Consolidator's."
+  },
+  {
+   "id": "W13-P1-D-042",
+   "judge_A": "keep",
+   "judge_B": "merge->W13-P1-E-029",
+   "why": "A kept; I merge into E-029: tail-vs-head phrasing instability is one stratification of the same per-class synonym-spread measurement."
+  },
+  {
+   "id": "W13-P1-D-062",
+   "judge_A": "merge->W13-P1-D-010",
+   "judge_B": "keep",
+   "why": "A merged into D-010; I keep: attribution/context-masking quantifies out-of-box reliance on natural images without composite curation; a different instrument from paste-into-atypical-scenes with different failure modes."
+  },
+  {
+   "id": "W13-P1-D-079",
+   "judge_A": "merge->W13-P1-D-021",
+   "judge_B": "keep",
+   "why": "A merged into D-021; I keep: D-021 establishes the density crossover; D-079's falsifiable artifact is a two-feature per-image routing rule. Same stimuli (co-run), different claims."
+  },
+  {
+   "id": "W13-P1-D-084",
+   "judge_A": "merge->W13-P1-D-095",
+   "judge_B": "keep",
+   "why": "A merged into D-095; I keep: counting-error concentration and detection FP/miss concentration are distinct task readouts over the same ambiguity-flagged pool (co-run)."
+  },
+  {
+   "id": "W13-P1-E-001",
+   "judge_A": "merge->W13-P1-E-046",
+   "judge_B": "keep",
+   "why": "A merged into E-046; I keep: last-layer-worst plus the pooling-pressure mechanism is the load-bearing base observation that E-046's query-conditional optimum presupposes. One probe rig, two claims (co-run)."
+  },
+  {
+   "id": "W13-P1-E-035",
+   "judge_A": "keep",
+   "judge_B": "kill",
+   "why": "A kept with a high-risk flag; I kill: known-result restatement risk (outlier/register-token line) is high enough that expected information per unit work is low. Feasibility itself is fine (T1); novelty judge may resurrect."
+  },
+  {
+   "id": "W13-P1-E-045",
+   "judge_A": "merge->W13-P1-E-011",
+   "judge_B": "keep",
+   "why": "A merged into E-011; I keep: E-011 is about ensembling averaging spatially incompatible maps; E-045 is about single-template wording moving boundaries. The remedies differ (ensemble pruning vs template standardization)."
+  },
+  {
+   "id": "W13-P1-E-063",
+   "judge_A": "merge->W13-P1-E-029",
+   "judge_B": "keep",
+   "why": "A merged into E-029 as the wave-1 C-052 port; I keep it as the renaming-reranks-leaderboards primary (absorbing D-006), with the C-052 ancestor flagged for the novelty judge. Leaderboard-validity claim is distinct from consistency-audit claim."
+  },
+  {
+   "id": "W13-P1-E-065",
+   "judge_A": "merge->W13-P1-D-096",
+   "judge_B": "keep",
+   "why": "A merged into D-096; I keep: expression re-annotation is a different instrument from box re-annotation; co-run in the shared annotation pool rather than merged."
+  },
+  {
+   "id": "W13-P1-F-002",
+   "judge_A": "merge->W13-P1-F-027",
+   "judge_B": "keep",
+   "why": "A merged into F-027; I keep: F-027 tests convention-matched noise beating pixel-perfect labels; F-002 tests conflicting-convention mixtures and harmonization recovery - a mixing intervention with its own outcome."
+  },
+  {
+   "id": "W13-P1-F-023",
+   "judge_A": "keep",
+   "judge_B": "kill",
+   "why": "A kept with a flag; I kill: recomputing normalization statistics on target data is an established test-time adaptation technique; the residual is a magnitude measurement with no belief at risk."
+  },
+  {
+   "id": "W13-P1-F-029",
+   "judge_A": "merge->W13-P1-F-060+W13-P1-E-077",
+   "judge_B": "merge->W13-P1-E-077",
+   "why": "Same direction; A names dual primary (F-060+E-077), I name E-077 alone (its training-free correlational check comes first). No content difference."
+  },
+  {
+   "id": "W13-P1-F-047",
+   "judge_A": "merge->W13-P1-F-086",
+   "judge_B": "keep",
+   "why": "A merged into F-086; I keep: the missing-pipeline-stage claim (test-set inflation plus train-redundancy) is decision-relevant beyond F-086's memorization mechanism. Shared retrieval harness (co-run)."
+  }
+ ],
+ "verdicts": [
+  {
+   "id": "W13-P1-D-001",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "proxy_confound_caption_frequency",
+    "family:frequency_proximity",
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-002",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:E-025",
+    "corun:vocabulary_sweep"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-003",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-016+E-026",
+    "corun:vocabulary_sweep"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-004",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-071",
+   "reason": "Same oracle decomposition (naming vs localization) on cached predictions; D-071 states the general foundation-scale claim and the novel-class split is one stratification of the same run."
+  },
+  {
+   "id": "W13-P1-D-005",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-047",
+   "reason": "Same hypothesis (text-tower geometry bounds detector confusions); E-047's correlational forecast plus D-005's renaming intervention are two arms of one study - keep the renaming intervention as arm 2 under E-047."
+  },
+  {
+   "id": "W13-P1-D-006",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-063",
+   "reason": "Same claim (renaming classes to correct synonyms reranks methods), boxes vs pixels; one renaming harness scores both substrates. Wave-1 C-052 is the classification ancestor - flag carried on E-063."
+  },
+  {
+   "id": "W13-P1-D-007",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-057",
+   "reason": "If attribute words are ignored (D-007), swapped-attribute instance selection (D-057) lands at chance; D-057's composite stimuli measure both readouts in one inference pass."
+  },
+  {
+   "id": "W13-P1-D-008",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-079",
+   "reason": "Identical part-query-returns-whole claim, boxes vs masks; E-079's part-annotated-benchmark version has ground truth and yields the box readout for free."
+  },
+  {
+   "id": "W13-P1-D-009",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:name_phrasing"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-010",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:compositing_harness"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-011",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:vocabulary_sweep"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-012",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-054",
+   "reason": "Same multilingual-degradation hypothesis; E-054's label-free cross-language mask-agreement audit is cheaper and extends to detection by boxing masks."
+  },
+  {
+   "id": "W13-P1-D-013",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-040"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-014",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-028",
+   "reason": "Manual granularity-acceptability review is a subset of E-028's hierarchy-aware error accounting on the same confusion tables."
+  },
+  {
+   "id": "W13-P1-D-015",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:blind_trivial_baseline"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-016",
+   "cluster": "open-vocabulary",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-003",
+   "reason": "Absence certification and none-of-the-above are one abstention harness: withheld-vocabulary relabeling and present/absent score-overlap are two readouts of the same runs."
+  },
+  {
+   "id": "W13-P1-D-017",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-096",
+   "reason": "Both measure inter-annotator box-IoU floors against benchmark thresholds; one double-annotation sprint stratified by object size answers both."
+  },
+  {
+   "id": "W13-P1-D-018",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-019",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-020",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "confound:matched_compute_hard"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-021",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:density_stimuli"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-022",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:hidden_budget"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-023",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:compositing_harness"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-024",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-025",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-026",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:rank_transfer"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-027",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "logging_only_first_step"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-028",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-029",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-030",
+   "cluster": "small-dense-objects",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-031",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-032",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:bootstrap_harness",
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-033",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-093",
+   "reason": "Same false-positive re-audit protocol; D-093 generalizes it and D-033 is the tail/federated stratum of the same audit."
+  },
+  {
+   "id": "W13-P1-D-034",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:frequency_proximity",
+    "corun:frequency_strat"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-035",
+   "cluster": "long-tail",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-C-047",
+   "reason": "WAVE1 COLLISION: support-set variance exceeding reported method gaps is accepted C-047 verbatim; the detection substrate is a stratification, not a new hypothesis."
+  },
+  {
+   "id": "W13-P1-D-036",
+   "cluster": "long-tail",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-037",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:compositing_harness"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-038",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "pairs_with:E-028"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-039",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "tension:F-005"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-040",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-013",
+   "reason": "Per-class threshold incomparability and no-usable-operating-point are the same cached-prediction analysis; the long-tail frequency axis is a stratification of D-013's plot."
+  },
+  {
+   "id": "W13-P1-D-041",
+   "cluster": "long-tail",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-042",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-029",
+   "reason": "Same synonym-spread measurement; tail-vs-head instability is one stratification of E-029's per-class synonym spread audit."
+  },
+  {
+   "id": "W13-P1-D-043",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:bootstrap_harness"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-044",
+   "cluster": "long-tail",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "tension:D-071"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-045",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_box_supervised_seg"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-046",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-047",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:E-067",
+    "prior_art_risk_boundary_metrics"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-048",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-049",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:convention_scoring"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-050",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-051",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-052",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "scale_gap_mild"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-053",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:convention_scoring"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-054",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:consistency_audit",
+    "wave1_flag:B-026/A-005"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-055",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "tension:D-077"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-056",
+   "cluster": "detection-segmentation-interplay",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-A-102",
+   "reason": "WAVE1 COLLISION: student inheritance of pseudo-mask geometric bias restates accepted A-102's pseudo-label bias-amplification law; convexity is a sub-measurement of the same audit."
+  },
+  {
+   "id": "W13-P1-D-057",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-007",
+    "corun:E-053"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-058",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-059",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "technique_port",
+    "prior_art_risk_typographic"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-060",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:F-033"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-061",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-062",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-063",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "tension:E-074"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-064",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-065",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-066",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-067",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-068",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:E-071"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-069",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-070",
+   "cluster": "fm-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-071",
+   "cluster": "localization-vs-recognition",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-004",
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-072",
+   "cluster": "localization-vs-recognition",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-073",
+   "cluster": "localization-vs-recognition",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-074",
+   "cluster": "localization-vs-recognition",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_box_uncertainty"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-075",
+   "cluster": "localization-vs-recognition",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:convention_scoring"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-076",
+   "cluster": "localization-vs-recognition",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-077",
+   "cluster": "localization-vs-recognition",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "tension:D-020/D-055"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-078",
+   "cluster": "localization-vs-recognition",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-079",
+   "cluster": "counting-density",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:density_stimuli"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-080",
+   "cluster": "counting-density",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_high_vlm_counting"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-081",
+   "cluster": "counting-density",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:density_stimuli"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-082",
+   "cluster": "counting-density",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_count_supervision"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-083",
+   "cluster": "counting-density",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-084",
+   "cluster": "counting-density",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:convention_scoring",
+    "corun:D-095"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-085",
+   "cluster": "evaluation-artifacts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:bootstrap_harness"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-086",
+   "cluster": "evaluation-artifacts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_flag:C-021_operating_point"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-087",
+   "cluster": "evaluation-artifacts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-C-077",
+   "reason": "WAVE1 COLLISION: evaluation-harness variance as an unbudgeted error term is accepted C-077; detection toolkits are one harness family within it."
+  },
+  {
+   "id": "W13-P1-D-088",
+   "cluster": "evaluation-artifacts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_flag:C-024_adjacent"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-089",
+   "cluster": "evaluation-artifacts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-090",
+   "cluster": "evaluation-artifacts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-091",
+   "cluster": "evaluation-artifacts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:hidden_budget",
+    "wave1_flag:C-045_ancestor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-092",
+   "cluster": "evaluation-artifacts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-C-028",
+   "reason": "WAVE1 COLLISION: corruption-suite vs natural-shift decorrelation is accepted C-028; this adds only the detection substrate."
+  },
+  {
+   "id": "W13-P1-D-093",
+   "cluster": "annotation-label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-033",
+    "corun:annotation_repool"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-094",
+   "cluster": "annotation-label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_access_batch_metadata_proxy"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-095",
+   "cluster": "annotation-label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:convention_scoring",
+    "corun:D-084"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-096",
+   "cluster": "annotation-label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-017",
+    "wave1_flag:C-025/C-066/B-091",
+    "corun:annotation_repool"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-097",
+   "cluster": "annotation-label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly",
+    "corun:annotation_repool"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-098",
+   "cluster": "annotation-label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-099",
+   "cluster": "annotation-label-noise",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-D-100",
+   "cluster": "annotation-label-noise",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-C-069",
+   "reason": "WAVE1 COLLISION: model-assisted annotation contaminating ground truth is accepted C-069 near-verbatim; detector-in-the-loop is its instantiation."
+  },
+  {
+   "id": "W13-P1-E-001",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_dense_layer_choice"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-002",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:E-064",
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-003",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-004",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-005",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-001",
+   "reason": "Identical caption-frequency-governs-performance claim, pixels vs boxes; one frequency-stratified analysis with two readouts."
+  },
+  {
+   "id": "W13-P1-E-006",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-007",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-008",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "confound_correlational_pilot",
+    "scale_gap_for_causal_claim"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-009",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-010",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:E-073",
+    "anomaly",
+    "corun:compositing_harness"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-011",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-012",
+   "cluster": "language-grounded-segmentation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-013",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:E-014+E-015+E-020",
+    "family:blind_trivial_baseline",
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-014",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-013",
+   "reason": "Distractor-count stratification is exactly the readout that decides whether head-noun-plus-salience solves the benchmark; same study as E-013."
+  },
+  {
+   "id": "W13-P1-E-015",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-013",
+   "reason": "The location-and-size blind prior is the null model inside E-013's baseline battery; scoring it is one hour of the same evaluation."
+  },
+  {
+   "id": "W13-P1-E-016",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-052",
+   "reason": "Referring-negation behavior is the dense readout of E-052's embedding negation-invariance claim; E-052 adds the predictive text-side metric."
+  },
+  {
+   "id": "W13-P1-E-017",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-018",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-019",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-020",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-013",
+   "reason": "Bimodality by head-noun uniqueness is the same stratified scoring pass as E-013/E-014; one aggregate hides it, one strat table shows it."
+  },
+  {
+   "id": "W13-P1-E-021",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-C-020",
+   "reason": "WAVE1 COLLISION: paraphrase instability as a free error detector is accepted C-020; referring segmentation is the dense substrate of the same audit."
+  },
+  {
+   "id": "W13-P1-E-022",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:consistency_audit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-023",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-024",
+   "cluster": "referring-expressions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-025",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-002",
+   "reason": "Identical distractor-vocabulary collapse claim, pixels vs boxes; one query-list manipulation harness covers both."
+  },
+  {
+   "id": "W13-P1-E-026",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-003",
+   "reason": "Identical withheld-class abstention protocol at pixel level; same harness, second substrate."
+  },
+  {
+   "id": "W13-P1-E-027",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-028",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-014",
+    "pairs_with:D-038"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-029",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-042",
+    "family:consistency_audit",
+    "corun:synonym_harness"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-030",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:frequency_proximity",
+    "corun:synonym_harness"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-031",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:frequency_proximity",
+    "prior_art_risk",
+    "wave1_flag:C-024_adjacent"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-032",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-033",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-034",
+   "cluster": "open-set-pixel-labeling",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:vocabulary_sweep"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-035",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "known_result_restatement_risk"
+   ],
+   "verdict": "kill",
+   "reason": "KNOWN-RESULT RESTATEMENT RISK (unverified judge assessment): high-norm global outlier patch tokens in ViT-family towers and register-style fixes are an actively published line; 'filter/reassign outliers, get dense gains across methods' likely re-runs it. Cheap (T1) but low expected information per unit work; killed for wave-2 triage. Novelty judge may resurrect with a differentiated design (e.g. reassignment-vs-registers head-to-head on frozen towers)."
+  },
+  {
+   "id": "W13-P1-E-036",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-037",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-B-046",
+   "reason": "WAVE1 COLLISION: texture-over-shape bias measured densely at boundaries is accepted B-046's exact design."
+  },
+  {
+   "id": "W13-P1-E-038",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-039",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-040",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "technique_port_mild"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-041",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly",
+    "corun:layer_probe_toolkit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-042",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-043",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:convention_scoring",
+    "wave1_flag:A-079"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-044",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:hidden_budget"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-045",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-046",
+   "cluster": "vlm-dense-failure-modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:layer_probe_toolkit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-047",
+   "cluster": "text-embedding-geometry",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-005",
+    "corun:text_geometry_toolkit",
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-048",
+   "cluster": "text-embedding-geometry",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "technique_port",
+    "corun:text_geometry_toolkit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-049",
+   "cluster": "text-embedding-geometry",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:text_geometry_toolkit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-050",
+   "cluster": "text-embedding-geometry",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-051",
+   "cluster": "text-embedding-geometry",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_bag_of_words",
+    "corun:text_geometry_toolkit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-052",
+   "cluster": "text-embedding-geometry",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:E-016",
+    "prior_art_risk_negation",
+    "corun:text_geometry_toolkit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-053",
+   "cluster": "text-embedding-geometry",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:D-057",
+    "corun:text_geometry_toolkit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-054",
+   "cluster": "text-embedding-geometry",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-012",
+    "family:consistency_audit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-055",
+   "cluster": "spatial-language-grounding",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-056",
+   "cluster": "spatial-language-grounding",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-057",
+   "cluster": "spatial-language-grounding",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-058",
+   "cluster": "spatial-language-grounding",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-059",
+   "cluster": "spatial-language-grounding",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-060",
+   "cluster": "spatial-language-grounding",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-061",
+   "cluster": "spatial-language-grounding",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-062",
+   "cluster": "spatial-language-grounding",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-063",
+   "cluster": "dense-evaluation-protocols",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-006",
+    "wave1_flag:C-052_ancestor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-064",
+   "cluster": "dense-evaluation-protocols",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-002",
+   "reason": "Oracle-mask/oracle-label decomposition and proposal-swap deltas are the same oracle-protocol study on the same models."
+  },
+  {
+   "id": "W13-P1-E-065",
+   "cluster": "dense-evaluation-protocols",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:annotation_repool"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-066",
+   "cluster": "dense-evaluation-protocols",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-C-045",
+   "reason": "WAVE1 COLLISION: no-peek prompt/template protocols deflating zero-shot numbers is accepted C-045's hidden-budget claim on the dense substrate."
+  },
+  {
+   "id": "W13-P1-E-067",
+   "cluster": "dense-evaluation-protocols",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-047",
+   "reason": "Identical boundary-weighted-metric reranking claim; one boundary-weighted re-scoring script covers instance masks and dense masks."
+  },
+  {
+   "id": "W13-P1-E-068",
+   "cluster": "dense-evaluation-protocols",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:convention_scoring"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-069",
+   "cluster": "dense-evaluation-protocols",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_pilot_small"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-070",
+   "cluster": "dense-evaluation-protocols",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-C-024",
+   "reason": "WAVE1 COLLISION: contamination-stratified scoring is accepted C-024's seen-shot design applied to dense benchmarks."
+  },
+  {
+   "id": "W13-P1-E-071",
+   "cluster": "mask-text-alignment-training",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-068",
+   "reason": "Same vocabulary-narrowing-under-fine-tuning claim; D-068's checkpoint-curve design measures E-071's before/after coverage audit directly."
+  },
+  {
+   "id": "W13-P1-E-072",
+   "cluster": "mask-text-alignment-training",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_flag:A-102/A-091",
+    "family:teacher_bias"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-073",
+   "cluster": "mask-text-alignment-training",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-010",
+   "reason": "Context-only scenes and object-erased scenes are the same counterfactual-evidence stimuli; one battery answers both. E-073's training-attribution angle (caption supervision learns co-occurrence) survives as a note for the study design."
+  },
+  {
+   "id": "W13-P1-E-074",
+   "cluster": "mask-text-alignment-training",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "tension:D-063",
+    "wave1_flag:A-041/A-014"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-075",
+   "cluster": "mask-text-alignment-training",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-076",
+   "cluster": "mask-text-alignment-training",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-077",
+   "cluster": "mask-text-alignment-training",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:F-029",
+    "family:teacher_bias"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-078",
+   "cluster": "mask-text-alignment-training",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-079",
+   "cluster": "granularity-and-parts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:D-008"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-080",
+   "cluster": "granularity-and-parts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-081",
+   "cluster": "granularity-and-parts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:consistency_audit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-082",
+   "cluster": "granularity-and-parts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-083",
+   "cluster": "granularity-and-parts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-084",
+   "cluster": "granularity-and-parts",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly",
+    "wave1_flag:B-030"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-085",
+   "cluster": "negation-counting-attributes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:E-089",
+    "family:missing_operation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-086",
+   "cluster": "negation-counting-attributes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:density_stimuli"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-087",
+   "cluster": "negation-counting-attributes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:missing_operation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-088",
+   "cluster": "negation-counting-attributes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-089",
+   "cluster": "negation-counting-attributes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-085",
+   "reason": "Ordinal and comparative queries both allege a missing explicit cross-instance comparison operation; one candidate-comparison stimulus battery plus wrapper test decides both."
+  },
+  {
+   "id": "W13-P1-E-090",
+   "cluster": "negation-counting-attributes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:missing_operation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-091",
+   "cluster": "negation-counting-attributes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:missing_operation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-092",
+   "cluster": "negation-counting-attributes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:D-069"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-093",
+   "cluster": "mllm-dense-interfaces",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-094",
+   "cluster": "mllm-dense-interfaces",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-095",
+   "cluster": "mllm-dense-interfaces",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-096",
+   "cluster": "mllm-dense-interfaces",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:consistency_audit"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-097",
+   "cluster": "mllm-dense-interfaces",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-098",
+   "cluster": "mllm-dense-interfaces",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-099",
+   "cluster": "mllm-dense-interfaces",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-E-100",
+   "cluster": "mllm-dense-interfaces",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-001",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-002",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:convention_scoring"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-003",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:content_over_realism"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-004",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-F-077",
+   "reason": "Depth-specific layout matching is one instantiation of F-077's layout-over-appearance factorial; run as a task arm, not a separate program."
+  },
+  {
+   "id": "W13-P1-F-005",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:content_over_realism",
+    "tension:D-039"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-006",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-F-066",
+   "reason": "Generator-internals pseudo-labels for real images are one arm of F-066's labels-for-real-images vs images-for-synthetic-labels comparison."
+  },
+  {
+   "id": "W13-P1-F-007",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 2,
+   "runnable_as_stated": true,
+   "flags": [
+    "weak_discrimination_two_task_pilot"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-008",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:content_over_realism"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-009",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-010",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-011",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-F-090",
+   "reason": "The ontology/definition mismatch audit is a component of F-090's renderer-label-vs-guideline divergence catalog."
+  },
+  {
+   "id": "W13-P1-F-012",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_access_public_synthetic_video_model"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-013",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-F-019",
+   "reason": "Depth-sensor noise calibration is one factor inside F-019's low-level pipeline-statistics program; F-019's residual-classifier check gates it for hours, not days."
+  },
+  {
+   "id": "W13-P1-F-014",
+   "cluster": "dense-task-generation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-015",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:hidden_budget"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-016",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-F-090",
+   "reason": "Convention-harmonized gap re-measurement is the intervention arm of F-090's convention-divergence audit (wave-1 B-085 is the medical relative - flag carried on F-090)."
+  },
+  {
+   "id": "W13-P1-F-017",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:content_over_realism",
+    "tension:F-073"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-018",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-019",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:F-013+F-079",
+    "family:content_over_realism"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-020",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:rank_transfer"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-021",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:content_over_realism"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-022",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:content_over_realism"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-023",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "known_result_restatement_risk"
+   ],
+   "verdict": "kill",
+   "reason": "KNOWN-RESULT RESTATEMENT RISK (unverified judge assessment): recomputing normalization statistics on unlabeled target data is an established test-time adaptation technique; the residual claim ('a large share of the sim-to-real gap lives in normalization statistics') is a magnitude measurement with no community belief at risk. Killed for triage; resurrect if reframed as one decomposition bound inside F-094."
+  },
+  {
+   "id": "W13-P1-F-024",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-025",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 2,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-F-097",
+   "reason": "The sim-to-real gap exponent is one term of F-097's joint real-synthetic scaling law; one fitting program, one pilot grid."
+  },
+  {
+   "id": "W13-P1-F-026",
+   "cluster": "sim-to-real",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-027",
+   "cluster": "label-noise",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-028",
+   "cluster": "label-noise",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:F-032"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-029",
+   "cluster": "label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-E-077",
+   "reason": "Recaptioned-corpus bias inheritance is the training-side confirmation of E-077's captioner mention-statistics ceiling; E-077's training-free correlational check comes first."
+  },
+  {
+   "id": "W13-P1-F-030",
+   "cluster": "label-noise",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-031",
+   "cluster": "label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:teacher_bias",
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-032",
+   "cluster": "label-noise",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-F-028",
+   "reason": "Injected-vs-organic noise leaderboard fragility and structured auto-label noise defeating LNL methods are the same flagship-methods-on-real-noise experiment."
+  },
+  {
+   "id": "W13-P1-F-033",
+   "cluster": "label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-D-060",
+   "reason": "Same correlated-errors-defeat-ensembling claim rooted in shared web pretraining; one pairwise error-overlap analysis covers foundation detectors and teacher-labelers."
+  },
+  {
+   "id": "W13-P1-F-034",
+   "cluster": "label-noise",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-035",
+   "cluster": "label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:teacher_bias",
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-036",
+   "cluster": "label-noise",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-037",
+   "cluster": "label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:convention_scoring"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-038",
+   "cluster": "label-noise",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:annotation_repool"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-039",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_collision"
+   ],
+   "verdict": "merge",
+   "merge_target": "wave1:W13-P1-C-058",
+   "reason": "WAVE1 COLLISION: pruning-scores-reduce-to-dedup restates accepted C-058 (curation adds little beyond dedup) on synthetic pools; the residual correlation check belongs under C-058."
+  },
+  {
+   "id": "W13-P1-F-040",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly",
+    "wave1_flag:C-102"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-041",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-042",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-043",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-044",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-045",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:scaling_law"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-046",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "technique_port_mild"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-047",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:retrieval_contamination"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-048",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-049",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-050",
+   "cluster": "data-centric-curation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-051",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 2,
+   "runnable_as_stated": true,
+   "flags": [
+    "scale_gap",
+    "family:scaling_law"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-052",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "tension:F-096"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-053",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "known_result_restatement_risk"
+   ],
+   "verdict": "kill",
+   "reason": "KNOWN-RESULT RESTATEMENT (unverified judge assessment): accumulate-vs-replace resolving model collapse in the practical regime restates a result this judge assesses as already established; re-running it on one small image model adds little information. Independent agreement with Judge A's standalone kill."
+  },
+  {
+   "id": "W13-P1-F-054",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-055",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_access_mild",
+    "family:teacher_bias"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-056",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-057",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 2,
+   "runnable_as_stated": true,
+   "flags": [
+    "scale_gap",
+    "family:scaling_law"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-058",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-059",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_mild"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-060",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly",
+    "family:teacher_bias"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-061",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:frequency_proximity"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-062",
+   "cluster": "synthetic-vs-real-pretraining",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-063",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "logging_only_first_step"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-064",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "tension:F-074"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-065",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-066",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:F-006"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-067",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:hidden_budget"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-068",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:teacher_bias"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-069",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-070",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-071",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-072",
+   "cluster": "generative-data-engines",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 3,
+   "runnable_as_stated": false,
+   "flags": [
+    "data_access_generated_video_checkpoints_uncertain"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-073",
+   "cluster": "procedural-and-graphics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:content_over_realism",
+    "tension:F-017"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-074",
+   "cluster": "procedural-and-graphics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "tension:F-064/F-098"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-075",
+   "cluster": "procedural-and-graphics",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-076",
+   "cluster": "procedural-and-graphics",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_access_mild"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-077",
+   "cluster": "procedural-and-graphics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:F-004",
+    "family:content_over_realism"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-078",
+   "cluster": "procedural-and-graphics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 2,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-079",
+   "cluster": "procedural-and-graphics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-F-019",
+   "reason": "Device-ISP calibration is another factor inside F-019's pipeline-statistics program; the same residual-classifier gate applies."
+  },
+  {
+   "id": "W13-P1-F-080",
+   "cluster": "procedural-and-graphics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_access_three_realism_rungs"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-081",
+   "cluster": "evaluation-of-synthetic-data",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_fid_utility"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-082",
+   "cluster": "evaluation-of-synthetic-data",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:rank_transfer"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-083",
+   "cluster": "evaluation-of-synthetic-data",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_access_needs_variants_with_outcomes"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-084",
+   "cluster": "evaluation-of-synthetic-data",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:rank_transfer"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-085",
+   "cluster": "evaluation-of-synthetic-data",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-086",
+   "cluster": "evaluation-of-synthetic-data",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "wave1_flag:C-023/C-064",
+    "corun:retrieval_contamination"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-087",
+   "cluster": "evaluation-of-synthetic-data",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:hidden_budget",
+    "wave1_flag:C-045_ancestor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-088",
+   "cluster": "evaluation-of-synthetic-data",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:hidden_budget"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-089",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly",
+    "cheap_kill_first_batch"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-090",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:F-011+F-016",
+    "family:convention_scoring",
+    "wave1_flag:B-085"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-091",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-092",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-093",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_high_memorization"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-094",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:content_over_realism",
+    "umbrella"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-095",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-096",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "anomaly",
+    "tension:F-052"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-097",
+   "cluster": "scaling-and-economics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 2,
+   "runnable_as_stated": true,
+   "flags": [
+    "absorbs:F-025",
+    "family:scaling_law"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-098",
+   "cluster": "scaling-and-economics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:scaling_law",
+    "family:frequency_proximity"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-099",
+   "cluster": "scaling-and-economics",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 1,
+   "runnable_as_stated": false,
+   "flags": [
+    "gated_proprietary_cost_data"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-100",
+   "cluster": "scaling-and-economics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-101",
+   "cluster": "scaling-and-economics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk_repetition_scaling",
+    "family:scaling_law"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-F-102",
+   "cluster": "scaling-and-economics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family:scaling_law"
+   ],
+   "verdict": "keep"
+  }
+ ],
+ "caveats": [
+  "kill/merge here is a feasibility/triage judgment, not a quality judgment; the Consolidator may resurrect any id.",
+  "The single T3 keep (F-099, proprietary cost-ledger access) is conditional: do not schedule until an org partner or public cost-documented project is confirmed.",
+  "Cross-wave merge targets (10 ids pointing at accepted wave-1 records) fold wave-2 substrates into wave-1 hypotheses; the wave-1 master was read-only and remains untouched.",
+  "All prior_art_risk and known_result_restatement flags are unverified; a dedicated prior-art search pass must precede Stage-2 selection, starting with the flagged keeps.",
+  "scale_gap-flagged keeps (F-051, F-057, and mildly D-052, E-008) have pilot-scale trend tests recorded here; their decisive at-scale versions are effectively T3."
+ ]
+}
