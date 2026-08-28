@@ -1,0 +1,1046 @@
+{
+ "task_id": "p1_wave_b_w1",
+ "role": "consolidator",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "P1 Wave B wave1 (generators A+B+C)",
+ "branch": "cursor/p1-wave-b-consolidator-w1-7a58",
+ "decided_at_utc": "2026-08-28T19:12:00Z",
+ "inputs": {
+  "judge_A_dedup": {
+   "branch": "origin/cursor/p1-wave-b-judge-a-dedup-f906",
+   "keep": 245,
+   "merge": 50,
+   "kill": 7
+  },
+  "judge_B_feasibility": {
+   "branch": "origin/cursor/p1-wave-b-judge-b-feasibility-a49e",
+   "keep": 245,
+   "merge": 44,
+   "kill": 13
+  },
+  "judge_C_adversary": {
+   "branch": "origin/cursor/p1-wave-b-judge-c-adversary-5030",
+   "keep": 241,
+   "merge": 52,
+   "kill": 9
+  },
+  "generators": {
+   "gen_a_sam_foundation_peft": {
+    "branch": "origin/cursor/p1-gen-a-sam-foundation-peft-c8d4",
+    "ideas": 102
+   },
+   "gen_b_hard_domain_dense_prediction": {
+    "branch": "origin/cursor/p1-gen-b-hard-domain-a13a",
+    "ideas": 96
+   },
+   "gen_c_contrarian_eval": {
+    "branch": "origin/cursor/windows13-p0-init-implementation-d93f",
+    "ideas": 104
+   }
+  },
+  "input_total": 302,
+  "coverage": "all 302 ids ruled on by all three judges; zero uncovered ids"
+ },
+ "reconciliation_policy": [
+  "ACCEPT if >=2 of 3 judges vote keep (majority keep).",
+  "KILL if not accepted and >=2 of 3 judges vote kill (majority kill).",
+  "MERGE otherwise (majority or plurality merge); merge target = majority target among proposing judges; ties broken in favor of Judge A (dedup specialist); targets validated to land in the accepted set, following chains if needed (none were needed).",
+  "The single 3-way split W13-P1-C-041 (A:merge, B:kill, C:keep) resolved as MERGE into W13-P1-C-021: majority is not-keep, and merge preserves the content inside an accepted program rather than discarding it against one judge's keep."
+ ],
+ "counts": {
+  "input_total": 302,
+  "accepted": 248,
+  "accepted_by_shard": {
+   "gen_a": 94,
+   "gen_b": 85,
+   "gen_c": 69
+  },
+  "accepted_unanimous": 223,
+  "accepted_2_1_majority": 25,
+  "merged": 47,
+  "merge_absorbers": 29,
+  "killed": 7,
+  "check_sum": "248 + 47 + 7 = 302"
+ },
+ "tie_breaks": [
+  {
+   "id": "W13-P1-C-035",
+   "into": "W13-P1-C-066",
+   "note": "A proposed C-066, C proposed C-068, B voted kill; C-068 is itself merged (not accepted), so only C-066 is a valid terminal; also Judge A dedup preference."
+  },
+  {
+   "id": "W13-P1-C-093",
+   "into": "W13-P1-C-023",
+   "note": "A proposed C-023, C proposed C-086 (both accepted); tie broken in favor of dedup-specialist Judge A; alternate target C-086 recorded here."
+  }
+ ],
+ "killed_ids": [
+  {
+   "id": "W13-P1-A-085",
+   "votes": {
+    "A": "kill",
+    "B": "kill",
+    "C": "kill"
+   },
+   "reasons": {
+    "A": "Permutation kill: early-exit/dynamic-depth ported to SAM; efficiency framing with thin scientific content beyond established early-exit literature (prior-art risk HYPOTHESIS, unverified).",
+    "B": "Efficiency recipe wearing a hypothesis costume: 'easy prompts saturate at shallower depth' is near-certain, and confirming it yields a router paper rather than a falsified belief. Architecture-permutation (early-exit ported to SAM).",
+    "C": "Early-exit / dynamic-depth is a mature efficiency literature ported to SAM. No belief challenged; the mechanism ('easy inputs saturate early') is the premise of that literature, not a finding. Unverified prior-art risk: very high."
+   }
+  },
+  {
+   "id": "W13-P1-A-089",
+   "votes": {
+    "A": "kill",
+    "B": "kill",
+    "C": "kill"
+   },
+   "reasons": {
+    "A": "Permutation kill: curriculum-ordering ported to sequential adapters; classic curriculum-effect template, compute-heavy (flagged by generator itself), low distinctiveness.",
+    "B": "Curriculum-order effect for sequential adapters is noise-dominated: settling it honestly needs many seeds x orders x domains, expensive relative to a generic payoff. Permutation of curriculum learning onto adapters.",
+    "C": "Curriculum/ordering is a generic continual-learning permutation (orders x domains). Mechanism stated at metaphor level ('breaks structures'); falsification requires a combinatorial sweep of sequential adaptations. High cost, low distinctiveness."
+   }
+  },
+  {
+   "id": "W13-P1-C-036",
+   "votes": {
+    "A": "kill",
+    "B": "kill",
+    "C": "kill"
+   },
+   "reasons": {
+    "A": "Prior-art-risk kill (HYPOTHESIS, unverified): mIoU-vs-boundary-quality divergence is a well-trodden metric critique with established boundary-quality metrics; no distinct new hypothesis beyond them.",
+    "B": "Boundary-vs-region metric divergence is established practice (boundary-quality metrics exist for exactly this reason); residual novelty (human editing-utility link) is a user study bolted onto a known result.",
+    "C": "Strawman community belief: the field demonstrably does not hold that region overlap suffices; boundary-quality metrics are standard practice. The contrarian frame is manufactured; what remains is a correlation audit."
+   }
+  },
+  {
+   "id": "W13-P1-C-055",
+   "votes": {
+    "A": "kill",
+    "B": "kill",
+    "C": "kill"
+   },
+   "reasons": {
+    "A": "Prior-art-risk kill (HYPOTHESIS, unverified): attention-map faithfulness failure is a heavily studied critique (attention-vs-occlusion faithfulness); port to current ViT checkpoints adds little hypothesis content.",
+    "B": "Attention-faithfulness failure is a heavily published area; the proposed occlusion-agreement test replicates known designs. Killed as redundant, not infeasible.",
+    "C": "Attention-vs-explanation faithfulness is a famous, extensively litigated debate. The idea restates it for vision transformers without a new falsifiable twist."
+   }
+  },
+  {
+   "id": "W13-P1-C-059",
+   "votes": {
+    "A": "kill",
+    "B": "kill",
+    "C": "kill"
+   },
+   "reasons": {
+    "A": "Permutation kill: direct port of the known emergence-is-a-metric-artifact critique to vision benchmarks; hypothesis is not new, only the substrate (prior-art risk HYPOTHESIS, unverified).",
+    "B": "Direct port of the famous emergence-is-a-metric-artifact result to vision benchmarks; permutation with high prior-art risk and no new falsification design.",
+    "C": "The metric-artifact account of emergent abilities is a widely known position; porting it to visual tasks changes neither the hypothesis nor the test."
+   }
+  },
+  {
+   "id": "W13-P1-C-062",
+   "votes": {
+    "A": "kill",
+    "B": "kill",
+    "C": "kill"
+   },
+   "reasons": {
+    "A": "Prior-art-risk kill (HYPOTHESIS, unverified): non-transfer of adversarial robustness across threat models is repeatedly documented; the proposed matrix is an audit of a known result.",
+    "B": "Cross-threat non-transfer of adversarial defenses is a well-established negative result; re-running the matrix is cheap but redundant.",
+    "C": "Non-transfer of adversarial robustness across threat models is a well-documented negative result. The proposed cross-threat matrix is a replication catalog, not a new claim."
+   }
+  },
+  {
+   "id": "W13-P1-C-104",
+   "votes": {
+    "A": "kill",
+    "B": "kill",
+    "C": "kill"
+   },
+   "reasons": {
+    "A": "Prior-art-risk kill (HYPOTHESIS, unverified): adaptive human-in-the-loop adversarial evaluation is an established paradigm; the shard adds no new falsifiable mechanism beyond applying it.",
+    "B": "Vague and human-gated: 'trained evaluators find more failures under adaptive budgets' is near-tautological, evaluator-skill-confounded, and has no crisp falsification criterion.",
+    "C": "Adaptive human-in-the-loop stress-testing is established practice, and 'static sets miss failures humans can find' is not a contested belief. Nothing distinct left to falsify."
+   }
+  }
+ ],
+ "merge_map": [
+  {
+   "id": "W13-P1-A-040",
+   "into": "W13-P1-A-017",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "keep"
+   },
+   "proposed_targets": {
+    "W13-P1-A-017": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Same hypothesis as A-017: pre-adaptation feature-similarity measurement predicts PEFT outcome; A-017 carries the decision rule, A-040 only reframes it as ROI forecasting. Merge.",
+    "B": "Same forecasting hypothesis (frozen-feature similarity predicts PEFT gain); A-017 carries the concrete crossover decision rule. One grid answers both."
+   }
+  },
+  {
+   "id": "W13-P1-A-064",
+   "into": "W13-P1-A-015",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-A-015": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Synthetic-data instantiation of A-015's mechanism (unique-ground-truth gradient pressure collapses multimask ambiguity); keep as an experimental arm of A-015, not a separate idea. Merge.",
+    "B": "Synthetic-data arm of the ambiguity-collapse study; same mechanism (unique ground truth unlearns the multimask prior), one diversity probe battery.",
+    "C": "Synthetic-data arm of the ambiguity-collapse hypothesis; A-015 already predicts collapse rate set by dataset ambiguity level."
+   }
+  },
+  {
+   "id": "W13-P1-A-068",
+   "into": "W13-P1-A-026",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-A-026": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Evaluation-protocol corollary of A-026's mechanism (ranking degrades faster than generation under shift); the oracle-gap growth is A-026's falsifiable prediction restated. Merge.",
+    "B": "Same logged data (all three masks plus scores across a shift ladder) answers both the ranking-bottleneck claim and the oracle-inflation protocol claim; fold as the protocol-implication arm.",
+    "C": "Oracle-vs-top1 inflation growing with shift is the protocol-level corollary of ranking-degrades-before-generation."
+   }
+  },
+  {
+   "id": "W13-P1-A-070",
+   "into": "W13-P1-C-024",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-024": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "SAM/SA-1B instantiation of C-024 (zero-shot performance inflated by pretraining-set overlap, measurable by overlap-stratified re-evaluation). Keep as the segmentation case study inside C-024. Merge.",
+    "B": "SAM/SA-1B instantiation of the seen-shot umbrella; run as the segmentation case study inside C-024's overlap-stratified design.",
+    "C": "Cross-shard duplicate: seen-shot inflation of zero-shot claims. C-024 is the umbrella; A-070 is the SAM/SA-1B case study."
+   }
+  },
+  {
+   "id": "W13-P1-A-074",
+   "into": "W13-P1-A-006",
+   "votes": {
+    "A": "merge",
+    "B": "keep",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-A-006": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Derivative attack application explicitly built on A-006/A-009 premises; universal-adversarial-perturbation-ported-to-prompt-space permutation. Value contingent on A-006/A-009 being confirmed first. Merge.",
+    "C": "Attack corollary: a universal click-offset field presupposes and exploits the A-006/A-009 failure structure; not an independent hypothesis."
+   }
+  },
+  {
+   "id": "W13-P1-A-098",
+   "into": "W13-P1-A-018",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-A-018": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Same hypothesis family as A-018: first-moment re-centering (bias/LayerNorm recalibration) absorbs much of photometric domain shift; BitFit-vs-LN-recalibration are arms of one experiment. Merge.",
+    "B": "Cheapest member of the recentering-not-relearning family (011/018/098/100); fold as the zero-training arm of one three-arm study and RUN IT FIRST - it is the cheapest kill of the family.",
+    "C": "Recalibration-not-relearning family, weight side: LayerNorm statistics re-estimation is a special case of bias/affine-only adaptation."
+   }
+  },
+  {
+   "id": "W13-P1-B-007",
+   "into": "W13-P1-B-033",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-B-033": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Same claim as B-033 (binary-mask leaderboards on amorphous classes measure threshold placement, not perception); soft re-scoring rank-correlation and oracle-threshold are two operationalizations of one hypothesis. Merge.",
+    "B": "Both claim leaderboards are threshold/representation artifacts; B-033's oracle-threshold protocol needs no soft ground truth and tests ranking instability more cheaply. B-007's soft-GT arm follows only if B-033 survives.",
+    "C": "'Rankings invert under a soft metric' is the consequence; B-033 supplies the mechanism (annotator-threshold guessing) and the oracle-threshold test."
+   }
+  },
+  {
+   "id": "W13-P1-B-013",
+   "into": "W13-P1-B-073",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-B-073": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Same hypothesis template as B-073 (two depth-ordered output layers recover error that flat single-label evaluation misattributes) with X=glass instead of X=smoke. Merge into one layered-output-space program.",
+    "B": "Front/rear glass labels are the transparency instantiation of the layered-output-space study; one two-head design on one frozen backbone covers both.",
+    "C": "Two-layer output space resolving see-through pixels: B-073 states the participating-media umbrella; glass front/rear labels are an instantiation."
+   }
+  },
+  {
+   "id": "W13-P1-B-015",
+   "into": "W13-P1-B-089",
+   "votes": {
+    "A": "merge",
+    "B": "keep",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-B-089": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Two-domain instance of B-089's failure-taxonomy-by-evidence-type program; the jitter-vs-extent-bias signature is the first concrete test inside B-089. Merge.",
+    "C": "The two-axis jitter/smear taxonomy is a special case of failure-signature clustering by boundary-evidence type."
+   }
+  },
+  {
+   "id": "W13-P1-B-036",
+   "into": "W13-P1-A-071",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-A-071": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Cross-shard duplicate of A-071: per-case score distributions are bimodal (success mode vs total-failure mode) so mean metrics track mixture weight; identical hypothesis, different territory wording. Merge.",
+    "B": "Same per-case bimodality claim in a different territory; one mixture-fit study spanning SAM domains and hard-domain models.",
+    "C": "Cross-shard duplicate: per-case score bimodality makes means mixture-weight trackers. A-071 additionally covers PEFT comparisons."
+   }
+  },
+  {
+   "id": "W13-P1-B-038",
+   "into": "W13-P1-C-073",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-073": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Hard-domain-subset instance of the C-073 statistical-power/bootstrap audit of benchmark deltas. Merge as one audit with a hard-domain stratum.",
+    "B": "Hard-domain subset power audit is a stratum inside the field-wide bootstrap/power audit; same machinery, same prediction files.",
+    "C": "The hard-domain power audit is a stratum of the field-wide paired-bootstrap audit."
+   }
+  },
+  {
+   "id": "W13-P1-B-039",
+   "into": "W13-P1-B-091",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-B-091": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Same premise as B-091 (mature hard benchmarks approach label-noise ceilings); B-091 supplies the estimable floor, B-039 is one test of it. Merge.",
+    "B": "Model-below-single-rater is the payoff readout of B-091's label-entropy-floor estimation; B-091 needs no new annotation where multi-rater data exists, B-039's re-annotation arm only where it does not.",
+    "C": "Models-at-annotator-disagreement is the comparison arm of the label-entropy-floor estimate."
+   }
+  },
+  {
+   "id": "W13-P1-B-051",
+   "into": "W13-P1-B-019",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-B-019": 2,
+    "W13-P1-C-013": 1
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Duplicate of B-019 within shard: both test whether model uncertainty estimates match true rater-disagreement maps; B-019 already covers the estimator family including learned aleatoric heads. Merge.",
+    "B": "Same non-identifiability claim about the aleatoric/epistemic decomposition; C-013's noise-and-size grid is the classification twin, B-051's capacity-manipulation test on multi-rater data becomes its dense-prediction arm. NOTE: Judge A merged B-051 into B-019 (map alignment); I read B-051's sharp content as identifiability, not alignment.",
+    "C": "Aleatoric-estimator-vs-rater-disagreement is the specific estimator family inside B-019's general claim."
+   }
+  },
+  {
+   "id": "W13-P1-B-064",
+   "into": "W13-P1-B-011",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-B-011": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Same physics-blindness claim as B-011 (models make no use of refraction); index-of-refraction ablation subsumes the background-structure decoupling test. Merge as a second condition of B-011.",
+    "B": "Both ask whether models use refraction; index-of-refraction ablation in matched renders is the controlled version, background-structure sweeps the observational one. Fold as a secondary arm.",
+    "C": "Both test whether models use refraction; B-011's index-of-refraction ablation is the cleaner causal design; the background-structure correlation folds in."
+   }
+  },
+  {
+   "id": "W13-P1-B-081",
+   "into": "W13-P1-B-035",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "keep"
+   },
+   "proposed_targets": {
+    "W13-P1-B-035": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Same forensic template as B-035/B-021 (decode a hidden annotation-pipeline variable from mask geometry alone), X=tool instead of loss/institution. Merge into one mask-forensics program.",
+    "B": "Tool signatures are one more factor in the mask-forensics factorial (loss x tool x site); one forensic-classifier study."
+   }
+  },
+  {
+   "id": "W13-P1-B-088",
+   "into": "W13-P1-C-027",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-027": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Smoke/fire-video instance of C-027 (non-iid split leakage; source-disjoint re-splitting deflates scores). Merge as the domain case study.",
+    "B": "Frame-level near-duplicate leakage in smoke/fire benchmarks is a substrate of the non-iid-split umbrella. NOTE: its perceptual-hash audit is the cheapest, highest-yield first action in the whole leakage family - run it first.",
+    "C": "Video-frame near-duplicate leakage is an instance of non-iid split leakage; smoke/fire is the domain case study of the C-027 umbrella."
+   }
+  },
+  {
+   "id": "W13-P1-B-096",
+   "into": "W13-P1-B-018",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-B-018": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "The loss-swap experiment IS the falsification test of B-018's loss-determined extent-bias claim; one idea stated twice. Merge.",
+    "B": "Loss-determined bias direction; B-018's phantom-calibrated design already predicts sign and size-dependence, B-096 adds the cross-domain loss-swap arm.",
+    "C": "Loss determines directional extent bias; the cross-domain loss swap is B-018's decisive experiment, not a separate hypothesis."
+   }
+  },
+  {
+   "id": "W13-P1-C-001",
+   "into": "W13-P1-C-052",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "keep"
+   },
+   "proposed_targets": {
+    "W13-P1-C-052": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Calibration instance of C-052 (rankings unstable under wording/prompt-template substitution); same hidden-variable template. Merge.",
+    "B": "Prompt-wording sensitivity umbrella; keep C-052's ranking-stability design and add C-001's calibration-variance decomposition as a mandatory arm (calibration, not just accuracy)."
+   }
+  },
+  {
+   "id": "W13-P1-C-005",
+   "into": "W13-P1-C-018",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-018": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Instantiation of C-018's umbrella (deterministic feature-space signals beat confidence/sampling uncertainty at foundation scale); kNN-vs-softmax also carries high prior-art risk (HYPOTHESIS, unverified). Merge.",
+    "B": "Instance of the deterministic-signals-beat-uncertainty-machinery family; fold as a method row of C-018's method-by-scale matrix (B-050 kept separately as the dense-prediction twin).",
+    "C": "Instance of 'cheap deterministic feature signals beat uncertainty machinery at foundation scale' (kNN distance arm)."
+   }
+  },
+  {
+   "id": "W13-P1-C-007",
+   "into": "W13-P1-C-073",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-073": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Calibration instance of C-073 (published deltas within test-set resampling noise). Merge.",
+    "B": "Calibration-specific instance of the deltas-within-noise audit.",
+    "C": "Calibration-specific instance of 'published deltas are within resampling noise'."
+   }
+  },
+  {
+   "id": "W13-P1-C-014",
+   "into": "W13-P1-C-018",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-018": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "MC-dropout-null instantiation of the C-018 umbrella claim. Merge as one experimental arm.",
+    "B": "MC-dropout-on-frozen-features is one method row in C-018's method-by-scale matrix.",
+    "C": "Instance of the same scale-inversion claim (MC-dropout-on-frozen-features arm)."
+   }
+  },
+  {
+   "id": "W13-P1-C-017",
+   "into": "W13-P1-C-018",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-018": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Embedding-norm instantiation of the C-018 umbrella claim. Merge as one experimental arm.",
+    "B": "Embedding-norm-vs-ensemble is another method row of the same matrix.",
+    "C": "Instance of the same scale-inversion claim (embedding-norm / logit-gap arm)."
+   }
+  },
+  {
+   "id": "W13-P1-C-022",
+   "into": "W13-P1-C-015",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "keep"
+   },
+   "proposed_targets": {
+    "W13-P1-C-015": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Utility corollary of C-015 (conditional/practical failure behind nominal marginal coverage under shift). Merge.",
+    "B": "Set-size decision-worthlessness and conditional-coverage failure are two readouts of one conformal-under-shift evaluation."
+   }
+  },
+  {
+   "id": "W13-P1-C-026",
+   "into": "W13-P1-C-023",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-023": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Generative-derivative special case of C-023 (dedup pipelines blind to non-pixel-level duplicates). Merge.",
+    "B": "Generative re-renderings are a second miss-mode of the same dedup-undercount audit; one contamination study, two probes.",
+    "C": "Generative derivatives are one class of semantic duplicates that evade pixel-level dedup."
+   }
+  },
+  {
+   "id": "W13-P1-C-030",
+   "into": "W13-P1-C-089",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-090": 1,
+    "W13-P1-C-089": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Blind-language-baseline and image-swap consistency are two operationalizations of one text-shortcut hypothesis; C-090's per-model consistency test is stronger. Merge.",
+    "B": "Blind language-prior baseline template; C-089's decorrelated-subset design subsumes blind-fraction reporting.",
+    "C": "The standing blind-baseline audit is C-089's method generalized; fold as a protocol extension."
+   }
+  },
+  {
+   "id": "W13-P1-C-031",
+   "into": "W13-P1-C-077",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-077": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Preprocessing instance of the C-077 harness-variance family. Merge.",
+    "B": "Preprocessing (resize/crop) is one nuisance axis of the evaluation-stack variance study.",
+    "C": "Preprocessing mismatch is a component of harness variance; C-077 is the umbrella measurement."
+   }
+  },
+  {
+   "id": "W13-P1-C-033",
+   "into": "W13-P1-C-027",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-027": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Retrieval-gallery instance of near-duplicate/non-iid benchmark inflation (C-027 family). Merge.",
+    "B": "Gallery near-duplication is duplicate-structure score inflation; fold into the leakage umbrella.",
+    "C": "Near-duplicate galleries are an instance of non-iid split/collection leakage."
+   }
+  },
+  {
+   "id": "W13-P1-C-035",
+   "into": "W13-P1-C-066",
+   "votes": {
+    "A": "merge",
+    "B": "kill",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-066": 1,
+    "W13-P1-C-068": 1
+   },
+   "resolution": "tie_broken_by_judge_A_dedup",
+   "reasons": {
+    "A": "Single-label-fallacy family (with C-066/C-068/C-101/B-095); multi-object top-1 critique also has high prior-art risk from known multi-label re-annotation efforts (HYPOTHESIS, unverified). Merge.",
+    "C": "Multi-label re-evaluation folds into distribution/set-based scoring. As a standalone claim it is also a known critique (high unverified prior-art risk)."
+   }
+  },
+  {
+   "id": "W13-P1-C-038",
+   "into": "W13-P1-C-042",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-042": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Corruption-menu-weighting instance of C-042 (rankings unstable under defensible reweighting). Merge.",
+    "B": "Deployment-weighted corruption scores are one reweighting scheme inside the rank-stability-under-reweighting study.",
+    "C": "Instance of 'rankings are artifacts of editorial weights' (corruption-menu weighting arm)."
+   }
+  },
+  {
+   "id": "W13-P1-C-040",
+   "into": "W13-P1-C-071",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "keep"
+   },
+   "proposed_targets": {
+    "W13-P1-C-071": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Judge-style circularity folds into C-071 (judge self/family-preference bias corrupting model comparisons). Merge.",
+    "B": "Judge-style circularity; self/family-preference estimation subsumes style-at-fixed-accuracy sensitivity."
+   }
+  },
+  {
+   "id": "W13-P1-C-041",
+   "into": "W13-P1-C-021",
+   "votes": {
+    "A": "merge",
+    "B": "kill",
+    "C": "keep"
+   },
+   "proposed_targets": {
+    "W13-P1-C-021": 1
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Operating-point critique of area metrics; same hypothesis as C-021 (aggregate curve metrics misrank at deployment-relevant operating points). Merge."
+   }
+  },
+  {
+   "id": "W13-P1-C-049",
+   "into": "W13-P1-C-077",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-077": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Normalization-adaptation instance of the C-077 harness-variance family. Merge.",
+    "B": "Norm-adaptation toggling is a harness nuisance axis.",
+    "C": "Unreported normalization adaptation is a component of harness variance."
+   }
+  },
+  {
+   "id": "W13-P1-C-050",
+   "into": "W13-P1-C-077",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-077": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Decode/interpolation-library instance of the C-077 harness-variance family. Merge.",
+    "B": "Decode/interpolation library variance is a harness nuisance axis.",
+    "C": "Decode/interpolation library differences are a component of harness variance."
+   }
+  },
+  {
+   "id": "W13-P1-C-051",
+   "into": "W13-P1-C-077",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-077": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Evaluation-resolution-convention instance of the C-077 harness-variance family. Merge.",
+    "B": "Evaluation resolution is a harness nuisance axis (fixed vs per-model-peak reporting arm).",
+    "C": "Evaluation-resolution choice is a component of harness variance."
+   }
+  },
+  {
+   "id": "W13-P1-C-053",
+   "into": "W13-P1-C-077",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-077": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Undisclosed-TTA instance of the C-077 harness-variance family. Merge.",
+    "B": "Test-time-augmentation on/off is a harness nuisance axis.",
+    "C": "Undisclosed test-time augmentation is a component of harness variance."
+   }
+  },
+  {
+   "id": "W13-P1-C-068",
+   "into": "W13-P1-C-066",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "keep"
+   },
+   "proposed_targets": {
+    "W13-P1-C-066": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Same distribution-vs-hard-label evaluation reranking claim as C-066/B-095. Merge.",
+    "B": "Distribution-vs-hard-label scoring rerank is the same study as agreement-ceiling reframing; one per-annotator-label benchmark serves both."
+   }
+  },
+  {
+   "id": "W13-P1-C-076",
+   "into": "W13-P1-C-042",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-042": 2,
+    "W13-P1-C-075": 1
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Aggregate-vs-stratified selection corollary of C-042's reweighting-instability claim. Merge.",
+    "B": "Task-reversal certification is the actionable readout of the low-effective-dimensionality analysis; same score matrix.",
+    "C": "Aggregate-vs-stratified selection is the decision-utility arm of weighting instability."
+   }
+  },
+  {
+   "id": "W13-P1-C-078",
+   "into": "W13-P1-C-073",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-073": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Prospective power-analysis twin of the retrospective C-073 bootstrap audit; one statistical-sufficiency program. Merge.",
+    "B": "Prospective power curves and retrospective bootstrap audit are two halves of one statistical-audit methods study.",
+    "C": "The power-analysis audit and the bootstrap audit are the same study reported two ways."
+   }
+  },
+  {
+   "id": "W13-P1-C-087",
+   "into": "W13-P1-C-048",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-048": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Head-vs-representation attribution; robustness instance of C-048's head-confound claim (cluster shared with A-014 and B-031). Merge.",
+    "B": "Head-vs-backbone shift decomposition is C-048's design run under distribution shift; one crossed grid.",
+    "C": "Head-vs-backbone attribution; the OOD arm of the head-confound audit (see also the deliberate A-014/B-031 tension)."
+   }
+  },
+  {
+   "id": "W13-P1-C-091",
+   "into": "W13-P1-C-089",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "keep"
+   },
+   "proposed_targets": {
+    "W13-P1-C-089": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Salience/size-prior instance of the C-089 prior-predictable-items template. Merge.",
+    "B": "Expression-blind size/position baseline is a blind-prior template instance; fold as the referring-expressions arm."
+   }
+  },
+  {
+   "id": "W13-P1-C-093",
+   "into": "W13-P1-C-023",
+   "votes": {
+    "A": "merge",
+    "B": "keep",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-023": 1,
+    "W13-P1-C-086": 1
+   },
+   "resolution": "tie_broken_by_judge_A_dedup",
+   "reasons": {
+    "A": "Template-reuse contamination instance (generator-template leakage) of the C-023 semantic-contamination family. Merge.",
+    "C": "Template regularities in chart QA are construction artifacts; C-086 states the general meta-spurious-cue claim."
+   }
+  },
+  {
+   "id": "W13-P1-C-094",
+   "into": "W13-P1-C-095",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-095": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Single-input-sufficiency template shared with C-095; keep the video-frame version as primary, fold multi-image in as a second benchmark family. Merge.",
+    "B": "Single-input sufficiency ablation, images instead of frames; one ablation harness.",
+    "C": "One single-input-sufficiency audit covers multi-image and video benchmarks."
+   }
+  },
+  {
+   "id": "W13-P1-C-096",
+   "into": "W13-P1-C-089",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "keep"
+   },
+   "proposed_targets": {
+    "W13-P1-C-089": 2
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Category-count-prior instance of the C-089 prior-predictable-items template. Merge.",
+    "B": "Modal-count prior baseline is a blind-prior template instance; fold as the counting arm."
+   }
+  },
+  {
+   "id": "W13-P1-C-098",
+   "into": "W13-P1-C-077",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-077": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Parser/format-compliance grading is harness variance for VLM benchmarks; instance of C-077. Merge.",
+    "B": "Answer-extraction/parsing tolerance is a harness nuisance axis.",
+    "C": "Parser/extraction compatibility is a component of harness variance."
+   }
+  },
+  {
+   "id": "W13-P1-C-099",
+   "into": "W13-P1-C-027",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-027": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Temporal-collection-order instance of C-027 (non-iid structure in splits; honest re-splitting deflates scores). Merge.",
+    "B": "Temporal collection order is a non-iid-split substrate; the timestamp probe folds into the leakage umbrella.",
+    "C": "Temporal collection order is an instance of non-iid split structure."
+   }
+  },
+  {
+   "id": "W13-P1-C-100",
+   "into": "W13-P1-C-042",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-042": 3
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Usage-frequency-weighting instance of C-042's reweighting-instability claim. Merge.",
+    "B": "Usage-weighted category weighting is one reweighting scheme in the same stability analysis.",
+    "C": "Usage-frequency weighting is another editorial-weights arm."
+   }
+  },
+  {
+   "id": "W13-P1-C-101",
+   "into": "W13-P1-C-066",
+   "votes": {
+    "A": "merge",
+    "B": "merge",
+    "C": "merge"
+   },
+   "proposed_targets": {
+    "W13-P1-C-066": 2,
+    "W13-P1-C-068": 1
+   },
+   "resolution": "majority",
+   "reasons": {
+    "A": "Answer-set/ambiguity-aware evaluation; same single-label-fallacy hypothesis as C-066/B-095 family. Merge.",
+    "B": "Answer-set/ambiguity-aware scoring is the same single-ground-truth critique; expert answer-set annotation becomes an arm of C-066.",
+    "C": "Answer-set scoring and label-distribution scoring are the same evaluation change."
+   }
+  }
+ ],
+ "accepted_2_1_ids": [
+  "W13-P1-A-009",
+  "W13-P1-A-017",
+  "W13-P1-A-019",
+  "W13-P1-A-029",
+  "W13-P1-A-032",
+  "W13-P1-A-059",
+  "W13-P1-A-061",
+  "W13-P1-A-077",
+  "W13-P1-A-086",
+  "W13-P1-A-094",
+  "W13-P1-A-100",
+  "W13-P1-B-027",
+  "W13-P1-B-041",
+  "W13-P1-B-046",
+  "W13-P1-B-056",
+  "W13-P1-B-089",
+  "W13-P1-C-015",
+  "W13-P1-C-016",
+  "W13-P1-C-044",
+  "W13-P1-C-047",
+  "W13-P1-C-052",
+  "W13-P1-C-056",
+  "W13-P1-C-058",
+  "W13-P1-C-079",
+  "W13-P1-C-080"
+ ],
+ "irreconcilable": false,
+ "notes": [
+  "EVIDENCE: all counts computed mechanically from judge_A.json, judge_B.json, judge_C.json fetched from the three judge branches; scripts run locally, no numbers invented.",
+  "Novelty of all 248 accepted ideas remains UNVERIFIED (hypothesis-level dedup + feasibility + adversarial screening only; prior-art search is a later gate).",
+  "Judge dissents on accepted ideas (25 ids) are preserved per-record in ideas_master.jsonl under judge_dissent.",
+  "Merged ids are recorded per-absorber in ideas_master.jsonl under merged_from; any merge may be resurrected by a later wave if a grouping proves wrong."
+ ]
+}

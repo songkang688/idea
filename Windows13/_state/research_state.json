@@ -14,10 +14,10 @@
   "supervisor": "Windows13",
   "current_stage": "Stage 1",
   "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
-  "total_ideas": 0,
+  "total_ideas": 248,
   "survivors": 0,
   "final_target": 3,
-  "status": "initialized",
+  "status": "stage1_exploration_in_progress",
   "numbering": {
     "decided_by": "P0 Wave B consolidator decision.json (origin/cursor/p0-init-consolidator-9302, decided 2026-08-28T17:24:30Z)",
     "decided_windows_id": "Windows13",
@@ -32,18 +32,59 @@
       "fetched_at_utc": "2026-08-28T17:30:52Z"
     },
     "existing_windows_found": [
-      {"id": "Windows2", "evidence": "top-level dir on origin/cursor/research-idea-evolution-windows2-c2c9 and windows2-stage1-agent-{a,b,c} branches"},
-      {"id": "Windows3", "evidence": "nested legacy staging/Windows3_supervisor on origin/cursor/idea-evolution-windows3-b534 and w3s1-cluster-b-7ea7; number 3 burned"},
-      {"id": "Windows4", "evidence": "top-level dir on origin/cursor/windows4-research-idea-evolution-2962"},
-      {"id": "Windows6", "evidence": "top-level dir on origin/cursor/windows6-research-idea-evolution-b55d"},
-      {"id": "Windows8", "evidence": "top-level dir on origin/cursor/windows8-research-idea-evolution-cd91"},
-      {"id": "Windows9", "evidence": "top-level dir on origin/cursor/windows9-p0-init-3045"},
-      {"id": "Windows10", "evidence": "top-level dir on origin/cursor/windows10-p0-init-26ec"},
-      {"id": "Windows11", "evidence": "top-level dir on origin/cursor/windows11-p0-init-c0c1"},
-      {"id": "Windows12", "evidence": "top-level dir on origin/cursor/windows12-p0-init-a095"}
+      {
+        "id": "Windows2",
+        "evidence": "top-level dir on origin/cursor/research-idea-evolution-windows2-c2c9 and windows2-stage1-agent-{a,b,c} branches"
+      },
+      {
+        "id": "Windows3",
+        "evidence": "nested legacy staging/Windows3_supervisor on origin/cursor/idea-evolution-windows3-b534 and w3s1-cluster-b-7ea7; number 3 burned"
+      },
+      {
+        "id": "Windows4",
+        "evidence": "top-level dir on origin/cursor/windows4-research-idea-evolution-2962"
+      },
+      {
+        "id": "Windows6",
+        "evidence": "top-level dir on origin/cursor/windows6-research-idea-evolution-b55d"
+      },
+      {
+        "id": "Windows8",
+        "evidence": "top-level dir on origin/cursor/windows8-research-idea-evolution-cd91"
+      },
+      {
+        "id": "Windows9",
+        "evidence": "top-level dir on origin/cursor/windows9-p0-init-3045"
+      },
+      {
+        "id": "Windows10",
+        "evidence": "top-level dir on origin/cursor/windows10-p0-init-26ec"
+      },
+      {
+        "id": "Windows11",
+        "evidence": "top-level dir on origin/cursor/windows11-p0-init-c0c1"
+      },
+      {
+        "id": "Windows12",
+        "evidence": "top-level dir on origin/cursor/windows12-p0-init-a095"
+      }
     ],
-    "occupied_numbers": [2, 3, 4, 6, 8, 9, 10, 11, 12],
-    "never_gap_fill": [1, 5, 7],
+    "occupied_numbers": [
+      2,
+      3,
+      4,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "never_gap_fill": [
+      1,
+      5,
+      7
+    ],
     "max_windows_number_observed": 12,
     "windows13_found_anywhere_at_pre_mkdir_scan": false,
     "window_lock_json_found_anywhere_at_pre_mkdir_scan": false,
@@ -81,5 +122,37 @@
       "experimental_results",
       "false_git_push_success"
     ]
+  },
+  "idea_counts": {
+    "stage1_generated_total": 302,
+    "stage1_accepted_total": 248,
+    "stage1_merged_total": 47,
+    "stage1_killed_total": 7,
+    "stage1_target": "1000+",
+    "by_wave": {
+      "p1_wave_b_w1": {
+        "generators": [
+          "gen_a_sam_foundation_peft",
+          "gen_b_hard_domain_dense_prediction",
+          "gen_c_contrarian_eval"
+        ],
+        "input": 302,
+        "accepted": 248,
+        "merged": 47,
+        "killed": 7,
+        "accepted_by_shard": {
+          "gen_a": 94,
+          "gen_b": 85,
+          "gen_c": 69
+        }
+      }
+    }
+  },
+  "last_consolidator": {
+    "task_id": "p1_wave_b_w1",
+    "role": "consolidator",
+    "branch": "cursor/p1-wave-b-consolidator-w1-7a58",
+    "consolidated_at_utc": "2026-08-28T19:12:00Z",
+    "note": "Wave1 (generators A+B+C) canonical set reconciled from judges A (dedup), B (feasibility), C (adversary) by majority vote: 302 in, 248 accepted (223 unanimous, 25 by 2-1), 47 merged, 7 killed. Novelty of all accepted ideas UNVERIFIED. Stage 1 exploration continues; 248 << 1000 target, more generator waves needed. Decision detail: Windows13/_state/tasks/p1/wave_b_w1/decision.json"
   }
 }
