@@ -60,10 +60,10 @@
     "working_tree_at_pre_init": "clean",
     "uncommitted_user_changes": false,
     "force_push": false,
-    "init_commit": null,
-    "push_status": "not_attempted_yet",
-    "push_verified_at": null,
-    "push_remote_sha": null,
+    "init_commit": "7857d11e93ea0bfe0603919b7ff8c0f89018cf21",
+    "push_status": "verified_success",
+    "push_verified_at": "2026-08-28T16:57:30Z",
+    "push_remote_sha": "7857d11e93ea0bfe0603919b7ff8c0f89018cf21",
     "push_failure_reason": null
   },
   "ideas_master_schema": {
@@ -131,7 +131,7 @@
     "state_files_initialized": true,
     "no_overwrite_of_old_windows": true,
     "git_status_checked": true,
-    "checkpoint_commit": false,
-    "push_verified_or_failure_recorded": false
+    "checkpoint_commit": true,
+    "push_verified_or_failure_recorded": true
   }
 }

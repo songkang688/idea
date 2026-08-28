@@ -50,4 +50,7 @@ Windows11/
 
 ### Checkpoint / push
 
-Filled after commit and push attempts. Placeholder until then: not yet done.
+- init commit: `7857d11e93ea0bfe0603919b7ff8c0f89018cf21`
+- push: `git push -u origin cursor/windows11-p0-init-c0c1` exit 0
+- verified: `git ls-remote origin refs/heads/cursor/windows11-p0-init-c0c1` == `7857d11e93ea0bfe0603919b7ff8c0f89018cf21`
+- force_push: false
