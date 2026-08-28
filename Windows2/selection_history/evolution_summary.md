@@ -16,6 +16,10 @@
 - F COMPLETE: 75 A keeps; literature in `stage2_agent_F/prior_work_attack.md`.
 - I COMPLETE: **190 slots** `Windows2/_wip/stage2_agent_I/provisional_200.md` (A84/B59/C47). This is the working 200.
 
+## Stage 3
+
+- M COMPLETE: 50 in `Windows2/_wip/stage3_agent_M/top50.md` (A17/B13/C20). Working path onward is O's Top20 → Q's Top5.
+
 ## Stage 4
 
 - H COMPLETE on B: `Windows2/_wip/stage4_agent_H/`. Freshness kills 0332, 0133, 0042-as-host.
