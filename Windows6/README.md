@@ -5,7 +5,7 @@
 - **Supervisor:** Windows6 (Autonomous Research PI)
 - **Repo:** `github.com/songkang688/idea`
 - **Branch:** `cursor/windows6-research-idea-evolution-b55d`
-- **Status:** IN PROGRESS — Stage 1 retry. Wave-1 (350×3) timed out with no catalogs. Wave-2 (80×3 compact JSONL) in flight. Supervisor S-series seed (~400) written locally.
+- **Status:** IN PROGRESS — Stage 1 wave-2 archived (A/B/C = 240). Wave-3 in flight to cross 1000. Supervisor seed S-001–S-600.
 
 Existing Windows trees on other branches (Windows2, Windows3 staging, Windows4) were **not** overwritten. This round writes only under `Windows6/`.
 
