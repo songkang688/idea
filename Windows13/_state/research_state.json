@@ -14,7 +14,7 @@
   "supervisor": "Windows13",
   "current_stage": "Stage 1",
   "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
-  "total_ideas": 248,
+  "total_ideas": 494,
   "survivors": 0,
   "final_target": 3,
   "status": "stage1_exploration_in_progress",
@@ -124,10 +124,10 @@
     ]
   },
   "idea_counts": {
-    "stage1_generated_total": 302,
-    "stage1_accepted_total": 248,
-    "stage1_merged_total": 47,
-    "stage1_killed_total": 7,
+    "stage1_generated_total": 604,
+    "stage1_accepted_total": 494,
+    "stage1_merged_total": 101,
+    "stage1_killed_total": 9,
     "stage1_target": "1000+",
     "by_wave": {
       "p1_wave_b_w1": {
@@ -145,6 +145,25 @@
           "gen_b": 85,
           "gen_c": 69
         }
+      },
+      "p1_wave_b_w2": {
+        "generators": [
+          "gen_d_object_detection",
+          "gen_e_vlm_dense_prediction",
+          "gen_f_synthetic_data"
+        ],
+        "input": 302,
+        "accepted": 246,
+        "merged": 54,
+        "killed": 2,
+        "accepted_by_shard": {
+          "gen_d": 79,
+          "gen_e": 79,
+          "gen_f": 88
+        },
+        "accepted_unanimous": 214,
+        "accepted_2_1_majority": 32,
+        "merged_into_wave1_master": 10
       }
     }
   },
@@ -162,8 +181,24 @@
       "portfolio_verdict": {
         "lexical_duplication": "LOW (max pairwise token-Jaccard 0.20, 0 near-duplicate pairs)",
         "structural_collapse": "HIGH (SAM/SAM2 ~34-35% subject share; calibration/uncertainty crowded across 3/3 wave-1 shards; gen_b ~72-73% smoke/fire/transparent fixation; eval-critique super-cluster ~43.5%; debunk-genre skew with strict-constructive ~3-4%)",
-        "saturated_stop_feeding": ["sam_internals", "peft_on_sam", "calibration_uncertainty", "annotation_pathology", "generic_eval_critique", "smoke_fire_transparent_media"],
-        "blind_spots_zero_coverage": ["restoration_lowlevel", "diffusion_model_science", "llm_agent_vision", "3d_geometry", "video_beyond_sam2", "scaling_laws", "memorization_privacy", "training_dynamics_objectives"],
+        "saturated_stop_feeding": [
+          "sam_internals",
+          "peft_on_sam",
+          "calibration_uncertainty",
+          "annotation_pathology",
+          "generic_eval_critique",
+          "smoke_fire_transparent_media"
+        ],
+        "blind_spots_zero_coverage": [
+          "restoration_lowlevel",
+          "diffusion_model_science",
+          "llm_agent_vision",
+          "3d_geometry",
+          "video_beyond_sam2",
+          "scaling_laws",
+          "memorization_privacy",
+          "training_dynamics_objectives"
+        ],
         "fake_citations_found": 0
       },
       "reconciliation": {
@@ -171,7 +206,16 @@
         "letter_collisions": "A's proposed gen_d..gen_i and C's gen_h collide with pushed wave2 shards gen_d..gen_g and reserved gen_h; queue remapped to fresh letters gen_i..gen_p",
         "irreconcilable": false
       },
-      "generator_letters_burned_or_in_flight": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f", "gen_g", "gen_h"],
+      "generator_letters_burned_or_in_flight": [
+        "gen_a",
+        "gen_b",
+        "gen_c",
+        "gen_d",
+        "gen_e",
+        "gen_f",
+        "gen_g",
+        "gen_h"
+      ],
       "next_task_queue_ids": [
         "p1_gen_i_restoration_lowlevel",
         "p1_gen_j_diffusion_model_science",
@@ -183,21 +227,29 @@
         "p1_gen_p_constructive_capability"
       ],
       "wave2_pending": {
-        "shards_off_master": ["gen_d_object_detection (100)", "gen_e_vlm_dense_prediction (100)", "gen_f_synthetic_data (102)", "gen_g_domain_shift (100)"],
+        "shards_off_master": [
+          "gen_d_object_detection (100)",
+          "gen_e_vlm_dense_prediction (100)",
+          "gen_f_synthetic_data (102)",
+          "gen_g_domain_shift (100)"
+        ],
         "ideas_off_master": 402,
         "judge_A_dedup": "done (origin/cursor/p1-wave-b-w2-judge-a-dedup-13e5)",
         "judges_B_C": "pending",
         "wave2_consolidator": "pending",
         "note": "D-G enter ideas_master.jsonl only via the Wave2 Consolidator after wave2 judges finish; this audit appended nothing to master"
       },
-      "recommended_next_task_type": ["p1_wave_b_w2_continue", "p1_wave_a_more_generators"]
+      "recommended_next_task_type": [
+        "p1_wave_b_w2_continue",
+        "p1_wave_a_more_generators"
+      ]
     }
   },
   "last_consolidator": {
-    "task_id": "p1_wave_b_w1",
+    "task_id": "p1_wave_b_w2",
     "role": "consolidator",
-    "branch": "cursor/p1-wave-b-consolidator-w1-7a58",
-    "consolidated_at_utc": "2026-08-28T19:12:00Z",
-    "note": "Wave1 (generators A+B+C) canonical set reconciled from judges A (dedup), B (feasibility), C (adversary) by majority vote: 302 in, 248 accepted (223 unanimous, 25 by 2-1), 47 merged, 7 killed. Novelty of all accepted ideas UNVERIFIED. Stage 1 exploration continues; 248 << 1000 target, more generator waves needed. Decision detail: Windows13/_state/tasks/p1/wave_b_w1/decision.json"
+    "branch": "cursor/p1-wave-b-consolidator-w2-3111",
+    "consolidated_at_utc": "2026-08-28T20:40:00Z",
+    "note": "Wave2 (generators D+E+F) canonical set reconciled from judges A (dedup), B (feasibility), C (adversary) by majority vote: 302 in, 246 accepted (214 unanimous, 32 by 2-1), 54 merged (10 into wave-1 master ids), 2 killed. Zero 3-way splits, zero unresolvable merge targets; meta-judge not required. Novelty of all accepted ideas UNVERIFIED. Stage 1 exploration continues; 494 << 1000 target, more generator waves needed (gen_g judged next, gen_i..gen_p queued by diversity audit). Decision detail: Windows13/_state/tasks/p1/wave_b_w2/decision.json"
   }
 }

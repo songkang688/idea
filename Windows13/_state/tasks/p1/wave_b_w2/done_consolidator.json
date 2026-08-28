@@ -1,0 +1,41 @@
+{
+  "task_id": "p1_wave_b_w2",
+  "role": "consolidator",
+  "status": "complete",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "wave": "P1 Wave B wave2 (generators D+E+F)",
+  "branch": "cursor/p1-wave-b-consolidator-w2-3111",
+  "counts": {
+    "input_total": 302,
+    "accepted_count": 246,
+    "accepted_unanimous": 214,
+    "accepted_2_1_majority": 32,
+    "accepted_by_shard": { "gen_d": 79, "gen_e": 79, "gen_f": 88 },
+    "merged": 54,
+    "merged_into_wave2_accepted": 44,
+    "merged_into_wave1_master": 10,
+    "killed": 2
+  },
+  "accepted_count_this_wave": 246,
+  "idea_master_total": 494,
+  "novelty_status_of_accepted": "unverified",
+  "irreconcilable_conflicts": false,
+  "outputs": [
+    "Windows13/_state/ideas_master.jsonl (246 records appended, 248 -> 494 lines, canonical)",
+    "Windows13/_state/research_state.json (updated, canonical)",
+    "Windows13/_state/research_ledger.md (rows 10-12 appended, canonical)",
+    "Windows13/_state/tasks/p1/wave_b_w2/decision.json",
+    "Windows13/_state/tasks/p1/wave_b_w2/consolidator.md",
+    "Windows13/_state/tasks/p1/wave_b_w2/done_consolidator.json"
+  ],
+  "canonical_identity_untouched": [
+    "Windows13/_state/window.lock.json"
+  ],
+  "recommended_next_task_type": "p1_wave_a_more_generators",
+  "diversity_audit_due": true,
+  "diversity_audit_due_reason": "last diversity audit ran on the 248-idea master; master is now 494, crossing the 300 and 400 bands (audit cadence: every 100-200 accepted ideas)",
+  "notes": "494 accepted globally, still far below the 1000+ Stage 1 target, so more generator waves are needed (gen_g domain-shift shard awaits its own judges; diversity audit already queued gen_i..gen_p with anti-crowding guards). Judges A/B/C had no irreconcilable conflicts: majority vote resolved all 302 ids with zero 3-way splits; 5 merge-target ties broken per policy (4 toward dedup Judge A, 1 toward Judge B where A voted keep); 10 merges landed in wave-1 master ids without modifying wave-1 records; both kills (F-053 3-0, E-035 2-1) are judge-assessed UNVERIFIED known-result restatements flagged resurrectable. p1_wave_c_meta_judge is not required. Novelty of all accepted ideas remains unverified; prior-art search is the next gate. Base state fast-forwarded through the diversity-audit consolidator branch so ledger rows 7-9 are preserved; the wave-1 248-line master was the verbatim base for appending.",
+  "completed_at_utc": "2026-08-28T20:40:00Z"
+}
