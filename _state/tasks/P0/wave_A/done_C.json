@@ -1,0 +1,26 @@
+{
+  "task_id": "P0-waveA-workerC",
+  "role": "Workspace Planner",
+  "status": "complete",
+  "output_files": ["_state/tasks/P0/wave_A/worker_C.md", "_state/tasks/P0/wave_A/done_C.json"],
+  "unresolved_items": [
+    "Confirm or bump CANDIDATE Windows13 against a fresh origin scan at judgment time; Windows9-12 appeared on origin mid-task, so numbering is actively racing",
+    "Ruling on gap policy: recommend never backfilling unobserved Windows1/5/7 (matches Windows8 and Windows12 practice)",
+    "Ruling on ideas_master.jsonl elimination policy: append superseding records vs in-place status flip",
+    "Ruling on whether selection_history/stage6_top3.md is required or final_ideas/Idea_01..03 alone suffices (Windows8 has no stage6 file)"
+  ],
+  "recommended_next_task_type": "Wave B Judge for Windows numbering",
+  "candidate_windows_id": "Windows13",
+  "proposed_tree": [
+    "Windows13/README.md",
+    "Windows13/.gitignore",
+    "Windows13/_state/research_state.json",
+    "Windows13/_state/ideas_master.jsonl",
+    "Windows13/_state/research_ledger.md",
+    "Windows13/_state/agent_log.md",
+    "Windows13/_state/window.lock.json",
+    "Windows13/selection_history/.gitkeep",
+    "Windows13/final_ideas/.gitkeep",
+    "Windows13/artifacts/.gitkeep"
+  ]
+}
