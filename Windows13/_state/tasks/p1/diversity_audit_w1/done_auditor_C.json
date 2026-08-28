@@ -1,0 +1,28 @@
+{
+  "task_id": "p1_diversity_audit_w1",
+  "role": "auditor_C_adversary",
+  "status": "done",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "completed_at_utc": "2026-08-28T19:34:04Z",
+  "branch": "cursor/p1-diversity-auditor-c-adversary-c2b5",
+  "audited_records": 248,
+  "audited_source": "Windows13/_state/ideas_master.jsonl @ origin/cursor/p1-wave-b-consolidator-w1-7a58 (936670f)",
+  "headline_findings": {
+    "permutation_families": "5 structural families with member IDs: F1 PEFT-knob factorial on SAM (~24-27), F2 SAM component-pathology grid (~62), F3 internal-score-as-free-detector (6), F4 cue-ablation collapse + gen_b organism fixation (62/85 smoke/fire/transparent), F5 published-deltas-are-noise (21, 30% of gen_c); lexical dedup clean (max Jaccard 0.20)",
+    "genre_collapse": "248/248 contrarian-audit schema; strict-constructive ~3-4%; 44.4% mask-centric; 34.3% SAM-subject",
+    "missing_territories": ["SR/restoration (0 anywhere)", "diffusion model science (2 eval-critiques only)", "LLM/agent vision loops (3 eval-critiques only)", "cross-field transfer (0)", "3D/NeRF/point-cloud (0)", "video beyond SAM2", "training dynamics/objectives (~3)", "non-SAM efficiency (0)", "embodied/robotics (0 dedicated)"],
+    "wave2_off_master": "402 ideas in 4 shards not in master: gen_d detection (100), gen_e vlm-dense (100), gen_f synthetic-data (102), gen_g domain-shift (100); letter collision with Auditor A's proposed mandates flagged",
+    "queue": "step 0 consolidate wave2 D-G first; then gen_h restoration, gen_i diffusion-science, gen_j llm-agent-vision, gen_k 3d-geometry-video, gen_l cross-field-transfer, gen_m constructive-capability; global guards G1-G6",
+    "citations": "0 made, 0 fake"
+  },
+  "outputs": [
+    "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_C.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_C.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w1/done_auditor_C.json"
+  ],
+  "canonical_files_untouched": ["ideas_master.jsonl", "research_state.json", "window.lock.json"],
+  "force_push": false,
+  "recommended_next_task_type": "p1_diversity_audit_consolidator"
+}

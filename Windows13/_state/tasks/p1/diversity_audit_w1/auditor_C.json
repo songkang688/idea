@@ -1,0 +1,163 @@
+{
+  "task_id": "p1_diversity_audit_w1",
+  "role": "auditor_C_adversary",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "audited_set": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w1-7a58",
+    "source_commit": "936670f17cf60b6dcfbe492518f3d3564d09f5e7",
+    "records": 248,
+    "wave": "p1_wave_b_w1",
+    "shards": {
+      "gen_a_sam_foundation_peft": 94,
+      "gen_b_hard_domain_dense_prediction": 85,
+      "gen_c_contrarian_eval": 69
+    }
+  },
+  "audited_at_utc": "2026-08-28T19:34:04Z",
+  "independence": "full quantitative pass completed before reading auditor_A or auditor_B shards; peer shards read afterwards for cross-reference only",
+  "method": "deterministic regex/keyword/token-Jaccard analysis over all text fields of all 248 records; manual reading of every cluster's one-liners; off-master branch inspection via git ls-tree/git show; no canonical files modified; no citations made anywhere in this audit",
+  "dedup_check": {
+    "evidence_label": "EVIDENCE",
+    "max_pairwise_token_jaccard": 0.20,
+    "near_duplicate_pairs_above_0_28": 0,
+    "verdict": "lexical dedup effective; collapse is structural, not lexical"
+  },
+  "permutation_families": [
+    {
+      "family_id": "F1_peft_knob_factorial_on_sam",
+      "size": "24-27",
+      "members_clusters": ["what_peft_actually_learns (12: A-011..A-022)", "adapter_ecosystem_continual (5: A-086..A-091)", "adaptation_interfaces (5: A-097..A-102)", "distillation_efficiency (5: A-080..A-084)"],
+      "structure": "factorial grid {rank, placement, encoder-vs-decoder, bias-only, VPT, prompt-type, sequence, merging, input stem, pos-emb, quantization, token merging} x {what PEFT learns / what it destroys}",
+      "evidence_label": "EVIDENCE",
+      "selection_cap": "keep <= 4 representatives at 200->50 cut",
+      "generation_action": "ban further PEFT-on-SAM generation"
+    },
+    {
+      "family_id": "F2_sam_component_pathology_grid",
+      "size": "~62",
+      "members_clusters": ["prompt_geometry_failure_modes (10)", "decoder_token_mechanics (8)", "iou_head_calibration_uncertainty (8)", "encoder_representation_myths (9)", "data_priors_sa1b (7)", "sam2_video_memory (9)", "robustness_adversarial (6)"],
+      "structure": "template: SAM's [component] [encodes/leaks/collapses under] [bias/shortcut], measurable by [cheap frozen-model probe]",
+      "evidence_label": "EVIDENCE",
+      "selection_cap": "keep <= 10, each with distinct downstream consequence",
+      "generation_action": "territory saturated; zero further SAM-internals generation"
+    },
+    {
+      "family_id": "F3_internal_score_as_free_detector",
+      "size": 6,
+      "members": ["W13-P1-A-025", "W13-P1-A-027", "W13-P1-A-058", "W13-P1-A-086", "W13-P1-B-019", "W13-P1-B-026"],
+      "structure": "one trick (reuse frozen model self-assessment as free detector) permuted over {OOD, label error, adapter routing, ambiguity}",
+      "evidence_label": "EVIDENCE",
+      "selection_cap": "keep <= 2",
+      "generation_action": "ban template in future shards"
+    },
+    {
+      "family_id": "F4_cue_ablation_collapse_plus_organism_fixation",
+      "size": "4 explicit template members; 62/85 (73%) of gen_b on smoke/fire/transparent/scattering organisms",
+      "members": ["W13-P1-B-012", "W13-P1-B-041", "W13-P1-B-042", "W13-P1-B-047"],
+      "structure": "template: [cue] is load-bearing shortcut for [domain]; acquire cue-ablated imagery; model collapses",
+      "evidence_label": "EVIDENCE",
+      "selection_cap": "keep <= 2",
+      "generation_action": "hard ban on smoke/fire/fog/transparent organisms in all future shards"
+    },
+    {
+      "family_id": "F5_published_deltas_are_noise_grid",
+      "size": 21,
+      "members": ["W13-P1-C-010", "W13-P1-C-013", "W13-P1-C-019", "W13-P1-C-025", "W13-P1-C-034", "W13-P1-C-046", "W13-P1-C-047", "W13-P1-C-048", "W13-P1-C-052", "W13-P1-C-054", "W13-P1-C-063", "W13-P1-C-067", "W13-P1-C-070", "W13-P1-C-073", "W13-P1-C-074", "W13-P1-C-075", "W13-P1-C-077", "W13-P1-C-080", "W13-P1-C-086", "W13-P1-C-089", "W13-P1-C-090"],
+      "structure": "{few-shot draws, seeds, single-run ablations, test-label error, resampling, contamination} x 'published improvements are within noise once controlled'; shared bootstrap/variance-audit machinery",
+      "evidence_label": "EVIDENCE",
+      "selection_cap": "keep <= 5",
+      "generation_action": "ban template as primary framing in future shards"
+    }
+  ],
+  "mashup_census": {
+    "evidence_label": "EVIDENCE",
+    "sam_subject_ideas": 85,
+    "sam_subject_share": "34.3%",
+    "gen_a_sam_centric": "81/94 (86%)",
+    "lora_peft_subject_ideas": 37,
+    "sam_and_peft_overlap": 28,
+    "surviving_apply_x_to_y_application_mashups": "0 crude ports (judges killed them); residual risk is factorial crowding (F1), not application spam"
+  },
+  "genre_collapse": {
+    "contrarian_audit_schema_share": "248/248",
+    "strict_constructive_ideas": "7-11 (~3-4%): A-003, A-021, A-045, A-077, A-080, B-057, C-061 plus ~4 mixed",
+    "auditor_B_looser_count_noted_post_hoc": "46/248 (18.5%)",
+    "mask_segmentation_centric": "110/248 (44.4%)",
+    "model_organism_collapse": "gen_a 81/94 SAM; gen_b 62/85 smoke/fire/transparent/scattering",
+    "method_collapse_hypothesis": "HYPOTHESIS: dominant experimental modes are frozen-model probing and benchmark re-analysis; almost nothing trains a new capability, biasing the final-3 toward critique-only papers",
+    "evidence_label": "EVIDENCE except where labeled HYPOTHESIS"
+  },
+  "missing_territories": [
+    {"territory": "super_resolution_restoration_lowlevel", "master_coverage": 0, "wave2_coverage": "none", "gap": "total", "priority": 1, "evidence_label": "EVIDENCE"},
+    {"territory": "diffusion_generative_model_science", "master_coverage": "~2 (C-037, C-064, eval-critiques only)", "wave2_coverage": "gen_f covers synthetic-data engines only", "gap": "model-science gap remains", "priority": 2, "evidence_label": "EVIDENCE"},
+    {"territory": "llm_agent_vision_loops", "master_coverage": "~3 (C-006, C-060, C-071, all VLM-eval critiques)", "wave2_coverage": "gen_e is VLM dense prediction, not agents", "gap": "agent/tool-use/test-time-compute gap remains", "priority": 3, "evidence_label": "EVIDENCE"},
+    {"territory": "cross_field_transfer", "master_coverage": 0, "wave2_coverage": "none", "gap": "total", "priority": 4, "evidence_label": "EVIDENCE"},
+    {"territory": "object_detection", "master_coverage": "0 dedicated", "wave2_coverage": "gen_d shard 100 ideas off-master", "gap": "covered off-master; do NOT re-commission; consolidate", "priority": "consolidation", "evidence_label": "EVIDENCE"},
+    {"territory": "3d_pointcloud_nerf_splatting", "master_coverage": 0, "wave2_coverage": "none", "gap": "total", "priority": 5, "evidence_label": "EVIDENCE"},
+    {"territory": "video_beyond_sam2", "master_coverage": "25 mentions, nearly all SAM2- or smoke-bound", "wave2_coverage": "none", "gap": "general video understanding", "priority": 5, "evidence_label": "EVIDENCE"},
+    {"territory": "training_dynamics_objective_science", "master_coverage": "~3", "wave2_coverage": "none", "gap": "large", "priority": 6, "evidence_label": "EVIDENCE"},
+    {"territory": "efficiency_deployment_non_sam", "master_coverage": "0 (7 efficiency ideas all SAM-centric)", "wave2_coverage": "none", "gap": "large", "priority": 6, "evidence_label": "EVIDENCE"},
+    {"territory": "embodied_robotics", "master_coverage": "0 dedicated (10 incidental)", "wave2_coverage": "none", "gap": "large", "priority": 7, "evidence_label": "EVIDENCE"}
+  ],
+  "wave2_shards_off_master": {
+    "evidence_label": "EVIDENCE (git ls-tree/show at audit time)",
+    "total_ideas_not_in_master": 402,
+    "shards": [
+      {"shard": "gen_d_object_detection", "ideas": 100, "id_range": "W13-P1-D-001..100", "branch": "origin/cursor/p1-gen-d-object-detection-07a3"},
+      {"shard": "gen_e_vlm_dense_prediction", "ideas": 100, "id_range": "W13-P1-E-001..100", "branch": "origin/cursor/w13-p1-gen-e-vlm-dense-9412"},
+      {"shard": "gen_f_synthetic_data", "ideas": 102, "id_range": "W13-P1-F-001..102", "branch": "origin/cursor/w13-p1-gen-f-synthetic-data-3a94"},
+      {"shard": "gen_g_domain_shift", "ideas": 100, "id_range": "W13-P1-G-001..100", "branch": "origin/cursor/p1-gen-g-domain-shift-0165"}
+    ],
+    "naming_collision_warning": "Auditor A's recommended territories reuse letters gen_d..gen_g with DIFFERENT mandates than the actually-pushed wave2 shards; consolidator must reconcile naming; this audit's queue uses fresh letters gen_h..gen_m"
+  },
+  "recommended_generator_queue": {
+    "step_0": "CONSOLIDATE WAVE2 FIRST: run judges A/B/C + consolidator over gen_d/e/f/g (402 ideas off-master) before commissioning any wave3 generator, with family-fingerprint caps (G2) applied at judge time",
+    "wave3_generators_in_priority_order": [
+      {"generator_id": "gen_h_restoration_lowlevel", "mandate": "SR, denoising, deblurring, low-light, ISP/imaging-pipeline science", "fills": "only 0.0%-everywhere territory", "guards": ["<=5% SAM mentions; ban SAM/LoRA-for-restoration mashups", ">=50% restoration-native phenomena (frequency hallucination, perceptual-distortion tradeoffs, real-vs-synthetic degradation gaps)", "falsification must not be PSNR/SSIM-only"], "priority": 1},
+      {"generator_id": "gen_i_diffusion_model_science", "mandate": "generative/diffusion models as subject: representations, guidance/inversion pathologies, memorization, diffusion-for-perception", "fills": "diffusion model-science gap (master has 2 eval-critiques only)", "guards": ["<=10% synthetic-training-data ideas (gen_f owns)", "ban 'generative eval metric is broken' framing (gen_c/F5 owns)"], "priority": 2},
+      {"generator_id": "gen_j_llm_agent_vision", "mandate": "LLM/agent loops around vision: tool use, self-verification, visual programs, test-time compute for perception", "fills": "LLM/agent gap (master has 3 VLM-eval critiques only)", "guards": ["<=20% eval-critique genre", "claims must target the loop/system, not merely the underlying VLM"], "priority": 3},
+      {"generator_id": "gen_k_3d_geometry_video", "mandate": "3D/point-cloud/NeRF-splatting/depth/optical-flow + video understanding beyond SAM2 memory", "fills": "3D 0 dedicated; general video gap", "guards": ["falsification must not reduce to 2D mask metrics", "<=10% SAM2 mentions"], "priority": 4},
+      {"generator_id": "gen_l_cross_field_transfer", "mandate": "transfer science across fields (vision <-> audio/time-series/graphs/scientific imaging)", "fills": "cross-field transfer 0", "guards": ["each idea names both fields AND the specific transferred invariance/structure", "hard ban on bare 'apply architecture X to field Y' permutations"], "priority": 5},
+      {"generator_id": "gen_m_constructive_capability", "mandate": "genre rebalancer: enabling-capability hypotheses with falsifiable mechanism claims, any territory", "fills": "strict-constructive genre ~3-4%", "guards": ["0% pure-audit genre", "<=10% SAM"], "priority": 6}
+    ],
+    "global_anti_crowding_constraints": [
+      "G1 SAM dilution: new shards <=5% SAM-subject; running master SAM-subject share must fall below 25% after each consolidation (currently 34.3%)",
+      "G2 family fingerprint at judge time: tag each idea with (subject_system, manipulated_variable, measurement_family); any cell >6 accepted ideas across master triggers family cap + merge review",
+      "G3 template ban-list: F1 PEFT-factorial-on-SAM, F2 SAM-component-pathology probes, F3 internal-score-as-free-detector, F4 smoke/fire/transparent organisms + cue-ablation-collapse, F5 published-deltas-are-noise, calibration/uncertainty as primary cluster",
+      "G4 genre quota: >=25% constructive/capability per new shard; <=40% pure audit/debunk",
+      "G5 structure quota: >=8 sub-clusters per ~100-idea shard, none >15%; >=30% of falsification experiments independent of segmentation/mask metrics",
+      "G6 off-master awareness: every consolidator enumerates generator shards on ALL origin branches before accepting a commissioning plan"
+    ]
+  },
+  "selection_time_caps_for_existing_248": {
+    "F1": "keep <= 4 of ~24-27",
+    "F2": "keep <= 10 of ~62 (distinct downstream consequences required)",
+    "F3": "keep <= 2 of 6",
+    "F4": "keep <= 2 of 4",
+    "F5": "keep <= 5 of 21",
+    "rationale": "HYPOTHESIS: frees ~80 slots at the 50-cut for territories not yet in master"
+  },
+  "citations": {
+    "made_in_this_audit": 0,
+    "fake": 0,
+    "policy": "no literature claims asserted; all findings labeled EVIDENCE (reproducible from repo contents), HYPOTHESIS, or MODEL SPECULATION"
+  },
+  "peer_cross_reference_post_hoc": {
+    "auditor_A": "concur on SAM/PEFT saturation, smoke-organism ban, calibration crowding, 3D/data-centric/training-dynamics blind spots; ADD: A's proposed gen_d..gen_g letters collide with actually-pushed wave2 shards; my structural families F1/F3/F5 with member IDs and selection-time caps are new",
+    "auditor_B": "concur on missing territories list (SR/diffusion/LLM-agent/detection) and saturated list; NOTE: B counts 46/248 constructive vs my strict 7-11 due to looser criterion; both counts imply genre rebalance needed"
+  },
+  "scope_compliance": {
+    "canonical_files_untouched": ["Windows13/_state/ideas_master.jsonl", "Windows13/_state/research_state.json", "Windows13/_state/window.lock.json"],
+    "windows13_only": true,
+    "own_branch": "cursor/p1-diversity-auditor-c-adversary-c2b5",
+    "force_push": false,
+    "files_written": [
+      "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_C.md",
+      "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_C.json",
+      "Windows13/_state/tasks/p1/diversity_audit_w1/done_auditor_C.json"
+    ]
+  }
+}
