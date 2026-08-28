@@ -1,0 +1,32 @@
+{
+  "task_id": "P0-waveA-workerA",
+  "role": "Repository Inspector",
+  "status": "complete",
+  "output_files": ["_state/tasks/P0/wave_A/worker_A.md"],
+  "unresolved_items": [
+    "Windows9-12 created by concurrent P0-init runs within ~10 min today (16:50-16:59 UTC); max candidate 12 may go stale, Judge must re-fetch before locking",
+    "Numbering non-contiguous: Windows1, Windows5, Windows7 absent everywhere; Judge must choose max+1 vs gap-fill policy",
+    "Windows3 exists only as nested variant staging/Windows3_supervisor/ on two branches; conservatively counted as claiming ID 3",
+    "No Windows* directory is merged into main; all live on unmerged cursor/* branches"
+  ],
+  "recommended_next_task_type": "Wave B Judge for Windows numbering",
+  "max_windows_number_candidate": 12,
+  "windows_candidates": [
+    {"path": "Windows2", "id": 2, "branch": "origin/cursor/research-idea-evolution-windows2-c2c9", "files": 31},
+    {"path": "Windows2/_wip/stage1_agent_A", "id": 2, "branch": "origin/cursor/windows2-stage1-agent-a-778d"},
+    {"path": "Windows2/_wip/stage1_agent_B", "id": 2, "branch": "origin/cursor/windows2-stage1-agent-b-8950"},
+    {"path": "Windows2/_wip/stage1_agent_C", "id": 2, "branch": "origin/cursor/windows2-stage1-agent-c-70ca"},
+    {"path": "staging/Windows3_supervisor", "id": 3, "branch": "origin/cursor/idea-evolution-windows3-b534", "files": 1, "note": "nested naming variant"},
+    {"path": "staging/Windows3_supervisor/stage1/cluster_B", "id": 3, "branch": "origin/cursor/w3s1-cluster-b-7ea7", "files": 3, "note": "nested naming variant"},
+    {"path": "Windows4", "id": 4, "branch": "origin/cursor/windows4-research-idea-evolution-2962", "files": 18},
+    {"path": "Windows6", "id": 6, "branch": "origin/cursor/windows6-research-idea-evolution-b55d", "files": 23},
+    {"path": "Windows8", "id": 8, "branch": "origin/cursor/windows8-research-idea-evolution-cd91", "files": 54},
+    {"path": "Windows9", "id": 9, "branch": "origin/cursor/windows9-p0-init-3045", "files": 8, "note": "fresh P0-init skeleton"},
+    {"path": "Windows10", "id": 10, "branch": "origin/cursor/windows10-p0-init-26ec", "files": 8, "note": "fresh P0-init skeleton"},
+    {"path": "Windows11", "id": 11, "branch": "origin/cursor/windows11-p0-init-c0c1", "files": 8, "note": "fresh P0-init skeleton"},
+    {"path": "Windows12", "id": 12, "branch": "origin/cursor/windows12-p0-init-a095", "files": 8, "note": "fresh P0-init skeleton; current max candidate"}
+  ],
+  "git_branch": "main (inspection) -> cursor/p0-wave-a-worker-a-repo-inspection-6ef7 (report commit)",
+  "git_dirty": false,
+  "commit_hash_HEAD": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a"
+}
