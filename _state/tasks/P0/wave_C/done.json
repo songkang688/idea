@@ -1,0 +1,20 @@
+{
+  "task_id": "P0-implementation",
+  "role": "P0 Implementation Agent (conditional)",
+  "status": "blocked",
+  "blocked_reason": "/workspace/_state/tasks/P0/wave_B/decision.json does not exist (checked at task start and polled 6 times over ~60 seconds; _state/tasks/P0/ directory absent entirely). Precondition ready_for_implementation=true cannot be evaluated. No Windows directory was created or modified.",
+  "output_files": [
+    "/workspace/_state/tasks/P0/wave_C/implementation.md",
+    "/workspace/_state/tasks/P0/wave_C/done.json"
+  ],
+  "unresolved_items": [
+    "P0 Wave B consolidator must write /workspace/_state/tasks/P0/wave_B/decision.json with ready_for_implementation=true and a canonical windows_path",
+    "Re-dispatch P0-implementation after decision.json exists; it must create exactly the windows_path from decision.json"
+  ],
+  "recommended_next_task_type": "WAIT_P0_DECISION",
+  "commit_hash": null,
+  "push_status": "pending",
+  "windows_path": null,
+  "windows_created": false,
+  "timestamp_utc": "2026-08-28T17:30Z"
+}
