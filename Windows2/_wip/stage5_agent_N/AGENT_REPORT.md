@@ -57,6 +57,14 @@ Binding constraints (from PI_BINDING correlated-pairs list, L portfolio_risk, an
 - **Annotation is the scarce resource, not GPU:** A-0206's corpus and C-0338's contingent small-strata labels are the only two annotation-bound items; they do not compete for the same annotator skill set (mask drawing vs box re-annotation) and can proceed in parallel.
 - **Honest-negative coverage:** every protocol pre-commits a publishable interpretation of its null; four of the ten (exp_02, exp_06, exp_08, exp_10) have nulls arguably as citable as their positives — consistent with the pipeline's either-outcome-publishes selection pressure, and priced accordingly in the ROI table.
 
+## Post-scriptum: reconciliation with Agent I's provisional_200 (landed mid-flight)
+
+Agent I's `stage2_agent_I/provisional_200.md` was pushed to the branch while this stage was being written (it did not exist at read time; verified again after my first push). Reconciliation against the ten:
+
+- **Unchanged and alive in I's 190:** B-0114 (L), B-0001 (L), A-0061, A-0206←A-0264 (A LOCK, "cap slot 1/5"), A-0199 [mut], A-0028 (¢), C-0306 (⏰, L), C-0338←0071+A-0323 (L, now also hosting a general-classes human-mIoU arm — exp_06's infrastructure sharing note extends to it).
+- **Re-hosted by I, protocols unaffected:** C-0082-mut re-entered as an *arm of A-0026* (VOS failure-map unit); exp_09's protocol is the executable form of that arm and also covers the standalone reading — the Stage-6 battle should treat exp_09 as the A-0026-arm's killer experiment if I's hosting stands. A-0100 became the *smoke/fire-provenance arm of C-0122* (duplication census host); exp_10's audit leg is that arm's protocol.
+- **Discrepancy for the PI:** I's fold left **A-0090 un-rescued** ("tier-2 not rescued, slot pressure") while `PI_BINDING.md` lists "A-0090 time-to-detect smoke, merged into A-0100" under Revives ("must have a slot or an explicit named arm"). exp_10 implements the PI-binding-compliant merged form; if I's slot accounting stands, the TTD layer should be recorded as a named arm of C-0122's smoke-provenance arm — zero extra slots, binding satisfied. Flagged for the PI to adjudicate; no file of I's was modified.
+
 ## Compliance
 
 - Output confined to `Windows2/_wip/stage5_agent_N/`; no other agent's files modified.
