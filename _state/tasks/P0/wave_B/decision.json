@@ -1,0 +1,69 @@
+{
+  "task_id": "P0-consolidator",
+  "role": "P0 Wave B/C Numbering Consolidator / Final Judge",
+  "parent": "WindowsX",
+  "wave": "B",
+  "decision_scope": "SINGLE canonical Windows numbering decision for THIS round; Implementation Agent (Wave C) creates the directory and writes window.lock.json",
+  "decided_at_utc": "2026-08-28T17:31:00Z",
+  "decided_by_branch": "cursor/p0-wave-b-consolidator-210c",
+  "repository": "https://github.com/songkang688/idea",
+  "base_branch": "main",
+  "base_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+
+  "windows_id": "Windows16",
+  "windows_number": 16,
+  "windows_path": "Windows16",
+  "overwrite_risk": "low",
+  "window_defined_by": "P0",
+  "ready_for_implementation": true,
+  "status": "decided",
+
+  "rationale": "KNOWN FACT (independent git fetch --prune + ls-tree over all 42 origin branch tips at 17:27-17:31Z): origin/main contains only README.md (single commit 990f3eb); no WindowsN directory is merged anywhere. Occupied WindowsN paths on unmerged cursor/* branches: 2, 3 (nested legacy staging/Windows3_supervisor/), 4, 6, 8, 9, 10, 11, 12 -- all hard-excluded because reusing them would overwrite live unmerged trees at merge time. Numbers 1, 5, 7 never existed on any ref; unanimous cross-pipeline precedent forbids gap-filling. Windows13 is SPENT: sibling pipeline '_p0_dispatch/tasks/p0_init/' pushed a consolidated Wave B decision.json (decided 17:24:30Z, pushed 17:27:58Z, branch cursor/p0-init-consolidator-9302) locking windows_id=Windows13 with implementation imminent. Windows14 is SPENT: sibling pipeline '_state/tasks/p0/windows_init/' (lowercase p0, dispatcher identity Windows14) pushed three unanimous judge verdicts for Windows14 (judge_A 17:24:25Z, judge_B 17:27:57Z, judge_C adversary 17:29:53Z); 14 is uncontested by every other pipeline, so its consolidator will take 14. Windows15 is STAKED: a third dispatcher with explicit identity 'Windows15' ('_dispatcher/p0/wave_a/', branches cursor/p0-wave-a-{repo-inspector,safety-inspector,workspace-planner}-*, pushed 17:22-17:24Z) unanimously recommends 15, and external sibling judges already rule 15 skipped in bump chains ('skip 15, claimed by the Windows15 dispatcher, and take 16' -- windows_init judge_C). External judges classify THIS wave ('_state/tasks/P0/wave_A/', capital P0, parent WindowsX, identity unproven) as a DISTINCT fourth pipeline; claiming 15 would race the Windows15-identity dispatcher, and shared identity with it cannot be proven from repo state. Windows16 is FREE: verified zero hits for 'Windows16' (case-insensitive, separator variants) as a path on any ref, in any blob at any branch tip, in any branch name, and in any commit message across all refs; the only mentions of the number 16 anywhere are conditional fallback prose in windows_init judge shards, which trigger only on a 14-collision that cannot occur (14 uncontested). Windows16 is therefore the smallest number that is unique versus every existing Windows* path AND free of every pushed sibling claim. Choosing 16 risks at worst a benign gap; choosing 13/14/15 risks a directory collision with an active judged pipeline.",
+
+  "evidence": {
+    "fetch_commands": [
+      "git fetch origin --prune (17:27Z, brought 4 new branches incl. cursor/p0-init-consolidator-9302 and cursor/p0-wave-b-judge-c-adversary-1b99)",
+      "prior fetch --prune at 17:27Z baseline; all scans re-run on post-fetch refs"
+    ],
+    "origin_main_tree": ["README.md"],
+    "origin_main_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a (single 'Initial commit'; no Windows dir ever merged)",
+    "windows_paths_observed_on_refs": [
+      {"number": 2, "path": "Windows2/", "refs": ["origin/cursor/research-idea-evolution-windows2-c2c9", "origin/cursor/windows2-stage1-agent-a-778d", "origin/cursor/windows2-stage1-agent-b-8950", "origin/cursor/windows2-stage1-agent-c-70ca"]},
+      {"number": 3, "path": "staging/Windows3_supervisor/ (nested legacy variant; number 3 burned per unanimous sibling rulings)", "refs": ["origin/cursor/idea-evolution-windows3-b534", "origin/cursor/w3s1-cluster-b-7ea7"]},
+      {"number": 4, "path": "Windows4/", "refs": ["origin/cursor/windows4-research-idea-evolution-2962"]},
+      {"number": 6, "path": "Windows6/", "refs": ["origin/cursor/windows6-research-idea-evolution-b55d"]},
+      {"number": 8, "path": "Windows8/", "refs": ["origin/cursor/windows8-research-idea-evolution-cd91"]},
+      {"number": 9, "path": "Windows9/", "refs": ["origin/cursor/windows9-p0-init-3045"]},
+      {"number": 10, "path": "Windows10/", "refs": ["origin/cursor/windows10-p0-init-26ec"]},
+      {"number": 11, "path": "Windows11/", "refs": ["origin/cursor/windows11-p0-init-c0c1"]},
+      {"number": 12, "path": "Windows12/", "refs": ["origin/cursor/windows12-p0-init-a095"]}
+    ],
+    "occupied_numbers": [2, 3, 4, 6, 8, 9, 10, 11, 12],
+    "never_existed_numbers_no_gap_fill": [1, 5, 7],
+    "max_windows_number_observed_as_path": 12,
+    "window_lock_json_found_anywhere": false,
+    "windows16_found_as_path_branch_commit_or_blob": false,
+    "concurrent_claims": {
+      "13": "SPENT -- '_p0_dispatch/tasks/p0_init/' pipeline: unanimous 3-judge Wave B + consolidated decision.json (cursor/p0-init-consolidator-9302, decided 17:24:30Z); recommends wave_c_implementation; VERIFIED PRIOR WORK (file read from fetched ref)",
+      "14": "SPENT -- '_state/tasks/p0/windows_init/' pipeline (dispatcher identity Windows14): judges A/B/C all verdict 14 (17:24-17:29Z); uncontested; VERIFIED PRIOR WORK",
+      "15": "STAKED -- '_dispatcher/p0/wave_a/' pipeline (explicit dispatcher_identity 'Windows15'): all 3 Wave A workers recommend 15, avoid 13/14 (17:22-17:24Z); sibling judges rule 15 skipped in bump chains; VERIFIED PRIOR WORK",
+      "16": "FREE -- claimed by THIS decision; only prior mentions are conditional fallback prose in windows_init judge shards contingent on a 14-collision that cannot occur; KNOWN FACT (verified by grep over all ref tips, branch names, commit messages)"
+    },
+    "own_wave_a_inputs": {
+      "worker_A_repo_inspector": {"branch": "origin/cursor/p0-wave-a-worker-a-repo-inspection-6ef7", "max_candidate": 12, "recommendation": "deferred to judge; flagged 9-12 race staleness"},
+      "worker_B_safety": {"branch": "origin/cursor/p0-wavea-worker-b-safety-6f40", "recommendation": 15, "caveat": "15 only if this pipeline is NOT the Windows14 dispatcher; flagged 13 as spent; identity unresolved"},
+      "worker_C_workspace_plan": {"branch": "origin/cursor/p0-wave-a-worker-c-workspace-plan-4899", "recommendation": 13, "consolidator_ruling": "VOID -- stale pre-race snapshot; 13 spent by _p0_dispatch consolidated verdict"},
+      "consolidator_resolution": "worker_C's 13 is void (spent); worker_B's 15 is rejected because the Windows15-identity dispatcher ('_dispatcher/p0/wave_a/') staked 15 at 17:22-17:24Z and this pipeline's shared identity with it is unprovable from repo state; the unique safe number is 16"
+    }
+  },
+
+  "implementation_instructions": {
+    "who": "Implementation Agent (Wave C) ONLY; this consolidator created NO Windows directory and NO window.lock.json",
+    "windows_path_to_create": "Windows16",
+    "race_policy": "Immediately before mkdir: git fetch origin --prune, then re-verify on fresh refs that no origin tip contains a Windows16 path, branch name, commit message, research_state windows_id, or window.lock.json claiming 16. On collision, bump to the smallest N > 16 absent from every origin tip and not claimed by a live judged pipeline, substituting N everywhere. Never take 13/14/15 (spent/staked), never gap-fill 1/5/7, never reuse 2/3/4/6/8/9/10/11/12. Perform fetch -> verify -> create -> commit -> push as one fast sequence; never force-push.",
+    "window_lock_json": "written by Implementation at Windows16/_state/window.lock.json with locked=true, windows_id=Windows16, windows_number=16, windows_path=Windows16, defined_by=P0, inside the init commit itself (matches ratified sibling ruling: no two-phase unlocked lock)",
+    "json_validity_gate": "validate every .json with python3 -m json.tool before committing (Windows11 research_state.json on origin is malformed JSON -- do not repeat)"
+  },
+
+  "recommended_next_task_type": "P0_IMPLEMENTATION"
+}
