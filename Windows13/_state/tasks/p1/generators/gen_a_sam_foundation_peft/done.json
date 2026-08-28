@@ -1,0 +1,46 @@
+{
+  "task_id": "p1_gen_a_sam_foundation_peft",
+  "role": "generator",
+  "status": "complete",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "wave": "P1 Wave A",
+  "territory": "SAM / foundation model adaptation / PEFT / failure modes of promptable segmentation (incl. LoRA/Adapter/VPT/BitFit, SAM2, distillation, evaluation methodology, prompt geometry, data priors)",
+  "idea_count": 102,
+  "id_seed_range": "W13-P1-A-001 .. W13-P1-A-102",
+  "clusters": {
+    "prompt_geometry_failure_modes": 10,
+    "what_peft_actually_learns": 12,
+    "iou_head_calibration_uncertainty": 8,
+    "encoder_representation_myths": 10,
+    "decoder_token_mechanics": 8,
+    "sam2_video_memory": 9,
+    "data_priors_sa1b": 8,
+    "evaluation_methodology": 7,
+    "robustness_adversarial": 7,
+    "distillation_efficiency": 6,
+    "adapter_ecosystem_continual": 6,
+    "interaction_loops_human_factors": 5,
+    "adaptation_interfaces": 6
+  },
+  "output_files": [
+    "Windows13/_state/tasks/p1/generators/gen_a_sam_foundation_peft/ideas_shard.jsonl",
+    "Windows13/_state/tasks/p1/generators/gen_a_sam_foundation_peft/ideas_shard.md",
+    "Windows13/_state/tasks/p1/generators/gen_a_sam_foundation_peft/done.json"
+  ],
+  "evidence_policy_compliance": "All why_possibly_novel fields are explicitly HYPOTHESIS-labeled; no verified-novelty claims. No invented papers, numbers, datasets, or experimental results. Prior-work citations restricted to widely known works the generator is confident exist (SAM, SAM 2, LoRA, Houlsby adapters, VPT, BitFit, MAE, DINO, CKA, MedSAM, SAMed context, MobileSAM/FastSAM/EfficientSAM, HQ-SAM, ToMe, DETR, RITM, model soups, task arithmetic, Geirhos texture bias, Darcet registers, LEEP, typographic attacks on CLIP); everything else marked HYPOTHESIS or MODEL SPECULATION.",
+  "canonical_state_untouched": true,
+  "notes": "Generated candidates only. Did not modify ideas_master.jsonl, research_state.json, window.lock.json, or windows_id. Did not write any other generator's files.",
+  "unresolved_items": [
+    "Novelty of every candidate is a hypothesis pending Wave B dedup and prior-art verification; several candidates (e.g., decoder-only tuning baselines, PE interpolation tricks, adaptive thresholding, SAM adversarial attacks) are especially likely to have partial prior art and should be prioritized for prior-art search.",
+    "Some ideas are mutually coupled (023/025/086/091 share the IoU-head style-bias premise; 006/009/074 share prompt-map non-smoothness) — dedup should treat them as distinct hypotheses but note the shared premises.",
+    "Compute-heavy candidates (032, 089, 102) include cheap precursor experiments in fastest_falsification_experiment; feasibility triage recommended before Stage 2 selection."
+  ],
+  "recommended_next_task_type": "p1_wave_b_dedup",
+  "generated_at_utc": "2026-08-28T18:10:00Z",
+  "lock_basis": {
+    "window_locked": true,
+    "lock_branch": "origin/cursor/windows13-p0-init-implementation-d93f",
+    "state_reader_branch": "origin/cursor/p1-state-reader-cc05"
+  }
+}
