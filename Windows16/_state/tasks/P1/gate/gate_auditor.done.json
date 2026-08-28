@@ -1,0 +1,15 @@
+{
+  "task_id": "P1-gate-auditor",
+  "status": "done",
+  "p1_may_start": true,
+  "accepted_idea_count": 0,
+  "windows_path": "Windows16",
+  "recommended_next_task_type": "P1_GENERATORS_START",
+  "lock_valid": true,
+  "lock_file": "Windows16/_state/window.lock.json",
+  "ideas_master_file": "Windows16/_state/ideas_master.jsonl",
+  "ideas_master_line_count": 0,
+  "ideas_master_byte_count": 0,
+  "audited_at_utc": "2026-08-28T17:44:00Z",
+  "report": "Windows16/_state/tasks/P1/gate/gate_auditor.md"
+}
