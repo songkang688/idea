@@ -1,0 +1,19 @@
+{
+  "task_id": "p0_wave_a_safety_inspector",
+  "role": "worker",
+  "status": "complete",
+  "output_files": [
+    "_dispatcher/p0/wave_a/safety_inspector/report.md",
+    "_dispatcher/p0/wave_a/safety_inspector/findings.json",
+    "_dispatcher/p0/wave_a/safety_inspector/done.json"
+  ],
+  "unresolved_items": [
+    "Windows13/14 may be reserved by unpushed parallel sessions (inferred from parent dispatcher identity 'Windows15'); no repo evidence for 13, 14, or 15 — judge must reconcile rule-based Windows13 vs dispatcher-identity Windows15.",
+    "Binary blob Windows8/Idea_01/outputs/idea01_e0/density_head.pt not inspectable by text scan (no indication of secrets).",
+    "Concurrent-allocation race across active p0-init pipelines requires a dispatcher-level lock (out of this worker's scope)."
+  ],
+  "recommended_next_task_type": "wave_b_judge",
+  "max_existing_windows_number": 12,
+  "recommended_next_windows_id": "Windows13",
+  "safety_ok_to_create": true
+}
