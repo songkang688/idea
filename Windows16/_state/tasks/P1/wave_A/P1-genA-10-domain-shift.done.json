@@ -1,0 +1,46 @@
+{
+  "task_id": "P1-genA-10-domain-shift",
+  "role": "Generator",
+  "status": "complete",
+  "window": "Windows16",
+  "territory": "Domain shift: domain adaptation/generalization, test-time adaptation, distribution-shift robustness, cross-site/cross-sensor transfer; academic ML only",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-10_domain_shift.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-10-domain-shift.done.json"
+  ],
+  "candidate_count": 100,
+  "target_band": "80-120",
+  "candidate_id_range": "dshf-0001..dshf-0100",
+  "clusters": {
+    "tta_stability_and_collapse": 9,
+    "tta_realistic_streams": 8,
+    "uda_alignment_limits": 8,
+    "domain_generalization_training": 9,
+    "source_free_and_continual": 8,
+    "shift_detection_and_monitoring": 8,
+    "cross_site_medical_scientific": 8,
+    "cross_sensor_transfer": 8,
+    "foundation_models_under_shift": 9,
+    "label_and_subpopulation_shift": 8,
+    "evaluation_and_model_selection": 9,
+    "theory_and_causal_views": 8
+  },
+  "evidence_labels": {
+    "HYPOTHESIS": 89,
+    "MODEL SPECULATION": 11
+  },
+  "schema_notes": "Each JSONL line carries the parent-mandated fields in order (candidate_id, territory, title, one_line_idea, cluster, problem, core_hypothesis, core_claim, method_sketch, falsifiable_prediction, why_important, why_possibly_novel, novelty_hook, minimal_falsification_experiment, main_risk, kill_risk, community_default_belief, why_it_might_be_wrong, fastest_falsifying_experiment, evidence_label). Following the convention of earlier Wave A shards, alias fields mirror their counterparts as closely related but non-identical prose: core_claim complements core_hypothesis, minimal_falsification_experiment complements method_sketch, novelty_hook complements why_possibly_novel, kill_risk complements main_risk. Every candidate states the community default belief, why it might be wrong, and a cheapest/fastest falsifying experiment.",
+  "compliance": {
+    "forbid_fiction": "No fabricated papers, citations, benchmark numbers, dataset facts, or experimental results; all quantitative statements are phrased as falsifiable predictions under HYPOTHESIS or MODEL SPECULATION labels, and dataset/model families are referenced generically as proposed experiment subjects.",
+    "novelty_claims": "All novelty statements are hedged as possibly-novel and explicitly marked unverified; no verified novelty claimed.",
+    "protected_files": "window.lock.json, research_state.json, ideas_master.jsonl untouched; no Windows directories created; no Windows numbers changed; only the two mandated files written under Windows16/_state/tasks/P1/."
+  },
+  "unresolved_items": [
+    "Novelty of all 100 candidates is unverified against the literature; Wave B dedup plus any novelty-checking stage must vet before promotion.",
+    "Intra-shard conceptual neighbors were minimized but remain for dedup review: dshf-0009 vs dshf-0022/dshf-0045/dshf-0073 (layer-wise divergence profiles reused as routing, alignment-depth, diagnosis, and unfreezing signals), dshf-0001 vs dshf-0017/dshf-0037/dshf-0050 (label-free collapse/overfitting/harm monitors for adaptation), dshf-0008 vs dshf-0078/dshf-0081 (label-prior estimation feeding objectives, estimator audits, and abstention), dshf-0011 vs dshf-0036/dshf-0041 (reusable adaptation state as snapshots, composable deltas, and trajectory warm starts), dshf-0016 vs dshf-0081 (abstention-threshold adaptation under shift vs under prior shift).",
+    "Cross-territory overlap likely with genA-01 SAM/PEFT (dshf-0067 PEFT robustness, dshf-0074 frozen-encoder adaptation), genA-02 medical segmentation (cross_site_medical_scientific cluster, especially dshf-0051..dshf-0056), genA-06 failure mining (dshf-0046/dshf-0047/dshf-0050 harm monitoring), genA-07 benchmark weaknesses (evaluation_and_model_selection cluster, especially dshf-0085, dshf-0088, dshf-0089), and genA-08 uncertainty (dshf-0016, dshf-0053, dshf-0072, dshf-0081 calibration/abstention themes); dedup should treat these as high-collision zones.",
+    "Several candidates require resources beyond a single-lab minimal experiment: dshf-0051 (factorial re-scan/re-stain clinical data), dshf-0071 (factorial pretraining compute), dshf-0089 (evaluation-server curation and operation); their fastest-falsifying experiments are scoped-down pilots.",
+    "Candidates dshf-0026, dshf-0084, dshf-0088, dshf-0090 presuppose reproducing published-style baselines locally under matched budgets; feasibility depends on public availability of the relevant method implementations."
+  ],
+  "recommended_next_task_type": "P1-genA-11-negative-results"
+}
