@@ -14,6 +14,12 @@
 - **Pivot** to event-disjoint only if cameras < 10 (underpowered).
 - **Continue** if H1 and H4 hold on ≥2 datasets.
 
-## Compute
+## Stage 5 engineering
 
-1 GPU, 1–3 days for small detector × 9 runs.
+Equal-N, class-ratio-matched splits. Cluster bootstrap over **events**. Probe control: ImageNet-pretrained backbone never trained on smoke.
+
+Day-1: Pyronear-2025 subsample, YOLOv8n, 1 seed × 3 protocols + probe + empty-frame FPR. ~10 GPU-h.
+
+**STOP** if random≈camera-disjoint within seed noise **and** probe≈chance **and** no seen/unseen empty FPR gap (confirm with 2 more seeds).
+
+Dedup (pHash) rerun separates duplicate leakage from camera signature.

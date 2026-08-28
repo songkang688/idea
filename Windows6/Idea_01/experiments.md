@@ -29,6 +29,12 @@ EXPECTED = hypothesized trend. ACTUAL = not measured in this repo (synthetic uni
 - **Pivot** if only one window shows clustering equivalence.
 - **Continue** if H1+H2 hold on ≥2 windows and ≥2 AMG settings.
 
-## Compute
+## Stage 5 engineering (from [Stage5 engineering final3](bc-00350b5e-c5eb-58d6-b9ae-fde8bd38be8c))
 
-1×12–24GB GPU for real SAM AMG on ~200 slices: hours, not days. Synthetic path: CPU minutes.
+Day-1: 100 TotalSegmentator slices, soft-tissue window, SAM ViT-B AMG vs k-means (k matched) vs multi-Otsu; then texture shuffle. ≤2 GPU-h.
+
+**STOP** if AMG closer to GT than to k-means **and** texture shuffle moves AMG a lot.
+
+**COCO control (Reviewer #2 preemption):** same protocol on COCO; clustering equivalence must be **CT-specific**.
+
+Full matrix ~40–80 GPU-h (windows × SAM variants × counterfactuals). No numbers claimed.
