@@ -1,0 +1,71 @@
+{
+  "task_id": "p0_init",
+  "role": "judge_A_numbering",
+  "judged_at_utc": "2026-08-28T17:18:28Z",
+  "branch": "cursor/p0-init-judge-a-numbering-d175",
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "max_existing_windows_number_observed": 12,
+  "max_evidence": "Windows12/ on origin/cursor/windows12-p0-init-a095 (also PR refs/pull/9/head); confirmed by independent ls-tree over all 23 remote branch tips, all 9 PR head refs, and full-history --all scan at 2026-08-28T17:17-17:18Z",
+  "windows_numbers_in_use": [2, 3, 4, 6, 8, 9, 10, 11, 12],
+  "never_existed_numbers": [1, 5, 7],
+  "gap_reuse_forbidden": true,
+  "anomalous_paths_ruling": {
+    "path": "staging/Windows3_supervisor/",
+    "counts_toward_numbering": true,
+    "rationale": "number 3 is burned by the nested legacy form; monotonic max+1 makes this moot for the current decision (max=12 from top-level dirs) but the ruling prevents future gap-filling of 3"
+  },
+  "fresh_fetch": {
+    "commands": ["git fetch origin --prune (17:15Z)", "git fetch origin --prune (17:17Z)", "git ls-remote origin (17:16Z)", "git fetch refs/pull/*/head (17:18Z)"],
+    "windows13_found_anywhere": false,
+    "window_lock_json_found_anywhere": false,
+    "variant_spellings_found": [],
+    "new_refs_since_wave_a": [
+      "origin/cursor/p0-windows-init-worker-a-fd36",
+      "origin/cursor/p0-windows-init-worker-c-f747"
+    ]
+  },
+  "concurrent_sibling_pipeline": {
+    "detected": true,
+    "dispatch_dir": "_state/tasks/p0/windows_init/",
+    "branches": ["cursor/p0-windows-init-worker-a-fd36", "cursor/p0-windows-init-worker-c-f747"],
+    "pushed_at_utc": "2026-08-28T17:16:08Z",
+    "sibling_primary_target": "Windows14",
+    "sibling_fallback_target": "Windows13",
+    "note": "sibling's worker_C.done.json explicitly defers Windows13 to this run and recommends Windows14 as its primary; KNOWN FACT from fetched shard, its final lock is HYPOTHESIS"
+  },
+  "contradictions_vs_workers": [
+    {
+      "id": "windows3_classification",
+      "between": ["worker_A", "worker_B"],
+      "vs": ["worker_C"],
+      "detail": "worker_A and worker_B count staging/Windows3_supervisor as window number 3; worker_C lists Windows3 in windows_ids_absent (top-level definition) while noting the staging path in prose",
+      "judge_resolution": "anomalous nested paths count toward numbering; number 3 is burned; no effect on max=12 or the Windows13 verdict"
+    },
+    {
+      "id": "wave_a_snapshots_stale",
+      "between": ["worker_A", "worker_B", "worker_C"],
+      "vs": ["fresh_fetch"],
+      "detail": "all Wave A scans (17:09-17:12Z) predate sibling pipeline branches p0-windows-init-worker-{a,c} (17:16Z) and the windows6 branch advance 6152f0c->d7508b0; worker_A's total_commits_all_refs=54 is now stale",
+      "judge_resolution": "fresh fetch trusted per mandate; worker numbering claims (max=12, no Windows13) remain correct under the fresh fetch, so this is staleness, not error"
+    },
+    {
+      "id": "core_numbers",
+      "between": [],
+      "vs": [],
+      "detail": "no contradiction on the decision-relevant facts: worker_A, worker_B, worker_C all independently report max=12 and recommend Windows13; independent fresh re-scan confirms both",
+      "judge_resolution": "unanimous and verified"
+    }
+  ],
+  "overwrite_risk": "LOW - Windows13 absent from all 23 branch tips, 9 PR heads, full history (all refs), and every research_state windows_id as of 17:18Z; only known concurrent pipeline targets Windows14 primary; residual race nonzero, so Implementation Agent must re-fetch and re-verify absence immediately before writing window.lock.json, bumping to smallest unused N>13 on collision",
+  "confidence": "high",
+  "confidence_numeric": 0.92,
+  "recommended_next_task_type": "wave_b_consolidator",
+  "constraints_respected": {
+    "wrote_window_lock": false,
+    "wrote_windows_dir_or_research_state": false,
+    "compared_worker_reports": true,
+    "refetched_independently": true
+  }
+}
