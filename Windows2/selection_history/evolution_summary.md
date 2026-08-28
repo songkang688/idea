@@ -37,6 +37,7 @@
 ## Stage 7 prototypes
 
 - P COMPLETE: `Windows2/_wip/stage7_proto_C0306/` (synthetic conformal vs NMS; not COCO results).
+- R COMPLETE: `Windows2/_wip/stage7_proto_A0028/` (synthetic teleport probe; not SAM2 weights).
 
 ## Eliminated (confirmed, do not revive without new evidence)
 
