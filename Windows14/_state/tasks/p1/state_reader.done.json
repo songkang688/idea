@@ -1,0 +1,16 @@
+{
+  "task_id": "p1_state_reader",
+  "role": "p1_state_reader",
+  "status": "complete",
+  "windows_id": "Windows14",
+  "windows_path": "Windows14",
+  "window_locked": true,
+  "current_accepted_ideas": 0,
+  "output_files": [
+    "Windows14/_state/tasks/p1/state_reader.md",
+    "Windows14/_state/tasks/p1/state_reader.done.json",
+    "Windows14/_state/tasks/p1/generator_task_queue.json"
+  ],
+  "unresolved_items": [],
+  "recommended_next_task_type": "p1_wave_A_generators"
+}

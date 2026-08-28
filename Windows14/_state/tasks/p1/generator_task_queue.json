@@ -1,0 +1,39 @@
+{
+  "windows_id": "Windows14",
+  "windows_path": "Windows14",
+  "window_locked": true,
+  "current_accepted_ideas": 0,
+  "target_accepted_ideas": 1000,
+  "next_wave": "P1_wave_A_generators",
+  "slots": 3,
+  "tasks": [
+    {
+      "task_id": "p1_gen_w1_a",
+      "territory": "SAM / Foundation Model adaptation / PEFT",
+      "shard": "worker_A",
+      "output_shard": "Windows14/_state/tasks/p1/wave1/worker_A.ideas.jsonl"
+    },
+    {
+      "task_id": "p1_gen_w1_b",
+      "territory": "Medical segmentation",
+      "shard": "worker_B",
+      "output_shard": "Windows14/_state/tasks/p1/wave1/worker_B.ideas.jsonl"
+    },
+    {
+      "task_id": "p1_gen_w1_c",
+      "territory": "Smoke / fire / ambiguous segmentation + failure mining",
+      "shard": "worker_C",
+      "output_shard": "Windows14/_state/tasks/p1/wave1/worker_C.ideas.jsonl"
+    }
+  ],
+  "wave_output_dir": "Windows14/_state/tasks/p1/wave1/",
+  "shard_rules": {
+    "write_independent_jsonl_shards_only": true,
+    "do_not_write_ideas_master_jsonl": true,
+    "do_not_modify_window_lock": true,
+    "do_not_modify_research_state": true
+  },
+  "base_branch": "cursor/windows14-p0-init-implementation-46a8",
+  "queue_written_by": "p1_state_reader",
+  "queue_written_at_utc": "2026-08-28T18:05Z"
+}
