@@ -1,0 +1,30 @@
+{
+  "task_id": "p1_wave_b_batch002_judge_A",
+  "role": "judge",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "input_count": 300,
+  "keep_count": 278,
+  "merge_count": 16,
+  "drop_count": 6,
+  "drop_duplicate_of_master_count": 5,
+  "drop_prior_art_risk_count": 1,
+  "cluster_count": 44,
+  "master_near_duplicate_flag_count": 38,
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_002/judge_A/report.md",
+    "Windows15/_state/tasks/p1/batch_002/judge_A/clusters.json",
+    "Windows15/_state/tasks/p1/batch_002/judge_A/verdict.jsonl",
+    "Windows15/_state/tasks/p1/batch_002/judge_A/done.json"
+  ],
+  "unresolved_items": [
+    "38 kept ideas are flagged as master near-duplicates (clusters.json -> master_near_duplicate_relations): same claim template as an accepted batch-001 hypothesis but with distinct falsifiable content; consolidator should decide per idea whether to accept as a new entry or fold the new content into the master idea.",
+    "12 cross-shard template-twin pairs were kept rather than merged (clusters.json -> cross_shard_near_duplicate_relations); consolidator should decide whether to unify them into single research programs.",
+    "4 internal contradictions retained intentionally (B-054 vs B-057, A-092 vs C-087, A-050 vs C-073, A-023 vs A-040); each needs one resolving experiment matrix, not a verdict.",
+    "Drop reason for C-038 ('prior-art risk: classical prior-shift correction') and prior_art_risk flags on kept ideas (A-032, A-072, B-001, B-004, B-024, B-048, B-051, C-005, C-089) are judgments made without literature verification; consolidator may reinstate or re-weight if a novelty check disagrees.",
+    "Master-duplicate decisions (C-001, B-072, B-083, C-064, C-070) were made against ideas_master.jsonl as of origin/cursor/p1-wave-b-batch001-consolidator-7c96; revalidate duplicate_of targets if the master list changed since.",
+    "Schema inconsistency across shards persists from batch 001: gen_A has cluster+evidence_class, gen_B cluster only, gen_C cluster+territory; harmonization needed before master-list ingestion.",
+    "No novelty verification and no citation checking were performed by this judge (per task constraints); all high-value flags are leverage judgments, not novelty claims."
+  ],
+  "recommended_next_task_type": "p1_wave_b_batch002_consolidator"
+}
