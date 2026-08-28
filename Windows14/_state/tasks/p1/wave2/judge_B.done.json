@@ -1,0 +1,40 @@
+{
+  "task_id": "p1_wave2_judge_B",
+  "role": "judge_B_permutation_filter",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "ideas_reviewed": 508,
+  "keep_count": 503,
+  "kill_count": 0,
+  "mutate_count": 5,
+  "per_shard": {
+    "worker_A": {"total": 133, "keep": 129, "mutate": 4, "kill": 0, "branch": "cursor/windows14-p1-wave2-worker-a-cc54"},
+    "worker_B": {"total": 126, "keep": 126, "mutate": 0, "kill": 0, "branch": "cursor/windows14-p1-wave2-worker-b-8795"},
+    "worker_D": {"total": 124, "keep": 124, "mutate": 0, "kill": 0, "branch": "cursor/windows14-p1-wave2-worker-d-a7e5"},
+    "worker_E": {"total": 125, "keep": 124, "mutate": 1, "kill": 0, "branch": "cursor/windows14-p1-wave2-worker-e-e584"}
+  },
+  "filter_criteria": [
+    "mere_architecture_permutations",
+    "module_A_plus_B_pairings",
+    "sam_plus_loss_or_backbone_swaps",
+    "mechanical_domain_transfers",
+    "parameter_only_scaling"
+  ],
+  "mutate_ids": ["w14w2a-011", "w14w2a-101", "w14w2a-104", "w14w2a-123", "w14E-071"],
+  "keep_with_note_ids": ["w14w2a-012", "w14w2a-034", "w14w2a-121", "w14D2-001", "w14D2-067", "w14D2-112", "w14E-001", "w14E-029", "w14E-053", "w14E-067", "w14E-084"],
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave2/judge_B.md",
+    "Windows14/_state/tasks/p1/wave2/judge_B.flags.jsonl",
+    "Windows14/_state/tasks/p1/wave2/judge_B.done.json"
+  ],
+  "unresolved_items": [
+    "worker_C shard was not judged (still generating per dispatch); a separate judge_B pass on worker_C is required before wave2 consolidation is complete.",
+    "Cross-shard near-duplicate hypotheses were NOT deduped here (out of judge_B scope); consolidator must merge families listed in judge_B.md, e.g., vocabulary interference (w14D2-026 / w14E-034 / w14E-089), plurality (w14D2-029 / w14E-037..042), caption-salience bias (w14D2-087 / w14E-055 / w14E-060 / w14E-103 / w14E-107), pre-NMS score-mass primitive (w14D2-001 / w14D2-112), generated-imagery benchmark contamination (w14w2a-112 / w14w2b-077 / w14w2b-084 / w14w2b-085).",
+    "Cross-wave overlap: w14E-029 / w14E-036 (negation) overlap wave1 negation entries (w14_p1b_122 / w14p1c-092); consolidator should merge with the wave2 attraction-effect framing as the stronger form.",
+    "5 mutate verdicts carry explicit 'mutation' re-framing instructions in judge_B.flags.jsonl; consolidator should apply them at merge time rather than dropping the ideas.",
+    "Judge A verdicts were not available/consulted (independence requirement); conflicts between judge_A and judge_B flags must be resolved by the consolidator.",
+    "Novelty remains unverified for all 508 ideas; no citations or numbers were invented or checked."
+  ],
+  "recommended_next_task_type": "p1_wave2_consolidator",
+  "judged_at_utc": "2026-08-28T20:30Z"
+}
