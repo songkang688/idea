@@ -1,0 +1,39 @@
+{
+  "task_id": "p0_init",
+  "role": "implementation",
+  "wave": "C",
+  "status": "complete",
+  "completed_at_utc": "2026-08-28T17:33:30Z",
+  "branch": "cursor/windows13-p0-init-implementation-d93f",
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "bumped": false,
+  "output_files": [
+    "Windows13/README.md",
+    "Windows13/_state/research_state.json",
+    "Windows13/_state/window.lock.json",
+    "Windows13/_state/ideas_master.jsonl",
+    "Windows13/_state/research_ledger.md",
+    "Windows13/_state/agent_log.md",
+    "Windows13/selection_history/.gitkeep",
+    "Windows13/final_ideas/.gitkeep",
+    "Windows13/artifacts/.gitkeep",
+    "_p0_dispatch/tasks/p0_init/implementation.md",
+    "_p0_dispatch/tasks/p0_init/implementation.json",
+    "_p0_dispatch/tasks/p0_init/done_implementation.json"
+  ],
+  "git": {
+    "init_commit": "38641a7a5813ed06b9b80c560e227ef382f76502",
+    "init_commit_message": "Research Idea Evolution - Windows13 - Initialization",
+    "init_push_result": "verified_success: git push exit 0; git ls-remote origin cursor/windows13-p0-init-implementation-d93f returned 38641a7a5813ed06b9b80c560e227ef382f76502 (matches local) at 2026-08-28T17:32:40Z",
+    "followup_commit_note": "a follow-up commit on this branch (permitted per decision.json commit_message_notes) records the verified push SHA in research_state.json git_safety and adds the implementation reports; its own push is verified via ls-remote before this agent reports completion",
+    "force_push": false
+  },
+  "unresolved_items": [
+    "Wave C verification should independently confirm: (a) Windows13/_state/window.lock.json is the sole window.lock.json across all origin heads, (b) research_state.json and window.lock.json JSON validity and required fields, (c) remote branch SHA matches the reported commits.",
+    "The P1 gate family (origin/cursor/p1-gate-state-reader-e933, origin/cursor/p1-lock-verifier-663b) was blocked awaiting exactly one authoritative locked window.lock.json; it should be re-run against this branch.",
+    "Pre-existing repo hygiene issues out of P0 scope (from consolidator): Windows11/_state/research_state.json on origin is malformed JSON; Windows8 branch carries a tracked binary artifact (density_head.pt)."
+  ],
+  "recommended_next_task_type": "wave_c_verification"
+}
