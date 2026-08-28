@@ -1,0 +1,45 @@
+{
+  "task_id": "P1-genA-01-sam-peft",
+  "role": "Generator",
+  "status": "complete",
+  "window": "Windows16",
+  "territory": "SAM/PEFT: Segment Anything family adaptation, parameter-efficient fine-tuning (LoRA/adapters/prompt tuning) for segmentation foundation models",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-01_sam_peft.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-01-sam-peft.done.json"
+  ],
+  "candidate_count": 110,
+  "target_band": "80-120",
+  "candidate_id_range": "samp-0001..samp-0110",
+  "clusters": {
+    "lora_placement_structure": 12,
+    "prompt_decoder_adaptation": 11,
+    "domain_specific_adaptation": 10,
+    "data_efficiency_label_scarcity": 10,
+    "forgetting_zero_shot_preservation": 9,
+    "efficiency_compression_interplay": 8,
+    "peft_science_analysis": 10,
+    "composability_multitask_federated": 9,
+    "automatic_prompting_policies": 8,
+    "video_temporal_adaptation": 7,
+    "uncertainty_calibration_quality": 7,
+    "evaluation_benchmark_hygiene": 9
+  },
+  "evidence_labels": {
+    "HYPOTHESIS": 104,
+    "MODEL SPECULATION": 6
+  },
+  "schema_notes": "Each JSONL line carries the parent-mandated fields (candidate_id, territory, one_line_idea, cluster, problem, core_hypothesis, falsifiable_prediction, why_important, why_possibly_novel, minimal_falsification_experiment, main_risk, community_default_belief, why_it_might_be_wrong, fastest_falsifying_experiment, evidence_label) plus title and the task_queue shard_format aliases (core_claim, method_sketch, novelty_hook, kill_risk) mirroring their counterparts. Every candidate answers: what the community assumes (community_default_belief), why it may be wrong (why_it_might_be_wrong), and the fastest falsifying experiment (fastest_falsifying_experiment).",
+  "compliance": {
+    "forbid_fiction": "No fabricated papers, citations, benchmark numbers, dataset facts, or claimed experimental results; all quantitative statements are phrased as falsifiable predictions under HYPOTHESIS or MODEL SPECULATION labels.",
+    "novelty_claims": "All novelty statements are hedged as possibly-novel and explicitly marked unverified; no verified novelty claimed.",
+    "protected_files": "window.lock.json, research_state.json, ideas_master.jsonl untouched; no Windows dirs created; no Windows numbers scanned."
+  },
+  "unresolved_items": [
+    "Novelty of all 110 candidates is unverified against the literature; Wave B dedup plus any novelty-checking stage must vet before promotion.",
+    "Intra-shard near-duplicates were minimized by design but a few conceptual neighbors remain for dedup review (e.g. samp-0006 vs samp-0102 on trivial-baseline audits; samp-0021 vs samp-0044 on drift metric vs retention benchmark; samp-0072 vs samp-0075 on routing vs retrieval; samp-0103 vs samp-0105 on prompt-protocol confounds).",
+    "Cross-territory overlap likely with genA-02 (medical seg), genA-08 (uncertainty), and genA-07 (benchmark weaknesses) shards; dedup should treat cluster tags uncertainty_calibration_quality and evaluation_benchmark_hygiene as high-collision zones.",
+    "samp-0104 (pretraining contamination audit) is feasibility-contingent on pretraining-data accessibility, flagged inside the record."
+  ],
+  "recommended_next_task_type": "next generator (P1-genA-02-medical-seg per task_queue dispatch_order; P1_WAVE_B_DEDUP once all Wave A shards land)"
+}
