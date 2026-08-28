@@ -1,0 +1,47 @@
+{
+  "task_id": "p1_gen_d_object_detection",
+  "role": "generator",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "branch": "cursor/p1-gen-d-object-detection-07a3",
+  "territory": "Object detection - open-vocabulary, small/dense objects, long-tail, detection-segmentation interplay, foundation-model failure modes. Explicitly not architecture mix-and-match.",
+  "status": "done",
+  "idea_count": 100,
+  "id_seed_range": "W13-P1-D-001..W13-P1-D-100",
+  "clusters": {
+    "open-vocabulary": 16,
+    "small-dense-objects": 14,
+    "long-tail": 14,
+    "detection-segmentation-interplay": 12,
+    "fm-failure-modes": 14,
+    "localization-vs-recognition": 8,
+    "counting-density": 6,
+    "evaluation-artifacts": 8,
+    "annotation-label-noise": 8
+  },
+  "outputs": [
+    "Windows13/_state/tasks/p1/generators/gen_d_object_detection/ideas_shard.jsonl",
+    "Windows13/_state/tasks/p1/generators/gen_d_object_detection/ideas_shard.md",
+    "Windows13/_state/tasks/p1/generators/gen_d_object_detection/done.json"
+  ],
+  "guarantees": {
+    "candidates_only": true,
+    "novelty_verified": false,
+    "evidence_labels_present": true,
+    "no_fabricated_papers_numbers_datasets_results": true,
+    "canonical_state_untouched": [
+      "Windows13/_state/ideas_master.jsonl",
+      "Windows13/_state/research_state.json",
+      "Windows13/_state/window.lock.json"
+    ],
+    "other_generator_shards_untouched": true
+  },
+  "validation": {
+    "jsonl_lines_parse": true,
+    "required_fields_complete": true,
+    "id_sequence_contiguous": true,
+    "duplicate_ids": 0
+  },
+  "recommended_next_task_type": "p1_wave_b_dedup",
+  "completed_at_utc": "2026-08-28T18:45:00Z"
+}
