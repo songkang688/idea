@@ -1,0 +1,17 @@
+{
+  "task_id": "pipeline-supervisor-tick",
+  "status": "complete",
+  "output_files": [
+    "/workspace/_state/tasks/pipeline/queue.json",
+    "/workspace/_state/tasks/pipeline/supervisor.md",
+    "/workspace/_state/tasks/pipeline/supervisor.done.json"
+  ],
+  "unresolved_items": [
+    "/workspace/_state/tasks/P0/wave_B/decision.json is still missing; P0 Wave B consolidator must write it with ready_for_implementation=true and a canonical windows_path",
+    "window.lock.json does not exist anywhere in the workspace; P0 cannot pass its completion gate",
+    "P0_IMPLEMENTATION remains blocked (see /workspace/_state/tasks/P0/wave_C/done.json, recommended WAIT_P0_DECISION) and must be re-dispatched only after decision.json is ready",
+    "Untracked _state/tasks/P1/ and _state/tasks/P5/ outputs exist but must not be consumed while P1-P7 are blocked"
+  ],
+  "recommended_next_task_type": "P0_CONSOLIDATOR_DECISION",
+  "timestamp_utc": "2026-08-28T17:31Z"
+}

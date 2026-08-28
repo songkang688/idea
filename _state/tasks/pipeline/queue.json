@@ -1,0 +1,34 @@
+{
+  "active_stage": "P0",
+  "blocked_stages": ["P1", "P2", "P3", "P4", "P5", "P6", "P7"],
+  "skip_forbidden": true,
+  "p0_lock_ok": false,
+  "markers_observed": {
+    "window_lock_json": false,
+    "p0_wave_b_decision_json": false,
+    "p0_wave_c_done_json": "present (P0-implementation status=blocked, recommended_next_task_type=WAIT_P0_DECISION)"
+  },
+  "next_dispatch": ["P0_CONSOLIDATOR_DECISION"],
+  "do_not_dispatch": [
+    "P0_IMPLEMENTATION",
+    "P1_GENERATORS",
+    "P2_REVIEWERS",
+    "P3_SEARCH",
+    "P4_ATTACK",
+    "P5_EXPERIMENT",
+    "P6_MEETING",
+    "P7_PACKAGES"
+  ],
+  "dispatch_conditions": {
+    "P0_IMPLEMENTATION": "only after /workspace/_state/tasks/P0/wave_B/decision.json exists with ready_for_implementation=true; then next_dispatch becomes [P0_IMPLEMENTATION, P0_VERIFICATION]",
+    "P0_VERIFICATION": "if window.lock.json exists, next_dispatch becomes [P0_VERIFICATION]"
+  },
+  "completion_gate": {
+    "P0": ["window.lock.json", "window_locked=true", "P0 verification PASS"],
+    "advance_rule": "only when current stage verification done.json status=complete AND recommended_next_task_type indicates next stage"
+  },
+  "last_tick": {
+    "task_id": "pipeline-supervisor-tick",
+    "timestamp_utc": "2026-08-28T17:31Z"
+  }
+}
