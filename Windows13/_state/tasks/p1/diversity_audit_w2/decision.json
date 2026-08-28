@@ -1,0 +1,337 @@
+{
+  "task_id": "p1_diversity_audit_w2",
+  "role": "consolidator",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "ok",
+  "irreconcilable": false,
+  "meta_judge_needed": false,
+  "branch": "cursor/p1-diversity-audit-consolidator-w2-942c",
+  "decided_at_utc": "2026-08-28T21:20:00Z",
+  "canonical_base": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w2-3111",
+    "commit": "929445dd130fa6b094024e7b00df42b7af6b04c6",
+    "accepted_count_canonical": 494,
+    "verification": "wc -l Windows13/_state/ideas_master.jsonl = 494 on this branch tip; python json parse of all lines = 494 records, 494 unique id_seed values",
+    "ideas_master_modified_by_this_task": false
+  },
+  "inputs": {
+    "auditor_A_mode_collapse": {
+      "branch": "origin/cursor/p1-diversity-audit-w2-auditor-a-7ef7",
+      "commit": "b974923",
+      "files": ["Windows13/_state/tasks/p1/diversity_audit_w2/auditor_A.json", "auditor_A.md", "done_auditor_A.json"],
+      "audited_commit": "929445dd130fa6b094024e7b00df42b7af6b04c6 (records 494)"
+    },
+    "auditor_B_quality_blindspots": {
+      "branch": "origin/cursor/p1-diversity-audit-w2-auditor-b-0688",
+      "commit": "2c1e08e",
+      "files": ["Windows13/_state/tasks/p1/diversity_audit_w2/auditor_B.json", "auditor_B.md", "done_auditor_B.json"],
+      "audited_commit": "929445dd130fa6b094024e7b00df42b7af6b04c6 (records 494)"
+    },
+    "auditor_C_adversary": {
+      "branch": "origin/cursor/p1-diversity-audit-w2-auditor-c-32c6",
+      "commit": "43a0856",
+      "files": ["Windows13/_state/tasks/p1/diversity_audit_w2/auditor_C.json", "auditor_C.md", "done_auditor_C.json"],
+      "audited_commit": "929445dd130fa6b094024e7b00df42b7af6b04c6 (records 494)"
+    },
+    "prior_w1_consolidator": {
+      "branch": "origin/cursor/p1-diversity-audit-consolidator-w1-25a0",
+      "commit": "a8592cb",
+      "file": "Windows13/_state/tasks/p1/diversity_audit_w1/decision.json",
+      "note": "w1 accepted_count_canonical was 248; queue gen_i..gen_p partially executed since (h/j/k dispatched under their own letters, gen_i's territory taken by gen_h, gen_l/gen_m in flight)"
+    }
+  },
+  "off_master_awareness": {
+    "method": "git fetch origin --prune, then git ls-tree -r over ALL 164 origin branches for Windows13/_state/tasks/p1/generators/ paths, plus branch-name scan (executed by this consolidator before writing this plan)",
+    "generator_shards_found_on_origin": {
+      "gen_a_sam_foundation_peft": "origin/cursor/p1-gen-a-sam-foundation-peft-c8d4 (in master via wave_b_w1)",
+      "gen_b_hard_domain_dense_prediction": "origin/cursor/p1-gen-b-hard-domain-a13a (in master via wave_b_w1)",
+      "gen_c_contrarian_eval": "on implementation lock branch and descendants (in master via wave_b_w1)",
+      "gen_d_object_detection": "origin/cursor/p1-gen-d-object-detection-07a3 (in master via wave_b_w2)",
+      "gen_e_vlm_dense_prediction": "origin/cursor/w13-p1-gen-e-vlm-dense-9412 (in master via wave_b_w2)",
+      "gen_f_synthetic_data": "origin/cursor/w13-p1-gen-f-synthetic-data-3a94 (in master via wave_b_w2)",
+      "gen_g_domain_shift": "origin/cursor/p1-gen-g-domain-shift-0165 (100 ideas OFF-MASTER, judges pending)",
+      "gen_h_sr_restoration": "origin/cursor/p1-gen-h-sr-restoration-1829 (100 ideas OFF-MASTER, judges pending)",
+      "gen_j_diffusion_model_science": "origin/cursor/p1-gen-j-diffusion-science-3470 (104 ideas OFF-MASTER, judges pending)",
+      "gen_k_3d_geometry_video": "origin/cursor/p1-gen-k-3d-geometry-video-dc89 (105 ideas OFF-MASTER, judges pending)"
+    },
+    "not_found_on_any_origin_branch": {
+      "gen_l_llm_agent_vision": "in flight / unpushed per parent dispatcher; treated as BURNED regardless",
+      "gen_m_training_dynamics_objectives": "in flight / unpushed per parent dispatcher; treated as BURNED regardless"
+    },
+    "letters_verified_free_on_origin": ["gen_n", "gen_o", "gen_p", "gen_q", "gen_r", "gen_s", "gen_t", "gen_u", "gen_v"],
+    "off_master_raw_idea_count": 409,
+    "none_of_these_shards_were_appended_to_master_by_this_task": true
+  },
+  "consensus_findings": [
+    "EVIDENCE (3/3): surface/lexical duplication remains LOW at 494 (A: max pairwise one-liner token-Jaccard 0.282, 0 pairs >= 0.33 of 121771; C: max 0.246 on its instrument); collapse is family/genre-level, not lexical.",
+    "EVIDENCE (3/3): the SAM guard HELD — SAM/SAM2 subject share fell 35.1% -> ~16-17.6% (87/494, all wave1; wave2 added zero); already below the w1 running-share target of 25%.",
+    "EVIDENCE (3/3): genre collapse is now the dominant axis: 494/494 contrarian schema; C genre split debunk 51.4% + mixed 23.9% vs constructive 7.7%; A wave2 loose-constructive 4.9%; B w2 clear-constructive 25.2% on its looser hand-label. Instruments differ (see reconciliation R6) but all three demand a constructive rebalance.",
+    "EVIDENCE (3/3): annotation/convention/label-noise pathology is the largest surviving cross-shard family (A: 194/494 = 39.3% mention-share, largest fingerprint cell 13 vs cap 6; C: P10 convention_mismatch 49 + P1 annotation_noise_floor 44; B: T9 proposed cap) — escalate to HARD BAN as primary subject.",
+    "EVIDENCE (3/3): w1 quality gates were never operationalized in the accepted master: numeric kill thresholds 23/494 (C) with wave2 at 4/246 (B); structured evidence_label dict 94/494 (gen_a only); family_fingerprint tags 0/246 in wave2 (B). gen_j (104/104 thresholds + full schema) proves the gates are satisfiable.",
+    "EVIDENCE (3/3, off-master inspection): gate compliance of unjudged shards is bimodal — gen_j FULL, gen_k compliant-divergent-schema (separate kill_threshold field, 98-105/105), gen_h near-zero (2/100), gen_g zero (pre-audit generation, excusable at generation time). Wave-3 judges must retrofit or remand.",
+    "EVIDENCE (3/3): the w1 blind spots SR/restoration, diffusion science, 3D/geometry/video, domain-shift are FILLED off-master (gen_h 100, gen_j 104, gen_k 105, gen_g 100 = 409 raw ideas awaiting judges); judging, not generation, is the current bottleneck (C A8).",
+    "EVIDENCE (2/3 A+C, B concurs via tier data): 1000+ target is reachable with existing letters alone — A projects ~903 after in-flight judging and ~1230 after the queued letters; C projects ~910 and ~1235 (both HYPOTHESIS arithmetic on 81.8% observed blended acceptance). New letters are diversity plays, not volume plays.",
+    "EVIDENCE (3/3): zero fake citations. C enumerated all 14 citation-bearing master records (all gen_a prior_work_basis, all real well-known works); 0 citation strings in the 409 off-master shard ideas; no auditor added citations; this consolidator adds none.",
+    "EVIDENCE (A+B): cross-wave template reuse is the new dominant permutation axis — judge_A permutation flags on 73/246 accepted wave2 (29.7%), wave1_family_adjacent 39/246; these 73 ids are the top prior-art/novelty risk (novelty_status still unverified for 494/494)."
+  ],
+  "reconciliation": [
+    {
+      "id": "R1_queue_priority_p_vs_o_first",
+      "positions": {"A": "gen_p first (elevated from w1 priority 8), gen_o second", "B": "dispatch order gen_o, gen_m, gen_n, gen_p; gen_p 'still justified, urgency reduced' by organic wave2/gen_j/gen_k improvement", "C": "gen_p first, gen_o second"},
+      "resolution": "gen_p first, gen_o second (2/3 A+C; B does not contest gen_p's justification, only its urgency). B's refinement adopted verbatim: gen_p is pointed at the debunk-heaviest clusters (detection-eval pathology, annotation conventions) for debunk-to-repair conversion, keeping the >=80% constructive mandate. In practice both dispatch in the same commissioning wave, so the cost of the disagreement is zero.",
+      "escalation_needed": false
+    },
+    {
+      "id": "R2_gen_m_disposition",
+      "positions": {"A": "gen_m queued priority 3", "B": "gen_m mandate intact, dispatch 2nd, plus 9 anti-overlap ids", "C": "gen_m priority 3 with an EXTENDED continual/open-world sub-mandate"},
+      "resolution": "All three auditors treated gen_m as dispatchable, but the parent dispatcher lock states gen_m is already in flight (possibly unpushed); this consolidator's all-branch scan confirms no gen_m shard on origin yet. gen_m is therefore recorded as BURNED/IN-FLIGHT and removed from the dispatch queue — its mandate stays exactly as fixed in the w1 decision (B's 9 anti-overlap ids are recorded below for the wave that JUDGES gen_m, since the generator can no longer be re-briefed). C's continual/open-world extension cannot be retrofitted onto an in-flight shard; that sub-territory is redirected to the new reserve letter gen_v (with B's rank-2 model_lifecycle_updating, which it adjoins).",
+      "gen_m_judge_time_anti_overlap_ids": ["W13-P1-D-031", "W13-P1-D-050", "W13-P1-E-075", "W13-P1-E-076", "W13-P1-F-036", "W13-P1-F-048", "W13-P1-F-058", "W13-P1-F-089", "W13-P1-F-095"],
+      "escalation_needed": false
+    },
+    {
+      "id": "R3_new_letter_mapping_A_C_vs_B",
+      "positions": {"A": "gen_q test-time compute/adaptation, gen_r cross-field transfer, gen_s embodied (reserve), gen_t efficiency (reserve)", "B": "gen_q efficiency_deployment, gen_r model_lifecycle, gen_s security, gen_t fairness, gen_u psychophysics", "C": "A's map adopted + narrowed gen_q; NEW gen_u adversarial_security_fairness"},
+      "resolution": "Adopted the A+C letter map (2/3, and C wrote after reading A, so the two maps are deliberately consistent). Every B territory survives under a different letter: B security (rank 3) + B fairness (rank 4) -> gen_u (C's letter, one shard); B efficiency (rank 1) -> gen_t; B model_lifecycle (rank 2) -> NEW reserve gen_v; B psychophysics (rank 5) -> folded into gen_q per A and C. Letters only were re-assigned; no B territory was dropped.",
+      "escalation_needed": false
+    },
+    {
+      "id": "R4_gen_q_tta_collision",
+      "positions": {"A": "gen_q mandate includes 'TTA failure modes under real shift', counting master-only coverage 0.2% as unowned", "C": "COLLISION: off-master gen_g already holds 14 dedicated TTA ideas G-001..G-014; narrow gen_q or defer until gen_g judged"},
+      "resolution": "C is correct — A counted master coverage only, and this consolidator's mandated off-master scan confirms gen_g's shard exists on origin/cursor/p1-gen-g-domain-shift-0165. gen_q is commissioned NARROWED: inference-time compute-scaling laws for perception, test-time search/ensembling, test-time training for dense prediction, plus the psychophysics and active-learning-folklore fold-ins; HARD anti-overlap guard banning TTA-method critique (entropy minimization, batch-statistics adaptation, TTA hyperparameter/stream pathologies) as primary subject; dispatch condition: only after gen_g is judged.",
+      "escalation_needed": false
+    },
+    {
+      "id": "R5_gen_r_commission_vs_keep_deferred",
+      "positions": {"A": "commission gen_r: w1 revisit rule triggered (coverage still 0.0%, in-flight h/j/k/l leave it untouched per shard inspection)", "B": "KEEP_DEFERRED_RECHECK_AT_AUDIT_W3: the w1 deferral condition referenced post-wave3 coverage, and wave3 is unjudged", "C": "revisit trigger met; queue at priority 7"},
+      "resolution": "Commissioned (2/3 A+C) but with B's caveat encoded as a dispatch condition: gen_r dispatches only after wave-3 judging of gen_g/h/j/k confirms cross-field coverage remains ~0 in the enlarged master. A and C both inspected the off-master shards and found no cross-field content, so the condition is expected to hold (EVIDENCE for the shards as generated; the accepted subset is what the condition checks).",
+      "escalation_needed": false
+    },
+    {
+      "id": "R6_constructive_count_instrument_spread",
+      "positions": {"A": "strict regex 1/494 constructive-phrased; wave2 loose 12/246 (4.9%)", "B": "wave2 clear-constructive 62/246 (25.2%) by hand-label; strict 22/246 (8.9%); portfolio strict 6-7%", "C": "portfolio constructive 38/494 (7.7%) by 4-way genre regex"},
+      "resolution": "Same criterion-variance pattern as w1 — NOT a factual conflict. Adopted: C's 7.7% as the portfolio headline; B's strict 8.9% as the wave2 strict figure; A's 4.9% retained as evidence that regex-visible constructive phrasing barely improved. Decision-relevant conclusion is unanimous: portfolio remains ~3:1 debunk-skewed and gen_p stays elevated. Stage-2 protected-id set = union of B w1's 46 ids, B w2's 62 clear-constructive ids, and C w2's 38 strict-constructive ids (genre-blind culling forbidden on all of them).",
+      "escalation_needed": false
+    },
+    {
+      "id": "R7_gen_t_priority",
+      "positions": {"B": "efficiency_deployment_science is its rank-1 new territory", "A": "gen_t reserve, priority 8, commission only if 1000-margin erodes", "C": "gen_t reserve, priority 9"},
+      "resolution": "Reserve status kept (2/3), but gen_t is FIRST reserve with an explicit promotion trigger: commission immediately if blended acceptance in wave-3 judging drops below ~70% (A's trigger) or once the six queued letters are dispatched. B's rank-1 support is recorded as dissent-in-favor-of-promotion.",
+      "escalation_needed": false
+    }
+  ],
+  "gen_i_retirement": {
+    "decision": "gen_i is RETIRED PERMANENTLY and must never be reassigned",
+    "grounds": "auditor C attack A5 (EVIDENCE): w1 queued gen_i_restoration_lowlevel but the dispatcher commissioned that territory as gen_h (origin/cursor/p1-gen-h-sr-restoration-1829), leaving gen_i a dangling letter with a stale mandate in a canonical decision file; auditor A concurs ('gen_i remains deferred: gen_h filled the restoration/low-level territory'). Letter registry is append-only; retiring beats deferring because a deferred letter with a stale mandate invites accidental double-commissioning."
+  },
+  "letters_burned_or_in_flight": {
+    "in_master": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f"],
+    "generated_off_master_awaiting_judges": ["gen_g", "gen_h", "gen_j", "gen_k"],
+    "in_flight_unpushed_treated_as_burned": ["gen_l", "gen_m"],
+    "retired_never_reassign": ["gen_i"],
+    "queued_by_this_decision": ["gen_p", "gen_o", "gen_n", "gen_u", "gen_q", "gen_r"],
+    "reserves": ["gen_t", "gen_s", "gen_v"],
+    "next_fresh_letter": "gen_w"
+  },
+  "next_task_queue": [
+    {
+      "task_id": "p1_gen_p_constructive_capability",
+      "role": "generator",
+      "generator_id": "gen_p_constructive_capability",
+      "priority": 1,
+      "was_w1_priority": 8,
+      "territory": "Genre rebalancer: enabling-capability hypotheses (new capability + falsifiable mechanism claim) in any territory, pointed FIRST at the debunk-heaviest clusters (detection-eval pathology, annotation conventions) for debunk-to-repair conversion; includes constructive eval-repair (paired/variance-budgeted designs, harness-invariant metrics, contamination-robust protocols with 'repaired protocol changes conclusion X' predictions)",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_p_constructive_capability/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-P-001..",
+      "fills": "portfolio constructive 7.7% (C) / wave2 loose-constructive 4.9% (A) vs debunk 51.4%; elevated by A(p1)+C(p1), B confirms still justified",
+      "anti_crowding_guards": [
+        ">= 80% constructive/capability records; 0% pure-audit genre",
+        "ban beats-SOTA framings without a mechanism claim",
+        "annotation/convention/label-noise pathology HARD BAN as primary subject",
+        "<= 10% SAM/SAM2 mentions",
+        "full gen_j gate schema mandatory (numeric kill threshold inside falsifiable_prediction + evidence_label dict + family_fingerprint + genre + needs_special_resources + seg_metric_dependent)",
+        "all global guards below"
+      ]
+    },
+    {
+      "task_id": "p1_gen_o_hard_domain_diversifier",
+      "role": "generator",
+      "generator_id": "gen_o_hard_domain_diversifier",
+      "priority": 2,
+      "was_w1_priority": 7,
+      "territory": "Hard domains gen_b ignored, with EXPLICIT underwater/sonar + microscopy/histology + document/OCR emphasis (all still ~0% primary at 494); remote sensing/satellite/aerial/UAV, industrial inspection/defect, agriculture; medical beyond the ambiguity lens (longitudinal/temporal, cross-site convention transfer, report-grounded tasks)",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_o_hard_domain_diversifier/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-O-001..",
+      "fills": "underwater 0.0%, microscopy 0.2-0.4%, document/OCR 0.2-0.4%, remote sensing 1.0-1.8%, agriculture ~0-0.2%, industrial 0 (A+B+C concur; B: 'highest-value remaining queue item'); medical share fell to ~11-12% so the cap has headroom",
+      "anti_crowding_guards": [
+        "HARD BAN smoke/fire/fog/transparent/amorphous-media examples",
+        "<= 25% medical records, all through the beyond-ambiguity lens",
+        "<= 5% SAM/SAM2 mentions; no port-model-X-to-domain-Y permutations - each idea needs a domain-native mechanism claim",
+        "full gen_j gate schema mandatory",
+        "all global guards below"
+      ]
+    },
+    {
+      "task_id": "p1_gen_n_scaling_memorization_data_laws",
+      "role": "generator",
+      "generator_id": "gen_n_scaling_memorization_data_laws",
+      "priority": 3,
+      "was_w1_priority": 6,
+      "territory": "Model/compute scaling laws of vision FMs, dense-task transfer scaling, EMERGENCE-claims audit (added per A+C), memorization in discriminative/dense models, membership inference on vision FMs, privacy of dense features, real-data composition laws; contamination as mechanism (not eval-critique)",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_n_scaling_memorization_data_laws/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-N-001..",
+      "fills": "scaling laws 0.2-0.8%, emergence ~0.4%, memorization/privacy 0.8-1.2% (A+B+C concur)",
+      "anti_crowding_guards": [
+        "STRENGTHENED anti-overlap vs accepted gen_f (B's verdict: territory partially colonized): ban synthetic-data-generation/curation-pipeline framings AND treat these 9 accepted ids as occupied ground requiring explicit differentiation: W13-P1-F-045, F-051, F-057, F-097, F-098, F-101, F-060, F-086, F-093",
+        "ban realism-not-the-active-ingredient framing (gen_f owns it, fingerprint already 12 vs cap 6)",
+        "each idea must name a data-level or scale-level intervention as the manipulated variable",
+        "<= 5% SAM/SAM2 mentions",
+        "full gen_j gate schema mandatory",
+        "all global guards below"
+      ]
+    },
+    {
+      "task_id": "p1_gen_u_adversarial_security_fairness",
+      "role": "generator",
+      "generator_id": "gen_u_adversarial_security_fairness",
+      "priority": 4,
+      "status": "NEW letter (C proposal, folds B's rank-3 security + rank-4 fairness territories; letter verified free on origin by this consolidator)",
+      "territory": "Attack science: adversarial patches/perturbations as mechanism claims, backdoor/poisoning of vision FMs and auto-label pipelines incl. synthetic-data supply chains, jailbreak-style attacks on VLM-grounded perception; fairness/demographic/geographic robustness with falsifiable mechanism claims; constructive forensics extending W13-P1-F-060",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_u_adversarial_security_fairness/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-U-001..",
+      "fills": "attack science ~0.4% primary, fairness ~0.2% primary (B blind-spot verdicts + C missing-territories; seeds W13-P1-D-059, F-044, F-060)",
+      "anti_crowding_guards": [
+        "each idea names an attack/bias mechanism + numeric kill threshold; no survey-style records",
+        "<= 20% eval-critique genre",
+        "<= 5% SAM/SAM2 mentions",
+        ">= 25% constructive; fairness records must carry mechanism claims, no pure-audit disparity catalogs",
+        "full gen_j gate schema mandatory",
+        "all global guards below"
+      ]
+    },
+    {
+      "task_id": "p1_gen_q_inference_time_compute",
+      "role": "generator",
+      "generator_id": "gen_q_inference_time_compute",
+      "priority": 5,
+      "status": "NEW letter, NARROWED from auditor A's proposal per auditor C attack A6 (letter verified free on origin)",
+      "dispatch_condition": "dispatch ONLY after gen_g is judged (its accepted TTA set defines the boundary)",
+      "territory": "Inference-time compute-scaling laws for perception, test-time search/ensembling, test-time training for dense prediction; fold-ins: active-learning/data-acquisition folklore (A), psychophysics-style human-model contrast designs (A+B+C)",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_q_inference_time_compute/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-Q-001..",
+      "fills": "test-time compute ~0.2%, active learning 0.6%, psychophysics 0-1.6% (A coverage counts; B blind-spot human_vision_psychophysics_alignment)",
+      "anti_crowding_guards": [
+        "HARD ANTI-OVERLAP: TTA-method critique (entropy minimization, batch-statistics adaptation, TTA hyperparameter circularity, stream collapse, do-no-harm gating, test-time prompt tuning) BANNED as primary subject — off-master gen_g owns G-001..G-014",
+        "ANTI-OVERLAP: in-flight gen_l owns LLM/agent-orchestrated loops; gen_q owns non-LLM test-time mechanisms for dense/detection models",
+        "<= 5% SAM/SAM2 mentions",
+        "annotation-pathology hard ban",
+        "full gen_j gate schema mandatory",
+        "all global guards below"
+      ]
+    },
+    {
+      "task_id": "p1_gen_r_cross_field_transfer",
+      "role": "generator",
+      "generator_id": "gen_r_cross_field_transfer",
+      "priority": 6,
+      "status": "NEW letter (w1-deferred territory; A+C say revisit trigger met; B's caveat encoded as the dispatch condition; letter verified free on origin)",
+      "dispatch_condition": "dispatch ONLY after wave-3 judging of gen_g/h/j/k confirms cross-field coverage remains ~0 in the enlarged master (honors B's KEEP_DEFERRED_RECHECK_AT_AUDIT_W3)",
+      "territory": "Vision <-> audio/time-series/graphs/scientific-imaging transfer science",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_r_cross_field_transfer/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-R-001..",
+      "fills": "cross-field transfer 0.0% at 494 (3/3 auditors), and A+C inspected off-master h/j/k shards and found the territory untouched",
+      "anti_crowding_guards": [
+        "each idea names both fields AND the specific transferred invariance/structure",
+        "hard ban on bare apply-architecture-X-to-field-Y permutations",
+        "full gen_j gate schema mandatory",
+        "all global guards below"
+      ]
+    }
+  ],
+  "reserve_letters_not_yet_commissioned": [
+    {
+      "generator_id": "gen_t_efficiency_deployment_science",
+      "reserve_rank": 1,
+      "territory": "quantization/pruning/distillation-as-science, latency-accuracy laws, edge deployment for dense prediction (non-SAM)",
+      "promotion_trigger": "blended acceptance in wave-3 judging < ~70% (A) OR all six queued letters dispatched; B ranked this territory 1st — dissent recorded in favor of promotion",
+      "anti_overlap_if_commissioned": ["W13-P1-F-052 distillation ceiling", "teacher-student block W13-P1-F-028/F-031/F-035/F-036"]
+    },
+    {
+      "generator_id": "gen_s_embodied_interactive_perception",
+      "reserve_rank": 2,
+      "territory": "embodied/robotic/active perception + interactive human-in-the-loop vision",
+      "promotion_trigger": "after gen_q/gen_r dispatch if acceptance holds (A+C concur)"
+    },
+    {
+      "generator_id": "gen_v_model_lifecycle_continual",
+      "reserve_rank": 3,
+      "territory": "NEW (B rank-2 model_lifecycle_updating + C's continual/open-world sub-mandate that could not be retrofitted onto in-flight gen_m): version drift, regression testing across model updates, continual/open-world learning, dataset/model half-life economics",
+      "seeds": ["W13-P1-F-102", "W13-P1-F-069"],
+      "promotion_trigger": "next diversity audit (w3) if coverage still ~0 after gen_m is judged; distinct from gen_m's within-run training dynamics"
+    }
+  ],
+  "do_not_recommission": ["gen_g", "gen_h", "gen_j", "gen_k", "gen_l", "gen_m", "detection (gen_d saturated)", "vlm_dense (gen_e saturated)", "synthetic_data (gen_f owned-and-closed)", "gen_i (retired)"],
+  "global_anti_crowding_guards": [
+    "KEEP (w1): SAM/SAM2-subject records <= 5% per new shard (<= 10% only where granted per-letter); running master SAM-subject share must stay below 25% (currently ~16-17.6%, guard HELD)",
+    "KEEP (w1): BAN calibration/uncertainty as a primary cluster in any new shard (family grew 31 -> 56 via pre-guard wave2; C P9)",
+    "KEEP (w1): HARD BAN smoke/fire/fog/transparent/amorphous-scattering-media running examples",
+    "KEEP (w1): BAN template families F1-F5; structure quota >= 8 distinct sub-clusters per ~100-idea shard, none > 15%; metric independence >= 30% of falsifications not segmentation/mask-metric-bound; genre quota >= 25% constructive and <= 40% pure debunk per shard",
+    "ESCALATE (w2, A + C P1/P10 + B T9): annotation/convention/label-noise pathology from stop-feeding to HARD BAN as primary subject in all new shards (mention-share 39.3%, largest fingerprint cell 13 vs cap 6)",
+    "ADD (w2, A): cap X-is-a-free/cheap-predictor-of-Y ideas at <= 3 per shard (cross-shard template now in all 6 shards)",
+    "ADD (w2, A): cap equalization/matched-budget-null primary framing at <= 3 per shard (judge fingerprints 9 + 7 both exceed cap 6)",
+    "ADD (w2, A): ban realism/fidelity-is-not-the-active-ingredient framing outside gen_f (fingerprint 12 vs cap 6)",
+    "ADD (w2, A): cap small/dense/crowded/counting as primary cluster at <= 5 per new shard (new 6/6-shard convergence, 13.8%)",
+    "ADD (w2, A+B): wave1-template-port rule — re-instantiating a wave1 critique template on a new subject requires a subject-native mechanism claim (73/246 accepted wave2 carry permutation flags)",
+    "ADD (w2, C A1): wave-3+ judges treat family membership as a MERGE TRIGGER, not only pairwise duplication; family_fingerprint cap <= 6 enforced at judge time AND at Stage-2 selection (14 cells already exceed it)",
+    "KEEP (w1): off-master awareness — every consolidator enumerates generator shards on ALL origin branches before accepting a commissioning plan (this task did)"
+  ],
+  "quality_gates_next_wave": [
+    "GATE-1 (w1, kept): every falsifiable_prediction carries a numeric kill threshold INSIDE the prediction field (master 23/494; gen_j proves satisfiable at 104/104)",
+    "GATE-2 (w1, sharpened per B): every record carries the structured evidence_label dict; CANONICAL SCHEMA = gen_j's (evidence_label dict + genre + family_fingerprint + needs_special_resources + seg_metric_dependent); wave2's uniform 5-field inline tags are mechanically normalizable — backfill before Stage 2",
+    "GATE-3 (w1, kept; B: gen_f worst at 18/88): fastest_falsification_experiment states a time/cost bound and requires only public data + single GPU, or explicitly sets needs_special_resources=true",
+    "GATE-4 (w2, NEW per B): each fastest experiment names >= 1 public dataset AND >= 1 public model (only 1 named-system mention across 492 wave2 experiment fields — benchmark-shopping risk)",
+    "GATE-5 (w2, NEW per C A3/A4): RETROFIT DUTY — wave-3 judges attach kill_threshold + evidence_label to gen_g (0/100 numeric) and gen_h (2/100) records at judge time or remand the shard; gen_k's separate kill_threshold field is normalized into falsifiable_prediction at wave-3 consolidation; a gate-compliance line is mandatory in the wave-3 consolidator done-file",
+    "GATE-6 (w2, NEW per C A4): judges audit self-declared genre labels against claim phrasing before applying genre quotas (gen_j self-declared 35.6% constructive vs 7% by phrasing; gen_k 32.4% vs 9%)",
+    "GATE-7 (w1, kept): no fake citations; prior-work claims labeled VERIFIED PRIOR WORK vs MODEL SPECULATION",
+    "GATE-8 (w2, NEW per B novelty debt): prior-art triage lane — sample ~10% per shard and verify against real literature (no invented citations) before Stage 2 ranking; priority order: the 73 permutation-flagged wave2 ids, then W13-P1-D-001 and W13-P1-E-031 (surviving prior-art risk flags)"
+  ],
+  "stage2_selection_notes": [
+    "Family caps at the 200-cut (C, slot counts HYPOTHESIS; mechanism is the demand): P4 metric/harness critique <= 10, P9 calibration <= 8, P10 convention mismatch <= 8, P1 annotation-noise floor <= 6, P2 name/synonym sensitivity <= 5, P6 oracle localization/recognition <= 3 — extends w1 F1-F5 caps; B's T6-T11 caps (cheap-predictor <= 5, teacher-bias <= 4, realism <= 5, annotation-convention <= 5, equalization-null <= 4, oracle-decomposition <= 3) apply to the same informal families and the tighter of the two applies per family",
+    "PROTECT from genre-blind culling: union of B w1's 46-id list, B w2's 62-id clear-constructive list, C w2's 38-id strict-constructive list",
+    "Normalize the evidence_label / kill-threshold schema across all shards (gen_j canonical) before Stage-2 ranking (400/494 master records currently schema-less to programmatic readers)",
+    "Discount claimed cheapness for B w1's 32 special-resource ids; wave2 contributes 0 special-resource fastest tests",
+    "Audit self-declared genre fields against claim phrasing before applying genre quotas (C)"
+  ],
+  "capacity_math_toward_1000": {
+    "evidence_label": "HYPOTHESIS (auditor arithmetic on EVIDENCE inputs; no new numbers invented by this consolidator)",
+    "master_now": 494,
+    "off_master_raw_verified": {"gen_g": 100, "gen_h": 100, "gen_j": 104, "gen_k": 105, "total": 409},
+    "in_flight_unpushed_expected": "gen_l ~100, gen_m ~100",
+    "observed_blended_acceptance": "494/604 = 81.8% (wave1 248/302, wave2 246/302)",
+    "auditor_projections": "A: ~903 after in-flight judging, ~1230 after queued letters; C: ~910 after in-flight judging, ~1235 after gen_m/n/o/p",
+    "conclusion": "1000+ reachable with already-burned letters plus the n/o/p queue alone; gen_u/q/r are diversity plays; judging g/h/j/k (409 raw ideas) is the bottleneck and should run as a parallel track"
+  },
+  "counts": {
+    "accepted_count_canonical": 494,
+    "ideas_master_modified": false,
+    "off_master_ideas_awaiting_judges": 409,
+    "next_task_queue_length": 6,
+    "reserve_letters": 3
+  },
+  "recommended_next_task_type": [
+    "p1_wave_b_w3 (judge wave over generated shards gen_g + gen_h + gen_j + gen_k: 3 judges + consolidator, applying GATE-5 retrofit duty and family-merge triggers; allowed to run G+H+J or G+H+K first if 4-shard waves are too large — parallel track, NOT this consolidator's merge to perform)",
+    "p1_wave_a_more_generators (dispatch gen_p, gen_o, gen_n, gen_u now; gen_q after gen_g judged; gen_r after wave-3 coverage check)"
+  ],
+  "no_fake_citations": true,
+  "scope_compliance": {
+    "window_lock_json_untouched": true,
+    "windows_id_unchanged": "Windows13",
+    "ideas_master_jsonl_untouched": true,
+    "generator_shards_not_copied_into_master": true,
+    "research_state_json_changes": "exploration/diversity-audit fields only; windows_id Windows13, window_locked true, Stage 1 preserved",
+    "research_ledger_md_changes": "append-only w2 audit section",
+    "own_branch": "cursor/p1-diversity-audit-consolidator-w2-942c",
+    "force_push": false
+  }
+}
