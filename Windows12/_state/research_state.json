@@ -1,0 +1,135 @@
+{
+  "windows_id": "Windows12",
+  "windows_path": "Windows12",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows12-p0-init-a095",
+  "base_branch": "main",
+  "created_at": "2026-08-28T16:57:10Z",
+  "supervisor": "Windows12",
+  "current_stage": "Stage 1",
+  "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "total_ideas": 0,
+  "survivors": 0,
+  "final_target": 3,
+  "status": "initialized",
+  "numbering": {
+    "scan_scope": [
+      "worktree_top_level",
+      "origin_heads"
+    ],
+    "identity_instruction": "Human named this supervisor Windows12; numbering is frozen for this window.",
+    "existing_windows_found": [
+      {
+        "id": "Windows2",
+        "evidence": "top-level dir on origin/cursor/research-idea-evolution-windows2-c2c9 and related branches"
+      },
+      {
+        "id": "Windows3",
+        "evidence": "staging/ on origin/cursor/idea-evolution-windows3-b534 (not top-level Windows3/)"
+      },
+      {
+        "id": "Windows4",
+        "evidence": "top-level dir on origin/cursor/windows4-research-idea-evolution-2962"
+      },
+      {
+        "id": "Windows6",
+        "evidence": "top-level dir on origin/cursor/windows6-research-idea-evolution-b55d"
+      },
+      {
+        "id": "Windows8",
+        "evidence": "top-level dir on origin/cursor/windows8-research-idea-evolution-cd91"
+      },
+      {
+        "id": "Windows9",
+        "evidence": "top-level dir on origin/cursor/windows9-p0-init-3045"
+      },
+      {
+        "id": "Windows10",
+        "evidence": "top-level dir on origin/cursor/windows10-p0-init-26ec"
+      }
+    ],
+    "windows_not_found_on_origin_heads": [
+      "Windows1",
+      "Windows5",
+      "Windows7",
+      "Windows11",
+      "Windows12"
+    ],
+    "max_n": 10,
+    "template_next": "Windows11",
+    "this_round": "Windows12",
+    "numbering_decision": "Keep Windows12 (human identity + no overwrite). Sequential N+1=Windows11 left unused to avoid colliding with concurrent inits.",
+    "overwrite_check": "passed_no_prior_windows12_in_this_worktree_and_no_windows12_on_origin_heads"
+  },
+  "git_safety": {
+    "pre_init_branch": "main",
+    "pre_init_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+    "working_tree_at_pre_init": "clean",
+    "force_push": false,
+    "init_commit": "6cfc93d8e765fd333c56e14ac94bca96d614aa7e",
+    "push_status": "verified_success",
+    "push_verified_at": "2026-08-28T16:58:19Z",
+    "push_remote_sha": "6cfc93d8e765fd333c56e14ac94bca96d614aa7e",
+    "push_failure_reason": null
+  },
+  "ideas_index": [],
+  "current_ranking": [],
+  "agent_slots": {
+    "max_concurrent": 3,
+    "required_model": "claude-fable-5-thinking-xhigh",
+    "environment": "cloud",
+    "active": [],
+    "completed": [],
+    "failed": [
+      {
+        "id": "bc-36bb04b7-a554-5033-9e08-baddd846a8b6",
+        "role": "scan_windows_numbering",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-4fc9cb23-02d9-526e-a79a-2809cb4edd8d",
+        "role": "p0_numbering_auditor",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-57cee90a-6153-5870-a9a0-0e6fedfe4ffe",
+        "role": "retry_windows_numbering_scan",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-ae4201ad-f61f-5793-9d06-7856847cb033",
+        "role": "retry_git_safety_auditor",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-1141ef00-783b-54e6-bfda-a11f5884c219",
+        "role": "retry_p0_completeness_audit",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-249364f3-9c4d-568e-b5d5-ba1e9f130fb9",
+        "role": "git_safety_audit",
+        "error": "You've used all included Cloud Agent usage. Enable on-demand usage to continue using Cloud Agents."
+      }
+    ]
+  },
+  "evidence_policy": {
+    "labels": [
+      "KNOWN FACT",
+      "VERIFIED PRIOR WORK",
+      "EVIDENCE",
+      "HYPOTHESIS",
+      "MODEL SPECULATION",
+      "EXPECTED RESULT",
+      "ACTUAL EXPERIMENTAL RESULT"
+    ],
+    "forbid_fiction": [
+      "paper_or_citation",
+      "benchmark_number",
+      "dataset_information",
+      "claimed_ran_experiments",
+      "experimental_results",
+      "false_git_push_success"
+    ]
+  }
+}
