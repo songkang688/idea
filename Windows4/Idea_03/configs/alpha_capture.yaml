@@ -1,0 +1,45 @@
+# AlphaSmoke Part B pillar 2 — measured-alpha capture + recovery protocol
+# (B3 — MANDATORY arm per stage4_r2_setC.md P096 verdict; metrics_protocol.md §4)
+# STATUS: PLAN. Executed at runbook R5.
+
+sources:
+  figlib_towers:
+    description: fixed wildfire-camera sequences with pre-smoke frames [S3 Dewangan 2022]
+    selection: sequences with >= 10 clean pre-smoke frames and no exposure change
+  lab_captures:
+    description: controlled smoke (smoke machine) against calibrated backgrounds
+    camera: locked exposure, locked white balance, locked focus, tripod
+    backgrounds: ">= 2 calibrated targets (matte gray, textured) per scene"
+    smoke_color_reference: gray card in-frame where feasible (F from calibration,
+      not estimation)
+
+background_model:
+  method: temporal_median
+  min_pre_smoke_frames: 10
+
+recovery:                       # src/alphasmoke/alpha_recovery/background_inversion.py
+  smoke_color_source: [calibrated_target_if_available, dense_region_estimate]
+  dense_quantile: 0.02
+  saturation_eps: 0.00784       # 2/255
+  conditioning_min: 0.08        # ||F - B|| floor; below -> alpha unidentifiable
+  sensitivity:
+    delta: 0.05                 # per-channel F perturbation
+    n_perturbations: 8
+    max_std: 0.10               # pixels above -> excluded; maps released
+
+frame_qc:
+  exposure_lock: required (EXIF / camera log verified)
+  illumination_drift_max: 0.02  # median |I - B| on smoke-free border region
+  exclusions: [backlit_scenes, plume_shadow_dominant, rain_or_lens_artifacts]
+
+qc_gate:                        # K-B5 (experiments.md §2)
+  min_frames_passing: 30
+  min_scenes: 3
+  on_fail: |
+    Reversal headline withdrawn per Set-C verdict (attack 3 stands). Fallback:
+    tau matrix labelled synthetic-only limitation; paper headline shifts to Part A
+    (proposal.md §5.2 fallback — a demotion path, not a rescue).
+
+release:
+  artifacts: [alpha_maps, validity_masks, sensitivity_maps, background_frames, capture_logs]
+  note: released with the paper, license permitting (deliverable 2)

@@ -1,0 +1,71 @@
+# AlphaSmoke Part B — evaluation protocol (metrics_protocol.md; obligations B2, B4, B9, B10)
+# STATUS: PLAN. Thresholds are pre-registered and carried from stage3/stage4 files;
+# they are inputs to kill conditions, not tuned by us.
+
+operating_threshold:
+  # tau_op: frozen at R1 to MATCH the released FoSp/SMOKE5K eval code
+  # (adaptive-2x-mean saliency rule vs fixed 0.5 — whichever the released code uses).
+  rule: null               # TODO(R1) — frozen once, used for every arm and pool member
+  verify_against: "released FoSp / SMOKE5K evaluation code"
+
+metric_columns:
+  binary:                  # B4: mMse and f_beta are first-class columns
+    - iou
+    - dice
+    - f_beta               # beta2 = 0.3 (saliency/smoke convention, FoSp [V])
+    - mmse                 # soft pred vs binary GT, per-image mean (K-B1 cell)
+    - boundary_f           # 2 px primary; 1/5 px appendix
+  alpha:
+    - mae
+    - sad
+    - mse
+    - grad                 # sigma = 1.4
+    - conn                 # step 0.1, theta 0.15
+  f_beta_beta2: 0.3
+  boundary_tolerance_px: [2, 1, 5]
+
+tau_protocol:
+  estimator: kendall_tau_b_sign_aligned    # src/alphasmoke/metrics/rank_agreement.py
+  bootstrap: {unit: image, n_boot: 10000, ci: 0.95}
+  reversal_top_k: 3
+  confirmatory_cells:                       # everything else is exploratory (plan §5)
+    - [mmse, mae]                           # K-B1: does mMse already proxy alpha error?
+    - [synthetic_alpha_ranking, measured_alpha_ranking]   # K-B3 agreement check
+
+kill_thresholds:            # provenance: stage3_kill_medical_smoke.md §7-8, stage4_r2_setC.md
+  tau_reversal: 0.8         # K-B1 / K-B2 / K-B3
+  rater_ceiling_iou: 0.85   # K-B4 demotion
+  min_pool_size: 6          # below this the tau matrix is reported underpowered
+  measured_alpha_qc: {min_frames: 30, min_scenes: 3}   # K-B5
+
+checkpoint_pool:            # target 8-12; frozen at R3; "attempted, unavailable" is
+                            # reported in the paper — no silent drops (datasets.md §4)
+  external:
+    - {name: yan_aaai2022, citation: "[S3]", weights: unverified}
+    - {name: fosp_aaai2024, citation: "[V]", weights: unverified}
+    - {name: sfmattingnet_2025, citation: "[V]", weights: unverified, mandatory: true}  # B9
+    - {name: yuan_ds0x_line, citation: "[S3]", weights: unverified}
+    - {name: mam, citation: "[S3]", weights: unverified}
+    - {name: cosw_neurips2024, citation: "[S3]", weights: unverified}
+    - name: sam_auto_mode
+      citation: "[M]"
+      weights: public
+      prompt_mode: automatic_or_grid_points   # B10 scope guard:
+      detector_prompts: forbidden             # no fire/smoke detector anywhere in the loop
+  internal:
+    - partA_arms: [M, MB, S, S_cal, ZERO]
+    - floors: [dark_channel, hsv_low_chroma]
+
+hsv_floor_params:           # fixed a priori; never tuned on any test set (protocol §6)
+  sat_max: 0.25
+  value_band: [0.35, 0.95]
+  value_soft: 0.15
+  spread_max: 0.12
+
+dark_channel_params:
+  patch: 15
+  omega: 0.95
+  atmospheric_top_fraction: 0.001
+
+published_deltas: []        # filled at R0 from verifiable tables ONLY (datasets.md §5)
+                            # row schema: {benchmark, method_pair, delta_iou, source}

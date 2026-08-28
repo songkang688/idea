@@ -1,2 +1,13 @@
-numpy>=1.24
-pillow>=10.0
+# AlphaSmoke — Windows4 Idea_03
+# Core (metrics, baselines, alpha recovery, rater ceiling):
+numpy>=1.26,<3
+scipy>=1.11,<2
+PyYAML>=6.0,<7
+
+# Tests:
+pytest>=8.0,<9
+
+# Optional — probe experiment only (src/alphasmoke/probes); metrics and baselines
+# do not import torch. Install when running runbook step R2:
+# torch>=2.2,<3
+# torchvision>=0.17,<1
