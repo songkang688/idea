@@ -1,0 +1,5 @@
+seed: 0
+limit: 64
+min_area: 1024
+box_dilation_px: 0
+fill: mean

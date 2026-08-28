@@ -1,0 +1,4 @@
+numpy>=1.24
+pillow>=10.0
+pyyaml>=6.0
+# Optional: segment-anything, torch, opencv-python, pycocotools
