@@ -1,0 +1,24 @@
+{
+  "task_id": "P3-lock-verifier",
+  "role": "P3 Lock Verifier (parent: WindowsX)",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P3/gate/lock_verifier.md",
+    "/workspace/_state/tasks/P3/gate/lock_verifier.done.json"
+  ],
+  "unresolved_items": [
+    "window.lock.json not found anywhere in /workspace (located by filename: recursive glob and find including hidden paths; 0 hits)",
+    "research_state.json not found anywhere in /workspace (same filename-based search scope; 0 hits)",
+    "locked=true and field consistency not evaluable: both lock files missing; no windows_path recorded and no Windows* directory exists",
+    "P0 window-lock initialization has not produced persisted artifacts on this checkout; consistent with P1 and P2 gate findings (P1 additionally found 4 conflicting unmerged research_state.json on divergent P0 branches, none merged to main)",
+    "P0 must run to completion and persist exactly one authoritative WindowsN/_state/window.lock.json (locked=true) with a field-consistent sibling research_state.json before P3 proceeds"
+  ],
+  "recommended_next_task_type": "P0-window-lock-rerun",
+  "p0_lock_ok": false,
+  "windows_id": null,
+  "windows_path": null,
+  "mismatch_fields": [
+    "window.lock.json:missing_file",
+    "research_state.json:missing_file"
+  ]
+}
