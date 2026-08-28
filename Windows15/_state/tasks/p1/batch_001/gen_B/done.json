@@ -1,0 +1,20 @@
+{
+  "task_id": "p1_wave_a_batch001_gen_B",
+  "role": "generator",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "territory": "T02 Medical segmentation",
+  "idea_count": 100,
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_001/gen_B/ideas.jsonl",
+    "Windows15/_state/tasks/p1/batch_001/gen_B/report.md",
+    "Windows15/_state/tasks/p1/batch_001/gen_B/done.json"
+  ],
+  "unresolved_items": [
+    "Novelty is hypothesized only; no literature verification performed by this generator",
+    "Ideas W15-B001-B-083..088 (foundation-model defects) should be cross-checked against batch_001 gen_A (T01) during Wave B dedup",
+    "Ideas W15-B001-B-013..024 (evaluation metrology) and W15-B001-B-076..082 (uncertainty) flagged as potential neighbors of future territories T07/T08 for the dedup ledger",
+    "Several minimal falsification experiments assume multi-rater or repeat-scan data availability; feasibility triage deferred to later selection stages"
+  ],
+  "recommended_next_task_type": "p1_wave_b_dedup"
+}

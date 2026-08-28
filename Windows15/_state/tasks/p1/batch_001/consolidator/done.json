@@ -1,0 +1,32 @@
+{
+  "task_id": "p1_wave_b_batch001_consolidator",
+  "role": "consolidator",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "accepted_count": 271,
+  "dropped_count": 29,
+  "canonical_idea_count": 271,
+  "diversity_audit_due": false,
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_001/decision.json",
+    "Windows15/_state/tasks/p1/batch_001/accepted.jsonl",
+    "Windows15/_state/tasks/p1/batch_001/consolidator/report.md",
+    "Windows15/_state/tasks/p1/batch_001/consolidator/next_task_queue.json",
+    "Windows15/_state/tasks/p1/batch_001/consolidator/done.json",
+    "Windows15/_state/ideas_master.jsonl",
+    "Windows15/_state/research_state.json",
+    "Windows15/_state/research_ledger.md"
+  ],
+  "unresolved_items": [
+    "4 ideas retained over judge_A solo drop votes (W15-B001-A-051, W15-B001-B-022, W15-B001-B-032, W15-B001-C-061) carry stage2_priorart_check_required; their prior-art status was never citation-verified by any agent.",
+    "6 accepted ideas (W15-B001-A-052, A-056, A-060, A-084, A-100, C-028) carry mutation_required=true and must be reformulated per judge_B salvage notes before Stage-2 promotion.",
+    "14 template-twin pairs retained by judge_A (same claim template, different domain) need redundancy scrutiny at the 1000+ -> 200 cut.",
+    "Diversity-audit trigger window (100-200 accepted) was overshot in a single batch (271); parent should decide whether to run p1_diversity_audit_checkpoint_1 with batch_002 dedup."
+  ],
+  "recommended_next_task_type": "p1_wave_a_batch002_generators",
+  "next_ready_task_ids": [
+    "p1_wave_a_batch002_gen_A",
+    "p1_wave_a_batch002_gen_B",
+    "p1_wave_a_batch002_gen_C"
+  ]
+}

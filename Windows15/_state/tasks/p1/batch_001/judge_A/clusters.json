@@ -1,0 +1,1298 @@
+{
+  "task_id": "p1_wave_b_batch001_judge_A",
+  "role": "judge",
+  "windows_path": "Windows15",
+  "inputs": {
+    "gen_A": "Windows15/_state/tasks/p1/batch_001/gen_A/ideas.jsonl (100 ideas, SAM/PEFT adaptation science)",
+    "gen_B": "Windows15/_state/tasks/p1/batch_001/gen_B/ideas.jsonl (100 ideas, medical segmentation)",
+    "gen_C": "Windows15/_state/tasks/p1/batch_001/gen_C/ideas.jsonl (100 ideas, amorphous-media segmentation: smoke/fire/glass)"
+  },
+  "clustering_basis": "Hypothesis-level: ideas grouped by shared falsifiable core claim and mechanism (what would be true of the world if the idea holds), not by keyword or domain. Cross-domain ideas sharing the same claim template are co-clustered; true near-duplicates are merged, retained template twins are recorded as near-duplicate relations.",
+  "input_count": 300,
+  "cluster_count": 40,
+  "clusters": [
+    {
+      "cluster_id": "HC-01",
+      "name": "eval_statistical_validity",
+      "cluster_hypothesis": "Measurement noise (label error, metric/inference noise, preprocessing variance, statistical power, dataset contamination, rater-noise floor) is comparable to or larger than typical claimed between-method differences, so many published rankings are unresolved.",
+      "size": 8,
+      "members": [
+        "W15-B001-A-072",
+        "W15-B001-A-075",
+        "W15-B001-B-001",
+        "W15-B001-B-006",
+        "W15-B001-B-014",
+        "W15-B001-B-020",
+        "W15-B001-B-024",
+        "W15-B001-C-098"
+      ],
+      "shard_coverage": {
+        "gen_A": 2,
+        "gen_B": 5,
+        "gen_C": 1
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-B-006",
+          "into": "W15-B001-B-020"
+        },
+        {
+          "from": "W15-B001-B-014",
+          "into": "W15-B001-B-020"
+        },
+        {
+          "from": "W15-B001-B-024",
+          "into": "W15-B001-B-020"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-02",
+      "name": "task_relevant_metric_decoupling",
+      "cluster_hypothesis": "Model orderings induced by overlap metrics (Dice/IoU) decouple from orderings induced by task-relevant quantities (dose, volume/change detection, topology, failure rate, human preference, physical correlates, deployment false alarms, detection latency), so overlap-based selection regularly picks the wrong model for the actual use case.",
+      "size": 14,
+      "members": [
+        "W15-B001-A-069",
+        "W15-B001-B-013",
+        "W15-B001-B-015",
+        "W15-B001-B-016",
+        "W15-B001-B-018",
+        "W15-B001-B-019",
+        "W15-B001-B-021",
+        "W15-B001-B-022",
+        "W15-B001-B-060",
+        "W15-B001-C-039",
+        "W15-B001-C-041",
+        "W15-B001-C-044",
+        "W15-B001-C-047",
+        "W15-B001-C-089"
+      ],
+      "shard_coverage": {
+        "gen_A": 1,
+        "gen_B": 8,
+        "gen_C": 5
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-B-019",
+          "into": "W15-B001-B-060"
+        }
+      ],
+      "drops_within": [
+        "W15-B001-B-022"
+      ],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-03",
+      "name": "evaluation_protocol_artifacts",
+      "cluster_hypothesis": "Specific bookkeeping and protocol choices (empty-case conventions, tight-box prompt leakage, prompt budgets, evaluation resolution on fractal boundaries, illumination mix, instance conventions, detectability weighting, temporal-consistency preferences) materially change scores and rankings independent of model quality.",
+      "size": 9,
+      "members": [
+        "W15-B001-A-070",
+        "W15-B001-A-071",
+        "W15-B001-B-017",
+        "W15-B001-C-010",
+        "W15-B001-C-040",
+        "W15-B001-C-037",
+        "W15-B001-C-042",
+        "W15-B001-C-045",
+        "W15-B001-C-046"
+      ],
+      "shard_coverage": {
+        "gen_A": 2,
+        "gen_B": 1,
+        "gen_C": 6
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-C-040",
+          "into": "W15-B001-C-010"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-04",
+      "name": "peft_comparison_validity",
+      "cluster_hypothesis": "Published PEFT/adaptation method comparisons are confounded by per-method hyperparameter (LR) mismatch, unmatched compute, memorization-prone splits, and missing floor/ceiling baselines (linear probing, random encoder); correcting the protocol overturns a large fraction of rankings.",
+      "size": 6,
+      "members": [
+        "W15-B001-A-020",
+        "W15-B001-A-058",
+        "W15-B001-A-068",
+        "W15-B001-A-073",
+        "W15-B001-A-074",
+        "W15-B001-A-076"
+      ],
+      "shard_coverage": {
+        "gen_A": 6,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-A-020",
+          "into": "W15-B001-A-068"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-A-076"
+      ]
+    },
+    {
+      "cluster_id": "HC-05",
+      "name": "detection_vs_delineation",
+      "cluster_hypothesis": "Aggregate segmentation scores conflate detection/localization with delineation; detection dominates the variance (small structures, lesions, early events), making the field's segmentation-metric conclusions substantially detection claims in disguise.",
+      "size": 6,
+      "members": [
+        "W15-B001-B-023",
+        "W15-B001-B-053",
+        "W15-B001-B-054",
+        "W15-B001-B-055",
+        "W15-B001-B-058",
+        "W15-B001-C-072"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 5,
+        "gen_C": 1
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-06",
+      "name": "supervision_definition_gap",
+      "cluster_hypothesis": "Sites, annotators, protocols, and time periods define systematically different labeling functions; a large share of cross-dataset/cross-site performance gap is a supervision-definition gap (convention/style), which is learnable, transferable, and correctable as a readout policy rather than a perception failure.",
+      "size": 8,
+      "members": [
+        "W15-B001-A-046",
+        "W15-B001-A-089",
+        "W15-B001-B-003",
+        "W15-B001-B-008",
+        "W15-B001-B-009",
+        "W15-B001-B-047",
+        "W15-B001-B-075",
+        "W15-B001-C-043"
+      ],
+      "shard_coverage": {
+        "gen_A": 2,
+        "gen_B": 5,
+        "gen_C": 1
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-07",
+      "name": "model_as_disagreement_simulator",
+      "cluster_hypothesis": "Cheap model-derived output distributions (multimask spread, per-rater-trained nets, seed ensembles, K-hypothesis heads, generative mask distributions) reproduce human inter-annotator disagreement structure well enough to substitute for multi-rater panels.",
+      "size": 5,
+      "members": [
+        "W15-B001-A-061",
+        "W15-B001-B-007",
+        "W15-B001-B-059",
+        "W15-B001-C-076",
+        "W15-B001-C-083"
+      ],
+      "shard_coverage": {
+        "gen_A": 1,
+        "gen_B": 2,
+        "gen_C": 2
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-B-059",
+          "into": "W15-B001-B-007"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-08",
+      "name": "continuous_latent_thresholding",
+      "cluster_hypothesis": "Binary masks are threshold quantizations of a continuous latent field (density/transmittance/membership); the continuous variable is present in features and in disagreement statistics, is lost at the binarizing head/target, and recovering it fixes bias, calibration, and cross-protocol transfer.",
+      "size": 9,
+      "members": [
+        "W15-B001-B-036",
+        "W15-B001-B-056",
+        "W15-B001-C-001",
+        "W15-B001-C-003",
+        "W15-B001-C-005",
+        "W15-B001-C-007",
+        "W15-B001-C-011",
+        "W15-B001-C-035",
+        "W15-B001-C-075"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 2,
+        "gen_C": 7
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-C-035",
+          "into": "W15-B001-C-003"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-C-011",
+        "W15-B001-B-036"
+      ]
+    },
+    {
+      "cluster_id": "HC-09",
+      "name": "annotation_protocol_design",
+      "cluster_hypothesis": "Annotation budget and protocol design (mode per geometry, slice fraction, halo/uncertain regions, per-annotator vs consensus labels, explicit negative evidence, media-specific ontology, noise-model realism, pilot rater studies) is a solvable optimization with measurable model consequences.",
+      "size": 8,
+      "members": [
+        "W15-B001-B-005",
+        "W15-B001-B-070",
+        "W15-B001-B-071",
+        "W15-B001-B-074",
+        "W15-B001-C-009",
+        "W15-B001-C-014",
+        "W15-B001-C-016",
+        "W15-B001-C-018"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 4,
+        "gen_C": 4
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-10",
+      "name": "annotation_process_imprint",
+      "cluster_hypothesis": "The annotation/generation process (tools, interpolation, QC smoothing, registration propagation, out-of-plane tracing, capture settings, convention parameters like shadows) leaves identifiable morphological signatures in labels that models internalize and reproduce.",
+      "size": 11,
+      "members": [
+        "W15-B001-A-036",
+        "W15-B001-A-041",
+        "W15-B001-B-002",
+        "W15-B001-B-004",
+        "W15-B001-B-010",
+        "W15-B001-B-011",
+        "W15-B001-B-073",
+        "W15-B001-C-004",
+        "W15-B001-C-006",
+        "W15-B001-C-013",
+        "W15-B001-C-015"
+      ],
+      "shard_coverage": {
+        "gen_A": 2,
+        "gen_B": 5,
+        "gen_C": 4
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-C-006",
+          "into": "W15-B001-C-004"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-11",
+      "name": "adaptation_data_efficiency",
+      "cluster_hypothesis": "What adaptation needs from labeled data is low-bandwidth (shift directions, conventions, prompt-response coverage), so selection by feature coverage, hardness, disagreement, prompt diversity, or cheap human-in-the-loop harvesting beats matched random labeling, and label noise is filtered by low-rank capacity.",
+      "size": 8,
+      "members": [
+        "W15-B001-A-051",
+        "W15-B001-A-052",
+        "W15-B001-A-053",
+        "W15-B001-A-054",
+        "W15-B001-A-056",
+        "W15-B001-A-057",
+        "W15-B001-A-059",
+        "W15-B001-A-060"
+      ],
+      "shard_coverage": {
+        "gen_A": 8,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [
+        "W15-B001-A-051"
+      ],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-12",
+      "name": "self_training_prior_reinforcement",
+      "cluster_hypothesis": "Confidence-filtered self-training/pseudo-labeling reinforces the base model's priors and contracts the prediction distribution, systematically failing on exactly the patterns that define the domain gap or rare variants.",
+      "size": 2,
+      "members": [
+        "W15-B001-A-055",
+        "W15-B001-B-069"
+      ],
+      "shard_coverage": {
+        "gen_A": 1,
+        "gen_B": 1,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-13",
+      "name": "peft_update_geometry",
+      "cluster_hypothesis": "The converged PEFT update has interpretable low-dimensional structure (layer/projection energy signatures, stable rank, subspace overlap with init, orthogonality across domains, spectral properties) that predicts required rank, seed variance, soup/merge behavior, and optimization stability.",
+      "size": 10,
+      "members": [
+        "W15-B001-A-011",
+        "W15-B001-A-012",
+        "W15-B001-A-013",
+        "W15-B001-A-014",
+        "W15-B001-A-018",
+        "W15-B001-A-019",
+        "W15-B001-A-021",
+        "W15-B001-A-022",
+        "W15-B001-A-078",
+        "W15-B001-A-079"
+      ],
+      "shard_coverage": {
+        "gen_A": 10,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-14",
+      "name": "minimal_sufficient_adaptation",
+      "cluster_hypothesis": "For low-level (photometric/sensor/statistics) shifts, tiny targeted interventions (input LUT/conv, tone curves, LayerNorm scales, channel gates, PE-only tuning, first-layer renormalization, physics-simulated noise training, alternative input representations) recover most of full PEFT's gain and localize what the shift physically is.",
+      "size": 8,
+      "members": [
+        "W15-B001-A-015",
+        "W15-B001-A-016",
+        "W15-B001-A-081",
+        "W15-B001-A-082",
+        "W15-B001-A-083",
+        "W15-B001-A-092",
+        "W15-B001-A-093",
+        "W15-B001-A-095"
+      ],
+      "shard_coverage": {
+        "gen_A": 8,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-A-093",
+          "into": "W15-B001-A-081"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-15",
+      "name": "geometric_scale_prior_mismatch",
+      "cluster_hypothesis": "Foundation and medical models carry scale/orientation/relative-size priors from training statistics; performance failures on atypical scales (thin structures vs patch size, huge objects, pediatric anatomy, pathology zoom, non-canonical orientation) are geometric-prior failures fixable by input renormalization rather than appearance learning.",
+      "size": 5,
+      "members": [
+        "W15-B001-A-035",
+        "W15-B001-A-044",
+        "W15-B001-A-094",
+        "W15-B001-A-097",
+        "W15-B001-B-043"
+      ],
+      "shard_coverage": {
+        "gen_A": 4,
+        "gen_B": 1,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-16",
+      "name": "capability_erosion",
+      "cluster_hypothesis": "Fine-tuning erases specific, separable capabilities (multimask/granularity diversity, self-calibration, corrective-click integration, boundary precision, near-domain skills) in predictable patterns, and shallow interventions (rehearsal, head-only retraining) recover much of the loss.",
+      "size": 10,
+      "members": [
+        "W15-B001-A-023",
+        "W15-B001-A-024",
+        "W15-B001-A-025",
+        "W15-B001-A-026",
+        "W15-B001-A-027",
+        "W15-B001-A-028",
+        "W15-B001-A-029",
+        "W15-B001-A-030",
+        "W15-B001-A-031",
+        "W15-B001-A-032"
+      ],
+      "shard_coverage": {
+        "gen_A": 10,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-A-025",
+          "into": "W15-B001-A-023"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-17",
+      "name": "edge_affinity_prior",
+      "cluster_hypothesis": "Pretrained segmenters carry a strong prior that boundaries live on high-gradient image edges; their errors displace systematically toward strong irrelevant edges (contrast gaps, smoke boundaries, medical definitional boundaries), distinguishable from scratch-trained error structure.",
+      "size": 3,
+      "members": [
+        "W15-B001-A-034",
+        "W15-B001-B-083",
+        "W15-B001-C-029"
+      ],
+      "shard_coverage": {
+        "gen_A": 1,
+        "gen_B": 1,
+        "gen_C": 1
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-C-029",
+          "into": "W15-B001-A-034"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-18",
+      "name": "sam_perceptual_mechanisms",
+      "cluster_hypothesis": "SAM's grouping is governed by identifiable low-level mechanisms (photometric contiguity, contrast polarity, high-frequency edge reliance, convention mixtures for transparency, encoder-level segmentability, prompt-starved camouflage) that predict its failures independent of semantic domain.",
+      "size": 6,
+      "members": [
+        "W15-B001-A-033",
+        "W15-B001-A-037",
+        "W15-B001-A-038",
+        "W15-B001-A-039",
+        "W15-B001-A-042",
+        "W15-B001-A-043"
+      ],
+      "shard_coverage": {
+        "gen_A": 6,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-19",
+      "name": "gap_localization_readout",
+      "cluster_hypothesis": "For many target domains the frozen encoder already contains the needed information; the dominant gap is at the readout (decoder, prompt space, granularity/hierarchy selection, head resolution), which layer-resolved divergence and probing can localize a priori.",
+      "size": 10,
+      "members": [
+        "W15-B001-A-007",
+        "W15-B001-A-008",
+        "W15-B001-A-017",
+        "W15-B001-A-045",
+        "W15-B001-A-047",
+        "W15-B001-A-048",
+        "W15-B001-A-050",
+        "W15-B001-B-084",
+        "W15-B001-B-087",
+        "W15-B001-B-088"
+      ],
+      "shard_coverage": {
+        "gen_A": 7,
+        "gen_B": 3,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-20",
+      "name": "prompt_interface_mechanics",
+      "cluster_hypothesis": "Prompt geometry and harvesting mechanics (click-boundary distance, box scale information, sub-patch aliasing, negative-prompt edge following, grid sampling and NMS) mechanistically determine large classes of SAM behavior commonly misattributed to perception.",
+      "size": 6,
+      "members": [
+        "W15-B001-A-001",
+        "W15-B001-A-002",
+        "W15-B001-A-003",
+        "W15-B001-A-004",
+        "W15-B001-A-010",
+        "W15-B001-A-040"
+      ],
+      "shard_coverage": {
+        "gen_A": 6,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-A-040",
+          "into": "W15-B001-A-010"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-21",
+      "name": "pretraining_provenance_priors",
+      "cluster_hypothesis": "SA-1B's construction (content frequency, curation style, mask-count statistics, granularity frequencies, privacy blurring, bootstrap conventions) installed measurable priors that propagate to all derived models and largely predict zero-shot gaps.",
+      "size": 7,
+      "members": [
+        "W15-B001-A-006",
+        "W15-B001-A-085",
+        "W15-B001-A-086",
+        "W15-B001-A-087",
+        "W15-B001-A-088",
+        "W15-B001-A-090",
+        "W15-B001-A-091"
+      ],
+      "shard_coverage": {
+        "gen_A": 7,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-A-090"
+      ]
+    },
+    {
+      "cluster_id": "HC-22",
+      "name": "synthetic_and_physical_data",
+      "cluster_hypothesis": "Physical correctness of training data (calibrated compositing, metered fog alpha, sensor-noise matching, chemistry diversity, scattering-parameter similarity) dominates visual realism and raw scale for transfer, and its absence creates artifact-keying and spoofing vulnerabilities.",
+      "size": 8,
+      "members": [
+        "W15-B001-C-084",
+        "W15-B001-C-088",
+        "W15-B001-C-092",
+        "W15-B001-C-094",
+        "W15-B001-C-095",
+        "W15-B001-C-096",
+        "W15-B001-C-097",
+        "W15-B001-C-099"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 0,
+        "gen_C": 8
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-C-099",
+        "W15-B001-C-092"
+      ]
+    },
+    {
+      "cluster_id": "HC-23",
+      "name": "shortcut_priors_medical",
+      "cluster_hypothesis": "Medical segmentation models rely on contextual/statistical shortcuts (location priors, anchor organs, scanner fingerprints, absolute intensities, dataset identity, batch statistics, report-language binding, healthy-anatomy completion) rather than target evidence, producing confident well-formed errors and no plausibility signal.",
+      "size": 16,
+      "members": [
+        "W15-B001-B-025",
+        "W15-B001-B-026",
+        "W15-B001-B-027",
+        "W15-B001-B-028",
+        "W15-B001-B-029",
+        "W15-B001-B-030",
+        "W15-B001-B-032",
+        "W15-B001-B-033",
+        "W15-B001-B-034",
+        "W15-B001-B-035",
+        "W15-B001-B-051",
+        "W15-B001-B-057",
+        "W15-B001-B-068",
+        "W15-B001-B-086",
+        "W15-B001-B-094",
+        "W15-B001-B-099"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 16,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-B-051",
+          "into": "W15-B001-B-026"
+        }
+      ],
+      "drops_within": [
+        "W15-B001-B-032"
+      ],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-24",
+      "name": "output_pipeline_bottleneck",
+      "cluster_hypothesis": "A large share of end-task error is introduced after the model's decision, in low-res mask representations, fixed upsampling, iso-surfacing/smoothing, or the segmentation intermediate itself; oracle-injection experiments can bound this and sometimes justify bypassing segmentation entirely.",
+      "size": 4,
+      "members": [
+        "W15-B001-A-049",
+        "W15-B001-B-092",
+        "W15-B001-B-093",
+        "W15-B001-C-033"
+      ],
+      "shard_coverage": {
+        "gen_A": 1,
+        "gen_B": 2,
+        "gen_C": 1
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-A-049",
+        "W15-B001-B-093"
+      ]
+    },
+    {
+      "cluster_id": "HC-25",
+      "name": "topology_thin_structures",
+      "cluster_hypothesis": "Topological correctness of thin structures is input-noise-chaotic and prior-sensitive: stabilization beats topology-penalized training, continuity priors anti-inform occlusive disease, and shape-prior strength acts as a hidden fairness parameter over rare anatomy.",
+      "size": 3,
+      "members": [
+        "W15-B001-B-089",
+        "W15-B001-B-090",
+        "W15-B001-B-091"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 3,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-26",
+      "name": "uncertainty_calibration_safety",
+      "cluster_hypothesis": "Learned confidence heads and sampling-based uncertainty are largely reducible to simple geometry (boundary distance, jitter variance) and fail optimistically under shift; perturbation-based signals, recalibration-only pathways, conformal scalars, and two-axis (spread vs jitter) readouts are more robust and cheaper, with equity consequences for abstention.",
+      "size": 12,
+      "members": [
+        "W15-B001-A-009",
+        "W15-B001-A-062",
+        "W15-B001-A-063",
+        "W15-B001-A-064",
+        "W15-B001-A-065",
+        "W15-B001-A-066",
+        "W15-B001-B-076",
+        "W15-B001-B-078",
+        "W15-B001-B-079",
+        "W15-B001-B-080",
+        "W15-B001-B-082",
+        "W15-B001-C-034"
+      ],
+      "shard_coverage": {
+        "gen_A": 6,
+        "gen_B": 5,
+        "gen_C": 1
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-B-082",
+          "into": "W15-B001-B-076"
+        },
+        {
+          "from": "W15-B001-A-063",
+          "into": "W15-B001-A-009"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-B-079"
+      ]
+    },
+    {
+      "cluster_id": "HC-27",
+      "name": "label_free_auditing",
+      "cluster_hypothesis": "Model-internal signals (runner-up-correct signatures, ensemble disagreement, anatomical-invariant violations) localize label errors, convention offsets, and quality rank without ground truth, enabling label auditing and unsupervised evaluation.",
+      "size": 3,
+      "members": [
+        "W15-B001-A-067",
+        "W15-B001-B-072",
+        "W15-B001-B-077"
+      ],
+      "shard_coverage": {
+        "gen_A": 1,
+        "gen_B": 2,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-28",
+      "name": "lifecycle_deployment_ops",
+      "cluster_hypothesis": "Adapter lifecycle operations (transport across base models, sequential ordering, routing with novelty fallback, foundation-vs-specialist total-cost decisions) have predictable rules derivable from feature-space structure.",
+      "size": 4,
+      "members": [
+        "W15-B001-A-077",
+        "W15-B001-A-098",
+        "W15-B001-A-099",
+        "W15-B001-A-100"
+      ],
+      "shard_coverage": {
+        "gen_A": 4,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-A-098"
+      ]
+    },
+    {
+      "cluster_id": "HC-29",
+      "name": "training_dynamics_boundary_memorization",
+      "cluster_hypothesis": "Fitting is spatially and temporally staged: interiors/regions generalize early, ambiguous boundary bands are memorized late; schedules, curricula, gradient surgery, label smoothing, and deliberate boundary jitter exploit this to preserve calibration and robustness at lower cost.",
+      "size": 8,
+      "members": [
+        "W15-B001-A-080",
+        "W15-B001-B-012",
+        "W15-B001-B-095",
+        "W15-B001-B-096",
+        "W15-B001-B-097",
+        "W15-B001-B-098",
+        "W15-B001-B-100",
+        "W15-B001-C-093"
+      ],
+      "shard_coverage": {
+        "gen_A": 1,
+        "gen_B": 6,
+        "gen_C": 1
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-B-100",
+          "into": "W15-B001-B-012"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-30",
+      "name": "media_temporal_dynamics",
+      "cluster_hypothesis": "For amorphous media the discriminative information is concentrated in temporal dynamics (turbulence spectra, decorrelation half-lives, divergence fields, gravity-signed motion, flicker, motion salience), which single-frame models cannot access and which sensor pipelines reshape; temporal statistics enable small models to match large single-frame ones.",
+      "size": 14,
+      "members": [
+        "W15-B001-C-012",
+        "W15-B001-C-028",
+        "W15-B001-C-038",
+        "W15-B001-C-049",
+        "W15-B001-C-050",
+        "W15-B001-C-051",
+        "W15-B001-C-052",
+        "W15-B001-C-053",
+        "W15-B001-C-054",
+        "W15-B001-C-055",
+        "W15-B001-C-056",
+        "W15-B001-C-078",
+        "W15-B001-C-090",
+        "W15-B001-C-100"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 0,
+        "gen_C": 14
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-C-049",
+          "into": "W15-B001-C-050"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-C-055"
+      ]
+    },
+    {
+      "cluster_id": "HC-31",
+      "name": "multimodal_sensing_media",
+      "cluster_hypothesis": "Modality physics (polarization, thermal-visible disagreement, dual-band attenuation ratios, depth-failure signatures, flash differentials, rolling-shutter row spectra, audio) supply cheap near-orthogonal signals for glass/smoke/fire that visible-appearance models fundamentally lack.",
+      "size": 8,
+      "members": [
+        "W15-B001-C-025",
+        "W15-B001-C-057",
+        "W15-B001-C-058",
+        "W15-B001-C-059",
+        "W15-B001-C-060",
+        "W15-B001-C-061",
+        "W15-B001-C-062",
+        "W15-B001-C-063"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 0,
+        "gen_C": 8
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [
+        "W15-B001-C-061"
+      ],
+      "high_value_flags": [
+        "W15-B001-C-063"
+      ]
+    },
+    {
+      "cluster_id": "HC-32",
+      "name": "image_formation_physics_media",
+      "cluster_hypothesis": "Single-image formation physics (transmittance identifiability, detectability indices, chromatic consistency, background-continuation residuals, displacement fields, shadow channels, illuminated-vs-emitting distinction, smoke-haze transfer-function coincidence) defines both hard information limits and unexploited channels for media perception.",
+      "size": 9,
+      "members": [
+        "W15-B001-C-002",
+        "W15-B001-C-008",
+        "W15-B001-C-019",
+        "W15-B001-C-020",
+        "W15-B001-C-021",
+        "W15-B001-C-022",
+        "W15-B001-C-024",
+        "W15-B001-C-026",
+        "W15-B001-C-027"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 0,
+        "gen_C": 9
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-33",
+      "name": "media_representation_output_space",
+      "cluster_hypothesis": "Choosing physics- or structure-aligned output spaces (log-transmittance additivity, nested level sets, layer counting, reflection/transmission decomposition, presence-vs-evidence dual masks, amodal objectives with predictable dissociations, matting pretraining, motion-derived 3D) changes what generalizes, beyond architecture or data scale.",
+      "size": 8,
+      "members": [
+        "W15-B001-C-017",
+        "W15-B001-C-074",
+        "W15-B001-C-077",
+        "W15-B001-C-079",
+        "W15-B001-C-080",
+        "W15-B001-C-081",
+        "W15-B001-C-082",
+        "W15-B001-C-087"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 0,
+        "gen_C": 8
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-C-017",
+          "into": "W15-B001-C-080"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-34",
+      "name": "interactive_refinement_dynamics",
+      "cluster_hypothesis": "Interactive segmentation dynamics are a distinct object of study: refinement oscillates non-convergently on ambiguous content, click economics scale with geometry (slices vs shape), and realistic click policies rather than random simulation determine deployed efficiency.",
+      "size": 4,
+      "members": [
+        "W15-B001-A-005",
+        "W15-B001-B-063",
+        "W15-B001-B-085",
+        "W15-B001-C-036"
+      ],
+      "shard_coverage": {
+        "gen_A": 1,
+        "gen_B": 2,
+        "gen_C": 1
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-C-036",
+          "into": "W15-B001-A-005"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-35",
+      "name": "human_ai_workflow",
+      "cluster_hypothesis": "Human-AI contouring workflows have their own failure physics: automation bias, distribution collapse toward model modes, non-monotone final quality in model accuracy, plausibility-gated (not magnitude-gated) error detection, anchoring by uncertainty overlays, and edit logs as the truer quality signal.",
+      "size": 7,
+      "members": [
+        "W15-B001-B-061",
+        "W15-B001-B-062",
+        "W15-B001-B-064",
+        "W15-B001-B-065",
+        "W15-B001-B-066",
+        "W15-B001-B-067",
+        "W15-B001-B-081"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 7,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-B-065"
+      ]
+    },
+    {
+      "cluster_id": "HC-36",
+      "name": "media_context_shortcuts",
+      "cluster_hypothesis": "Media segmenters rely on scene context, color subspaces, rims, category identity, viewpoint-conditioned speculars, and camera artifacts (bloom, bitrate, resolution) rather than material evidence; counterfactual manipulations quantify each reliance and predict field false positives/misses.",
+      "size": 15,
+      "members": [
+        "W15-B001-C-023",
+        "W15-B001-C-032",
+        "W15-B001-C-048",
+        "W15-B001-C-064",
+        "W15-B001-C-065",
+        "W15-B001-C-066",
+        "W15-B001-C-067",
+        "W15-B001-C-068",
+        "W15-B001-C-069",
+        "W15-B001-C-070",
+        "W15-B001-C-071",
+        "W15-B001-C-073",
+        "W15-B001-C-085",
+        "W15-B001-C-086",
+        "W15-B001-C-091"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 0,
+        "gen_C": 15
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-37",
+      "name": "frozen_foundation_signals",
+      "cluster_hypothesis": "Frozen foundation-model behaviors on media are exploitable sensors: prompt fall-through rate is an opacity meter, and cross-model inconsistency signatures localize transparent surfaces with zero task-specific training.",
+      "size": 2,
+      "members": [
+        "W15-B001-C-030",
+        "W15-B001-C-031"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 0,
+        "gen_C": 2
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": [
+        "W15-B001-C-030"
+      ]
+    },
+    {
+      "cluster_id": "HC-38",
+      "name": "consistency_as_supervision",
+      "cluster_hypothesis": "Internal consistency violations (across jittered prompts, flips, multimask candidates, adjacent CT slices) are enriched at error locations and supply label-free adaptation signal competitive with small supervised sets.",
+      "size": 2,
+      "members": [
+        "W15-B001-A-084",
+        "W15-B001-A-096"
+      ],
+      "shard_coverage": {
+        "gen_A": 2,
+        "gen_B": 0,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-39",
+      "name": "distribution_shift_medical",
+      "cluster_hypothesis": "Cross-site gaps decompose into case-mix, contrast phase, habitus geometry, and acquisition-parameter envelopes with identifiable structure; harmonization/TTA that normalizes shift also normalizes away pathology signal, inverting clinical priorities.",
+      "size": 6,
+      "members": [
+        "W15-B001-B-045",
+        "W15-B001-B-046",
+        "W15-B001-B-048",
+        "W15-B001-B-049",
+        "W15-B001-B-050",
+        "W15-B001-B-052"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 6,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [
+        {
+          "from": "W15-B001-B-052",
+          "into": "W15-B001-B-046"
+        }
+      ],
+      "drops_within": [],
+      "high_value_flags": []
+    },
+    {
+      "cluster_id": "HC-40",
+      "name": "volumetric_geometry_inference",
+      "cluster_hypothesis": "3D inference plumbing (resampling, patchwise objectives, window grids, padding side channels, axial anisotropy, FOV truncation, SR priors, 2D/3D disagreement bands) creates systematic, fixable error classes independent of representation quality.",
+      "size": 8,
+      "members": [
+        "W15-B001-B-031",
+        "W15-B001-B-037",
+        "W15-B001-B-038",
+        "W15-B001-B-039",
+        "W15-B001-B-040",
+        "W15-B001-B-041",
+        "W15-B001-B-042",
+        "W15-B001-B-044"
+      ],
+      "shard_coverage": {
+        "gen_A": 0,
+        "gen_B": 8,
+        "gen_C": 0
+      },
+      "verdict": "keep_cluster",
+      "merges_within": [],
+      "drops_within": [],
+      "high_value_flags": []
+    }
+  ],
+  "cross_shard_near_duplicate_relations": [
+    {
+      "pair": [
+        "W15-B001-C-029",
+        "W15-B001-A-034"
+      ],
+      "resolution": "merged C-029 into A-034 (edge-affinity prior; smoke kept as testbed)"
+    },
+    {
+      "pair": [
+        "W15-B001-C-036",
+        "W15-B001-A-005"
+      ],
+      "resolution": "merged C-036 into A-005 (interactive oscillation; media kept as testbed)"
+    },
+    {
+      "pair": [
+        "W15-B001-A-072",
+        "W15-B001-B-020"
+      ],
+      "resolution": "kept both: same noise-floor template, different fields and variance sources"
+    },
+    {
+      "pair": [
+        "W15-B001-A-061",
+        "W15-B001-C-083"
+      ],
+      "resolution": "kept both: disagreement-simulator template, different instruments"
+    },
+    {
+      "pair": [
+        "W15-B001-A-036",
+        "W15-B001-C-013"
+      ],
+      "resolution": "kept both: morphology-fingerprint template, different generation processes"
+    },
+    {
+      "pair": [
+        "W15-B001-A-062",
+        "W15-B001-B-078"
+      ],
+      "resolution": "kept both: overconfidence-under-shift template, different systems"
+    },
+    {
+      "pair": [
+        "W15-B001-A-067",
+        "W15-B001-B-077"
+      ],
+      "resolution": "kept both: label-auditing-signal template, different instruments"
+    },
+    {
+      "pair": [
+        "W15-B001-A-045",
+        "W15-B001-B-084"
+      ],
+      "resolution": "kept both: granularity-selection-gap template, intervention vs predictor"
+    },
+    {
+      "pair": [
+        "W15-B001-A-055",
+        "W15-B001-B-069"
+      ],
+      "resolution": "kept both: self-training prior-reinforcement template, different readouts"
+    },
+    {
+      "pair": [
+        "W15-B001-A-092",
+        "W15-B001-C-088"
+      ],
+      "resolution": "kept both: physics-matched-noise template, different transfer directions"
+    },
+    {
+      "pair": [
+        "W15-B001-A-053",
+        "W15-B001-B-096"
+      ],
+      "resolution": "kept both (with C-093): boundary-noise-filtering template, three mechanisms"
+    },
+    {
+      "pair": [
+        "W15-B001-B-003",
+        "W15-B001-C-043"
+      ],
+      "resolution": "kept both (with B-047): labeling-function template, different designs"
+    },
+    {
+      "pair": [
+        "W15-B001-B-017",
+        "W15-B001-C-046"
+      ],
+      "resolution": "kept both: bookkeeping-convention template, different mechanisms"
+    },
+    {
+      "pair": [
+        "W15-B001-A-080",
+        "W15-B001-B-012"
+      ],
+      "resolution": "kept both: staged-fitting template, adaptation vs from-scratch training"
+    }
+  ],
+  "high_value_anomalies": [
+    {
+      "idea_id": "W15-B001-C-030",
+      "why": "Defect-as-sensor inversion: prompt fall-through rate as a calibrated opacity meter. Cheap, odd, and opens a supervision channel for media models."
+    },
+    {
+      "idea_id": "W15-B001-A-049",
+      "why": "Cheap oracle experiment (feed ground-truth low-res masks through SAM's own output path) that could bound and deflate a large fraction of the boundary-fine-tuning literature."
+    },
+    {
+      "idea_id": "W15-B001-B-065",
+      "why": "Non-monotone final-contour quality as model accuracy rises (rare errors evade review). Safety-critical, testable, and contradicts the field's implicit monotonicity assumption."
+    },
+    {
+      "idea_id": "W15-B001-B-093",
+      "why": "Bypass segmentation entirely for scalar clinical endpoints. If direct regression degrades more gracefully under shift, large parts of pipeline design are misallocated effort."
+    },
+    {
+      "idea_id": "W15-B001-A-076",
+      "why": "Random-encoder floor for adaptation benchmarks: exposes which benchmarks actually test foundation knowledge. High leverage as a field-wide audit at low compute."
+    },
+    {
+      "idea_id": "W15-B001-A-098",
+      "why": "Adapter transport across base models via a linear feature-space map. If even partially true, changes the economics of adapter ecosystems on evolving bases."
+    },
+    {
+      "idea_id": "W15-B001-C-055",
+      "why": "Active micro-motion + rigidity-violation test for refractive surfaces: converts a passive perception problem into an active sensing one at tiny model cost."
+    },
+    {
+      "idea_id": "W15-B001-C-063",
+      "why": "Rolling-shutter row-spectrum as a single-frame flame-dynamics cue: camera-artifact physics used as signal rather than nuisance."
+    },
+    {
+      "idea_id": "W15-B001-C-099",
+      "why": "Synthetic media fully activate deployed smoke/fire pipelines, enabling spoofing/injection; physically grounded consistency checks as the countermeasure. Security-relevant and immediately testable."
+    },
+    {
+      "idea_id": "W15-B001-C-011",
+      "why": "Annotator disagreement probability as a monotone function of transmittance: turns annotation noise into a physical densitometer with zero density supervision."
+    },
+    {
+      "idea_id": "W15-B001-B-079",
+      "why": "Abstention correlates with disease burden, so automation is enriched for healthy cases: an equity failure mode invisible to aggregate uncertainty metrics."
+    },
+    {
+      "idea_id": "W15-B001-A-090",
+      "why": "SA-1B privacy blurring taught blur-transition edges as objectness evidence: a sharp, falsifiable provenance quirk with dataset-governance implications."
+    },
+    {
+      "idea_id": "W15-B001-C-092",
+      "why": "Physical compositing correctness beats visual realism for synthetic-to-real transfer: factorial design cleanly separates two conflated data-quality axes."
+    },
+    {
+      "idea_id": "W15-B001-B-036",
+      "why": "Fractional-membership training: identical overlap metrics but unbiased volumetry. Quietly high clinical value hidden from standard evaluation."
+    }
+  ],
+  "summary_counts": {
+    "keep": 275,
+    "merge": 21,
+    "drop": 4
+  },
+  "caveats": [
+    "No novelty verification was performed; 'likely-known' and 'prior-art risk' notes are advisory judgments only.",
+    "No citations were consulted or invented.",
+    "Merges are the judge's verdict only; the consolidator may re-split any merged pair."
+  ]
+}

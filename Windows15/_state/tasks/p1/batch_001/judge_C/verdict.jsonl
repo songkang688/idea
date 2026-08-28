@@ -1,0 +1,300 @@
+{"idea_id": "W15-B001-A-001", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F34_prompt_granularity_ambiguity"], "note": ""}
+{"idea_id": "W15-B001-A-002", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-003", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-004", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-005", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F38_click_oscillation", "protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-A-006", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F34_prompt_granularity_ambiguity"], "note": ""}
+{"idea_id": "W15-B001-A-007", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-008", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-009", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F04_prompt_jitter_probe"], "note": ""}
+{"idea_id": "W15-B001-A-010", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-011", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F17_intrinsic_rank_diagnostics"], "note": ""}
+{"idea_id": "W15-B001-A-012", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F17_intrinsic_rank_diagnostics"], "note": ""}
+{"idea_id": "W15-B001-A-013", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-014", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-015", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F14_input_interface_modality_gap"], "note": ""}
+{"idea_id": "W15-B001-A-016", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F14_input_interface_modality_gap"], "note": ""}
+{"idea_id": "W15-B001-A-017", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-A-018", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-019", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-A-020", "verdict": "duplicate_of", "duplicate_of": "W15-B001-A-068", "confidence": "high", "flags": ["hard_duplicate", "scope:intra_A"], "note": "Same claim: PEFT/LoRA comparison outcomes are per-method learning-rate artifacts. A-068 is the general audit; A-020 restates it for decomposed/scaled LoRA variants. Salvage: Preserve A-020's mechanism experiment: transplanting the variant's implicit per-component scaling into vanilla LoRA's optimizer."}
+{"idea_id": "W15-B001-A-021", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F17_intrinsic_rank_diagnostics"], "note": ""}
+{"idea_id": "W15-B001-A-022", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-023", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F39_forgetting_structure"], "note": ""}
+{"idea_id": "W15-B001-A-024", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F02_calibration_fragility_under_shift"], "note": ""}
+{"idea_id": "W15-B001-A-025", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F39_forgetting_structure"], "note": ""}
+{"idea_id": "W15-B001-A-026", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F39_forgetting_structure"], "note": ""}
+{"idea_id": "W15-B001-A-027", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F37_boundary_noise_sensitivity", "protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-A-028", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F39_forgetting_structure"], "note": ""}
+{"idea_id": "W15-B001-A-029", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-030", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-031", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F39_forgetting_structure"], "note": ""}
+{"idea_id": "W15-B001-A-032", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F16_uncertainty_pathway_modularity"], "note": ""}
+{"idea_id": "W15-B001-A-033", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-034", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-035", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-036", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F05_annotation_style_fingerprints"], "note": ""}
+{"idea_id": "W15-B001-A-037", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-038", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-039", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": "Territory encroachment: transparency-convention claim sits in T03. Distinct from C-002/C-081 (SAM/SA-1B-specific convention flip vs task ontology) — keep, but consolidator should co-cluster with gen_C transparency ontology ideas."}
+{"idea_id": "W15-B001-A-040", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F07_learned_count_priors", "protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-A-041", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-042", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F08_pre_run_difficulty_prediction"], "note": ""}
+{"idea_id": "W15-B001-A-043", "verdict": "duplicate_of", "duplicate_of": "W15-B001-A-070", "confidence": "medium", "flags": ["hard_duplicate", "scope:intra_A"], "note": "A-043 is the camouflage instance of A-070's general under-prompting audit ('SAM fails on X' papers close under oracle prompting). A-070's own design spans 8 claimed-failure domains. Salvage: Retain camouflage as the flagship case study; fold the encoder-linear-probe arm into the A-042 segmentability-probe idea."}
+{"idea_id": "W15-B001-A-044", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-045", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-046", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-A-047", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F17_intrinsic_rank_diagnostics"], "note": ""}
+{"idea_id": "W15-B001-A-048", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-049", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-050", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F03_iou_head_domain_meter"], "note": ""}
+{"idea_id": "W15-B001-A-051", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-052", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F36_annotation_budget_allocation"], "note": ""}
+{"idea_id": "W15-B001-A-053", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-A-054", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F36_annotation_budget_allocation"], "note": ""}
+{"idea_id": "W15-B001-A-055", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F35_self_training_pathologies"], "note": ""}
+{"idea_id": "W15-B001-A-056", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-057", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-A-058", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F32_leakage_audits"], "note": ""}
+{"idea_id": "W15-B001-A-059", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-060", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-061", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F01_model_diversity_vs_human_disagreement"], "note": "Canonical zero-training member of F01; do not merge with trained-ensemble members (B-059/B-077)."}
+{"idea_id": "W15-B001-A-062", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F03_iou_head_domain_meter"], "note": ""}
+{"idea_id": "W15-B001-A-063", "verdict": "duplicate_of", "duplicate_of": "W15-B001-A-009", "confidence": "high", "flags": ["hard_duplicate", "scope:intra_A"], "note": "Same claim: prompt-jitter variance beats SAM's learned IoU head as a failure detector. A-063 re-states A-009 at matched FLOPs with a compute-reallocation frame. Salvage: Preserve the FLOPs-matched protocol (ViT-B+jitter vs ViT-H+head) and the 'architectural, not training artifact' persistence clause."}
+{"idea_id": "W15-B001-A-064", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F16_uncertainty_pathway_modularity"], "note": ""}
+{"idea_id": "W15-B001-A-065", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-066", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F04_prompt_jitter_probe", "protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-A-067", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F06_supervision_definition_gap"], "note": ""}
+{"idea_id": "W15-B001-A-068", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F11_power_and_confound_metrology"], "note": ""}
+{"idea_id": "W15-B001-A-069", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F12_metric_relative_rankings"], "note": ""}
+{"idea_id": "W15-B001-A-070", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-071", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F13_evaluation_information_leaks"], "note": ""}
+{"idea_id": "W15-B001-A-072", "verdict": "duplicate_of", "duplicate_of": "W15-B001-B-020", "confidence": "medium", "flags": ["hard_duplicate", "scope:cross_A_B"], "note": "Same claim on the same (medical) literature: published method orderings are statistically unresolved. A-072 argues from training-side seed/split variance, B-020 from evaluation-side test-set power; one power-audit paper. Salvage: Merge the training-side variance decomposition and A-072's replication-probability validation into B-020's bootstrap/permutation audit."}
+{"idea_id": "W15-B001-A-073", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F18_missing_baseline_controls"], "note": ""}
+{"idea_id": "W15-B001-A-074", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F11_power_and_confound_metrology"], "note": ""}
+{"idea_id": "W15-B001-A-075", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F11_power_and_confound_metrology"], "note": ""}
+{"idea_id": "W15-B001-A-076", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F18_missing_baseline_controls", "protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-A-077", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-078", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-079", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-080", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-081", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F14_input_interface_modality_gap"], "note": ""}
+{"idea_id": "W15-B001-A-082", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-083", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F15_scale_gap_geometric_fix"], "note": ""}
+{"idea_id": "W15-B001-A-084", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-A-085", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-086", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F07_learned_count_priors", "protect:competing_pair"], "note": "Explicitly tests residuals beyond A-040's mechanical model — protected competing pair, not a duplicate."}
+{"idea_id": "W15-B001-A-087", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-088", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-089", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F06_supervision_definition_gap"], "note": ""}
+{"idea_id": "W15-B001-A-090", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-A-091", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-092", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F14_input_interface_modality_gap"], "note": "T02-adjacent as gen_A self-flagged; no gen_B counterpart found (gen_B has no speckle/physics-augmentation idea). Keep in T01 physics family F14."}
+{"idea_id": "W15-B001-A-093", "verdict": "duplicate_of", "duplicate_of": "W15-B001-A-081", "confidence": "high", "flags": ["hard_duplicate", "scope:intra_A"], "note": "A-093 is the thermal special case of A-081 (input-space transform matches LoRA on sensor shifts); A-081's own fastest-falsification already specifies 'one thermal domain, LUT vs LoRA-8'. Salvage: Keep the ~1-dimensional-gap claim and the cross-dataset tone-curve-transfer prediction as A-081's flagship arm."}
+{"idea_id": "W15-B001-A-094", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F15_scale_gap_geometric_fix"], "note": "T02-adjacent; no gen_B counterpart (B-087 is modality clustering, different claim)."}
+{"idea_id": "W15-B001-A-095", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-096", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": "T02-adjacent; checked against B-031/B-039 — different claims (supervision signal vs context economics). Keep."}
+{"idea_id": "W15-B001-A-097", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-098", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-A-099", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-A-100", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-001", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F06_supervision_definition_gap"], "note": ""}
+{"idea_id": "W15-B001-B-002", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-003", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F05_annotation_style_fingerprints"], "note": ""}
+{"idea_id": "W15-B001-B-004", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-005", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-006", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F11_power_and_confound_metrology"], "note": "Test-label noise floor: distinct from B-020 (power) — different noise source, keep separate in F11."}
+{"idea_id": "W15-B001-B-007", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F10_per_rater_vs_consensus"], "note": ""}
+{"idea_id": "W15-B001-B-008", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-009", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-010", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-011", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-012", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-013", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F12_metric_relative_rankings"], "note": ""}
+{"idea_id": "W15-B001-B-014", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F11_power_and_confound_metrology"], "note": ""}
+{"idea_id": "W15-B001-B-015", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F12_metric_relative_rankings"], "note": ""}
+{"idea_id": "W15-B001-B-016", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-017", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F12_metric_relative_rankings"], "note": ""}
+{"idea_id": "W15-B001-B-018", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-019", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F19_longitudinal_consistency"], "note": ""}
+{"idea_id": "W15-B001-B-020", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F11_power_and_confound_metrology"], "note": ""}
+{"idea_id": "W15-B001-B-021", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-022", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F12_metric_relative_rankings"], "note": ""}
+{"idea_id": "W15-B001-B-023", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F13_evaluation_information_leaks"], "note": ""}
+{"idea_id": "W15-B001-B-024", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F11_power_and_confound_metrology"], "note": ""}
+{"idea_id": "W15-B001-B-025", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-026", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F21_position_coordinate_reliance"], "note": ""}
+{"idea_id": "W15-B001-B-027", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-028", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-029", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-030", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F23_prior_driven_hallucination"], "note": ""}
+{"idea_id": "W15-B001-B-031", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F20_3d_context_need_vs_use"], "note": ""}
+{"idea_id": "W15-B001-B-032", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F20_3d_context_need_vs_use"], "note": ""}
+{"idea_id": "W15-B001-B-033", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-034", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-035", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F23_prior_driven_hallucination"], "note": ""}
+{"idea_id": "W15-B001-B-036", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F09_continuous_output_space"], "note": ""}
+{"idea_id": "W15-B001-B-037", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-038", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-039", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-040", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-041", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F21_position_coordinate_reliance"], "note": ""}
+{"idea_id": "W15-B001-B-042", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-043", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F15_scale_gap_geometric_fix"], "note": ""}
+{"idea_id": "W15-B001-B-044", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-045", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-046", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-047", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F06_supervision_definition_gap"], "note": ""}
+{"idea_id": "W15-B001-B-048", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-049", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-050", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-051", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-052", "verdict": "duplicate_of", "duplicate_of": "W15-B001-B-046", "confidence": "medium", "flags": ["hard_duplicate", "scope:intra_B"], "note": "One mechanism claim: statistical normalization/alignment removes the pathology signal it treats as distribution shift. B-046 is the offline-harmonization arm, B-052 the test-time-normalization arm. Salvage: Keep B-052's pathology-burden crossover prediction and the TTA safety-inversion deployment framing as a second falsification arm."}
+{"idea_id": "W15-B001-B-053", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-054", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F19_longitudinal_consistency"], "note": ""}
+{"idea_id": "W15-B001-B-055", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-056", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F09_continuous_output_space"], "note": ""}
+{"idea_id": "W15-B001-B-057", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-058", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F07_learned_count_priors"], "note": ""}
+{"idea_id": "W15-B001-B-059", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F01_model_diversity_vs_human_disagreement", "protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-B-060", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F19_longitudinal_consistency"], "note": ""}
+{"idea_id": "W15-B001-B-061", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-062", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F22_edit_centric_objectives"], "note": ""}
+{"idea_id": "W15-B001-B-063", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-064", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-065", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-B-066", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F33_plausibility_correctness_dissociation"], "note": ""}
+{"idea_id": "W15-B001-B-067", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F22_edit_centric_objectives"], "note": ""}
+{"idea_id": "W15-B001-B-068", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-069", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F35_self_training_pathologies"], "note": ""}
+{"idea_id": "W15-B001-B-070", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F36_annotation_budget_allocation"], "note": ""}
+{"idea_id": "W15-B001-B-071", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-072", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-073", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-074", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-075", "verdict": "duplicate_of", "duplicate_of": "W15-B001-B-047", "confidence": "high", "flags": ["hard_duplicate", "scope:intra_B"], "note": "Same claim: site-specific labeling protocols, not images or optimization, dominate multi-site training loss. Per-site heads (B-047) and harmonized-label federation (B-075) are two interventions on one hypothesis. Salvage: Keep the harmonized-relabeling intervention and the federated setting as a deployment variant of the merged idea."}
+{"idea_id": "W15-B001-B-076", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-077", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F01_model_diversity_vs_human_disagreement", "protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-B-078", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F02_calibration_fragility_under_shift"], "note": ""}
+{"idea_id": "W15-B001-B-079", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-B-080", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-081", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-082", "verdict": "duplicate_of", "duplicate_of": "W15-B001-B-076", "confidence": "medium", "flags": ["hard_duplicate", "scope:intra_B"], "note": "One discovery: spatial uncertainty signals are ~deterministic functions of distance-to-predicted-boundary. B-076 states it as a recalibration fix, B-082 as an MC-dropout null-equivalence critique. Salvage: Keep the two-feature geometric null model and its error-flagging equivalence test as the adversarial arm of the merged idea."}
+{"idea_id": "W15-B001-B-083", "verdict": "duplicate_of", "duplicate_of": "W15-B001-A-034", "confidence": "medium", "flags": ["hard_duplicate", "scope:cross_A_B"], "note": "T01/T02 collision: the gradient/edge-snapping prior of (pretrained) segmenters — boundaries placed at the strongest local gradient rather than the true boundary. A-034 gives the predictive snap-field mechanism; B-083 the same defect on medical definition-vs-edge conflicts. Salvage: Keep B-083's pretrained-vs-scratch signed-error control (provenance attribution) and medical conflict sites as a testbed of the merged claim."}
+{"idea_id": "W15-B001-B-084", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F34_prompt_granularity_ambiguity"], "note": "Checked against A-001/A-006: the variance-decomposition and hierarchy-ambiguity-score designs are distinct; medical nesting is structural, not just a domain swap. Keep."}
+{"idea_id": "W15-B001-B-085", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-086", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-087", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-088", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F08_pre_run_difficulty_prediction"], "note": ""}
+{"idea_id": "W15-B001-B-089", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-090", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F23_prior_driven_hallucination"], "note": ""}
+{"idea_id": "W15-B001-B-091", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-092", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-093", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-B-094", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F23_prior_driven_hallucination", "protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-B-095", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-096", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F37_boundary_noise_sensitivity"], "note": ""}
+{"idea_id": "W15-B001-B-097", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-B-098", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-B-099", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F32_leakage_audits"], "note": ""}
+{"idea_id": "W15-B001-B-100", "verdict": "duplicate_of", "duplicate_of": "W15-B001-B-012", "confidence": "medium", "flags": ["hard_duplicate", "scope:intra_B"], "note": "One phenomenon: boundary-band label noise is memorized late while interiors fit early/stay underfit. B-012 is the temporal view (per-structure stopping), B-100 the spatial view (targeted regularization). Salvage: Keep the voxel-stratified train-test gap curves and spatially weighted regularization as the intervention arm."}
+{"idea_id": "W15-B001-C-001", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F06_supervision_definition_gap"], "note": ""}
+{"idea_id": "W15-B001-C-002", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-003", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F09_continuous_output_space"], "note": ""}
+{"idea_id": "W15-B001-C-004", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F26_sensor_defined_fire_extent", "protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-C-005", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-006", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F26_sensor_defined_fire_extent"], "note": ""}
+{"idea_id": "W15-B001-C-007", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-008", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-009", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-010", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F12_metric_relative_rankings"], "note": ""}
+{"idea_id": "W15-B001-C-011", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": "Human-disagreement-as-density-sensor; adjacent to F01 but measures the stimulus, not model diversity. Keep."}
+{"idea_id": "W15-B001-C-012", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-013", "verdict": "duplicate_of", "duplicate_of": "W15-B001-B-003", "confidence": "medium", "flags": ["hard_duplicate", "scope:cross_B_C"], "note": "T02/T03 collision: annotation-style fingerprints are stable, decodable from masks, learned and reproduced by models. Tool signature (C-013) is one style factor within B-003's annotator/institution style claim. Salvage: Keep the controlled dual-tool re-annotation of identical footage as the cleanest causal design in the merged idea."}
+{"idea_id": "W15-B001-C-014", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F36_annotation_budget_allocation"], "note": ""}
+{"idea_id": "W15-B001-C-015", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-016", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F10_per_rater_vs_consensus"], "note": ""}
+{"idea_id": "W15-B001-C-017", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F29_transparency_layer_counting"], "note": ""}
+{"idea_id": "W15-B001-C-018", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-019", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-020", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F08_pre_run_difficulty_prediction"], "note": ""}
+{"idea_id": "W15-B001-C-021", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F26_sensor_defined_fire_extent"], "note": ""}
+{"idea_id": "W15-B001-C-022", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F30_refractive_distortion_suite"], "note": ""}
+{"idea_id": "W15-B001-C-023", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-024", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-025", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-C-026", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-027", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-028", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-029", "verdict": "duplicate_of", "duplicate_of": "W15-B001-A-034", "confidence": "medium", "flags": ["hard_duplicate", "scope:cross_A_C"], "note": "T01/T03 collision: the same edge-snapping prior, instantiated on media where the true boundary is physically not on any image gradient (hallucinated crisp edges inside smoke). Salvage: Keep the gradient-alignment excess score and the solid-object null control; media are the sharpest testbed of the merged claim."}
+{"idea_id": "W15-B001-C-030", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F04_prompt_jitter_probe"], "note": "Prediction cross-references C-011 as its comparison baseline; distinct probe (model fall-through vs human disagreement). Keep both."}
+{"idea_id": "W15-B001-C-031", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F31_cross_channel_glass_labels"], "note": ""}
+{"idea_id": "W15-B001-C-032", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F24_context_shortcut_media"], "note": ""}
+{"idea_id": "W15-B001-C-033", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-034", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F04_prompt_jitter_probe", "protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-C-035", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-036", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F38_click_oscillation", "protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-C-037", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-038", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-039", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F12_metric_relative_rankings"], "note": ""}
+{"idea_id": "W15-B001-C-040", "verdict": "duplicate_of", "duplicate_of": "W15-B001-C-010", "confidence": "high", "flags": ["hard_duplicate", "scope:intra_C"], "note": "Contained claim: C-010's falsifiable prediction already includes C-040's rank-inversion-across-resolutions result verbatim (fractal boundaries make boundary metrics resolution-relative). Generator itself flagged the pair. Salvage: Keep the per-image instability vs box-counting-complexity correlation as a secondary prediction."}
+{"idea_id": "W15-B001-C-041", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F33_plausibility_correctness_dissociation"], "note": ""}
+{"idea_id": "W15-B001-C-042", "verdict": "duplicate_of", "duplicate_of": "W15-B001-C-020", "confidence": "high", "flags": ["hard_duplicate", "scope:intra_C"], "note": "Contained claim: C-020's prediction already includes rescoring restricted to detectable pixels; C-042 adds only the benchmark-weighting proposal on top of the same detectability index. Salvage: Keep the prediction that detectability-weighted scores correlate better with cross-dataset generalization."}
+{"idea_id": "W15-B001-C-043", "verdict": "duplicate_of", "duplicate_of": "W15-B001-C-001", "confidence": "medium", "flags": ["hard_duplicate", "scope:intra_C"], "note": "Same claim: smoke 'domain gaps' are supervision-definition gaps. C-001 is the annotator-threshold mechanism (one-parameter offset recovers the gap); C-043 the dataset-level consequence (protocol-swap re-annotation recovers the gap). Generator flagged the family. Salvage: Keep the protocol-swap re-annotation experiment as the dataset-level falsification arm of the merged idea."}
+{"idea_id": "W15-B001-C-044", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F28_distractor_blindness"], "note": ""}
+{"idea_id": "W15-B001-C-045", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-046", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F12_metric_relative_rankings"], "note": ""}
+{"idea_id": "W15-B001-C-047", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-048", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-049", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F25_temporal_signal_sufficiency"], "note": ""}
+{"idea_id": "W15-B001-C-050", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F25_temporal_signal_sufficiency"], "note": ""}
+{"idea_id": "W15-B001-C-051", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-052", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-C-053", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-054", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-055", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F30_refractive_distortion_suite"], "note": ""}
+{"idea_id": "W15-B001-C-056", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-057", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F31_cross_channel_glass_labels"], "note": ""}
+{"idea_id": "W15-B001-C-058", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-059", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-060", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F31_cross_channel_glass_labels"], "note": ""}
+{"idea_id": "W15-B001-C-061", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-062", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-063", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-C-064", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-065", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F24_context_shortcut_media"], "note": ""}
+{"idea_id": "W15-B001-C-066", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F24_context_shortcut_media"], "note": ""}
+{"idea_id": "W15-B001-C-067", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-C-068", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F24_context_shortcut_media"], "note": ""}
+{"idea_id": "W15-B001-C-069", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-070", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-071", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F26_sensor_defined_fire_extent"], "note": ""}
+{"idea_id": "W15-B001-C-072", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F27_detection_latency_casualties"], "note": ""}
+{"idea_id": "W15-B001-C-073", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F28_distractor_blindness"], "note": ""}
+{"idea_id": "W15-B001-C-074", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F09_continuous_output_space"], "note": ""}
+{"idea_id": "W15-B001-C-075", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F09_continuous_output_space"], "note": ""}
+{"idea_id": "W15-B001-C-076", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F09_continuous_output_space"], "note": ""}
+{"idea_id": "W15-B001-C-077", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F30_refractive_distortion_suite"], "note": ""}
+{"idea_id": "W15-B001-C-078", "verdict": "duplicate_of", "duplicate_of": "W15-B001-C-050", "confidence": "medium", "flags": ["hard_duplicate", "scope:intra_C"], "note": "Same core claim: smoke separates from distractors by characteristic temporal/spectral statistics. C-078 extends C-050's turbulence-slope signature to a joint spatial-temporal cell plus an architecture corollary. Salvage: Keep the joint spatial-temporal factorization measurement and the parameter-efficiency test as extension arms."}
+{"idea_id": "W15-B001-C-079", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-080", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F29_transparency_layer_counting"], "note": ""}
+{"idea_id": "W15-B001-C-081", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-082", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-083", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F01_model_diversity_vs_human_disagreement"], "note": ""}
+{"idea_id": "W15-B001-C-084", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-085", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-C-086", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-087", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-088", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-089", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F27_detection_latency_casualties"], "note": ""}
+{"idea_id": "W15-B001-C-090", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F25_temporal_signal_sufficiency", "protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-C-091", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-092", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-093", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F37_boundary_noise_sensitivity", "protect:competing_pair"], "note": ""}
+{"idea_id": "W15-B001-C-094", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-095", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-096", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-097", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}
+{"idea_id": "W15-B001-C-098", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["family:F32_leakage_audits"], "note": ""}
+{"idea_id": "W15-B001-C-099", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": ["protect:singular_anomaly"], "note": ""}
+{"idea_id": "W15-B001-C-100", "verdict": "keep", "duplicate_of": null, "confidence": "high", "flags": [], "note": ""}

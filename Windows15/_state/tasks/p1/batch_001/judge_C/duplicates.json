@@ -1,0 +1,714 @@
+{
+  "task_id": "p1_wave_b_batch001_judge_C",
+  "windows_path": "Windows15",
+  "batch": "batch_001",
+  "judge": "C",
+  "role": "adversarial duplicate / intra-batch collision auditor",
+  "inputs": {
+    "gen_A": {
+      "branch": "origin/cursor/p1-wave-a-gen-a-f6f6",
+      "territory": "T01 SAM / foundation-model adaptation / PEFT",
+      "ideas": 100
+    },
+    "gen_B": {
+      "branch": "origin/cursor/p1-wave-a-batch001-gen-b-9ddf",
+      "territory": "T02 Medical segmentation",
+      "ideas": 100
+    },
+    "gen_C": {
+      "branch": "origin/cursor/p1-wave-a-batch001-gen-c-65da",
+      "territory": "T03 Smoke / fire / transparent / ambiguous objects",
+      "ideas": 100
+    }
+  },
+  "dedup_standard": "Two ideas are hard duplicates when they assert the same core scientific claim such that decisively falsifying/verifying one substantially falsifies/verifies the other; a domain re-instantiation counts as distinct only if the domain changes the mechanism or the prediction, not merely the dataset. Entailment, nested claims, and competing mechanisms over one observable are NOT duplicates — they are flagged.",
+  "hard_duplicates": [
+    {
+      "duplicate": "W15-B001-A-020",
+      "canonical": "W15-B001-A-068",
+      "scope": "intra_A",
+      "confidence": "high",
+      "rationale": "Same claim: PEFT/LoRA comparison outcomes are per-method learning-rate artifacts. A-068 is the general audit; A-020 restates it for decomposed/scaled LoRA variants.",
+      "salvage_in_merge": "Preserve A-020's mechanism experiment: transplanting the variant's implicit per-component scaling into vanilla LoRA's optimizer."
+    },
+    {
+      "duplicate": "W15-B001-A-043",
+      "canonical": "W15-B001-A-070",
+      "scope": "intra_A",
+      "confidence": "medium",
+      "rationale": "A-043 is the camouflage instance of A-070's general under-prompting audit ('SAM fails on X' papers close under oracle prompting). A-070's own design spans 8 claimed-failure domains.",
+      "salvage_in_merge": "Retain camouflage as the flagship case study; fold the encoder-linear-probe arm into the A-042 segmentability-probe idea."
+    },
+    {
+      "duplicate": "W15-B001-A-063",
+      "canonical": "W15-B001-A-009",
+      "scope": "intra_A",
+      "confidence": "high",
+      "rationale": "Same claim: prompt-jitter variance beats SAM's learned IoU head as a failure detector. A-063 re-states A-009 at matched FLOPs with a compute-reallocation frame.",
+      "salvage_in_merge": "Preserve the FLOPs-matched protocol (ViT-B+jitter vs ViT-H+head) and the 'architectural, not training artifact' persistence clause."
+    },
+    {
+      "duplicate": "W15-B001-A-072",
+      "canonical": "W15-B001-B-020",
+      "scope": "cross_A_B",
+      "confidence": "medium",
+      "rationale": "Same claim on the same (medical) literature: published method orderings are statistically unresolved. A-072 argues from training-side seed/split variance, B-020 from evaluation-side test-set power; one power-audit paper.",
+      "salvage_in_merge": "Merge the training-side variance decomposition and A-072's replication-probability validation into B-020's bootstrap/permutation audit."
+    },
+    {
+      "duplicate": "W15-B001-A-093",
+      "canonical": "W15-B001-A-081",
+      "scope": "intra_A",
+      "confidence": "high",
+      "rationale": "A-093 is the thermal special case of A-081 (input-space transform matches LoRA on sensor shifts); A-081's own fastest-falsification already specifies 'one thermal domain, LUT vs LoRA-8'.",
+      "salvage_in_merge": "Keep the ~1-dimensional-gap claim and the cross-dataset tone-curve-transfer prediction as A-081's flagship arm."
+    },
+    {
+      "duplicate": "W15-B001-B-052",
+      "canonical": "W15-B001-B-046",
+      "scope": "intra_B",
+      "confidence": "medium",
+      "rationale": "One mechanism claim: statistical normalization/alignment removes the pathology signal it treats as distribution shift. B-046 is the offline-harmonization arm, B-052 the test-time-normalization arm.",
+      "salvage_in_merge": "Keep B-052's pathology-burden crossover prediction and the TTA safety-inversion deployment framing as a second falsification arm."
+    },
+    {
+      "duplicate": "W15-B001-B-075",
+      "canonical": "W15-B001-B-047",
+      "scope": "intra_B",
+      "confidence": "high",
+      "rationale": "Same claim: site-specific labeling protocols, not images or optimization, dominate multi-site training loss. Per-site heads (B-047) and harmonized-label federation (B-075) are two interventions on one hypothesis.",
+      "salvage_in_merge": "Keep the harmonized-relabeling intervention and the federated setting as a deployment variant of the merged idea."
+    },
+    {
+      "duplicate": "W15-B001-B-082",
+      "canonical": "W15-B001-B-076",
+      "scope": "intra_B",
+      "confidence": "medium",
+      "rationale": "One discovery: spatial uncertainty signals are ~deterministic functions of distance-to-predicted-boundary. B-076 states it as a recalibration fix, B-082 as an MC-dropout null-equivalence critique.",
+      "salvage_in_merge": "Keep the two-feature geometric null model and its error-flagging equivalence test as the adversarial arm of the merged idea."
+    },
+    {
+      "duplicate": "W15-B001-B-083",
+      "canonical": "W15-B001-A-034",
+      "scope": "cross_A_B",
+      "confidence": "medium",
+      "rationale": "T01/T02 collision: the gradient/edge-snapping prior of (pretrained) segmenters — boundaries placed at the strongest local gradient rather than the true boundary. A-034 gives the predictive snap-field mechanism; B-083 the same defect on medical definition-vs-edge conflicts.",
+      "salvage_in_merge": "Keep B-083's pretrained-vs-scratch signed-error control (provenance attribution) and medical conflict sites as a testbed of the merged claim."
+    },
+    {
+      "duplicate": "W15-B001-B-100",
+      "canonical": "W15-B001-B-012",
+      "scope": "intra_B",
+      "confidence": "medium",
+      "rationale": "One phenomenon: boundary-band label noise is memorized late while interiors fit early/stay underfit. B-012 is the temporal view (per-structure stopping), B-100 the spatial view (targeted regularization).",
+      "salvage_in_merge": "Keep the voxel-stratified train-test gap curves and spatially weighted regularization as the intervention arm."
+    },
+    {
+      "duplicate": "W15-B001-C-013",
+      "canonical": "W15-B001-B-003",
+      "scope": "cross_B_C",
+      "confidence": "medium",
+      "rationale": "T02/T03 collision: annotation-style fingerprints are stable, decodable from masks, learned and reproduced by models. Tool signature (C-013) is one style factor within B-003's annotator/institution style claim.",
+      "salvage_in_merge": "Keep the controlled dual-tool re-annotation of identical footage as the cleanest causal design in the merged idea."
+    },
+    {
+      "duplicate": "W15-B001-C-029",
+      "canonical": "W15-B001-A-034",
+      "scope": "cross_A_C",
+      "confidence": "medium",
+      "rationale": "T01/T03 collision: the same edge-snapping prior, instantiated on media where the true boundary is physically not on any image gradient (hallucinated crisp edges inside smoke).",
+      "salvage_in_merge": "Keep the gradient-alignment excess score and the solid-object null control; media are the sharpest testbed of the merged claim."
+    },
+    {
+      "duplicate": "W15-B001-C-040",
+      "canonical": "W15-B001-C-010",
+      "scope": "intra_C",
+      "confidence": "high",
+      "rationale": "Contained claim: C-010's falsifiable prediction already includes C-040's rank-inversion-across-resolutions result verbatim (fractal boundaries make boundary metrics resolution-relative). Generator itself flagged the pair.",
+      "salvage_in_merge": "Keep the per-image instability vs box-counting-complexity correlation as a secondary prediction."
+    },
+    {
+      "duplicate": "W15-B001-C-042",
+      "canonical": "W15-B001-C-020",
+      "scope": "intra_C",
+      "confidence": "high",
+      "rationale": "Contained claim: C-020's prediction already includes rescoring restricted to detectable pixels; C-042 adds only the benchmark-weighting proposal on top of the same detectability index.",
+      "salvage_in_merge": "Keep the prediction that detectability-weighted scores correlate better with cross-dataset generalization."
+    },
+    {
+      "duplicate": "W15-B001-C-043",
+      "canonical": "W15-B001-C-001",
+      "scope": "intra_C",
+      "confidence": "medium",
+      "rationale": "Same claim: smoke 'domain gaps' are supervision-definition gaps. C-001 is the annotator-threshold mechanism (one-parameter offset recovers the gap); C-043 the dataset-level consequence (protocol-swap re-annotation recovers the gap). Generator flagged the family.",
+      "salvage_in_merge": "Keep the protocol-swap re-annotation experiment as the dataset-level falsification arm of the merged idea."
+    },
+    {
+      "duplicate": "W15-B001-C-078",
+      "canonical": "W15-B001-C-050",
+      "scope": "intra_C",
+      "confidence": "medium",
+      "rationale": "Same core claim: smoke separates from distractors by characteristic temporal/spectral statistics. C-078 extends C-050's turbulence-slope signature to a joint spatial-temporal cell plus an architecture corollary.",
+      "salvage_in_merge": "Keep the joint spatial-temporal factorization measurement and the parameter-efficiency test as extension arms."
+    }
+  ],
+  "duplicate_groups": [
+    {
+      "group": "edge_snapping_prior",
+      "canonical": "W15-B001-A-034",
+      "members": [
+        "W15-B001-A-034",
+        "W15-B001-B-083",
+        "W15-B001-C-029"
+      ],
+      "note": "The predicted flagship cross-territory collision: one defect claim in all three shards. Merge keeps A-034's snap-field mechanism, B-083's pretrained-vs-scratch provenance control, C-029's media excess-alignment metric."
+    }
+  ],
+  "near_duplicate_families": [
+    {
+      "family_id": "F01_model_diversity_vs_human_disagreement",
+      "members": [
+        "W15-B001-A-061",
+        "W15-B001-B-059",
+        "W15-B001-B-077",
+        "W15-B001-C-083"
+      ],
+      "shared_claim": "Model output diversity (multimask spread / seed ensembles / K-hypothesis heads) co-localizes with human annotator disagreement.",
+      "recommendation": "Keep all: frozen-promptable (A-061), trained-ensemble (B-059/B-077, a protected competing pair), and trained multi-head with media/solid dissociation (C-083) are separately falsifiable. Under quota pressure merge B-059+B-077 first, into a three-way attribution test (model uncertainty vs irreducible ambiguity vs label error)."
+    },
+    {
+      "family_id": "F02_calibration_fragility_under_shift",
+      "members": [
+        "W15-B001-A-024",
+        "W15-B001-B-078"
+      ],
+      "shared_claim": "Self-assessment/calibration degrades faster than accuracy under perturbation (PEFT adaptation in A-024; deployment site shift in B-078).",
+      "recommendation": "Keep both: forgetting-side vs robustness-side of one asymmetry; co-cluster and merge only if the consolidator needs the slot."
+    },
+    {
+      "family_id": "F03_iou_head_domain_meter",
+      "members": [
+        "W15-B001-A-050",
+        "W15-B001-A-062"
+      ],
+      "shared_claim": "SAM's IoU head carries domain-level but not instance-level signal.",
+      "recommendation": "Keep both: A-050 (within-image resolution near chance) and A-062 (overconfidence ranks domains) are complementary decompositions; strong merge candidates."
+    },
+    {
+      "family_id": "F04_prompt_jitter_probe",
+      "members": [
+        "W15-B001-A-009",
+        "W15-B001-A-066",
+        "W15-B001-C-030",
+        "W15-B001-C-034"
+      ],
+      "shared_claim": "Prompt-perturbation statistics of a frozen promptable segmenter as a zero-training measurement instrument.",
+      "recommendation": "Keep all four: failure detection (A-009, canonical; A-063 already collapsed into it), uncertainty decomposition (A-066), opacity probe (C-030), ambiguity meter (C-034). Note A-066 vs C-034 is a protected competing pair on what jitter variance measures."
+    },
+    {
+      "family_id": "F05_annotation_style_fingerprints",
+      "members": [
+        "W15-B001-A-036",
+        "W15-B001-B-003"
+      ],
+      "shared_claim": "Boundary-morphology statistics fingerprint the annotation source and are reproduced by trained models.",
+      "recommendation": "Keep both after collapsing C-013 into B-003: A-036 is a provenance claim about SAM/SA-1B machine annotation (pairs with A-085); B-003 is the human-annotator style + normalization intervention."
+    },
+    {
+      "family_id": "F06_supervision_definition_gap",
+      "members": [
+        "W15-B001-A-067",
+        "W15-B001-A-089",
+        "W15-B001-B-001",
+        "W15-B001-B-047",
+        "W15-B001-C-001"
+      ],
+      "shared_claim": "Measured residual/domain gaps are substantially label-convention/protocol gaps, not model or appearance gaps.",
+      "recommendation": "Keep all after collapsing B-075 into B-047 and C-043 into C-001: auditing tool (A-067), acquisition-waste corollary (A-089), benchmark residual (B-001), multi-site training (B-047), threshold mechanism (C-001) are distinct falsifiable surfaces of one theme. Highest residual over-merge risk in the batch: do not collapse across these five."
+    },
+    {
+      "family_id": "F07_learned_count_priors",
+      "members": [
+        "W15-B001-A-040",
+        "W15-B001-A-086",
+        "W15-B001-B-058"
+      ],
+      "shared_claim": "Predicted object/instance counts are pulled toward dataset statistics or sampling-machinery ceilings rather than scene truth.",
+      "recommendation": "Keep all: A-040 vs A-086 is a protected competing pair (mechanics vs learned prior; A-086 explicitly tests residuals beyond A-040's model); B-058's conditional-dependence probe in lesion detection is mechanistically distinct."
+    },
+    {
+      "family_id": "F08_pre_run_difficulty_prediction",
+      "members": [
+        "W15-B001-A-042",
+        "W15-B001-B-088",
+        "W15-B001-C-020"
+      ],
+      "shared_claim": "Segmentation difficulty is predictable before running the model (learned feature probe / boundary-contrast statistic / physical detectability index).",
+      "recommendation": "Keep all: predictor class differs (learned vs hand-crafted vs physics-derived) and so do the downstream corollaries."
+    },
+    {
+      "family_id": "F09_continuous_output_space",
+      "members": [
+        "W15-B001-B-036",
+        "W15-B001-B-056",
+        "W15-B001-C-003",
+        "W15-B001-C-074",
+        "W15-B001-C-075",
+        "W15-B001-C-076"
+      ],
+      "shared_claim": "Binary masks are the wrong output space where the underlying quantity is continuous (partial volume, infiltration, optical density, boundary distributions).",
+      "recommendation": "Keep all: physical quantity and falsification differ per member (volumetry, biology, latent-density probe, log-space additivity, nesting generalization, distribution likelihood). Under quota pressure merge within-territory first (C-003/C-074/C-075), never across territories."
+    },
+    {
+      "family_id": "F10_per_rater_vs_consensus",
+      "members": [
+        "W15-B001-B-007",
+        "W15-B001-C-016"
+      ],
+      "shared_claim": "Train on unfused per-rater masks rather than consensus.",
+      "recommendation": "Keep both: B-007 claims a calibration win (medical), C-016 an accuracy win via the fabricated-boundary mechanism (media, with solid-object control). Cross-territory merge candidates under quota."
+    },
+    {
+      "family_id": "F11_power_and_confound_metrology",
+      "members": [
+        "W15-B001-A-068",
+        "W15-B001-A-074",
+        "W15-B001-A-075",
+        "W15-B001-B-006",
+        "W15-B001-B-014",
+        "W15-B001-B-020",
+        "W15-B001-B-024"
+      ],
+      "shared_claim": "Published deltas ride on statistical noise floors and unreported confounds (LR tuning, wall-clock budgets, benchmark redundancy, test-label noise, metric test-retest variance, preprocessing).",
+      "recommendation": "Keep all after collapsing A-020 into A-068 and A-072 into B-020: each member names a different noise/confound source with its own audit design."
+    },
+    {
+      "family_id": "F12_metric_relative_rankings",
+      "members": [
+        "W15-B001-A-069",
+        "W15-B001-B-013",
+        "W15-B001-B-015",
+        "W15-B001-B-017",
+        "W15-B001-B-022",
+        "W15-B001-C-010",
+        "W15-B001-C-039",
+        "W15-B001-C-046"
+      ],
+      "shared_claim": "Model rankings are functions of metric and evaluation-convention choices (boundary vs region, size strata, dose, empty-case rules, resolution, matting vs IoU, instance conventions).",
+      "recommendation": "Keep all after collapsing C-040 into C-010: the flipping variable differs per member. If the consolidator wants one umbrella 'metric-relative SOTA' claim, C-039 states it most generally — but the per-domain mechanisms are the falsifiable content."
+    },
+    {
+      "family_id": "F13_evaluation_information_leaks",
+      "members": [
+        "W15-B001-A-071",
+        "W15-B001-B-023"
+      ],
+      "shared_claim": "Evaluation protocols smuggle localization-oracle information (GT-derived box prompts; pre-cropped ROIs), inflating results asymmetrically.",
+      "recommendation": "Keep both; merge candidates under quota."
+    },
+    {
+      "family_id": "F14_input_interface_modality_gap",
+      "members": [
+        "W15-B001-A-015",
+        "W15-B001-A-016",
+        "W15-B001-A-081",
+        "W15-B001-A-092"
+      ],
+      "shared_claim": "Sensor/modality domain gaps live at the input interface (first-layer stats, channel statistics, input transforms, physics augmentation).",
+      "recommendation": "Keep all after collapsing A-093 into A-081: nested but independently falsifiable claims (first-block adaptation, LN-affine sufficiency, external transform parity, speckle-augmentation transfer)."
+    },
+    {
+      "family_id": "F15_scale_gap_geometric_fix",
+      "members": [
+        "W15-B001-A-083",
+        "W15-B001-A-094",
+        "W15-B001-B-043"
+      ],
+      "shared_claim": "Apparent domain gaps that are actually scale gaps, fixable geometrically (PE retuning, rescaling) or manifesting as granularity instability.",
+      "recommendation": "Keep all: fix location and domain differ (positional encodings vs input rescaling vs scale-lessness instability)."
+    },
+    {
+      "family_id": "F16_uncertainty_pathway_modularity",
+      "members": [
+        "W15-B001-A-032",
+        "W15-B001-A-064"
+      ],
+      "shared_claim": "SAM's uncertainty pathway is modular: cheap to break, cheap to repair (A-032), cheap to adapt on its own (A-064).",
+      "recommendation": "Keep both: nested claims sharing one intervention; high-priority merge pair under quota."
+    },
+    {
+      "family_id": "F17_intrinsic_rank_diagnostics",
+      "members": [
+        "W15-B001-A-011",
+        "W15-B001-A-012",
+        "W15-B001-A-021",
+        "W15-B001-A-047"
+      ],
+      "shared_claim": "Read/predict where and at what rank adaptation must act (update-location signatures, effective-rank saturation, spectral rank prediction, CKA placement prescription).",
+      "recommendation": "Keep all: diagnostic-vs-prescriptive twins (A-011/A-047 and A-012/A-021); merge within twins first under quota."
+    },
+    {
+      "family_id": "F18_missing_baseline_controls",
+      "members": [
+        "W15-B001-A-073",
+        "W15-B001-A-076"
+      ],
+      "shared_claim": "Missing null controls for SAM adaptation claims (frozen-encoder shallow head; random-weight encoder).",
+      "recommendation": "Keep both: different controls answering different questions."
+    },
+    {
+      "family_id": "F19_longitudinal_consistency",
+      "members": [
+        "W15-B001-B-019",
+        "W15-B001-B-054",
+        "W15-B001-B-060"
+      ],
+      "shared_claim": "Longitudinal/clinical utility tracks error consistency, not cross-sectional accuracy.",
+      "recommendation": "Keep all: volume-estimator bias (B-019), count instability (B-054), consistency-beats-accuracy (B-060); B-019/B-060 are the closest pair — merge those first under quota."
+    },
+    {
+      "family_id": "F20_3d_context_need_vs_use",
+      "members": [
+        "W15-B001-B-031",
+        "W15-B001-B-032"
+      ],
+      "shared_claim": "Long-range/3D context: how much the task needs (B-031) vs how much models actually use (B-032).",
+      "recommendation": "Keep both: information-theoretic vs mechanistic claims; complementary."
+    },
+    {
+      "family_id": "F21_position_coordinate_reliance",
+      "members": [
+        "W15-B001-B-026",
+        "W15-B001-B-041"
+      ],
+      "shared_claim": "Models rely on absolute position / coordinate encodings (anatomical prior vs crop-convention exploitation).",
+      "recommendation": "Keep both; merge candidates under quota."
+    },
+    {
+      "family_id": "F22_edit_centric_objectives",
+      "members": [
+        "W15-B001-B-062",
+        "W15-B001-B-067"
+      ],
+      "shared_claim": "Human edit behavior, not Dice, is the operative target (edit-cost objective; edit-prediction QA).",
+      "recommendation": "Keep both; merge candidates under quota."
+    },
+    {
+      "family_id": "F23_prior_driven_hallucination",
+      "members": [
+        "W15-B001-B-030",
+        "W15-B001-B-035",
+        "W15-B001-B-090",
+        "W15-B001-B-094"
+      ],
+      "shared_claim": "Learned anatomy priors override image evidence (lesion inpainting, impossible-input confidence, false patency, hallucinated removed organs).",
+      "recommendation": "Keep all: one mechanism, four clinically distinct failure surfaces; B-094 additionally makes a learnability claim (protected). Do not collapse to a single 'hallucination' idea."
+    },
+    {
+      "family_id": "F24_context_shortcut_media",
+      "members": [
+        "W15-B001-C-032",
+        "W15-B001-C-065",
+        "W15-B001-C-066",
+        "W15-B001-C-068"
+      ],
+      "shared_claim": "Media segmenters use context, not the medium (text-prompt context, skyline, cropping collapse, fire priming).",
+      "recommendation": "Keep all, but this is the densest intra-C family: under quota pressure collapse toward C-066 (the general context-dependence measurement) keeping C-065/C-068 as named shortcut instances."
+    },
+    {
+      "family_id": "F25_temporal_signal_sufficiency",
+      "members": [
+        "W15-B001-C-049",
+        "W15-B001-C-050",
+        "W15-B001-C-090"
+      ],
+      "shared_claim": "Smoke's discriminative information is temporal, cheap, and under-used (tiny temporal models, turbulence spectra, human motion pop-out).",
+      "recommendation": "Keep all after collapsing C-078 into C-050: capacity claim vs physical signature vs psychophysics; C-090 is protected as a singular anomaly."
+    },
+    {
+      "family_id": "F26_sensor_defined_fire_extent",
+      "members": [
+        "W15-B001-C-004",
+        "W15-B001-C-006",
+        "W15-B001-C-021",
+        "W15-B001-C-071"
+      ],
+      "shared_claim": "Fire/smoke image extent is defined by the sensor and illumination, not the phenomenon (exposure-defined GT, shutter-defined boundaries, cast-light segmentation, glare/PSF masks).",
+      "recommendation": "Keep all: labels-side (C-004/C-006) vs model-output-side (C-021/C-071) claims with separate falsifications."
+    },
+    {
+      "family_id": "F27_detection_latency_casualties",
+      "members": [
+        "W15-B001-C-072",
+        "W15-B001-C-089"
+      ],
+      "shared_claim": "Early-detection latency is sacrificed by dataset curation (C-072) and by mask-quality objectives (C-089).",
+      "recommendation": "Keep both: different causal knobs on the same casualty; test jointly but claim separately."
+    },
+    {
+      "family_id": "F28_distractor_blindness",
+      "members": [
+        "W15-B001-C-044",
+        "W15-B001-C-073"
+      ],
+      "shared_claim": "Benchmarks are blind to false alarms on smoke-like distractors; a small taxonomy explains most field false positives.",
+      "recommendation": "Keep both: evaluation blind spot vs closed-list taxonomy; merge candidates under quota."
+    },
+    {
+      "family_id": "F29_transparency_layer_counting",
+      "members": [
+        "W15-B001-C-017",
+        "W15-B001-C-080"
+      ],
+      "shared_claim": "Transparent self-overlap breaks binary label spaces; per-pixel layer counting is the fix (generator-flagged defect/remedy pair).",
+      "recommendation": "Keep both; merge into one defect+remedy idea under quota."
+    },
+    {
+      "family_id": "F30_refractive_distortion_suite",
+      "members": [
+        "W15-B001-C-022",
+        "W15-B001-C-055",
+        "W15-B001-C-077"
+      ],
+      "shared_claim": "Refractive background distortion is the load-bearing glass cue (static warp regression, induced micro-parallax, layer decomposition).",
+      "recommendation": "Keep all: single-image vs temporal vs decomposition claims."
+    },
+    {
+      "family_id": "F31_cross_channel_glass_labels",
+      "members": [
+        "W15-B001-C-031",
+        "W15-B001-C-057",
+        "W15-B001-C-060"
+      ],
+      "shared_claim": "Cross-channel disagreement (model ensembles, thermal-visible, depth dropout) is a free glass/media label source.",
+      "recommendation": "Keep all: sensor channels differ in cost and deployment; independently falsifiable."
+    },
+    {
+      "family_id": "F32_leakage_audits",
+      "members": [
+        "W15-B001-A-058",
+        "W15-B001-B-099",
+        "W15-B001-C-098"
+      ],
+      "shared_claim": "Train-test leakage inflates scores via territory-specific mechanisms (patient splits, batch-norm patient identity, viral-footage near-duplicates).",
+      "recommendation": "Keep all: same abstract audit, three distinct mechanisms; the most generic family in the batch — deprioritize before merging."
+    },
+    {
+      "family_id": "F33_plausibility_correctness_dissociation",
+      "members": [
+        "W15-B001-B-066",
+        "W15-B001-C-041"
+      ],
+      "shared_claim": "Human judgment keys on plausibility, dissociated from correctness (review safety in medical; metric validity in media).",
+      "recommendation": "Keep both; cross-territory merge candidates under quota."
+    },
+    {
+      "family_id": "F34_prompt_granularity_ambiguity",
+      "members": [
+        "W15-B001-A-001",
+        "W15-B001-A-006",
+        "W15-B001-B-084"
+      ],
+      "shared_claim": "Prompt ambiguity over granularity/hierarchy, resolved by dataset priors, dominates promptable-model behavior.",
+      "recommendation": "Keep all: click-geometry dial (A-001), SA-1B frequency prior (A-006), medical nested-anatomy variance decomposition (B-084)."
+    },
+    {
+      "family_id": "F35_self_training_pathologies",
+      "members": [
+        "W15-B001-A-055",
+        "W15-B001-B-069"
+      ],
+      "shared_claim": "Self-training fails structurally (confidence-gap correlation vs shape-diversity collapse).",
+      "recommendation": "Keep both: different collapse mechanisms and metrics."
+    },
+    {
+      "family_id": "F36_annotation_budget_allocation",
+      "members": [
+        "W15-B001-A-052",
+        "W15-B001-A-054",
+        "W15-B001-B-070",
+        "W15-B001-C-014"
+      ],
+      "shared_claim": "Where the annotation budget goes beats how much (image coverage, prompt diversity, slice selection, trimap economics).",
+      "recommendation": "Keep all: unit of allocation differs per member."
+    },
+    {
+      "family_id": "F37_boundary_noise_sensitivity",
+      "members": [
+        "W15-B001-A-027",
+        "W15-B001-B-096",
+        "W15-B001-C-093"
+      ],
+      "shared_claim": "How much boundary label noise matters, and to what: includes the protected A-027 vs C-093 solids/media contradiction and B-096's regularization reinterpretation.",
+      "recommendation": "Keep all; the cross-territory contradiction is the value — do not collapse."
+    },
+    {
+      "family_id": "F38_click_oscillation",
+      "members": [
+        "W15-B001-A-005",
+        "W15-B001-C-036"
+      ],
+      "shared_claim": "Interactive click refinement fails to converge (protected competing pair: decoder correction-memory deficit vs physically undefined boundary).",
+      "recommendation": "Keep both: they predict different behavior on complex solids; a joint experiment adjudicates."
+    },
+    {
+      "family_id": "F39_forgetting_structure",
+      "members": [
+        "W15-B001-A-023",
+        "W15-B001-A-025",
+        "W15-B001-A-026",
+        "W15-B001-A-028",
+        "W15-B001-A-031"
+      ],
+      "shared_claim": "Structure of PEFT forgetting (diversity collapse, part-whole loss, interference-by-similarity, displacement, crossover).",
+      "recommendation": "Keep all; A-023/A-025 share the multimask observable and are the first in-family merge pair under quota."
+    }
+  ],
+  "protected": {
+    "competing_pairs": [
+      {
+        "members": [
+          "W15-B001-A-040",
+          "W15-B001-A-086"
+        ],
+        "why_protect": "Everything-mode count ceiling: grid/NMS sampling machinery vs learned SA-1B count prior. A-086 is explicitly designed as a residual test beyond A-040's mechanical model."
+      },
+      {
+        "members": [
+          "W15-B001-A-017",
+          "W15-B001-A-046"
+        ],
+        "why_protect": "Where label conventions live: A-017 says decoder-only adaptation cannot absorb convention shifts; A-046 says a retrained decoder ports conventions across domains. Matched contradiction defining a decisive experiment."
+      },
+      {
+        "members": [
+          "W15-B001-A-019",
+          "W15-B001-A-053"
+        ],
+        "why_protect": "Low LoRA rank: an unnecessary restriction once spectral regularization is added (A-019) vs a beneficial label-noise filter on dirty data (A-053)."
+      },
+      {
+        "members": [
+          "W15-B001-A-057",
+          "W15-B001-B-097"
+        ],
+        "why_protect": "Training order: anti-curriculum by zero-shot difficulty (A-057) vs curriculum by rater agreement (B-097). Opposite-signed predictions across territories."
+      },
+      {
+        "members": [
+          "W15-B001-B-059",
+          "W15-B001-B-077"
+        ],
+        "why_protect": "Ensemble disagreement maps irreducible rater ambiguity (B-059) vs correctable label error (B-077). Competing interpretations of one signal; must not be merged into a single vague claim."
+      },
+      {
+        "members": [
+          "W15-B001-A-066",
+          "W15-B001-C-034"
+        ],
+        "why_protect": "What prompt-jitter variance measures: epistemic model uncertainty decoupled from ambiguity (A-066) vs a stimulus-ambiguity meter for boundary-undefined objects (C-034)."
+      },
+      {
+        "members": [
+          "W15-B001-A-005",
+          "W15-B001-C-036"
+        ],
+        "why_protect": "Click-refinement oscillation cause: decoder correction-memory deficit predicting oscillation on complex solids too (A-005) vs boundary-undefinedness predicting monotone convergence on solids (C-036)."
+      },
+      {
+        "members": [
+          "W15-B001-C-052",
+          "W15-B001-C-063"
+        ],
+        "why_protect": "In-camera flicker aliasing: a confound that invalidates flicker features across sensors (C-052) vs a signal that discriminates flame within single frames (C-063)."
+      },
+      {
+        "members": [
+          "W15-B001-C-067",
+          "W15-B001-C-085"
+        ],
+        "why_protect": "High-frequency content for smoke: dispensable distractor texture such that downsampling helps (C-085) vs essential evidence destroyed by compression (C-067). Both can hold at different operating points — mapping the crossover is the experiment."
+      },
+      {
+        "members": [
+          "W15-B001-A-027",
+          "W15-B001-C-093"
+        ],
+        "why_protect": "Boundary label noise: globally corrosive on solids (A-027) vs nearly harmless on media (C-093). Cross-territory contradiction that doubles as a probe of what boundary supervision teaches."
+      }
+    ],
+    "singular_anomalies": [
+      {
+        "idea_id": "W15-B001-C-090",
+        "why_protect": "Untrained humans beat models on incipient smoke via pre-attentive motion pop-out. Psychophysics claim; superficially a 'temporal family' member but not a model variant — do not sweep into F25 merges."
+      },
+      {
+        "idea_id": "W15-B001-B-079",
+        "why_protect": "Abstention preferentially rejects pathological cases (care-disparity engine). Safety/equity claim distinct from the calibration family; easy to mistake for generic selective-prediction critique."
+      },
+      {
+        "idea_id": "W15-B001-B-065",
+        "why_protect": "Intermediate-accuracy automation yields better final corrected contours than best models (vigilance mechanism). Counterintuitive human-factors claim, not a model-quality claim."
+      },
+      {
+        "idea_id": "W15-B001-A-076",
+        "why_protect": "Random-encoder LoRA control: quantifies the any-features-plus-training share of 'foundation model adaptation'. Reads like a baseline nitpick; it is the missing control for the entire T01 literature."
+      },
+      {
+        "idea_id": "W15-B001-C-025",
+        "why_protect": "Two-polarization capture may make transparency nearly trivial — reframes an 'algorithmic frontier' as an RGB-sensor artifact. Field-level reframing worth protecting."
+      },
+      {
+        "idea_id": "W15-B001-A-098",
+        "why_protect": "Linear re-basing of LoRAs across base-model generations. Only lifecycle-portability claim in the batch; superficially similar to merging/arithmetic ideas (A-022) but orthogonal."
+      },
+      {
+        "idea_id": "W15-B001-C-004",
+        "why_protect": "Fire ground truth is exposure-defined (GT is a function of the sensor). Labels-side claim distinct from model glare-tracing (C-071); anchors family F26."
+      },
+      {
+        "idea_id": "W15-B001-B-094",
+        "why_protect": "Detecting surgical absence is a distinct capability that presence-trained models cannot learn from ordinary data. Contains a learnability claim beyond the hallucination family."
+      },
+      {
+        "idea_id": "W15-B001-A-084",
+        "why_protect": "Test-time self-consistency adaptation: prompt/augmentation disagreement used as a training signal on one image. Superficially in the jitter family (F04) but is an adaptation method claim, not a measurement claim."
+      },
+      {
+        "idea_id": "W15-B001-C-099",
+        "why_protect": "Segmenters respond identically to real and diffusion-generated smoke — a spoofing/false-alarm channel. Only security-flavored claim in the batch."
+      },
+      {
+        "idea_id": "W15-B001-A-090",
+        "why_protect": "SA-1B privacy-blur shortcut (blur boundaries attract masks). Provenance-specific defect; gen_A already flagged its [VERIFIED PRIOR WORK] tag for downstream fact-check — protect the idea, verify the premise."
+      },
+      {
+        "idea_id": "W15-B001-B-093",
+        "why_protect": "Direct image-to-measurement regression beats segment-then-measure. Questions segmentation as a universal intermediate; no sibling in any shard."
+      }
+    ]
+  },
+  "generator_hint_adjudication": {
+    "gen_A_hints": "009/050/055/063: A-063 collapsed into A-009, rest kept. 008/060/067/081, 012/059/078/079, 013/078/099, 022/099, 038/092/095, 083/097: kept distinct as claimed. 040/086: upgraded to protected competing pair. 037/093: moot — A-093 collapsed into A-081 (a pair gen_A did NOT flag).",
+    "gen_B_hints": "083-088 vs gen_A: confirmed one hard collision (B-083 -> A-034); B-084..B-088 survive as distinct. 013-024 metrology: B-020 absorbed A-072 (cross), B-014/B-017/B-022/B-024 kept. 076-082 uncertainty: B-082 collapsed into B-076 (unflagged by generator); B-077/B-059 protected as competing pair.",
+    "gen_C_hints": "C-001/C-043/C-075: C-043 collapsed into C-001, C-075 kept. C-010/C-040: collapsed as hinted (containment confirmed in C-010's own prediction text). C-030/C-034 and C-017/C-080: kept distinct as claimed. Unflagged catches: C-042 -> C-020, C-078 -> C-050, C-013 -> B-003 (cross), C-029 -> A-034 (cross)."
+  },
+  "counts": {
+    "ideas_reviewed": 300,
+    "keep": 284,
+    "duplicate_of": 16,
+    "drop": 0,
+    "hard_duplicates_intra_shard": 12,
+    "hard_duplicates_cross_territory": 4,
+    "near_duplicate_families": 39,
+    "protected_competing_pairs": 10,
+    "protected_singular_anomalies": 12
+  },
+  "compliance": {
+    "novelty_verification_performed": false,
+    "citations_invented": false,
+    "locked_or_canonical_state_files_modified": false,
+    "outputs_written_only_to": "Windows15/_state/tasks/p1/batch_001/judge_C/"
+  },
+  "audited_at": "2026-08-28T19:10:00Z"
+}

@@ -1,0 +1,24 @@
+{
+  "task_id": "p1_wave_b_batch001_judge_A",
+  "role": "judge",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "input_count": 300,
+  "keep_count": 275,
+  "drop_count": 4,
+  "merge_count": 21,
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_001/judge_A/report.md",
+    "Windows15/_state/tasks/p1/batch_001/judge_A/clusters.json",
+    "Windows15/_state/tasks/p1/batch_001/judge_A/verdict.jsonl",
+    "Windows15/_state/tasks/p1/batch_001/judge_A/done.json"
+  ],
+  "unresolved_items": [
+    "14 retained cross-shard template-twin pairs (same claim template, different domain/instrument) were kept rather than merged; consolidator should decide whether to unify them into single research programs (listed in clusters.json -> cross_shard_near_duplicate_relations).",
+    "Drop reasons for B-032, B-022, C-061 include 'likely-known / prior-art risk' judgments made without literature verification; consolidator may reinstate if a novelty check disagrees.",
+    "Internal contradiction retained intentionally: A-017 (encoder-locus of convention changes) vs A-045/A-046 (decoder-locus); needs one resolving experiment matrix, not a verdict.",
+    "Schema inconsistency across shards: gen_B has territory+evidence_class, gen_C has evidence_class only, gen_A has neither; field harmonization needed before master-list ingestion.",
+    "No novelty verification and no citation checking were performed by this judge (per task constraints); all 'high-value' flags are leverage judgments, not novelty claims."
+  ],
+  "recommended_next_task_type": "p1_wave_b_batch001_consolidator"
+}

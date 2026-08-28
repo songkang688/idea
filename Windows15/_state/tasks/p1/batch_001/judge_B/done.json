@@ -1,0 +1,64 @@
+{
+  "task_id": "p1_wave_b_batch001_judge_B",
+  "role": "judge",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "inputs": {
+    "gen_A": {
+      "branch": "origin/cursor/p1-wave-a-gen-a-f6f6",
+      "head": "5b770eb05040d0168d2ee35fba69ca060a085964",
+      "ideas": 100
+    },
+    "gen_B": {
+      "branch": "origin/cursor/p1-wave-a-batch001-gen-b-9ddf",
+      "head": "588902125444c35c9b4599e2a649d8ff96640bbf",
+      "ideas": 100
+    },
+    "gen_C": {
+      "branch": "origin/cursor/p1-wave-a-batch001-gen-c-65da",
+      "head": "046bd2ceb9e806802d4fc37e8806687eed0fda86",
+      "ideas": 100
+    }
+  },
+  "counts": {
+    "ideas_reviewed": 300,
+    "keep": 294,
+    "mutate": 6,
+    "drop": 0,
+    "permutation_flagged": 40,
+    "falsifiable_true": 300,
+    "falsifiable_false": 0,
+    "feasibility": {
+      "cheap": 96,
+      "medium": 191,
+      "expensive": 13,
+      "infeasible": 0
+    },
+    "per_shard": {
+      "gen_A": { "keep": 95, "mutate": 5, "drop": 0, "permutation_flagged": 23 },
+      "gen_B": { "keep": 100, "mutate": 0, "drop": 0, "permutation_flagged": 7 },
+      "gen_C": { "keep": 99, "mutate": 1, "drop": 0, "permutation_flagged": 10 }
+    },
+    "mutate_ids": [
+      "W15-B001-A-052",
+      "W15-B001-A-056",
+      "W15-B001-A-060",
+      "W15-B001-A-084",
+      "W15-B001-A-100",
+      "W15-B001-C-028"
+    ]
+  },
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_001/judge_B/report.md",
+    "Windows15/_state/tasks/p1/batch_001/judge_B/verdict.jsonl",
+    "Windows15/_state/tasks/p1/batch_001/judge_B/done.json"
+  ],
+  "unresolved_items": [
+    "No novelty verification performed; all archetype comparisons are pattern-match judgments, not literature checks",
+    "Cross-shard near-duplicate families listed in report.md (jitter-instability, interactive non-convergence, disagreement-predicts-rater-disagreement, style signatures, label auditing, metric/power audits) deferred to dedup/consolidation",
+    "A-017 vs A-045/A-046 encoder-vs-decoder convention contradiction should be preserved and bound into one adjudicating experiment, not deduplicated away",
+    "A-090 interpretation depends on the unverified SA-1B privacy-blurring provenance detail flagged by gen_A",
+    "Feasibility grades for availability-risk ideas (B-008, B-011, B-029, B-043, B-077, C-039) assume the named data can be obtained; treat availability as the first gate"
+  ],
+  "recommended_next_task_type": "p1_wave_b_batch001_consolidator"
+}

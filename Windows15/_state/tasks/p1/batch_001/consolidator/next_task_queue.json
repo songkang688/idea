@@ -1,0 +1,75 @@
+{
+  "queue_version": 2,
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "generated_by": "p1_wave_b_batch001_consolidator",
+  "generated_at": "2026-08-28T19:25:00Z",
+  "state_snapshot": {
+    "accepted_ideas_in_master": 271,
+    "target_accepted": 1000,
+    "batches_consolidated": [1]
+  },
+  "scheduling_decision": {
+    "accepted_lt_1000": true,
+    "accepted_in_100_200_range": false,
+    "diversity_audit_due": false,
+    "decision": "accepted=271 < 1000, so next wave is batch_002 generators (T04/T05/T06). 271 is above the 100-200 diversity-audit trigger range, so no audit is scheduled by rule; however the 100-200 window was overshot within a single batch, so the parent is advised to run p1_diversity_audit_checkpoint_1 alongside or immediately after batch_002 dedup."
+  },
+  "tasks": [
+    {
+      "task_id": "p1_wave_a_batch002_gen_A",
+      "type": "generator",
+      "territory": "T04 Object detection",
+      "batch": 2,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_002/gen_A/",
+      "status": "ready",
+      "notes": "Same generator contract as batch_001 (state_reader/task_queue.json): shard-only writes, no canonical file edits, no verified-novelty claims, no invented citations. Avoid re-generating claims already covered by the 271 accepted ideas (read ideas_master.jsonl titles/clusters first)."
+    },
+    {
+      "task_id": "p1_wave_a_batch002_gen_B",
+      "type": "generator",
+      "territory": "T05 VLM / dense prediction",
+      "batch": 2,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_002/gen_B/",
+      "status": "ready",
+      "notes": "Same contract as gen_A."
+    },
+    {
+      "task_id": "p1_wave_a_batch002_gen_C",
+      "type": "generator",
+      "territory": "T06 failure mining",
+      "batch": 2,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_002/gen_C/",
+      "status": "ready",
+      "notes": "Same contract as gen_A. Failure-mining ideas overlapping T01-T03 failure clusters (see batch_001 judge_A clusters.json) must cite the differentiating angle explicitly."
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch002",
+      "type": "dedup_consolidator",
+      "territory": "Wave B judges + consolidator for batch_002; dedup against BOTH batch_002 shards AND the 271 previously accepted ideas in ideas_master.jsonl",
+      "batch": 2,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_002/dedup/",
+      "status": "blocked_until_batch002_generators_done"
+    },
+    {
+      "task_id": "p1_diversity_audit_checkpoint_1",
+      "type": "diversity_audit",
+      "territory": "Diversity audit across accepted ideas: cluster balance, territory coverage, near-duplicate density, template-twin families (judge_C family flags), status of 6 mutation_required ideas and 4 stage2_priorart_check_required ideas.",
+      "batch": 2,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/audits/diversity_checkpoint_1/",
+      "status": "advisory_parent_decision",
+      "notes": "Not due by the literal 100-200 trigger (accepted=271 overshot the window in one batch). Consolidator recommends running it with batch_002 dedup; parent decides."
+    }
+  ],
+  "hard_rules_carryover": [
+    "Only the Wave B consolidator may append to Windows15/_state/ideas_master.jsonl.",
+    "Nobody modifies window.lock.json or the windows_* identity fields.",
+    "No new Windows directories.",
+    "No invented citations, benchmark numbers, or claimed experimental results."
+  ]
+}

@@ -12,10 +12,31 @@
   "supervisor": "Windows15",
   "current_stage": "Stage 1",
   "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
-  "total_ideas": 0,
-  "survivors": 0,
+  "total_ideas": 300,
+  "survivors": 271,
   "final_target": 3,
-  "status": "initialized",
+  "status": "exploring",
+  "stage1_progress": {
+    "accepted_in_ideas_master": 271,
+    "target_accepted": 1000,
+    "batches": [
+      {
+        "batch": 1,
+        "territories": [
+          "T01 SAM / Foundation Model adaptation / PEFT",
+          "T02 Medical segmentation",
+          "T03 Smoke / fire / ambiguous segmentation"
+        ],
+        "generated": 300,
+        "accepted": 271,
+        "removed_as_duplicate": 29,
+        "quality_dropped": 0,
+        "accepted_with_mutation_required": 6,
+        "decision": "Windows15/_state/tasks/p1/batch_001/decision.json",
+        "consolidated_at": "2026-08-28T19:25:00Z"
+      }
+    ]
+  },
   "numbering": {
     "scan_scope": [
       "worktree_top_level",

@@ -1,0 +1,19 @@
+{
+  "task_id": "p1_wave_a_batch001_gen_A",
+  "role": "generator",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "territory": "T01 SAM / Foundation Model adaptation / PEFT",
+  "idea_count": 100,
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_001/gen_A/ideas.jsonl",
+    "Windows15/_state/tasks/p1/batch_001/gen_A/report.md",
+    "Windows15/_state/tasks/p1/batch_001/gen_A/done.json"
+  ],
+  "unresolved_items": [
+    "SA-1B privacy-blurring detail used in idea W15-B001-A-090 is tagged VERIFIED PRIOR WORK from remembered release documentation; downstream verifier should confirm before promotion",
+    "Cross-generator dedup against batch_001 gen_B (T02) and gen_C (T03) shards deferred to p1_wave_b_dedup_batch001; highest collision risk flagged in report.md (ideas 045, 056, 058, 061, 092-096 vs T02)",
+    "No novelty verification performed by design; all why_possibly_novel fields are hypotheses requiring a later literature check"
+  ],
+  "recommended_next_task_type": "p1_wave_b_dedup"
+}

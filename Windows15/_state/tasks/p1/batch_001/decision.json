@@ -1,0 +1,588 @@
+{
+  "task_id": "p1_wave_b_batch001_consolidator",
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "batch": 1,
+  "created_at": "2026-08-28T19:25:00Z",
+  "inputs": {
+    "gen_A": {
+      "branch": "origin/cursor/p1-wave-a-gen-a-f6f6",
+      "head": "5b770eb05040d0168d2ee35fba69ca060a085964"
+    },
+    "gen_B": {
+      "branch": "origin/cursor/p1-wave-a-batch001-gen-b-9ddf",
+      "head": "588902125444c35c9b4599e2a649d8ff96640bbf"
+    },
+    "gen_C": {
+      "branch": "origin/cursor/p1-wave-a-batch001-gen-c-65da",
+      "head": "046bd2ceb9e806802d4fc37e8806687eed0fda86"
+    },
+    "judge_A": {
+      "branch": "origin/cursor/p1-wave-b-batch001-judge-a-1cf8",
+      "head": "e47e0965789ecc4b3f071921020971a8eae019fe"
+    },
+    "judge_B": {
+      "branch": "origin/cursor/p1-wave-b-batch001-judge-b-5493",
+      "head": "853a4e424e40113b90bf436735fd6244edc34782"
+    },
+    "judge_C": {
+      "branch": "origin/cursor/p1-wave-b-batch001-judge-c-4e6d",
+      "head": "3d0d578bb6a6386a76bd1c754ec4a7c6dce6a193"
+    }
+  },
+  "input_counts": {
+    "ideas_total": 300,
+    "per_shard": {
+      "gen_A": 100,
+      "gen_B": 100,
+      "gen_C": 100
+    },
+    "judge_A": {
+      "keep": 275,
+      "merge": 21,
+      "drop": 4
+    },
+    "judge_B": {
+      "keep": 294,
+      "mutate": 6
+    },
+    "judge_C": {
+      "keep": 284,
+      "duplicate_of": 16
+    }
+  },
+  "resolution_rules": {
+    "R1_verdict_normalization": "Judge A 'merge' and Judge C 'duplicate_of' both mean remove-as-duplicate into an explicit surviving target. Judge B 'mutate' means keep with required reformulation. 'drop' is a quality/prior-art removal vote.",
+    "R2_dedup_union": "An idea is removed as duplicate if >=1 dedup judge (A or C) names an explicit merge/duplicate target. Rationale: a duplicate relation is positively evidenced from the two in-corpus idea texts (checkable without external facts), whereas missing a duplicate is easy; and removal is lossless - the relation is recorded as absorbed_duplicates on the surviving anchor. Consolidator spot-checked 12 pairs against the raw idea texts, including 8 single-judge cases, and confirmed each pair shares the same core claim (see report.md).",
+    "R3_target_survival": "Merge targets must themselves be accepted. Chains are followed to the final anchor; cycles are a hard error. Where both dedup judges flagged the same idea, their targets were asserted identical (8/8 agreed).",
+    "R4_quality_drop_majority": "Removal for prior-art/weakness reasons requires >=2 of 3 judges voting drop, because such drops rest on external prior-art claims that were not citation-verified (evidence policy forbids inventing citations; Judge A marked its own drops advisory). All 4 drop votes in this batch were solo (Judge A) with Judges B and C voting keep, so the 2-1 keep majority retains them, flagged stage2_priorart_check_required.",
+    "R5_mutation_passthrough": "Judge B 'mutate' verdicts (all falsifiable=true, permutation_flag=true) are accepted with mutation_required=true carrying Judge B's salvage note; Stage 2 must apply the reformulation before further promotion.",
+    "R6_precedence": "Dedup removal (R2) takes precedence over mutate and drop votes on the same idea. No overlap occurred in this batch (asserted).",
+    "R7_no_invented_evidence": "The consolidator adds no novelty or prior-art claims of its own and verified no judge note is treated as fact; all carried notes remain advisory. No citations were invented."
+  },
+  "outcome_counts": {
+    "accepted": 271,
+    "removed_as_duplicate": 29,
+    "quality_dropped": 0,
+    "solo_drop_votes_overridden": 4,
+    "accepted_with_mutation_required": 6,
+    "unanimous_keep": 261
+  },
+  "dedup_overlap": {
+    "judge_A_only": [
+      "W15-B001-A-025",
+      "W15-B001-A-040",
+      "W15-B001-B-006",
+      "W15-B001-B-014",
+      "W15-B001-B-019",
+      "W15-B001-B-024",
+      "W15-B001-B-051",
+      "W15-B001-B-059",
+      "W15-B001-C-006",
+      "W15-B001-C-017",
+      "W15-B001-C-035",
+      "W15-B001-C-036",
+      "W15-B001-C-049"
+    ],
+    "judge_C_only": [
+      "W15-B001-A-043",
+      "W15-B001-A-072",
+      "W15-B001-B-075",
+      "W15-B001-B-083",
+      "W15-B001-C-013",
+      "W15-B001-C-042",
+      "W15-B001-C-043",
+      "W15-B001-C-078"
+    ],
+    "both_judges_same_target": [
+      "W15-B001-A-020",
+      "W15-B001-A-063",
+      "W15-B001-A-093",
+      "W15-B001-B-052",
+      "W15-B001-B-082",
+      "W15-B001-B-100",
+      "W15-B001-C-029",
+      "W15-B001-C-040"
+    ]
+  },
+  "resolution_table_nontrivial": [
+    {
+      "idea_id": "W15-B001-A-020",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-068",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "A-020 (vanilla LoRA matches decomposition variants after LR tuning) is the specific instance of A-068's general per-method-LR re-evaluation claim.",
+        "judge_C": "Same claim: PEFT/LoRA comparison outcomes are per-method learning-rate artifacts. A-068 is the general audit; A-020 restates it for decomposed/scaled LoRA variants. Salvage: Preserve A-020's mechanism experiment: transplanting the variant's implicit per-component scaling into vanilla LoRA's optimizer."
+      }
+    },
+    {
+      "idea_id": "W15-B001-A-025",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-023",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (fine-tuning collapses multimask/granularity diversity); A-025 adds the mechanism (single-granularity datasets) and a readout, same experiment.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-A-040",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-010",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (everything-mode failures are grid/NMS harvesting mechanics, not perception); A-040's dense-scene count arm folds into A-010's closed-form recall test.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-A-043",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-070",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "",
+        "judge_C": "A-043 is the camouflage instance of A-070's general under-prompting audit ('SAM fails on X' papers close under oracle prompting). A-070's own design spans 8 claimed-failure domains. Salvage: Retain camouflage as the flagship case study; fold the encoder-linear-probe arm into the A-042 segmentability-probe idea."
+      }
+    },
+    {
+      "idea_id": "W15-B001-A-063",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-009",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (prompt-jitter agreement beats the learned IoU head for failure detection); A-063 contributes the matched-FLOPs protocol, which should be retained.",
+        "judge_C": "Same claim: prompt-jitter variance beats SAM's learned IoU head as a failure detector. A-063 re-states A-009 at matched FLOPs with a compute-reallocation frame. Salvage: Preserve the FLOPs-matched protocol (ViT-B+jitter vs ViT-H+head) and the 'architectural, not training artifact' persistence clause."
+      }
+    },
+    {
+      "idea_id": "W15-B001-A-072",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-020",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Kept as the SAM few-shot instantiation of the HC-01 noise-floor claim; template twin of B-020 (different field, different variance sources).",
+        "judge_C": "Same claim on the same (medical) literature: published method orderings are statistically unresolved. A-072 argues from training-side seed/split variance, B-020 from evaluation-side test-set power; one power-audit paper. Salvage: Merge the training-side variance decomposition and A-072's replication-probability validation into B-020's bootstrap/permutation audit."
+      }
+    },
+    {
+      "idea_id": "W15-B001-A-093",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-081",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "A-093 (thermal monotone tone curve) is a special case of A-081's tiny-learned-input-transform claim; keep thermal as a testbed.",
+        "judge_C": "A-093 is the thermal special case of A-081 (input-space transform matches LoRA on sensor shifts); A-081's own fastest-falsification already specifies 'one thermal domain, LUT vs LoRA-8'. Salvage: Keep the ~1-dimensional-gap claim and the cross-dataset tone-curve-transfer prediction as A-081's flagship arm."
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-006",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-020",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (benchmark noise floor vs claimed deltas); B-006 is the label-error variance source, subsumed by B-020's minimal-detectable-difference framing. Retain label-error arm in the merged study.",
+        "judge_C": "Test-label noise floor: distinct from B-020 (power) — different noise source, keep separate in F11."
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-014",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-020",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim; B-014 is the metric/inference-noise variance source for HD95, subsumed as one arm of B-020's power analysis.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-019",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-060",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same experimental substrate (longitudinal change detection vs cross-sectional Dice); B-019's volume-consistency intervention becomes an arm of B-060's error-correlation study.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-024",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-020",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim; B-024 is the preprocessing-variance source, subsumed as one arm of B-020's variance decomposition.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-051",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-026",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (spatial/location priors override appearance); B-026's factorial design subsumes B-051's rearrangement manipulation.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-052",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-046",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim (normalizing away shift removes pathology signal); B-052's TTA mechanism becomes an arm of B-046's harmonization-strength study.",
+        "judge_C": "One mechanism claim: statistical normalization/alignment removes the pathology signal it treats as distribution shift. B-046 is the offline-harmonization arm, B-052 the test-time-normalization arm. Salvage: Keep B-052's pathology-burden crossover prediction and the TTA safety-inversion deployment framing as a second falsification arm."
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-059",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-007",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (cheap model ensembles reproduce inter-rater disagreement); B-059's seed-ensemble mechanism becomes an arm alongside B-007's per-rater training.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-075",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-047",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "",
+        "judge_C": "Same claim: site-specific labeling protocols, not images or optimization, dominate multi-site training loss. Per-site heads (B-047) and harmonized-label federation (B-075) are two interventions on one hypothesis. Salvage: Keep the harmonized-relabeling intervention and the federated setting as a deployment variant of the merged idea."
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-082",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-076",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (sampling uncertainty is a deterministic function of boundary distance + contrast); B-082's MC-dropout null model merges with B-076's recalibration map.",
+        "judge_C": "One discovery: spatial uncertainty signals are ~deterministic functions of distance-to-predicted-boundary. B-076 states it as a recalibration fix, B-082 as an MC-dropout null-equivalence critique. Salvage: Keep the two-feature geometric null model and its error-flagging equivalence test as the adversarial arm of the merged idea."
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-083",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-034",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Kept alongside A-034: adds the scratch-trained control that turns the edge-affinity prior into a pretraining-causal claim.",
+        "judge_C": "T01/T02 collision: the gradient/edge-snapping prior of (pretrained) segmenters — boundaries placed at the strongest local gradient rather than the true boundary. A-034 gives the predictive snap-field mechanism; B-083 the same defect on medical definition-vs-edge conflicts. Salvage: Keep B-083's pretrained-vs-scratch signed-error control (provenance attribution) and medical conflict sites as a testbed of the merged claim."
+      }
+    },
+    {
+      "idea_id": "W15-B001-B-100",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-012",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (boundary-band voxels memorized, interiors generalize) measured two ways; one spatially-resolved training-dynamics study covers both.",
+        "judge_C": "One phenomenon: boundary-band label noise is memorized late while interiors fit early/stay underfit. B-012 is the temporal view (per-structure stopping), B-100 the spatial view (targeted regularization). Salvage: Keep the voxel-stratified train-test gap curves and spatially weighted regularization as the intervention arm."
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-006",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-C-004",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (capture/exposure settings redefine the media mask); C-006's shutter-regime version folds into C-004's exposure-dependence study.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-013",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-003",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Template twin of A-036; kept for the tool-attribution forensics angle.",
+        "judge_C": "T02/T03 collision: annotation-style fingerprints are stable, decodable from masks, learned and reproduced by models. Tool signature (C-013) is one style factor within B-003's annotator/institution style claim. Salvage: Keep the controlled dual-tool re-annotation of identical footage as the cleanest causal design in the merged idea."
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-017",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-C-080",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (explicit layer counting resolves multi-layer glass); C-017's annotation-side label and C-080's output-space reframing are one program.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-029",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-034",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Cross-shard near-duplicate: both claim segmenter boundaries snap to strong irrelevant image gradients; C-029's smoke measurement becomes a testbed of A-034's edge-field model.",
+        "judge_C": "T01/T03 collision: the same edge-snapping prior, instantiated on media where the true boundary is physically not on any image gradient (hallucinated crisp edges inside smoke). Salvage: Keep the gradient-alignment excess score and the solid-object null control; media are the sharpest testbed of the merged claim."
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-035",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-C-003",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (density/transmittance present in features, lost at binarizing head); C-035's frozen-ViT probe is one arm of C-003's probing study.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-036",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-005",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Cross-shard near-duplicate: both claim interactive refinement oscillates non-convergently on ambiguous content; keep media as the high-ambiguity testbed.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-040",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-C-010",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "C-040 (rank instability across evaluation resolutions) is the direct consequence of C-010's fractal-boundary mechanism; one study covers both.",
+        "judge_C": "Contained claim: C-010's falsifiable prediction already includes C-040's rank-inversion-across-resolutions result verbatim (fractal boundaries make boundary metrics resolution-relative). Generator itself flagged the pair. Salvage: Keep the per-image instability vs box-counting-complexity correlation as a secondary prediction."
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-042",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-C-020",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "",
+        "judge_C": "Contained claim: C-020's prediction already includes rescoring restricted to detectable pixels; C-042 adds only the benchmark-weighting proposal on top of the same detectability index. Salvage: Keep the prediction that detectability-weighted scores correlate better with cross-dataset generalization."
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-043",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-C-001",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Template twin of B-003/B-047; kept for its distinctive re-annotation protocol-swap design in the media domain.",
+        "judge_C": "Same claim: smoke 'domain gaps' are supervision-definition gaps. C-001 is the annotator-threshold mechanism (one-parameter offset recovers the gap); C-043 the dataset-level consequence (protocol-swap re-annotation recovers the gap). Generator flagged the family. Salvage: Keep the protocol-swap re-annotation experiment as the dataset-level falsification arm of the merged idea."
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-049",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-C-050",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same claim (short-window temporal statistics suffice for smoke-vs-distractor); C-050 supplies the physical mechanism (turbulence spectral slope) and transfer test.",
+        "judge_C": ""
+      }
+    },
+    {
+      "idea_id": "W15-B001-C-078",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-C-050",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Architecture claim riding on the same spatiotemporal-concentration physics as C-050; kept: parameter-efficiency prediction is distinct.",
+        "judge_C": "Same core claim: smoke separates from distractors by characteristic temporal/spectral statistics. C-078 extends C-050's turbulence-slope signature to a joint spatial-temporal cell plus an architecture corollary. Salvage: Keep the joint spatial-temporal factorization measurement and the parameter-efficiency test as extension arms."
+      }
+    },
+    {
+      "idea_id": "W15-B001-A-051",
+      "outcome": "accepted_with_flag",
+      "rule": "R4_solo_drop_overridden_by_2v1_keep_majority",
+      "drop_vote_by": [
+        "judge_A"
+      ],
+      "keep_votes_by": [
+        "judge_B",
+        "judge_C"
+      ],
+      "judge_A_drop_note": "Weakest member of HC-11: descriptive scaling-curve fitting with a soft 'approximately shared exponent' claim; dominated by actionable siblings (A-052 selection, A-057 hardness curriculum) that would generate the same curves as a byproduct.",
+      "consolidator_note": "Drop rationale rests on unverified prior-art claims (Judge A itself labeled them advisory / no citation verified). Per evidence policy, sub-agent prior-art conclusions are not facts; idea retained with mandatory Stage-2 prior-art check."
+    },
+    {
+      "idea_id": "W15-B001-B-022",
+      "outcome": "accepted_with_flag",
+      "rule": "R4_solo_drop_overridden_by_2v1_keep_majority",
+      "drop_vote_by": [
+        "judge_A"
+      ],
+      "keep_votes_by": [
+        "judge_B",
+        "judge_C"
+      ],
+      "judge_A_drop_note": "Largely anticipated by existing resolution/shape-normalized boundary metrics (surface-Dice-style normalization); residual novelty unclear as stated. (Advisory; no citation verification performed.)",
+      "consolidator_note": "Drop rationale rests on unverified prior-art claims (Judge A itself labeled them advisory / no citation verified). Per evidence policy, sub-agent prior-art conclusions are not facts; idea retained with mandatory Stage-2 prior-art check."
+    },
+    {
+      "idea_id": "W15-B001-B-032",
+      "outcome": "accepted_with_flag",
+      "rule": "R4_solo_drop_overridden_by_2v1_keep_majority",
+      "drop_vote_by": [
+        "judge_A"
+      ],
+      "keep_votes_by": [
+        "judge_B",
+        "judge_C"
+      ],
+      "judge_A_drop_note": "Likely-known: effective-receptive-field locality of trained attention models is heavily studied; the hypothesis adds little marginal content beyond existing ERF analyses. (Advisory; no citation verification performed.)",
+      "consolidator_note": "Drop rationale rests on unverified prior-art claims (Judge A itself labeled them advisory / no citation verified). Per evidence policy, sub-agent prior-art conclusions are not facts; idea retained with mandatory Stage-2 prior-art check."
+    },
+    {
+      "idea_id": "W15-B001-C-061",
+      "outcome": "accepted_with_flag",
+      "rule": "R4_solo_drop_overridden_by_2v1_keep_majority",
+      "drop_vote_by": [
+        "judge_A"
+      ],
+      "keep_votes_by": [
+        "judge_B",
+        "judge_C"
+      ],
+      "judge_A_drop_note": "Audio-visual sound-source localization for coarse spatial supervision is an established technique; the flame-specific increment is thin relative to the cluster's stronger physics-based signals (C-062, C-063). (Advisory.)",
+      "consolidator_note": "Drop rationale rests on unverified prior-art claims (Judge A itself labeled them advisory / no citation verified). Per evidence policy, sub-agent prior-art conclusions are not facts; idea retained with mandatory Stage-2 prior-art check."
+    },
+    {
+      "idea_id": "W15-B001-A-052",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "MUTATE. k-center/coreset selection applied to SAM-LoRA is a known-method permutation. Salvage: recast as the claim that a labeled image's adaptation value is predicted by its coverage of the domain's feature-shift directions (measurable pre-training from frozen-feature discrepancy spectra; ties to A-021). Kill the 'selection beats random' framing."
+    },
+    {
+      "idea_id": "W15-B001-A-056",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "MUTATE. SAM-proposes/human-verifies is standard annotation-tooling practice (workflow permutation). Salvage: isolate the falsifiable core - residual SAM mask errors are per-domain incoherent and hence un-memorizable by low-rank updates - and make measured error-coherence the predictor of when cheap verification matches dense labels (complements A-053)."
+    },
+    {
+      "idea_id": "W15-B001-A-060",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "MUTATE. Multimask-spread acquisition is query-by-committee with SAM as the committee (known-AL permutation). Salvage: drop the AL race; test the informational claim that multimask disagreement specifically localizes convention/granularity uncertainty while low confidence mixes noise, difficulty and junk. Fold the measurement into the A-061/A-089 family."
+    },
+    {
+      "idea_id": "W15-B001-A-084",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "MUTATE. SAM + self-consistency test-time adaptation matches the established entropy/consistency-TTA family (method permutation). Salvage: the diagnostic claim that cross-prompt/augmentation inconsistency is spatially enriched at true error locations under shift; test that as a measurement (error-localization AUROC), with per-image adaptation demoted to a secondary intervention arm."
+    },
+    {
+      "idea_id": "W15-B001-A-100",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "MUTATE. 'Frozen features separate domains' is a widely assumed premise and nearest-centroid routing is engineering assembly. Salvage: rewrite around the only non-obvious content - the failure boundary on near-duplicate domains (e.g. two CT sites) and whether centroid distance is a calibrated novel-domain detector."
+    },
+    {
+      "idea_id": "W15-B001-C-028",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "MUTATE. A router dispatching pixels to existing pretrained specialists is Module-A+B assembly. Salvage: the two-sided physical signature (dense decorrelating temporal change for volumetric media vs sparse edge-locked geometric change for refractive solids) is a falsifiable observation claim - validate the statistic's bimodality and cross-domain stability first; the router is at most a downstream application."
+    }
+  ],
+  "note_on_unlisted_ideas": "All ideas not in resolution_table_nontrivial were unanimous keep (A=keep, B=keep, C=keep) and are accepted without flags."
+}

@@ -1,0 +1,40 @@
+{
+  "task_id": "p1_wave_b_batch001_judge_C",
+  "windows_path": "Windows15",
+  "batch": "batch_001",
+  "role": "wave_b_judge",
+  "judge": "C",
+  "focus": "adversarial duplicate / intra-batch collision audit",
+  "status": "done",
+  "inputs": [
+    "origin/cursor/p1-wave-a-gen-a-f6f6:Windows15/_state/tasks/p1/batch_001/gen_A/ideas.jsonl",
+    "origin/cursor/p1-wave-a-batch001-gen-b-9ddf:Windows15/_state/tasks/p1/batch_001/gen_B/ideas.jsonl",
+    "origin/cursor/p1-wave-a-batch001-gen-c-65da:Windows15/_state/tasks/p1/batch_001/gen_C/ideas.jsonl"
+  ],
+  "outputs": [
+    "Windows15/_state/tasks/p1/batch_001/judge_C/report.md",
+    "Windows15/_state/tasks/p1/batch_001/judge_C/duplicates.json",
+    "Windows15/_state/tasks/p1/batch_001/judge_C/verdict.jsonl",
+    "Windows15/_state/tasks/p1/batch_001/judge_C/done.json"
+  ],
+  "counts": {
+    "ideas_reviewed": 300,
+    "keep": 284,
+    "duplicate_of": 16,
+    "drop": 0,
+    "hard_duplicates_intra_shard": 12,
+    "hard_duplicates_cross_territory": 4,
+    "near_duplicate_families": 39,
+    "protected_competing_pairs": 10,
+    "protected_singular_anomalies": 12
+  },
+  "compliance": {
+    "novelty_verification_performed": false,
+    "citations_invented": false,
+    "locked_or_canonical_state_files_modified": false,
+    "writes_confined_to": "Windows15/_state/tasks/p1/batch_001/judge_C/"
+  },
+  "branch": "cursor/p1-wave-b-batch001-judge-c-4e6d",
+  "completed_at": "2026-08-28T19:15:00Z",
+  "recommended_next_task_type": "p1_wave_b_batch001_consolidator"
+}
