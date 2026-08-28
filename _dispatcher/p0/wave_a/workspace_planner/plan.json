@@ -1,0 +1,185 @@
+{
+  "task_id": "p0_wave_a_workspace_planner",
+  "role": "worker",
+  "pipeline_stage": "P0 (Initialize Windows)",
+  "dispatcher_identity": "Windows15",
+  "authority_note": "RECOMMENDATION ONLY. This worker is not the final authority on the window number. The Wave B judge / P0 Final agent MUST re-fetch origin and re-verify absence of the chosen WindowsN on ALL origin/* heads immediately before creating the directory or writing window.lock.json.",
+  "scan": {
+    "scanned_at_utc": "2026-08-28T17:20:00Z",
+    "base_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+    "origin_main_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+    "method": "git fetch origin --prune + per-branch fetch of all refs/heads, then git ls-tree -r on every origin/* branch tip, case-insensitive regex (^|/)(windows|win|w)[ _-]?[0-9]+, plus git grep of blob contents for Windows13..19 and Windows15 mentions",
+    "remote_branches_scanned": 28,
+    "windows_dirs_found": ["Windows2", "Windows4", "Windows6", "Windows8", "Windows9", "Windows10", "Windows11", "Windows12"],
+    "naming_anomalies": ["staging/Windows3_supervisor/ on origin/cursor/idea-evolution-windows3-b534 (Windows3 never exists top-level)"],
+    "absent_numbers": [1, 5, 7, 13, 14, 15],
+    "windows13_14_15_directories": "NONE on any ref (KNOWN FACT)",
+    "windows15_mentions_in_any_blob": "NONE (KNOWN FACT)"
+  },
+  "max_existing_windows_number": 12,
+  "recommended_next_windows_id": "Windows15",
+  "recommended_next_windows_number": 15,
+  "numbering_rationale": [
+    "KNOWN FACT: max existing WindowsN directory on any origin ref is Windows12; sequential template Windows{max+1} would be Windows13.",
+    "VERIFIED PRIOR WORK: Windows13 was already claimed (recommended, never created) by a stalled sibling P0 dispatch (shards on origin/cursor/p0-init-repo-inspector-1ccf, p0-init-worker-b-safety-8ad3, p0-init-worker-c-ce9b under _p0_dispatch/tasks/p0_init/).",
+    "VERIFIED PRIOR WORK: Windows14 was the previous dispatcher identity; its Wave A shards (origin/cursor/p0-windows-init-worker-{a,b,c}-* under _state/tasks/p0/windows_init/) recommended 14 primary / 13 fallback; never created.",
+    "VERIFIED PRIOR WORK: Windows12 precedent — that run chose its dispatcher identity (12) over sequential max+1 (11) explicitly to avoid collision with concurrent runs, recorded in Windows12/_state/research_state.json numbering block.",
+    "KNOWN FACT: repo numbering history tolerates gaps (1, 5, 7 absent) and never reuses them; extending monotonically to 15 is convention-consistent.",
+    "DECISION (recommendation): Windows15 = current dispatcher identity, verified free on every ref, zero collision risk with the two stalled pipelines that claimed 13 and 14."
+  ],
+  "directory_tree": [
+    "README.md",
+    "_state/",
+    "_state/research_state.json",
+    "_state/window.lock.json",
+    "_state/ideas_master.jsonl",
+    "_state/research_ledger.md",
+    "_state/agent_log.md",
+    "selection_history/",
+    "selection_history/.gitkeep",
+    "final_ideas/",
+    "final_ideas/.gitkeep",
+    "artifacts/",
+    "artifacts/.gitkeep"
+  ],
+  "files_to_create": [
+    {
+      "path": "README.md",
+      "purpose": "Window identity card + goal + pipeline + status snapshot. Follows the Windows12 README convention (Chinese-dominant, KNOWN FACT numbering block, identity-freeze statement).",
+      "required_fields": [
+        "title: '# WindowsN — Autonomous Research Idea Evolution'",
+        "Windows 编号 (windows_id)",
+        "创建日期 (UTC date)",
+        "Supervisor / PI = WindowsN",
+        "仓库 = github.com/songkang688/idea",
+        "Branch = the init branch name",
+        "当前状态 = initialized",
+        "identity-freeze sentence: 本窗口固定为 WindowsN，后续阶段不得改号；本轮只写入 WindowsN/",
+        "KNOWN FACT numbering-scan block (existing dirs, anomalies, absent numbers, max_n, why N was chosen)",
+        "本轮目标: 1000+ ideas -> 3 executable research packages via falsifiable filtering",
+        "研究方向 (第一/第二优先级 lists, copy from Windows12 convention)",
+        "Pipeline: `1000+ -> 200 -> 50 -> 20 -> 5 -> 3`",
+        "当前状态 table: Stage=Stage 1, total_ideas=0, survivors=0, final_target=3, status=initialized",
+        "下一步: run P1 (Stage 1 large-scale idea exploration); placeholder must not be written as completed research"
+      ]
+    },
+    {
+      "path": "_state/research_state.json",
+      "purpose": "Machine-readable canonical window state. Superset of the Windows12 schema plus the NEW P0 window-definition fields mandated by this pipeline.",
+      "required_fields": [
+        "windows_id: 'WindowsN' (string)",
+        "windows_number: N (integer, NEW field, must match digits of windows_id)",
+        "windows_path: 'WindowsN' (string)",
+        "window_locked: true (boolean, NEW field)",
+        "window_defined_by: 'P0' (string, NEW field)",
+        "window_definition_status: 'canonical' (string, NEW field)",
+        "repository: 'https://github.com/songkang688/idea'",
+        "branch: <init branch name>",
+        "base_branch: 'main'",
+        "created_at: ISO-8601 UTC timestamp",
+        "supervisor: 'WindowsN'",
+        "current_stage: 'Stage 1'",
+        "target_pipeline: '1000+ -> 200 -> 50 -> 20 -> 5 -> 3'",
+        "total_ideas: 0",
+        "survivors: 0",
+        "final_target: 3",
+        "status: 'initialized'",
+        "numbering: {scan_scope, existing_windows_found[] with per-id evidence strings, windows_not_found_on_origin_heads[], max_n: 12, template_next: 'Windows13', this_round: 'WindowsN', numbering_decision, overwrite_check}",
+        "git_safety: {pre_init_branch, pre_init_head, working_tree_at_pre_init, force_push: false, init_commit, push_status, push_verified_at, push_remote_sha, push_failure_reason}",
+        "ideas_index: []",
+        "current_ranking: []",
+        "evidence_policy: {labels: [KNOWN FACT, VERIFIED PRIOR WORK, EVIDENCE, HYPOTHESIS, MODEL SPECULATION, EXPECTED RESULT, ACTUAL EXPERIMENTAL RESULT], forbid_fiction: [paper_or_citation, benchmark_number, dataset_information, claimed_ran_experiments, experimental_results, false_git_push_success]}"
+      ]
+    },
+    {
+      "path": "_state/window.lock.json",
+      "purpose": "Immutable window-identity lock. NEW MECHANISM: no window.lock.json exists on any ref (KNOWN FACT from scan) — this pipeline introduces it. Written ONLY by the P0 Final/Implementation agent AFTER a fresh origin re-fetch re-verifies WindowsN is still absent. This planner shard does NOT write it and this plan is NOT canonical for its values.",
+      "required_fields": [
+        "windows_id: 'WindowsN'",
+        "windows_number: N (integer)",
+        "windows_path: 'WindowsN'",
+        "window_locked: true",
+        "window_defined_by: 'P0'",
+        "window_definition_status: 'canonical'",
+        "locked_at: ISO-8601 UTC timestamp of lock write",
+        "locked_by: 'Windows15 dispatcher / P0 Final agent' (actual writer identity)",
+        "numbering_evidence: {max_existing_windows_number: 12, scanned_refs: <count>, scanned_at: ISO-8601, gaps_not_reused: [1,5,7,13,14], verification: 'fresh git fetch origin --prune + ls-tree on all origin heads immediately before lock'}",
+        "do_not_renumber: true"
+      ]
+    },
+    {
+      "path": "_state/ideas_master.jsonl",
+      "purpose": "Master idea registry, one JSON object per line, appended by Stage 1+. Initialized EMPTY (0 bytes) — this exactly matches the Windows9–12 convention (KNOWN FACT). Do NOT add a header line.",
+      "required_fields": [
+        "file initialized empty (0 bytes)",
+        "per-line schema for later stages (documented in research_ledger.md, not written into the jsonl at init): {idea_id, title, cluster, stage, status: keep|kill|mutate|revive, score, evidence_label, source_agent, created_at}"
+      ]
+    },
+    {
+      "path": "_state/research_ledger.md",
+      "purpose": "Human-readable canonical ledger: scope, priorities, values, evidence rules, numbering decision, stage log. Follows the Windows12 ledger convention.",
+      "required_fields": [
+        "title: '# WindowsN Research Ledger'",
+        "metadata block: windows_id, created_at, repository, branch, current_stage, status, total_ideas=0, survivors=0, final_target=3, pipeline='1000+ -> 200 -> 50 -> 20 -> 5 -> 3'",
+        "本轮研究范围 section (scope; only write inside WindowsN/, never overwrite other Windows)",
+        "研究优先级 section (第一优先级 / 第二优先级 lists per Windows12 convention)",
+        "科研价值观 section (prefer new observation/falsifiable hypothesis/failure mode; downweight module-stitching pseudo-novelty; the 3 standing questions)",
+        "Evidence Rules section (7 evidence labels; absolute prohibition on fabricated papers/benchmarks/datasets/experiments/push-success)",
+        "编号决策 table with KNOWN FACT / DECISION labels (worktree state, remote dirs found, max N=12, WindowsN absent, decision=WindowsN, reason)",
+        "当前 Stage section (initialized, ideas_master.jsonl empty, no Keep/Kill decisions yet)",
+        "下一阶段要做什么 section (run P1 Stage 1)"
+      ]
+    },
+    {
+      "path": "_state/agent_log.md",
+      "purpose": "Append-only operational log of agent actions. Follows the Windows12 agent_log convention.",
+      "required_fields": [
+        "title: '# WindowsN Agent Log'",
+        "entry heading: '## <ISO timestamp> — P0 start'",
+        "Git pre-check (KNOWN FACT): status, HEAD sha, remote, uncommitted changes, root files",
+        "Windows scan (KNOWN FACT): worktree result, per-branch origin findings, not-found list, max_n, chosen N with reason",
+        "Actions: branch created, tree created (WindowsN/ only), force-push not used, checkpoint commit sha, push verification result (only after actual ls-remote verification — never fabricate push success)",
+        "Overwrite check (KNOWN FACT): no pre-existing WindowsN dir in worktree or on any origin head; only new files under WindowsN/ added; root README.md untouched"
+      ]
+    },
+    {
+      "path": "selection_history/.gitkeep",
+      "purpose": "Empty placeholder keeping selection_history/ (per-stage Keep/Kill/Mutate/Revive selection records) in git. Windows9–12 convention.",
+      "required_fields": ["empty file"]
+    },
+    {
+      "path": "final_ideas/.gitkeep",
+      "purpose": "Empty placeholder keeping final_ideas/ (final 3 research packages) in git. Windows9–12 convention.",
+      "required_fields": ["empty file"]
+    },
+    {
+      "path": "artifacts/.gitkeep",
+      "purpose": "Empty placeholder keeping artifacts/ (supporting research artifacts) in git. Windows9–12 convention.",
+      "required_fields": ["empty file"]
+    }
+  ],
+  "pipeline": ["1000+", "200", "50", "20", "5", "3"],
+  "commit_message_template": "Research Idea Evolution - WindowsN - Initialization",
+  "commit_message_note": "Prior init branches used 'Initialize WindowsN research workspace (P0)', but the broader repo convention on content commits is 'Research Idea Evolution - WindowsN - <action>' (e.g. Windows2 ingest, Windows 8 Top 3). The mandated template fits the dominant convention; substitute the locked N for 'N'.",
+  "branch_naming_convention": "cursor/windows<N>-p0-init-<4hex> observed for Windows9-12 init branches; implementation agent should follow its own dispatcher-issued naming rules if they differ.",
+  "implementation_rules": [
+    "Write ONLY under WindowsN/ (plus dispatcher shard paths). Never modify root README.md or any other WindowsM/ tree.",
+    "Re-fetch origin --prune and re-verify WindowsN absent on ALL origin/* heads immediately before mkdir and before writing window.lock.json.",
+    "Initialize ideas_master.jsonl as a 0-byte file.",
+    "Never fabricate push success: verify via git ls-remote origin <branch> == local sha before recording push_status=verified_success.",
+    "No force push.",
+    "All numbering claims in README/ledger/log must carry KNOWN FACT labels backed by the fresh scan, not by this plan."
+  ],
+  "existing_convention_notes": [
+    "KNOWN FACT: origin/main contains ONLY README.md ('# fnyuan', single commit 990f3eb). Every Windows tree lives exclusively on its own unmerged cursor/* branch; no WindowsN has ever been merged to main.",
+    "KNOWN FACT: Windows9, Windows10, Windows11, Windows12 (branches cursor/windows{9,10,11,12}-p0-init-*) share the identical P0 skeleton: README.md, _state/{agent_log.md, ideas_master.jsonl, research_ledger.md, research_state.json}, artifacts/.gitkeep, final_ideas/.gitkeep, selection_history/.gitkeep. This is the convention to match.",
+    "KNOWN FACT: ideas_master.jsonl is initialized as an empty (0-byte) file in all four prior P0 inits — no header line.",
+    "KNOWN FACT: NO window.lock.json exists on any scanned ref, and no prior research_state.json contains window_locked / window_defined_by / window_definition_status / windows_number fields. These are NEW mechanisms introduced by this P0 pipeline spec, not observed prior convention.",
+    "KNOWN FACT: README/ledger/agent_log are Chinese-dominant bilingual documents with explicit KNOWN FACT evidence labels and an identity-freeze statement.",
+    "KNOWN FACT: numbering gaps 1, 5, 7 exist and were never reused; numbering extends monotonically upward.",
+    "VERIFIED PRIOR WORK: Windows3 exists only as staging/Windows3_supervisor/ (nested naming anomaly), never top-level; all other windows use exact-case top-level WindowsN/.",
+    "VERIFIED PRIOR WORK: Windows12 chose its dispatcher-identity number (12) over sequential max+1 (11) to avoid concurrent-run collision — precedent for choosing 15 here.",
+    "VERIFIED PRIOR WORK: numbers 13 and 14 were claimed by two stalled P0 dispatch pipelines (shards only on _p0_dispatch/tasks/p0_init/ and _state/tasks/p0/windows_init/ branches); neither directory was ever created. Recommend treating 13/14 as burned; judge decides.",
+    "KNOWN FACT: prior init runs used two commits: 'Initialize WindowsN research workspace (P0)' then a follow-up recording the verified push SHA inside research_state.json.git_safety."
+  ]
+}

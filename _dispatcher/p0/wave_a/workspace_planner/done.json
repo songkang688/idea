@@ -1,0 +1,18 @@
+{
+  "task_id": "p0_wave_a_workspace_planner",
+  "role": "worker",
+  "status": "complete",
+  "output_files": [
+    "_dispatcher/p0/wave_a/workspace_planner/report.md",
+    "_dispatcher/p0/wave_a/workspace_planner/plan.json",
+    "_dispatcher/p0/wave_a/workspace_planner/done.json"
+  ],
+  "unresolved_items": [
+    "Final WindowsN number is the Wave B judge's call: Windows15 recommended primary (dispatcher identity, verified free, avoids stalled 13/14 claims); Windows13 sequential fallback only if judge voids the prior claims; implementer must re-fetch origin and re-verify absence on ALL origin heads immediately before mkdir and before writing window.lock.json.",
+    "Numbers 13 and 14 were claimed by two stalled sibling P0 pipelines (shards only, no directories); whether they are burned is a judge policy decision — precedent (gaps 1/5/7 never reused; Windows12 identity-over-sequential choice) supports burned.",
+    "window.lock.json and the window_locked/window_defined_by/window_definition_status/windows_number fields have NO prior convention on any ref (KNOWN FACT) — they are new mechanisms from this pipeline spec; schema proposed in plan.json is a recommendation, not canonical.",
+    "staging/Windows3_supervisor/ naming anomaly: whether it counts as canonical Windows3 should be settled in the lock's numbering_evidence block (does not affect max=12).",
+    "Remote is under active concurrent modification historically (minute granularity); this scan (2026-08-28 ~17:20 UTC) is perishable."
+  ],
+  "recommended_next_task_type": "wave_b_judge"
+}
