@@ -1,0 +1,91 @@
+{
+  "windows_id": "Windows16",
+  "windows_number": 16,
+  "windows_path": "Windows16",
+  "window_locked": true,
+  "window_defined_by": "P0",
+  "window_definition_status": "canonical",
+  "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "pipeline_stages": [
+    {"stage": 1, "name": "generation", "survivors": "1000+"},
+    {"stage": 2, "name": "first_screening", "survivors": 200},
+    {"stage": 3, "name": "second_screening", "survivors": 50},
+    {"stage": 4, "name": "deep_evaluation", "survivors": 20},
+    {"stage": 5, "name": "finalist_selection", "survivors": 5},
+    {"stage": 6, "name": "final_ideas", "survivors": 3}
+  ],
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows16-p0-implementation-3255",
+  "base_branch": "main",
+  "base_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+  "created_at": "2026-08-28T17:35:59Z",
+  "supervisor": "WindowsX (P0 pipeline, _state/tasks/P0/)",
+  "current_stage": "Stage 1",
+  "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "total_ideas": 0,
+  "survivors": 0,
+  "final_target": 3,
+  "status": "initialized",
+  "numbering": {
+    "decided_by": "P0 Wave B consolidator decision.json (_state/tasks/P0/wave_B/decision.json, decided 2026-08-28T17:31:00Z, decided_by_branch cursor/p0-wave-b-consolidator-210c)",
+    "decided_windows_id": "Windows16",
+    "bumped": false,
+    "race_policy_followed": "git fetch origin --prune immediately before mkdir, then re-verified on fresh refs (65 origin branches) that no origin tip contains a Windows16 path, branch name, commit message, research_state windows_id, or window.lock.json claiming 16",
+    "pre_mkdir_refetch": {
+      "command": "git fetch origin --prune",
+      "fetched_at_utc": "2026-08-28T17:34:30Z",
+      "new_refs_observed": [
+        "origin/cursor/windows13-p0-init-implementation-d93f",
+        "origin/cursor/p0-wave-b-judge-a-numbering-1d88",
+        "origin/cursor/p0-wave-b-judge-b-safety-d1e9",
+        "origin/cursor/cheap-killers-seg0252-0046m-cf1c",
+        "origin/cursor/seg-0276-m-stage5-f84d"
+      ]
+    },
+    "occupied_numbers": [2, 3, 4, 6, 8, 9, 10, 11, 12],
+    "spent_or_staked_numbers": {
+      "13": "SPENT and now IMPLEMENTED: Windows13/ with window.lock.json pushed on origin/cursor/windows13-p0-init-implementation-d93f (verified post-fetch)",
+      "14": "SPENT: unanimous 3-judge verdicts for the '_state/tasks/p0/windows_init/' pipeline (dispatcher identity Windows14)",
+      "15": "STAKED: '_dispatcher/p0/' pipeline with explicit dispatcher identity Windows15; its Wave B judges confirm 15 on origin"
+    },
+    "never_gap_fill": [1, 5, 7],
+    "max_windows_number_observed": 13,
+    "windows16_found_anywhere_at_pre_mkdir_scan": false,
+    "window_lock_json_claiming_16_found_at_pre_mkdir_scan": false,
+    "only_16_mentions_on_origin": "conditional fallback prose in sibling judge verdicts (Windows15 pipeline judge_B bump-target-on-15-collision; windows_init judge_C bump-target-on-14-collision); neither condition can occur, so 16 is unclaimed",
+    "numbering_decision": "Windows16 per canonical decision.json; pre-mkdir re-fetch + re-scan at 2026-08-28T17:34:30Z-17:35:30Z confirmed Windows16 absent from every origin tip, branch name, commit message, and blob, so no bump was needed.",
+    "overwrite_check": "passed_no_windows16_on_any_origin_head_tree_branch_name_commit_message_or_blob"
+  },
+  "git_safety": {
+    "pre_init_branch": "cursor/pipeline-supervisor-tick-9186",
+    "pre_init_head": "82d52bc pipeline supervisor tick (parent branch)",
+    "working_tree_at_pre_init": "clean except untracked _state/tasks/ shards",
+    "force_push": false,
+    "init_commit": null,
+    "push_status": "pending",
+    "push_verified_at": null,
+    "push_remote_sha": null,
+    "push_failure_reason": null
+  },
+  "ideas_index": [],
+  "current_ranking": [],
+  "evidence_policy": {
+    "labels": [
+      "KNOWN FACT",
+      "VERIFIED PRIOR WORK",
+      "EVIDENCE",
+      "HYPOTHESIS",
+      "MODEL SPECULATION",
+      "EXPECTED RESULT",
+      "ACTUAL EXPERIMENTAL RESULT"
+    ],
+    "forbid_fiction": [
+      "paper_or_citation",
+      "benchmark_number",
+      "dataset_information",
+      "claimed_ran_experiments",
+      "experimental_results",
+      "false_git_push_success"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "windows_id": "Windows16",
+  "windows_number": 16,
+  "windows_path": "Windows16",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows16-p0-implementation-3255",
+  "created_at": "2026-08-28T17:35:59Z",
+  "locked": true,
+  "defined_by": "P0",
+  "decision_source": "_state/tasks/P0/wave_B/decision.json (P0 Wave B consolidator, decided 2026-08-28T17:31:00Z)",
+  "lock_semantics": "Hard numbering lock written inside the init commit itself (no two-phase unlocked lock). No agent may renumber, move, or repurpose Windows16/. Bumping rules for future windows: never reuse 2/3/4/6/8/9/10/11/12, never gap-fill 1/5/7, never take 13/14/15 (spent/staked by sibling pipelines)."
+}
