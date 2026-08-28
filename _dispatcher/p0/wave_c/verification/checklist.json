@@ -1,0 +1,75 @@
+{
+  "task_id": "p0_wave_c_verification_canonical",
+  "role": "verification_consolidator",
+  "target_branch": "cursor/windows15-p0-init-implementation-4708",
+  "target_branch_head": "d8df13abbabfb4e581dc52e820add064d6572115",
+  "init_commit": "0ad99d59e33184ae8efcf93985dcaa1eab16cf27",
+  "checked_at_utc": "2026-08-28T18:05:00Z",
+  "checks": [
+    {
+      "id": 1,
+      "check": "verifier_A_complete",
+      "result": "PASS",
+      "evidence": "_dispatcher/p0/wave_c/verification_A/done.json on origin/cursor/p0-wave-c-verification-a-identity-5fb4: status=complete, p0_complete=true, windows_unique_and_correct=true, did_not_overwrite_old_dirs=true, state_files_created=true, 7/7 checks, unresolved_items=[]"
+    },
+    {
+      "id": 2,
+      "check": "verifier_B_complete",
+      "result": "PASS",
+      "evidence": "_dispatcher/p0/wave_c/verification_B/done.json on origin/cursor/p0-wave-c-verification-b-git-ea72: status=complete, p0_complete=true, git_safety_complete=true, commit_complete=true, push_status=verified_success, commit_hash=0ad99d5, branch_head=d8df13a; unresolved items informational only"
+    },
+    {
+      "id": 3,
+      "check": "verifier_C_complete",
+      "result": "PASS",
+      "evidence": "_dispatcher/p0/wave_c/verification_C/done.json on origin/cursor/p0-wave-c-verification-c-8345: status=complete, p0_complete=true, decision_compliant=true, state_files_created=true, 17/17 checks, gaps=[], unresolved_items=[]"
+    },
+    {
+      "id": 4,
+      "check": "verifier_conflict",
+      "result": "PASS",
+      "evidence": "No conflicts: all three verifiers agree on init commit 0ad99d5, branch head d8df13a, and p0_complete=true; A/B/C cover disjoint scopes (identity, git, decision-compliance)"
+    },
+    {
+      "id": 5,
+      "check": "windows_unique_and_correct (independent)",
+      "result": "PASS",
+      "evidence": "Fresh `git fetch origin --prune` (84 heads) at consolidation time; recursive ls-tree scan of EVERY origin head: Windows15/ paths exist ONLY on this pipeline's own refs (implementation branch + 3 Wave C verifier shards that branch from it); only windows15-named branch is cursor/windows15-p0-init-implementation-4708; every window.lock.json/research_state.json on origin claiming windows_id Windows15 lives in this pipeline's Windows15/_state/; siblings hold Windows13/14/16 and attribute 15 to this pipeline; number 15 matches _dispatcher/p0/wave_b/decision.json (windows_number=15, do_not_renumber=true)"
+    },
+    {
+      "id": 6,
+      "check": "did_not_overwrite_old_dirs (independent)",
+      "result": "PASS",
+      "evidence": "git diff --name-status merge-base(origin/main, branch)=1cf3304..d8df13a: 14 files, ALL status 'A' (added), all under Windows15/ or _dispatcher/p0/; zero modified/deleted files; root README.md and Windows1..Windows16 trees of other pipelines untouched; 1cf3304 is an ancestor of origin/main"
+    },
+    {
+      "id": 7,
+      "check": "state_files_created (independent)",
+      "result": "PASS",
+      "evidence": "All 9 files of decision.json directory_tree present on branch head: Windows15/README.md, _state/research_state.json, _state/window.lock.json, _state/ideas_master.jsonl (exactly 0 bytes per convention), _state/research_ledger.md, _state/agent_log.md, selection_history/.gitkeep, final_ideas/.gitkeep, artifacts/.gitkeep; research_state.json and window.lock.json pass python3 -m json.tool; identity fields windows_id=Windows15/windows_number=15/windows_path=Windows15/window_locked=true/window_defined_by=P0/window_definition_status=canonical present in both; pipeline '1000+ -> 200 -> 50 -> 20 -> 5 -> 3' recorded; README/ledger/agent_log carry required '# Windows15 ...' titles"
+    },
+    {
+      "id": 8,
+      "check": "git_safety_complete (independent)",
+      "result": "PASS",
+      "evidence": "research_state.json git_safety block complete: pre_init_branch=main, pre_init_head=1cf3304 (verified ancestor of origin/main), working_tree_at_pre_init=clean, force_push=false, init_commit=0ad99d5, push_status=verified_success, push_verified_at=2026-08-28T17:54:18Z, push_remote_sha=0ad99d5, push_failure_reason=null; window.lock.json records two-phase lock-time re-fetch protocol (phase-1 17:48:58Z pre-mkdir, phase-2 17:53:23Z pre-lock, 78 refs, bumped=false); branch history is linear (2 commits on top of main), consistent with no force push"
+    },
+    {
+      "id": 9,
+      "check": "commit_complete (independent)",
+      "result": "PASS",
+      "evidence": "git log: commit 0ad99d59e33184ae8efcf93985dcaa1eab16cf27 subject is EXACTLY 'Research Idea Evolution - Windows15 - Initialization', parent 1cf3304; follow-up commit d8df13a ('Record verified push SHA in git_safety') has parent 0ad99d5; init commit is ancestor of branch head"
+    },
+    {
+      "id": 10,
+      "check": "push_verified (independent)",
+      "result": "PASS",
+      "evidence": "git ls-remote origin at consolidation time: d8df13abbabfb4e581dc52e820add064d6572115 refs/heads/cursor/windows15-p0-init-implementation-4708; equals locally fetched head; contains init commit 0ad99d5 as ancestor; push_status=verified_success is accurate, no fabricated push claim"
+    }
+  ],
+  "checks_total": 10,
+  "checks_passed": 10,
+  "checks_failed": 0,
+  "p0_stage_complete": true,
+  "next_stage": "P1"
+}
