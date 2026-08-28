@@ -50,3 +50,11 @@ User required Task cloud agents with model `claude-fable-5-thinking-xhigh`, max 
 - Created branch `cursor/windows12-p0-init-a095` from `main` @ `990f3eb`
 - Created `Windows12/` tree only; did not modify other Windows or root research
 - Force push: not used
+- Checkpoint commit: `6cfc93d8e765fd333c56e14ac94bca96d614aa7e`
+- Push: **verified_success** at 2026-08-28T16:58:19Z; `origin/cursor/windows12-p0-init-a095` == local SHA (ls-remote + fetch)
+
+### Overwrite check (KNOWN FACT)
+
+- This worktree did not contain any pre-existing Windows dir
+- No origin head contained `Windows12/` before this commit
+- Only new files under `Windows12/` were added; root `README.md` untouched
