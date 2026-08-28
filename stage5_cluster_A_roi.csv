@@ -1,0 +1,8 @@
+id,rank,short_title,decision,roi_1to10,mve_gpu_hours,full_gpu_hours,killer_exp_gpu_hours,peak_vram_gb,training_runs,annotation_budget_usd,both_outcomes_publishable,primary_risk
+A-0017,1,SAM2 causal memory surgery + predictive-validity vs SAMURAI/DAM4SAM,KEEP,9.0,8,120,60,24,0,0,yes,scooping in fast-moving SAM2-memory subfield
+A-0061,2,Boundary Nyquist cutoff-ratio table across decoders,KEEP,8.5,2,20,15,16,0,0,yes,knee may be unidentifiable (smooth roll-off)
+A-0002,3,Point-path RFF spectral surgery + AMG grid-phase test,KEEP,8.0,4,100,30,16,0,0,yes,effect ambiguity-dominated; mid-tier significance ceiling
+A-0178,4,Artifact-token excess failure via test-time register toggle,DROP,7.5,1,100,20,24,0,0,yes,existential gate: MAE-lineage SAM may lack artifacts
+A-0107,5,PEFT forgetting swap matrix + dual-decoder serving table,DROP,7.0,10,450,40,70,34,0,yes,swap incoherence voids instrument; instantiation-adjacent novelty
+A-0062,6,Sigma-stratified soft-reference re-scoring of HQ line,DROP,6.5,2,5,5,16,0,6000,yes,annotation cost/logistics; underpowered instrument possible
+A-0271,7,SA-1B filter-ablated relabeling + student ceiling inheritance,DROP,6.0,25,1100,380,40,5,0,yes,compute (~1000 GPU-h); student priors may wash out label signatures
