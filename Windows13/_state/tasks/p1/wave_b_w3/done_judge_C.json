@@ -1,0 +1,52 @@
+{
+ "task_id": "p1_wave_b_w3",
+ "role": "judge_C_adversary",
+ "status": "done",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "w3_GHJ",
+ "branch": "cursor/p1-wave-b-w3-judge-c-adversary-e10f",
+ "generated_at_utc": "2026-08-28T23:55:00Z",
+ "outputs": [
+  "Windows13/_state/tasks/p1/wave_b_w3/judge_C.json",
+  "Windows13/_state/tasks/p1/wave_b_w3/judge_C.md",
+  "Windows13/_state/tasks/p1/wave_b_w3/accepted_shard_C.jsonl",
+  "Windows13/_state/tasks/p1/wave_b_w3/done_judge_C.json"
+ ],
+ "counts": {
+  "input_total": 304,
+  "input_by_shard": {"gen_g": 100, "gen_h": 100, "gen_j": 104},
+  "keep": 254,
+  "keep_by_shard": {"gen_g": 77, "gen_h": 83, "gen_j": 94},
+  "merge": 44,
+  "merge_by_shard": {"gen_g": 20, "gen_h": 17, "gen_j": 7},
+  "merge_within_wave3": 32,
+  "merge_within_wave3_cross_shard": 2,
+  "merge_into_master": 12,
+  "kill": 6,
+  "kill_by_shard": {"gen_g": 3, "gen_h": 0, "gen_j": 3},
+  "template_families": 38,
+  "fingerprint_cells_audited": 10,
+  "fingerprint_cells_over_cap_after_merges": 3,
+  "anomalies_protected": 38,
+  "deliberate_tensions_kept": 6,
+  "cross_shard_attractors": 10,
+  "high_prior_art_watchlist": 20,
+  "gate5_retrofit_flagged_keeps": 160,
+  "check_sum": "254 + 44 + 6 = 304"
+ },
+ "unresolved_items": [
+  "G-025 conflict: Judge B merge-primary vs this judge's kill (published-ERM-result restatement); consolidator must resolve — if the kill is upheld, kept G-026 is the surviving primary and Judge B's merged content routes there.",
+  "3 fingerprint cells remain over cap <=6 after judge-time merges: dispersion_as_uncertainty (7 keeps, 2 protected tensions inside), generator_memorization_primary (8 keeps + master F-086/F-093), cheap_predictor_of_outcome (per-shard w2 guard exceeded: gen_g 7, gen_j 4); Stage-2/consolidator cap enforcement required with the protected ids listed in judge_C.json.",
+  "GATE-5 retrofit duty outstanding for all 160 kept gen_g/gen_h records (numeric kill thresholds + evidence_label): schema-only repair-or-remand recommended; this judge invented no numbers or labels.",
+  "GATE-4 wave-wide failure (named public dataset+model in experiment fields: gen_g 0/100, gen_h 0/100, gen_j 7/104 by this judge's instrument): asset naming must be added in the same retrofit.",
+  "GATE-6: genre quotas must be applied on judge labels, not generator self-labels (gen_j self-declares 35.6% constructive vs ~19% strict by phrasing; gen_g likely violates the <=40% pure-debunk quota).",
+  "All 6 kills are unverified prior-art assessments and recoverable via the GATE-8 novelty lane."
+ ],
+ "recommended_next_task_type": "p1_wave_b_w3_consolidator",
+ "canonical_state_untouched": true,
+ "no_fake_citations": true,
+ "no_new_ideas": true,
+ "force_push": false
+}

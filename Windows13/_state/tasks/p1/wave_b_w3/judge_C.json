@@ -1,0 +1,1324 @@
+{
+ "task_id": "p1_wave_b_w3",
+ "role": "judge_C_adversary",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "w3_GHJ",
+ "branch": "cursor/p1-wave-b-w3-judge-c-adversary-e10f",
+ "generated_at_utc": "2026-08-28T23:55:00Z",
+ "inputs": {
+  "gen_g_domain_shift": {
+   "branch": "origin/cursor/p1-gen-g-domain-shift-0165",
+   "ideas": 100,
+   "schema": "legacy 13-field, no gate fields"
+  },
+  "gen_h_sr_restoration": {
+   "branch": "origin/cursor/p1-gen-h-sr-restoration-1829",
+   "ideas": 100,
+   "schema": "legacy 13-field, no gate fields"
+  },
+  "gen_j_diffusion_model_science": {
+   "branch": "origin/cursor/p1-gen-j-diffusion-science-3470",
+   "ideas": 104,
+   "schema": "full canonical gen_j gate schema"
+  },
+  "master_read_only": {
+   "branch": "origin/cursor/p1-wave-b-consolidator-w2-3111",
+   "commit": "929445d",
+   "records": 494,
+   "modified": false
+  },
+  "commissioning": {
+   "branch": "origin/cursor/p1-diversity-audit-consolidator-w2-942c",
+   "used_for": "family-merge trigger, fingerprint cap <=6, GATE-5/GATE-6 duties, F1-F5 and w2 bans/caps"
+  },
+  "judge_B_w3_glanced": {
+   "branch": "origin/cursor/p1-wave-b-w3-judge-b-feasibility-2e78",
+   "protocol": "judge_B.md glanced for conflict notes AFTER this judge's dispositions were drafted from the raw shards; one master collision adopted post-hoc and verified (H-061->C-032); all divergences recorded below"
+  },
+  "judge_A_w3": "not on origin at judging time (branch scan)",
+  "gen_k_l_m_n_o_p": "NOT read into this accepted shard; not merged (per commission)"
+ },
+ "epistemic_status": "No novelty verified for any idea. Every prior-art remark (including all 6 kill rationales and the 20-entry watchlist) is this judge's UNVERIFIED recall for the GATE-8 novelty lane to check. No citations asserted or invented anywhere in these outputs. No new ideas were added; all thresholds/labels for gen_g/gen_h are left to the GATE-5 retrofit — this judge invented no numbers.",
+ "method": [
+  "Pass 1 — hygiene: parse all 304 records; citation-string scan (et al./arXiv/venue acronyms/year-parens): ZERO hits in all three shards; hedging labels intact on every spot-checked record.",
+  "Pass 2 — banned clusters: keyword + context scan for smoke/fire/fog/haze/scattering/transparent running examples (zero substantive hits; 5 incidental word matches verified harmless); calibration/uncertainty primary-cluster scan (no such cluster in any shard; 3 member-level keeps flagged); annotation/convention-primary scan (2 gen_g members found and merged into master B-085 — ban enforced).",
+  "Pass 3 — template families and eval-critique collapse: 38 families named across the wave; gen_g audited as the eval-critique-heaviest shard (~10-member benchmark/leaderboard-critique genre mass).",
+  "Pass 4 — permutation attack: cross-shard and cross-wave substrate swaps merged to one primary (H-040->J-059, H-041->J-080, G-054->A-061 etc.); ports of published results killed, not merged (6 kills).",
+  "Pass 5 — master collision audit vs all 494 accepted ids (12 merges into master; adjacency flags on 12 keeps).",
+  "Pass 6 — GATE-5/GATE-6 instruments: digit-in-prediction and evidence_label counts per shard; genre self-label vs phrasing audit for gen_j; regex genre instrument for gen_g/gen_h.",
+  "Pass 7 — fingerprint-cell audit vs cap <=6 counting master + this wave's keeps (10 cells audited, 3 over cap after merges)."
+ ],
+ "counts": {
+  "input_total": 304,
+  "input_by_shard": {
+   "gen_g": 100,
+   "gen_h": 100,
+   "gen_j": 104
+  },
+  "keep": 254,
+  "keep_by_shard": {
+   "gen_g": 77,
+   "gen_h": 83,
+   "gen_j": 94
+  },
+  "merge": 44,
+  "merge_by_shard": {
+   "gen_g": 20,
+   "gen_h": 17,
+   "gen_j": 7
+  },
+  "merge_within_wave3": 32,
+  "merge_within_wave3_cross_shard": [
+   "W13-P1-H-040",
+   "W13-P1-H-041"
+  ],
+  "merge_into_master": 12,
+  "kill": 6,
+  "kill_by_shard": {
+   "gen_g": 3,
+   "gen_h": 0,
+   "gen_j": 3
+  },
+  "template_families": 38,
+  "fingerprint_cells_audited": 10,
+  "fingerprint_cells_over_cap": 3,
+  "anomalies_protected": 38,
+  "cross_shard_attractors": 10,
+  "deliberate_tensions_kept": 6,
+  "high_prior_art_watchlist": 20,
+  "gate5_retrofit_flagged_keeps": 160,
+  "check_sum": "254 + 44 + 6 = 304"
+ },
+ "keep_ids": [
+  "W13-P1-G-001",
+  "W13-P1-G-003",
+  "W13-P1-G-004",
+  "W13-P1-G-005",
+  "W13-P1-G-006",
+  "W13-P1-G-007",
+  "W13-P1-G-008",
+  "W13-P1-G-009",
+  "W13-P1-G-010",
+  "W13-P1-G-011",
+  "W13-P1-G-012",
+  "W13-P1-G-014",
+  "W13-P1-G-015",
+  "W13-P1-G-016",
+  "W13-P1-G-018",
+  "W13-P1-G-019",
+  "W13-P1-G-020",
+  "W13-P1-G-021",
+  "W13-P1-G-022",
+  "W13-P1-G-023",
+  "W13-P1-G-024",
+  "W13-P1-G-026",
+  "W13-P1-G-027",
+  "W13-P1-G-028",
+  "W13-P1-G-030",
+  "W13-P1-G-032",
+  "W13-P1-G-033",
+  "W13-P1-G-034",
+  "W13-P1-G-037",
+  "W13-P1-G-038",
+  "W13-P1-G-039",
+  "W13-P1-G-040",
+  "W13-P1-G-041",
+  "W13-P1-G-042",
+  "W13-P1-G-043",
+  "W13-P1-G-044",
+  "W13-P1-G-045",
+  "W13-P1-G-046",
+  "W13-P1-G-047",
+  "W13-P1-G-048",
+  "W13-P1-G-049",
+  "W13-P1-G-050",
+  "W13-P1-G-051",
+  "W13-P1-G-053",
+  "W13-P1-G-057",
+  "W13-P1-G-058",
+  "W13-P1-G-059",
+  "W13-P1-G-060",
+  "W13-P1-G-061",
+  "W13-P1-G-062",
+  "W13-P1-G-064",
+  "W13-P1-G-065",
+  "W13-P1-G-066",
+  "W13-P1-G-067",
+  "W13-P1-G-070",
+  "W13-P1-G-072",
+  "W13-P1-G-075",
+  "W13-P1-G-076",
+  "W13-P1-G-077",
+  "W13-P1-G-079",
+  "W13-P1-G-080",
+  "W13-P1-G-081",
+  "W13-P1-G-082",
+  "W13-P1-G-083",
+  "W13-P1-G-084",
+  "W13-P1-G-085",
+  "W13-P1-G-087",
+  "W13-P1-G-088",
+  "W13-P1-G-089",
+  "W13-P1-G-093",
+  "W13-P1-G-094",
+  "W13-P1-G-095",
+  "W13-P1-G-096",
+  "W13-P1-G-097",
+  "W13-P1-G-098",
+  "W13-P1-G-099",
+  "W13-P1-G-100",
+  "W13-P1-H-001",
+  "W13-P1-H-002",
+  "W13-P1-H-003",
+  "W13-P1-H-004",
+  "W13-P1-H-005",
+  "W13-P1-H-007",
+  "W13-P1-H-008",
+  "W13-P1-H-009",
+  "W13-P1-H-010",
+  "W13-P1-H-012",
+  "W13-P1-H-013",
+  "W13-P1-H-014",
+  "W13-P1-H-015",
+  "W13-P1-H-017",
+  "W13-P1-H-018",
+  "W13-P1-H-019",
+  "W13-P1-H-020",
+  "W13-P1-H-021",
+  "W13-P1-H-022",
+  "W13-P1-H-023",
+  "W13-P1-H-024",
+  "W13-P1-H-025",
+  "W13-P1-H-026",
+  "W13-P1-H-028",
+  "W13-P1-H-029",
+  "W13-P1-H-030",
+  "W13-P1-H-031",
+  "W13-P1-H-032",
+  "W13-P1-H-033",
+  "W13-P1-H-034",
+  "W13-P1-H-035",
+  "W13-P1-H-036",
+  "W13-P1-H-037",
+  "W13-P1-H-038",
+  "W13-P1-H-039",
+  "W13-P1-H-042",
+  "W13-P1-H-043",
+  "W13-P1-H-044",
+  "W13-P1-H-045",
+  "W13-P1-H-046",
+  "W13-P1-H-047",
+  "W13-P1-H-048",
+  "W13-P1-H-049",
+  "W13-P1-H-050",
+  "W13-P1-H-052",
+  "W13-P1-H-054",
+  "W13-P1-H-055",
+  "W13-P1-H-057",
+  "W13-P1-H-059",
+  "W13-P1-H-060",
+  "W13-P1-H-064",
+  "W13-P1-H-065",
+  "W13-P1-H-066",
+  "W13-P1-H-067",
+  "W13-P1-H-068",
+  "W13-P1-H-069",
+  "W13-P1-H-070",
+  "W13-P1-H-071",
+  "W13-P1-H-072",
+  "W13-P1-H-073",
+  "W13-P1-H-074",
+  "W13-P1-H-075",
+  "W13-P1-H-076",
+  "W13-P1-H-077",
+  "W13-P1-H-078",
+  "W13-P1-H-079",
+  "W13-P1-H-080",
+  "W13-P1-H-081",
+  "W13-P1-H-082",
+  "W13-P1-H-083",
+  "W13-P1-H-084",
+  "W13-P1-H-085",
+  "W13-P1-H-087",
+  "W13-P1-H-089",
+  "W13-P1-H-090",
+  "W13-P1-H-091",
+  "W13-P1-H-092",
+  "W13-P1-H-093",
+  "W13-P1-H-094",
+  "W13-P1-H-095",
+  "W13-P1-H-097",
+  "W13-P1-H-099",
+  "W13-P1-H-100",
+  "W13-P1-J-001",
+  "W13-P1-J-002",
+  "W13-P1-J-003",
+  "W13-P1-J-004",
+  "W13-P1-J-005",
+  "W13-P1-J-006",
+  "W13-P1-J-007",
+  "W13-P1-J-008",
+  "W13-P1-J-009",
+  "W13-P1-J-010",
+  "W13-P1-J-011",
+  "W13-P1-J-012",
+  "W13-P1-J-013",
+  "W13-P1-J-014",
+  "W13-P1-J-015",
+  "W13-P1-J-016",
+  "W13-P1-J-017",
+  "W13-P1-J-018",
+  "W13-P1-J-019",
+  "W13-P1-J-020",
+  "W13-P1-J-021",
+  "W13-P1-J-022",
+  "W13-P1-J-023",
+  "W13-P1-J-024",
+  "W13-P1-J-025",
+  "W13-P1-J-026",
+  "W13-P1-J-027",
+  "W13-P1-J-028",
+  "W13-P1-J-029",
+  "W13-P1-J-030",
+  "W13-P1-J-031",
+  "W13-P1-J-032",
+  "W13-P1-J-033",
+  "W13-P1-J-034",
+  "W13-P1-J-035",
+  "W13-P1-J-036",
+  "W13-P1-J-037",
+  "W13-P1-J-038",
+  "W13-P1-J-039",
+  "W13-P1-J-040",
+  "W13-P1-J-041",
+  "W13-P1-J-043",
+  "W13-P1-J-044",
+  "W13-P1-J-046",
+  "W13-P1-J-047",
+  "W13-P1-J-049",
+  "W13-P1-J-050",
+  "W13-P1-J-051",
+  "W13-P1-J-052",
+  "W13-P1-J-055",
+  "W13-P1-J-056",
+  "W13-P1-J-057",
+  "W13-P1-J-058",
+  "W13-P1-J-059",
+  "W13-P1-J-061",
+  "W13-P1-J-062",
+  "W13-P1-J-064",
+  "W13-P1-J-065",
+  "W13-P1-J-066",
+  "W13-P1-J-067",
+  "W13-P1-J-068",
+  "W13-P1-J-069",
+  "W13-P1-J-070",
+  "W13-P1-J-071",
+  "W13-P1-J-072",
+  "W13-P1-J-073",
+  "W13-P1-J-074",
+  "W13-P1-J-075",
+  "W13-P1-J-076",
+  "W13-P1-J-077",
+  "W13-P1-J-078",
+  "W13-P1-J-079",
+  "W13-P1-J-080",
+  "W13-P1-J-081",
+  "W13-P1-J-082",
+  "W13-P1-J-083",
+  "W13-P1-J-084",
+  "W13-P1-J-085",
+  "W13-P1-J-086",
+  "W13-P1-J-087",
+  "W13-P1-J-088",
+  "W13-P1-J-089",
+  "W13-P1-J-092",
+  "W13-P1-J-093",
+  "W13-P1-J-094",
+  "W13-P1-J-095",
+  "W13-P1-J-096",
+  "W13-P1-J-097",
+  "W13-P1-J-098",
+  "W13-P1-J-100",
+  "W13-P1-J-101",
+  "W13-P1-J-102",
+  "W13-P1-J-103",
+  "W13-P1-J-104"
+ ],
+ "kill_ids": [
+  "W13-P1-G-002",
+  "W13-P1-G-025",
+  "W13-P1-G-068",
+  "W13-P1-J-090",
+  "W13-P1-J-091",
+  "W13-P1-J-099"
+ ],
+ "kill_reasons": {
+  "W13-P1-G-002": "Expected-yes restatement of a repeatedly documented artifact: batch-statistics dependence of batch-norm-era TTA and its collapse at batch size one is, to this judge's UNVERIFIED recall, the stated motivation of the single-sample/episodic TTA sub-literature. The residual (a unified batch-size scaling curve as primary axis) is measurement detail; the batch-size axis survives inside kept G-085's arrival-process rig. Independent convergence: Judge B's only kill. Recoverable via GATE-8 if the prior-art assessment fails.",
+  "W13-P1-G-025": "The record itself concedes 'the competitiveness of plain training is known' — the one-liner restates the famous ERM-matches-DG-algorithms result under fair model selection (UNVERIFIED recall). The residual (algorithm effect as a decreasing function of backbone quality) is an incremental scaling ablation and survives inside kept G-026's backbone-vs-algorithm variance decomposition. NOTE FOR CONSOLIDATOR: Judge B used G-025 as a merge PRIMARY (G-026->G-025); if this kill is upheld, G-026 is the surviving primary. Recoverable.",
+  "W13-P1-G-068": "Restates the published weight-averaging robustness-recovery family (weight-space ensembling of fine-tuned models recovering robustness lost to fine-tuning; model-soup-style averaging) as if contrarian — UNVERIFIED recall. The community belief it attacks ('averaging is an orthogonal trick') is not genuinely held; averaging is already the incumbent. Residual = a budget-matched frontier protocol, i.e. measurement detail. Recoverable.",
+  "W13-P1-J-090": "The record concedes the zero-terminal-SNR flaw is published; the published work already quantified the brightness/mean-shift artifact and shipped fixes (UNVERIFIED recall). Residual = auditing whether deployed models patched it — an expected-yes audit of a known, already-corrected flaw. Third instance of the wave's 'known-flaw-as-law' pattern. Judge B kept it on the cheap-kill honor roll — divergence recorded. Recoverable.",
+  "W13-P1-J-091": "The record concedes resolution-dependent schedule adjustments exist as engineering patches; to this judge's UNVERIFIED recall, derived (information/spectral-matching) resolution corrections to noise schedules are also published, not just folk patches. Residual = behavioral-invariance validation of a known rule. Recoverable.",
+  "W13-P1-J-099": "Expected-yes permutation: attention-swap editing is established for images (the record concedes this) and, to this judge's UNVERIFIED recall, training-free motion transfer by temporal-attention state injection is published for video diffusion. Residual = separability quantification, which is measurement detail on a demonstrated capability. Recoverable."
+ },
+ "merge_map": {
+  "W13-P1-G-013": {
+   "target": "W13-P1-G-009",
+   "reason": "Same hypothesis — 'learned test-time adaptation gains are mostly augmentation ensembling plus confident-view selection' — instantiated on test-time prompt tuning vs single-sample TTA. One ablation rig (remove the learning component, keep the ensembling) covers both method families."
+  },
+  "W13-P1-G-017": {
+   "target": "W13-P1-G-015",
+   "reason": "Family merge (FM-backbones-nullify-classical-UDA): one benchmark-suite run of classical alignment methods plus plain self-training on foundation features answers both 'classical UDA adds nothing' and 'plain self-training beats alignment'. Judge B merged the same pair in the opposite direction — either primary is acceptable; this judge keeps G-015 because its claim is the falsification target, G-017 the baseline arm."
+  },
+  "W13-P1-G-029": {
+   "target": "W13-P1-C-079",
+   "reason": "Master collision: C-079 is the accepted 'silent test-informed model selection; leakage-audit protocol' claim; G-029 is that audit instantiated on the domain-generalization literature (source-only selection)."
+  },
+  "W13-P1-G-031": {
+   "target": "W13-P1-C-084",
+   "reason": "Master collision: C-084 already owns 'corruption/style-augmentation gains overfit the benchmark's corruption menu and generalize weakly'. G-031's anti-correlation twist on stylized benchmarks is the natural-shift arm of C-084's held-out-family design."
+  },
+  "W13-P1-G-035": {
+   "target": "W13-P1-G-095",
+   "reason": "Near-duplicate across clusters: both claim language-side prompt construction from a target-domain description substitutes for gradient-based adaptation of VLMs. One comparison (prompt-side vs gradient-side adaptation at matched benchmarks) covers both; G-095 is the cleaner 'language is an adaptation surface' primary."
+  },
+  "W13-P1-G-036": {
+   "target": "W13-P1-G-027",
+   "reason": "Family merge (better-environment-partitions rescue invariance methods): one factorial running invariance-penalty methods under {human, capture-metadata, latent-discovered} partitions adjudicates both records. G-027 carries the causal-meaningfulness mechanism; G-036's latent-discovery arm is retained inside it."
+  },
+  "W13-P1-G-052": {
+   "target": "W13-P1-C-024",
+   "reason": "Master collision: C-024 owns 'zero-shot is seen-shot — stratify accuracy by pretraining-similarity'. G-052's near-duplicate-inflates-robustness claim is the same stratification experiment with robustness as the readout."
+  },
+  "W13-P1-G-054": {
+   "target": "W13-P1-A-061",
+   "reason": "Master collision: A-061 owns the licensed-photography viewpoint/prototype prior with lawful degradation off eye-level views. G-054 ports the same photographer-intent mechanism to classification prototype-views; one viewpoint-stratified evaluation covers both."
+  },
+  "W13-P1-G-055": {
+   "target": "W13-P1-B-085",
+   "reason": "BANNED-primary (annotation/convention pathology) + master collision: B-085 already owns 'a measurable share of cross-domain drop is label-convention shift, isolable by re-annotation under a unified protocol'. G-055 is the domain-general restatement."
+  },
+  "W13-P1-G-056": {
+   "target": "W13-P1-G-047",
+   "reason": "Same claim — within-dataset dependence structure (hidden batch effects / shared sources) invalidates i.i.d.-based conclusions — measured as error-bar overconfidence (G-047) vs conclusion flips under cluster-aware resampling (G-056). One cluster-resampling study reports both readouts."
+  },
+  "W13-P1-G-063": {
+   "target": "W13-P1-G-030",
+   "reason": "Equalization-null family: both attribute robustness to data composition at matched budgets ('diversity, not scale' / 'data, not objective'). One data x objective x scale factorial covers both; G-030 keeps the manipulated-variable framing."
+  },
+  "W13-P1-G-069": {
+   "target": "W13-P1-C-028",
+   "reason": "Master collision: C-028 owns 'synthetic corruption benchmarks poorly predict real degradation; corruption scores a misleading certification'. G-069's method-ranking arm extends the same design. Converges with Judge B."
+  },
+  "W13-P1-G-071": {
+   "target": "W13-P1-C-023",
+   "reason": "Master collision: C-023 owns semantic-duplicate contamination underestimation; G-071's 'decontaminate shift test sets before trusting FM robustness numbers' is C-023's protocol applied to shift benchmarks. Converges with Judge B."
+  },
+  "W13-P1-G-073": {
+   "target": "W13-P1-G-012",
+   "reason": "Rankings-don't-transfer family: 'episodic reset protocols overstate TTA practicality' and 'static benchmarks cannot rank methods for gradual drift' are the same protocol-realism reversal claim; one controlled stream benchmark with drift dynamics adjudicates both. Converges with Judge B."
+  },
+  "W13-P1-G-074": {
+   "target": "W13-P1-B-085",
+   "reason": "BANNED-primary (annotation/convention) + family merge: geographic-shift 'degradation is partly label-taxonomy mismatch' is the regional instance of B-085's re-annotation-share design (via killed sibling G-055's generic form)."
+  },
+  "W13-P1-G-078": {
+   "target": "W13-P1-C-077",
+   "reason": "Master collision: C-077 owns harness variance as an unbudgeted error term; preprocessing sensitivity is a harness component and G-078's audit is one arm of C-077's design."
+  },
+  "W13-P1-G-086": {
+   "target": "W13-P1-G-012",
+   "reason": "Same protocol-realism reversal template, compute-normalization arm: a stream benchmark with matched-compute reporting covers the 'compute-normalized leaderboard inverts rankings' claim as a second readout of G-012's rig."
+  },
+  "W13-P1-G-090": {
+   "target": "W13-P1-G-087",
+   "reason": "Cheap-predictor family: 'which quantity predicts transfer harm' — hypothesis-disagreement measures (G-087) vs decision-aware shift norms (G-090) are competing entries in one predictor bake-off; a single benchmark of harm predictors covers both."
+  },
+  "W13-P1-G-091": {
+   "target": "W13-P1-G-072",
+   "reason": "Effective-robustness methodology pair: slope unidentifiability at ID saturation and link-function-dependence of robustness verdicts are two readouts of one reanalysis of published effective-robustness tables. Converges with Judge B."
+  },
+  "W13-P1-G-092": {
+   "target": "W13-P1-G-021",
+   "reason": "Cheap-predictor family: pre-hoc prediction of adaptation/transfer outcome from unlabeled data — feature-geometry adaptability score (G-021) vs shift-corrected transferability metrics (G-092) — one predictor-benchmark covers both."
+  },
+  "W13-P1-H-006": {
+   "target": "W13-P1-H-001",
+   "reason": "Degradation-attribution family: one kernel x noise x compression factorial answers both 'noise+compression dominate kernel mismatch' and 'signal-dependent noise is the single largest lever'. Converges with Judge B."
+  },
+  "W13-P1-H-011": {
+   "target": "W13-P1-H-002",
+   "reason": "Same claim — measured-device degradations beat large randomized pipelines — as transfer comparison (H-002) vs per-device calibration product (H-011); devices-cluster-in-degradation-space is the shared mechanism; one calibration-vs-pipeline comparison covers both."
+  },
+  "W13-P1-H-016": {
+   "target": "W13-P1-H-007",
+   "reason": "Same failure mode (blind models damage nearly-clean inputs): H-007 supplies the severity-distribution mechanism, H-016 the do-no-harm identity metric; one clean/mild-input audit reports both. Converges with Judge B."
+  },
+  "W13-P1-H-027": {
+   "target": "W13-P1-H-013",
+   "reason": "Same mechanism — ground-truth misalignment in real-world paired benchmarks taxes fidelity and rewards hedged blur: benchmark-incentive arm (H-013) and perception-distortion-confound arm (H-027) of one alignment-error-sweep experiment. Converges with Judge B."
+  },
+  "W13-P1-H-040": {
+   "target": "W13-P1-J-059",
+   "reason": "Cross-shard near-duplicate: distillation to one-step destroys posterior diversity — restoration substrate (H-040) vs dense-prediction substrate (J-059). One dispersion-map comparison of teacher samples vs student outputs covers both; gen_j record is the gate-compliant primary."
+  },
+  "W13-P1-H-041": {
+   "target": "W13-P1-J-080",
+   "reason": "Cross-shard near-duplicate: the autoencoder roundtrip sets a hard fidelity floor (small structures / fine text) — J-080's decode(encode(x)) bound protocol covers the restoration arm directly. Converges with Judge B. gen_j record is the gate-compliant primary."
+  },
+  "W13-P1-H-051": {
+   "target": "W13-P1-H-033",
+   "reason": "Prior-vs-evidence family: 'failures concentrate where the prior is strongest and evidence weakest' is the atlas form of H-033's 'hallucination severity scales with prior strength'; one strength-vs-hallucination curve covers both."
+  },
+  "W13-P1-H-053": {
+   "target": "W13-P1-H-033",
+   "reason": "Same claim — hallucination grows with generative prior scale/strength; H-053 adds the disclosure-metric framing. One severity-vs-training-compute curve covers both. Judge B merged the same pair with H-053 as primary — direction flip recorded; this judge keeps the mechanism-bearing H-033."
+  },
+  "W13-P1-H-056": {
+   "target": "W13-P1-C-029",
+   "reason": "Master collision: C-029 owns benchmark aging (dated test sets overstate today's accuracy); H-056 is the SR instance — one modern-recollection study is C-029's design."
+  },
+  "W13-P1-H-058": {
+   "target": "W13-P1-C-077",
+   "reason": "Master collision: silent evaluation-convention differences (cropping, color conversion, bit depth) are harness variance; H-058 is C-077's audit ported to SR."
+  },
+  "W13-P1-H-061": {
+   "target": "W13-P1-C-032",
+   "reason": "Master collision, adopted after post-hoc comparison with Judge B and verified against the master: C-032 owns adaptive overfitting to reused test sets measured by fresh replicas; H-061 is exactly that in the SR ecosystem."
+  },
+  "W13-P1-H-062": {
+   "target": "W13-P1-H-028",
+   "reason": "Same proposal — forward-model consistency-to-observation as the fidelity axis; H-062 is the mandatory-metric form, H-028 the axis-replacement form; one metric-introduction study covers both. Converges with Judge B."
+  },
+  "W13-P1-H-063": {
+   "target": "W13-P1-H-007",
+   "reason": "Severity-distribution family: 'benchmarks concentrate mid-range severity while deployment is bimodal/mild-heavy' is the evaluation-side arm of H-007's training-side severity mismatch; one deployment-severity-weighted study covers both."
+  },
+  "W13-P1-H-086": {
+   "target": "W13-P1-H-035",
+   "reason": "Same proposal — evidence-gated abstention instead of fabrication — on safety-critical domains generally (H-086) vs text regions concretely (H-035); H-035 is the implementable primary, H-086's domain framing retained as its deployment arm."
+  },
+  "W13-P1-H-088": {
+   "target": "W13-P1-H-029",
+   "reason": "Same divergence claim — human-preferred vs machine-optimal restorations — with OCR as the concrete machine task; one joint human-study + machine-consumption evaluation covers both. Converges with Judge B."
+  },
+  "W13-P1-H-096": {
+   "target": "W13-P1-H-034",
+   "reason": "Typicality-drift family: outputs regress toward training-typical content — faces/identity (H-034) and rare textures (H-096) are two substrates of one prior-collapse protocol (embedding-shift / texture-reassignment readouts)."
+  },
+  "W13-P1-H-098": {
+   "target": "W13-P1-H-043",
+   "reason": "Restoration-memorization pair: 'restorers inject memorized training images' and 'SR models memorize patches retrievably' are one nearest-neighbor/memorization-probe protocol at image vs patch granularity."
+  },
+  "W13-P1-J-042": {
+   "target": "W13-P1-J-040",
+   "reason": "Memorization-signature pair: sharper score-field attractors (basin geometry) and earlier trajectory commitment are two readouts of one trajectory-analysis study on memorized vs novel generations."
+  },
+  "W13-P1-J-045": {
+   "target": "W13-P1-J-043",
+   "reason": "Layout-tier memorization pair: J-043 establishes the layout-template tier; J-045's 'augmentations suppress pixel-tier but not layout-tier' is the mitigation-differential readout of the same layout-memorization instrument."
+  },
+  "W13-P1-J-048": {
+   "target": "W13-P1-J-050",
+   "reason": "Sampler-distribution family: 'ODE vs SDE differ in texture statistics' is the mechanism arm of J-050's broader 'sampler families produce distributionally distinct outputs at convergence-matched settings'; one cross-sampler statistics battery covers both, with the ODE/SDE high-frequency contrast preserved as a named sub-test."
+  },
+  "W13-P1-J-053": {
+   "target": "W13-P1-J-052",
+   "reason": "Seed-layout family: the noise-space linear layout directions (J-053) are the steering instrument of J-052's seed-composition-genome phenomenon; one noise-to-layout mapping study covers both."
+  },
+  "W13-P1-J-054": {
+   "target": "W13-P1-J-031",
+   "reason": "Fixed-point family: iterated invert-edit drift to model-typical attractors (J-031) and renoise-denoise convergence to fixed points (J-054) are one iterated-application protocol with editing and img2img arms."
+  },
+  "W13-P1-J-060": {
+   "target": "W13-P1-J-056",
+   "reason": "Dispersion-tracks-ambiguity family: sample spread localizing at theoretically ill-posed pixels — depth/occlusion boundaries (J-056) and aperture-problem flow edges (J-060) — one dispersion-vs-theoretical-null-space protocol; J-060's elongation-along-edge prediction retained as the flow arm."
+  },
+  "W13-P1-J-063": {
+   "target": "W13-P1-J-057",
+   "reason": "Same claim — generative samplers reproduce the distribution of human beliefs/disagreement — on multi-rater segmentation (J-057) vs amodal completion guesses (J-063); one sampled-set-vs-human-distribution comparison covers both."
+  }
+ },
+ "template_families": {
+  "tta_gains_attribution": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-001",
+    "W13-P1-G-007",
+    "W13-P1-G-008",
+    "W13-P1-G-009",
+    "W13-P1-G-014"
+   ]
+  },
+  "shift_family_specialization": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-001",
+    "W13-P1-G-024"
+   ]
+  },
+  "simple_baseline_wins": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-006",
+    "W13-P1-G-014",
+    "W13-P1-G-015",
+    "W13-P1-G-018",
+    "W13-P1-G-037"
+   ]
+  },
+  "fm_nullifies_classic_methods": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-015",
+    "W13-P1-G-018",
+    "W13-P1-G-026"
+   ]
+  },
+  "selection_dominates_gains": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-019",
+    "W13-P1-G-034"
+   ]
+  },
+  "rankings_dont_transfer": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-012",
+    "W13-P1-G-044"
+   ]
+  },
+  "invariance_objective_critique": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-016",
+    "W13-P1-G-022",
+    "W13-P1-G-027",
+    "W13-P1-G-093"
+   ]
+  },
+  "label_shift_blindspot": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-008",
+    "W13-P1-G-045",
+    "W13-P1-G-083",
+    "W13-P1-G-089"
+   ]
+  },
+  "cheap_predictor_of_outcome": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-021",
+    "W13-P1-G-043",
+    "W13-P1-G-064",
+    "W13-P1-G-084",
+    "W13-P1-G-087",
+    "W13-P1-G-089",
+    "W13-P1-G-099",
+    "W13-P1-H-012",
+    "W13-P1-J-026",
+    "W13-P1-J-029",
+    "W13-P1-J-049",
+    "W13-P1-J-078"
+   ]
+  },
+  "pretraining_coverage_explains_robustness": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-057",
+    "W13-P1-G-058"
+   ]
+  },
+  "effective_robustness_methodology": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-040",
+    "W13-P1-G-072"
+   ]
+  },
+  "equalization_matched_budget_null": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-023",
+    "W13-P1-G-028",
+    "W13-P1-G-030",
+    "W13-P1-H-032",
+    "W13-P1-H-091",
+    "W13-P1-H-099",
+    "W13-P1-J-007"
+   ]
+  },
+  "uncertainty_instrument": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-042",
+    "W13-P1-G-053",
+    "W13-P1-G-007"
+   ]
+  },
+  "degradation_attribution_factorial": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-001",
+    "W13-P1-H-003",
+    "W13-P1-H-004",
+    "W13-P1-H-005",
+    "W13-P1-H-010"
+   ]
+  },
+  "measured_vs_randomized_degradations": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-002",
+    "W13-P1-H-012"
+   ]
+  },
+  "severity_distribution_mismatch": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-007",
+    "W13-P1-H-017",
+    "W13-P1-H-097"
+   ]
+  },
+  "metric_gaming": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-024",
+    "W13-P1-H-059",
+    "W13-P1-H-075"
+   ]
+  },
+  "machine_vs_human_objectives": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-029",
+    "W13-P1-H-083",
+    "W13-P1-H-089"
+   ]
+  },
+  "dispersion_as_uncertainty": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-030",
+    "W13-P1-H-037",
+    "W13-P1-H-039",
+    "W13-P1-J-056",
+    "W13-P1-J-057",
+    "W13-P1-J-058",
+    "W13-P1-J-062"
+   ]
+  },
+  "prior_vs_evidence_hallucination": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-033",
+    "W13-P1-H-036",
+    "W13-P1-H-045",
+    "W13-P1-J-061",
+    "W13-P1-G-097"
+   ]
+  },
+  "typicality_drift_fixed_points": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-034",
+    "W13-P1-H-045",
+    "W13-P1-J-031"
+   ]
+  },
+  "abstention_gating": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-035",
+    "W13-P1-G-010"
+   ]
+  },
+  "forward_consistency_fidelity": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-028",
+    "W13-P1-H-084"
+   ]
+  },
+  "neural_era_degradations": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-008",
+    "W13-P1-H-054"
+   ]
+  },
+  "free_side_information": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-020",
+    "W13-P1-H-077"
+   ]
+  },
+  "distillation_diversity_loss": {
+   "members_kept_or_absorbed": [
+    "W13-P1-J-059",
+    "W13-P1-J-072",
+    "W13-P1-J-073",
+    "W13-P1-J-074",
+    "W13-P1-J-075"
+   ]
+  },
+  "generator_memorization": {
+   "members_kept_or_absorbed": [
+    "W13-P1-J-038",
+    "W13-P1-J-039",
+    "W13-P1-J-040",
+    "W13-P1-J-041",
+    "W13-P1-J-043",
+    "W13-P1-J-044",
+    "W13-P1-J-046",
+    "W13-P1-H-043"
+   ]
+  },
+  "guidance_laws": {
+   "members_kept_or_absorbed": [
+    "W13-P1-J-020",
+    "W13-P1-J-021",
+    "W13-P1-J-025",
+    "W13-P1-J-028"
+   ]
+  },
+  "early_commitment_window": {
+   "members_kept_or_absorbed": [
+    "W13-P1-J-047",
+    "W13-P1-J-064",
+    "W13-P1-J-098",
+    "W13-P1-H-036"
+   ]
+  },
+  "sampler_distribution_choice": {
+   "members_kept_or_absorbed": [
+    "W13-P1-J-050",
+    "W13-P1-J-055"
+   ]
+  },
+  "vae_information_floor": {
+   "members_kept_or_absorbed": [
+    "W13-P1-J-080",
+    "W13-P1-J-084"
+   ]
+  },
+  "binding_conditioning_pathologies": {
+   "members_kept_or_absorbed": [
+    "W13-P1-J-014",
+    "W13-P1-J-023",
+    "W13-P1-J-064",
+    "W13-P1-J-065",
+    "W13-P1-J-068",
+    "W13-P1-J-070"
+   ]
+  },
+  "long_horizon_video": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-078",
+    "W13-P1-H-079",
+    "W13-P1-J-098",
+    "W13-P1-J-100",
+    "W13-P1-J-102"
+   ]
+  },
+  "corruption_operator_design": {
+   "members_kept_or_absorbed": [
+    "W13-P1-J-088",
+    "W13-P1-J-093",
+    "W13-P1-J-094"
+   ]
+  },
+  "generative_perception_robustness": {
+   "members_kept_or_absorbed": [
+    "W13-P1-G-100",
+    "W13-P1-J-016",
+    "W13-P1-J-011"
+   ]
+  },
+  "one_target_assumption": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-064",
+    "W13-P1-H-071"
+   ]
+  },
+  "per_input_guidance": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-038",
+    "W13-P1-J-026"
+   ]
+  },
+  "prompt_sensitivity": {
+   "members_kept_or_absorbed": [
+    "W13-P1-H-050",
+    "W13-P1-G-096"
+   ]
+  }
+ },
+ "fingerprint_cell_audit": {
+  "rule": "family membership is a MERGE TRIGGER (w2 escalation, C A1); cap <=6 per cell counted against master + this wave's keeps; per-shard caps from w2 guards where noted",
+  "cells": [
+   {
+    "cell": "dispersion_as_uncertainty",
+    "master_members": [
+     "(none strict; B-052/B-026 adjacent)"
+    ],
+    "wave_kept": 7,
+    "cap": 6,
+    "status": "EXCEEDS_AFTER_MERGES",
+    "action": "2 merges applied; 2 protected tensions inside; consolidator arbitration required"
+   },
+   {
+    "cell": "generator_memorization_primary",
+    "master_members": [
+     "W13-P1-F-086",
+     "W13-P1-F-093"
+    ],
+    "wave_kept": 8,
+    "cap": 6,
+    "status": "EXCEEDS_AFTER_MERGES",
+    "action": "3 merges applied; recommend Stage-2 cap with J-038/J-041/J-043 protected"
+   },
+   {
+    "cell": "rankings_dont_transfer_across_shift_families",
+    "master_members": [
+     "W13-P1-C-028",
+     "W13-P1-C-084"
+    ],
+    "wave_kept": 4,
+    "cap": 6,
+    "status": "AT_CAP",
+    "action": "G-069/G-031 merged into the master members; kept G-001, G-024, G-012, G-044 are distinct instruments"
+   },
+   {
+    "cell": "cheap_predictor_of_outcome",
+    "master_members": [
+     "cross-shard template present in all 6 master shards (w2 audit)"
+    ],
+    "wave_kept": 12,
+    "cap": "<=3 per shard (w2 guard)",
+    "status": "EXCEEDS_PER_SHARD (gen_g 7, gen_h 1, gen_j 4)",
+    "action": "2 merges applied (G-090->G-087, G-092->G-021); remaining members mechanistically distinct; flagged for consolidator + Stage-2 T6 cap"
+   },
+   {
+    "cell": "pretraining_coverage_explains_robustness",
+    "master_members": [
+     "W13-P1-C-023",
+     "W13-P1-C-024"
+    ],
+    "wave_kept": 2,
+    "cap": 6,
+    "status": "OK_AFTER_MERGES",
+    "action": "G-052/G-071 merged into master; G-057 (audit) + G-058 (time-travel instrument) kept"
+   },
+   {
+    "cell": "equalization_matched_budget_null",
+    "master_members": [
+     "capped w2 family (fingerprints 9+7 vs cap 6)"
+    ],
+    "wave_kept": 7,
+    "cap": "<=3 per shard (w2 guard)",
+    "status": "AT_SHARD_CAP (g 3, h 3, j 1)",
+    "action": "G-063 merged into G-030; watch at Stage 2"
+   },
+   {
+    "cell": "annotation_convention_shift_primary",
+    "master_members": [
+     "13-member master cell (w2 audit), HARD BAN as primary"
+    ],
+    "wave_kept": 0,
+    "cap": 6,
+    "status": "BAN_ENFORCED",
+    "action": "G-055 and G-074 merged into master B-085; zero kept primary members in this wave"
+   },
+   {
+    "cell": "calibration_uncertainty_primary",
+    "master_members": [
+     "56-member capped master family (w2 audit)"
+    ],
+    "wave_kept": 3,
+    "cap": "banned as primary cluster",
+    "status": "NO_PRIMARY_CLUSTER; 3 member-level keeps flagged",
+    "action": "G-007/G-042/G-053 carry banned_cluster_adjacent flags; dispersion cell tracked separately"
+   },
+   {
+    "cell": "web_photo_priors",
+    "master_members": [
+     "W13-P1-A-059",
+     "W13-P1-A-061",
+     "W13-P1-D-061",
+     "W13-P1-D-067"
+    ],
+    "wave_kept": 0,
+    "cap": 6,
+    "status": "OK",
+    "action": "G-054 merged into A-061; cell unchanged at 4"
+   },
+   {
+    "cell": "simple_baseline_wins",
+    "master_members": [
+     "W13-P1-C-058 (adjacent)"
+    ],
+    "wave_kept": 5,
+    "cap": 6,
+    "status": "AT_CAP_WITH_ADJACENT",
+    "action": "G-017 merged into G-015; G-006/G-014/G-037 carry template flags"
+   }
+  ]
+ },
+ "gate5_retrofit_audit": {
+  "duty": "flag gen_g/gen_h records missing numeric kill thresholds and evidence_label for the consolidator; DO NOT invent numbers (none invented)",
+  "gen_g": {
+   "numeric_kill_threshold_in_prediction": "0/100",
+   "evidence_label_dict": "0/100",
+   "verdict": "ALL 77 gen_g keeps carry gate5_retrofit_needed=true in accepted_shard_C.jsonl"
+  },
+  "gen_h": {
+   "numeric_kill_threshold_in_prediction": "0/100 usable (H-066 '4x' and H-072 '8-bit' contain digits that are scale/bit-depth descriptors, not kill thresholds — independently matches Judge B)",
+   "evidence_label_dict": "0/100",
+   "verdict": "ALL 83 gen_h keeps carry gate5_retrofit_needed=true"
+  },
+  "gen_j": {
+   "numeric_kill_threshold_in_prediction": "104/104",
+   "evidence_label_dict": "104/104",
+   "verdict": "fully compliant; no retrofit"
+  },
+  "recommendation": "schema-only repair-or-remand at consolidation; content quality of gen_g/gen_h does not justify content rejection over schema (concurs with Judge B independently)",
+  "gate4_note": "named public dataset+model in experiment fields: gen_g 0/100, gen_h 0/100, gen_j 7/104 by this judge's instrument (Judge B counted 8/104 — instrument variance, same conclusion): wave-wide GATE-4 failure; asset naming must be added at retrofit"
+ },
+ "gate6_genre_audit": {
+  "duty": "audit self-declared genre vs claim phrasing before applying genre quotas",
+  "gen_j_self_declared": {
+   "characterization_law": 57,
+   "constructive_capability": 37,
+   "audit_debunk": 10,
+   "constructive_share": "35.6%"
+  },
+  "gen_j_judge_phrasing_audit": {
+   "strict_constructive_by_phrasing": "~20/104 (19%): a delivered capability or improvement is claimed (e.g. J-009, J-013, J-019, J-022, J-024, J-026, J-039, J-041, J-046, J-051, J-052, J-055, J-066, J-076, J-083, J-085, J-092, J-093, J-101)",
+   "mislabeled_as_constructive": "~9 self-declared constructive records are measurement instruments / evaluation protocols (J-017, J-027, J-032, J-037, J-049, J-077, J-078, J-095, J-097) and several are characterization laws with a constructive coda (e.g. J-061, J-080)",
+   "audit_debunk_understated": "self-declared audit_debunk 9.6% understates debunk-phrased content (~30/104 one-liners lead with a failure/artifact claim)",
+   "verdict": "self-labels inflated toward constructive, consistent with the w2 audit's finding (35.6% declared vs ~7-19% by phrasing depending on strictness); consolidator must NOT apply genre quotas to self-labels"
+  },
+  "gen_g_gen_h_no_self_labels": {
+   "instrument": "one-liner regex (constructive-marker vs debunk-marker; large mixed bucket, coarse)",
+   "gen_g": {
+    "constructive_phrased": 23,
+    "debunk_phrased": 32,
+    "mixed_or_neither": 45,
+    "judge_hand_read": "debunk/audit-dominant shard (majority of 'mixed' resolve to critique on hand reading); eval-critique genre mass ~10 records; genre quota (<=40% pure debunk) likely violated — quota decision belongs to the consolidator on judge labels, not generator labels"
+   },
+   "gen_h": {
+    "constructive_phrased": 15,
+    "debunk_phrased": 33,
+    "mixed_or_neither": 52,
+    "judge_hand_read": "balanced-critical; roughly ~20 constructive-leaning keeps (metric/protocol/product proposals)"
+   }
+  }
+ },
+ "banned_cluster_audit": {
+  "smoke_scattering_media": "PASS — zero substantive hits in all 304 records (4 gen_g + 1 gen_h incidental word matches verified: 'transparent probability corrections', 'scattered places', 'per-method scatter').",
+  "calibration_uncertainty_primary": "PASS at cluster level (no shard has a calibration/uncertainty cluster); 3 member-level keeps flagged banned_cluster_adjacent (G-007, G-042, G-053); the new dispersion_as_uncertainty attractor is functionally adjacent to the capped master calibration family and is tracked as its own over-cap cell.",
+  "annotation_convention_primary": "ENFORCED — the only two primary members (G-055, G-074) are merged into master B-085; J-057 uses annotator disagreement constructively (distribution-matching target), noted but not banned.",
+  "F1_F5": "PASS — no PEFT-factorial-on-SAM, SAM-component-pathology, internal-score-as-free-detector (closest: G-099/H-030 flagged in dispersion/cheap-predictor cells), cue-ablation-on-scattering, or published-deltas-are-noise-primary records in this wave (G-034/G-019 are variance-instrument keeps with subject-native mechanisms, flagged).",
+  "sam_share": "0/304 SAM/SAM2-subject records — SAM guard trivially holds this wave."
+ },
+ "anomaly_ids": [
+  "W13-P1-G-027",
+  "W13-P1-G-048",
+  "W13-P1-G-050",
+  "W13-P1-G-058",
+  "W13-P1-G-061",
+  "W13-P1-G-067",
+  "W13-P1-G-077",
+  "W13-P1-G-088",
+  "W13-P1-G-096",
+  "W13-P1-G-097",
+  "W13-P1-H-008",
+  "W13-P1-H-009",
+  "W13-P1-H-013",
+  "W13-P1-H-025",
+  "W13-P1-H-026",
+  "W13-P1-H-042",
+  "W13-P1-H-049",
+  "W13-P1-H-052",
+  "W13-P1-H-069",
+  "W13-P1-H-076",
+  "W13-P1-H-080",
+  "W13-P1-H-085",
+  "W13-P1-H-090",
+  "W13-P1-H-094",
+  "W13-P1-J-003",
+  "W13-P1-J-006",
+  "W13-P1-J-023",
+  "W13-P1-J-036",
+  "W13-P1-J-043",
+  "W13-P1-J-052",
+  "W13-P1-J-058",
+  "W13-P1-J-067",
+  "W13-P1-J-079",
+  "W13-P1-J-082",
+  "W13-P1-J-086",
+  "W13-P1-J-088",
+  "W13-P1-J-096",
+  "W13-P1-J-104"
+ ],
+ "anomaly_notes": {
+  "W13-P1-G-027": "Constructive rescue inside a debunk shard: invariance methods fail because annotated environments are not causally meaningful, and metadata-built environments revive them. Tension partner of G-026.",
+  "W13-P1-G-048": "Reframes augmentation as an unacknowledged train-time distribution shift interacting with test-time shift — a mechanism nobody in the shard's eval-critique mass touches.",
+  "W13-P1-G-050": "Performativity: deployed models reshape their own future data, breaking i.i.d. evaluation in a way only simulation protocols can measure. No template family; protect.",
+  "W13-P1-G-058": "Time-travel evaluation on post-cutoff imagery as the only clean novelty-robustness measurement. Instrument-defining; protect from coverage-family consolidation (it is the family's decisive test).",
+  "W13-P1-G-061": "Contrarian sign-flip: foundation models LESS robust than small supervised models on low-level sensor/compression shifts — attacks the shard's own robustness-optimism and the field's.",
+  "W13-P1-G-067": "Instruction tuning / preference alignment as an unmeasured robustness tax on VLM visual competence — new axis, safety-relevant.",
+  "W13-P1-G-077": "Adversarially-filtered test sets measure disagreement with the filter model, making robustness conclusions filter-relative artifacts. Sharp, protocol-level, non-template.",
+  "W13-P1-G-088": "Anti-debunk: theory bounds are numerically vacuous yet ordinally predictive — rescues theory as a ranking tool. Genre-diversifying; Judge B folded it into G-087, this judge protects it (divergence recorded).",
+  "W13-P1-G-096": "The text tower has its own distribution-shift problem (register, dialect, terminology) as large as image shift and unmeasured — genuinely new benchmark axis.",
+  "W13-P1-G-097": "Accuracy degrades gracefully while grounding collapses: language priors silently replace vision under shift. Distinct hidden-failure-swap mechanism.",
+  "W13-P1-H-008": "Era claim: dominant real-world degradations are now neural-network-induced (on-device enhancement), making classic degradation models obsolete. Field-redefining if true.",
+  "W13-P1-H-009": "Category-error claim: much low-quality imagery was never downsampled, so SR-as-inverse-downsampling is the wrong problem statement for a large share of use.",
+  "W13-P1-H-013": "Benchmark-incentive mechanism (alignment error rewards hedged blur) that explains a known aesthetic pathology; absorbs H-027.",
+  "W13-P1-H-025": "Psychophysics: preference between faithful and hallucinated restorations reverses with viewing time and ground-truth knowledge — time-limited studies structurally favor hallucination.",
+  "W13-P1-H-026": "Attacks the perception-distortion frontier itself as a loss mis-specification artifact, claiming a properly specified conditional likelihood dominates both endpoints. High-risk high-reward contrarian.",
+  "W13-P1-H-042": "Generative restorers as unstable inverse maps: imperceptible input perturbations flip hallucinated semantic content — forensic-grade failure, non-template.",
+  "W13-P1-H-049": "Mechanism inversion: SSL invariances are exactly what a fidelity metric must not have, so SSL features make WORSE perceptual losses than older supervised features.",
+  "W13-P1-H-052": "In-context restoration examples act as style anchors, not degradation evidence — shuffled examples work; attribution claim about an interface everyone trusts.",
+  "W13-P1-H-069": "Restorers exploit content-degradation correlation as a shortcut and misrestore counterfactual images — a causal-confound claim unique in the shard.",
+  "W13-P1-H-076": "Multi-frame video SR advantage collapses on properly anti-aliased/compressed footage because temporal aliasing is the main cross-frame cue — mechanism discovery with deployment consequences.",
+  "W13-P1-H-080": "Face-video enhancement alters lip/expression micro-motion, changing perceived speech and emotion — safety-relevant, invisible to every current metric.",
+  "W13-P1-H-085": "Natural-photo priors contaminate scientific imagery with plausible artifacts — hard-domain coupling claim; protect for the underserved-domains agenda.",
+  "W13-P1-H-090": "Face enhancement shifts identity-verification scores asymmetrically across demographic groups — fairness-relevant disparate-impact mechanism; protect.",
+  "W13-P1-H-094": "SR gets amplitude spectra right but phase systematically wrong, and phase error predicts perceived structural artifacts — crisp, subject-native, non-template.",
+  "W13-P1-J-003": "Prediction-parameterization (v/x0 vs epsilon) as the controller of high-noise feature quality — a concrete, checkable design-choice law.",
+  "W13-P1-J-006": "Null-prompted conditional models beat genuinely unconditional ones: text conditioning organizes representations even when unused — surprising if true.",
+  "W13-P1-J-023": "Un-negatable concepts: score-subtraction negation removes appearance but cannot remove relational content — a predicted CLASS of failures, not an instance.",
+  "W13-P1-J-036": "Inverted latents carry a recoverable fingerprint of the caption used at inversion — forensic and bias implications; non-template.",
+  "W13-P1-J-043": "Layout-tier memorization: composition templates recur far above verbatim copying — a second, unmeasured tier of memorization; anchor of the memorization cell.",
+  "W13-P1-J-052": "Seed as composition genome with a searchable layout library — folklore turned into a falsifiable mapping (+ absorbed J-053 steering arm).",
+  "W13-P1-J-058": "Provable under-dispersion of diffusion posterior samplers in controlled linear inverse problems, with a correction factor — theory-grade and deployment-relevant.",
+  "W13-P1-J-067": "Language as a hidden conditioning variable: same concept in different languages yields systematically different visual distributions — cultural-prior quantification.",
+  "W13-P1-J-079": "One-step generators are qualitatively different objects: discontinuity at the 1-to-2 step transition locates the boundary of diffusion-like behavior.",
+  "W13-P1-J-082": "VAE decoders hallucinate texture deterministically — decoder-signature textures and unrepresentable true textures; underpins forensic and eval claims.",
+  "W13-P1-J-086": "Shared-VAE ecosystem correlates errors across 'independent' models, deflating ensemble gains — supply-chain claim mirroring accepted F-060's spirit at the architecture level.",
+  "W13-P1-J-088": "Coarse-to-fine generation is a property of Gaussian schedules, not diffusion itself — corruption-operator counterfactual with representation-learning consequences.",
+  "W13-P1-J-096": "Video diffusion buys smoothness by suppressing motion diversity — lawful under-dispersion of motion statistics; measurable and consequential.",
+  "W13-P1-J-104": "Video models memorize at LOWER duplication thresholds than image models because temporal redundancy is built-in duplication — privacy intuitions ported from images are wrong."
+ },
+ "deliberate_tensions_kept": [
+  {
+   "ids": [
+    "W13-P1-H-030",
+    "W13-P1-H-039",
+    "W13-P1-J-062"
+   ],
+   "tension": "Cross-seed dispersion as a hallucination map (H-030) vs agreement-can-be-confidently-wrong with an uncalibrated agreement-accuracy relation (H-039), with J-062 claiming the coupling collapses under shift. One calibration study adjudicates; kept unmerged deliberately."
+  },
+  {
+   "ids": [
+    "W13-P1-H-037",
+    "W13-P1-J-056",
+    "W13-P1-J-057"
+   ],
+   "tension": "Opposite predictions from one instrument: gen_j claims sampler dispersion localizes at genuinely ill-posed structure (J-056/J-057); gen_h claims seed diversity is misallocated — varying irrelevant texture while collapsing on ambiguous content (H-037). Substrate differs (dense prediction vs restoration); the disagreement is experiment-adjudicable and protected."
+  },
+  {
+   "ids": [
+    "W13-P1-G-011",
+    "W13-P1-G-079",
+    "W13-P1-G-082"
+   ],
+   "tension": "Three incompatible mechanisms for long-horizon adaptation stability: periodic hard reset (G-011) vs cached per-condition domain memory (G-079) vs divergence anchor to source (G-082). A single long-stream benchmark ranks them; merging would destroy the disagreement."
+  },
+  {
+   "ids": [
+    "W13-P1-G-026",
+    "W13-P1-G-027"
+   ],
+   "tension": "Is algorithm-centric DG research dead (G-026: rankings are backbone noise) or mis-tested (G-027: works given causally meaningful environments)? Kept as the shard's productive argument, sharpened now that G-025 is killed."
+  },
+  {
+   "ids": [
+    "W13-P1-H-099",
+    "W13-P1-J-019",
+    "W13-P1-J-013"
+   ],
+   "tension": "Does multi-step generative machinery pay off outside sampling? H-099 says single-pass matches multi-step for restoration at matched compute; J-019/J-013 claim distilled/cheap variants retain most generative advantages for perception. Adjudicable by one matched-compute battery."
+  },
+  {
+   "ids": [
+    "W13-P1-G-038",
+    "W13-P1-G-037",
+    "W13-P1-G-042"
+   ],
+   "tension": "What should monitoring optimize — detection power on embeddings (G-037), anytime-valid false-alarm control (G-042), or harm-calibrated alarms (G-038, which says most detected shifts are harmless)? Protocol-level disagreement kept."
+  }
+ ],
+ "cross_shard_attractors": [
+  {
+   "name": "dispersion_as_uncertainty",
+   "members": [
+    "W13-P1-H-030",
+    "W13-P1-H-037",
+    "W13-P1-H-039",
+    "W13-P1-J-056",
+    "W13-P1-J-057",
+    "W13-P1-J-058",
+    "W13-P1-J-062"
+   ],
+   "note": "The wave's largest new attractor: generative sample spread as posterior/uncertainty. 2 merges applied (J-060->J-056, J-063->J-057); 7 keeps EXCEED the <=6 fingerprint cap; two protected tensions inside — consolidator must arbitrate rather than blind-cull."
+  },
+  {
+   "name": "generator_memorization",
+   "members": [
+    "W13-P1-J-038",
+    "W13-P1-J-039",
+    "W13-P1-J-040",
+    "W13-P1-J-041",
+    "W13-P1-J-043",
+    "W13-P1-J-044",
+    "W13-P1-J-046",
+    "W13-P1-H-043",
+    "W13-P1-J-025",
+    "W13-P1-J-074",
+    "W13-P1-J-104"
+   ],
+   "note": "8 memorization-primary keeps (+3 counted primarily in guidance/distillation/video cells) on top of master F-086/F-093. 3 merges applied (J-042->J-040, J-045->J-043, H-098->H-043); still OVER the cap; Stage-2 cap enforcement required. Protect J-038 (threshold law), J-041 (surgical unlearning), J-043 (layout tier)."
+  },
+  {
+   "name": "prior_vs_evidence_hallucination",
+   "members": [
+    "W13-P1-H-033",
+    "W13-P1-H-036",
+    "W13-P1-J-061",
+    "W13-P1-G-097"
+   ],
+   "note": "Prior strength vs conditioning evidence as the hallucination controller; H-051/H-053 merged into H-033."
+  },
+  {
+   "name": "distillation_diversity_loss",
+   "members": [
+    "W13-P1-J-059",
+    "W13-P1-J-072",
+    "W13-P1-J-073",
+    "W13-P1-J-074",
+    "W13-P1-J-075",
+    "W13-P1-H-099",
+    "W13-P1-J-019"
+   ],
+   "note": "H-040 merged into J-059; core cell 5, adjacent members via tension T5."
+  },
+  {
+   "name": "vae_information_floor",
+   "members": [
+    "W13-P1-J-080",
+    "W13-P1-J-084",
+    "W13-P1-H-072"
+   ],
+   "note": "H-041 merged into J-080; H-072's 8-bit training floor is the bit-depth sibling."
+  },
+  {
+   "name": "per_input_guidance",
+   "members": [
+    "W13-P1-H-038",
+    "W13-P1-J-026"
+   ],
+   "note": "Per-input guidance-scale prediction: consistency-residual (restoration) vs prompt-statistics (generation) — different mechanisms, one co-run rig."
+  },
+  {
+   "name": "early_commitment_window",
+   "members": [
+    "W13-P1-J-047",
+    "W13-P1-J-064",
+    "W13-P1-J-098",
+    "W13-P1-H-036"
+   ],
+   "note": "One trajectory-swap instrument, four substrates (layout, binding, video identity, restoration detail)."
+  },
+  {
+   "name": "protocol_realism_reverses_rankings",
+   "members": [
+    "W13-P1-G-012",
+    "W13-P1-G-085",
+    "W13-P1-H-070",
+    "W13-P1-J-050"
+   ],
+   "note": "Realistic-protocol reversal template across TTA streams, arrival processes, tiled inference, and sampler choice; G-073/G-086 merged into G-012."
+  },
+  {
+   "name": "generative_perception_robustness",
+   "members": [
+    "W13-P1-G-100",
+    "W13-P1-J-016",
+    "W13-P1-J-011"
+   ],
+   "note": "Generative(-feature) robustness profiles differ from discriminative — one corruption-sweep rig, three readouts; kept unmerged because hypotheses differ (profile shape vs crossover severity vs photometric-prior boundary)."
+  },
+  {
+   "name": "restoration_for_machines",
+   "members": [
+    "W13-P1-H-083",
+    "W13-P1-H-029",
+    "W13-P1-H-089",
+    "W13-P1-H-087"
+   ],
+   "note": "Human-pleasing restoration harms machine consumption; adjacent master D-030."
+  }
+ ],
+ "wave1_master_adjacency_flags_on_keeps": {
+  "W13-P1-G-005": "W13-P1-A-091 (self-training/TTA degeneracy; G-005 generalizes the collapse phenomenon to long unlabeled streams with collapse frequency as the metric)",
+  "W13-P1-G-019": "W13-P1-C-079 / W13-P1-C-047 (selection- and variance-dominance templates; G-019's unsupervised-model-selection instrument is subject-native)",
+  "W13-P1-G-034": "W13-P1-C-047 (evaluation-design variance exceeds method gaps; LODO-variance instrument is subject-native)",
+  "W13-P1-G-051": "W13-P1-C-029 (benchmark aging; G-051's time-respecting-split protocol is a distinct instrument)",
+  "W13-P1-G-053": "W13-P1-C-015 (conformal failures under shift; G-053's mechanism is dependence/non-exchangeability, not covariate shift)",
+  "W13-P1-G-065": "W13-P1-B-046 (texture/shortcut bias; G-065 claims scale reduces frequency but not mechanism)",
+  "W13-P1-G-096": "W13-P1-C-052 (name/synonym sensitivity family; G-096 widens it to a text-tower shift axis)",
+  "W13-P1-G-097": "W13-P1-C-089 (language-prior hallucination; G-097 is the under-shift grounding-collapse variant)",
+  "W13-P1-H-050": "W13-P1-B-026 / W13-P1-C-020 (prompt-jitter/paraphrase sensitivity family ported to instruction restoration; kept because the fragility-as-flaw claim and substrate are new)",
+  "W13-P1-J-008": "W13-P1-A-039 (register/outlier-token pathology family; DiT + photometric-state storage is a subject-native mechanism claim)",
+  "W13-P1-J-016": "W13-P1-C-028 (corruption benchmarks; J-016 is a mechanism claim about generative pretraining, not an eval critique)",
+  "W13-P1-H-083": "W13-P1-D-030 (restoration-for-machines tension: SR preprocessing biases detection)"
+ },
+ "judge_B_divergence": [
+  "PROCESS: judge_B.md was glanced mid-task strictly for conflict notes, after this judge's dispositions were drafted from the raw shards. One objective adoption: H-061 -> master C-032 (adaptive test-set overfitting), verified against the master before adopting; recorded transparently.",
+  "CONFLICT FOR CONSOLIDATOR — G-025: Judge B merges G-026->G-025 (keeps G-025 as primary); this judge KILLS G-025 as a restatement of the published ERM-competitiveness result and keeps G-026 as the surviving subject-native instrument. If the kill is upheld, B's merged content routes to G-026.",
+  "Kills: B kills only G-002 (C concurs); C additionally kills G-025, G-068, J-090 (B honor-roll keep), J-091, J-099 — all prior-art-restatement kills, all recoverable.",
+  "Direction flips (same pair, opposite primary): G-015/G-017 (B keeps G-017, C keeps G-015), H-033/H-053 (B keeps H-053, C keeps H-033). Either primary is workable; consolidator picks.",
+  "Routing differences: G-052 (B: ->G-057 in-wave; C: ->master C-024), G-074 (B: ->G-055 in-wave; C: both ->master B-085 under the annotation ban), G-088 (B: ->G-087; C: keeps as genre-diversifying anomaly), H-039 (B: ->J-062; C: keeps as protected tension partner of H-030).",
+  "Convergences (independent): G-002 kill; merges G-035->G-095, G-036->G-027, G-069->C-028, G-071->C-023, G-091->G-072, G-073->G-012, H-006->H-001, H-016->H-007, H-027->H-013, H-062->H-028, H-088->H-029, H-041->J-080; GATE-5 counts (0/100, 0/100-usable, 104/104); GATE-4 wave-wide failure."
+ ],
+ "watchlists": {
+  "high_prior_art_risk_keeps": {
+   "W13-P1-G-004": "BN-vs-LN dependence of TTA conclusions is partially documented in transformer-era TTA work (UNVERIFIED).",
+   "W13-P1-G-006": "Training-free retrieval/cache adapters for frozen VLMs are published; the risk-comparison framing vs gradient TTA may be the only new part (UNVERIFIED).",
+   "W13-P1-G-020": "Source-free DA matching joint training is close to the published source-free literature's headline (UNVERIFIED).",
+   "W13-P1-G-037": "Two-sample tests on learned representations detecting shift is an established result family (UNVERIFIED).",
+   "W13-P1-G-040": "Deviations from accuracy-on-the-line for fine-tuned/adapted models are discussed in the effective-robustness literature (UNVERIFIED).",
+   "W13-P1-G-094": "Density-ratio estimation in learned embedding spaces for importance weighting has published instances (UNVERIFIED).",
+   "W13-P1-H-015": "Internal-recurrence zero-shot SR is established; the 'beats foundation-scale pretraining data' comparison is the new part (UNVERIFIED).",
+   "W13-P1-H-024": "Gameability of learned perceptual metrics has published demonstrations; the 'metric texture' fingerprint may be new (UNVERIFIED).",
+   "W13-P1-H-036": "Weak late-stage conditioning in diffusion SR is folklore-adjacent and partially documented via SDEdit-style analyses (UNVERIFIED).",
+   "W13-P1-H-043": "Diffusion memorization probes exist for generation; the restoration-injection variant appears new but adjacent (UNVERIFIED).",
+   "W13-P1-H-100": "Equivariance-regularized SR replacing self-ensembling has published neighbors (UNVERIFIED).",
+   "W13-P1-J-008": "Register tokens are documented for supervised/SSL ViTs; the DiT + style-state claim is the new part (UNVERIFIED).",
+   "W13-P1-J-009": "Model stitching / representational alignment across independently trained networks is an established family (UNVERIFIED).",
+   "W13-P1-J-013": "Diffusion-classifier variance reduction (incl. paired noise) is discussed in the diffusion-classifier literature (UNVERIFIED).",
+   "W13-P1-J-024": "Cross-model guidance (weak-model/autoguidance-style) is published; the small-steers-large compute claim is the new part (UNVERIFIED).",
+   "W13-P1-J-030": "Null-text inversion's mechanism (guidance-amplified inversion bias absorbed by optimized null embeddings) is published; kept ONLY for the falsifiable 'bias is low-dimensional and globally correctable without per-image optimization' claim (UNVERIFIED).",
+   "W13-P1-J-035": "SDEdit strength sweet spots are folklore with published heuristics; the SNR-universality quantification is the new part (UNVERIFIED).",
+   "W13-P1-J-047": "Early layout commitment is qualitatively documented in editing papers; the universal SNR-unit decision point is the new part (UNVERIFIED).",
+   "W13-P1-J-083": "Latent channel semantics (luma/chroma-like roles) circulate in practitioner folklore and tooling; systematic quantification may be new (UNVERIFIED).",
+   "W13-P1-J-089": "Spectral deficits of generative models are documented for GANs and partially for diffusion; the stable per-family deficit-shape law is the new part (UNVERIFIED)."
+  },
+  "for_novelty_gate_first": [
+   "W13-P1-J-030",
+   "W13-P1-J-024",
+   "W13-P1-J-008",
+   "W13-P1-G-006",
+   "W13-P1-G-037",
+   "W13-P1-G-040",
+   "W13-P1-H-015",
+   "W13-P1-H-036",
+   "W13-P1-J-013",
+   "W13-P1-J-035"
+  ]
+ },
+ "unresolved_items": [
+  "G-025 kill-vs-merge-primary conflict with Judge B (consolidator decision).",
+  "3 fingerprint cells remain over cap after judge-time merges: dispersion_as_uncertainty (7 keeps, 2 protected tensions inside), generator_memorization_primary (8 keeps + 2 master members), cheap_predictor_of_outcome (per-shard guard exceeded: gen_g 7, gen_j 4). Stage-2/consolidator cap enforcement required; protected ids listed per cell.",
+  "GATE-5 retrofit for 160 kept gen_g/gen_h records (thresholds + evidence_label): repair-or-remand, no numbers invented here.",
+  "GATE-4 wave-wide failure (public dataset+model naming): must be fixed in the same retrofit.",
+  "Genre quotas must be applied on judge labels, not self-labels (GATE-6 finding)."
+ ],
+ "caveats": [
+  "All kill rationales are unverified prior-art hypotheses; every kill is recoverable via the GATE-8 novelty lane.",
+  "Genre and family instruments are regex + hand-reading; counts labeled as such, no false precision claimed.",
+  "Master fingerprint-cell counts reuse the w2 audit's published cell sizes where this judge could not recount (marked in the cell table).",
+  "gen_k/l/m/n/o/p shards were not judged and are not represented in accepted_shard_C.jsonl."
+ ],
+ "canonical_state_untouched": [
+  "ideas_master.jsonl",
+  "research_state.json",
+  "window.lock.json"
+ ],
+ "no_fake_citations": true,
+ "recommended_next_task_type": "p1_wave_b_w3_consolidator"
+}
