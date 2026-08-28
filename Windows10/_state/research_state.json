@@ -1,0 +1,84 @@
+{
+  "windows_id": "Windows10",
+  "windows_path": "Windows10",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows10-p0-init-26ec",
+  "base_branch": "main",
+  "created_at": "2026-08-28T16:53:57Z",
+  "supervisor": "Windows10",
+  "current_stage": "Stage 1",
+  "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "total_ideas": 0,
+  "survivors": 0,
+  "final_target": 3,
+  "status": "initialized",
+  "numbering": {
+    "scan_scope": [
+      "worktree_top_level",
+      "origin_heads"
+    ],
+    "existing_windows_found": [
+      {
+        "id": "Windows2",
+        "evidence": "top-level dir on origin/cursor/research-idea-evolution-windows2-c2c9 and related branches"
+      },
+      {
+        "id": "Windows3",
+        "evidence": "staging/Windows3_supervisor on origin/cursor/idea-evolution-windows3-b534"
+      },
+      {
+        "id": "Windows4",
+        "evidence": "top-level dir on origin/cursor/windows4-research-idea-evolution-2962"
+      },
+      {
+        "id": "Windows6",
+        "evidence": "top-level dir on origin/cursor/windows6-research-idea-evolution-b55d"
+      },
+      {
+        "id": "Windows8",
+        "evidence": "top-level dir on origin/cursor/windows8-research-idea-evolution-cd91"
+      },
+      {
+        "id": "Windows9",
+        "evidence": "top-level dir on origin/cursor/windows9-p0-init-3045"
+      }
+    ],
+    "max_n": 9,
+    "this_round": "Windows10",
+    "overwrite_check": "passed_no_prior_windows_in_this_worktree_and_no_windows10_on_origin_heads"
+  },
+  "git_safety": {
+    "pre_init_branch": "main",
+    "pre_init_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+    "working_tree_at_pre_init": "clean",
+    "force_push": false,
+    "init_commit": null,
+    "push_status": "not_attempted",
+    "push_verified_at": null,
+    "push_remote_sha": null,
+    "push_failure_reason": null
+  },
+  "ideas_index": [],
+  "current_ranking": [],
+  "agent_slots": {
+    "max_concurrent": 3,
+    "required_model": "claude-fable-5-thinking-xhigh",
+    "active": [
+      {
+        "id": "bc-f13b845c-72b8-54ff-9cc0-70757d49c774",
+        "role": "scan_windows_dirs",
+        "status": "dispatched"
+      },
+      {
+        "id": "bc-99938808-e3b2-512f-8dfe-572dd9c92977",
+        "role": "git_safety_inspect",
+        "status": "dispatched"
+      },
+      {
+        "id": "bc-0b1f10b6-e34a-52be-a9fc-3a6bed892c8f",
+        "role": "p0_init_auditor",
+        "status": "dispatched"
+      }
+    ]
+  }
+}
