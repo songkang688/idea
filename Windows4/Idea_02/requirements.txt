@@ -1,2 +1,23 @@
+# PromptAmnesia prototype environment (Windows4/Idea_02)
+# Loose lower bounds; hash-pin an exact lockfile at roadmap Phase 0 (E0).
+
 numpy>=1.24
-# optional: torch, segment-anything, peft
+scipy>=1.10
+pandas>=2.0
+pyyaml>=6.0
+tqdm>=4.65
+matplotlib>=3.7
+scikit-image>=0.21
+opencv-python-headless>=4.8
+
+# Deep-learning stack (needed for train stub, splice arm, and real evaluation runs;
+# the dry-run / self-test paths of the prototype are numpy-only)
+torch>=2.1
+torchvision>=0.16
+safetensors>=0.4
+
+# Model under test — official Segment Anything implementation
+segment-anything @ git+https://github.com/facebookresearch/segment-anything.git
+
+# Dataset tooling
+pycocotools>=2.0.7

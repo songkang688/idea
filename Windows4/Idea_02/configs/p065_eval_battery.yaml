@@ -1,0 +1,77 @@
+# PromptAmnesia — P065 prompt-type evaluation battery (E3 + E4)
+# STATUS: PRE-REGISTRATION DRAFT. Contrast family and simulators FREEZE at `idea02-prereg-v1`.
+# Binding: the MIXED-PROMPT FT COLUMN licenses all forgetting claims; oracle-best-of-3 carries diversity.
+
+meta:
+  package: Windows4/Idea_02 PromptAmnesia
+  experiment: E3_E4_battery
+  status: DRAFT
+  freeze_tag: idea02-prereg-v1
+
+inputs:
+  checkpoints: matched_gain_manifest_from_E2   # selected by src/promptamnesia/matched_gain.py
+  frozen_floor: sam_vit_b                      # evaluated under identical protocol in every cell
+
+retention_suites:
+  - coco_val2017_instances
+  - lvis_rare_subset
+  - cross_domain_medical            # the non-fine-tuned medical domain per checkpoint
+threshold_policy:
+  rule: per_arm_per_domain_tuned_on_shared_calibration_split_then_frozen
+  code_path: src/promptamnesia/threshold_gate.py   # same path as gate — no drift
+
+battery_columns:
+  box:
+    prompt: gt_box_with_preregistered_jitter
+    jitter: {type: relative_uniform, max_shift: 0.05, max_scale: 0.10}
+    readout: [dice_at_tuned_threshold, miou_at_tuned_threshold]
+  one_click:
+    prompt: single_positive_point
+    placement_primary: error_free_interior_max_dist_transform
+    readout: [dice_at_tuned_threshold, miou_at_tuned_threshold]
+  iterative_5:
+    protocol: click k+1 at center of largest error component; NEGATIVE click if largest component is FP
+    max_clicks: 5
+    readout: [dice_at_k_curve, noc_at_90_where_defined]
+    subprotocol_split: [positive_only_cells, negative_click_cells]   # carries O2 (A1-109/C1-071)
+  multimask_ambiguity:              # E4 — binding oracle decomposition
+    probe_set: ambiguity_probes_v1  # mining protocol frozen at E0; index committed before E2 analysis
+    probe_source: coco_lvis_nested_instance_pairs
+    target_size_design: ">=500 probes (design target, final N reported)"
+    candidates: 3                   # SAM multimask mode
+    readout: [oracle_best_of_3_iou, argmax_iou, oracle_argmax_gap]
+    human_spot_audit: {enabled: true, subsample: random, attack: B3}
+
+click_simulators:                   # RClicks/BREPS hygiene — dual-simulator duplicates of headline contrasts
+  primary: error_centroid_protocol
+  alternative: uniform_interior
+  policy: contrasts_that_flip_are_demoted_to_simulator_dependent_limitations
+
+contrast_family:                    # PRE-REGISTERED, Holm-corrected; delta = metric(FT) - metric(frozen floor)
+  O1: {contrast: delta_one_click_vs_delta_box, source: C1-065}
+  O2: {contrast: delta_negative_click_cells_vs_positive_only_cells, source: A1-109_C1-071}
+  O3: {contrast: delta_dice_at_click5_vs_click1, source: C1-063}
+  O4: {contrast: delta_oracle_best_of_3_vs_delta_argmax, source: C1-061}
+  O5: {contrast: pointFT_boxEval_vs_boxFT_pointEval_offdiagonal, source: C1-074, role: coverage_asymmetry}
+
+claim_conditions:                   # a contrast COUNTS only if all three hold
+  - holm_significant_under_hierarchical_bootstrap   # resample images within domain, seeds within arm
+  - point_estimate_outside_p082_operative_envelope
+  - holds_in_mixed_prompt_column                    # box-only column = coverage map only, never forgetting
+
+statistics:
+  bootstrap: {levels: [images, seeds], resamples: 10000, ci: 0.95}
+  multiplicity: holm_over_O1_to_O5
+  matched_gain_sensitivity: rerun_headline_contrasts_at_tolerances [0.25, 1.0]
+
+reporting_panel_appendix:           # P110 residue (Stage-4 disposition); PANEL ONLY, no scalar proposed
+  - per_prompt_type_retention_table
+  - gain_vs_retention_frontier_plot_per_arm
+  - model_card_row_per_checkpoint
+
+output:
+  format: [parquet, csv]
+  dry_run_behavior: emit_matrix_skeleton_with_NaN   # NO FAKE METRICS — NaN until real run artifacts exist
+  run_artifact_required: {config_hash: true, seed: true, commit: true}
+
+estimated_budget: {gpu_days: "3-6 (ESTIMATE, forward passes only)"}

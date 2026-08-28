@@ -1,0 +1,70 @@
+# PromptAmnesia — P082 noise-floor gate (E1) — RUNS FIRST, EVAL-ONLY
+# STATUS: PRE-REGISTRATION DRAFT. Target list and envelope definition FREEZE at `idea02-prereg-v1`.
+# Obligations in force (stage4_r2_setB.md §8): symmetric thresholds; released checkpoints only for
+# named indictments; pre-registered target list; confirmatory (not discovery) coupling framing.
+
+meta:
+  package: Windows4/Idea_02 PromptAmnesia
+  experiment: E1_p082_gate
+  status: DRAFT
+  freeze_tag: idea02-prereg-v1
+
+subjects:
+  frozen_reference:
+    - {name: sam_vit_b, source: official_release, role: floor_and_envelope}
+    - {name: sam_vit_h, source: official_release, role: reference_only}
+  released_finetuned:            # named indictments restricted to this list (F8 rule)
+    - {name: medsam_vit_b, source: public_release, training_prompts: box_only}
+    - {name: sam_med2d, source: public_release, training_prompts: box_point_mask}
+  reimplementations: sensitivity_checks_only_never_named
+
+retention_domains:
+  - {name: coco_val2017_instances, notes: frozen-SAM-relative; absolute zero-shot not claimed (attack B2)}
+  - {name: lvis_rare_subset, notes: frequency stress}
+  - {name: tn3k, notes: medical cross-domain probe}
+  - {name: busi, notes: excluded for checkpoints trained on it}
+exclusion_rule: a checkpoint's own training domain never appears in its retention set
+
+prompt_types: [box_jittered, single_point, iterative_5_with_negative_clicks]
+
+envelope:                        # null-model variance decomposition (no forgetting by construction)
+  built_on: frozen_model_replicates
+  variance_sources:
+    prompt_sampling_seeds: 5     # box jitter + point placement draws
+    calibration_eval_split_draws: 3
+    threshold_sweep: {range: [0.0, 1.0], steps: 51, tuned_on: calibration_split, applied_to: eval_split}
+  statistic: empirical_95pct_band_of_abs_delta   # per (domain x prompt_type), Dice and mIoU
+  b6_control:                    # attack B6: FT-model variance may exceed frozen variance
+    ft_replicates_on: [medsam_vit_b, sam_med2d]
+    operative_envelope: max_of_frozen_and_ft_per_cell
+
+symmetric_threshold_protocol:
+  rule: frozen and fine-tuned models both tuned per-domain on the SAME calibration split, then frozen
+  asymmetric_access: treated_as_leakage_either_direction
+
+preregistered_targets:           # deltas tested against the envelope; additions after first eval = exploratory
+  - {checkpoint: medsam_vit_b, domain: coco_val2017_instances, prompt: box_jittered,
+     protocol: [published_then_symmetric]}
+  - {checkpoint: medsam_vit_b, domain: coco_val2017_instances, prompt: single_point,
+     protocol: [published_then_symmetric], note: box-only training -> coverage channel expected dominant}
+  - {checkpoint: medsam_vit_b, domain: tn3k, prompt: box_jittered, protocol: [published_then_symmetric]}
+  - {checkpoint: sam_med2d, domain: coco_val2017_instances, prompt: box_jittered,
+     protocol: [published_then_symmetric]}
+  - {checkpoint: sam_med2d, domain: coco_val2017_instances, prompt: single_point,
+     protocol: [published_then_symmetric]}
+  - {checkpoint: sam_med2d, domain: lvis_rare_subset, prompt: iterative_5_with_negative_clicks,
+     protocol: [symmetric]}
+
+coupling_regression:             # confirmatory framing MANDATORY (Stage-3 order re Biderman/Soutif)
+  framing: confirm_learning_forgetting_coupling_in_promptable_regime
+  x: achieved_target_domain_gain_at_matched_checkpoint
+  y: retention_delta_vs_frozen_floor
+  runs_on: E2_grid_when_available
+
+gate_decision:
+  proceed_iff: ">=1 released checkpoint with reproduced retention delta outside operative envelope
+                on >=2 retention domains for >=1 prompt type"
+  pivot_action: Idea_02 re-scopes to deflation branch (roadmap Phase 2'); supervisor notified
+  implementation: src/promptamnesia/threshold_gate.py::gate_decision
+
+estimated_budget: {gpu_days: "1-2 (ESTIMATE)", partial_readout: one_domain_under_1_day}

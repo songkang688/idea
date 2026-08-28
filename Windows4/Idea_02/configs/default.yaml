@@ -1,4 +1,0 @@
-rank: 8
-lr: 1.0e-4
-epochs: 1
-match_dice_eps: 0.01
