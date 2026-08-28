@@ -1,76 +1,80 @@
 # Agent M Report — Stage 2/3/4 merge: 200 → Top 50
 
-**Role:** Cloud Sub-Agent M, merger of Stage-2 portfolios under Stage-4 Reviewer-2 verdicts. **Not the PI. No final-3 selected. No full research packages written.** All writes confined to `Windows2/_wip/stage3_agent_M/`.
+**Role:** Cloud Sub-Agent M, merger of the Stage-2 fold under Stage-4 Reviewer-2 verdicts and the post-L PI binding decisions. **Not the PI. No final-3 selected. No full research packages written.** All writes confined to `Windows2/_wip/stage3_agent_M/`.
 
 ## Inputs and provenance
 
-- `Windows2/_wip/stage2_agent_I/provisional_200.md` — **does not exist**; per instructions the 200 was built as G's 121 slots + F's 75 keeps = 196 units.
-- `Windows2/_wip/stage6_agent_L/` — **does not exist**; no L audit was available to fold in.
-- Binding verdicts consumed: H (29 attacks, 6 KILL), J (23 attacks, 0 KILL, 2 framing deaths), K (38 attacks, 5 KILL) — all `verdicts.jsonl` + `AGENT_REPORT.md`, plus `PI_TO_I.md` directives.
+- **Base 200:** Agent I's `stage2_agent_I/provisional_200.md` (190 slots: 84 A / 59 B / 47 C) — landed mid-cut and was adopted as mandated, replacing M's interim G+F reconstruction; all of I's merge topology respected unless a binding cap forced a change.
+- **Binding verdicts:** H (29 attacks, 6 KILL), J (23 attacks, 2 framing deaths), K (38 attacks, 5 KILL) — all `verdicts.jsonl` + reports.
+- **PI directives:** `PI_TO_I.md` and **`PI_BINDING.md`** (post-L overrides: B-0114 4-arm-only; A-0061 demoted from bare SURVIVE; five mandatory revives; correlated-pair one-bet declarations; gravity must include C-0306 and/or C-0338).
+- **Agent L audit** (`stage6_agent_L/`): findings and revive list consumed; L's ledger corrections applied to every affected entry.
 
 ## Deliverables
 
 | File | Contents |
 |---|---|
-| `top50.md` | 50 slots: ID, mutated one-liner, cluster, R2 verdict, killer experiment, survival rationale |
-| `cut_log.md` | Full 196 → 50 accounting: 9 R2 slot kills, 9 slot-freeing merges, 10 cap cuts, 17 named correlation/risk cuts, 101 grouped unattacked-depth cuts |
-| `cluster_map.md` | 18 clusters, cap status, correlated exposures, shared infrastructure, revival queue |
+| `top50.md` | 50 slots: ID (+hosted arms), mutated one-liner, cluster, R2 verdict, killer experiment, survival rationale |
+| `cut_log.md` | Full 190 → 50 accounting: 54 I-slots selected (4 in-50 merges), 10 cap/K-enforcement cuts, 17 named correlation/risk cuts, 109 grouped unattacked-depth cuts |
+| `cluster_map.md` | 18 clusters, cap status, PI one-bet declarations, constructive-content inventory, revival queue, shared infrastructure |
 | `AGENT_REPORT.md` | this file |
 
 ## Headline: the 50
 
-| Batch | Slots | Bare SURVIVE | SURVIVE-IF-EXPERIMENT | MUTATE | Unattacked carry |
+| Batch | Slots | Bare SURVIVE | SURVIVE-IF-EXPERIMENT | MUTATE | Unattacked / PI-revived hosts |
 |---|---|---|---|---|---|
-| A | 17 | 1 (A-0061) | 7 | 8 | 1 (A-0322) |
-| B | 14 | 0 | 10 | 3 | 1 (B-0284) |
-| C | 19 | 0 | 15 | 4 | 0 |
-| **Total** | **50** | **1** | **32** | **15** | **2** |
+| A | 17 | 0 | 7 | 8 | 2 (A-0028, A-0290) |
+| B | 13 | 0 | 9 | 3 | 1 (B-0284) |
+| C | 20 | 0 | 15 | 4 | 1 (C-0300) |
+| **Total** | **50** | **0** | **31** | **15** | **4** |
 
-Rule compliance: no R2 KILL hosts a slot; framing-dead ideas (A-0199 cut entirely, A-0215 and all C/B MUTATEs) appear only in mutated form; caps hit exactly (taxonomy 2/2, GT-epistemology 2/2, PEFT 2/2); C eval-audit share 26% ≤ 40%; all 8 protected ideas in; diversity minima exceeded (5 medical, 4 SAM/video/fingerprint, 3 PEFT/VFM mechanism, 6 non-noise detection-eval).
+Compliance: no R2 KILL hosts a slot; framing-dead ideas only in mutated form; caps hit exactly (taxonomy 2/2, GT-epistemology 2/2, PEFT 2/2, C eval-audit 28% ≤ 40%); all 8 protections honored (B-0114 in 4-arm dense form only); all 5 PI_BINDING revives placed (A-0199-mut and A-0028 as slots; C-0334, C-0082-mut, A-0090 as named arms); zero bare SURVIVEs after the A-0061 demotion; diversity minima exceeded (5 medical, 5 SAM/video/fingerprint, 3 PEFT/VFM mechanism, 6 non-noise detection-eval).
 
 ## Recommended next 20 for Stage-5 engineering (NOT a final-3 pick)
 
-Selection logic: paper-shapedness per H/J/K rankings × urgency clocks × protection status × cluster de-correlation (never more than 2 per cluster). The PI weighs upside; this is an engineering-readiness ordering.
+Ordering logic: paper-shapedness per H/J/K × urgency clocks × PI_BINDING constraints (one-bet pairs consolidated into single programs; constructive quota visible; C represented as mandated). Pilots run concurrently, not counted.
 
 **Batch A (8):**
-1. **A-0061** — only bare SURVIVE; cheapest decisive result in the portfolio; start checkpoint logging immediately.
-2. **A-0206** — data-genetics flagship; the controlled-provenance corpus is the long-lead item — commission it first.
-3. **A-0331** — freshness-fragile (CC-DiceCE closing the niche): K/J-style "pursue first or drop" — first-in.
-4. **A-0163** — band atlas; shares the cluster-2 annotation protocol (budget once, serves 0237+0249/0349 too).
-5. **A-0237+0249** — merged three-way decomposition with the UDA-credit smoking gun.
-6. **A-0100** — two GPU-days + curation; fastest completable slot in the 50.
-7. **A-0326** — compute-bounded crossover law with free architectural cross-validation.
-8. **A-0215-mutated** — GPU-week, zero annotation cost; prerequisite mining (A-0322) can run in parallel.
+1. **A-0061** — cheapest decisive result; Betti-matching instrument + 2601.06067 positioning; this-cycle window. (One bet with A-0206 at lock time.)
+2. **A-0206** — commission the controlled-provenance corpus first; it is the long-lead item and serves three revivable arms.
+3. **A-0331** — freshness-fragile; first-in or drop.
+4. **A-0163** — band atlas; fund the shared taxonomy protocol once (serves 0237+0249/0349).
+5. **A-0237+0249** — three-way decomposition + UDA-credit smoking gun.
+6. **A-0326** — crossover law with free architectural cross-validation.
+7. **A-0215-mut** — GPU-week, zero annotation cost; yardstick mining from C-0300 runs in parallel.
+8. **A-0199-mut** — PI-revived; ~2 GPU-days; execute before the VLM hallucination wave reaches classical segmenters.
 
-**Batch B (6):**
-9. **B-0114** — best risk-adjusted bet in B; 4-arm design fully specified.
-10. **B-0194** (+ B-0169 as one program) — randomized-dose protocol, ~1 week compute; shared policy-envelope hedge.
-11. **B-0001** — 1 GPU-week stratified audit; publishes on either outcome.
-12. **B-0104** — invariance-dissociation grid with the mandatory high-rank arm.
-13. **B-0268** — two-quarter clock; calibration arms (placebo/injection/provenance) before any headline.
-14. **B-0213** — two-quarter clock; ≥3 pre-registered matching conventions.
+**Batch B (5 programs):**
+9. **B-0114 + B-0001 as ONE register program** (PI one-bet declaration): shared backbone grid, 4-arm dense design + stratified uncertainty audit, NOP-vs-broadcast diagnostics.
+10. **B-0194 + B-0169 as ONE interactive program**: randomized dose + policy envelope, ~2 weeks compute total.
+11. **B-0104** — invariance-dissociation grid with mandatory high-rank arm.
+12. **B-0268** — two-quarter clock; calibration arms first.
+13. **B-0213** — two-quarter clock; three matching conventions pre-registered.
 
-**Batch C (6):**
-15. **C-0306** — urgent (third conformal-OD paper expected within months); run the blind-spot gate now.
-16. **C-0338** — first wave of the GT-epistemology race; size census of LVIS double annotations is the precondition.
-17. **C-0057** — inference-only; shares ReM/MJ-COCO infrastructure with 0338.
-18. **C-0011** — closing window; two-GPU-week inference grid.
-19. **C-0136+0287+0302 rigor program** — first-mover shelf life ~12 months; one shared seed grid.
-20. **C-0309-mutated** — detection-item IRT; positioning against arXiv:2409.04041 mandatory.
+**Batch C (7):**
+14. **C-0306** — urgent; run the blind-spot gate now (PI: gravity must include this and/or 0338).
+15. **C-0338** — LVIS double-annotation size census is the precondition; first wave of the GT-epistemology race.
+16. **C-0057** — inference-only; shares ReM/MJ-COCO infrastructure with 0338.
+17. **C-0011** — closing window; two-GPU-week grid.
+18. **C-0136+0287+0302 rigor program** — one seed grid; ~12-month first-mover shelf life; B-0033 arm stays dormant unless partner compute appears.
+19. **C-0309-mut** — detection-item IRT; constructive artifact (1k short test).
+20. **C-0122-mut unit** — duplication/leakage where it hurts, including the A-0100 smoke/fire arm + A-0090 TTD constructive layer; fast and certain-yield.
 
-Held back from the 20 deliberately: B-0317 (collaborator-gated), C-0260/C-0276+0256/C-0159 (retrain-grid-heavy — start after the shared grid is budgeted), A-0121/A-0075/A-0175 (pilot-gated: run the three cheap pilots concurrently with the 20, then promote or kill), C-0279 (fast lane but Udandarao-shadowed; slot it when the residual-structure analysis is staffed).
+**Concurrent pilot set (cheap, pre-registered floors, not counted in the 20):** A-0121, A-0075, A-0175, plus A-0028's one-GPU-day teleport probe — A-0028 additionally requires the Reviewer-2 pass it never had before any engineering commitment.
+
+Held back deliberately: C-0260 / C-0276+0256 / C-0159 (start after the shared retrain grid is budgeted), C-0279 (fast lane but Udandarao-shadowed; staff the residual-structure analysis first), B-0286/B-0284 (medical slots; sequence after the pilot set returns), A-0349/A-0145/A-0290, C-0158/0308/0135/0193/0321/0226/0150/0300 (second wave).
 
 ## Remaining risks
 
-1. **Unattacked-risk concentration.** 2 of 50 slots (A-0322, B-0284) and several G-FLEX-derived arms were never attacked by H/J/K. Both carried slots are cheap and census-verified, but a Stage-5 mini-attack on them (plus on the merged-form designs of 0237+0249 and the rigor program, which no reviewer saw *as merged*) is the cheapest remaining de-risking step.
-2. **Freshness half-life.** H measured ~1-in-3 scoop probability within 12 months for sub-2-GPU-week ideas. Nine slots sit on explicit clocks (0306, 0011, 0331, 0268, 0213, 0122, 0279, 0338, 0345-cut). Portfolio storage converts them to kills; the next-20 ordering front-loads them.
-3. **Taxonomy debt.** Cluster 2's hidden foundational paper (the noise/convention/quality/ambiguity taxonomy) is still unbuilt. Three slots (0163, 0237+0249, 0349) depend on pieces of it; if Stage 5 cannot fund the shared annotation protocol, expect correlated failure and consider promoting a revival-queue item.
-4. **Merged-slot fission risk.** Four slots are multi-ID programs (0237+0249, 0276+0256, 0283+0285, 0136+0287+0302). If the PI prefers thinner papers, the named arms are the fission points — but each fission re-exposes the salami-slicing/double-counting rejections K warned about.
-5. **Compute-partner conditionals are fully out.** Everything requiring flagship-scale pretraining or a compute partner (B-0033, B-0293, C-0277, C-0327, C-0055) is dead or cut. If a partner materializes, C-0055 (fresh COCO test set) and C-0277 (single-bias intervention) are the recorded revival candidates.
-6. **No L audit.** Stage-6 meta-audit outputs did not exist at cut time; if L later flags G/F bookkeeping errors, the 196-unit base and this 50 must be re-checked against them.
+1. **Echo-chamber discount (L Finding 4).** D/E/F/H/J/K share one base model and prompt culture; treat their convergence as ~2 independent opinions. The "noise bounds progress" template appears in ≥8 surviving units; one umbrella paper (Label Convergence is 80% there) ages the whole rigor/GT block overnight. The 50 caps that block at 6 slots (rows 3–4 of the cluster map) but cannot eliminate the common mode.
+2. **Unattacked hosts in the 50.** A-0028 (PI revive, never attacked), A-0290, B-0284, C-0300. A Stage-5 mini-attack on these four plus the merged-form designs (0237+0249, the rigor program) is the cheapest remaining de-risking step. L's "most dangerous unverified keeps" list (C-0122, C-0193, C-0308, B-0164, B-0286) has since been covered by K and H attacks.
+3. **Scoop-hazard clocks.** H's measured ~1/3-per-year hazard on ≤2-GPU-week ideas; L's arithmetic says three cheap finalists ≈ 70% chance one is scooped in a year. Eleven slots carry explicit start-within-one-quarter deadlines (listed in cluster_map). Portfolio storage converts them to kills — B-0332 is the cautionary corpse.
+4. **Taxonomy debt.** The noise/convention/quality/ambiguity taxonomy underlying cluster 2 is still unowned. If Stage 5 cannot fund the shared annotation protocol, expect correlated failure across 0163/0237+0249/0349 and promote from the revival queue.
+5. **Venue mix undecided (L rec 8).** Roughly two-thirds of the 50 are analysis/D&B-track shaped; the ranking inverts under a CVPR-method-track objective. The next-20 embeds constructive artifacts (0306, 0309, 0163, 0175, 0122's TTD arm) but the PI must fix the venue mix in writing before the Top-5 lock or re-litigate at writing time.
+6. **Medical-FM science remains one conditional deep.** B-0293 stays folded into B-0286; if no compute partner appears and B-0286's mutation underdelivers, the portfolio's answer to "do medical FMs beat natural FMs?" is thin. A-0075 post-pilot and A-0065 (revival queue) are the hedges.
+7. **Governance items closed here, pending PI ratification:** the B-0033 dormant-arm compromise (Stage-4 kill vs Stage-2 protection) and the C-0334 arm formalization inside 0283+0285's protocol are recorded in `cut_log.md`/`top50.md`; the remaining sign-offs L demanded (C-0251/0253/0271) are PI actions, not M's.
 
 ## Compliance
 
 - Did not pick a final 3; did not write research packages; did not modify any other agent's directory.
-- Every verdict citation traces to H/J/K `verdicts.jsonl` or PI_TO_I.md; no new literature claims introduced without an upstream verdict.
-- All 11 R2 kill IDs (+ upstream A-0017/A-0051) verified absent from the 50's hosts.
+- Every verdict citation traces to H/J/K `verdicts.jsonl`, PI_TO_I.md, PI_BINDING.md, or L's audit; no new literature claims introduced by M.
+- All R2 kill IDs verified absent from the 50's hosts; all PI_BINDING revives verified present.
