@@ -1,0 +1,169 @@
+% C-0306 references — BibTeX for VERIFIED entries only.
+% Policy: entries appear here only if PIPELINE-VERIFIED or TEXTBOOK (see references.md).
+% UNVERIFIED works (references.md, bottom table) intentionally have NO BibTeX entry
+% until their identifiers are confirmed at proposal freeze. Never invent identifiers.
+
+% ---------- core prior work ----------
+
+@article{seqcrc2025,
+  title   = {Conformal Object Detection by Sequential Risk Control},
+  journal = {arXiv preprint arXiv:2505.24038},
+  year    = {2025},
+  url     = {https://arxiv.org/abs/2505.24038},
+  note    = {PIPELINE-VERIFIED (Stage-2 D; Stage-4 K re-verified v2). Calibrates after NMS.}
+}
+
+@inproceedings{iouaware_wacv2024,
+  title     = {Do We Still Need Non-Maximum Suppression? {IoU}-Aware Calibration (short title per pipeline record)},
+  booktitle = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  year      = {2024},
+  doi       = {10.1109/wacv57701.2024.00478},
+  note      = {PIPELINE-VERIFIED (Stage-4 K; mandated baseline). Confirm full title/authors via DOI at freeze.}
+}
+
+@article{probod_cp2026,
+  title   = {Probabilistic Object Detection with Conformal Prediction},
+  journal = {arXiv preprint arXiv:2605.07549},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2605.07549},
+  note    = {PIPELINE-VERIFIED (Stage-2 D); Stage-4 K flags: inherited, re-verify at freeze.}
+}
+
+@article{calib_eval_ijcv2024,
+  title   = {A Systematic Evaluation of Uncertainty Calibration in Pretrained Object Detectors},
+  journal = {International Journal of Computer Vision},
+  year    = {2024},
+  url     = {https://link.springer.com/article/10.1007/s11263-024-02219-z},
+  note    = {PIPELINE-VERIFIED (Stage-4 K).}
+}
+
+@article{kosub2019jaccard,
+  author  = {Kosub, Sven},
+  title   = {A note on the triangle inequality for the {J}accard distance},
+  journal = {Pattern Recognition Letters},
+  year    = {2019},
+  url     = {https://arxiv.org/abs/1612.02696},
+  note    = {The metric lemma behind CPS Theorem 1.}
+}
+
+% ---------- conformal foundations ----------
+
+@book{vovk2005algorithmic,
+  author    = {Vovk, Vladimir and Gammerman, Alexander and Shafer, Glenn},
+  title     = {Algorithmic Learning in a Random World},
+  publisher = {Springer},
+  year      = {2005}
+}
+
+@inproceedings{papadopoulos2002inductive,
+  author    = {Papadopoulos, Harris and Proedrou, Kostas and Vovk, Volodya and Gammerman, Alex},
+  title     = {Inductive Confidence Machines for Regression},
+  booktitle = {European Conference on Machine Learning (ECML)},
+  year      = {2002}
+}
+
+@article{lei2018distribution,
+  author  = {Lei, Jing and G'Sell, Max and Rinaldo, Alessandro and Tibshirani, Ryan J. and Wasserman, Larry},
+  title   = {Distribution-Free Predictive Inference for Regression},
+  journal = {Journal of the American Statistical Association},
+  year    = {2018},
+  url     = {https://arxiv.org/abs/1604.04173}
+}
+
+@article{angelopoulos2021gentle,
+  author  = {Angelopoulos, Anastasios N. and Bates, Stephen},
+  title   = {A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification},
+  journal = {arXiv preprint arXiv:2107.07511},
+  year    = {2021},
+  url     = {https://arxiv.org/abs/2107.07511}
+}
+
+@inproceedings{angelopoulos2024crc,
+  author    = {Angelopoulos, Anastasios N. and Bates, Stephen and Fisch, Adam and Lei, Lihua and Schuster, Tal},
+  title     = {Conformal Risk Control},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2208.02814}
+}
+
+@article{angelopoulos2021ltt,
+  author  = {Angelopoulos, Anastasios N. and Bates, Stephen and Cand{\`e}s, Emmanuel J. and Jordan, Michael I. and Lei, Lihua},
+  title   = {Learn then Test: Calibrating Predictive Algorithms to Achieve Risk Control},
+  journal = {arXiv preprint arXiv:2110.01052},
+  year    = {2021},
+  url     = {https://arxiv.org/abs/2110.01052}
+}
+
+% ---------- detection / NMS / datasets ----------
+
+@inproceedings{bodla2017softnms,
+  author    = {Bodla, Navaneeth and Singh, Bharat and Chellappa, Rama and Davis, Larry S.},
+  title     = {Soft-{NMS} -- Improving Object Detection With One Line of Code},
+  booktitle = {IEEE International Conference on Computer Vision (ICCV)},
+  year      = {2017},
+  url       = {https://arxiv.org/abs/1704.04503}
+}
+
+@inproceedings{hosang2017learning,
+  author    = {Hosang, Jan and Benenson, Rodrigo and Schiele, Bernt},
+  title     = {Learning Non-Maximum Suppression},
+  booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2017},
+  url       = {https://arxiv.org/abs/1705.02950}
+}
+
+@inproceedings{carion2020detr,
+  author    = {Carion, Nicolas and Massa, Francisco and Synnaeve, Gabriel and Usunier, Nicolas and Kirillov, Alexander and Zagoruyko, Sergey},
+  title     = {End-to-End Object Detection with Transformers},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2020},
+  url       = {https://arxiv.org/abs/2005.12872}
+}
+
+@inproceedings{zhu2021deformable,
+  author    = {Zhu, Xizhou and Su, Weijie and Lu, Lewei and Li, Bin and Wang, Xiaogang and Dai, Jifeng},
+  title     = {Deformable {DETR}: Deformable Transformers for End-to-End Object Detection},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2021},
+  url       = {https://arxiv.org/abs/2010.04159}
+}
+
+@inproceedings{ren2015faster,
+  author    = {Ren, Shaoqing and He, Kaiming and Girshick, Ross and Sun, Jian},
+  title     = {Faster {R-CNN}: Towards Real-Time Object Detection with Region Proposal Networks},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2015},
+  url       = {https://arxiv.org/abs/1506.01497}
+}
+
+@inproceedings{tian2019fcos,
+  author    = {Tian, Zhi and Shen, Chunhua and Chen, Hao and He, Tong},
+  title     = {{FCOS}: Fully Convolutional One-Stage Object Detection},
+  booktitle = {IEEE International Conference on Computer Vision (ICCV)},
+  year      = {2019},
+  url       = {https://arxiv.org/abs/1904.01355}
+}
+
+@inproceedings{lin2014coco,
+  author    = {Lin, Tsung-Yi and Maire, Michael and Belongie, Serge and Hays, James and Perona, Pietro and Ramanan, Deva and Doll{\'a}r, Piotr and Zitnick, C. Lawrence},
+  title     = {Microsoft {COCO}: Common Objects in Context},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2014},
+  url       = {https://arxiv.org/abs/1405.0312}
+}
+
+@inproceedings{gupta2019lvis,
+  author    = {Gupta, Agrim and Doll{\'a}r, Piotr and Girshick, Ross},
+  title     = {{LVIS}: A Dataset for Large Vocabulary Instance Segmentation},
+  booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2019},
+  url       = {https://arxiv.org/abs/1908.03195}
+}
+
+@article{shao2018crowdhuman,
+  author  = {Shao, Shuai and Zhao, Zijian and Li, Boxun and Xiao, Tete and Yu, Gang and Zhang, Xiangyu and Sun, Jian},
+  title   = {CrowdHuman: A Benchmark for Detecting Human in a Crowd},
+  journal = {arXiv preprint arXiv:1805.00123},
+  year    = {2018},
+  url     = {https://arxiv.org/abs/1805.00123}
+}
