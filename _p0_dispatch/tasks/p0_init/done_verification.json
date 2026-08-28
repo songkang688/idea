@@ -1,0 +1,23 @@
+{
+  "task_id": "p0_init",
+  "role": "verification",
+  "wave": "C",
+  "status": "complete",
+  "completed_at_utc": "2026-08-28T17:40:00Z",
+  "branch": "cursor/p0-wave-c-verification-5e24",
+  "p0_complete": true,
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "commit_hash": "38641a7a5813ed06b9b80c560e227ef382f76502",
+  "push_status": "verified_success",
+  "output_files": [
+    "_p0_dispatch/tasks/p0_init/verification.md",
+    "_p0_dispatch/tasks/p0_init/verification.json",
+    "_p0_dispatch/tasks/p0_init/done_verification.json"
+  ],
+  "unresolved_items": [
+    "P1 gate family (p1-gate-state-reader, p1-lock-verifier) was previously blocked awaiting an authoritative locked window.lock.json; it should now be re-run against origin/cursor/windows13-p0-init-implementation-d93f",
+    "Out-of-scope repo hygiene on other branches (Windows11 malformed research_state.json; Windows8 tracked binary density_head.pt) left untouched"
+  ],
+  "recommended_next_task_type": "p1_start"
+}

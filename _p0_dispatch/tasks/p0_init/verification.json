@@ -1,0 +1,73 @@
+{
+  "task_id": "p0_init",
+  "role": "verification",
+  "wave": "C",
+  "verified_at_utc": "2026-08-28T17:40:00Z",
+  "verification_branch": "cursor/p0-wave-c-verification-5e24",
+  "subject_branch": "cursor/windows13-p0-init-implementation-d93f",
+  "subject_remote_tip_sha": "7b37f37808f891a32708331518dad6ec299c0180",
+  "decision_source": {
+    "branch": "origin/cursor/p0-init-consolidator-9302",
+    "file": "_p0_dispatch/tasks/p0_init/decision.json",
+    "remote_sha": "823a75944315ede938423e6e7ccf090de4e6bb72",
+    "decision_json_identical_on_subject_branch": true
+  },
+  "p0_complete": true,
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "commit_hash": "38641a7a5813ed06b9b80c560e227ef382f76502",
+  "commit_message": "Research Idea Evolution - Windows13 - Initialization",
+  "reports_commit_hash": "7b37f37808f891a32708331518dad6ec299c0180",
+  "push_status": "verified_success",
+  "push_evidence": "git ls-remote origin (this session) shows refs/heads/cursor/windows13-p0-init-implementation-d93f at 7b37f37808f891a32708331518dad6ec299c0180; init commit 38641a7a is a verified ancestor of that tip (git merge-base --is-ancestor exit 0)",
+  "checks": {
+    "fetch_and_remote_sha_confirmed": {
+      "result": "pass",
+      "evidence": "git fetch origin --prune exit 0; ls-remote shows subject branch at 7b37f378..., consolidator branch at 823a7594..."
+    },
+    "unique_correct_windows_id": {
+      "result": "pass",
+      "evidence": "window.lock.json: windows_id=Windows13, locked=true, defined_by=P0, definition_status=canonical; research_state.json: window_locked=true, window_defined_by=P0, window_definition_status=canonical; independent scan of all 70 origin heads found Windows13 tree only on subject branch; no other commit/branch name mentions Windows13"
+    },
+    "no_overwrite_of_historical_windows": {
+      "result": "pass",
+      "evidence": "git diff --name-status origin/main..38641a7a is 12 additions, zero deletions/modifications; origin/main contains only README.md; historical Windows2/3/4/6/8/9/10/11/12 live on separate untouched branches; tip commit 7b37f378 only edits Windows13/_state and adds report files"
+    },
+    "required_state_files_exist": {
+      "result": "pass",
+      "evidence": "ls-tree at remote tip: Windows13/README.md, _state/{research_state.json, window.lock.json, ideas_master.jsonl, research_ledger.md, agent_log.md}, selection_history/.gitkeep, final_ideas/.gitkeep, artifacts/.gitkeep all present"
+    },
+    "json_validity": {
+      "result": "pass",
+      "evidence": "python3 -m json.tool exit 0 on both research_state.json and window.lock.json as read from the remote tip"
+    },
+    "pipeline_string_present": {
+      "result": "pass",
+      "evidence": "'1000+ -> 200 -> 50 -> 20 -> 5 -> 3' found in Windows13/README.md (1), research_state.json (2), window.lock.json (1)"
+    },
+    "git_safety_no_secrets_no_force_push": {
+      "result": "pass",
+      "evidence": "secret-pattern scan of full origin/main..tip diff found no matches (AWS keys, private keys, api/secret/password assignments, ghp_/gho_ tokens, x-access-token, Bearer, sk- keys); linear fast-forward history from main verified via parent hashes; force_push=false recorded and consistent with evidence"
+    },
+    "init_commit_exists_with_required_message": {
+      "result": "pass",
+      "evidence": "38641a7a5813ed06b9b80c560e227ef382f76502 'Research Idea Evolution - Windows13 - Initialization' (2026-08-28 17:32:53 +0000)"
+    },
+    "push_succeeded": {
+      "result": "pass",
+      "evidence": "ls-remote (independent, this session) shows subject branch tip 7b37f378 containing init commit 38641a7a as ancestor"
+    },
+    "bump_justification": {
+      "result": "pass",
+      "evidence": "not bumped; decision.json decided Windows13; independent 70-branch scan finds no competing Windows13 claim in any tree/branch-name/commit-message; corroboration: concurrent sibling pipeline (cursor/windows16-p0-implementation-3255, init 17:37:09Z) recorded 13/14/15 as spent/staked and took 16, respecting the Windows13 stake"
+    }
+  },
+  "failures": [],
+  "non_blocking_observations": [
+    "Sibling pipeline initialized Windows16 with its own lock on cursor/windows16-p0-implementation-3255 (different number, no collision)",
+    "Pre-existing out-of-scope hygiene issues on other branches: Windows11 research_state.json reportedly malformed on its branch; Windows8 branch carries tracked binary density_head.pt",
+    "window.lock.json was NOT rewritten by this verifier (no critical error found)"
+  ],
+  "recommended_next_task_type": "p1_start"
+}
