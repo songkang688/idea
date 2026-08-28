@@ -66,13 +66,13 @@ Idea ID, Stage, Status, Cluster, Core Hypothesis, Scores, Closest Prior Work, No
 ## Git checkpoint
 
 - pre_init HEAD: `990f3ebc75d7ab03a8960cf0d1e5621cbb29194a` on `main` (KNOWN FACT)
-- init commit: pending first checkpoint
-- push: not_attempted
+- init commit: `0255bd7f47ae66e6e161539782e12f4a49c299ae` (KNOWN FACT)
+- push: verified_success — `git ls-remote` SHA equals local HEAD `0255bd7f47ae66e6e161539782e12f4a49c299ae` (KNOWN FACT)
 - force_push: not used
 
 ## 当前 Stage
 
-Stage 1 — P0 工作区初始化进行中。Idea 生成未开始。
+Stage 1 — 已完成 P0 工作区初始化。Idea 生成未开始。
 
 ## 下一阶段要做什么
 

@@ -24,3 +24,9 @@ Supervisor 本地并行核实（不把子 Agent 结论当事实）:
 
 - Keep: Windows10 编号。Reason: N+1 规则；不覆盖历史。
 - 无 Kill/Mutate/Revive Idea（尚无 Idea）。
+
+## 2026-08-28T16:54Z — P0 git checkpoint
+
+- init commit: `0255bd7f47ae66e6e161539782e12f4a49c299ae`
+- push: verified_success (`origin/cursor/windows10-p0-init-26ec` SHA matches local HEAD; no force push)
+- overwrite check: worktree contains only `README.md` + `Windows10/`; origin/main still has no Windows dirs.
