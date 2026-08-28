@@ -1,0 +1,14 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "worker_C_workspace_planner",
+  "status": "complete",
+  "output_files": ["_state/tasks/p0/windows_init/worker_C.md"],
+  "unresolved_items": [
+    "Final WindowsN number selection is the judge's call: Windows14 recommended as primary (identity-if-free precedent from Windows12, lower race risk), Windows13 as sequential fallback; P0 Final must re-fetch origin and re-verify absence on all origin/* heads immediately before locking.",
+    "Commit-message family choice: mandated 'Research Idea Evolution - WindowsN - Initialization' vs the observed P0-init family 'Initialize WindowsN research workspace (P0)' used by Windows9-12; plan proposes the mandated form.",
+    "Whether the six lock fields live only in _state/window.lock.json or are also mirrored into research_state.json (plan recommends mirroring both).",
+    "Concurrency: sibling dispatch shard on origin/cursor/p0-init-repo-inspector-1ccf already recommended Windows13; other concurrent P0 runs may claim 13/14 after this worker's 2026-08-28 ~17:13 UTC scan."
+  ],
+  "recommended_next_task_type": "wave_B_judge",
+  "proposed_structure_complete": true
+}
