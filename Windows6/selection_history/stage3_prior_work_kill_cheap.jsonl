@@ -1,0 +1,12 @@
+{"id":"F-012-samhq-vs-filter","continue":"mutate","novelty_confidence":0.35,"remaining_novelty":"Stratified where HQ-SAM gains live; guided filter not CRF; do not claim filter matches HQ-SAM overall"}
+{"id":"F-014-S-030-ln-affine-vs-lora","continue":"kill","novelty_confidence":0.2,"reason":"LN-affine TTA crowded (LN-TTA WACV 2026, IGTTA TMI 2025, MedSAM TTA 2025)"}
+{"id":"empty-slice-fpr-gate","continue":"mutate","novelty_confidence":0.45,"remaining_novelty":"Cross-leaderboard FPR vs Dice decorrelation audit; kill two-stage gate as method"}
+{"id":"histogram-matching-da","continue":"kill","novelty_confidence":0.15,"reason":"KiTS23 2023, RHM 2021, knee MRI 2026 already show cheap intensity alignment"}
+{"id":"sam-amg-intensity-clustering","continue":"keep","novelty_confidence":0.6,"remaining_novelty":"Mechanistic AMG vs HU k-means equivalence on CT not found"}
+{"id":"alignment-tax-vlm-localization","continue":"mutate","novelty_confidence":0.5,"remaining_novelty":"Stage-isolated base vs SFT vs RLHF localization curve only"}
+{"id":"clip-text-unused-organs","continue":"mutate","novelty_confidence":0.5,"remaining_novelty":"Atlas-centroid substitution proving text is spatial prior"}
+{"id":"camera-id-leakage-smoke","continue":"keep","novelty_confidence":0.55,"remaining_novelty":"Peer-reviewed inflation quantification across smoke/fire benches"}
+{"id":"lora-effective-rank","continue":"kill","novelty_confidence":0.1,"reason":"Illusion of Equivalence 2024 already measures effective rank << r"}
+{"id":"prompt-jitter-uncertainty","continue":"kill","novelty_confidence":0.05,"reason":"SAM-U, UR-SAM, SAIF, FNPC-SAM 2023-2026"}
+{"id":"multiclick-nonmonotonic","continue":"kill","novelty_confidence":0.15,"reason":"RITM 2021, TETRIS/RClicks 2024, Stable-SAM ICLR 2025"}
+{"id":"dice-vs-ce-calibration","continue":"kill","novelty_confidence":0.2,"reason":"TMI 2020, DSC++ 2022, gradient surgery 2026"}
