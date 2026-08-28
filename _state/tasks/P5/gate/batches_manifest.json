@@ -1,0 +1,21 @@
+{
+  "manifest_id": "P5-batches-manifest",
+  "generated_by": "P5-batch-planner",
+  "generated_at_utc": "2026-08-28T17:27:11Z",
+  "stage": "P5 Experimental Engineering (~20 -> Top 5)",
+  "status": "blocked",
+  "windows_id": null,
+  "windows_path": null,
+  "stage4_survivor_count": null,
+  "batch_count": 0,
+  "batches": [],
+  "batch_schema": {
+    "batch_id": "P5-A-<n>",
+    "wave": "A",
+    "roles": ["P5 Experiment Designer", "P5 Implementation Engineer", "P5 Causal-Ablation Analyst"],
+    "survivor_ids": "subset of Stage 4 survivors covered by this batch (each survivor appears in exactly one batch)",
+    "task_ids": "task ids from task_queue.json belonging to this batch"
+  },
+  "blocked_reason": "No authoritative P0 window lock (window.lock.json absent everywhere; research_state.json in 4-way conflict on unmerged P0 branches Windows9/10/11/12) => windows_path unresolved => Stage 4 survivor list unavailable => zero batches plannable without guessing (forbidden).",
+  "recommended_next_task_type": "P5_BLOCKED_NEED_P0"
+}

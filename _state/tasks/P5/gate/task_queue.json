@@ -1,0 +1,28 @@
+{
+  "queue_id": "P5-wave-a-experiment-queue",
+  "generated_by": "P5-batch-planner",
+  "generated_at_utc": "2026-08-28T17:27:11Z",
+  "stage": "P5 Experimental Engineering (~20 -> Top 5)",
+  "status": "blocked",
+  "blocked_reason": "P0 window lock missing: window.lock.json does not exist anywhere (working tree or the committed tree of any of the 42 origin branches). research_state.json is absent from the working tree and exists only as FOUR conflicting copies on four divergent unmerged P0 branches (Windows9/10/11/12). No authoritative windows_id/windows_path can be resolved without guessing (forbidden), therefore Stage 4 survivors cannot be loaded and no experiment tasks can be enqueued.",
+  "windows_id": null,
+  "windows_path": null,
+  "stage4_survivors_source": null,
+  "stage4_survivor_count": null,
+  "wave_a_roles": [
+    "P5 Experiment Designer",
+    "P5 Implementation Engineer",
+    "P5 Causal-Ablation Analyst"
+  ],
+  "task_schema": {
+    "task_id": "P5-A-<batch>-<seq>",
+    "role": "one of wave_a_roles",
+    "survivor_ids": "list of Stage 4 survivor idea ids assigned to this task (from windows_path survivor list)",
+    "inputs": "paths under windows_path (survivor records, prior stage reviews)",
+    "outputs": "experiment dossier path under windows_path/_state/tasks/P5/ (written by Wave A workers, NOT by this planner)",
+    "depends_on": "list of task_ids"
+  },
+  "tasks": [],
+  "notes": "Empty queue emitted as a blocked scaffold only. This planner does not design experiments, estimate ROI, or pick the Top 5; those belong to Wave A and later P5 waves. Recovery order: (1) P0 re-run produces exactly one authoritative WindowsN/_state/window.lock.json (locked=true) + consistent sibling research_state.json discoverable from the base branch; (2) P4 persists the Stage 4 survivor list (~20) under that windows_path; (3) re-run this P5 batch planner to populate tasks[] and batches.",
+  "recommended_next_task_type": "P5_BLOCKED_NEED_P0"
+}

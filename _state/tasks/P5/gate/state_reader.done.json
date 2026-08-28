@@ -1,0 +1,26 @@
+{
+  "task_id": "P5-batch-planner",
+  "role": "P5 Experiment Batch Planner / State Reader (parent: WindowsX; Stage: P5 Experimental Engineering ~20 -> Top 5)",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P5/gate/state_reader.md",
+    "/workspace/_state/tasks/P5/gate/state_reader.done.json",
+    "/workspace/_state/tasks/P5/gate/task_queue.json",
+    "/workspace/_state/tasks/P5/gate/batches_manifest.json"
+  ],
+  "unresolved_items": [
+    "window.lock.json not found anywhere: 0 hits in the /workspace working tree (find by filename including hidden paths, excluding .git) and 0 hits in the committed tree of any of the 42 origin branches (git ls-tree sweep of every refs/remotes/origin/* after git fetch --prune).",
+    "research_state.json: 0 hits in the /workspace working tree; FOUR conflicting copies exist only on four divergent, unmerged P0 branches: Windows9/_state/research_state.json (origin/cursor/windows9-p0-init-3045), Windows10/_state/research_state.json (origin/cursor/windows10-p0-init-26ec), Windows11/_state/research_state.json (origin/cursor/windows11-p0-init-c0c1), Windows12/_state/research_state.json (origin/cursor/windows12-p0-init-a095). Conflict rule => blocked; no WindowsN guessed and no winner selected.",
+    "origin/main contains only README.md; none of the four P0 states is merged; no authoritative windows identity (windows_id/windows_path) is discoverable, so no Windows* directory exists in the working tree.",
+    "Stage 4 survivors cannot be loaded: with windows_path unresolved there is no authoritative survivor list. Stage-4-adjacent artifacts exist only on unmerged historical branches (Windows8/selection_history/stage4_top20.md on origin/cursor/windows8-research-idea-evolution-cd91; Windows6/selection_history/stage4_reviewer2_cheap5.jsonl on origin/cursor/windows6-research-idea-evolution-b55d; research_ledger/stage4_reviewer2_kill_panel.md on origin/cursor/reviewer2-stage4-kill-panel-5733) and none is tied to a locked window; stage4_survivor_count = null (not evaluable).",
+    "Findings are consistent with (and do not contradict) prior gate machine fields: P1 _state/tasks/P1/gate/state_reader.done.json (status=blocked, p0_lock_ok=false, windows_id=null, windows_path=null) and P2 _state/tasks/P2/gate/lock_verifier.done.json (status=blocked, p0_lock_ok=false, windows_id=null, windows_path=null); both were re-verified against the live repository rather than trusted blindly. P3 gate (lock_verifier) independently reports the same block.",
+    "task_queue.json emitted with an empty tasks[] (blocked scaffold for Wave A roles Designer / Implementation Engineer / Causal-Ablation); batches_manifest.json emitted with batch_count=0. No experiment dossiers written; no experiments designed; no ROI estimated; no Top 5 picked (out of scope and blocked).",
+    "Unblock path: P0 must run to completion and persist exactly one authoritative WindowsN/_state/window.lock.json (locked=true) with a field-consistent sibling research_state.json discoverable from the base branch; then P4 must produce the Stage 4 survivor list (~20) under that windows_path; only then can P5 Wave A batches be planned."
+  ],
+  "recommended_next_task_type": "P5_BLOCKED_NEED_P0",
+  "p0_lock_ok": false,
+  "windows_id": null,
+  "windows_path": null,
+  "stage4_survivor_count": null,
+  "batch_count": 0
+}
