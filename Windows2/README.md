@@ -28,7 +28,7 @@ Same week, co-schedule A-0028's 1-GPU-day SAM2-L teleport battery (`Windows2/_wi
 | Project | Package | Prototype |
 | --- | --- | --- |
 | Idea_01 C-0306 | **`Windows2/Idea_01/`** | complete (synthetic; 27 tests) |
-| Idea_02 A-0028 | drafting next | complete (synthetic) |
+| Idea_02 A-0028 | **`Windows2/Idea_02/`** | complete (synthetic; 23 tests) |
 | Idea_03 B-0114 | drafting under `_wip/package_draft_B0114/` | complete (synthetic) |
 
 Do not treat `_wip` synthetic numbers as COCO/SAM2 benchmark results.

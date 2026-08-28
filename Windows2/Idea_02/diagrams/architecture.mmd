@@ -1,0 +1,24 @@
+%% A-0028 full-study architecture (package draft, Agent V)
+%% Rendered in experiments.md Section 15; this is the standalone source.
+flowchart LR
+  subgraph stimuli["Stimulus layer"]
+    SYN["synthetic compositor<br/>COCO/LVIS crops, Poisson blend<br/>(d, g, s) grid + placebo arm"]
+    NAT["natural hard-cut set<br/>~100 curated clips, manual GT"]
+  end
+  subgraph subjects["Subject models"]
+    S2["SAM2.1 T/S/B+/L<br/>(L = killer battery)"]
+    S3["SAM3 video tracker"]
+    FIX["DAM4SAM · SAMURAI<br/>(fixed-memory comparators)"]
+    SUR["surrogate tracker<br/>known lambda_loc<br/>(instrument validation only)"]
+  end
+  subgraph scoring["Scoring & analysis"]
+    TRI["trichotomy at swap frame:<br/>follow-object / follow-place /<br/>other / lost (IoU rule)"]
+    PER["persistence / recovery /<br/>memory-pollution readouts"]
+    PSY["psychometric fit P(follow-place | d,g,s)<br/>Wilson CIs · location-prior index"]
+  end
+  SYN --> S2 & S3 & FIX
+  SYN -. "abstract world" .-> SUR
+  NAT --> S2 & S3 & FIX
+  S2 & S3 & FIX & SUR --> TRI --> PER --> PSY
+  PSY --> OUT["arbitration curves per model<br/>+ generational comparison<br/>+ fix-evaluation instrument"]
+  DUM["dummy brackets:<br/>pure location prior /<br/>pure appearance matcher"] --> TRI

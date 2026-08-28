@@ -3,7 +3,7 @@
 ## Final 3
 
 1. **C-0306** → `Windows2/Idea_01/` (package archived; 28 sections; 27 tests)
-2. **A-0028** → Idea_02 (package drafting)
+2. **A-0028** → `Windows2/Idea_02/` (package archived; synthetic instrument, 23 tests)
 3. **B-0114** → Idea_03 (package drafting)
 
 ## Pipeline
