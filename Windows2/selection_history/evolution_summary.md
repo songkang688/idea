@@ -33,6 +33,7 @@
 - L COMPLETE: `Windows2/_wip/stage6_agent_L/`. Binding PI response: `Windows2/_wip/PI_BINDING.md`.
 - O COMPLETE: Top 20 in `Windows2/_wip/stage6_agent_O/top20.md`.
 - Q COMPLETE: Top 5 in `Windows2/_wip/stage6_agent_Q/top5.md` — C-0306, B-0114-4arm, A-0028, B-0194+0169, C-0338.
+- S COMPLETE: Final 3 in `Windows2/_wip/stage6_agent_S/final3.md` — **C-0306, A-0028, B-0114**.
 
 ## Stage 7 prototypes
 

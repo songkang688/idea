@@ -2,19 +2,22 @@
 
 ## Pipeline
 
-1000+ ideas → 200 → 50 → 20 → 5 → 3 executable research packages.
+1042 → 190 → 50 → 20 → 5 → **3**.
 
-## Current stage
+## Final 3 (Stage 6 closed)
 
-Top 5 locked. Prototypes: **C-0306 and A-0028 COMPLETE** (CPU tests passed). S: 5→3. T: B-0114 proto. U: C-0306 full package draft (28 sections) staged under `_wip` until S names Idea_01.
+1. **C-0306** conformal vs NMS + coverage-preserving suppression
+2. **A-0028** SAM2/SAM3 teleport / arbitration probe
+3. **B-0114** 4-arm dense VPT-as-registers (+B-0001 arm)
+
+First GPU-day: **C-0306 blind-spot census** on real detectors.
 
 | Agent | Status |
 | --- | --- |
-| P | COMPLETE — C-0306 proto |
-| R | COMPLETE — A-0028 proto (23 tests) |
-| S | RUNNING — 5→3 |
+| S | COMPLETE — final 3 |
+| U | RUNNING — C-0306 full package |
 | T | RUNNING — B-0114 proto |
-| U | DISPATCHING — C-0306 Stage-7 package draft |
+| V | DISPATCHING — A-0028 full package |
 
 ## Git safety
 
