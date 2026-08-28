@@ -1,0 +1,64 @@
+{
+  "task_id": "p1_wave2_judge_A",
+  "role": "judge_A_dedup_cluster",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "windows_id": "Windows14",
+  "input_idea_counts": {
+    "worker_A": 133,
+    "worker_B": 126,
+    "worker_C": 130,
+    "worker_D": 124,
+    "worker_E": 125,
+    "total": 638
+  },
+  "cluster_count": 110,
+  "cluster_breakdown": {
+    "hypothesis_overlap": 44,
+    "distinct_theme_group": 66,
+    "cross_shard": 38
+  },
+  "duplicate_mark_count": 56,
+  "duplicate_mark_breakdown": {
+    "drop_duplicate": 15,
+    "near_duplicate_kept": 41
+  },
+  "keep_count": 623,
+  "drop_count": 15,
+  "drops_by_shard": {
+    "worker_A": 2,
+    "worker_B": 1,
+    "worker_C": 8,
+    "worker_D": 2,
+    "worker_E": 2
+  },
+  "cross_wave_near_dup_flags": [
+    {"wave2": "w14D2-012", "wave1": "w14-0202", "strength": "strong", "note": "size-conditional recalibration beats global temperature; nearly identical hypothesis, wave2 adds detection arm"},
+    {"wave2": "w14w2b-037", "wave1": "w14-0153", "strength": "moderate", "note": "8-bit conversion destroys sub-quantization signal; different locus (label mismatch vs input ceiling)"},
+    {"wave2": "w14w2c-125", "wave1": "w14-0068", "strength": "moderate", "note": "distillation-inheritance family; distinct claims (failure map vs correction loop)"},
+    {"wave2": "w14w2a-113", "wave1": "w14-0068", "strength": "moderate", "note": "distillation-inheritance family; synthetic-bias arm"},
+    {"wave2": "w14w2b-108", "wave1": "w14-0366", "strength": "weak", "note": "rolling-shutter physics shared; claims distinct"}
+  ],
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave2/judge_A.md",
+    "Windows14/_state/tasks/p1/wave2/judge_A.clusters.jsonl",
+    "Windows14/_state/tasks/p1/wave2/judge_A.done.json"
+  ],
+  "did_not_touch": [
+    "Windows14/_state/ideas_master.jsonl",
+    "Windows14/_state/research_state.json",
+    "Windows14/_state/research_ledger.md",
+    "Windows14/_state/window.lock.json",
+    "Windows14/_state/tasks/p1/wave2/worker_*.ideas.jsonl",
+    "Windows14/_state/tasks/p1/wave2/judge_B.*",
+    "Windows14/_state/tasks/p1/wave2/judge_C.*"
+  ],
+  "unresolved_items": [
+    "8 tension pairs kept unresolved (listed in judge_A.md); consolidator should pair each into one decisive experiment",
+    "near_duplicate members are kept, not merged; consolidator decides final merges per cluster",
+    "5 cross-wave near-dup flags against wave1 ideas_master.jsonl are advisory only; consolidator must dedup w14D2-012 vs w14-0202 explicitly",
+    "no novelty verification performed; all clustering is over unverified HYPOTHESIS-status ideas",
+    "candidate pairs surfaced by TF-IDF (threshold 0.18) plus manual sweep of high-collision zones; fully-disjoint-vocabulary paraphrase duplicates could be missed in low-collision zones"
+  ],
+  "recommended_next_task_type": "p1_wave2_consolidator"
+}
