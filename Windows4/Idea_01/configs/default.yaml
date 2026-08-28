@@ -1,5 +1,70 @@
-seed: 0
-limit: 64
-min_area: 1024
-box_dilation_px: 0
-fill: mean
+# SeeingInside — single source of truth for the prototype harness.
+# The `thresholds` block is the PRE-REGISTRATION artifact: frozen at the Stage-7 commit,
+# and src/config.py refuses --override on any thresholds.* key (roadmap.md standing rule).
+
+experiment:
+  name: e0_smoke
+  out_dir: artifacts/e0_smoke
+  seed: 4014
+
+dataset:
+  kind: synthetic            # synthetic (E0) | coco | medical (E1; loaders wired Phase 1)
+  image_size: 192
+  n_eval: 60                 # E0 smoke size; E1 uses 500+500 frozen instance lists
+  eval_seed_offset: 0        # DISJOINT from train_null.train_seed_offset
+  contrast_levels: {low: 0.06, high: 0.35}
+  solidity_levels: {high: 0.05, low: 0.45}   # blob spikiness -> high/low solidity
+  noise_sigma: 0.02
+  coco:                      # Phase 1: freeze + commit the instance list before any run
+    root: null
+    ann_file: null
+    n: 500
+  medical:                   # PRIMARY endpoint arm (MedSAM-protocol datasets)
+    root: null
+    n: 500
+    contrast_decile_max: 2   # pre-registered cohort rule: lowest two in-box contrast deciles
+
+model:
+  backend: stub              # stub (no weights needed) | sam (official frozen SAM)
+  stub_models: [boxfill, oracle_threshold]   # E0 negative + positive controls
+  sam_checkpoint: null       # e.g. /weights/sam_vit_b_01ec64.pth
+  sam_model_type: vit_b      # vit_b | vit_l | vit_h  (E5 sweeps these)
+  device: cpu
+  multimask: false           # fixed head primary; multimask is a sensitivity row (§18)
+
+nulls:
+  use_boxfill: true
+  use_convexity_matched: true
+  learned_null_ckpt: artifacts/learned_null.pt
+
+conditions:
+  paddings_px: [0, 4, 8, 16]         # prompt sweep (proposal §12)
+  primary_padding_px: 0
+  object_out: true
+  object_out_inpaint_method: telea   # telea | ns | mean — prototype/robustness arm;
+                                     # diffusion inpainter slots in behind the same
+                                     # signature at Phase 1 (roadmap.md)
+  object_swap: true
+  sham_inpaint: true                 # instrument-artifact bound (§18)
+  patch_shuffle: {enabled: true, patch_px: 16}   # S-604, SECONDARY only
+  matched_noise: true                            # SECONDARY only
+  ablation_dilate_px: [4, 8, 16]     # E4 decoupling arm; index 0 used elsewhere
+
+thresholds:                  # PRE-REGISTERED — FROZEN. Dice in [0,1] units.
+  tau1_csg_dice: 0.05        # median CSG <= tau1  (5 Dice points)
+  rho_persistence: 0.85      # median persistence >= rho
+  tau2_track_delta: 0.05     # median (T - T_null) <= tau2  -> tracking failure
+  tau3_nrf: 0.90             # median NRF >= tau3
+  # Stage-3 binding GLOBAL kill (checked across strata at E1, not per stratum):
+  # if median CSG > 0.15 in EVERY stratum -> claim dead, negative note, stop.
+  global_kill_csg_dice: 0.15
+
+train_null:                  # learned box->mask null (only trained component; SAM frozen)
+  n_train: 400
+  train_seed_offset: 10000   # disjoint from eval seeds
+  grid: 24                   # grid/hidden sized to respect the <100k-param cap (§26)
+  hidden: [64, 128]
+  lr: 1.0e-3
+  epochs: 30
+  batch_size: 64
+  ckpt_out: artifacts/learned_null.pt

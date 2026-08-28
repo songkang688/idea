@@ -1,0 +1,145 @@
+{
+  "e0_checks": {
+    "E0_PASS": true,
+    "boxfill_stub_all_interpolator": true,
+    "oracle_stub_seeing_somewhere": true
+  },
+  "verdicts": {
+    "boxfill_stub :: high-contrast/high-solidity": {
+      "conjunction": {
+        "c1_low_csg_high_persistence": true,
+        "c2_tracking_failure": true,
+        "c3_null_reaches_intact": true,
+        "c4_secondary_consistent": true
+      },
+      "median_csg": 0.0,
+      "median_csg_secondary": 0.0,
+      "median_dice_intact": 0.8801635991811041,
+      "median_dice_sham": 0.8793949039579423,
+      "median_nrf": 1.1222357907502685,
+      "median_persistence": 0.9999999999989183,
+      "median_track_delta": -0.11608158052160555,
+      "n": 15,
+      "verdict": "interpolator"
+    },
+    "boxfill_stub :: high-contrast/low-solidity": {
+      "conjunction": {
+        "c1_low_csg_high_persistence": true,
+        "c2_tracking_failure": true,
+        "c3_null_reaches_intact": true,
+        "c4_secondary_consistent": true
+      },
+      "median_csg": 0.0,
+      "median_csg_secondary": 0.0,
+      "median_dice_intact": 0.8186101295625862,
+      "median_dice_sham": 0.8067007164492417,
+      "median_nrf": 1.0893012198918077,
+      "median_persistence": 0.9999999999991452,
+      "median_track_delta": -0.17114372343228557,
+      "n": 15,
+      "verdict": "interpolator"
+    },
+    "boxfill_stub :: low-contrast/high-solidity": {
+      "conjunction": {
+        "c1_low_csg_high_persistence": true,
+        "c2_tracking_failure": true,
+        "c3_null_reaches_intact": true,
+        "c4_secondary_consistent": true
+      },
+      "median_csg": 0.0,
+      "median_csg_secondary": 0.0,
+      "median_dice_intact": 0.8701684836463129,
+      "median_dice_sham": 0.8746153846145436,
+      "median_nrf": 1.1333164168566732,
+      "median_persistence": 0.9999999999990616,
+      "median_track_delta": -0.12102047812758598,
+      "n": 15,
+      "verdict": "interpolator"
+    },
+    "boxfill_stub :: low-contrast/low-solidity": {
+      "conjunction": {
+        "c1_low_csg_high_persistence": true,
+        "c2_tracking_failure": true,
+        "c3_null_reaches_intact": true,
+        "c4_secondary_consistent": true
+      },
+      "median_csg": 0.0,
+      "median_csg_secondary": 0.0,
+      "median_dice_intact": 0.8073154800776268,
+      "median_dice_sham": 0.7985002851208087,
+      "median_nrf": 1.1218212568514354,
+      "median_persistence": 0.9999999999990347,
+      "median_track_delta": -0.18534083201479468,
+      "n": 15,
+      "verdict": "interpolator"
+    },
+    "oracle_threshold_stub :: high-contrast/high-solidity": {
+      "conjunction": {
+        "c1_low_csg_high_persistence": false,
+        "c2_tracking_failure": false,
+        "c3_null_reaches_intact": true,
+        "c4_secondary_consistent": true
+      },
+      "median_csg": 0.41357200106843117,
+      "median_csg_secondary": 0.13389897918582272,
+      "median_dice_intact": 0.9999999999980431,
+      "median_dice_sham": 0.9999337133749994,
+      "median_nrf": 0.9878557874762808,
+      "median_persistence": 0.5864279989305552,
+      "median_track_delta": 0.15741849634021654,
+      "n": 15,
+      "verdict": "seeing"
+    },
+    "oracle_threshold_stub :: high-contrast/low-solidity": {
+      "conjunction": {
+        "c1_low_csg_high_persistence": false,
+        "c2_tracking_failure": false,
+        "c3_null_reaches_intact": false,
+        "c4_secondary_consistent": true
+      },
+      "median_csg": 0.4045928973465135,
+      "median_csg_secondary": 0.20588235294093804,
+      "median_dice_intact": 0.9999009606804001,
+      "median_dice_sham": 0.9999999999983172,
+      "median_nrf": 0.8933488140653584,
+      "median_persistence": 0.5952890792278474,
+      "median_track_delta": 0.15252260134101425,
+      "n": 15,
+      "verdict": "seeing"
+    },
+    "oracle_threshold_stub :: low-contrast/high-solidity": {
+      "conjunction": {
+        "c1_low_csg_high_persistence": false,
+        "c2_tracking_failure": true,
+        "c3_null_reaches_intact": true,
+        "c4_secondary_consistent": true
+      },
+      "median_csg": 0.1765750241228723,
+      "median_csg_secondary": 0.1358694848831915,
+      "median_dice_intact": 0.7464178607106084,
+      "median_dice_sham": 0.7511612475091203,
+      "median_nrf": 1.3241184168322735,
+      "median_persistence": 0.6643402399113101,
+      "median_track_delta": -0.19896057735066197,
+      "n": 15,
+      "verdict": "seeing"
+    },
+    "oracle_threshold_stub :: low-contrast/low-solidity": {
+      "conjunction": {
+        "c1_low_csg_high_persistence": false,
+        "c2_tracking_failure": true,
+        "c3_null_reaches_intact": true,
+        "c4_secondary_consistent": true
+      },
+      "median_csg": 0.15313432328541643,
+      "median_csg_secondary": 0.19881197269979367,
+      "median_dice_intact": 0.7693224716853382,
+      "median_dice_sham": 0.7829082765516393,
+      "median_nrf": 1.169344166823572,
+      "median_persistence": 0.7841451766940717,
+      "median_track_delta": -0.12678169783069726,
+      "n": 15,
+      "verdict": "seeing"
+    }
+  }
+}
