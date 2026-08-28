@@ -22,7 +22,7 @@ Cause: 340 long-form ideas / agent exceeded cloud activity limit. Mitigation: co
 Wave-1 (DONE catalogs):
 | Role | Agent ID | Result |
 |------|----------|--------|
-| A1 | `bc-cf0d6dad-8d99-5cf2-8493-40753ec2897c` | 120 ideas → `stage1_A1.md` |
+| A1 | `bc-cf0d6dad-8d99-5cf2-8493-40753ec2897c` | 120 ideas → `stage1_A1.md` (DONE). Protect: A1-027,030,039,046,049,063,067,082,094,099,105,108,115,118,120. Cheap: A1-002,004,008,015,020,023,032,048,058,068,071,084,095,098,110 |
 | B1 | `bc-6d41759b-58e9-50f4-9910-f625336d6f29` | 120 ideas → `stage1_B1.md` |
 | C1 | `bc-3d8edeb8-ca72-58ae-b909-4ff5a13e209b` | 120 ideas on branch `cursor/stage1-c1-idea-catalog-209b`; copied to `stage1_C1.md` |
 
