@@ -1,0 +1,6 @@
+segment-anything  # official SAM
+torch>=2.1
+torchvision
+pyyaml
+numpy
+pycocotools

@@ -1,0 +1,5 @@
+primary_modality: CT
+bins_diameter_mm: [4, 6, 8, 10]
+bins_cnr: [1, 2, 3, 5]
+kill_if_tau_ci_includes_zero: true
+universality_claim: false

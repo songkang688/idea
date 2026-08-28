@@ -1,0 +1,4 @@
+shift: leave_one_scanner_out_or_declared_proxy
+ts_fit: source_val_only
+label_smoothing_control: true
+metric: sparsification_aurc
