@@ -1,0 +1,46 @@
+{
+  "task_id": "P1-genA-06-failure-mining",
+  "role": "Generator",
+  "status": "complete",
+  "window": "Windows16",
+  "territory": "Failure mining: systematic error-case discovery, hard-example selection, slice discovery, and error-taxonomy-driven training and evaluation for vision models (segmentation/detection/classification on images and video)",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-06_failure_mining.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-06-failure-mining.done.json"
+  ],
+  "candidate_count": 90,
+  "target_band": "80-120",
+  "candidate_id_range": "errc-0001..errc-0090",
+  "clusters": {
+    "slice_discovery_methods": 9,
+    "error_taxonomy_construction": 8,
+    "hard_example_mining_training": 9,
+    "synthetic_error_generation": 8,
+    "detection_specific_failures": 8,
+    "segmentation_specific_failures": 8,
+    "video_temporal_failures": 7,
+    "benchmark_construction_from_errors": 8,
+    "error_prediction_models": 7,
+    "human_annotation_error_interaction": 6,
+    "slice_validity_evaluation": 6,
+    "cross_model_error_structure": 6
+  },
+  "evidence_labels": {
+    "HYPOTHESIS": 85,
+    "MODEL SPECULATION": 5
+  },
+  "schema_notes": "Each JSONL line carries the parent-mandated fields (candidate_id, territory, title, one_line_idea, cluster, problem, core_hypothesis, falsifiable_prediction, why_important, why_possibly_novel, minimal_falsification_experiment, main_risk, community_default_belief, why_it_might_be_wrong, fastest_falsifying_experiment, evidence_label) plus the task_queue shard_format aliases (core_claim, method_sketch, novelty_hook, kill_risk) mirroring their counterparts, consistent with sibling shards genA-01..03. Every candidate states the community default belief, why it might be wrong, and a cheapest falsifying experiment.",
+  "compliance": {
+    "scope": "All 90 candidates are academic vision/ML research on segmentation/detection/classification error analysis for images and video; no security, intrusion, or reverse-engineering content.",
+    "forbid_fiction": "No fabricated papers, citations, benchmark numbers, dataset facts, or claimed experimental results; all quantitative statements are phrased as falsifiable predictions under HYPOTHESIS or MODEL SPECULATION labels.",
+    "novelty_claims": "All novelty statements are hedged as possibly-novel and explicitly marked unverified; no verified novelty claimed.",
+    "protected_files": "window.lock.json, research_state.json, ideas_master.jsonl untouched; no Windows directories created; no Windows numbers changed; only the two listed output files written."
+  },
+  "unresolved_items": [
+    "Novelty of all 90 candidates is unverified against the literature; Wave B dedup plus any novelty-checking stage must vet before promotion.",
+    "Intra-shard conceptual neighbors flagged for dedup review: errc-0009 vs errc-0081 vs errc-0082 (slice stability/multiplicity control family), errc-0005 vs errc-0018 vs errc-0073 (label-noise contamination of mined errors family), errc-0066 vs errc-0069 (input-intrinsic difficulty decomposition family), errc-0046 vs errc-0063 vs errc-0085 (annotator-ambiguity irreducible-error family), errc-0002 vs errc-0016 (VLM-generated description audit family).",
+    "Cross-territory overlap likely with genA-07 (benchmark weaknesses) via the benchmark_construction_from_errors cluster, and with any uncertainty/calibration shard via error_prediction_models; dedup should treat those clusters as high-collision zones.",
+    "Several candidates (errc-0073, errc-0075, errc-0083) require human-subjects-style annotation studies whose cost/IRB-equivalent feasibility should be assessed before promotion."
+  ],
+  "recommended_next_task_type": "P1-genA-07-benchmark-weaknesses"
+}
