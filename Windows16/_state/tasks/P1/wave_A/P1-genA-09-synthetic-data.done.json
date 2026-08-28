@@ -1,0 +1,47 @@
+{
+  "task_id": "P1-genA-09-synthetic-data",
+  "role": "Generator",
+  "status": "complete",
+  "window": "Windows16",
+  "territory": "Synthetic data for vision/ML: generative or simulated training data, sim-to-real, synthetic-data curricula, contamination-safe eval sets, data-quality vs quantity trade-offs. Academic ML only.",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-09_synthetic_data.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-09-synthetic-data.done.json"
+  ],
+  "candidate_count": 100,
+  "target_band": "80-120",
+  "candidate_id_range": "synd-0001..synd-0100",
+  "clusters": {
+    "generative_training_data": 10,
+    "sim_to_real_transfer": 10,
+    "synthetic_data_curricula": 9,
+    "contamination_safe_evaluation": 10,
+    "quality_quantity_tradeoffs": 9,
+    "recursive_training_model_collapse": 8,
+    "filtering_and_scoring": 8,
+    "label_fidelity_annotation": 8,
+    "fairness_privacy_bias": 7,
+    "task_specific_synthesis": 8,
+    "hybrid_mixing_strategies": 7,
+    "theory_and_diagnostics": 6
+  },
+  "evidence_labels": {
+    "HYPOTHESIS": 93,
+    "MODEL SPECULATION": 7
+  },
+  "schema_notes": "Each JSONL line carries the parent-mandated fields (candidate_id, territory, title, one_line_idea, cluster, problem, core_hypothesis, falsifiable_prediction, why_important, why_possibly_novel, minimal_falsification_experiment, main_risk, community_default_belief, why_it_might_be_wrong, fastest_falsifying_experiment, evidence_label) plus the shard_format aliases (core_claim, method_sketch, novelty_hook, kill_risk) mirroring their counterparts, consistent with sibling shards genA-01..06. Every candidate states the community default belief, why it might be wrong, and a cheapest falsifying experiment.",
+  "compliance": {
+    "scope": "All 100 candidates are ordinary academic computer-vision/ML research on synthetic training data, sim-to-real transfer, curricula, contamination-safe evaluation, and quality-quantity trade-offs; no security, intrusion, or reverse-engineering content.",
+    "forbid_fiction": "No fabricated papers, citations, benchmark numbers, dataset facts, or claimed experimental results; all quantitative statements are phrased as falsifiable predictions under HYPOTHESIS or MODEL SPECULATION labels.",
+    "novelty_claims": "All novelty statements are hedged as possibly-novel and explicitly marked unverified; no verified novelty claimed.",
+    "protected_files": "window.lock.json, research_state.json, ideas_master.jsonl untouched; no Windows directories created; no Windows numbers changed; only the two listed output files written under Windows16/_state/tasks/P1/."
+  },
+  "unresolved_items": [
+    "Novelty of all 100 candidates is unverified against the literature; Wave B dedup plus any novelty-checking stage must vet before promotion.",
+    "Intra-shard conceptual neighbors flagged for dedup review: synd-0023 vs synd-0029 (synthetic-sample ordering-axis family), synd-0009 vs synd-0044 vs synd-0096 (pre-hoc utility-predictor family), synd-0008 vs synd-0043 vs synd-0075 (per-class budget-allocation family), synd-0025 vs synd-0089 vs synd-0093 (normalization/provenance mixing-mechanics family), synd-0019 vs synd-0065 (annotation-convention gap family, eval-side vs train-side), synd-0045 vs synd-0060 vs synd-0071 (label-alignment scoring family), synd-0049 vs synd-0055 (collapse-mitigation family).",
+    "Cross-territory overlap likely with genA-06 (failure mining) via synd-0003 failure-conditioned synthesis, with genA-07 (benchmark weaknesses) via the contamination_safe_evaluation cluster, and with the upcoming genA-10 (domain shift) via the sim_to_real_transfer cluster; dedup should treat those clusters as high-collision zones.",
+    "Candidates synd-0067 and synd-0072 require human-annotator studies whose cost and IRB-equivalent feasibility should be assessed before promotion; synd-0033 (canary insertion) should be scoped to controlled corpora only.",
+    "Several ideas (synd-0040, synd-0046, synd-0050, synd-0096) require multi-run training grids that are compute-heavy relative to typical Wave A candidates; feasibility screening should weigh their falsification cost."
+  ],
+  "recommended_next_task_type": "P1-genA-10-domain-shift"
+}
