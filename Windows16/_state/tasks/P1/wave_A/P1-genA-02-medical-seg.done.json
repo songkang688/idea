@@ -1,0 +1,17 @@
+{
+  "task_id": "P1-genA-02-medical-seg",
+  "role": "Generator",
+  "status": "done",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-02_medical_seg.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-02-medical-seg.done.json"
+  ],
+  "unresolved_items": [
+    "Novelty is NOT verified for any candidate: why_possibly_novel fields are generator-side impressions and require literature checking in a later verification wave.",
+    "All candidates are labeled HYPOTHESIS (106) or MODEL SPECULATION (4); no experiments were run and no citations, benchmark numbers, or dataset facts were fabricated per evidence_policy.forbid_fiction.",
+    "Deduplication was performed only within this shard; cross-shard overlap with other Wave A territories (notably genA-01 SAM/PEFT, genA-08 uncertainty, genA-10 domain-shift) is likely for the foundation_models_sam_adaptation, uncertainty_calibration_deployment, and domain_shift_cross_site clusters and should be resolved by the consolidator.",
+    "Shard uses the richer per-candidate schema mandated by the dispatch instructions (15 fields) rather than the 8-field shard_format listed in gate/task_queue.json; consolidator should be aware both schemas exist in Wave A."
+  ],
+  "recommended_next_task_type": "P1 Wave A consolidator/dedup-judge pass over generator shards (cross-shard dedup, novelty triage, merge scoring) before any merge into ideas_master.jsonl",
+  "candidate_count": 110
+}
