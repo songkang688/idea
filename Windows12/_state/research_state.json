@@ -80,7 +80,38 @@
     "environment": "cloud",
     "active": [],
     "completed": [],
-    "failed": []
+    "failed": [
+      {
+        "id": "bc-36bb04b7-a554-5033-9e08-baddd846a8b6",
+        "role": "scan_windows_numbering",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-4fc9cb23-02d9-526e-a79a-2809cb4edd8d",
+        "role": "p0_numbering_auditor",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-57cee90a-6153-5870-a9a0-0e6fedfe4ffe",
+        "role": "retry_windows_numbering_scan",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-ae4201ad-f61f-5793-9d06-7856847cb033",
+        "role": "retry_git_safety_auditor",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-1141ef00-783b-54e6-bfda-a11f5884c219",
+        "role": "retry_p0_completeness_audit",
+        "error": "You must acknowledge Claude Fable 5's data retention policy to use the model."
+      },
+      {
+        "id": "bc-249364f3-9c4d-568e-b5d5-ba1e9f130fb9",
+        "role": "git_safety_audit",
+        "error": "You've used all included Cloud Agent usage. Enable on-demand usage to continue using Cloud Agents."
+      }
+    ]
   },
   "evidence_policy": {
     "labels": [

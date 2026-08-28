@@ -36,14 +36,14 @@ User required Task cloud agents with model `claude-fable-5-thinking-xhigh`, max 
 
 | time | id | role | result |
 |------|----|------|--------|
-| 16:56 | bc-36bb04b7-a554-5033-9e08-baddd846a8b6 | Scan Windows numbering | ERROR (cloud usage / setup) |
-| 16:56 | bc-249364f3-9c4d-568e-b5d5-ba1e9f130fb9 | Git safety audit | ERROR: "You've used all included Cloud Agent usage. Enable on-demand usage to continue using Cloud Agents." |
-| 16:56 | bc-4fc9cb23-02d9-526e-a79a-2809cb4edd8d | P0 numbering auditor | ERROR |
-| 16:57 | bc-57cee90a-6153-5870-a9a0-0e6fedfe4ffe | Retry Windows numbering scan | dispatched (may ERROR) |
-| 16:57 | bc-ae4201ad-f61f-5793-9d06-7856847cb033 | Retry git safety auditor | dispatched (may ERROR) |
-| 16:57 | bc-1141ef00-783b-54e6-bfda-a11f5884c219 | Retry P0 completeness audit | dispatched (may ERROR) |
+| 16:56 | bc-36bb04b7-a554-5033-9e08-baddd846a8b6 | Scan Windows numbering | ERROR: Fable 5 data retention policy not acknowledged |
+| 16:56 | bc-249364f3-9c4d-568e-b5d5-ba1e9f130fb9 | Git safety audit | ERROR: included Cloud Agent usage exhausted (on-demand not enabled) |
+| 16:56 | bc-4fc9cb23-02d9-526e-a79a-2809cb4edd8d | P0 numbering auditor | ERROR: Fable 5 data retention policy not acknowledged |
+| 16:57 | bc-57cee90a-6153-5870-a9a0-0e6fedfe4ffe | Retry Windows numbering scan | ERROR: Fable 5 data retention policy not acknowledged |
+| 16:57 | bc-ae4201ad-f61f-5793-9d06-7856847cb033 | Retry git safety auditor | ERROR: Fable 5 data retention policy not acknowledged |
+| 16:57 | bc-1141ef00-783b-54e6-bfda-a11f5884c219 | Retry P0 completeness audit | ERROR: Fable 5 data retention policy not acknowledged |
 
-**FACT:** Supervisor completed P0 locally because cloud sub-agent quota/errors prevented independent cloud scans from returning usable reports. Local `git fetch` + `git ls-tree` on all origin heads was used instead. Sub-agent conclusions were not treated as facts.
+**FACT:** None of the required `claude-fable-5-thinking-xhigh` cloud sub-agents returned a research report. Shared completion error for the Fable retries: `You must acknowledge Claude Fable 5's data retention policy to use the model.` P0 numbering/git safety were completed by the Supervisor via local `git fetch` + `git ls-tree`; sub-agent outputs were not used as evidence.
 
 ### Actions
 
