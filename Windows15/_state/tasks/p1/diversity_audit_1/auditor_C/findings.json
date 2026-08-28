@@ -1,0 +1,422 @@
+{
+  "task_id": "p1_diversity_audit_1_C",
+  "auditor": "auditor_C",
+  "audit_focus": "contrarian-hypothesis / research-blind-spot audit: counter-intuitiveness, stance-direction balance, community_default_belief schema forcing, missing scientific questions, recommended T07-T16 territory mix",
+  "windows_path": "Windows15",
+  "window_locked_readonly_respected": true,
+  "created_at": "2026-08-28T20:45:00Z",
+  "inputs": {
+    "ideas_master": {
+      "path": "Windows15/_state/ideas_master.jsonl",
+      "branch": "origin/cursor/p1-wave-b-batch001-consolidator-7c96",
+      "head": "b8d60bce42ab0a9f0f7b35278454d65d59f01331",
+      "sha256": "150201919e85bd41172bb88d4e24c406361ae27fc34a0a93465f5013854c737d",
+      "accepted_ideas": 271
+    },
+    "generator_shards": [
+      "Windows15/_state/tasks/p1/batch_001/gen_A/ideas.jsonl",
+      "Windows15/_state/tasks/p1/batch_001/gen_B/ideas.jsonl",
+      "Windows15/_state/tasks/p1/batch_001/gen_C/ideas.jsonl"
+    ],
+    "shard_join": "271/271 master rows matched to raw shard records carrying community_default_belief / why_that_may_be_wrong",
+    "sibling_audits_consulted_not_copied": {
+      "auditor_A": "origin/cursor/p1-diversity-auditor-a-d203 @ fc9c24f768a0054a49f044586534b48ea174239e",
+      "auditor_B": "origin/cursor/p1-diversity-audit-1-auditor-b-10e4 @ 829c4765b2a8788df1bb166747a657ee10a478b8"
+    }
+  },
+  "q1_counter_intuitive_deficit": {
+    "verdict": "corpus does NOT lack counter-intuitive hypotheses wholesale; it lacks specific DIRECTIONS: anti-pessimism ~1.5%, null/equivalence 2.6%, affirmative/boundary-of-validity 0%, meta-critique-of-critique 0%",
+    "stance_taxonomy_nonexclusive": {
+      "regex_patterns": {
+        "deflationary": "\\b(artifact|illusion|folklore|shortcut|confound|inflat|overstat|overestimat|not (a |the )?(due|caused|robust|semantic|salien)|rather than|instead of|in disguise|masquerad|is not|are not|does not|do not|cannot|fails?\\b|broken|misattribut|mirage|spurious)",
+        "anti_pessimism": "\\b(gaps? (close|shrink|vanish)|already (encode|contain|know|possess|present)|underestimat|understat|more capable|better than (assumed|believed|reported)|without (any )?(fine-?tuning|retraining|new training)|for free|latent(ly)? (present|capab)|recover(able|s)? (from|without)|no (new|additional) (training|data) (is )?(needed|required))",
+        "directional_surprise": "\\b(hurts?|harms?|degrad|worse than|invert|backwards|reversed?|negative transfer|smaller (model|rank|dataset)s? (outperform|beat|match)|less (data|supervision) (is better|outperform|beats)|random(ly)? (initializ|chosen|selected)\\w* (match|beat|perform)|scratch (match|beat|outperform)|forgetting (is|can be) (beneficial|useful|desirable))",
+        "null_claim": "\\b(no better than|indistinguishable|statistically (equivalent|indistinguishable)|within (measurement |the )?noise|chance level|matche?s? .{0,40}(full fine-?tuning|supervised|specialist)|as (good|well) as|equivalent to|no (measurable|significant|real) (difference|effect|gain|benefit))",
+        "quant_law": "\\b(scal(es|ing) (law|linearly|logarithm)|power[- ]law|log-linear|monoton(e|ic)|threshold\\b.{0,40}(consistent|universal|transfers)|predictable from|linear(ly)? (predict|relat)|single (scalar|number|dial|knob)|universal (constant|curve|exponent))",
+        "constructive": "\\b(enables?|unlock|can be (harvested|exploited|used as|converted)|free (sensor|label|signal|supervision|detector)|acts? as a (free|built-in)|provides? (a )?(new|free)|turn(s|ing)? .{0,30}into (a )?(sensor|supervisor|signal|detector)|improve|boost)"
+      },
+      "counts": {
+        "deflationary": 106,
+        "directional_surprise": 44,
+        "quant_law": 22,
+        "constructive": 17,
+        "null_claim": 7,
+        "anti_pessimism_regex": 6,
+        "anti_pessimism_read_verified": 4,
+        "untagged_diagnostic": 109
+      },
+      "ids": {
+        "anti_pessimism_regex": [
+          "W15-B001-A-070",
+          "W15-B001-B-007",
+          "W15-B001-B-099",
+          "W15-B001-C-019",
+          "W15-B001-C-079",
+          "W15-B001-C-083"
+        ],
+        "anti_pessimism_read_verified": [
+          "W15-B001-A-070",
+          "W15-B001-A-007",
+          "W15-B001-C-019",
+          "W15-B001-C-079"
+        ],
+        "null_claim": [
+          "W15-B001-A-052",
+          "W15-B001-A-069",
+          "W15-B001-A-071",
+          "W15-B001-C-012",
+          "W15-B001-C-014",
+          "W15-B001-C-027",
+          "W15-B001-C-093"
+        ],
+        "directional_surprise": [
+          "W15-B001-A-004",
+          "W15-B001-A-024",
+          "W15-B001-A-027",
+          "W15-B001-A-028",
+          "W15-B001-A-029",
+          "W15-B001-A-031",
+          "W15-B001-A-037",
+          "W15-B001-A-038",
+          "W15-B001-A-044",
+          "W15-B001-A-053",
+          "W15-B001-A-057",
+          "W15-B001-A-088",
+          "W15-B001-A-099",
+          "W15-B001-B-003",
+          "W15-B001-B-021",
+          "W15-B001-B-025",
+          "W15-B001-B-028",
+          "W15-B001-B-029",
+          "W15-B001-B-038",
+          "W15-B001-B-041",
+          "W15-B001-B-046",
+          "W15-B001-B-049",
+          "W15-B001-B-054",
+          "W15-B001-B-058",
+          "W15-B001-B-060",
+          "W15-B001-B-065",
+          "W15-B001-B-069",
+          "W15-B001-B-071",
+          "W15-B001-B-078",
+          "W15-B001-B-081",
+          "W15-B001-B-091",
+          "W15-B001-B-093",
+          "W15-B001-B-098",
+          "W15-B001-C-039",
+          "W15-B001-C-050",
+          "W15-B001-C-058",
+          "W15-B001-C-062",
+          "W15-B001-C-066",
+          "W15-B001-C-067",
+          "W15-B001-C-082",
+          "W15-B001-C-086",
+          "W15-B001-C-091",
+          "W15-B001-C-093",
+          "W15-B001-C-096"
+        ],
+        "quant_law": [
+          "W15-B001-A-005",
+          "W15-B001-A-021",
+          "W15-B001-A-022",
+          "W15-B001-A-030",
+          "W15-B001-A-051",
+          "W15-B001-A-062",
+          "W15-B001-A-077",
+          "W15-B001-A-087",
+          "W15-B001-B-049",
+          "W15-B001-B-055",
+          "W15-B001-B-063",
+          "W15-B001-B-065",
+          "W15-B001-B-070",
+          "W15-B001-B-085",
+          "W15-B001-C-010",
+          "W15-B001-C-011",
+          "W15-B001-C-030",
+          "W15-B001-C-054",
+          "W15-B001-C-059",
+          "W15-B001-C-071",
+          "W15-B001-C-075",
+          "W15-B001-C-085"
+        ],
+        "constructive": [
+          "W15-B001-A-031",
+          "W15-B001-A-065",
+          "W15-B001-A-078",
+          "W15-B001-A-080",
+          "W15-B001-A-084",
+          "W15-B001-B-003",
+          "W15-B001-B-013",
+          "W15-B001-B-036",
+          "W15-B001-B-069",
+          "W15-B001-B-071",
+          "W15-B001-B-097",
+          "W15-B001-C-053",
+          "W15-B001-C-054",
+          "W15-B001-C-079",
+          "W15-B001-C-080",
+          "W15-B001-C-082",
+          "W15-B001-C-088"
+        ]
+      }
+    },
+    "protected_counterintuitive_ideas": [
+      "W15-B001-A-057",
+      "W15-B001-A-077",
+      "W15-B001-B-065",
+      "W15-B001-B-093",
+      "W15-B001-C-091",
+      "W15-B001-A-028",
+      "W15-B001-C-093",
+      "W15-B001-B-038",
+      "W15-B001-A-031",
+      "W15-B001-B-060",
+      "W15-B001-A-070",
+      "W15-B001-A-078",
+      "W15-B001-C-082",
+      "W15-B001-B-025",
+      "W15-B001-A-004"
+    ],
+    "singleton_contrarian_bets_no_cluster_support": [
+      "W15-B001-A-077",
+      "W15-B001-A-057",
+      "W15-B001-B-065",
+      "W15-B001-B-093",
+      "W15-B001-A-070",
+      "W15-B001-C-090",
+      "W15-B001-A-007"
+    ],
+    "deflation_to_rehabilitation_ratio": "approx 106:4 (~25:1)"
+  },
+  "q2_schema_forced_debunk_stance": {
+    "verdict": true,
+    "evidence": {
+      "mandatory_fields_fill_rate": "community_default_belief 300/300 generated and 271/271 accepted; why_that_may_be_wrong 300/300 and 271/271",
+      "ideas_affirming_default_belief": 0,
+      "belief_topic_diversity": "high - 6-theme keyword sweep covers only 11.1% of belief fields; stance (oppose) is the uniform element, not the topic",
+      "belief_fields_with_evidence_labels": {
+        "VERIFIED PRIOR WORK": 4,
+        "KNOWN FACT": 1,
+        "unlabeled": 266
+      },
+      "belief_fields_with_folklore_or_implicit_hedges": 13,
+      "belief_fields_practice_description_markers": 4,
+      "belief_fields_with_absolutist_intensifiers": 27,
+      "intensifier_examples": [
+        "only path (C-095)",
+        "any population (B-057)",
+        "unconditionally (A-031)",
+        "harmless and helpful (C-096)"
+      ],
+      "random_sample_classification": {
+        "seed": 15,
+        "n": 30,
+        "plausible_argued_position": "~40% (e.g. A-019, B-018, A-057, C-052, B-091, A-009)",
+        "practice_default_recast_as_belief": "~40% (e.g. B-016, A-074, C-098, C-047, A-098)",
+        "constructed_or_intensifier_inflated": "~20% (e.g. C-095, B-057, A-031, C-096, A-064)",
+        "label": "MODEL SPECULATION - single-auditor manual reading, per window evidence policy"
+      },
+      "cross_generator_uniformity": "deflationary stance uniform across gen_A/B/C (consistent with auditor_A's 24-28% per-shard deflationary title rates) => pipeline/schema property, not generator quirk",
+      "direction_asymmetry_mechanism": "schema 'state belief then argue it wrong' yields field-is-fooled hypotheses; rehabilitation requires debunking a negative belief, which only A-070 does"
+    },
+    "risk": "safe contrarianism against soft targets: novelty-vs-default-belief may be measured against manufactured or intensifier-inflated defaults; belief provenance is unscored anywhere in the pipeline"
+  },
+  "q3_missing_scientific_questions": [
+    {
+      "id": "MQ-01",
+      "question": "Which reported foundation-model failures (medical/camouflage/transparency/smoke) are evaluation artifacts of under-prompting or protocol, recoverable without retraining?",
+      "status": "singleton (A-070, T01 only)"
+    },
+    {
+      "id": "MQ-02",
+      "question": "What does the frozen model know that its output interface cannot express (latent decodability of classes/depth/materials/boundaries)?",
+      "status": "singleton (A-007)"
+    },
+    {
+      "id": "MQ-03",
+      "question": "Which corpus-claimed artifacts/shortcuts flip or vanish with backbone scale (emergence / inverse scaling)?",
+      "status": "absent (0 ideas use model scale as variable)"
+    },
+    {
+      "id": "MQ-04",
+      "question": "Does test-time compute (sampling, ensembling, iterative refinement) buy segmentation quality; what is its scaling curve?",
+      "status": "absent"
+    },
+    {
+      "id": "MQ-05",
+      "question": "Where do community default beliefs HOLD - quantitative domain-of-validity maps (affirmative science)?",
+      "status": "absent (0 affirmative ideas)"
+    },
+    {
+      "id": "MQ-06",
+      "question": "Are the critique instruments (counterfactual probes, shortcut measurements, disagreement decompositions) themselves confounded?",
+      "status": "absent (both regex candidates are false positives)"
+    },
+    {
+      "id": "MQ-07",
+      "question": "What fraction of published SOTA deltas is jointly explained by protocol + shortcut + label artifacts (grand-synthesis test of the 109-idea critique family)?",
+      "status": "absent"
+    },
+    {
+      "id": "MQ-08",
+      "question": "Under what conditions does human+model exceed both alone (positive complementarity)?",
+      "status": "absent (human-factors slice is exclusively negative: B-065, B-081)"
+    },
+    {
+      "id": "MQ-09",
+      "question": "How do segmentation and detection/depth/counting transfer or interfere as tasks (headline claim)?",
+      "status": "near-absent (~2 passing mentions); T04/T05 will inherit unless charged"
+    },
+    {
+      "id": "MQ-10",
+      "question": "Does SAM regurgitate SA-1B masks; do adapters leak patient anatomy; contamination forensics?",
+      "status": "absent as headline (6 hits use memorization as mechanism vocabulary only)"
+    },
+    {
+      "id": "MQ-11",
+      "question": "Do model-generated labels pollute successive training corpora at ecosystem scale (lineage feedback beyond B-069 self-training collapse)?",
+      "status": "near-absent"
+    },
+    {
+      "id": "MQ-12",
+      "question": "Which accuracy improvements are decision-theoretically worthless (below clinical/economic action thresholds)?",
+      "status": "near-absent (5 loose matches; only A-077 carries cost as core)"
+    }
+  ],
+  "recommended_territory_mix_T07_T16": {
+    "note": "ADVISORY ONLY - this auditor did not write any task queue; p1_diversity_audit_consolidator owns the canonical queue. Assumes batch_002 T04/T05/T06 proceed as already queued.",
+    "territories": [
+      {
+        "id": "T07",
+        "name": "Capability rehabilitation & oracle evaluation",
+        "charter": "re-test reported FM failures under oracle prompting/protocols across T01-T03 domains; latent-capability probing of frozen models",
+        "stance_quota": ">=50% anti_pessimism",
+        "fills": [
+          "MQ-01",
+          "MQ-02"
+        ]
+      },
+      {
+        "id": "T08",
+        "name": "Scaling behavior & test-time compute",
+        "charter": "backbone scale as experimental variable (emergence/inverse-scaling of corpus-claimed artifacts), data-scaling laws, inference-time compute scaling",
+        "stance_quota": ">=50% quant_law",
+        "fills": [
+          "MQ-03",
+          "MQ-04"
+        ]
+      },
+      {
+        "id": "T09",
+        "name": "Video, temporal & streaming segmentation",
+        "charter": "SAM-2-family memory mechanics, longitudinal medical change, temporal hypotheses outside T03",
+        "stance_quota": "balanced; <=25% deflationary",
+        "fills": [
+          "coverage hole - concurs auditor_A/B"
+        ]
+      },
+      {
+        "id": "T10",
+        "name": "Constructive signal harvesting",
+        "charter": "turn corpus diagnostics into mechanisms: uncertainty/disagreement/consistency as supervision, free sensors into working systems; grow HC-37/HC-38",
+        "stance_quota": ">=60% constructive",
+        "fills": [
+          "constructive deficit"
+        ]
+      },
+      {
+        "id": "T11",
+        "name": "Interactive segmentation & human factors",
+        "charter": "correction dynamics, annotation ergonomics, automation bias AND complementarity conditions",
+        "stance_quota": ">=30% anti_pessimism/complementarity",
+        "fills": [
+          "MQ-08",
+          "HC-34 starvation"
+        ]
+      },
+      {
+        "id": "T12",
+        "name": "Boundary-conditions & adversarial collaboration",
+        "charter": "map domains of validity of top ~15 attacked beliefs; replicate the corpus's biggest claims; meta-critique of probe instruments",
+        "stance_quota": "100% confirmatory/null/meta",
+        "fills": [
+          "MQ-05",
+          "MQ-06",
+          "MQ-07"
+        ]
+      },
+      {
+        "id": "T13",
+        "name": "3D, geometry & non-photographic domains",
+        "charter": "volumetric beyond medical, remote sensing, industrial inspection, documents, microscopy",
+        "stance_quota": "balanced",
+        "fills": [
+          "territory ceiling"
+        ]
+      },
+      {
+        "id": "T14",
+        "name": "Open-world formulation science",
+        "charter": "instance/panoptic/amodal/part-whole ontology outside media; what 'an object' is to a segmenter",
+        "stance_quota": "balanced",
+        "fills": [
+          "formulation blind spot"
+        ]
+      },
+      {
+        "id": "T15",
+        "name": "Theory & formal limits",
+        "charter": "identifiability, information-theoretic impossibility, sample complexity; formalize C-027/C-010-style results for T01/T02",
+        "stance_quota": ">=40% quant_law/null",
+        "fills": [
+          "thin formal slice"
+        ]
+      },
+      {
+        "id": "T16",
+        "name": "Security, lineage & memorization",
+        "charter": "adversarial/spoofing (currently 1 idea), regurgitation/privacy, model-generated-label feedback, contamination forensics",
+        "stance_quota": "balanced",
+        "fills": [
+          "MQ-10",
+          "MQ-11"
+        ]
+      }
+    ],
+    "cross_cutting_contract_changes": {
+      "stance_quotas_per_100_idea_shard": {
+        "deflationary_max": 25,
+        "constructive_min": 20,
+        "anti_pessimism_min": 10,
+        "quant_law_min": 10,
+        "null_equivalence_min": 5,
+        "affirmative_bets_min": 3
+      },
+      "schema_changes": [
+        "replace mandatory community_default_belief/why_that_may_be_wrong with claim_direction enum: debunk | rehabilitate | affirm_with_boundary | new_capability | quantitative_law | null_result; belief field becomes optional",
+        "when belief field used: require provenance tag documented_position | practice_default | folk_attribution; forbid absolutist intensifiers unless quoted",
+        "add who_would_disagree field naming the sub-community that would bet against the hypothesis"
+      ],
+      "stage2_guidance": "protect singleton contrarian bets from cluster-size-based cuts; consider commissioning 2-3 competing formulations of each"
+    }
+  },
+  "relation_to_sibling_audits": {
+    "concur_with_A": [
+      "deflationary meta-family dominance (independent 39.1% vs A 40.2%)",
+      "schema-induced house style uniform across shards",
+      "temporal/video and territory-ceiling blind spots"
+    ],
+    "concur_with_B": [
+      "permutation pseudo-innovation not the main risk",
+      "theory/security/continual underweighted"
+    ],
+    "disagreement_nuance_vs_A": "title-level ~1% constructive undercounts; full-text constructive 6.3% and directional-surprise 16.2% mean the corpus is not generically short of counter-intuitive claims - the shortage is directional (anti-pessimism/null/affirmative/meta-critique)",
+    "novel_contribution": "belief-field provenance forensics: debunk stance aimed at largely undocumented or intensifier-inflated defaults - novelty-inflation risk at Stage 2"
+  },
+  "caveats": [
+    "regex-plus-reading heuristics by one auditor; small categories read exhaustively, large ones sampled",
+    "sample classification and safe-contrarianism assessment are MODEL SPECULATION; no literature consulted or cited",
+    "no prior-art or novelty verification performed on any idea",
+    "no task queue, canonical state file, or lock was written or modified"
+  ]
+}
