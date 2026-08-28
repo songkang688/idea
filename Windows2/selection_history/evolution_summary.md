@@ -22,7 +22,9 @@
 - J COMPLETE on A: `Windows2/_wip/stage4_agent_J/`. Only A-0061 bare SURVIVE; 0199/0215 framing killed.
 - K COMPLETE on C: `Windows2/_wip/stage4_agent_K/`. Kills 0046, 0119, 0341, 0303, 0055.
 
-## Stage 6 audit
+## Stage 5
+
+- N COMPLETE: `Windows2/_wip/stage5_agent_N/`. Recommended battle-5: C-0306, C-0338, B-0114 (4-arm), A-0061, A-0206; wildcard A-0028.
 
 - L COMPLETE: `Windows2/_wip/stage6_agent_L/`. Binding PI response: `Windows2/_wip/PI_BINDING.md`.
 

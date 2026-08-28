@@ -6,20 +6,18 @@
 
 ## Current stage
 
-**Stage 2 200-cut COMPLETE: 190 slots** (`stage2_agent_I/provisional_200.md`). M cutting to 50; N Stage-5 protocols; O Stage-6 battle toward 20.
+190-slot 200-cut done. N Stage-5 protocols **complete**. M →50, O →20, P implements C-0306 killer-experiment prototype (highest ROI).
 
-| Agent | Status | Result |
-| --- | --- | --- |
-| I | COMPLETE | 190 = A84 / B59 / C47; LOCK 51 |
-| M | RUNNING | 50-cut |
-| N | RUNNING | killer experiments |
-| O | DISPATCHING | group battle → ~20 |
+| Agent | Status |
+| --- | --- |
+| N | COMPLETE — `stage5_agent_N/` ROI: C-0306 > C-0338 > A-0061 > A-0028 > B-0114-4arm |
+| M | RUNNING — 50 |
+| O | RUNNING — 20 |
+| P | DISPATCHING — runnable proto for C-0306 |
 
-## PI notes on I's 190
+## PI constraints for Top-3 (from N+L)
 
-- A is **overweight** (84 vs ~70 intended). M/O should trim A FLEX first (I named A-0020, 0178, 0209, 0107, 0352).
-- LOCK A=6 is measurement-heavy; inject L revives (A-0028, A-0199-mut, C-0082-mut) into the 50/20 even if I left them FLEX/out.
-- Still obey `PI_BINDING.md`.
+Exclusion pairs: B-0114×B-0001; A-0061×A-0206; at most one of {A-0061, A-0206, C-0338}. Top-3 must include a constructive package (C-0306 qualifies). A-0028 is run-regardless wildcard.
 
 ## Git safety
 
