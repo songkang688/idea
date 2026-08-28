@@ -6,23 +6,25 @@
 
 ## Current stage
 
-**Stage 2 A-review COMPLETE.** Folding into 200 (Agent I running). Stage 4 started on B (H) and A (J).
+Stage 2 fold-to-200 (I). Stage 4: **H complete on B**; J on A; K on C.
 
 | Agent | Status | Result |
 | --- | --- | --- |
-| D | COMPLETE | C keep 107 |
-| E | COMPLETE | B keep 77 |
-| F | COMPLETE | A keep **75** / kill 51 / borderline 226; prior-work 28: 2 KILL / 15 MUTATE / 11 SURVIVE |
+| F | COMPLETE | A keep 75 |
 | G | COMPLETE | B∪C 121 slots |
-| H | RUNNING | Reviewer #2 on B |
-| I | RUNNING | Fold A into 200 (told via `PI_TO_I.md` to use F FINAL) |
-| J | DISPATCHING | Reviewer #2 on A PhD-bets |
+| H | COMPLETE | 29 B ideas attacked: 0 bare SURVIVE / 14 SURVIVE-IF-EXPERIMENT / 9 MUTATE / 6 KILL including **B-0332 scooped** |
+| I | RUNNING | Fold A into 200 |
+| J | RUNNING | Reviewer #2 on A |
+| K | DISPATCHING | Reviewer #2 on C LOCK |
 
 ## Hard kills (do not revive without new evidence)
 
-- B-0136, B-0175, B-0279
-- **A-0017** (WACV 2026 arXiv:2412.04243)
-- **A-0051** (Lemay MELBA 2022)
+- B-0136, B-0175, B-0279, **B-0332**, **B-0133**, **B-0042** (host), B-0025, B-0252
+- A-0017, A-0051
+
+## Supervisor belief
+
+B's "upgrade statics to dynamics/causal" family failed as a correlated bet (H). Paper-shaped B remainder: 0114, 0194, 0001, 0104, 0268, 0213, 0169 — all experiment-gated.
 
 ## Git safety
 

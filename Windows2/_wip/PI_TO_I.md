@@ -12,3 +12,12 @@ Agent F is COMPLETE. Use the FINAL files, not WIP:
 Prefer F's **mutated** forms for 0001, 0060, 0076, 0107, 0181, 0198, 0245, 0301, 0326, 0074, 0331, 0300, 0352.
 
 Flagship A survivors to protect if they do not duplicate G LOCK: 0206, 0163, 0150, 0151, 0145, 0121, 0175 (if still in shortlist).
+
+## Agent H Reviewer #2 on B (COMPLETE) — drop these from LOCK/FLEX hosts
+
+- **W2-B-0332 KILL** — arXiv 2510.23482 visual-thought corruption (post-hoc theater scooped)
+- **W2-B-0133 KILL** — LoRA MIA/memorization 2025–26 opposite-direction result
+- **W2-B-0042 KILL** as host — fold residual into B-0213 (SynCLIP)
+- Also KILL: B-0025, B-0033 (as standalone; already parasite of C-0136), B-0252
+
+Nothing in B's top 20 survived Reviewer #2 without a named experiment. Prefer H's SURVIVE-IF-EXPERIMENT mutated forms: 0114, 0194, 0001, 0104, 0268, 0213, 0169.

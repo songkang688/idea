@@ -13,11 +13,21 @@
 ## Stage 2 merge
 
 - G COMPLETE: 184 → 121 B∪C slots (LOCK 50 / FLEX 71), 40 DROP, 23 merged parasites. Files: `Windows2/_wip/stage2_agent_G/`.
-- F WIP: 76 A keeps on branch (`stage2_agent_F/shortlist.md`); F still running literature.
+- F COMPLETE: 75 A keeps; literature in `stage2_agent_F/prior_work_attack.md`.
 - I: fold A into reserved 79 slots → provisional 200.
+
+## Stage 4
+
+- H COMPLETE on B: `Windows2/_wip/stage4_agent_H/`. Freshness kills 0332, 0133, 0042-as-host.
 
 ## Eliminated (confirmed, do not revive without new evidence)
 
 - W2-B-0136 — Davari et al. CVPR 2022 (representation forgetting / rotation)
 - W2-B-0175 — RClicks NeurIPS 2024
 - W2-B-0279 — DINOv3 medical benchmark collision
+- W2-A-0017 — WACV 2026 arXiv:2412.04243 (SA-1B compact-region prior)
+- W2-A-0051 — Lemay et al. MELBA 2022 (disagreement-preserving labels)
+- W2-B-0332 — arXiv 2510.23482 visual CoT thought corruption
+- W2-B-0133 — 2025–26 LoRA privacy/memorization papers
+- W2-B-0042 as host — SynCLIP / synonym-sensitivity (fold into 0213)
+- W2-B-0025, W2-B-0252 — Reviewer #2 (no silencing experiment)
