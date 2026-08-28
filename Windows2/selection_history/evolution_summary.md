@@ -8,7 +8,7 @@
 | --- | --- | --- | --- | --- |
 | D | C | 107 | 180 | 58 mutate; no hard kill on flagship 15 |
 | E | B | 77 | 268 | hard kills 0136, 0175, 0279 |
-| F | A | pending | pending | running |
+| F | A | **75** | 51 | prior-work: KILL 0017, 0051 |
 
 ## Stage 2 merge
 

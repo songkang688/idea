@@ -18,7 +18,10 @@
 
 ## Agent F — batch A
 
-Still running. Do not close 1000→200 until F returns.
+- Files: `Windows2/_wip/stage2_agent_F/`
+- Keep **75** (Tier A 17 / B 31 / C 21 / protected 6); kill 51; borderline 226
+- Prior-work 28: KILL 0017, 0051; 15 MUTATE; 11 SURVIVE
+- Flagships if they survive merge: A-0206 SAM fingerprint, A-0163 stuff-band ontology, A-0150 scale-relative GT, A-0145 COD findability bias
 
 ## Supervisor policy for 200-cut (draft)
 
