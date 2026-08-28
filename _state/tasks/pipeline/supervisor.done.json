@@ -1,0 +1,33 @@
+{
+  "task_id": "pipeline-supervisor-tick",
+  "status": "complete",
+  "tick_at_utc": "2026-08-28T17:41:00Z",
+  "output_files": [
+    "/workspace/_state/tasks/pipeline/queue.json",
+    "/workspace/_state/tasks/pipeline/supervisor.md",
+    "/workspace/_state/tasks/pipeline/supervisor.done.json"
+  ],
+  "facts_observed": {
+    "window_lock_json_exists": true,
+    "window_lock_locked": true,
+    "wave_B_decision_ready_for_implementation": true,
+    "wave_C_done_json_exists": true,
+    "wave_C_status": "complete",
+    "p0_verify_done_json_exists": true,
+    "latest_verification_source": "/workspace/Windows16/_state/tasks/P0/verification/p0_verify.done.json (preferred; identical root copy at /workspace/_state/tasks/P0/verification/p0_verify.done.json)",
+    "latest_verification_p0_complete": true,
+    "latest_verification_verified_at_utc": "2026-08-28T17:40:00Z",
+    "stale_1736Z_blocked_verify_treated_as_pass": false
+  },
+  "queue_state": {
+    "skip_forbidden": true,
+    "active_stage": "P1",
+    "p0_lock_ok": true,
+    "next_dispatch": ["P1_STATE_READER"]
+  },
+  "unresolved_items": [
+    "P1_STATE_READER not yet dispatched/completed (next dispatch)",
+    "P2-P7 remain blocked pending completion of prior stages"
+  ],
+  "recommended_next_task_type": "P1_STATE_READER"
+}

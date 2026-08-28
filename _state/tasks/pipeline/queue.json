@@ -1,0 +1,48 @@
+{
+  "task_id": "pipeline-supervisor-tick",
+  "role": "Pipeline Queue Supervisor",
+  "parent": "WindowsX",
+  "tick_at_utc": "2026-08-28T17:41:00Z",
+  "skip_forbidden": true,
+  "active_stage": "P1",
+  "p0_lock_ok": true,
+  "next_dispatch": ["P1_STATE_READER"],
+  "dispatch_note": "P0 verification PASS (p0_complete=true, verified 2026-08-28T17:40:00Z, supersedes the 17:36Z BLOCKED verify). Queue advances past P0; next dispatch is the P1 state reader.",
+  "facts": {
+    "window_lock_json_exists": true,
+    "window_lock_json_path": "/workspace/Windows16/_state/window.lock.json",
+    "window_lock_locked": true,
+    "wave_B_decision_json_exists": true,
+    "wave_B_ready_for_implementation": true,
+    "wave_B_windows_id": "Windows16",
+    "wave_C_done_json_exists": true,
+    "wave_C_status": "complete",
+    "wave_C_recommended_next_task_type": "P0_VERIFICATION",
+    "p0_verify_done_json_exists": true,
+    "p0_verify_root_copy": "/workspace/_state/tasks/P0/verification/p0_verify.done.json (17:40:00Z, complete, p0_complete=true; no longer the stale 17:36Z BLOCKED version)",
+    "p0_verify_windows16_copy": "/workspace/Windows16/_state/tasks/P0/verification/p0_verify.done.json (present, preferred as current; identical to root copy)",
+    "latest_verification_p0_complete": true,
+    "latest_verification_verified_at_utc": "2026-08-28T17:40:00Z",
+    "latest_verification_recommended_next_task_type": "P1_STATE_READER",
+    "stale_1736Z_blocked_verify": "superseded by 17:40:00Z complete verification; NOT treated as PASS on its own",
+    "verification_status": "PASS"
+  },
+  "stages": {
+    "P0": {
+      "status": "complete",
+      "detail": "Windows16 created and locked (init commit 48a0d48, branch cursor/windows16-p0-implementation-3255, push verified). Verification PASS at 17:40:00Z: p0_complete=true, all checks true."
+    },
+    "P1": { "status": "active", "detail": "Unblocked by P0 verification PASS; dispatch P1_STATE_READER." },
+    "P2": { "status": "blocked", "unblocks_when": "P1 complete" },
+    "P3": { "status": "blocked", "unblocks_when": "prior stages complete" },
+    "P4": { "status": "blocked", "unblocks_when": "prior stages complete" },
+    "P5": { "status": "blocked", "unblocks_when": "prior stages complete" },
+    "P6": { "status": "blocked", "unblocks_when": "prior stages complete" },
+    "P7": { "status": "blocked", "unblocks_when": "prior stages complete" }
+  },
+  "advance_rules": {
+    "on_lock_exists_verification_not_passed": "active_stage=P0, next_dispatch=[\"P0_VERIFICATION\"], p0_lock_ok=false, P1-P7 blocked",
+    "on_verification_pass_with_P1_recommendation": "active_stage=P1, next_dispatch=[\"P1_STATE_READER\"], p0_lock_ok=true (APPLIED this tick)",
+    "stale_verify_guard": "the 17:36Z BLOCKED verify is never treated as PASS when a newer Windows16 verification exists or the lock exists"
+  }
+}
