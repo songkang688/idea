@@ -1,0 +1,25 @@
+{
+  "task_id": "p1_gen_w2_c",
+  "role": "worker_C",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "territory": "Negative results + contrarian (community beliefs that may be false; non-replication hypotheses; anti-scaling claims); fairness/bias and adversarial robustness used as contrarian substrates",
+  "idea_count": 130,
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave2/worker_C.ideas.jsonl",
+    "Windows14/_state/tasks/p1/wave2/worker_C.md",
+    "Windows14/_state/tasks/p1/wave2/worker_C.done.json"
+  ],
+  "unresolved_items": [
+    "No novelty verification performed; all why_possibly_novel fields are unverified hypotheses (evidence_status=HYPOTHESIS on every idea); ideas 005, 023, 052, 064, 077, 092 explicitly flag adjacent VERIFIED PRIOR WORK in other settings",
+    "Cross-shard adjacency flagged in-line for Wave B dedup: 022/096 (domain shift, wave2 worker_A), 055 (synthetic data, worker_A), 054/074 (medical substrate, wave1 worker_B), 044/104 (SAM/promptable, wave1 workers A/C), 122 (LLM/agent, wave3 territory)",
+    "Intra-shard near-neighbors listed in worker_C.md section 'Unresolved items' item 3 (002/058, 013/075, 030/090, 064/103, 003/123/128, 007/105) for dedup review",
+    "Calibration cap: no idea has uncertainty/calibration as primary subject; 098 and 127 mention confidence mechanisms inside non-calibration claims and should be re-inspected if judges disagree",
+    "Several minimal experiments share infrastructure (dual-protocol re-annotation, boundary-metric harness, checkpoint-zoo re-scoring, matched-compute pretraining pairs) that a consolidator could factor into shared platforms"
+  ],
+  "recommended_next_task_type": "p1_wave_B_dedup",
+  "wrote_ideas_master": false,
+  "window_lock_verified": true,
+  "id_seed_prefix": "w14w2c-",
+  "completed_at_utc": "2026-08-28T20:15Z"
+}
