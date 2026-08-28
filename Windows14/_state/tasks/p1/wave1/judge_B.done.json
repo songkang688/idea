@@ -1,0 +1,35 @@
+{
+  "task_id": "p1_wave1_judge_B",
+  "role": "judge_B_permutation_filter",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "ideas_reviewed": 382,
+  "keep_count": 359,
+  "kill_count": 1,
+  "mutate_count": 22,
+  "per_shard": {
+    "worker_A": {"total": 132, "keep": 120, "mutate": 12, "kill": 0},
+    "worker_B": {"total": 126, "keep": 124, "mutate": 2, "kill": 0},
+    "worker_C": {"total": 124, "keep": 115, "mutate": 8, "kill": 1}
+  },
+  "filter_criteria": [
+    "mere_architecture_permutations",
+    "module_A_plus_B_pairings",
+    "sam_plus_loss_or_backbone_swaps",
+    "mechanical_medical_or_smoke_transfers",
+    "parameter_only_scaling"
+  ],
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave1/judge_B.md",
+    "Windows14/_state/tasks/p1/wave1/judge_B.flags.jsonl",
+    "Windows14/_state/tasks/p1/wave1/judge_B.done.json"
+  ],
+  "unresolved_items": [
+    "Cross-shard near-duplicate hypotheses were NOT deduped here (out of judge_B scope); consolidator must merge, e.g., prompt-jitter instability (w14A-010 / w14_p1b_005 / w14p1c-001 / w14p1c-061), negation blindness (w14_p1b_122 / w14p1c-092), patch-grid minimum-size limits (w14A-021 / w14_p1b_061 / w14p1c-105).",
+    "22 mutate verdicts carry explicit 'mutation' re-framing instructions in judge_B.flags.jsonl; consolidator should apply them at merge time rather than dropping the ideas.",
+    "worker_A placement-permutation family should be consolidated onto kept anchors w14A-030/077/117/127 with mutated members (w14A-016/042/047) folded in as validation protocols.",
+    "Judge A verdicts were not available/consulted (independence requirement); conflicts between judge_A and judge_B flags must be resolved by the consolidator."
+  ],
+  "recommended_next_task_type": "p1_wave1_consolidator",
+  "judged_at_utc": "2026-08-28T18:55Z"
+}
