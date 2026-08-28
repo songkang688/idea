@@ -1,27 +1,21 @@
 # Evolution summary (Windows2)
 
-## Stage 1 — CLOSED (count)
+## Stage 1 — CLOSED (count): 1042 ideas
 
-| Batch | IDs | n | Path |
-| --- | --- | --- | --- |
-| A | W2-A-0001–0352 | 352 | `Windows2/_wip/stage1_agent_A/` |
-| B | W2-B-0001–0345 | 345 | `Windows2/_wip/stage1_agent_B/` |
-| C | W2-C-0001–0345 | 345 | `Windows2/_wip/stage1_agent_C/` |
-| **Total** | | **1042** | |
+## Stage 2 — per-batch
 
-No more Stage-1 generation unless an auditor finds a missing scientific cluster.
+| Reviewer | Batch | Keep | Kill | Notes |
+| --- | --- | --- | --- | --- |
+| D | C | 107 | 180 | 58 mutate; no hard kill on flagship 15 |
+| E | B | 77 | 268 | hard kills 0136, 0175, 0279 |
+| F | A | pending | pending | running |
 
-## Stage 2/3 — IN PROGRESS (per-batch, then merge)
+## Stage 2 merge (partial)
 
-- D: C catalog (running)
-- E: B catalog (running)
-- F: A catalog (dispatching)
+Agent G: merge B∪C keeps (~184) into a provisional list, census checkpoints/prediction caches, flag cross-batch duplicates. Wait for F before locking 200.
 
-After all three score files exist: supervisor merges to ~200 with protected exceptions, then Stage 3 continues only on the merged 200 (or mutate survivors).
+## Eliminated (confirmed, do not revive without new evidence)
 
-## Cross-batch merge notes
-
-- Prompt variance: A-0001, B-0042, C-0011
-- Metric/label noise: A-0151/0198, C-0046/0057
-- SAM/SA-1B prior + contamination: A-0017/0206/0301, C-0082
-- Transfer/shift: B-0226/0200, C-0081, A-0245
+- W2-B-0136 — Davari et al. CVPR 2022 (representation forgetting / rotation)
+- W2-B-0175 — RClicks NeurIPS 2024
+- W2-B-0279 — DINOv3 medical benchmark collision
