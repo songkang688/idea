@@ -1,0 +1,1828 @@
+{
+ "task_id": "p1_wave_b_w3",
+ "role": "judge_A_dedup",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "w3_GHJ (sub-wave: generators G+H+J only; gen_k judged separately per consolidator split)",
+ "branch": "cursor/p1-wave-b-w3-judge-a-dedup-e60e",
+ "generated_at_utc": "2026-08-28T23:13:29Z",
+ "inputs": [
+  {
+   "generator": "gen_g_domain_shift",
+   "branch": "origin/cursor/p1-gen-g-domain-shift-0165",
+   "shard_path": "Windows13/_state/tasks/p1/generators/gen_g_domain_shift/ideas_shard.jsonl",
+   "idea_count": 100
+  },
+  {
+   "generator": "gen_h_sr_restoration",
+   "branch": "origin/cursor/p1-gen-h-sr-restoration-1829",
+   "shard_path": "Windows13/_state/tasks/p1/generators/gen_h_sr_restoration/ideas_shard.jsonl",
+   "idea_count": 100
+  },
+  {
+   "generator": "gen_j_diffusion_model_science",
+   "branch": "origin/cursor/p1-gen-j-diffusion-science-3470",
+   "shard_path": "Windows13/_state/tasks/p1/generators/gen_j_diffusion_model_science/ideas_shard.jsonl",
+   "idea_count": 104
+  }
+ ],
+ "canonical_master_reference": {
+  "branch": "origin/cursor/p1-wave-b-consolidator-w2-3111",
+  "path": "Windows13/_state/ideas_master.jsonl",
+  "accepted_count": 494,
+  "usage": "READ-ONLY collision flagging; master NOT rewritten or appended by this judge"
+ },
+ "collision_only_shards_enumerated": {
+  "gen_k_3d_geometry_video": {
+   "branch": "origin/cursor/p1-gen-k-3d-geometry-video-dc89",
+   "count": 105
+  },
+  "gen_l_llm_agent_vision": {
+   "branch": "origin/cursor/p1-gen-l-llm-agent-vision-c11e",
+   "count": 100
+  },
+  "gen_m_training_dynamics_objectives": {
+   "branch": "origin/cursor/p1-gen-m-training-dynamics-d8f7",
+   "count": 100
+  },
+  "gen_n_scaling_memorization_data_laws": {
+   "branch": "origin/cursor/p1-gen-n-scaling-memorization-4814",
+   "count": 100
+  },
+  "gen_p_constructive_capability": {
+   "branch": "origin/cursor/p1-gen-p-constructive-6c3b",
+   "count": 104
+  },
+  "gen_o_hard_domain_diversifier": "NOT on origin at judge time (in flight)",
+  "gen_u_adversarial_security_fairness": "NOT on origin at judge time (in flight)",
+  "usage": "flag-only per commission: NONE of these shards merged into this accepted list; collisions recorded in offmaster_collision_flags for their future judge waves"
+ },
+ "method": "Hypothesis-level cross-shard dedup over G+H+J: ideas compared on core_hypothesis content (mechanism + falsifiable claim), not title strings. Two ideas are duplicates when they assert the same mechanism with the same falsification design, differing only in substrate (task, modality, metric, or the X-slot of a template). Per the w2 diversity-audit ruling (GATE retrofit + merge triggers), FAMILY MEMBERSHIP was treated as a MERGE TRIGGER, not only pairwise Jaccard: judge-assigned family fingerprints were capped at <=6 kept primaries per cell (memorization, posterior-dispersion, degradation-realism and annotation-convention caps all fired). Lexical Jaccard scans (within-wave, vs 494-master, vs 5 collision-only shards) found NO pair above 0.24 — duplication in this wave is family/hypothesis-level, exactly as the w2 audit predicted, so all verdicts below rest on the judge's manual hypothesis comparison. Kept ideas were checked against the 494 accepted master ideas: near-verbatim substrate ports were killed with the master id as merge target; family-adjacent ideas kept with flags. Collision-only shards gen_k/l/m/n/p were enumerated for flags only. High-value anomalies protected. GATE-5 compliance was AUDITED and RECORDED per record but NOT repaired by this judge (no thresholds or evidence labels were invented). NO novelty verification performed; every prior-art remark is an unverified judge hypothesis; no citations invented. Canonical state untouched.",
+ "counts": {
+  "input_total": 304,
+  "input_per_shard": {
+   "gen_g": 100,
+   "gen_h": 100,
+   "gen_j": 104
+  },
+  "keep": 260,
+  "keep_per_shard": {
+   "gen_g": 81,
+   "gen_h": 84,
+   "gen_j": 95
+  },
+  "kill_or_merge": 44,
+  "kill_per_shard": {
+   "gen_g": 19,
+   "gen_h": 16,
+   "gen_j": 9
+  },
+  "duplicate_groups_within_wave": 31,
+  "kills_inside_within_wave_groups": 32,
+  "cross_shard_duplicate_groups": 2,
+  "master_collision_groups": 8,
+  "master_collision_kills": 11,
+  "standalone_known_result_kills": 1,
+  "master_collision_flags_on_keeps": 46,
+  "offmaster_collision_flags_on_keeps": 27,
+  "flagged_permutation_ids_unique": 138,
+  "family_merge_triggers_fired": 9,
+  "anomalies": 21,
+  "deliberate_tensions": 7,
+  "judge_clusters": 32,
+  "gate5_missing_kill_threshold": {
+   "gen_g": 100,
+   "gen_h": 100,
+   "gen_j": 0,
+   "note": "H-066/H-072 contain incidental numerals (4x, 8-bit) but no pre-registered kill thresholds; strictly-no-numeral counts are gen_g 100/100, gen_h 98/100"
+  },
+  "gate5_missing_evidence_label": {
+   "gen_g": 100,
+   "gen_h": 100,
+   "gen_j": 0
+  },
+  "gate5_keeps_needing_retrofit": 165,
+  "gen_j_self_declared_genre": {
+   "characterization_law": 57,
+   "audit_debunk": 10,
+   "constructive_capability": 37
+  }
+ },
+ "gate5_record": {
+  "duty": "GATE-5 (w2 diversity decision): wave-3 judges attach kill_threshold + evidence_label to gen_g and gen_h records at judge time OR remand the shard.",
+  "what_this_judge_did": "AUDITED and FLAGGED only. Every kept gen_g/gen_h record carries judge_A_meta.gate5.retrofit_needed=true. This judge did NOT invent numeric thresholds or evidence labels (doing so per-record for 165 keeps is threshold-fabrication risk and belongs with judge B feasibility / judge C adversary / consolidator, who must retrofit-or-remand before the master merge). gen_j is fully compliant (104/104) and needs nothing.",
+  "recommendation": "Retrofit path: judge B attaches thresholds while doing feasibility (it must read every fastest_falsification_experiment anyway); judge C spot-audits; consolidator writes the mandatory gate-compliance line. Remand path (if retrofit slips): remand gen_g+gen_h keeps as a block, do NOT merge them threshold-less into the master.",
+  "gate6_note": "gen_j self-declared genre distribution recorded in counts.gen_j_self_declared_genre; w2 audit measured self-declared 35.6% constructive vs ~7% by phrasing — genre labels must be re-audited against claim phrasing (GATE-6) before genre quotas are applied; not re-adjudicated here."
+ },
+ "clusters": {
+  "g_continual_online_shift": {
+   "total": 8,
+   "keep": 8
+  },
+  "g_domain_generalization": {
+   "total": 12,
+   "keep": 9
+  },
+  "g_fm_robustness_scaling": {
+   "total": 12,
+   "keep": 9
+  },
+  "g_iid_assumption_violations": {
+   "total": 10,
+   "keep": 8
+  },
+  "g_shift_benchmark_critique": {
+   "total": 10,
+   "keep": 7
+  },
+  "g_shift_detection_monitoring": {
+   "total": 10,
+   "keep": 10
+  },
+  "g_shift_theory_measurement": {
+   "total": 8,
+   "keep": 6
+  },
+  "g_test_time_adaptation": {
+   "total": 14,
+   "keep": 10
+  },
+  "g_unsupervised_domain_adaptation": {
+   "total": 10,
+   "keep": 9
+  },
+  "g_vlm_multimodal_shift": {
+   "total": 6,
+   "keep": 5
+  },
+  "h_benchmark_weaknesses": {
+   "total": 10,
+   "keep": 6
+  },
+  "h_blind_real_world": {
+   "total": 10,
+   "keep": 9
+  },
+  "h_degradation_modeling": {
+   "total": 12,
+   "keep": 10
+  },
+  "h_downstream_coupling": {
+   "total": 8,
+   "keep": 6
+  },
+  "h_fm_restoration": {
+   "total": 10,
+   "keep": 8
+  },
+  "h_generative_prior_failures": {
+   "total": 12,
+   "keep": 9
+  },
+  "h_ignored_assumptions": {
+   "total": 10,
+   "keep": 10
+  },
+  "h_perception_distortion": {
+   "total": 10,
+   "keep": 8
+  },
+  "h_training_dynamics": {
+   "total": 10,
+   "keep": 10
+  },
+  "h_video_temporal": {
+   "total": 8,
+   "keep": 8
+  },
+  "j_conditioning_binding": {
+   "total": 8,
+   "keep": 8
+  },
+  "j_diffusion_for_perception": {
+   "total": 10,
+   "keep": 10
+  },
+  "j_diffusion_priors_for_ambiguity": {
+   "total": 8,
+   "keep": 7
+  },
+  "j_diffusion_representations": {
+   "total": 9,
+   "keep": 9
+  },
+  "j_distillation_fewstep_science": {
+   "total": 8,
+   "keep": 8
+  },
+  "j_generator_memorization": {
+   "total": 9,
+   "keep": 6
+  },
+  "j_guidance_science": {
+   "total": 9,
+   "keep": 9
+  },
+  "j_inversion_editing_pathologies": {
+   "total": 9,
+   "keep": 9
+  },
+  "j_latent_space_vae_effects": {
+   "total": 8,
+   "keep": 7
+  },
+  "j_noise_schedule_frequency": {
+   "total": 8,
+   "keep": 7
+  },
+  "j_sampling_dynamics": {
+   "total": 9,
+   "keep": 7
+  },
+  "j_video_temporal_diffusion": {
+   "total": 9,
+   "keep": 8
+  }
+ },
+ "duplicate_groups": {
+  "dg01_degradation_factor_attribution": {
+   "primary": "W13-P1-H-001",
+   "merged": [
+    "W13-P1-H-006"
+   ],
+   "reason": "H-006 (signal-dependent noise is the largest single realism lever) is one main effect inside H-001's kernel/noise/compression factorial; same mechanism (noise+compression dominate kernel realism), same factorial falsification design. Family cap (degradation_realism_decomposition) also binds.",
+   "cross_shard": false
+  },
+  "dg02_neural_processing_degradations": {
+   "primary": "W13-P1-H-054",
+   "merged": [
+    "W13-P1-H-008"
+   ],
+   "reason": "Same hypothesis: neural-processing-induced artifacts are an unmodeled degradation family that classic blur-noise-compression pipelines cannot express and simulated neural chains fix; H-008 is the single-pass on-device special case of H-054's compounding chain claim.",
+   "cross_shard": false
+  },
+  "dg03_conditioning_beats_marginalization": {
+   "primary": "W13-P1-H-097",
+   "merged": [
+    "W13-P1-H-018"
+   ],
+   "reason": "Same mechanism (blind marginalization over degradations forces an averaged inverse operator; explicit conditioning/routing removes the penalty at matched capacity) and same matched-capacity falsification; H-018's archetype-MoE is the architectural variant of H-097's severity conditioning. Family-cap trigger.",
+   "cross_shard": false
+  },
+  "dg04_misalignment_metric_bias": {
+   "primary": "W13-P1-H-013",
+   "merged": [
+    "W13-P1-H-027"
+   ],
+   "reason": "Same mechanism: residual reference misalignment in real-world paired benchmarks biases full-reference metrics against sharp/faithful outputs; H-013 states leaderboard blur selection, H-027 restates it as the confounded perception-distortion frontier. One quantify-misalignment-then-rerank design.",
+   "cross_shard": false
+  },
+  "dg05_matched_recipe_compression": {
+   "primary": "W13-P1-H-091",
+   "merged": [
+    "W13-P1-H-032"
+   ],
+   "reason": "Equalization-null template: claimed architecture/framework differences are training-recipe and confound artifacts compressed by a matched-recipe rerun; H-032 (GAN vs diffusion) is the framework instance of H-091's architecture-decade claim. w2 guard caps this template at <=3 per shard.",
+   "cross_shard": false
+  },
+  "dg06_evidence_gated_abstention": {
+   "primary": "W13-P1-H-086",
+   "merged": [
+    "W13-P1-H-035"
+   ],
+   "reason": "Same design: abstain/preserve-uncertainty where observation evidence is insufficient instead of fabricating; H-035 (text glyphs) is the text special case of H-086's safety-critical fine-structure claim.",
+   "cross_shard": false
+  },
+  "dg07_distillation_mode_averaging": {
+   "primary": "W13-P1-J-059",
+   "merged": [
+    "W13-P1-H-040"
+   ],
+   "reason": "Cross-shard substrate pair: distillation objectives average the teacher's posterior modes so few-step students convert represented multi-modality into regression-like averaged output; J-059 (dense prediction, spatial-matching prediction, full gate schema) kept primary, H-040 is the restoration instance.",
+   "cross_shard": true
+  },
+  "dg08_vae_roundtrip_ceiling": {
+   "primary": "W13-P1-J-080",
+   "merged": [
+    "W13-P1-H-041",
+    "W13-P1-J-084"
+   ],
+   "reason": "Cross-shard 3-way: the autoencoder roundtrip decode(encode(x)) is a hard information ceiling that upstream modules cannot cross; J-080 (generation, critical structure size, cleanest bound protocol) kept primary; H-041 (latent restoration fidelity floor) and J-084 (dense-prediction probe ceiling) are the same bound on other substrates.",
+   "cross_shard": true
+  },
+  "dg09_hallucination_scales_with_prior": {
+   "primary": "W13-P1-H-033",
+   "merged": [
+    "W13-P1-H-053"
+   ],
+   "reason": "Same hypothesis stated twice: fabrication rate on evidence-poor inputs rises with generative prior strength; H-033 parameterizes by data/model quality, H-053 by pretraining compute. One scale-ladder falsification. Family-cap trigger.",
+   "cross_shard": false
+  },
+  "dg10_observation_consistency_fidelity": {
+   "primary": "W13-P1-H-028",
+   "merged": [
+    "W13-P1-H-062"
+   ],
+   "reason": "Same proposal: replace/augment reference distortion with consistency-to-observation under the forward model; H-028 is the theory claim (tradeoff becomes mild), H-062 the audit claim (models violate re-degradation consistency) — one metric, two arms.",
+   "cross_shard": false
+  },
+  "dg11_restoration_reimagination_boundary": {
+   "primary": "W13-P1-H-044",
+   "merged": [
+    "W13-P1-H-084"
+   ],
+   "reason": "Same instrument: per-region decomposition of output into observation-derived vs prior-injected information; H-044 defines the boundary and the field-level claim, H-084's forensic fidelity certificates are its deployment packaging.",
+   "cross_shard": false
+  },
+  "dg12_human_machine_divergence": {
+   "primary": "W13-P1-H-029",
+   "merged": [
+    "W13-P1-H-088"
+   ],
+   "reason": "Same mechanism (perceptually tuned restoration destroys machine-relevant evidence; human-optimal and machine-optimal operating points diverge); H-088 is the OCR/text instance of H-029's general claim.",
+   "cross_shard": false
+  },
+  "dg13_sharp_attractor_signature": {
+   "primary": "W13-P1-J-040",
+   "merged": [
+    "W13-P1-J-042"
+   ],
+   "reason": "Same mechanism: memorized items are over-sharpened score-field attractors; J-042's early trajectory commitment is a direct corollary measurement of J-040's convergence-rate/basin signature. Family-cap trigger (memorization <=6).",
+   "cross_shard": false
+  },
+  "dg14_layout_tier_memorization": {
+   "primary": "W13-P1-J-043",
+   "merged": [
+    "W13-P1-J-045"
+   ],
+   "reason": "Same discovery: compositional/layout-tier memorization distinct from pixel tier; J-045's augmentation-invariance claim is the mitigation-audit arm of J-043 (its hypothesis restates J-043's mechanism). Family-cap trigger.",
+   "cross_shard": false
+  },
+  "dg15_surgical_unlearning": {
+   "primary": "W13-P1-J-041",
+   "merged": [
+    "W13-P1-J-046"
+   ],
+   "reason": "Same instrument (gradient-attribution localization of caption-keyed memorization in cross-attention K/V and ablation of <1% of weights); J-046's neighborhood-diversity improvement is the follow-on arm of J-041's localization claim. Family-cap trigger; J-046's claim that memorization harms nearby generalization is preserved as the high-value arm.",
+   "cross_shard": false
+  },
+  "dg16_seed_layout_control": {
+   "primary": "W13-P1-J-052",
+   "merged": [
+    "W13-P1-J-053"
+   ],
+   "reason": "Same mechanism (under ODE sampling, initial noise determines coarse composition independently of prompt); J-053's linear noise-direction controls are the continuous version of J-052's discrete seed-layout library.",
+   "cross_shard": false
+  },
+  "dg17_iterated_regeneration_contraction": {
+   "primary": "W13-P1-J-031",
+   "merged": [
+    "W13-P1-J-054"
+   ],
+   "reason": "Same law: iterated inversion/regeneration is a contraction toward model-typical attractors with a measurable per-model rate; J-054's renoise-denoise fixed points and per-region img2img rewriting predictor are the same contraction measured on another loop.",
+   "cross_shard": false
+  },
+  "dg18_dispersion_matches_illposedness": {
+   "primary": "W13-P1-J-056",
+   "merged": [
+    "W13-P1-J-060"
+   ],
+   "reason": "Same mechanism: generative-sampler dispersion expresses the observability structure of the inverse problem (peaks exactly where the problem is ill-posed); J-060's aperture-problem anisotropy is the optical-flow instance of J-056's depth claim and is preserved as the sharpest quantitative arm. Family-cap trigger (posterior_dispersion <=6).",
+   "cross_shard": false
+  },
+  "dg19_spectrum_matched_schedules": {
+   "primary": "W13-P1-J-093",
+   "merged": [
+    "W13-P1-J-091"
+   ],
+   "reason": "Same law: the noise schedule should equalize information destruction given the data power spectrum; J-091's resolution-corrected schedules are the special case where the spectrum shifts with resolution. One derive-schedule-from-spectrum design.",
+   "cross_shard": false
+  },
+  "dg20_memorization_dose_response": {
+   "primary": "W13-P1-J-038",
+   "merged": [
+    "W13-P1-J-104"
+   ],
+   "reason": "Substrate pair: sigmoidal memorization-vs-duplication law with predictable midpoint shift; J-104 transports J-038's dose-response design to video with a redundancy-multiplier correction (within-clip redundancy acts as built-in duplication). Family-cap trigger (memorization <=6); J-104's video-privacy arm preserved, resurrection candidate if video track is wanted separately.",
+   "cross_shard": false
+  },
+  "dg21_selection_oracle_circularity": {
+   "primary": "W13-P1-G-019",
+   "merged": [
+    "W13-P1-G-003"
+   ],
+   "reason": "Same mechanism (hyperparameter/model selection encodes oracle knowledge of the test shift; leakage-free selection erases or dominates reported gains); G-003 is the TTA instantiation of G-019's general selection-variance claim.",
+   "cross_shard": false
+  },
+  "dg22_tta_output_repriors": {
+   "primary": "W13-P1-G-007",
+   "merged": [
+    "W13-P1-G-008"
+   ],
+   "reason": "Same mechanism: the dominant effect of TTA is output-layer re-prioring/rescaling, recoverable post hoc without touching features; G-008's explicit label-shift-estimator claim is the prior-change arm of G-007.",
+   "cross_shard": false
+  },
+  "dg23_stream_realism_rankings": {
+   "primary": "W13-P1-G-073",
+   "merged": [
+    "W13-P1-G-012"
+   ],
+   "reason": "Same claim schema and design: TTA method rankings are protocol artifacts that reverse under realistic stream dynamics; G-012's episodic-reset critique is one protocol axis inside G-073's controlled drift-dynamics benchmark.",
+   "cross_shard": false
+  },
+  "dg24_augmentation_ensembling_gain": {
+   "primary": "W13-P1-G-009",
+   "merged": [
+    "W13-P1-G-013"
+   ],
+   "reason": "Same mechanism (reported test-time gains come from augmentation ensembling / confident-view selection, not the learned update) and same ablate-the-update design; G-013 is the VLM prompt-tuning instance of G-009.",
+   "cross_shard": false
+  },
+  "dg25_fm_nullifies_alignment": {
+   "primary": "W13-P1-G-015",
+   "merged": [
+    "W13-P1-G-017"
+   ],
+   "reason": "Same hypothesis: on strong frozen foundation features, alignment-based UDA machinery adds nothing beyond simple target self-training; G-015 states the null, G-017 the equivalent dominance claim — one benchmark-suite comparison.",
+   "cross_shard": false
+  },
+  "dg26_backbone_not_algorithm": {
+   "primary": "W13-P1-G-025",
+   "merged": [
+    "W13-P1-G-026"
+   ],
+   "reason": "Same claim (DG algorithm effect is indistinguishable from zero on foundation backbones; scores are backbone+selection properties); G-025 is the controlled rerun, G-026 the meta-analytic variance decomposition — merged as two arms of one study.",
+   "cross_shard": false
+  },
+  "dg27_invariance_robustness_tradeoff": {
+   "primary": "W13-P1-G-093",
+   "merged": [
+    "W13-P1-G-031"
+   ],
+   "reason": "Same mechanism: enforcing invariance to a factor trades away robustness to shifts correlated with that factor; G-031's style-augmentation anti-correlation is the style instance of G-093's general frontier law.",
+   "cross_shard": false
+  },
+  "dg28_environment_partition_quality": {
+   "primary": "W13-P1-G-027",
+   "merged": [
+    "W13-P1-G-036"
+   ],
+   "reason": "Same hypothesis: invariance-penalty failures are environment-quality failures, and better partitions (capture metadata for G-027, label-free latent discovery for G-036) recover gains — two partition sources for one re-partitioning experiment.",
+   "cross_shard": false
+  },
+  "dg29_pretraining_contamination_robustness": {
+   "primary": "W13-P1-G-071",
+   "merged": [
+    "W13-P1-G-052"
+   ],
+   "reason": "Same mechanism: web-scraped shift test sets sit inside pretraining neighborhoods so measured robustness is exposure; G-052's near-duplicate proximity effect is the mechanism arm of G-071's decontamination-protocol claim.",
+   "cross_shard": false
+  },
+  "dg30_decision_aware_shift_harm": {
+   "primary": "W13-P1-G-090",
+   "merged": [
+    "W13-P1-G-087"
+   ],
+   "reason": "Same claim schema: shift harm must be measured in a model/decision-aware space, generic divergences fail; G-087's hypothesis-disagreement statistic is one estimator of G-090's decision-relevant-subspace norm and is preserved as a baseline arm.",
+   "cross_shard": false
+  },
+  "dg31_language_supplies_domain": {
+   "primary": "W13-P1-G-035",
+   "merged": [
+    "W13-P1-G-095"
+   ],
+   "reason": "Same hypothesis: most of what unsupervised adaptation extracts from target images is coarse domain identity that language can supply directly; G-095's systematic prompt-construction procedure is the operational arm of G-035.",
+   "cross_shard": false
+  }
+ },
+ "master_collision_groups": {
+  "mg01_label_convention_share_of_shift": {
+   "master_target": "W13-P1-B-085",
+   "killed": [
+    "W13-P1-G-055",
+    "W13-P1-G-074"
+   ],
+   "reason": "Near-verbatim cross-wave ports: measured distribution-shift degradation is partly annotation-standard/label-convention shift, isolable by relabeling under a unified standard — accepted B-085 states this (medical substrate) and F-094 already decomposes domain gap into factors including label convention. Annotation/convention pathology is HARD-BANNED as primary subject (w2 diversity ruling; master family already exceeds fingerprint cap), so both die into B-085: G-055 general cross-dataset arm, G-074 geographic-taxonomy arm."
+  },
+  "mg02_exposure_not_robustness": {
+   "master_target": "W13-P1-C-024",
+   "killed": [
+    "W13-P1-G-057"
+   ],
+   "reason": "Near-verbatim port: stratify performance by proximity/coverage of pretraining data to show claimed generalization/robustness is concentrated where near-training content exists — C-024's seen-shot design with robustness in the y-axis slot. No subject-native mechanism beyond the substrate swap."
+  },
+  "mg03_post_cutoff_novelty_eval": {
+   "master_target": "W13-P1-C-085",
+   "killed": [
+    "W13-P1-G-058"
+   ],
+   "reason": "Near-verbatim port: evaluate on imagery created after the training cutoff to show benchmark robustness does not transfer to genuine temporal novelty — exactly C-085's design and claim; G-058's growth-with-time arm folds in."
+  },
+  "mg04_effective_robustness_curve_artifacts": {
+   "master_target": "W13-P1-C-081",
+   "killed": [
+    "W13-P1-G-072",
+    "W13-P1-G-091"
+   ],
+   "reason": "Both are arms of accepted C-081 (effective-robustness linear fits break near the accuracy ceiling and conclusions flip under ceiling-aware models): G-072 = the near-ceiling identifiability arm, G-091 = the alternative-link-function arm. Same refit-the-population falsification."
+  },
+  "mg05_convention_harness_variance": {
+   "master_target": "W13-P1-C-077",
+   "killed": [
+    "W13-P1-G-078",
+    "W13-P1-H-058"
+   ],
+   "reason": "Near-verbatim ports of accepted C-077 (harness/convention variance is an unbudgeted error term comparable to method margins): G-078 = preprocessing variants on robustness benchmarks, H-058 = border-crop/color-conversion/bit-depth conventions in SR. Mechanism identical; only the convention list is field-specific (preserved as arms)."
+  },
+  "mg06_adaptive_reuse_secret_replica": {
+   "master_target": "W13-P1-C-032",
+   "killed": [
+    "W13-P1-H-061"
+   ],
+   "reason": "Near-verbatim port: adaptive overfitting from years of test-set reuse, exposed by a fresh/secret replica that compresses scores and gaps — C-032's design with SR benchmarks in the substrate slot."
+  },
+  "mg07_benchmark_aging": {
+   "master_target": "W13-P1-C-029",
+   "killed": [
+    "W13-P1-H-056"
+   ],
+   "reason": "Near-verbatim port: legacy test sets are photographically dated and rankings reshuffle on freshly collected modern imagery — C-029's benchmark-aging claim on the SR substrate (ranking-form arm preserved)."
+  },
+  "mg08_paraphrase_instability": {
+   "master_target": "W13-P1-C-020",
+   "killed": [
+    "W13-P1-H-050"
+   ],
+   "reason": "Near-verbatim port of the paraphrase-instability template already consolidated into C-020 in wave 2 (E-021 was killed the same way): semantically equivalent phrasings of a restoration instruction produce materially different outputs and reported results are prompt-tuned upper bounds. Restoration-instruction arm preserved."
+  }
+ },
+ "kill_or_merge_ids": {
+  "W13-P1-G-003": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-019",
+   "group": "dg21_selection_oracle_circularity",
+   "reason": "Same mechanism (hyperparameter/model selection encodes oracle knowledge of the test shift; leakage-free selection erases or dominates reported gains); G-003 is the TTA instantiation of G-019's general selection-variance claim."
+  },
+  "W13-P1-G-008": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-007",
+   "group": "dg22_tta_output_repriors",
+   "reason": "Same mechanism: the dominant effect of TTA is output-layer re-prioring/rescaling, recoverable post hoc without touching features; G-008's explicit label-shift-estimator claim is the prior-change arm of G-007."
+  },
+  "W13-P1-G-012": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-073",
+   "group": "dg23_stream_realism_rankings",
+   "reason": "Same claim schema and design: TTA method rankings are protocol artifacts that reverse under realistic stream dynamics; G-012's episodic-reset critique is one protocol axis inside G-073's controlled drift-dynamics benchmark."
+  },
+  "W13-P1-G-013": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-009",
+   "group": "dg24_augmentation_ensembling_gain",
+   "reason": "Same mechanism (reported test-time gains come from augmentation ensembling / confident-view selection, not the learned update) and same ablate-the-update design; G-013 is the VLM prompt-tuning instance of G-009."
+  },
+  "W13-P1-G-017": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-015",
+   "group": "dg25_fm_nullifies_alignment",
+   "reason": "Same hypothesis: on strong frozen foundation features, alignment-based UDA machinery adds nothing beyond simple target self-training; G-015 states the null, G-017 the equivalent dominance claim — one benchmark-suite comparison."
+  },
+  "W13-P1-G-026": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-025",
+   "group": "dg26_backbone_not_algorithm",
+   "reason": "Same claim (DG algorithm effect is indistinguishable from zero on foundation backbones; scores are backbone+selection properties); G-025 is the controlled rerun, G-026 the meta-analytic variance decomposition — merged as two arms of one study."
+  },
+  "W13-P1-G-031": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-093",
+   "group": "dg27_invariance_robustness_tradeoff",
+   "reason": "Same mechanism: enforcing invariance to a factor trades away robustness to shifts correlated with that factor; G-031's style-augmentation anti-correlation is the style instance of G-093's general frontier law."
+  },
+  "W13-P1-G-036": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-027",
+   "group": "dg28_environment_partition_quality",
+   "reason": "Same hypothesis: invariance-penalty failures are environment-quality failures, and better partitions (capture metadata for G-027, label-free latent discovery for G-036) recover gains — two partition sources for one re-partitioning experiment."
+  },
+  "W13-P1-G-052": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-071",
+   "group": "dg29_pretraining_contamination_robustness",
+   "reason": "Same mechanism: web-scraped shift test sets sit inside pretraining neighborhoods so measured robustness is exposure; G-052's near-duplicate proximity effect is the mechanism arm of G-071's decontamination-protocol claim."
+  },
+  "W13-P1-G-055": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-B-085 (accepted master)",
+   "group": "mg01_label_convention_share_of_shift",
+   "reason": "Near-verbatim cross-wave ports: measured distribution-shift degradation is partly annotation-standard/label-convention shift, isolable by relabeling under a unified standard — accepted B-085 states this (medical substrate) and F-094 already decomposes domain gap into factors including label convention. Annotation/convention pathology is HARD-BANNED as primary subject (w2 diversity ruling; master family already exceeds fingerprint cap), so both die into B-085: G-055 general cross-dataset arm, G-074 geographic-taxonomy arm."
+  },
+  "W13-P1-G-057": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-C-024 (accepted master)",
+   "group": "mg02_exposure_not_robustness",
+   "reason": "Near-verbatim port: stratify performance by proximity/coverage of pretraining data to show claimed generalization/robustness is concentrated where near-training content exists — C-024's seen-shot design with robustness in the y-axis slot. No subject-native mechanism beyond the substrate swap."
+  },
+  "W13-P1-G-058": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-C-085 (accepted master)",
+   "group": "mg03_post_cutoff_novelty_eval",
+   "reason": "Near-verbatim port: evaluate on imagery created after the training cutoff to show benchmark robustness does not transfer to genuine temporal novelty — exactly C-085's design and claim; G-058's growth-with-time arm folds in."
+  },
+  "W13-P1-G-068": {
+   "verdict": "kill",
+   "merge_target": null,
+   "group": "standalone_known_result",
+   "reason": "Known-result restatement (judge assessment, UNVERIFIED, no citation invented): that weight averaging across fine-tuned runs recovers robustness lost to fine-tuning and traces a superior robustness-accuracy frontier closely matches widely known published results on weight averaging / interpolation for robust fine-tuning. Killed on the F-053 precedent; Consolidator may resurrect if the novelty judge disagrees. Note tension with kept G-028 (weight-averaging gains are generic variance reduction, not shift-specific)."
+  },
+  "W13-P1-G-072": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-C-081 (accepted master)",
+   "group": "mg04_effective_robustness_curve_artifacts",
+   "reason": "Both are arms of accepted C-081 (effective-robustness linear fits break near the accuracy ceiling and conclusions flip under ceiling-aware models): G-072 = the near-ceiling identifiability arm, G-091 = the alternative-link-function arm. Same refit-the-population falsification."
+  },
+  "W13-P1-G-074": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-B-085 (accepted master)",
+   "group": "mg01_label_convention_share_of_shift",
+   "reason": "Near-verbatim cross-wave ports: measured distribution-shift degradation is partly annotation-standard/label-convention shift, isolable by relabeling under a unified standard — accepted B-085 states this (medical substrate) and F-094 already decomposes domain gap into factors including label convention. Annotation/convention pathology is HARD-BANNED as primary subject (w2 diversity ruling; master family already exceeds fingerprint cap), so both die into B-085: G-055 general cross-dataset arm, G-074 geographic-taxonomy arm."
+  },
+  "W13-P1-G-078": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-C-077 (accepted master)",
+   "group": "mg05_convention_harness_variance",
+   "reason": "Near-verbatim ports of accepted C-077 (harness/convention variance is an unbudgeted error term comparable to method margins): G-078 = preprocessing variants on robustness benchmarks, H-058 = border-crop/color-conversion/bit-depth conventions in SR. Mechanism identical; only the convention list is field-specific (preserved as arms)."
+  },
+  "W13-P1-G-087": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-090",
+   "group": "dg30_decision_aware_shift_harm",
+   "reason": "Same claim schema: shift harm must be measured in a model/decision-aware space, generic divergences fail; G-087's hypothesis-disagreement statistic is one estimator of G-090's decision-relevant-subspace norm and is preserved as a baseline arm."
+  },
+  "W13-P1-G-091": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-C-081 (accepted master)",
+   "group": "mg04_effective_robustness_curve_artifacts",
+   "reason": "Both are arms of accepted C-081 (effective-robustness linear fits break near the accuracy ceiling and conclusions flip under ceiling-aware models): G-072 = the near-ceiling identifiability arm, G-091 = the alternative-link-function arm. Same refit-the-population falsification."
+  },
+  "W13-P1-G-095": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-G-035",
+   "group": "dg31_language_supplies_domain",
+   "reason": "Same hypothesis: most of what unsupervised adaptation extracts from target images is coarse domain identity that language can supply directly; G-095's systematic prompt-construction procedure is the operational arm of G-035."
+  },
+  "W13-P1-H-006": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-001",
+   "group": "dg01_degradation_factor_attribution",
+   "reason": "H-006 (signal-dependent noise is the largest single realism lever) is one main effect inside H-001's kernel/noise/compression factorial; same mechanism (noise+compression dominate kernel realism), same factorial falsification design. Family cap (degradation_realism_decomposition) also binds."
+  },
+  "W13-P1-H-008": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-054",
+   "group": "dg02_neural_processing_degradations",
+   "reason": "Same hypothesis: neural-processing-induced artifacts are an unmodeled degradation family that classic blur-noise-compression pipelines cannot express and simulated neural chains fix; H-008 is the single-pass on-device special case of H-054's compounding chain claim."
+  },
+  "W13-P1-H-018": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-097",
+   "group": "dg03_conditioning_beats_marginalization",
+   "reason": "Same mechanism (blind marginalization over degradations forces an averaged inverse operator; explicit conditioning/routing removes the penalty at matched capacity) and same matched-capacity falsification; H-018's archetype-MoE is the architectural variant of H-097's severity conditioning. Family-cap trigger."
+  },
+  "W13-P1-H-027": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-013",
+   "group": "dg04_misalignment_metric_bias",
+   "reason": "Same mechanism: residual reference misalignment in real-world paired benchmarks biases full-reference metrics against sharp/faithful outputs; H-013 states leaderboard blur selection, H-027 restates it as the confounded perception-distortion frontier. One quantify-misalignment-then-rerank design."
+  },
+  "W13-P1-H-032": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-091",
+   "group": "dg05_matched_recipe_compression",
+   "reason": "Equalization-null template: claimed architecture/framework differences are training-recipe and confound artifacts compressed by a matched-recipe rerun; H-032 (GAN vs diffusion) is the framework instance of H-091's architecture-decade claim. w2 guard caps this template at <=3 per shard."
+  },
+  "W13-P1-H-035": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-086",
+   "group": "dg06_evidence_gated_abstention",
+   "reason": "Same design: abstain/preserve-uncertainty where observation evidence is insufficient instead of fabricating; H-035 (text glyphs) is the text special case of H-086's safety-critical fine-structure claim."
+  },
+  "W13-P1-H-040": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-059",
+   "group": "dg07_distillation_mode_averaging",
+   "reason": "Cross-shard substrate pair: distillation objectives average the teacher's posterior modes so few-step students convert represented multi-modality into regression-like averaged output; J-059 (dense prediction, spatial-matching prediction, full gate schema) kept primary, H-040 is the restoration instance."
+  },
+  "W13-P1-H-041": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-080",
+   "group": "dg08_vae_roundtrip_ceiling",
+   "reason": "Cross-shard 3-way: the autoencoder roundtrip decode(encode(x)) is a hard information ceiling that upstream modules cannot cross; J-080 (generation, critical structure size, cleanest bound protocol) kept primary; H-041 (latent restoration fidelity floor) and J-084 (dense-prediction probe ceiling) are the same bound on other substrates."
+  },
+  "W13-P1-H-050": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-C-020 (accepted master)",
+   "group": "mg08_paraphrase_instability",
+   "reason": "Near-verbatim port of the paraphrase-instability template already consolidated into C-020 in wave 2 (E-021 was killed the same way): semantically equivalent phrasings of a restoration instruction produce materially different outputs and reported results are prompt-tuned upper bounds. Restoration-instruction arm preserved."
+  },
+  "W13-P1-H-053": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-033",
+   "group": "dg09_hallucination_scales_with_prior",
+   "reason": "Same hypothesis stated twice: fabrication rate on evidence-poor inputs rises with generative prior strength; H-033 parameterizes by data/model quality, H-053 by pretraining compute. One scale-ladder falsification. Family-cap trigger."
+  },
+  "W13-P1-H-056": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-C-029 (accepted master)",
+   "group": "mg07_benchmark_aging",
+   "reason": "Near-verbatim port: legacy test sets are photographically dated and rankings reshuffle on freshly collected modern imagery — C-029's benchmark-aging claim on the SR substrate (ranking-form arm preserved)."
+  },
+  "W13-P1-H-058": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-C-077 (accepted master)",
+   "group": "mg05_convention_harness_variance",
+   "reason": "Near-verbatim ports of accepted C-077 (harness/convention variance is an unbudgeted error term comparable to method margins): G-078 = preprocessing variants on robustness benchmarks, H-058 = border-crop/color-conversion/bit-depth conventions in SR. Mechanism identical; only the convention list is field-specific (preserved as arms)."
+  },
+  "W13-P1-H-061": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-C-032 (accepted master)",
+   "group": "mg06_adaptive_reuse_secret_replica",
+   "reason": "Near-verbatim port: adaptive overfitting from years of test-set reuse, exposed by a fresh/secret replica that compresses scores and gaps — C-032's design with SR benchmarks in the substrate slot."
+  },
+  "W13-P1-H-062": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-028",
+   "group": "dg10_observation_consistency_fidelity",
+   "reason": "Same proposal: replace/augment reference distortion with consistency-to-observation under the forward model; H-028 is the theory claim (tradeoff becomes mild), H-062 the audit claim (models violate re-degradation consistency) — one metric, two arms."
+  },
+  "W13-P1-H-084": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-044",
+   "group": "dg11_restoration_reimagination_boundary",
+   "reason": "Same instrument: per-region decomposition of output into observation-derived vs prior-injected information; H-044 defines the boundary and the field-level claim, H-084's forensic fidelity certificates are its deployment packaging."
+  },
+  "W13-P1-H-088": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-H-029",
+   "group": "dg12_human_machine_divergence",
+   "reason": "Same mechanism (perceptually tuned restoration destroys machine-relevant evidence; human-optimal and machine-optimal operating points diverge); H-088 is the OCR/text instance of H-029's general claim."
+  },
+  "W13-P1-J-042": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-040",
+   "group": "dg13_sharp_attractor_signature",
+   "reason": "Same mechanism: memorized items are over-sharpened score-field attractors; J-042's early trajectory commitment is a direct corollary measurement of J-040's convergence-rate/basin signature. Family-cap trigger (memorization <=6)."
+  },
+  "W13-P1-J-045": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-043",
+   "group": "dg14_layout_tier_memorization",
+   "reason": "Same discovery: compositional/layout-tier memorization distinct from pixel tier; J-045's augmentation-invariance claim is the mitigation-audit arm of J-043 (its hypothesis restates J-043's mechanism). Family-cap trigger."
+  },
+  "W13-P1-J-046": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-041",
+   "group": "dg15_surgical_unlearning",
+   "reason": "Same instrument (gradient-attribution localization of caption-keyed memorization in cross-attention K/V and ablation of <1% of weights); J-046's neighborhood-diversity improvement is the follow-on arm of J-041's localization claim. Family-cap trigger; J-046's claim that memorization harms nearby generalization is preserved as the high-value arm."
+  },
+  "W13-P1-J-053": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-052",
+   "group": "dg16_seed_layout_control",
+   "reason": "Same mechanism (under ODE sampling, initial noise determines coarse composition independently of prompt); J-053's linear noise-direction controls are the continuous version of J-052's discrete seed-layout library."
+  },
+  "W13-P1-J-054": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-031",
+   "group": "dg17_iterated_regeneration_contraction",
+   "reason": "Same law: iterated inversion/regeneration is a contraction toward model-typical attractors with a measurable per-model rate; J-054's renoise-denoise fixed points and per-region img2img rewriting predictor are the same contraction measured on another loop."
+  },
+  "W13-P1-J-060": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-056",
+   "group": "dg18_dispersion_matches_illposedness",
+   "reason": "Same mechanism: generative-sampler dispersion expresses the observability structure of the inverse problem (peaks exactly where the problem is ill-posed); J-060's aperture-problem anisotropy is the optical-flow instance of J-056's depth claim and is preserved as the sharpest quantitative arm. Family-cap trigger (posterior_dispersion <=6)."
+  },
+  "W13-P1-J-084": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-080",
+   "group": "dg08_vae_roundtrip_ceiling",
+   "reason": "Cross-shard 3-way: the autoencoder roundtrip decode(encode(x)) is a hard information ceiling that upstream modules cannot cross; J-080 (generation, critical structure size, cleanest bound protocol) kept primary; H-041 (latent restoration fidelity floor) and J-084 (dense-prediction probe ceiling) are the same bound on other substrates."
+  },
+  "W13-P1-J-091": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-093",
+   "group": "dg19_spectrum_matched_schedules",
+   "reason": "Same law: the noise schedule should equalize information destruction given the data power spectrum; J-091's resolution-corrected schedules are the special case where the spectrum shifts with resolution. One derive-schedule-from-spectrum design."
+  },
+  "W13-P1-J-104": {
+   "verdict": "kill_or_merge",
+   "merge_target": "W13-P1-J-038",
+   "group": "dg20_memorization_dose_response",
+   "reason": "Substrate pair: sigmoidal memorization-vs-duplication law with predictable midpoint shift; J-104 transports J-038's dose-response design to video with a redundancy-multiplier correction (within-clip redundancy acts as built-in duplication). Family-cap trigger (memorization <=6); J-104's video-privacy arm preserved, resurrection candidate if video track is wanted separately."
+  }
+ },
+ "flagged_permutation": {
+  "cheap_predictor_of_outcome": {
+   "members": [
+    "W13-P1-G-021",
+    "W13-P1-G-043",
+    "W13-P1-G-080",
+    "W13-P1-G-084",
+    "W13-P1-G-089",
+    "W13-P1-G-090",
+    "W13-P1-G-087",
+    "W13-P1-G-092",
+    "W13-P1-G-099",
+    "W13-P1-H-012",
+    "W13-P1-H-017",
+    "W13-P1-J-026",
+    "W13-P1-J-029",
+    "W13-P1-J-032",
+    "W13-P1-J-049",
+    "W13-P1-J-062",
+    "W13-P1-J-078"
+   ],
+   "sizes": {
+    "members": 17,
+    "kept_members": 16
+   }
+  },
+  "snr_reparameterization_universality": {
+   "members": [
+    "W13-P1-J-001",
+    "W13-P1-J-035",
+    "W13-P1-J-047",
+    "W13-P1-J-093",
+    "W13-P1-J-091"
+   ],
+   "sizes": {
+    "members": 5,
+    "kept_members": 4
+   }
+  },
+  "commitment_window": {
+   "members": [
+    "W13-P1-J-047",
+    "W13-P1-J-064",
+    "W13-P1-J-095",
+    "W13-P1-J-098",
+    "W13-P1-H-036",
+    "W13-P1-J-042"
+   ],
+   "sizes": {
+    "members": 6,
+    "kept_members": 5
+   }
+  },
+  "posterior_dispersion_as_uncertainty": {
+   "members": [
+    "W13-P1-H-030",
+    "W13-P1-H-037",
+    "W13-P1-H-039",
+    "W13-P1-J-056",
+    "W13-P1-J-060",
+    "W13-P1-J-057",
+    "W13-P1-J-058",
+    "W13-P1-J-062",
+    "W13-P1-J-063"
+   ],
+   "sizes": {
+    "members": 9,
+    "kept_members": 8
+   }
+  },
+  "selection_oracle_circularity": {
+   "members": [
+    "W13-P1-G-019",
+    "W13-P1-G-003",
+    "W13-P1-G-029",
+    "W13-P1-G-034",
+    "W13-P1-G-076"
+   ],
+   "sizes": {
+    "members": 5,
+    "kept_members": 4
+   }
+  },
+  "contamination_exposure": {
+   "members": [
+    "W13-P1-G-071",
+    "W13-P1-G-052",
+    "W13-P1-G-057",
+    "W13-P1-G-058",
+    "W13-P1-G-049",
+    "W13-P1-G-051"
+   ],
+   "sizes": {
+    "members": 6,
+    "kept_members": 3
+   }
+  },
+  "corruption_vs_natural_shift": {
+   "members": [
+    "W13-P1-G-001",
+    "W13-P1-G-024",
+    "W13-P1-G-069"
+   ],
+   "sizes": {
+    "members": 3,
+    "kept_members": 3
+   }
+  },
+  "fm_nullifies_adaptation_algorithms": {
+   "members": [
+    "W13-P1-G-015",
+    "W13-P1-G-017",
+    "W13-P1-G-018",
+    "W13-P1-G-025",
+    "W13-P1-G-026",
+    "W13-P1-G-006",
+    "W13-P1-G-014"
+   ],
+   "sizes": {
+    "members": 7,
+    "kept_members": 5
+   }
+  },
+  "degradation_realism_decomposition": {
+   "members": [
+    "W13-P1-H-001",
+    "W13-P1-H-006",
+    "W13-P1-H-002",
+    "W13-P1-H-003",
+    "W13-P1-H-005",
+    "W13-P1-H-007",
+    "W13-P1-H-012"
+   ],
+   "sizes": {
+    "members": 7,
+    "kept_members": 6
+   }
+  },
+  "metric_gaming_rewards_hallucination": {
+   "members": [
+    "W13-P1-H-013",
+    "W13-P1-H-027",
+    "W13-P1-H-024",
+    "W13-P1-H-059",
+    "W13-P1-H-075"
+   ],
+   "sizes": {
+    "members": 5,
+    "kept_members": 4
+   }
+  },
+  "equalization_matched_budget_null": {
+   "members": [
+    "W13-P1-H-091",
+    "W13-P1-H-032",
+    "W13-P1-H-099",
+    "W13-P1-H-081",
+    "W13-P1-G-086"
+   ],
+   "sizes": {
+    "members": 5,
+    "kept_members": 4
+   }
+  },
+  "consistency_self_audit_new_T": {
+   "members": [
+    "W13-P1-H-092",
+    "W13-P1-H-100",
+    "W13-P1-H-028",
+    "W13-P1-H-062",
+    "W13-P1-J-037",
+    "W13-P1-J-077"
+   ],
+   "sizes": {
+    "members": 6,
+    "kept_members": 5
+   }
+  },
+  "iterated_regeneration_drift": {
+   "members": [
+    "W13-P1-J-031",
+    "W13-P1-J-054",
+    "W13-P1-H-078",
+    "W13-P1-H-054",
+    "W13-P1-H-008",
+    "W13-P1-J-102",
+    "W13-P1-H-034",
+    "W13-P1-H-045",
+    "W13-P1-H-096"
+   ],
+   "sizes": {
+    "members": 9,
+    "kept_members": 7
+   }
+  },
+  "memorization_family": {
+   "members": [
+    "W13-P1-J-038",
+    "W13-P1-J-104",
+    "W13-P1-J-039",
+    "W13-P1-J-040",
+    "W13-P1-J-042",
+    "W13-P1-J-041",
+    "W13-P1-J-046",
+    "W13-P1-J-043",
+    "W13-P1-J-045",
+    "W13-P1-J-044",
+    "W13-P1-J-025",
+    "W13-P1-J-074",
+    "W13-P1-H-043",
+    "W13-P1-H-098"
+   ],
+   "sizes": {
+    "members": 14,
+    "kept_members": 10
+   }
+  },
+  "distillation_lossmap": {
+   "members": [
+    "W13-P1-J-019",
+    "W13-P1-J-049",
+    "W13-P1-J-059",
+    "W13-P1-H-040",
+    "W13-P1-J-072",
+    "W13-P1-J-073",
+    "W13-P1-J-074",
+    "W13-P1-J-075",
+    "W13-P1-J-076",
+    "W13-P1-J-077",
+    "W13-P1-J-078",
+    "W13-P1-J-079"
+   ],
+   "sizes": {
+    "members": 12,
+    "kept_members": 11
+   }
+  },
+  "vae_bottleneck_attribution": {
+   "members": [
+    "W13-P1-J-080",
+    "W13-P1-H-041",
+    "W13-P1-J-084",
+    "W13-P1-J-081",
+    "W13-P1-J-082",
+    "W13-P1-J-083",
+    "W13-P1-J-085",
+    "W13-P1-J-086",
+    "W13-P1-J-087"
+   ],
+   "sizes": {
+    "members": 9,
+    "kept_members": 7
+   }
+  },
+  "relational_binding_failures": {
+   "members": [
+    "W13-P1-J-014",
+    "W13-P1-J-023",
+    "W13-P1-J-064",
+    "W13-P1-J-065",
+    "W13-P1-J-068",
+    "W13-P1-J-070"
+   ],
+   "sizes": {
+    "members": 6,
+    "kept_members": 6
+   }
+  },
+  "language_prior_substitution": {
+   "members": [
+    "W13-P1-G-097",
+    "W13-P1-H-046",
+    "W13-P1-G-035",
+    "W13-P1-G-095"
+   ],
+   "sizes": {
+    "members": 4,
+    "kept_members": 3
+   }
+  },
+  "machine_vs_human_objectives": {
+   "members": [
+    "W13-P1-H-029",
+    "W13-P1-H-088",
+    "W13-P1-H-083",
+    "W13-P1-H-086",
+    "W13-P1-H-035",
+    "W13-P1-H-089",
+    "W13-P1-H-085",
+    "W13-P1-H-087"
+   ],
+   "sizes": {
+    "members": 8,
+    "kept_members": 6
+   }
+  },
+  "protocol_dependence_of_rankings": {
+   "members": [
+    "W13-P1-G-073",
+    "W13-P1-G-012",
+    "W13-P1-G-044",
+    "W13-P1-G-085",
+    "W13-P1-G-069"
+   ],
+   "sizes": {
+    "members": 5,
+    "kept_members": 4
+   }
+  }
+ },
+ "master_collision_flags_on_keeps": {
+  "W13-P1-G-001": {
+   "master_ids": [
+    "W13-P1-C-028"
+   ],
+   "note": "corruption-vs-natural-shift family; C-028 is the accepted ancestor (corruption scores mislead about real degradation); G-001 keeps a TTA-native mechanism (class-conditional structure preservation)."
+  },
+  "W13-P1-G-002": {
+   "master_ids": [],
+   "note": "Known-result risk (UNVERIFIED): batch-size-1 failure of batch-statistics TTA is the motivating observation of the single-sample-TTA literature; the systematic gains-are-batch-artifacts audit may still be novel. Prior-art check first-in-line."
+  },
+  "W13-P1-G-005": {
+   "master_ids": [
+    "W13-P1-A-091",
+    "W13-P1-E-072"
+   ],
+   "note": "self-training/adaptation collapse family: A-091 predicts degenerate self-training for SAM, E-072 round-over-round pseudo-label drift; G-005 generalizes to a collapse-frequency protocol claim over TTA methods."
+  },
+  "W13-P1-G-009": {
+   "master_ids": [
+    "W13-P1-C-019"
+   ],
+   "note": "C-019 (TTA-based uncertainty measures augmentation sensitivity) is family-adjacent; G-009's claim is about accuracy gains, not uncertainty."
+  },
+  "W13-P1-G-014": {
+   "master_ids": [
+    "W13-P1-F-023"
+   ],
+   "note": "HIGH: F-023 (sim-to-real gap lives in normalization statistics; recalibration recovers it) asserts the same low-level-statistics-matching recovery with model-side stats; G-014's input-space transform + reversibility/safety argument is the delta. Novelty gate first-in-line."
+  },
+  "W13-P1-G-018": {
+   "master_ids": [
+    "W13-P1-C-024"
+   ],
+   "note": "benchmark-obsolescence adjacency: zero-shot saturation of office-style suites; distinct object (benchmark validity) from C-024 (seen-shot attribution)."
+  },
+  "W13-P1-G-028": {
+   "master_ids": [
+    "W13-P1-C-012"
+   ],
+   "note": "attribution-null family: C-012 (ensembles improve calibration by uniform confidence shrink) is the calibration analog of G-028's uniform-lift claim for weight averaging. See also killed G-068."
+  },
+  "W13-P1-G-029": {
+   "master_ids": [
+    "W13-P1-C-032"
+   ],
+   "note": "adaptive-overfitting adjacency: C-032 measures test-reuse gains; G-029's object is selection-protocol leakage in the DG literature specifically."
+  },
+  "W13-P1-G-034": {
+   "master_ids": [
+    "W13-P1-C-047"
+   ],
+   "note": "variance-exceeds-gaps template: C-047 (few-shot support-set draws) is the accepted ancestor; G-034's axis is held-out-domain choice with method-domain interactions."
+  },
+  "W13-P1-G-047": {
+   "master_ids": [
+    "W13-P1-C-047",
+    "W13-P1-C-054"
+   ],
+   "note": "evaluation-statistics family: dependence-inflated variance vs draw/seed variance; G-047's effective-sample-size mechanism is distinct but the deliverable (published significances fail) matches the family."
+  },
+  "W13-P1-G-049": {
+   "master_ids": [
+    "W13-P1-C-029",
+    "W13-P1-C-058",
+    "W13-P1-F-040"
+   ],
+   "note": "curation family: C-058 (curation adds little), F-040 (quality filters anti-select dense value); G-049's reconstruct-the-rejected-data optimism measurement is the delta."
+  },
+  "W13-P1-G-051": {
+   "master_ids": [
+    "W13-P1-C-029"
+   ],
+   "note": "HIGH: time-respecting splits vs shuffled splits is family-adjacent to C-029 (benchmark aging) and is standard practice in time-series/recsys evaluation (known-practice risk, UNVERIFIED). Kept for the vision-benchmark ranking-change claim; novelty gate first-in-line."
+  },
+  "W13-P1-G-053": {
+   "master_ids": [
+    "W13-P1-C-015"
+   ],
+   "note": "HIGH: C-015 (conformal marginal coverage hides conditional failures under shift) is the accepted neighbor; G-053's delta is dependence/exchangeability violation in streams rather than conditional coverage."
+  },
+  "W13-P1-G-054": {
+   "master_ids": [
+    "W13-P1-D-064",
+    "W13-P1-D-061"
+   ],
+   "note": "HIGH: web-curation typicality priors (D-064 web-aesthetic, D-061 canonical scale) already accepted; G-054's photographer-intent mechanism and unposed-capture design is the delta. Novelty gate first-in-line."
+  },
+  "W13-P1-G-056": {
+   "master_ids": [
+    "W13-P1-C-023",
+    "W13-P1-F-086"
+   ],
+   "note": "near-duplicate/leakage family; G-056's object is within-dataset sibling structure changing benchmark conclusions."
+  },
+  "W13-P1-G-060": {
+   "master_ids": [],
+   "note": "gen_n boundary: scaling-law territory (commissioned to gen_n); G-060's OOD-saturates-earlier claim is robustness-specific. See off-master flags."
+  },
+  "W13-P1-G-065": {
+   "master_ids": [
+    "W13-P1-B-046"
+   ],
+   "note": "shortcut-persistence family: B-046 (texture-shape bias at boundaries); G-065 claims scale changes thresholds, not mechanisms."
+  },
+  "W13-P1-G-069": {
+   "master_ids": [
+    "W13-P1-C-028"
+   ],
+   "note": "HIGH: closest kept neighbor to accepted C-028; kept because the method-panel ranking-transfer design (variance of method gains across regimes) is a different falsification instrument than C-028's model-score proxy claim. Novelty gate first-in-line."
+  },
+  "W13-P1-G-071": {
+   "master_ids": [
+    "W13-P1-C-023",
+    "W13-P1-C-024",
+    "W13-P1-C-032",
+    "W13-P1-F-086"
+   ],
+   "note": "HIGH: contamination-family umbrella on robustness benchmarks; kept as this wave's single decontamination-protocol representative (absorbed G-052; G-057/G-058 killed into C-024/C-085)."
+  },
+  "W13-P1-G-076": {
+   "master_ids": [
+    "W13-P1-C-047"
+   ],
+   "note": "selection-privilege arm of the statistics family: group labels used for selection are the hidden oracle."
+  },
+  "W13-P1-G-086": {
+   "master_ids": [
+    "W13-P1-D-091",
+    "W13-P1-C-045"
+   ],
+   "note": "HIGH: matched-budget-null template; D-091 (equal-inference-budget re-evaluation) and C-045 (prompt-budget) are accepted ancestors; G-086's TTA-field reinvestment claim is the delta. Also collides with in-flight L-092 (iso-cost agent loops)."
+  },
+  "W13-P1-G-093": {
+   "master_ids": [
+    "W13-P1-C-082"
+   ],
+   "note": "shift-factorization adjacency; G-093's invariance-robustness frontier is a mechanism law, not a benchmark critique."
+  },
+  "W13-P1-G-096": {
+   "master_ids": [
+    "W13-P1-C-052"
+   ],
+   "note": "text-side shift family: C-052 (synonym substitution reorders rankings) accepted; wave-2 consolidated cross-lingual variants (E-054⊃D-012). G-096's claim of a full second shift axis with caption-convention mechanism is the delta."
+  },
+  "W13-P1-G-097": {
+   "master_ids": [
+    "W13-P1-C-089",
+    "W13-P1-D-058"
+   ],
+   "note": "HIGH: language-prior substitution family (C-089 blind-control hallucination, D-058 co-occurrence hallucination); G-097's delta is the shift-dependent dynamic (accuracy degrades slowly while grounding collapses)."
+  },
+  "W13-P1-H-013": {
+   "master_ids": [
+    "W13-P1-B-033"
+   ],
+   "note": "metric-pathology family adjacency (annotator-threshold guessing); H-013's alignment-error mechanism is restoration-native."
+  },
+  "W13-P1-H-024": {
+   "master_ids": [
+    "W13-P1-C-037"
+   ],
+   "note": "HIGH: C-037 (fixed-feature-space generative metrics structurally gameable) is the accepted ancestor; H-024's recognizable metric-texture signature + human-detectability claim is the delta. Novelty gate first-in-line."
+  },
+  "W13-P1-H-039": {
+   "master_ids": [
+    "W13-P1-B-052"
+   ],
+   "note": "correlated-error family: B-052 (deep ensembles agree on the same wrong boundary) is the accepted ancestor of agreement-can-be-confidently-wrong."
+  },
+  "W13-P1-H-043": {
+   "master_ids": [
+    "W13-P1-F-093"
+   ],
+   "note": "memorization-privacy family: F-093 (generator memorization leaks training individuals) accepted for synthetic data; H-043 moves the hazard to restoration outputs. Also gen_n collision (N-081)."
+  },
+  "W13-P1-H-055": {
+   "master_ids": [
+    "W13-P1-C-025",
+    "W13-P1-B-091"
+   ],
+   "note": "reference-quality family: C-025 (annotation error exceeds model gaps), B-091 (label-entropy floors); H-055's regression-substrate ceiling (degraded GT penalizes cleaner-than-reference outputs) is the delta."
+  },
+  "W13-P1-H-059": {
+   "master_ids": [
+    "W13-P1-C-037"
+   ],
+   "note": "metric-gaming family; no-reference IQA domain mismatch is the delta."
+  },
+  "W13-P1-H-083": {
+   "master_ids": [
+    "W13-P1-D-030"
+   ],
+   "note": "HIGH: D-030 (SR preprocessing biases tiny-object labels toward typical categories) is the accepted detection-side instance; H-083 generalizes to restore-then-recognize vs degraded-input training. Novelty gate first-in-line."
+  },
+  "W13-P1-H-091": {
+   "master_ids": [
+    "W13-P1-C-054"
+   ],
+   "note": "recipe-vs-architecture adjacency (seed/recipe variance family); also gen_m boundary (training-recipe science)."
+  },
+  "W13-P1-H-092": {
+   "master_ids": [
+    "W13-P1-E-029",
+    "W13-P1-C-020"
+   ],
+   "note": "consistency_self_audit family, new T = scale composition (w2 rule: each member needs a genuinely different T — satisfied)."
+  },
+  "W13-P1-H-096": {
+   "master_ids": [
+    "W13-P1-D-030"
+   ],
+   "note": "typicality-substitution family: outputs drift toward head-of-distribution classes under ambiguity."
+  },
+  "W13-P1-H-098": {
+   "master_ids": [
+    "W13-P1-F-093"
+   ],
+   "note": "memorization family (patch-recall in regression models); gen_n collision (N-055/N-081)."
+  },
+  "W13-P1-H-100": {
+   "master_ids": [
+    "W13-P1-C-020"
+   ],
+   "note": "consistency_self_audit family, new T = geometric equivariance; known equivariant-SR literature risk (UNVERIFIED), prior-art check required."
+  },
+  "W13-P1-J-008": {
+   "master_ids": [
+    "W13-P1-A-039"
+   ],
+   "note": "HIGH: A-039 (register/outlier tokens in SAM correlated with leakage) accepted; wave-2 flagged registers as a high-risk literature-adjacent topic (E-035). J-008's generative-register content claim (appearance/style buffering, deletion dissociates style from layout) is the delta. Novelty gate first-in-line."
+  },
+  "W13-P1-J-012": {
+   "master_ids": [
+    "W13-P1-A-079"
+   ],
+   "note": "amodal/occlusion family adjacency (SAM modal/amodal ambiguity accepted); J-012's claim is representational (probes on generative features)."
+  },
+  "W13-P1-J-015": {
+   "master_ids": [
+    "W13-P1-A-079"
+   ],
+   "note": "occlusion-ordering adjacency; see also gen_p collision (P-049)."
+  },
+  "W13-P1-J-038": {
+   "master_ids": [
+    "W13-P1-F-093"
+   ],
+   "note": "memorization dose-response; F-093 is the accepted privacy neighbor; strongest off-master collision is gen_n (N-053/N-054/N-055)."
+  },
+  "W13-P1-J-057": {
+   "master_ids": [
+    "W13-P1-B-019"
+   ],
+   "note": "annotator-disagreement family: B-019 (uncertainty maps fail to track expert disagreement); J-057 claims generative samplers DO match the disagreement distribution — a deliberate cross-wave tension worth preserving."
+  },
+  "W13-P1-J-059": {
+   "master_ids": [
+    "W13-P1-A-080"
+   ],
+   "note": "distillation-kills-ambiguity family: A-080 accepted for SAM students; J-059's spatial-matching prediction (student blur map == teacher dispersion map) is the delta."
+  },
+  "W13-P1-J-062": {
+   "master_ids": [
+    "W13-P1-B-052"
+   ],
+   "note": "correlated-error family under shift (consensus stays high while accuracy falls)."
+  },
+  "W13-P1-J-072": {
+   "master_ids": [
+    "W13-P1-A-080"
+   ],
+   "note": "distillation family: tail-truncation order extends A-080's ambiguity-first claim to mode mass."
+  },
+  "W13-P1-J-074": {
+   "master_ids": [
+    "W13-P1-A-080"
+   ],
+   "note": "distillation family; also gen_n collision (N-070 membership inheritance)."
+  },
+  "W13-P1-J-075": {
+   "master_ids": [
+    "W13-P1-A-080"
+   ],
+   "note": "distillation family: structural (baked-in) tradeoff arm."
+  },
+  "W13-P1-J-082": {
+   "master_ids": [
+    "W13-P1-F-060"
+   ],
+   "note": "fingerprint family: F-060 (students inherit generator fingerprints) accepted; J-082's decoder-determinism/texture-vocabulary claim is the delta."
+  },
+  "W13-P1-J-086": {
+   "master_ids": [
+    "W13-P1-D-060"
+   ],
+   "note": "HIGH: D-060 (shared web data correlates foundation-detector errors, defeating ensembling) is the accepted ancestor of the correlated-ecosystem-error claim; J-086's shared-VAE module mechanism + decoder-swap instrument is the delta. Novelty gate first-in-line."
+  }
+ },
+ "offmaster_collision_flags_on_keeps": {
+  "W13-P1-J-038": [
+   "gen_n:N-053",
+   "gen_n:N-054",
+   "gen_n:N-055"
+  ],
+  "W13-P1-J-074": [
+   "gen_n:N-070"
+  ],
+  "W13-P1-H-043": [
+   "gen_n:N-081"
+  ],
+  "W13-P1-H-098": [
+   "gen_n:N-055",
+   "gen_n:N-081"
+  ],
+  "W13-P1-G-047": [
+   "gen_n:N-043"
+  ],
+  "W13-P1-G-056": [
+   "gen_n:N-043"
+  ],
+  "W13-P1-G-030": [
+   "gen_n:scaling-law territory (N-016/N-051)"
+  ],
+  "W13-P1-G-060": [
+   "gen_n:scaling-law territory (N-016/N-051)"
+  ],
+  "W13-P1-G-063": [
+   "gen_n:scaling-law territory"
+  ],
+  "W13-P1-G-086": [
+   "gen_l:L-092"
+  ],
+  "W13-P1-G-006": [
+   "gen_l:test-time-compute boundary; gen_q dispatch-conditioned territory (R4)"
+  ],
+  "W13-P1-H-076": [
+   "gen_k:K-077"
+  ],
+  "W13-P1-H-077": [
+   "gen_k:K-077"
+  ],
+  "W13-P1-H-079": [
+   "gen_k:video-memory territory",
+   "gen_m:M-081 adjacency"
+  ],
+  "W13-P1-J-009": [
+   "gen_p:P-055",
+   "gen_p:P-061"
+  ],
+  "W13-P1-J-012": [
+   "gen_p:P-049"
+  ],
+  "W13-P1-J-015": [
+   "gen_p:P-049"
+  ],
+  "W13-P1-J-005": [
+   "gen_k:monocular-depth-science territory"
+  ],
+  "W13-P1-J-011": [
+   "gen_k:monocular-depth-science territory"
+  ],
+  "W13-P1-J-097": [
+   "gen_k:video-understanding territory"
+  ],
+  "W13-P1-J-102": [
+   "gen_k:video-understanding-memory territory (effective context measurement)"
+  ],
+  "W13-P1-J-103": [
+   "gen_k:3D/4D territory (camera-vs-object motion)"
+  ],
+  "W13-P1-J-092": [
+   "gen_m:training-dynamics boundary"
+  ],
+  "W13-P1-J-078": [
+   "gen_m:M-069 adjacency"
+  ],
+  "W13-P1-H-091": [
+   "gen_m:recipe-science boundary"
+  ],
+  "W13-P1-H-090": [
+   "gen_u:fairness territory (queued) — accepted H-090 becomes occupied ground for gen_u anti-overlap"
+  ],
+  "W13-P1-J-067": [
+   "gen_u:cultural-prior adjacency (queued)"
+  ]
+ },
+ "anomaly_ids": {
+  "W13-P1-G-033": "compositional shift (familiar factors, novel combinations) as a distinct unmeasured failure axis uncorrelated with standard shift scores",
+  "W13-P1-G-050": "deployment feedback loops break i.i.d. evaluation; simulation-based protocols are the only instrument that sees it",
+  "W13-P1-G-065": "shortcut reliance survives foundation scale mechanistically unchanged — scale moves thresholds, not mechanisms",
+  "W13-P1-G-085": "bursty arrival breaks TTA at ZERO distribution shift (prior-collapse updates from class bursts)",
+  "W13-P1-H-025": "human preference between faithful and hallucinated restorations reverses with viewing time and ground-truth knowledge — the protocol encodes the hallucination bias",
+  "W13-P1-H-042": "imperceptible input perturbations deterministically flip hallucinated semantic content — restored semantics are functions of noise-level details (forensic significance)",
+  "W13-P1-H-043": "restoration models can inject memorized training images into outputs on ambiguous inputs (privacy/copyright hazard no benchmark surfaces)",
+  "W13-P1-H-049": "SSL invariances make foundation features WORSE perceptual-loss backbones than older supervised features — inverts the newer-features-are-better default",
+  "W13-P1-H-051": "failure density peaks where the prior is strongest and evidence weakest — inverts the strong-priors-help-hard-content intuition",
+  "W13-P1-H-071": "the single-ground-truth training convention is the common root cause of both regression blur and generative overconfident fabrication",
+  "W13-P1-H-076": "the multi-frame advantage of video SR is largely temporal aliasing exploitation and collapses on anti-aliased/compressed footage",
+  "W13-P1-H-080": "face-video enhancement alters lip/expression micro-motion enough to change lip-reading and perceived affect while passing every quality metric",
+  "W13-P1-J-008": "diffusion transformers grow register-like high-norm tokens that buffer global appearance state; deleting them breaks style while sparing layout",
+  "W13-P1-J-010": "generative features resolve left/right symmetric-part ambiguity that discriminative features cannot, with margin concentrated exactly on symmetry-confusable pairs",
+  "W13-P1-J-018": "coarse expected-motion fields are linearly decodable from single-image diffusion features — implicit dynamics knowledge in image-only generators",
+  "W13-P1-J-039": "verbatim recall is caption-keyed: prompt-space perturbation collapses extraction without retraining (inference-time privacy mitigation)",
+  "W13-P1-J-052": "the initial noise seed is a transferable composition genome enabling a searchable layout library with no model modification",
+  "W13-P1-J-065": "count control fails at the same subitizing-like breakpoint (~4) in both probe decodability and generation accuracy — a representational boundary shared by reading and doing",
+  "W13-P1-J-082": "decoder texture hallucination is deterministic: a fixed texture vocabulary that fingerprints the decoder and excludes unrepresentable textures",
+  "W13-P1-J-090": "terminal-SNR mismatch injects a closed-form-computable global bias verifiable across public models — a rare pencil-and-paper falsifiable",
+  "W13-P1-J-102": "long-horizon collapse periodicity reverse-engineers the effective temporal memory of black-box video models"
+ },
+ "deliberate_tensions": {
+  "W13-P1-H-030": "vs H-037: cross-seed variance is a usable hallucination map vs diversity is misallocated (varies irrelevant texture, collapses where ambiguity matters). Adjudicate by experiment, not dedup.",
+  "W13-P1-H-037": "vs H-030 (see above); also vs J-056/J-057 which assert dispersion tracks true ambiguity in dense diffusion samplers.",
+  "W13-P1-J-056": "vs J-058: dispersion localizes genuine ill-posedness vs posterior samplers systematically under-disperse. Both kept; regime-mapping pair.",
+  "W13-P1-J-057": "vs J-058 (same tension) and vs master B-019 (uncertainty maps fail to track expert disagreement).",
+  "W13-P1-J-058": "vs J-056/J-057: under-dispersion vs faithful ambiguity expression.",
+  "W13-P1-H-099": "vs J-079: iteration adds nothing at matched compute for evidence-bounded fidelity vs the 1-to-2-step transition is a real discontinuity. Also vs J-019.",
+  "W13-P1-J-079": "vs H-099 (see above).",
+  "W13-P1-J-019": "vs J-073/J-075: one-step students retain perception-feature quality vs lose input sensitivity and accessible diversity. Complementary regime map, kept deliberately.",
+  "W13-P1-J-073": "vs J-019 (see above).",
+  "W13-P1-J-075": "vs J-019 (see above).",
+  "W13-P1-G-037": "vs G-041: classical two-sample tests on frozen embeddings suffice for shift detection vs embedding statistics are dominated by low-level factors that mask semantic shift.",
+  "W13-P1-G-041": "vs G-037 (see above).",
+  "W13-P1-J-023": "vs J-070: negation failure located in score-space geometry (un-negatable relational content) vs upstream in the text encoder embedding. Competing mechanisms; both kept.",
+  "W13-P1-J-070": "vs J-023 (see above).",
+  "W13-P1-H-095": "vs H-002: degradation-distribution enrichment keeps paying vs a compact measured degradation set beats large randomized diversity. Budget-allocation tension.",
+  "W13-P1-H-002": "vs H-095 (see above).",
+  "W13-P1-G-028": "vs killed G-068 (resurrectable): weight-averaging gains are generic variance reduction vs weight averaging dominates the robustness frontier."
+ },
+ "keep_ids": [
+  "W13-P1-G-001",
+  "W13-P1-G-002",
+  "W13-P1-G-004",
+  "W13-P1-G-005",
+  "W13-P1-G-006",
+  "W13-P1-G-007",
+  "W13-P1-G-009",
+  "W13-P1-G-010",
+  "W13-P1-G-011",
+  "W13-P1-G-014",
+  "W13-P1-G-015",
+  "W13-P1-G-016",
+  "W13-P1-G-018",
+  "W13-P1-G-019",
+  "W13-P1-G-020",
+  "W13-P1-G-021",
+  "W13-P1-G-022",
+  "W13-P1-G-023",
+  "W13-P1-G-024",
+  "W13-P1-G-025",
+  "W13-P1-G-027",
+  "W13-P1-G-028",
+  "W13-P1-G-029",
+  "W13-P1-G-030",
+  "W13-P1-G-032",
+  "W13-P1-G-033",
+  "W13-P1-G-034",
+  "W13-P1-G-035",
+  "W13-P1-G-037",
+  "W13-P1-G-038",
+  "W13-P1-G-039",
+  "W13-P1-G-040",
+  "W13-P1-G-041",
+  "W13-P1-G-042",
+  "W13-P1-G-043",
+  "W13-P1-G-044",
+  "W13-P1-G-045",
+  "W13-P1-G-046",
+  "W13-P1-G-047",
+  "W13-P1-G-048",
+  "W13-P1-G-049",
+  "W13-P1-G-050",
+  "W13-P1-G-051",
+  "W13-P1-G-053",
+  "W13-P1-G-054",
+  "W13-P1-G-056",
+  "W13-P1-G-059",
+  "W13-P1-G-060",
+  "W13-P1-G-061",
+  "W13-P1-G-062",
+  "W13-P1-G-063",
+  "W13-P1-G-064",
+  "W13-P1-G-065",
+  "W13-P1-G-066",
+  "W13-P1-G-067",
+  "W13-P1-G-069",
+  "W13-P1-G-070",
+  "W13-P1-G-071",
+  "W13-P1-G-073",
+  "W13-P1-G-075",
+  "W13-P1-G-076",
+  "W13-P1-G-077",
+  "W13-P1-G-079",
+  "W13-P1-G-080",
+  "W13-P1-G-081",
+  "W13-P1-G-082",
+  "W13-P1-G-083",
+  "W13-P1-G-084",
+  "W13-P1-G-085",
+  "W13-P1-G-086",
+  "W13-P1-G-088",
+  "W13-P1-G-089",
+  "W13-P1-G-090",
+  "W13-P1-G-092",
+  "W13-P1-G-093",
+  "W13-P1-G-094",
+  "W13-P1-G-096",
+  "W13-P1-G-097",
+  "W13-P1-G-098",
+  "W13-P1-G-099",
+  "W13-P1-G-100",
+  "W13-P1-H-001",
+  "W13-P1-H-002",
+  "W13-P1-H-003",
+  "W13-P1-H-004",
+  "W13-P1-H-005",
+  "W13-P1-H-007",
+  "W13-P1-H-009",
+  "W13-P1-H-010",
+  "W13-P1-H-011",
+  "W13-P1-H-012",
+  "W13-P1-H-013",
+  "W13-P1-H-014",
+  "W13-P1-H-015",
+  "W13-P1-H-016",
+  "W13-P1-H-017",
+  "W13-P1-H-019",
+  "W13-P1-H-020",
+  "W13-P1-H-021",
+  "W13-P1-H-022",
+  "W13-P1-H-023",
+  "W13-P1-H-024",
+  "W13-P1-H-025",
+  "W13-P1-H-026",
+  "W13-P1-H-028",
+  "W13-P1-H-029",
+  "W13-P1-H-030",
+  "W13-P1-H-031",
+  "W13-P1-H-033",
+  "W13-P1-H-034",
+  "W13-P1-H-036",
+  "W13-P1-H-037",
+  "W13-P1-H-038",
+  "W13-P1-H-039",
+  "W13-P1-H-042",
+  "W13-P1-H-043",
+  "W13-P1-H-044",
+  "W13-P1-H-045",
+  "W13-P1-H-046",
+  "W13-P1-H-047",
+  "W13-P1-H-048",
+  "W13-P1-H-049",
+  "W13-P1-H-051",
+  "W13-P1-H-052",
+  "W13-P1-H-054",
+  "W13-P1-H-055",
+  "W13-P1-H-057",
+  "W13-P1-H-059",
+  "W13-P1-H-060",
+  "W13-P1-H-063",
+  "W13-P1-H-064",
+  "W13-P1-H-065",
+  "W13-P1-H-066",
+  "W13-P1-H-067",
+  "W13-P1-H-068",
+  "W13-P1-H-069",
+  "W13-P1-H-070",
+  "W13-P1-H-071",
+  "W13-P1-H-072",
+  "W13-P1-H-073",
+  "W13-P1-H-074",
+  "W13-P1-H-075",
+  "W13-P1-H-076",
+  "W13-P1-H-077",
+  "W13-P1-H-078",
+  "W13-P1-H-079",
+  "W13-P1-H-080",
+  "W13-P1-H-081",
+  "W13-P1-H-082",
+  "W13-P1-H-083",
+  "W13-P1-H-085",
+  "W13-P1-H-086",
+  "W13-P1-H-087",
+  "W13-P1-H-089",
+  "W13-P1-H-090",
+  "W13-P1-H-091",
+  "W13-P1-H-092",
+  "W13-P1-H-093",
+  "W13-P1-H-094",
+  "W13-P1-H-095",
+  "W13-P1-H-096",
+  "W13-P1-H-097",
+  "W13-P1-H-098",
+  "W13-P1-H-099",
+  "W13-P1-H-100",
+  "W13-P1-J-001",
+  "W13-P1-J-002",
+  "W13-P1-J-003",
+  "W13-P1-J-004",
+  "W13-P1-J-005",
+  "W13-P1-J-006",
+  "W13-P1-J-007",
+  "W13-P1-J-008",
+  "W13-P1-J-009",
+  "W13-P1-J-010",
+  "W13-P1-J-011",
+  "W13-P1-J-012",
+  "W13-P1-J-013",
+  "W13-P1-J-014",
+  "W13-P1-J-015",
+  "W13-P1-J-016",
+  "W13-P1-J-017",
+  "W13-P1-J-018",
+  "W13-P1-J-019",
+  "W13-P1-J-020",
+  "W13-P1-J-021",
+  "W13-P1-J-022",
+  "W13-P1-J-023",
+  "W13-P1-J-024",
+  "W13-P1-J-025",
+  "W13-P1-J-026",
+  "W13-P1-J-027",
+  "W13-P1-J-028",
+  "W13-P1-J-029",
+  "W13-P1-J-030",
+  "W13-P1-J-031",
+  "W13-P1-J-032",
+  "W13-P1-J-033",
+  "W13-P1-J-034",
+  "W13-P1-J-035",
+  "W13-P1-J-036",
+  "W13-P1-J-037",
+  "W13-P1-J-038",
+  "W13-P1-J-039",
+  "W13-P1-J-040",
+  "W13-P1-J-041",
+  "W13-P1-J-043",
+  "W13-P1-J-044",
+  "W13-P1-J-047",
+  "W13-P1-J-048",
+  "W13-P1-J-049",
+  "W13-P1-J-050",
+  "W13-P1-J-051",
+  "W13-P1-J-052",
+  "W13-P1-J-055",
+  "W13-P1-J-056",
+  "W13-P1-J-057",
+  "W13-P1-J-058",
+  "W13-P1-J-059",
+  "W13-P1-J-061",
+  "W13-P1-J-062",
+  "W13-P1-J-063",
+  "W13-P1-J-064",
+  "W13-P1-J-065",
+  "W13-P1-J-066",
+  "W13-P1-J-067",
+  "W13-P1-J-068",
+  "W13-P1-J-069",
+  "W13-P1-J-070",
+  "W13-P1-J-071",
+  "W13-P1-J-072",
+  "W13-P1-J-073",
+  "W13-P1-J-074",
+  "W13-P1-J-075",
+  "W13-P1-J-076",
+  "W13-P1-J-077",
+  "W13-P1-J-078",
+  "W13-P1-J-079",
+  "W13-P1-J-080",
+  "W13-P1-J-081",
+  "W13-P1-J-082",
+  "W13-P1-J-083",
+  "W13-P1-J-085",
+  "W13-P1-J-086",
+  "W13-P1-J-087",
+  "W13-P1-J-088",
+  "W13-P1-J-089",
+  "W13-P1-J-090",
+  "W13-P1-J-092",
+  "W13-P1-J-093",
+  "W13-P1-J-094",
+  "W13-P1-J-095",
+  "W13-P1-J-096",
+  "W13-P1-J-097",
+  "W13-P1-J-098",
+  "W13-P1-J-099",
+  "W13-P1-J-100",
+  "W13-P1-J-101",
+  "W13-P1-J-102",
+  "W13-P1-J-103"
+ ],
+ "epistemic_status": "NO novelty verified for any kept idea. All prior-art and known-result remarks are the judge's unverified hypotheses (MODEL SPECULATION); no experimental numbers or citations were invented. kill_or_merge is a redundancy disposition, not a quality verdict; the Consolidator may resurrect any merged id."
+}

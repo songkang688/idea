@@ -1,0 +1,73 @@
+{
+  "task_id": "p1_wave_b_w3",
+  "role": "judge_A_dedup",
+  "status": "complete",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "wave": "w3_GHJ",
+  "branch": "cursor/p1-wave-b-w3-judge-a-dedup-e60e",
+  "inputs": [
+    { "generator": "gen_g_domain_shift", "branch": "origin/cursor/p1-gen-g-domain-shift-0165", "idea_count": 100 },
+    { "generator": "gen_h_sr_restoration", "branch": "origin/cursor/p1-gen-h-sr-restoration-1829", "idea_count": 100 },
+    { "generator": "gen_j_diffusion_model_science", "branch": "origin/cursor/p1-gen-j-diffusion-science-3470", "idea_count": 104 }
+  ],
+  "canonical_master_reference": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w2-3111",
+    "path": "Windows13/_state/ideas_master.jsonl",
+    "accepted_count": 494,
+    "usage": "read-only collision flagging; master NOT rewritten or appended"
+  },
+  "collision_only_shards": {
+    "enumerated_flag_only_not_merged": ["gen_k (105)", "gen_l (100)", "gen_m (100)", "gen_n (100)", "gen_p (104)"],
+    "not_on_origin_at_judge_time": ["gen_o", "gen_u"]
+  },
+  "counts": {
+    "input_total": 304,
+    "keep": 260,
+    "kill_or_merge": 44,
+    "keep_per_shard": { "gen_g": 81, "gen_h": 84, "gen_j": 95 },
+    "kill_per_shard": { "gen_g": 19, "gen_h": 16, "gen_j": 9 },
+    "duplicate_groups": 31,
+    "cross_shard_duplicate_groups": 2,
+    "master_collisions": {
+      "kill_groups_with_master_target": 8,
+      "kills_into_master": 11,
+      "standalone_known_result_kills": 1,
+      "flagged_keeps": 46
+    },
+    "offmaster_collision_flags_on_keeps": 27,
+    "permutation_flags": { "families": 20, "unique_flagged_ids": 138 },
+    "family_merge_triggers": 9,
+    "gate5_missing_kill_threshold_counts": {
+      "gen_g": 100,
+      "gen_h": 100,
+      "gen_j": 0,
+      "note": "gen_h has 2 records (H-066, H-072) with incidental numerals but no pre-registered kill threshold; strictly-no-numeral counts are gen_g 100/100, gen_h 98/100. evidence_label dicts missing: gen_g 100/100, gen_h 100/100, gen_j 0/104. Keeps needing retrofit before master merge: 165 of 260. Judge A audited and flagged per record (judge_A_meta.gate5) but did NOT invent thresholds or labels — retrofit-or-remand passes to judge B/C and the consolidator per GATE-5."
+    },
+    "anomalies_protected": 21,
+    "deliberate_tensions": 7,
+    "judge_clusters": 32
+  },
+  "output_files": [
+    "Windows13/_state/tasks/p1/wave_b_w3/judge_A.json",
+    "Windows13/_state/tasks/p1/wave_b_w3/judge_A.md",
+    "Windows13/_state/tasks/p1/wave_b_w3/accepted_shard_A.jsonl",
+    "Windows13/_state/tasks/p1/wave_b_w3/done_judge_A.json"
+  ],
+  "unresolved_items": [
+    "GATE-5 retrofit is deliberately unfinished: 165 kept gen_g/gen_h records lack numeric kill thresholds and evidence_label dicts; judge B should attach thresholds during feasibility review (it reads every fastest experiment anyway), judge C spot-audits, and the consolidator must write the mandatory gate-compliance line — or remand the gen_g+gen_h keeps as a block. They must not be merged threshold-less into the master.",
+    "Novelty unverified for all 260 keeps; 46 carry master collision/prior-art flags. Highest-risk keeps for the novelty gate: G-069 (vs C-028), G-014 (vs F-023), J-086 (vs D-060), J-008 (vs A-039 + registers literature), H-024 (vs C-037), H-083 (vs D-030), G-054 (vs D-064/D-061), G-097 (vs C-089/D-058), G-086 (vs D-091/C-045), G-071 (vs contamination family), G-051 (vs C-029 + known-practice risk), G-053 (vs C-015).",
+    "kill_or_merge is a redundancy disposition, not a quality verdict; likeliest resurrection candidates: J-104 (video memorization privacy track), J-060 (aperture-anisotropy dispersion), G-068 (standalone known-result kill on the judge's UNVERIFIED assessment), H-084 (forensic certificates).",
+    "27 keeps carry collision flags against unjudged origin shards gen_k/l/m/n/p (strongest: J-038 vs N-053/N-054/N-055 memorization dose-response); these are reconciliation duties for those shards' judge waves, and H-090 (accepted here) becomes occupied ground for queued gen_u's fairness territory.",
+    "GATE-6 recorded, not enforced: gen_j self-declares 35.6% constructive (37/104), the exact figure the w2 audit found inflated vs ~7% by phrasing; genre labels must be re-audited before genre quotas are applied.",
+    "The 17-member cheap_predictor_of_outcome template family (max fingerprint cell 2 after merges) is this wave's dominant permutation pattern and is first in line for Stage-2 slot caps.",
+    "Seven deliberate tensions need adjudication by experiment, not dedup (H-030 vs H-037; J-056/J-057 vs J-058; H-099 vs J-079; J-019 vs J-073/J-075; G-037 vs G-041; J-023 vs J-070; H-095 vs H-002).",
+    "This sub-wave covers G+H+J only per the consolidator's split; gen_k (105 ideas, on origin) still needs its own judge wave, and dispositions may shift when judges B and C report and the Wave-B consolidator merges."
+  ],
+  "recommended_next_task_type": "p1_wave_b_w3_more_judges",
+  "canonical_state_untouched": true,
+  "no_fake_citations": true,
+  "force_push": false,
+  "completed_at_utc": "2026-08-28T23:59:00Z"
+}
