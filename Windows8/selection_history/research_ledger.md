@@ -1,15 +1,21 @@
-# Windows8 Research Ledger
+# Windows8 Research Ledger (final)
 
-**Current stage:** Stage 1 — Massive Idea Exploration  
-**Top candidates:** none yet  
-**Idea pool size:** 0 ingested / target ≥1000 raw
+**Stage:** 7–8 complete for archival. Experiments not run on real SAM.
 
-## Live sub-agents (max 3)
+**Pool:** 2766 raw IDs in `selection_history/raw/pool.jsonl`
 
-1. A — RUNNING — `bc-c89434d9-3086-5407-8e57-2871161bf8e3`
-2. B — RUNNING — `bc-3afc797e-4db6-52aa-b877-126b1513c84b`
-3. C — RUNNING — `bc-4a5961ff-029f-5e2a-b8d0-83d23f14e484`
+**Top candidates:** Idea_01, Idea_02, Idea_03 as packaged.
 
-## Fields maintained per surviving idea
+## Novelty status
 
-Idea ID · Stage · Research Cluster · Novelty status · Prior work · Reviewer opinions · Major risks · Unresolved questions · Required experiments · Survival/elimination reason · Top-candidate flag
+- Idea_01: remaining novelty = causal locus (encoder vs objectness interface). Confidence medium.
+- Idea_02: remaining novelty = PEFT-delta spectrum + HP vs rank. Confidence medium-low (venue fit).
+- Idea_03: remaining novelty = anti-calibration of SAM IoU head. Confidence medium; dies on E0.
+
+## Major risks
+
+Cloud agent failures; dataset/checkpoint absence; desk-reject of probe/calibration papers.
+
+## Survival reasons
+
+See `evolution_summary.md` and `eliminated_ideas_summary.md`.

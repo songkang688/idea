@@ -1,0 +1,7 @@
+seed: 8
+rank: 8
+dim: 32
+spatial: 16
+n: 32
+kc_ratio: 0.25
+out_dir: outputs/idea02_fft

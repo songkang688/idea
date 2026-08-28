@@ -1,0 +1,4 @@
+TOY RUN (FakeEncoder). NOT a scientific result.
+amorphous_nsd_proxy=0.0000 pred_mean=0.2927 dice_hard=0.0000
+object_nsd_proxy=0.0000
+H1/H2 require real SAM embeddings and real datasets.

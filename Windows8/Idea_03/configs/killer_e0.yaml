@@ -1,0 +1,5 @@
+seed: 8
+n_obj: 200
+n_amorph: 200
+tau: 0.5
+out_dir: outputs/idea03_e0

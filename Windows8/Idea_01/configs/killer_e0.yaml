@@ -1,0 +1,14 @@
+# killer E0
+seed: 8
+image_size: 64
+embed_dim: 32
+n_amorphous: 48
+n_coco: 48
+epochs: 30
+lr: 0.01
+lambda_bce: 1.0
+lambda_dice: 1.0
+lambda_tv: 0.05
+threshold: 0.5
+fake_encoder: true
+out_dir: outputs/idea01_e0

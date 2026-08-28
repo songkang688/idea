@@ -4,36 +4,39 @@
 - **Created:** 2026-08-28 (UTC)
 - **Supervisor:** Windows8 (PI)
 - **Repo:** `github.com/songkang688/idea`
-- **Status:** IN PROGRESS — Stage 1 Massive Idea Exploration (3 cloud sub-agents running)
 
-This folder is the archival root for this evolution round. Prior Windows trees live on other branches (`Windows2`, `Windows4`, Windows3 staging). This round writes **only** under `Windows8/` and does not overwrite any prior Windows directory.
+This tree is exclusive to this round. Other Windows directories on sibling branches were not modified.
 
 ## This round’s three Ideas
 
-*Pending Stage 6–7. Do not treat this README as final until Idea_01/02/03 packages exist.*
+1. **Idea_01 — Objectness, Not Features** (recommended): frozen SAM embeddings + density/exclusion vs prompted SAM on amorphous targets, with a COCO control.
+2. **Idea_02 — Spectral Locality of Dense PEFT:** LoRA feature deltas are hypothesized to be spatially low-pass; test high-frequency residual vs extra rank.
+3. **Idea_03 — Selective SAM via IoU-token Recalibration:** SAM IoU tokens hypothesized anti-calibrated on amorphous domains; risk-coverage vs adapters.
 
 ## Most recommended
 
-*Pending.*
+**Idea_01.** It is the cheapest falsifier of the “fine-tune the encoder” default, and prior work already occupied the eval-only and adapter-SOTA slots.
 
 ## Why
 
-*Pending.*
+- Not Med-SA / LoRA-MedSAM (those are methods without a locus-of-failure test).
+- Not “SAM fails on fire/glass” (already evaluated).
+- Killer experiment is one GPU-day and can kill the project honestly.
 
 ## Project status
 
 | Package | Status |
 |---------|--------|
-| Idea_01 | not yet selected |
-| Idea_02 | not yet selected |
-| Idea_03 | not yet selected |
+| Idea_01 | Ready to start E0 (needs real SAM weights for science; toy loop runs) |
+| Idea_02 | Ready to start FFT audit |
+| Idea_03 | Ready to start reliability dump |
 
 ## Next experiment to run
 
-*Pending Killer Experiment of the #1 project.*
+Idea_01 E0 (see `Idea_01/experiments.md`). Do not report FakeEncoder numbers as results.
 
-## Git / process notes
+## Candidate titles
 
-- Max concurrent sub-agents: 3
-- Model slug for sub-agents: `claude-fable-5-thinking-xhigh`
-- Stage 1 batches: A (method/SAM/medical/domain-shift failures), B (eval/robustness/synthetic/assumptions), C (negative-result / confounder / training-dynamics science)
+- Objectness, Not Features: Where Segment Anything Actually Fails on Amorphous Targets
+- LoRA Is a Low-Pass Adapter: Spectral Locality of PEFT for Dense Prediction
+- When SAM Is Sure and Wrong: Selective Segmentation via IoU-Token Recalibration

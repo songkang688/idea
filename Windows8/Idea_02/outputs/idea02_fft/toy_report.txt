@@ -1,0 +1,3 @@
+TOY LoRA on random tensors. NOT a scientific result.
+low_freq_energy_fraction=0.1057 kc_ratio=0.25
+H1 requires real SAM/ViT feature deltas after medical PEFT.

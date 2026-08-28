@@ -24,3 +24,11 @@ Three cloud sub-agents, model `claude-fable-5-thinking-xhigh`, 350 ideas each (t
 | Stage1 ideas batch C | `bc-4a5961ff-029f-5e2a-b8d0-83d23f14e484` | negative-result science, confounders, training dynamics, data-centric |
 
 Next: ingest full lists → dedup/cluster → Stage 2 independent review (1000→200).
+
+## Stage 1 recovery (t1)
+
+Cloud batch A/B/C all ERROR (`request is required and could not be loaded from cloud agent state`). Redispatch:
+
+- C retry (cloud): `bc-7a636a75-321a-50bf-bd04-7ae953ed578d`
+- A local file-writer: `bc-778600d1-369b-5e0d-97bf-b82f6b3bdf0d` → `Windows8/selection_history/raw/batch_A.md`
+- B local file-writer: `bc-fb91c4d2-b3c2-5ef7-bb3f-59ac95cf0894` → `Windows8/selection_history/raw/batch_B.md`
