@@ -1,0 +1,20 @@
+{
+  "task_id": "p1_state_reader",
+  "role": "state_reader",
+  "status": "complete",
+  "completed_at_utc": "2026-08-28T17:45:00Z",
+  "branch": "cursor/p1-state-reader-cc05",
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "idea_count": 0,
+  "current_stage": "Stage 1",
+  "output_files": [
+    "Windows13/_state/tasks/p1/state_reader/state_reader.md",
+    "Windows13/_state/tasks/p1/state_reader/state_reader.json",
+    "Windows13/_state/tasks/p1/state_reader/done.json"
+  ],
+  "unresolved_items": [],
+  "recommended_next_task_type": "p1_wave_a_generators"
+}

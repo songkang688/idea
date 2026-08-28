@@ -1,0 +1,124 @@
+{
+  "task_id": "p1_state_reader",
+  "role": "state_reader",
+  "read_at_utc": "2026-08-28T17:45:00Z",
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows13-p0-init-implementation-d93f",
+  "window_locked": true,
+  "lock_source": {
+    "file": "Windows13/_state/window.lock.json",
+    "read_from": "origin/cursor/windows13-p0-init-implementation-d93f",
+    "remote_tip_sha": "7b37f37808f891a32708331518dad6ec299c0180",
+    "lock_field_locked": true,
+    "defined_by": "P0",
+    "definition_status": "canonical",
+    "modified_by_this_task": false
+  },
+  "research_state_source": {
+    "file": "Windows13/_state/research_state.json",
+    "read_from": "origin/cursor/windows13-p0-init-implementation-d93f",
+    "window_locked": true,
+    "consistent_with_lock": true,
+    "modified_by_this_task": false
+  },
+  "p0_verification_cross_check": {
+    "branch": "origin/cursor/p0-wave-c-verification-5e24",
+    "files": [
+      "_p0_dispatch/tasks/p0_init/done_verification.json",
+      "_p0_dispatch/tasks/p0_init/verification.json"
+    ],
+    "p0_complete": true,
+    "verified_windows_id": "Windows13",
+    "verified_windows_path": "Windows13",
+    "conflict_with_lock": false
+  },
+  "idea_count": 0,
+  "ideas_master_path": "Windows13/_state/ideas_master.jsonl",
+  "ideas_master_lines": 0,
+  "ideas_master_bytes": 0,
+  "current_stage": "Stage 1",
+  "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "total_ideas": 0,
+  "survivors": 0,
+  "final_target": 3,
+  "status": "initialized",
+  "next_task_queue": [
+    {
+      "task_id": "p1_gen_a_sam_foundation_peft",
+      "role": "generator",
+      "territory": "SAM / foundation model adaptation / PEFT / failure modes of promptable segmentation",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_a_sam_foundation_peft/ideas_shard.jsonl"
+    },
+    {
+      "task_id": "p1_gen_b_hard_domain_dense_prediction",
+      "role": "generator",
+      "territory": "Medical / smoke-fire / transparent / ambiguous dense prediction failure modes",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_b_hard_domain_dense_prediction/ideas_shard.jsonl"
+    },
+    {
+      "task_id": "p1_gen_c_contrarian_eval",
+      "role": "generator",
+      "territory": "Contrarian evaluation: calibration, uncertainty, benchmark/dataset weaknesses, negative results",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_c_contrarian_eval/ideas_shard.jsonl"
+    }
+  ],
+  "backlog_territories": [
+    {
+      "task_id": "p1_gen_d_object_detection",
+      "role": "generator",
+      "territory": "Object detection: open-vocabulary, small/dense objects, long-tail, detection-segmentation interplay",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_d_object_detection/ideas_shard.jsonl"
+    },
+    {
+      "task_id": "p1_gen_e_vlm_dense_prediction",
+      "role": "generator",
+      "territory": "VLM dense prediction: language-grounded segmentation, referring expressions, open-set pixel labeling",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_e_vlm_dense_prediction/ideas_shard.jsonl"
+    },
+    {
+      "task_id": "p1_gen_f_synthetic_data",
+      "role": "generator",
+      "territory": "Synthetic data: generation for dense tasks, sim-to-real, label noise, data-centric curation",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_f_synthetic_data/ideas_shard.jsonl"
+    },
+    {
+      "task_id": "p1_gen_g_domain_shift",
+      "role": "generator",
+      "territory": "Domain shift: unsupervised/test-time adaptation, domain generalization, distribution-shift robustness",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_g_domain_shift/ideas_shard.jsonl"
+    },
+    {
+      "task_id": "p1_gen_h_sr_restoration",
+      "role": "generator",
+      "territory": "Super-resolution / restoration: degradation modeling, real-world blind restoration, perceptual-fidelity trade-offs",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_h_sr_restoration/ideas_shard.jsonl"
+    },
+    {
+      "task_id": "p1_gen_i_diffusion_generation",
+      "role": "generator",
+      "territory": "Diffusion / generation: controllable generation, generative priors for perception, editing, distillation",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_i_diffusion_generation/ideas_shard.jsonl"
+    },
+    {
+      "task_id": "p1_gen_j_llm_agent",
+      "role": "generator",
+      "territory": "LLM / agent: tool use, agentic vision pipelines, reasoning for perception, evaluation of agents",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_j_llm_agent/ideas_shard.jsonl"
+    },
+    {
+      "task_id": "p1_gen_k_cross_field_transfer",
+      "role": "generator",
+      "territory": "Cross-field transfer: importing methods/insights from NLP, audio, graphics, robotics, or science domains into vision",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_k_cross_field_transfer/ideas_shard.jsonl"
+    }
+  ],
+  "rules_honored": {
+    "did_not_create_new_windows": true,
+    "did_not_modify_window_lock_json": true,
+    "did_not_change_windows_identity_fields": true,
+    "did_not_update_canonical_research_state_json": true
+  }
+}
