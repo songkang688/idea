@@ -1,0 +1,25 @@
+{
+  "task_id": "P7-lock-verifier",
+  "role": "P7 Lock Verifier (parent: WindowsX)",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P7/gate/lock_verifier.md",
+    "/workspace/_state/tasks/P7/gate/lock_verifier.done.json"
+  ],
+  "unresolved_items": [
+    "window.lock.json not found anywhere: 0 hits in the /workspace working tree (recursive glob, hidden-aware rg, filesystem find excluding .git) and 0 hits in the trees of all 48 origin/* branches after git fetch --prune (exact-filename git ls-tree scan)",
+    "research_state.json not in the working tree and not on origin/main; exactly four conflicting copies exist on divergent unmerged P0-init branches (Windows9/10/11/12), all status='initialized', current_stage='Stage 1', total_ideas=0, survivors=0, none carrying a locked field and none with a sibling window.lock.json",
+    "locked=true not evaluable (lock file missing) and lock<->state field consistency not evaluable (no lock to compare; state side is a 4-way conflict with no authoritative winner; rules forbid guessing)",
+    "Windows12 candidate records six failed P0 subagent slots (model data-retention acknowledgement and cloud-agent usage-quota errors), consistent with P0 aborting before lock emission",
+    "P0 must run to completion and persist exactly one authoritative WindowsN/_state/window.lock.json (locked=true) with a field-consistent sibling research_state.json, reachable from main, resolving the Windows9/10/11/12 conflict, before P7 may proceed",
+    "outputs written to fallback /workspace/_state/tasks/P7/gate/ because no valid windows_path exists"
+  ],
+  "recommended_next_task_type": "P0-window-lock-rerun",
+  "p0_lock_ok": false,
+  "windows_id": null,
+  "windows_path": null,
+  "mismatch_fields": [
+    "window.lock.json:missing_file",
+    "research_state.json:missing_file"
+  ]
+}
