@@ -1,0 +1,4121 @@
+{
+ "task_id": "p1_wave_b_w1",
+ "role": "judge_B_feasibility",
+ "wave": "wave1_gen_ABC",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "branch": "cursor/p1-wave-b-judge-b-feasibility-a49e",
+ "generated_at_utc": "2026-08-28T18:55:15Z",
+ "inputs": {
+  "gen_a": "origin/cursor/p1-gen-a-sam-foundation-peft-c8d4:Windows13/_state/tasks/p1/generators/gen_a_sam_foundation_peft/ideas_shard.jsonl",
+  "gen_b": "origin/cursor/p1-gen-b-hard-domain-a13a:Windows13/_state/tasks/p1/generators/gen_b_hard_domain_dense_prediction/ideas_shard.jsonl",
+  "gen_c": "origin/cursor/windows13-p0-init-implementation-d93f:Windows13/_state/tasks/p1/generators/gen_c_contrarian_eval/ideas_shard.jsonl",
+  "judge_A_reference_only": "origin/cursor/p1-wave-b-judge-a-dedup-f906:Windows13/_state/tasks/p1/wave_b_w1/judge_A.json"
+ },
+ "method": "Independent feasibility judging: every idea re-read from the generator shards and scored on (1) minimal-experiment cost (tier T1 = frozen-model inference or cached-prediction analysis only; T2 = small training runs, synthetic rendering, or light collection; T3 = gated on hardware, clinical experts, human recruitment at scale, or pretraining-scale compute), (2) whether the stated falsification is actually runnable with public assets, (3) architecture-permutation risk (recipe ported onto a new model without a belief at risk), and (4) vagueness (no crisp failure criterion). Judge A's shard was consulted only after forming verdicts; agreements and disagreements are recorded, not reconciled. No novelty is verified anywhere; every prior_art_risk flag is this judge's unverified hypothesis. No citations are asserted.",
+ "epistemic_status": "NO verified novelty claims. All prior-art remarks are unverified judge hypotheses. No fabricated citations.",
+ "counts": {
+  "input_total": 302,
+  "input_by_shard": {
+   "A": 102,
+   "B": 96,
+   "C": 104
+  },
+  "keep": 245,
+  "keep_by_shard": {
+   "A": 93,
+   "B": 84,
+   "C": 68
+  },
+  "merge": 44,
+  "kill": 13,
+  "anomalies": 20,
+  "tier_T1_keep": 97,
+  "tier_T2_keep": 142,
+  "tier_T3_keep": 6,
+  "duplicate_groups": 28,
+  "co_run_clusters": 9,
+  "disagreements_vs_judge_A": 12
+ },
+ "keep_ids": [
+  "W13-P1-A-001",
+  "W13-P1-A-002",
+  "W13-P1-A-003",
+  "W13-P1-A-004",
+  "W13-P1-A-005",
+  "W13-P1-A-006",
+  "W13-P1-A-007",
+  "W13-P1-A-008",
+  "W13-P1-A-009",
+  "W13-P1-A-010",
+  "W13-P1-A-011",
+  "W13-P1-A-012",
+  "W13-P1-A-013",
+  "W13-P1-A-014",
+  "W13-P1-A-015",
+  "W13-P1-A-016",
+  "W13-P1-A-017",
+  "W13-P1-A-018",
+  "W13-P1-A-019",
+  "W13-P1-A-020",
+  "W13-P1-A-021",
+  "W13-P1-A-022",
+  "W13-P1-A-023",
+  "W13-P1-A-024",
+  "W13-P1-A-025",
+  "W13-P1-A-026",
+  "W13-P1-A-027",
+  "W13-P1-A-028",
+  "W13-P1-A-029",
+  "W13-P1-A-030",
+  "W13-P1-A-031",
+  "W13-P1-A-033",
+  "W13-P1-A-034",
+  "W13-P1-A-035",
+  "W13-P1-A-036",
+  "W13-P1-A-037",
+  "W13-P1-A-038",
+  "W13-P1-A-039",
+  "W13-P1-A-041",
+  "W13-P1-A-042",
+  "W13-P1-A-043",
+  "W13-P1-A-044",
+  "W13-P1-A-045",
+  "W13-P1-A-046",
+  "W13-P1-A-047",
+  "W13-P1-A-048",
+  "W13-P1-A-049",
+  "W13-P1-A-050",
+  "W13-P1-A-051",
+  "W13-P1-A-052",
+  "W13-P1-A-053",
+  "W13-P1-A-054",
+  "W13-P1-A-055",
+  "W13-P1-A-056",
+  "W13-P1-A-057",
+  "W13-P1-A-058",
+  "W13-P1-A-059",
+  "W13-P1-A-060",
+  "W13-P1-A-062",
+  "W13-P1-A-063",
+  "W13-P1-A-065",
+  "W13-P1-A-066",
+  "W13-P1-A-067",
+  "W13-P1-A-069",
+  "W13-P1-A-071",
+  "W13-P1-A-072",
+  "W13-P1-A-073",
+  "W13-P1-A-074",
+  "W13-P1-A-075",
+  "W13-P1-A-076",
+  "W13-P1-A-077",
+  "W13-P1-A-078",
+  "W13-P1-A-079",
+  "W13-P1-A-080",
+  "W13-P1-A-081",
+  "W13-P1-A-082",
+  "W13-P1-A-083",
+  "W13-P1-A-084",
+  "W13-P1-A-086",
+  "W13-P1-A-087",
+  "W13-P1-A-088",
+  "W13-P1-A-090",
+  "W13-P1-A-091",
+  "W13-P1-A-092",
+  "W13-P1-A-093",
+  "W13-P1-A-094",
+  "W13-P1-A-095",
+  "W13-P1-A-096",
+  "W13-P1-A-097",
+  "W13-P1-A-099",
+  "W13-P1-A-100",
+  "W13-P1-A-101",
+  "W13-P1-A-102",
+  "W13-P1-B-001",
+  "W13-P1-B-002",
+  "W13-P1-B-003",
+  "W13-P1-B-004",
+  "W13-P1-B-005",
+  "W13-P1-B-006",
+  "W13-P1-B-008",
+  "W13-P1-B-009",
+  "W13-P1-B-010",
+  "W13-P1-B-011",
+  "W13-P1-B-012",
+  "W13-P1-B-014",
+  "W13-P1-B-015",
+  "W13-P1-B-016",
+  "W13-P1-B-017",
+  "W13-P1-B-018",
+  "W13-P1-B-019",
+  "W13-P1-B-020",
+  "W13-P1-B-021",
+  "W13-P1-B-022",
+  "W13-P1-B-023",
+  "W13-P1-B-024",
+  "W13-P1-B-025",
+  "W13-P1-B-026",
+  "W13-P1-B-027",
+  "W13-P1-B-028",
+  "W13-P1-B-029",
+  "W13-P1-B-030",
+  "W13-P1-B-031",
+  "W13-P1-B-032",
+  "W13-P1-B-033",
+  "W13-P1-B-034",
+  "W13-P1-B-035",
+  "W13-P1-B-037",
+  "W13-P1-B-040",
+  "W13-P1-B-041",
+  "W13-P1-B-042",
+  "W13-P1-B-043",
+  "W13-P1-B-044",
+  "W13-P1-B-045",
+  "W13-P1-B-046",
+  "W13-P1-B-047",
+  "W13-P1-B-048",
+  "W13-P1-B-049",
+  "W13-P1-B-050",
+  "W13-P1-B-052",
+  "W13-P1-B-053",
+  "W13-P1-B-054",
+  "W13-P1-B-055",
+  "W13-P1-B-057",
+  "W13-P1-B-058",
+  "W13-P1-B-059",
+  "W13-P1-B-060",
+  "W13-P1-B-061",
+  "W13-P1-B-062",
+  "W13-P1-B-063",
+  "W13-P1-B-065",
+  "W13-P1-B-066",
+  "W13-P1-B-067",
+  "W13-P1-B-068",
+  "W13-P1-B-069",
+  "W13-P1-B-070",
+  "W13-P1-B-071",
+  "W13-P1-B-072",
+  "W13-P1-B-073",
+  "W13-P1-B-074",
+  "W13-P1-B-075",
+  "W13-P1-B-076",
+  "W13-P1-B-077",
+  "W13-P1-B-078",
+  "W13-P1-B-079",
+  "W13-P1-B-080",
+  "W13-P1-B-082",
+  "W13-P1-B-083",
+  "W13-P1-B-084",
+  "W13-P1-B-085",
+  "W13-P1-B-086",
+  "W13-P1-B-087",
+  "W13-P1-B-090",
+  "W13-P1-B-091",
+  "W13-P1-B-092",
+  "W13-P1-B-093",
+  "W13-P1-B-094",
+  "W13-P1-B-095",
+  "W13-P1-C-002",
+  "W13-P1-C-003",
+  "W13-P1-C-004",
+  "W13-P1-C-006",
+  "W13-P1-C-008",
+  "W13-P1-C-009",
+  "W13-P1-C-010",
+  "W13-P1-C-011",
+  "W13-P1-C-012",
+  "W13-P1-C-013",
+  "W13-P1-C-015",
+  "W13-P1-C-016",
+  "W13-P1-C-018",
+  "W13-P1-C-019",
+  "W13-P1-C-020",
+  "W13-P1-C-021",
+  "W13-P1-C-023",
+  "W13-P1-C-024",
+  "W13-P1-C-025",
+  "W13-P1-C-027",
+  "W13-P1-C-028",
+  "W13-P1-C-029",
+  "W13-P1-C-032",
+  "W13-P1-C-034",
+  "W13-P1-C-037",
+  "W13-P1-C-039",
+  "W13-P1-C-042",
+  "W13-P1-C-043",
+  "W13-P1-C-044",
+  "W13-P1-C-045",
+  "W13-P1-C-046",
+  "W13-P1-C-047",
+  "W13-P1-C-048",
+  "W13-P1-C-052",
+  "W13-P1-C-054",
+  "W13-P1-C-057",
+  "W13-P1-C-060",
+  "W13-P1-C-061",
+  "W13-P1-C-063",
+  "W13-P1-C-064",
+  "W13-P1-C-065",
+  "W13-P1-C-066",
+  "W13-P1-C-067",
+  "W13-P1-C-069",
+  "W13-P1-C-070",
+  "W13-P1-C-071",
+  "W13-P1-C-072",
+  "W13-P1-C-073",
+  "W13-P1-C-074",
+  "W13-P1-C-075",
+  "W13-P1-C-077",
+  "W13-P1-C-079",
+  "W13-P1-C-080",
+  "W13-P1-C-081",
+  "W13-P1-C-082",
+  "W13-P1-C-083",
+  "W13-P1-C-084",
+  "W13-P1-C-085",
+  "W13-P1-C-086",
+  "W13-P1-C-088",
+  "W13-P1-C-089",
+  "W13-P1-C-090",
+  "W13-P1-C-092",
+  "W13-P1-C-093",
+  "W13-P1-C-095",
+  "W13-P1-C-097",
+  "W13-P1-C-102",
+  "W13-P1-C-103"
+ ],
+ "merge_ids": [
+  {
+   "id": "W13-P1-A-040",
+   "merge_target": "W13-P1-A-017",
+   "reason": "Same forecasting hypothesis (frozen-feature similarity predicts PEFT gain); A-017 carries the concrete crossover decision rule. One grid answers both."
+  },
+  {
+   "id": "W13-P1-A-061",
+   "merge_target": "W13-P1-A-059",
+   "reason": "One photographic-canon-prior study, two axes (frame position, viewpoint). A-059 kept as primary on cost: position-grid compositing is hours, viewpoint sweeps need rendering/capture. NOTE: Judge A merged in the opposite direction (059 into 061); consolidator should keep one study with both axes as arms."
+  },
+  {
+   "id": "W13-P1-A-064",
+   "merge_target": "W13-P1-A-015",
+   "reason": "Synthetic-data arm of the ambiguity-collapse study; same mechanism (unique ground truth unlearns the multimask prior), one diversity probe battery."
+  },
+  {
+   "id": "W13-P1-A-068",
+   "merge_target": "W13-P1-A-026",
+   "reason": "Same logged data (all three masks plus scores across a shift ladder) answers both the ranking-bottleneck claim and the oracle-inflation protocol claim; fold as the protocol-implication arm."
+  },
+  {
+   "id": "W13-P1-A-070",
+   "merge_target": "W13-P1-C-024",
+   "reason": "SAM/SA-1B instantiation of the seen-shot umbrella; run as the segmentation case study inside C-024's overlap-stratified design."
+  },
+  {
+   "id": "W13-P1-A-098",
+   "merge_target": "W13-P1-A-018",
+   "reason": "Cheapest member of the recentering-not-relearning family (011/018/098/100); fold as the zero-training arm of one three-arm study and RUN IT FIRST - it is the cheapest kill of the family."
+  },
+  {
+   "id": "W13-P1-B-007",
+   "merge_target": "W13-P1-B-033",
+   "reason": "Both claim leaderboards are threshold/representation artifacts; B-033's oracle-threshold protocol needs no soft ground truth and tests ranking instability more cheaply. B-007's soft-GT arm follows only if B-033 survives."
+  },
+  {
+   "id": "W13-P1-B-013",
+   "merge_target": "W13-P1-B-073",
+   "reason": "Front/rear glass labels are the transparency instantiation of the layered-output-space study; one two-head design on one frozen backbone covers both."
+  },
+  {
+   "id": "W13-P1-B-036",
+   "merge_target": "W13-P1-A-071",
+   "reason": "Same per-case bimodality claim in a different territory; one mixture-fit study spanning SAM domains and hard-domain models."
+  },
+  {
+   "id": "W13-P1-B-038",
+   "merge_target": "W13-P1-C-073",
+   "reason": "Hard-domain subset power audit is a stratum inside the field-wide bootstrap/power audit; same machinery, same prediction files."
+  },
+  {
+   "id": "W13-P1-B-039",
+   "merge_target": "W13-P1-B-091",
+   "reason": "Model-below-single-rater is the payoff readout of B-091's label-entropy-floor estimation; B-091 needs no new annotation where multi-rater data exists, B-039's re-annotation arm only where it does not."
+  },
+  {
+   "id": "W13-P1-B-051",
+   "merge_target": "W13-P1-C-013",
+   "reason": "Same non-identifiability claim about the aleatoric/epistemic decomposition; C-013's noise-and-size grid is the classification twin, B-051's capacity-manipulation test on multi-rater data becomes its dense-prediction arm. NOTE: Judge A merged B-051 into B-019 (map alignment); I read B-051's sharp content as identifiability, not alignment."
+  },
+  {
+   "id": "W13-P1-B-064",
+   "merge_target": "W13-P1-B-011",
+   "reason": "Both ask whether models use refraction; index-of-refraction ablation in matched renders is the controlled version, background-structure sweeps the observational one. Fold as a secondary arm."
+  },
+  {
+   "id": "W13-P1-B-081",
+   "merge_target": "W13-P1-B-035",
+   "reason": "Tool signatures are one more factor in the mask-forensics factorial (loss x tool x site); one forensic-classifier study."
+  },
+  {
+   "id": "W13-P1-B-088",
+   "merge_target": "W13-P1-C-027",
+   "reason": "Frame-level near-duplicate leakage in smoke/fire benchmarks is a substrate of the non-iid-split umbrella. NOTE: its perceptual-hash audit is the cheapest, highest-yield first action in the whole leakage family - run it first."
+  },
+  {
+   "id": "W13-P1-B-089",
+   "merge_target": "W13-P1-B-015",
+   "reason": "Taxonomy-discovery version of the same question; B-015's displacement-statistics separability test is concrete and falsifiable, while B-089's blind clustering has no failure criterion. Keep the instrument; the taxonomy is its scaled-up output. NOTE: Judge A merged in the opposite direction."
+  },
+  {
+   "id": "W13-P1-B-096",
+   "merge_target": "W13-P1-B-018",
+   "reason": "Loss-determined bias direction; B-018's phantom-calibrated design already predicts sign and size-dependence, B-096 adds the cross-domain loss-swap arm."
+  },
+  {
+   "id": "W13-P1-C-001",
+   "merge_target": "W13-P1-C-052",
+   "reason": "Prompt-wording sensitivity umbrella; keep C-052's ranking-stability design and add C-001's calibration-variance decomposition as a mandatory arm (calibration, not just accuracy)."
+  },
+  {
+   "id": "W13-P1-C-005",
+   "merge_target": "W13-P1-C-018",
+   "reason": "Instance of the deterministic-signals-beat-uncertainty-machinery family; fold as a method row of C-018's method-by-scale matrix (B-050 kept separately as the dense-prediction twin)."
+  },
+  {
+   "id": "W13-P1-C-007",
+   "merge_target": "W13-P1-C-073",
+   "reason": "Calibration-specific instance of the deltas-within-noise audit."
+  },
+  {
+   "id": "W13-P1-C-014",
+   "merge_target": "W13-P1-C-018",
+   "reason": "MC-dropout-on-frozen-features is one method row in C-018's method-by-scale matrix."
+  },
+  {
+   "id": "W13-P1-C-017",
+   "merge_target": "W13-P1-C-018",
+   "reason": "Embedding-norm-vs-ensemble is another method row of the same matrix."
+  },
+  {
+   "id": "W13-P1-C-022",
+   "merge_target": "W13-P1-C-015",
+   "reason": "Set-size decision-worthlessness and conditional-coverage failure are two readouts of one conformal-under-shift evaluation."
+  },
+  {
+   "id": "W13-P1-C-026",
+   "merge_target": "W13-P1-C-023",
+   "reason": "Generative re-renderings are a second miss-mode of the same dedup-undercount audit; one contamination study, two probes."
+  },
+  {
+   "id": "W13-P1-C-030",
+   "merge_target": "W13-P1-C-089",
+   "reason": "Blind language-prior baseline template; C-089's decorrelated-subset design subsumes blind-fraction reporting."
+  },
+  {
+   "id": "W13-P1-C-031",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Preprocessing (resize/crop) is one nuisance axis of the evaluation-stack variance study."
+  },
+  {
+   "id": "W13-P1-C-033",
+   "merge_target": "W13-P1-C-027",
+   "reason": "Gallery near-duplication is duplicate-structure score inflation; fold into the leakage umbrella."
+  },
+  {
+   "id": "W13-P1-C-038",
+   "merge_target": "W13-P1-C-042",
+   "reason": "Deployment-weighted corruption scores are one reweighting scheme inside the rank-stability-under-reweighting study."
+  },
+  {
+   "id": "W13-P1-C-040",
+   "merge_target": "W13-P1-C-071",
+   "reason": "Judge-style circularity; self/family-preference estimation subsumes style-at-fixed-accuracy sensitivity."
+  },
+  {
+   "id": "W13-P1-C-049",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Norm-adaptation toggling is a harness nuisance axis."
+  },
+  {
+   "id": "W13-P1-C-050",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Decode/interpolation library variance is a harness nuisance axis."
+  },
+  {
+   "id": "W13-P1-C-051",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Evaluation resolution is a harness nuisance axis (fixed vs per-model-peak reporting arm)."
+  },
+  {
+   "id": "W13-P1-C-053",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Test-time-augmentation on/off is a harness nuisance axis."
+  },
+  {
+   "id": "W13-P1-C-068",
+   "merge_target": "W13-P1-C-066",
+   "reason": "Distribution-vs-hard-label scoring rerank is the same study as agreement-ceiling reframing; one per-annotator-label benchmark serves both."
+  },
+  {
+   "id": "W13-P1-C-076",
+   "merge_target": "W13-P1-C-075",
+   "reason": "Task-reversal certification is the actionable readout of the low-effective-dimensionality analysis; same score matrix."
+  },
+  {
+   "id": "W13-P1-C-078",
+   "merge_target": "W13-P1-C-073",
+   "reason": "Prospective power curves and retrospective bootstrap audit are two halves of one statistical-audit methods study."
+  },
+  {
+   "id": "W13-P1-C-087",
+   "merge_target": "W13-P1-C-048",
+   "reason": "Head-vs-backbone shift decomposition is C-048's design run under distribution shift; one crossed grid."
+  },
+  {
+   "id": "W13-P1-C-091",
+   "merge_target": "W13-P1-C-089",
+   "reason": "Expression-blind size/position baseline is a blind-prior template instance; fold as the referring-expressions arm."
+  },
+  {
+   "id": "W13-P1-C-094",
+   "merge_target": "W13-P1-C-095",
+   "reason": "Single-input sufficiency ablation, images instead of frames; one ablation harness."
+  },
+  {
+   "id": "W13-P1-C-096",
+   "merge_target": "W13-P1-C-089",
+   "reason": "Modal-count prior baseline is a blind-prior template instance; fold as the counting arm."
+  },
+  {
+   "id": "W13-P1-C-098",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Answer-extraction/parsing tolerance is a harness nuisance axis."
+  },
+  {
+   "id": "W13-P1-C-099",
+   "merge_target": "W13-P1-C-027",
+   "reason": "Temporal collection order is a non-iid-split substrate; the timestamp probe folds into the leakage umbrella."
+  },
+  {
+   "id": "W13-P1-C-100",
+   "merge_target": "W13-P1-C-042",
+   "reason": "Usage-weighted category weighting is one reweighting scheme in the same stability analysis."
+  },
+  {
+   "id": "W13-P1-C-101",
+   "merge_target": "W13-P1-C-066",
+   "reason": "Answer-set/ambiguity-aware scoring is the same single-ground-truth critique; expert answer-set annotation becomes an arm of C-066."
+  }
+ ],
+ "kill_ids": [
+  {
+   "id": "W13-P1-A-032",
+   "reason": "Decisive falsification requires counterfactual pretraining of promptable segmenters from MAE vs contrastive inits (multi-day multi-GPU); the proposed cheap precursor (phenotype overlap between MAE probes and SAM errors) cannot discriminate inheritance from convergence. No cheap kill exists; park until a funded training slot exists."
+  },
+  {
+   "id": "W13-P1-A-085",
+   "reason": "Efficiency recipe wearing a hypothesis costume: 'easy prompts saturate at shallower depth' is near-certain, and confirming it yields a router paper rather than a falsified belief. Architecture-permutation (early-exit ported to SAM)."
+  },
+  {
+   "id": "W13-P1-A-089",
+   "reason": "Curriculum-order effect for sequential adapters is noise-dominated: settling it honestly needs many seeds x orders x domains, expensive relative to a generic payoff. Permutation of curriculum learning onto adapters."
+  },
+  {
+   "id": "W13-P1-B-056",
+   "reason": "Near-tautological: a global threshold provably cannot express spatially varying costs, so the experiment only measures a gap whose size is dictated by invented cost maps. No belief at risk; a measurement, not a hypothesis."
+  },
+  {
+   "id": "W13-P1-C-035",
+   "reason": "Known-critique restatement: multi-label re-evaluations of top-1 benchmarks already exist and the fast experiment literally reuses them. Nothing left to falsify cheaply that prior work has not."
+  },
+  {
+   "id": "W13-P1-C-036",
+   "reason": "Boundary-vs-region metric divergence is established practice (boundary-quality metrics exist for exactly this reason); residual novelty (human editing-utility link) is a user study bolted onto a known result."
+  },
+  {
+   "id": "W13-P1-C-041",
+   "reason": "Reporting FPR-at-high-TPR alongside AUROC is already standard in OOD papers; the claimed reordering is largely documented. Low information per unit work despite trivial cost."
+  },
+  {
+   "id": "W13-P1-C-055",
+   "reason": "Attention-faithfulness failure is a heavily published area; the proposed occlusion-agreement test replicates known designs. Killed as redundant, not infeasible."
+  },
+  {
+   "id": "W13-P1-C-056",
+   "reason": "The decisive equalized SSL-vs-supervised comparison is pretraining-scale compute; small paired runs cannot settle an explicitly scale-dependent claim. Feasibility fail for this project's budget."
+  },
+  {
+   "id": "W13-P1-C-058",
+   "reason": "Same pretraining-scale wall as C-056, and public data-curation competitions already run this exact ablation at multiple scales; no cheap decisive kill is available to us and the field is actively measuring it."
+  },
+  {
+   "id": "W13-P1-C-059",
+   "reason": "Direct port of the famous emergence-is-a-metric-artifact result to vision benchmarks; permutation with high prior-art risk and no new falsification design."
+  },
+  {
+   "id": "W13-P1-C-062",
+   "reason": "Cross-threat non-transfer of adversarial defenses is a well-established negative result; re-running the matrix is cheap but redundant."
+  },
+  {
+   "id": "W13-P1-C-104",
+   "reason": "Vague and human-gated: 'trained evaluators find more failures under adaptive budgets' is near-tautological, evaluator-skill-confounded, and has no crisp falsification criterion."
+  }
+ ],
+ "anomaly_ids": [
+  "W13-P1-A-034",
+  "W13-P1-A-044",
+  "W13-P1-A-063",
+  "W13-P1-A-065",
+  "W13-P1-A-079",
+  "W13-P1-A-087",
+  "W13-P1-B-016",
+  "W13-P1-B-029",
+  "W13-P1-B-030",
+  "W13-P1-B-054",
+  "W13-P1-B-067",
+  "W13-P1-B-069",
+  "W13-P1-B-071",
+  "W13-P1-B-083",
+  "W13-P1-B-090",
+  "W13-P1-B-093",
+  "W13-P1-C-069",
+  "W13-P1-C-072",
+  "W13-P1-C-074",
+  "W13-P1-C-075"
+ ],
+ "duplicate_groups": [
+  {
+   "group": "jb01_bimodal_per_case",
+   "primary": "W13-P1-A-071",
+   "members": [
+    "W13-P1-A-071",
+    "W13-P1-B-036"
+   ],
+   "note": "Per-case score bimodality; one mixture-fit study across territories."
+  },
+  {
+   "group": "jb02_seen_shot",
+   "primary": "W13-P1-C-024",
+   "members": [
+    "W13-P1-C-024",
+    "W13-P1-A-070"
+   ],
+   "note": "Zero-shot is seen-shot; A-070 is the SAM/SA-1B case study."
+  },
+  {
+   "group": "jb03_noniid_leakage",
+   "primary": "W13-P1-C-027",
+   "members": [
+    "W13-P1-C-027",
+    "W13-P1-B-088",
+    "W13-P1-C-033",
+    "W13-P1-C-099"
+   ],
+   "note": "Non-iid splits / duplicate-structure leakage umbrella. B-088's hash audit is the cheapest first action."
+  },
+  {
+   "group": "jb04_single_truth_scoring",
+   "primary": "W13-P1-C-066",
+   "members": [
+    "W13-P1-C-066",
+    "W13-P1-C-068",
+    "W13-P1-C-101",
+    "W13-P1-B-095"
+   ],
+   "note": "Distribution/set-aware scoring; B-095 kept separately as the dense-prediction twin that can co-run."
+  },
+  {
+   "group": "jb05_cheap_signals_beat_uncertainty",
+   "primary": "W13-P1-C-018",
+   "members": [
+    "W13-P1-C-018",
+    "W13-P1-C-005",
+    "W13-P1-C-014",
+    "W13-P1-C-017",
+    "W13-P1-B-050"
+   ],
+   "note": "Deterministic signals vs uncertainty machinery; B-050 kept as dense twin."
+  },
+  {
+   "group": "jb06_stat_audit",
+   "primary": "W13-P1-C-073",
+   "members": [
+    "W13-P1-C-073",
+    "W13-P1-C-007",
+    "W13-P1-C-078",
+    "W13-P1-B-038"
+   ],
+   "note": "Bootstrap noise audit + power curves = one methods study."
+  },
+  {
+   "group": "jb07_eval_stack_nuisance",
+   "primary": "W13-P1-C-077",
+   "members": [
+    "W13-P1-C-077",
+    "W13-P1-C-031",
+    "W13-P1-C-049",
+    "W13-P1-C-050",
+    "W13-P1-C-051",
+    "W13-P1-C-053",
+    "W13-P1-C-098"
+   ],
+   "note": "One factorial: harness x preprocessing x resolution x TTA x parsing."
+  },
+  {
+   "group": "jb08_reweighting_instability",
+   "primary": "W13-P1-C-042",
+   "members": [
+    "W13-P1-C-042",
+    "W13-P1-C-038",
+    "W13-P1-C-100"
+   ],
+   "note": "Rank stability under defensible reweightings."
+  },
+  {
+   "group": "jb09_blind_prior_baselines",
+   "primary": "W13-P1-C-089",
+   "members": [
+    "W13-P1-C-089",
+    "W13-P1-C-030",
+    "W13-P1-C-091",
+    "W13-P1-C-096"
+   ],
+   "note": "Blind/prior baseline template; arms: hallucination, referring, counting, blind-VQA."
+  },
+  {
+   "group": "jb10_single_input_sufficiency",
+   "primary": "W13-P1-C-095",
+   "members": [
+    "W13-P1-C-095",
+    "W13-P1-C-094"
+   ],
+   "note": "Single-frame/single-image sufficiency ablation harness."
+  },
+  {
+   "group": "jb11_dedup_blindness",
+   "primary": "W13-P1-C-023",
+   "members": [
+    "W13-P1-C-023",
+    "W13-P1-C-026"
+   ],
+   "note": "Two miss-modes (semantic dupes, generative derivatives) of one contamination audit."
+  },
+  {
+   "group": "jb12_prompt_wording",
+   "primary": "W13-P1-C-052",
+   "members": [
+    "W13-P1-C-052",
+    "W13-P1-C-001"
+   ],
+   "note": "Wording sensitivity with mandatory calibration arm; C-045 (search budget) kept as a distinct axis."
+  },
+  {
+   "group": "jb13_head_confound",
+   "primary": "W13-P1-C-048",
+   "members": [
+    "W13-P1-C-048",
+    "W13-P1-C-087"
+   ],
+   "note": "Backbone x head crossed grid, in- and out-of-distribution. Part of the A-014/B-031/C-048 head-to-head."
+  },
+  {
+   "group": "jb14_judge_circularity",
+   "primary": "W13-P1-C-071",
+   "members": [
+    "W13-P1-C-071",
+    "W13-P1-C-040"
+   ],
+   "note": "Learned judges favor their own distribution; style sensitivity folds in."
+  },
+  {
+   "group": "jb15_benchmark_redundancy",
+   "primary": "W13-P1-C-075",
+   "members": [
+    "W13-P1-C-075",
+    "W13-P1-C-076"
+   ],
+   "note": "Factor analysis + reversal certification on one score matrix."
+  },
+  {
+   "group": "jb16_threshold_artifact",
+   "primary": "W13-P1-B-033",
+   "members": [
+    "W13-P1-B-033",
+    "W13-P1-B-007"
+   ],
+   "note": "Oracle-threshold protocol first; soft-GT leaderboard arm second. Complementary-opposing pair with A-076 kept by design."
+  },
+  {
+   "group": "jb17_loss_sets_bias",
+   "primary": "W13-P1-B-018",
+   "members": [
+    "W13-P1-B-018",
+    "W13-P1-B-096"
+   ],
+   "note": "Phantom-calibrated loss-bias law plus cross-domain loss-swap arm."
+  },
+  {
+   "group": "jb18_layered_outputs",
+   "primary": "W13-P1-B-073",
+   "members": [
+    "W13-P1-B-073",
+    "W13-P1-B-013"
+   ],
+   "note": "Two-layer output spaces for media and glass; one frozen-backbone two-head design."
+  },
+  {
+   "group": "jb19_label_entropy_floor",
+   "primary": "W13-P1-B-091",
+   "members": [
+    "W13-P1-B-091",
+    "W13-P1-B-039"
+   ],
+   "note": "Floor estimation from existing raters; commission re-annotation only where absent."
+  },
+  {
+   "group": "jb20_mask_forensics",
+   "primary": "W13-P1-B-035",
+   "members": [
+    "W13-P1-B-035",
+    "W13-P1-B-081",
+    "W13-P1-B-021"
+   ],
+   "note": "B-021 kept separately (site decoding) but shares the forensic-classifier stack."
+  },
+  {
+   "group": "jb21_refraction_use",
+   "primary": "W13-P1-B-011",
+   "members": [
+    "W13-P1-B-011",
+    "W13-P1-B-064"
+   ],
+   "note": "IOR ablation (controlled) + background-structure sweep (observational)."
+  },
+  {
+   "group": "jb22_failure_taxonomy",
+   "primary": "W13-P1-B-015",
+   "members": [
+    "W13-P1-B-015",
+    "W13-P1-B-089"
+   ],
+   "note": "Displacement-statistics instrument first; taxonomy is its output. Direction reversed vs Judge A."
+  },
+  {
+   "group": "jb23_aleatoric_identifiability",
+   "primary": "W13-P1-C-013",
+   "members": [
+    "W13-P1-C-013",
+    "W13-P1-B-051"
+   ],
+   "note": "Non-identifiability of the decomposition; classification grid + dense capacity-manipulation arm. Target differs from Judge A (B-019)."
+  },
+  {
+   "group": "jb24_peft_gain_forecasting",
+   "primary": "W13-P1-A-017",
+   "members": [
+    "W13-P1-A-017",
+    "W13-P1-A-040"
+   ],
+   "note": "One grid, crossover rule + ROI framing."
+  },
+  {
+   "group": "jb25_ambiguity_collapse",
+   "primary": "W13-P1-A-015",
+   "members": [
+    "W13-P1-A-015",
+    "W13-P1-A-064",
+    "W13-P1-A-080"
+   ],
+   "note": "A-080 kept separately (distillation twin) but shares the diversity battery."
+  },
+  {
+   "group": "jb26_oracle_gap",
+   "primary": "W13-P1-A-026",
+   "members": [
+    "W13-P1-A-026",
+    "W13-P1-A-068"
+   ],
+   "note": "One mask+score logging run answers ranking-bottleneck and oracle-inflation."
+  },
+  {
+   "group": "jb27_photo_canon_prior",
+   "primary": "W13-P1-A-059",
+   "members": [
+    "W13-P1-A-059",
+    "W13-P1-A-061"
+   ],
+   "note": "Position and viewpoint axes of one canon-prior study. Direction reversed vs Judge A."
+  },
+  {
+   "group": "jb28_recentering_not_relearning",
+   "primary": "W13-P1-A-018",
+   "members": [
+    "W13-P1-A-018",
+    "W13-P1-A-098",
+    "W13-P1-A-011",
+    "W13-P1-A-100"
+   ],
+   "note": "A-011 and A-100 kept as siblings; one 4-arm study (histogram-match, bias-only, LN-recalib, input-stem). Run A-098's zero-training arm first."
+  }
+ ],
+ "co_run_clusters": [
+  {
+   "cluster": "click_response_field_tooling",
+   "members": [
+    "W13-P1-A-001",
+    "W13-P1-A-006",
+    "W13-P1-A-009",
+    "W13-P1-B-025"
+   ],
+   "note": "One dense click-sweep harness serves all four."
+  },
+  {
+   "cluster": "human_click_corpus",
+   "members": [
+    "W13-P1-A-069",
+    "W13-P1-A-092"
+   ],
+   "note": "Collect one 300-500 object human-click corpus once."
+  },
+  {
+   "cluster": "jitter_machinery",
+   "members": [
+    "W13-P1-A-005",
+    "W13-P1-B-026"
+   ],
+   "note": "Same prompt-jitter instrumentation, different claims (over-adaptation early warning vs ambiguity detection)."
+  },
+  {
+   "cluster": "synthetic_smoke_pipeline",
+   "members": [
+    "W13-P1-B-001",
+    "W13-P1-B-005",
+    "W13-P1-B-057",
+    "W13-P1-B-058",
+    "W13-P1-B-062",
+    "W13-P1-B-082"
+   ],
+   "note": "One volumetric-render pipeline with per-pixel transmittance serves six studies."
+  },
+  {
+   "cluster": "multirater_analysis_stack",
+   "members": [
+    "W13-P1-B-017",
+    "W13-P1-B-019",
+    "W13-P1-B-020",
+    "W13-P1-B-022",
+    "W13-P1-B-026",
+    "W13-P1-B-074",
+    "W13-P1-B-086",
+    "W13-P1-B-091",
+    "W13-P1-B-095",
+    "W13-P1-C-066"
+   ],
+   "note": "One multi-rater dataset ingestion (e.g. LIDC/QUBIQ-class) powers ten analyses; several are pure analysis (T1)."
+  },
+  {
+   "cluster": "architectural_spatial_fingerprints",
+   "members": [
+    "W13-P1-A-034",
+    "W13-P1-A-043",
+    "W13-P1-B-077"
+   ],
+   "note": "Window lattice, constant offset, patch quantization: distinct mechanisms, shared signed-boundary-error tooling."
+  },
+  {
+   "cluster": "sam2_memory_probes",
+   "members": [
+    "W13-P1-A-049",
+    "W13-P1-A-052",
+    "W13-P1-A-054",
+    "W13-P1-A-056",
+    "W13-P1-B-070"
+   ],
+   "note": "One SAM2 memory-instrumentation harness."
+  },
+  {
+   "cluster": "cue_conflict_stimuli",
+   "members": [
+    "W13-P1-A-035",
+    "W13-P1-A-060",
+    "W13-P1-B-043",
+    "W13-P1-B-046"
+   ],
+   "note": "Shared texture/edge-transplant stimulus generation."
+  },
+  {
+   "cluster": "reannotation_infra",
+   "members": [
+    "W13-P1-C-010",
+    "W13-P1-C-025",
+    "W13-P1-C-067",
+    "W13-P1-C-069"
+   ],
+   "note": "Shared annotator pool and adjudication protocol."
+  }
+ ],
+ "disagreements_vs_judge_A": [
+  {
+   "id": "W13-P1-A-032",
+   "judge_A": "keep",
+   "judge_B": "kill",
+   "why": "Falsification is training-bound (counterfactual pretraining); the cheap precursor cannot discriminate inheritance from convergence. Feasibility kill."
+  },
+  {
+   "id": "W13-P1-A-074",
+   "judge_A": "kill",
+   "judge_B": "keep_flagged",
+   "why": "Judge A killed as UAP permutation; I keep because the staged cheap-kill design (per-image bound first) is exactly the falsification discipline we want. Low priority, permutation-flagged."
+  },
+  {
+   "id": "W13-P1-A-086",
+   "judge_A": "kill",
+   "judge_B": "keep_flagged",
+   "why": "One-afternoon kill and designed tension with A-023; a recipe, but a cheaply falsifiable one."
+  },
+  {
+   "id": "W13-P1-A-059/W13-P1-A-061",
+   "judge_A": "merge 059 into 061",
+   "judge_B": "merge 061 into 059",
+   "why": "Cost-based primary choice: position-grid compositing is hours, viewpoint sweeps need rendering. Same one-study outcome either way."
+  },
+  {
+   "id": "W13-P1-B-015/W13-P1-B-089",
+   "judge_A": "merge 015 into 089",
+   "judge_B": "merge 089 into 015",
+   "why": "B-015 is the falsifiable instrument; B-089's blind clustering lacks a failure criterion. Keep the measurable one."
+  },
+  {
+   "id": "W13-P1-B-051",
+   "judge_A": "merge into B-019",
+   "judge_B": "merge into C-013",
+   "why": "B-051's sharp content is decomposition identifiability (capacity test), not spatial map alignment; it belongs with C-013."
+  },
+  {
+   "id": "W13-P1-B-056",
+   "judge_A": "keep",
+   "judge_B": "kill",
+   "why": "Near-tautological measurement; outcome guaranteed nonzero and magnitude set by invented cost maps."
+  },
+  {
+   "id": "W13-P1-C-056",
+   "judge_A": "keep",
+   "judge_B": "kill",
+   "why": "Pretraining-scale compute wall; small-scale answers do not transfer to an explicitly scale-dependent claim."
+  },
+  {
+   "id": "W13-P1-C-058",
+   "judge_A": "keep",
+   "judge_B": "kill",
+   "why": "Same compute wall plus the field already runs this ablation (public curation competitions)."
+  },
+  {
+   "id": "W13-P1-C-079",
+   "judge_A": "kill_or_merge",
+   "judge_B": "keep",
+   "why": "Controlled dev-loop is the causal design in the adaptive-overfitting family and is cheap; keep alongside C-032."
+  },
+  {
+   "id": "W13-P1-C-093",
+   "judge_A": "kill_or_merge",
+   "judge_B": "keep",
+   "why": "Template re-rendering is a controlled counterfactual, a distinct falsification design from blind baselines."
+  },
+  {
+   "id": "W13-P1-C-078",
+   "judge_A": "kill_or_merge (statistical family)",
+   "judge_B": "merge into C-073",
+   "why": "Same direction as A, explicit target recorded: power curves fold into the bootstrap audit."
+  }
+ ],
+ "verdicts": [
+  {
+   "id": "W13-P1-A-001",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-002",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-003",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "checkpoint_availability"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-004",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-005",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-006",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-007",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-008",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-009",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-010",
+   "cluster": "prompt_geometry_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-011",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-012",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_dependency_multirater"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-013",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-014",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-015",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-016",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-017",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_heavy"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-018",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-019",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-020",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-021",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-022",
+   "cluster": "what_peft_actually_learns",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-023",
+   "cluster": "iou_head_calibration_uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "note": "Load-bearing idea: A-025, A-086, A-091 all presuppose or contest the IoU-head score's meaning. Run A-023 first; its outcome reprices three other ideas."
+  },
+  {
+   "id": "W13-P1-A-024",
+   "cluster": "iou_head_calibration_uncertainty",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-025",
+   "cluster": "iou_head_calibration_uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-026",
+   "cluster": "iou_head_calibration_uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-027",
+   "cluster": "iou_head_calibration_uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-028",
+   "cluster": "iou_head_calibration_uncertainty",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "curation_labor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-029",
+   "cluster": "iou_head_calibration_uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-030",
+   "cluster": "iou_head_calibration_uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-031",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-032",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [
+    "compute_heavy"
+   ],
+   "verdict": "kill",
+   "reason": "Decisive falsification requires counterfactual pretraining of promptable segmenters from MAE vs contrastive inits (multi-day multi-GPU); the proposed cheap precursor (phenotype overlap between MAE probes and SAM errors) cannot discriminate inheritance from convergence. No cheap kill exists; park until a funded training slot exists."
+  },
+  {
+   "id": "W13-P1-A-033",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-034",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "anomaly": true,
+   "note": "Anomaly: architecture-fingerprint via Fourier analysis of aggregate error maps; inference-only, hours, unusual and decisive either way."
+  },
+  {
+   "id": "W13-P1-A-035",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation",
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-036",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-037",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-038",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-039",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-040",
+   "cluster": "encoder_representation_myths",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-A-017",
+   "reason": "Same forecasting hypothesis (frozen-feature similarity predicts PEFT gain); A-017 carries the concrete crossover decision rule. One grid answers both."
+  },
+  {
+   "id": "W13-P1-A-041",
+   "cluster": "decoder_token_mechanics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-042",
+   "cluster": "decoder_token_mechanics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-043",
+   "cluster": "decoder_token_mechanics",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "note": "One of the cleanest cheap kills in the whole wave: synthetic exact boundaries, signed offset histogram, an afternoon."
+  },
+  {
+   "id": "W13-P1-A-044",
+   "cluster": "decoder_token_mechanics",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-A-045",
+   "cluster": "decoder_token_mechanics",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-046",
+   "cluster": "decoder_token_mechanics",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-047",
+   "cluster": "decoder_token_mechanics",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-048",
+   "cluster": "decoder_token_mechanics",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-049",
+   "cluster": "sam2_video_memory",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-050",
+   "cluster": "sam2_video_memory",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "synthesis_labor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-051",
+   "cluster": "sam2_video_memory",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-052",
+   "cluster": "sam2_video_memory",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-053",
+   "cluster": "sam2_video_memory",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation",
+    "compute_moderate"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-054",
+   "cluster": "sam2_video_memory",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "capture_labor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-055",
+   "cluster": "sam2_video_memory",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-056",
+   "cluster": "sam2_video_memory",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-057",
+   "cluster": "sam2_video_memory",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_moderate"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-058",
+   "cluster": "data_priors_sa1b",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-059",
+   "cluster": "data_priors_sa1b",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "note": "Kept as primary of the photographic-canon-prior pair on cost grounds (see merge note on A-061; direction disagrees with Judge A)."
+  },
+  {
+   "id": "W13-P1-A-060",
+   "cluster": "data_priors_sa1b",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "curation_labor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-061",
+   "cluster": "data_priors_sa1b",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-A-059",
+   "reason": "One photographic-canon-prior study, two axes (frame position, viewpoint). A-059 kept as primary on cost: position-grid compositing is hours, viewpoint sweeps need rendering/capture. NOTE: Judge A merged in the opposite direction (059 into 061); consolidator should keep one study with both axes as arms."
+  },
+  {
+   "id": "W13-P1-A-062",
+   "cluster": "data_priors_sa1b",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-063",
+   "cluster": "data_priors_sa1b",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "curation_labor"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-A-064",
+   "cluster": "data_priors_sa1b",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-A-015",
+   "reason": "Synthetic-data arm of the ambiguity-collapse study; same mechanism (unique ground truth unlearns the multimask prior), one diversity probe battery."
+  },
+  {
+   "id": "W13-P1-A-065",
+   "cluster": "data_priors_sa1b",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-A-066",
+   "cluster": "evaluation_methodology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-067",
+   "cluster": "evaluation_methodology",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-068",
+   "cluster": "evaluation_methodology",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-A-026",
+   "reason": "Same logged data (all three masks plus scores across a shift ladder) answers both the ranking-bottleneck claim and the oracle-inflation protocol claim; fold as the protocol-implication arm."
+  },
+  {
+   "id": "W13-P1-A-069",
+   "cluster": "evaluation_methodology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep",
+   "note": "Co-collect human clicks once for A-069 and A-092; one 300-500 object click corpus serves both."
+  },
+  {
+   "id": "W13-P1-A-070",
+   "cluster": "evaluation_methodology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-024",
+   "reason": "SAM/SA-1B instantiation of the seen-shot umbrella; run as the segmentation case study inside C-024's overlap-stratified design."
+  },
+  {
+   "id": "W13-P1-A-071",
+   "cluster": "evaluation_methodology",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-072",
+   "cluster": "evaluation_methodology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "engineering_heavy"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-073",
+   "cluster": "robustness_adversarial",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-074",
+   "cluster": "robustness_adversarial",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation",
+    "prior_art_risk"
+   ],
+   "verdict": "keep",
+   "note": "KEEP-flagged in disagreement with Judge A (who killed as permutation): the staged kill is exemplary - per-image worst-case bound first, universal field only if that survives. Cheap, decisive, but low novelty priority."
+  },
+  {
+   "id": "W13-P1-A-075",
+   "cluster": "robustness_adversarial",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-076",
+   "cluster": "robustness_adversarial",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-077",
+   "cluster": "robustness_adversarial",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation",
+    "curation_labor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-078",
+   "cluster": "robustness_adversarial",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-079",
+   "cluster": "robustness_adversarial",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "curation_labor"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-A-080",
+   "cluster": "distillation_efficiency",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-081",
+   "cluster": "distillation_efficiency",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-082",
+   "cluster": "distillation_efficiency",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-083",
+   "cluster": "distillation_efficiency",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-084",
+   "cluster": "distillation_efficiency",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-085",
+   "cluster": "distillation_efficiency",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "kill",
+   "reason": "Efficiency recipe wearing a hypothesis costume: 'easy prompts saturate at shallower depth' is near-certain, and confirming it yields a router paper rather than a falsified belief. Architecture-permutation (early-exit ported to SAM)."
+  },
+  {
+   "id": "W13-P1-A-086",
+   "cluster": "adapter_ecosystem_continual",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation",
+    "depends_on_A023_tension"
+   ],
+   "verdict": "keep",
+   "note": "KEEP-flagged in disagreement with Judge A: one-afternoon kill, and it is in designed tension with A-023 (if the score is a style critic, score-routing should fail in a diagnostic way)."
+  },
+  {
+   "id": "W13-P1-A-087",
+   "cluster": "adapter_ecosystem_continual",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "vague_battery_definition"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-A-088",
+   "cluster": "adapter_ecosystem_continual",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-089",
+   "cluster": "adapter_ecosystem_continual",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "kill",
+   "reason": "Curriculum-order effect for sequential adapters is noise-dominated: settling it honestly needs many seeds x orders x domains, expensive relative to a generic payoff. Permutation of curriculum learning onto adapters."
+  },
+  {
+   "id": "W13-P1-A-090",
+   "cluster": "adapter_ecosystem_continual",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-091",
+   "cluster": "adapter_ecosystem_continual",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-092",
+   "cluster": "interaction_loops_human_factors",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep",
+   "note": "Shares the human-click corpus with A-069."
+  },
+  {
+   "id": "W13-P1-A-093",
+   "cluster": "interaction_loops_human_factors",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-094",
+   "cluster": "interaction_loops_human_factors",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation",
+    "human_study_arm"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-095",
+   "cluster": "interaction_loops_human_factors",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_dependency_multirater"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-096",
+   "cluster": "interaction_loops_human_factors",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-097",
+   "cluster": "adaptation_interfaces",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-098",
+   "cluster": "adaptation_interfaces",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-A-018",
+   "reason": "Cheapest member of the recentering-not-relearning family (011/018/098/100); fold as the zero-training arm of one three-arm study and RUN IT FIRST - it is the cheapest kill of the family."
+  },
+  {
+   "id": "W13-P1-A-099",
+   "cluster": "adaptation_interfaces",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-100",
+   "cluster": "adaptation_interfaces",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-101",
+   "cluster": "adaptation_interfaces",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-A-102",
+   "cluster": "adaptation_interfaces",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_heavy_full_version"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-001",
+   "cluster": "amorphous_boundary_ontology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-002",
+   "cluster": "amorphous_boundary_ontology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-003",
+   "cluster": "amorphous_boundary_ontology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-004",
+   "cluster": "amorphous_boundary_ontology",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-005",
+   "cluster": "amorphous_boundary_ontology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-006",
+   "cluster": "amorphous_boundary_ontology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_dependency_chroma_smoke"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-007",
+   "cluster": "amorphous_boundary_ontology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-B-033",
+   "reason": "Both claim leaderboards are threshold/representation artifacts; B-033's oracle-threshold protocol needs no soft ground truth and tests ranking instability more cheaply. B-007's soft-GT arm follows only if B-033 survives."
+  },
+  {
+   "id": "W13-P1-B-008",
+   "cluster": "amorphous_boundary_ontology",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-009",
+   "cluster": "transparent_object_perception",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-010",
+   "cluster": "transparent_object_perception",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-011",
+   "cluster": "transparent_object_perception",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "rendering_labor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-012",
+   "cluster": "transparent_object_perception",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-013",
+   "cluster": "transparent_object_perception",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-B-073",
+   "reason": "Front/rear glass labels are the transparency instantiation of the layered-output-space study; one two-head design on one frozen backbone covers both."
+  },
+  {
+   "id": "W13-P1-B-014",
+   "cluster": "transparent_object_perception",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "weak_identification_correlational"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-015",
+   "cluster": "transparent_object_perception",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "note": "Kept as primary over B-089 (reverse of Judge A): displacement-statistics separability is a falsifiable instrument; taxonomy discovery is its output, not a separate testable claim."
+  },
+  {
+   "id": "W13-P1-B-016",
+   "cluster": "transparent_object_perception",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-B-017",
+   "cluster": "medical_ambiguity_ground_truth",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_dependency_multirater"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-018",
+   "cluster": "medical_ambiguity_ground_truth",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-019",
+   "cluster": "medical_ambiguity_ground_truth",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-020",
+   "cluster": "medical_ambiguity_ground_truth",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-021",
+   "cluster": "medical_ambiguity_ground_truth",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_dependency_multisite"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-022",
+   "cluster": "medical_ambiguity_ground_truth",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-023",
+   "cluster": "medical_ambiguity_ground_truth",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-024",
+   "cluster": "medical_ambiguity_ground_truth",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-025",
+   "cluster": "foundation_model_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "note": "Shares click-response-field tooling with A-001/A-006/A-009; build the grid-sweep harness once."
+  },
+  {
+   "id": "W13-P1-B-026",
+   "cluster": "foundation_model_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-027",
+   "cluster": "foundation_model_failure_modes",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-028",
+   "cluster": "foundation_model_failure_modes",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "weak_identification_correlational"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-029",
+   "cluster": "foundation_model_failure_modes",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "checkpoint_availability"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-B-030",
+   "cluster": "foundation_model_failure_modes",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "curation_labor_difficulty_matching"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-B-031",
+   "cluster": "foundation_model_failure_modes",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-032",
+   "cluster": "foundation_model_failure_modes",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-033",
+   "cluster": "evaluation_metric_pathologies",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-034",
+   "cluster": "evaluation_metric_pathologies",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-035",
+   "cluster": "evaluation_metric_pathologies",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-036",
+   "cluster": "evaluation_metric_pathologies",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-A-071",
+   "reason": "Same per-case bimodality claim in a different territory; one mixture-fit study spanning SAM domains and hard-domain models."
+  },
+  {
+   "id": "W13-P1-B-037",
+   "cluster": "evaluation_metric_pathologies",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "vague_downstream_definition"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-038",
+   "cluster": "evaluation_metric_pathologies",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-073",
+   "reason": "Hard-domain subset power audit is a stratum inside the field-wide bootstrap/power audit; same machinery, same prediction files."
+  },
+  {
+   "id": "W13-P1-B-039",
+   "cluster": "evaluation_metric_pathologies",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "merge",
+   "merge_target": "W13-P1-B-091",
+   "reason": "Model-below-single-rater is the payoff readout of B-091's label-entropy-floor estimation; B-091 needs no new annotation where multi-rater data exists, B-039's re-annotation arm only where it does not."
+  },
+  {
+   "id": "W13-P1-B-040",
+   "cluster": "evaluation_metric_pathologies",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-041",
+   "cluster": "shortcut_and_cue_reliance",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-042",
+   "cluster": "shortcut_and_cue_reliance",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-043",
+   "cluster": "shortcut_and_cue_reliance",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "curation_labor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-044",
+   "cluster": "shortcut_and_cue_reliance",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-045",
+   "cluster": "shortcut_and_cue_reliance",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-046",
+   "cluster": "shortcut_and_cue_reliance",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-047",
+   "cluster": "shortcut_and_cue_reliance",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "confound_risk_deblurring"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-048",
+   "cluster": "shortcut_and_cue_reliance",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "curation_labor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-049",
+   "cluster": "uncertainty_and_calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "note": "Top cheap-kill of shard B uncertainty cluster: temperature-scale once, measure realized area-interval coverage in hours."
+  },
+  {
+   "id": "W13-P1-B-050",
+   "cluster": "uncertainty_and_calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-051",
+   "cluster": "uncertainty_and_calibration",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-013",
+   "reason": "Same non-identifiability claim about the aleatoric/epistemic decomposition; C-013's noise-and-size grid is the classification twin, B-051's capacity-manipulation test on multi-rater data becomes its dense-prediction arm. NOTE: Judge A merged B-051 into B-019 (map alignment); I read B-051's sharp content as identifiability, not alignment."
+  },
+  {
+   "id": "W13-P1-B-052",
+   "cluster": "uncertainty_and_calibration",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-053",
+   "cluster": "uncertainty_and_calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-054",
+   "cluster": "uncertainty_and_calibration",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "vague_decision_simulation"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-B-055",
+   "cluster": "uncertainty_and_calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-056",
+   "cluster": "uncertainty_and_calibration",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "Near-tautological: a global threshold provably cannot express spatially varying costs, so the experiment only measures a gap whose size is dictated by invented cost maps. No belief at risk; a measurement, not a hypothesis."
+  },
+  {
+   "id": "W13-P1-B-057",
+   "cluster": "physics_priors_and_image_formation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-058",
+   "cluster": "physics_priors_and_image_formation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-059",
+   "cluster": "physics_priors_and_image_formation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-060",
+   "cluster": "physics_priors_and_image_formation",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [
+    "hardware_gated_polarimetric"
+   ],
+   "verdict": "keep",
+   "note": "Sharp hypothesis but hardware-gated (polarimetric camera); keep at low wave priority until hardware access is confirmed."
+  },
+  {
+   "id": "W13-P1-B-061",
+   "cluster": "physics_priors_and_image_formation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-062",
+   "cluster": "physics_priors_and_image_formation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-063",
+   "cluster": "physics_priors_and_image_formation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-064",
+   "cluster": "physics_priors_and_image_formation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-B-011",
+   "reason": "Both ask whether models use refraction; index-of-refraction ablation in matched renders is the controlled version, background-structure sweeps the observational one. Fold as a secondary arm."
+  },
+  {
+   "id": "W13-P1-B-065",
+   "cluster": "temporal_process_vs_object",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_heavy"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-066",
+   "cluster": "temporal_process_vs_object",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-067",
+   "cluster": "temporal_process_vs_object",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-B-068",
+   "cluster": "temporal_process_vs_object",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-069",
+   "cluster": "temporal_process_vs_object",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-B-070",
+   "cluster": "temporal_process_vs_object",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-071",
+   "cluster": "temporal_process_vs_object",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [
+    "hardware_gated_event_camera"
+   ],
+   "verdict": "keep",
+   "anomaly": true,
+   "note": "Anomaly, hardware-gated (event camera). The one-afternoon candle/mirror pilot is the cheapest version; do not scale before it."
+  },
+  {
+   "id": "W13-P1-B-072",
+   "cluster": "temporal_process_vs_object",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [
+    "human_study",
+    "expert_gated_clinical"
+   ],
+   "verdict": "keep",
+   "note": "Expert-gated (radiologist raters, longitudinal data). Keep but expect this to be blocked for this project; flag for consolidator."
+  },
+  {
+   "id": "W13-P1-B-073",
+   "cluster": "representation_and_output_space",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-074",
+   "cluster": "representation_and_output_space",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-075",
+   "cluster": "representation_and_output_space",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-076",
+   "cluster": "representation_and_output_space",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-077",
+   "cluster": "representation_and_output_space",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-078",
+   "cluster": "representation_and_output_space",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-079",
+   "cluster": "representation_and_output_space",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-080",
+   "cluster": "representation_and_output_space",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "permutation"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-081",
+   "cluster": "data_and_annotation_protocols",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-B-035",
+   "reason": "Tool signatures are one more factor in the mask-forensics factorial (loss x tool x site); one forensic-classifier study."
+  },
+  {
+   "id": "W13-P1-B-082",
+   "cluster": "data_and_annotation_protocols",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-083",
+   "cluster": "data_and_annotation_protocols",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [
+    "hardware_gated_full_version"
+   ],
+   "verdict": "keep",
+   "anomaly": true,
+   "note": "Fast version is runnable with public paired thermal-visible wildfire footage; the instrumented-release full version is a funded-lab experiment."
+  },
+  {
+   "id": "W13-P1-B-084",
+   "cluster": "data_and_annotation_protocols",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-085",
+   "cluster": "data_and_annotation_protocols",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [
+    "expert_gated_clinical"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-086",
+   "cluster": "data_and_annotation_protocols",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-087",
+   "cluster": "data_and_annotation_protocols",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-088",
+   "cluster": "data_and_annotation_protocols",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-027",
+   "reason": "Frame-level near-duplicate leakage in smoke/fire benchmarks is a substrate of the non-iid-split umbrella. NOTE: its perceptual-hash audit is the cheapest, highest-yield first action in the whole leakage family - run it first."
+  },
+  {
+   "id": "W13-P1-B-089",
+   "cluster": "unifying_failure_structure",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-B-015",
+   "reason": "Taxonomy-discovery version of the same question; B-015's displacement-statistics separability test is concrete and falsifiable, while B-089's blind clustering has no failure criterion. Keep the instrument; the taxonomy is its scaled-up output. NOTE: Judge A merged in the opposite direction."
+  },
+  {
+   "id": "W13-P1-B-090",
+   "cluster": "unifying_failure_structure",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_moderate"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-B-091",
+   "cluster": "unifying_failure_structure",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-092",
+   "cluster": "unifying_failure_structure",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-093",
+   "cluster": "unifying_failure_structure",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-B-094",
+   "cluster": "unifying_failure_structure",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [
+    "vague_protocol_heavy"
+   ],
+   "verdict": "keep",
+   "note": "High-payoff but protocol-heavy and vague as stated; recommend piloting the three bounds on ONE domain and twenty cases before any commitment."
+  },
+  {
+   "id": "W13-P1-B-095",
+   "cluster": "unifying_failure_structure",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-B-096",
+   "cluster": "unifying_failure_structure",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-B-018",
+   "reason": "Loss-determined bias direction; B-018's phantom-calibrated design already predicts sign and size-dependence, B-096 adds the cross-domain loss-swap arm."
+  },
+  {
+   "id": "W13-P1-C-001",
+   "cluster": "calibration",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-052",
+   "reason": "Prompt-wording sensitivity umbrella; keep C-052's ranking-stability design and add C-001's calibration-variance decomposition as a mandatory arm (calibration, not just accuracy)."
+  },
+  {
+   "id": "W13-P1-C-002",
+   "cluster": "calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-003",
+   "cluster": "calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-004",
+   "cluster": "calibration",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-005",
+   "cluster": "calibration",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-018",
+   "reason": "Instance of the deterministic-signals-beat-uncertainty-machinery family; fold as a method row of C-018's method-by-scale matrix (B-050 kept separately as the dense-prediction twin)."
+  },
+  {
+   "id": "W13-P1-C-006",
+   "cluster": "calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-007",
+   "cluster": "calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-073",
+   "reason": "Calibration-specific instance of the deltas-within-noise audit."
+  },
+  {
+   "id": "W13-P1-C-008",
+   "cluster": "calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-009",
+   "cluster": "calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-010",
+   "cluster": "calibration",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-011",
+   "cluster": "calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "vague_event_semantics"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-012",
+   "cluster": "calibration",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-013",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_moderate"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-014",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-018",
+   "reason": "MC-dropout-on-frozen-features is one method row in C-018's method-by-scale matrix."
+  },
+  {
+   "id": "W13-P1-C-015",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-016",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-017",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-018",
+   "reason": "Embedding-norm-vs-ensemble is another method row of the same matrix."
+  },
+  {
+   "id": "W13-P1-C-018",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_heavy"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-019",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-020",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-021",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-022",
+   "cluster": "uncertainty",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-015",
+   "reason": "Set-size decision-worthlessness and conditional-coverage failure are two readouts of one conformal-under-shift evaluation."
+  },
+  {
+   "id": "W13-P1-C-023",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "infra_heavy_retrieval_index"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-024",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "infra_heavy_retrieval_index"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-025",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-026",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-023",
+   "reason": "Generative re-renderings are a second miss-mode of the same dedup-undercount audit; one contamination study, two probes."
+  },
+  {
+   "id": "W13-P1-C-027",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-028",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "capture_labor",
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-029",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_dependency_timestamps"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-030",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-089",
+   "reason": "Blind language-prior baseline template; C-089's decorrelated-subset design subsumes blind-fraction reporting."
+  },
+  {
+   "id": "W13-P1-C-031",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Preprocessing (resize/crop) is one nuisance axis of the evaluation-stack variance study."
+  },
+  {
+   "id": "W13-P1-C-032",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-033",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-027",
+   "reason": "Gallery near-duplication is duplicate-structure score inflation; fold into the leakage umbrella."
+  },
+  {
+   "id": "W13-P1-C-034",
+   "cluster": "benchmark-contamination",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_dependency_metadata"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-035",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "Known-critique restatement: multi-label re-evaluations of top-1 benchmarks already exist and the fast experiment literally reuses them. Nothing left to falsify cheaply that prior work has not."
+  },
+  {
+   "id": "W13-P1-C-036",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "Boundary-vs-region metric divergence is established practice (boundary-quality metrics exist for exactly this reason); residual novelty (human editing-utility link) is a user study bolted onto a known result."
+  },
+  {
+   "id": "W13-P1-C-037",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study",
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-038",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-042",
+   "reason": "Deployment-weighted corruption scores are one reweighting scheme inside the rank-stability-under-reweighting study."
+  },
+  {
+   "id": "W13-P1-C-039",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-040",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-071",
+   "reason": "Judge-style circularity; self/family-preference estimation subsumes style-at-fixed-accuracy sensitivity."
+  },
+  {
+   "id": "W13-P1-C-041",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "Reporting FPR-at-high-TPR alongside AUROC is already standard in OOD papers; the claimed reordering is largely documented. Low information per unit work despite trivial cost."
+  },
+  {
+   "id": "W13-P1-C-042",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-043",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-044",
+   "cluster": "metric-validity",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-045",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-046",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-047",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-048",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-049",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Norm-adaptation toggling is a harness nuisance axis."
+  },
+  {
+   "id": "W13-P1-C-050",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Decode/interpolation library variance is a harness nuisance axis."
+  },
+  {
+   "id": "W13-P1-C-051",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Evaluation resolution is a harness nuisance axis (fixed vs per-model-peak reporting arm)."
+  },
+  {
+   "id": "W13-P1-C-052",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-053",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Test-time-augmentation on/off is a harness nuisance axis."
+  },
+  {
+   "id": "W13-P1-C-054",
+   "cluster": "protocol-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk",
+    "compute_moderate"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-055",
+   "cluster": "negative-results",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "Attention-faithfulness failure is a heavily published area; the proposed occlusion-agreement test replicates known designs. Killed as redundant, not infeasible."
+  },
+  {
+   "id": "W13-P1-C-056",
+   "cluster": "negative-results",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "The decisive equalized SSL-vs-supervised comparison is pretraining-scale compute; small paired runs cannot settle an explicitly scale-dependent claim. Feasibility fail for this project's budget."
+  },
+  {
+   "id": "W13-P1-C-057",
+   "cluster": "negative-results",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep",
+   "note": "Cheapest sharp test in the negative-results cluster: public scale ladders, cached logits, accuracy-controlled regression in a day."
+  },
+  {
+   "id": "W13-P1-C-058",
+   "cluster": "negative-results",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "Same pretraining-scale wall as C-056, and public data-curation competitions already run this exact ablation at multiple scales; no cheap decisive kill is available to us and the field is actively measuring it."
+  },
+  {
+   "id": "W13-P1-C-059",
+   "cluster": "negative-results",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "Direct port of the famous emergence-is-a-metric-artifact result to vision benchmarks; permutation with high prior-art risk and no new falsification design."
+  },
+  {
+   "id": "W13-P1-C-060",
+   "cluster": "negative-results",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-061",
+   "cluster": "negative-results",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_moderate",
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-062",
+   "cluster": "negative-results",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "Cross-threat non-transfer of adversarial defenses is a well-established negative result; re-running the matrix is cheap but redundant."
+  },
+  {
+   "id": "W13-P1-C-063",
+   "cluster": "negative-results",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_moderate"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-064",
+   "cluster": "negative-results",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_moderate"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-065",
+   "cluster": "human-baselines-annotation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-066",
+   "cluster": "human-baselines-annotation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-067",
+   "cluster": "human-baselines-annotation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-068",
+   "cluster": "human-baselines-annotation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-066",
+   "reason": "Distribution-vs-hard-label scoring rerank is the same study as agreement-ceiling reframing; one per-annotator-label benchmark serves both."
+  },
+  {
+   "id": "W13-P1-C-069",
+   "cluster": "human-baselines-annotation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-C-070",
+   "cluster": "human-baselines-annotation",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-071",
+   "cluster": "human-baselines-annotation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study",
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-072",
+   "cluster": "human-baselines-annotation",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "vague_operationalization",
+    "data_access_risk"
+   ],
+   "verdict": "keep",
+   "anomaly": true,
+   "note": "Anomaly kept with a warning: vendor-provenance data is rarely public; narrow to datasets with documented annotation origins or this is unrunnable."
+  },
+  {
+   "id": "W13-P1-C-073",
+   "cluster": "statistics-reproducibility",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "engineering_heavy"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-074",
+   "cluster": "statistics-reproducibility",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-C-075",
+   "cluster": "statistics-reproducibility",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep",
+   "anomaly": true
+  },
+  {
+   "id": "W13-P1-C-076",
+   "cluster": "statistics-reproducibility",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-075",
+   "reason": "Task-reversal certification is the actionable readout of the low-effective-dimensionality analysis; same score matrix."
+  },
+  {
+   "id": "W13-P1-C-077",
+   "cluster": "statistics-reproducibility",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "engineering_moderate"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-078",
+   "cluster": "statistics-reproducibility",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-073",
+   "reason": "Prospective power curves and retrospective bootstrap audit are two halves of one statistical-audit methods study."
+  },
+  {
+   "id": "W13-P1-C-079",
+   "cluster": "statistics-reproducibility",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep",
+   "note": "KEEP in disagreement with Judge A: the controlled dev-loop is the causal version of C-032's observational regression and is cheap; keep both, they triangulate."
+  },
+  {
+   "id": "W13-P1-C-080",
+   "cluster": "statistics-reproducibility",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_moderate"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-081",
+   "cluster": "robustness-shift-critique",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-082",
+   "cluster": "robustness-shift-critique",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "annotation_labor"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-083",
+   "cluster": "robustness-shift-critique",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-084",
+   "cluster": "robustness-shift-critique",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "engineering_moderate"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-085",
+   "cluster": "robustness-shift-critique",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "data_dependency_timestamps"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-086",
+   "cluster": "robustness-shift-critique",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-087",
+   "cluster": "robustness-shift-critique",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-048",
+   "reason": "Head-vs-backbone shift decomposition is C-048's design run under distribution shift; one crossed grid."
+  },
+  {
+   "id": "W13-P1-C-088",
+   "cluster": "robustness-shift-critique",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-089",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-090",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-091",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-089",
+   "reason": "Expression-blind size/position baseline is a blind-prior template instance; fold as the referring-expressions arm."
+  },
+  {
+   "id": "W13-P1-C-092",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-093",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "rendering_labor"
+   ],
+   "verdict": "keep",
+   "note": "KEEP in disagreement with Judge A: template re-rendering is a distinct falsification design (controlled counterfactual), not another blind baseline."
+  },
+  {
+   "id": "W13-P1-C-094",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-095",
+   "reason": "Single-input sufficiency ablation, images instead of frames; one ablation harness."
+  },
+  {
+   "id": "W13-P1-C-095",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-096",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-089",
+   "reason": "Modal-count prior baseline is a blind-prior template instance; fold as the counting arm."
+  },
+  {
+   "id": "W13-P1-C-097",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "human_study",
+    "safety_protocols"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-098",
+   "cluster": "vlm-eval-weaknesses",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-077",
+   "reason": "Answer-extraction/parsing tolerance is a harness nuisance axis."
+  },
+  {
+   "id": "W13-P1-C-099",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-027",
+   "reason": "Temporal collection order is a non-iid-split substrate; the timestamp probe folds into the leakage umbrella."
+  },
+  {
+   "id": "W13-P1-C-100",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-042",
+   "reason": "Usage-weighted category weighting is one reweighting scheme in the same stability analysis."
+  },
+  {
+   "id": "W13-P1-C-101",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-066",
+   "reason": "Answer-set/ambiguity-aware scoring is the same single-ground-truth critique; expert answer-set annotation becomes an arm of C-066."
+  },
+  {
+   "id": "W13-P1-C-102",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "compute_heavy_full_version",
+    "checkpoint_dependency_fast_version"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-103",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T2_small_training_or_light_collection",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "verdict": "keep"
+  },
+  {
+   "id": "W13-P1-C-104",
+   "cluster": "ignored-assumptions",
+   "feasibility_tier": "T3_gated_or_expensive",
+   "feasibility_score": 2,
+   "runnable_as_stated": false,
+   "flags": [],
+   "verdict": "kill",
+   "reason": "Vague and human-gated: 'trained evaluators find more failures under adaptive budgets' is near-tautological, evaluator-skill-confounded, and has no crisp falsification criterion."
+  }
+ ],
+ "caveats": [
+  "kill/merge here is a feasibility judgment, not a quality judgment; the Consolidator may resurrect any id.",
+  "T3 keeps (B-060, B-071, B-072, B-083, B-085, B-094) are kept on hypothesis quality but should not be scheduled until their gate (hardware, experts, protocol pilot) is confirmed.",
+  "prior_art_risk flags are unverified; a dedicated prior-art search pass must run before Stage-2 selection.",
+  "Canonical state files (ideas_master.jsonl, research_state.json, window.lock.json) deliberately untouched."
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "task_id": "p1_wave_b_w1",
+ "role": "judge_B_feasibility",
+ "status": "complete",
+ "recommended_next_task_type": "p1_wave_b_judge_C_or_consolidator",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "branch": "cursor/p1-wave-b-judge-b-feasibility-a49e",
+ "generated_at_utc": "2026-08-28T18:55:15Z",
+ "outputs": [
+  "Windows13/_state/tasks/p1/wave_b_w1/judge_B.md",
+  "Windows13/_state/tasks/p1/wave_b_w1/judge_B.json",
+  "Windows13/_state/tasks/p1/wave_b_w1/accepted_shard_B.jsonl",
+  "Windows13/_state/tasks/p1/wave_b_w1/done_judge_B.json"
+ ],
+ "counts": {
+  "input_total": 302,
+  "input_by_shard": {
+   "A": 102,
+   "B": 96,
+   "C": 104
+  },
+  "keep": 245,
+  "keep_by_shard": {
+   "A": 93,
+   "B": 84,
+   "C": 68
+  },
+  "merge": 44,
+  "kill": 13,
+  "anomalies": 20,
+  "tier_T1_keep": 97,
+  "tier_T2_keep": 142,
+  "tier_T3_keep": 6,
+  "duplicate_groups": 28,
+  "co_run_clusters": 9,
+  "disagreements_vs_judge_A": 12
+ },
+ "notes": "Independent feasibility pass over all 302 ideas (A:102, B:96, C:104). Keep 245 (A:93, B:84, C:68), merge 44, kill 13, anomalies 20, 28 duplicate groups, 9 co-run infrastructure clusters, 12 recorded disagreements vs Judge A (informational; Consolidator resolves). Canonical state untouched."
+}
