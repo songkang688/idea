@@ -1,0 +1,41 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "judge_C_adversary",
+  "status": "complete",
+  "output_files": [
+    "_state/tasks/p0/windows_init/judge_C.md",
+    "_state/tasks/p0/windows_init/judge_C.done.json"
+  ],
+  "unresolved_items": [
+    "Residual race window: no scan can exclude a not-yet-pushed run claiming Windows14 first; consolidator MUST git fetch origin --prune (branches AND refs/pull/*/head) immediately before writing the canonical lock and re-verify no ref contains a Windows14 path or lock artifact claiming 14; on collision bump to smallest unused N>14 not claimed by a live judged pipeline (as of 17:25Z that means skip 15, claimed by the Windows15 dispatcher, and take 16); never take 13 (sibling _p0_dispatch unanimous three-judge claim, 17:18-17:21Z) and never gap-fill 1/5/7/3",
+    "Wave A worker_B and worker_C fallback recommendations of Windows13 are VOID: the sibling _p0_dispatch pipeline is provably not stale/abandoned (full Wave B verdicts for Windows13 pushed 17:18:28-17:21:00Z on cursor/p0-init-judge-{a,b,c}-* branches); 13 must be treated as spent regardless of any canonicality ruling",
+    "Sibling-identity speculation conflict between worker_A (distinct Windows13-like dispatcher) and worker_B (possibly same Windows14 parent) is resolved in worker_A's favor by post-Wave-A evidence (sibling completed its own Wave B claiming 13 and describes our wave as a separate sibling pipeline), but the sibling's true parent identity remains unproven from repo state",
+    "Two additional dispatch pipelines entered after Wave A: a Windows15-identity dispatcher (_dispatcher/p0/wave_a/, recommends 15, explicitly avoids 13/14) and a fourth wave (_state/tasks/P0/wave_A/, recommends 15 unless it shares identity with this Windows14 pipeline); neither contests 14, but the consolidator should record them in decision.json",
+    "Hygiene (non-blocking): Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is invalid JSON (bare 1b, line 114; independently re-verified by this judge); all new JSON state files must pass a parser check before commit",
+    "P1/P2 gate lock verifiers (branches cursor/p1-lock-verifier-663b, cursor/p2-lock-verifier-56b5) are already blocked on the missing window.lock.json; downstream stages are waiting on the consolidator's lock"
+  ],
+  "recommended_next_task_type": "wave_B_consolidator",
+  "contradictions_found": true,
+  "recommended_windows_id": "Windows14",
+  "recommended_windows_number": 14,
+  "audit_summary": {
+    "shards_audited": ["worker_A", "worker_B", "worker_C"],
+    "fabrications_found": false,
+    "stale_but_not_wrong": true,
+    "spot_checks_passed": 10,
+    "independent_scan": {
+      "fetched_at_utc": "2026-08-28T17:25Z",
+      "refs_scanned": "28 origin branch tips + 9 PR heads, full-path case-insensitive variant regex (WindowsN, windowsN, Windows N, Windows_N, Windows-N, WinN, staging/Windows*)",
+      "max_existing_windows_number": 12,
+      "windows_numbers_in_use": [2, 3, 4, 6, 8, 9, 10, 11, 12],
+      "windows13_directory_exists": false,
+      "windows14_directory_exists": false,
+      "window_lock_json_exists": false
+    },
+    "race_state_at_audit": {
+      "windows13": "claimed by sibling _p0_dispatch pipeline via unanimous three-judge Wave B verdict (17:18:28Z/17:19:00Z/17:21:00Z); no directory yet",
+      "windows14": "claimed by this pipeline (dispatcher identity; Wave A workers B/C, our judge_A at 17:24:25Z, and this judge concur); uncontested by all other live pipelines; no directory yet",
+      "windows15": "claimed by third dispatcher (identity Windows15, _dispatcher/p0/wave_a/, 17:22-17:24Z); no directory yet"
+    }
+  }
+}
