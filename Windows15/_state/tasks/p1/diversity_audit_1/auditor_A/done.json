@@ -1,0 +1,54 @@
+{
+  "task_id": "p1_diversity_audit_1_A",
+  "role": "diversity_auditor",
+  "audit_focus": "mode_collapse_and_cluster_crowding",
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "status": "done",
+  "created_at": "2026-08-28T20:05:00Z",
+  "inputs": {
+    "branch": "origin/cursor/p1-wave-b-batch001-consolidator-7c96",
+    "head": "b8d60bce42ab0a9f0f7b35278454d65d59f01331",
+    "files": [
+      "Windows15/_state/ideas_master.jsonl",
+      "Windows15/_state/tasks/p1/batch_001/accepted.jsonl",
+      "Windows15/_state/tasks/p1/batch_001/decision.json"
+    ]
+  },
+  "counts": {
+    "ideas_audited": 271,
+    "clusters_total": 40,
+    "effective_cluster_count": 32.1,
+    "gini_cluster_sizes": 0.275,
+    "top10_cluster_share": 0.413,
+    "overrepresented_clusters": 4,
+    "thin_clusters_le3": 7,
+    "single_shard_clusters": 23,
+    "ideas_in_single_shard_clusters": 162,
+    "meta_families": 9,
+    "deflationary_meta_family_ideas": 109,
+    "deflationary_meta_family_share": 0.402,
+    "misattribution_template_matches": 135,
+    "constructive_titles": 3,
+    "retained_cross_shard_template_twin_pairs": 12,
+    "blind_spots_flagged": 12,
+    "recommendations": 5
+  },
+  "verdict": {
+    "cluster_level_mode_collapse": false,
+    "meta_template_crowding": true,
+    "severity": "moderate"
+  },
+  "constraints_respected": {
+    "window_lock_untouched": true,
+    "ideas_master_read_only": true,
+    "no_novelty_verification": true,
+    "no_citations_invented": true
+  },
+  "outputs": [
+    "Windows15/_state/tasks/p1/diversity_audit_1/auditor_A/report.md",
+    "Windows15/_state/tasks/p1/diversity_audit_1/auditor_A/findings.json",
+    "Windows15/_state/tasks/p1/diversity_audit_1/auditor_A/done.json"
+  ],
+  "recommended_next_task_type": "p1_diversity_audit_consolidator"
+}

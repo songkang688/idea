@@ -1,0 +1,689 @@
+{
+  "task_id": "p1_diversity_audit_1_A",
+  "auditor": "auditor_A",
+  "audit_focus": "mode_collapse_and_cluster_crowding",
+  "created_at": "2026-08-28T20:05:00Z",
+  "inputs": {
+    "branch": "origin/cursor/p1-wave-b-batch001-consolidator-7c96",
+    "head": "b8d60bce42ab0a9f0f7b35278454d65d59f01331",
+    "files": [
+      "Windows15/_state/ideas_master.jsonl",
+      "Windows15/_state/tasks/p1/batch_001/accepted.jsonl",
+      "Windows15/_state/tasks/p1/batch_001/decision.json",
+      "Windows15/_state/tasks/p1/batch_001/judge_A/clusters.json"
+    ],
+    "ideas_master_count": 271,
+    "accepted_count": 271,
+    "id_sets_identical": true
+  },
+  "method_note": "All statistics computed from corpus files. Template/topic/stance counts are keyword-regex heuristics (patterns included); meta-family grouping is auditor judgment over the 40 judge-defined harmonized clusters. No novelty verification; no citations consulted or invented.",
+  "verdict": {
+    "cluster_level_mode_collapse": false,
+    "meta_template_crowding": true,
+    "severity": "moderate",
+    "summary": "40 clusters, effective count 32.1, Gini 0.275 - no single-cluster collapse. But 109/271 ideas (40.2%) sit in three deflationary meta-families sharing one 'trusted signal X is actually artifact Y' skeleton, uniformly across all three generators (house style, likely schema-induced via mandatory community_default_belief). Constructive titles ~1%. Rebalance next generation wave; no pruning of this corpus required."
+  },
+  "cluster_stats": {
+    "n_ideas": 271,
+    "n_clusters": 40,
+    "sizes_desc": [
+      15,
+      15,
+      13,
+      12,
+      10,
+      10,
+      10,
+      9,
+      9,
+      9,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      6,
+      6,
+      5,
+      5,
+      5,
+      5,
+      5,
+      4,
+      4,
+      4,
+      4,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      1
+    ],
+    "mean_size": 6.78,
+    "median_size": 7,
+    "max_size": 15,
+    "min_size": 1,
+    "hhi": 0.0311,
+    "effective_cluster_count": 32.1,
+    "gini": 0.275,
+    "top5_share": 0.24,
+    "top10_share": 0.413,
+    "per_cluster": {
+      "HC-23": {
+        "name": "shortcut_priors_medical",
+        "size": 15,
+        "share": 0.055
+      },
+      "HC-36": {
+        "name": "media_context_shortcuts",
+        "size": 15,
+        "share": 0.055
+      },
+      "HC-02": {
+        "name": "task_relevant_metric_decoupling",
+        "size": 13,
+        "share": 0.048
+      },
+      "HC-30": {
+        "name": "media_temporal_dynamics",
+        "size": 12,
+        "share": 0.044
+      },
+      "HC-19": {
+        "name": "gap_localization_readout",
+        "size": 10,
+        "share": 0.037
+      },
+      "HC-26": {
+        "name": "uncertainty_calibration_safety",
+        "size": 10,
+        "share": 0.037
+      },
+      "HC-13": {
+        "name": "peft_update_geometry",
+        "size": 10,
+        "share": 0.037
+      },
+      "HC-16": {
+        "name": "capability_erosion",
+        "size": 9,
+        "share": 0.033
+      },
+      "HC-10": {
+        "name": "annotation_process_imprint",
+        "size": 9,
+        "share": 0.033
+      },
+      "HC-32": {
+        "name": "image_formation_physics_media",
+        "size": 9,
+        "share": 0.033
+      },
+      "HC-11": {
+        "name": "adaptation_data_efficiency",
+        "size": 8,
+        "share": 0.03
+      },
+      "HC-09": {
+        "name": "annotation_protocol_design",
+        "size": 8,
+        "share": 0.03
+      },
+      "HC-40": {
+        "name": "volumetric_geometry_inference",
+        "size": 8,
+        "share": 0.03
+      },
+      "HC-08": {
+        "name": "continuous_latent_thresholding",
+        "size": 8,
+        "share": 0.03
+      },
+      "HC-31": {
+        "name": "multimodal_sensing_media",
+        "size": 8,
+        "share": 0.03
+      },
+      "HC-22": {
+        "name": "synthetic_and_physical_data",
+        "size": 8,
+        "share": 0.03
+      },
+      "HC-21": {
+        "name": "pretraining_provenance_priors",
+        "size": 7,
+        "share": 0.026
+      },
+      "HC-14": {
+        "name": "minimal_sufficient_adaptation",
+        "size": 7,
+        "share": 0.026
+      },
+      "HC-03": {
+        "name": "evaluation_protocol_artifacts",
+        "size": 7,
+        "share": 0.026
+      },
+      "HC-29": {
+        "name": "training_dynamics_boundary_memorization",
+        "size": 7,
+        "share": 0.026
+      },
+      "HC-35": {
+        "name": "human_ai_workflow",
+        "size": 7,
+        "share": 0.026
+      },
+      "HC-33": {
+        "name": "media_representation_output_space",
+        "size": 7,
+        "share": 0.026
+      },
+      "HC-06": {
+        "name": "supervision_definition_gap",
+        "size": 6,
+        "share": 0.022
+      },
+      "HC-05": {
+        "name": "detection_vs_delineation",
+        "size": 6,
+        "share": 0.022
+      },
+      "HC-20": {
+        "name": "prompt_interface_mechanics",
+        "size": 5,
+        "share": 0.018
+      },
+      "HC-18": {
+        "name": "sam_perceptual_mechanisms",
+        "size": 5,
+        "share": 0.018
+      },
+      "HC-15": {
+        "name": "geometric_scale_prior_mismatch",
+        "size": 5,
+        "share": 0.018
+      },
+      "HC-04": {
+        "name": "peft_comparison_validity",
+        "size": 5,
+        "share": 0.018
+      },
+      "HC-39": {
+        "name": "distribution_shift_medical",
+        "size": 5,
+        "share": 0.018
+      },
+      "HC-24": {
+        "name": "output_pipeline_bottleneck",
+        "size": 4,
+        "share": 0.015
+      },
+      "HC-07": {
+        "name": "model_as_disagreement_simulator",
+        "size": 4,
+        "share": 0.015
+      },
+      "HC-01": {
+        "name": "eval_statistical_validity",
+        "size": 4,
+        "share": 0.015
+      },
+      "HC-28": {
+        "name": "lifecycle_deployment_ops",
+        "size": 4,
+        "share": 0.015
+      },
+      "HC-34": {
+        "name": "interactive_refinement_dynamics",
+        "size": 3,
+        "share": 0.011
+      },
+      "HC-27": {
+        "name": "label_free_auditing",
+        "size": 3,
+        "share": 0.011
+      },
+      "HC-25": {
+        "name": "topology_thin_structures",
+        "size": 3,
+        "share": 0.011
+      },
+      "HC-12": {
+        "name": "self_training_prior_reinforcement",
+        "size": 2,
+        "share": 0.007
+      },
+      "HC-38": {
+        "name": "consistency_as_supervision",
+        "size": 2,
+        "share": 0.007
+      },
+      "HC-37": {
+        "name": "frozen_foundation_signals",
+        "size": 2,
+        "share": 0.007
+      },
+      "HC-17": {
+        "name": "edge_affinity_prior",
+        "size": 1,
+        "share": 0.004
+      }
+    }
+  },
+  "overrepresented_clusters": [
+    {
+      "cluster": "HC-23",
+      "name": "shortcut_priors_medical",
+      "size": 15,
+      "x_mean": 2.2,
+      "note": "instance enumeration of medical shortcut reliance"
+    },
+    {
+      "cluster": "HC-36",
+      "name": "media_context_shortcuts",
+      "size": 15,
+      "x_mean": 2.2,
+      "note": "same shortcut-reliance template as HC-23 with domain swapped to media; combined 30 ideas (11.1%) = corpus's true largest mode"
+    },
+    {
+      "cluster": "HC-02",
+      "name": "task_relevant_metric_decoupling",
+      "size": 13,
+      "x_mean": 1.9,
+      "note": "one claim enumerated over ~13 task-relevant quantities"
+    },
+    {
+      "cluster": "HC-30",
+      "name": "media_temporal_dynamics",
+      "size": 12,
+      "x_mean": 1.8,
+      "note": "one claim enumerated over temporal statistics"
+    }
+  ],
+  "thin_clusters": [
+    {
+      "cluster": "HC-17",
+      "name": "edge_affinity_prior",
+      "size": 1
+    },
+    {
+      "cluster": "HC-12",
+      "name": "self_training_prior_reinforcement",
+      "size": 2
+    },
+    {
+      "cluster": "HC-37",
+      "name": "frozen_foundation_signals",
+      "size": 2
+    },
+    {
+      "cluster": "HC-38",
+      "name": "consistency_as_supervision",
+      "size": 2
+    },
+    {
+      "cluster": "HC-25",
+      "name": "topology_thin_structures",
+      "size": 3
+    },
+    {
+      "cluster": "HC-27",
+      "name": "label_free_auditing",
+      "size": 3
+    },
+    {
+      "cluster": "HC-34",
+      "name": "interactive_refinement_dynamics",
+      "size": 3
+    }
+  ],
+  "meta_families": {
+    "F1_evaluation_critique": {
+      "clusters": [
+        "HC-01",
+        "HC-02",
+        "HC-03",
+        "HC-04",
+        "HC-05",
+        "HC-27"
+      ],
+      "skeleton": "benchmark/metric/statistical/protocol signal the field trusts is an artifact",
+      "ideas": 38,
+      "share": 0.14
+    },
+    "F2_shortcut_reliance": {
+      "clusters": [
+        "HC-23",
+        "HC-36",
+        "HC-17",
+        "HC-15"
+      ],
+      "skeleton": "models rely on contextual/statistical shortcuts rather than target evidence",
+      "ideas": 36,
+      "share": 0.133
+    },
+    "F3_annotation_provenance": {
+      "clusters": [
+        "HC-06",
+        "HC-08",
+        "HC-09",
+        "HC-10",
+        "HC-07"
+      ],
+      "skeleton": "ground-truth labels are constructed objects whose process/conventions models learn",
+      "ideas": 35,
+      "share": 0.129
+    },
+    "F4_uncertainty_consistency_signals": {
+      "clusters": [
+        "HC-26",
+        "HC-38",
+        "HC-37"
+      ],
+      "skeleton": "uncertainty reduces to geometry / internal consistency is exploitable signal",
+      "ideas": 14,
+      "share": 0.052
+    },
+    "F5_adaptation_mechanics": {
+      "clusters": [
+        "HC-11",
+        "HC-13",
+        "HC-14",
+        "HC-16",
+        "HC-19",
+        "HC-28",
+        "HC-12"
+      ],
+      "skeleton": "structure and economics of PEFT/adaptation updates",
+      "ideas": 50,
+      "share": 0.185
+    },
+    "F6_media_physics": {
+      "clusters": [
+        "HC-30",
+        "HC-31",
+        "HC-32",
+        "HC-33",
+        "HC-22"
+      ],
+      "skeleton": "physical signal structure of amorphous media",
+      "ideas": 44,
+      "share": 0.162
+    },
+    "F7_sam_mechanics": {
+      "clusters": [
+        "HC-20",
+        "HC-18",
+        "HC-21",
+        "HC-34"
+      ],
+      "skeleton": "SAM behavior explained by prompt/pretraining mechanics",
+      "ideas": 20,
+      "share": 0.074
+    },
+    "F8_pipeline_plumbing": {
+      "clusters": [
+        "HC-40",
+        "HC-24",
+        "HC-29",
+        "HC-25"
+      ],
+      "skeleton": "error introduced by 3D/output/training plumbing",
+      "ideas": 22,
+      "share": 0.081
+    },
+    "F9_shift_and_workflow": {
+      "clusters": [
+        "HC-39",
+        "HC-35"
+      ],
+      "skeleton": "distribution shift decomposition and human-AI workflow failure physics",
+      "ideas": 12,
+      "share": 0.044
+    }
+  },
+  "deflationary_mass": {
+    "families": [
+      "F1_evaluation_critique",
+      "F2_shortcut_reliance",
+      "F3_annotation_provenance"
+    ],
+    "ideas": 109,
+    "share": 0.402,
+    "shared_skeleton": "a signal the field treats as informative (benchmark score / model evidence / ground-truth label) is actually an artifact of (protocol / shortcut / annotation process)"
+  },
+  "template_prevalence": {
+    "T1_misattribution_debunk": {
+      "pattern": "\\b(not (a |an )?(percept|semantic|domain|perception|model|capabilit)|misattribut|in disguise|masquerad|actually (a|an|the)\\b|is really\\b|, not\\b|not .{0,40}(but|it'?s)\\b|rather than\\b)",
+      "matches": 135,
+      "share": 0.498
+    },
+    "T2_artifact_of_pipeline": {
+      "pattern": "\\b(artifact|artefact|bookkeeping|convention|protocol choice|mechanics\\b|plumbing|side.?channel|leak)",
+      "matches": 67,
+      "share": 0.247
+    },
+    "T13_annotation_labeling_function": {
+      "pattern": "\\b(annotat|label(ing|er|ed)? (function|protocol|convention|style|budget|noise|error)|rater|supervision definition)",
+      "matches": 70,
+      "share": 0.258
+    },
+    "T12_physics_signal": {
+      "pattern": "\\b(physics|physical(ly)?|polariz|thermal|turbulence|spectr|scattering|transmittance|attenuation|rolling.?shutter|optic|illuminat|photometric)",
+      "matches": 69,
+      "share": 0.255
+    },
+    "T10_metric_decoupling": {
+      "pattern": "\\b(dice|iou|overlap metric|boundary metric|hd95|rank(ing)?s? (invert|unstable|change|flip|decoupl)|decoupl|pick(s)? the wrong|selects? the wrong)",
+      "matches": 54,
+      "share": 0.199
+    },
+    "T16_eval_audit_of_field": {
+      "pattern": "\\b(published (rank|compar|result|method)|literature\\b|the field|papers? (close|claim|report)|survey|re.?evaluat|audit)",
+      "matches": 52,
+      "share": 0.192
+    },
+    "T11_uncertainty_geometry": {
+      "pattern": "\\b(uncertainty|confidence|calibrat|abstention|conformal|iou head|jitter|mc.?dropout|entropy)",
+      "matches": 47,
+      "share": 0.173
+    },
+    "T6_cheap_beats_expensive": {
+      "pattern": "\\b(cheap(er)?\\b|tiny\\b|frozen\\b.{0,60}(match|suffic|beat|recover)|(match|recover)(es|s)? most of|fraction of (the )?(cost|compute|label)|small(er)? model(s)? (match|beat)|zero (task-specific )?training)",
+      "matches": 45,
+      "share": 0.166
+    },
+    "T14_temporal_dynamics": {
+      "pattern": "\\b(temporal|motion|flicker|decorrelat|frame(s)?\\b|video|dynamic(s)?\\b)",
+      "matches": 37,
+      "share": 0.137
+    },
+    "T8_fingerprint_imprint": {
+      "pattern": "\\b(fingerprint|signature|imprint|style\\b|forensic|watermark|reproduc(e|ing) (the )?(annotat|style))",
+      "matches": 35,
+      "share": 0.129
+    },
+    "T15_capability_erosion": {
+      "pattern": "\\b(forget|eros|erase|collaps|lose(s)?\\b.{0,40}(capabilit|diversity|granularity)|catastrophic|degrad(es|ation).{0,40}(after|during) (fine.?tun|adapt))",
+      "matches": 28,
+      "share": 0.103
+    }
+  },
+  "title_stance": {
+    "strict_deflationary_titles": {
+      "count": 70,
+      "share": 0.258,
+      "pattern": ", not|is not|are not|n't|artifact|rather than|not a|not the|not percept"
+    },
+    "loose_deflationary_titles": {
+      "count": 125,
+      "share": 0.461
+    },
+    "constructive_titles": {
+      "count": 3,
+      "share": 0.011
+    },
+    "colon_two_part_frame": {
+      "count": 141,
+      "share": 0.52
+    },
+    "comma_not_pivot": {
+      "count": 50,
+      "share": 0.185
+    },
+    "per_shard_strict_deflationary_rate": {
+      "gen_A": 0.28,
+      "gen_B": 0.24,
+      "gen_C": 0.26
+    },
+    "interpretation": "deflationary mode is uniform across generators - pipeline-wide house style, most plausibly induced by the mandatory community_default_belief schema field"
+  },
+  "experiment_template_prevalence": {
+    "correlate_or_regress_two_quantities": {
+      "count": 60,
+      "share": 0.221
+    },
+    "human_rater_study": {
+      "count": 15,
+      "share": 0.055
+    },
+    "reevaluate_published_methods": {
+      "count": 12,
+      "share": 0.044
+    },
+    "counterfactual_input_manipulation": {
+      "count": 11,
+      "share": 0.041
+    },
+    "linear_probe": {
+      "count": 5,
+      "share": 0.018
+    },
+    "factorial_design": {
+      "count": 4,
+      "share": 0.015
+    },
+    "pretrained_vs_scratch_control": {
+      "count": 3,
+      "share": 0.011
+    }
+  },
+  "shard_isolation": {
+    "single_shard_clusters": 23,
+    "single_shard_cluster_ids": [
+      "HC-04",
+      "HC-11",
+      "HC-13",
+      "HC-14",
+      "HC-16",
+      "HC-17",
+      "HC-18",
+      "HC-20",
+      "HC-21",
+      "HC-22",
+      "HC-23",
+      "HC-25",
+      "HC-28",
+      "HC-30",
+      "HC-31",
+      "HC-32",
+      "HC-33",
+      "HC-35",
+      "HC-36",
+      "HC-37",
+      "HC-38",
+      "HC-39",
+      "HC-40"
+    ],
+    "ideas_in_single_shard_clusters": 162,
+    "share_of_corpus": 0.598,
+    "cross_shard_clusters": 17,
+    "retained_cross_shard_template_twin_pairs": 12,
+    "note": "per judge_A cross_shard_near_duplicate_relations: 14 flagged pairs, 2 merged, 12 deliberately kept as template twins (same hypothesis skeleton, domain swapped) - cluster counts therefore understate template repetition"
+  },
+  "blind_spots": [
+    {
+      "topic": "constructive method/architecture/loss proposals",
+      "evidence": "new-architecture framing 4 mentions, new-loss 1, constructive titles 3/271 (~1%)",
+      "severity": "high"
+    },
+    {
+      "topic": "positive-capability clusters starved vs deflationary mass",
+      "evidence": "HC-37 (2) + HC-38 (2) new-signal ideas vs 109 broken-signal ideas; media physics F6 is the exception",
+      "severity": "high"
+    },
+    {
+      "topic": "language/open-vocabulary segmentation as mechanism",
+      "evidence": "8 mentions, all deflationary probes (A-007, B-086, C-032)",
+      "severity": "medium"
+    },
+    {
+      "topic": "in-context / visual-prompt adaptation (no weight updates)",
+      "evidence": "3 mentions despite T01 being an adaptation territory",
+      "severity": "medium"
+    },
+    {
+      "topic": "instance/panoptic/part-whole task formulations",
+      "evidence": "2 passing mentions",
+      "severity": "medium"
+    },
+    {
+      "topic": "generative/diffusion segmentation approaches",
+      "evidence": "3 mentions",
+      "severity": "medium"
+    },
+    {
+      "topic": "continual/lifelong skill accumulation",
+      "evidence": "4 mentions, all erosion-adjacent; HC-28 has 4 ideas",
+      "severity": "medium"
+    },
+    {
+      "topic": "temporal/video modeling for T01/T02 (non-media)",
+      "evidence": "temporal reasoning concentrated in T03 (HC-30, 12 ideas); no memory/propagation hypotheses for SAM or longitudinal medical beyond evaluation targets",
+      "severity": "medium"
+    },
+    {
+      "topic": "interactive segmentation dynamics",
+      "evidence": "HC-34 = 3 ideas despite interactivity being SAM's defining interface",
+      "severity": "low"
+    },
+    {
+      "topic": "federated/privacy-preserving learning",
+      "evidence": "2 mentions",
+      "severity": "low"
+    },
+    {
+      "topic": "cross-territory synthesis",
+      "evidence": "23/40 clusters (162 ideas, 59.8%) single-shard; cross-domain clusters mostly formed at dedup time",
+      "severity": "medium"
+    },
+    {
+      "topic": "territory ceiling (by design)",
+      "evidence": "corpus spans only T01/T02/T03; no non-medical 3D, remote sensing, document/industrial segmentation",
+      "severity": "informational"
+    }
+  ],
+  "recommendations": [
+    "Cap deflationary/debunk framings at ~25% of next batch per generator; require minimum shares of constructive and quantitative-law hypotheses",
+    "Freeze instance-enumeration in HC-23/HC-36/HC-02/HC-30: admit only competing mechanisms or cross-instance quantitative laws",
+    "Seed starved clusters HC-37, HC-38, HC-34, HC-27, HC-12 and blind-spot topics (in-context adaptation, language-as-mechanism, generative segmentation, temporal T01/T02)",
+    "Soften/alternate the community_default_belief schema requirement for a slice of generation; diversify falsification designs beyond correlation studies",
+    "Add explicit cross-territory generation prompts to counter 60% single-shard clustering"
+  ],
+  "caveats": [
+    "Template/topic/stance counts are keyword-regex heuristics: topic coverage over-counts passing mentions, template matching under-counts paraphrases",
+    "Meta-family grouping F1-F9 is auditor judgment; per-family cluster membership included for regrouping",
+    "No novelty verification performed; no claims about prior art; no citations consulted or invented",
+    "Corpus files read-only; ideas_master.jsonl and window.lock.json untouched"
+  ]
+}
