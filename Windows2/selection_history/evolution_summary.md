@@ -1,25 +1,27 @@
 # Evolution summary (Windows2)
 
-## Stage 1
+## Stage 1 — CLOSED (count)
 
-- Agent C COMPLETE: 345 ideas `W2-C-0001`–`0345`.
-- Agent B COMPLETE: 345 ideas `W2-B-0001`–`0345`.
-- Agent A still running.
-- Running total: **690 / 1000+**.
+| Batch | IDs | n | Path |
+| --- | --- | --- | --- |
+| A | W2-A-0001–0352 | 352 | `Windows2/_wip/stage1_agent_A/` |
+| B | W2-B-0001–0345 | 345 | `Windows2/_wip/stage1_agent_B/` |
+| C | W2-C-0001–0345 | 345 | `Windows2/_wip/stage1_agent_C/` |
+| **Total** | | **1042** | |
 
-## Stage 2/3 (partial)
+No more Stage-1 generation unless an auditor finds a missing scientific cluster.
 
-- Agent D: review + prior-work attack on batch C (running).
-- Agent E: review + prior-work attack on batch B (dispatching).
-- Do not globally cut to 200 until A is in and D/E scores exist.
+## Stage 2/3 — IN PROGRESS (per-batch, then merge)
 
-## Cross-batch merge notes (supervisor)
+- D: C catalog (running)
+- E: B catalog (running)
+- F: A catalog (dispatching)
 
-Possible conceptual overlap to resolve later:
-- C-0081 classification-pretrain vs dense transfer ↔ B frozen-vs-tuned / representation mismatch.
-- C-0011 prompt-template variance ↔ B-0042 synonym variance in open-vocab.
-- C-0082 SAM zero-shot atlas ↔ upcoming Agent A SAM failure catalog.
+After all three score files exist: supervisor merges to ~200 with protected exceptions, then Stage 3 continues only on the merged 200 (or mutate survivors).
 
-## Mutations / kills
+## Cross-batch merge notes
 
-None confirmed (independent review not back).
+- Prompt variance: A-0001, B-0042, C-0011
+- Metric/label noise: A-0151/0198, C-0046/0057
+- SAM/SA-1B prior + contamination: A-0017/0206/0301, C-0082
+- Transfer/shift: B-0226/0200, C-0081, A-0245
