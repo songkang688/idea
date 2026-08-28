@@ -16,7 +16,8 @@
 | D | Review + prior-work on C | COMPLETE | keep 107 (79+28) / mutate 58 / kill 180; mandatory-15: 7 survive / 8 mutate / 0 kill |
 | E | Review + prior-work on B | COMPLETE | keep 77 / kill 268; mandatory-15: 6 survive / 7 mutate / 2 kill |
 | F | Review + prior-work on A | RUNNING | — |
-| G | Cross-batch B∪C merge + feasibility census | DISPATCHING | — |
+| G | Cross-batch B∪C merge + feasibility census | RUNNING | — |
+| H | Reviewer #2 + freshness sweep on B top bets | DISPATCHING | — |
 
 Provisional keep pool before A: **184** (107 C + 77 B), too fat and eval-skewed. D recommends capping C eval-audits at ~60% of C's contribution to the 200.
 
