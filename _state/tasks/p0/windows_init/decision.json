@@ -1,0 +1,61 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "wave_B_consolidator",
+  "status": "complete",
+  "windows_id": "Windows14",
+  "windows_number": 14,
+  "windows_path": "Windows14",
+  "window_locked": false,
+  "window_defined_by": "P0",
+  "window_definition_status": "decision_pending_implementation",
+  "overwrite_check_required_at_lock": true,
+  "never_take": [1, 3, 5, 7, 13, 15],
+  "collision_bump_policy": "If the mandatory fresh 'git fetch origin --prune' (branches AND refs/pull/*/head) at lock time shows any ref containing a Windows14 path (any casing/nesting) or any lock/decision artifact claiming 14, bump to the smallest unused N > 14 that is not in never_take and carries no live judged claim: skip 15 (judged verdict by the Windows15-identity _dispatcher pipeline at 17:35:00Z), making 16 the effective bump target, then 17, and so on; re-verify each candidate's absence against the same fresh fetch before taking it. Never take 13 (implemented and locked by the sibling _p0_dispatch pipeline: Windows13/_state/window.lock.json, locked 2026-08-28T17:31:30Z on origin/cursor/windows13-p0-init-implementation-d93f). Never gap-fill 1/3/5/7 (3 is burned by nested staging/Windows3_supervisor/; 1 is in live semantic use via research_ledger/windows1/; 5 and 7 were never used and the repo convention is monotonic-only, per Windows12's recorded numbering block). Numbers 2-12 are occupied by existing directory trees and are likewise never available.",
+  "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "commit_message": "Research Idea Evolution - Windows14 - Initialization",
+  "structure": ["README.md", "_state/", "selection_history/", "final_ideas/", "artifacts/"],
+  "state_files": ["_state/research_state.json", "_state/ideas_master.jsonl", "_state/research_ledger.md", "_state/agent_log.md", "_state/window.lock.json"],
+  "json_validity_gate": true,
+  "recommended_next_task_type": "wave_C_implementation",
+  "judge_consensus": true,
+  "fresh_scan_at": "2026-08-28T17:36:44Z",
+  "fresh_scan": {
+    "method": "git fetch origin --prune at 17:34:37Z and again at 17:36:44Z, plus explicit fetch of refs/pull/1..9/head; git ls-tree -r on every origin branch head and every PR head; case-insensitive nested regex over full paths covering WindowsN, windowsN, 'Windows N', Windows_N, Windows-N, WinN, staging/Windows*; separate scan for window.lock.json on every ref",
+    "occupied_windows_numbers": [2, 3, 4, 6, 8, 9, 10, 11, 12, 13],
+    "max_existing_windows_number": 13,
+    "windows13_directory_exists": true,
+    "windows13_lock_exists": true,
+    "windows13_evidence": "Windows13/ full skeleton incl. Windows13/_state/window.lock.json (locked_at 2026-08-28T17:31:30Z, defined_by P0, definition_status canonical) on origin/cursor/windows13-p0-init-implementation-d93f @ 7b37f37 (tip advanced from 38641a7 during this consolidation); implemented by the sibling _p0_dispatch pipeline per its own decision.json on origin/cursor/p0-init-consolidator-9302",
+    "windows14_directory_exists": false,
+    "windows14_lock_or_claim_artifact_exists": false,
+    "windows15_directory_exists": false,
+    "window_lock_json_locations": ["origin/cursor/windows13-p0-init-implementation-d93f : Windows13/_state/window.lock.json"],
+    "windows3_note": "number 3 exists only as nested staging/Windows3_supervisor/ (never top-level Windows3/); counted as used, never gap-fill",
+    "windows1_note": "lowercase nested ledger path research_ledger/windows1/stage5/SEG-0276-M.md exists on origin/cursor/seg-0276-m-stage5-f84d; a ledger reference, not a top-level workspace, but number 1 stays in never_take"
+  },
+  "judge_verdicts": {
+    "judge_A": {"branch": "origin/cursor/p0-windows-init-judge-a-054f", "tip": "f51121facfd670bfcecc78404a400e23f8e9400e", "recommended_windows_id": "Windows14", "recommended_windows_number": 14, "conflicts_with_other_shards": false},
+    "judge_B": {"branch": "origin/cursor/p0-windows-init-judge-b-ac5d", "tip": "ed23575c3bacfb7c14c09ebd48dbfc1eb9f6fa91", "recommended_windows_id": "Windows14", "recommended_windows_number": 14, "structure_ok": true, "overwrite_risk": "low", "secret_risk": "low"},
+    "judge_C": {"branch": "origin/cursor/p0-wave-b-judge-c-adversary-1b99", "tip": "52eef961cff667e59064adb74a8ddf055c105467", "recommended_windows_id": "Windows14", "recommended_windows_number": 14, "contradictions_found": true, "fabrications_found": false}
+  },
+  "worker_shards": {
+    "worker_A": {"branch": "origin/cursor/p0-windows-init-worker-a-fd36", "tip": "6a79e347444de82cfab7e9071e2cda0bb79c07dc", "stance": "max=12; abstained on number, deferred to Wave B"},
+    "worker_B": {"branch": "origin/cursor/p0-windows-init-worker-b-f78e", "tip": "b21cd901b5fb42f4966273a58fd64f9b8ebe2693", "stance": "suggested 14 primary, 13 fallback (fallback voided by judges)"},
+    "worker_C": {"branch": "origin/cursor/p0-windows-init-worker-c-f747", "tip": "a6728ddf98ddcc21b94144253963e0f126687e1b", "stance": "14 primary, 13 fallback (fallback voided by judges); structure plan adopted"}
+  },
+  "race_state_at_decision": {
+    "windows13": "TAKEN: directory + window.lock.json implemented by sibling _p0_dispatch pipeline (lock created 17:31:30Z)",
+    "windows14": "FREE and uncontested: no path, branch, lock, or competing claim on any ref; ceded to this pipeline by name in the 13-era judges' shards, the Windows15 pipeline's shards, and the fourth (capital-P0) wave's shards",
+    "windows15": "CLAIMED (no directory yet): Windows15-identity _dispatcher pipeline, judged verdict at 17:35:00Z on origin/cursor/p0-wave-b-judge-c-adversarial-6c5d; do not bump to 15",
+    "windows16": "reserved as this pipeline's declared collision-bump target (acknowledged by the Windows15 pipeline's judge_C, which routes its own bump to 16-after-check/17)",
+    "fourth_wave": "capital-P0 'WindowsX orchestrator' wave: its wave_C implementer is blocked (cursor/p0-implementation-blocked-9408, windows_created=false) and forbidden to invent an N; residual risk only if its consolidator lands a decision, mitigated by the lock-time re-fetch"
+  },
+  "unresolved_items": [
+    "Residual race window (HYPOTHESIS, cannot be closed by any scan): a not-yet-pushed run could claim Windows14 between this decision (fresh scan 2026-08-28T17:36:44Z) and Wave C's lock; Wave C MUST git fetch origin --prune (branches and refs/pull/*/head) and re-verify Windows14 absence on every ref immediately before creating the directory AND again immediately before writing Windows14/_state/window.lock.json, applying collision_bump_policy on any hit",
+    "Windows15 is claimed by the _dispatcher pipeline via a judged verdict (17:35:00Z) but has no directory yet; the never_take entry for 15 reflects that live claim, not an existing tree",
+    "The capital-P0 fourth wave (_state/tasks/P0/) is blocked but its consolidator could still act; also note the case-collision hazard between _state/tasks/P0/ and _state/tasks/p0/ on case-insensitive filesystems (macOS/Windows defaults) if both families ever merge to one branch",
+    "Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is invalid JSON (bare token '1b', line 114); Wave C must run the json_validity_gate (e.g. python3 -m json.tool) on every .json state file before commit and downstream parsers must not assume prior windows' research_state.json files parse",
+    "P1/P2 gate lock verifiers are already blocked waiting on window.lock.json; Wave C implementation should proceed promptly after this decision",
+    "Commit-message family: this decision mandates 'Research Idea Evolution - Windows14 - Initialization' (the form required by the pipeline spec), noting prior P0 inits (Windows9-12) used 'Initialize WindowsN research workspace (P0)' and the Windows13 sibling used the mandated form"
+  ]
+}
