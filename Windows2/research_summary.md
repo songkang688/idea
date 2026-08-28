@@ -6,17 +6,24 @@
 
 ## Current stage
 
-**50 and 20 both exist.** Working path: O Top20 → Q Top5. P: C-0306 proto. R: A-0028 proto (battle-ready SAM2 wildcard).
+**Top 5 locked** (`stage6_agent_Q/top5.md`):
+
+1. C-0306 conformal coverage vs NMS (constructive; first GPU-day)
+2. B-0114 4-arm dense VPT-as-registers (+B-0001 arm)
+3. A-0028 SAM2 teleport
+4. B-0194+0169 interactive sycophancy
+5. C-0338 size-resolved human ceiling
+
+S: **5→3**. P/R: prototypes for C-0306 and A-0028.
+
+5→3 must resolve: drop 2 of {B-0114, B-0194, C-0338} while keeping C-0306 + A-0028 unless a new fatal flaw appears. Medical-zero is an accepted Top-5 dissent — S may swap C-0338 for a medical seat only with a silencing experiment.
 
 | Agent | Status |
 | --- | --- |
-| M | COMPLETE — 50 (A17/B13/C20) |
-| O | COMPLETE — Top 20 |
+| Q | COMPLETE — Top 5 |
 | P | RUNNING — C-0306 proto |
-| Q | RUNNING — 20→5 |
-| R | DISPATCHING — A-0028 SAM2 teleport proto |
-
-Intersection gravity: **C-0306, B-0114-4arm, A-0028**.
+| R | RUNNING — A-0028 proto |
+| S | DISPATCHING — 5→3 |
 
 ## Git safety
 
