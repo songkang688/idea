@@ -20,6 +20,7 @@
 
 - H COMPLETE on B: `Windows2/_wip/stage4_agent_H/`. Freshness kills 0332, 0133, 0042-as-host.
 - J COMPLETE on A: `Windows2/_wip/stage4_agent_J/`. Only A-0061 bare SURVIVE; 0199/0215 framing killed.
+- K COMPLETE on C: `Windows2/_wip/stage4_agent_K/`. Kills 0046, 0119, 0341, 0303, 0055.
 
 ## Eliminated (confirmed, do not revive without new evidence)
 
@@ -32,3 +33,7 @@
 - W2-B-0133 — 2025–26 LoRA privacy/memorization papers
 - W2-B-0042 as host — SynCLIP / synonym-sensitivity (fold into 0213)
 - W2-B-0025, W2-B-0252 — Reviewer #2 (no silencing experiment)
+- W2-C-0046 — Label Convergence + noise-aware AP (WACV 2025)
+- W2-C-0119 — PCR ICCV 2025 oral (label-free mAP)
+- W2-C-0341 — 2025–26 batch-invariant / determinism literature
+- W2-C-0303, W2-C-0055 — unfundable / confounded designs

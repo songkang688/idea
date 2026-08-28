@@ -29,3 +29,9 @@ Nothing in B's top 20 survived Reviewer #2 without a named experiment. Prefer H'
 - Merge **A-0237 + A-0249** (mutually unidentifiable).
 - Prefer SURVIVE-IF-EXPERIMENT: 0206, 0163, 0150, 0151, 0075, 0121, 0100, 0326, 0175.
 - Six ideas share one unbuilt taxonomy of noise/convention/quality/ambiguity — do not count them as six independent slots.
+
+## Agent K Reviewer #2 on C (COMPLETE)
+
+DROP hosts: **C-0046, C-0119, C-0341, C-0303, C-0055**.
+C-0046 scoop also means do not keep a generic "annotation-noise AP band" family as the flagship.
+Prefer K's SURVIVE-IF-EXPERIMENT: C-0306 (conformal/NMS), C-0338 (size-resolved human ceiling), plus mutated 0302/0327/0158 only in narrowed forms.
