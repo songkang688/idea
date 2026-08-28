@@ -1,0 +1,50 @@
+{
+ "task_id": "p1_wave_b_w3",
+ "role": "judge_B_feasibility",
+ "status": "complete",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "w3_GHJ",
+ "branch": "cursor/p1-wave-b-w3-judge-b-feasibility-2e78",
+ "generated_at_utc": "2026-08-28T23:55:00Z",
+ "outputs": [
+  "Windows13/_state/tasks/p1/wave_b_w3/judge_B.json",
+  "Windows13/_state/tasks/p1/wave_b_w3/judge_B.md",
+  "Windows13/_state/tasks/p1/wave_b_w3/accepted_shard_B.jsonl",
+  "Windows13/_state/tasks/p1/wave_b_w3/done_judge_B.json"
+ ],
+ "counts": {
+  "input_total": 304,
+  "input_by_shard": {"G": 100, "H": 100, "J": 104},
+  "keep": 283,
+  "keep_by_shard": {"G": 88, "H": 91, "J": 104},
+  "merge": 20,
+  "merge_in_wave": 15,
+  "merge_in_wave_cross_shard": 2,
+  "merge_cross_wave_into_master": 3,
+  "kill": 1,
+  "anomalies": 29,
+  "tier_T1_keep": 196,
+  "tier_T2_keep": 87,
+  "tier_T3_keep": 0,
+  "score5_keeps": 132,
+  "duplicate_groups": 17,
+  "co_run_clusters": 18,
+  "gate5_missing_kill_threshold": {"gen_g": 100, "gen_h": 100, "gen_j": 0},
+  "gate5_missing_evidence_label": {"gen_g": 100, "gen_h": 100, "gen_j": 0},
+  "gate4_named_public_assets": {"gen_g": 0, "gen_h": 0, "gen_j": 8}
+ },
+ "unresolved_items": [
+  "judge_A wave-3 output was not on origin at judging time; Consolidator must diff this shard against judge_A when it lands (expected friction: 3 cross-wave merges G-069/G-071/H-061, 2 cross-shard merges H-041/H-039, 1 kill G-002).",
+  "GATE-5 repair-or-remand decision belongs to the Consolidator: all 200 gen_g/gen_h records need kill-threshold + evidence_label retrofit (this judge invented no numbers); recommendation is schema-only remand, not content rejection.",
+  "GATE-4 wave-wide gap (gen_g 0/100, gen_h 0/100, gen_j 8/104 name specific public assets) needs asset-naming at retrofit; benchmark-shopping risk until then.",
+  "Family-cap pressure escalated unresolved: sample_dispersion_uncertainty at 8 members post-merge (includes kept tension H-037 vs J-056); distillation_fewstep at 12 instruments over one shared rig - recommend Stage-2 slot caps rather than forced judge-time merges.",
+  "prior_art_risk flags (18 ids listed in judge_B.json gate_compliance.GATE-8) are unverified and need the GATE-8 triage lane before Stage-2."
+ ],
+ "recommended_next_task_type": "p1_wave_b_w3_judge_C_or_consolidator",
+ "canonical_state_untouched": true,
+ "no_fake_citations": true,
+ "force_push": false,
+ "notes": "Independent feasibility pass over raw shards gen_g+gen_h+gen_j (304 ideas; gen_k/l/m/n/o/p explicitly not read). Keep 283 (G:88, H:91, J:104), merge 20 (15 in-wave, 2 cross-shard H->J, 3 cross-wave into accepted wave-1 C-023/C-028/C-032 targets; master file untouched), kill 1 (G-002, unverified known-result restatement). Zero T3 keeps - no gated resources needed anywhere in this wave. Gate compliance is bimodal exactly as commissioned: gen_j 104/104 on GATE-1/2/3, gen_g+gen_h 0/200 on GATE-1/2 (every such verdict carries gate5_retrofit_needed=true; no numbers invented). Canonical state (ideas_master.jsonl 494 records, research_state.json, window.lock.json) present on branch and untouched."
+}
