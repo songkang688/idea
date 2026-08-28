@@ -25,10 +25,10 @@
 
 ## Status
 
-All three: **ready to start killer experiments**. No ACTUAL experimental results in this archive (EXPECTED only).
+All three: **ready to start killer experiments**. Idea_01 `artifacts/e0_smoke/` is a **stub-backend harness check** (boxfill/oracle stubs on synthetic data), **not** a SAM/COCO result. Idea_02 code emits NaN skeletons unless real weights are supplied.
 
 ## Next experiment to run (this week)
 
-**Idea_01 killer:** frozen SAM (ViT-B), COCO val subset, GT box prompts. Conditions: (A) original image, (B) box-fill with mean color, (C) on-manifold inpaint inside box (any public inpainter), (D) prompt-only / no-image tokens if API allows, (E) ellipse-in-box geometric null. Primary metric: ΔDice(B−A) and ΔDice(C−A). Stop: if (C)≈(A) and (B)≪(A), SAM uses interior appearance; if (B)≈(A), interpolator hypothesis holds.
+**Idea_01 killer:** `python -m src.eval` (see `Idea_01/README.md`) with frozen SAM-ViT-B when weights exist; otherwise the stub e0 path only checks the decision logic.
 
 Then Idea_02 P082 threshold sweep on one public MedSAM checkpoint. Then Idea_03 HSV + frozen-encoder probe on a public smoke set.
