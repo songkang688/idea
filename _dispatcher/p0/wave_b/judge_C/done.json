@@ -1,0 +1,21 @@
+{
+  "task_id": "p0_wave_b_judge_C",
+  "role": "judge",
+  "status": "complete",
+  "output_files": [
+    "_dispatcher/p0/wave_b/judge_C/report.md",
+    "_dispatcher/p0/wave_b/judge_C/verdict.json",
+    "_dispatcher/p0/wave_b/judge_C/done.json"
+  ],
+  "unresolved_items": [
+    "Fourth P0 wave (_state/tasks/P0/wave_A/, capital P0, 'WindowsX' orchestrator) holds a conditional worker-level recommendation on Windows15 ('14 if same dispatcher as the Windows14 wave, else 15'); its implementer is currently blocked and forbidden to invent an N, but its consolidator could land a decision at any time - the implementation agent's lock-time re-fetch + absence re-verification is the only defense",
+    "13-era pipeline holds three unanimous Wave B verdicts for Windows13 and may materialize Windows13/ at any moment; 14-era pipeline holds two Wave B verdicts for Windows14 with fallback 16 (never 13, never 15); consolidator must treat 13/14/16 as encumbered when defining the bump rule",
+    "repo_inspector's 'locked' terminology for the 13-era verdict must not be propagated into decision.json: KNOWN_FACT zero window.lock.json files exist on any of 49 origin heads and all P1-P7 gate agents report p0_lock_ok=false",
+    "safety_inspector's headline field recommended_next_windows_id=Windows13 in findings.json is unsafe if consumed without its prose caveat; consolidator should disregard the headline and use the caveat (15)",
+    "New content evidence: 'Windows1 PI' identity in active use (branch cursor/stage3-prior-work-killsheet-windows1-18d9, pushed ~17:31Z, no Windows1/ directory) - ratify burning gap 1 alongside 3/5/7/13/14",
+    "Remote is churning at minute granularity (~10 new branches appeared during this single audit; 49 heads at final fetch) - every scan result including this one is perishable"
+  ],
+  "recommended_next_task_type": "wave_b_consolidator_or_wave_c_meta_judge",
+  "windows_id": "Windows15",
+  "windows_number": 15
+}

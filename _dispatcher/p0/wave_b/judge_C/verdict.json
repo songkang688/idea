@@ -1,0 +1,49 @@
+{
+  "task_id": "p0_wave_b_judge_C",
+  "role": "judge_C_adversarial",
+  "pipeline": "P0 Initialize Windows (parent dispatcher identity: Windows15)",
+  "judged_at_utc": "2026-08-28T17:35:00Z",
+  "branch": "cursor/p0-wave-b-judge-c-adversarial-6c5d",
+  "repository": "https://github.com/songkang688/idea",
+  "base_main_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+  "fetch_basis": "four full 'git fetch origin --prune +refs/heads/*:refs/remotes/origin/*' passes at ~17:27/17:29/17:31/17:33 UTC; final state 49 origin branch heads; remote gained ~10 branches DURING this audit",
+  "windows_id": "Windows15",
+  "windows_number": 15,
+  "windows_path": "Windows15",
+  "attacks_that_stuck": [
+    "A2-terminology: repo_inspector calls the 13-era sibling verdict a 'lock' ('Windows13 is locked'); KNOWN_FACT zero window.lock.json files exist on any of 49 origin heads and every P1-P7 gate agent independently reports p0_lock_ok=false; a branch-level judge verdict is a claim, not a lock; consolidator must not treat 13 or 14 as mechanically locked",
+    "A3-headline: safety_inspector's headline recommendation (recommended_next_windows_id: Windows13, findings.json) was already collision-encumbered at its own push time (17:22:50Z) because three unanimous 13-era Wave B verdicts had landed 17:19:31-17:20:54Z; the correction to 15 was demoted to a caveat; a headline-only consumer would be steered into a head-on duplicate claim",
+    "A4-blindspot: all three Wave A reports missed the fourth P0 wave (_state/tasks/P0/wave_A/, capital P0, 'WindowsX' orchestrator family) whose worker_B conditionally recommends Windows15 ('if not same dispatcher as Windows14 wave -> 15'); excusable by timestamps (fourth wave pushed 17:22:59-17:25:28Z) but planner's 'Windows15 ... zero collision risk' was an over-claim within minutes of publication",
+    "A6-framing: repo_inspector leads its rationale with 'matches parent identity' - circular as stated; identity alone has zero evidentiary weight; the number must be (and is) derivable identity-free"
+  ],
+  "attacks_that_failed": [
+    "A1-missed-directories: FAILED - independent case-insensitive nested scan of all 49 heads finds exactly {Windows2, staging/Windows3_supervisor, Windows4, Windows6, Windows8, Windows9, Windows10, Windows11, Windows12}, max=12, identical to all three workers; no case/spacing variants exist to have been missed",
+    "A2-invention: FAILED on substance - the Windows13 claim artifacts exist NOW (three unanimous 13-era judge verdicts on cursor/p0-init-judge-{a,b,c}-* branches) and the Windows14 claim is now STRONGER than Wave A reported (two 14-era judge verdicts landed 17:24:25Z and 17:27:57Z, post-dating Wave A); nothing was invented; 'no 14-era verdict observed yet' was true at scan time and is stale, not fabricated",
+    "A3-against-15: FAILED - identity-free derivation converges on 15 (max directory 12; 13 and 14 verdict-encumbered; 15 has no path/branch/lock/verdict on any of 49 heads); Windows16 is affirmatively anti-justified (burns 15 for nothing, creates a new gap, and squats on the 14-era pipeline's declared collision-bump target 16)",
+    "A5-sibling-locks: FAILED - zero window.lock.json anywhere; P1-P7 gate agents and the pipeline supervisor all bind to windows_id null and report blocked; no sibling has locked any number; every number Wave A treated as burned (13, 14) is genuinely claimed and every number it treated as taken (2-12, incl. nested 3) genuinely exists",
+    "A6-substance: FAILED - Windows15 stands with the identity premise deleted; external corroboration from BOTH sibling pipelines (14-era judge_B reserves 15 for this pipeline and re-routes its own fallback to 16; 13-era judge_A maps the 13/14 partition); Windows12 identity-over-sequential precedent verified on-ref",
+    "A7-gap-reuse: FAILED (reuse rejected) - burn 1/5/7/13/14: 1 is in live semantic use ('Windows1 PI' killsheet pushed ~17:31Z on cursor/stage3-prior-work-killsheet-windows1-18d9); 5/7 never existed and the monotonic-only convention is recorded in Windows12's numbering block; 13 has three landed verdicts; 14 has two; 3 is burned by actual staging/Windows3_supervisor/ trees"
+  ],
+  "contradictions_found": [
+    "Intra-wave headline split: safety_inspector recommends 13, repo_inspector and workspace_planner recommend 15 - resolved in favor of 15",
+    "repo_inspector 'Windows13 is locked by sibling judge verdict' vs workspace_planner 'window.lock.json does NOT exist on any ref' - planner correct; verdicts are claims, not locks",
+    "repo_inspector 'no judge verdict for 14-era observed yet' - true at 17:22:40Z, false NOW (14-era judge_A @ 17:24:25Z, judge_B @ 17:27:57Z, both verdict Windows14)",
+    "All three Wave A reports omit the fourth P0 wave (_state/tasks/P0/wave_A/) and its conditional claim on 15 - timestamp-excusable, but Wave A's collision map was incomplete at publication",
+    "Ref-count drift 27/28/30 across the three reports vs 49 heads at this audit's final fetch - each accurate at its instant; all scans are perishable at minute granularity"
+  ],
+  "overwrite_safe": true,
+  "overwrite_safe_conditions": [
+    "Implementation agent MUST run git fetch origin --prune and re-verify NO origin head contains any Windows15 path (any casing/nesting), any windows15-named branch, or any window.lock.json claiming 15 - immediately before mkdir AND again immediately before writing window.lock.json",
+    "On collision bump to the smallest unused N > 15 that carries no sibling verdict (16 is the 14-era pipeline's declared fallback: only take 16 after confirming no 14-era collision consumed it; otherwise 17)",
+    "Never reuse 1/3/5/7/13/14 or 2-12; never force-push; write only under Windows15/ plus this pipeline's dispatcher shard paths",
+    "Fourth-wave watch: capital-P0 pipeline (_state/tasks/P0/) currently cannot create any window (its wave_C implementer is blocked on a nonexistent decision.json and forbidden to invent an N, KNOWN_FACT from cursor/p7-package-planner-9986) - but its consolidator could land a decision at any time; the lock-time re-fetch is the only defense"
+  ],
+  "rationale": "Identity-free derivation: max existing Windows directory on any of 49 origin heads is 12 (KNOWN_FACT). 13 carries three unanimous sibling Wave B verdicts and 14 carries two (SIBLING_ARTIFACT files whose existence is KNOWN_FACT NOW); choosing either is a knowing head-on collision. 15 has no directory, no branch name, no lock, and no landed verdict on any ref (KNOWN_FACT); the only encumbrance is a conditional, verdict-less worker recommendation from the blocked fourth wave. 16 would create a fresh gap and collide with the 14-era pipeline's declared bump target. Smallest safe integer > 12 = 15. Dispatcher identity 'Windows15' coincides but is NOT load-bearing: both sibling pipelines independently treat 15 as this pipeline's number (14-era judge_B explicitly bumps to 16, not 15, on its own collision). Windows12 precedent (identity-over-sequential for concurrency safety, recorded in Windows12/_state/research_state.json) corroborates.",
+  "evidence_classes": {
+    "KNOWN_FACT": "verified firsthand this session via git commands against the final ~17:33Z fetch: directory census on all 49 heads, zero lock files, zero Windows13-19 paths, main tree, commit timestamps, existence of every cited sibling file",
+    "SIBLING_ARTIFACT": "contents of fetched sibling shard/verdict files (13-era judges A/B/C, 14-era judges A/B, fourth-wave workers A/B/C and wave_C implementer, P1-P7 gate agents, pipeline supervisor) - existence verified firsthand, internal claims reproduced not re-executed",
+    "TIMESTAMP_ANALYSIS": "git log %cI committer dates used to order Wave A commits (17:22:40-17:24:38Z) against sibling verdicts (17:19:31-17:27:57Z) and the fourth wave (17:22:59-17:25:28Z)",
+    "HYPOTHESIS": "future behavior of the blocked pipelines (13-era consolidator materializing Windows13; fourth-wave consolidator's identity ruling; the 13/14/15 partition holding)"
+  },
+  "recommended_next_task_type": "wave_b_consolidator_or_wave_c_meta_judge"
+}
