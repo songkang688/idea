@@ -1,0 +1,18 @@
+{
+  "task_id": "P1-gate-auditor",
+  "role": "P1 Gate Auditor",
+  "status": "done",
+  "output_files": [
+    "/workspace/_state/tasks/P1/gate/gate_auditor.md",
+    "/workspace/_state/tasks/P1/gate/gate_auditor.done.json"
+  ],
+  "unresolved_items": [
+    "window.lock.json not found anywhere in /workspace (searched by filename, recursive, hidden paths included) - P0 window initialization has not run",
+    "ideas_master.jsonl not found anywhere in /workspace - no idea corpus exists to count",
+    "outputs written to fallback path /workspace/_state/tasks/P1/gate/ because no valid windows path exists"
+  ],
+  "recommended_next_task_type": "P1_BLOCKED_NEED_P0",
+  "p1_may_start": false,
+  "accepted_idea_count": 0,
+  "windows_path": null
+}

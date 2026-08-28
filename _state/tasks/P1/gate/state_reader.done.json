@@ -1,0 +1,37 @@
+{
+  "task_id": "P1-state-reader",
+  "role": "P1 State Reader Agent (Wave GATE)",
+  "status": "blocked",
+  "output_files": [
+    "_state/tasks/P1/gate/state_reader.md",
+    "_state/tasks/P1/gate/state_reader.done.json",
+    "_state/tasks/P1/gate/task_queue.json"
+  ],
+  "unresolved_items": [
+    "ZERO window.lock.json files exist anywhere in the repository (working tree of main and all 30 origin branches searched; case-insensitive sweep for any 'lock'-named file also returned zero hits). Rule 3 => blocked.",
+    "FOUR conflicting research_state.json files exist on four divergent, unmerged P0 branches: Windows9/_state/research_state.json (origin/cursor/windows9-p0-init-3045), Windows10/_state/research_state.json (origin/cursor/windows10-p0-init-26ec), Windows11/_state/research_state.json (origin/cursor/windows11-p0-init-c0c1), Windows12/_state/research_state.json (origin/cursor/windows12-p0-init-a095). Rule 4 => blocked; no winner selected by max number.",
+    "None of the four P0 states is merged to main; base branch contains only README.md.",
+    "P0 must re-run/complete: emit exactly one authoritative WindowsN/_state/ pair with window.lock.json (window_locked=true) consistent with its sibling research_state.json, discoverable from the base branch."
+  ],
+  "recommended_next_task_type": "P0 Verification / re-run P0; P1 BLOCKED",
+  "windows_id": null,
+  "windows_number": null,
+  "windows_path": null,
+  "window_locked": false,
+  "accepted_idea_count": null,
+  "p0_lock_ok": false,
+  "evidence": {
+    "search_scope": [
+      "working tree /workspace (branch main @ 990f3ebc75d7ab03a8960cf0d1e5621cbb29194a)",
+      "all refs/remotes/origin/* after git fetch --prune (30 branches)"
+    ],
+    "window_lock_json_found": [],
+    "research_state_json_found": [
+      {"branch": "origin/cursor/windows9-p0-init-3045", "path": "Windows9/_state/research_state.json", "windows_id": "Windows9"},
+      {"branch": "origin/cursor/windows10-p0-init-26ec", "path": "Windows10/_state/research_state.json", "windows_id": "Windows10"},
+      {"branch": "origin/cursor/windows11-p0-init-c0c1", "path": "Windows11/_state/research_state.json", "windows_id": "Windows11"},
+      {"branch": "origin/cursor/windows12-p0-init-a095", "path": "Windows12/_state/research_state.json", "windows_id": "Windows12"}
+    ],
+    "ideas_master_jsonl_found": []
+  }
+}

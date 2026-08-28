@@ -1,0 +1,15 @@
+{
+  "queue_id": "P1-exploration-task-queue",
+  "stage": "P1 Massive Idea Exploration",
+  "generated_by": "P1-state-reader",
+  "generated_at_utc": "2026-08-28T17:24:00Z",
+  "blocked": true,
+  "blocked_reasons": [
+    "No window.lock.json exists anywhere in the repository (rule 3).",
+    "Four conflicting research_state.json files (Windows9/10/11/12) on divergent unmerged P0 branches (rule 4)."
+  ],
+  "windows_id": null,
+  "windows_number": null,
+  "windows_path": null,
+  "items": []
+}
