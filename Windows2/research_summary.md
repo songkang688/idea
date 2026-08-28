@@ -6,18 +6,24 @@
 
 ## Current stage
 
-190-slot 200-cut done. N Stage-5 protocols **complete**. M →50, O →20, P implements C-0306 killer-experiment prototype (highest ROI).
+**Top 5 locked** (`stage6_agent_Q/top5.md`):
+
+1. C-0306 conformal coverage vs NMS (constructive; first GPU-day)
+2. B-0114 4-arm dense VPT-as-registers (+B-0001 arm)
+3. A-0028 SAM2 teleport
+4. B-0194+0169 interactive sycophancy
+5. C-0338 size-resolved human ceiling
+
+S: **5→3**. P/R: prototypes for C-0306 and A-0028.
+
+5→3 must resolve: drop 2 of {B-0114, B-0194, C-0338} while keeping C-0306 + A-0028 unless a new fatal flaw appears. Medical-zero is an accepted Top-5 dissent — S may swap C-0338 for a medical seat only with a silencing experiment.
 
 | Agent | Status |
 | --- | --- |
-| N | COMPLETE — `stage5_agent_N/` ROI: C-0306 > C-0338 > A-0061 > A-0028 > B-0114-4arm |
-| M | RUNNING — 50 |
-| O | RUNNING — 20 |
-| P | DISPATCHING — runnable proto for C-0306 |
-
-## PI constraints for Top-3 (from N+L)
-
-Exclusion pairs: B-0114×B-0001; A-0061×A-0206; at most one of {A-0061, A-0206, C-0338}. Top-3 must include a constructive package (C-0306 qualifies). A-0028 is run-regardless wildcard.
+| Q | COMPLETE — Top 5 |
+| P | RUNNING — C-0306 proto |
+| R | RUNNING — A-0028 proto |
+| S | DISPATCHING — 5→3 |
 
 ## Git safety
 
