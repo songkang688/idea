@@ -1,0 +1,300 @@
+{"idea_id": "W15-B001-A-001", "cluster_id": "HC-20", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-002", "cluster_id": "HC-20", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-003", "cluster_id": "HC-20", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-004", "cluster_id": "HC-20", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-005", "cluster_id": "HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor of interactive-oscillation claim after absorbing C-036 (media testbed)."}
+{"idea_id": "W15-B001-A-006", "cluster_id": "HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Ambiguity-resolution prior read as SA-1B granularity-frequency imprint; kept here rather than HC-07 because the claim is provenance-causal."}
+{"idea_id": "W15-B001-A-007", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-008", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-009", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing A-063; retain A-063's matched-FLOPs protocol (ViT-B + jitter vs ViT-H + head)."}
+{"idea_id": "W15-B001-A-010", "cluster_id": "HC-20", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing A-040; closed-form grid-recall test plus dense-scene count arm."}
+{"idea_id": "W15-B001-A-011", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-012", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to A-021: post-hoc (stable rank) vs a-priori (feature-discrepancy spectrum) rank predictors; kept both, they test different measurement points of the same program."}
+{"idea_id": "W15-B001-A-013", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-014", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-015", "cluster_id": "HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-016", "cluster_id": "HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-017", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Deliberately kept: partially contradicts A-045/A-046 (encoder- vs decoder-locus of convention changes); the tension is informative and resolvable by one experiment matrix."}
+{"idea_id": "W15-B001-A-018", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-019", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-020", "cluster_id": "HC-04", "decision": "merge", "merge_into": "W15-B001-A-068", "duplicate_of": "W15-B001-A-068", "notes": "A-020 (vanilla LoRA matches decomposition variants after LR tuning) is the specific instance of A-068's general per-method-LR re-evaluation claim."}
+{"idea_id": "W15-B001-A-021", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to A-012; the a-priori predictor is the deployable half."}
+{"idea_id": "W15-B001-A-022", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-023", "cluster_id": "HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing A-025."}
+{"idea_id": "W15-B001-A-024", "cluster_id": "HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-025", "cluster_id": "HC-16", "decision": "merge", "merge_into": "W15-B001-A-023", "duplicate_of": "W15-B001-A-023", "notes": "Same claim (fine-tuning collapses multimask/granularity diversity); A-025 adds the mechanism (single-granularity datasets) and a readout, same experiment."}
+{"idea_id": "W15-B001-A-026", "cluster_id": "HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-027", "cluster_id": "HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-028", "cluster_id": "HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-029", "cluster_id": "HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-030", "cluster_id": "HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-031", "cluster_id": "HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-032", "cluster_id": "HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-033", "cluster_id": "HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-034", "cluster_id": "HC-17", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor of HC-17 after absorbing C-029 (smoke testbed); B-083 kept for its pretrained-vs-scratch causal comparison."}
+{"idea_id": "W15-B001-A-035", "cluster_id": "HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-036", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of C-013 (mask morphology fingerprints its generation process); kept both: SA-1B pipeline vs annotation-tool targets."}
+{"idea_id": "W15-B001-A-037", "cluster_id": "HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-038", "cluster_id": "HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-039", "cluster_id": "HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-040", "cluster_id": "HC-20", "decision": "merge", "merge_into": "W15-B001-A-010", "duplicate_of": "W15-B001-A-010", "notes": "Same claim (everything-mode failures are grid/NMS harvesting mechanics, not perception); A-040's dense-scene count arm folds into A-010's closed-form recall test."}
+{"idea_id": "W15-B001-A-041", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-042", "cluster_id": "HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-043", "cluster_id": "HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-044", "cluster_id": "HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-045", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of B-084 (dominant gap is granularity/hierarchy selection, not delineation); kept both: decoder-retraining intervention vs predictive ambiguity measure."}
+{"idea_id": "W15-B001-A-046", "cluster_id": "HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-047", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "A-priori placement predictor; the deployable half of the gap-localization program with A-045."}
+{"idea_id": "W15-B001-A-048", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-049", "cluster_id": "HC-24", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Cheap oracle experiment (feed ground-truth low-res masks through SAM's own output path) that could bound and deflate a large fraction of the boundary-fine-tuning literature."}
+{"idea_id": "W15-B001-A-050", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Within-image resolution failure of the IoU head; sharpens A-062/A-024 with a use-case-level claim."}
+{"idea_id": "W15-B001-A-051", "cluster_id": "HC-11", "decision": "drop", "merge_into": null, "duplicate_of": null, "notes": "Weakest member of HC-11: descriptive scaling-curve fitting with a soft 'approximately shared exponent' claim; dominated by actionable siblings (A-052 selection, A-057 hardness curriculum) that would generate the same curves as a byproduct."}
+{"idea_id": "W15-B001-A-052", "cluster_id": "HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-053", "cluster_id": "HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Cross-domain relative of B-096/C-093 (boundary-noise robustness via capacity/augmentation/jitter); kept: low-rank filtering is a distinct mechanism."}
+{"idea_id": "W15-B001-A-054", "cluster_id": "HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-055", "cluster_id": "HC-12", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of B-069 (self-training reinforces base prior); kept both: confidence-filtering mechanism vs shape-distribution contraction."}
+{"idea_id": "W15-B001-A-056", "cluster_id": "HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-057", "cluster_id": "HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-058", "cluster_id": "HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-059", "cluster_id": "HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-060", "cluster_id": "HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-061", "cluster_id": "HC-07", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of C-083 (SAM multimask vs trained K-heads as disagreement simulators); kept both, instruments differ."}
+{"idea_id": "W15-B001-A-062", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of B-078 (systematic overconfidence under shift); kept both: SAM IoU head vs medical calibration pipelines."}
+{"idea_id": "W15-B001-A-063", "cluster_id": "HC-26", "decision": "merge", "merge_into": "W15-B001-A-009", "duplicate_of": "W15-B001-A-009", "notes": "Same claim (prompt-jitter agreement beats the learned IoU head for failure detection); A-063 contributes the matched-FLOPs protocol, which should be retained."}
+{"idea_id": "W15-B001-A-064", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-065", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-066", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-067", "cluster_id": "HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of B-077 (model signals audit labels); kept both: signature-based vs ensemble-disagreement instruments."}
+{"idea_id": "W15-B001-A-068", "cluster_id": "HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor of HC-04 after absorbing A-020."}
+{"idea_id": "W15-B001-A-069", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-070", "cluster_id": "HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-071", "cluster_id": "HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-072", "cluster_id": "HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Kept as the SAM few-shot instantiation of the HC-01 noise-floor claim; template twin of B-020 (different field, different variance sources)."}
+{"idea_id": "W15-B001-A-073", "cluster_id": "HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "High-leverage floor baseline; complements A-076 (random-encoder) and A-074 (matched compute)."}
+{"idea_id": "W15-B001-A-074", "cluster_id": "HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-075", "cluster_id": "HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-076", "cluster_id": "HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Random-encoder floor for adaptation benchmarks: exposes which benchmarks actually test foundation knowledge. High leverage as a field-wide audit at low compute."}
+{"idea_id": "W15-B001-A-077", "cluster_id": "HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-078", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-079", "cluster_id": "HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-080", "cluster_id": "HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Cross-domain relative of B-012 (staged timescales during adaptation); kept: SAM adaptation substrate and recalibration recipe differ."}
+{"idea_id": "W15-B001-A-081", "cluster_id": "HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing A-093 (thermal tone-curve special case)."}
+{"idea_id": "W15-B001-A-082", "cluster_id": "HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-083", "cluster_id": "HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-084", "cluster_id": "HC-38", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to A-096 within HC-38; kept both: per-image TTT vs cross-slice training-time signal."}
+{"idea_id": "W15-B001-A-085", "cluster_id": "HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-086", "cluster_id": "HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Distinct increment above A-010/A-040 mechanics: a learned count prior beyond harvesting mechanics."}
+{"idea_id": "W15-B001-A-087", "cluster_id": "HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-088", "cluster_id": "HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-089", "cluster_id": "HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-090", "cluster_id": "HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] SA-1B privacy blurring taught blur-transition edges as objectness evidence: a sharp, falsifiable provenance quirk with dataset-governance implications."}
+{"idea_id": "W15-B001-A-091", "cluster_id": "HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-092", "cluster_id": "HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of C-088 (physics-matched noise statistics dominate content); kept both, transfer directions differ."}
+{"idea_id": "W15-B001-A-093", "cluster_id": "HC-14", "decision": "merge", "merge_into": "W15-B001-A-081", "duplicate_of": "W15-B001-A-081", "notes": "A-093 (thermal monotone tone curve) is a special case of A-081's tiny-learned-input-transform claim; keep thermal as a testbed."}
+{"idea_id": "W15-B001-A-094", "cluster_id": "HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-095", "cluster_id": "HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-096", "cluster_id": "HC-38", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to A-084; kept for the bold claim that label-free consistency beats small supervised LoRA."}
+{"idea_id": "W15-B001-A-097", "cluster_id": "HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-098", "cluster_id": "HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Adapter transport across base models via a linear feature-space map. If even partially true, changes the economics of adapter ecosystems on evolving bases."}
+{"idea_id": "W15-B001-A-099", "cluster_id": "HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-A-100", "cluster_id": "HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Practically useful but low-surprise member; router + novelty fallback likely near known practice. Kept (advisory note, no verification performed)."}
+{"idea_id": "W15-B001-B-001", "cluster_id": "HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to B-074 (rater-noise floor as ceiling); kept separately: B-001 is an evaluation claim about current benchmarks, B-074 a predictive budgeting claim."}
+{"idea_id": "W15-B001-B-002", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-003", "cluster_id": "HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-004", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-005", "cluster_id": "HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-006", "cluster_id": "HC-01", "decision": "merge", "merge_into": "W15-B001-B-020", "duplicate_of": "W15-B001-B-020", "notes": "Same claim (benchmark noise floor vs claimed deltas); B-006 is the label-error variance source, subsumed by B-020's minimal-detectable-difference framing. Retain label-error arm in the merged study."}
+{"idea_id": "W15-B001-B-007", "cluster_id": "HC-07", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor of HC-07 after absorbing B-059 (seed-ensemble arm)."}
+{"idea_id": "W15-B001-B-008", "cluster_id": "HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-009", "cluster_id": "HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Definitional ambiguity zones as fixed error-saturation maps; complements B-001 within the supervision-definition program."}
+{"idea_id": "W15-B001-B-010", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-011", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-012", "cluster_id": "HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing B-100; spatially staged fitting with per-structure stopping."}
+{"idea_id": "W15-B001-B-013", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Operating-point reattribution of small-structure gains; kept as the detection-flavored member of HC-02."}
+{"idea_id": "W15-B001-B-014", "cluster_id": "HC-01", "decision": "merge", "merge_into": "W15-B001-B-020", "duplicate_of": "W15-B001-B-020", "notes": "Same claim; B-014 is the metric/inference-noise variance source for HD95, subsumed as one arm of B-020's power analysis."}
+{"idea_id": "W15-B001-B-015", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-016", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-017", "cluster_id": "HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of C-046 (bookkeeping conventions permute rankings); kept both: empty-case vs instance-convention mechanisms."}
+{"idea_id": "W15-B001-B-018", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-019", "cluster_id": "HC-02", "decision": "merge", "merge_into": "W15-B001-B-060", "duplicate_of": "W15-B001-B-060", "notes": "Same experimental substrate (longitudinal change detection vs cross-sectional Dice); B-019's volume-consistency intervention becomes an arm of B-060's error-correlation study."}
+{"idea_id": "W15-B001-B-020", "cluster_id": "HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor of HC-01 after absorbing B-006/B-014/B-024 as variance-source arms."}
+{"idea_id": "W15-B001-B-021", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-022", "cluster_id": "HC-02", "decision": "drop", "merge_into": null, "duplicate_of": null, "notes": "Largely anticipated by existing resolution/shape-normalized boundary metrics (surface-Dice-style normalization); residual novelty unclear as stated. (Advisory; no citation verification performed.)"}
+{"idea_id": "W15-B001-B-023", "cluster_id": "HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-024", "cluster_id": "HC-01", "decision": "merge", "merge_into": "W15-B001-B-020", "duplicate_of": "W15-B001-B-020", "notes": "Same claim; B-024 is the preprocessing-variance source, subsumed as one arm of B-020's variance decomposition."}
+{"idea_id": "W15-B001-B-025", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-026", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing B-051."}
+{"idea_id": "W15-B001-B-027", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-028", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-029", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-030", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with B-094 (prior-driven hallucination of expected anatomy); kept both: lesion interpolation vs whole-structure absence + negative-supervision claim."}
+{"idea_id": "W15-B001-B-031", "cluster_id": "HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-032", "cluster_id": "HC-23", "decision": "drop", "merge_into": null, "duplicate_of": null, "notes": "Likely-known: effective-receptive-field locality of trained attention models is heavily studied; the hypothesis adds little marginal content beyond existing ERF analyses. (Advisory; no citation verification performed.)"}
+{"idea_id": "W15-B001-B-033", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-034", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-035", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-036", "cluster_id": "HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Fractional-membership training: identical overlap metrics but unbiased volumetry. Quietly high clinical value hidden from standard evaluation. | Also fits HC-02's volumetry decoupling; assigned here as the continuous-latent supervision fix."}
+{"idea_id": "W15-B001-B-037", "cluster_id": "HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-038", "cluster_id": "HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-039", "cluster_id": "HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-040", "cluster_id": "HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-041", "cluster_id": "HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-042", "cluster_id": "HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-043", "cluster_id": "HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-044", "cluster_id": "HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-045", "cluster_id": "HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Case-mix reweighting as the first-order explanation of cross-site gaps; the decomposition baseline every shift study needs."}
+{"idea_id": "W15-B001-B-046", "cluster_id": "HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing B-052 (TTA arm)."}
+{"idea_id": "W15-B001-B-047", "cluster_id": "HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of B-003 (annotator style) and C-043 (protocol swap) at the site level; kept: intervention (per-site heads/conditioning) differs."}
+{"idea_id": "W15-B001-B-048", "cluster_id": "HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-049", "cluster_id": "HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-050", "cluster_id": "HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-051", "cluster_id": "HC-23", "decision": "merge", "merge_into": "W15-B001-B-026", "duplicate_of": "W15-B001-B-026", "notes": "Same claim (spatial/location priors override appearance); B-026's factorial design subsumes B-051's rearrangement manipulation."}
+{"idea_id": "W15-B001-B-052", "cluster_id": "HC-39", "decision": "merge", "merge_into": "W15-B001-B-046", "duplicate_of": "W15-B001-B-046", "notes": "Same core claim (normalizing away shift removes pathology signal); B-052's TTA mechanism becomes an arm of B-046's harmonization-strength study."}
+{"idea_id": "W15-B001-B-053", "cluster_id": "HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-054", "cluster_id": "HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-055", "cluster_id": "HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to B-013 (operating-point framing); kept: loss-weighting-to-sensitivity-curve mapping is a constructive design rule."}
+{"idea_id": "W15-B001-B-056", "cluster_id": "HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Continuous-percept explanation of rater operating points; anchors the clinical version of the thresholding claim."}
+{"idea_id": "W15-B001-B-057", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-058", "cluster_id": "HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-059", "cluster_id": "HC-07", "decision": "merge", "merge_into": "W15-B001-B-007", "duplicate_of": "W15-B001-B-007", "notes": "Same claim (cheap model ensembles reproduce inter-rater disagreement); B-059's seed-ensemble mechanism becomes an arm alongside B-007's per-rater training."}
+{"idea_id": "W15-B001-B-060", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor for longitudinal change-detection decoupling after absorbing B-019."}
+{"idea_id": "W15-B001-B-061", "cluster_id": "HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-062", "cluster_id": "HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-063", "cluster_id": "HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Realistic click-policy simulation; complements B-085's click-economics scaling law."}
+{"idea_id": "W15-B001-B-064", "cluster_id": "HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-065", "cluster_id": "HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Non-monotone final-contour quality as model accuracy rises (rare errors evade review). Safety-critical, testable, and contradicts the field's implicit monotonicity assumption."}
+{"idea_id": "W15-B001-B-066", "cluster_id": "HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-067", "cluster_id": "HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-068", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-069", "cluster_id": "HC-12", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of A-055; kept for the rare-variant/mode-collapse readout."}
+{"idea_id": "W15-B001-B-070", "cluster_id": "HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-071", "cluster_id": "HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-072", "cluster_id": "HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-073", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-074", "cluster_id": "HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-075", "cluster_id": "HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-076", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing B-082 (MC-dropout null-model arm)."}
+{"idea_id": "W15-B001-B-077", "cluster_id": "HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of A-067; kept for the medical label-auditing framing."}
+{"idea_id": "W15-B001-B-078", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of A-062; kept for the auto-accept-threshold safety consequence."}
+{"idea_id": "W15-B001-B-079", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Abstention correlates with disease burden, so automation is enriched for healthy cases: an equity failure mode invisible to aggregate uncertainty metrics."}
+{"idea_id": "W15-B001-B-080", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-081", "cluster_id": "HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-082", "cluster_id": "HC-26", "decision": "merge", "merge_into": "W15-B001-B-076", "duplicate_of": "W15-B001-B-076", "notes": "Same claim (sampling uncertainty is a deterministic function of boundary distance + contrast); B-082's MC-dropout null model merges with B-076's recalibration map."}
+{"idea_id": "W15-B001-B-083", "cluster_id": "HC-17", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Kept alongside A-034: adds the scratch-trained control that turns the edge-affinity prior into a pretraining-causal claim."}
+{"idea_id": "W15-B001-B-084", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of A-045; kept for the per-prompt failure-probability predictor."}
+{"idea_id": "W15-B001-B-085", "cluster_id": "HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Click-economics scaling law; defines when 2D interactive tooling is economically irrational."}
+{"idea_id": "W15-B001-B-086", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Language-binding shortcut for report-trained models; medical-specific and testable by matched-anatomy contrasts."}
+{"idea_id": "W15-B001-B-087", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Mid-level grafting claim; representational-locus complement to A-047's placement predictor."}
+{"idea_id": "W15-B001-B-088", "cluster_id": "HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Boundary-contrast as sufficient statistic for zero-shot variance; defines the residual that adaptation research should target."}
+{"idea_id": "W15-B001-B-089", "cluster_id": "HC-25", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-090", "cluster_id": "HC-25", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-091", "cluster_id": "HC-25", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-092", "cluster_id": "HC-24", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-093", "cluster_id": "HC-24", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Bypass segmentation entirely for scalar clinical endpoints. If direct regression degrades more gracefully under shift, large parts of pipeline design are misallocated effort. | Also the most radical member of HC-24: drop the intermediate entirely for scalar endpoints."}
+{"idea_id": "W15-B001-B-094", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Kept alongside B-030; absence recognition as a distinct capability requiring dedicated supervision."}
+{"idea_id": "W15-B001-B-095", "cluster_id": "HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-096", "cluster_id": "HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Cross-domain relative of A-053/C-093; kept: augmentation-as-boundary-smoothing decomposition."}
+{"idea_id": "W15-B001-B-097", "cluster_id": "HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-098", "cluster_id": "HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-B-099", "cluster_id": "HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "BatchNorm patient-leakage; known-adjacent but with a specific deployment-gap prediction. Kept with caution (advisory)."}
+{"idea_id": "W15-B001-B-100", "cluster_id": "HC-29", "decision": "merge", "merge_into": "W15-B001-B-012", "duplicate_of": "W15-B001-B-012", "notes": "Same claim (boundary-band voxels memorized, interiors generalize) measured two ways; one spatially-resolved training-dynamics study covers both."}
+{"idea_id": "W15-B001-C-001", "cluster_id": "HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-002", "cluster_id": "HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of C-020; kept: background-modulation score for glass is a distinct computable predictor."}
+{"idea_id": "W15-B001-C-003", "cluster_id": "HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing C-035; one probing study spans trained smoke heads and frozen SSL ViTs."}
+{"idea_id": "W15-B001-C-004", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing C-006 (shutter regime arm)."}
+{"idea_id": "W15-B001-C-005", "cluster_id": "HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-006", "cluster_id": "HC-10", "decision": "merge", "merge_into": "W15-B001-C-004", "duplicate_of": "W15-B001-C-004", "notes": "Same claim (capture/exposure settings redefine the media mask); C-006's shutter-regime version folds into C-004's exposure-dependence study."}
+{"idea_id": "W15-B001-C-007", "cluster_id": "HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-008", "cluster_id": "HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-009", "cluster_id": "HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-010", "cluster_id": "HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing C-040; fractal boundary scaling is the mechanism, ranking instability the consequence."}
+{"idea_id": "W15-B001-C-011", "cluster_id": "HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Annotator disagreement probability as a monotone function of transmittance: turns annotation noise into a physical densitometer with zero density supervision."}
+{"idea_id": "W15-B001-C-012", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-013", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of A-036; kept for the tool-attribution forensics angle."}
+{"idea_id": "W15-B001-C-014", "cluster_id": "HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-015", "cluster_id": "HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-016", "cluster_id": "HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-017", "cluster_id": "HC-33", "decision": "merge", "merge_into": "W15-B001-C-080", "duplicate_of": "W15-B001-C-080", "notes": "Same claim (explicit layer counting resolves multi-layer glass); C-017's annotation-side label and C-080's output-space reframing are one program."}
+{"idea_id": "W15-B001-C-018", "cluster_id": "HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-019", "cluster_id": "HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-020", "cluster_id": "HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of C-002 (detectability score predicts misses; smoke vs glass); kept both, different physics and testbeds."}
+{"idea_id": "W15-B001-C-021", "cluster_id": "HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-022", "cluster_id": "HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Prior-art risk: refractive-flow estimation exists; the sample-efficiency and category-agnosticism comparison against direct masks is the kept increment."}
+{"idea_id": "W15-B001-C-023", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-024", "cluster_id": "HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-025", "cluster_id": "HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Prior-art risk: polarization cues for transparent surfaces are an established sensing line; the sharp claim here is the 'most published difficulty is sensor-induced' reattribution. Kept with caution."}
+{"idea_id": "W15-B001-C-026", "cluster_id": "HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-027", "cluster_id": "HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-028", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-029", "cluster_id": "HC-17", "decision": "merge", "merge_into": "W15-B001-A-034", "duplicate_of": "W15-B001-A-034", "notes": "Cross-shard near-duplicate: both claim segmenter boundaries snap to strong irrelevant image gradients; C-029's smoke measurement becomes a testbed of A-034's edge-field model."}
+{"idea_id": "W15-B001-C-030", "cluster_id": "HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Defect-as-sensor inversion: prompt fall-through rate as a calibrated opacity meter. Cheap, odd, and opens a supervision channel for media models."}
+{"idea_id": "W15-B001-C-031", "cluster_id": "HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-032", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to C-066 (context reliance); kept both: open-vocabulary anchor mechanism vs cropping/scrambling causal test."}
+{"idea_id": "W15-B001-C-033", "cluster_id": "HC-24", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-034", "cluster_id": "HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Media instantiation of jitter-instability signal, used for ambiguity detection rather than failure detection; kept alongside A-009."}
+{"idea_id": "W15-B001-C-035", "cluster_id": "HC-08", "decision": "merge", "merge_into": "W15-B001-C-003", "duplicate_of": "W15-B001-C-003", "notes": "Same claim (density/transmittance present in features, lost at binarizing head); C-035's frozen-ViT probe is one arm of C-003's probing study."}
+{"idea_id": "W15-B001-C-036", "cluster_id": "HC-34", "decision": "merge", "merge_into": "W15-B001-A-005", "duplicate_of": "W15-B001-A-005", "notes": "Cross-shard near-duplicate: both claim interactive refinement oscillates non-convergently on ambiguous content; keep media as the high-ambiguity testbed."}
+{"idea_id": "W15-B001-C-037", "cluster_id": "HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-038", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Shares the appearance-decorrelation half-life measurement with C-056; kept both: tracker limits vs label staleness are different consequences."}
+{"idea_id": "W15-B001-C-039", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-040", "cluster_id": "HC-03", "decision": "merge", "merge_into": "W15-B001-C-010", "duplicate_of": "W15-B001-C-010", "notes": "C-040 (rank instability across evaluation resolutions) is the direct consequence of C-010's fractal-boundary mechanism; one study covers both."}
+{"idea_id": "W15-B001-C-041", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-042", "cluster_id": "HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-043", "cluster_id": "HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of B-003/B-047; kept for its distinctive re-annotation protocol-swap design in the media domain."}
+{"idea_id": "W15-B001-C-044", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-045", "cluster_id": "HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-046", "cluster_id": "HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Also relates to HC-06 (conventions); assigned here because the claim is about what instance metrics measure."}
+{"idea_id": "W15-B001-C-047", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-048", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-049", "cluster_id": "HC-30", "decision": "merge", "merge_into": "W15-B001-C-050", "duplicate_of": "W15-B001-C-050", "notes": "Same claim (short-window temporal statistics suffice for smoke-vs-distractor); C-050 supplies the physical mechanism (turbulence spectral slope) and transfer test."}
+{"idea_id": "W15-B001-C-050", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing C-049; spectral-slope mechanism carries the sufficiency claim."}
+{"idea_id": "W15-B001-C-051", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-052", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-053", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-054", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-055", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Active micro-motion + rigidity-violation test for refractive surfaces: converts a passive perception problem into an active sensing one at tiny model cost."}
+{"idea_id": "W15-B001-C-056", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Shares the half-life measurement with C-038; kept for the dataset-QC consequence."}
+{"idea_id": "W15-B001-C-057", "cluster_id": "HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-058", "cluster_id": "HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-059", "cluster_id": "HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-060", "cluster_id": "HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-061", "cluster_id": "HC-31", "decision": "drop", "merge_into": null, "duplicate_of": null, "notes": "Audio-visual sound-source localization for coarse spatial supervision is an established technique; the flame-specific increment is thin relative to the cluster's stronger physics-based signals (C-062, C-063). (Advisory.)"}
+{"idea_id": "W15-B001-C-062", "cluster_id": "HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-063", "cluster_id": "HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Rolling-shutter row-spectrum as a single-frame flame-dynamics cue: camera-artifact physics used as signal rather than nuisance."}
+{"idea_id": "W15-B001-C-064", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Known-adjacent (color reliance of fire detectors) but the counterfactual color-reliance index predicting field FP rates is a kept increment (advisory)."}
+{"idea_id": "W15-B001-C-065", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-066", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-067", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-068", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-069", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-070", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-071", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-072", "cluster_id": "HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Dataset-curation prior read as detection-latency failure; also relates to HC-22."}
+{"idea_id": "W15-B001-C-073", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-074", "cluster_id": "HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-075", "cluster_id": "HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-076", "cluster_id": "HC-07", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Distribution-as-output evaluation claim; kept: likelihood-based ranking is a different instrument from spread-matching."}
+{"idea_id": "W15-B001-C-077", "cluster_id": "HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-078", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Architecture claim riding on the same spatiotemporal-concentration physics as C-050; kept: parameter-efficiency prediction is distinct."}
+{"idea_id": "W15-B001-C-079", "cluster_id": "HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-080", "cluster_id": "HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Anchor after absorbing C-017; layer counting as label and as output space, one program."}
+{"idea_id": "W15-B001-C-081", "cluster_id": "HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-082", "cluster_id": "HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-083", "cluster_id": "HC-07", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of A-061; kept: trained multi-head diversity on mixed data is a different instrument from frozen SAM spread."}
+{"idea_id": "W15-B001-C-084", "cluster_id": "HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-085", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-086", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-087", "cluster_id": "HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-088", "cluster_id": "HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of A-092; kept: deployment-camera noise injection at train time is a distinct intervention."}
+{"idea_id": "W15-B001-C-089", "cluster_id": "HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Also relates to HC-05 (detection latency); assigned here as a metric-decoupling Pareto claim."}
+{"idea_id": "W15-B001-C-090", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Motion-salience localization of the human advantage on incipient smoke; clean three-condition psychophysics design."}
+{"idea_id": "W15-B001-C-091", "cluster_id": "HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-092", "cluster_id": "HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Physical compositing correctness beats visual realism for synthetic-to-real transfer: factorial design cleanly separates two conflated data-quality axes."}
+{"idea_id": "W15-B001-C-093", "cluster_id": "HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Cross-domain relative of A-053/B-096; kept: quantifies how little boundary information media labels carry."}
+{"idea_id": "W15-B001-C-094", "cluster_id": "HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-095", "cluster_id": "HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-096", "cluster_id": "HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-097", "cluster_id": "HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B001-C-098", "cluster_id": "HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Distinct mechanism within HC-01: duplicate contamination from viral disaster footage, not measurement noise."}
+{"idea_id": "W15-B001-C-099", "cluster_id": "HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "[HIGH-VALUE FLAG] Synthetic media fully activate deployed smoke/fire pipelines, enabling spoofing/injection; physically grounded consistency checks as the countermeasure. Security-relevant and immediately testable."}
+{"idea_id": "W15-B001-C-100", "cluster_id": "HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Static-vs-dynamic transparency as categorically different mechanisms; kept as the liquids boundary of HC-30."}
