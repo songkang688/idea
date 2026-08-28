@@ -1,0 +1,37 @@
+{
+  "task_id": "p1_wave_a_batch003_gen_A",
+  "role": "generator",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "territory": "T07 benchmark/dataset weaknesses",
+  "idea_count": 100,
+  "id_range": "W15-B003-A-001..W15-B003-A-100",
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_003/gen_A/ideas.jsonl",
+    "Windows15/_state/tasks/p1/batch_003/gen_A/report.md",
+    "Windows15/_state/tasks/p1/batch_003/gen_A/done.json"
+  ],
+  "diversity_quota_compliance": {
+    "source": "p1 diversity audit checkpoint-1 (auditor_A/B/C branches)",
+    "stance_counts": {
+      "constructive": 28,
+      "quant_law": 21,
+      "debunk": 20,
+      "null_equivalence": 17,
+      "rehabilitation": 10,
+      "mechanism": 4
+    },
+    "debunk_share": 0.20,
+    "debunk_cap_recommended": 0.25,
+    "max_cluster_size": 8,
+    "max_single_skeleton_instances": 5
+  },
+  "unresolved_items": [
+    "Novelty is hypothesized only; no literature verification performed by this generator",
+    "Ideas A-047/A-058/A-060/A-063 (synthetic evaluation data) should be cross-checked against batch_003 gen_C (T09 synthetic data) during Wave B dedup",
+    "Ideas A-057..A-063 (LLM-judge validity) flagged as potential neighbors of future T15; A-016/A-070 as potential neighbors of T08 for the dedup ledger",
+    "Ideas A-005/A-018/A-020/A-089 flagged for overlap check against batch_001 gen_B evaluation-metrology block (W15-B001-B-013..024)",
+    "Several minimal falsification experiments assume archived per-item prediction files or competition logs; feasibility triage deferred to later selection stages"
+  ],
+  "recommended_next_task_type": "p1_wave_b_dedup_batch003"
+}
