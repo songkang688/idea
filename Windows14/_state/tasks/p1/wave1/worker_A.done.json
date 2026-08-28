@@ -1,0 +1,10 @@
+{
+  "task_id": "p1_gen_w1_a",
+  "role": "worker_A",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "idea_count": 132,
+  "output_files": ["Windows14/_state/tasks/p1/wave1/worker_A.ideas.jsonl"],
+  "unresolved_items": [],
+  "recommended_next_task_type": "p1_wave_B_dedup"
+}
