@@ -1,0 +1,48 @@
+{
+  "task_id": "p1_gen_c_contrarian_eval",
+  "role": "generator",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "branch": "cursor/windows13-p0-init-implementation-d93f",
+  "territory": "Contrarian evaluation - calibration, uncertainty, benchmark/dataset weaknesses, negative results, ignored assumptions in vision foundation model evaluation",
+  "status": "done",
+  "idea_count": 104,
+  "id_seed_range": "W13-P1-C-001..W13-P1-C-104",
+  "clusters": {
+    "calibration": 12,
+    "uncertainty": 10,
+    "benchmark-contamination": 12,
+    "metric-validity": 10,
+    "protocol-assumptions": 10,
+    "negative-results": 10,
+    "human-baselines-annotation": 8,
+    "statistics-reproducibility": 8,
+    "robustness-shift-critique": 8,
+    "vlm-eval-weaknesses": 10,
+    "ignored-assumptions": 6
+  },
+  "outputs": [
+    "Windows13/_state/tasks/p1/generators/gen_c_contrarian_eval/ideas_shard.jsonl",
+    "Windows13/_state/tasks/p1/generators/gen_c_contrarian_eval/ideas_shard.md",
+    "Windows13/_state/tasks/p1/generators/gen_c_contrarian_eval/done.json"
+  ],
+  "guarantees": {
+    "candidates_only": true,
+    "novelty_verified": false,
+    "evidence_labels_present": true,
+    "no_fabricated_papers_numbers_datasets_results": true,
+    "canonical_state_untouched": [
+      "Windows13/_state/ideas_master.jsonl",
+      "Windows13/_state/research_state.json",
+      "Windows13/_state/window.lock.json"
+    ]
+  },
+  "validation": {
+    "jsonl_lines_parse": true,
+    "required_fields_complete": true,
+    "id_sequence_contiguous": true,
+    "duplicate_ids": 0
+  },
+  "recommended_next_task_type": "p1_wave_b_dedup",
+  "completed_at_utc": "2026-08-28T18:05:00Z"
+}
