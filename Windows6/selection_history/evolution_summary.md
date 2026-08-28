@@ -6,5 +6,5 @@
 - Stage 2 DE: **64/160 survive**. Top-10 assassin in flight.
 - Stage 4 Reviewer #2 (cheap-5): AMG clustering, camera-ID, alignment-tax **survive**; empty-FPR audit and atlas-vs-text **killed**.
 - Provisional packages under `Idea_01`–`Idea_03` (synthetic prototypes only).
-- Stage 5 cloud engineering + DE assassin + auditor: in flight.
+- Stage 5 cloud engineering + DE assassin + auditor: **done**. Day-1 budgets ~2 / ~10 / ~8 GPU-h. COCO control on Idea_01; equal-N splits on Idea_02; O1/O2/O3 format vs representation on Idea_03.
 
