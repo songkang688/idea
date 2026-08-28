@@ -1,0 +1,373 @@
+id,cluster,novelty,significance,scientific_question,technical_soundness,feasibility,compute,dataset_availability,baseline_availability,not_already_published_judgment,experimental_clarity,venue_potential,risk,potential_upside,research_roi,mean_score,decision,reason
+A-0001,sam-prompt-sensitivity,7,6,7,6,5,8,7,7,7,7,6,5,6,5,6.46,KILL,Needs human annotation-time logs; basin area likely confounded with object size and boundary complexity
+A-0002,sam-prompt-sensitivity,8,7,9,8,8,8,9,8,8,8,7,5,7,8,7.92,KEEP,Mechanistic aliasing hypothesis; cheap Fourier analysis plus prompt-encoder-only retrain; clean falsification either way
+A-0003,sam-prompt-sensitivity,7,6,8,8,9,9,9,9,7,9,6,6,6,8,7.77,PROTECT,Cheap-falsifiable and counter-intuitive: order-invariance of click sets is assumed everywhere and untested; days of compute
+A-0004,sam-prompt-sensitivity,6,5,6,5,7,8,8,7,6,6,5,6,5,5,6.08,KILL,Probe-only mechanistic claim with weak decision relevance; linear-separability assumption fragile
+A-0005,sam-prompt-sensitivity,7,7,8,7,8,7,8,8,7,8,7,4,7,8,7.46,KEEP,Concrete architectural bottleneck (mask-prior resolution) with a quantitative erosion law and a testable fix
+A-0006,sam-prompt-sensitivity,5,6,6,6,8,8,8,7,5,7,5,5,5,5,6.23,KILL,Instability forecasting adjacent to mask-quality-prediction literature; incremental
+A-0007,sam-prompt-sensitivity,7,5,7,5,5,7,6,6,7,6,5,7,5,4,5.77,KILL,Psychophysics controls hard; texture manipulations likely shift human judgments too
+A-0008,sam-prompt-sensitivity,4,5,5,6,7,6,8,8,4,7,4,4,4,4,5.54,KILL,Jitter-augmentation trade-off is folklore-adjacent; law likely dataset-specific; vague novelty
+A-0009,sam-prompt-sensitivity,6,4,7,5,8,8,9,8,7,7,4,6,4,5,6.31,KILL,Cute formalism but result driven by the greedy-refinement definition; low significance
+A-0010,sam-prompt-sensitivity,6,5,6,7,8,8,9,9,6,8,5,4,5,6,6.77,KILL,Clean but modest payoff; distillation lineage confound acknowledged; budget kill
+A-0011,sam-prompt-sensitivity,5,4,5,5,4,8,3,6,6,6,3,7,4,3,4.77,KILL,Per-user calibration is niche HCI; requires multi-annotator click logs; low venue fit
+A-0012,sam-prompt-sensitivity,6,5,6,5,5,8,5,7,6,6,5,6,5,4,5.62,KILL,Overlaps fragility themes of A-0002/A-0003; human ambiguity ratings noisy; budget kill
+A-0013,sam-prompt-sensitivity,4,5,5,6,7,7,8,7,4,7,4,5,4,4,5.54,KILL,Ensemble-disagreement uncertainty is well-trodden; simulated correction policies unrealistic
+A-0014,sam-prompt-sensitivity,5,4,6,6,8,8,9,8,5,7,4,4,4,5,6.08,KILL,Equivariance-defect measurement incremental; interpolation artifacts confound; low upside
+A-0015,sam-prompt-sensitivity,4,5,4,5,6,6,8,7,3,6,4,6,4,3,5.00,KILL,Learned click policies over frozen SAM likely published; model-idiosyncrasy overfit risk
+A-0016,sam2-video-memory,8,7,9,8,8,8,8,8,8,8,7,4,7,8,7.85,KEEP,Step-vs-exponential forgetting decay cleanly separates architectural from representational failure; cheap controlled occlusions
+A-0017,sam2-video-memory,8,8,9,8,7,8,8,8,8,8,8,5,8,8,8.00,KEEP,Causal memory-surgery intervention on stale entries; strong mechanism claim with direct fix implications
+A-0018,sam2-video-memory,6,6,7,6,8,8,9,8,5,8,5,4,5,6,6.69,KILL,fps sensitivity plausibly documented already or soon; retiming artifacts confound; budget kill
+A-0019,sam2-video-memory,5,4,6,7,9,8,9,9,6,8,4,6,4,5,6.46,KILL,Likely boring null; value hinges entirely on framing
+A-0020,sam2-video-memory,6,4,6,6,4,7,3,7,7,6,4,7,4,4,5.23,KILL,Phase-labeled video data scarce; niche failure regime
+A-0021,sam2-video-memory,6,5,6,5,8,8,9,8,6,7,5,6,5,5,6.38,KILL,Reversed-video physics confound undermines the asymmetry attribution
+A-0022,sam2-video-memory,5,6,6,7,6,8,5,8,5,7,5,4,5,5,6.00,KILL,Isotonic recalibration of a head is standard; ground-truth partial-occlusion labels scarce; budget kill
+A-0023,sam2-video-memory,5,6,6,6,8,8,8,8,4,7,5,4,5,5,6.23,KILL,Quality-gated memory writes are an obvious engineering direction; likely explored
+A-0024,sam2-video-memory,7,6,8,7,8,8,7,8,7,8,6,6,7,7,7.23,PROTECT,Cheap-falsifiable: twin-object crossovers isolate appearance-vs-motion identity; synthetic-to-real gap is the accepted risk
+A-0025,sam2-video-memory,6,6,7,6,6,8,6,8,6,7,5,5,5,5,6.23,KILL,Solid changepoint analysis but sparse long-video ground truth limits per-frame IoU; budget kill
+A-0026,sam2-video-memory,3,4,4,5,8,8,8,8,2,7,3,4,3,3,5.08,KILL,SAM2 already retains prompted-frame memory; largely moot or published
+A-0027,sam2-video-memory,5,5,5,5,8,8,8,8,5,7,4,6,4,4,5.85,KILL,Attention-entropy failure signals incremental; clutter false-alarm risk
+A-0028,sam2-video-memory,7,7,7,5,6,8,6,7,7,6,6,6,6,5,6.38,KILL,Near-keep; 'correct behavior at splits' undefined so evaluation ambiguity blocks clean claims
+A-0029,sam2-video-memory,5,5,5,5,8,8,9,8,6,6,4,5,4,4,5.92,KILL,Identity-vs-boundary decomposition definitional; systems-flavored
+A-0030,sam2-video-memory,7,8,7,6,8,8,9,9,7,8,7,5,7,8,7.62,KEEP,Negative-transfer regression SAM2-vs-SAM1 on stills; cheap and of wide interest; spectral mechanism probe included
+A-0031,sam3-concept-prompting,7,8,8,6,7,8,7,7,6,7,7,5,7,7,7.08,KEEP,Relation-vs-attribute recall gap in concept segmentation; timely SAM3-era diagnosis with matched-difficulty design
+A-0032,sam3-concept-prompting,7,7,8,7,8,8,8,7,7,8,7,4,7,8,7.46,KEEP,Misses predictable from prototype distance makes exhaustivity failure quantifiable a priori; cheap embedding analysis
+A-0033,sam3-concept-prompting,5,6,6,6,8,8,8,7,4,8,5,4,5,5,6.23,KILL,Phrasing/template sensitivity heavily studied in CLIP-descendant literature
+A-0034,sam3-concept-prompting,7,7,8,8,8,8,7,7,6,8,7,4,7,8,7.38,KEEP,Random-removal baseline sharply falsifies compositional negation in concept heads; cheap and decisive
+A-0035,sam3-concept-prompting,6,5,6,5,7,8,7,7,6,6,5,5,5,5,6.00,KILL,Retrieved-set diversity metrics contestable; modest payoff
+A-0036,sam3-concept-prompting,6,6,7,6,7,8,6,7,5,7,5,5,5,5,6.15,KILL,Sibling-confusion hallucination adjacent to open-vocab false-positive analyses; budget kill
+A-0037,sam3-concept-prompting,8,6,8,5,5,7,7,6,8,6,6,8,7,4,6.38,KILL,Near-protect; causal activation patching delicate and decodability does not establish use; methodology fragile
+A-0038,sam3-concept-prompting,4,5,5,6,8,8,8,8,4,8,4,3,4,5,5.92,KILL,Score hysteresis is an engineering fix; low scientific content
+A-0039,sam3-concept-prompting,6,6,7,7,6,8,5,7,6,7,5,4,5,5,6.15,KILL,Clean pathway decomposition but matched cross-style scenes scarce; budget kill
+A-0040,sam3-concept-prompting,5,5,6,6,8,8,8,7,6,7,4,4,4,5,6.08,KILL,Batching-implementation dependence limits generality
+A-0041,sam3-concept-prompting,6,6,7,6,5,8,5,7,6,6,5,5,5,5,5.92,KILL,Verified-absence annotation expensive; emptiness angle kept via A-0134
+A-0042,sam3-concept-prompting,8,5,7,6,5,7,5,6,8,6,5,7,6,4,6.00,KILL,Near-protect; morph continua likely off-distribution and require a human study; double-confounded
+A-0043,sam3-concept-prompting,6,6,7,6,6,8,6,7,5,7,5,5,5,5,6.08,KILL,Frequency-performance decay studied in open-vocab detection; cliff-vs-smooth is a marginal residual question
+A-0044,sam3-concept-prompting,6,5,6,6,6,8,5,7,6,6,5,5,5,5,5.85,KILL,Reflections angle kept via A-0330; annotation of reflection extents genuinely ambiguous
+A-0045,sam3-concept-prompting,6,5,6,5,7,8,7,6,6,6,4,6,5,4,5.77,KILL,Mechanism-specific to exemplar aggregation; limited cross-model generality
+A-0046,medsam-domain-shift,7,6,7,5,6,7,6,8,6,6,6,6,6,5,6.23,KILL,Near-keep; intensity-vs-shape synthetic constructs unlikely to isolate the two factors cleanly
+A-0047,medsam-domain-shift,7,9,8,7,8,8,8,8,6,8,8,3,8,8,7.77,KEEP,Box-rejection incapability is a clinically critical and cheaply demonstrable safety failure; MICCAI-strong
+A-0048,medsam-domain-shift,5,6,6,6,8,8,8,7,4,7,5,4,5,5,6.15,KILL,Label-free QC via slice coherence adjacent to established reverse-validation ideas
+A-0049,medsam-domain-shift,5,6,6,6,7,7,7,7,5,7,5,4,5,5,6.00,KILL,Asymmetric boundary losses exist; annotation-style bias confounds signed error
+A-0050,medsam-domain-shift,6,6,7,7,5,8,4,7,5,6,6,5,5,5,5.92,KILL,Scanner/site effects well studied in medical imaging; public crossed-factor data scarce
+A-0051,medsam-domain-shift,8,7,8,7,6,8,5,7,8,7,7,5,7,7,7.08,KEEP,Institution-style inheritance is a fresh testable data-provenance claim with audit value for medical AI
+A-0052,medsam-domain-shift,5,6,6,7,5,6,4,8,4,7,6,5,5,4,5.62,KILL,PEFT-vs-nnU-Net crossover comparisons are a crowded space; rare-modality data access hard
+A-0053,medsam-domain-shift,7,9,8,7,7,8,6,8,6,7,8,4,8,8,7.46,KEEP,Shape-prior hallucination of healthy anatomy on pathology is safety-critical; decomposable and falsifiable
+A-0054,medsam-domain-shift,6,5,6,6,8,8,8,8,6,8,5,4,5,6,6.54,KILL,Cute pragmatics probe but findings reduce to dataset box statistics; budget kill
+A-0055,medsam-domain-shift,5,6,6,6,8,8,8,8,5,8,5,4,5,5,6.38,KILL,Windowing sensitivity partially known; per-organ optimum complicates the proposed fix
+A-0056,medsam-domain-shift,7,6,7,6,7,7,6,7,7,7,5,6,5,5,6.31,KILL,Convention-forgetting effect may sit below detection; annotation-convention theme kept via A-0194
+A-0057,medsam-domain-shift,5,7,6,6,5,8,4,7,4,6,6,5,5,4,5.62,KILL,Uncertainty-vs-reader-disagreement already studied; few multi-reader datasets
+A-0058,medsam-domain-shift,6,6,6,6,7,8,7,8,6,7,5,5,5,5,6.31,KILL,Narrow inference-time fix; positional rescaling may break pretrained attention; incremental
+A-0059,medsam-domain-shift,5,7,7,7,8,8,7,8,4,8,5,3,5,6,6.54,KILL,Oracle-box decoupling is standard analysis methodology; likely already reported for MedSAM-class models
+A-0060,medsam-domain-shift,5,6,6,6,5,6,5,7,4,6,5,5,5,4,5.38,KILL,Federated adapter averaging/routing is a crowded engineering space; module-flavored
+A-0061,boundary-quality,8,7,8,7,8,8,9,8,7,8,7,5,7,8,7.69,KEEP,Boundary-Nyquist law links contour error spectrum to decoder resolution; cheap and architecture-predictive
+A-0062,boundary-quality,7,8,8,7,6,8,5,8,7,7,7,5,8,7,7.15,KEEP,Metric-gaming exposure of HQ boundary heads against soft multi-annotator ground truth; field-correcting
+A-0063,boundary-quality,7,6,7,6,6,8,5,7,7,7,6,6,6,5,6.38,KILL,Cue-conflict stimuli off-distribution risk; geometry-cue version kept via A-0317
+A-0064,boundary-quality,6,5,6,5,6,7,8,7,6,6,5,7,5,4,5.85,KILL,Subspace-constrained PEFT is module-flavored; input-dependent subspaces likely defeat a global decomposition
+A-0065,boundary-quality,6,5,6,5,6,7,6,7,6,6,5,6,5,4,5.69,KILL,Content confounds tool provenance; generator-fingerprint theme kept via A-0271
+A-0066,boundary-quality,6,5,6,6,7,8,6,7,6,6,5,5,5,5,6.00,KILL,Estimated-depth circularity; modest payoff
+A-0067,boundary-quality,5,5,6,7,8,8,8,8,5,7,4,4,4,5,6.15,KILL,Bias/variance ensembling decomposition is textbook; incremental insight
+A-0068,boundary-quality,8,6,8,6,7,8,7,7,7,7,6,7,7,6,6.92,PROTECT,Counter-intuitive and cheap: binary-trained logits carrying recoverable alpha-matte information would be a surprising free capability
+A-0069,boundary-quality,7,6,7,6,7,8,8,8,7,7,5,6,6,5,6.69,KILL,Attractor-floor idea overlaps prompt-basin/refinement themes; oracle-policy coverage weak; budget kill
+A-0070,boundary-quality,6,5,6,5,6,6,7,7,6,6,5,6,5,4,5.69,KILL,Size-subset fine-tuning confounds scale with category; moderate payoff
+A-0071,boundary-quality,7,5,7,7,7,7,8,8,7,7,5,5,5,5,6.54,KILL,Near-keep; crisp 4-fold anisotropy prediction but narrow; natural orientation statistics may mask the effect
+A-0072,boundary-quality,5,5,5,6,7,7,8,7,4,7,4,5,4,4,5.62,KILL,Auxiliary error-prediction heads are well-trodden module territory
+A-0073,boundary-quality,7,7,8,7,7,8,8,8,7,8,6,4,6,7,7.23,KEEP,Instance-instance vs instance-background boundary gap isolates a distinct competence cheaply with contrast matching
+A-0074,boundary-quality,8,6,7,5,8,9,8,8,8,8,6,8,7,6,7.23,PROTECT,Simple counter-intuitive training-free claim (decoder as PSF; deconvolve logits); probably fails and cheap to find out
+A-0075,boundary-quality,7,7,6,6,4,9,4,6,7,6,4,6,6,4,5.85,KILL,Multi-domain user studies expensive; venue mismatch for CV mainlines
+A-0076,mobile-distillation,7,7,7,6,5,4,7,7,7,7,6,5,6,5,6.23,KILL,Five-point distillation ladder training exceeds small-lab budget; capability batteries leak across capabilities
+A-0077,mobile-distillation,6,5,6,5,6,7,8,8,6,6,5,6,5,5,6.00,KILL,High-dimensional manifold estimates fragile; the one-epoch decoder fix is engineering
+A-0078,mobile-distillation,7,7,8,7,8,8,8,9,7,8,6,4,7,8,7.54,KEEP,Pathology inheritance through distillation; natural experiment using MobileSAM/FastSAM/EfficientSAM checkpoints with no new training
+A-0079,mobile-distillation,5,5,6,6,7,7,8,8,5,7,4,4,4,5,5.92,KILL,Quantization sensitivity scans are routine; hardware-specific conclusions
+A-0080,mobile-distillation,8,7,8,7,8,8,7,8,8,8,6,4,7,8,7.54,KEEP,Psychophysics-style effective-resolution audit exposes hollow high-res claims; cheap synthetic method with real-data validation
+A-0081,mobile-distillation,5,6,6,6,4,3,7,7,6,6,5,5,5,3,5.31,KILL,3x4 factorial distillation grid is infeasible compute for a small lab
+A-0082,mobile-distillation,5,5,5,6,7,7,8,8,4,7,4,4,4,4,5.69,KILL,Early-exit/anytime inference is heavily mined; module-flavored
+A-0083,mobile-distillation,6,5,6,6,6,5,8,7,6,6,5,6,5,4,5.77,KILL,Distillation-loss variant (module stacking flavor); optimization instability risk
+A-0084,mobile-distillation,7,7,8,7,7,7,6,8,7,7,6,5,7,7,7.00,KEEP,Hidden fragmentation failure of efficient attention on spatially extended objects; benchmark-invisible claim worth surfacing
+A-0085,mobile-distillation,5,6,6,6,7,7,8,8,5,7,5,5,5,5,6.15,KILL,Cascade/escalation design space well explored; threshold-tuning dependent
+A-0086,mobile-distillation,6,6,7,6,7,7,8,8,5,7,5,5,5,5,6.31,KILL,Segmentation-aware token pruning likely published; gradient-informed criterion costly online
+A-0087,mobile-distillation,7,6,7,6,8,8,8,9,7,7,6,7,7,6,7.08,PROTECT,Counter-intuitive: students beating teachers in stable characterizable regimes; sparse-noise risk acknowledged
+A-0088,mobile-distillation,7,6,7,6,4,3,7,7,7,6,6,6,6,4,5.85,KILL,Matched scratch-training baselines are the whole cost; infeasible compute
+A-0089,mobile-distillation,5,6,5,6,6,7,7,7,6,7,4,4,5,5,5.85,KILL,Energy profiling valuable but systems-venue material; hardware-specific
+A-0090,mobile-distillation,5,5,5,6,6,6,8,8,5,6,4,5,5,4,5.62,KILL,Cached-feature micro-decoder is engineering amortization; ambiguity handling likely lost
+A-0091,peft-mechanics,6,6,7,6,7,5,8,8,5,7,5,5,5,5,6.15,KILL,Adapter-placement studies exist; placement effects often flat in large models
+A-0092,peft-mechanics,7,7,8,7,6,5,7,8,7,7,6,6,7,6,6.77,KEEP,Rank as function of intrinsic shift dimensionality is a clean quantitative law with direct design implications
+A-0093,peft-mechanics,7,7,8,7,7,6,8,8,6,8,6,5,7,7,7.08,KEEP,Pre-merge compatibility test from principal angles; timely for the adapter-merging ecosystem
+A-0094,peft-mechanics,7,7,7,7,8,7,8,8,6,8,6,6,7,7,7.15,PROTECT,Simple and counter-intuitive: many domain gaps may be prompt-interpretation gaps; component-isolation table is cheap
+A-0095,peft-mechanics,6,5,6,6,6,5,8,8,5,7,5,5,5,4,5.85,KILL,Mode connectivity likely trivially high in low-dimensional adapter space; insight limited
+A-0096,peft-mechanics,7,7,7,5,5,6,6,7,6,6,6,6,6,5,6.08,KILL,Near-keep; equal-headroom matching across style/physics domains likely unconstructable
+A-0097,peft-mechanics,5,5,5,5,6,6,8,7,6,6,4,6,4,4,5.46,KILL,Gradient-tap modules; stacking-flavored; binding constraint unclear
+A-0098,peft-mechanics,6,6,7,6,7,6,8,8,5,7,5,5,5,5,6.23,KILL,QK-vs-VO constrained tuning confounded by optimization difficulty; adjacent work exists
+A-0099,peft-mechanics,6,6,7,5,5,5,8,8,6,6,5,6,6,4,5.92,KILL,Neighborhood-preserving full fine-tuning control hard to implement cleanly
+A-0100,peft-mechanics,8,7,7,5,5,6,8,8,8,6,6,8,8,5,6.69,PROTECT,High-risk high-reward: adapter transport across backbone scales would change PEFT economics; layer correspondence may not exist
+A-0101,peft-mechanics,6,6,6,7,8,7,8,8,6,8,5,4,5,6,6.62,KILL,Cross-prompt collateral damage plausible but effect likely small; folded conceptually under prompt-space forgetting
+A-0102,peft-mechanics,5,5,6,6,7,6,8,8,5,6,4,5,4,4,5.69,KILL,Norm-vs-LoRA comparisons abundant; mechanism story post-hoc
+A-0103,peft-mechanics,7,6,7,5,4,6,5,7,7,5,5,7,6,4,5.69,KILL,Shortcut-probe construction is dataset-specific labor; fragile methodology
+A-0104,peft-mechanics,7,7,8,6,7,6,7,8,7,7,6,6,7,6,6.85,KEEP,Bias-reachability boundary of PEFT via equivariance floor; decision-relevant negative-result design
+A-0105,peft-mechanics,5,6,5,6,4,3,7,7,5,6,5,6,5,3,5.15,KILL,25-dataset config grid is AutoML-scale compute; meta-model overfit risk
+A-0106,peft-forgetting,6,7,7,5,6,6,8,8,5,6,5,7,6,4,6.08,KILL,Erosion curves adjacent to existing anti-forgetting SAM work; phase-transition predictor speculative
+A-0107,peft-forgetting,7,8,8,7,8,7,8,8,7,8,7,5,8,8,7.62,KEEP,Forgetting-as-readout with decoder-reset recovery matrix; cheap 2x2 design and high practical value
+A-0108,peft-forgetting,7,6,7,6,7,7,6,7,7,7,5,5,6,6,6.46,KILL,Near-keep; ambiguity-benchmark immaturity adds noise; folded into the A-0107 program
+A-0109,peft-forgetting,6,6,7,6,6,5,8,8,6,7,5,6,6,5,6.23,KILL,Rank-threshold law overlaps A-0092; optimizer and learning-rate dependence risk
+A-0110,peft-forgetting,5,6,6,6,7,6,8,8,4,7,5,5,5,5,6.00,KILL,Pseudo-rehearsal on own outputs is established continual-learning practice; incremental transfer
+A-0111,peft-forgetting,5,5,6,6,6,5,8,8,5,7,4,6,4,4,5.62,KILL,Ordering/curriculum effects in continual learning well mined; budget and LR dominate
+A-0112,peft-forgetting,6,6,6,5,5,5,8,8,6,6,5,7,6,4,5.85,KILL,Attribution instability plus whack-a-mole hotspots; costly retrain loops
+A-0113,peft-forgetting,7,8,7,7,7,6,8,8,7,7,7,5,7,7,7.15,KEEP,Silent cross-modal alignment damage from vision-tower PEFT; timely for VLM fine-tuning practice
+A-0114,peft-forgetting,7,6,7,6,6,6,6,8,7,6,5,6,6,5,6.23,KILL,Near-keep; pretraining-like data approximation weak; loss-isolation viable as secondary analysis elsewhere
+A-0115,peft-forgetting,4,6,5,6,8,7,8,8,3,7,4,4,5,4,5.77,KILL,Task-vector negation/scaling is published task-arithmetic territory
+A-0116,peft-forgetting,7,6,7,7,8,7,8,8,7,8,5,5,6,6,6.92,KILL,Near-keep; prompt-space forgetting real but likely small relative to image-domain effects; budget
+A-0117,peft-forgetting,5,5,6,6,6,6,8,8,5,7,4,5,5,4,5.77,KILL,EWC-vs-distillation comparisons are standard continual-learning fare
+A-0118,peft-forgetting,7,7,7,5,4,7,4,7,7,5,5,7,6,4,5.77,KILL,Contamination verification without training-data access is the unsolved core; fragile
+A-0119,peft-forgetting,8,7,7,5,7,8,8,8,8,6,6,7,8,6,7.08,PROTECT,Counter-intuitive high-reward: suppression-not-erasure of forgotten capabilities; prompt-search overfitting is the risk
+A-0120,peft-forgetting,8,7,7,6,7,8,6,8,8,7,6,6,7,7,7.08,KEEP,Ecosystem-as-natural-experiment forgetting law from public community checkpoints; zero training cost
+A-0121,calibration-uncertainty,5,7,6,7,8,8,8,8,5,8,5,3,5,6,6.62,KILL,Conditional ECE stratification straightforward; likely observed in passing already; budget kill
+A-0122,calibration-uncertainty,6,6,6,6,8,8,8,8,5,7,5,5,5,5,6.38,KILL,Boundary-distance recalibration incremental; universality claim likely breaks across datasets
+A-0123,calibration-uncertainty,7,6,7,6,6,7,7,7,7,6,5,6,6,5,6.31,KILL,Near-keep; error-type labeling subjective; correlation-threshold claims fragile
+A-0124,calibration-uncertainty,4,6,6,7,7,8,8,7,3,7,5,4,5,4,5.92,KILL,Conformal segmentation with morphological bounds already published; residual question thin
+A-0125,calibration-uncertainty,7,6,7,6,5,8,4,7,7,6,5,5,6,5,6.08,KILL,Near-keep; human choice-frequency collection costly; task-framing dependence noted
+A-0126,calibration-uncertainty,5,6,6,6,7,7,8,8,4,7,5,4,5,5,6.08,KILL,Calibration-aware fine-tuning known; add-a-loss module flavor
+A-0127,calibration-uncertainty,6,6,6,6,5,9,5,6,6,7,3,5,5,4,5.69,KILL,Uncertainty-display HCI study; CHI-shaped with weak CV venue fit
+A-0128,calibration-uncertainty,7,7,8,7,8,8,8,8,7,8,6,4,7,8,7.46,KEEP,Confidence rising while accuracy plateaus in interactive loops is a crisp safety pathology; cheap scripted-session test
+A-0129,calibration-uncertainty,4,6,6,6,7,8,8,7,3,7,5,5,5,4,5.85,KILL,Feature-density OOD/failure prediction is saturated literature
+A-0130,calibration-uncertainty,6,6,6,5,5,6,7,7,6,5,5,6,5,4,5.62,KILL,Constructing encoders differing only in calibration is the hard unsolved step
+A-0131,calibration-uncertainty,6,7,7,7,7,8,8,7,6,7,5,4,6,6,6.69,KILL,Near-keep; coverage-matched leaderboard reranking solid but confidence-signal heterogeneity complicates fairness; budget
+A-0132,calibration-uncertainty,7,8,8,7,6,7,6,7,7,7,6,5,7,7,6.92,KEEP,Definitional audit: estimators claiming aleatoric should predict annotator entropy rather than model error
+A-0133,calibration-uncertainty,6,6,6,7,8,8,8,8,6,8,5,4,5,6,6.69,KILL,Single-variable recalibration fix; useful but thin; content-time confound
+A-0134,calibration-uncertainty,7,7,7,7,7,7,7,7,7,7,6,4,7,7,6.92,KEEP,Emptiness/null-prompt competence is a real unmodeled output mode with clear pipeline value
+A-0135,calibration-uncertainty,5,6,6,6,7,7,7,7,6,7,4,5,5,5,6.00,KILL,Transfer-matrix bookkeeping; modest conceptual payoff
+A-0136,small-thin-objects,8,8,9,7,8,8,8,8,7,8,7,4,8,8,7.85,KEEP,Sub-token collapse law cleanly separates tokenization limits from information limits; cheap resolution-sweep design
+A-0137,small-thin-objects,7,8,8,7,8,8,8,8,7,8,7,5,8,8,7.69,KEEP,Encoder-knows/decoder-drops proof via probes would redirect small-object work toward decoders
+A-0138,small-thin-objects,4,6,5,6,7,7,8,8,3,7,4,4,5,4,5.69,KILL,Crop/zoom policies for small objects are well-published territory
+A-0139,small-thin-objects,6,6,7,6,6,8,7,7,6,6,5,5,5,5,6.15,KILL,Near-keep; motif taxonomy subjectivity; vessel-domain niche
+A-0140,small-thin-objects,5,7,7,7,8,8,8,8,4,8,5,3,5,6,6.62,KILL,Oracle-ablation decomposition is standard methodology; likely already reported
+A-0141,small-thin-objects,6,6,7,6,6,5,8,8,6,7,5,5,5,5,6.15,KILL,Resampling-transfer study needs multiple fine-tunes; category-leak risk; moderate payoff
+A-0142,small-thin-objects,8,6,8,6,7,8,8,8,7,7,6,7,7,6,7.08,PROTECT,Counter-intuitive: context ablation improving small-object masks would reverse a standard assumption; cheap inpainting test
+A-0143,small-thin-objects,7,5,7,6,7,8,6,6,7,7,4,6,5,5,6.15,KILL,Metrology niche; logit shapes may be decoder artifacts uncorrelated with true position
+A-0144,small-thin-objects,6,6,6,7,8,8,8,8,5,8,4,4,5,5,6.46,KILL,NMS-artifact fix; aging relevance as NMS-free architectures spread
+A-0145,small-thin-objects,7,6,7,5,6,8,8,8,6,6,5,6,6,5,6.38,KILL,Attention-mass aggregate ill-defined across heads/layers; mediation analysis fragile
+A-0146,small-thin-objects,7,7,8,7,7,8,7,8,7,7,6,5,7,7,7.15,KEEP,Packing-density phase transition scaling with output resolution; extrapolable feasibility law for dense-instance work
+A-0147,small-thin-objects,4,5,5,6,8,8,8,8,4,7,4,4,4,5,5.85,KILL,Gated TTA is engineering compute allocation; ceiling-bounded by base model
+A-0148,small-thin-objects,6,8,7,7,6,9,6,8,5,7,5,4,6,6,6.62,KILL,Near-keep; label-noise ceiling important but generalized by kept A-0152; annotation cost
+A-0149,small-thin-objects,7,5,7,6,6,8,5,8,7,6,5,7,6,4,6.15,KILL,Registration errors likely cancel sub-pixel gains; niche capture setting
+A-0150,small-thin-objects,5,6,6,7,8,8,8,8,5,8,4,4,5,5,6.38,KILL,Practical prompting rule but thin scientific core
+A-0151,evaluation-weakness,7,8,7,7,7,8,8,8,6,7,6,5,8,7,7.23,KEEP,Metric-induced field steering; historical re-ranking under rebalanced composites is cheap and provocative meta-science
+A-0152,evaluation-weakness,7,9,8,8,6,8,6,8,6,8,7,4,8,7,7.38,KEEP,Label-noise ceiling test could render top-of-leaderboard gaps meaningless; bootstrap-over-annotations is rigorous
+A-0153,evaluation-weakness,6,7,7,7,7,8,8,8,6,8,5,4,6,6,6.85,KILL,Near-keep; protocol-sensitivity solid but folded into the A-0151/A-0152 meta-evaluation program; budget
+A-0154,evaluation-weakness,9,8,7,5,5,8,6,6,8,6,6,8,9,5,6.77,PROTECT,High-risk high-reward contamination forensics via annotation-style regurgitation; style-convergence confound may sink it
+A-0155,evaluation-weakness,6,7,6,6,6,8,7,8,5,6,5,5,6,5,6.23,KILL,Tail-metric advocacy exists; high-variance estimates need very large suites
+A-0156,evaluation-weakness,7,7,7,7,7,8,8,8,6,7,5,5,6,6,6.85,KILL,Near-keep; evaluator-variance quantification overlaps protocol-sensitivity theme
+A-0157,evaluation-weakness,6,6,6,5,6,8,7,7,6,6,5,6,5,5,6.00,KILL,Coverage conclusions hostage to feature-space choice
+A-0158,evaluation-weakness,6,7,7,6,6,8,7,8,6,7,5,5,6,5,6.46,KILL,Granularity-confound share folded into kept A-0237 any-valid-interpretation rescoring
+A-0159,evaluation-weakness,7,8,7,6,4,7,5,6,7,6,5,6,7,4,6.08,KILL,Three downstream harnesses is a multi-lab engineering lift
+A-0160,evaluation-weakness,6,6,6,5,5,8,5,7,6,6,5,6,5,4,5.69,KILL,Time-vs-content matching likely impossible at the needed precision
+A-0161,evaluation-weakness,6,7,6,7,5,7,5,7,5,7,6,5,6,5,6.08,KILL,10k pairwise human preferences costly; learned-judge trend crowded
+A-0162,evaluation-weakness,7,9,7,8,8,9,8,8,6,8,6,4,8,8,7.69,KEEP,Minimum-detectable-effect audit of published deltas; cheap and rigorous with field-level consequences
+A-0163,evaluation-weakness,6,6,6,6,5,8,5,7,6,6,5,5,6,4,5.85,KILL,Multi-style re-annotation cost; convention theme kept via A-0194
+A-0164,evaluation-weakness,6,6,5,4,4,6,6,6,7,5,4,7,5,3,5.15,KILL,Simulated research-dynamics proxy unconvincing
+A-0165,evaluation-weakness,6,6,6,7,7,8,7,8,7,7,4,4,5,5,6.38,KILL,Reproducibility audit useful but workshop/TMLR-shaped; selection bias toward rerunnable repos
+A-0166,representation-mismatch,6,7,7,6,7,7,8,8,5,7,5,5,6,6,6.54,KILL,Near-keep; property-vs-suitability analysis correlational; encoder properties collinear
+A-0167,representation-mismatch,7,7,7,7,7,7,8,8,6,7,6,4,7,7,7.00,KEEP,Pixel-level unique-information map for SAM-vs-CLIP features; analysis rather than fusion engineering
+A-0168,representation-mismatch,5,6,6,7,7,7,8,8,4,7,5,4,5,5,6.15,KILL,Positional-interpolation degradation known; refit fixes semi-standard
+A-0169,representation-mismatch,8,7,8,6,6,6,8,8,7,6,7,7,8,6,7.00,PROTECT,Reviewer-splitting debunk: DINO object-attention as epiphenomenon of local smoothness; dissociation delicate but high-payoff
+A-0170,representation-mismatch,6,6,7,7,8,8,8,8,5,8,5,4,5,6,6.69,KILL,Patch-grid boundary snapping likely partially documented; fix is ensembling engineering
+A-0171,representation-mismatch,5,6,6,7,7,7,8,8,4,7,5,5,5,5,6.15,KILL,Model stitching / representational alignment is established territory
+A-0172,representation-mismatch,6,6,6,6,7,7,8,8,6,6,5,5,5,5,6.23,KILL,Layer-role probing before/after fine-tuning is incremental bookkeeping
+A-0173,representation-mismatch,7,7,7,6,4,3,7,7,6,6,6,6,6,4,5.85,KILL,Matched twin pretraining runs exceed small-lab compute
+A-0174,representation-mismatch,6,6,6,6,7,8,8,8,6,7,5,5,5,5,6.38,KILL,Cascade disagreement gating engineering-adjacent; score normalization issues
+A-0175,representation-mismatch,8,7,7,6,6,8,5,7,8,7,6,6,7,6,6.77,KEEP,Camera-metadata shortcut features in VFMs; provocative cheap probes with deployment relevance
+A-0176,representation-mismatch,6,6,6,6,6,8,5,7,5,6,5,5,5,5,5.85,KILL,SAM-on-nonphotographic-domain evaluations abundant; mechanism claim is a modest residual
+A-0177,representation-mismatch,7,6,7,5,6,7,8,8,7,6,5,6,6,5,6.38,KILL,Near-keep; probe-based information estimates are lower bounds so stage comparisons stay shaky
+A-0178,representation-mismatch,8,7,8,7,7,7,8,8,7,8,7,5,8,8,7.54,KEEP,Causal chain from register/artifact tokens to user-visible prompt failures; timely and cheap
+A-0179,representation-mismatch,6,6,6,6,7,8,7,7,6,7,5,5,5,5,6.23,KILL,Cross-modal disagreement signal useful but granularity variance confounds; modest
+A-0180,representation-mismatch,7,7,7,6,4,3,6,7,7,6,6,6,6,4,5.85,KILL,Composition-controlled pretraining is compute-infeasible
+A-0181,detection-failures,8,7,8,7,7,8,8,8,7,7,7,5,7,7,7.38,KEEP,Query territories reframe crowded-scene misses as slot resource allocation; cheap to map on trained detectors
+A-0182,detection-failures,6,5,6,6,7,8,8,8,6,6,5,5,5,5,6.23,KILL,Merge-adjudication protocol heavy for modest payoff
+A-0183,detection-failures,8,7,8,7,7,8,8,8,7,7,7,5,7,7,7.38,KEEP,Spatial background-prior ceiling on open-vocabulary recall; clean synthetic-placement control available
+A-0184,detection-failures,5,6,6,7,8,8,8,8,4,7,4,4,5,5,6.23,KILL,Conditional threshold calibration operationally known
+A-0185,detection-failures,6,6,7,6,7,8,7,8,6,7,5,5,5,5,6.38,KILL,Near-keep; amodal-modal inconsistency plausible but synthetic-occlusion transfer weak
+A-0186,detection-failures,7,6,7,6,7,7,7,8,6,7,5,5,6,6,6.54,KILL,Query-exhaustion knee overlaps the kept A-0181 slot-allocation account
+A-0187,detection-failures,6,6,6,5,5,5,8,8,6,6,5,6,5,4,5.77,KILL,Many-seed retraining needed to beat noise; production-flavored
+A-0188,detection-failures,6,6,6,6,7,8,8,8,5,7,5,4,6,6,6.46,KILL,Pipeline-disagreement verification practical but implementation-quality-confounded
+A-0189,detection-failures,7,6,7,7,8,8,8,8,7,8,5,4,6,6,7.00,KILL,Near-keep; prompt-anchoring coefficient crisp but narrow; budget
+A-0190,detection-failures,6,6,6,6,7,8,8,8,5,7,5,5,5,5,6.31,KILL,Detection flicker/jitter partially documented; threshold-dependence noted
+A-0191,detection-failures,7,8,8,7,8,8,8,8,6,8,7,4,7,8,7.54,KEEP,Tail failure as naming-not-detection inverts closed-set wisdom; cheap decisive decomposition on LVIS tail
+A-0192,detection-failures,6,6,7,6,5,8,4,8,6,7,5,5,5,5,6.00,KILL,Verified-empty scene curation expensive; specificity theme kept via A-0134
+A-0193,detection-failures,6,5,6,6,6,7,6,8,6,6,5,5,5,5,5.92,KILL,Rendering-realism transfer doubts; moderate payoff
+A-0194,detection-failures,7,8,8,7,7,7,8,8,6,8,6,4,7,7,7.23,KEEP,Convention-translator upper-bounds how much cross-dataset gap is annotation convention; reframes generalization claims
+A-0195,detection-failures,7,6,7,5,6,7,8,8,6,6,5,7,6,4,6.23,KILL,Circuit localization may fail (distributed); DETR duplicate-suppression analyses exist
+A-0196,scaling-emergence,7,8,8,6,7,7,7,8,6,7,7,5,8,7,7.15,KEEP,Capability-resolved scaling exponents (small objects vs mean IoU) answer whether scale alone closes gaps
+A-0197,scaling-emergence,6,6,7,6,7,7,8,8,6,7,5,5,6,5,6.46,KILL,Correctability-scaling interesting but protocol-interaction risk; folded under the A-0196 program
+A-0198,scaling-emergence,7,8,8,7,7,7,7,8,7,7,7,5,8,7,7.31,KEEP,Emergence-as-metric-artifact test in a controllable vision setting; timely for scaling debates
+A-0199,scaling-emergence,6,6,6,6,4,3,6,7,6,6,5,6,6,3,5.38,KILL,Nested-subset pretraining is infeasible compute
+A-0200,scaling-emergence,8,8,8,6,7,8,6,8,7,7,7,6,8,7,7.31,KEEP,Inverse scaling in vision (semantic priors overriding pixel evidence) is provocative and checkpoint-ladder cheap
+A-0201,scaling-emergence,7,7,7,6,4,5,7,7,7,6,6,6,6,4,6.08,KILL,Independent same-scale training runs scarce; question underdetermined by available models
+A-0202,scaling-emergence,6,5,6,5,7,8,7,8,7,6,5,6,5,5,6.15,KILL,Literal-vs-intent operationalization subjective
+A-0203,scaling-emergence,6,7,6,6,3,2,7,7,6,6,6,6,6,3,5.46,KILL,Allocation-grid training at two scales is pretraining-scale budget
+A-0204,scaling-emergence,7,7,7,6,3,2,6,7,7,6,6,6,7,3,5.69,KILL,Diversity/depth-controlled pretraining infeasible for small lab
+A-0205,scaling-emergence,7,7,7,5,6,7,8,8,7,7,6,6,6,5,6.62,KILL,Near-keep; ladder confounds (data/recipe) contaminate exchange-rate estimates
+A-0206,scaling-emergence,7,6,7,5,4,4,6,6,7,5,5,7,6,3,5.46,KILL,Mask-memorization detection lacks tooling; retraining required
+A-0207,scaling-emergence,6,6,6,6,4,5,6,7,6,6,5,6,5,4,5.54,KILL,Needs within-run checkpoint access that is rarely public
+A-0208,scaling-emergence,7,7,7,6,4,4,7,7,6,7,6,6,7,4,6.08,KILL,Noise-ladder training compute-heavy; interesting but out of small-lab reach
+A-0209,scaling-emergence,6,6,7,6,3,3,6,7,7,6,5,6,6,3,5.46,KILL,Fixed-data model ladders must be trained; compute-infeasible
+A-0210,scaling-emergence,6,7,6,6,3,2,6,7,6,6,6,6,6,3,5.38,KILL,Multi-task subset training matrix is production-scale compute
+A-0211,interactive-loop,8,7,8,6,6,9,5,6,8,7,6,6,7,6,6.85,KEEP,User co-adaptation invalidating static-simulator benchmarks; modest-n study with large evaluative consequence
+A-0212,interactive-loop,5,6,6,6,6,8,6,7,4,7,5,5,5,5,5.85,KILL,Active-query/information-gain interfaces well explored
+A-0213,interactive-loop,7,6,7,6,5,8,4,6,7,6,5,6,6,5,6.00,KILL,Near-keep; spiral mining needs large human interaction logs
+A-0214,interactive-loop,7,6,7,6,5,9,4,6,7,6,5,6,6,5,6.08,KILL,Effort instrumentation noise across users/devices; HCI-shaped
+A-0215,interactive-loop,6,6,6,6,7,8,6,7,6,7,5,4,5,5,6.15,KILL,Locality-constrained decoding is an engineering contract fix
+A-0216,interactive-loop,6,5,6,6,5,7,6,6,7,6,4,6,5,4,5.62,KILL,Ordering-simulation combinatorics for modest payoff
+A-0217,interactive-loop,7,6,6,5,4,8,3,5,7,5,4,7,6,3,5.31,KILL,Requires instrumented production tool; user-error vs model-error confound
+A-0218,interactive-loop,7,6,6,5,3,7,3,5,7,5,5,7,6,3,5.23,KILL,Expert trace collection at scale unaffordable
+A-0219,interactive-loop,6,6,7,7,5,9,5,6,6,7,4,5,5,4,5.92,KILL,Latency-HCI study; CHI-shaped venue fit
+A-0220,interactive-loop,5,5,5,5,5,8,5,6,6,6,4,6,4,4,5.23,KILL,Priming/batching effect confounded by fatigue; low stakes
+A-0221,interactive-loop,7,8,7,6,6,9,5,6,7,7,5,5,8,6,6.69,KEEP,Over-deference making assisted labels worse than unassisted is an ecosystem-critical claim about AI-assisted annotation
+A-0222,interactive-loop,6,5,6,6,5,7,4,6,6,6,4,6,5,4,5.38,KILL,Personalization-memory engineering; retrieval quality bottleneck
+A-0223,interactive-loop,6,5,6,6,4,8,4,5,7,6,4,6,5,4,5.38,KILL,Annotator-chain logistics heavy; style-lock conclusion predictable
+A-0224,interactive-loop,5,5,5,6,4,8,4,6,4,6,4,6,4,3,4.92,KILL,Gaze-as-prompt explored; eyetracker logistics
+A-0225,interactive-loop,6,5,6,5,5,7,5,6,7,6,4,6,5,4,5.46,KILL,Informative-censoring violation acknowledged; niche annotation economics
+A-0226,ambiguity-multihypothesis,7,8,8,7,6,8,6,7,7,7,6,5,7,7,7.00,KEEP,Ambiguity taxonomy plus 3-slot coverage test grounds the whole multi-hypothesis agenda empirically
+A-0227,ambiguity-multihypothesis,7,7,8,7,7,8,6,8,7,7,6,4,7,7,7.08,KEEP,Fixed-template vs input-adaptive hypothesis diversity is a sharp cheap calibration-of-ambiguity test
+A-0228,ambiguity-multihypothesis,6,6,6,6,6,7,7,7,6,6,5,5,6,5,6.08,KILL,Hypothesis-propagating pipelines are systems engineering; combinatorial blowup
+A-0229,ambiguity-multihypothesis,7,6,7,6,6,8,5,7,7,7,5,5,6,5,6.31,KILL,Hierarchy-incoherence folded into kept A-0334 scene-level coherence; part-hierarchy ground truth contestable
+A-0230,ambiguity-multihypothesis,6,5,6,6,7,8,7,7,6,6,5,5,5,5,6.08,KILL,Elicitation-trick yield study; validity filtering subjective
+A-0231,ambiguity-multihypothesis,6,6,6,6,6,8,6,7,6,6,5,5,5,5,6.00,KILL,Ambiguity-atlas transfer bookkeeping; estimation noise caps measurable claims
+A-0232,ambiguity-multihypothesis,6,7,6,6,5,7,6,6,6,6,5,5,6,4,5.85,KILL,Five downstream applications is a systems lift; under-exploitation bias acknowledged
+A-0233,ambiguity-multihypothesis,6,6,6,6,6,7,5,7,6,6,5,5,5,5,5.85,KILL,Task-conditioned selection head is module territory
+A-0234,ambiguity-multihypothesis,7,7,7,7,5,6,4,7,6,7,6,6,7,5,6.23,KILL,Near-keep; distribution-vs-consensus asymmetry elegant but multi-annotator data volume likely insufficient
+A-0235,ambiguity-multihypothesis,7,7,7,6,5,7,4,7,7,7,5,5,6,5,6.15,KILL,Per-domain valid-interpretation ground truth is annotation-heavy; silent-failure theme kept via A-0348
+A-0236,ambiguity-multihypothesis,8,6,7,6,7,8,8,8,7,7,6,6,7,6,7.00,KILL,Near-protect; granularity-dial interpolation demo-able but manifold-exit artifacts likely
+A-0237,ambiguity-multihypothesis,7,8,7,7,5,8,5,8,6,7,6,5,8,6,6.77,KEEP,Any-valid-interpretation rescoring separates granularity style from error in model rankings; benchmark-correcting
+A-0238,ambiguity-multihypothesis,7,6,7,6,5,8,4,7,7,6,5,6,6,5,6.08,KILL,Clean aggregation-ambiguous prompt construction is hard; niche
+A-0239,ambiguity-multihypothesis,6,6,6,6,7,8,8,7,4,7,5,5,5,5,6.15,KILL,Label-error detection via model disagreement is established (confident-learning family)
+A-0240,ambiguity-multihypothesis,7,5,6,6,4,8,3,6,7,6,4,6,5,4,5.46,KILL,Capture-protocol field study logistics; inapplicable to archival imagery
+A-0241,robustness-shift,5,6,6,6,6,7,7,8,4,7,5,5,5,5,5.92,KILL,Corruption benchmarking crowded; fingerprint-based selection is a modest increment
+A-0242,robustness-shift,7,7,8,7,7,8,8,8,7,7,6,5,7,7,7.23,KEEP,Interaction-recoverable vs unrecoverable corruption split is operationally decisive and cheap to measure
+A-0243,robustness-shift,8,7,8,6,7,7,8,8,7,7,7,6,7,7,7.23,KEEP,Adversarial and certified robustness over prompt space rather than pixel space is an unclaimed formal object
+A-0244,robustness-shift,5,6,6,6,7,7,8,8,5,7,4,4,5,5,6.08,KILL,Codec robustness practical but incremental; pipeline control fussy
+A-0245,robustness-shift,8,6,7,6,4,7,3,7,8,6,5,7,6,4,5.92,KILL,Near-protect; better-input-as-OOD is delightfully counter-intuitive but matched multi-quality capture is logistically heavy
+A-0246,robustness-shift,6,5,6,6,7,8,8,8,6,7,5,5,5,5,6.31,KILL,Positional sensitivity mapping; object-position confounds; modest payoff
+A-0247,robustness-shift,6,6,6,7,6,6,8,8,5,7,5,5,5,5,6.15,KILL,Corruption-interaction superadditivity plausible-and-expected; factorial cost
+A-0248,robustness-shift,6,6,6,6,7,8,8,8,6,7,5,6,6,5,6.46,KILL,Prompt-path retrofit worth a try but module-flavored; information ceiling under severe corruption
+A-0249,robustness-shift,5,6,6,6,7,7,8,8,4,7,5,4,5,5,6.08,KILL,Robustness loss under fine-tuning documented in the CLIP era; mitigation is data mixing
+A-0250,robustness-shift,6,6,6,5,5,7,5,7,6,6,5,6,5,4,5.62,KILL,Relighting-artifact contamination undermines the counterfactual promise
+A-0251,robustness-shift,7,6,7,6,7,8,7,8,7,6,5,6,6,5,6.54,KILL,Near-keep; binding-vs-feature channel separation interesting but attention-landing proxy weak
+A-0252,robustness-shift,5,6,5,6,8,8,7,8,6,7,4,4,5,5,6.15,KILL,Input-spec audit is useful engineering hygiene rather than a paper
+A-0253,robustness-shift,6,7,7,6,7,7,7,8,4,7,5,5,6,5,6.31,KILL,TTA entropy-collapse failure documented; detector increment modest
+A-0254,robustness-shift,5,6,6,6,7,8,8,8,5,7,5,4,5,5,6.23,KILL,Temporal-median recovery split predictable; engineering
+A-0255,robustness-shift,5,6,6,6,6,6,8,7,3,7,5,5,5,4,5.69,KILL,Randomized-smoothing certificates for segmentation already published
+A-0256,open-vocab-grounding,7,8,8,7,7,7,7,8,6,7,7,5,8,7,7.23,KEEP,Construct-stratified referring failures plus scale-resistance identifies a linguistic core that scale will not fix
+A-0257,open-vocab-grounding,8,7,8,7,7,8,7,8,7,7,7,5,7,7,7.31,KEEP,Reporting-bias inheritance gives a causal language-side account of grounding gaps; cheap partial-correlation design
+A-0258,open-vocab-grounding,7,6,7,6,5,8,4,7,6,6,5,6,6,4,5.92,KILL,Configuration-controlled scene construction labor-intensive; template account partially known
+A-0259,open-vocab-grounding,6,7,6,6,6,7,6,7,5,6,5,5,6,5,6.00,KILL,Multilingual grounding parity studied; translation quality confounds
+A-0260,open-vocab-grounding,6,6,7,6,7,8,7,8,5,7,5,5,5,5,6.31,KILL,Description-length effects adjacent to prompt-robustness literature; naturalness confound along the ladder
+A-0261,open-vocab-grounding,6,5,6,6,7,8,6,7,6,7,5,5,5,5,6.08,KILL,Selection-bias catalog descriptive; cultural-variance reference problem
+A-0262,open-vocab-grounding,7,8,8,7,7,8,6,8,6,7,7,5,7,7,7.15,KEEP,Attribute-object binding failures in segmentation with a retrieval-account fit; sharper than VQA binding rehashes
+A-0263,open-vocab-grounding,7,7,7,6,6,7,5,7,6,6,6,5,6,5,6.23,KILL,Near-keep; affordance-mapping localization good but affordance ground truth subjective
+A-0264,open-vocab-grounding,7,7,7,6,4,7,3,6,7,6,6,6,6,4,5.85,KILL,Event-anchored referring benchmark construction expensive
+A-0265,open-vocab-grounding,5,6,6,6,7,7,7,7,5,7,4,5,5,5,5.92,KILL,Template-transfer audit; prompt-engineering portability is minor science
+A-0266,open-vocab-grounding,8,7,7,6,4,8,3,6,8,6,5,7,7,4,6.08,KILL,Near-protect; nameability-gap concept strong but exhaustive unnamed-region annotation plus crowdsourced queries is heavy
+A-0267,open-vocab-grounding,6,7,7,6,6,6,6,7,5,7,5,5,6,5,6.08,KILL,Negation learnability curves; negation angle kept via A-0034; surface-heuristic leak risk
+A-0268,open-vocab-grounding,7,6,7,6,5,7,4,7,6,7,5,5,6,5,6.00,KILL,Attribute-extent ground truth fuzzy; annotation cost; part-supervision fix is module-ish
+A-0269,open-vocab-grounding,6,6,6,7,7,7,7,7,6,7,5,4,5,5,6.23,KILL,Correlated-stage-error point useful but reads as a systems reliability note
+A-0270,open-vocab-grounding,7,6,8,6,7,8,6,7,6,7,5,6,6,5,6.46,KILL,Near-keep; single-threshold mechanism test nice but concept-difficulty confound looms
+A-0271,data-centric-bias,8,8,8,6,7,7,7,7,7,7,7,5,8,7,7.23,KEEP,SA-1B generator-fingerprint inheritance is a timely data-ecology claim with detectable statistical signatures
+A-0272,data-centric-bias,7,8,8,7,6,5,7,7,6,7,7,5,8,6,6.85,KEEP,Mask-property-resolved model-collapse dynamics; small-scale generations affordable and decision-relevant for self-training
+A-0273,data-centric-bias,6,6,7,5,6,5,7,7,6,6,5,6,6,4,5.85,KILL,Difficulty-metric circularity; retraining pairs costly
+A-0274,data-centric-bias,6,8,6,6,4,7,4,6,5,6,6,6,6,4,5.69,KILL,Geographic-bias segmentation variant of known classification findings; data assembly heavy
+A-0275,data-centric-bias,7,8,7,7,6,5,7,7,7,7,6,5,8,6,6.77,KEEP,Stratum-resolved marginal value of human labels directly steers annotation budgets in the foundation era
+A-0276,data-centric-bias,6,6,6,6,6,5,7,7,6,6,5,5,5,4,5.77,KILL,Synthetic conflict structure may not match natural duplication; training cost
+A-0277,data-centric-bias,6,6,7,6,6,6,7,7,4,7,5,5,5,5,5.92,KILL,Context dependence and decontextualized augmentation studied in co-occurrence-bias literature
+A-0278,data-centric-bias,6,5,6,5,5,7,5,7,7,6,4,6,5,4,5.54,KILL,Era-content-resolution confounds likely fatal
+A-0279,data-centric-bias,7,6,6,5,6,8,6,6,7,6,4,6,5,4,5.85,KILL,Convergent-curation vs world-homogenization unidentifiable
+A-0280,data-centric-bias,6,6,6,6,5,5,6,7,6,6,5,6,6,4,5.69,KILL,Controlled synthetic-fraction training runs; renderer-specific signatures limit audit generality
+A-0281,data-centric-bias,7,7,7,6,6,7,7,7,6,7,5,5,6,5,6.38,KILL,Near-keep; acquisition-labeler correlation sharp but conclusions simulation-fidelity-bound
+A-0282,data-centric-bias,6,7,6,6,5,4,5,7,6,6,5,5,6,4,5.62,KILL,Quality-mixture training grids plus matting-grade data procurement costly
+A-0283,data-centric-bias,7,8,7,5,4,6,4,6,7,6,6,7,7,4,5.92,KILL,Monoculture thesis important but provenance-documented datasets scarce; confounds abound
+A-0284,data-centric-bias,6,6,7,6,6,5,7,7,6,7,5,5,5,5,6.00,KILL,Structured-vs-random noise training study; useful QA conclusion but training-grid cost
+A-0285,data-centric-bias,7,6,7,6,3,2,6,7,7,6,5,6,6,3,5.46,KILL,Order-controlled pretraining is infeasible compute
+A-0286,continual-tta,6,6,7,6,7,8,8,8,6,7,5,5,5,5,6.46,KILL,Single-image TTA stopping rule useful; objective-dependence; budget
+A-0287,continual-tta,6,6,6,6,7,8,8,8,4,7,5,5,5,5,6.23,KILL,Drift/reset addressed by CoTTA-style literature; anchored-offset is a known remedy
+A-0288,continual-tta,5,6,6,6,7,7,8,8,4,7,5,5,5,5,6.08,KILL,Triggered-vs-continuous adaptation studied in TTA and shift-detection literature
+A-0289,continual-tta,6,5,6,6,6,7,5,7,7,6,4,5,5,4,5.69,KILL,Simulated user conventions weak proxy; niche deployment question
+A-0290,continual-tta,6,6,6,6,7,7,8,8,5,7,5,5,5,5,6.23,KILL,Retrieval/episodic TTA variants exist; latency constraint acknowledged
+A-0291,continual-tta,6,6,6,6,6,7,7,7,6,6,5,5,5,5,6.00,KILL,Component attribution defeated by inter-stage interactions; systems-flavored
+A-0292,continual-tta,7,7,7,7,8,8,8,8,7,7,5,5,7,7,7.15,KEEP,Forgetting-free continual improvement as prompt-policy learning over frozen weights; clean safety property by construction
+A-0293,continual-tta,6,6,6,6,6,7,7,7,5,6,4,5,5,4,5.77,KILL,Delayed-feedback online learning known in theory; applied increment modest
+A-0294,continual-tta,6,6,6,6,5,6,6,7,6,6,4,5,5,4,5.62,KILL,Federated-TTA gating simulation; fleet realism gap
+A-0295,continual-tta,7,6,7,6,7,8,8,8,6,7,5,5,6,5,6.62,KILL,Near-keep; input-space adaptation limits clean but the commutation formalism is coarse
+A-0296,continual-tta,7,7,7,6,7,7,8,8,6,7,6,6,7,6,6.85,KEEP,Prompt-consistency as vision-native TTA objective with collapse-safety comparison against entropy minimization
+A-0297,continual-tta,6,6,5,6,5,6,7,7,7,6,4,6,5,4,5.69,KILL,Audit-trail attribution is deployment tooling; increment interactions defeat subset replay
+A-0298,continual-tta,6,6,6,6,6,7,7,7,6,6,4,5,5,4,5.85,KILL,Renewal-theoretic reset scheduling cute but simulation-bound
+A-0299,continual-tta,6,6,6,6,6,7,6,7,6,6,4,5,5,4,5.77,KILL,Supervision-value ranking depends on interface-cost normalization; operations-research flavored
+A-0300,continual-tta,8,8,7,6,5,7,7,7,8,6,6,8,9,5,6.85,PROTECT,High-risk high-reward: certified-deviation PEFT for regulated in-field updates; vacuous-bound risk real but payoff is a new deployment class
+A-0301,architecture-internals,6,6,7,6,7,8,8,8,6,7,5,6,5,5,6.46,KILL,Attention-pathway attribution blurred by redundancy; modest decision value
+A-0302,architecture-internals,8,7,8,7,7,6,8,8,7,7,6,5,7,7,7.15,KEEP,Mask-token capacity law with retrained token-count ladder; clean architectural limit on representable mask complexity
+A-0303,architecture-internals,6,6,7,7,7,7,8,8,6,7,5,5,6,6,6.62,KILL,Near-keep; corner-position pathology plus embedding refit is narrow; compositing confound
+A-0304,architecture-internals,7,6,7,6,7,8,8,8,6,7,6,5,6,6,6.77,KILL,Near-duplicate of kept A-0178 register/artifact-token investigation
+A-0305,architecture-internals,5,5,6,6,7,7,8,8,5,7,4,5,5,5,6.00,KILL,Layer-skip/drop analyses common; downstream activation-statistics confound
+A-0306,architecture-internals,7,5,6,5,6,8,8,8,7,5,5,7,5,4,6.08,KILL,Two decoder iterations too shallow for optimization-dynamics claims
+A-0307,architecture-internals,6,6,7,6,7,7,8,8,5,7,5,5,6,5,6.38,KILL,Per-layer boundary/semantic probing semi-known; tap-selection increment
+A-0308,architecture-internals,5,5,5,6,8,8,8,8,6,7,3,5,4,4,5.92,KILL,Nondeterminism floor documentation; likely negligible under deterministic modes
+A-0309,architecture-internals,6,5,6,6,5,4,8,8,6,6,4,6,5,4,5.62,KILL,Retraining matched pairs is costly for a regularizer curiosity
+A-0310,architecture-internals,5,5,5,6,7,8,8,8,6,7,3,6,4,4,5.85,KILL,Likely-null inference-isolation audit; operational value only
+A-0311,architecture-internals,6,6,6,6,4,3,8,8,6,6,5,5,5,3,5.54,KILL,Decoder shape-grid training exceeds small-lab budget
+A-0312,architecture-internals,4,4,5,6,8,8,8,8,6,7,3,6,3,4,5.69,KILL,Likely-null implementation audit
+A-0313,architecture-internals,8,7,8,7,7,7,7,8,7,7,6,5,7,7,7.15,KEEP,Individuation depth as a mechanistic cross-architecture predictor of touching-instance segmentation ability
+A-0314,architecture-internals,8,7,7,6,7,8,8,8,7,7,7,6,8,7,7.31,KEEP,Activation steering as training-free mask-property control; imports a hot LLM tool with clear vision semantics
+A-0315,architecture-internals,6,6,6,6,5,5,8,8,6,6,5,6,5,4,5.85,KILL,Native-scale memory interesting but control training heavy; data-vs-architecture attribution hard
+A-0316,3d-volumetric-geometry,7,8,7,7,7,8,7,8,6,7,7,4,7,7,7.15,KEEP,3D-consistency defect quantification underpins every SAM-to-3D lifting pipeline; cheap with existing multiview data
+A-0317,3d-volumetric-geometry,8,7,8,6,6,8,4,7,7,6,6,7,7,5,6.54,PROTECT,Cheap-falsifiable and reviewer-splitting: trompe-l'oeil cue conflicts test whether geometric information in features is used or epiphenomenal
+A-0318,3d-volumetric-geometry,5,7,6,6,5,4,7,8,4,7,6,5,6,4,5.77,KILL,2D-vs-3D medical crossover comparisons crowded; training ladders costly
+A-0319,3d-volumetric-geometry,6,6,6,6,5,7,5,5,7,6,5,6,5,4,5.62,KILL,Few mature 3D promptable baselines; prompt-semantics question premature
+A-0320,3d-volumetric-geometry,8,7,8,7,7,7,6,7,7,7,7,5,8,7,7.15,KEEP,Latent amodal knowledge elicited from modal-only training; strong scientific and practical stakes
+A-0321,3d-volumetric-geometry,6,6,6,6,5,6,5,7,7,6,5,6,6,4,5.77,KILL,Intrinsics conditioning niche; scale-ambiguous evaluation cases rare
+A-0322,3d-volumetric-geometry,6,6,6,6,5,5,7,7,5,6,6,6,6,4,5.77,KILL,SfM-consistency fine-tuning is a training-method paper; geometric-noise injection risk
+A-0323,3d-volumetric-geometry,6,6,6,6,5,6,6,7,5,7,5,5,5,4,5.69,KILL,Rare-viewpoint collapse known qualitatively; orbit data logistics
+A-0324,3d-volumetric-geometry,6,6,7,6,4,7,4,7,6,6,5,6,6,4,5.69,KILL,Articulated part ground-truth annotation cost dominates
+A-0325,3d-volumetric-geometry,7,6,7,6,5,8,4,7,7,7,5,6,6,5,6.15,KILL,Near-keep; behind-glass layer collapse strong idea but dual-layer ground truth genuinely ambiguous
+A-0326,3d-volumetric-geometry,6,7,6,6,5,7,5,7,6,6,6,5,6,5,6.00,KILL,Topology-triggered re-prompting is a useful tool paper; expertise-heavy ground truth
+A-0327,3d-volumetric-geometry,7,5,7,6,6,8,5,7,7,6,5,6,5,5,6.08,KILL,Shadow-binding control folded under the kept A-0314 steering agenda
+A-0328,3d-volumetric-geometry,6,6,6,5,5,6,6,7,7,6,5,7,6,4,5.77,KILL,Structure/physics adapter decomposition may not exist in weight space
+A-0329,3d-volumetric-geometry,5,6,5,6,6,7,7,7,5,6,5,5,5,4,5.69,KILL,Prior-injection reranking is application-flavored
+A-0330,3d-volumetric-geometry,8,7,8,7,7,8,6,7,7,7,6,5,7,7,7.08,KEEP,Features-know-reflections-but-outputs-do-not; an unread internal signal with a cheap probe test and deduplication payoff
+A-0331,compositional-counting,6,6,6,6,6,6,8,8,5,7,5,5,5,5,6.08,KILL,Counting-paradigm comparisons crowded; head-capacity confound
+A-0332,compositional-counting,6,6,6,7,7,8,7,8,6,7,5,4,5,6,6.46,KILL,Consistency projection is a constrained-decoding trick; dataset-relative constraint definition
+A-0333,compositional-counting,6,7,7,6,6,7,6,7,6,6,6,5,6,5,6.23,KILL,Relational segmentation decomposition overlaps kept A-0031 and A-0262
+A-0334,compositional-counting,8,7,8,7,7,8,7,8,7,7,6,5,7,7,7.23,KEEP,Scene-level containment-coherence score exposes hierarchy contradictions no per-mask metric can see
+A-0335,compositional-counting,7,6,7,6,7,8,7,8,7,7,5,6,6,5,6.62,KILL,Near-keep; subitizing parallel charming but density/occlusion confounds at higher counts
+A-0336,compositional-counting,8,7,8,7,7,8,7,8,7,7,6,5,7,7,7.23,KEEP,Memory-vs-redetection account of object permanence with probe-decay timing; crisp mechanistic video science
+A-0337,compositional-counting,7,6,7,6,6,8,5,8,7,7,5,5,5,5,6.31,KILL,Near-keep; material-vs-object prompt semantics cute but documentation-style contribution
+A-0338,compositional-counting,7,6,6,6,5,8,4,7,7,6,5,6,6,4,5.92,KILL,Collective-extent ground truth variance high; missing-category claim hard to score
+A-0339,compositional-counting,7,6,7,6,4,8,4,7,7,6,5,6,6,4,5.92,KILL,Property/appearance-crossed scene construction requires staged photography
+A-0340,compositional-counting,7,6,7,6,4,7,4,7,7,6,5,6,6,4,5.85,KILL,Transformation part-identity ground-truth labor dominates
+A-0341,compositional-counting,6,5,6,6,7,8,7,8,6,7,4,5,5,5,6.15,KILL,Cardinality-constrained decoding retrofit; readout engineering
+A-0342,compositional-counting,6,6,7,7,8,8,8,8,6,8,5,4,5,6,6.77,KILL,Near-keep; shared-boundary disagreement real but the joint-decoding fix is engineering
+A-0343,compositional-counting,7,6,7,5,7,8,8,8,7,7,5,6,6,5,6.62,KILL,Near-keep; inpainting-artifact confound weakens the nonlocality claim
+A-0344,compositional-counting,6,6,7,6,6,6,6,7,6,6,5,5,6,5,6.00,KILL,Part-transfer taxonomy; analogous-part correspondence definitions contestable
+A-0345,compositional-counting,6,6,6,6,5,8,4,7,7,6,5,6,5,4,5.77,KILL,Interval-counting consumers must be built to evaluate fairly; niche
+A-0346,failure-prediction-deployment,7,9,7,7,6,7,7,8,6,7,6,5,8,7,7.08,KEEP,Empirically derived failure taxonomy as a reporting standard; foundational infrastructure with coverage/stability tests
+A-0347,failure-prediction-deployment,5,6,6,6,7,8,7,7,4,7,5,5,5,5,6.00,KILL,Input-only failure forecasting adjacent to established difficulty/quality estimation
+A-0348,failure-prediction-deployment,8,8,7,6,6,8,5,6,8,6,6,5,8,6,6.77,KEEP,Plausible-but-wrong error fraction as a distinct safety axis that varies across models at matched accuracy
+A-0349,failure-prediction-deployment,6,6,5,6,6,8,7,7,6,6,4,5,5,5,5.92,KILL,Contract framing is engineering-standardization work
+A-0350,failure-prediction-deployment,6,6,6,6,7,8,7,7,6,6,4,5,5,5,6.08,KILL,Canary-diff qualification is MLOps tooling
+A-0351,failure-prediction-deployment,6,7,7,6,5,8,4,6,6,6,5,5,6,4,5.85,KILL,Complementarity mapping needs large human-correction corpora
+A-0352,failure-prediction-deployment,6,7,6,6,5,8,4,6,6,6,4,5,6,4,5.69,KILL,Pipeline archetypes hard to source; industrial-report shaped
+A-0353,failure-prediction-deployment,5,7,6,6,6,7,6,7,5,6,4,5,5,4,5.69,KILL,Monitoring-signal comparisons exist in shift-detection literature; scenario-realism debt
+A-0354,failure-prediction-deployment,6,6,6,6,4,8,4,5,6,6,3,6,5,3,5.23,KILL,Explanation-reliance user study requires solved attribution; CHI-shaped
+A-0355,failure-prediction-deployment,6,6,6,6,5,6,7,7,7,6,4,6,5,4,5.77,KILL,Behavior pinning is engineering; exactness likely unattainable under architecture change
+A-0356,failure-prediction-deployment,8,7,7,6,7,8,7,7,8,7,6,6,7,7,7.08,KEEP,Compact audit-probe fingerprinting of black-box segmentation models; timely for API-era accountability
+A-0357,failure-prediction-deployment,6,6,5,6,5,8,5,6,6,6,4,5,5,4,5.54,KILL,Cost-elicitation instability; decision-analysis shaped
+A-0358,failure-prediction-deployment,6,6,6,6,5,8,5,6,6,6,3,5,5,4,5.54,KILL,Abstention-interface HCI; weak CV venue fit
+A-0359,failure-prediction-deployment,7,7,6,6,3,8,2,6,7,6,5,7,7,3,5.62,KILL,Production log access is the blocking dependency
+A-0360,failure-prediction-deployment,6,7,5,5,3,8,2,5,7,5,4,7,6,3,5.08,KILL,Reliability-economics case studies need organizational cost data; consulting-shaped
+A-0361,bonus-cross-cutting,8,8,7,6,6,6,7,7,7,7,7,6,8,6,6.92,KEEP,Realism-constrained cross-model disagreement search maps the field's shared capability frontier; generative search is affordable
+A-0362,bonus-cross-cutting,6,7,6,5,6,7,7,7,6,6,5,6,6,5,6.08,KILL,Near-keep; 'exhausted prompt optimization' is ill-defined making the decision boundary unfalsifiable
+A-0363,bonus-cross-cutting,7,6,6,6,5,8,5,6,7,6,5,6,6,4,5.92,KILL,Turing-test framing fun; expert forced-choice studies costly; tells may be annotation-tool artifacts
+A-0364,bonus-cross-cutting,6,7,6,6,6,7,7,7,6,6,5,5,6,5,6.15,KILL,Failure-correlation across heads needs careful difficulty baselining; systemic-risk framing over-broad
+A-0365,bonus-cross-cutting,7,7,6,6,4,8,4,6,8,6,5,6,7,4,6.00,KILL,Near-protect; metrology-grade annotation cost heavy; standard-setting better done by a consortium
+A-0366,bonus-cross-cutting,9,7,7,5,6,6,6,6,8,6,6,8,8,5,6.54,PROTECT,High-risk high-reward behavioral training-data forensics (model paleontology); signals may wash out but the auditing payoff is large
+A-0367,bonus-cross-cutting,8,8,8,7,7,8,7,7,7,7,7,5,8,7,7.38,KEEP,Real-vs-generated segmentation kinship and curation-loop drift; timely synthetic-data-ecology result
+A-0368,bonus-cross-cutting,7,7,7,6,3,2,6,6,6,6,6,6,7,3,5.54,KILL,Matched-scale attention-free pretraining is infeasible compute
+A-0369,bonus-cross-cutting,7,6,6,5,4,7,4,6,7,5,4,7,6,3,5.38,KILL,Decay forecasting through structural breaks unreliable; year-stratified data heavy
+A-0370,bonus-cross-cutting,8,6,7,5,5,7,7,6,8,6,5,7,7,4,6.23,KILL,Near-protect; surrogate coverage inflated by easy cases; interpretability claim slippery
+A-0371,bonus-cross-cutting,6,6,5,6,5,8,5,6,7,6,4,6,5,4,5.62,KILL,API drift monitoring is infrastructure journalism; terms-of-service risk
+A-0372,bonus-cross-cutting,6,6,5,5,4,8,4,5,7,6,3,6,5,3,5.15,KILL,Dashboard selection study is meta-HCI; participant validity issues
