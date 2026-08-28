@@ -1,0 +1,48 @@
+{
+  "task_id": "p1_wave1_judge_C",
+  "role": "judge_C_value_diversity",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "inputs": {
+    "worker_A": {
+      "branch": "origin/cursor/windows14-p1-wave-a-worker-a-e978",
+      "path": "Windows14/_state/tasks/p1/wave1/worker_A.ideas.jsonl",
+      "ideas": 132
+    },
+    "worker_B": {
+      "branch": "origin/cursor/windows14-p1-wave-a-worker-b-c6ba",
+      "path": "Windows14/_state/tasks/p1/wave1/worker_B.ideas.jsonl",
+      "ideas": 126
+    },
+    "worker_C": {
+      "branch": "origin/cursor/windows14-p1-wave-a-worker-c-4be5",
+      "path": "Windows14/_state/tasks/p1/wave1/worker_C.ideas.jsonl",
+      "ideas": 124
+    }
+  },
+  "ideas_reviewed": 382,
+  "high_value_count": 36,
+  "collapse_flags": 12,
+  "flag_breakdown": {
+    "high_value": 36,
+    "convergence_dedup": 8,
+    "mode_collapse_risk": 4,
+    "missing_territory": 10,
+    "qa": 3,
+    "total": 61
+  },
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave1/judge_C.md",
+    "Windows14/_state/tasks/p1/wave1/judge_C.flags.jsonl",
+    "Windows14/_state/tasks/p1/wave1/judge_C.done.json"
+  ],
+  "unresolved_items": [
+    "Novelty of all flagged ideas is unverified: no literature search was performed; 20 ideas contain 'never been measured / nobody has' phrasing (flag JC-QA-02) that the consolidator must downgrade to unverified before merging into ideas_master.jsonl.",
+    "Independent Judge A and Judge B outputs not read by design; cross-judge reconciliation is the consolidator's job.",
+    "Eight cross-worker convergence families (flags JC-CV-01..08) require dedup/merge decisions at consolidation.",
+    "Inconsistent id_seed schemes across shards (flag JC-QA-01) require normalization at merge.",
+    "Ten missing-territory flags (JC-MT-01..10) require a dispatcher decision on wave-2 generator quotas."
+  ],
+  "recommended_next_task_type": "p1_wave1_consolidator",
+  "canonical_files_untouched": ["Windows14/_state/window.lock.json", "Windows14/_state/research_state.json", "Windows14/_state/ideas_master.jsonl"]
+}
