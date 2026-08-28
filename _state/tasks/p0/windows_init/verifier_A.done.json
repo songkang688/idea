@@ -1,0 +1,12 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "wave_C_verifier_A_uniqueness",
+  "status": "complete",
+  "unique_windows14": true,
+  "overwrite_of_old_windows": false,
+  "lock_present": true,
+  "windows_id": "Windows14",
+  "unresolved_items": [],
+  "recommended_next_task_type": "wave_C_verification_consolidator",
+  "output_files": ["_state/tasks/p0/windows_init/verifier_A.md"]
+}
