@@ -1,0 +1,118 @@
+{
+  "graph_id": "P7-package-graph",
+  "generated_by": "P7-package-planner",
+  "generated_at": "2026-08-28T17:28:55Z",
+  "stage": "P7 Final 3 Research Packages",
+  "status": "blocked",
+  "instantiated": false,
+  "blocked_reason": "windows_id/windows_path unresolvable (no window.lock.json anywhere; 4-way research_state.json conflict on unmerged P0 branches, one candidate invalid JSON) and no Stage 6 Final 3 exists on any ref. Graph is a template only; no node may execute.",
+  "recommended_next_task_type": "P7_BLOCKED_NEED_P0",
+  "windows_id": null,
+  "windows_path": null,
+  "final3_count": null,
+  "nodes": [
+    {
+      "node_id": "P7-GATE",
+      "type": "gate",
+      "role": "P7 Package Planner / State Reader",
+      "state": "blocked",
+      "instantiated": true,
+      "outputs": [
+        "/workspace/_state/tasks/P7/gate/state_reader.md",
+        "/workspace/_state/tasks/P7/gate/state_reader.done.json",
+        "/workspace/_state/tasks/P7/gate/task_queue.json",
+        "/workspace/_state/tasks/P7/gate/package_graph.json"
+      ]
+    },
+    {
+      "node_id": "P7-LEAD-1",
+      "type": "lead_researcher",
+      "wave": "A",
+      "binds_slot": "FINAL3-SLOT-1",
+      "idea_id": null,
+      "state": "not_instantiated",
+      "instantiated": false,
+      "instantiate_when": "task_queue.json status='ready' and FINAL3-SLOT-1.idea_id is set from the Stage 6 Final 3 record",
+      "planned_outputs": [
+        "<windows_path>/packages/<idea_id>/package.md",
+        "<windows_path>/packages/<idea_id>/citations.json",
+        "<windows_path>/packages/<idea_id>/diagrams/",
+        "<windows_path>/_state/tasks/P7/lead_<idea_id>.done.json"
+      ]
+    },
+    {
+      "node_id": "P7-LEAD-2",
+      "type": "lead_researcher",
+      "wave": "A",
+      "binds_slot": "FINAL3-SLOT-2",
+      "idea_id": null,
+      "state": "not_instantiated",
+      "instantiated": false,
+      "instantiate_when": "task_queue.json status='ready' and FINAL3-SLOT-2.idea_id is set from the Stage 6 Final 3 record",
+      "planned_outputs": [
+        "<windows_path>/packages/<idea_id>/package.md",
+        "<windows_path>/packages/<idea_id>/citations.json",
+        "<windows_path>/packages/<idea_id>/diagrams/",
+        "<windows_path>/_state/tasks/P7/lead_<idea_id>.done.json"
+      ]
+    },
+    {
+      "node_id": "P7-LEAD-3",
+      "type": "lead_researcher",
+      "wave": "A",
+      "binds_slot": "FINAL3-SLOT-3",
+      "idea_id": null,
+      "state": "not_instantiated",
+      "instantiated": false,
+      "instantiate_when": "task_queue.json status='ready' and FINAL3-SLOT-3.idea_id is set from the Stage 6 Final 3 record",
+      "planned_outputs": [
+        "<windows_path>/packages/<idea_id>/package.md",
+        "<windows_path>/packages/<idea_id>/citations.json",
+        "<windows_path>/packages/<idea_id>/diagrams/",
+        "<windows_path>/_state/tasks/P7/lead_<idea_id>.done.json"
+      ]
+    },
+    {
+      "node_id": "P7-INTEGRATOR",
+      "type": "integrator",
+      "wave": "B",
+      "state": "not_instantiated",
+      "instantiated": false,
+      "instantiate_when": "all three P7-LEAD-* done.json markers exist with status='done'",
+      "planned_outputs": [
+        "<windows_path>/packages/index.md (cross-package summary and consistency check)",
+        "<windows_path>/_state/tasks/P7/integrator.done.json"
+      ]
+    },
+    {
+      "node_id": "P7-GATE-AUDIT",
+      "type": "gate_auditor",
+      "wave": "C",
+      "state": "not_instantiated",
+      "instantiated": false,
+      "instantiate_when": "P7-INTEGRATOR done.json exists with status='done'",
+      "planned_outputs": [
+        "<windows_path>/_state/tasks/P7/gate/gate_auditor.md",
+        "<windows_path>/_state/tasks/P7/gate/gate_auditor.done.json (verifies 3 complete packages, real citations, updates research_state.json handoff recommendation)"
+      ]
+    }
+  ],
+  "edges": [
+    {"from": "P7-GATE", "to": "P7-LEAD-1", "condition": "queue ready + slot 1 bound"},
+    {"from": "P7-GATE", "to": "P7-LEAD-2", "condition": "queue ready + slot 2 bound"},
+    {"from": "P7-GATE", "to": "P7-LEAD-3", "condition": "queue ready + slot 3 bound"},
+    {"from": "P7-LEAD-1", "to": "P7-INTEGRATOR", "condition": "lead 1 done"},
+    {"from": "P7-LEAD-2", "to": "P7-INTEGRATOR", "condition": "lead 2 done"},
+    {"from": "P7-LEAD-3", "to": "P7-INTEGRATOR", "condition": "lead 3 done"},
+    {"from": "P7-INTEGRATOR", "to": "P7-GATE-AUDIT", "condition": "integrator done"}
+  ],
+  "external_prerequisites": [
+    {"id": "P0", "state": "missing", "detail": "exactly one authoritative WindowsN/_state/window.lock.json (window_locked=true) + valid consistent research_state.json, discoverable from origin/main"},
+    {"id": "P1", "state": "missing", "detail": "idea pool 1000+ under <windows_path>"},
+    {"id": "P2", "state": "missing", "detail": "cut to ~200 survivors"},
+    {"id": "P3", "state": "missing", "detail": "prior-work kill search to ~50"},
+    {"id": "P4", "state": "missing", "detail": "reviewer #2 war to ~20"},
+    {"id": "P5", "state": "missing", "detail": "cut to final-meeting shortlist"},
+    {"id": "P6", "state": "missing", "detail": "final meeting persists Final 3 under <windows_path>"}
+  ]
+}

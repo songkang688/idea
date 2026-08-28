@@ -1,0 +1,26 @@
+{
+  "task_id": "P7-package-planner",
+  "role": "P7 Package Planner / State Reader (parent: WindowsX; Stage: P7 Final 3 Research Packages)",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P7/gate/state_reader.md",
+    "/workspace/_state/tasks/P7/gate/state_reader.done.json",
+    "/workspace/_state/tasks/P7/gate/task_queue.json",
+    "/workspace/_state/tasks/P7/gate/package_graph.json"
+  ],
+  "unresolved_items": [
+    "ZERO window.lock.json files exist anywhere: working tree /workspace and full trees of all 49 refs/remotes/origin/* branches (after git fetch --prune) contain no file with that exact name. No authoritative windows_id/windows_path exists for P7 to bind to.",
+    "FOUR conflicting research_state.json files exist on four divergent, unmerged P0-init branches: Windows9/_state/research_state.json (origin/cursor/windows9-p0-init-3045), Windows10/_state/research_state.json (origin/cursor/windows10-p0-init-26ec), Windows11/_state/research_state.json (origin/cursor/windows11-p0-init-c0c1), Windows12/_state/research_state.json (origin/cursor/windows12-p0-init-a095). Rules forbid guessing/selecting a winner.",
+    "The Windows11 candidate research_state.json is INVALID JSON (JSONDecodeError: Expecting ',' delimiter: line 114 column 18; unquoted token '\"wave\": 1b,').",
+    "None of the four candidate states is merged to main (origin/main @ 990f3ebc75d7ab03a8960cf0d1e5621cbb29194a contains only README.md).",
+    "No Stage 6 Final 3 exists anywhere: no artifact matching final3/final_3/stage6/stage_6 on any of the 49 branch trees or in the working tree; all parseable candidate states report current_stage='Stage 1', status='initialized', total_ideas=0, survivors=0. Stages P1-P6 have not run for the current window, so there is nothing to package.",
+    "Briefing discrepancy (factual): the cited existing marker /workspace/_state/tasks/P1/gate/state_reader.done.json does not exist in this working tree; the equivalent evidence is at /workspace/_state/tasks/P1/gate/gate_auditor.done.json (p1_may_start=false) and /workspace/_state/tasks/P3/gate/state_reader.done.json and /workspace/_state/tasks/P4/gate/state_reader.done.json (both p0_lock_ok=false). The briefing's substance (P0 lock not OK) is confirmed.",
+    "task_queue.json emitted BLOCKED with zero dispatchable Wave A Lead Researcher tasks; package_graph.json emitted as an uninstantiated template (instantiated=false on all planned nodes). No packages written, no Final 3 picked, no citations fabricated.",
+    "Prerequisite chain before P7 can run: (1) P0 emits exactly one authoritative WindowsN/_state/window.lock.json (window_locked=true) with a valid, field-consistent sibling research_state.json discoverable from main; (2) P1 idea pool 1000+; (3) P2 cut to ~200; (4) P3 kill search to ~50; (5) P4 reviewer war to ~20; (6) P5 cut to final-meeting shortlist; (7) P6 final meeting persists the Final 3 under <windows_path>. Then P7 re-runs and dispatches Wave A."
+  ],
+  "recommended_next_task_type": "P7_BLOCKED_NEED_P0",
+  "p0_lock_ok": false,
+  "windows_id": null,
+  "windows_path": null,
+  "final3_count": null
+}

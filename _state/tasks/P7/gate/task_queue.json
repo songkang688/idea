@@ -1,0 +1,75 @@
+{
+  "queue_id": "P7-wave-a-lead-researchers",
+  "generated_by": "P7-package-planner",
+  "generated_at": "2026-08-28T17:28:55Z",
+  "stage": "P7 Final 3 Research Packages",
+  "status": "blocked",
+  "blocked_reason": "No authoritative window.lock.json exists anywhere (working tree + all 49 origin branch trees); four conflicting research_state.json candidates sit on divergent unmerged P0-init branches (Windows9/10/11/12; Windows11 copy is invalid JSON); no Stage 6 Final 3 artifact exists on any ref. windows_id/windows_path unresolvable; nothing may be dispatched.",
+  "recommended_next_task_type": "P7_BLOCKED_NEED_P0",
+  "p0_lock_ok": false,
+  "windows_id": null,
+  "windows_path": null,
+  "final3_count": null,
+  "dispatchable_task_count": 0,
+  "tasks": [],
+  "planned_slots": [
+    {
+      "slot_id": "FINAL3-SLOT-1",
+      "task_id_template": "P7-lead-researcher-<idea_id>",
+      "idea_id": null,
+      "idea_title": null,
+      "dispatchable": false,
+      "reason_not_dispatchable": "Final 3 idea #1 does not exist; Stage 6 (P6) has not run."
+    },
+    {
+      "slot_id": "FINAL3-SLOT-2",
+      "task_id_template": "P7-lead-researcher-<idea_id>",
+      "idea_id": null,
+      "idea_title": null,
+      "dispatchable": false,
+      "reason_not_dispatchable": "Final 3 idea #2 does not exist; Stage 6 (P6) has not run."
+    },
+    {
+      "slot_id": "FINAL3-SLOT-3",
+      "task_id_template": "P7-lead-researcher-<idea_id>",
+      "idea_id": null,
+      "idea_title": null,
+      "dispatchable": false,
+      "reason_not_dispatchable": "Final 3 idea #3 does not exist; Stage 6 (P6) has not run."
+    }
+  ],
+  "task_template": {
+    "wave": "A",
+    "role": "P7 Lead Researcher",
+    "parent": "WindowsX",
+    "one_task_per": "Final 3 idea (exactly 3 tasks when instantiated)",
+    "inputs_when_instantiated": [
+      "<windows_path>/_state/window.lock.json (read-only; bind windows_id/windows_path from it, never guess)",
+      "<windows_path>/_state/research_state.json (read-only)",
+      "Stage 6 Final 3 record under <windows_path> (idea_id, title, one-line thesis, survival history through P2-P6)"
+    ],
+    "deliverables_per_idea": [
+      "<windows_path>/packages/<idea_id>/package.md (full research package: problem statement, motivation, related work, method sketch, evaluation plan, risks/kill-criteria)",
+      "<windows_path>/packages/<idea_id>/citations.json (only real, verified citations; fabrication forbidden)",
+      "<windows_path>/packages/<idea_id>/diagrams/ (architecture/flow diagrams as needed)",
+      "<windows_path>/_state/tasks/P7/lead_<idea_id>.done.json"
+    ],
+    "hard_constraints": [
+      "Do not scan/increment Windows numbers; do not create Windows dirs; do not modify window.lock.json",
+      "No fabricated citations; every reference must be verifiable",
+      "Do not alter the Final 3 selection; package exactly the idea assigned",
+      "Do not claim git success without a real push result"
+    ]
+  },
+  "unblock_conditions": [
+    "Exactly one authoritative WindowsN/_state/window.lock.json exists with window_locked=true, valid JSON, discoverable from origin/main",
+    "Sibling <windows_path>/_state/research_state.json is valid JSON and field-consistent with the lock, with current_stage at/after Stage 6",
+    "A Stage 6 Final 3 record exists under <windows_path> naming exactly 3 surviving idea_ids",
+    "P7 Package Planner re-run flips this queue to status='ready', fills planned_slots[].idea_id, and sets dispatchable=true per slot"
+  ],
+  "dispatch_rules": {
+    "parallelism": "all 3 Lead Researcher tasks may run in parallel (no inter-idea dependency)",
+    "join": "P7-integrator runs only after all 3 lead done.json markers exist with status='done'",
+    "on_any_lead_blocked": "P7-integrator must not run; escalate to parent WindowsX"
+  }
+}
