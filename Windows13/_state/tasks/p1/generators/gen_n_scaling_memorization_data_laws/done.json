@@ -1,0 +1,98 @@
+{
+  "task_id": "p1_gen_n_scaling_memorization_data_laws",
+  "role": "generator",
+  "generator_id": "gen_n_scaling_memorization_data_laws",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "ok",
+  "branch": "cursor/p1-gen-n-scaling-memorization-4814",
+  "completed_at_utc": "2026-08-28T21:40:00Z",
+  "queue_source": "origin/cursor/p1-diversity-audit-consolidator-w1-25a0 Windows13/_state/tasks/p1/diversity_audit_w1/decision.json (priority 6 entry)",
+  "canonical_master_read_only": "origin/cursor/p1-wave-b-consolidator-w2-3111 (494 ideas; not modified)",
+  "territory": "Scaling-law science of vision foundation models; memorization/privacy in discriminative/dense vision models; real-pretraining-data composition effects; contamination science as mechanism (not eval-critique); emergence at mechanism level per Auditor C",
+  "idea_count": 100,
+  "id_seed_range": "W13-P1-N-001..W13-P1-N-100",
+  "clusters": {
+    "model-compute-scaling-laws": 11,
+    "dense-transfer-scaling": 11,
+    "real-data-composition-laws": 12,
+    "repetition-and-unique-data": 9,
+    "emergence-mechanisms": 9,
+    "memorization-in-discriminative-models": 12,
+    "membership-inference-vision-fm": 10,
+    "dense-feature-privacy": 9,
+    "contamination-mechanism": 9,
+    "scaling-breakdowns-anomalies": 8
+  },
+  "genre_counts": {
+    "constructive_capability": 25,
+    "characterization_law": 67,
+    "audit_debunk": 8
+  },
+  "guard_self_audit": {
+    "anti_overlap_ids_avoided": [
+      "W13-P1-F-045", "W13-P1-F-051", "W13-P1-F-057", "W13-P1-F-060", "W13-P1-F-086",
+      "W13-P1-F-093", "W13-P1-F-097", "W13-P1-F-098", "W13-P1-F-101",
+      "W13-P1-C-023", "W13-P1-C-024", "W13-P1-C-059", "W13-P1-C-069", "W13-P1-C-102",
+      "W13-P1-B-029", "W13-P1-E-070", "W13-P1-G-071", "W13-P1-K-100", "W13-P1-H-043", "W13-P1-H-098"
+    ],
+    "synthetic_data_generation_or_curation_pipeline_framings": 0,
+    "every_idea_names_data_or_scale_level_manipulated_variable": true,
+    "sam_subject_records": 1,
+    "sam_share": 0.01,
+    "sam_cap": 0.05,
+    "calibration_uncertainty_primary_cluster": false,
+    "calibration_token_occurrences": 0,
+    "scattering_media_examples": 0,
+    "banned_f1_to_f5_framings": 0,
+    "distinct_subclusters": 10,
+    "max_cluster_share": 0.12,
+    "constructive_share": 0.25,
+    "pure_audit_debunk_share": 0.08,
+    "non_segmentation_metric_falsification_share": 0.99,
+    "numeric_kill_threshold_coverage": 1.0,
+    "falsified_if_clause_coverage": 1.0,
+    "structured_evidence_label_coverage": 1.0,
+    "prior_work_basis_coverage": 1.0,
+    "family_fingerprint_coverage": 1.0,
+    "fastest_falsification_single_gpu_public_data_coverage": 0.99,
+    "needs_special_resources_records": 1,
+    "needs_special_resources_ids": ["W13-P1-N-020"],
+    "off_master_shards_skimmed_for_collisions": [
+      "origin/cursor/w13-p1-gen-f-synthetic-data-3a94",
+      "origin/cursor/p1-gen-h-sr-restoration-1829",
+      "origin/cursor/p1-gen-j-diffusion-science-3470",
+      "origin/cursor/p1-gen-k-3d-geometry-video-dc89",
+      "origin/cursor/p1-gen-l-llm-agent-vision-c11e",
+      "origin/cursor/p1-gen-d-object-detection-07a3",
+      "origin/cursor/w13-p1-gen-e-vlm-dense-9412",
+      "origin/cursor/p1-gen-g-domain-shift-0165"
+    ],
+    "not_colonized": ["gen_m within-run training dynamics/objectives", "gen_o hard domains", "gen_p constructive eval-repair", "gen_l LLM/agent loops", "gen_j diffusion science", "gen_k 3D/video", "gen_h SR/restoration", "gen_g domain shift", "gen_q efficiency/TTA"]
+  },
+  "novelty_status": "unverified (generation only; Wave B dedup + novelty verification pending; novelty never claimed as verified)",
+  "no_fake_citations": true,
+  "citation_policy": "prior-work mentions are limited to well-known published work recalled by the model, always labeled as unverified model recall inside evidence_label.prior_work_basis; no fabricated numbers, datasets, or results",
+  "output_files": [
+    "Windows13/_state/tasks/p1/generators/gen_n_scaling_memorization_data_laws/ideas_shard.jsonl",
+    "Windows13/_state/tasks/p1/generators/gen_n_scaling_memorization_data_laws/ideas_shard.md",
+    "Windows13/_state/tasks/p1/generators/gen_n_scaling_memorization_data_laws/done.json"
+  ],
+  "unresolved_items": [
+    "novelty verification against literature is pending (Wave B)",
+    "cross-shard dedup against in-flight gen_i/gen_m/gen_o/gen_p shards (not yet on origin at generation time) must be done by the Wave B consolidator",
+    "constructive share is exactly at the 25% floor; the Wave B consolidator should not cull constructive records on genre grounds"
+  ],
+  "recommended_next_task_type": "p1_wave_a_more_generators",
+  "scope_compliance": {
+    "ideas_master_jsonl_untouched": true,
+    "research_state_json_untouched": true,
+    "window_lock_json_untouched": true,
+    "window_lock_verified": "Windows13/_state/window.lock.json present on canonical master with locked=true, windows_id=Windows13; identity not modified",
+    "wrote_only_own_shard_directory": true,
+    "own_branch": "cursor/p1-gen-n-scaling-memorization-4814",
+    "no_other_windows_scanned": true,
+    "force_push": false
+  }
+}
