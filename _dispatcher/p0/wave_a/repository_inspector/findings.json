@@ -1,0 +1,147 @@
+{
+  "task_id": "p0_wave_a_repository_inspector",
+  "pipeline": "P0 Initialize Windows",
+  "parent_dispatcher_identity": "Windows15",
+  "role": "worker",
+  "scanned_at_utc": "2026-08-28T17:17:00Z to 2026-08-28T17:20:00Z",
+  "repo": "https://github.com/songkang688/idea",
+  "default_branch": "main",
+  "existing_windows_candidates": [
+    {
+      "path": "Windows2/",
+      "number": 2,
+      "source": "origin/cursor/research-idea-evolution-windows2-c2c9",
+      "also_on": [
+        "origin/cursor/windows2-stage1-agent-a-778d",
+        "origin/cursor/windows2-stage1-agent-b-8950",
+        "origin/cursor/windows2-stage1-agent-c-70ca"
+      ],
+      "evidence_class": "KNOWN FACT (git ls-tree of fetched remote-tracking ref)"
+    },
+    {
+      "path": "staging/Windows3_supervisor/",
+      "number": 3,
+      "source": "origin/cursor/idea-evolution-windows3-b534",
+      "also_on": ["origin/cursor/w3s1-cluster-b-7ea7"],
+      "note": "nested naming anomaly; never exists as top-level Windows3/; sibling judge ruled number 3 counts as burned",
+      "evidence_class": "KNOWN FACT (git ls-tree of fetched remote-tracking ref)"
+    },
+    {
+      "path": "Windows4/",
+      "number": 4,
+      "source": "origin/cursor/windows4-research-idea-evolution-2962",
+      "evidence_class": "KNOWN FACT (git ls-tree of fetched remote-tracking ref)"
+    },
+    {
+      "path": "Windows6/",
+      "number": 6,
+      "source": "origin/cursor/windows6-research-idea-evolution-b55d",
+      "note": "branch tip advanced twice during inspection (4020899 -> 7fd609c); actively being worked on",
+      "evidence_class": "KNOWN FACT (git ls-tree of fetched remote-tracking ref)"
+    },
+    {
+      "path": "Windows8/",
+      "number": 8,
+      "source": "origin/cursor/windows8-research-idea-evolution-cd91",
+      "evidence_class": "KNOWN FACT (git ls-tree of fetched remote-tracking ref)"
+    },
+    {
+      "path": "Windows9/",
+      "number": 9,
+      "source": "origin/cursor/windows9-p0-init-3045",
+      "evidence_class": "KNOWN FACT (git ls-tree of fetched remote-tracking ref)"
+    },
+    {
+      "path": "Windows10/",
+      "number": 10,
+      "source": "origin/cursor/windows10-p0-init-26ec",
+      "evidence_class": "KNOWN FACT (git ls-tree of fetched remote-tracking ref)"
+    },
+    {
+      "path": "Windows11/",
+      "number": 11,
+      "source": "origin/cursor/windows11-p0-init-c0c1",
+      "note": "Windows11/_state/research_state.json is malformed JSON (JSONDecodeError line 114 col 18); verified firsthand with python json.load",
+      "evidence_class": "KNOWN FACT (git ls-tree + firsthand JSON parse)"
+    },
+    {
+      "path": "Windows12/",
+      "number": 12,
+      "source": "origin/cursor/windows12-p0-init-a095",
+      "evidence_class": "KNOWN FACT (git ls-tree of fetched remote-tracking ref)"
+    },
+    {
+      "path": "(no directory) Windows13 CLAIM by sibling judge verdict",
+      "number": 13,
+      "source": "other_branch: origin/cursor/p0-init-judge-a-numbering-d175 (_p0_dispatch/tasks/p0_init/judge_A.json, completed_at_utc 2026-08-28T17:18:28Z)",
+      "note": "sibling P0 pipeline's Wave B judge LOCKED windows_id=Windows13; directory not yet created on any ref as of 17:19Z",
+      "evidence_class": "KNOWN FACT that the verdict file exists with this content; HYPOTHESIS that its implementation agent will create Windows13/"
+    },
+    {
+      "path": "(no directory) Windows14 CLAIM as primary target of second sibling pipeline",
+      "number": 14,
+      "source": "other_branch: origin/cursor/p0-windows-init-worker-{a-fd36,b-f78e,c-f747} (_state/tasks/p0/windows_init/, pushed ~2026-08-28T17:16Z)",
+      "note": "Windows14-identity dispatcher pipeline; worker B suggested 14 primary / 13 fallback; no judge verdict for it observed yet; directory not created on any ref as of 17:19Z",
+      "evidence_class": "KNOWN FACT that the shard files exist with this content; HYPOTHESIS that its judge will lock Windows14"
+    }
+  ],
+  "max_existing_windows_number": 12,
+  "max_existing_windows_number_semantics": "maximum N for which a WindowsN directory (any spelling/nesting) exists in any tree on any fetched ref; claims for 13 and 14 exist only as dispatch-shard text, not directories",
+  "recommended_next_windows_id": "Windows15",
+  "recommended_next_windows_number": 15,
+  "recommendation_rationale": "Strict max+1 over directories would be 13, but Windows13 is locked by a sibling pipeline's judge verdict (17:18:28Z) and Windows14 is the declared primary target of a second in-flight sibling pipeline. Parent identity Windows15 is free on every ref, tree, blob, branch name, and PR ref. Recommendation only; Wave B judge must re-fetch origin immediately before locking and must bump to smallest unused N>=15 on collision.",
+  "branch": "cursor/p0-wave-a-repo-inspector-0a03",
+  "base_branch_at_scan": "main @ 990f3ebc75d7ab03a8960cf0d1e5621cbb29194a (Initial commit; the ONLY commit on main)",
+  "remote": "origin = https://github.com/songkang688/idea (fetch+push; URL embeds x-access-token credential, value not recorded)",
+  "git_status_short": "clean before shard files were added; only this shard's three files under _dispatcher/p0/wave_a/repository_inspector/ are new",
+  "dirty": false,
+  "uncommitted_files": [],
+  "windows_numbers_with_directories": [2, 3, 4, 6, 8, 9, 10, 11, 12],
+  "absent_windows_numbers": [1, 5, 7, 13, 14],
+  "gap_reuse": "sibling judge ruled gap_reuse_forbidden=true (numbers 1/5/7 never existed, 3 burned by nested form); all prior runs extended monotonically upward",
+  "checkout_completeness": {
+    "is_shallow": false,
+    "is_sparse": false,
+    "workdir_matches_origin_main": true,
+    "origin_main_tree": ["README.md"],
+    "note": "checkout is complete but main itself is minimal; ALL WindowsN content lives on unmerged origin/cursor/* branches and PR refs pull/1..9",
+    "evidence_class": "KNOWN FACT (git rev-parse --is-shallow-repository=false; core.sparseCheckout unset; git diff origin/main main empty; git ls-tree -r origin/main)"
+  },
+  "tags": [],
+  "stash": [],
+  "pr_refs_observed": "refs/pull/1..9 head+merge refs on remote (ls-remote); pull/9 corresponds to Windows12 branch",
+  "fetches_performed": [
+    "git fetch origin main (success)",
+    "git fetch origin +refs/heads/*:refs/remotes/origin/* (success; 20+ new/updated refs vs stale snapshot)",
+    "git fetch origin --tags (success; zero tags)",
+    "git fetch origin --prune final freshness pass at ~17:19Z (success; picked up new judge branch p0-init-judge-a-numbering-d175 and windows6 advance)"
+  ],
+  "fetch_failures": [],
+  "risks": [
+    {
+      "risk": "Numbering race: three P0 pipelines (identities Windows13/14/15-era) ran within minutes of each other today; 13 is locked by a sibling judge, 14 is a sibling's primary target. Any number this pipeline locks must be re-verified against a fresh fetch at lock time.",
+      "evidence_class": "KNOWN FACT (shard/verdict files fetched and read firsthand)"
+    },
+    {
+      "risk": "Remote under active concurrent modification at minute granularity: during this inspection alone, branch cursor/p0-init-judge-a-numbering-d175 appeared and cursor/windows6-research-idea-evolution-b55d advanced 4020899->7fd609c. Every scan result is perishable.",
+      "evidence_class": "KNOWN FACT (observed between successive fetches)"
+    },
+    {
+      "risk": "Nothing is merged to origin/main (single Initial commit). Duplicate-number collisions between branches will only surface at merge/consolidation time.",
+      "evidence_class": "KNOWN FACT (git log origin/main has exactly one commit)"
+    },
+    {
+      "risk": "Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is invalid JSON; downstream parsers must not assume prior research_state.json files parse.",
+      "evidence_class": "KNOWN FACT (verified firsthand: json.load raises JSONDecodeError line 114 col 18)"
+    },
+    {
+      "risk": "No dirty-tree or divergence risk in this checkout: clean tree, no stash, local main == origin/main, full (non-shallow, non-sparse) clone.",
+      "evidence_class": "KNOWN FACT (git status --porcelain empty; git diff origin/main main empty)"
+    }
+  ],
+  "notes": [
+    "Dispatcher identity 'Windows15' appears nowhere in any ref, tree, blob, branch name, or commit message; it is parent-process identity only. (KNOWN FACT: git grep + branch-name scan found no windows15 token)",
+    "Two earlier dispatch-shard directory conventions exist on sibling branches: _p0_dispatch/tasks/p0_init/ (13-era) and _state/tasks/p0/windows_init/ (14-era); this pipeline uses _dispatcher/p0/. No path collisions between the three.",
+    "Case/spacing variants ('Windows 1', 'Window1', 'windows1', 'WINDOWS1', underscore/hyphen forms) were included in the scan regex; the only anomalous form found is staging/Windows3_supervisor/. (KNOWN FACT)"
+  ]
+}

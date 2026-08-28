@@ -1,0 +1,19 @@
+{
+  "task_id": "p0_wave_a_repository_inspector",
+  "role": "worker",
+  "status": "complete",
+  "output_files": [
+    "_dispatcher/p0/wave_a/repository_inspector/report.md",
+    "_dispatcher/p0/wave_a/repository_inspector/findings.json",
+    "_dispatcher/p0/wave_a/repository_inspector/done.json"
+  ],
+  "unresolved_items": [
+    "Numbering race is live: sibling pipeline 1 (_p0_dispatch, 13-era) has a judge verdict locking Windows13 (17:18:28Z, branch cursor/p0-init-judge-a-numbering-d175) but no Windows13/ directory exists yet on any ref; sibling pipeline 2 (_state/tasks/p0/windows_init, 14-era) targets Windows14 primary with no judge verdict observed yet. Wave B judge for THIS pipeline (Windows15) must re-fetch origin --prune immediately before locking and bump to smallest unused N>=15 on collision.",
+    "Whether staging/Windows3_supervisor counts as canonical Windows3 was ruled YES (number burned) by the sibling judge; this pipeline's judge should ratify or overrule.",
+    "Windows1, Windows5, Windows7 never existed on any ref; sibling judge ruled gap reuse forbidden; this pipeline's judge should ratify.",
+    "Windows11/_state/research_state.json is malformed JSON (verified firsthand); repo hygiene item for any consolidator that parses prior windows' state."
+  ],
+  "recommended_next_task_type": "wave_b_judge",
+  "max_existing_windows_number": 12,
+  "recommended_next_windows_id": "Windows15"
+}
