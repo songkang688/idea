@@ -1,0 +1,56 @@
+{
+ "task_id": "p1_wave_b_w2",
+ "role": "judge_C_adversary",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "wave_b_w2",
+ "status": "done",
+ "branch": "cursor/p1-wave-b-w2-judge-c-adversary-46ac",
+ "generated_at_utc": "2026-08-28T20:35:00Z",
+ "outputs": [
+  "Windows13/_state/tasks/p1/wave_b_w2/judge_C.md",
+  "Windows13/_state/tasks/p1/wave_b_w2/judge_C.json",
+  "Windows13/_state/tasks/p1/wave_b_w2/accepted_shard_C.jsonl",
+  "Windows13/_state/tasks/p1/wave_b_w2/done_judge_C.json"
+ ],
+ "counts": {
+  "input_total": 302,
+  "input_by_shard": {
+   "gen_d": 100,
+   "gen_e": 100,
+   "gen_f": 102
+  },
+  "keep": 223,
+  "keep_by_shard": {
+   "gen_d": 68,
+   "gen_e": 78,
+   "gen_f": 77
+  },
+  "merge": 76,
+  "merge_by_shard": {
+   "gen_d": 31,
+   "gen_e": 21,
+   "gen_f": 24
+  },
+  "merge_within_wave2": 59,
+  "merge_into_wave1_master": 17,
+  "kill": 3,
+  "kill_by_shard": {
+   "gen_d": 1,
+   "gen_e": 1,
+   "gen_f": 1
+  },
+  "template_families": 28,
+  "anomalies_protected": 33,
+  "cross_shard_attractors": 13,
+  "deliberate_tensions_kept": 8,
+  "check_sum": "223 + 76 + 3 = 302"
+ },
+ "canonical_state_untouched": [
+  "ideas_master.jsonl",
+  "research_state.json",
+  "window.lock.json"
+ ],
+ "recommended_next_task_type": "p1_wave_b_w2_consolidator"
+}
