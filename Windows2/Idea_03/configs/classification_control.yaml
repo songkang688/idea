@@ -1,0 +1,26 @@
+# E0 — classification bug-detector control: MUST reproduce VPT Fig. 11 (Prompt-Fixed ~= Linear).
+# Failure => HALT: implementation bug assumed; all results embargoed (experiments.md section 19).
+# Spec draft — not runnable against src/prototype.
+name: classification_control
+seeds: [0]                       # 1 seed smoke first; extend to [0,1,2] once passing
+
+backbones:
+  - {id: register_free,     arch: dinov2_vitb14,     ckpt: TODO@execution}
+  - {id: register_equipped, arch: dinov2_vitb14_reg, ckpt: TODO@execution}
+
+arms: [no_token, frozen_random, learned]   # Linear / Prompt-Fixed / Prompt-Learned, per Fig. 11
+prompt: {num_prompts: 16, insertion: shallow, init: vpt_default}
+
+datasets:                        # VTAB-style triplet (natural / specialized / structured)
+  - cifar100
+  - dtd
+  - eurosat
+
+head: {kind: linear_cls, trainable: [head, prompts_when_learned]}
+
+expected_reproduction:           # pre-registered pass condition
+  criterion: "frozen_random ~= no_token (within seed noise) AND learned > no_token"
+  reference: "VPT Fig. 11, arXiv:2203.12119 — Prompt-Fixed yields comparable results w.r.t. Linear"
+  on_failure: HALT_EMBARGO_ALL_RESULTS
+
+budget: {gpu: 24gb_single, est_total: ~2_gpu_days}

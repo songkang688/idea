@@ -1,0 +1,31 @@
+# Adds H's attention-bias control (sink_only: trainable keys, values zeroed)
+# as a 5th arm. This is the control H's Stage-4 attack calls non-negotiable
+# for separating register geometry from the softmax-temperature confound.
+name: with_sink
+seeds: [0, 1, 2]
+backbones: [register_free, register_equipped]
+arms: [no_token, frozen_random, learned, learned_frozen, sink_only]
+num_prompts: 4
+num_registers: 4
+head_kind: linear
+
+data:
+  image_size: 32
+  patch_size: 4
+  num_classes: 4
+
+model:
+  dim: 48
+  depth: 3
+  heads: 4
+  mlp_ratio: 2.0
+
+train:
+  pretrain_steps: 300
+  pretrain_lr: 3.0e-3
+  arm_steps: 400
+  arm_lr: 3.0e-3
+  batch_size: 32
+  train_scenes: 512
+  val_scenes: 192
+  paired_scenes: 64

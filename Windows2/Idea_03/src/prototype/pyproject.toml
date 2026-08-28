@@ -1,0 +1,13 @@
+[project]
+name = "vpt-registers-proto"
+version = "0.1.0"
+description = "B-0114 Stage-7 prototype: 4-arm dense-task VPT decomposition on synthetic scenes (CPU-only)"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.1", "numpy>=1.24", "PyYAML>=6.0"]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
