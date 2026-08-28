@@ -1,0 +1,89 @@
+{
+  "task_id": "p0_init",
+  "role": "worker_C_workspace_planner",
+  "agent": "Agent C",
+  "plan_written_at": "2026-08-28T17:10:50Z",
+  "repository": "https://github.com/songkang688/idea",
+  "base_branch": "main",
+  "base_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+  "worker_branch": "cursor/p0-init-worker-c-ce9b",
+  "fetch_evidence": {
+    "command": "git fetch origin --prune",
+    "exit_code": 0,
+    "fetched_at_utc": "2026-08-28T17:09Z",
+    "new_refs_observed": [
+      "origin/cursor/windows9-p0-init-3045",
+      "origin/cursor/windows10-p0-init-26ec",
+      "origin/cursor/windows11-p0-init-c0c1",
+      "origin/cursor/windows12-p0-init-a095",
+      "origin/cursor/stage1-batch-c-ideas-06c2",
+      "origin/cursor/stage1-cluster-a-ideas-e2b2",
+      "origin/cursor/windows2-stage1-agent-b-8950"
+    ]
+  },
+  "numbering_scan": {
+    "scan_scope": ["worktree_top_level", "origin_heads_all_branches"],
+    "windows_dirs_found_on_origin_heads": [
+      {"id": "Windows2", "evidence": "origin/cursor/research-idea-evolution-windows2-c2c9 and windows2-stage1-agent-{a,b,c} branches"},
+      {"id": "Windows4", "evidence": "origin/cursor/windows4-research-idea-evolution-2962"},
+      {"id": "Windows6", "evidence": "origin/cursor/windows6-research-idea-evolution-b55d"},
+      {"id": "Windows8", "evidence": "origin/cursor/windows8-research-idea-evolution-cd91"},
+      {"id": "Windows9", "evidence": "origin/cursor/windows9-p0-init-3045"},
+      {"id": "Windows10", "evidence": "origin/cursor/windows10-p0-init-26ec"},
+      {"id": "Windows11", "evidence": "origin/cursor/windows11-p0-init-c0c1"},
+      {"id": "Windows12", "evidence": "origin/cursor/windows12-p0-init-a095"}
+    ],
+    "windows_ids_absent": ["Windows1", "Windows3", "Windows5", "Windows7", "Windows13+"],
+    "windows3_note": "Branch cursor/idea-evolution-windows3-b534 exists but used staging/, not a top-level Windows3/ dir",
+    "max_n_observed": 12,
+    "main_branch_windows_dirs": []
+  },
+  "suggested_windows_id": "Windows13",
+  "suggested_windows_id_basis": "max_n_observed=12 on all origin heads after fresh fetch; Windows13 absent everywhere; template Windows{max_n+1}",
+  "suggested_windows_id_caveat": "SUGGESTION ONLY, not locked. Windows9-12 were created today by concurrent runs; locker must re-fetch and re-scan immediately before locking and bump to smallest unused N>13 on collision. Do not gap-fill 1/3/5/7.",
+  "directory_tree": {
+    "Windows{N}": {
+      "README.md": "file",
+      "_state": {
+        "research_state.json": "file",
+        "ideas_master.jsonl": "file (empty, append-only JSONL)",
+        "research_ledger.md": "file",
+        "agent_log.md": "file",
+        "window.lock.json": "file (created unlocked; supervisor locks after final re-scan)"
+      },
+      "selection_history": {".gitkeep": "file"},
+      "final_ideas": {".gitkeep": "file"},
+      "artifacts": {".gitkeep": "file"}
+    }
+  },
+  "files_to_create": [
+    {"path": "Windows{N}/README.md", "init": "window identity header, KNOWN-FACT numbering scan, goal (3 research packages via falsifiable filtering), two-tier research priorities, pipeline line, status table (stage=Stage 1, total_ideas=0, survivors=0, final_target=3, status=initialized), next-step P1 pointer"},
+    {"path": "Windows{N}/_state/research_state.json", "init": "canonical machine state: windows_id/path, repository, branch, base_branch, created_at (UTC), supervisor, current_stage='Stage 1', target_pipeline='1000+ -> 200 -> 50 -> 20 -> 5 -> 3', stage_targets, total_ideas=0, survivors=0, final_target=3, status='initialized', numbering block (execution-time scan evidence), git_safety block (pre_init_head, force_push=false, push_status='pending' until remote SHA verified), ideas_index=[], current_ranking=[], evidence_policy labels + forbid_fiction list"},
+    {"path": "Windows{N}/_state/ideas_master.jsonl", "init": "empty 0-byte file (verified convention of Windows9/11/12); one JSON object per idea appended later: id W{N}-I####, title, stage_entered, stage_current, status alive|killed|merged, source_agent, one_liner, falsifiable_hypothesis, kill_reason, artifact_paths, created_at"},
+    {"path": "Windows{N}/_state/research_ledger.md", "init": "round identity block, research scope + priorities, pipeline stage-gate table (stage, target, entry/exit criteria, evidence file), evidence-label policy, empty Stage 1 ledger section"},
+    {"path": "Windows{N}/_state/agent_log.md", "init": "title + first entry 'P0 Initialize Windows': git pre-check FACTs, execution-time numbering scan, sub-agent dispatch table with real results (failures verbatim), numbering decision; append-only thereafter"},
+    {"path": "Windows{N}/_state/window.lock.json", "init": "unlocked lock record: windows_id=null, locked=false, locked_by/locked_at=null, lock_scope='window_numbering', numbering_scan skeleton with suggested_by_workers={worker_C: 'Windows13'}, rule requiring supervisor re-fetch+re-scan immediately before locking; NEW FILE this round, no prior in-repo precedent"},
+    {"path": "Windows{N}/selection_history/.gitkeep", "init": "empty; stage evidence added lazily per stage (stage1_pool/*.jsonl, stage2_top200.md+ids, stage3_top50.md, stage4_top20.md, stage5_top5.md, stage6_final3.md)"},
+    {"path": "Windows{N}/final_ideas/.gitkeep", "init": "empty; later holds 3 Research Packages (proposal.md, literature.md, experiments.md, roadmap.md, reviewer_attacks.md, src/, configs/, diagrams/, references/ per Windows8 precedent)"},
+    {"path": "Windows{N}/artifacts/.gitkeep", "init": "empty; shared code/configs/toy outputs referenced by ideas; heavy/binary outputs summarized as text reports"}
+  ],
+  "pipeline": {
+    "spec": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+    "stages": [
+      {"stage": 1, "name": "generate", "target": "1000+", "evidence": "selection_history/stage1_pool/*.jsonl"},
+      {"stage": 2, "name": "screen", "target": 200, "evidence": "selection_history/stage2_top200.md + stage2_top200_ids.txt"},
+      {"stage": 3, "name": "deepen", "target": 50, "evidence": "selection_history/stage3_top50.md"},
+      {"stage": 4, "name": "attack", "target": 20, "evidence": "selection_history/stage4_top20.md"},
+      {"stage": 5, "name": "finalists", "target": 5, "evidence": "selection_history/stage5_top5.md"},
+      {"stage": 6, "name": "packages", "target": 3, "evidence": "selection_history/stage6_final3.md + final_ideas/"}
+    ]
+  },
+  "suggested_commit_message": "Research Idea Evolution - Windows13 - Initialization",
+  "suggested_commit_message_note": "Replace 13 with the locked id if it differs; dispatcher template takes precedence over prior 'Initialize WindowsN research workspace (P0)' style",
+  "git_safety_rules": [
+    "never force-push",
+    "never modify root README.md, other Windows* dirs, or other workers' _p0_dispatch shards",
+    "base init off freshly fetched origin/main",
+    "record real push results; set push_status=verified_success only after remote SHA check"
+  ]
+}
