@@ -1,0 +1,66 @@
+{
+  "task_id": "p1_wave_b_w2",
+  "role": "judge_A_dedup",
+  "status": "complete",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "wave": "P1 Wave B (wave 2: generators D+E+F only)",
+  "branch": "cursor/p1-wave-b-w2-judge-a-dedup-13e5",
+  "inputs": [
+    {
+      "generator": "gen_d_object_detection",
+      "branch": "origin/cursor/p1-gen-d-object-detection-07a3",
+      "idea_count": 100
+    },
+    {
+      "generator": "gen_e_vlm_dense_prediction",
+      "branch": "origin/cursor/w13-p1-gen-e-vlm-dense-9412",
+      "idea_count": 100
+    },
+    {
+      "generator": "gen_f_synthetic_data",
+      "branch": "origin/cursor/w13-p1-gen-f-synthetic-data-3a94",
+      "idea_count": 102
+    }
+  ],
+  "wave1_reference": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w1-7a58",
+    "path": "Windows13/_state/ideas_master.jsonl",
+    "accepted_count": 248,
+    "usage": "read-only collision flagging; master NOT rewritten"
+  },
+  "counts": {
+    "input_total": 302,
+    "keep": 248,
+    "keep_per_shard": { "gen_d": 80, "gen_e": 80, "gen_f": 88 },
+    "kill_or_merge": 54,
+    "kill_per_shard": { "gen_d": 20, "gen_e": 20, "gen_f": 14 },
+    "duplicate_groups": 36,
+    "wave1_collision_kills": 12,
+    "wave1_flagged_keeps": 40,
+    "flagged_permutation_ids": 99,
+    "anomalies": 18,
+    "clusters": 32
+  },
+  "output_files": [
+    "Windows13/_state/tasks/p1/wave_b_w2/judge_A.md",
+    "Windows13/_state/tasks/p1/wave_b_w2/judge_A.json",
+    "Windows13/_state/tasks/p1/wave_b_w2/accepted_shard_A.jsonl",
+    "Windows13/_state/tasks/p1/wave_b_w2/done_judge_A.json"
+  ],
+  "canonical_state_untouched": [
+    "Windows13/_state/ideas_master.jsonl",
+    "Windows13/_state/research_state.json",
+    "Windows13/_state/window.lock.json"
+  ],
+  "unresolved_items": [
+    "Novelty of all 248 kept candidates remains unverified; the 40 kept ids carrying wave-1 collision or prior-art flags (judge_A.json -> wave1_collision_flags_on_keeps) and every 'prior-art check required' note are first in line for the novelty gate. Highest-risk keeps: E-035, D-054, E-084, F-040, E-043, D-096, F-086, E-072, E-074.",
+    "kill_or_merge dispositions (54 ids with explicit merge targets, including 12 targets in the wave-1 master) are redundancy consolidations, not quality verdicts; the Consolidator may resurrect any merged id. Likeliest resurrection candidates as attached experiments: E-073, E-064, F-016, D-100.",
+    "Six deliberately kept tensions need adjudication by experiment, not dedup: D-063 vs E-074, F-005 vs D-039, F-052 vs F-096, D-071 vs D-044, D-077 vs D-020/D-055, F-074 vs F-064/F-098.",
+    "F-053 was killed as a known-result restatement on the judge's UNVERIFIED assessment; resurrect if the novelty judge disagrees.",
+    "Feasibility/compute triage and impact ranking were not performed here; this wave covers generators D+E+F only and dispositions may shift when additional wave-2 judges report and a wave-2 Consolidator merges against the wave-1 master."
+  ],
+  "recommended_next_task_type": "p1_wave_b_w2_more_judges",
+  "completed_at_utc": "2026-08-28T19:50:00Z"
+}

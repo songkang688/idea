@@ -1,0 +1,1736 @@
+{
+  "task_id": "p1_wave_b_w2",
+  "role": "judge_A_dedup",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "wave": "P1 Wave B (wave 2: generators D+E+F only)",
+  "branch": "cursor/p1-wave-b-w2-judge-a-dedup-13e5",
+  "generated_at_utc": "2026-08-28T19:45:00Z",
+  "inputs": [
+    {
+      "generator": "gen_d_object_detection",
+      "branch": "origin/cursor/p1-gen-d-object-detection-07a3",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_d_object_detection/ideas_shard.jsonl",
+      "idea_count": 100
+    },
+    {
+      "generator": "gen_e_vlm_dense_prediction",
+      "branch": "origin/cursor/w13-p1-gen-e-vlm-dense-9412",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_e_vlm_dense_prediction/ideas_shard.jsonl",
+      "idea_count": 100
+    },
+    {
+      "generator": "gen_f_synthetic_data",
+      "branch": "origin/cursor/w13-p1-gen-f-synthetic-data-3a94",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_f_synthetic_data/ideas_shard.jsonl",
+      "idea_count": 102
+    }
+  ],
+  "wave1_reference": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w1-7a58",
+    "path": "Windows13/_state/ideas_master.jsonl",
+    "accepted_count": 248,
+    "usage": "read-only collision flagging; master NOT rewritten by this judge"
+  },
+  "method": "Hypothesis-level cross-shard dedup over D+E+F: ideas compared on core_hypothesis content (mechanism + falsifiable claim), not title strings. Two ideas are duplicates when they assert the same mechanism with the same falsification design, differing only in substrate (task, modality, metric, or the X-slot of a template). Template families (the wave-2 analogs of wave-1's SAM+X: content-over-realism factorials, wave-1 critique ports, consistency self-audits, hidden-budget confounds, missing-operation wrappers, proximity-predicts-performance, teacher-bias inheritance, convention-scoring, rank-transfer, scaling-law fits, oracle decompositions, blind baselines) were flagged; per group one or two primaries kept, the rest kill_or_merge with explicit targets. Kept ideas were additionally checked against the 248 wave-1 accepted ideas: near-verbatim substrate ports of accepted ideas were killed with the wave-1 id as target; family-adjacent ideas were kept with wave1 flags. High-value anomalies protected. NO novelty verification performed; every prior-art remark is an unverified judge hypothesis. No citations invented. Canonical state (ideas_master.jsonl, research_state.json, window.lock.json) untouched.",
+  "counts": {
+    "input_total": 302,
+    "input_per_shard": {
+      "gen_d": 100,
+      "gen_e": 100,
+      "gen_f": 102
+    },
+    "keep": 248,
+    "keep_per_shard": {
+      "gen_d": 80,
+      "gen_e": 80,
+      "gen_f": 88
+    },
+    "kill_or_merge": 54,
+    "kill_per_shard": {
+      "gen_d": 20,
+      "gen_e": 20,
+      "gen_f": 14
+    },
+    "duplicate_groups": 36,
+    "kills_inside_duplicate_groups": 44,
+    "standalone_kills_wave1_ports_or_known_results": 10,
+    "wave1_collision_kills": 12,
+    "wave1_flagged_keeps": 40,
+    "flagged_permutation_ids": 99,
+    "anomalies": 18,
+    "clusters": 32
+  },
+  "clusters": {
+    "openvocab_vocabulary_dependence": {
+      "description": "Open-vocabulary performance as a function of the query vocabulary and its text/caption statistics.",
+      "members": [
+        "W13-P1-D-001",
+        "W13-P1-D-002",
+        "W13-P1-D-011",
+        "W13-P1-D-034",
+        "W13-P1-E-005",
+        "W13-P1-E-025",
+        "W13-P1-E-030",
+        "W13-P1-E-031",
+        "W13-P1-E-032",
+        "W13-P1-E-033",
+        "W13-P1-E-034"
+      ]
+    },
+    "absence_abstention_scope": {
+      "description": "Saying 'not here / not my scope': absence certification, abstention, no-target refusal, hallucinated outputs for absent referents.",
+      "members": [
+        "W13-P1-D-003",
+        "W13-P1-D-016",
+        "W13-P1-D-070",
+        "W13-P1-E-018",
+        "W13-P1-E-026",
+        "W13-P1-E-042"
+      ]
+    },
+    "recognition_vs_localization": {
+      "description": "Decompositions of detection/segmentation error into finding vs naming; skylines and pretraining-allocation consequences.",
+      "members": [
+        "W13-P1-D-004",
+        "W13-P1-D-015",
+        "W13-P1-D-044",
+        "W13-P1-D-071",
+        "W13-P1-D-072",
+        "W13-P1-D-073",
+        "W13-P1-D-077",
+        "W13-P1-E-002",
+        "W13-P1-E-007",
+        "W13-P1-E-064"
+      ]
+    },
+    "text_embedding_geometry": {
+      "description": "Text-tower geometry as the driver of dense/detection errors: confusions, hubs, token length, polysemy, relational and negation insensitivity, binding bounds.",
+      "members": [
+        "W13-P1-D-005",
+        "W13-P1-E-047",
+        "W13-P1-E-048",
+        "W13-P1-E-049",
+        "W13-P1-E-050",
+        "W13-P1-E-051",
+        "W13-P1-E-052",
+        "W13-P1-E-053"
+      ]
+    },
+    "name_phrasing_multilinguality": {
+      "description": "Sensitivity to name strings: synonyms, phrasings, multilingual queries; consistency as audit and fix.",
+      "members": [
+        "W13-P1-D-006",
+        "W13-P1-D-009",
+        "W13-P1-D-012",
+        "W13-P1-D-042",
+        "W13-P1-E-029",
+        "W13-P1-E-054",
+        "W13-P1-E-063"
+      ]
+    },
+    "compositional_binding_attributes": {
+      "description": "Instance-level attribute-object binding and attribute/state grounding.",
+      "members": [
+        "W13-P1-D-007",
+        "W13-P1-D-057",
+        "W13-P1-E-024",
+        "W13-P1-E-088",
+        "W13-P1-E-092"
+      ]
+    },
+    "granularity_parts_extent": {
+      "description": "Part-whole structure, hierarchy credit, granularity control, amodal/modal extent, topology-vs-grammar.",
+      "members": [
+        "W13-P1-D-008",
+        "W13-P1-D-014",
+        "W13-P1-D-038",
+        "W13-P1-E-028",
+        "W13-P1-E-043",
+        "W13-P1-E-079",
+        "W13-P1-E-080",
+        "W13-P1-E-081",
+        "W13-P1-E-082",
+        "W13-P1-E-083",
+        "W13-P1-E-084"
+      ]
+    },
+    "context_reliance_cooccurrence": {
+      "description": "Context vs in-region evidence: composites, inpainting counterfactuals, co-occurrence hallucination, habitat effects, context-dose curves.",
+      "members": [
+        "W13-P1-D-010",
+        "W13-P1-D-023",
+        "W13-P1-D-028",
+        "W13-P1-D-037",
+        "W13-P1-D-058",
+        "W13-P1-D-062",
+        "W13-P1-D-076",
+        "W13-P1-E-006",
+        "W13-P1-E-010",
+        "W13-P1-E-073"
+      ]
+    },
+    "score_calibration_thresholds": {
+      "description": "Score semantics across classes/images: per-class thresholds, calibration-explains-training-gains, box uncertainty.",
+      "members": [
+        "W13-P1-D-013",
+        "W13-P1-D-031",
+        "W13-P1-D-040",
+        "W13-P1-D-074",
+        "W13-P1-E-027"
+      ]
+    },
+    "small_dense_object_mechanics": {
+      "description": "Small/dense-object mechanisms: metrics, stride aliasing, assignment starvation, pixel budgets, query cliffs, priming, pattern completion, frozen-feature ceilings.",
+      "members": [
+        "W13-P1-D-018",
+        "W13-P1-D-019",
+        "W13-P1-D-020",
+        "W13-P1-D-022",
+        "W13-P1-D-025",
+        "W13-P1-D-026",
+        "W13-P1-D-027",
+        "W13-P1-D-029",
+        "W13-P1-D-030",
+        "W13-P1-D-055",
+        "W13-P1-D-063"
+      ]
+    },
+    "counting_density_suppression": {
+      "description": "Counting and suppression in dense scenes: paradigm crossover, identity errors, crowding, count supervision, disagreement audits, ordinal/calibrated counting.",
+      "members": [
+        "W13-P1-D-021",
+        "W13-P1-D-024",
+        "W13-P1-D-078",
+        "W13-P1-D-079",
+        "W13-P1-D-080",
+        "W13-P1-D-081",
+        "W13-P1-D-082",
+        "W13-P1-D-083",
+        "W13-P1-E-085",
+        "W13-P1-E-086"
+      ]
+    },
+    "longtail_evaluation_training": {
+      "description": "Long-tail evaluation and training artifacts: noise, profile overfitting, context oversampling, intra-tail regression.",
+      "members": [
+        "W13-P1-D-032",
+        "W13-P1-D-035",
+        "W13-P1-D-036",
+        "W13-P1-D-041",
+        "W13-P1-D-043"
+      ]
+    },
+    "detection_segmentation_pipelines": {
+      "description": "Detection<->segmentation interplay: masks from boxes, mask-mediated training, pipeline error coupling, conventions, nested instances, ontology, stability rescoring.",
+      "members": [
+        "W13-P1-D-045",
+        "W13-P1-D-046",
+        "W13-P1-D-048",
+        "W13-P1-D-049",
+        "W13-P1-D-050",
+        "W13-P1-D-051",
+        "W13-P1-D-052",
+        "W13-P1-D-053",
+        "W13-P1-D-054"
+      ]
+    },
+    "foundation_detector_priors_forgetting": {
+      "description": "Web-pretraining priors of foundation detectors and forgetting under adaptation.",
+      "members": [
+        "W13-P1-D-059",
+        "W13-P1-D-060",
+        "W13-P1-D-061",
+        "W13-P1-D-064",
+        "W13-P1-D-067",
+        "W13-P1-D-068",
+        "W13-P1-D-069",
+        "W13-P1-E-012",
+        "W13-P1-E-071",
+        "W13-P1-E-076"
+      ]
+    },
+    "mllm_dense_interfaces": {
+      "description": "Multimodal-LLM dense interfaces: coordinate emission, token bottlenecks, reasoning tax, consistency, uncertainty channels, correction turns, overlays, tiling.",
+      "members": [
+        "W13-P1-D-065",
+        "W13-P1-D-066",
+        "W13-P1-E-023",
+        "W13-P1-E-041",
+        "W13-P1-E-093",
+        "W13-P1-E-094",
+        "W13-P1-E-095",
+        "W13-P1-E-096",
+        "W13-P1-E-097",
+        "W13-P1-E-098",
+        "W13-P1-E-099",
+        "W13-P1-E-100"
+      ]
+    },
+    "eval_protocol_statistics": {
+      "description": "Evaluation protocol and statistics for detection: bootstrap noise, AP pathologies, caps, matching rules, budgets, preprocessing variance.",
+      "members": [
+        "W13-P1-D-085",
+        "W13-P1-D-086",
+        "W13-P1-D-087",
+        "W13-P1-D-088",
+        "W13-P1-D-089",
+        "W13-P1-D-090",
+        "W13-P1-D-091",
+        "W13-P1-D-092",
+        "W13-P1-E-044",
+        "W13-P1-E-066"
+      ]
+    },
+    "annotation_limits_conventions": {
+      "description": "Annotation as the binding constraint: missing labels, style drift, ambiguity strata, agreement floors, label-error inheritance, assisted-annotation loops.",
+      "members": [
+        "W13-P1-D-017",
+        "W13-P1-D-033",
+        "W13-P1-D-075",
+        "W13-P1-D-084",
+        "W13-P1-D-093",
+        "W13-P1-D-094",
+        "W13-P1-D-095",
+        "W13-P1-D-096",
+        "W13-P1-D-097",
+        "W13-P1-D-098",
+        "W13-P1-D-099",
+        "W13-P1-D-100",
+        "W13-P1-E-065"
+      ]
+    },
+    "dense_feature_mechanics": {
+      "description": "VLM feature mechanics for dense prediction: layers, outlier tokens, anisotropy, receptive fields, resolution/aspect handling, window inconsistency, shallow decoders.",
+      "members": [
+        "W13-P1-E-001",
+        "W13-P1-E-004",
+        "W13-P1-E-035",
+        "W13-P1-E-036",
+        "W13-P1-E-037",
+        "W13-P1-E-038",
+        "W13-P1-E-039",
+        "W13-P1-E-040",
+        "W13-P1-E-046",
+        "W13-P1-E-074"
+      ]
+    },
+    "language_seg_pipelines_training": {
+      "description": "Language-grounded segmentation pipeline and training choices: stage interfaces, caption richness, retrieval alternatives, ensembling, boundary-aware objectives, supervision conventions.",
+      "members": [
+        "W13-P1-E-003",
+        "W13-P1-E-008",
+        "W13-P1-E-009",
+        "W13-P1-E-011",
+        "W13-P1-E-045",
+        "W13-P1-E-075",
+        "W13-P1-E-078"
+      ]
+    },
+    "referring_relational_grounding": {
+      "description": "Referring and relational grounding: skylines, OCR integration, set decoding, round-trips, frames of reference, graded/metric/depth/size relations, hop decay, cue order.",
+      "members": [
+        "W13-P1-E-013",
+        "W13-P1-E-014",
+        "W13-P1-E-015",
+        "W13-P1-E-017",
+        "W13-P1-E-019",
+        "W13-P1-E-020",
+        "W13-P1-E-021",
+        "W13-P1-E-022",
+        "W13-P1-E-055",
+        "W13-P1-E-056",
+        "W13-P1-E-057",
+        "W13-P1-E-058",
+        "W13-P1-E-059",
+        "W13-P1-E-060",
+        "W13-P1-E-061",
+        "W13-P1-E-062"
+      ]
+    },
+    "negation_logic_set_queries": {
+      "description": "Negation, complements, connectives, comparatives, metric quantities: missing set/comparison operations at the grounding interface.",
+      "members": [
+        "W13-P1-E-016",
+        "W13-P1-E-087",
+        "W13-P1-E-089",
+        "W13-P1-E-090",
+        "W13-P1-E-091"
+      ]
+    },
+    "dense_eval_protocols": {
+      "description": "Dense evaluation protocols: boundary weighting, background conventions, in-the-wild queries, contamination stratification.",
+      "members": [
+        "W13-P1-D-047",
+        "W13-P1-E-067",
+        "W13-P1-E-068",
+        "W13-P1-E-069",
+        "W13-P1-E-070"
+      ]
+    },
+    "sim2real_content_factors": {
+      "description": "What actually transfers from synthetic data: content/motion/occlusion/layout/physics/camera factors vs photorealism; non-monotone realism.",
+      "members": [
+        "W13-P1-F-003",
+        "W13-P1-F-004",
+        "W13-P1-F-005",
+        "W13-P1-F-008",
+        "W13-P1-F-010",
+        "W13-P1-F-012",
+        "W13-P1-F-013",
+        "W13-P1-F-017",
+        "W13-P1-F-018",
+        "W13-P1-F-019",
+        "W13-P1-F-022",
+        "W13-P1-F-073",
+        "W13-P1-F-077",
+        "W13-P1-F-079",
+        "W13-P1-F-080",
+        "W13-P1-F-091",
+        "W13-P1-F-094"
+      ]
+    },
+    "sim2real_adaptation_methods": {
+      "description": "Sim-to-real adaptation methods and their audits: randomization decomposition, rank transfer, label-space resampling, normalization baselines, translation label corruption, coverage prediction.",
+      "members": [
+        "W13-P1-F-015",
+        "W13-P1-F-020",
+        "W13-P1-F-021",
+        "W13-P1-F-023",
+        "W13-P1-F-024",
+        "W13-P1-F-026"
+      ]
+    },
+    "label_convention_synthetic": {
+      "description": "Label conventions between synthetic and human ground truth: renderer logic, harmonization, missing-annotation channels, ambiguity-aware uncertainty; augmentation artifacts.",
+      "members": [
+        "W13-P1-D-039",
+        "W13-P1-F-001",
+        "W13-P1-F-002",
+        "W13-P1-F-011",
+        "W13-P1-F-016",
+        "W13-P1-F-027",
+        "W13-P1-F-037",
+        "W13-P1-F-038",
+        "W13-P1-F-076",
+        "W13-P1-F-090"
+      ]
+    },
+    "label_noise_learning": {
+      "description": "Learning with realistic label noise: structured auto-label noise, boundary-localized damage, cleaning pathologies, clean-validation economics, soft-vs-hard moderation.",
+      "members": [
+        "W13-P1-F-028",
+        "W13-P1-F-030",
+        "W13-P1-F-031",
+        "W13-P1-F-032",
+        "W13-P1-F-033",
+        "W13-P1-F-034",
+        "W13-P1-F-035",
+        "W13-P1-F-036"
+      ]
+    },
+    "teacher_bias_inheritance": {
+      "description": "Teacher-to-student bias transfer: fingerprints, mention-statistics ceilings, homogenized captions, compositional deficits.",
+      "members": [
+        "W13-P1-D-056",
+        "W13-P1-E-072",
+        "W13-P1-E-077",
+        "W13-P1-F-029",
+        "W13-P1-F-055",
+        "W13-P1-F-060",
+        "W13-P1-F-068"
+      ]
+    },
+    "data_curation_valuation": {
+      "description": "Curation and valuation of synthetic pools: filters, mining, pruning-scale effects, mixing-ratio prediction, influence, prompt diversity, probe-based utility prediction.",
+      "members": [
+        "W13-P1-F-039",
+        "W13-P1-F-040",
+        "W13-P1-F-041",
+        "W13-P1-F-042",
+        "W13-P1-F-043",
+        "W13-P1-F-044",
+        "W13-P1-F-045",
+        "W13-P1-F-046",
+        "W13-P1-F-048",
+        "W13-P1-F-049",
+        "W13-P1-F-050",
+        "W13-P1-F-083"
+      ]
+    },
+    "synthetic_scaling_economics": {
+      "description": "Scaling laws and economics of synthetic data: joint laws, anchors, repetition crossovers, support plateaus, TCO, depreciation, generator sizing.",
+      "members": [
+        "W13-P1-F-007",
+        "W13-P1-F-025",
+        "W13-P1-F-057",
+        "W13-P1-F-088",
+        "W13-P1-F-097",
+        "W13-P1-F-098",
+        "W13-P1-F-099",
+        "W13-P1-F-100",
+        "W13-P1-F-101",
+        "W13-P1-F-102"
+      ]
+    },
+    "synthetic_pretraining_provenance": {
+      "description": "Synthetic data in pretraining: procedural filters, distillation ceilings, collapse regimes, density targeting, provenance conditioning, vintage/contamination drift.",
+      "members": [
+        "W13-P1-F-051",
+        "W13-P1-F-052",
+        "W13-P1-F-053",
+        "W13-P1-F-054",
+        "W13-P1-F-056",
+        "W13-P1-F-058",
+        "W13-P1-F-059",
+        "W13-P1-F-061",
+        "W13-P1-F-062",
+        "W13-P1-F-069",
+        "W13-P1-F-095"
+      ]
+    },
+    "generative_data_engines": {
+      "description": "Generative data engines: label generation, editing vs generating, negatives, gradient-matched generation, video hybrids, streams, multi-renderer, black-box generation tuning, multi-view exceedance.",
+      "members": [
+        "W13-P1-F-006",
+        "W13-P1-F-009",
+        "W13-P1-F-014",
+        "W13-P1-F-063",
+        "W13-P1-F-064",
+        "W13-P1-F-065",
+        "W13-P1-F-066",
+        "W13-P1-F-067",
+        "W13-P1-F-070",
+        "W13-P1-F-071",
+        "W13-P1-F-072",
+        "W13-P1-F-074",
+        "W13-P1-F-075",
+        "W13-P1-F-078",
+        "W13-P1-F-089",
+        "W13-P1-F-096"
+      ]
+    },
+    "synthetic_eval_contamination": {
+      "description": "Evaluating synthetic data itself: perceptual-metric validity, architecture-conditional rankings, compressed synthetic tests, leakage, tuning asymmetry, shift-anticipation, privacy.",
+      "members": [
+        "W13-P1-F-047",
+        "W13-P1-F-081",
+        "W13-P1-F-082",
+        "W13-P1-F-084",
+        "W13-P1-F-085",
+        "W13-P1-F-086",
+        "W13-P1-F-087",
+        "W13-P1-F-092",
+        "W13-P1-F-093"
+      ]
+    }
+  },
+  "duplicate_groups": {
+    "dg01_caption_frequency_governs_openvocab": {
+      "primary": [
+        "W13-P1-D-001"
+      ],
+      "members": [
+        "W13-P1-D-001",
+        "W13-P1-E-005"
+      ],
+      "merged": {
+        "W13-P1-E-005": "Identical caption-frequency-predicts-per-class-performance regression; segmentation is a substrate swap of D-001's detection design."
+      }
+    },
+    "dg02_distractor_vocabulary_instability": {
+      "primary": [
+        "W13-P1-D-002"
+      ],
+      "members": [
+        "W13-P1-D-002",
+        "W13-P1-E-025"
+      ],
+      "merged": {
+        "W13-P1-E-025": "Identical plausible-distractor vocabulary-collapse claim at pixel level; one distractor-augmentation protocol falsifies both."
+      }
+    },
+    "dg03_no_abstention_nearest_concept_relabeling": {
+      "primary": [
+        "W13-P1-D-003"
+      ],
+      "members": [
+        "W13-P1-D-003",
+        "W13-P1-E-026"
+      ],
+      "merged": {
+        "W13-P1-E-026": "Same mechanism (contrastive scores lack an absolute covered-vs-uncovered scale, forcing nearest-concept assignment); pixel abstention is the dense reading of D-003."
+      }
+    },
+    "dg04_recognition_dominates_residual_error": {
+      "primary": [
+        "W13-P1-D-071"
+      ],
+      "members": [
+        "W13-P1-D-071",
+        "W13-P1-D-004"
+      ],
+      "merged": {
+        "W13-P1-D-004": "Same oracle naming-vs-localization decomposition; D-071 states the general foundation-scale claim plus the scaling trend, and the novel-class case is its first experiment."
+      }
+    },
+    "dg05_text_geometry_predicts_confusions": {
+      "primary": [
+        "W13-P1-E-047"
+      ],
+      "members": [
+        "W13-P1-E-047",
+        "W13-P1-D-005"
+      ],
+      "merged": {
+        "W13-P1-D-005": "Identical text-embedding-similarity-predicts-confusion hypothesis; E-047 carries the stronger text-only-forecast formulation; detection is one substrate."
+      }
+    },
+    "dg06_synonym_phrasing_sensitivity": {
+      "primary": [
+        "W13-P1-E-029"
+      ],
+      "members": [
+        "W13-P1-E-029",
+        "W13-P1-D-009",
+        "W13-P1-E-063",
+        "W13-P1-D-006"
+      ],
+      "merged": {
+        "W13-P1-D-009": "Phrasing-equivalence AP variance is the same measurement as E-029's synonym sweep; keep the version carrying the consistency-enforcement fix.",
+        "W13-P1-E-063": "Cross-dataset name-affinity reranking is the benchmark-level consequence of the same synonym sensitivity, with the same renaming design.",
+        "W13-P1-D-006": "WAVE1 COLLISION: near-verbatim port of accepted W13-P1-C-052 (synonym substitution reranks zero-shot models) from classification to detection AP."
+      }
+    },
+    "dg07_attribute_binding": {
+      "primary": [
+        "W13-P1-D-057"
+      ],
+      "members": [
+        "W13-P1-D-057",
+        "W13-P1-D-007"
+      ],
+      "merged": {
+        "W13-P1-D-007": "'Attribute words contribute nothing' is the marginal version of D-057's swapped-attribute two-instance binding test; one suite falsifies both."
+      }
+    },
+    "dg08_part_queries_return_wholes": {
+      "primary": [
+        "W13-P1-E-079"
+      ],
+      "members": [
+        "W13-P1-E-079",
+        "W13-P1-D-008"
+      ],
+      "merged": {
+        "W13-P1-D-008": "Identical part-query-returns-whole hypothesis; E-079 carries the sharper signature (correct object selection, failed part boundary)."
+      }
+    },
+    "dg09_context_over_evidence_detection": {
+      "primary": [
+        "W13-P1-D-010"
+      ],
+      "members": [
+        "W13-P1-D-010",
+        "W13-P1-D-062"
+      ],
+      "merged": {
+        "W13-P1-D-062": "Attribution-measured outside-box reliance and cut-paste composites test the same 'foundation detectors are context classifiers' hypothesis; attribution kept as secondary measurement."
+      }
+    },
+    "dg10_context_over_evidence_dense": {
+      "primary": [
+        "W13-P1-E-010"
+      ],
+      "members": [
+        "W13-P1-E-010",
+        "W13-P1-E-073"
+      ],
+      "merged": {
+        "W13-P1-E-073": "Context-mass on object-absent scenes is the same context-over-evidence falsification; E-010's inpainting counterfactual is the cleanest instrument; caption-supervision attribution noted for the primary."
+      }
+    },
+    "dg11_per_class_threshold_incomparability": {
+      "primary": [
+        "W13-P1-D-013"
+      ],
+      "members": [
+        "W13-P1-D-013",
+        "W13-P1-D-040"
+      ],
+      "merged": {
+        "W13-P1-D-040": "The long-tail no-usable-operating-point claim is D-013's per-class score incomparability read off at the frequency extremes; same threshold-sweep experiment."
+      }
+    },
+    "dg12_hierarchy_granularity_credit": {
+      "primary": [
+        "W13-P1-D-038",
+        "W13-P1-E-028"
+      ],
+      "members": [
+        "W13-P1-D-038",
+        "W13-P1-D-014",
+        "W13-P1-E-028"
+      ],
+      "merged": {
+        "W13-P1-D-014": "Hierarchy-aware credit reranking duplicated; D-038 states the sharpest consequence (head-tail gap is a fine-grained naming gap) with the same re-scoring design; E-028 kept as the dense-side co-primary."
+      }
+    },
+    "dg13_vocabulary_forgetting_alignment": {
+      "primary": [
+        "W13-P1-D-068"
+      ],
+      "members": [
+        "W13-P1-D-068",
+        "W13-P1-E-071"
+      ],
+      "merged": {
+        "W13-P1-E-071": "Region-text fine-tuning narrowing the effective open vocabulary is the same alignment-forgetting claim with the same before/after broad-vocabulary probe."
+      }
+    },
+    "dg14_bootstrap_noise_detection": {
+      "primary": [
+        "W13-P1-D-085"
+      ],
+      "members": [
+        "W13-P1-D-085",
+        "W13-P1-D-032",
+        "W13-P1-D-035"
+      ],
+      "merged": {
+        "W13-P1-D-032": "Rare-class bootstrap CIs are the class-stratified core of D-085's headline-AP variance decomposition; one bootstrap study covers both.",
+        "W13-P1-D-035": "WAVE1 COLLISION: near-verbatim port of accepted W13-P1-C-047 (support-set draw variance exceeds method gaps) from few-shot classification to few-shot detection."
+      }
+    },
+    "dg15_counting_paradigm_crossover": {
+      "primary": [
+        "W13-P1-D-021"
+      ],
+      "members": [
+        "W13-P1-D-021",
+        "W13-P1-D-079"
+      ],
+      "merged": {
+        "W13-P1-D-079": "The scene-statistics router is the direct application of D-021's undercount/crossover law; the law must be established first."
+      }
+    },
+    "dg16_annotation_ceiling_strict_metrics": {
+      "primary": [
+        "W13-P1-D-096"
+      ],
+      "members": [
+        "W13-P1-D-096",
+        "W13-P1-D-017",
+        "W13-P1-E-065"
+      ],
+      "merged": {
+        "W13-P1-D-017": "Small-object annotation ceiling is one stratum of D-096's general human-agreement-floor claim with the same repeated-annotation design.",
+        "W13-P1-E-065": "Referring-at-the-annotator-ceiling is a substrate of the same agreement-floor claim (also adjacent to accepted wave-1 C-025/C-066)."
+      }
+    },
+    "dg17_unannotated_true_positives": {
+      "primary": [
+        "W13-P1-D-093"
+      ],
+      "members": [
+        "W13-P1-D-093",
+        "W13-P1-D-033"
+      ],
+      "merged": {
+        "W13-P1-D-033": "Rare-class unannotated-true-positive deflation is the tail stratum of D-093's general precision-is-annotation-limited audit."
+      }
+    },
+    "dg18_countability_convention_ambiguity": {
+      "primary": [
+        "W13-P1-D-095"
+      ],
+      "members": [
+        "W13-P1-D-095",
+        "W13-P1-D-084"
+      ],
+      "merged": {
+        "W13-P1-D-084": "Partial-visibility countability ambiguity and aggregate one-vs-many ambiguity are the same convention-ambiguous-stratum claim; one ambiguity-flagged re-scoring covers both."
+      }
+    },
+    "dg19_boundary_weighted_reranking": {
+      "primary": [
+        "W13-P1-D-047"
+      ],
+      "members": [
+        "W13-P1-D-047",
+        "W13-P1-E-067"
+      ],
+      "merged": {
+        "W13-P1-E-067": "Boundary-weighted reranking duplicated across substrates; D-047 keeps the downstream-utility component; E-067's family-specific (language-method) weakness recorded on the primary."
+      }
+    },
+    "dg20_prompt_template_boundary_artifacts": {
+      "primary": [
+        "W13-P1-E-011"
+      ],
+      "members": [
+        "W13-P1-E-011",
+        "W13-P1-E-045"
+      ],
+      "merged": {
+        "W13-P1-E-045": "Template-induced boundary flip maps are the audit behind E-011's ensembling-blurs-boundaries tradeoff; one per-template study covers both."
+      }
+    },
+    "dg21_layer_depth_dense_alignment": {
+      "primary": [
+        "W13-P1-E-046"
+      ],
+      "members": [
+        "W13-P1-E-046",
+        "W13-P1-E-001"
+      ],
+      "merged": {
+        "W13-P1-E-001": "Final-layer-worst is the base observation inside E-046's query-conditional layer-optimum claim; per-layer probe shared; E-001's scale-trend sub-claim recorded on the primary."
+      }
+    },
+    "dg22_easy_regime_referring": {
+      "primary": [
+        "W13-P1-E-013"
+      ],
+      "members": [
+        "W13-P1-E-013",
+        "W13-P1-E-014",
+        "W13-P1-E-015",
+        "W13-P1-E-020"
+      ],
+      "merged": {
+        "W13-P1-E-014": "Distractor-count decay is the stratified restatement of the head-noun+salience skyline claim; same stratified re-scoring.",
+        "W13-P1-E-015": "Blind location-size prior is a weaker baseline inside the same benchmark-weakness audit.",
+        "W13-P1-E-020": "Bimodality by category uniqueness is the regime-structure restatement of the same skyline finding; progress-attribution sub-claim recorded on the primary."
+      }
+    },
+    "dg23_negation_blindness": {
+      "primary": [
+        "W13-P1-E-052"
+      ],
+      "members": [
+        "W13-P1-E-052",
+        "W13-P1-E-016"
+      ],
+      "merged": {
+        "W13-P1-E-016": "Affirmative-reading behavior is subsumed by E-052's text-displacement law, which predicts it and adds the per-system fixability predictor."
+      }
+    },
+    "dg24_missing_comparison_operation": {
+      "primary": [
+        "W13-P1-E-085"
+      ],
+      "members": [
+        "W13-P1-E-085",
+        "W13-P1-E-089"
+      ],
+      "merged": {
+        "W13-P1-E-089": "Comparative selection and ordinal selection both instantiate 'no cross-candidate comparison operation; external comparison stage fixes it'."
+      }
+    },
+    "dg25_crosslingual_inconsistency": {
+      "primary": [
+        "W13-P1-E-054"
+      ],
+      "members": [
+        "W13-P1-E-054",
+        "W13-P1-D-012"
+      ],
+      "merged": {
+        "W13-P1-D-012": "Same multilingual-degradation-tracks-pretraining-share claim; E-054 adds the label-free cross-lingual agreement audit; both sit in accepted wave-1 C-103's family."
+      }
+    },
+    "dg26_proposal_stage_dominates": {
+      "primary": [
+        "W13-P1-E-002"
+      ],
+      "members": [
+        "W13-P1-E-002",
+        "W13-P1-E-064"
+      ],
+      "merged": {
+        "W13-P1-E-064": "Oracle-classification/oracle-localization reranking and the factorial proposal-vs-classifier decomposition test the same 'progress is proposal-side' hypothesis."
+      }
+    },
+    "dg27_convention_matched_synthetic_labels": {
+      "primary": [
+        "W13-P1-F-027"
+      ],
+      "members": [
+        "W13-P1-F-027",
+        "W13-P1-F-002"
+      ],
+      "merged": {
+        "W13-P1-F-002": "Convention-transforming synthetic masks and injecting human-like structured noise are the same convention-matching intervention; F-027 states the sharper truth-vs-benchmark point; source-flag conditioning variant noted."
+      }
+    },
+    "dg28_sim2real_convention_ontology": {
+      "primary": [
+        "W13-P1-F-090"
+      ],
+      "members": [
+        "W13-P1-F-090",
+        "W13-P1-F-011",
+        "W13-P1-F-016"
+      ],
+      "merged": {
+        "W13-P1-F-011": "Ontology remapping audit is contained in the renderer-vs-guideline convention audit of F-090.",
+        "W13-P1-F-016": "WAVE1 COLLISION (partial): convention-harmonized re-evaluation of the sim-to-real gap duplicates F-090 and ports accepted W13-P1-B-085 (cross-site label-convention shift) to sim-to-real."
+      }
+    },
+    "dg29_layout_over_appearance": {
+      "primary": [
+        "W13-P1-F-077"
+      ],
+      "members": [
+        "W13-P1-F-077",
+        "W13-P1-F-004"
+      ],
+      "merged": {
+        "W13-P1-F-004": "Layout/scale-statistics matching for metric depth is the depth instantiation of F-077's layout-over-appearance factorial."
+      }
+    },
+    "dg30_camera_sensor_pipeline": {
+      "primary": [
+        "W13-P1-F-019"
+      ],
+      "members": [
+        "W13-P1-F-019",
+        "W13-P1-F-013",
+        "W13-P1-F-079"
+      ],
+      "merged": {
+        "W13-P1-F-013": "Calibrated sensor-noise simulation is the depth-sensor instance of the camera/sensor-pipeline statistics claim.",
+        "W13-P1-F-079": "Virtual-camera/ISP calibration duplicates the camera-pipeline claim with a device-matching variant, noted on the primary."
+      }
+    },
+    "dg31_injected_noise_leaderboard_artifact": {
+      "primary": [
+        "W13-P1-F-028"
+      ],
+      "members": [
+        "W13-P1-F-028",
+        "W13-P1-F-032"
+      ],
+      "merged": {
+        "W13-P1-F-032": "Injected-versus-organic and injected-versus-autolabel noise are the same injection-artifact-leaderboard hypothesis; auto-label noise is the more current family and subsumes the design."
+      }
+    },
+    "dg32_correlated_teacher_errors": {
+      "primary": [
+        "W13-P1-D-060"
+      ],
+      "members": [
+        "W13-P1-D-060",
+        "W13-P1-F-033"
+      ],
+      "merged": {
+        "W13-P1-F-033": "Correlated teacher errors limiting ensemble auto-labeling is the labeling application of D-060's shared-blind-spot claim, with the same pairwise error-overlap measurement."
+      }
+    },
+    "dg33_synthetic_test_leakage": {
+      "primary": [
+        "W13-P1-F-086"
+      ],
+      "members": [
+        "W13-P1-F-086",
+        "W13-P1-F-047"
+      ],
+      "merged": {
+        "W13-P1-F-047": "Cross-boundary dedup audit is the instrument for F-086's generator-memorization test-leakage claim; the train-adjacent null is kept as a sub-prediction."
+      }
+    },
+    "dg34_labels_for_real_beats_images_with_labels": {
+      "primary": [
+        "W13-P1-F-066"
+      ],
+      "members": [
+        "W13-P1-F-066",
+        "W13-P1-F-006"
+      ],
+      "merged": {
+        "W13-P1-F-006": "Pseudo-labels from generative internals is one mechanism inside F-066's inversion (real images + generated labels beat generated images + perfect labels)."
+      }
+    },
+    "dg35_captioner_fingerprint_inheritance": {
+      "primary": [
+        "W13-P1-F-060",
+        "W13-P1-E-077"
+      ],
+      "members": [
+        "W13-P1-F-060",
+        "W13-P1-E-077",
+        "W13-P1-F-029"
+      ],
+      "merged": {
+        "W13-P1-F-029": "Captioner-fingerprint inheritance is covered by generator-fingerprint attribution (F-060) plus the mention-statistics ceiling law (E-077)."
+      }
+    },
+    "dg36_joint_scaling_law": {
+      "primary": [
+        "W13-P1-F-097"
+      ],
+      "members": [
+        "W13-P1-F-097",
+        "W13-P1-F-025"
+      ],
+      "merged": {
+        "W13-P1-F-025": "The gap-floor scaling law is a special case of F-097's joint real-synthetic two-term scaling surface; crossover prediction shared."
+      }
+    }
+  },
+  "kill_or_merge_ids": {
+    "W13-P1-D-004": {
+      "merge_target": "W13-P1-D-071",
+      "reason": "Same oracle naming-vs-localization decomposition; D-071 states the general foundation-scale claim plus the scaling trend, and the novel-class case is its first experiment."
+    },
+    "W13-P1-D-005": {
+      "merge_target": "W13-P1-E-047",
+      "reason": "Identical text-embedding-similarity-predicts-confusion hypothesis; E-047 carries the stronger text-only-forecast formulation; detection is one substrate."
+    },
+    "W13-P1-D-006": {
+      "merge_target": "W13-P1-E-029",
+      "reason": "WAVE1 COLLISION: near-verbatim port of accepted W13-P1-C-052 (synonym substitution reranks zero-shot models) from classification to detection AP."
+    },
+    "W13-P1-D-007": {
+      "merge_target": "W13-P1-D-057",
+      "reason": "'Attribute words contribute nothing' is the marginal version of D-057's swapped-attribute two-instance binding test; one suite falsifies both."
+    },
+    "W13-P1-D-008": {
+      "merge_target": "W13-P1-E-079",
+      "reason": "Identical part-query-returns-whole hypothesis; E-079 carries the sharper signature (correct object selection, failed part boundary)."
+    },
+    "W13-P1-D-009": {
+      "merge_target": "W13-P1-E-029",
+      "reason": "Phrasing-equivalence AP variance is the same measurement as E-029's synonym sweep; keep the version carrying the consistency-enforcement fix."
+    },
+    "W13-P1-D-012": {
+      "merge_target": "W13-P1-E-054",
+      "reason": "Same multilingual-degradation-tracks-pretraining-share claim; E-054 adds the label-free cross-lingual agreement audit; both sit in accepted wave-1 C-103's family."
+    },
+    "W13-P1-D-014": {
+      "merge_target": "W13-P1-D-038+W13-P1-E-028",
+      "reason": "Hierarchy-aware credit reranking duplicated; D-038 states the sharpest consequence (head-tail gap is a fine-grained naming gap) with the same re-scoring design; E-028 kept as the dense-side co-primary."
+    },
+    "W13-P1-D-017": {
+      "merge_target": "W13-P1-D-096",
+      "reason": "Small-object annotation ceiling is one stratum of D-096's general human-agreement-floor claim with the same repeated-annotation design."
+    },
+    "W13-P1-D-032": {
+      "merge_target": "W13-P1-D-085",
+      "reason": "Rare-class bootstrap CIs are the class-stratified core of D-085's headline-AP variance decomposition; one bootstrap study covers both."
+    },
+    "W13-P1-D-033": {
+      "merge_target": "W13-P1-D-093",
+      "reason": "Rare-class unannotated-true-positive deflation is the tail stratum of D-093's general precision-is-annotation-limited audit."
+    },
+    "W13-P1-D-035": {
+      "merge_target": "W13-P1-D-085",
+      "reason": "WAVE1 COLLISION: near-verbatim port of accepted W13-P1-C-047 (support-set draw variance exceeds method gaps) from few-shot classification to few-shot detection."
+    },
+    "W13-P1-D-040": {
+      "merge_target": "W13-P1-D-013",
+      "reason": "The long-tail no-usable-operating-point claim is D-013's per-class score incomparability read off at the frequency extremes; same threshold-sweep experiment."
+    },
+    "W13-P1-D-056": {
+      "merge_target": "wave1:W13-P1-A-102",
+      "reason": "WAVE1 COLLISION: student inheritance of foundation pseudo-mask convexity/anti-thin bias restates accepted A-102's pseudo-label bias-amplification law; thin-structure ceiling is a sub-prediction there."
+    },
+    "W13-P1-D-062": {
+      "merge_target": "W13-P1-D-010",
+      "reason": "Attribution-measured outside-box reliance and cut-paste composites test the same 'foundation detectors are context classifiers' hypothesis; attribution kept as secondary measurement."
+    },
+    "W13-P1-D-079": {
+      "merge_target": "W13-P1-D-021",
+      "reason": "The scene-statistics router is the direct application of D-021's undercount/crossover law; the law must be established first."
+    },
+    "W13-P1-D-084": {
+      "merge_target": "W13-P1-D-095",
+      "reason": "Partial-visibility countability ambiguity and aggregate one-vs-many ambiguity are the same convention-ambiguous-stratum claim; one ambiguity-flagged re-scoring covers both."
+    },
+    "W13-P1-D-087": {
+      "merge_target": "wave1:W13-P1-C-077",
+      "reason": "WAVE1 COLLISION: near-verbatim port of accepted C-077 (same checkpoint scores differently across harnesses) to detection evaluation toolkits."
+    },
+    "W13-P1-D-092": {
+      "merge_target": "wave1:W13-P1-C-028",
+      "reason": "WAVE1 COLLISION: corruption-suite-does-not-predict-natural-shift already accepted as C-028; detection is a substrate swap."
+    },
+    "W13-P1-D-100": {
+      "merge_target": "wave1:W13-P1-C-069",
+      "reason": "WAVE1 COLLISION: model-in-the-loop annotation contamination accepted as C-069; the dual-protocol annotation design is an experiment for that existing idea, not a new hypothesis."
+    },
+    "W13-P1-E-001": {
+      "merge_target": "W13-P1-E-046",
+      "reason": "Final-layer-worst is the base observation inside E-046's query-conditional layer-optimum claim; per-layer probe shared; E-001's scale-trend sub-claim recorded on the primary."
+    },
+    "W13-P1-E-005": {
+      "merge_target": "W13-P1-D-001",
+      "reason": "Identical caption-frequency-predicts-per-class-performance regression; segmentation is a substrate swap of D-001's detection design."
+    },
+    "W13-P1-E-014": {
+      "merge_target": "W13-P1-E-013",
+      "reason": "Distractor-count decay is the stratified restatement of the head-noun+salience skyline claim; same stratified re-scoring."
+    },
+    "W13-P1-E-015": {
+      "merge_target": "W13-P1-E-013",
+      "reason": "Blind location-size prior is a weaker baseline inside the same benchmark-weakness audit."
+    },
+    "W13-P1-E-016": {
+      "merge_target": "W13-P1-E-052",
+      "reason": "Affirmative-reading behavior is subsumed by E-052's text-displacement law, which predicts it and adds the per-system fixability predictor."
+    },
+    "W13-P1-E-020": {
+      "merge_target": "W13-P1-E-013",
+      "reason": "Bimodality by category uniqueness is the regime-structure restatement of the same skyline finding; progress-attribution sub-claim recorded on the primary."
+    },
+    "W13-P1-E-021": {
+      "merge_target": "wave1:W13-P1-C-020",
+      "reason": "WAVE1 COLLISION: paraphrase-consistency-as-error-detector accepted as C-020 for visual prompts; referring masks are a substrate swap."
+    },
+    "W13-P1-E-025": {
+      "merge_target": "W13-P1-D-002",
+      "reason": "Identical plausible-distractor vocabulary-collapse claim at pixel level; one distractor-augmentation protocol falsifies both."
+    },
+    "W13-P1-E-026": {
+      "merge_target": "W13-P1-D-003",
+      "reason": "Same mechanism (contrastive scores lack an absolute covered-vs-uncovered scale, forcing nearest-concept assignment); pixel abstention is the dense reading of D-003."
+    },
+    "W13-P1-E-037": {
+      "merge_target": "wave1:W13-P1-B-046",
+      "reason": "WAVE1 COLLISION: texture-bias amplification at dense/boundary level accepted as B-046 (with A-035); the VLM language-queried dense-vs-global comparison is noted for the novelty judge as a possible extension."
+    },
+    "W13-P1-E-045": {
+      "merge_target": "W13-P1-E-011",
+      "reason": "Template-induced boundary flip maps are the audit behind E-011's ensembling-blurs-boundaries tradeoff; one per-template study covers both."
+    },
+    "W13-P1-E-063": {
+      "merge_target": "W13-P1-E-029",
+      "reason": "Cross-dataset name-affinity reranking is the benchmark-level consequence of the same synonym sensitivity, with the same renaming design."
+    },
+    "W13-P1-E-064": {
+      "merge_target": "W13-P1-E-002",
+      "reason": "Oracle-classification/oracle-localization reranking and the factorial proposal-vs-classifier decomposition test the same 'progress is proposal-side' hypothesis."
+    },
+    "W13-P1-E-065": {
+      "merge_target": "W13-P1-D-096",
+      "reason": "Referring-at-the-annotator-ceiling is a substrate of the same agreement-floor claim (also adjacent to accepted wave-1 C-025/C-066)."
+    },
+    "W13-P1-E-066": {
+      "merge_target": "wave1:W13-P1-C-045",
+      "reason": "WAVE1 COLLISION: prompt-configuration tuning against the reported benchmark is accepted C-045 (hidden prompt-search budget) specialized to dense evaluation."
+    },
+    "W13-P1-E-067": {
+      "merge_target": "W13-P1-D-047",
+      "reason": "Boundary-weighted reranking duplicated across substrates; D-047 keeps the downstream-utility component; E-067's family-specific (language-method) weakness recorded on the primary."
+    },
+    "W13-P1-E-070": {
+      "merge_target": "wave1:W13-P1-C-024",
+      "reason": "WAVE1 COLLISION: contamination-stratified deflation of zero-shot claims accepted as C-024 (wave-1 dg02); dense benchmarks are a substrate swap."
+    },
+    "W13-P1-E-071": {
+      "merge_target": "W13-P1-D-068",
+      "reason": "Region-text fine-tuning narrowing the effective open vocabulary is the same alignment-forgetting claim with the same before/after broad-vocabulary probe."
+    },
+    "W13-P1-E-073": {
+      "merge_target": "W13-P1-E-010",
+      "reason": "Context-mass on object-absent scenes is the same context-over-evidence falsification; E-010's inpainting counterfactual is the cleanest instrument; caption-supervision attribution noted for the primary."
+    },
+    "W13-P1-E-089": {
+      "merge_target": "W13-P1-E-085",
+      "reason": "Comparative selection and ordinal selection both instantiate 'no cross-candidate comparison operation; external comparison stage fixes it'."
+    },
+    "W13-P1-F-002": {
+      "merge_target": "W13-P1-F-027",
+      "reason": "Convention-transforming synthetic masks and injecting human-like structured noise are the same convention-matching intervention; F-027 states the sharper truth-vs-benchmark point; source-flag conditioning variant noted."
+    },
+    "W13-P1-F-004": {
+      "merge_target": "W13-P1-F-077",
+      "reason": "Layout/scale-statistics matching for metric depth is the depth instantiation of F-077's layout-over-appearance factorial."
+    },
+    "W13-P1-F-006": {
+      "merge_target": "W13-P1-F-066",
+      "reason": "Pseudo-labels from generative internals is one mechanism inside F-066's inversion (real images + generated labels beat generated images + perfect labels)."
+    },
+    "W13-P1-F-011": {
+      "merge_target": "W13-P1-F-090",
+      "reason": "Ontology remapping audit is contained in the renderer-vs-guideline convention audit of F-090."
+    },
+    "W13-P1-F-013": {
+      "merge_target": "W13-P1-F-019",
+      "reason": "Calibrated sensor-noise simulation is the depth-sensor instance of the camera/sensor-pipeline statistics claim."
+    },
+    "W13-P1-F-016": {
+      "merge_target": "W13-P1-F-090",
+      "reason": "WAVE1 COLLISION (partial): convention-harmonized re-evaluation of the sim-to-real gap duplicates F-090 and ports accepted W13-P1-B-085 (cross-site label-convention shift) to sim-to-real."
+    },
+    "W13-P1-F-025": {
+      "merge_target": "W13-P1-F-097",
+      "reason": "The gap-floor scaling law is a special case of F-097's joint real-synthetic two-term scaling surface; crossover prediction shared."
+    },
+    "W13-P1-F-029": {
+      "merge_target": "W13-P1-F-060+W13-P1-E-077",
+      "reason": "Captioner-fingerprint inheritance is covered by generator-fingerprint attribution (F-060) plus the mention-statistics ceiling law (E-077)."
+    },
+    "W13-P1-F-032": {
+      "merge_target": "W13-P1-F-028",
+      "reason": "Injected-versus-organic and injected-versus-autolabel noise are the same injection-artifact-leaderboard hypothesis; auto-label noise is the more current family and subsumes the design."
+    },
+    "W13-P1-F-033": {
+      "merge_target": "W13-P1-D-060",
+      "reason": "Correlated teacher errors limiting ensemble auto-labeling is the labeling application of D-060's shared-blind-spot claim, with the same pairwise error-overlap measurement."
+    },
+    "W13-P1-F-039": {
+      "merge_target": "wave1:W13-P1-C-058",
+      "reason": "WAVE1 COLLISION: pruning-scores-are-dedup-in-disguise restates accepted C-058 (curation adds little beyond dedup); the decomposition experiment is an add-on to that idea."
+    },
+    "W13-P1-F-047": {
+      "merge_target": "W13-P1-F-086",
+      "reason": "Cross-boundary dedup audit is the instrument for F-086's generator-memorization test-leakage claim; the train-adjacent null is kept as a sub-prediction."
+    },
+    "W13-P1-F-053": {
+      "merge_target": "known_result",
+      "reason": "Restates the (judge-assessed, UNVERIFIED) widely reported accumulate-vs-replace result on model collapse; residual content (anchor-fraction grid for vision) is an ablation of a known claim, not a new hypothesis. Consolidator may resurrect if the novelty judge disagrees."
+    },
+    "W13-P1-F-079": {
+      "merge_target": "W13-P1-F-019",
+      "reason": "Virtual-camera/ISP calibration duplicates the camera-pipeline claim with a device-matching variant, noted on the primary."
+    }
+  },
+  "standalone_kills": {
+    "W13-P1-D-056": {
+      "target": "wave1:W13-P1-A-102",
+      "reason": "WAVE1 COLLISION: student inheritance of foundation pseudo-mask convexity/anti-thin bias restates accepted A-102's pseudo-label bias-amplification law; thin-structure ceiling is a sub-prediction there."
+    },
+    "W13-P1-D-087": {
+      "target": "wave1:W13-P1-C-077",
+      "reason": "WAVE1 COLLISION: near-verbatim port of accepted C-077 (same checkpoint scores differently across harnesses) to detection evaluation toolkits."
+    },
+    "W13-P1-D-092": {
+      "target": "wave1:W13-P1-C-028",
+      "reason": "WAVE1 COLLISION: corruption-suite-does-not-predict-natural-shift already accepted as C-028; detection is a substrate swap."
+    },
+    "W13-P1-D-100": {
+      "target": "wave1:W13-P1-C-069",
+      "reason": "WAVE1 COLLISION: model-in-the-loop annotation contamination accepted as C-069; the dual-protocol annotation design is an experiment for that existing idea, not a new hypothesis."
+    },
+    "W13-P1-E-021": {
+      "target": "wave1:W13-P1-C-020",
+      "reason": "WAVE1 COLLISION: paraphrase-consistency-as-error-detector accepted as C-020 for visual prompts; referring masks are a substrate swap."
+    },
+    "W13-P1-E-037": {
+      "target": "wave1:W13-P1-B-046",
+      "reason": "WAVE1 COLLISION: texture-bias amplification at dense/boundary level accepted as B-046 (with A-035); the VLM language-queried dense-vs-global comparison is noted for the novelty judge as a possible extension."
+    },
+    "W13-P1-E-066": {
+      "target": "wave1:W13-P1-C-045",
+      "reason": "WAVE1 COLLISION: prompt-configuration tuning against the reported benchmark is accepted C-045 (hidden prompt-search budget) specialized to dense evaluation."
+    },
+    "W13-P1-E-070": {
+      "target": "wave1:W13-P1-C-024",
+      "reason": "WAVE1 COLLISION: contamination-stratified deflation of zero-shot claims accepted as C-024 (wave-1 dg02); dense benchmarks are a substrate swap."
+    },
+    "W13-P1-F-039": {
+      "target": "wave1:W13-P1-C-058",
+      "reason": "WAVE1 COLLISION: pruning-scores-are-dedup-in-disguise restates accepted C-058 (curation adds little beyond dedup); the decomposition experiment is an add-on to that idea."
+    },
+    "W13-P1-F-053": {
+      "target": "known_result",
+      "reason": "Restates the (judge-assessed, UNVERIFIED) widely reported accumulate-vs-replace result on model collapse; residual content (anchor-fraction grid for vision) is an ablation of a known claim, not a new hypothesis. Consolidator may resurrect if the novelty judge disagrees."
+    }
+  },
+  "flagged_permutation": {
+    "content_over_realism_factorial": {
+      "description": "SAM+X-analog template of this wave: 'factor X (motion/blending/occlusion/camera/physics/layout/assets/label-space) beats photorealism for task Y, shown by a 2x2 factorial'. F-094 is the umbrella; kept members must carry a distinct factor and mechanism.",
+      "members": [
+        "W13-P1-F-003",
+        "W13-P1-F-004",
+        "W13-P1-F-005",
+        "W13-P1-F-008",
+        "W13-P1-F-013",
+        "W13-P1-F-016",
+        "W13-P1-F-017",
+        "W13-P1-F-019",
+        "W13-P1-F-021",
+        "W13-P1-F-022",
+        "W13-P1-F-073",
+        "W13-P1-F-077",
+        "W13-P1-F-079",
+        "W13-P1-F-094"
+      ]
+    },
+    "wave1_critique_ports": {
+      "description": "Known critique or accepted wave-1 idea ported to a new substrate (detection/dense/synthetic). Killed where near-verbatim; kept members carry a genuinely new measurable component.",
+      "members": [
+        "W13-P1-D-006",
+        "W13-P1-D-012",
+        "W13-P1-D-035",
+        "W13-P1-D-059",
+        "W13-P1-D-087",
+        "W13-P1-D-088",
+        "W13-P1-D-092",
+        "W13-P1-E-021",
+        "W13-P1-E-037",
+        "W13-P1-E-066",
+        "W13-P1-E-070",
+        "W13-P1-F-023",
+        "W13-P1-F-039"
+      ]
+    },
+    "consistency_self_audit": {
+      "description": "Template: 'measure self-consistency under transform T (paraphrase, synonym, language, format, jitter, containment, round-trip) and use it as a free audit or fix'. Accepted wave-1 C-020 is the family ancestor.",
+      "members": [
+        "W13-P1-D-054",
+        "W13-P1-E-021",
+        "W13-P1-E-022",
+        "W13-P1-E-029",
+        "W13-P1-E-054",
+        "W13-P1-E-081",
+        "W13-P1-E-096"
+      ]
+    },
+    "hidden_budget_confound": {
+      "description": "Template: 'gains shrink when hidden budget X (inference compute, tuning effort, generation compute, prompt search, resolution, augmentation strength, preprocessing) is equalized'. Wave-1 C-045 is the ancestor.",
+      "members": [
+        "W13-P1-D-022",
+        "W13-P1-D-091",
+        "W13-P1-E-044",
+        "W13-P1-E-066",
+        "W13-P1-F-015",
+        "W13-P1-F-067",
+        "W13-P1-F-087",
+        "W13-P1-F-088"
+      ]
+    },
+    "missing_operation_wrapper": {
+      "description": "Template: 'dense grounding lacks symbolic operation X (ordinal sort, comparison, set complement, connectives, metric filtering); near-chance behavior; external parse-and-compose wrapper fixes it'.",
+      "members": [
+        "W13-P1-E-085",
+        "W13-P1-E-087",
+        "W13-P1-E-089",
+        "W13-P1-E-090",
+        "W13-P1-E-091"
+      ]
+    },
+    "proximity_predicts_performance": {
+      "description": "Template: 'performance is predictable from proximity/frequency/coverage of the training distribution (caption frequency, lexical rarity, visual distance, condition coverage, generator support)'.",
+      "members": [
+        "W13-P1-D-001",
+        "W13-P1-D-034",
+        "W13-P1-E-005",
+        "W13-P1-E-030",
+        "W13-P1-E-031",
+        "W13-P1-F-026",
+        "W13-P1-F-061",
+        "W13-P1-F-098"
+      ]
+    },
+    "teacher_bias_inheritance": {
+      "description": "Template: 'students inherit and amplify teacher/generator/captioner biases; fingerprints are measurable'. Wave-1 A-102/A-091 are ancestors.",
+      "members": [
+        "W13-P1-D-056",
+        "W13-P1-D-100",
+        "W13-P1-E-072",
+        "W13-P1-E-077",
+        "W13-P1-F-029",
+        "W13-P1-F-031",
+        "W13-P1-F-035",
+        "W13-P1-F-055",
+        "W13-P1-F-060",
+        "W13-P1-F-068"
+      ]
+    },
+    "convention_scoring_template": {
+      "description": "Template: 'a share of measured error/gap is annotation-convention or ontology mismatch; harmonized or tolerance scoring changes scores and rankings'. Wave-1 C-067/B-085/B-075/A-079 are ancestors.",
+      "members": [
+        "W13-P1-D-049",
+        "W13-P1-D-053",
+        "W13-P1-D-075",
+        "W13-P1-D-084",
+        "W13-P1-D-094",
+        "W13-P1-D-095",
+        "W13-P1-E-043",
+        "W13-P1-E-068",
+        "W13-P1-E-083",
+        "W13-P1-F-002",
+        "W13-P1-F-011",
+        "W13-P1-F-016",
+        "W13-P1-F-027",
+        "W13-P1-F-037",
+        "W13-P1-F-090"
+      ]
+    },
+    "rank_transfer_instability": {
+      "description": "Template: 'method rankings established on benchmark/regime X do not transfer to regime Y'.",
+      "members": [
+        "W13-P1-D-026",
+        "W13-P1-D-036",
+        "W13-P1-D-092",
+        "W13-P1-F-020",
+        "W13-P1-F-082",
+        "W13-P1-F-084"
+      ]
+    },
+    "scaling_law_template": {
+      "description": "Template: 'fit a two-term scaling/crossover law from pilot runs and predict the large-scale decision (mix ratio, pruning, anchor fraction, repetition crossover, plateau)'.",
+      "members": [
+        "W13-P1-F-025",
+        "W13-P1-F-045",
+        "W13-P1-F-046",
+        "W13-P1-F-057",
+        "W13-P1-F-097",
+        "W13-P1-F-098",
+        "W13-P1-F-101"
+      ]
+    },
+    "oracle_decomposition_template": {
+      "description": "Template: 'decompose error with oracle substitutions (oracle naming, oracle boxes, oracle proposals, IoU-sweep fingerprints) and attribute progress'.",
+      "members": [
+        "W13-P1-D-004",
+        "W13-P1-D-038",
+        "W13-P1-D-044",
+        "W13-P1-D-071",
+        "W13-P1-D-073",
+        "W13-P1-D-077",
+        "W13-P1-E-002",
+        "W13-P1-E-064"
+      ]
+    },
+    "blind_trivial_baseline": {
+      "description": "Template: 'a deliberately crude/blind skyline captures a large share of benchmark performance, exposing what the benchmark fails to test'. Wave-1 C-089/C-016 are ancestors.",
+      "members": [
+        "W13-P1-D-015",
+        "W13-P1-E-013",
+        "W13-P1-E-015"
+      ]
+    }
+  },
+  "wave1_collision_flags_on_keeps": {
+    "W13-P1-D-019": "wave1 family A-009 (sub-pixel aliasing of prompt-to-mask map); detection stride substrate is distinct.",
+    "W13-P1-D-031": "adjacent to wave1 calibration cluster (C-002..C-012); the training-gains-are-calibration claim itself is new to the corpus.",
+    "W13-P1-D-036": "wave1 family C-042 (ranking instability under reweighting); training-distribution profile overfitting is the new element.",
+    "W13-P1-D-039": "wave1 family B-087 (copy-paste physically invalid for media); artifact-cue inflation for rare classes is the new element; tension with F-005.",
+    "W13-P1-D-043": "wave1 family C-044 (micro vs macro averaging); intra-tail redistribution and worst-group reporting are the new elements.",
+    "W13-P1-D-054": "wave1 collision risk B-026/A-005 (prompt-jitter consistency); detection-rescoring application is new; verify against wave-1 members before Stage 2.",
+    "W13-P1-D-058": "wave1 family C-089 (co-occurrence/language-prior hallucination); region-level FP design with co-occurrence-ordered rates is new.",
+    "W13-P1-D-061": "wave1 family A-062 (size-ratio-anchored granularity prior); apparent-size canonical prior for detection is distinct.",
+    "W13-P1-D-080": "prior-art check required: VLM subitizing/counting-regime studies exist; the enumeration-vs-estimation error-signature decomposition is the claimed delta.",
+    "W13-P1-D-088": "wave1 family C-023 (semantic-duplicate contamination); within-test-set effective-sample-size claim is distinct.",
+    "W13-P1-D-091": "wave1 family C-045 (hidden budgets); inference-compute axis is distinct.",
+    "W13-P1-D-096": "wave1 family C-025/C-066/B-091 (annotation ceilings); box-geometry noise-floor normalization is the new instrument.",
+    "W13-P1-D-097": "wave1 family C-010 (models better than labels); localization-consensus substrate is new.",
+    "W13-P1-D-059": "prior-art check required: typographic attacks on CLIP are documented (wave-1 A-077 is the defense-side sibling); region-level detection attack surface is the claimed delta.",
+    "W13-P1-E-004": "prior-art check required: training-free dense-CLIP surgery literature discusses smoothing effects; the sub-additivity falsification is the claimed delta.",
+    "W13-P1-E-009": "prior-art check required: retrieval-based/training-free dense labeling exists; the errors-overlap-with-trained-heads claim is the delta.",
+    "W13-P1-E-013": "wave1 family C-089 (blind-baseline template); referring skyline is a new substrate.",
+    "W13-P1-E-035": "wave1 collision risk A-039 (high-norm outlier/register tokens); heavy prior-art risk (registers literature); the VLM-dense filtering-gains claim must survive a novelty pass.",
+    "W13-P1-E-043": "wave1 family A-079 (modal/amodal instability); language-conditioned phrasing/occluder dependence is the new axis.",
+    "W13-P1-E-046": "prior-art check required: intermediate-layer dense extraction is known; query-conditional layer routing is the claimed delta (absorbs E-001).",
+    "W13-P1-E-052": "prior-art check required: negation blindness of contrastive text encoders is partially documented; the displacement-predicts-dense-fixability law is the claimed delta.",
+    "W13-P1-E-054": "wave1 family C-103 (multilingual re-evaluation); label-free cross-lingual agreement audit is the new instrument (absorbs D-012).",
+    "W13-P1-E-072": "wave1 family A-102/A-091 (self-training bias amplification); text-geometry drift substrate is new.",
+    "W13-P1-E-074": "wave1 family A-041/A-014 (readout-sufficiency); frozen-VLM dense decoder literature exists — prior-art check required; tension with D-063.",
+    "W13-P1-E-084": "wave1 collision risk B-030 (mass vs count nouns); topology/connectivity control by syntax is the new claim beyond B-030's accuracy claim.",
+    "W13-P1-E-095": "prior-art check required: reports of reasoning hurting perception exist; the easy/hard crossover with attention-mass mediation is the claimed delta.",
+    "W13-P1-F-014": "prior-art check required: reconstruction-based re-rendering data engines exist; the geometric-imperfection-vs-appearance-gap tradeoff claim is the delta.",
+    "W13-P1-F-020": "wave1 family C-028 (proxy-benchmark rank transfer); adaptation-method substrate is distinct.",
+    "W13-P1-F-023": "prior-art check required: normalization-statistics adaptation is well studied; the claim that published adaptation gains shrink against this baseline is the delta.",
+    "W13-P1-F-015": "prior-art check required: randomization-vs-augmentation comparisons exist; the 2D-expressible/3D-only decomposition is the claimed delta.",
+    "W13-P1-F-040": "wave1 collision risk C-102 (quality filtering helps some tasks, hurts others); dense-task filter-inversion prediction is the new element.",
+    "W13-P1-F-067": "wave1 family C-064 (synthetic gains tied to generator style) and hidden-budget family; the data-volume-ladder reproduction matrix is the new instrument.",
+    "W13-P1-F-086": "wave1 family C-023/C-064 (contamination); generator-memorization leakage channel is the new mechanism.",
+    "W13-P1-F-087": "wave1 family C-045 (hidden budgets); tuning-effort asymmetry in the synthetic-data literature is the substrate.",
+    "W13-P1-F-037": "wave1 family B-075/B-084 (ambiguity vs error decomposition); synthetic-convention overconfidence claim is the new element.",
+    "W13-P1-D-074": "prior-art check required: box-uncertainty regression heads exist; the metric-deployment-mismatch framing and downstream-proxy evaluation are the claimed delta.",
+    "W13-P1-D-078": "prior-art check required: learned/appearance-aware NMS exists; the identity-signal-vs-geometry dissociation on dense same-class scenes is the claimed delta.",
+    "W13-P1-D-022": "prior-art check required: resolution-matched baseline critiques exist for small-object methods; the systematic re-audit is the contribution.",
+    "W13-P1-E-001": "killed into E-046; known training-free dense-feature literature; scale-trend sub-claim preserved on primary.",
+    "W13-P1-F-064": "prior-art check required: generator class-conditional recall metrics exist; the per-class augmentation-ceiling law is the claimed delta.",
+    "W13-P1-E-079": "prior-art check required: part-segmentation failures partially documented; the whole-retrieval signature across families is the claimed delta."
+  },
+  "anomaly_ids": {
+    "W13-P1-D-029": "Pattern-completion in dense detection (confident FPs at vacated grid positions) — perception-vs-prior dissociation with a clean synthetic test.",
+    "W13-P1-D-051": "Nested-instance structural blind spot caused by overlap-resolution machinery — an architecture-level impossibility claim with a purpose-built suite.",
+    "W13-P1-D-069": "State-space, not category-space, is the generalization frontier — inverts the field's difficulty ordering with a matched comparison.",
+    "W13-P1-D-083": "Paradigm-disagreement (detector vs density) conditioned on inter-paradigm agreement as a free annotation-error detector.",
+    "W13-P1-D-097": "Detectors out-localize their own training labels; evaluation penalizes models for being right — measurable with consensus re-annotation.",
+    "W13-P1-D-099": "Sparse-annotation training teaches context-conditional self-censorship — learned suppression rules invisible to sparse evaluation.",
+    "W13-P1-E-010": "Masks persist after the object is inpainted away — the cleanest context-over-evidence falsification in the wave.",
+    "W13-P1-E-041": "Pixel-probing MLLM visual tokens beats the model's own verbalized dense outputs — locates dense failure at the interface.",
+    "W13-P1-E-055": "Frame-of-reference viewer-centrism shared by models AND annotators — a hidden ambiguity the benchmarks reward instead of measure.",
+    "W13-P1-E-084": "Countability grammar controls mask topology — an unmeasured coupling between syntax and output structure.",
+    "W13-P1-E-095": "Reasoning tax: chain-of-thought displaces visual attention and hurts easy dense targets — a crossover prediction with a mediation measurement.",
+    "W13-P1-E-099": "Visual prompt overlays contaminate predictions for unmarked objects — an uncontrolled interference in all mark-based prompting studies.",
+    "W13-P1-F-027": "Pixel-perfect labels can transfer worse than convention-matched noisy labels — evaluation rewards annotator behavior, not geometric truth.",
+    "W13-P1-F-040": "Quality filters anti-select dense-task value; the rejected half may train better — a category error in scalar quality.",
+    "W13-P1-F-060": "Generator fingerprints survive training well enough for supply-chain forensics on black-box students.",
+    "W13-P1-F-069": "Crawl-vintage synthetic contamination as a measurable data-quality variable with a spiking-reproduction design.",
+    "W13-P1-F-091": "Non-monotone realism: maximal realism re-imports the real world's spurious correlations that cruder randomization had removed.",
+    "W13-P1-F-096": "Students exceed teachers via multi-view consistency fusion — a predictable exceedance regime defined by teacher-error independence."
+  },
+  "deliberate_tensions": {
+    "W13-P1-D-063": "Deliberate head-to-head with E-074: D-063 claims frozen features lack sub-patch precision (no head closes the high-IoU gap); E-074 claims a shallow decoder recovers most of the dense gap. Keep both; the experiments adjudicate.",
+    "W13-P1-E-074": "Deliberate head-to-head with D-063 (see D-063 note).",
+    "W13-P1-F-005": "Deliberate tension with D-039: F-005 claims cut-paste sufficiency past a realism threshold; D-039 claims paste artifacts inflate gains. Joint design: artifact-controlled insertion.",
+    "W13-P1-D-039": "Deliberate tension with F-005 (see F-005 note).",
+    "W13-P1-F-052": "Boundary tension with F-096: F-052 says exceedance requires an external signal; F-096 supplies one (multi-view error independence). Compatible; keep both as a regime-mapping pair.",
+    "W13-P1-F-096": "Boundary tension with F-052 (see F-052 note).",
+    "W13-P1-D-044": "Scope-limiter for D-071/D-004: naming dominates except for geometrically atypical classes where proposal recall binds. Kept as the designed counter-claim.",
+    "W13-P1-D-077": "Tension with D-020/D-055: D-077 bets pretraining compute on recognition (objectness saturates); D-020/D-055 bet on dense/objectness pretraining for small-object transfer. Kept as a designed head-to-head.",
+    "W13-P1-D-020": "Tension with D-077 (see D-077 note).",
+    "W13-P1-D-055": "Tension with D-077 (see D-077 note).",
+    "W13-P1-F-074": "Tension with F-064/F-098: infinite procedural streams beat fixed datasets vs generator-support ceilings; the resolution is whether the stream's effective support keeps growing."
+  },
+  "keep_ids": [
+    "W13-P1-D-001",
+    "W13-P1-D-002",
+    "W13-P1-D-003",
+    "W13-P1-D-010",
+    "W13-P1-D-011",
+    "W13-P1-D-013",
+    "W13-P1-D-015",
+    "W13-P1-D-016",
+    "W13-P1-D-018",
+    "W13-P1-D-019",
+    "W13-P1-D-020",
+    "W13-P1-D-021",
+    "W13-P1-D-022",
+    "W13-P1-D-023",
+    "W13-P1-D-024",
+    "W13-P1-D-025",
+    "W13-P1-D-026",
+    "W13-P1-D-027",
+    "W13-P1-D-028",
+    "W13-P1-D-029",
+    "W13-P1-D-030",
+    "W13-P1-D-031",
+    "W13-P1-D-034",
+    "W13-P1-D-036",
+    "W13-P1-D-037",
+    "W13-P1-D-038",
+    "W13-P1-D-039",
+    "W13-P1-D-041",
+    "W13-P1-D-042",
+    "W13-P1-D-043",
+    "W13-P1-D-044",
+    "W13-P1-D-045",
+    "W13-P1-D-046",
+    "W13-P1-D-047",
+    "W13-P1-D-048",
+    "W13-P1-D-049",
+    "W13-P1-D-050",
+    "W13-P1-D-051",
+    "W13-P1-D-052",
+    "W13-P1-D-053",
+    "W13-P1-D-054",
+    "W13-P1-D-055",
+    "W13-P1-D-057",
+    "W13-P1-D-058",
+    "W13-P1-D-059",
+    "W13-P1-D-060",
+    "W13-P1-D-061",
+    "W13-P1-D-063",
+    "W13-P1-D-064",
+    "W13-P1-D-065",
+    "W13-P1-D-066",
+    "W13-P1-D-067",
+    "W13-P1-D-068",
+    "W13-P1-D-069",
+    "W13-P1-D-070",
+    "W13-P1-D-071",
+    "W13-P1-D-072",
+    "W13-P1-D-073",
+    "W13-P1-D-074",
+    "W13-P1-D-075",
+    "W13-P1-D-076",
+    "W13-P1-D-077",
+    "W13-P1-D-078",
+    "W13-P1-D-080",
+    "W13-P1-D-081",
+    "W13-P1-D-082",
+    "W13-P1-D-083",
+    "W13-P1-D-085",
+    "W13-P1-D-086",
+    "W13-P1-D-088",
+    "W13-P1-D-089",
+    "W13-P1-D-090",
+    "W13-P1-D-091",
+    "W13-P1-D-093",
+    "W13-P1-D-094",
+    "W13-P1-D-095",
+    "W13-P1-D-096",
+    "W13-P1-D-097",
+    "W13-P1-D-098",
+    "W13-P1-D-099",
+    "W13-P1-E-002",
+    "W13-P1-E-003",
+    "W13-P1-E-004",
+    "W13-P1-E-006",
+    "W13-P1-E-007",
+    "W13-P1-E-008",
+    "W13-P1-E-009",
+    "W13-P1-E-010",
+    "W13-P1-E-011",
+    "W13-P1-E-012",
+    "W13-P1-E-013",
+    "W13-P1-E-017",
+    "W13-P1-E-018",
+    "W13-P1-E-019",
+    "W13-P1-E-022",
+    "W13-P1-E-023",
+    "W13-P1-E-024",
+    "W13-P1-E-027",
+    "W13-P1-E-028",
+    "W13-P1-E-029",
+    "W13-P1-E-030",
+    "W13-P1-E-031",
+    "W13-P1-E-032",
+    "W13-P1-E-033",
+    "W13-P1-E-034",
+    "W13-P1-E-035",
+    "W13-P1-E-036",
+    "W13-P1-E-038",
+    "W13-P1-E-039",
+    "W13-P1-E-040",
+    "W13-P1-E-041",
+    "W13-P1-E-042",
+    "W13-P1-E-043",
+    "W13-P1-E-044",
+    "W13-P1-E-046",
+    "W13-P1-E-047",
+    "W13-P1-E-048",
+    "W13-P1-E-049",
+    "W13-P1-E-050",
+    "W13-P1-E-051",
+    "W13-P1-E-052",
+    "W13-P1-E-053",
+    "W13-P1-E-054",
+    "W13-P1-E-055",
+    "W13-P1-E-056",
+    "W13-P1-E-057",
+    "W13-P1-E-058",
+    "W13-P1-E-059",
+    "W13-P1-E-060",
+    "W13-P1-E-061",
+    "W13-P1-E-062",
+    "W13-P1-E-068",
+    "W13-P1-E-069",
+    "W13-P1-E-072",
+    "W13-P1-E-074",
+    "W13-P1-E-075",
+    "W13-P1-E-076",
+    "W13-P1-E-077",
+    "W13-P1-E-078",
+    "W13-P1-E-079",
+    "W13-P1-E-080",
+    "W13-P1-E-081",
+    "W13-P1-E-082",
+    "W13-P1-E-083",
+    "W13-P1-E-084",
+    "W13-P1-E-085",
+    "W13-P1-E-086",
+    "W13-P1-E-087",
+    "W13-P1-E-088",
+    "W13-P1-E-090",
+    "W13-P1-E-091",
+    "W13-P1-E-092",
+    "W13-P1-E-093",
+    "W13-P1-E-094",
+    "W13-P1-E-095",
+    "W13-P1-E-096",
+    "W13-P1-E-097",
+    "W13-P1-E-098",
+    "W13-P1-E-099",
+    "W13-P1-E-100",
+    "W13-P1-F-001",
+    "W13-P1-F-003",
+    "W13-P1-F-005",
+    "W13-P1-F-007",
+    "W13-P1-F-008",
+    "W13-P1-F-009",
+    "W13-P1-F-010",
+    "W13-P1-F-012",
+    "W13-P1-F-014",
+    "W13-P1-F-015",
+    "W13-P1-F-017",
+    "W13-P1-F-018",
+    "W13-P1-F-019",
+    "W13-P1-F-020",
+    "W13-P1-F-021",
+    "W13-P1-F-022",
+    "W13-P1-F-023",
+    "W13-P1-F-024",
+    "W13-P1-F-026",
+    "W13-P1-F-027",
+    "W13-P1-F-028",
+    "W13-P1-F-030",
+    "W13-P1-F-031",
+    "W13-P1-F-034",
+    "W13-P1-F-035",
+    "W13-P1-F-036",
+    "W13-P1-F-037",
+    "W13-P1-F-038",
+    "W13-P1-F-040",
+    "W13-P1-F-041",
+    "W13-P1-F-042",
+    "W13-P1-F-043",
+    "W13-P1-F-044",
+    "W13-P1-F-045",
+    "W13-P1-F-046",
+    "W13-P1-F-048",
+    "W13-P1-F-049",
+    "W13-P1-F-050",
+    "W13-P1-F-051",
+    "W13-P1-F-052",
+    "W13-P1-F-054",
+    "W13-P1-F-055",
+    "W13-P1-F-056",
+    "W13-P1-F-057",
+    "W13-P1-F-058",
+    "W13-P1-F-059",
+    "W13-P1-F-060",
+    "W13-P1-F-061",
+    "W13-P1-F-062",
+    "W13-P1-F-063",
+    "W13-P1-F-064",
+    "W13-P1-F-065",
+    "W13-P1-F-066",
+    "W13-P1-F-067",
+    "W13-P1-F-068",
+    "W13-P1-F-069",
+    "W13-P1-F-070",
+    "W13-P1-F-071",
+    "W13-P1-F-072",
+    "W13-P1-F-073",
+    "W13-P1-F-074",
+    "W13-P1-F-075",
+    "W13-P1-F-076",
+    "W13-P1-F-077",
+    "W13-P1-F-078",
+    "W13-P1-F-080",
+    "W13-P1-F-081",
+    "W13-P1-F-082",
+    "W13-P1-F-083",
+    "W13-P1-F-084",
+    "W13-P1-F-085",
+    "W13-P1-F-086",
+    "W13-P1-F-087",
+    "W13-P1-F-088",
+    "W13-P1-F-089",
+    "W13-P1-F-090",
+    "W13-P1-F-091",
+    "W13-P1-F-092",
+    "W13-P1-F-093",
+    "W13-P1-F-094",
+    "W13-P1-F-095",
+    "W13-P1-F-096",
+    "W13-P1-F-097",
+    "W13-P1-F-098",
+    "W13-P1-F-099",
+    "W13-P1-F-100",
+    "W13-P1-F-101",
+    "W13-P1-F-102"
+  ],
+  "epistemic_status": "No novelty verified for any kept idea. All prior-art-risk and known-result assessments are the judge's unverified hypotheses. No citations were invented or implied."
+}
