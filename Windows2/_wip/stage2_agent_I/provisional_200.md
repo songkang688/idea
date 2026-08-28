@@ -2,29 +2,30 @@
 
 Agent I (merger + novelty assassin for batch A; **not PI, no final-3**). Date: 2026-08-28.
 Built by folding batch A (F's 76 keeps + 28 tier-2 rescue candidates) into G's 121-slot B∪C portfolio, after the prior-work verdicts in `a_prior_work.md` and the collision resolutions in `collisions_AFG.md`. G files untouched; this file supersedes `stage2_agent_G/provisional_200_partial.md` as the working 200.
-**Mid-merge reconciliation:** F's final `prior_work_attack.md`, Stage-4 Agent J's `verdicts.jsonl`, Agent H's B-verdicts, and the PI directive (`_wip/PI_TO_I.md`) all landed while this fold was in flight; all are incorporated (see `a_prior_work.md` Part 5 and `collisions_AFG.md` §8). Net effect: 3 of my literature kills restored as mutations (0331, 0352, 0107), 2 LOCKs demoted to FLEX (0334, 0349), 4 H-mandated B kills applied, re-annotation-arbiter cluster consolidated (6 ideas → 3 A slots + 1 C host).
+**Mid-merge reconciliation:** F's final `prior_work_attack.md`, Stage-4 verdicts from Agents J (batch A), H (batch B), and K (batch C), and the PI directive (`_wip/PI_TO_I.md`) all landed while this fold was in flight; all are incorporated (see `a_prior_work.md` Part 5 and `collisions_AFG.md` §8–9). Net effect: 3 of my literature kills restored as mutations (0331, 0352, 0107), 2 LOCKs demoted to FLEX (0334, 0349), 4 H-mandated B kills + 5 K-mandated C kills applied, re-annotation-arbiter cluster consolidated (6 ideas → 3 A slots + 1 C host).
 
 ## Headline accounting
 
 | Category | A | B | C | Total |
 |---|---|---|---|---|
-| **LOCK** | 6 | 17 | 31 | **54** |
-| **FLEX** | 77 | 42 | 21 | **140** |
-| **Portfolio slots** | **83** | **59** | **52** | **194** ✓ (target 190–210) |
+| **LOCK** | 6 | 17 | 28 | **51** |
+| **FLEX** | 78 | 42 | 19 | **139** |
+| **Portfolio slots** | **84** | **59** | **47** | **190** ✓ (target 190–210) |
 
 Movement from G's baseline (B 64 / C 57 / A-reserve 79):
 - 4 G FLEX absorbed as arms of A hosts (C-0208→A-0237, C-0345→A-0301, C-0078→A-0337, C-0333→A-0334).
 - 1 G LOCK merged within G to enforce the contamination cap (C-0298→C-0122).
 - 1 G FLEX folded per G's own conditional (B-0293→B-0286, no compute partner).
 - **4 B kills mandated by Agent H / PI:** B-0332 (LOCK; visual-thought corruption scooped, arXiv:2510.23482), B-0025, B-0133 (LoRA-memorization opposite-direction result), B-0252. B-0042's residual relocated C-0011→B-0213 per PI.
-- A takes 83 slots (79 reserved + 4 freed by absorbing G content into A hosts and by B kills).
-- 14 A ideas merged into G hosts and 5 A-internal merges (arms, no slots); 2 A ideas killed by literature.
+- **5 C kills per Agent K's Reviewer-2 verdicts:** C-0046 (Label Convergence / Noise-Aware Evaluation WACV 2025 own the noise-band artifact; 0080 arm relocated to C-0311, claims-audit residual to C-0302) · C-0341 (2025–26 determinism/batch-invariant-kernel literature; residual paragraph in C-0290) · C-0303 (Recht null + COCO-O; un-deconfoundable) · C-0119 (PCR ICCV 2025 oral owns label-free mAP estimation) · C-0055 (unfundable without partner; conditional revival recorded).
+- A takes 84 slots (79 reserved + 5 freed by absorbing G content into A hosts and by H/K kills); rescue A-0043 promoted to hold the portfolio at the 190 floor.
+- 14 A ideas merged into G hosts and 6 A-internal merges (arms, no slots); 2 A ideas killed by literature.
 
 Tags: (L)=LOCK, (F)=FLEX; [mut]=claim demoted/refocused per `a_prior_work.md`; hosts show ←parasites; (¢)=cheap, ($)=heavy, (⏰)=urgency.
 
 ---
 
-## BATCH A — 83 slots
+## BATCH A — 84 slots
 
 ### A LOCK (6)
 
@@ -109,7 +110,7 @@ Tags: (L)=LOCK, (F)=FLEX; [mut]=claim demoted/refocused per `a_prior_work.md`; h
 | A-0117 | Caustics as transparent-object shadows; HRHR physics |
 | A-0139 | COD models lack inhibition-of-return; multi-instance recall collapse |
 
-### A FLEX — Tier-2 rescues (25)
+### A FLEX — Tier-2 rescues (26)
 
 | ID | Claim |
 |---|---|
@@ -117,6 +118,7 @@ Tags: (L)=LOCK, (F)=FLEX; [mut]=claim demoted/refocused per `a_prior_work.md`; h
 | A-0020 | Everything-mode recall geometry vs prompt-grid density |
 | A-0025 | Topology bias: holes filled at rates predictable from training statistics; fine-tune causal leg |
 | A-0034 | VOS metrics reward temporal smoothness: oracle-smoother audit (¢) |
+| A-0043 | Once lost, always lost: absorbing-state analysis of VOS failure (hazard/recovery statistics); promoted from optional-arm status to hold the 190 floor after K's C kills; coordinates with the A-0026 unit |
 | A-0046 | Ultrasound speckle decorrelation breaks SAM2 memory; matched-cost duel; medical |
 | A-0062 | Through-plane spacing threshold where 3D stops beating 2D; crossover law; medical |
 | A-0065 | Clinician-click sim2real prompting gap; RClicks ported to medical |
@@ -165,16 +167,16 @@ agentic (3): B-0329 agent confidence vs tool quality · B-0338 web-agent contami
 
 ---
 
-## BATCH C — 52 slots (G's portfolio, 6 deltas)
+## BATCH C — 47 slots (G's portfolio, I + K deltas)
 
-### C LOCK (31)
+### C LOCK (28)
 
-C-0302 ←0070,0065,0284, **A-0313** rigor flagship + segmentation power-audit arm · C-0309 ←0328 IRT for benchmarks · C-0136 ←B-0033 seed variance census · C-0311 ←0064,0042,0282, **A-0198** metrology uncertainty budget + seed-churn variance arm · C-0344 instruction-A/B protocol experiment · C-0338 ←0071, **A-0323** human ceiling + general-classes human-mIoU arm · C-0260 monoculture cross-dataset ranks · C-0276 ←0255 tail-progress illusion · C-0256 ←0261 size-frequency confound · C-0306 (⏰) conformal coverage vs NMS · C-0057 missing-annotation tax · C-0011 (⏰) vocabulary noise vs margins (B-0042 residual relocated to B-0213 per PI/H) · C-0326 ←**A-0305** residual-error adjudication + multi-benchmark headroom arm · C-0327 2015 architecture + 2026 recipe · C-0283 stale-baselines decay · C-0285 shadow tuning · C-0226 ←0248,0231 SR truthfulness · C-0150 ←0221, **A-0245** UDA reckoning + cross-pair rank-stability arm · C-0287 ablation sign-flip rates · C-0259 label-everything re-annotation · C-0046 ←0080 annotation-noise band CIs · C-0007 ←**A-0164** tiny-object noise floor + jitter-propagation method arm · C-0279 ←0001,0020 exposure-vs-rarity · C-0159 detection AL replication · **C-0122 ←0264, A-0100, C-0298** duplication census + smoke/fire-provenance arm + hash-audit arm — cap slot 5/5 · C-0158 NMS calibration destroyer · C-0308 machine psychophysics staircases · C-0135 co-occurrence overrides appearance · C-0341 batch cross-talk exploit · C-0055 fresh i.i.d. COCO test set · C-0043 ←**A-0071** size-stratified Dice reliability + consensus-referenced ceiling-audit arm (J-corrected formalism: rater-vs-consensus extrapolated ceiling, not pairwise inter-rater Dice). *(C-0298 merged into C-0122.)*
+C-0302 ←0070,0065,0284, **A-0313**, C-0046-claims-residual — rigor flagship + segmentation power-audit arm (K-gate applies) · C-0309 ←0328 IRT for benchmarks (K mutation applies) · C-0136 ←B-0033 seed variance census · C-0311 ←0064,0042,0282, **A-0198**, **0080** (tightness-drift arm relocated from killed C-0046 per K) — metrology uncertainty budget + seed-churn variance arm · C-0344 instruction-A/B protocol experiment (K mutation applies) · C-0338 ←0071, **A-0323** human ceiling + general-classes human-mIoU arm · C-0260 monoculture cross-dataset ranks · C-0276 ←0255 tail-progress illusion · C-0256 ←0261 size-frequency confound · C-0306 (⏰) conformal coverage vs NMS · C-0057 missing-annotation tax · C-0011 (⏰) vocabulary noise vs margins (B-0042 residual relocated to B-0213 per PI/H) · C-0326 ←**A-0305** residual-error adjudication + multi-benchmark headroom arm · C-0327 2015 architecture + 2026 recipe (K mutation applies) · C-0283 stale-baselines decay · C-0285 shadow tuning · C-0226 ←0248,0231 SR truthfulness · C-0150 ←0221, **A-0245** UDA reckoning + cross-pair rank-stability arm (K mutation applies) · C-0287 ablation sign-flip rates · C-0259 label-everything re-annotation · C-0007 ←**A-0164** tiny-object noise floor + jitter-propagation method arm (K mutation applies) · C-0279 ←0001,0020 exposure-vs-rarity · C-0159 detection AL replication · **C-0122 ←0264, A-0100, C-0298** duplication census + smoke/fire-provenance arm + hash-audit arm — cap slot 5/5 (K mutation applies) · C-0158 NMS calibration destroyer (K mutation applies) · C-0308 machine psychophysics staircases · C-0135 co-occurrence overrides appearance · C-0043 ←**A-0071** size-stratified Dice reliability + consensus-referenced ceiling-audit arm (J-corrected formalism; K mutation applies). *(C-0298 merged into C-0122. K KILLS applied: C-0046 — arms redistributed as noted; C-0341 — residual batch-sensitivity paragraph in C-0290; C-0055 — conditional revival only with industrial annotation partner.)*
 
-### C FLEX (21)
+### C FLEX (19)
 
-Tier-A survivors (14): C-0193 threshold drift · **C-0115 ←A-0220** quality-vs-quantity exchange + mask-precision-threshold arm · C-0119 transform rank-stability · C-0145 vocabulary interference · C-0178 synthetic vs real corruption · C-0190 flicker as free uncertainty · **C-0212 ←A-0228** night-is-ISP + RAW-evaluation execution arm · C-0258 fairness benchmark · C-0269 CLIP curation bias · C-0277 end-to-end bias tracing · **C-0300 ←0304-C, A-0322** reproduction-gap meta-analysis + literature-mined noise-floor arm · C-0303 tuning tax · C-0319 weak-to-strong dense · C-0321 behavioral contracts. *(C-0078→A-0337 · C-0208→A-0237 · C-0345→A-0301.)*
-Tier-B survivors (7): C-0013 small objects from context · C-0116 ghost-rate benchmark · C-0125 stride-grid box snapping · C-0290 ←0288/0289/0296 determinism audit · C-0329 vestigial RPN · C-0332 cropping test · C-0340 resolution is pixel count. *(C-0333→A-0334.)*
+Tier-A survivors (12): C-0193 threshold drift · **C-0115 ←A-0220** quality-vs-quantity exchange + mask-precision-threshold arm · C-0145 vocabulary interference · C-0178 synthetic vs real corruption · C-0190 flicker as free uncertainty · **C-0212 ←A-0228** night-is-ISP + RAW-evaluation execution arm · C-0258 fairness benchmark · C-0269 CLIP curation bias · C-0277 end-to-end bias tracing (K mutation applies) · **C-0300 ←0304-C, A-0322** reproduction-gap meta-analysis + literature-mined noise-floor arm · C-0319 weak-to-strong dense · C-0321 behavioral contracts. *(C-0078→A-0337 · C-0208→A-0237 · C-0345→A-0301 · K KILLS: C-0303 (Recht null + COCO-O), C-0119 (PCR ICCV 2025 owns label-free mAP estimation).)*
+Tier-B survivors (7): C-0013 small objects from context · C-0116 ghost-rate benchmark · C-0125 stride-grid box snapping · C-0290 ←0288/0289/0296, C-0341-residual determinism audit · C-0329 vestigial RPN · C-0332 cropping test · C-0340 resolution is pixel count. *(C-0333→A-0334.)*
 
 ---
 
@@ -186,13 +188,14 @@ Tier-B survivors (7): C-0013 small objects from context · C-0116 ghost-rate ben
 **G→G (3):** C-0298→C-0122 · B-0293→B-0286 · B-0042 residual C-0011→B-0213 (PI/H).
 **Re-entry (1):** C-0082-mut→A-0026.
 **H/PI kills in B (4, no arms):** B-0332 · B-0025 · B-0133 · B-0252.
+**K kills in C (5):** C-0046 (arms: 0080→C-0311, claims-residual→C-0302) · C-0341 (residual→C-0290) · C-0303 · C-0119 · C-0055 (conditional revival with industrial partner).
 (G's pre-existing remaining parasites unchanged; see G's file.)
 
 ## LEFTOVER CUTS (batch A)
 
 **Killed by literature (2):** A-0272 (CreativePSD/LICA/OmniPSD own design-layer corpora) · A-0017 (WACV 2026 owns wiry-failure + evidences architectural cause; F concurs — expressivity sliver lives in the rescued A-0203).
 **Initially killed, restored as mutations after F/J reconciliation (3):** A-0331, A-0352, A-0107 (see F Tier A / Tier C tables above).
-**Tier-2 not rescued (25, slot pressure):** A-0007, 0008, 0015, 0016, 0018, 0021, 0029*, 0036, 0043*, 0045, 0081, 0088, 0090, 0106, 0111, 0118, 0126, 0135, 0155, 0189, 0226, 0252, 0259, 0266, 0310. (*flagged as optional arms of the A-0026 unit.)
+**Tier-2 not rescued (24, slot pressure):** A-0007, 0008, 0015, 0016, 0018, 0021, 0029*, 0036, 0045, 0081, 0088, 0090, 0106, 0111, 0118, 0126, 0135, 0155, 0189, 0226, 0252, 0259, 0266, 0310. (*flagged as optional arm of the A-0026 unit. A-0043 was promoted to a slot after K's C kills.)
 F's 51 kills and 172 remaining borderlines stand as F recorded them; G's 40 drops stand as G recorded them. All cuts reversible.
 
 ## Cluster-cap compliance

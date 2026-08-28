@@ -235,4 +235,6 @@ F's attack (28 ideas, live-searched: 2 KILL, 15 MUTATE, 11 SURVIVE) and J's Revi
 
 **PI directive (`_wip/PI_TO_I.md`) additionally applied:** 0017/0051 confirmed dead (already so) · F's mutated forms adopted throughout · flagship survivors 0206, 0163, 0150, 0121, 0175, 0145 protected (0151 folded into 0163 per the re-annotation-arbiter consolidation below) · J's re-annotation-arbiter cluster (0237, 0249, 0151, 0150, 0163, 0071) consolidated from 6 slots to 3 A slots + 1 C-host arm: **A-0151 → arm of A-0163** (annotation-share is definable only with the band taxonomy) and **A-0071 → arm of C-0043** (the multi-annotator medical reliability anchor hosts the consensus-referenced ceiling audit) · H/PI B kills applied (B-0332, B-0025, B-0133, B-0252; B-0042 residual relocated to B-0213).
 
-**Final totals after reconciliation: 2 literature kills (0272, 0017) · 3 kills reverted to mutations (0331, 0352, 0107) · 2 LOCK demotions (0334, 0349) · A portfolio 83 slots, grand total 194.**
+**Agent K's batch-C verdicts (pushed after the PI note) are also ingested:** 5 C kills applied (C-0046, C-0341, C-0303, C-0119, C-0055 — see `collisions_AFG.md` §9), with A-0043 promoted from optional-arm status to hold the 190 floor.
+
+**Final totals after reconciliation: 2 literature kills (0272, 0017) · 3 kills reverted to mutations (0331, 0352, 0107) · 2 LOCK demotions (0334, 0349) · A portfolio 84 slots, grand total 190.**

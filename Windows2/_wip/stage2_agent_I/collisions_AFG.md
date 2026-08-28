@@ -65,6 +65,12 @@ Members before merge would have been 6+ slots. After merge, exactly **5**:
 - F's mutated forms preferred throughout for 0001, 0060, 0076, 0107, 0181, 0198, 0245, 0301, 0326, 0074, 0331, 0300, 0352 (0001/0060 were never in the keep set; all others carry the mutation in `provisional_200.md`).
 - Flagship protections honored: 0206, 0163, 0150, 0121, 0175, 0145 all hold slots; 0151 survives as a named arm.
 
+## 9. Agent K (Reviewer-2 on batch C) — verdicts ingested
+
+- **K kills applied (5 C slots):** C-0046 (Label Convergence + Noise-Aware Evaluation, WACV 2025, own the LVIS/COCO noise-band artifact — 0080 tightness-drift arm relocated to C-0311, claims-audit residual to C-0302) · C-0341 (2025–26 determinism/batch-invariant-kernel literature explains and fixes batch cross-talk — residual paragraph in C-0290) · C-0303 (Recht adaptivity null + COCO-O; observational design un-deconfoundable) · C-0119 (PCR, ICCV 2025 oral, owns label-free mAP-from-consistency) · C-0055 (unfundable without industrial partner; conditional revival recorded).
+- **Slot backfill:** tier-2 A-0043 (VOS absorbing-state analysis) promoted from optional-arm status to a FLEX slot, holding the portfolio at the 190 floor.
+- K's MUTATE/SURVIVE-IF-EXPERIMENT gates on C hosts (0302, 0309, 0344, 0007, 0043, 0122, 0150, 0158, 0277, 0327 and the SURVIVE-IF set) do not change slot structure; they are flagged inline in `provisional_200.md` and live in `stage4_agent_K/`.
+
 ## Cross-batch balance effects
 
 - G FLEX displaced into arms of A hosts: **C-0208, C-0345, C-0078, C-0333** (4 slots, content preserved).
