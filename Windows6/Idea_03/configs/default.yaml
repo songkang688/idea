@@ -1,0 +1,4 @@
+checkpoints: [base, chat]
+decode: constrained_xyxy
+probe: linear_visual_tokens
+optional: text_only_dpo_lora

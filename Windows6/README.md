@@ -2,39 +2,32 @@
 
 - **Windows ID:** Windows6
 - **Created:** 2026-08-28 (UTC)
-- **Supervisor:** Windows6 (Autonomous Research PI)
-- **Repo:** `github.com/songkang688/idea`
+- **Supervisor:** Windows6
 - **Branch:** `cursor/windows6-research-idea-evolution-b55d`
-- **Status:** Stage 1 complete (1080 raw / 1062 live). Stage 2 scoring + Stage 3 prior-work attack in flight.
+- **Status:** Provisional Final 3 packaged; Stage 5/6 still confirming against DE-top10 assassin + auditor.
 
-Existing Windows trees on other branches (Windows2, Windows3 staging, Windows4) were **not** overwritten. This round writes only under `Windows6/`.
+## This round’s three Ideas (provisional)
 
-## This round’s three Ideas
-
-*Pending Stage 6–7. Do not treat placeholders as final.*
+| # | Folder | Idea | Recommendation |
+|---|--------|------|----------------|
+| 1 | `Idea_01/` | SAM AMG ≈ HU clustering on CT (mechanistic + counterfactuals) | **#1 start here** — cheapest, falsifiable, no huge pretrain |
+| 2 | `Idea_02/` | Camera-ID vs event-disjoint leakage on smoke/fire | Strong audit paper if two datasets |
+| 3 | `Idea_03/` | Alignment tax on localization (format-controlled + probe) | Highest impact, highest concurrent-work risk |
 
 ## Most recommended
 
-*TBD after Killer-Experiment ROI, prior-work kill, and Reviewer #2 survival.*
+**Idea_01.** Reviewer #2 attacks all have cheap shut-up experiments; CPU prototype exists; does not depend on rare checkpoint triples.
 
-## Next experiment to run
+## Next experiment
 
-*TBD after Final 3 Research Packages exist.*
+Run `Idea_01/src/amg_intensity_equiv.py`, then 50 real CT slices with SAM AMG vs k-means/SLIC (see `Idea_01/experiments.md`).
 
 ## Project status
 
 | Idea | Status |
 |------|--------|
-| Idea_01 | not selected |
-| Idea_02 | not selected |
-| Idea_03 | not selected |
+| Idea_01 | Package + synthetic prototype; **no real SAM numbers** |
+| Idea_02 | Package + synthetic split probe; **no smoke mAP** |
+| Idea_03 | Package + format-vs-probe demo; **no VLM eval** |
 
-## Sub-agents (model `claude-fable-5-thinking-xhigh`)
-
-| Slot | Name | Agent ID | Cluster |
-|------|------|----------|---------|
-| 1 | Stage1 SAM-medical-smoke | `bc-ff4f0a24-dbe1-5d13-a171-ec8099834131` | A — SAM / medical / smoke / detection failures |
-| 2 | Stage1 VFM-PEFT-VLM | `bc-42dfeb7a-eb69-5997-b7d3-26ab7d4db49c` | B — VFM / VLM / PEFT / forgetting |
-| 3 | Stage1 eval-assumptions-combo | `bc-1c466ee1-726f-5bc5-a68d-e51ac906d52d` | C — eval / assumptions / negative results |
-
-Target: ≥1000 raw ideas (350 × 3), then 1000 → 200 → 50 → 20 → 5 → 3 executable packages.
+Stage 1: 1080 raw / 1062 live. Stage 2: 78+64 scored. Stage 3–4: prior-work + Reviewer #2 on cheap cluster.

@@ -1,0 +1,5 @@
+# AMG vs clustering on one slice (fill paths)
+window: abdomen
+k_means: [8, 16, 32]
+metrics: [hungarian_iou, ari, boundary_f]
+counterfactuals: [intensity_remap, texture_shuffle]

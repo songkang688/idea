@@ -1,0 +1,4 @@
+split_types: [random, event_disjoint, camera_disjoint]
+seeds: 3
+detector: yolo_nano
+metrics: [ap, far_at_recall]
