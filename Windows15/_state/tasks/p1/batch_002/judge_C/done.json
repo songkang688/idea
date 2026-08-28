@@ -1,0 +1,45 @@
+{
+  "task_id": "p1_wave_b_batch002_judge_C",
+  "windows_path": "Windows15",
+  "batch": "batch_002",
+  "role": "wave_b_judge",
+  "judge": "C",
+  "focus": "adversarial duplicate audit: intra-batch (intra-shard + cross-shard) and vs accepted batch_001 master; competing pairs protected",
+  "status": "done",
+  "inputs": [
+    "origin/cursor/p1-wave-a-batch002-gen-a-83d7:Windows15/_state/tasks/p1/batch_002/gen_A/ideas.jsonl",
+    "origin/cursor/p1-wave-a-batch002-gen-b-0edc:Windows15/_state/tasks/p1/batch_002/gen_B/ideas.jsonl",
+    "origin/cursor/p1-wave-a-batch002-gen-c-86e2:Windows15/_state/tasks/p1/batch_002/gen_C/ideas.jsonl",
+    "origin/cursor/p1-wave-b-batch001-consolidator-7c96:Windows15/_state/ideas_master.jsonl"
+  ],
+  "outputs": [
+    "Windows15/_state/tasks/p1/batch_002/judge_C/report.md",
+    "Windows15/_state/tasks/p1/batch_002/judge_C/duplicates.json",
+    "Windows15/_state/tasks/p1/batch_002/judge_C/verdict.jsonl",
+    "Windows15/_state/tasks/p1/batch_002/judge_C/done.json"
+  ],
+  "counts": {
+    "ideas_reviewed": 300,
+    "master_ideas_checked": 271,
+    "keep": 280,
+    "duplicate_of": 20,
+    "drop": 0,
+    "hard_duplicates_intra_shard": 8,
+    "hard_duplicates_cross_shard": 10,
+    "hard_duplicates_vs_master": 2,
+    "near_duplicate_families": 45,
+    "protected_competing_pairs": 12,
+    "protected_competing_vs_master": 5,
+    "protected_master_adjacent_kept": 12
+  },
+  "compliance": {
+    "novelty_verification_performed": false,
+    "citations_invented": false,
+    "locked_or_canonical_state_files_modified": false,
+    "sibling_judge_output_copied": false,
+    "writes_confined_to": "Windows15/_state/tasks/p1/batch_002/judge_C/"
+  },
+  "branch": "cursor/p1-wave-b-batch002-judge-c-e0c7",
+  "completed_at": "2026-08-28T21:10:00Z",
+  "recommended_next_task_type": "p1_wave_b_batch002_consolidator"
+}
