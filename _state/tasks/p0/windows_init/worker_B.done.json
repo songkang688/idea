@@ -1,0 +1,17 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "worker_B_safety_inspector",
+  "status": "complete",
+  "output_files": ["_state/tasks/p0/windows_init/worker_B.md"],
+  "unresolved_items": [
+    "Numbering race on 13: a parallel dispatch wave (branches cursor/p0-init-repo-inspector-1ccf, cursor/p0-init-worker-b-safety-8ad3, cursor/p0-init-worker-c-ce9b, pushed 17:12-17:13 UTC 2026-08-28 under _p0_dispatch/tasks/p0_init/) unanimously recommends Windows13; Judge must re-fetch origin immediately before locking any number.",
+    "Identity ambiguity: it is unresolved whether that _p0_dispatch wave is an earlier attempt by this same Windows14 parent or a distinct dispatcher; Judge should reconcile before choosing 13 vs 14.",
+    "Windows3 exists only as nested staging/Windows3_supervisor/ (never top-level Windows3/); Judge should confirm it counts as a used number (this scan counted it).",
+    "Hygiene: Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is invalid JSON (unquoted value `1b` at line 114); downstream ledger parsers must not assume prior research_state.json files parse.",
+    "Nothing is merged to origin/main (single Initial commit); all WindowsN content lives on unmerged cursor/* branches, so duplicate-claim collisions only surface at merge/consolidation time."
+  ],
+  "recommended_next_task_type": "wave_B_judge",
+  "suggested_windows_number": 14,
+  "overwrite_risk": "low",
+  "secret_risk": "low"
+}
