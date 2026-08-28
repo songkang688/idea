@@ -1,0 +1,23 @@
+{
+  "task_id": "P1-lock-verifier",
+  "status": "done",
+  "p0_lock_ok": true,
+  "windows_id": "Windows16",
+  "windows_path": "Windows16",
+  "mismatch_fields": [],
+  "recommended_next_task_type": "P1-idea-generation",
+  "verified_at_utc": "2026-08-28T17:42:00Z",
+  "checks": {
+    "lock_locked_true": true,
+    "research_state_window_locked_true": true,
+    "windows_id_match": true,
+    "windows_number_match": true,
+    "windows_path_match": true,
+    "repository_match": true,
+    "branch_match": true,
+    "created_at_match": true,
+    "defined_by_match": true,
+    "windows_path_exists_on_disk": true
+  },
+  "report": "Windows16/_state/tasks/P1/gate/lock_verifier.md"
+}
