@@ -12,8 +12,10 @@
     "Re-dispatch P0-implementation after decision.json exists; it must create exactly the windows_path from decision.json"
   ],
   "recommended_next_task_type": "WAIT_P0_DECISION",
-  "commit_hash": null,
-  "push_status": "pending",
+  "commit_hash": "56f69fa724667c51feca40d32618dd7d66061839",
+  "push_status": "pushed",
+  "push_detail": "git push -u origin cursor/p0-implementation-blocked-9408 succeeded (new branch created on origin, tracking set up)",
+  "branch": "cursor/p0-implementation-blocked-9408",
   "windows_path": null,
   "windows_created": false,
   "timestamp_utc": "2026-08-28T17:30Z"
