@@ -1,0 +1,20 @@
+{
+  "task_id": "p0_wave_b_judge_B",
+  "role": "judge",
+  "status": "complete",
+  "output_files": [
+    "_dispatcher/p0/wave_b/judge_B/report.md",
+    "_dispatcher/p0/wave_b/judge_B/verdict.json",
+    "_dispatcher/p0/wave_b/judge_B/done.json"
+  ],
+  "unresolved_items": [
+    "Primary residual race: unattributed fourth Wave A family (_state/tasks/P0/wave_A/, capital P0) has no judge verdict yet and its worker_B conditionally floated 15; consolidator/implementation MUST re-run git fetch origin --prune and re-verify Windows15 absent (path, branch token, research_state windows_id, lock claim) on every origin tip immediately before mkdir and before writing window.lock.json, bumping to smallest unused N>15 (16) on collision - never downward to 13/14, never gap-fill 1/5/7, never reuse 2,3,4,6,8-12.",
+    "13-era family consolidated Windows13 at 17:24:30Z (wave_c_implementation next) and 14-era family holds two judge verdicts for Windows14: both directories will likely appear on origin within minutes; any scan stating max=12 goes stale when they land - re-derive at lock time.",
+    "No window.lock.json exists anywhere yet (P1/P2/P3 gates all blocked on it); all sibling number claims are soft branch-level verdicts, so the final fetch-verify-create window is the only authoritative arbiter.",
+    "Hygiene (non-blocking): Windows11/_state/research_state.json on its branch is malformed JSON - gate all new .json on a parse check; Windows8 branch carries an unscannable binary density_head.pt; never commit VM git remote URLs or .git/config contents (VM-level tokens live outside the repo)."
+  ],
+  "recommended_next_task_type": "wave_b_consolidator",
+  "windows_id": "Windows15",
+  "windows_number": 15,
+  "safety_ok_to_create": true
+}
