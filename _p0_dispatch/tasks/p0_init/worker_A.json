@@ -1,0 +1,105 @@
+{
+  "task_id": "p0_init",
+  "role": "worker_A_repository_inspector",
+  "inspected_at_utc": "2026-08-28T17:10:00Z",
+  "repo": "https://github.com/songkang688/idea",
+  "fetch_performed": true,
+  "fetch_command": "git fetch origin --prune --tags",
+  "total_commits_all_refs": 54,
+  "tags": [],
+  "origin_main": {
+    "head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+    "head_subject": "Initial commit",
+    "tree_files": ["README.md"],
+    "contains_windows_dirs": false
+  },
+  "windows_candidates": [
+    {
+      "number": 2,
+      "path": "Windows2/",
+      "on_main": false,
+      "branches": [
+        "origin/cursor/research-idea-evolution-windows2-c2c9",
+        "origin/cursor/windows2-stage1-agent-a-778d",
+        "origin/cursor/windows2-stage1-agent-b-8950",
+        "origin/cursor/windows2-stage1-agent-c-70ca"
+      ],
+      "evidence_commits": ["3c0ab0a", "7c5307e", "83d2be9", "57db2bc"]
+    },
+    {
+      "number": 3,
+      "path": "staging/Windows3_supervisor/",
+      "on_main": false,
+      "note": "exists only under staging/, never as top-level Windows3/",
+      "branches": [
+        "origin/cursor/idea-evolution-windows3-b534",
+        "origin/cursor/w3s1-cluster-b-7ea7"
+      ],
+      "evidence_commits": ["6e8c159", "ea2a921", "468ee32"]
+    },
+    {
+      "number": 4,
+      "path": "Windows4/",
+      "on_main": false,
+      "branches": ["origin/cursor/windows4-research-idea-evolution-2962"],
+      "evidence_commits": ["7c750b2", "3d718af", "1987914"]
+    },
+    {
+      "number": 6,
+      "path": "Windows6/",
+      "on_main": false,
+      "branches": ["origin/cursor/windows6-research-idea-evolution-b55d"],
+      "evidence_commits": ["b4deb49", "ab5d157", "e0dc568"]
+    },
+    {
+      "number": 8,
+      "path": "Windows8/",
+      "on_main": false,
+      "branches": ["origin/cursor/windows8-research-idea-evolution-cd91"],
+      "evidence_commits": ["049cce2", "9a174bb"]
+    },
+    {
+      "number": 9,
+      "path": "Windows9/",
+      "on_main": false,
+      "branches": ["origin/cursor/windows9-p0-init-3045"],
+      "evidence_commits": ["2751f99", "bc7ab44"]
+    },
+    {
+      "number": 10,
+      "path": "Windows10/",
+      "on_main": false,
+      "branches": ["origin/cursor/windows10-p0-init-26ec"],
+      "evidence_commits": ["0255bd7", "46a39dc"]
+    },
+    {
+      "number": 11,
+      "path": "Windows11/",
+      "on_main": false,
+      "branches": ["origin/cursor/windows11-p0-init-c0c1"],
+      "evidence_commits": ["7857d11", "9b23183"]
+    },
+    {
+      "number": 12,
+      "path": "Windows12/",
+      "on_main": false,
+      "branches": ["origin/cursor/windows12-p0-init-a095"],
+      "evidence_commits": ["6cfc93d", "8598f93", "7f9d62a"]
+    }
+  ],
+  "absent_windows_numbers": [1, 5, 7],
+  "max_windows_number_candidate": 12,
+  "recommended_new_windows_number": 13,
+  "git_branch": "cursor/p0-init-repo-inspector-1ccf",
+  "git_branch_at_inspection_start": "main",
+  "git_status_clean": true,
+  "uncommitted_files": [],
+  "remotes": {
+    "origin": "https://github.com/songkang688/idea"
+  },
+  "risks": [
+    "Windows9-12 branch tips all dated 2026-08-28 16:50-16:59 UTC: strong hypothesis of concurrent P0-init runs racing to claim numbers; re-fetch immediately before locking a number",
+    "Nothing is merged to main; main has a single root commit, so any main-only scan would wrongly report zero Windows",
+    "Commit 7f9d62a (Windows12 branch) records a 'Fable 5 policy failure for P0 cloud sub-agents' from a prior run"
+  ]
+}
