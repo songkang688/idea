@@ -2,7 +2,9 @@
 
 Agent I (merger + novelty assassin for batch A; **not PI, no final-3**). Date: 2026-08-28.
 
-Agent F's `prior_work_attack.md` was **not present** at merge time (F's directory contains only `shortlist.md`, `scores.jsonl`, `kills.md`, `parts/`). Per mission, I ran my own web prior-work attacks on **all 17 F Tier A ideas** plus every A keep that touches a G LOCK or a predicted collision cluster. Every citation below is a real, web-verified paper (title-level identity confirmed); where I could not verify a specific paper I say so rather than invent one.
+Agent F's `prior_work_attack.md` was **not present** when this merge started (F's directory contained only `shortlist.md`, `scores.jsonl`, `kills.md`, `parts/`). Per mission, I ran my own web prior-work attacks on **all 17 F Tier A ideas** plus every A keep that touches a G LOCK or a predicted collision cluster. Every citation below is a real, web-verified paper (title-level identity confirmed); where I could not verify a specific paper I say so rather than invent one.
+
+**F's attack file and Stage-4 Agent J's `verdicts.jsonl` were pushed while this fold was in flight; Part 5 reconciles my verdicts with theirs and supersedes Parts 1–4 where they conflict.**
 
 Verdict key: **LOCK** = survives with full claim · **KEEP (FLEX)** = survives, competes on merit · **MUTATE** = survives only with the demoted/refocused claim stated · **MERGE→host** = content survives as a named arm, no slot · **KILL** = literature occupies the territory.
 
@@ -210,4 +212,25 @@ Rescues were re-screened against the same threat map before admission; three wer
 - **A-0034** (VOS oracle smoother), **A-0309** (PQ matching cliff), **A-0255** (Hungarian-matching circularity), **A-0203** (unpromptable objects), **A-0283** (radial extrapolation failure): no occupying prior found at title level; each admitted with the standard "re-search before proposal" flag.
 - Remaining rescues (0010, 0020, 0046, 0062, 0068, 0099, 0101, 0160, 0170, 0178, 0200, 0209, 0233, 0286, 0343, 0348) carry F's original screening plus my collision check against the G portfolio; none touches a G LOCK. A-0343 must cite the ARO/bag-of-words line (ICLR 2023) as its classification-side template; A-0348 must position against test-time-compute work in generative models as an import, not an invention.
 
-**Totals: 5 literature kills (0331, 0352, 0272, 0017, 0107) · 4 mutations kept (0074, 0199, 0326, 0071, plus unit-mutation 0026) · 17 A ideas merged into hosts · everything else survived attack.**
+**Pre-reconciliation totals: 5 literature kills (0331, 0352, 0272, 0017, 0107) · mutations kept (0074, 0199, 0326, 0071, 0026-unit) · 17 A ideas merged into hosts · everything else survived attack. See Part 5 for the final post-reconciliation totals.**
+
+---
+
+## Part 5 — Reconciliation with F's `prior_work_attack.md` and J's Stage-4 verdicts (supersedes conflicts above)
+
+F's attack (28 ideas, live-searched: 2 KILL, 15 MUTATE, 11 SURVIVE) and J's Reviewer-2 verdicts on 23 batch-A survivors arrived mid-merge. Where we independently attacked the same idea, agreement was high (0017 KILL/KILL; 0074, 0199, 0300, 0326, 0331-premise, 0334-mechanism all judged occupied by both). Divergences, resolved as follows:
+
+| ID | Mine | F / J | Resolution |
+|---|---|---|---|
+| **A-0331** | KILL (blob loss/ICI) | F: MUTATE (gradient instrumentation unclaimed) · J: MUTATE, "freshness-fragile, pursue first" (CC-DiceCE ISBI 2026 already prints gradient-field contrasts) | **Restored as FLEX [mut]**: per-instance gradient-share instrumentation + data-side-vs-loss-side remedies; must beat the size-only predictor; execute-first flag |
+| **A-0352** | KILL (segmentation-free EF regression established) | F: MUTATE (non-count scalars open) · J: MUTATE (regression *lost* in-domain on fetal-head circumference PMC8877769; physical-GT anchoring is the survival condition) | **Restored as FLEX [mut]**: physical referents (phantom volumes, harvest biomass, cytometry counts) with boundary ambiguity varied; rides A-0175 infrastructure |
+| **A-0107** | KILL (GRAR/TOPGN/Foster) | F: MUTATE (supervision-purity fraction + fleet-scaling law unclaimed; F found SILICA/Bootstrap-Perception, I found GRAR — all use the cue, none train pure-RGB from mined masks) | **Restored as FLEX [mut]**: purity taxonomy + pseudo-label scaling study |
+| **A-0334** | LOCK (leakage-at-scale) | F: MUTATE (silhouette recognition classical) · J: MUTATE — **BareBones (arXiv:2604.10528)** now provides the mask-only recognition benchmark, with an opposite headline for VLMs; only the documented-practice privacy audit survives | **Demoted to FLEX [mut]**; C-0333 arm retained but flagged as partially scooped by BareBones |
+| **A-0349** | LOCK | J: MUTATE — training-labels objection (models are trained on human conventions, so in-distribution divergence should be ~0); Hoffman–Richards minima confound | **Demoted to FLEX [mut]**: convention-learnability version (model vs own training labels, per junction type, evidence-strength scaling, curvature/function dissociation control) |
+| **A-0199** | MUTATE (dose-response) | J: MUTATE with freshness hit — HalluSegBench (arXiv:2506.21546), HII-DPO already own segmentation-hallucination framing | Kept FLEX; repositioned as the dense/classical-segmenter complement with fully-known training data |
+| **A-0121** | LOCK | J: SURVIVE-IF-EXPERIMENT; freshness: VehicleSec 2026 mirror-induced **LiDAR** phantoms + patents | Kept LOCK; camera-side audit unclaimed; pilot-gated (pre-registered phantom-rate floor); "hidden error class" rhetoric retired |
+| **A-0071** | MUTATE (ecosystem audit) | J: MUTATE — pairwise inter-rater Dice is **not** an upper bound (Cellpose-SAM argument); consensus-referenced ceiling required | Mutation adopted: rater-vs-consensus extrapolated ceiling, SOTA located against that, style-vs-anatomy residual decomposition |
+| **A-0148** | KEEP | F: MUTATE — soft-vs-hard highlighting literature owns the core format effect | Mutation adopted: COD-specific with calibration quality experimentally manipulated; harm condition links A-0188 |
+| **A-0145 / A-0215 / A-0026 / A-0181 / A-0237(+0249) / A-0301 / A-0074 / A-0326 / A-0076 / A-0300 / A-0198 / A-0245** | keep/merge | F/J mutations of scope | All adopted as row-level notes in `provisional_200.md`; none changes slot structure (my merges 0249→0237, 0300→0290, 0198→C-0311, 0245→C-0150, 0100→C-0122 are each independently endorsed by F or J) |
+
+**Final totals after reconciliation: 2 literature kills (0272, 0017) · 3 kills reverted to mutations (0331, 0352, 0107) · 2 LOCK demotions (0334, 0349) · A portfolio 85 slots, grand total 200.**

@@ -52,7 +52,7 @@ Members before merge would have been 6+ slots. After merge, exactly **5**:
 
 | Collision | Resolution |
 |---|---|
-| **A-0334 vs C-0333** ("mask shape leaks semantics" vs "silhouettes are almost enough") | **A-0334 hosts ← C-0333.** Same shape-sufficiency territory; A-0334 carries the larger claim set (dataset-scale leakage + privacy demonstration); C-0333's detection-class sufficiency measurement becomes the capability arm. |
+| **A-0334 vs C-0333** ("mask shape leaks semantics" vs "silhouettes are almost enough") | **A-0334 hosts ← C-0333.** Same shape-sufficiency territory; A-0334 carries the larger claim set. Post-reconciliation caveat: J found **BareBones (arXiv:2604.10528)** — a silhouette-only recognition benchmark — which scoops much of C-0333's capability measurement and demotes the host to FLEX [mut] (documented-practice privacy audit is the surviving leg). |
 | **A-0237 vs C-0208** (label conventions masquerade as domain shift vs "label conventions are a domain" hosting 0014/0134) | **A-0237 hosts ← C-0208 (incl. its 0014/0134 arms) ← A-0249.** A's version has the falsifiable >25%-of-gap figure and the UDA credit-assignment stakes; C-0208's framing and arms survive inside. |
 | **A-0337 vs C-0078** (mask metrics vs downstream, segmentation vs detection) | **A-0337 hosts ← C-0078.** One metric→downstream validity program with instrumented consumers; detection (AP) is an arm. Also carries A-0352's residual decision-rule framing. |
 | **A-0300 vs A-0290** (ensemble-gain collapse vs shared blind spots) | **A-0290 hosts ← A-0300** (temporal-trend arm; same model-zoo infrastructure, same monoculture thesis). |
