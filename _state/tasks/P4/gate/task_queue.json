@@ -1,0 +1,55 @@
+{
+  "queue_id": "P4-reviewer-war-wave-a",
+  "stage": "P4 Reviewer #2 War (~50 -> ~20)",
+  "generated_by": "P4-batch-planner",
+  "generated_at": "2026-08-28T17:30:00Z",
+  "status": "blocked",
+  "blocking_reason": "No authoritative window: zero window.lock.json anywhere in the repository; four conflicting research_state.json on unmerged P0 branches (Windows9/10/11/12); zero Stage 3 survivors exist on any ref (all ideas_master.jsonl empty, no stage3_prior_work.md). Do-not-guess rule prevents selecting a WindowsN.",
+  "recommended_next_task_type": "P4_BLOCKED_NEED_P0",
+  "windows_id": null,
+  "windows_path": null,
+  "stage3_survivor_count": null,
+  "ready_task_count": 0,
+  "tasks": [],
+  "wave_a_attack_templates": {
+    "note": "Templates only. NOT runnable until P0 emits one authoritative WindowsN/_state/window.lock.json + research_state.json and Stages 1-3 produce ~50 Stage 3 survivors in <windows_path>/_state/ideas_master.jsonl. On the unblocked re-run, the batch planner will instantiate one task per attacker role per batch of survivors, filling idea_ids from actual survivor records. No attacks are run by the planner.",
+    "input_contract": {
+      "survivor_source": "<windows_path>/_state/ideas_master.jsonl (Stage 3 survivors only)",
+      "state_source": "<windows_path>/_state/research_state.json",
+      "prior_work_context": "<windows_path>/selection_history/stage3_prior_work.md (if present)"
+    },
+    "output_contract": {
+      "per_task_output": "<windows_path>/_state/tasks/P4/wave_a/<task_id>.attack.jsonl",
+      "per_task_done": "<windows_path>/_state/tasks/P4/wave_a/<task_id>.done.json",
+      "attack_record_fields": ["idea_id", "attacker_role", "attack_class", "severity_1to5", "argument", "evidence_or_citation_or_none", "fatal_flag"],
+      "rules": ["attacks only - no Keep/Kill verdicts (verdicts belong to a later wave)", "no fabricated citations: cite only verifiable sources or mark evidence_or_citation_or_none as 'none'"]
+    },
+    "roles": [
+      {
+        "task_id_template": "P4A-R2-<batch_id>",
+        "role": "Reviewer #2 (hostile generalist referee)",
+        "mandate": "For each survivor idea in the batch, produce the strongest good-faith rejection case: novelty deflation vs known prior work, overclaiming, weak framing, unfalsifiable claims, 'so what' failures.",
+        "depends_on": ["P0 lock", "Stage 3 survivors"]
+      },
+      {
+        "task_id_template": "P4A-METH-<batch_id>",
+        "role": "Methodology skeptic",
+        "mandate": "For each survivor idea in the batch, attack feasibility and rigor: experimental design flaws, missing baselines/controls, confounds, data availability, statistical power, compute/scale realism, reproducibility.",
+        "depends_on": ["P0 lock", "Stage 3 survivors"]
+      },
+      {
+        "task_id_template": "P4A-SIG-<batch_id>-",
+        "role": "Significance skeptic",
+        "mandate": "For each survivor idea in the batch, attack impact: marginal-gain critique, niche audience, dead-end trajectory, better-served-by-existing-methods, real-world irrelevance.",
+        "depends_on": ["P0 lock", "Stage 3 survivors"]
+      }
+    ],
+    "batching_policy": {
+      "expected_survivors": "~50 (actual count read from ideas_master.jsonl at re-run)",
+      "batch_size": 10,
+      "expected_batches": "ceil(actual_survivor_count / 10)",
+      "tasks_per_batch": 3,
+      "parallelism": "all Wave A attack tasks are independent and may run in parallel"
+    }
+  }
+}

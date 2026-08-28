@@ -1,0 +1,24 @@
+{
+  "task_id": "P4-batch-planner",
+  "role": "P4 State Reader / Batch Planner (Wave GATE, parent WindowsX, stage: P4 Reviewer #2 War ~50 -> ~20)",
+  "status": "blocked",
+  "output_files": [
+    "_state/tasks/P4/gate/state_reader.md",
+    "_state/tasks/P4/gate/state_reader.done.json",
+    "_state/tasks/P4/gate/task_queue.json",
+    "_state/tasks/P4/gate/batches_manifest.json"
+  ],
+  "unresolved_items": [
+    "ZERO window.lock.json files exist anywhere: working tree /workspace and full trees of all 37 refs/remotes/origin/* branches searched after git fetch --all --prune. p0_lock_ok=false; window_locked unreadable.",
+    "FOUR conflicting research_state.json files exist on four divergent, unmerged P0 branches: Windows9/_state/research_state.json (origin/cursor/windows9-p0-init-3045), Windows10/_state/research_state.json (origin/cursor/windows10-p0-init-26ec), Windows11/_state/research_state.json (origin/cursor/windows11-p0-init-c0c1), Windows12/_state/research_state.json (origin/cursor/windows12-p0-init-a095). Conflict => blocked; no WindowsN guessed.",
+    "None of the four P0 states is merged to main (origin/main @ 990f3eb contains only README.md).",
+    "No Stage 3 survivors exist anywhere: all four states report current_stage='Stage 1', status='initialized', total_ideas=0, survivors=0; all four ideas_master.jsonl files are empty (0 non-empty lines); no stage3_prior_work.md exists on any ref; selection_history/ contains only .gitkeep. The expected ~50-survivor P4 input is absent.",
+    "P0 must re-run/complete first: emit exactly one authoritative WindowsN/_state/window.lock.json (window_locked=true) consistent with its sibling research_state.json, discoverable from the base branch. Then Stages 1-3 must run before P4 can plan Reviewer-War batches."
+  ],
+  "recommended_next_task_type": "P4_BLOCKED_NEED_P0",
+  "p0_lock_ok": false,
+  "windows_id": null,
+  "windows_path": null,
+  "stage3_survivor_count": null,
+  "batch_count": 0
+}

@@ -1,0 +1,20 @@
+{
+  "manifest_id": "P4-reviewer-war-batches",
+  "stage": "P4 Reviewer #2 War (~50 -> ~20)",
+  "generated_by": "P4-batch-planner",
+  "generated_at": "2026-08-28T17:30:00Z",
+  "status": "blocked",
+  "windows_id": null,
+  "windows_path": null,
+  "stage3_survivor_count": null,
+  "batch_count": 0,
+  "batches": [],
+  "blocking_reason": "Cannot form batches: no authoritative window (zero window.lock.json anywhere; four conflicting research_state.json on unmerged P0 branches Windows9/10/11/12) and zero Stage 3 survivors exist on any ref (all ideas_master.jsonl empty; no stage3_prior_work.md).",
+  "planned_policy_on_unblock": {
+    "batch_size": 10,
+    "batch_id_format": "B<index>",
+    "membership": "Stage 3 survivor idea_ids read from <windows_path>/_state/ideas_master.jsonl in file order",
+    "tasks_per_batch": ["P4A-R2-<batch_id>", "P4A-METH-<batch_id>", "P4A-SIG-<batch_id>"]
+  },
+  "recommended_next_task_type": "P4_BLOCKED_NEED_P0"
+}
