@@ -27,6 +27,7 @@
 - N COMPLETE: `Windows2/_wip/stage5_agent_N/`. Recommended battle-5: C-0306, C-0338, B-0114 (4-arm), A-0061, A-0206; wildcard A-0028.
 
 - L COMPLETE: `Windows2/_wip/stage6_agent_L/`. Binding PI response: `Windows2/_wip/PI_BINDING.md`.
+- O COMPLETE: Top 20 in `Windows2/_wip/stage6_agent_O/top20.md`.
 
 ## Eliminated (confirmed, do not revive without new evidence)
 

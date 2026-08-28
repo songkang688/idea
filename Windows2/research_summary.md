@@ -6,18 +6,19 @@
 
 ## Current stage
 
-190-slot 200-cut done. N Stage-5 protocols **complete**. M →50, O →20, P implements C-0306 killer-experiment prototype (highest ROI).
+**Stage 6 Top-20 COMPLETE** (`stage6_agent_O/top20.md`). M still producing a 50 (now secondary). P building C-0306 proto. Q cutting 20→5.
+
+O battle-ready 5: C-0306, B-0114-4arm, B-0194+0169, A-0028, C-0057.
+N ROI-5: C-0306, C-0338, A-0061, A-0028, B-0114.
+
+Intersection gravity: **C-0306, B-0114-4arm, A-0028**. Tension: C-0338 vs C-0057 vs A-0061 vs A-0206 (audit cap).
 
 | Agent | Status |
 | --- | --- |
-| N | COMPLETE — `stage5_agent_N/` ROI: C-0306 > C-0338 > A-0061 > A-0028 > B-0114-4arm |
-| M | RUNNING — 50 |
-| O | RUNNING — 20 |
-| P | DISPATCHING — runnable proto for C-0306 |
-
-## PI constraints for Top-3 (from N+L)
-
-Exclusion pairs: B-0114×B-0001; A-0061×A-0206; at most one of {A-0061, A-0206, C-0338}. Top-3 must include a constructive package (C-0306 qualifies). A-0028 is run-regardless wildcard.
+| O | COMPLETE — Top 20 |
+| M | RUNNING — 50 (reconcile if it contradicts O) |
+| P | RUNNING — C-0306 proto |
+| Q | DISPATCHING — 20→5 battle |
 
 ## Git safety
 
