@@ -1,0 +1,25 @@
+{
+  "task_id": "P6-meeting-coordinator",
+  "role": "P6 Meeting Coordinator / State Reader (parent: WindowsX)",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P6/gate/state_reader.md",
+    "/workspace/_state/tasks/P6/gate/state_reader.done.json",
+    "/workspace/_state/tasks/P6/gate/task_queue.json",
+    "/workspace/_state/tasks/P6/gate/disagreement_matrix_stub.json"
+  ],
+  "unresolved_items": [
+    "window.lock.json not found anywhere in /workspace (filename-based recursive search including hidden paths; 0 hits) - Windows identity cannot be established and guessing WindowsN is prohibited",
+    "research_state.json not found anywhere in /workspace (same filename-based search scope; 0 hits) - stage progression state unknown",
+    "no Windows* directory exists in /workspace, so no windows_path exists to load Stage 5 Top 5 dossiers from; stage5_top5_count=0",
+    "Stage 5 (P5) Top 5 output cannot exist without a locked windows_path; P5 absence is secondary to the missing P0 lock",
+    "prior gate markers concur: P1 gate_auditor (p1_may_start=false, P1_BLOCKED_NEED_P0) and P3 lock_verifier (blocked, p0_lock_ok=false, both lock files missing_file); referenced P1/gate/state_reader.done.json is absent on this checkout but P1 gate_auditor records the equivalent p0_lock_ok=false finding",
+    "unmerged origin/cursor/p0-* branches exist with conflicting research_state.json variants (per P3 findings); none merged to main, none authoritative on this checkout",
+    "task_queue.json and disagreement_matrix_stub.json written EMPTY per blocked-state rules; outputs written to fallback path /workspace/_state/tasks/P6/gate/ because no valid windows_path exists"
+  ],
+  "recommended_next_task_type": "P6_BLOCKED_NEED_P0",
+  "p0_lock_ok": false,
+  "windows_id": null,
+  "windows_path": null,
+  "stage5_top5_count": 0
+}

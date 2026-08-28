@@ -1,0 +1,11 @@
+{
+  "stage": "P6-research-group-battle-top5-to-final3",
+  "generated_by": "P6-meeting-coordinator",
+  "status": "blocked",
+  "blocked_reason": "window.lock.json and research_state.json missing; no windows_path; Stage 5 Top 5 dossiers unavailable (stage5_top5_count=0)",
+  "windows_id": null,
+  "windows_path": null,
+  "stage5_top5_count": 0,
+  "stage5_top5_ids": [],
+  "tasks": []
+}
