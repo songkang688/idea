@@ -2,7 +2,7 @@
 
 ## Most dangerous rejection
 
-“This is WiSE-FT with extra distillation. HQ-SAM already reported the COCO drop. MedSAM already fine-tunes SAM. No new mechanism.”
+“This is WiSE-FT with extra distillation. HQ-SAM already reported the COCO drop. RobustSAM already preserves SAM via consistency. MedSAM already fine-tunes SAM. No new mechanism.”
 
 ## Hidden assumption
 
@@ -16,7 +16,7 @@ That COCO click mIoU is a valid proxy for SA-1B promptability, and that interpol
 
 ## Missing baselines
 
-WiSE-FT, model soup of epoch checkpoints, EWC, LoRA at matched train time, decoder-only.
+WiSE-FT, RobustSAM-style frozen consistency, R-Adapter interpolation, model soup of epoch checkpoints, EWC, LoRA at matched train time, decoder-only.
 
 ## Unfairness
 

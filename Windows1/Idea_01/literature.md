@@ -15,6 +15,10 @@ Status: KNOWN unless marked UNSURE. URLs are canonical where possible.
 - Wortsman et al., *Model soups*, ICML 2022. https://arxiv.org/abs/2203.05482
 - Hu et al., *LoRA*, ICLR 2022. https://arxiv.org/abs/2106.09685
 - Kirkpatrick et al., *EWC*, PNAS 2017. https://arxiv.org/abs/1612.00796
+- Kim et al., *R-Adapter* (WiSE-style ensemble inside PEFT; CLIP, not SAM), ECCV 2024. https://arxiv.org/abs/2408.05749
+- Mai et al., *Lessons and Insights from a Unifying Study of PEFT in Visual Recognition* (WiSE-for-PEFT), CVPR 2025. https://arxiv.org/abs/2409.16434
+- Chen et al., *RobustSAM*, CVPR 2024. https://arxiv.org/abs/2406.09627 — consistency vs frozen SAM on degraded images; **architectural**, not a COCO-interactive constraint
+- Zhong et al., *Conv-LoRA*, ICLR 2024. https://arxiv.org/abs/2401.17868 — PEFT forgetting mitigation by freezing, not a performance constraint
 
 ## Interactive evaluation (also used as attacks on naive click-sim)
 
@@ -34,4 +38,6 @@ Status: KNOWN unless marked UNSURE. URLs are canonical where possible.
 
 ## Relation
 
-HQ-SAM/MedSAM = **neighbors**. WiSE-FT = **kill-switch baseline**. RClicks/TETRIS = **eval protocol constraints**, not competitors.
+HQ-SAM/MedSAM/RobustSAM/Conv-LoRA = **neighbors** (freeze or extra modules, not a J_gen constraint). WiSE-FT / R-Adapter = **kill-switch / PEFT-interpolation** baselines. RClicks/TETRIS = **eval protocol constraints**.
+
+Lit-verify (2026-08-28): **NOT FOUND** an explicit paper that fine-tunes SAM subject to a constraint that COCO interactive performance not degrade. The combination remains OPEN as of that search (EVIDENCE = search miss, not proof of unpublished status).

@@ -1,0 +1,1 @@
+Verified 2026-08-28 by independent literature agent. Full table in that agent's report. Novelty check: constrained SAM-FT retaining COCO interactive performance — NOT FOUND as an explicit optimization constraint; nearest are HQ-SAM, RobustSAM, Conv-LoRA, R-Adapter.
