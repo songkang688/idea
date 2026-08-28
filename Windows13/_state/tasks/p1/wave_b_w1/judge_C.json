@@ -1,0 +1,986 @@
+{
+ "task_id": "p1_wave_b_w1",
+ "role": "judge_C_adversary",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "wave_b_w1",
+ "branch": "cursor/p1-wave-b-judge-c-adversary-5030",
+ "generated_at_utc": "2026-08-28T19:00:13Z",
+ "inputs": {
+  "gen_a_sam_foundation_peft": {
+   "branch": "cursor/p1-gen-a-sam-foundation-peft-c8d4",
+   "path": "Windows13/_state/tasks/p1/generators/gen_a_sam_foundation_peft/ideas_shard.jsonl",
+   "ideas": 102
+  },
+  "gen_b_hard_domain_dense_prediction": {
+   "branch": "cursor/p1-gen-b-hard-domain-a13a",
+   "path": "Windows13/_state/tasks/p1/generators/gen_b_hard_domain_dense_prediction/ideas_shard.jsonl",
+   "ideas": 96
+  },
+  "gen_c_contrarian_eval": {
+   "branch": "cursor/windows13-p0-init-implementation-d93f",
+   "path": "Windows13/_state/tasks/p1/generators/gen_c_contrarian_eval/ideas_shard.jsonl",
+   "ideas": 104
+  },
+  "judge_A_consulted": {
+   "branch": "cursor/p1-wave-b-judge-a-dedup-f906",
+   "note": "Read after this judge's dispositions were drafted; used for format conventions and post-hoc divergence notes only. All verdicts here are independent."
+  },
+  "judge_B": "not found on remote at judging time (searched refs for p1-wave-b-judge-b*); judged without it"
+ },
+ "epistemic_status": "NO novelty verified for any kept idea. All prior-art-risk statements are this judge's unverified hypotheses. No citations invented; three generator-side references to real named works (Geirhos, Darcet, Goh) were checked for tone, flagged as convention risk, not fabrication.",
+ "method": [
+  "Pass 1 field audit: all 302 ideas checked for the 12 required fields (community_default_belief, why_it_might_be_wrong, fastest_falsification_experiment included); scan for fabricated citations and unhedged novelty claims.",
+  "Pass 2 template extraction: meta-templates identified per shard and cross-shard (SAM+X, LoRA+X, loss+X, cue-ablation, hidden-variance, shortcut-solvable, reweighting, scale-null, convention-decodability, etc.); each family consolidated to paradigm primaries.",
+  "Pass 3 falsifiability and tone attack: existence-claims, protocol-proposals-dressed-as-hypotheses, strawman community beliefs, and known-critique restatements flagged or killed.",
+  "Pass 4 anomaly protection: unusual, contrarian, non-template ideas explicitly protected against consolidation pressure.",
+  "Kill/merge is hypothesis-level: two ideas merge only when they assert the same mechanism testable by one experimental design; substrate permutations (domain, metric, technique slot) do not count as distinct hypotheses."
+ ],
+ "counts": {
+  "input_total": 302,
+  "input_by_shard": {
+   "gen_a": 102,
+   "gen_b": 96,
+   "gen_c": 104
+  },
+  "keep": 241,
+  "keep_by_shard": {
+   "gen_a": 88,
+   "gen_b": 83,
+   "gen_c": 70
+  },
+  "kill": 9,
+  "kill_by_shard": {
+   "gen_a": 3,
+   "gen_b": 0,
+   "gen_c": 6
+  },
+  "merge": 52,
+  "merge_by_shard": {
+   "gen_a": 11,
+   "gen_b": 13,
+   "gen_c": 28
+  },
+  "kill_or_merge_total": 61,
+  "template_families": 20,
+  "anomalies_protected": 23,
+  "cross_shard_attractors": 10
+ },
+ "keep_ids": [
+  "W13-P1-A-001",
+  "W13-P1-A-002",
+  "W13-P1-A-003",
+  "W13-P1-A-004",
+  "W13-P1-A-005",
+  "W13-P1-A-006",
+  "W13-P1-A-007",
+  "W13-P1-A-008",
+  "W13-P1-A-010",
+  "W13-P1-A-011",
+  "W13-P1-A-012",
+  "W13-P1-A-013",
+  "W13-P1-A-014",
+  "W13-P1-A-015",
+  "W13-P1-A-016",
+  "W13-P1-A-018",
+  "W13-P1-A-020",
+  "W13-P1-A-021",
+  "W13-P1-A-022",
+  "W13-P1-A-023",
+  "W13-P1-A-024",
+  "W13-P1-A-025",
+  "W13-P1-A-026",
+  "W13-P1-A-027",
+  "W13-P1-A-028",
+  "W13-P1-A-030",
+  "W13-P1-A-031",
+  "W13-P1-A-032",
+  "W13-P1-A-033",
+  "W13-P1-A-034",
+  "W13-P1-A-035",
+  "W13-P1-A-036",
+  "W13-P1-A-037",
+  "W13-P1-A-038",
+  "W13-P1-A-039",
+  "W13-P1-A-040",
+  "W13-P1-A-041",
+  "W13-P1-A-042",
+  "W13-P1-A-043",
+  "W13-P1-A-044",
+  "W13-P1-A-045",
+  "W13-P1-A-046",
+  "W13-P1-A-047",
+  "W13-P1-A-048",
+  "W13-P1-A-049",
+  "W13-P1-A-050",
+  "W13-P1-A-051",
+  "W13-P1-A-052",
+  "W13-P1-A-053",
+  "W13-P1-A-054",
+  "W13-P1-A-055",
+  "W13-P1-A-056",
+  "W13-P1-A-057",
+  "W13-P1-A-058",
+  "W13-P1-A-059",
+  "W13-P1-A-060",
+  "W13-P1-A-061",
+  "W13-P1-A-062",
+  "W13-P1-A-063",
+  "W13-P1-A-065",
+  "W13-P1-A-066",
+  "W13-P1-A-067",
+  "W13-P1-A-069",
+  "W13-P1-A-071",
+  "W13-P1-A-072",
+  "W13-P1-A-073",
+  "W13-P1-A-075",
+  "W13-P1-A-076",
+  "W13-P1-A-078",
+  "W13-P1-A-079",
+  "W13-P1-A-080",
+  "W13-P1-A-081",
+  "W13-P1-A-082",
+  "W13-P1-A-083",
+  "W13-P1-A-084",
+  "W13-P1-A-086",
+  "W13-P1-A-087",
+  "W13-P1-A-088",
+  "W13-P1-A-090",
+  "W13-P1-A-091",
+  "W13-P1-A-092",
+  "W13-P1-A-093",
+  "W13-P1-A-095",
+  "W13-P1-A-096",
+  "W13-P1-A-097",
+  "W13-P1-A-099",
+  "W13-P1-A-101",
+  "W13-P1-A-102",
+  "W13-P1-B-001",
+  "W13-P1-B-002",
+  "W13-P1-B-003",
+  "W13-P1-B-004",
+  "W13-P1-B-005",
+  "W13-P1-B-006",
+  "W13-P1-B-008",
+  "W13-P1-B-009",
+  "W13-P1-B-010",
+  "W13-P1-B-011",
+  "W13-P1-B-012",
+  "W13-P1-B-014",
+  "W13-P1-B-016",
+  "W13-P1-B-017",
+  "W13-P1-B-018",
+  "W13-P1-B-019",
+  "W13-P1-B-020",
+  "W13-P1-B-021",
+  "W13-P1-B-022",
+  "W13-P1-B-023",
+  "W13-P1-B-024",
+  "W13-P1-B-025",
+  "W13-P1-B-026",
+  "W13-P1-B-028",
+  "W13-P1-B-029",
+  "W13-P1-B-030",
+  "W13-P1-B-031",
+  "W13-P1-B-032",
+  "W13-P1-B-033",
+  "W13-P1-B-034",
+  "W13-P1-B-035",
+  "W13-P1-B-037",
+  "W13-P1-B-040",
+  "W13-P1-B-042",
+  "W13-P1-B-043",
+  "W13-P1-B-044",
+  "W13-P1-B-045",
+  "W13-P1-B-047",
+  "W13-P1-B-048",
+  "W13-P1-B-049",
+  "W13-P1-B-050",
+  "W13-P1-B-052",
+  "W13-P1-B-053",
+  "W13-P1-B-054",
+  "W13-P1-B-055",
+  "W13-P1-B-056",
+  "W13-P1-B-057",
+  "W13-P1-B-058",
+  "W13-P1-B-059",
+  "W13-P1-B-060",
+  "W13-P1-B-061",
+  "W13-P1-B-062",
+  "W13-P1-B-063",
+  "W13-P1-B-065",
+  "W13-P1-B-066",
+  "W13-P1-B-067",
+  "W13-P1-B-068",
+  "W13-P1-B-069",
+  "W13-P1-B-070",
+  "W13-P1-B-071",
+  "W13-P1-B-072",
+  "W13-P1-B-073",
+  "W13-P1-B-074",
+  "W13-P1-B-075",
+  "W13-P1-B-076",
+  "W13-P1-B-077",
+  "W13-P1-B-078",
+  "W13-P1-B-079",
+  "W13-P1-B-080",
+  "W13-P1-B-081",
+  "W13-P1-B-082",
+  "W13-P1-B-083",
+  "W13-P1-B-084",
+  "W13-P1-B-085",
+  "W13-P1-B-086",
+  "W13-P1-B-087",
+  "W13-P1-B-089",
+  "W13-P1-B-090",
+  "W13-P1-B-091",
+  "W13-P1-B-092",
+  "W13-P1-B-093",
+  "W13-P1-B-094",
+  "W13-P1-B-095",
+  "W13-P1-C-001",
+  "W13-P1-C-002",
+  "W13-P1-C-003",
+  "W13-P1-C-004",
+  "W13-P1-C-006",
+  "W13-P1-C-008",
+  "W13-P1-C-009",
+  "W13-P1-C-010",
+  "W13-P1-C-011",
+  "W13-P1-C-012",
+  "W13-P1-C-013",
+  "W13-P1-C-018",
+  "W13-P1-C-019",
+  "W13-P1-C-020",
+  "W13-P1-C-021",
+  "W13-P1-C-022",
+  "W13-P1-C-023",
+  "W13-P1-C-024",
+  "W13-P1-C-025",
+  "W13-P1-C-027",
+  "W13-P1-C-028",
+  "W13-P1-C-029",
+  "W13-P1-C-032",
+  "W13-P1-C-034",
+  "W13-P1-C-037",
+  "W13-P1-C-039",
+  "W13-P1-C-040",
+  "W13-P1-C-041",
+  "W13-P1-C-042",
+  "W13-P1-C-043",
+  "W13-P1-C-045",
+  "W13-P1-C-046",
+  "W13-P1-C-048",
+  "W13-P1-C-054",
+  "W13-P1-C-056",
+  "W13-P1-C-057",
+  "W13-P1-C-058",
+  "W13-P1-C-060",
+  "W13-P1-C-061",
+  "W13-P1-C-063",
+  "W13-P1-C-064",
+  "W13-P1-C-065",
+  "W13-P1-C-066",
+  "W13-P1-C-067",
+  "W13-P1-C-068",
+  "W13-P1-C-069",
+  "W13-P1-C-070",
+  "W13-P1-C-071",
+  "W13-P1-C-072",
+  "W13-P1-C-073",
+  "W13-P1-C-074",
+  "W13-P1-C-075",
+  "W13-P1-C-077",
+  "W13-P1-C-079",
+  "W13-P1-C-081",
+  "W13-P1-C-082",
+  "W13-P1-C-083",
+  "W13-P1-C-084",
+  "W13-P1-C-085",
+  "W13-P1-C-086",
+  "W13-P1-C-088",
+  "W13-P1-C-089",
+  "W13-P1-C-090",
+  "W13-P1-C-091",
+  "W13-P1-C-092",
+  "W13-P1-C-095",
+  "W13-P1-C-096",
+  "W13-P1-C-097",
+  "W13-P1-C-102",
+  "W13-P1-C-103"
+ ],
+ "kill_ids": [
+  "W13-P1-A-077",
+  "W13-P1-A-085",
+  "W13-P1-A-089",
+  "W13-P1-C-016",
+  "W13-P1-C-036",
+  "W13-P1-C-055",
+  "W13-P1-C-059",
+  "W13-P1-C-062",
+  "W13-P1-C-104"
+ ],
+ "kill_reasons": {
+  "W13-P1-A-077": "No held community belief is attacked: nobody claims text conditioning costs nothing in robustness. Immunity of a coordinate-only interface to typographic binding follows from the interface definition; quantifying an expected asymmetry is a measurement, not a hypothesis. SAM+X security permutation.",
+  "W13-P1-A-085": "Early-exit / dynamic-depth is a mature efficiency literature ported to SAM. No belief challenged; the mechanism ('easy inputs saturate early') is the premise of that literature, not a finding. Unverified prior-art risk: very high.",
+  "W13-P1-A-089": "Curriculum/ordering is a generic continual-learning permutation (orders x domains). Mechanism stated at metaphor level ('breaks structures'); falsification requires a combinatorial sweep of sequential adaptations. High cost, low distinctiveness.",
+  "W13-P1-C-016": "Restates the long-standing critique that OOD benchmarks fall to trivial low-level statistics; hedged in tone but adds no new mechanism or protocol beyond re-running known baselines. Unverified prior-art risk: very high.",
+  "W13-P1-C-036": "Strawman community belief: the field demonstrably does not hold that region overlap suffices; boundary-quality metrics are standard practice. The contrarian frame is manufactured; what remains is a correlation audit.",
+  "W13-P1-C-055": "Attention-vs-explanation faithfulness is a famous, extensively litigated debate. The idea restates it for vision transformers without a new falsifiable twist.",
+  "W13-P1-C-062": "Non-transfer of adversarial robustness across threat models is a well-documented negative result. The proposed cross-threat matrix is a replication catalog, not a new claim.",
+  "W13-P1-C-059": "The metric-artifact account of emergent abilities is a widely known position; porting it to visual tasks changes neither the hypothesis nor the test.",
+  "W13-P1-C-104": "Adaptive human-in-the-loop stress-testing is established practice, and 'static sets miss failures humans can find' is not a contested belief. Nothing distinct left to falsify."
+ },
+ "merge_map": {
+  "W13-P1-A-009": {
+   "into": "W13-P1-A-006",
+   "reason": "Click-map non-smoothness: A-006 is the phenomenology (structured interior failure sets), A-009 the positional-encoding aliasing mechanism. One study, two arms."
+  },
+  "W13-P1-A-017": {
+   "into": "W13-P1-A-040",
+   "reason": "Same pre-training regression: predict PEFT outcome from frozen-feature similarity. The head-vs-LoRA crossover size is a derived quantity of A-040's forecaster."
+  },
+  "W13-P1-A-019": {
+   "into": "W13-P1-A-099",
+   "reason": "Same mechanism: gradients through a fixed prompt protocol reshape the prompt pathway. A-099 is the stronger endpoint (prompt-ignoring); A-019 is a milestone on the same curve."
+  },
+  "W13-P1-A-029": {
+   "into": "W13-P1-A-026",
+   "reason": "Both assert selection-not-generation is the bottleneck. A-026 diagnoses; A-029 is the intervention arm (head recalibration) of the same experiment."
+  },
+  "W13-P1-A-064": {
+   "into": "W13-P1-A-015",
+   "reason": "Synthetic-data arm of the ambiguity-collapse hypothesis; A-015 already predicts collapse rate set by dataset ambiguity level."
+  },
+  "W13-P1-A-068": {
+   "into": "W13-P1-A-026",
+   "reason": "Oracle-vs-top1 inflation growing with shift is the protocol-level corollary of ranking-degrades-before-generation."
+  },
+  "W13-P1-A-070": {
+   "into": "W13-P1-C-024",
+   "reason": "Cross-shard duplicate: seen-shot inflation of zero-shot claims. C-024 is the umbrella; A-070 is the SAM/SA-1B case study."
+  },
+  "W13-P1-A-074": {
+   "into": "W13-P1-A-006",
+   "reason": "Attack corollary: a universal click-offset field presupposes and exploits the A-006/A-009 failure structure; not an independent hypothesis."
+  },
+  "W13-P1-A-094": {
+   "into": "W13-P1-A-092",
+   "reason": "Click-policy mismatch: A-092 measures the human-simulator gap; the gradient-derived click advisor is its intervention arm."
+  },
+  "W13-P1-A-098": {
+   "into": "W13-P1-A-018",
+   "reason": "Recalibration-not-relearning family, weight side: LayerNorm statistics re-estimation is a special case of bias/affine-only adaptation."
+  },
+  "W13-P1-A-100": {
+   "into": "W13-P1-A-011",
+   "reason": "Recalibration-not-relearning family, input side: a learned 1x1 stem is the parametric version of histogram matching."
+  },
+  "W13-P1-B-007": {
+   "into": "W13-P1-B-033",
+   "reason": "'Rankings invert under a soft metric' is the consequence; B-033 supplies the mechanism (annotator-threshold guessing) and the oracle-threshold test."
+  },
+  "W13-P1-B-013": {
+   "into": "W13-P1-B-073",
+   "reason": "Two-layer output space resolving see-through pixels: B-073 states the participating-media umbrella; glass front/rear labels are an instantiation."
+  },
+  "W13-P1-B-015": {
+   "into": "W13-P1-B-089",
+   "reason": "The two-axis jitter/smear taxonomy is a special case of failure-signature clustering by boundary-evidence type."
+  },
+  "W13-P1-B-027": {
+   "into": "W13-P1-B-025",
+   "reason": "The gradient-snapping coefficient is the summary statistic of the snapping-field measurement. One measurement program."
+  },
+  "W13-P1-B-036": {
+   "into": "W13-P1-A-071",
+   "reason": "Cross-shard duplicate: per-case score bimodality makes means mixture-weight trackers. A-071 additionally covers PEFT comparisons."
+  },
+  "W13-P1-B-038": {
+   "into": "W13-P1-C-073",
+   "reason": "The hard-domain power audit is a stratum of the field-wide paired-bootstrap audit."
+  },
+  "W13-P1-B-039": {
+   "into": "W13-P1-B-091",
+   "reason": "Models-at-annotator-disagreement is the comparison arm of the label-entropy-floor estimate."
+  },
+  "W13-P1-B-041": {
+   "into": "W13-P1-B-048",
+   "reason": "Global haze-statistics reliance is one intervention inside the media-discrimination (smoke/steam/fog) audit."
+  },
+  "W13-P1-B-046": {
+   "into": "W13-P1-A-035",
+   "reason": "Texture-vs-shape cue conflict for segmentation; boundary-band localization is an analysis choice, not a new hypothesis."
+  },
+  "W13-P1-B-051": {
+   "into": "W13-P1-B-019",
+   "reason": "Aleatoric-estimator-vs-rater-disagreement is the specific estimator family inside B-019's general claim."
+  },
+  "W13-P1-B-064": {
+   "into": "W13-P1-B-011",
+   "reason": "Both test whether models use refraction; B-011's index-of-refraction ablation is the cleaner causal design; the background-structure correlation folds in."
+  },
+  "W13-P1-B-088": {
+   "into": "W13-P1-C-027",
+   "reason": "Video-frame near-duplicate leakage is an instance of non-iid split leakage; smoke/fire is the domain case study of the C-027 umbrella."
+  },
+  "W13-P1-B-096": {
+   "into": "W13-P1-B-018",
+   "reason": "Loss determines directional extent bias; the cross-domain loss swap is B-018's decisive experiment, not a separate hypothesis."
+  },
+  "W13-P1-C-005": {
+   "into": "W13-P1-C-018",
+   "reason": "Instance of 'cheap deterministic feature signals beat uncertainty machinery at foundation scale' (kNN distance arm)."
+  },
+  "W13-P1-C-007": {
+   "into": "W13-P1-C-073",
+   "reason": "Calibration-specific instance of 'published deltas are within resampling noise'."
+  },
+  "W13-P1-C-014": {
+   "into": "W13-P1-C-018",
+   "reason": "Instance of the same scale-inversion claim (MC-dropout-on-frozen-features arm)."
+  },
+  "W13-P1-C-015": {
+   "into": "W13-P1-C-022",
+   "reason": "One shifted-conformal study should report conditional coverage and set-size utility together; two symptoms, one evaluation."
+  },
+  "W13-P1-C-017": {
+   "into": "W13-P1-C-018",
+   "reason": "Instance of the same scale-inversion claim (embedding-norm / logit-gap arm)."
+  },
+  "W13-P1-C-026": {
+   "into": "W13-P1-C-023",
+   "reason": "Generative derivatives are one class of semantic duplicates that evade pixel-level dedup."
+  },
+  "W13-P1-C-030": {
+   "into": "W13-P1-C-089",
+   "reason": "The standing blind-baseline audit is C-089's method generalized; fold as a protocol extension."
+  },
+  "W13-P1-C-031": {
+   "into": "W13-P1-C-077",
+   "reason": "Preprocessing mismatch is a component of harness variance; C-077 is the umbrella measurement."
+  },
+  "W13-P1-C-033": {
+   "into": "W13-P1-C-027",
+   "reason": "Near-duplicate galleries are an instance of non-iid split/collection leakage."
+  },
+  "W13-P1-C-035": {
+   "into": "W13-P1-C-068",
+   "reason": "Multi-label re-evaluation folds into distribution/set-based scoring. As a standalone claim it is also a known critique (high unverified prior-art risk)."
+  },
+  "W13-P1-C-038": {
+   "into": "W13-P1-C-042",
+   "reason": "Instance of 'rankings are artifacts of editorial weights' (corruption-menu weighting arm)."
+  },
+  "W13-P1-C-044": {
+   "into": "W13-P1-C-042",
+   "reason": "Instance of the same weighting-instability claim (micro-vs-macro arm)."
+  },
+  "W13-P1-C-047": {
+   "into": "W13-P1-C-073",
+   "reason": "Support-set draw variance is a component of the same statistical audit of evaluation noise."
+  },
+  "W13-P1-C-049": {
+   "into": "W13-P1-C-077",
+   "reason": "Unreported normalization adaptation is a component of harness variance."
+  },
+  "W13-P1-C-050": {
+   "into": "W13-P1-C-077",
+   "reason": "Decode/interpolation library differences are a component of harness variance."
+  },
+  "W13-P1-C-051": {
+   "into": "W13-P1-C-077",
+   "reason": "Evaluation-resolution choice is a component of harness variance."
+  },
+  "W13-P1-C-052": {
+   "into": "W13-P1-C-045",
+   "reason": "Synonym instability is the wording arm of the prompt-search hidden-budget variable."
+  },
+  "W13-P1-C-053": {
+   "into": "W13-P1-C-077",
+   "reason": "Undisclosed test-time augmentation is a component of harness variance."
+  },
+  "W13-P1-C-076": {
+   "into": "W13-P1-C-042",
+   "reason": "Aggregate-vs-stratified selection is the decision-utility arm of weighting instability."
+  },
+  "W13-P1-C-078": {
+   "into": "W13-P1-C-073",
+   "reason": "The power-analysis audit and the bootstrap audit are the same study reported two ways."
+  },
+  "W13-P1-C-080": {
+   "into": "W13-P1-C-054",
+   "reason": "Single-seed ablation deltas are the ablation-level case of the seed lottery."
+  },
+  "W13-P1-C-087": {
+   "into": "W13-P1-C-048",
+   "reason": "Head-vs-backbone attribution; the OOD arm of the head-confound audit (see also the deliberate A-014/B-031 tension)."
+  },
+  "W13-P1-C-093": {
+   "into": "W13-P1-C-086",
+   "reason": "Template regularities in chart QA are construction artifacts; C-086 states the general meta-spurious-cue claim."
+  },
+  "W13-P1-C-094": {
+   "into": "W13-P1-C-095",
+   "reason": "One single-input-sufficiency audit covers multi-image and video benchmarks."
+  },
+  "W13-P1-C-098": {
+   "into": "W13-P1-C-077",
+   "reason": "Parser/extraction compatibility is a component of harness variance."
+  },
+  "W13-P1-C-099": {
+   "into": "W13-P1-C-027",
+   "reason": "Temporal collection order is an instance of non-iid split structure."
+  },
+  "W13-P1-C-100": {
+   "into": "W13-P1-C-042",
+   "reason": "Usage-frequency weighting is another editorial-weights arm."
+  },
+  "W13-P1-C-101": {
+   "into": "W13-P1-C-068",
+   "reason": "Answer-set scoring and label-distribution scoring are the same evaluation change."
+  }
+ },
+ "template_families": {
+  "tf01_recalibration_not_relearning": {
+   "members": [
+    "W13-P1-A-011",
+    "W13-P1-A-018",
+    "W13-P1-A-097",
+    "W13-P1-A-098",
+    "W13-P1-A-100"
+   ],
+   "claim": "Most of SAM's domain gap is low-order photometric/statistics drift fixable without learning shape.",
+   "disposition": "kept A-011, A-018, A-097; merged A-098 into A-018, A-100 into A-011"
+  },
+  "tf02_adaptation_forecasting": {
+   "members": [
+    "W13-P1-A-005",
+    "W13-P1-A-017",
+    "W13-P1-A-024",
+    "W13-P1-A-036",
+    "W13-P1-A-040",
+    "W13-P1-A-047"
+   ],
+   "claim": "A cheap measurable M predicts adaptation outcome O before/without training.",
+   "disposition": "merged A-017 into A-040; rest kept flagged"
+  },
+  "tf03_silent_capability_erosion": {
+   "members": [
+    "W13-P1-A-015",
+    "W13-P1-A-016",
+    "W13-P1-A-019",
+    "W13-P1-A-020",
+    "W13-P1-A-022",
+    "W13-P1-A-057",
+    "W13-P1-A-064",
+    "W13-P1-A-075",
+    "W13-P1-A-080",
+    "W13-P1-A-091",
+    "W13-P1-A-095",
+    "W13-P1-A-099"
+   ],
+   "claim": "Adaptation silently destroys capability X, invisible to the target metric.",
+   "disposition": "merged A-019 into A-099, A-064 into A-015; rest kept flagged (distinct capabilities/mechanisms)"
+  },
+  "tf04_sam_plus_x_ports": {
+   "members": [
+    "W13-P1-A-021",
+    "W13-P1-A-022",
+    "W13-P1-A-025",
+    "W13-P1-A-030",
+    "W13-P1-A-035",
+    "W13-P1-A-039",
+    "W13-P1-A-042",
+    "W13-P1-A-053",
+    "W13-P1-A-074",
+    "W13-P1-A-077",
+    "W13-P1-A-085",
+    "W13-P1-A-086",
+    "W13-P1-A-088",
+    "W13-P1-A-089",
+    "W13-P1-A-094"
+   ],
+   "claim": "Port known technique/phenomenon X from classification/NLP to SAM.",
+   "disposition": "killed A-077, A-085, A-089; merged A-074, A-094; survivors carry mandatory prior-art flags"
+  },
+  "tf05_architectural_periodicity_fingerprints": {
+   "members": [
+    "W13-P1-A-034",
+    "W13-P1-A-043",
+    "W13-P1-A-048",
+    "W13-P1-A-065",
+    "W13-P1-B-077"
+   ],
+   "claim": "Architecture/data-generation periodicity leaves measurable spatial fingerprints in outputs.",
+   "disposition": "all kept (distinct mechanisms), flagged as one attractor"
+  },
+  "tf06_cue_ablation_shortcuts": {
+   "members": [
+    "W13-P1-A-035",
+    "W13-P1-B-012",
+    "W13-P1-B-041",
+    "W13-P1-B-042",
+    "W13-P1-B-043",
+    "W13-P1-B-044",
+    "W13-P1-B-045",
+    "W13-P1-B-046",
+    "W13-P1-B-047",
+    "W13-P1-B-048"
+   ],
+   "claim": "Intervene on cue Y; if masks move, the model was a Y-detector.",
+   "disposition": "merged B-041 into B-048, B-046 into A-035; rest kept flagged (one paradigm, distinct cues)"
+  },
+  "tf07_physics_prior_x": {
+   "members": [
+    "W13-P1-B-011",
+    "W13-P1-B-057",
+    "W13-P1-B-059",
+    "W13-P1-B-060",
+    "W13-P1-B-061",
+    "W13-P1-B-062",
+    "W13-P1-B-063",
+    "W13-P1-B-064"
+   ],
+   "claim": "Models ignore physical mechanism Z that the image formation provides for free.",
+   "disposition": "merged B-064 into B-011; rest kept flagged"
+  },
+  "tf08_loss_plus_x": {
+   "members": [
+    "W13-P1-A-101",
+    "W13-P1-B-003",
+    "W13-P1-B-018",
+    "W13-P1-B-035",
+    "W13-P1-B-096"
+   ],
+   "claim": "The loss function, not data or architecture, sets output property W.",
+   "disposition": "merged B-096 into B-018; rest kept flagged"
+  },
+  "tf09_convention_decodability": {
+   "members": [
+    "W13-P1-A-012",
+    "W13-P1-A-063",
+    "W13-P1-A-095",
+    "W13-P1-B-021",
+    "W13-P1-B-081",
+    "W13-P1-B-085",
+    "W13-P1-C-067",
+    "W13-P1-C-072"
+   ],
+   "claim": "Labels encode institutional/tool/guideline conventions; models learn and reveal them.",
+   "disposition": "all kept, flagged as a single cross-shard attractor"
+  },
+  "tf10_hidden_variance_term": {
+   "members": [
+    "W13-P1-A-072",
+    "W13-P1-B-038",
+    "W13-P1-C-007",
+    "W13-P1-C-025",
+    "W13-P1-C-031",
+    "W13-P1-C-045",
+    "W13-P1-C-047",
+    "W13-P1-C-048",
+    "W13-P1-C-049",
+    "W13-P1-C-050",
+    "W13-P1-C-051",
+    "W13-P1-C-052",
+    "W13-P1-C-053",
+    "W13-P1-C-054",
+    "W13-P1-C-073",
+    "W13-P1-C-077",
+    "W13-P1-C-078",
+    "W13-P1-C-080"
+   ],
+   "claim": "Unbudgeted variance/confound V rivals claimed effect sizes; comparisons are artifacts.",
+   "disposition": "consolidated 18 members to 7 primaries: A-072, C-025, C-045, C-048, C-054, C-073, C-077"
+  },
+  "tf11_shortcut_solvable_benchmark": {
+   "members": [
+    "W13-P1-C-030",
+    "W13-P1-C-089",
+    "W13-P1-C-090",
+    "W13-P1-C-091",
+    "W13-P1-C-092",
+    "W13-P1-C-093",
+    "W13-P1-C-094",
+    "W13-P1-C-095",
+    "W13-P1-C-096",
+    "W13-P1-C-098"
+   ],
+   "claim": "Ablate an input channel; the benchmark is still solved, so it never measured the marketed capability.",
+   "disposition": "kept one primary per ablation paradigm: C-089, C-090, C-091, C-092, C-095, C-096; merged C-030, C-093, C-094, C-098"
+  },
+  "tf12_reweighting_instability": {
+   "members": [
+    "W13-P1-C-034",
+    "W13-P1-C-038",
+    "W13-P1-C-042",
+    "W13-P1-C-044",
+    "W13-P1-C-076",
+    "W13-P1-C-100"
+   ],
+   "claim": "Rankings are artifacts of editorial weighting choices.",
+   "disposition": "kept C-042 (umbrella) and C-034 (subpopulation stakes); merged C-038, C-044, C-076, C-100"
+  },
+  "tf13_deterministic_beats_uncertainty": {
+   "members": [
+    "W13-P1-B-050",
+    "W13-P1-C-005",
+    "W13-P1-C-014",
+    "W13-P1-C-017",
+    "W13-P1-C-018"
+   ],
+   "claim": "Cheap deterministic feature-space signals dominate sampling-based uncertainty at foundation scale.",
+   "disposition": "kept C-018 (umbrella) and B-050 (hard-domain arm); merged C-005, C-014, C-017"
+  },
+  "tf14_conformal_pathologies": {
+   "members": [
+    "W13-P1-B-053",
+    "W13-P1-C-015",
+    "W13-P1-C-022"
+   ],
+   "claim": "Conformal guarantees hold marginally and fail conditionally/decisionally under shift.",
+   "disposition": "kept C-022 (classification utility) and B-053 (dense structure-level); merged C-015 into C-022"
+  },
+  "tf15_scale_nulls": {
+   "members": [
+    "W13-P1-C-056",
+    "W13-P1-C-057",
+    "W13-P1-C-058",
+    "W13-P1-C-060",
+    "W13-P1-C-061",
+    "W13-P1-C-063"
+   ],
+   "claim": "Technique X provides nothing at foundation scale once controls are equalized.",
+   "disposition": "all kept (distinct techniques, real contrarian value) but flagged: stylistically templated and each needs a prior-art sweep of existing controlled studies"
+  },
+  "tf16_distributional_ground_truth": {
+   "members": [
+    "W13-P1-B-095",
+    "W13-P1-C-035",
+    "W13-P1-C-066",
+    "W13-P1-C-068",
+    "W13-P1-C-101"
+   ],
+   "claim": "Score against the rater/answer distribution, not a single label; rankings and 'superhuman' claims change.",
+   "disposition": "kept B-095 (dense), C-068 (classification umbrella), C-066 (superhuman reframing); merged C-035, C-101"
+  },
+  "tf17_contamination_leakage": {
+   "members": [
+    "W13-P1-A-070",
+    "W13-P1-B-088",
+    "W13-P1-C-023",
+    "W13-P1-C-024",
+    "W13-P1-C-026",
+    "W13-P1-C-027",
+    "W13-P1-C-032",
+    "W13-P1-C-033",
+    "W13-P1-C-069",
+    "W13-P1-C-072",
+    "W13-P1-C-079",
+    "W13-P1-C-099"
+   ],
+   "claim": "Test signal leaks into training/development through channel L; measured progress is partly leakage.",
+   "disposition": "kept C-023, C-024, C-027, C-032, C-069, C-072, C-079; merged A-070, B-088*, C-026, C-033, C-099 (*B-088 folded via C-027 umbrella)"
+  },
+  "tf18_threshold_pathology": {
+   "members": [
+    "W13-P1-A-076",
+    "W13-P1-B-007",
+    "W13-P1-B-033",
+    "W13-P1-B-040"
+   ],
+   "claim": "Binarization-threshold placement, not perception, drives scores on soft/low-contrast targets.",
+   "disposition": "merged B-007 into B-033; A-076, B-033, B-040 kept as complementary arms"
+  },
+  "tf19_judge_model_bias": {
+   "members": [
+    "W13-P1-C-040",
+    "W13-P1-C-043",
+    "W13-P1-C-071"
+   ],
+   "claim": "Model-based judges/metrics import their own training distribution as the standard.",
+   "disposition": "all kept, flagged as one attractor"
+  },
+  "tf20_known_critique_restatement": {
+   "members": [
+    "W13-P1-C-016",
+    "W13-P1-C-030",
+    "W13-P1-C-035",
+    "W13-P1-C-036",
+    "W13-P1-C-055",
+    "W13-P1-C-059",
+    "W13-P1-C-062",
+    "W13-P1-C-104"
+   ],
+   "claim": "(anti-pattern) Restate a famous critique with hedged tone.",
+   "disposition": "killed C-016, C-036, C-055, C-059, C-062, C-104; merged C-030, C-035"
+  }
+ },
+ "cross_shard_attractors": [
+  "bimodal failure distributions (A-071 / B-036)",
+  "seen-shot contamination of zero-shot claims (A-070 / C-024)",
+  "head-vs-representation attribution (A-014 / B-031 / C-048 / C-087)",
+  "annotation-convention decodability (A-012, A-063, A-095 / B-021, B-081, B-085 / C-067, C-072)",
+  "cue-conflict probes (A-035 / B-043, B-046)",
+  "hidden-variance-term audits (A-072 / B-038 / C-031..C-080 family)",
+  "distributional ground truth (B-095 / C-035, C-066, C-068, C-101)",
+  "prompt-jitter as measurement (A-005 / B-026)",
+  "scale-prior mismatch (A-062 / B-028)",
+  "architectural periodicity fingerprints (A-034, A-043, A-065 / B-077)"
+ ],
+ "anomaly_ids": [
+  "W13-P1-A-031",
+  "W13-P1-A-044",
+  "W13-P1-A-063",
+  "W13-P1-A-065",
+  "W13-P1-A-066",
+  "W13-P1-A-079",
+  "W13-P1-A-087",
+  "W13-P1-B-016",
+  "W13-P1-B-022",
+  "W13-P1-B-029",
+  "W13-P1-B-030",
+  "W13-P1-B-054",
+  "W13-P1-B-060",
+  "W13-P1-B-069",
+  "W13-P1-B-071",
+  "W13-P1-B-083",
+  "W13-P1-B-090",
+  "W13-P1-B-093",
+  "W13-P1-C-032",
+  "W13-P1-C-069",
+  "W13-P1-C-072",
+  "W13-P1-C-074",
+  "W13-P1-C-075"
+ ],
+ "anomaly_notes": {
+  "W13-P1-A-031": "Contrarian against 'segmentation foundation model = general visual foundation model'; boundary/semantic anti-correlation across layers is a checkable dissociation.",
+  "W13-P1-A-044": "Representational blind spot (relationally defined regions unreachable by prompt-as-locator) that no PEFT fixes; attacks the interface, not the weights.",
+  "W13-P1-A-063": "Guideline archaeology: foundation models memorize annotation policy, not just imagery. Opens a data-provenance forensics line.",
+  "W13-P1-A-065": "SA-1B grid-prompt fingerprint inside SAM's prior: dataset-construction artifact detectable in the model. Unusual and cheap to test.",
+  "W13-P1-A-066": "mIoU anti-correlates with interactive usability across PEFT methods: directly attacks the field's selection criterion.",
+  "W13-P1-A-079": "Modal/amodal instability governed by prompt geometry: names an unacknowledged output-semantics ambiguity with a lawful structure claim.",
+  "W13-P1-A-087": "Catastrophic remembering: adaptation moves a model backward along its own training history. Genuinely new framing of forgetting.",
+  "W13-P1-B-016": "Human-model gap on glass may be an evaluation-regime artifact near an information ceiling; deflates an entire benchmark-progress narrative.",
+  "W13-P1-B-022": "Ambiguity and difficulty are different, possibly anti-correlated pixel populations; most uncertainty work conflates them.",
+  "W13-P1-B-029": "Scaling asymptote as ontology failure, not data shortage: pretraining scale cannot buy what the label space cannot express.",
+  "W13-P1-B-030": "Mass-noun linguistic penalty in text-prompted segmentation: a language-side cause for vision-side failure. Cross-modal and cheap.",
+  "W13-P1-B-054": "Representation-ambiguity matching law (soft maps vs mask sets, double dissociation): would organize the uncertainty-representation literature.",
+  "W13-P1-B-060": "Information gap vs model gap: a small polarimetric probe beating RGB foundation models would redirect effort from scale to sensing.",
+  "W13-P1-B-069": "Predict the spread-rate derivative, not the state: re-poses the task around what is annotator-stable and decision-relevant.",
+  "W13-P1-B-071": "Event-camera combustion microdynamics separating real flames from depictions: hardware-level contrarian, crisp signature claim.",
+  "W13-P1-B-083": "Sparse physical sensor labels beating dense human labels per dollar: attacks the annotation-centric worldview with a costed prediction.",
+  "W13-P1-B-090": "Ambiguity-type transfer beats domain-appearance transfer: a transfer-matrix design with a genuinely surprising off-diagonal prediction.",
+  "W13-P1-B-093": "Human-model failure complementarity largest on hard domains: quantifies where teams (not models) have headroom.",
+  "W13-P1-C-032": "Adaptive overfitting returning in the foundation era would reverse the celebrated replication-era conclusion; release-date-dependent gap is testable.",
+  "W13-P1-C-069": "Model-assisted annotation self-preference loops: ground truth itself is becoming model-lineage-biased. Ecosystem-level contamination claim.",
+  "W13-P1-C-072": "Annotation-vendor convention leakage invisible to dedup: a leakage channel nobody audits, with a concrete fingerprinting test.",
+  "W13-P1-C-074": "Leaderboard winner's curse quantified from submission statistics: turns a folk suspicion into an estimable bias.",
+  "W13-P1-C-075": "Benchmark ecosystem low effective dimensionality: if one factor explains most rankings, new benchmarks add events, not information."
+ },
+ "deliberate_tensions_kept": [
+  {
+   "ids": [
+    "W13-P1-A-014",
+    "W13-P1-B-031"
+   ],
+   "note": "Head vs features: A-014 predicts the shifted-domain gap lives in the readout; B-031 predicts hard-domain gaps live in the features. Designed head-to-head; both kept (with C-048 as the confound-control arm)."
+  },
+  {
+   "ids": [
+    "W13-P1-A-076",
+    "W13-P1-B-033"
+   ],
+   "note": "Threshold pathology, opposite valence: A-076 says thresholds hide recoverable competence; B-033 says thresholds manufacture fake competence differences. Complementary; both kept."
+  },
+  {
+   "ids": [
+    "W13-P1-A-005",
+    "W13-P1-B-026"
+   ],
+   "note": "Prompt jitter as pathology (over-adaptation early warning) vs as signal (ambiguity meter). Same measurement, opposite uses; both kept."
+  },
+  {
+   "ids": [
+    "W13-P1-A-058",
+    "W13-P1-B-006"
+   ],
+   "note": "Shape-prior monoculture from model-in-the-loop data (A) vs from human blob priors (B): convergent claims with different causal sources; both kept to let the data decide."
+  }
+ ],
+ "watchlists": {
+  "prior_art_risk_high": [
+   "W13-P1-A-021",
+   "W13-P1-A-022",
+   "W13-P1-A-025",
+   "W13-P1-A-030",
+   "W13-P1-A-035",
+   "W13-P1-A-039",
+   "W13-P1-A-042",
+   "W13-P1-A-053",
+   "W13-P1-A-086",
+   "W13-P1-A-088",
+   "W13-P1-A-097",
+   "W13-P1-A-101",
+   "W13-P1-A-102",
+   "W13-P1-B-023",
+   "W13-P1-B-035",
+   "W13-P1-B-060",
+   "W13-P1-B-084",
+   "W13-P1-C-002",
+   "W13-P1-C-006",
+   "W13-P1-C-010",
+   "W13-P1-C-020",
+   "W13-P1-C-021",
+   "W13-P1-C-023",
+   "W13-P1-C-025",
+   "W13-P1-C-028",
+   "W13-P1-C-037",
+   "W13-P1-C-040",
+   "W13-P1-C-046",
+   "W13-P1-C-056",
+   "W13-P1-C-060",
+   "W13-P1-C-061",
+   "W13-P1-C-071",
+   "W13-P1-C-088",
+   "W13-P1-C-089"
+  ],
+  "weak_falsifiability": [
+   "W13-P1-A-090",
+   "W13-P1-B-089",
+   "W13-P1-B-094",
+   "W13-P1-C-037",
+   "W13-P1-C-064",
+   "W13-P1-C-079"
+  ],
+  "strawman_community_belief": [
+   "W13-P1-B-023"
+  ],
+  "compute_heavy": [
+   "W13-P1-A-032",
+   "W13-P1-C-056",
+   "W13-P1-C-058"
+  ],
+  "hardware_required": [
+   "W13-P1-B-060",
+   "W13-P1-B-071",
+   "W13-P1-B-083"
+  ]
+ },
+ "audit_findings": {
+  "missing_fields": "none: all 302 ideas carry all 12 required fields with substantive content",
+  "fake_citations": "none found; A-035, A-039, A-077 name real works (Geirhos cue-conflict, Darcet registers, Goh typographic attacks) inside hedged HYPOTHESIS statements - convention risk flagged, not fabrication",
+  "novelty_tone": "all 302 why_possibly_novel fields are hedged (HYPOTHESIS / 'to my knowledge' / 'appears'); no flat novelty assertions",
+  "quota_uniformity": "gen_b emitted exactly 8 ideas in each of 12 clusters - a quota-filling signature; within several clusters the ideas instantiate one paradigm",
+  "strawman_beliefs": "worst cases killed (C-036, C-104); B-023 kept but its community_default_belief overstates how much the field trusts overlap metrics"
+ },
+ "caveats": [
+  "kill_or_merge is not a quality verdict; merge targets say where content folds. The Consolidator may resurrect any merged id.",
+  "This judge is deliberately harsher on permutation families than on risky single ideas; a protected anomaly with a thin experiment beats a polished template instance.",
+  "Prior-art risk labels are unverified hypotheses; the prior_art_risk_high watchlist should be first in line for the search gate.",
+  "Cross-shard convergence (three 'independent' generators, same idea) should be read by the Consolidator as a prior-art warning signal: attractors of the generating model are likely near the field's public discourse.",
+  "Judge B output was not available; consolidation should not treat this file as incorporating feasibility triage."
+ ]
+}
