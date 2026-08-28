@@ -23,7 +23,10 @@ evidence or experiment that would settle it. The PI should treat these as open, 
 - **SP/ENG:** One micro-field, one seat, one bet (PI_BINDING); shared checkpoints make it a free arm.
 - **Decisive evidence:** the 4-arm run itself. If the norm-map signal survives on register-equipped backbones
   (i.e., dissociates from the register mechanism), the arm spins out as its own paper and the one-bet clause no longer
-  binds. Dissociation is exactly what PI_BINDING requires before the pair counts as two.
+  binds. Dissociation is exactly what PI_BINDING requires before the pair counts as two. **Update (N landed
+  mid-battle):** Agent N's exp_02 already protocolizes this exact 1-GPU-week dissociation/merge decision experiment
+  and reaches the same resolution independently ("decision instrument, not an independent bet") — run exp_02 before
+  committing exp_01's full study; FM's dissent is now an empirical question with a written protocol.
 
 ## 3. A-0175: bench-1 vs seat (SEG protest standing)
 

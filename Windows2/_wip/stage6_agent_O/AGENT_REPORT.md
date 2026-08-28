@@ -74,6 +74,27 @@ C-0311-flagship (replication-ensemble infrastructure), A-0163 (multi-rater pool 
 B-0268 (calibration arms are the gate), A-0331 (ready in design but requires an execute-first commitment the group
 must actually schedule — J's condition).
 
+## Reconciliation with Agent N (Stage-5, landed mid-battle)
+
+`stage5_agent_N/` (killer-experiment protocols for the PI's diversified 10) was pushed to the branch while this
+battle was in flight; reconciled before push, no seat changed as a result:
+
+- **Full coverage, zero conflicts:** all ten of N's IDs are in this Top 20 — 7 seats + 3 named arms (mapping at the
+  bottom of `top20.md`). N reported no substitutions needed; the battle independently reached the same set.
+- **Fresh facts ingested:** N's live scoop-checks on the two never-attacked revives updated two rows — A-0028
+  (DAM4SAM / SAM2-SAM3 memory-design line documented the distractor phenomenon; teleport probe confirmed unclaimed;
+  SAM3 added as subject; ⏰ added) and C-0082-mut (RUAC + TCSR-Monitor learned monitors narrow the wedge to
+  interpretable-law + cross-domain extrapolation; learned-monitor baseline now mandatory; A-0203 named as substitute
+  if its gate fails).
+- **B-0001 dissent has a protocol now:** N's exp_02 is the 1-GPU-week dissociation/merge decision experiment that
+  settles disagreement #2; it should run before B-0114's full 4-arm study is committed.
+- **A-0090 discrepancy (N's flag):** I's fold left A-0090 un-rescued; PI_BINDING mandates it. This Top 20 seats the
+  TTD layer as a named arm of C-0122-mut (seat #17) — binding satisfied at zero slot cost, concurring with N's
+  proposed resolution. PI signature still wanted on the record.
+- **N's Top-3 guard rule carried forward:** at most ONE of {A-0061, A-0206, C-0338} in any later Top-3, and any
+  Top-3 must contain a constructive/method package (C-0306, A-0206-with-corpus, or B-0114's retrofit branch qualify).
+  This battle's Top 20 is compatible with that rule; the Stage-7 selector should inherit it.
+
 ## Handoff
 
 - Unresolved fights for the PI: `disagreements.md` (8 items — medical-FM coverage, B-0001 paper count, A-0175 gate,
