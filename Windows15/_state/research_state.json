@@ -1,0 +1,127 @@
+{
+  "windows_id": "Windows15",
+  "windows_number": 15,
+  "windows_path": "Windows15",
+  "window_locked": true,
+  "window_defined_by": "P0",
+  "window_definition_status": "canonical",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows15-p0-init-implementation-4708",
+  "base_branch": "main",
+  "created_at": "2026-08-28T17:50:30Z",
+  "supervisor": "Windows15",
+  "current_stage": "Stage 1",
+  "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "total_ideas": 0,
+  "survivors": 0,
+  "final_target": 3,
+  "status": "initialized",
+  "numbering": {
+    "scan_scope": [
+      "worktree_top_level",
+      "all_origin_heads_recursive_ls_tree_any_casing_any_nesting",
+      "origin_branch_names",
+      "window.lock.json_claims_on_all_origin_heads",
+      "research_state.json_windows_id_claims_on_all_origin_heads"
+    ],
+    "scanned_at": "2026-08-28T17:48:58Z",
+    "scanned_refs": 74,
+    "existing_windows_found": [
+      {
+        "id": "Windows1",
+        "evidence": "top-level Windows1/ merged onto origin/main (Research Idea Evolution - Windows 1 - Top 3 Ideas); nested research_ledger/windows1/ on origin/main and origin/cursor/seg-0276-m-stage5-f84d; never reuse"
+      },
+      {
+        "id": "Windows2",
+        "evidence": "top-level dir on origin/cursor/research-idea-evolution-windows2-c2c9 plus three windows2-stage1 agent branches"
+      },
+      {
+        "id": "Windows3",
+        "evidence": "nested staging/Windows3_supervisor/ on origin/cursor/idea-evolution-windows3-b534 and origin/cursor/w3s1-cluster-b-7ea7 (never top-level; number burned)"
+      },
+      {
+        "id": "Windows4",
+        "evidence": "top-level dir on origin/cursor/windows4-research-idea-evolution-2962"
+      },
+      {
+        "id": "Windows6",
+        "evidence": "top-level dir on origin/cursor/windows6-research-idea-evolution-b55d"
+      },
+      {
+        "id": "Windows8",
+        "evidence": "top-level dir on origin/cursor/windows8-research-idea-evolution-cd91"
+      },
+      {
+        "id": "Windows9",
+        "evidence": "top-level dir on origin/cursor/windows9-p0-init-3045"
+      },
+      {
+        "id": "Windows10",
+        "evidence": "top-level dir on origin/cursor/windows10-p0-init-26ec"
+      },
+      {
+        "id": "Windows11",
+        "evidence": "top-level dir on origin/cursor/windows11-p0-init-c0c1 (research_state.json malformed JSON - hygiene note)"
+      },
+      {
+        "id": "Windows12",
+        "evidence": "top-level dir on origin/cursor/windows12-p0-init-a095"
+      },
+      {
+        "id": "Windows13",
+        "evidence": "implemented + locked: Windows13/_state/window.lock.json claims 13 on origin/cursor/windows13-p0-init-implementation-d93f (also mirrored on origin/cursor/p1-state-reader-cc05)"
+      },
+      {
+        "id": "Windows14",
+        "evidence": "implemented + locked: Windows14/_state/window.lock.json claims 14 on origin/cursor/windows14-p0-init-implementation-46a8 (locked 2026-08-28T17:45:40Z, after consolidator snapshot; its never_take list includes 15)"
+      },
+      {
+        "id": "Windows16",
+        "evidence": "implemented + locked: Windows16/_state/window.lock.json claims 16 on origin/cursor/windows16-p0-implementation-3255 (skipped 15 because it is staked by this pipeline)"
+      }
+    ],
+    "windows_not_found_on_origin_heads": [
+      "Windows5",
+      "Windows7",
+      "Windows15"
+    ],
+    "never_gap_fill": [1, 5, 7],
+    "max_n": 16,
+    "this_round": "Windows15",
+    "numbering_decision": "Windows15 per _dispatcher/p0/wave_b/decision.json",
+    "decision_source": "_dispatcher/p0/wave_b/decision.json",
+    "overwrite_check": "passed_no_prior_windows15_in_worktree_and_no_windows15_path_branch_lock_claim_or_research_state_claim_on_any_origin_head_at_2026-08-28T17:48:58Z_re-verified_before_lock_write"
+  },
+  "git_safety": {
+    "pre_init_branch": "main",
+    "pre_init_head": "1cf3304265ba6b5093f7c68eb39461b883961a07",
+    "working_tree_at_pre_init": "clean",
+    "force_push": false,
+    "init_commit": null,
+    "push_status": "pending_verification",
+    "push_verified_at": null,
+    "push_remote_sha": null,
+    "push_failure_reason": null
+  },
+  "ideas_index": [],
+  "current_ranking": [],
+  "evidence_policy": {
+    "labels": [
+      "KNOWN FACT",
+      "VERIFIED PRIOR WORK",
+      "EVIDENCE",
+      "HYPOTHESIS",
+      "MODEL SPECULATION",
+      "EXPECTED RESULT",
+      "ACTUAL EXPERIMENTAL RESULT"
+    ],
+    "forbid_fiction": [
+      "paper_or_citation",
+      "benchmark_number",
+      "dataset_information",
+      "claimed_ran_experiments",
+      "experimental_results",
+      "false_git_push_success"
+    ]
+  }
+}

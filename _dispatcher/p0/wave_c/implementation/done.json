@@ -1,0 +1,34 @@
+{
+  "task_id": "p0_wave_c_implementation",
+  "role": "implementer",
+  "status": "complete",
+  "windows_id": "Windows15",
+  "windows_number": 15,
+  "windows_path": "Windows15",
+  "commit_hash": null,
+  "branch": "cursor/windows15-p0-init-implementation-4708",
+  "push_status": "pending_verification",
+  "push_remote_sha": null,
+  "push_failure_reason": null,
+  "output_files": [
+    "Windows15/README.md",
+    "Windows15/_state/research_state.json",
+    "Windows15/_state/window.lock.json",
+    "Windows15/_state/ideas_master.jsonl",
+    "Windows15/_state/research_ledger.md",
+    "Windows15/_state/agent_log.md",
+    "Windows15/selection_history/.gitkeep",
+    "Windows15/final_ideas/.gitkeep",
+    "Windows15/artifacts/.gitkeep",
+    "_dispatcher/p0/wave_b/decision.json",
+    "_dispatcher/p0/wave_b/consolidator/report.md",
+    "_dispatcher/p0/wave_b/consolidator/done.json",
+    "_dispatcher/p0/wave_c/implementation/report.md",
+    "_dispatcher/p0/wave_c/implementation/done.json"
+  ],
+  "overwrote_historical_window": false,
+  "unresolved_items": [
+    "commit_hash / push_status / push_remote_sha are finalized by the follow-up git_safety commit only after real ls-remote verification (never fabricated)"
+  ],
+  "recommended_next_task_type": "wave_c_verification"
+}

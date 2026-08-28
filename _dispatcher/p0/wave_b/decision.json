@@ -1,0 +1,253 @@
+{
+  "task_id": "p0_wave_b_decision",
+  "status": "decided",
+  "pipeline_name": "P0 Initialize Windows",
+  "parent_dispatcher_identity": "Windows15",
+  "decided_at_utc": "2026-08-28T17:41:00Z",
+  "decided_by": "Wave B Consolidator (sole authorized writer of _dispatcher/p0/wave_b/decision.json)",
+  "decided_by_branch": "cursor/p0-wave-b-consolidator-decision-b9e0",
+  "repository": "https://github.com/songkang688/idea",
+  "base_branch": "main",
+  "base_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+
+  "windows_id": "Windows15",
+  "windows_number": 15,
+  "windows_path": "Windows15",
+  "window_locked": false,
+  "window_defined_by": "P0",
+  "window_definition_status": "decided_pending_implementation",
+  "overwrite_safe": true,
+  "safety_ok_to_create": true,
+
+  "judge_votes": {
+    "A": "Windows15 (judge_A numbering/identity, verdict.json on origin/cursor/p0-wave-b-judge-a-numbering-1d88, judged 17:30:00Z; identity-free derivation, dissent from safety_inspector's Windows13 headline resolved by re-inspection)",
+    "B": "Windows15 (judge_B feasibility/overwrite-safety, verdict.json on origin/cursor/p0-wave-b-judge-b-safety-d1e9, judged 17:30:00Z; overwrite_safe=true, safety_ok_to_create=true)",
+    "C": "Windows15 (judge_C adversarial, verdict.json on origin/cursor/p0-wave-b-judge-c-adversarial-6c5d, judged 17:35:00Z; all attacks against 15 failed; overwrite_safe=true with lock-time re-fetch conditions)"
+  },
+  "judge_consensus": true,
+  "judge_conflict": false,
+
+  "consolidator_independent_rescan": {
+    "fetch_command": "git fetch origin --prune",
+    "fetches_utc": ["2026-08-28T17:38:30Z (initial, 68 refs)", "2026-08-28T17:40:57Z (final freshness pass, 70 refs; picked up cursor/p0-windows-init-consolidator-9906 = 14-era consolidated decision)"],
+    "origin_refs_at_final_scan": 70,
+    "method": "git ls-tree -r --name-only on EVERY origin head; case-insensitive nested regex for Windows path segments; dedicated scans for window.lock.json, research_state.json windows_id fields, branch-name tokens, and git grep for Windows15 textual claims",
+    "windows15_directory_on_any_ref": false,
+    "windows15_branch_name_on_any_ref": false,
+    "windows15_window_lock_claim_on_any_ref": false,
+    "windows15_research_state_claim_on_any_ref": false,
+    "windows15_textual_mentions": "ONLY (a) this pipeline's own _dispatcher/p0/ shards and (b) sibling pipelines' verdict/decision/lock files that ATTRIBUTE 15 to this pipeline (14-era never_take entry; capital-P0 decision 'STAKED' entry; Windows16 lock's bumping-rules prose)",
+    "occupied_windows_numbers_as_directories": [2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 16],
+    "occupied_evidence": {
+      "2": "Windows2/ on origin/cursor/research-idea-evolution-windows2-c2c9 (+3 windows2-stage1 branches)",
+      "3": "nested staging/Windows3_supervisor/ on origin/cursor/idea-evolution-windows3-b534 (never top-level; number burned)",
+      "4": "Windows4/ on origin/cursor/windows4-research-idea-evolution-2962",
+      "6": "Windows6/ on origin/cursor/windows6-research-idea-evolution-b55d",
+      "8": "Windows8/ on origin/cursor/windows8-research-idea-evolution-cd91",
+      "9": "Windows9/ on origin/cursor/windows9-p0-init-3045",
+      "10": "Windows10/ on origin/cursor/windows10-p0-init-26ec",
+      "11": "Windows11/ on origin/cursor/windows11-p0-init-c0c1 (research_state.json malformed JSON - hygiene note)",
+      "12": "Windows12/ on origin/cursor/windows12-p0-init-a095",
+      "13": "Windows13/ IMPLEMENTED + LOCKED (Windows13/_state/window.lock.json, locked 17:31:30Z) on origin/cursor/windows13-p0-init-implementation-d93f - the 13-era _p0_dispatch sibling pipeline",
+      "16": "Windows16/ IMPLEMENTED + LOCKED (Windows16/_state/window.lock.json, locked 17:35:59Z) on origin/cursor/windows16-p0-implementation-3255 - the capital-P0 'WindowsX' sibling pipeline, which SKIPPED 15 because it is staked by THIS pipeline"
+    },
+    "claimed_not_yet_implemented": {
+      "14": "14-era '_state/tasks/p0/windows_init' pipeline: unanimous 3-judge verdict + consolidated decision.json (17:36:44Z on origin/cursor/p0-windows-init-consolidator-9906); no Windows14/ directory yet; its never_take list includes 15 ('do not bump to 15' - attributed to this pipeline)"
+    },
+    "never_gap_fill": [1, 5, 7],
+    "gap_notes": "1: never a top-level dir; in live semantic use ('Windows1 PI' killsheet branch; nested research_ledger/windows1/ ledger path) - never reuse. 5/7: never existed in any spelling on any ref; repo convention is strictly monotonic (Windows12 numbering-block precedent) - never back-fill.",
+    "window_lock_json_files_on_origin": [
+      "Windows13/_state/window.lock.json (claims Windows13) on origin/cursor/windows13-p0-init-implementation-d93f",
+      "Windows16/_state/window.lock.json (claims Windows16) on origin/cursor/windows16-p0-implementation-3255"
+    ],
+    "sibling_p0_decision_files_on_origin": [
+      "_p0_dispatch/tasks/p0_init/decision.json (Windows13, 17:24:30Z) on origin/cursor/p0-init-consolidator-9302 -> implemented",
+      "_state/tasks/P0/wave_B/decision.json (Windows16, 17:31:00Z) on origin/cursor/p0-wave-b-consolidator-210c -> implemented; records 15 as 'STAKED' by this _dispatcher/p0/ pipeline",
+      "_state/tasks/p0/windows_init/decision.json (Windows14, 17:36:44Z) on origin/cursor/p0-windows-init-consolidator-9906 -> pending implementation; never_take includes 15",
+      "_dispatcher/p0/wave_b/decision.json exists on NO other ref - this file is the first and only canonical decision for this pipeline"
+    ],
+    "race_risk_resolution": "The judges' primary residual race (the capital-P0 fourth wave conditionally floating 15) RESOLVED IN OUR FAVOR after they judged: that pipeline consolidated Windows16 at 17:31:00Z and implemented it at 17:35:59Z, explicitly recording 15 as staked by this pipeline. All three sibling pipelines (13-era, 14-era, 16-era) now either occupy other numbers or list 15 as never-take/ours."
+  },
+
+  "bump_rule_if_windows15_occupied_at_lock_time": {
+    "rule": "judge-agreed: bump to the smallest unused N >= 16; NEVER 13 or 14; NEVER reuse 1/5/7 or any occupied number 2-13 or 16; apply ONLY after a fresh git fetch origin --prune and full re-scan of every origin head (paths any casing/nesting, branch names, window.lock.json claims, research_state windows_id fields)",
+    "effective_first_candidate_as_of_this_scan": 17,
+    "effective_candidate_reason": "16 is already implemented+locked by the capital-P0 sibling (17:35:59Z) and 14 is the consolidated claim of the 14-era sibling, so the smallest bump candidate satisfying the rule is currently 17 (then 18, ...); re-derive against the fresh lock-time scan, never against this snapshot"
+  },
+
+  "pipeline": ["1000+", "200", "50", "20", "5", "3"],
+  "commit_message": "Research Idea Evolution - Windows15 - Initialization",
+
+  "lock_fields_for_implementation": {
+    "note": "Wave C Implementation MUST copy these exact values into Windows15/_state/research_state.json and Windows15/_state/window.lock.json (only after the lock-time re-fetch passes).",
+    "windows_id": "Windows15",
+    "windows_number": 15,
+    "windows_path": "Windows15",
+    "window_locked": true,
+    "window_defined_by": "P0",
+    "window_definition_status": "canonical",
+    "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+    "commit_message": "Research Idea Evolution - Windows15 - Initialization",
+    "decision_source": "_dispatcher/p0/wave_b/decision.json (this file, canonical for this pipeline's numbering)",
+    "do_not_renumber": true
+  },
+
+  "lock_time_protocol": "MANDATORY two-phase re-verification by Wave C Implementation: (1) run `git fetch origin --prune` IMMEDIATELY BEFORE `mkdir Windows15` and re-verify that NO origin/* head contains any Windows15 path (any casing or nesting), any windows15-named branch, any window.lock.json claiming 15, or any research_state.json with windows_id Windows15; (2) run `git fetch origin --prune` AGAIN immediately before writing Windows15/_state/window.lock.json and repeat the same re-verification. On any hit, apply bump_rule_if_windows15_occupied_at_lock_time (smallest unused N >= 16, never 13/14, never reuse 1/5/7/2-13/16) against the FRESH scan, update all N-bearing fields consistently, and record the bump with evidence. Keep the fetch-verify-create-push sequence as fast as possible. After window.lock.json is pushed, the identity is permanent (do_not_renumber). Never force-push. Never fabricate push success - verify via `git ls-remote origin <branch>` == local sha before recording push_status.",
+
+  "directory_tree": [
+    "README.md",
+    "_state/",
+    "_state/research_state.json",
+    "_state/window.lock.json",
+    "_state/ideas_master.jsonl",
+    "_state/research_ledger.md",
+    "_state/agent_log.md",
+    "selection_history/",
+    "selection_history/.gitkeep",
+    "final_ideas/",
+    "final_ideas/.gitkeep",
+    "artifacts/",
+    "artifacts/.gitkeep"
+  ],
+
+  "files_to_create": [
+    {
+      "path": "README.md",
+      "purpose": "Window identity card + goal + pipeline + status snapshot. Follows the Windows12 README convention (Chinese-dominant, KNOWN FACT numbering block, identity-freeze statement).",
+      "required_fields": [
+        "title: '# Windows15 — Autonomous Research Idea Evolution'",
+        "Windows 编号 (windows_id = Windows15)",
+        "创建日期 (UTC date)",
+        "Supervisor / PI = Windows15",
+        "仓库 = github.com/songkang688/idea",
+        "Branch = the init branch name",
+        "当前状态 = initialized",
+        "identity-freeze sentence: 本窗口固定为 Windows15，后续阶段不得改号；本轮只写入 Windows15/",
+        "KNOWN FACT numbering-scan block (existing dirs, anomalies, absent numbers, max_n, why 15 was chosen) - values MUST come from the implementation agent's own fresh lock-time scan, not copied from this decision snapshot",
+        "本轮目标: 1000+ ideas -> 3 executable research packages via falsifiable filtering",
+        "研究方向 (第一/第二优先级 lists, copy from Windows12 convention)",
+        "Pipeline: `1000+ -> 200 -> 50 -> 20 -> 5 -> 3`",
+        "当前状态 table: Stage=Stage 1, total_ideas=0, survivors=0, final_target=3, status=initialized",
+        "下一步: run P1 (Stage 1 large-scale idea exploration); placeholder must not be written as completed research"
+      ]
+    },
+    {
+      "path": "_state/research_state.json",
+      "purpose": "Machine-readable canonical window state. Superset of the Windows12 schema plus the NEW P0 window-definition fields mandated by this pipeline.",
+      "required_fields": [
+        "windows_id: 'Windows15' (string)",
+        "windows_number: 15 (integer, must match digits of windows_id)",
+        "windows_path: 'Windows15' (string)",
+        "window_locked: true (boolean)",
+        "window_defined_by: 'P0' (string)",
+        "window_definition_status: 'canonical' (string)",
+        "repository: 'https://github.com/songkang688/idea'",
+        "branch: <init branch name>",
+        "base_branch: 'main'",
+        "created_at: ISO-8601 UTC timestamp",
+        "supervisor: 'Windows15'",
+        "current_stage: 'Stage 1'",
+        "target_pipeline: '1000+ -> 200 -> 50 -> 20 -> 5 -> 3'",
+        "total_ideas: 0",
+        "survivors: 0",
+        "final_target: 3",
+        "status: 'initialized'",
+        "numbering: {scan_scope, existing_windows_found[] with per-id evidence strings, windows_not_found_on_origin_heads[], max_n: <from fresh lock-time scan; 16 as of consolidator scan 17:40:57Z - do NOT hardcode 12>, this_round: 'Windows15', numbering_decision: 'Windows15 per _dispatcher/p0/wave_b/decision.json', decision_source: '_dispatcher/p0/wave_b/decision.json', overwrite_check}",
+        "git_safety: {pre_init_branch, pre_init_head, working_tree_at_pre_init, force_push: false, init_commit, push_status, push_verified_at, push_remote_sha, push_failure_reason}",
+        "ideas_index: []",
+        "current_ranking: []",
+        "evidence_policy: {labels: [KNOWN FACT, VERIFIED PRIOR WORK, EVIDENCE, HYPOTHESIS, MODEL SPECULATION, EXPECTED RESULT, ACTUAL EXPERIMENTAL RESULT], forbid_fiction: [paper_or_citation, benchmark_number, dataset_information, claimed_ran_experiments, experimental_results, false_git_push_success]}"
+      ]
+    },
+    {
+      "path": "_state/window.lock.json",
+      "purpose": "Immutable window-identity lock. Written ONLY by the Wave C Implementation agent AFTER the second fresh origin re-fetch re-verifies Windows15 is still absent (see lock_time_protocol).",
+      "required_fields": [
+        "windows_id: 'Windows15'",
+        "windows_number: 15 (integer)",
+        "windows_path: 'Windows15'",
+        "window_locked: true",
+        "window_defined_by: 'P0'",
+        "window_definition_status: 'canonical'",
+        "locked_at: ISO-8601 UTC timestamp of lock write",
+        "locked_by: 'Windows15 dispatcher / P0 Wave C Implementation agent' (actual writer identity)",
+        "decision_source: '_dispatcher/p0/wave_b/decision.json'",
+        "numbering_evidence: {max_existing_windows_number: <from the fresh lock-time scan; 16 as of consolidator scan 17:40:57Z>, scanned_refs: <count>, scanned_at: ISO-8601, never_reused_numbers: [1,5,7,14] plus all occupied [2,3,4,6,8,9,10,11,12,13,16], verification: 'fresh git fetch origin --prune + ls-tree on all origin heads immediately before lock'}",
+        "do_not_renumber: true"
+      ]
+    },
+    {
+      "path": "_state/ideas_master.jsonl",
+      "purpose": "Master idea registry, one JSON object per line, appended by Stage 1+. Initialized EMPTY (0 bytes) - exactly matches the Windows9-12 convention. Do NOT add a header line.",
+      "required_fields": [
+        "file initialized empty (0 bytes)",
+        "per-line schema for later stages (documented in research_ledger.md, not written into the jsonl at init): {idea_id, title, cluster, stage, status: keep|kill|mutate|revive, score, evidence_label, source_agent, created_at}"
+      ]
+    },
+    {
+      "path": "_state/research_ledger.md",
+      "purpose": "Human-readable canonical ledger: scope, priorities, values, evidence rules, numbering decision, stage log. Follows the Windows12 ledger convention.",
+      "required_fields": [
+        "title: '# Windows15 Research Ledger'",
+        "metadata block: windows_id, created_at, repository, branch, current_stage, status, total_ideas=0, survivors=0, final_target=3, pipeline='1000+ -> 200 -> 50 -> 20 -> 5 -> 3'",
+        "本轮研究范围 section (scope; only write inside Windows15/, never overwrite other Windows)",
+        "研究优先级 section (第一优先级 / 第二优先级 lists per Windows12 convention)",
+        "科研价值观 section (prefer new observation/falsifiable hypothesis/failure mode; downweight module-stitching pseudo-novelty; the 3 standing questions)",
+        "Evidence Rules section (7 evidence labels; absolute prohibition on fabricated papers/benchmarks/datasets/experiments/push-success)",
+        "编号决策 table with KNOWN FACT / DECISION labels (worktree state, remote dirs found, max N from fresh scan, Windows15 absent, decision=Windows15 per decision.json, reason)",
+        "当前 Stage section (initialized, ideas_master.jsonl empty, no Keep/Kill decisions yet)",
+        "下一阶段要做什么 section (run P1 Stage 1)"
+      ]
+    },
+    {
+      "path": "_state/agent_log.md",
+      "purpose": "Append-only operational log of agent actions. Follows the Windows12 agent_log convention.",
+      "required_fields": [
+        "title: '# Windows15 Agent Log'",
+        "entry heading: '## <ISO timestamp> — P0 start'",
+        "Git pre-check (KNOWN FACT): status, HEAD sha, remote, uncommitted changes, root files",
+        "Windows scan (KNOWN FACT): worktree result, per-branch origin findings, not-found list, max_n, chosen N=15 with reason and decision_source",
+        "Actions: branch created, tree created (Windows15/ only), force-push not used, checkpoint commit sha, push verification result (only after actual ls-remote verification - never fabricate push success)",
+        "Overwrite check (KNOWN FACT): no pre-existing Windows15 dir in worktree or on any origin head; only new files under Windows15/ added; root README.md untouched"
+      ]
+    },
+    {
+      "path": "selection_history/.gitkeep",
+      "purpose": "Empty placeholder keeping selection_history/ (per-stage Keep/Kill/Mutate/Revive selection records) in git. Windows9-12 convention.",
+      "required_fields": ["empty file"]
+    },
+    {
+      "path": "final_ideas/.gitkeep",
+      "purpose": "Empty placeholder keeping final_ideas/ (final 3 research packages) in git. Windows9-12 convention.",
+      "required_fields": ["empty file"]
+    },
+    {
+      "path": "artifacts/.gitkeep",
+      "purpose": "Empty placeholder keeping artifacts/ (supporting research artifacts) in git. Windows9-12 convention.",
+      "required_fields": ["empty file"]
+    }
+  ],
+
+  "implementation_rules": [
+    "Write ONLY under Windows15/ (plus this pipeline's _dispatcher/ shard paths). Never modify root README.md or any other WindowsM/ tree.",
+    "LOCK-TIME RE-FETCH (mandatory, two-phase): run `git fetch origin --prune` and re-verify Windows15 absent on ALL origin/* heads (paths any casing/nesting, branch names, window.lock.json claims, research_state windows_id fields) IMMEDIATELY BEFORE mkdir Windows15 AND AGAIN immediately before writing Windows15/_state/window.lock.json. On collision, bump per bump_rule_if_windows15_occupied_at_lock_time.",
+    "Copy lock_fields_for_implementation verbatim into Windows15/_state/research_state.json and Windows15/_state/window.lock.json (window_locked=true, window_definition_status=canonical apply at implementation time; this decision file itself remains window_locked=false / decided_pending_implementation).",
+    "Initialize ideas_master.jsonl as a 0-byte file.",
+    "Parse-check every .json file (e.g. python3 -m json.tool) before commit - Windows11's malformed research_state.json is the cautionary precedent.",
+    "Never fabricate push success: verify via `git ls-remote origin <branch>` == local sha before recording push_status=verified_success.",
+    "No force push. New branches only.",
+    "Never commit `git remote -v` output, .git/config contents, or effective remote URLs into tracked files (VM-level credential injection lives outside the repo and must stay there).",
+    "All numbering claims in README/ledger/log must carry KNOWN FACT labels backed by the implementation agent's own fresh scan, not by this decision snapshot.",
+    "Commit message for the init commit: 'Research Idea Evolution - Windows15 - Initialization'."
+  ],
+
+  "evidence_hygiene_notes": [
+    "Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is malformed JSON - downstream parsers must not assume prior state files parse.",
+    "Windows8 branch carries an unscannable binary (density_head.pt) - no indication of secrets, unverifiable by grep.",
+    "Secret scans by two independent pipelines plus judge_B's spot-scan: clean; only pattern-NAME false positives inside prior safety reports.",
+    "Case-fold hazard between sibling shard dirs _state/tasks/P0/ and _state/tasks/p0/ if ever merged on a case-insensitive filesystem; does not affect Windows15/ creation.",
+    "Remote churns at minute granularity (70 refs at final scan, up from 54 at judge time); every scan snapshot in this file is perishable - the lock-time re-fetch is the only authoritative check."
+  ],
+
+  "recommended_next_task_type": "wave_c_implementation"
+}
