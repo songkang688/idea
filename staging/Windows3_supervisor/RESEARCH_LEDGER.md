@@ -33,11 +33,24 @@
 7. Final 3 full research packages
 8. Git archival into new `WindowsN/` + commit + push + verify
 
+## Checkpoint 2026-08-28T16:23Z
+
+All 3 Stage 1 children still **RUNNING**. No branch, no diff, no dashboard events, `lastMessageActivity` still equals spawn time. Treat as in-flight, not failed. Do not open extra cloud slots (max 3).
+
+Peer Windows runs on this repo (do not overwrite their folders): Windows2/4/6/8 branches exist; `origin/main` still only `README.md`.
+
+## Stage 2 review rubric (queued; do not start until ≥1000 ideas exist)
+
+Score independently (do not rank by mean):
+Novelty, Significance, Scientific Question, Technical Soundness, Feasibility, Compute, Dataset Availability, Baseline Availability, Likelihood Already Published, Experimental Clarity, Venue potential, Risk, Upside, ROI.
+
+Protect: high-risk/high-upside; simple counter-intuitive; high reviewer disagreement; cheap-to-falsify.
+
 ## Top candidates
 
 _Empty until Stage 1 returns._
 
 ## Unresolved
 
-- Child agents have not returned files/SHAs yet.
-- Other concurrent parent runs exist on the same repo; archival must re-check `Windows*` on latest `origin/main` before writing.
+- Stage 1 children have not produced files yet.
+- Archival Windows number still TBD from latest `origin/main` inventory.
