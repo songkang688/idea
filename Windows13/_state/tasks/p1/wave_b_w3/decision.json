@@ -1,0 +1,941 @@
+{
+ "task_id": "p1_wave_b_w3",
+ "role": "consolidator",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "P1 Wave B wave3 sub-wave w3_GHJ (generators G+H+J)",
+ "branch": "cursor/p1-wave-b-consolidator-w3-bf20",
+ "base_branch_for_state": "origin/cursor/p1-diversity-audit-consolidator-w2-942c (fast-forward descendant of the canonical master tip origin/cursor/p1-wave-b-consolidator-w2-3111 @ 929445d; the 494-line ideas_master.jsonl is preserved verbatim as the append base, and the w2 diversity-audit ledger rows 13-15 + exploration state are preserved, following the w2 consolidator precedent)",
+ "decided_at_utc": "2026-08-29T00:30:00Z",
+ "scope": "G+H+J only. gen_k/l/m/n/o/p/u are NOT judged, NOT merged, NOT appended here; they await their own judge waves.",
+ "inputs": {
+  "judge_A_dedup": {
+   "branch": "origin/cursor/p1-wave-b-w3-judge-a-dedup-e60e",
+   "keep": 260,
+   "kill_or_merge": 44
+  },
+  "judge_B_feasibility": {
+   "branch": "origin/cursor/p1-wave-b-w3-judge-b-feasibility-2e78",
+   "keep": 283,
+   "merge": 20,
+   "kill": 1
+  },
+  "judge_C_adversary": {
+   "branch": "origin/cursor/p1-wave-b-w3-judge-c-adversary-e10f",
+   "keep": 254,
+   "merge": 44,
+   "kill": 6
+  },
+  "generators": {
+   "gen_g_domain_shift": {
+    "branch": "origin/cursor/p1-gen-g-domain-shift-0165",
+    "ideas": 100,
+    "schema": "legacy 13-field (no kill thresholds, no evidence_label)"
+   },
+   "gen_h_sr_restoration": {
+    "branch": "origin/cursor/p1-gen-h-sr-restoration-1829",
+    "ideas": 100,
+    "schema": "legacy 13-field (no usable kill thresholds, no evidence_label)"
+   },
+   "gen_j_diffusion_model_science": {
+    "branch": "origin/cursor/p1-gen-j-diffusion-science-3470",
+    "ideas": 104,
+    "schema": "full gen_j gate schema (kill threshold inside falsifiable_prediction, evidence_label dict, family_fingerprint, genre) - verified 104/104 by consolidator re-scan"
+   }
+  },
+  "commissioning_gates": "origin/cursor/p1-diversity-audit-consolidator-w2-942c (GATE-5 retrofit-or-remand for gen_g/gen_h; GATE-6 judge genre labels not self-labels; family cap <=6 as merge trigger)",
+  "input_total": 304,
+  "coverage": "all 304 ids ruled on by all three judges; verified mechanically; zero uncovered ids"
+ },
+ "reconciliation_policy": [
+  "ACCEPT if >=2 of 3 judges vote keep (majority keep).",
+  "KILL if not accepted and >=2 of 3 judges vote kill (majority kill).",
+  "MERGE otherwise; merge target = majority target among proposing judges; ties broken in favor of Judge A (dedup specialist), per w1/w2 policy; all targets validated to land in an accepted record (wave3 accepted set, remand queue, or wave1/2 master), following merge chains where a proposed target was itself merged.",
+  "Judge A's kill_or_merge entries with master targets treated as merge-into-master votes (trace target = master id); A's single standalone kill (G-068) treated as a kill vote.",
+  "3-way keep/merge/kill splits resolve to MERGE (w1 fallback, majority-not-keep): fired exactly once (J-091).",
+  "GATE-5 split applied AFTER voting: accepted gen_j records (schema-compliant 104/104) are appended to ideas_master.jsonl; accepted gen_g/gen_h records (0/100 + 0/100 usable kill thresholds) are REMANDED to Windows13/_state/tasks/p1/wave_b_w3/remand_gate5.jsonl and NOT appended - no thresholds invented, no content rejected.",
+  "Kill rationales of outvoted judges travel as judge_dissent on the kept record and route to the GATE-8 novelty lane; nothing is silently dropped."
+ ],
+ "counts": {
+  "input_total": 304,
+  "accepted_by_majority": 271,
+  "accepted_by_shard": {
+   "gen_g": 84,
+   "gen_h": 89,
+   "gen_j": 98
+  },
+  "accepted_unanimous": 232,
+  "accepted_2_1_majority": 39,
+  "appended_to_master": 98,
+  "appended_shard": "gen_j only (GATE-5 compliant)",
+  "remanded_gate5": 173,
+  "remanded_by_shard": {
+   "gen_g": 84,
+   "gen_h": 89
+  },
+  "merged": 31,
+  "merged_into_wave3_accepted": 22,
+  "merged_into_master_wave12_ids": 9,
+  "killed": 2,
+  "check_sum": "271 accepted + 31 merged + 2 killed = 304; 98 appended + 173 remanded = 271 accepted",
+  "idea_master_total_after_append": 592
+ },
+ "headline_conflict_G025": {
+  "conflict": "Judge C killed G-025 (published fair-selection ERM-matches-DG-algorithms restatement; wanted kept G-026 as surviving primary) vs Judge B used G-025 as merge PRIMARY (G-026 -> G-025); Judge A also kept G-025 and merged G-026 into it.",
+  "resolution": "G-025 KEPT as merge primary absorbing G-026, per the majority rule (A keep + B keep vs C kill = 2-1 keep; A merge->G-025 + B merge->G-025 vs C keep = 2-1 merge for G-026).",
+  "written_rule": "When one judge's kill conflicts with two judges' keep/merge-primary on the same id, the majority verdict stands and the minority kill rationale is preserved verbatim as judge_dissent on the kept record and routed to the GATE-8 novelty/prior-art lane; if GATE-8 later upholds C's published-result assessment, the absorbed G-026 content (backbone-vs-algorithm variance decomposition) is the designated surviving primary exactly as C specified, so no information is lost under either future outcome.",
+  "record_location": "remand_gate5.jsonl (G-025 is gen_g, so it is remanded pending GATE-5 retrofit with merged_from=[G-026] and C's kill_reason attached)",
+  "meta_judge_needed": false
+ },
+ "three_way_split_J091": {
+  "votes": {
+   "judge_A_dedup": "merge -> W13-P1-J-093",
+   "judge_B_feasibility": "keep",
+   "judge_C_adversary": "kill (published resolution-shifted schedule corrections; UNVERIFIED)"
+  },
+  "resolution": "MERGE into J-093 per the w1 fallback (majority-not-keep resolves to merge; Judge A's target is the only proposed target).",
+  "note": "J-093 (spectrum-matched schedules) is appended to master with merged_from=[J-091]; C's kill rationale and B's keep travel in decision + master record metas; the GATE-8 lane re-examines the family."
+ },
+ "kills": [
+  {
+   "id": "W13-P1-G-002",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "kill",
+    "judge_C_adversary": "kill"
+   },
+   "reason": "Judge-assessed UNVERIFIED known-result restatement: small-batch collapse of batch-norm-dependent TTA is repeatedly documented (both B and C independently); the batch-size axis survives inside kept G-085's arrival-process rig. Judge A dissent (keep) recorded. Resurrectable via GATE-8 if the novelty lane disagrees."
+  },
+  {
+   "id": "W13-P1-G-068",
+   "votes": {
+    "judge_A_dedup": "kill",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "kill"
+   },
+   "reason": "Judge-assessed UNVERIFIED known-result restatement: weight-averaging / robust-fine-tuning result family (A and C independently); live tension with kept G-028 noted by A. Judge B dissent (keep) recorded. Resurrectable via GATE-8."
+  }
+ ],
+ "merge_target_tie_breaks": [
+  {
+   "id": "W13-P1-G-031",
+   "proposals": {
+    "judge_A_dedup": "W13-P1-G-093",
+    "judge_C_adversary": "W13-P1-C-084"
+   },
+   "resolved_to": "W13-P1-G-093",
+   "rule": "tie broken toward dedup-specialist Judge A per w1/w2 policy; C-084 adjacency recorded on the G-093 remand record via C's meta"
+  },
+  {
+   "id": "W13-P1-G-052",
+   "proposals": {
+    "judge_A_dedup": "W13-P1-G-071",
+    "judge_B_feasibility": "W13-P1-G-057",
+    "judge_C_adversary": "W13-P1-C-024"
+   },
+   "resolved_to": "W13-P1-C-023 (via chain G-052 -> G-071 -> C-023)",
+   "rule": "three distinct targets = tie broken toward Judge A (G-071); G-071 itself resolved 2-1 merge into master C-023 (B+C), so the chain lands G-052 in C-023. B's alternative target G-057 stays an accepted keep; C's C-024 adjacency noted."
+  }
+ ],
+ "merges_into_master_wave12_ids": {
+  "note": "9 wave-3 ids absorbed into already-accepted wave-1/2 master records; NO master record was modified (w2 precedent). Absorption recorded here only.",
+  "map": {
+   "W13-P1-C-023": [
+    "W13-P1-G-052 (chain via G-071)",
+    "W13-P1-G-071"
+   ],
+   "W13-P1-B-085": [
+    "W13-P1-G-055 (annotation-convention HARD BAN primary)",
+    "W13-P1-G-074 (annotation-convention HARD BAN primary)"
+   ],
+   "W13-P1-C-028": [
+    "W13-P1-G-069"
+   ],
+   "W13-P1-C-077": [
+    "W13-P1-G-078",
+    "W13-P1-H-058"
+   ],
+   "W13-P1-C-029": [
+    "W13-P1-H-056"
+   ],
+   "W13-P1-C-032": [
+    "W13-P1-H-061"
+   ]
+  }
+ },
+ "merge_table": [
+  {
+   "id": "W13-P1-G-013",
+   "final_target": "W13-P1-G-009",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-G-009",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-009",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-G-009"
+   }
+  },
+  {
+   "id": "W13-P1-G-017",
+   "final_target": "W13-P1-G-015",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-G-015",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-015",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-G-015"
+   }
+  },
+  {
+   "id": "W13-P1-G-026",
+   "final_target": "W13-P1-G-025",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-G-025",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-025",
+    "judge_B_feasibility": "merge -> W13-P1-G-025",
+    "judge_C_adversary": "keep"
+   }
+  },
+  {
+   "id": "W13-P1-G-031",
+   "final_target": "W13-P1-G-093",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-G-093",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-093",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-C-084"
+   }
+  },
+  {
+   "id": "W13-P1-G-035",
+   "final_target": "W13-P1-G-095",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-G-095",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "merge -> W13-P1-G-095",
+    "judge_C_adversary": "merge -> W13-P1-G-095"
+   }
+  },
+  {
+   "id": "W13-P1-G-036",
+   "final_target": "W13-P1-G-027",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-G-027",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-027",
+    "judge_B_feasibility": "merge -> W13-P1-G-027",
+    "judge_C_adversary": "merge -> W13-P1-G-027"
+   }
+  },
+  {
+   "id": "W13-P1-G-052",
+   "final_target": "W13-P1-C-023",
+   "target_location": "ideas_master(wave1/2 record, not modified)",
+   "proposed_target": "W13-P1-G-071",
+   "chain": true,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-071",
+    "judge_B_feasibility": "merge -> W13-P1-G-057",
+    "judge_C_adversary": "merge -> W13-P1-C-024"
+   }
+  },
+  {
+   "id": "W13-P1-G-055",
+   "final_target": "W13-P1-B-085",
+   "target_location": "ideas_master(wave1/2 record, not modified)",
+   "proposed_target": "W13-P1-B-085",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-B-085",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-B-085"
+   }
+  },
+  {
+   "id": "W13-P1-G-069",
+   "final_target": "W13-P1-C-028",
+   "target_location": "ideas_master(wave1/2 record, not modified)",
+   "proposed_target": "W13-P1-C-028",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "merge -> W13-P1-C-028",
+    "judge_C_adversary": "merge -> W13-P1-C-028"
+   }
+  },
+  {
+   "id": "W13-P1-G-071",
+   "final_target": "W13-P1-C-023",
+   "target_location": "ideas_master(wave1/2 record, not modified)",
+   "proposed_target": "W13-P1-C-023",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "merge -> W13-P1-C-023",
+    "judge_C_adversary": "merge -> W13-P1-C-023"
+   }
+  },
+  {
+   "id": "W13-P1-G-073",
+   "final_target": "W13-P1-G-012",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-G-012",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "merge -> W13-P1-G-012",
+    "judge_C_adversary": "merge -> W13-P1-G-012"
+   }
+  },
+  {
+   "id": "W13-P1-G-074",
+   "final_target": "W13-P1-B-085",
+   "target_location": "ideas_master(wave1/2 record, not modified)",
+   "proposed_target": "W13-P1-B-085",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-B-085",
+    "judge_B_feasibility": "merge -> W13-P1-G-055",
+    "judge_C_adversary": "merge -> W13-P1-B-085"
+   }
+  },
+  {
+   "id": "W13-P1-G-078",
+   "final_target": "W13-P1-C-077",
+   "target_location": "ideas_master(wave1/2 record, not modified)",
+   "proposed_target": "W13-P1-C-077",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-C-077",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-C-077"
+   }
+  },
+  {
+   "id": "W13-P1-G-091",
+   "final_target": "W13-P1-G-072",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-G-072",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-C-081",
+    "judge_B_feasibility": "merge -> W13-P1-G-072",
+    "judge_C_adversary": "merge -> W13-P1-G-072"
+   }
+  },
+  {
+   "id": "W13-P1-H-006",
+   "final_target": "W13-P1-H-001",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-H-001",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-001",
+    "judge_B_feasibility": "merge -> W13-P1-H-001",
+    "judge_C_adversary": "merge -> W13-P1-H-001"
+   }
+  },
+  {
+   "id": "W13-P1-H-016",
+   "final_target": "W13-P1-H-007",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-H-007",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "merge -> W13-P1-H-007",
+    "judge_C_adversary": "merge -> W13-P1-H-007"
+   }
+  },
+  {
+   "id": "W13-P1-H-027",
+   "final_target": "W13-P1-H-013",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-H-013",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-013",
+    "judge_B_feasibility": "merge -> W13-P1-H-013",
+    "judge_C_adversary": "merge -> W13-P1-H-013"
+   }
+  },
+  {
+   "id": "W13-P1-H-040",
+   "final_target": "W13-P1-J-059",
+   "target_location": "ideas_master(wave3 appended gen_j record)",
+   "proposed_target": "W13-P1-J-059",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-059",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-J-059"
+   }
+  },
+  {
+   "id": "W13-P1-H-041",
+   "final_target": "W13-P1-J-080",
+   "target_location": "ideas_master(wave3 appended gen_j record)",
+   "proposed_target": "W13-P1-J-080",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-080",
+    "judge_B_feasibility": "merge -> W13-P1-J-080",
+    "judge_C_adversary": "merge -> W13-P1-J-080"
+   }
+  },
+  {
+   "id": "W13-P1-H-053",
+   "final_target": "W13-P1-H-033",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-H-033",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-033",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-H-033"
+   }
+  },
+  {
+   "id": "W13-P1-H-056",
+   "final_target": "W13-P1-C-029",
+   "target_location": "ideas_master(wave1/2 record, not modified)",
+   "proposed_target": "W13-P1-C-029",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-C-029",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-C-029"
+   }
+  },
+  {
+   "id": "W13-P1-H-058",
+   "final_target": "W13-P1-C-077",
+   "target_location": "ideas_master(wave1/2 record, not modified)",
+   "proposed_target": "W13-P1-C-077",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-C-077",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-C-077"
+   }
+  },
+  {
+   "id": "W13-P1-H-061",
+   "final_target": "W13-P1-C-032",
+   "target_location": "ideas_master(wave1/2 record, not modified)",
+   "proposed_target": "W13-P1-C-032",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-C-032",
+    "judge_B_feasibility": "merge -> W13-P1-C-032",
+    "judge_C_adversary": "merge -> W13-P1-C-032"
+   }
+  },
+  {
+   "id": "W13-P1-H-062",
+   "final_target": "W13-P1-H-028",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-H-028",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-028",
+    "judge_B_feasibility": "merge -> W13-P1-H-028",
+    "judge_C_adversary": "merge -> W13-P1-H-028"
+   }
+  },
+  {
+   "id": "W13-P1-H-088",
+   "final_target": "W13-P1-H-029",
+   "target_location": "remand_gate5.jsonl(gen_g/gen_h accepted pending retrofit)",
+   "proposed_target": "W13-P1-H-029",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-029",
+    "judge_B_feasibility": "merge -> W13-P1-H-029",
+    "judge_C_adversary": "merge -> W13-P1-H-029"
+   }
+  },
+  {
+   "id": "W13-P1-J-042",
+   "final_target": "W13-P1-J-040",
+   "target_location": "ideas_master(wave3 appended gen_j record)",
+   "proposed_target": "W13-P1-J-040",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-040",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-J-040"
+   }
+  },
+  {
+   "id": "W13-P1-J-045",
+   "final_target": "W13-P1-J-043",
+   "target_location": "ideas_master(wave3 appended gen_j record)",
+   "proposed_target": "W13-P1-J-043",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-043",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-J-043"
+   }
+  },
+  {
+   "id": "W13-P1-J-053",
+   "final_target": "W13-P1-J-052",
+   "target_location": "ideas_master(wave3 appended gen_j record)",
+   "proposed_target": "W13-P1-J-052",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-052",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-J-052"
+   }
+  },
+  {
+   "id": "W13-P1-J-054",
+   "final_target": "W13-P1-J-031",
+   "target_location": "ideas_master(wave3 appended gen_j record)",
+   "proposed_target": "W13-P1-J-031",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-031",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-J-031"
+   }
+  },
+  {
+   "id": "W13-P1-J-060",
+   "final_target": "W13-P1-J-056",
+   "target_location": "ideas_master(wave3 appended gen_j record)",
+   "proposed_target": "W13-P1-J-056",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-056",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-J-056"
+   }
+  },
+  {
+   "id": "W13-P1-J-091",
+   "final_target": "W13-P1-J-093",
+   "target_location": "ideas_master(wave3 appended gen_j record)",
+   "proposed_target": "W13-P1-J-093",
+   "chain": false,
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-093",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "kill"
+   }
+  }
+ ],
+ "accepted_2_1_majority_detail": [
+  {
+   "id": "W13-P1-G-003",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-019",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-G-008",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-007",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-G-012",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-073",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-G-015",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "merge -> W13-P1-G-017",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_B_feasibility"
+  },
+  {
+   "id": "W13-P1-G-025",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "kill"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-G-029",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-C-079"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-G-054",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-A-061"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-G-056",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-G-047"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-G-057",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-C-024",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-G-058",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-C-085",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-G-063",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-G-030"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-G-072",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-C-081",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-G-086",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-G-012"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-G-087",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-090",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-G-088",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "merge -> W13-P1-G-087",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_B_feasibility"
+  },
+  {
+   "id": "W13-P1-G-090",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-G-087"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-G-092",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-G-021"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-G-095",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-G-035",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-H-008",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-054",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-H-011",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-H-002"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-H-018",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-097",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-H-032",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-091",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-H-033",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "merge -> W13-P1-H-053",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_B_feasibility"
+  },
+  {
+   "id": "W13-P1-H-035",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-086",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-H-039",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "merge -> W13-P1-J-062",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_B_feasibility"
+  },
+  {
+   "id": "W13-P1-H-050",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-C-020",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-H-051",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-H-033"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-H-063",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-H-007"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-H-084",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-H-044",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-H-086",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-H-035"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-H-096",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-H-034"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-H-098",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-H-043"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-J-046",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-041",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-J-048",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-J-050"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-J-063",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-J-057"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-J-084",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-080",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  },
+  {
+   "id": "W13-P1-J-090",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "kill"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-J-099",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "kill"
+   },
+   "dissenter": "judge_C_adversary"
+  },
+  {
+   "id": "W13-P1-J-104",
+   "votes": {
+    "judge_A_dedup": "merge -> W13-P1-J-038",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "dissenter": "judge_A_dedup"
+  }
+ ],
+ "gate5": {
+  "policy": "remand (option a of the commissioning): accepted gen_g/gen_h records lacking a usable pre-registered numeric kill threshold are NOT appended to ideas_master.jsonl and are remanded, with full records + judge votes + dissents + merged_from, to Windows13/_state/tasks/p1/wave_b_w3/remand_gate5.jsonl for a GATE-5 repair lane.",
+  "policy_rationale": [
+   "All three judges independently found gen_g 0/100 and gen_h 0/100-usable kill thresholds (H-066/H-072 numerals are scale/bit-depth descriptors, not thresholds) and recommended schema-only repair-or-remand, not content rejection.",
+   "Judge A: 'They must NOT be merged threshold-less into the master.' Commissioning: prefer not flooding master with zero-threshold records.",
+   "No numeric thresholds, evidence labels, or asset names were invented by judges or by this consolidator (fabrication risk).",
+   "gen_j (104/104 compliant) proves the schema is satisfiable, so append proceeds for gen_j only; master stays 100% threshold-bearing for wave-3 records."
+  ],
+  "remanded_counts": {
+   "gen_g": 84,
+   "gen_h": 89,
+   "total": 173
+  },
+  "gate5_deferred_appended_to_master": 0,
+  "repair_lane_duty": "retrofit numeric kill thresholds into falsifiable_prediction + evidence_label dicts + GATE-4 named public dataset/model (and gen_h GATE-3 explicit time/cost bounds) from each record's own experiment text; then a consolidator appends the retrofitted records to ideas_master.jsonl. Every remand record carries gate5_deferred=true, gate5_missing[], and remand.lane=p1_wave_b_w3_gate5_repair.",
+  "counted_in_done_json": true
+ },
+ "gen_j_schema_normalization": {
+  "checked": "all 104 raw gen_j records re-scanned by this consolidator: single uniform keyset; kill threshold present INSIDE falsifiable_prediction on 104/104 (no separate kill_threshold field, no threshold-less records); evidence_label dict on 104/104.",
+  "normalization_applied": "none needed beyond master-schema metadata: appended records add source_branch, wave=p1_wave_b_w3, status, novelty_status=unverified, judge_votes, judge metas, judge_dissent, merged_from, accepted_by, consolidated_at_utc; gen_j gate fields (genre, family_fingerprint, evidence_label, needs_special_resources, seg_metric_dependent) preserved verbatim."
+ },
+ "gate6": {
+  "ruling": "genre quotas MUST be applied on judge labels, not generator self-labels (commissioning + both B and C).",
+  "finding": "gen_j self-declares 35.6% constructive (37/104) vs Judge C strict-phrasing audit ~19-20/104; gen_g is debunk/audit-dominant and likely violates the <=40% pure-debunk quota by judge labels.",
+  "action_here": "recorded, not enforced - genre quotas are a Stage-2 selection instrument; judge C's labels are preserved in judge_C_meta on every record and in judge_C.json for the Stage-2 ranker. No verdict in this consolidation used self-labels."
+ },
+ "family_cap_followups": {
+  "over_cap_cells_left_for_stage2": [
+   "dispersion_as_uncertainty (7 keeps incl. 2 protected tensions - consolidator keeps C's arbitration-not-blind-culling note)",
+   "generator_memorization_primary (8 keeps + master F-086/F-093; protect J-038/J-041/J-043 at Stage 2)",
+   "cheap_predictor_of_outcome (g:7 h:1 j:4 keeps; w2 guard <=3/shard exceeded in gen_g; first in line for Stage-2 slot caps per A and C)"
+  ],
+  "rationale": "judge-time merges already fired inside these families (dg-groups + C merges adopted where majority agreed); remaining members are mechanistically distinct per >=2 judges, so forced consolidator merges would override two-judge keep majorities - deferred to Stage-2 slot caps exactly as B and C recommend."
+ },
+ "unresolved_items": [
+  "173 accepted gen_g/gen_h records await the GATE-5 repair lane (remand_gate5.jsonl); they are accepted-on-content and MUST NOT be re-generated or re-judged from scratch.",
+  "GATE-8 novelty/prior-art lane owed for: 46 master-flagged keeps (A), 18-20 prior-art watchlist ids (B/C), both kills (G-002, G-068), and outvoted kill rationales on kept G-025, J-090, J-099 and merged J-091.",
+  "GATE-4 asset naming (named public dataset+model) missing wave-wide for gen_g/gen_h (0/200) and thin for gen_j (7-8/104): fix inside the same repair lane for G/H; gen_j records are runnable but benefit from asset pinning at Stage 2.",
+  "27 accepted records carry collision flags against unjudged origin shards gen_k/l/m/n/p (strongest: J-038 vs N-053/N-054/N-055); reconciliation duty belongs to those shards' judge waves; H-090 acceptance makes it occupied ground for queued gen_u.",
+  "gen_k (105 ideas, on origin) + gen_l/gen_m/gen_n/gen_p (+ gen_o/gen_u when pushed) still need their own judge waves before any further master append.",
+  "Deliberate tensions kept for adjudication-by-experiment (union of A/B/C lists, e.g. H-030 vs H-037/H-039, J-056/J-057 vs J-058, H-099 vs J-079/J-019, G-037 vs G-041/G-042, J-023 vs J-070, H-095 vs H-002, G-026-content vs G-027 inside G-025)."
+ ],
+ "irreconcilable": false,
+ "meta_judge_needed": false,
+ "no_fake_citations": true,
+ "novelty_status_of_all_accepted": "unverified",
+ "force_push": false
+}

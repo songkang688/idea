@@ -14,7 +14,7 @@
   "supervisor": "Windows13",
   "current_stage": "Stage 1",
   "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
-  "total_ideas": 494,
+  "total_ideas": 592,
   "survivors": 0,
   "final_target": 3,
   "status": "stage1_exploration_in_progress",
@@ -124,10 +124,10 @@
     ]
   },
   "idea_counts": {
-    "stage1_generated_total": 604,
-    "stage1_accepted_total": 494,
-    "stage1_merged_total": 101,
-    "stage1_killed_total": 9,
+    "stage1_generated_total": 908,
+    "stage1_accepted_total": 592,
+    "stage1_merged_total": 132,
+    "stage1_killed_total": 11,
     "stage1_target": "1000+",
     "by_wave": {
       "p1_wave_b_w1": {
@@ -164,8 +164,37 @@
         "accepted_unanimous": 214,
         "accepted_2_1_majority": 32,
         "merged_into_wave1_master": 10
+      },
+      "p1_wave_b_w3": {
+        "generators": [
+          "gen_g_domain_shift",
+          "gen_h_sr_restoration",
+          "gen_j_diffusion_model_science"
+        ],
+        "sub_wave": "w3_GHJ",
+        "input": 304,
+        "accepted_by_majority": 271,
+        "accepted_appended_to_master": 98,
+        "accepted_remanded_gate5": 173,
+        "merged": 31,
+        "killed": 2,
+        "accepted_by_shard": {
+          "gen_g": 84,
+          "gen_h": 89,
+          "gen_j": 98
+        },
+        "appended_by_shard": {
+          "gen_g": 0,
+          "gen_h": 0,
+          "gen_j": 98
+        },
+        "accepted_unanimous": 232,
+        "accepted_2_1_majority": 39,
+        "merged_into_wave12_master": 9,
+        "gate5_note": "gen_g/gen_h acceptances remanded to Windows13/_state/tasks/p1/wave_b_w3/remand_gate5.jsonl pending kill-threshold + evidence_label retrofit (no thresholds invented); gen_j appended fully gate-compliant"
       }
-    }
+    },
+    "stage1_accepted_pending_gate5_retrofit": 173
   },
   "exploration": {
     "diversity_audit_w1": {
@@ -310,13 +339,31 @@
         "p1_wave_b_w3",
         "p1_wave_a_more_generators"
       ]
+    },
+    "wave_b_w3_consolidation": {
+      "task_id": "p1_wave_b_w3",
+      "role": "consolidator",
+      "completed_at_utc": "2026-08-29T00:30:00Z",
+      "consolidator_branch": "cursor/p1-wave-b-consolidator-w3-bf20",
+      "decision_file": "Windows13/_state/tasks/p1/wave_b_w3/decision.json",
+      "judge_branches": {
+        "A_dedup": "origin/cursor/p1-wave-b-w3-judge-a-dedup-e60e",
+        "B_feasibility": "origin/cursor/p1-wave-b-w3-judge-b-feasibility-2e78",
+        "C_adversary": "origin/cursor/p1-wave-b-w3-judge-c-adversary-e10f"
+      },
+      "scope": "G+H+J only; gen_k/l/m/n/o/p/u not judged, not merged, awaiting later waves",
+      "headline_conflict": "G-025 C-kill vs A+B merge-primary resolved by majority rule (kept, C rationale as dissent -> GATE-8); one 3-way split (J-091) resolved to merge per w1 fallback; meta-judge not needed",
+      "gate5_policy": "schema-only remand of 173 accepted gen_g/gen_h records (0 thresholds invented; repair lane p1_wave_b_w3_gate5_repair owns retrofit + append)",
+      "remand_queue": "Windows13/_state/tasks/p1/wave_b_w3/remand_gate5.jsonl (173 records)",
+      "master_after_append": 592,
+      "diversity_audit_due": true
     }
   },
   "last_consolidator": {
-    "task_id": "p1_wave_b_w2",
+    "task_id": "p1_wave_b_w3",
     "role": "consolidator",
-    "branch": "cursor/p1-wave-b-consolidator-w2-3111",
-    "consolidated_at_utc": "2026-08-28T20:40:00Z",
-    "note": "Wave2 (generators D+E+F) canonical set reconciled from judges A (dedup), B (feasibility), C (adversary) by majority vote: 302 in, 246 accepted (214 unanimous, 32 by 2-1), 54 merged (10 into wave-1 master ids), 2 killed. Zero 3-way splits, zero unresolvable merge targets; meta-judge not required. Novelty of all accepted ideas UNVERIFIED. Stage 1 exploration continues; 494 << 1000 target, more generator waves needed (gen_g judged next, gen_i..gen_p queued by diversity audit). Decision detail: Windows13/_state/tasks/p1/wave_b_w2/decision.json"
+    "branch": "cursor/p1-wave-b-consolidator-w3-bf20",
+    "consolidated_at_utc": "2026-08-29T00:30:00Z",
+    "note": "Wave3 sub-wave w3_GHJ (generators G+H+J) reconciled from judges A (dedup), B (feasibility), C (adversary) by majority vote: 304 in, 271 accepted (232 unanimous, 39 by 2-1), 31 merged (9 into wave-1/2 master ids), 2 killed. GATE-5 split: 98 gate-compliant gen_j records appended (master 494 -> 592); 173 accepted gen_g/gen_h records REMANDED to wave_b_w3/remand_gate5.jsonl pending kill-threshold/evidence_label retrofit - no thresholds invented, no content rejected. Headline G-025 conflict (C kill vs B merge-primary) resolved by majority rule without meta-judge; one 3-way split (J-091) resolved to merge per w1 fallback. Novelty of all accepted ideas UNVERIFIED. Stage 1 continues: 592 << 1000 target; gen_k + L/M/N/P (+O/U when pushed) await judge waves; GATE-5 repair lane is the highest-priority follow-up. Decision detail: Windows13/_state/tasks/p1/wave_b_w3/decision.json"
   }
 }
