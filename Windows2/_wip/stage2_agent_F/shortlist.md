@@ -2,9 +2,9 @@
 
 Reviewer: Cloud Sub-Agent F (Independent Reviewer + Novelty Assassin). Scope: batch A only (W2-A-0001..0352).
 
-**76 keeps** out of 352 (51 killed, 225 borderline). Selection was NOT by score average: high-risk/high-reward, simple counter-intuitive, cheap-to-falsify, and disagreement-prone ideas were protected explicitly. Tier membership reflects my confidence that the idea is (a) a real scientific question, (b) not already published, and (c) worth a PhD-student-year — in that priority order.
+**75 keeps** out of 352 (51 killed, 226 borderline). Selection was NOT by score average: high-risk/high-reward, simple counter-intuitive, cheap-to-falsify, and disagreement-prone ideas were protected explicitly. Tier membership reflects my confidence that the idea is (a) a real scientific question, (b) not already published, and (c) worth a PhD-student-year — in that priority order.
 
-Ideas marked in `prior_work_attack.md` were additionally web-searched; their verdicts there override first-pass optimism.
+Ideas attacked in `prior_work_attack.md` were web-searched; verdicts there override first-pass optimism. One idea (W2-A-0017) was demoted from this shortlist after its attack found a direct prior-work hit (see 'Post-attack demotion' below).
 
 ## Tier A — Highest conviction (17)
 
@@ -19,8 +19,8 @@ The strongest combination of novelty, significance, upside and ROI in the batch.
   - Why kept: Geometrically-verified phantom objects in puddles is a hidden, safety-relevant, metric-invisible error class with a built-in verification method (mirror symmetry about the road plane); best forensic idea in C05.
 
 - **W2-A-0148** (C06) — Human-AI teaming for camouflage search: model proposals + human verification exceeds either alone, but only if model uncertainty is exposed.
-  - Scores: N5 S5 U5 ROI5 Unpub4 Risk3 Feas3 | Flags: `counter-intuitive,human-study,attack-target-extra`
-  - Why kept: 'Binary masks are the worst output format' is a causal HCI claim against the field's default deliverable, with anchoring as the mechanism; N=30 study is the entire cost. Lit-attacked below.
+  - Scores: N5 S5 U5 ROI5 Unpub4 Risk3 Feas3 | Flags: `counter-intuitive,human-study`
+  - Why kept: Lit-attacked: soft-vs-hard highlighting literature (NSF visual-search studies) already shows soft/graded confidence beats hard binary highlights and hard highlighting can mask non-highlighted targets. Surviving mutation: camouflage/COD-specific teaming with calibration quality as moderator and segmentation-mask anchoring mechanism. MUTATE but keep.
 
 - **W2-A-0150** (C06) — Ambiguous boundaries drift with image resolution: the same object gets objectively different 'correct' boundaries at different scales - boundary GT is scale-relative.
   - Scores: N5 S5 U5 ROI5 Unpub5 Risk3 Feas4 | Flags: `disagreement-prone,annotation-theory,counter-intuitive`
@@ -93,7 +93,7 @@ The strongest combination of novelty, significance, upside and ROI in the batch.
   - Why kept: 'Which leaderboards have crossed their own noise floor' is a field-level service with teeth; the style-vs-anatomy error decomposition is what elevates it above known single-dataset inter-rater studies.
 
 - **W2-A-0075** (C03) — Consensus fusion (STAPLE-style) systematically erases minority-expert detections that are disproportionately correct on rare pathologies.
-  - Scores: N5 S5 U5 ROI4 Unpub4 Risk4 Feas2 | Flags: `high-risk-high-reward,disagreement-prone,clinical-safety,attack-target-extra`
+  - Scores: N5 S5 U5 ROI4 Unpub4 Risk4 Feas2 | Flags: `high-risk-high-reward,disagreement-prone,clinical-safety`
   - Why kept: Outcome-anchored test of consensus erasing the correct minority expert is the most ethically loaded finding available in this cluster; data access is the wall. Protect as HRHR. Lit-attacked below.
 
 - **W2-A-0076** (C04) — Smoke has no true binary boundary: model rankings on smoke benchmarks flip when evaluated against density (alpha) labels instead of binary masks.
@@ -145,7 +145,7 @@ The strongest combination of novelty, significance, upside and ROI in the batch.
   - Why kept: Foundation-regime re-baselining that could obsolete a subfield's methodology; pre-registration and authors'-code discipline (own note) is what separates a service to the field from a flame war. High leverage per GPU.
 
 - **W2-A-0272** (C11) — Layered source files (PSD/SVG) are the largest untapped mask corpus: design assets contain millions of human-made segmentations nobody trains on.
-  - Scores: N5 S5 U5 ROI4 Unpub4 Risk3 Feas3 | Flags: `new-data-source,attack-target-extra`
+  - Scores: N5 S5 U5 ROI4 Unpub4 Risk3 Feas3 | Flags: `new-data-source`
   - Why kept: Design files as a mask corpus with professional boundary quality and different economics is the most original data idea in the batch; licensing and harvesting engineering are real but characterizable. Lit-attacked below.
 
 - **W2-A-0276** (C12) — Dense-prediction scaling laws diverge from classification: boundary quality scales with a smaller exponent than region accuracy - fit both.
@@ -204,13 +204,9 @@ The strongest combination of novelty, significance, upside and ROI in the batch.
   - Scores: N5 S5 U5 ROI4 Unpub4 Risk3 Feas3 | Flags: `disagreement-prone,annotation-theory,high-risk-high-reward`
   - Why kept: Multi-modal (not noisy-binary) disagreement structure invalidating pairwise-agreement certification is foundational annotation theory; a 10-rater panel on 300 items is expensive but small compared to the claim's reach. Protect.
 
-## Tier C — Kept on merit within crowded areas (22)
+## Tier C — Kept on merit within crowded areas (21)
 
 Very good ideas that sit in more crowded literature neighborhoods or carry heavier execution burdens; kept because the core question is real and unanswered.
-
-- **W2-A-0017** (C01) — SA-1B's auto-mask pipeline imprinted a closed-compact-region prior on SAM; open curves and wiry objects are structurally outside its output space.
-  - Scores: N4 S5 U5 ROI4 Unpub3 Risk3 Feas5 | Flags: `ecosystem-inbreeding`
-  - Why kept: Data-genetics explanation of wiry-object failure; needs the fine-tune causal leg to beat 'correlation' reviews. Lit-attacked below.
 
 - **W2-A-0022** (C01) — The Jacobian of SAM's mask w.r.t. prompt location is a label-free edge/structure detector - characterize what it computes.
   - Scores: N5 S4 U5 ROI4 Unpub4 Risk4 Feas4 | Flags: `high-risk-high-reward,new-readout`
@@ -305,7 +301,7 @@ Would not survive on aggregate scores alone; protected under the high-risk/high-
   - Why kept: Static-measurement-predicts-temporal-failure is a clean, useful claim; occlusion-event dominance is the honest failure mode. Lit-attacked below.
 
 - **W2-A-0028** (C02) — Test whether SAM2 tracks appearance or location: teleport experiments separating the two.
-  - Scores: N4 S4 U4 ROI5 Unpub4 Risk2 Feas5 | Flags: `cheap-falsify,counter-intuitive,attack-target-extra`
+  - Scores: N4 S4 U4 ROI5 Unpub4 Risk2 Feas5 | Flags: `cheap-falsify,counter-intuitive`
   - Why kept: Psychology-style teleport probe cleanly dissociates appearance-tracking from location-prior; either outcome is a finding. Among the best of C02.
 
 - **W2-A-0063** (C03) — Annotation fatigue leaves order signatures in public medical datasets: label quality drifts within annotation sessions and is detectable post hoc.
@@ -323,6 +319,10 @@ Would not survive on aggregate scores alone; protected under the high-risk/high-
 - **W2-A-0139** (C06) — COD models lack inhibition-of-return: they find one instance and stop, missing conspecific groups - measure multi-instance recall collapse.
   - Scores: N5 S4 U4 ROI4 Unpub5 Risk3 Feas4 | Flags: `counter-intuitive`
   - Why kept: Conditional recall after the first find (inhibition-of-return deficit) is an original behavioral probe borrowed from visual-search psychology; ecology relevance (herds) gives it real stakes.
+
+## Post-attack demotion
+
+- **W2-A-0017** — was Tier C; demoted to BORDERLINE after the adversarial search found Zhang et al., *Quantifying the Limits of Segmentation Foundation Models* (WACV 2026, arXiv:2412.04243), which quantifies wiry/tree-like failure, attributes it to SA-1B shape statistics, and already ran the targeted fine-tuning experiment (it fails — the limitation is architectural). The surviving sliver (formal prompt-output-space expressivity) should be merged into W2-A-0203.
 
 ## Protection audit
 
