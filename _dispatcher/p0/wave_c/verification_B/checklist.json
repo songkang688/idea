@@ -1,0 +1,72 @@
+{
+  "task_id": "p0_wave_c_verification_B",
+  "verifier": "wave_c_verification_agent_B_git",
+  "verified_at": "2026-08-28T18:00:00Z",
+  "target_branch": "cursor/windows15-p0-init-implementation-4708",
+  "remote": "https://github.com/songkang688/idea",
+  "checks": [
+    {
+      "id": 1,
+      "check": "ls-remote matches claimed SHAs",
+      "result": "pass",
+      "evidence": "git ls-remote origin refs/heads/cursor/windows15-p0-init-implementation-4708 -> d8df13abbabfb4e581dc52e820add064d6572115 (== claimed head); claimed init commit 0ad99d59e33184ae8efcf93985dcaa1eab16cf27 present on branch"
+    },
+    {
+      "id": 2,
+      "check": "commit exists, message exact, not force-pushed (ancestry from main)",
+      "result": "pass",
+      "evidence": "git cat-file -p succeeds; subject byte-exact 'Research Idea Evolution - Windows15 - Initialization'; parent of init commit == origin/main tip 1cf3304265ba6b5093f7c68eb39461b883961a07; merge-base(origin/main, branch) == main tip; linear fast-forward chain main -> init -> head; no force-push evidence"
+    },
+    {
+      "id": 3,
+      "check": "push succeeded (remote SHA == branch tip)",
+      "result": "pass",
+      "evidence": "remote tip d8df13abbabfb4e581dc52e820add064d6572115 == local branch tip == claimed head; init commit contained in pushed head"
+    },
+    {
+      "id": 4,
+      "check": "no secrets in committed files (Windows15/ and _dispatcher/ on branch)",
+      "result": "pass",
+      "evidence": "14 text files scanned at branch tip (no binaries); zero matches for private-key blocks, AWS/GitHub/GitLab/Slack/OpenAI/Google token formats, JWTs, Bearer tokens; only 40-hex strings are the three git commit SHAs (init, main tip, prior main tip); keyword hits are benign prose in judge/consolidator reports"
+    },
+    {
+      "id": 5,
+      "check": "no credentialed URLs committed",
+      "result": "pass",
+      "evidence": "git grep for scheme://user@host / user:pass@host patterns over branch tree returned zero matches"
+    },
+    {
+      "id": 6,
+      "check": "root README.md unmodified vs origin/main",
+      "result": "pass",
+      "evidence": "README.md absent from git diff --name-status origin/main..branch; note: origin/main advanced 990f3ebc -> 1cf3304 relative to stale local clone, and the branch is based on the current main tip 1cf3304, so comparison is against live main"
+    },
+    {
+      "id": 7,
+      "check": "diff is additions under Windows15/ and _dispatcher/ only",
+      "result": "pass",
+      "evidence": "git diff --name-status origin/main..branch: exactly 14 paths, all status A, all under Windows15/ or _dispatcher/; second commit d8df13a only modified 4 of those same added files, still within allowed roots"
+    },
+    {
+      "id": 8,
+      "check": "git_safety fields in research_state.json match reality",
+      "result": "pass",
+      "evidence": "pre_init_branch=main, pre_init_head=1cf3304 (== init parent == main tip), force_push=false, init_commit=0ad99d59, push_status=verified_success, push_failure_reason=null all match observed state; push_remote_sha=0ad99d59 was accurate at push_verified_at 2026-08-28T17:54:18Z (current tip d8df13a is the commit that recorded the field - inherent self-reference, not a mismatch); working_tree_at_pre_init=clean not retroactively provable, no contrary evidence"
+    }
+  ],
+  "claimed_vs_actual": {
+    "claimed_init_commit": "0ad99d59e33184ae8efcf93985dcaa1eab16cf27",
+    "actual_init_commit": "0ad99d59e33184ae8efcf93985dcaa1eab16cf27",
+    "claimed_head": "d8df13abbabfb4e581dc52e820add064d6572115",
+    "actual_head": "d8df13abbabfb4e581dc52e820add064d6572115",
+    "claimed_message": "Research Idea Evolution - Windows15 - Initialization",
+    "actual_message": "Research Idea Evolution - Windows15 - Initialization",
+    "origin_main_at_verification": "1cf3304265ba6b5093f7c68eb39461b883961a07"
+  },
+  "overall": "pass",
+  "blocking_findings": [],
+  "informational_notes": [
+    "push_remote_sha in research_state.json records the init commit SHA (remote tip at verification time 2026-08-28T17:54:18Z); the recording commit d8df13a was pushed afterward, so current remote tip is d8df13a. Self-reference artifact, no action needed.",
+    "origin/main moved from 990f3ebc75d7ab03a8960cf0d1e5621cbb29194a to 1cf3304265ba6b5093f7c68eb39461b883961a07 relative to the stale local clone; Windows15 branch is based on the newer (current) main tip, so no drift."
+  ]
+}
