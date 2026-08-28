@@ -1,0 +1,24 @@
+{
+  "task_id": "p1_state_reader",
+  "role": "state_reader",
+  "status": "complete",
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "lock_ok": true,
+  "idea_count": 0,
+  "output_files": [
+    "Windows15/_state/tasks/p1/state_reader/report.md",
+    "Windows15/_state/tasks/p1/state_reader/state.json",
+    "Windows15/_state/tasks/p1/state_reader/task_queue.json",
+    "Windows15/_state/tasks/p1/state_reader/done.json"
+  ],
+  "unresolved_items": [
+    "PR https://github.com/songkang688/idea/pull/11 (P0 init) is still OPEN; canonical Windows15 state lives on the P0 branches, not on main. Not a blocker for Wave A."
+  ],
+  "recommended_next_task_type": "p1_wave_a_generators",
+  "next_ready_task_ids": [
+    "p1_wave_a_batch001_gen_A",
+    "p1_wave_a_batch001_gen_B",
+    "p1_wave_a_batch001_gen_C"
+  ]
+}

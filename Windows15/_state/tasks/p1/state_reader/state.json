@@ -1,0 +1,29 @@
+{
+  "windows_id": "Windows15",
+  "windows_number": 15,
+  "windows_path": "Windows15",
+  "window_locked": true,
+  "current_stage": "Stage 1",
+  "idea_count": 0,
+  "lock_ok": true,
+  "repository": "https://github.com/songkang688/idea",
+  "p0_lock_branch": "cursor/windows15-p0-init-implementation-4708",
+  "p0_verification_branch": "cursor/p0-wave-c-verification-consolidator-99e6",
+  "p0_pr": "https://github.com/songkang688/idea/pull/11",
+  "lock_source": "P0 branches provided by parent dispatcher (no max-N scan performed)",
+  "lock_checks": {
+    "window_locked_true": true,
+    "lock_matches_research_state_windows_id": true,
+    "lock_matches_research_state_windows_number": true,
+    "lock_matches_research_state_windows_path": true,
+    "lock_identical_across_p0_branches": true,
+    "research_state_identical_across_p0_branches": true,
+    "ideas_master_present": true,
+    "ideas_master_bytes": 0,
+    "ideas_master_nonempty_lines": 0
+  },
+  "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "read_at": "2026-08-28T18:10:00Z",
+  "read_by": "p1_state_reader",
+  "reader_branch": "cursor/windows15-p1-state-reader-a5fa"
+}

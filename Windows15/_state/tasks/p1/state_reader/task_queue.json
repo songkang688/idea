@@ -1,0 +1,281 @@
+{
+  "queue_version": 1,
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "generated_by": "p1_state_reader",
+  "generated_at": "2026-08-28T18:10:00Z",
+  "goal": "Reach 1000+ accepted deduplicated ideas in Windows15/_state/ideas_master.jsonl via Wave A generators (shards) + Wave B dedup consolidators. Generators write shards ONLY under their assigned output_dir; they must NEVER rewrite the canonical ideas_master.jsonl and must NEVER modify window.lock.json or research_state.json identity fields.",
+  "generator_contract": {
+    "target_count_range": [80, 120],
+    "required_fields_per_idea": [
+      "ID seed",
+      "One-line Idea",
+      "Cluster",
+      "Problem",
+      "Core Hypothesis",
+      "Falsifiable Prediction",
+      "Why Important",
+      "Why Possibly Novel",
+      "Minimal Falsification Experiment",
+      "Main Risk"
+    ],
+    "hard_rules": [
+      "Generators must NOT claim verified novelty ('Why Possibly Novel' is a hypothesis label, not a verified claim).",
+      "No invented citations, benchmark numbers, or claimed experimental results.",
+      "Write shard files only under the assigned output_dir (inside Windows15/). No canonical ideas_master.jsonl rewrite.",
+      "Do not modify window.lock.json, windows_id, windows_number, or windows_path.",
+      "Do not create new Windows directories."
+    ]
+  },
+  "tasks": [
+    {
+      "task_id": "p1_wave_a_batch001_gen_A",
+      "type": "generator",
+      "territory": "T01 SAM / Foundation Model adaptation / PEFT",
+      "batch": 1,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_001/gen_A/",
+      "status": "ready"
+    },
+    {
+      "task_id": "p1_wave_a_batch001_gen_B",
+      "type": "generator",
+      "territory": "T02 Medical segmentation",
+      "batch": 1,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_001/gen_B/",
+      "status": "ready"
+    },
+    {
+      "task_id": "p1_wave_a_batch001_gen_C",
+      "type": "generator",
+      "territory": "T03 Smoke / fire / ambiguous segmentation",
+      "batch": 1,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_001/gen_C/",
+      "status": "ready"
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch001",
+      "type": "dedup_consolidator",
+      "territory": "Wave B dedup of batch_001 shards (gen_A/B/C) into accepted ideas; append-only merge into canonical ideas_master.jsonl by the consolidator ONLY",
+      "batch": 1,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_001/dedup/",
+      "status": "blocked_until_batch001_generators_done"
+    },
+    {
+      "task_id": "p1_wave_a_batch002_gen_A",
+      "type": "generator",
+      "territory": "T04 Object detection",
+      "batch": 2,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_002/gen_A/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch002_gen_B",
+      "type": "generator",
+      "territory": "T05 VLM / dense prediction",
+      "batch": 2,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_002/gen_B/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch002_gen_C",
+      "type": "generator",
+      "territory": "T06 failure mining",
+      "batch": 2,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_002/gen_C/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch002",
+      "type": "dedup_consolidator",
+      "territory": "Wave B dedup of batch_002 shards against all previously accepted ideas",
+      "batch": 2,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_002/dedup/",
+      "status": "blocked_until_batch002_generators_done"
+    },
+    {
+      "task_id": "p1_diversity_audit_checkpoint_1",
+      "type": "diversity_audit",
+      "territory": "Diversity audit across accepted ideas: cluster balance, territory coverage, near-duplicate density. Trigger after ~100-200 accepted ideas (expected around end of batch_002 dedup).",
+      "batch": 2,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/audits/diversity_checkpoint_1/",
+      "status": "blocked_until_100_to_200_accepted"
+    },
+    {
+      "task_id": "p1_wave_a_batch003_gen_A",
+      "type": "generator",
+      "territory": "T07 benchmark/dataset weaknesses",
+      "batch": 3,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_003/gen_A/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch003_gen_B",
+      "type": "generator",
+      "territory": "T08 uncertainty/calibration",
+      "batch": 3,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_003/gen_B/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch003_gen_C",
+      "type": "generator",
+      "territory": "T09 synthetic data",
+      "batch": 3,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_003/gen_C/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch003",
+      "type": "dedup_consolidator",
+      "territory": "Wave B dedup of batch_003 shards against all previously accepted ideas",
+      "batch": 3,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_003/dedup/",
+      "status": "blocked_until_batch003_generators_done"
+    },
+    {
+      "task_id": "p1_wave_a_batch004_gen_A",
+      "type": "generator",
+      "territory": "T10 domain shift",
+      "batch": 4,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_004/gen_A/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch004_gen_B",
+      "type": "generator",
+      "territory": "T11 negative results",
+      "batch": 4,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_004/gen_B/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch004_gen_C",
+      "type": "generator",
+      "territory": "T12 contrarian hypotheses",
+      "batch": 4,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_004/gen_C/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch004",
+      "type": "dedup_consolidator",
+      "territory": "Wave B dedup of batch_004 shards against all previously accepted ideas",
+      "batch": 4,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_004/dedup/",
+      "status": "blocked_until_batch004_generators_done"
+    },
+    {
+      "task_id": "p1_wave_a_batch005_gen_A",
+      "type": "generator",
+      "territory": "T13 super-resolution/restoration",
+      "batch": 5,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_005/gen_A/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch005_gen_B",
+      "type": "generator",
+      "territory": "T14 diffusion/generation",
+      "batch": 5,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_005/gen_B/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch005_gen_C",
+      "type": "generator",
+      "territory": "T15 LLM/agent",
+      "batch": 5,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_005/gen_C/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch005",
+      "type": "dedup_consolidator",
+      "territory": "Wave B dedup of batch_005 shards against all previously accepted ideas",
+      "batch": 5,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_005/dedup/",
+      "status": "blocked_until_batch005_generators_done"
+    },
+    {
+      "task_id": "p1_wave_a_batch006_gen_A",
+      "type": "generator",
+      "territory": "T16 cross-field transfer",
+      "batch": 6,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_006/gen_A/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch006_gen_B",
+      "type": "generator",
+      "territory": "T01 SAM / Foundation Model adaptation / PEFT (second pass: angles not covered by batch_001 gen_A per dedup report)",
+      "batch": 6,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_006/gen_B/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_a_batch006_gen_C",
+      "type": "generator",
+      "territory": "T06 failure mining x T08 uncertainty/calibration (intersection pass: gaps identified by diversity audit)",
+      "batch": 6,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_006/gen_C/",
+      "status": "pending"
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch006",
+      "type": "dedup_consolidator",
+      "territory": "Wave B dedup of batch_006 shards against all previously accepted ideas",
+      "batch": 6,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_006/dedup/",
+      "status": "blocked_until_batch006_generators_done"
+    },
+    {
+      "task_id": "p1_diversity_audit_checkpoint_2",
+      "type": "diversity_audit",
+      "territory": "Second diversity audit; re-balance remaining territory rotation (T01-T16) based on accepted-idea cluster histogram before scheduling batches beyond 006.",
+      "batch": 6,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/audits/diversity_checkpoint_2/",
+      "status": "blocked_until_500_accepted"
+    },
+    {
+      "task_id": "p1_stage_completion_auditors",
+      "type": "stage_completion_audit",
+      "territory": "Stage-Completion Auditors: verify >=1000 accepted deduplicated ideas in ideas_master.jsonl, required fields present per idea, no verified-novelty claims by generators, territory coverage across T01-T16. ONLY dispatch after >=1000 accepted.",
+      "batch": 99,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/audits/stage_completion/",
+      "status": "blocked_until_1000_accepted"
+    }
+  ],
+  "scheduling_notes": [
+    "Dispatch batch_001 gen_A/B/C immediately (status=ready).",
+    "Parent should keep 3 generator slots filled: promote the next pending batch to ready as slots free up; run the batch's Wave B dedup after its 3 generators complete.",
+    "If territories T01-T16 are exhausted before 1000+ accepted, schedule additional batches using second-pass/intersection territories guided by dedup and diversity-audit reports (as in batch_006).",
+    "Only the Wave B dedup consolidator may append accepted ideas to Windows15/_state/ideas_master.jsonl; generators only write shards in their output_dir."
+  ]
+}
