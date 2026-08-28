@@ -1,0 +1,32 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "wave_C_verifier_B_state_git",
+  "status": "complete",
+  "verdict": "pass",
+  "state_files_ok": true,
+  "json_ok": true,
+  "commit_ok": true,
+  "push_ok": true,
+  "commit": "cb86614201db8b5f328864feeb776b443e2e0ec5",
+  "push_error": null,
+  "windows_id": "Windows14",
+  "verified_branch": "cursor/windows14-p0-init-implementation-46a8",
+  "verified_remote_tip": "1cbba316fc16b0caba93f486de1e15bcdf564859",
+  "init_commit_message_ok": true,
+  "init_commit_message": "Research Idea Evolution - Windows14 - Initialization",
+  "bumped": false,
+  "git_safety_hashes_ok": true,
+  "windows14_unique_across_origin_branch_heads": true,
+  "p1_started": false,
+  "verified_at_utc": "2026-08-28T17:50:00Z",
+  "unresolved_items": [
+    "git_safety.main_head (990f3eb) is stale: origin/main has advanced to 1cf3304265ba6b5093f7c68eb39461b883961a07 since init; the field was accurate at init time and is informational only, not an error",
+    "push_remote_sha/push_verified_at (cb86614 @ 2026-08-28T17:46:30Z) are HISTORIC CLAIMS re-verified by ancestry only: cb86614 is provably on the remote as an ancestor of current tip 1cbba31, but the original point-in-time ls-remote cannot be replayed",
+    "Carried forward, out of scope: Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is pre-existing invalid JSON; downstream parsers must not assume prior windows' state files parse"
+  ],
+  "recommended_next_task_type": "wave_C_verification_consolidator",
+  "output_files": [
+    "_state/tasks/p0/windows_init/verifier_B.md",
+    "_state/tasks/p0/windows_init/verifier_B.done.json"
+  ]
+}
