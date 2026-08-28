@@ -1,0 +1,58 @@
+{
+  "task_id": "p1_wave_b_w1",
+  "role": "judge_A_dedup",
+  "status": "complete",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "wave": "P1 Wave B (wave 1: generators A+B+C only)",
+  "branch": "cursor/p1-wave-b-judge-a-dedup-f906",
+  "inputs": [
+    {
+      "generator": "gen_a_sam_foundation_peft",
+      "branch": "origin/cursor/p1-gen-a-sam-foundation-peft-c8d4",
+      "idea_count": 102
+    },
+    {
+      "generator": "gen_b_hard_domain_dense_prediction",
+      "branch": "origin/cursor/p1-gen-b-hard-domain-a13a",
+      "idea_count": 96
+    },
+    {
+      "generator": "gen_c_contrarian_eval",
+      "branch": "origin/cursor/windows13-p0-init-implementation-d93f",
+      "idea_count": 104
+    }
+  ],
+  "counts": {
+    "input_total": 302,
+    "keep": 245,
+    "keep_per_shard": { "gen_a": 92, "gen_b": 85, "gen_c": 68 },
+    "kill_or_merge": 57,
+    "kill_per_shard": { "gen_a": 10, "gen_b": 11, "gen_c": 36 },
+    "duplicate_groups": 33,
+    "flagged_permutation_ids": 63,
+    "anomalies": 18,
+    "clusters": 32
+  },
+  "output_files": [
+    "Windows13/_state/tasks/p1/wave_b_w1/judge_A.md",
+    "Windows13/_state/tasks/p1/wave_b_w1/judge_A.json",
+    "Windows13/_state/tasks/p1/wave_b_w1/accepted_shard_A.jsonl",
+    "Windows13/_state/tasks/p1/wave_b_w1/done_judge_A.json"
+  ],
+  "canonical_state_untouched": [
+    "Windows13/_state/ideas_master.jsonl",
+    "Windows13/_state/research_state.json",
+    "Windows13/_state/window.lock.json"
+  ],
+  "unresolved_items": [
+    "Novelty of all 245 kept candidates remains unverified; prior-art search is the next gate. Prioritize the 40+ kept-but-flagged permutation-family ids (see judge_A.json flagged_permutation) and every 'verify prior art' note in accepted_shard_A.jsonl.",
+    "kill_or_merge dispositions (57 ids with merge targets and reasons) are redundancy consolidations, not quality verdicts; the Consolidator may resurrect any merged id if it disagrees with a grouping.",
+    "Deliberately kept tensions need adjudication by experiment, not dedup: dg27 head-vs-representation (A-014 vs B-031 make opposing predictions) and the A-076/B-033 threshold-mechanism vs threshold-metric pair.",
+    "Feasibility/compute triage not performed here (gen A flagged A-032 and A-102 as compute-heavy; both kept on scientific content).",
+    "This wave covers generators A+B+C only; dispositions may shift when later generator waves and additional judges (novelty, feasibility) report."
+  ],
+  "recommended_next_task_type": "p1_wave_b_more_judges_or_consolidator",
+  "completed_at_utc": "2026-08-28T19:10:00Z"
+}
