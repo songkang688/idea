@@ -20,6 +20,14 @@ Chronological log of agent actions inside research window **Windows16**.
    _state/window.lock.json (locked=true, in init commit), _state/ideas_master.jsonl
    (empty), _state/research_ledger.md, this log, selection_history/.gitkeep,
    final_ideas/.gitkeep, artifacts/.gitkeep. No other WindowsN tree touched.
-6. Next: validate all JSON with `python3 -m json.tool`, commit with exact message
-   `Research Idea Evolution - Windows16 - Initialization`, push, record REAL push
-   status in `_state/tasks/P0/wave_C/`.
+6. 17:36Z — Validated `research_state.json`, `window.lock.json` (python3 -m json.tool)
+   and `ideas_master.jsonl` (0 lines, valid JSONL).
+7. 17:37Z — Final pre-commit race check (`git fetch origin --prune` + re-scan of all
+   origin tips and branch names): Windows16 still FREE. Committed
+   `48a0d4898d728811a1dfbeaeb1fc3e3d3e1854fa` with exact message
+   `Research Idea Evolution - Windows16 - Initialization`.
+8. 17:37Z — Pushed `cursor/windows16-p0-implementation-3255` to origin; push VERIFIED
+   via `git ls-remote` (remote SHA == local HEAD == 48a0d48). No force-push used.
+9. 17:37Z — Recorded verified push status in `research_state.json` git_safety
+   (follow-up bookkeeping commit) and wrote Wave C reports to
+   `_state/tasks/P0/wave_C/` (implementation.md, done.json).
