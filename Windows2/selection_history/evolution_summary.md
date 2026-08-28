@@ -10,9 +10,11 @@
 | E | B | 77 | 268 | hard kills 0136, 0175, 0279 |
 | F | A | pending | pending | running |
 
-## Stage 2 merge (partial)
+## Stage 2 merge
 
-Agent G: merge B∪C keeps (~184) into a provisional list, census checkpoints/prediction caches, flag cross-batch duplicates. Wait for F before locking 200.
+- G COMPLETE: 184 → 121 B∪C slots (LOCK 50 / FLEX 71), 40 DROP, 23 merged parasites. Files: `Windows2/_wip/stage2_agent_G/`.
+- F WIP: 76 A keeps on branch (`stage2_agent_F/shortlist.md`); F still running literature.
+- I: fold A into reserved 79 slots → provisional 200.
 
 ## Eliminated (confirmed, do not revive without new evidence)
 
