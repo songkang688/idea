@@ -1,0 +1,46 @@
+{
+  "task_id": "P1-genA-05-vlm-dense",
+  "role": "Generator",
+  "status": "complete",
+  "window": "Windows16",
+  "territory": "VLM/dense prediction: vision-language models for dense tasks, grounding, referring segmentation, pixel-level alignment between text and image features",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-05_vlm_dense.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-05-vlm-dense.done.json"
+  ],
+  "candidate_count": 101,
+  "target_band": "80-120",
+  "candidate_id_range": "vlmd-0001..vlmd-0101",
+  "clusters": {
+    "patch_text_alignment_geometry": 10,
+    "open_vocab_training_supervision": 10,
+    "referring_segmentation_language": 10,
+    "grounding_hallucination_robustness": 8,
+    "architecture_text_conditioning": 10,
+    "evaluation_benchmark_hygiene": 9,
+    "compositional_spatial_language": 8,
+    "uncertainty_calibration_dense": 8,
+    "llm_reasoning_segmentation": 8,
+    "efficiency_adaptation_deployment": 8,
+    "data_bias_scaling": 6,
+    "cross_task_unification": 6
+  },
+  "evidence_labels": {
+    "HYPOTHESIS": 94,
+    "MODEL SPECULATION": 7
+  },
+  "schema_notes": "Each JSONL line carries the parent-mandated fields (candidate_id, territory, title, one_line_idea, cluster, problem, core_hypothesis, core_claim, method_sketch, falsifiable_prediction, why_important, why_possibly_novel, novelty_hook, minimal_falsification_experiment, main_risk, kill_risk, community_default_belief, why_it_might_be_wrong, fastest_falsifying_experiment, evidence_label). Alias fields mirror their counterparts per shard_format convention: core_claim=core_hypothesis, method_sketch=minimal_falsification_experiment, novelty_hook=why_possibly_novel, kill_risk=main_risk. Every candidate answers: what the community assumes (community_default_belief), why it may be wrong (why_it_might_be_wrong), and the fastest falsifying experiment (fastest_falsifying_experiment).",
+  "compliance": {
+    "forbid_fiction": "No fabricated papers, citations, benchmark numbers, dataset facts, or claimed experimental results; all quantitative statements are phrased as falsifiable predictions under HYPOTHESIS or MODEL SPECULATION labels.",
+    "novelty_claims": "All novelty statements are hedged as possibly-novel and explicitly marked unverified; no verified novelty claimed.",
+    "protected_files": "window.lock.json, research_state.json, ideas_master.jsonl untouched; no Windows dirs created; no Windows numbers scanned."
+  },
+  "novelty": "unverified",
+  "unresolved_items": [
+    "Novelty of all 101 candidates is unverified against the literature; Wave B dedup plus any novelty-checking stage must vet before promotion.",
+    "Intra-shard near-duplicates were minimized by design but conceptual neighbors remain for dedup review: vlmd-0021 vs vlmd-0074 (shortcut/baseline audits of referring vs reasoning benchmarks), vlmd-0050 vs vlmd-0052 (synonym renaming vs prompt-overfitting leakage), vlmd-0068 vs vlmd-0069 (paraphrase-based ambiguity detection vs paraphrase-based uncertainty estimation), vlmd-0008 vs vlmd-0022 vs vlmd-0084 (negation handling at alignment, benchmark, and efficiency levels).",
+    "Cross-territory overlap likely with genA-01 (SAM/PEFT: prompt/decoder adaptation, forgetting), genA-07 (benchmark weaknesses: evaluation_benchmark_hygiene cluster), and genA-08 (uncertainty: uncertainty_calibration_dense cluster); dedup should treat those cluster tags as high-collision zones.",
+    "vlmd-0090 and vlmd-0093 require small-scale pretraining runs whose external validity at production scale is flagged inside the records; vlmd-0036 depends on access to open pretraining corpora for contamination analysis."
+  ],
+  "recommended_next_task_type": "P1-genA-06-failure-mining"
+}
