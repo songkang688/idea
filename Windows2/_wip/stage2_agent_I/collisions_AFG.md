@@ -58,12 +58,20 @@ Members before merge would have been 6+ slots. After merge, exactly **5**:
 | **A-0300 vs A-0290** (ensemble-gain collapse vs shared blind spots) | **A-0290 hosts ← A-0300** (temporal-trend arm; same model-zoo infrastructure, same monoculture thesis). |
 | **A-0076 vs A-0091/A-0082** (smoke metric audits, internal to A) | **A-0076 hosts ← A-0091 (human-judgment vs IoU rankings) ← A-0082 (annotator alpha-threshold distribution).** One smoke-metrology paper: binary-mask rankings vs density labels, with the human-preference and alpha-cutoff arms. |
 
+## 8. PI directive (`_wip/PI_TO_I.md`) — applied after F/H/J completion
+
+- **B kills mandated by Agent H:** B-0332 (LOCK; arXiv:2510.23482 scooped visual-thought corruption), B-0133 (opposite-direction LoRA-memorization results), B-0025, B-0252 — all dropped, no arms. **B-0042 residual relocated** from C-0011 to B-0213 (SynCLIP).
+- **Re-annotation-arbiter cluster consolidated** (J risk #1: 0237, 0249, 0151, 0150, 0163, 0071 all use better-annotations-as-referee and share one unbuilt noise/convention/quality/ambiguity taxonomy): 0237+0249 merge already mandatory; additionally **A-0151 → arm of A-0163** and **A-0071 → arm of C-0043**. Remaining slots: A-0237, A-0150, A-0163 — declared one GT-epistemology program with a single shared taxonomy + multi-rater pool.
+- F's mutated forms preferred throughout for 0001, 0060, 0076, 0107, 0181, 0198, 0245, 0301, 0326, 0074, 0331, 0300, 0352 (0001/0060 were never in the keep set; all others carry the mutation in `provisional_200.md`).
+- Flagship protections honored: 0206, 0163, 0150, 0121, 0175, 0145 all hold slots; 0151 survives as a named arm.
+
 ## Cross-batch balance effects
 
 - G FLEX displaced into arms of A hosts: **C-0208, C-0345, C-0078, C-0333** (4 slots, content preserved).
 - G LOCK merged within G: **C-0298 → C-0122** (cap enforcement).
 - G FLEX folded within G: **B-0293 → B-0286** (G's own conditional).
-- A ideas merged into G hosts (content preserved, no A slot): **A-0245→C-0150 · A-0164→C-0007 · A-0313→C-0302 · A-0322→C-0300 · A-0228→C-0212 · A-0305→C-0326 · A-0100→C-0122 · A-0323→C-0338 · A-0198→C-0311 · A-0003→B-0018 · A-0153→B-0203 · A-0220→C-0115** (12).
-- A-internal merges: **A-0249→A-0237 · A-0264→A-0206 · A-0300→A-0290 · A-0091→A-0076 · A-0082→A-0076** (5), plus **C-0082-mut→A-0026** re-entry.
+- H/PI kills in B (no arms): **B-0332, B-0025, B-0133, B-0252**.
+- A ideas merged into G hosts (content preserved, no A slot): **A-0245→C-0150 · A-0164→C-0007 · A-0313→C-0302 · A-0322→C-0300 · A-0228→C-0212 · A-0305→C-0326 · A-0100→C-0122 · A-0323→C-0338 · A-0198→C-0311 · A-0071→C-0043 · A-0003→B-0018 · A-0153→B-0203 · A-0220→C-0115** (13).
+- A-internal merges: **A-0249→A-0237 · A-0264→A-0206 · A-0300→A-0290 · A-0091→A-0076 · A-0082→A-0076 · A-0151→A-0163** (6), plus **C-0082-mut→A-0026** re-entry.
 
 All merges are reversible; every parasite is named at its host in `provisional_200.md`.
