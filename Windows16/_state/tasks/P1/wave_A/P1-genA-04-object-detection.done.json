@@ -1,0 +1,18 @@
+{
+  "task_id": "P1-genA-04-object-detection",
+  "role": "Generator",
+  "status": "complete",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-04_object_detection.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-04-object-detection.done.json"
+  ],
+  "candidate_count": 100,
+  "unresolved_items": [
+    "Novelty of all 100 candidates is unverified (every candidate labeled HYPOTHESIS or MODEL SPECULATION per evidence_policy.forbid_fiction); a later verifier/consolidator must check each against real prior work before acceptance.",
+    "No deduplication was performed against sibling shards (genA-01 SAM/PEFT, genA-02 medical-seg, genA-03 smoke-fire-ambiguous) or later territories; cross-shard overlap is possible in evaluation-protocol, uncertainty/calibration, label-noise, and synthetic-data clusters.",
+    "Candidates assuming multi-annotator subsets, RAW-image detection data, geotagged evaluation splits, or source-video provenance presume such data can be sourced; feasibility was not checked.",
+    "Four candidates (dete-0019, dete-0049, dete-0056, dete-0072) are labeled MODEL SPECULATION because their premises hinge on unmeasured field-wide statistical or confounding claims; they need especially careful downstream vetting."
+  ],
+  "recommended_next_task_type": "P1-genA-05-vlm-dense",
+  "note": "Novelty unverified for all candidates. Breadth-first generation across 12 clusters (open_vocabulary 12, small_object 10, dense_crowded 8, long_tail 10, label_noise 10, eval_metrics 10, training_objectives 10, pretraining_ssl 8, uncertainty_openworld 8, efficiency_architecture 6, domain_shift 5, synthetic_data 3). No citations, benchmark numbers, or experimental results were fabricated; all claims are framed as hypotheses to be falsified."
+}
