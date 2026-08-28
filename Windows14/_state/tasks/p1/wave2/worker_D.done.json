@@ -1,0 +1,17 @@
+{
+  "task_id": "p1_gen_w2_d",
+  "role": "worker_D",
+  "status": "complete",
+  "windows_path": "Windows14",
+  "idea_count": 124,
+  "recommended_next_task_type": "p1_wave2_pending_or_wave1_consolidator",
+  "output_files": [
+    "Windows14/_state/tasks/p1/wave2/worker_D.ideas.jsonl",
+    "Windows14/_state/tasks/p1/wave2/worker_D.md",
+    "Windows14/_state/tasks/p1/wave2/worker_D.done.json"
+  ],
+  "unresolved_items": [
+    "novelty of all 124 ideas unverified (HYPOTHESIS status by design); dedup against wave1 shards and parallel wave2 shards belongs to judges/consolidator",
+    "possible thematic overlap with wave1 worker_C failure-mining shard on error-taxonomy-critique ideas; flagged for dedup judge"
+  ]
+}
