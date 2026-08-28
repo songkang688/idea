@@ -2,16 +2,24 @@
 
 ## Stage 1
 
-- 2026-08-28: Dispatched A (SAM), B (VFM/PEFT), C (detection/eval).
-- Agent C COMPLETE: 345 ideas, IDs `W2-C-0001`–`W2-C-0345`, files under `Windows2/_wip/stage1_agent_C/`.
-- Agents A and B still running.
-- Running total of original ideas: **345 / 1000+** (incomplete).
+- Agent C COMPLETE: 345 ideas `W2-C-0001`–`0345`.
+- Agent B COMPLETE: 345 ideas `W2-B-0001`–`0345`.
+- Agent A still running.
+- Running total: **690 / 1000+**.
 
-## Stage 2/3 (partial, batch C)
+## Stage 2/3 (partial)
 
-- Next dispatch: independent Reviewer + prior-work assassin on C catalog, with extra effort on the 15 high-ROI IDs.
-- Do not globally cut to 200 until A+B are in.
+- Agent D: review + prior-work attack on batch C (running).
+- Agent E: review + prior-work attack on batch B (dispatching).
+- Do not globally cut to 200 until A is in and D/E scores exist.
+
+## Cross-batch merge notes (supervisor)
+
+Possible conceptual overlap to resolve later:
+- C-0081 classification-pretrain vs dense transfer ↔ B frozen-vs-tuned / representation mismatch.
+- C-0011 prompt-template variance ↔ B-0042 synonym variance in open-vocab.
+- C-0082 SAM zero-shot atlas ↔ upcoming Agent A SAM failure catalog.
 
 ## Mutations / kills
 
-None yet (no independent review).
+None confirmed (independent review not back).
