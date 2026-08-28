@@ -1,0 +1,76 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "wave_C_verifier_C",
+  "verifier": "C",
+  "scope": "secrets + git safety + P0 completion checklist",
+  "dispatcher": "Windows14",
+  "status": "complete",
+  "verdict": "pass",
+  "audited_branch": "cursor/windows14-p0-init-implementation-46a8",
+  "audited_head": "1cbba316fc16b0caba93f486de1e15bcdf564859",
+  "audited_init_commit": "cb86614201db8b5f328864feeb776b443e2e0ec5",
+  "verified_at_utc": "2026-08-28T17:51:48Z",
+  "checklist": {
+    "windows_unique_and_correct": true,
+    "no_overwrite_old_dirs": true,
+    "state_files_created": true,
+    "git_safety_done": true,
+    "commit_done": true,
+    "push_success_or_real_failure_recorded": true
+  },
+  "secret_scan": {
+    "patterns": ["ghp_", "github_pat_", "sk-", "AKIA", "PEM PRIVATE KEY headers"],
+    "method": "git grep -n -I -E over each of the 3 branch-unique commit trees; second pass over every blob from git rev-list --objects origin/main..branch; third loose case-insensitive pass over the final tree; mechanism sanity-checked with a known-present string",
+    "matches_found": 0,
+    "secret_values_printed": false,
+    "result": "clean"
+  },
+  "force_push_check": {
+    "fetch_forced_update_markers": 0,
+    "linear_parent_chain": "990f3eb -> 57133e0 -> cb86614 -> 1cbba31",
+    "recorded_push_sha_is_ancestor_of_remote_head": true,
+    "result": "no force-push evidence"
+  },
+  "other_windows_dirs_check": {
+    "method": "git show --name-status on all 3 branch-unique commits",
+    "non_add_changes": ["M Windows14/_state/research_state.json (Windows14's own file, follow-up shard commit)"],
+    "deletions": 0,
+    "renames": 0,
+    "other_windowsn_paths_touched": 0,
+    "result": "clean"
+  },
+  "push_ok_vs_ls_remote": {
+    "implementation_done_json_push_ok": true,
+    "implementation_done_json_commit": "cb86614201db8b5f328864feeb776b443e2e0ec5",
+    "live_ls_remote_head": "1cbba316fc16b0caba93f486de1e15bcdf564859",
+    "relationship": "live remote head is the fast-forward child of the recorded pushed commit",
+    "result": "push_ok is truthful"
+  },
+  "uniqueness_scan": {
+    "refs_scanned": "all origin branch heads plus refs/pull/1-9/head after git fetch origin --prune at ~2026-08-28T17:49Z",
+    "refs_with_windows14_paths": ["origin/cursor/windows14-p0-init-implementation-46a8"],
+    "refs_with_windows14_identity_claims": ["origin/cursor/p0-windows-init-consolidator-9906 (this pipeline's own decision files)", "origin/cursor/windows14-p0-init-implementation-46a8"],
+    "window_lock_json_census": {
+      "Windows13": "origin/cursor/windows13-p0-init-implementation-d93f (also mirrored on origin/cursor/p1-state-reader-cc05)",
+      "Windows14": "origin/cursor/windows14-p0-init-implementation-46a8",
+      "Windows16": "origin/cursor/windows16-p0-implementation-3255 (lock explicitly cedes 14)"
+    },
+    "result": "Windows14 unique and correctly numbered"
+  },
+  "json_validity_gate": {
+    "method": "python3 -m json.tool run independently this run",
+    "valid": ["Windows14/_state/research_state.json", "Windows14/_state/window.lock.json", "_state/tasks/p0/windows_init/implementation.done.json", "_state/tasks/p0/windows_init/decision.json", "_state/tasks/p0/windows_init/consolidator.done.json"],
+    "ideas_master_jsonl": "0 bytes, line-parseable"
+  },
+  "p1_started": false,
+  "output_files": [
+    "_state/tasks/p0/windows_init/verifier_C.md",
+    "_state/tasks/p0/windows_init/verifier_C.done.json"
+  ],
+  "unresolved_items": [
+    "Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is invalid JSON (pre-existing, another window's tree, out of scope for this audit)",
+    "decision.json's collision bump target of 16 is stale (Windows16 now implemented and locked by a sibling pipeline); irrelevant to Windows14, future window pipelines must re-derive",
+    "Windows15 remains claimed-without-directory by the _dispatcher pipeline; not this pipeline's concern"
+  ],
+  "recommended_next_task_type": "p1_gate"
+}
