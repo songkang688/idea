@@ -1,0 +1,373 @@
+id,sub_cluster,novelty,significance,scientific_question,technical_soundness,feasibility,compute_cost_efficiency,dataset_availability,baseline_availability,not_already_published,experimental_clarity,venue_potential,risk_level,potential_upside,research_roi,composite,decision,rationale
+C-0001,VLM-DENSE,2,4,5,4,5,5,5,5,1,5,3,2,3,3,3.85,KILL,"published: register/artifact-token damage to CLIP dense features and inference-time fixes are an established, heavily-plowed line of work"
+C-0002,VLM-DENSE,4,4,5,4,5,4,5,5,4,5,4,3,4,5,4.46,PROTECT,"protect(counter-intuitive,cheaply-falsifiable): random-orthogonal class vectors vs text embeddings is a one-week control experiment that could deflate the entire language-prior narrative for seen-class open-vocab segmentation"
+C-0003,VLM-DENSE,2,3,4,4,4,4,4,4,2,4,3,2,3,3,3.38,KILL,published: concept-frequency-explains-zero-shot is established for classification; dense-prediction regression is an incremental extension
+C-0004,VLM-DENSE,4,4,5,4,4,4,5,4,3,5,4,2,4,4,4.15,KEEP,"keep: layer-wise localization probing inside pixel-grounding VLMs is unplowed, cheap on frozen models, and directly redesigns LISA-style architectures if the early-layer peak holds"
+C-0005,VLM-DENSE,4,4,4,4,4,4,5,4,4,4,4,2,4,4,4.08,KEEP,keep: resolution/TTA-matched vision-only baseline is the missing attribution control for language-guided dense claims; clean falsifiable confound test
+C-0006,VLM-DENSE,3,3,3,4,4,4,5,4,3,4,3,2,3,3,3.54,KILL,belowcut: multi-layer feature fusion is well-plowed; per-class layer routing is a modest delta over existing layer-selection studies
+C-0007,VLM-DENSE,4,3,4,4,5,5,5,5,4,5,4,2,3,5,4.31,KEEP,"keep: reducing prompt engineering to a 1-parameter-per-class logit bias is cheap, crisp, and would kill a whole subgenre of prompt-template papers"
+C-0008,VLM-DENSE,2,3,4,4,5,4,5,5,2,4,3,2,3,3,3.62,KILL,published: language-insensitivity of referring-expression models has documented precedents; scrambling analyses for REC exist
+C-0009,VLM-DENSE,4,4,4,4,4,3,5,4,4,4,4,3,4,4,4.00,KEEP,keep: spectral-aliasing account of blurry VLM boundaries has a concrete mechanism plus an anti-aliased patch-stem fix; strong CVPR-style analysis+method package
+C-0010,VLM-DENSE,4,4,4,3,2,1,3,3,4,3,3,4,4,2,3.08,KILL,cost: requires a pretraining-scale sweep of contrastive VLMs; non-monotonicity claim cannot be tested credibly on existing public checkpoint grids alone
+C-0011,VLM-DENSE,3,4,4,3,2,1,4,4,3,4,3,4,4,2,3.15,KILL,cost: training an identically-sized random-init LLM inside a reasoning-segmentation system is a multi-GPU-month bet on a single narrow claim
+C-0012,VLM-DENSE,2,3,4,4,4,4,5,4,2,4,3,2,3,3,3.46,KILL,published: positional-embedding interpolation and resolution adaptation is a crowded engineering literature (FlexiViT-style); residual novelty thin
+C-0013,VLM-DENSE,4,4,4,4,2,1,3,3,3,3,4,4,4,2,3.15,KILL,cost: requires deduplicated re-pretraining of vision-language corpora; contamination question is important but infeasible at this budget
+C-0014,VLM-DENSE,4,4,4,4,5,5,5,5,3,5,4,2,3,5,4.31,KEEP,keep: unifying the zoo of training-free CLIP-segmentation attention hacks as spatial smoothing is a cheap equivalence proof that would reorganize a noisy subfield
+C-0015,VLM-DENSE,3,3,3,3,2,2,4,4,3,3,3,3,3,2,2.92,KILL,cost: region-level vs global contrastive comparison needs controlled pretraining runs; hypothesis also vaguer than siblings
+C-0016,VLM-DENSE,3,4,4,4,4,3,4,4,3,4,4,3,4,3,3.69,KILL,belowcut: format-neutral grounding probes are a good idea but instruction-tuning grounding analyses are partially plowed; outcompeted inside sub-cluster
+C-0017,VLM-DENSE,3,3,4,3,3,3,4,4,3,3,3,3,3,3,3.23,KILL,belowcut: granularity-interference is plausible but the training-data confounds are hard to control; weaker experimental grip than kept siblings
+C-0018,VLM-DENSE,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,trope-adjacent: lives inside the crowded SAM-proposals+VLM-labels recipe space and the thing/stuff performance concentration is partially documented
+C-0019,VLM-DENSE,3,3,4,4,4,4,5,4,3,4,3,2,3,3,3.62,KILL,belowcut: vocabulary-size interference effects are partially studied; a clean law would be nice but marginal over existing prompt-set analyses
+C-0020,VLM-DENSE,3,3,4,4,3,3,3,4,3,4,3,3,3,3,3.31,KILL,belowcut: dense cue-conflict benchmark is a solid but incremental extension of the classification cue-conflict paradigm; benchmark construction cost not justified by expected surprise
+C-0021,VLM-DENSE,3,3,4,4,5,5,5,4,3,4,3,2,3,4,3.85,KILL,belowcut: synonym-swap vs image-corruption comparison is cheap and crisp but text-side robustness of open-vocab models is partially plowed
+C-0022,VLM-DENSE,4,4,4,4,4,4,5,4,4,4,4,2,4,4,4.08,KEEP,keep: variance-decomposition showing upsampler choice outweighs backbone choice at fixed compute inverts the field's attention allocation; cheap and immediately actionable
+C-0023,VLM-DENSE,2,3,3,4,5,5,5,5,2,4,3,2,2,3,3.54,KILL,published: synonym/description averaging and random-descriptor debunks of prompt tuning are established; thin residual novelty
+C-0024,VLM-DENSE,3,3,3,3,3,2,4,4,3,3,3,3,3,3,3.08,KILL,belowcut: recency/ordering effects in multi-source fine-tuning are known from LLM training practice; vision-grounding version is incremental
+C-0025,VLM-DENSE,3,3,4,4,4,4,4,4,3,4,4,2,3,3,3.62,KILL,belowcut: prior/scale-statistics correction for domain transfer is useful (MICCAI-flavored) but adjacent to existing calibration and prior-shift literature
+C-0026,VLM-DENSE,3,3,4,4,4,4,5,5,2,4,3,2,3,3,3.62,KILL,published: token merging/pruning effects on dense tasks are actively studied; graceful-degradation observation likely at least partially documented
+C-0027,VLM-DENSE,3,3,4,4,4,3,4,4,3,4,3,3,3,3,3.46,KILL,redundant: rationale-corruption causal test overlaps kept sibling C-0004 (where spatial information lives in reasoning-segmentation stacks); C-0004 is the crisper instrument
+C-0028,VLM-DENSE,5,5,4,3,2,2,4,3,4,3,4,5,5,3,3.62,PROTECT,protect(high-risk-high-reward): batch-composition as the causal origin of dense grounding in contrastive VLMs; expensive and may fail but success rewrites how dense alignment is trained
+C-0029,VLM-DENSE,4,5,4,4,3,2,5,5,4,4,4,3,5,4,4.08,KEEP,keep: validating whether frozen-probe rankings predict full fine-tuning rankings underwrites the entire foundation-model-benchmark genre; expensive but foundational
+C-0030,VLM-DENSE,2,3,4,4,4,4,4,4,2,4,3,2,3,3,3.38,KILL,published: negation failure of cosine-similarity text scoring is documented with dedicated benchmarks; segmentation variant incremental
+C-0031,VLM-ARCH,1,3,4,4,4,4,5,5,1,4,3,2,2,2,3.23,KILL,published: deep-layer visual-token redundancy and carrier-token routing is the basis of established token-pruning work
+C-0032,VLM-ARCH,2,3,4,4,4,4,5,5,1,4,3,2,2,2,3.31,KILL,published: modality-gap origin (temperature/initialization) and its weak downstream relevance are documented
+C-0033,VLM-ARCH,4,4,5,4,4,3,5,5,4,5,4,2,4,4,4.23,KEEP,keep: token-count-matched projector comparison is the missing control in the MLP-vs-QFormer debate; cheap decisive design study
+C-0034,VLM-ARCH,3,3,4,4,4,3,5,5,3,4,3,2,3,3,3.62,KILL,belowcut: capability-resolved compression curves are useful but the visual-token-compression space is crowded; descriptive rather than belief-challenging
+C-0035,VLM-ARCH,2,3,4,4,5,4,5,5,2,4,3,2,3,3,3.62,KILL,published: patch-shuffle ablations of multimodal benchmarks appear in several VLM analysis papers
+C-0036,VLM-ARCH,4,4,4,4,4,3,5,4,4,4,4,2,4,4,4.00,KEEP,keep: LayerNorm/bias-only tuning reproducing full encoder unfreezing would show multimodal alignment learns no new visual features; cheap with immediate training-recipe consequences
+C-0037,VLM-ARCH,3,3,4,4,4,4,5,5,2,4,3,2,3,3,3.62,KILL,belowcut: image-blind baselines are known; systematized per-model prior correction is a service contribution with modest novelty
+C-0038,VLM-ARCH,3,3,3,3,2,2,3,3,3,3,3,4,3,2,2.77,KILL,cost: requires controlled interleaved-vs-single-image pretraining; attribution claim untestable on public checkpoints alone
+C-0039,VLM-ARCH,4,4,4,4,4,3,5,4,3,4,4,3,4,4,3.92,KEEP,keep: encoder-swap causal test of whether compositional failures are inherited from contrastive feature geometry cleanly splits blame between towers
+C-0040,VLM-ARCH,3,4,4,4,3,2,4,4,2,4,3,2,3,3,3.31,KILL,published: resolution-vs-parameters allocation curves are partially established in VLM scaling and vision-centric studies
+C-0041,VLM-ARCH,2,3,4,4,4,3,4,4,2,4,3,2,3,3,3.31,KILL,published: small-data instruction tuning (LIMA-style) has known analogs in the visual instruction literature; likely scooped
+C-0042,VLM-ARCH,2,3,4,4,4,4,5,5,1,4,3,2,3,2,3.38,KILL,published: hallucination-head localization and inference-time attention interventions are a crowded 2024-25 area
+C-0043,VLM-ARCH,3,3,3,4,4,3,4,4,3,4,3,2,3,3,3.38,KILL,belowcut: image-boundary encoding fix is plausible but narrow; engineering-flavored without a belief-challenging core
+C-0044,VLM-ARCH,3,4,4,4,2,1,4,3,3,3,4,4,4,2,3.15,KILL,cost: compute-matched early-vs-late-fusion training is a pretraining-scale undertaking; taxonomy valuable but infeasible here
+C-0045,VLM-ARCH,2,3,4,4,4,4,5,5,1,4,3,2,3,2,3.38,KILL,published: attention-sink behavior on visual tokens and sink-aware fixes are documented
+C-0046,VLM-ARCH,2,4,4,4,3,2,4,4,1,4,3,2,3,2,3.08,KILL,published: encoder-selection studies for VLM assembly (zero-shot accuracy as poor predictor) exist in vision-centric VLM work
+C-0047,VLM-ARCH,5,3,5,4,4,4,5,5,4,5,4,4,4,4,4.31,PROTECT,"protect(counter-intuitive,cheaply-falsifiable): raster-scan serialization as a hidden spatial-reasoning bias is a delightfully simple unasked question; either result is informative"
+C-0048,VLM-ARCH,3,3,4,4,4,3,5,4,3,4,3,2,3,3,3.54,KILL,belowcut: AnyRes decomposition into ensemble-denoising vs finer sampling is a solid ablation but modest in reach
+C-0049,VLM-ARCH,3,3,4,4,4,3,5,4,3,4,3,2,3,3,3.54,KILL,belowcut: fixed-zoom-heuristic baseline for agentic re-looking is a useful deflation but close in spirit to existing visual-search ablations
+C-0050,VLM-ARCH,3,3,4,4,4,4,4,4,3,4,3,3,3,3,3.54,KILL,belowcut: whitening-coloring alignment of visual tokens is cheap but statistics-alignment explanations are partially plowed; outcompeted
+C-0051,VLM-ARCH,4,4,4,4,4,3,5,4,4,4,4,3,4,4,4.00,KEEP,keep: perception-interference law (bigger LLM decoder = worse pure perception) is counter-intuitive and disagreement-prone with a clean scale-series test
+C-0052,VLM-ARCH,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: corrupted-exemplar ICL analysis is established in NLP; multimodal port is incremental
+C-0053,VLM-ARCH,3,3,4,4,4,3,4,4,3,4,3,3,3,3,3.46,KILL,belowcut: coordinate-channel fix for absolute localization is plausible engineering; mechanism claim (phase destruction) hard to isolate
+C-0054,VLM-ARCH,1,3,4,4,4,4,5,5,1,4,3,1,2,2,3.23,KILL,published: single-frame solvability of video-language benchmarks is a well-established finding
+C-0055,VLM-ARCH,3,3,4,4,4,3,5,4,2,4,3,2,3,3,3.46,KILL,published: multi-encoder-concatenation studies exist; receptive-field/resolution explanation is a modest residual over them
+C-0056,VLM-ARCH,3,3,3,3,4,4,5,4,3,3,3,3,3,3,3.38,KILL,belowcut: attention-entropy as intrinsic diagnostic is speculative; predictive-validity bar is high and prior probe-metric attempts underdeliver
+C-0057,VLM-ARCH,3,3,4,4,4,3,5,4,3,4,3,2,3,3,3.54,KILL,redundant: collateral-damage measurement of joint tuning overlaps kept sibling C-0036; C-0036 answers the mechanism more directly
+C-0058,VLM-ARCH,4,3,5,4,5,5,5,5,4,5,4,2,3,5,4.38,KEEP,keep: attributing digit-substitution OCR errors to numeral subword tokenization is a crisp cheap causal split (retokenize and compare) with direct fix implications
+C-0059,VLM-ARCH,2,3,4,4,5,4,5,5,1,4,3,2,3,2,3.46,KILL,published: caption-sufficiency / vision-necessity audits of multimodal benchmarks are established
+C-0060,VLM-ARCH,4,4,4,4,4,3,5,4,4,4,4,3,4,4,4.00,KEEP,keep: projector-transplant test of the platonic-representation hypothesis converts a philosophical debate into a cheap stitching experiment
+C-0061,FT-INSTAB,4,4,4,4,3,2,4,4,3,4,3,3,4,3,3.54,KILL,redundant: sample-level spike attribution overlaps kept sibling C-0069 (norm-parameter spike mechanism); one spike-mechanism slot in the portfolio
+C-0062,FT-INSTAB,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: LoRA learning-rate/rank scaling has established treatments (rank-stabilized and lr-ratio work); law-fitting residual is thin
+C-0063,FT-INSTAB,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: warmup-as-Adam-variance-stabilization has documented precedents including v-initialization alternatives
+C-0064,FT-INSTAB,4,4,4,4,4,4,5,5,4,5,4,2,4,5,4.31,KEEP,"keep: locating catastrophic forgetting in embedding/unembedding drift with a freeze fix is cheap, mechanistic, and immediately actionable for multimodal fine-tuning"
+C-0065,FT-INSTAB,3,3,4,4,4,4,4,4,2,4,3,3,3,3,3.46,KILL,published: attention-entropy collapse and its link to instability are documented; forward-only screening variant is incremental
+C-0066,FT-INSTAB,3,3,3,3,3,3,4,4,3,3,3,4,4,3,3.23,KILL,belowcut: grokking search in VLM fine-tuning is a fishing expedition; heavily-plowed phenomenon with unclear payoff if absent
+C-0067,FT-INSTAB,2,4,4,4,4,3,5,5,2,4,3,2,3,3,3.54,KILL,published: run-variance-vs-claimed-margins meta-analyses are established in NLP; multimodal port is incremental and partially covered by kept meta ideas (C-0300)
+C-0068,FT-INSTAB,4,4,5,4,4,4,5,5,4,5,4,2,4,5,4.38,KEEP,keep: cold-Adam-statistics account of early-fine-tuning feature destruction plus optimizer warm-start fix is a cheap mechanism experiment attacking the LoRA-vs-full-FT folklore
+C-0069,FT-INSTAB,4,4,5,4,4,3,5,5,4,5,4,2,4,4,4.23,KEEP,keep: LayerNorm-scale gradient amplification as the spike mechanism with a targeted norm-lr fix; falsifiable and of broad practical value
+C-0070,FT-INSTAB,2,3,4,4,4,3,4,4,2,4,2,2,3,3,3.23,KILL,published: fp32/QK-norm attention-logit stabilization is documented engineering practice
+C-0071,FT-INSTAB,3,3,4,3,4,3,4,4,3,4,3,3,3,3,3.38,KILL,belowcut: gradient-variance account of why self-distilled data trains smoothly is plausible but confounded (content vs targets); weaker grip than kept siblings
+C-0072,FT-INSTAB,1,3,4,4,4,3,5,5,1,4,3,2,2,2,3.15,KILL,published: LoRA-vs-full-FT functional non-equivalence (intruder-dimension style results) is documented
+C-0073,FT-INSTAB,3,3,4,4,3,3,4,4,3,4,3,3,3,3,3.38,KILL,belowcut: Hessian-eigenvalue spike prediction is plausible but sharpness-metrics-predict-little results lower the prior; outcompeted
+C-0074,FT-INSTAB,4,3,4,4,4,4,4,4,4,4,3,3,4,4,3.85,KEEP,keep: EMA-tracks-a-sound-trajectory-through-spikes reframes spikes as excursions not derailments; nearly free to test on any unstable run
+C-0075,FT-INSTAB,3,3,4,4,4,3,4,4,3,4,3,2,3,3,3.46,KILL,belowcut: rare-token unembedding-norm instability plus per-token clipping is credible but narrow; adjacent to documented loss-spike lore
+C-0076,FT-INSTAB,4,4,5,4,4,3,5,4,4,4,4,2,4,4,4.08,KEEP,keep: converting two-stage unfreezing folklore into a measurable phase boundary (projector convergence) gives the community a criterion instead of a superstition
+C-0077,FT-INSTAB,5,4,4,3,3,2,4,4,4,3,3,4,5,3,3.62,PROTECT,"protect(counter-intuitive,disagreement-prone): curated high-quality pretraining data producing more brittle fine-tuning inverts the data-quality gospel; risky but high information value either way"
+C-0078,FT-INSTAB,4,3,4,4,4,3,4,4,3,4,3,3,3,3,3.54,KILL,"belowcut: clipping-as-implicit-curation is elegant but the portfolio already carries two spike/stability mechanisms (C-0069, C-0074)"
+C-0079,FT-INSTAB,3,3,4,4,4,3,5,5,3,4,3,2,3,3,3.62,KILL,belowcut: LLRD-equals-early-layer-freezing decomposition is a tidy but low-stakes equivalence
+C-0080,FT-INSTAB,3,3,3,3,3,2,3,3,3,3,3,4,3,2,2.85,KILL,belowcut: shared-encoder feedback loop in multimodal preference tuning is niche and hard to instrument cleanly
+C-0081,FT-INSTAB,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: LoRA-forgets-less comparisons exist; matched-functional-change refinement is a control on published work rather than a new question
+C-0082,FT-INSTAB,4,3,4,4,4,4,5,5,3,4,3,3,3,4,3.85,KILL,redundant: freezing-norm-scales stability claim is the mirror of kept C-0069 (norm scales as high-leverage instability locus); C-0069 subsumes the mechanism
+C-0083,FT-INSTAB,3,3,3,3,2,1,4,4,3,3,3,4,3,2,2.85,KILL,cost: progressive-unfreezing revival requires 7B+ full-FT sweeps; hypothesis interesting but budget-prohibitive
+C-0084,FT-INSTAB,3,3,4,4,4,3,5,5,3,4,3,3,3,3,3.62,KILL,belowcut: epoch-dip phenomenon hunting is descriptive; payoff modest unless the dip is large and universal
+C-0085,FT-INSTAB,3,3,4,3,4,3,5,5,2,3,3,3,3,3,3.38,KILL,published: loss-benchmark decoupling during instruction tuning is qualitatively documented in LLM practice; measured decoupling point is incremental
+C-0086,FT-INSTAB,3,4,4,4,4,2,5,5,3,4,3,2,3,3,3.62,KILL,belowcut: order-reshuffling variance undermining mixture-attribution is valuable meta but expensive in runs and covered in spirit by kept C-0300
+C-0087,FT-INSTAB,3,3,4,3,3,2,4,4,3,3,3,4,3,2,3.08,KILL,belowcut: rollback-plus-noise vs rollback-plus-skip needs many spike-prone large runs; weak feasibility at this scale
+C-0088,FT-INSTAB,3,3,4,4,4,3,5,5,3,4,3,3,3,3,3.62,KILL,belowcut: attention-vs-MLP adapter placement OOD asymmetry is plausible but adapter-placement space is heavily strip-mined
+C-0089,FT-INSTAB,4,4,4,4,3,2,5,5,3,4,3,3,4,3,3.69,KILL,belowcut: critical-lr two-phase map is a nice framing but requires dense lr sweeps across models; outcompeted by cheaper kept siblings
+C-0090,FT-INSTAB,4,4,5,4,4,3,5,5,4,5,4,3,4,4,4.23,KEEP,keep: random-text-vs-real-text rehearsal cleanly separates content-rehearsal from gradient-scale-rebalancing explanations of multimodal forgetting; counter-intuitive if random text suffices
+C-0091,REP-LEARN,4,4,4,4,4,3,5,5,4,4,4,2,4,4,4.08,KEEP,"keep: showing linear probes mispredict nonlinear-head utility under shift, plus a tunability probe replacement, attacks the field's default representation metric with a constructive fix"
+C-0092,REP-LEARN,2,3,4,4,5,5,5,5,2,4,3,2,3,3,3.69,KILL,published: deleting dominant nuisance components has established analogs (all-but-the-top style) and SSL-feature nuisance analyses exist
+C-0093,REP-LEARN,4,4,4,4,3,3,5,4,4,4,3,4,4,4,3.85,PROTECT,protect(disagreement-prone): flat transfer across a wide controlled range of dimensional collapse would contradict a whole diagnostics literature; controlled-rank construction is the hard risky part
+C-0094,REP-LEARN,3,3,3,3,3,3,4,4,3,3,3,3,3,3,3.15,KILL,belowcut: cataloging unexplained invariances is descriptive; attributing them to dataset symmetries is underdetermined without interventions
+C-0095,REP-LEARN,4,4,4,4,3,3,5,4,4,4,4,3,4,4,3.92,KEEP,keep: CLS-vs-mean-pool pretraining as the hidden determinant of patch-token dense quality is a concrete overlooked mechanism testable with matched pretraining pairs
+C-0096,REP-LEARN,4,4,4,4,4,3,5,5,4,4,4,2,4,4,4.08,KEEP,keep: explains the MIM probe-badly/finetune-well puzzle via high-frequency nonlinearly-coded components; resolves a genuine standing anomaly with clear probes
+C-0097,REP-LEARN,3,3,4,4,3,2,5,5,3,4,3,2,3,3,3.46,KILL,belowcut: representation-peak-depth scaling law is tidy but needs many scale-matched checkpoints; modest payoff
+C-0098,REP-LEARN,2,3,4,4,5,5,5,5,2,4,3,2,3,3,3.69,KILL,published: feature-norm-carries-signal (familiarity/OOD) has documented precedents; norm-aware transfer residual is thin
+C-0099,REP-LEARN,4,5,5,4,4,4,5,5,4,5,4,3,5,5,4.54,PROTECT,"protect(disagreement-prone,cheaply-falsifiable): whitening-at-transfer erasing SSL method differences would collapse much of the objective-design literature into second-moment bookkeeping; cheap and explosive"
+C-0100,REP-LEARN,2,3,4,4,3,2,4,4,2,4,3,2,3,2,3.08,KILL,published: crop-policy-drives-object-centrism has been studied in contrastive-crops analyses
+C-0101,REP-LEARN,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: kNN-vs-linear-probe dissociation is real but a measurement-taxonomy contribution; limited surprise
+C-0102,REP-LEARN,2,3,4,4,3,2,4,4,2,4,3,2,3,2,3.08,KILL,published: temperature-controls-separation-granularity is substantially covered by contrastive-loss behavior analyses
+C-0103,REP-LEARN,4,5,4,4,3,2,4,4,4,4,4,3,5,4,3.92,KEEP,keep: SSL-vs-supervised at matched data scale via weak labels is the missing confound test under the DINOv2-era consensus; expensive but decision-relevant for the whole field
+C-0104,REP-LEARN,3,3,4,4,4,3,5,4,2,4,3,2,3,3,3.46,KILL,published: register-token effects on patch structure are a crowded fast-moving area; high scoop risk
+C-0105,REP-LEARN,4,3,4,3,4,4,5,4,3,4,3,3,3,3,3.62,KILL,belowcut: rank-transition objectness is elegant but unsupervised object discovery from ViT features is heavily plowed; outcompeted
+C-0106,REP-LEARN,3,3,4,4,3,2,4,4,2,4,3,3,3,3,3.23,KILL,published: EMA-teacher necessity ablations exist in BYOL/DINO lineage; snapshot-teacher variant is incremental
+C-0107,REP-LEARN,2,3,4,4,4,3,5,5,1,4,3,2,3,2,3.31,KILL,published: representation-similarity metrics failing to predict functional interchangeability is documented
+C-0108,REP-LEARN,3,3,3,3,3,3,4,4,3,3,3,3,3,3,3.15,KILL,belowcut: phase-vs-amplitude Fourier signature is intriguing but the single-signature claim is likely too strong; weak experimental grip
+C-0109,REP-LEARN,4,4,4,4,4,4,5,5,4,4,4,2,4,4,4.15,KEEP,keep: relocating the long-tail problem from representation to readout (tail classes recoverable few-shot from frozen geometry) redirects a large literature; cheap frozen-feature study
+C-0110,REP-LEARN,3,3,4,4,2,2,4,4,3,3,3,3,3,2,3.08,KILL,cost: dedup-density-vs-objective variance decomposition requires controlled SSL pretraining sweeps
+C-0111,REP-LEARN,3,3,4,4,3,2,4,4,3,3,3,3,3,3,3.23,KILL,belowcut: temporal-invariance-collapses-pose mechanism is plausible but needs controlled video pretraining; outcompeted
+C-0112,REP-LEARN,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: mid-layer robustness advantages are documented in several transfer/robustness studies
+C-0113,REP-LEARN,4,4,5,4,5,5,5,5,4,5,3,3,4,5,4.46,PROTECT,"protect(cheaply-falsifiable,counter-intuitive): frozen random-MLP heads matching trained heads on strong features is a days-cheap test that would deflate head-engineering papers"
+C-0114,REP-LEARN,3,3,4,4,4,4,4,4,2,4,3,2,3,3,3.46,KILL,published: linear-analogy probing of visual/CLIP spaces has documented attempts; attribute-family mapping is incremental
+C-0115,REP-LEARN,3,3,4,4,5,5,4,4,3,4,3,2,3,4,3.77,KILL,belowcut: normalization-statistics-as-dataset-fingerprint is cute and cheap but the payoff (domain-shift detector) is a small utility; outcompeted
+C-0116,REP-LEARN,2,3,4,4,5,5,4,4,2,4,3,2,3,3,3.54,KILL,published: CLIP numerosity/counting probing is an active documented area
+C-0117,REP-LEARN,2,3,3,3,3,3,4,4,2,3,3,3,3,2,2.92,KILL,published: positive-pair information overlap theory of augmentation selection (InfoMin lineage) substantially covers this
+C-0118,REP-LEARN,4,4,4,4,4,4,5,5,4,4,3,3,4,4,4.08,KEEP,keep: projector-features-better-for-fine-grained inverts the universal discard-the-projector convention with a clear task-split prediction; cheap frozen-feature test
+C-0119,REP-LEARN,3,3,4,4,3,2,4,4,2,4,3,2,3,3,3.23,KILL,published: log-linear exposure-frequency dependence of per-class quality is established for classification paradigms; cross-paradigm port is incremental
+C-0120,REP-LEARN,2,3,4,4,3,2,4,4,1,4,3,2,2,2,2.92,KILL,published: augmentation (crop-scale) control of shape-texture bias is documented
+C-0121,GEN4SEG,3,3,4,4,4,3,5,4,2,4,3,2,3,3,3.46,KILL,published: diffusion-timestep feature analyses are crowded; granularity-selector refinement is incremental
+C-0122,GEN4SEG,3,3,4,4,4,3,5,4,3,4,3,3,3,3,3.54,KILL,belowcut: attributing cross-attention localization to the frozen text encoder is a fair control study but outcompeted within the sub-cluster
+C-0123,GEN4SEG,4,5,5,4,3,2,4,4,4,4,4,3,5,4,4.00,KEEP,keep: strictly matched generative-vs-discriminative pretraining for dense prediction is the missing controlled comparison the whole diffusion-features debate rests on; expensive but definitive
+C-0124,GEN4SEG,3,4,4,4,4,3,4,4,2,4,4,2,3,3,3.54,KILL,redundant: SR-hallucination-corrupts-downstream overlaps kept sibling C-0145 (SR-vs-matched-resolution control); C-0145 is the sharper causal design
+C-0125,GEN4SEG,5,4,4,4,4,3,4,4,4,4,4,4,4,4,4.00,PROTECT,protect(counter-intuitive): restoration-removes-informative-signal (raw noisy beats denoised for appropriately trained segmenters) inverts the restore-then-analyze dogma; cheap enough to falsify quickly
+C-0126,GEN4SEG,4,4,5,4,4,3,5,5,4,5,4,2,4,5,4.31,KEEP,keep: reproducing diffusion-augmentation gains by reweighting real data to the induced class-frequency profile is the mechanism-test that the synthetic-data genre owes the community
+C-0127,GEN4SEG,3,3,4,3,3,3,4,4,3,3,3,3,3,3,3.23,KILL,belowcut: human-indistinguishable generations as shortcut diagnostics is clever but indistinguishability curation is fragile; weaker grip than kept siblings
+C-0128,GEN4SEG,4,4,4,4,4,3,5,4,4,4,4,2,4,4,4.00,KEEP,keep: inversion-based counterfactual scene pairs turn correlational context studies into causal per-class context-reliance measurements; strong benchmark-free instrument
+C-0129,GEN4SEG,4,4,4,4,4,3,5,4,4,4,4,2,4,4,4.00,KEEP,keep: quantitative failure laws for attention-derived synthetic masks (leakage onto shadows/reflections) tells the field exactly where free mask supervision can be trusted
+C-0130,GEN4SEG,2,3,4,4,4,3,4,4,2,4,3,3,3,3,3.31,KILL,published: amodal completion via diffusion inpainting has close published analogs; zero-shot readout variant is incremental
+C-0131,GEN4SEG,4,3,3,3,3,2,4,4,3,3,3,4,4,3,3.23,KILL,belowcut: noise-level-to-augmentation-strength unification is attractive but empirically slippery (matched information removal is hard to operationalize)
+C-0132,GEN4SEG,3,3,4,4,4,3,5,4,3,4,3,2,3,3,3.54,KILL,belowcut: VAE-ceiling caveat for latent-diffusion features is a useful methodological note; limited upside beyond a caveat
+C-0133,GEN4SEG,3,3,4,4,4,3,4,4,2,4,3,2,3,3,3.38,KILL,published: perception-distortion trade-off literature substantially anticipates the perceptual-vs-machine-fidelity inversion
+C-0134,GEN4SEG,3,3,4,4,3,2,4,4,3,4,3,2,3,3,3.31,KILL,belowcut: compute-matched deflation of diffusion-classifier robustness is a fair control but expensive per datapoint; outcompeted
+C-0135,GEN4SEG,3,3,4,3,3,2,4,4,2,3,3,3,3,2,3.00,KILL,published: self-consuming/model-collapse loops are heavily studied; dense-canary angle is a modest twist
+C-0136,GEN4SEG,3,3,4,4,4,4,4,4,3,4,3,2,3,4,3.62,KILL,belowcut: restoration-disagreement as segmentation uncertainty is a neat cheap trick but utility-scoped; outcompeted by mechanism-level siblings
+C-0137,GEN4SEG,2,3,3,3,4,3,4,4,2,3,3,3,3,2,3.00,KILL,trope-adjacent: personalization-plus-cross-attention-readout for few-shot segmentation is a combination play with published personalized-segmentation neighbors and no deeper mechanism
+C-0138,GEN4SEG,3,3,4,4,4,3,5,5,3,4,3,3,3,3,3.62,KILL,belowcut: harmonized-copy-paste ID-vs-OOD trade-off is plausible but copy-paste augmentation analysis is well-plowed; marginal surprise
+C-0139,GEN4SEG,3,3,4,3,4,3,4,4,2,4,3,2,3,3,3.31,KILL,published: text-to-image generation-frequency bias audits exist; calibrated-instrument framing is incremental
+C-0140,GEN4SEG,3,3,4,4,2,2,3,4,3,3,3,3,3,2,3.00,KILL,cost: tracking dense-structure emergence needs a suite of diffusion pretraining checkpoints that mostly do not exist publicly
+C-0141,GEN4SEG,4,3,4,3,2,2,4,4,3,3,3,4,4,2,3.15,KILL,cost: matched-scale GAN-vs-diffusion feature comparison requires training GANs at diffusion scale; contrarian but budget-prohibitive
+C-0142,GEN4SEG,3,3,4,4,3,2,4,4,2,4,3,2,3,3,3.23,KILL,published: unconditional-vs-text-conditioned diffusion feature comparisons have documented attempts
+C-0143,GEN4SEG,1,3,4,4,4,3,4,4,1,4,3,2,2,2,3.00,KILL,published: implicit depth/3D probing of image diffusion models is established
+C-0144,GEN4SEG,2,3,4,4,4,3,4,4,2,4,3,2,3,3,3.31,KILL,published: train-on-degraded vs restore-then-analyze comparisons exist per degradation domain
+C-0145,GEN4SEG,4,4,5,4,4,3,5,5,3,5,4,2,4,4,4.15,KEEP,keep: SR-for-small-objects vs matched-effective-resolution training is a clean deflation with direct deployment consequences for aerial/medical pipelines
+C-0146,GEN4SEG,3,3,4,4,4,3,5,4,3,4,3,2,3,3,3.54,KILL,redundant: interior-replacement context instrument overlaps kept sibling C-0128; C-0128 covers both insertion and removal counterfactuals
+C-0147,GEN4SEG,2,3,4,4,4,3,4,4,2,4,3,2,3,3,3.31,KILL,published: diffusion-vs-SSL feature comparisons for correspondence and discrimination are documented
+C-0148,GEN4SEG,4,4,4,4,3,3,4,4,4,4,4,3,4,4,3.85,KEEP,keep: a falsifiable if-and-only-if decision rule (mode-coverage gap) for when generative augmentation helps replaces anecdote with mechanism; exactly the anti-trope study the area needs
+C-0149,GEN4SEG,3,3,4,3,3,2,4,4,3,3,3,3,4,3,3.23,KILL,belowcut: stylized-equals-photorealistic synthetic training is interesting but synthetic-data realism studies are numerous; needs costly matched generation
+C-0150,GEN4SEG,2,3,4,3,3,2,4,4,2,3,3,3,3,2,2.92,KILL,published: correspondence/tracking readouts from video generative models are an active documented area
+C-0151,LLM-ANNOT,3,3,4,4,4,4,4,4,4,4,3,2,3,3,3.62,KILL,belowcut: machine-vs-human disagreement alignment is a good question but outcompeted by kept siblings with sharper downstream consequences
+C-0152,LLM-ANNOT,4,3,4,4,4,4,4,4,3,4,3,2,3,4,3.69,KILL,belowcut: correlated-error inflation of self-consistency is real and cheap to show but is a known statistical caveat in ensembling; modest surprise
+C-0153,LLM-ANNOT,3,3,4,4,4,3,4,4,3,4,3,2,3,3,3.46,KILL,belowcut: task-generality of hardness routing is useful infrastructure knowledge but low on scientific surprise
+C-0154,LLM-ANNOT,4,4,4,4,4,4,4,4,4,4,4,2,4,4,4.00,KEEP,keep: guideline-prompt choices materially shifting trained-model behavior makes ground truth an unreported experimenter degree of freedom; cheap and unsettling
+C-0155,LLM-ANNOT,3,3,4,4,4,4,5,4,3,4,3,2,3,3,3.62,KILL,belowcut: geometric error structure of machine masks is useful but descriptive; correction trick is engineering
+C-0156,LLM-ANNOT,3,3,4,4,4,3,4,4,3,4,3,2,3,3,3.46,KILL,belowcut: verify-only vs generate-then-filter is a sensible pipeline comparison but the generation-verification asymmetry premise is well-known
+C-0157,LLM-ANNOT,4,4,5,4,4,4,4,4,4,5,4,2,4,4,4.15,KEEP,keep: rationales-do-not-improve-but-make-errors-auditable is a crisp dissociation with direct annotation-pipeline consequences; cheap
+C-0158,LLM-ANNOT,4,5,5,4,4,3,5,5,4,4,4,2,5,4,4.31,KEEP,keep: uncertainty-based acquisition selecting exactly the items where LLM labels fail breaks classic active learning under machine annotation; feedback-loop mechanism is precise and testable
+C-0159,LLM-ANNOT,4,5,5,4,4,3,5,5,4,4,4,2,5,4,4.31,KEEP,keep: confident correlated prior-structured LLM label noise violating the assumptions of the entire noisy-label literature is a foundational negative result with a constructive new noise model
+C-0160,LLM-ANNOT,4,4,4,4,3,3,4,4,3,4,3,3,4,3,3.62,KILL,redundant: same-family annotate-then-train circularity overlaps kept sibling C-0179 (lineage bias); C-0179 is the sharper benchmark-level claim
+C-0161,LLM-ANNOT,3,3,4,4,4,4,4,4,3,4,3,2,3,3,3.54,KILL,belowcut: co-occurrence-predictable error taxonomy is useful but hallucination-follows-language-priors is well-established at the phenomenon level
+C-0162,LLM-ANNOT,3,3,4,4,4,3,4,4,3,4,3,2,3,3,3.46,KILL,belowcut: error-anticorrelation condition for annotator debate is plausible but debate literature in LLMs already circles this; multimodal port incremental
+C-0163,LLM-ANNOT,3,3,4,3,2,3,3,3,4,3,3,4,3,2,3.00,KILL,feasibility: measuring mid-annotation API-update seams requires archival access to deprecated model versions; hard to control retrospectively
+C-0164,LLM-ANNOT,3,3,4,4,3,3,4,4,3,4,3,3,3,3,3.38,KILL,belowcut: human-vs-machine difficulty-profile inversion needs sizable crowdworker studies; interesting but budget-heavy for the expected delta
+C-0165,LLM-ANNOT,3,3,4,4,4,4,4,4,3,4,3,2,3,3,3.54,KILL,belowcut: prompt-variants as manipulable weak labelers is a tidy Snorkel port; framework contribution more than a scientific question
+C-0166,LLM-ANNOT,3,3,3,3,4,3,4,4,3,3,3,3,3,3,3.23,KILL,belowcut: counterfactual-query mask elicitation is speculative prompting engineering without a clear mechanism
+C-0167,LLM-ANNOT,3,3,4,4,4,3,4,4,3,4,3,2,3,3,3.46,KILL,belowcut: caption-supervision operating points are useful but the hallucinated-noun injection phenomenon is qualitatively known
+C-0168,LLM-ANNOT,3,3,4,4,3,3,4,4,3,3,3,3,3,3,3.31,KILL,belowcut: bootstrapped self-annotation fixed points overlap self-training theory; dense-task twist modest
+C-0169,LLM-ANNOT,3,3,4,4,4,4,4,4,2,4,3,2,3,3,3.46,KILL,published: position/order biases of LLM selection are established; fossilization-into-datasets angle is a modest extension
+C-0170,LLM-ANNOT,4,4,4,4,4,4,4,4,4,4,4,2,4,4,4.00,KEEP,keep: self-generated-easiness (machine-authored benchmarks are easier for machines) quantifies a circularity that inflates reported progress; cheap paired-design test
+C-0171,LLM-ANNOT,4,3,4,4,4,4,4,4,4,4,3,3,3,3,3.69,KILL,belowcut: prompt-language-inherits-ontology is genuinely fresh but downstream stakes and venue fit are weaker than kept siblings
+C-0172,LLM-ANNOT,3,3,4,4,4,4,4,4,2,4,3,2,3,3,3.46,KILL,published: soft-label/distributional training benefits are established; elicited-distribution variant is incremental
+C-0173,LLM-ANNOT,3,3,4,4,4,3,4,4,3,4,3,3,3,3,3.46,KILL,belowcut: annotation-time poisoning is a real threat model but fits security venues; CVPR-cluster fit weak
+C-0174,LLM-ANNOT,2,3,4,4,3,3,4,4,2,4,3,2,3,3,3.23,KILL,published: generation-over-generation diversity decay is core model-collapse territory
+C-0175,LLM-ANNOT,3,4,4,4,3,3,3,3,3,4,3,3,4,3,3.38,KILL,belowcut: anchoring of human correctors to machine pre-labels matters but requires controlled human-subject studies; heavy for this portfolio
+C-0176,LLM-ANNOT,3,4,4,4,4,3,5,5,2,4,3,2,3,3,3.62,KILL,published: benchmark label-error auditing and ranking-impact analysis is established; agentic-auditor variant is incremental
+C-0177,LLM-ANNOT,3,3,3,3,4,3,4,4,3,3,3,3,3,3,3.23,KILL,belowcut: decomposition-depth quality-cost law is pipeline characterization without a belief-challenging core
+C-0178,LLM-ANNOT,3,3,4,3,4,3,4,4,3,3,3,3,3,3,3.31,KILL,belowcut: confusable-class-description negative mining is a plausible data trick; hypothesis not sharply falsifiable
+C-0179,LLM-ANNOT,5,5,4,4,3,3,4,4,4,4,4,3,5,4,4.08,KEEP,keep: lineage bias (benchmarks labeled by a model family advantaging that family's descendants) is a fresh structural threat to evaluation validity as machine annotation becomes standard
+C-0180,LLM-ANNOT,3,4,4,4,3,3,4,4,3,4,3,2,3,3,3.46,KILL,belowcut: correlation-aware budget allocation is a sound decision-theory contribution but incremental over existing human-AI complementarity work
+C-0181,EMP-PHEN,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: internal-state error/failure prediction probes are documented; delta over existing failure-detection work is thin
+C-0182,EMP-PHEN,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: cross-model consistency of example learning order is established; forgetting-order variant is an incremental twist
+C-0183,EMP-PHEN,1,3,4,4,3,3,5,5,1,4,3,2,2,2,3.08,KILL,published: sample-wise double descent is documented in the double-descent literature
+C-0184,EMP-PHEN,3,3,4,4,3,2,5,5,2,4,2,3,3,2,3.23,KILL,published: lottery-ticket transfer across tasks/datasets is studied; seed-inversion twist is modest and the area has cooled
+C-0185,EMP-PHEN,3,3,4,3,4,3,5,5,3,3,3,3,3,3,3.46,KILL,belowcut: filter-emergence as early training-health diagnostic is plausible but predictive-validity bar is high; outcompeted
+C-0186,EMP-PHEN,3,3,4,3,4,3,5,5,3,3,3,3,3,3,3.46,KILL,belowcut: boundary-geometry fingerprint of fragile classes is intriguing but curvature estimation in high dimensions is methodologically fragile
+C-0187,EMP-PHEN,1,3,4,4,4,3,5,5,1,4,3,2,2,2,3.15,KILL,published: random-label training and layer-wise transferability of resulting features is documented
+C-0188,EMP-PHEN,4,4,5,4,5,5,5,5,4,5,4,2,3,5,4.46,KEEP,keep: batch-composition-dependent segmentation outputs violate the determinism assumption of evaluation and deployment; trivially cheap to demonstrate and practically alarming
+C-0189,EMP-PHEN,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: frequency-band sensitivity differences of ViTs vs CNNs are documented
+C-0190,EMP-PHEN,4,5,4,4,4,3,5,5,4,4,4,2,5,4,4.23,KEEP,keep: rising cross-model error correlation (model monoculture) quantifies a systemic risk to ensembling and benchmark headroom nobody tracks; historical-checkpoint study is feasible
+C-0191,EMP-PHEN,3,3,4,3,3,3,4,4,3,3,3,3,3,3,3.23,KILL,belowcut: memorized-anchor stability through fine-tuning is interesting but pretraining-set membership is hard to establish for modern checkpoints
+C-0192,EMP-PHEN,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: layer-swap/drop robustness of trained networks is documented (residual-ensembles lineage)
+C-0193,EMP-PHEN,4,4,4,4,4,3,5,5,4,4,4,2,4,4,4.08,KEEP,keep: per-pixel prediction-depth phenomenon plus early-exit exploitation gives both a scientific observation and a practical adaptive-compute segmentation method
+C-0194,EMP-PHEN,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: sparse-evidence quantification overlaps attribution/sufficiency literature; solid but not surprising
+C-0195,EMP-PHEN,4,3,3,3,3,3,4,4,3,3,3,4,4,3,3.31,KILL,belowcut: likelihood-accuracy coupling inside discriminative nets is a neat hypothesis but implicit-compression measurement is underdetermined; risky without protected-slot upside
+C-0196,EMP-PHEN,3,3,4,3,3,3,4,4,3,3,3,3,3,3,3.23,KILL,belowcut: redundancy-as-scaffolding claim needs delicate during-training pruning controls; adjacent to lottery/pruning lore
+C-0197,EMP-PHEN,2,3,4,4,3,3,4,4,2,3,3,3,3,3,3.15,KILL,published: capability resurrection after further fine-tuning is documented in the LLM safety/unlearning literature; vision port is incremental
+C-0198,EMP-PHEN,3,3,3,3,3,3,4,4,3,3,2,4,4,3,3.15,KILL,belowcut: monosemanticity width thresholds fit interpretability venues; measurement of human-alignable units is methodologically contested
+C-0199,EMP-PHEN,3,3,4,4,4,3,5,5,3,4,3,2,3,3,3.62,KILL,redundant: boundary-first learning order overlaps kept sibling C-0193 (pixel-level training/inference depth structure); C-0193 has the stronger exploit
+C-0200,EMP-PHEN,5,3,4,3,4,3,5,5,4,4,3,5,4,3,3.85,PROTECT,"protect(high-risk-high-reward,counter-intuitive): init-intrinsic lucky initializations would create a free reusable performance lever and contradict init-as-noise orthodoxy; likely null but cheap enough to gamble"
+C-0201,EMP-PHEN,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: decisions-fixed-by-mid-depth is substantially covered by early-exit and logit-lens style analyses
+C-0202,EMP-PHEN,3,3,4,4,4,4,4,4,3,4,3,2,3,3,3.54,KILL,belowcut: distractor-capture budget mapping is a decent psychophysics port but expected effect sizes are small; outcompeted
+C-0203,EMP-PHEN,3,3,4,4,4,3,5,5,2,4,3,2,3,3,3.54,KILL,redundant: universal-residue characterization overlaps the difficulty-score literature and kept sibling C-0190 (shared-error structure); marginal residual novelty
+C-0204,EMP-PHEN,5,4,4,3,3,2,4,4,4,3,3,5,5,3,3.62,PROTECT,"protect(high-risk-high-reward,disagreement-prone): spikes-as-beneficial-exploration contradicts the universal spikes-are-pathology assumption; needs careful counterfactual trajectories but a positive result changes training practice"
+C-0205,EMP-PHEN,3,3,4,4,4,3,5,5,3,4,3,3,3,3,3.62,KILL,belowcut: per-class staircase transitions echo the emergence-vs-metric debate at class level; descriptive
+C-0206,EMP-PHEN,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: cross-task weight averaging is core model-soup/merging territory
+C-0207,EMP-PHEN,4,4,4,4,4,4,5,5,4,4,4,2,4,4,4.15,KEEP,"keep: learned positional embeddings as a hidden store of dataset spatial priors, with predictable transfer harm to aerial/rotated domains, is a fresh testable locus of bias"
+C-0208,EMP-PHEN,4,3,4,4,5,5,5,5,3,4,3,3,3,4,4.00,KILL,belowcut: DC/brightness-shift hypersensitivity is cheap and embarrassing-if-true but mean-shift robustness is partially covered in corruption suites; close call
+C-0209,EMP-PHEN,4,3,4,3,3,3,5,5,3,3,3,3,4,3,3.54,KILL,belowcut: late-training functional linearization explaining distillability is attractive but effective-nonlinearity metrics are contestable; outcompeted
+C-0210,EMP-PHEN,4,4,4,4,4,3,5,5,4,4,4,2,4,4,4.08,KEEP,keep: batch size silently trading ID accuracy against OOD robustness at matched validation loss would expose an unreported hyperparameter confound across the literature
+C-0211,ASSUMP,2,3,4,4,3,2,4,4,2,4,3,2,3,2,3.08,KILL,published: repeat-curated vs unique-data trade-offs are established in data-constrained scaling work; vision port incremental
+C-0212,ASSUMP,2,3,4,4,3,2,5,5,2,4,3,2,3,2,3.23,KILL,published: fixed/static token-mixing alternatives to dynamic attention are documented (synthesizer/MLP-mixer lineage)
+C-0213,ASSUMP,2,3,4,4,3,3,4,4,2,4,3,2,3,3,3.23,KILL,published: model-relabeling beating original human labels is documented in relabeled-benchmark studies
+C-0214,ASSUMP,4,4,5,4,3,2,5,5,4,5,4,2,4,4,4.08,KEEP,keep: vocabulary-richness vs image-count decomposition of 21k-pretraining gains is a clean unrun ablation behind a default community belief
+C-0215,ASSUMP,3,3,4,4,4,3,5,5,3,4,3,2,3,3,3.62,KILL,belowcut: online-vs-materialized augmentation isolates stochastic regularization but expected result direction is unsurprising; close call
+C-0216,ASSUMP,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: coarse/weak mask supervision for segmentation is a mature literature
+C-0217,ASSUMP,1,3,4,4,4,3,5,5,1,4,3,2,2,2,3.15,KILL,published: train-test resolution discrepancy and its object-size-statistics account are established
+C-0218,ASSUMP,3,3,4,4,4,3,5,5,3,4,3,2,3,3,3.62,KILL,belowcut: batch-composition null at modern scale is plausible but a null-confirming study with limited redirect value
+C-0219,ASSUMP,4,4,4,4,4,3,5,5,4,4,4,2,4,4,4.08,KEEP,keep: mapping the regime where few-shot fine-tuning underperforms zero-shot challenges the always-adapt default with direct practitioner consequences
+C-0220,ASSUMP,1,3,4,4,3,2,5,5,1,4,3,2,2,2,3.00,KILL,published: squared-loss/regression training matching softmax cross-entropy is documented
+C-0221,ASSUMP,1,3,4,4,3,2,5,5,1,4,3,2,2,2,3.00,KILL,published: curriculum benefits vanishing under tuned baselines is documented in when-do-curricula-work studies
+C-0222,ASSUMP,3,3,4,4,4,3,5,5,3,4,3,2,3,3,3.62,KILL,belowcut: cross-dataset hyperparameter transferability is useful workflow knowledge but low scientific surprise
+C-0223,ASSUMP,3,3,4,4,3,2,5,5,3,4,3,3,3,3,3.46,KILL,cost: width-vs-depth for dense prediction at matched compute needs an architecture-sweep training budget
+C-0224,ASSUMP,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: attention-vs-causal-attribution audits (attention-is-not-explanation lineage) exist including ViT variants
+C-0225,ASSUMP,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: frozen-BN audit is cheap and useful but an engineering hygiene finding
+C-0226,ASSUMP,4,3,4,3,4,4,5,5,3,4,3,3,3,3,3.69,KILL,belowcut: TTA-gain-as-pathology-diagnostic is a nice reframe but the correlational design cannot cleanly separate miscalibration from shortcut reliance
+C-0227,ASSUMP,2,3,4,4,3,2,5,5,2,4,3,2,3,2,3.23,KILL,published: pretraining-vs-scratch crossover frontiers are documented; modern-recipe update is incremental
+C-0228,ASSUMP,2,3,4,4,3,2,5,5,2,4,3,2,3,2,3.23,KILL,published: small-negative-pool and negative-free contrastive learning are established
+C-0229,ASSUMP,4,4,5,4,3,2,5,5,4,5,4,2,4,4,4.08,KEEP,keep: multi-task-vs-pooled-images decomposition isolates whether task diversity itself improves representations; a clean unrun control behind multi-task folklore
+C-0230,ASSUMP,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: label-smoothing collateral damage (distillation/transfer geometry) is substantially documented
+C-0231,ASSUMP,3,3,4,4,2,1,4,4,3,4,3,3,3,2,3.08,KILL,cost: testing whether scale+schedule eliminates ViT augmentation dependence requires large-data pretraining sweeps
+C-0232,ASSUMP,1,3,4,4,4,4,5,5,1,4,3,2,2,2,3.23,KILL,published: density/kNN scoring on frozen foundation features matching trained OOD detectors is established
+C-0233,ASSUMP,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: no-positional-embedding ViTs and position-recovery-from-content are documented
+C-0234,ASSUMP,2,3,4,4,3,2,5,5,1,4,3,2,2,2,3.08,KILL,published: plain single-stream backbones matching hierarchical/skip designs for dense tasks is established (plain-ViT dense lineage)
+C-0235,ASSUMP,3,3,4,4,4,3,5,5,3,4,3,2,3,3,3.62,KILL,belowcut: architecture-diversity ensemble premium erosion is plausible and cheap but a narrow ensembling question
+C-0236,ASSUMP,3,3,4,4,3,2,4,4,2,4,3,3,3,3,3.23,KILL,published: transfer-peak-then-ossification with longer pretraining has documented precedents; checkpoint-suite dependence limits feasibility
+C-0237,ASSUMP,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: hard-example-mining redundancy audit is useful hygiene but expected-null with modest redirect value
+C-0238,ASSUMP,3,3,4,4,4,3,5,5,3,4,3,2,3,3,3.62,KILL,belowcut: context-module gains as parameter/optimization effects is a fair audit but effective-receptive-field methodology is contested; close call
+C-0239,ASSUMP,1,3,4,4,3,3,5,5,1,4,3,2,2,2,3.08,KILL,published: weight-decay-as-effective-learning-rate-control mechanism is documented
+C-0240,ASSUMP,4,4,4,4,4,3,5,5,4,4,4,3,4,4,4.08,KEEP,"keep: freezing-preserves-robustness as an artifact of pretraining-aligned shift choices, with predicted reversal on task-aligned shifts, directly attacks a celebrated finding; disagreement-prone with a clean 2x2 design"
+C-0241,NEG-HYP,3,3,4,4,4,3,5,5,3,4,3,3,3,3,3.62,KILL,belowcut: attention-guided augmentation null is plausible but the method family is already fading; low redirect value
+C-0242,NEG-HYP,4,3,4,4,3,2,5,5,3,4,3,4,3,3,3.54,KILL,belowcut: formula-image pretraining null requires matched-compute pretraining runs; disagreement value real but budget-heavy for a shrinking subfield
+C-0243,NEG-HYP,2,3,4,4,2,2,5,5,2,4,3,3,3,2,3.15,KILL,published: NAS-gains-as-recipe-co-optimization critiques and random-search parity results are documented
+C-0244,NEG-HYP,2,3,4,4,3,3,5,5,2,4,3,2,3,2,3.31,KILL,published: task-pairing benefit heterogeneity (depth+segmentation included) is documented in which-tasks-to-learn-together work
+C-0245,NEG-HYP,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: porting attribution sanity checks to the ViT explanation stack is worthy but methodologically incremental
+C-0246,NEG-HYP,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: emergence-as-thresholded-metric-artifact is established for LLMs; VLM port is incremental
+C-0247,NEG-HYP,4,4,4,4,4,3,5,5,4,4,4,3,4,4,4.08,KEEP,keep: null for small-corpus domain-specific MAE pretraining vs general-checkpoint fine-tuning attacks a default recipe across medical/aerial imaging; strong MICCAI relevance either way
+C-0248,NEG-HYP,4,4,4,4,4,3,5,5,4,4,4,2,4,4,4.08,KEEP,keep: ensemble distillation transferring accuracy but not the robustness/calibration that ensembles are valued for exposes a false economy in reliability engineering
+C-0249,NEG-HYP,1,3,4,4,5,5,5,5,1,4,3,2,2,2,3.38,KILL,published: random/generic-descriptor parity with LLM-generated class descriptions is documented
+C-0250,NEG-HYP,3,3,4,4,3,2,5,5,3,4,3,3,3,3,3.46,KILL,belowcut: cross-perturbation adversarial generalization at scale is an adversarial-venue question with heavy training costs
+C-0251,NEG-HYP,4,4,4,4,3,2,5,5,4,4,4,3,4,3,3.85,KEEP,keep: multi-crop gains attributed to resolution asymmetry rather than view count is a precise mechanism null against a canonized SSL component
+C-0252,NEG-HYP,3,3,4,4,4,3,5,5,2,4,3,3,3,3,3.54,KILL,published: simple-baseline parity with feature-alignment domain adaptation has documented precedents
+C-0253,NEG-HYP,3,3,4,4,4,3,5,5,2,4,3,2,3,3,3.54,KILL,published: replay dominance over regularization/architecture continual-learning methods is substantially documented
+C-0254,NEG-HYP,3,3,4,4,4,4,5,5,3,4,3,2,3,4,3.77,KILL,belowcut: visual-prompt-tuning vs parameter-matched heads null is cheap and useful but a narrow adapter-bookkeeping question; close call
+C-0255,NEG-HYP,3,3,4,4,4,3,5,5,2,4,3,2,3,3,3.54,KILL,published: semi-supervised gains collapsing on strong pretrained backbones has documented precedents
+C-0256,NEG-HYP,3,3,4,4,2,1,5,5,3,4,3,4,4,2,3.31,KILL,cost: SAM-optimizer null at large data scale requires exactly the large-scale training the hypothesis is about
+C-0257,NEG-HYP,3,3,4,4,4,4,5,5,3,4,3,2,3,4,3.77,KILL,belowcut: head-importance seed non-replication is cheap meta-science but head-pruning is a cooling area; close call
+C-0258,NEG-HYP,1,3,4,4,4,3,5,5,1,4,3,2,2,2,3.15,KILL,published: post-hoc calibration failure under distribution shift is established
+C-0259,NEG-HYP,3,3,4,4,4,3,5,5,2,4,3,2,3,3,3.54,KILL,published: caption-supervised emergent grouping failing on clutter/stuff is qualitatively documented in the follow-up literature
+C-0260,NEG-HYP,3,3,4,4,4,3,5,5,3,4,3,3,3,3,3.62,KILL,belowcut: retrieval-augmentation-as-leakage null is a fair audit but retrieval-augmented classification is a narrow niche
+C-0261,NEG-HYP,2,3,4,4,3,3,5,5,2,4,2,2,2,2,3.15,KILL,published: dataset-distillation architecture-specificity failures are documented
+C-0262,NEG-HYP,4,3,5,4,5,5,5,5,4,5,3,2,3,5,4.31,KEEP,keep: mixup-calibration-equals-temperature-scaling is a days-cheap equivalence test that would delete a standard claim from the augmentation literature
+C-0263,NEG-HYP,3,3,4,4,4,3,5,5,3,4,3,3,3,3,3.62,KILL,belowcut: frequency-defense benchmark-overfitting null is plausible but corruption-benchmark critique is getting crowded
+C-0264,NEG-HYP,2,3,4,4,3,2,5,5,2,4,3,2,3,2,3.23,KILL,published: capacity-gap (non-monotone teacher-size) phenomenon is documented; VLM-teacher re-test is incremental replication
+C-0265,NEG-HYP,4,4,5,4,5,4,5,5,3,5,4,3,4,5,4.38,PROTECT,"protect(disagreement-prone,cheaply-falsifiable): CoT-null-or-negative-for-perception cuts against the reasoning-helps-everything current; cheap benchmark sweep with high argument value either way"
+C-0266,NEG-HYP,3,4,4,4,2,3,3,3,3,3,2,4,4,2,3.08,KILL,feasibility: controlled practitioner debugging studies need dozens of skilled subjects and planted-bug infrastructure; poor CV-venue fit
+C-0267,NEG-HYP,3,3,4,4,3,2,5,4,3,4,3,3,3,3,3.38,KILL,cost: matched-compute slot-vs-patch pretraining comparison is expensive and object-centric learning already faces internal null results
+C-0268,NEG-HYP,3,3,4,4,3,2,5,5,2,4,3,2,3,2,3.31,KILL,published: intermediate-task transfer effect heterogeneity is documented in NLP; vision port is incremental
+C-0269,NEG-HYP,3,4,4,4,3,2,5,5,2,4,3,2,3,3,3.46,KILL,published: ImageNet-accuracy-vs-transfer correlation and its modern-frontier breakdown are substantially documented
+C-0270,NEG-HYP,4,4,5,4,4,3,5,5,4,5,4,2,4,4,4.23,KEEP,keep: confidence-thresholded pseudo-label selection performing no better than volume-matched random retention attacks the core operator of semi/self-supervised pipelines with a trivial control
+C-0271,EVAL-FAIL,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: boundary-weighted and size-aware segmentation metrics with ranking consequences are documented (boundary-IoU lineage)
+C-0272,EVAL-FAIL,3,4,4,4,4,4,5,5,3,4,3,2,3,4,3.85,KILL,redundant: preprocessing-variation audit is subsumed by kept sibling C-0279 (protocol-normalized re-evaluation of claimed margins)
+C-0273,EVAL-FAIL,3,3,4,4,4,4,5,5,2,4,3,2,3,3,3.62,KILL,published: detection error decomposition toolkits exist; decade-scale localization-vs-classification retrospective is a modest extension
+C-0274,EVAL-FAIL,4,4,4,4,4,4,5,5,4,4,4,2,4,4,4.15,KEEP,keep: quantifying the exact-class-name penalty and showing semantic-similarity-aware scoring reorders open-vocabulary methods fixes a known-broken but unmeasured evaluation convention
+C-0275,EVAL-FAIL,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: native-geometry evaluation is a fair protocol critique but expected ranking shifts are modest; outcompeted
+C-0276,EVAL-FAIL,4,4,4,4,4,4,5,5,4,4,4,2,4,5,4.23,KEEP,keep: documenting silently divergent versions of nominally identical benchmarks across codebases quantifies a comparability error the whole field silently absorbs
+C-0277,EVAL-FAIL,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: boundary-tolerance gaming is real but niche; a footnote-scale finding
+C-0278,EVAL-FAIL,3,4,4,4,4,4,5,5,3,4,3,2,3,3,3.77,KILL,belowcut: reliability-adjusted dense evaluation is worthy but calibration-aware evaluation proposals are accumulating; outcompeted
+C-0279,EVAL-FAIL,4,5,4,4,4,3,5,5,4,4,4,2,5,5,4.31,KEEP,keep: protocol-normalized re-evaluation quantifying how much of recent SOTA margins is inference-time protocol rather than method is high-leverage hygiene for the whole leaderboard economy
+C-0280,EVAL-FAIL,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: exact-match VQA metric penalties on generative VLMs are documented
+C-0281,EVAL-FAIL,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: LLM-judge verbosity/style biases are established in text evaluation; multimodal port is incremental
+C-0282,EVAL-FAIL,3,4,4,4,3,3,4,4,2,4,3,3,4,3,3.46,KILL,published: multimodal benchmark contamination measurement is an active documented area
+C-0283,EVAL-FAIL,3,3,4,4,4,4,5,5,3,4,3,2,3,4,3.77,KILL,belowcut: episode-count power analysis is statistically sound service work; low surprise
+C-0284,EVAL-FAIL,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: severity-calibration inconsistency across corruption types is a fair audit with modest consequences
+C-0285,EVAL-FAIL,4,4,4,4,4,4,5,5,4,4,4,2,4,4,4.15,KEEP,keep: auditing hidden target-benchmark hyperparameter tuning inside zero-shot cross-dataset claims measures how much of reported zero-shot is quiet supervision
+C-0286,EVAL-FAIL,3,3,4,4,4,4,5,5,2,4,3,2,3,3,3.62,KILL,published: hierarchy-aware scoring and granularity-mismatch penalties have documented treatments
+C-0287,EVAL-FAIL,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: PQ-arithmetic-steers-design is plausible but panoptic metric critique reaches a narrow audience
+C-0288,EVAL-FAIL,3,4,4,4,3,3,4,3,3,4,4,3,4,3,3.54,KILL,belowcut: human-study-grounded perceptual segmentation metric is valuable but human-subject cost is high; outcompeted in portfolio
+C-0289,EVAL-FAIL,3,3,4,4,4,4,5,5,3,4,3,2,3,4,3.77,KILL,belowcut: meta-benchmark reweighting stability is cheap and fair but conclusions likely confirm suspected fragility without redirecting practice
+C-0290,EVAL-FAIL,3,5,4,4,2,2,2,5,3,4,4,3,5,3,3.54,KILL,cost: fresh protocol-matched replication test sets for detection/segmentation require large new annotation budgets
+C-0291,EVAL-FAIL,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: image-blind solvability of grounding/referring benchmarks is documented; prior-resistant splits are incremental
+C-0292,EVAL-FAIL,3,4,4,3,3,3,4,4,3,3,3,3,4,3,3.38,KILL,feasibility: measuring best-checkpoint-on-test inflation requires access to practices nobody discloses; only simulatable indirectly
+C-0293,EVAL-FAIL,4,4,5,4,5,5,5,5,4,5,4,1,4,5,4.54,KEEP,keep: rare-class IoU confidence intervals spanning multiple mIoU points would reclassify a fraction of claimed SOTA margins as noise; a weekend of bootstrap statistics with field-wide consequences
+C-0294,EVAL-FAIL,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: depth-metric saturation critique is fair but the monodepth community is already migrating metrics
+C-0295,EVAL-FAIL,3,3,4,4,3,3,4,4,3,4,3,3,3,3,3.38,KILL,belowcut: simulated-vs-real click ranking disagreement needs human interaction studies; niche protocol question
+C-0296,EVAL-FAIL,2,3,4,4,4,4,5,5,1,4,3,2,3,2,3.38,KILL,published: statistical artifacts in compositionality benchmarks are documented
+C-0297,EVAL-FAIL,3,4,4,3,3,3,4,4,3,3,3,3,4,3,3.38,KILL,belowcut: effective-shift-distance recalibration of OOD claims is conceptually right but distribution-distance estimation is contestable enough to blunt the conclusion
+C-0298,EVAL-FAIL,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: VOS ability decomposition (re-identification vs propagation) is useful but a narrow protocol contribution
+C-0299,EVAL-FAIL,3,3,4,4,4,4,5,5,2,4,3,2,3,3,3.62,KILL,published: AP's exploitable handling of duplicate/ranked predictions is documented in detection-metric critiques
+C-0300,EVAL-FAIL,5,5,4,4,3,2,5,5,4,4,4,3,5,4,4.15,KEEP,keep: a measured false-discovery rate for a year of segmentation/detection SOTA claims converts meta-scientific complaint into a number the field must answer; expensive but flagship-grade
+C-0301,ROBUST,3,4,4,4,4,3,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: cross-task robustness non-transfer on a shared backbone is a good observation but close in spirit to kept C-0302's sharper mechanism claim
+C-0302,ROBUST,4,4,4,4,4,3,4,4,3,4,3,3,4,3,3.69,KEEP,keep: last-layer-retraining (spurious-cues-live-in-the-last-layer) breaking down for dense prediction attacks a celebrated finding exactly where its assumptions (spatial entanglement) fail
+C-0303,ROBUST,3,4,4,4,3,3,3,4,3,4,4,3,4,3,3.54,KILL,belowcut: physical decomposition of adverse-weather failure is valuable but requires controlled weather capture or high-fidelity simulation; outcompeted on feasibility
+C-0304,ROBUST,3,3,4,4,4,4,5,5,2,4,3,2,3,3,3.62,KILL,published: adversarial-patch propagation in dense predictors and attention-spreads-corruption observations are documented
+C-0305,ROBUST,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: natural-adversarial-benchmark label-quality audits have documented precedents
+C-0306,ROBUST,3,4,4,4,3,2,5,5,3,4,3,2,4,3,3.62,KILL,belowcut: sub-additive stacking of robustness interventions is a good portfolio question but requires a large intervention-grid training budget
+C-0307,ROBUST,1,3,4,4,4,3,5,5,1,4,3,2,2,2,3.15,KILL,published: TTA failure under non-i.i.d./correlated streams is established
+C-0308,ROBUST,3,3,4,4,3,3,5,4,3,4,2,3,3,2,3.31,KILL,belowcut: certified-robustness honest accounting for dense tasks is worthy but certification is a poor CVPR-cluster fit and conclusions are anticipated
+C-0309,ROBUST,3,3,4,4,4,3,5,4,3,4,2,2,3,3,3.46,KILL,belowcut: smoothing-vs-boundary-precision trade-off law is plausible and clean but audience is narrow
+C-0310,ROBUST,5,4,4,4,3,3,3,4,4,4,4,3,4,4,3.85,KEEP,keep: ISP-parameter sensitivity via RAW re-rendering opens a robustness axis (the camera pipeline) the field treats as invisible; fresh with hardware-aware deployment stakes
+C-0311,ROBUST,4,3,4,3,3,3,4,4,3,3,3,4,3,3,3.31,KILL,belowcut: video-models-more-blur-fragile inversion is cute but requires matched video/image pretraining pairs; close call
+C-0312,ROBUST,4,5,4,4,4,4,5,5,4,4,4,2,5,5,4.38,KEEP,keep: directional prediction bias under shift (rare/safety classes vanish first) exposes a failure structure aggregate robustness metrics cannot see; cheap re-analysis of existing shifted benchmarks
+C-0313,ROBUST,1,3,4,4,3,3,5,5,1,4,3,2,2,2,3.08,KILL,published: augmentation-corruption overlap driving benchmark gains is established
+C-0314,ROBUST,2,4,4,4,3,3,4,4,2,4,3,2,3,3,3.31,KILL,published: fusion-worse-than-best-branch under sensor degradation is documented in multi-sensor robustness studies
+C-0315,ROBUST,4,4,4,4,4,4,5,5,3,4,3,2,4,4,4.00,KILL,belowcut: object-size-vs-corruption reliability law is safety-useful but largely descriptive; close call against kept ROBUST siblings
+C-0316,ROBUST,4,3,4,4,4,4,5,5,3,4,3,3,3,4,3.85,KILL,belowcut: codec-band dependence of web-trained models is cheap and fresh-ish but JPEG-robustness work partially covers it; close call
+C-0317,ROBUST,3,3,4,4,3,2,5,5,2,4,3,3,3,3,3.38,KILL,published: adversarially-robust-backbone transfer behavior is documented; crossover refinement is incremental
+C-0318,ROBUST,3,3,4,4,4,4,5,5,2,4,3,2,3,3,3.62,KILL,published: temporal instability/flicker of video segmentation is documented; standardization is a service contribution
+C-0319,ROBUST,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: failure-topology (local CNN vs global ViT error geometry) is interesting but descriptive; outcompeted
+C-0320,ROBUST,4,4,4,4,4,4,5,5,4,4,4,2,4,4,4.15,KEEP,keep: super-linear composition of individually mild corruptions directly indicts single-axis robustness benchmarks with a cheap factorial design
+C-0321,ROBUST,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: backdoor attacks on segmentation with localized triggers are documented
+C-0322,ROBUST,2,3,4,4,4,4,5,5,2,4,3,2,3,3,3.54,KILL,published: SAM prompt-perturbation instability is documented in SAM robustness studies
+C-0323,ROBUST,3,4,4,4,4,4,5,5,3,4,3,2,3,3,3.77,KILL,redundant: per-image worst-case tail structure overlaps kept sibling C-0312 (failure structure hidden by aggregates); C-0312 has the sharper safety framing
+C-0324,ROBUST,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: stylization-preserves-layout critique is correct but a bounded methodological point
+C-0325,ROBUST,4,5,4,4,4,4,5,5,4,4,4,2,5,5,4.38,KEEP,keep: pixel-vs-instance robustness decoupling (whole instances vanish at stable mIoU) plus instance-survival metrics is a safety-relevant blind spot with a cheap measurement fix
+C-0326,ROBUST,3,5,4,4,2,3,2,4,3,3,4,4,5,3,3.46,KILL,cost: causal attribution of geographic performance gaps requires controlled multi-region data collection beyond this budget
+C-0327,ROBUST,3,4,4,4,3,3,3,4,3,4,3,3,4,3,3.46,KILL,belowcut: sim-discovered-failure transfer rate is important for AV but needs paired sim/real capture infrastructure
+C-0328,ROBUST,2,3,4,4,3,2,5,5,2,4,3,2,3,2,3.23,KILL,published: matched-data-and-recipe retraining attributing robustness differences to data is documented
+C-0329,ROBUST,4,3,4,4,4,3,5,5,3,4,3,3,3,3,3.69,KILL,belowcut: scale-dependent vulnerability to structured label noise is a good hypothesis but noise-injection design space is large; close call
+C-0330,ROBUST,4,5,4,4,4,4,5,5,4,4,4,2,5,4,4.31,KEEP,"keep: abstention mechanisms inverting under shift (confident on wrong shifted items, abstaining on solvable ID items) breaks the safety story selective prediction is sold on"
+C-0331,GENERAL,3,3,4,4,4,4,5,5,3,4,3,2,3,3,3.69,KILL,belowcut: KL-from-init as a generalization-gap predictor competes in the crowded complexity-measure benchmark space
+C-0332,GENERAL,4,5,5,4,4,3,5,5,4,4,4,2,5,4,4.31,KEEP,keep: testing whether the ID-OOD linear accuracy law survives structured dense-prediction errors determines whether the field's main robustness interpretive tool applies to segmentation at all
+C-0333,GENERAL,1,3,4,4,2,2,5,5,1,4,3,3,2,1,2.85,KILL,published: memorization-necessity for tail generalization has established empirical treatments
+C-0334,GENERAL,5,5,4,3,3,3,5,5,4,3,4,4,5,4,4.08,KEEP,"keep: unifying texture bias, shortcut learning, and adversarial vulnerability under one measurable spectral-simplicity quantity is a high-upside consolidation bet with a concrete single-intervention prediction"
+C-0335,GENERAL,3,3,4,4,3,2,5,5,2,4,3,2,3,2,3.31,KILL,published: flatness-fails-across-architectures is documented; foundation-scale replication is confirmatory
+C-0336,GENERAL,3,4,4,4,4,3,5,5,3,4,3,2,4,3,3.77,KILL,belowcut: open-set-vs-domain-shift decorrelation is a solid conceptual cleanup; close call against kept GENERAL siblings
+C-0337,GENERAL,3,3,4,3,4,3,5,5,3,4,3,3,3,3,3.54,KILL,belowcut: human-confusion-alignment as robustness predictor is plausible but human-similarity predictors have mixed track records
+C-0338,GENERAL,4,5,4,4,3,3,4,4,4,4,4,3,5,4,4.00,KEEP,keep: a visual n-gram law bounding compositional generalization by training-data co-occurrence statistics would reframe compositionality from architecture problem to data-statistics bound
+C-0339,GENERAL,4,3,3,3,3,3,4,4,3,3,3,4,4,3,3.31,KILL,belowcut: weights-vs-context conservation trade-off is intriguing but operationalizing the two capacities cleanly is underdetermined
+C-0340,GENERAL,3,3,4,3,3,2,4,4,3,3,3,3,4,3,3.23,KILL,belowcut: full invariance-provenance decomposition (architecture vs data) is ambitious and requires many controlled pretraining runs
+C-0341,GENERAL,1,4,4,4,2,1,4,4,1,4,3,3,2,1,2.69,KILL,published: data-determines-CLIP-robustness including source-ablation retraining is established
+C-0342,GENERAL,3,3,4,4,4,4,5,5,2,4,3,2,3,3,3.62,KILL,published: model-independent example-difficulty scores (C-score/prediction-depth lineage) substantially cover this
+C-0343,GENERAL,4,4,5,4,3,3,5,5,4,4,3,4,5,4,4.08,PROTECT,protect(disagreement-prone): preventing neural collapse and observing unchanged generalization would demote a hot theoretical literature to epiphenomenon status; constructing collapse-free-but-matched training is the hard risky part
+C-0344,GENERAL,3,4,4,4,3,2,4,4,3,4,3,3,4,3,3.46,KILL,cost: controlled-diversity same-size corpus construction plus pretraining sweeps is a large-budget undertaking
+C-0345,GENERAL,4,4,4,4,4,3,4,4,3,4,4,3,4,3,3.77,KILL,belowcut: text-acquired-knowledge transfer to visual tasks is a strong question but partially probed in VLM analysis work; close call under portfolio limits
+C-0346,GENERAL,3,3,4,3,3,3,4,4,3,3,3,3,3,3,3.23,KILL,belowcut: meta-overfitting audit of learned pipeline components is diffuse across too many component types for one crisp claim
+C-0347,GENERAL,3,3,4,4,4,3,5,5,3,4,3,2,3,3,3.62,KILL,belowcut: pruning-changes-generalization-profile is plausible and cheap but dataset-pruning analyses are accumulating quickly
+C-0348,GENERAL,5,5,4,4,3,2,5,5,4,4,4,4,5,4,4.15,KEEP,keep: testing whether scale increases the behavioral spread of identically-scoring models (underspecification volume) is an uncomfortable high-stakes question about what scaling actually pins down
+C-0349,GENERAL,4,5,4,4,3,3,4,4,4,4,4,3,5,4,4.00,KEEP,keep: re-annotating subsets under both conventions to split cross-dataset drops into annotation-convention vs true distribution shift would recalibrate the entire domain-generalization literature
+C-0350,GENERAL,4,4,4,4,3,3,4,4,3,4,4,3,4,3,3.69,KILL,belowcut: scaling-fails-geometric-extrapolation is important but viewpoint/scale OOD testing infrastructure is nontrivial; close call
+C-0351,GENERAL,3,3,4,4,4,3,5,5,2,4,3,2,3,3,3.54,KILL,published: task-arithmetic composition boundaries are actively documented in the merging literature
+C-0352,GENERAL,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: feature-vs-readout decomposition of shift damage (probing/refit recovery) has documented precedents
+C-0353,GENERAL,3,4,4,4,3,3,5,5,3,4,3,3,4,3,3.69,KILL,belowcut: degradation-curve shape vs scale (graceful vs cliff) is a good question but needs dense shift-magnitude instrumentation; outcompeted
+C-0354,GENERAL,3,3,4,4,3,2,4,4,3,4,3,3,3,3,3.31,KILL,cost: decoupling scene complexity from category diversity requires constructing controlled pretraining corpora
+C-0355,GENERAL,5,4,4,4,3,3,5,5,4,4,3,4,5,4,4.08,PROTECT,protect(counter-intuitive): more head-class data improving tail performance via compositional feature reuse inverts the rebalancing orthodoxy; a clean allocation experiment with reversal-grade upside
+C-0356,GENERAL,3,4,4,4,3,3,4,4,3,4,3,3,4,3,3.54,KILL,belowcut: ordered cue-hierarchy after shortcut removal is plausible but shortcut-sequence measurement is methodologically heavy
+C-0357,GENERAL,4,3,4,4,4,4,5,5,3,4,3,3,3,4,3.85,KILL,belowcut: dedup-harms-small-data is cheap and contrarian but dedup-policy scale-dependence is partially anticipated in data-curation work; close call
+C-0358,GENERAL,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: consistency/agreement-based unlabeled model selection is documented
+C-0359,GENERAL,3,3,4,4,4,3,5,5,2,4,3,2,3,3,3.54,KILL,published: low-level statistical alignment recovering much of syn-to-real gaps has documented precedents
+C-0360,GENERAL,4,5,4,4,4,3,4,4,4,4,4,2,5,4,4.08,KEEP,keep: a computable pretraining resolution/patch-size ceiling on fine-grained downstream capability would replace more-scale-will-fix-it expectations with a hard law; directly relevant to medical/aerial fine detail
+C-0361,WILDCARD,5,5,4,3,2,2,3,3,4,3,3,5,5,3,3.46,PROTECT,"protect(high-risk-high-reward): an autonomous literature-scale replication census is the single highest-upside meta-science bet in the catalog; likely to partially fail, transformative if it lands"
+C-0362,WILDCARD,4,3,4,4,4,4,3,3,4,4,2,3,3,3,3.46,KILL,venue: researcher-forecast calibration is cheap and fun but has no plausible CVPR/ICCV/ECCV/MICCAI home
+C-0363,WILDCARD,4,4,4,4,3,2,4,4,4,4,3,3,4,3,3.62,KILL,belowcut: trick half-life curves require re-implementing many historical recipes; high effort relative to a mostly-confirmatory conclusion
+C-0364,WILDCARD,3,3,3,3,3,3,3,3,3,3,2,3,3,2,2.85,KILL,venue: citations-vs-adoption divergence is scientometrics; wrong audience for this cluster's target venues
+C-0365,WILDCARD,4,4,4,4,4,3,5,5,4,4,4,3,4,4,4.08,KEEP,keep: directed archaeology re-testing CRFs/superpixels/structured priors on foundation features is a cheap systematic sweep that could resurrect discarded tools now that unary terms are strong
+C-0366,WILDCARD,4,4,4,4,1,2,3,3,4,3,2,5,4,2,3.08,KILL,feasibility: multi-team same-paper implementation experiment requires organizational coordination beyond any single group's control
+C-0367,WILDCARD,3,3,3,3,3,3,4,4,3,3,2,3,3,2,3.00,KILL,belowcut: benchmark lifecycle forecasting is interesting meta-science with weak venue fit and soft falsifiability
+C-0368,WILDCARD,3,3,3,3,2,3,2,2,3,3,2,4,3,2,2.62,KILL,feasibility: file-drawer estimation via surveys and notebook sampling has severe access and response-bias problems; wrong venue
+C-0369,WILDCARD,3,4,4,4,4,3,4,4,3,4,3,2,3,3,3.54,KILL,belowcut: compute-normalized progress re-plotting is a solid retrospective but close to existing efficiency-trend analyses
+C-0370,WILDCARD,4,3,4,3,3,3,3,3,3,3,2,3,3,2,3.00,KILL,venue: LLM-artifact contamination of the vision literature is timely but a bibliometric/integrity study; poor fit for target venues
+C-0371,WILDCARD,2,3,4,4,4,3,5,5,2,4,3,2,3,3,3.46,KILL,published: hardware/software nondeterminism noise floors at fixed seeds are documented
+C-0372,WILDCARD,5,4,3,3,2,3,3,3,4,3,2,5,5,3,3.31,PROTECT,"protect(disagreement-prone,high-risk-high-reward): adversarial collaboration on live vision controversies is a protocol experiment the field has never run; hard to organize but success creates a reusable dispute-resolution instrument"
