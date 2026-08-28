@@ -1,7 +1,6 @@
 # Evolution summary
 
-- Stage 1 wave-1: timeout, no catalogs.
-- Stage 1 wave-2: A/B/C archived (240).
-- Stage 1 wave-3: E+F complete; D surplus in flight.
-- Pool: **1000 raw / 982 live** (count met).
-- Stage 2 scoring + Stage 3 prior-work assassin: in flight.
+- Stage 1 complete: **1080 raw / 1062 live** (S + A–F + D surplus).
+- Wave-1 timeouts recovered via compact waves + supervisor seed.
+- Stage 2: two scoring batches in flight (ABCF + DE).
+- Stage 3 prior-work assassin on cheap-killers: in flight.

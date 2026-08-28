@@ -5,7 +5,7 @@
 - **Supervisor:** Windows6 (Autonomous Research PI)
 - **Repo:** `github.com/songkang688/idea`
 - **Branch:** `cursor/windows6-research-idea-evolution-b55d`
-- **Status:** Stage 1 count met (1000 raw / 982 live). D surplus still generating. Stage 2 scoring + Stage 3 prior-work attack in flight.
+- **Status:** Stage 1 complete (1080 raw / 1062 live). Stage 2 scoring + Stage 3 prior-work attack in flight.
 
 Existing Windows trees on other branches (Windows2, Windows3 staging, Windows4) were **not** overwritten. This round writes only under `Windows6/`.
 
