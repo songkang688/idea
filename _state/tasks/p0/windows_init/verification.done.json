@@ -1,0 +1,54 @@
+{
+  "task_id": "p0_windows_init",
+  "role": "wave_C_verification_consolidator",
+  "status": "complete",
+  "p0_complete": true,
+  "windows_id": "Windows14",
+  "windows_number": 14,
+  "windows_path": "Windows14",
+  "windows_lock_path": "Windows14/_state/window.lock.json",
+  "branch": "cursor/windows14-p0-init-implementation-46a8",
+  "init_commit": "cb86614201db8b5f328864feeb776b443e2e0ec5",
+  "head_commit": "1cbba316fc16b0caba93f486de1e15bcdf564859",
+  "push_ok": true,
+  "push_error": null,
+  "checks": {
+    "unique_and_correct": true,
+    "no_overwrite": true,
+    "state_files_created": true,
+    "git_safety_done": true,
+    "commit_done": true,
+    "push_success_or_real_failure_recorded": true
+  },
+  "unresolved_items": [],
+  "recommended_next_task_type": "P1",
+  "output_files": [
+    "_state/tasks/p0/windows_init/verification.md",
+    "_state/tasks/p0/windows_init/verification.done.json"
+  ],
+  "identity_source": "Windows14/_state/window.lock.json (windows_id/windows_number/windows_path/branch read from lock, not dispatcher name)",
+  "head_commit_note": "head_commit is the implementation-branch head verified via live git ls-remote at consolidation time, before this consolidator's own verification commit",
+  "verifier_consensus": {
+    "verifier_A": {"branch": "cursor/p0-wave-c-verifier-a-uniqueness-88e1", "tip": "52f72a50cc0100a6f6b774e16563601abcb53dff", "status": "complete", "unique_windows14": true, "overwrite_of_old_windows": false, "lock_present": true},
+    "verifier_B": {"branch": "cursor/p0-wave-c-verifier-b-state-git-0719", "tip": "6653e1875fc844658202115b38c7d8a067d4df09", "status": "complete", "verdict": "pass", "state_files_ok": true, "json_ok": true, "commit_ok": true, "push_ok": true},
+    "verifier_C": {"branch": "cursor/p0-wave-c-verifier-c-secrets-d175", "tip": "439c45791fd73f81be361be6a7c4bd606a03ae49", "status": "complete", "verdict": "pass", "secret_scan_result": "clean", "all_checklist_true": true},
+    "conflicts_on_p0_booleans": 0
+  },
+  "independent_rechecks": {
+    "refetched_at_utc": "2026-08-28T17:56Z",
+    "uniqueness": "Windows14 paths on exactly 4 origin refs, all one lineage (implementation tip + 3 fast-forward verifier descendants with empty Windows14 diff); no PR head and no origin/main Windows14; lock census: 13/15/16 claimed elsewhere, 14 only here",
+    "no_overwrite": "branch base 990f3eb contained only README.md; branch-unique commits contain only adds plus one modification of Windows14's own research_state.json; 0 deletions, 0 renames, 0 other-WindowsN paths",
+    "state_files": "all 9 Windows14 files present; python3 -m json.tool passed on window.lock.json, research_state.json, implementation.done.json, decision.json, consolidator.done.json; ideas_master.jsonl 0 bytes line-parseable",
+    "git_safety": "git_safety block present in research_state.json; linear single-parent chain 990f3eb -> 57133e0 -> cb86614 -> 1cbba31 re-verified; no forced-update markers",
+    "commit": "init commit cb86614201db8b5f328864feeb776b443e2e0ec5 'Research Idea Evolution - Windows14 - Initialization' is ancestor of head",
+    "push": "live git ls-remote origin refs/heads/cursor/windows14-p0-init-implementation-46a8 -> 1cbba316fc16b0caba93f486de1e15bcdf564859 == local HEAD at verification time",
+    "secrets": "0 matches for ghp_/github_pat_/sk-/AKIA/PEM-private-key/xox[baprs]/AIza/loose key=value patterns across full trees of all 3 branch-unique commits; grep mechanism sanity-checked against known-present string; no secret values printed"
+  },
+  "carried_forward_non_blocking": [
+    "Windows11 research_state.json on origin/cursor/windows11-p0-init-c0c1 is pre-existing invalid JSON (another window's tree, out of scope)",
+    "decision.json bump target 16 stale for future window pipelines (15 and 16 now implemented elsewhere); irrelevant to Windows14",
+    "git_safety.main_head 990f3eb stale vs current origin/main 1cf3304 (accurate at init time, informational)"
+  ],
+  "p1_started": false,
+  "verified_at_utc": "2026-08-28T17:59Z"
+}
