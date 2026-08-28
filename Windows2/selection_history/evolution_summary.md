@@ -19,6 +19,7 @@
 ## Stage 4
 
 - H COMPLETE on B: `Windows2/_wip/stage4_agent_H/`. Freshness kills 0332, 0133, 0042-as-host.
+- J COMPLETE on A: `Windows2/_wip/stage4_agent_J/`. Only A-0061 bare SURVIVE; 0199/0215 framing killed.
 
 ## Eliminated (confirmed, do not revive without new evidence)
 

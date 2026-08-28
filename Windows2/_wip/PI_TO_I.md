@@ -21,3 +21,11 @@ Flagship A survivors to protect if they do not duplicate G LOCK: 0206, 0163, 015
 - Also KILL: B-0025, B-0033 (as standalone; already parasite of C-0136), B-0252
 
 Nothing in B's top 20 survived Reviewer #2 without a named experiment. Prefer H's SURVIVE-IF-EXPERIMENT mutated forms: 0114, 0194, 0001, 0104, 0268, 0213, 0169.
+
+## Agent J Reviewer #2 on A (COMPLETE)
+
+- Only **A-0061** is a bare SURVIVE (topology lost at checkpoint selection).
+- Framing dead as written: **A-0199** (HalluSegBench / HII-DPO), **A-0215** (label-effect ≫ model-effect literature). Keep only J's mutations if at all.
+- Merge **A-0237 + A-0249** (mutually unidentifiable).
+- Prefer SURVIVE-IF-EXPERIMENT: 0206, 0163, 0150, 0151, 0075, 0121, 0100, 0326, 0175.
+- Six ideas share one unbuilt taxonomy of noise/convention/quality/ambiguity — do not count them as six independent slots.
