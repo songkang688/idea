@@ -14,7 +14,7 @@
 
 - G COMPLETE: 184 → 121 B∪C slots (LOCK 50 / FLEX 71), 40 DROP, 23 merged parasites. Files: `Windows2/_wip/stage2_agent_G/`.
 - F COMPLETE: 75 A keeps; literature in `stage2_agent_F/prior_work_attack.md`.
-- I: fold A into reserved 79 slots → provisional 200.
+- I COMPLETE: **190 slots** `Windows2/_wip/stage2_agent_I/provisional_200.md` (A84/B59/C47). This is the working 200.
 
 ## Stage 4
 
