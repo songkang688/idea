@@ -1,0 +1,20 @@
+{
+  "task_id": "P3-stage2-inventory",
+  "role": "P3 Stage-2 Inventory Agent (parent: WindowsX)",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P3/gate/stage2_inventory.md",
+    "/workspace/_state/tasks/P3/gate/stage2_inventory.done.json"
+  ],
+  "unresolved_items": [
+    "window.lock.json does not exist anywhere (working tree and all origin branches searched by filename, case-insensitive) - P0 never persisted a lock; lock invalid => missing, not conflicting",
+    "No authoritative research_state.json: four conflicting copies on divergent unmerged P0 branches (Windows9/10/11/12); Windows11 copy is malformed JSON; all parseable copies report current_stage=Stage 1, total_ideas=0, survivors=0",
+    "stage2_top200.md exists only on unmerged non-lock-designated branches (Windows4: origin/cursor/windows4-research-idea-evolution-2962; Windows8: origin/cursor/windows8-research-idea-evolution-cd91) - orphaned artifacts, not countable as authoritative Stage 2 survivors",
+    "Outputs written to fallback /workspace/_state/tasks/P3/gate/ because windows_path is null",
+    "P0 must run to completion (exactly one authoritative WindowsN/_state/window.lock.json with locked=true plus consistent sibling research_state.json, discoverable from base branch), then P2 must produce Stage 2 survivors, before P3 may start"
+  ],
+  "recommended_next_task_type": "P3_BLOCKED_NEED_P0",
+  "p3_may_start": false,
+  "stage2_survivor_count": 0,
+  "windows_path": null
+}
