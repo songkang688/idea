@@ -6,30 +6,21 @@
 
 ## Current stage
 
-**Stage 4 complete on A, B, and C.** Fold-to-200 (I) and meta-audit (L) still running. Agent M cutting toward **50** using all Reviewer #2 verdicts.
+Stage 4 A/B/C complete. L audit complete — **PI accepted binding demotions/revives** in `Windows2/_wip/PI_BINDING.md`. I folding 200; M cutting 50; N writing Stage-5 killer-experiment protocols on a diversified set.
 
-| Agent | Status | Result |
-| --- | --- | --- |
-| H | COMPLETE | B: 0 bare SURVIVE; 6 KILL |
-| J | COMPLETE | A: 1 bare SURVIVE (A-0061) |
-| K | COMPLETE | C: 0 bare SURVIVE; 5 KILL including **C-0046** (Label Convergence / noise-aware AP) |
-| I | RUNNING | Fold A into 200 |
-| L | RUNNING | Meta-auditor |
-| M | DISPATCHING | 200→50 under R2 constraints |
+| Agent | Status |
+| --- | --- |
+| I | RUNNING — 200-fold |
+| M | RUNNING — 50-cut |
+| N | DISPATCHING — Stage 5 killer experiments (diversified 10) |
+| L | COMPLETE — audit in `stage6_agent_L/` |
 
-## Hard kills (do not revive without new evidence)
+## PI belief updates (after L)
 
-- B: 0136, 0175, 0279, 0332, 0133, 0042-host, 0025, 0252
-- A: 0017, 0051; framing-dead 0199, 0215
-- C: **0046, 0119, 0341, 0303, 0055**
-
-## Emerging gravity (NOT final 3)
-
-- A-0061 topology-at-checkpoint-selection
-- A-0206 SAM fingerprint (experiment-gated)
-- B-0114 VPT-as-registers; B-0001 register-norm UQ
-- C-0306 conformal vs NMS; C-0338 human small-object ceiling
-- Cap measurement families: annotation-taxonomy (A) and GT-epistemology (C) are correlated
+- B-0114 frozen-prompt pilot is not a flagship.
+- A-0061 is experiment-gated, not free novelty.
+- A-0199 classical-segmenter mutation is revived; VLM scoops over-broad.
+- Top-3 cannot be four cheap diagnosis papers from one micro-field.
 
 ## Git safety
 

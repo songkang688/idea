@@ -22,6 +22,10 @@
 - J COMPLETE on A: `Windows2/_wip/stage4_agent_J/`. Only A-0061 bare SURVIVE; 0199/0215 framing killed.
 - K COMPLETE on C: `Windows2/_wip/stage4_agent_K/`. Kills 0046, 0119, 0341, 0303, 0055.
 
+## Stage 6 audit
+
+- L COMPLETE: `Windows2/_wip/stage6_agent_L/`. Binding PI response: `Windows2/_wip/PI_BINDING.md`.
+
 ## Eliminated (confirmed, do not revive without new evidence)
 
 - W2-B-0136 — Davari et al. CVPR 2022 (representation forgetting / rotation)
