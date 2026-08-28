@@ -1,0 +1,46 @@
+{
+  "task_id": "P1-genA-07-benchmark-weaknesses",
+  "role": "Generator",
+  "status": "complete",
+  "window": "Windows16",
+  "territory": "Benchmark weaknesses in vision/ML: label errors, benchmark saturation, shortcut learning, metric blind spots, train-test contamination; ideas that expose or repair flawed evaluation",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-07_benchmark_weaknesses.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-07-benchmark-weaknesses.done.json"
+  ],
+  "candidate_count": 90,
+  "target_band": "80-120",
+  "candidate_id_range": "bnw-0001..bnw-0090",
+  "clusters": {
+    "label_error_detection_and_impact": 8,
+    "saturation_and_headroom": 8,
+    "shortcut_learning_audits": 8,
+    "contamination_and_leakage": 8,
+    "metric_blind_spots": 8,
+    "test_set_reuse_adaptive_overfitting": 7,
+    "annotation_process_artifacts": 7,
+    "benchmark_repair_and_versioning": 7,
+    "statistical_rigor_and_ranking_stability": 7,
+    "external_validity_and_dataset_bias": 7,
+    "generative_and_judge_eval_weaknesses": 8,
+    "benchmark_meta_science_and_incentives": 7
+  },
+  "evidence_labels": {
+    "HYPOTHESIS": 79,
+    "MODEL SPECULATION": 11
+  },
+  "schema_notes": "Each JSONL line carries the parent-mandated fields in order (candidate_id, territory, title, one_line_idea, cluster, problem, core_hypothesis, core_claim, method_sketch, falsifiable_prediction, why_important, why_possibly_novel, novelty_hook, minimal_falsification_experiment, main_risk, kill_risk, community_default_belief, why_it_might_be_wrong, fastest_falsifying_experiment, evidence_label). Following the convention of earlier Wave A shards, the task_queue shard_format aliases mirror their counterparts: core_claim=core_hypothesis, method_sketch=minimal_falsification_experiment, novelty_hook=why_possibly_novel, kill_risk=main_risk. Every candidate states the community default belief, why it might be wrong, and a cheapest/fastest falsifying experiment.",
+  "compliance": {
+    "forbid_fiction": "No fabricated papers, citations, benchmark numbers, dataset facts, or experimental results; real dataset/model names appear only as proposed experiment subjects and all quantitative statements are phrased as falsifiable predictions under HYPOTHESIS or MODEL SPECULATION labels.",
+    "novelty_claims": "All novelty statements are hedged as possibly-novel and explicitly marked unverified; no verified novelty claimed.",
+    "protected_files": "window.lock.json, research_state.json, ideas_master.jsonl untouched; no Windows directories created; no Windows numbers changed; only the two mandated files written under Windows16/_state/tasks/P1/."
+  },
+  "unresolved_items": [
+    "Novelty of all 90 candidates is unverified against the literature; Wave B dedup plus any novelty-checking stage must vet before promotion.",
+    "Intra-shard conceptual neighbors were minimized but remain for dedup review: bnw-0015 vs bnw-0062/bnw-0064 (minimum-detectable-effect vs paired-test/cluster-bootstrap machinery), bnw-0011 vs bnw-0074 (cross-benchmark rank decorrelation vs inconsistency decomposition), bnw-0029 vs bnw-0041/bnw-0046 (canary mirrors vs adaptivity audits and rotating shards), bnw-0004 vs bnw-0054 (committee-cleaning circularity vs pre-labeling anchoring), bnw-0014 vs bnw-0057/bnw-0061 (discriminative cores vs item retirement and ranking-influence functions).",
+    "Cross-territory overlap likely with genA-01 (its evaluation_benchmark_hygiene cluster), genA-06 failure mining (bnw-0012 residual-error triage, bnw-0035 slice deltas), genA-08 uncertainty (bnw-0040 calibration-metric binning), genA-09 synthetic data (bnw-0032 generated-data recontamination), and genA-11 negative results (audit/refutation-style candidates); dedup should treat these as high-collision zones.",
+    "Several candidates (bnw-0006, bnw-0029, bnw-0048, bnw-0053, bnw-0072) depend on new human annotation or expert adjudication budgets; feasibility is flagged inside the records but not costed.",
+    "Meta-science candidates (bnw-0084..bnw-0090) require literature-mining or community-cohort infrastructure that exceeds a single-lab minimal experiment; their fastest-falsifying experiments are scoped-down pilots."
+  ],
+  "recommended_next_task_type": "P1-genA-08-uncertainty"
+}
