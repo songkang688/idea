@@ -23,3 +23,8 @@ Supervisor 本地并行核实（不把子 Agent 结论当事实）:
 
 - Keep: Windows9 编号。Reason: 不覆盖历史；N+1 规则。
 - 无 Kill/Mutate/Revive Idea（尚无 Idea）。
+
+## 2026-08-28T16:50Z — P0 git checkpoint
+
+- init commit: `2751f99fada02a238f3d1692dc7a9fcd8d85a32e`
+- push: verified_success (`origin/cursor/windows9-p0-init-3045` SHA matches local HEAD; no force push)

@@ -57,6 +57,12 @@ Idea ID, Stage, Status, Cluster, Core Hypothesis, Scores, Closest Prior Work, No
 
 - 2026-08-28: **Keep Windows9 as this-round id.** Reason: remote max N=8; creating Windows9 does not overwrite existing trees. (KNOWN FACT)
 
+## Git checkpoint
+
+- init commit: `2751f99fada02a238f3d1692dc7a9fcd8d85a32e` (KNOWN FACT)
+- push: verified_success — `git ls-remote` SHA equals local HEAD (KNOWN FACT)
+- force_push: not used
+
 ## 当前 Stage
 
 Stage 1 — 已完成 P0 工作区初始化。Idea 生成未开始。
