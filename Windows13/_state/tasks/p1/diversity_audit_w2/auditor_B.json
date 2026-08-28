@@ -1,0 +1,132 @@
+{
+  "task_id": "p1_diversity_audit_w2",
+  "role": "auditor_B_quality_blindspots",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "branch": "cursor/p1-diversity-audit-w2-auditor-b-0688",
+  "audited_at_utc": "2026-08-28T20:50:27Z",
+  "audited_set": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w2-3111",
+    "source_commit": "929445dd130fa6b094024e7b00df42b7af6b04c6",
+    "records": 494,
+    "wave1": {"gen_a_sam_foundation_peft": 94, "gen_b_hard_domain_dense_prediction": 85, "gen_c_contrarian_eval": 69},
+    "wave2": {"gen_d_object_detection": 79, "gen_e_vlm_dense_prediction": 79, "gen_f_synthetic_data": 88}
+  },
+  "independence": {
+    "auditor_A_w2_fetch_attempted": true,
+    "auditor_A_w2_found": false,
+    "evidence": "git fetch origin + ls-tree scan of every origin branch for Windows13/_state/tasks/p1/diversity_audit_w2/ at audit time returned no files; audit fully independent of Auditor A w2"
+  },
+  "method": "deterministic regex/count analysis over all fields of all 494 records; manual read + hand-labeled genre classification of all 246 wave2 one-liners; judge-meta aggregation (feasibility tiers, duplicate groups, template families); off-master inspection of gen_g/h/j/k shards on origin branches; no canonical state modified",
+  "hypothesis_quality": {
+    "field_completeness_w2": {"all_11_prose_fields_substantive": "246/246", "hedge_words_in_predictions": "0/246", "evidence_label": "EVIDENCE"},
+    "falsifiability": {
+      "explicit_falsified_if_clause": {"w1": "149/248 (60%)", "w2": "0/246 (0%)", "verdict": "REGRESSION - wave2 predictions are directional [EXPECTED RESULT] statements that never state the kill condition"},
+      "numeric_kill_threshold_in_prediction": {"w1": "2-4/248 (~1.6%)", "w2": "4/246 (1.6%)", "w2_ids": ["W13-P1-D-026", "W13-P1-E-058", "W13-P1-F-020", "W13-P1-F-082"], "verdict": "UNCHANGED (bad); w1 gate not retrofitted by wave2 judges/consolidator"},
+      "vague_magnitude_only_predictions": {"w1": "87/248 (35%)", "w2": "89/246 (36%)"},
+      "note": "wave2 D/E/F were generated before the w1 audit gates existed; recorded as calibration, not violation",
+      "evidence_label": "EVIDENCE"
+    },
+    "evidence_labeling_schema": {
+      "structured_dict": {"w1": "94/248 (gen_a only)", "w2": "0/246", "master": "94/494"},
+      "w2_inline_tags": "246/246 records uniformly tag exactly 5 fields (problem, core_hypothesis, falsifiable_prediction, why_possibly_novel, community_default_belief); mechanically normalizable to the dict schema",
+      "fragmentation": "4 conventions across master + in-flight shards (gen_a dict; gen_b/c sparse inline; wave2 uniform inline; gen_j dict+genre+fingerprint vs gen_k evidence_labels+kill_threshold)",
+      "severity": "top structural defect, worse than w1 (400/494 records schema-less to programmatic readers)",
+      "action": "consolidator adopt gen_j schema as canonical; backfill wave2 mechanically",
+      "evidence_label": "EVIDENCE"
+    },
+    "experiment_specification": {
+      "judge_B_runnable_as_stated_w2": "244/246",
+      "named_public_models_or_datasets_in_w2_experiment_fields": "1 mention across 492 fields (wave1 gen_a named systems freely)",
+      "risk": "benchmark-shopping degree of freedom when experiments are actually run; recommend requiring >=1 named public dataset+model per experiment",
+      "evidence_label": "EVIDENCE (count) + HYPOTHESIS (risk)"
+    },
+    "citations": {"citation_like_strings_w2": 0, "fake_citations_found_master": 0, "w1_finding_unchanged": "13 real citations, all in gen_a", "evidence_label": "EVIDENCE"}
+  },
+  "cheap_kill": {
+    "time_or_cost_bound_in_fastest_test": {"w1": "144/248 (58%)", "w2": "129/246 (52%)", "by_w2_shard": {"gen_d": "54/79", "gen_e": "57/79", "gen_f": "18/88 (20%, portfolio worst)"}},
+    "feasibility_tiers_w2": {"T1_inference_or_analysis_only": 167, "T2_small_training_or_light_collection": 78, "T3_gated_or_expensive": 1},
+    "feasibility_tiers_w1": {"T1": 97, "T2": 139, "T3": 6, "missing": 6},
+    "special_resource_fastest_tests": {"w1": 32, "w2": 0},
+    "duplicate_groups_with_3plus_accepted": 0,
+    "assessment": "structurally cheap (68% T1, no gated resources) but adjudication-poor: a T1 test without a pre-registered kill threshold produces a plot, not a verdict",
+    "evidence_label": "EVIDENCE (counts) + HYPOTHESIS (assessment)"
+  },
+  "debunk_vs_constructive": {
+    "w2_clear_constructive": {"count": "62/246 (25.2%)", "gen_d": "13/79 (16.5%)", "gen_e": "17/79 (21.5%)", "gen_f": "32/88 (36.4%)"},
+    "w2_clear_constructive_ids": [
+      "W13-P1-D-018","W13-P1-D-024","W13-P1-D-045","W13-P1-D-046","W13-P1-D-050","W13-P1-D-054","W13-P1-D-065","W13-P1-D-072","W13-P1-D-074","W13-P1-D-078","W13-P1-D-079","W13-P1-D-082","W13-P1-D-083",
+      "W13-P1-E-004","W13-P1-E-009","W13-P1-E-029","W13-P1-E-033","W13-P1-E-039","W13-P1-E-040","W13-P1-E-046","W13-P1-E-048","W13-P1-E-049","W13-P1-E-050","W13-P1-E-058","W13-P1-E-072","W13-P1-E-074","W13-P1-E-075","W13-P1-E-080","W13-P1-E-081","W13-P1-E-086",
+      "W13-P1-F-003","W13-P1-F-005","W13-P1-F-008","W13-P1-F-009","W13-P1-F-010","W13-P1-F-014","W13-P1-F-019","W13-P1-F-021","W13-P1-F-023","W13-P1-F-034","W13-P1-F-036","W13-P1-F-041","W13-P1-F-043","W13-P1-F-046","W13-P1-F-054","W13-P1-F-059","W13-P1-F-060","W13-P1-F-065","W13-P1-F-066","W13-P1-F-070","W13-P1-F-071","W13-P1-F-072","W13-P1-F-073","W13-P1-F-074","W13-P1-F-075","W13-P1-F-077","W13-P1-F-078","W13-P1-F-083","W13-P1-F-089","W13-P1-F-092","W13-P1-F-096","W13-P1-F-100"
+    ],
+    "w2_borderline_constructive_ids": [
+      "W13-P1-D-019","W13-P1-D-027","W13-P1-D-038","W13-P1-D-043","W13-P1-D-055","W13-P1-D-061","W13-P1-D-086","W13-P1-D-096","W13-P1-D-099",
+      "W13-P1-E-008","W13-P1-E-027","W13-P1-E-028","W13-P1-E-047","W13-P1-E-052","W13-P1-E-054","W13-P1-E-076","W13-P1-E-096",
+      "W13-P1-F-007","W13-P1-F-018","W13-P1-F-026","W13-P1-F-030","W13-P1-F-049","W13-P1-F-050","W13-P1-F-056","W13-P1-F-057","W13-P1-F-058","W13-P1-F-063","W13-P1-F-064","W13-P1-F-097","W13-P1-F-098","W13-P1-F-101"
+    ],
+    "w2_loose_upper_bound": "93/246 (37.8%)",
+    "w2_strict_constructive": {"count": "22/246 (8.9%)", "ids": ["W13-P1-D-045","W13-P1-D-050","W13-P1-D-054","W13-P1-D-072","W13-P1-D-078","W13-P1-D-079","W13-P1-D-082","W13-P1-D-083","W13-P1-E-009","W13-P1-E-074","W13-P1-E-080","W13-P1-F-014","W13-P1-F-041","W13-P1-F-046","W13-P1-F-054","W13-P1-F-059","W13-P1-F-066","W13-P1-F-070","W13-P1-F-071","W13-P1-F-078","W13-P1-F-083","W13-P1-F-096"]},
+    "w2_debunk_audit_share": "~58-62%",
+    "portfolio_after_w2": {"strict": "29-33/494 (6-7%, up from 3-4%)", "loose": "108/494 (21.9%, up from 18.5%)"},
+    "in_flight_self_reported_genre": {"gen_j": "37/104 constructive, 10 audit_debunk", "gen_k": "34/105 constructive, 27 debunk_audit"},
+    "verdict": "improving (gen_f and gate-compliant in-flight shards) but portfolio still ~3:1 debunk vs strict-constructive; gen_p >=80% mandate remains justified; protect the 62-id w2 constructive list (extends w1's 46-id protected list to 108) from genre-blind Stage-2 culling",
+    "evidence_label": "EVIDENCE (counts) + HYPOTHESIS (hand-labeling judgment)"
+  },
+  "guard_compliance_w2": {
+    "sam_share": {"w2_subject": "0/246", "master_subject": "79/494 (16.0%)", "guard_below_25pct": "MET"},
+    "calibration_uncertainty_primary": "8/246 (3.3%) - ban respected",
+    "seg_mask_metric_bound_falsifications": "14% of w2 (guard >=30% independence MET; additional 15% detection-AP-bound, expected for gen_d)",
+    "structure_quota": {"gen_d": "9 clusters, max 16% (marginal violation: small-dense-objects 13/79, fm-failure-modes 13/79 vs 15% cap)", "gen_e": "11 clusters, max 13% PASS", "gen_f": "10 clusters, max 12% PASS"},
+    "family_fingerprint_guard": {"records_tagged": "0/246", "verdict": "NOT OPERATIONALIZED", "informal_families_exceeding_cap_6": {"judge_C": {"annotation_ceiling_conventions": 13, "realism_not_the_active_ingredient": 12, "equalization_null_hidden_budget": 9, "pseudo_label_bias_inheritance": 8, "input_geometry_artifacts": 7, "density_crowding_counting": 7, "cheap_predictor_of_outcome": 7}, "judge_A": {"convention_scoring_template": 11, "content_over_realism_factorial": 10, "proximity_predicts_performance": 7, "hidden_budget_confound": 7, "teacher_bias_inheritance": 7, "oracle_decomposition_template": 6, "consistency_self_audit": 6}}},
+    "proposed_stage2_template_caps_T6_T11": {"T6_cheap_predictor_of_outcome_or_proximity": "keep <=5", "T7_teacher_pseudo_label_bias_inheritance": "keep <=4", "T8_realism_not_active_ingredient": "keep <=5", "T9_annotation_convention_ceiling_scoring": "keep <=5", "T10_equalization_null_hidden_budget": "keep <=4", "T11_oracle_decomposition": "keep <=3", "evidence_label": "HYPOTHESIS (cap values for consolidator/Stage-2 to tune)"}
+  },
+  "remaining_queue_validation": {
+    "off_master_awareness": "verified on origin branches: gen_g domain_shift 100 (incl. 15 TTA-primary), gen_h sr_restoration 100, gen_j diffusion_science 104, gen_k 3d_geometry_video 105; gen_l llm_agent_vision in flight per dispatcher; none re-recommended",
+    "gen_m_training_dynamics_objectives": {"verdict": "MANDATE INTACT", "anti_overlap_ids_to_add": ["W13-P1-D-031","W13-P1-D-050","W13-P1-E-075","W13-P1-E-076","W13-P1-F-036","W13-P1-F-048","W13-P1-F-058","W13-P1-F-089","W13-P1-F-095"]},
+    "gen_n_scaling_memorization_data_laws": {"verdict": "PARTIALLY COLONIZED by accepted gen_f - tighten guards before dispatch", "anti_overlap_ids_to_add": ["W13-P1-F-045","W13-P1-F-051","W13-P1-F-057","W13-P1-F-097","W13-P1-F-098","W13-P1-F-101","W13-P1-F-060","W13-P1-F-086","W13-P1-F-093"], "residual_territory": "model/compute scaling laws of vision FMs, dense-task transfer scaling, emergence claims, memorization in discriminative/dense models, membership inference on vision FMs, privacy of dense features, real-data composition laws"},
+    "gen_o_hard_domain_diversifier": {"verdict": "MANDATE FULLY INTACT - highest-value remaining queue item", "w2_domain_native_records": "~6 (D-026 aerial/microscopy scale, F-020/F-026 driving, F-022 robotics, F-009/F-080 human-centric); underwater 0, microscopy-primary 0, remote-sensing-primary 0, agriculture 0, document/OCR-primary 0, industrial 0", "note": "portfolio medical share fell to ~12%; <=25% medical cap easily satisfiable"},
+    "gen_p_constructive_capability": {"verdict": "STILL JUSTIFIED, urgency reduced (organic improvement in w2/gen_j/gen_k)", "suggestion": "point gen_p at debunk-heaviest clusters (detection-eval pathology, annotation conventions) for debunk-to-repair conversion; keep >=80% mandate"},
+    "recommended_dispatch_order": ["p1_gen_o_hard_domain_diversifier", "p1_gen_m_training_dynamics_objectives", "p1_gen_n_scaling_memorization_data_laws", "p1_gen_p_constructive_capability"]
+  },
+  "blind_spots_remaining": [
+    {"territory": "efficiency_deployment_science", "coverage": "2 w2 primary (F-045, F-052); deferred at w1; owned by no in-flight shard", "verdict": "BLIND_SPOT"},
+    {"territory": "model_lifecycle_continual_updating", "coverage": "1 primary (F-102; F-069 adjacent)", "verdict": "BLIND_SPOT"},
+    {"territory": "security_adversarial_backdoor_poisoning", "coverage": "~1 primary (D-059; F-044 adjacent); synthetic-data supply-chain attacks untouched", "verdict": "BLIND_SPOT"},
+    {"territory": "fairness_geographic_demographic", "coverage": "0 primary, ~3 mentions in 494", "verdict": "BLIND_SPOT"},
+    {"territory": "human_vision_psychophysics_alignment", "coverage": "~2 seeds (D-018, D-080, D-081, D-096 adjacencies)", "verdict": "BLIND_SPOT"},
+    {"territory": "cross_field_transfer", "coverage": "0; w1 deferral condition (wave3 leaves it ~0) not yet evaluable - wave3 unjudged", "verdict": "KEEP_DEFERRED_RECHECK_AT_AUDIT_W3"},
+    {"territory": "embodied_robotics", "coverage": "1 primary (F-022)", "verdict": "KEEP_DEFERRED"}
+  ],
+  "recommended_new_territories": [
+    {"rank": 1, "generator_letter_suggestion": "gen_q_efficiency_deployment_science", "territory": "quantization/pruning/distillation-as-science, latency-accuracy laws, edge deployment for dense prediction", "anti_overlap": ["W13-P1-F-052 distillation ceiling", "teacher-student block F-028/F-031/F-035/F-036"], "letters_q_plus_verified_free_on_origin": true},
+    {"rank": 2, "generator_letter_suggestion": "gen_r_model_lifecycle_updating", "territory": "version drift, regression testing across model updates, continual learning, dataset/model half-life economics", "seeds": ["W13-P1-F-102", "W13-P1-F-069"], "distinct_from": "gen_m within-run training dynamics"},
+    {"rank": 3, "generator_letter_suggestion": "gen_s_security_dense_prediction", "territory": "adversarial robustness of dense/open-vocab systems, backdoors, data poisoning incl. synthetic-data supply chains; constructive forensics extending F-060", "seeds": ["W13-P1-D-059", "W13-P1-F-044", "W13-P1-F-060"]},
+    {"rank": 4, "generator_letter_suggestion": "gen_t_fairness_geographic (bench, next audit)", "territory": "demographic/geographic performance disparity in dense prediction; >=25% constructive, no pure-audit genre"},
+    {"rank": 5, "generator_letter_suggestion": "gen_u_human_vision_psychophysics (bench, next audit)", "territory": "human-model alignment as mechanism: crowding, subitizing, perceptual metrics, annotation noise floors"}
+  ],
+  "in_flight_gate_compliance_spotcheck": {
+    "gen_j": "COMPLIANT: 98/104 numeric thresholds, 104/104 structured evidence_label + genre + family_fingerprint + needs_special_resources + seg_metric_dependent, 77/104 time bounds",
+    "gen_k": "COMPLIANT-DIVERGENT-SCHEMA: 105/105 separate kill_threshold field, evidence_labels, genre, fingerprint, 105/105 time bounds",
+    "gen_h": "NON-COMPLIANT: 0/100 thresholds, 0/100 structured labels, 2/100 time bounds",
+    "gen_g": "NON-COMPLIANT (pre-audit generation): 0/100 gates, 69/100 time bounds",
+    "action": "wave3 judges must retrofit kill thresholds for gen_g/gen_h at judge time or explicitly grade them under the gateless wave2 standard"
+  },
+  "novelty_debt": {
+    "novelty_status_unverified": "494/494",
+    "surviving_prior_art_risk_flags": ["W13-P1-D-001", "W13-P1-E-031"],
+    "killed_known_result_restatements": ["W13-P1-E-035", "W13-P1-F-053"],
+    "recommendation": "prior-art triage lane (sample ~10% per shard, verify against real literature, no invented citations) before Stage 2 ranking",
+    "evidence_label": "EVIDENCE (counts) + HYPOTHESIS (recommendation)"
+  },
+  "no_fake_citations_in_this_audit": true,
+  "files_written": [
+    "Windows13/_state/tasks/p1/diversity_audit_w2/auditor_B.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w2/auditor_B.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w2/done_auditor_B.json"
+  ],
+  "files_not_touched": ["Windows13/_state/ideas_master.jsonl", "Windows13/_state/research_state.json", "Windows13/_state/window.lock.json", "Windows13/_state/research_ledger.md"],
+  "force_push": false,
+  "recommended_next_task_type": "p1_diversity_audit_w2_C_or_consolidator"
+}
