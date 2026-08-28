@@ -1,0 +1,47 @@
+{
+  "task_id": "p0_wave_c_verification_A",
+  "role": "verifier",
+  "verified_at_utc": "2026-08-28T18:00Z",
+  "target_branch": "origin/cursor/windows15-p0-init-implementation-4708",
+  "target_head": "d8df13abbabfb4e581dc52e820add064d6572115",
+  "init_commit": "0ad99d59e33184ae8efcf93985dcaa1eab16cf27",
+  "origin_heads_scanned": 79,
+  "items": [
+    {
+      "id": "windows_id_unique_and_correct",
+      "passed": true,
+      "evidence": "decision.json on target specifies Windows15/15 with 3/3 judge consensus and is byte-identical (blob a3739da397f99605a2fa65732ec14c5eabc0ce94) to the canonical copy on origin/cursor/p0-wave-b-consolidator-decision-b9e0; window.lock.json and research_state.json both claim windows_id=Windows15/windows_number=15 matching decision.lock_fields_for_implementation exactly. Independent scan of all 79 origin heads: Windows15 path (any casing/nesting) exists ONLY on the target branch; only one windows15-named branch (the target); JSON-parse of every window.lock.json/research_state.json on every head found claims only for 9,10,11,12,13,14,16 elsewhere - no other ref claims 15."
+    },
+    {
+      "id": "did_not_overwrite_historical_windows_dirs",
+      "passed": true,
+      "evidence": "git diff --name-status origin/main..target = 14 files ALL status A (added), 0 modified/deleted/renamed. Inherited trees byte-identical to main: Windows1/ tree f103edda29814471fda7122ca2631113b9b9bfa4, research_ledger/ tree 43d82ea8bee8f30ed07d718d935f6526d87f20c7, root README.md blob 9bbdf7c1c1526baf4e82b990fd21c8f2cf037790 on BOTH refs. Merge-base with origin/main = 1cf3304265ba6b5093f7c68eb39461b883961a07 = main HEAD (clean fast-forward, no force-push). No other WindowsN tree exists on the target branch; other windows (2,3,4,6,8,9,10,11,12,13,14,16) live on their own branches and are untouched."
+    },
+    {
+      "id": "required_state_files_exist",
+      "passed": true,
+      "evidence": "git ls-tree -r of target HEAD shows all 9 required items: Windows15/README.md, Windows15/_state/research_state.json, Windows15/_state/window.lock.json, Windows15/_state/ideas_master.jsonl (git cat-file -s = 0 bytes exactly), Windows15/_state/research_ledger.md, Windows15/_state/agent_log.md, Windows15/selection_history/.gitkeep, Windows15/final_ideas/.gitkeep, Windows15/artifacts/.gitkeep."
+    },
+    {
+      "id": "research_state_json_fields_correct",
+      "passed": true,
+      "evidence": "Verbatim at target HEAD: windows_id=\"Windows15\", windows_number=15, windows_path=\"Windows15\", window_locked=true, window_defined_by=\"P0\", window_definition_status=\"canonical\", target_pipeline=\"1000+ -> 200 -> 50 -> 20 -> 5 -> 3\" (pipeline value exact; stored under target_pipeline key). git_safety.init_commit and push_remote_sha both equal the real init commit 0ad99d5..., force_push=false, push_status=verified_success."
+    },
+    {
+      "id": "window_lock_json_locked_and_defined_by_p0",
+      "passed": true,
+      "evidence": "Verbatim at target HEAD: locked=true AND window_locked=true (both present); defined_by=\"P0\" AND window_defined_by=\"P0\" (both present); window_definition_status=\"canonical\"; decision_source=\"_dispatcher/p0/wave_b/decision.json\"; do_not_renumber=true; numbering_evidence.bumped=false."
+    },
+    {
+      "id": "json_files_parse",
+      "passed": true,
+      "evidence": "python3 json.load PARSE OK for all 5 JSON files added by the branch: Windows15/_state/research_state.json, Windows15/_state/window.lock.json, _dispatcher/p0/wave_b/decision.json, _dispatcher/p0/wave_b/consolidator/done.json, _dispatcher/p0/wave_c/implementation/done.json. ideas_master.jsonl is 0 bytes (trivially valid JSONL). Only malformed file in ecosystem is sibling Windows11's research_state.json on origin/cursor/windows11-p0-init-c0c1 - outside this pipeline."
+    },
+    {
+      "id": "no_unjustified_bump_away_from_15",
+      "passed": true,
+      "evidence": "Number is 15 end-to-end (decision -> research_state -> window.lock); numbering_evidence.bumped=false and bump_rule_triggered=false. Independent scan confirms no evidence required a bump: 15 absent from all 78 other origin heads; siblings routed around 15 (Windows14 lock lists 15 in never_take; Windows16 pipeline recorded 15 as STAKED by this pipeline and skipped it). Keeping 15 was correct."
+    }
+  ],
+  "all_passed": true
+}

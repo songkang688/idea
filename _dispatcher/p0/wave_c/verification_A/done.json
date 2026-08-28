@@ -1,0 +1,23 @@
+{
+  "task_id": "p0_wave_c_verification_A",
+  "role": "verifier",
+  "status": "complete",
+  "p0_complete": true,
+  "windows_id": "Windows15",
+  "windows_unique_and_correct": true,
+  "did_not_overwrite_old_dirs": true,
+  "state_files_created": true,
+  "output_files": [
+    "_dispatcher/p0/wave_c/verification_A/report.md",
+    "_dispatcher/p0/wave_c/verification_A/checklist.json",
+    "_dispatcher/p0/wave_c/verification_A/done.json"
+  ],
+  "unresolved_items": [],
+  "recommended_next_task_type": "wave_c_verification_consolidator",
+  "verified_target_branch": "origin/cursor/windows15-p0-init-implementation-4708",
+  "verified_target_head": "d8df13abbabfb4e581dc52e820add064d6572115",
+  "verified_init_commit": "0ad99d59e33184ae8efcf93985dcaa1eab16cf27",
+  "checks_passed": 7,
+  "checks_total": 7,
+  "notes": "All identity/overwrite/state-file checks pass on independent evidence (79 origin heads scanned). Informational only: sibling Windows11 branch has a pre-existing malformed research_state.json (out of scope); research_state.json stores the pipeline under the target_pipeline key with the exact required value."
+}
