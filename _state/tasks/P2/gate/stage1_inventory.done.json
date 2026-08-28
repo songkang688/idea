@@ -7,12 +7,12 @@
     "/workspace/_state/tasks/P2/gate/stage1_inventory.done.json"
   ],
   "unresolved_items": [
-    "window.lock.json not found anywhere under /workspace; no valid window lock exists",
-    "research_state.json not found anywhere under /workspace",
-    "No Windows* directory exists; no windows_path available to scope the Stage 1 inventory",
-    "ideas_master.jsonl not found anywhere under /workspace; accepted_idea_count is factually 0",
-    "stage1_exploration.md not found anywhere under /workspace",
-    "P0 window-lock initialization has never completed on this checkout (origin/main is still at the initial commit); P0 must run to completion, then P1 Stage 1 generation, before P2 reviewers may start"
+    "window.lock.json not found in the working tree or on any of the 36 origin branches; zero locks exist repo-wide",
+    "research_state.json absent from the working tree; four conflicting unmerged copies exist on origin branches (Windows9/10/11/12 P0-init branches), none authoritative and none merged to main",
+    "No Windows* directory exists in the working tree; no windows_path available to scope the Stage 1 inventory",
+    "ideas_master.jsonl absent from the working tree; all four branch copies are 0 bytes, so accepted_idea_count is factually 0",
+    "stage1_exploration.md not found in the working tree or on any branch",
+    "P0 window-lock initialization was started four times but never completed (no lock written, nothing merged to main); P0 must complete with exactly one authoritative window, then P1 Stage 1 generation must run, before P2 reviewers may start"
   ],
   "recommended_next_task_type": "P2_BLOCKED_NEED_P0",
   "p2_may_start": false,
