@@ -1,0 +1,23 @@
+{
+  "task_id": "P2-lock-verifier",
+  "role": "P2 Independent Lock Verifier",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P2/gate/lock_verifier.md",
+    "/workspace/_state/tasks/P2/gate/lock_verifier.done.json"
+  ],
+  "unresolved_items": [
+    "window.lock.json not found anywhere (searched /workspace recursively including hidden/ignored files, and system-wide)",
+    "research_state.json not found anywhere (same search scope)",
+    "No windows_path available and no Windows* directory exists in /workspace; consistency and path-existence checks not evaluable",
+    "P0 window-lock initialization has not run or its artifacts were not persisted; P0 must be re-run to completion before P2 proceeds"
+  ],
+  "recommended_next_task_type": "P0-window-lock-rerun",
+  "p0_lock_ok": false,
+  "windows_id": null,
+  "windows_path": null,
+  "mismatch_fields": [
+    "window.lock.json:missing_file",
+    "research_state.json:missing_file"
+  ]
+}
