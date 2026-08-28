@@ -1,0 +1,55 @@
+{
+  "task_id": "P1-state-reader",
+  "status": "complete",
+  "p0_lock_ok": true,
+  "windows_id": "Windows16",
+  "windows_path": "Windows16",
+  "accepted_idea_count": 0,
+  "recommended_next_task_type": "P1 Wave A Generator batch (3 parallel)",
+  "stage": "P1 Massive Idea Exploration 0->1000+",
+  "parent": "WindowsX",
+  "inputs_read": [
+    "Windows16/_state/window.lock.json",
+    "Windows16/_state/research_state.json",
+    "Windows16/_state/tasks/P0/verification/p0_verify.done.json",
+    "Windows16/_state/ideas_master.jsonl"
+  ],
+  "lock_checks": {
+    "lock_parses": true,
+    "locked_true": true,
+    "windows_id_is_windows16": true,
+    "defined_by_p0": true,
+    "research_state_identity_matches": true,
+    "p0_verify_p0_complete_true": true,
+    "p0_push_verified": true
+  },
+  "ideas_master_file": "Windows16/_state/ideas_master.jsonl",
+  "ideas_master_exists": true,
+  "ideas_master_line_count": 0,
+  "outputs_written": [
+    "Windows16/_state/tasks/P1/gate/state_reader.md",
+    "Windows16/_state/tasks/P1/gate/state_reader.done.json",
+    "Windows16/_state/tasks/P1/gate/task_queue.json"
+  ],
+  "task_queue_summary": {
+    "path": "Windows16/_state/tasks/P1/gate/task_queue.json",
+    "total_tasks": 16,
+    "ready_to_dispatch": [
+      "P1-genA-01-sam-peft",
+      "P1-genA-02-medical-seg",
+      "P1-genA-03-smoke-fire-ambiguous"
+    ],
+    "queued_count": 13,
+    "target_candidate_count_band": [80, 120],
+    "total_target_candidates": 1560,
+    "shard_root": "Windows16/_state/tasks/P1/wave_A/shards/"
+  },
+  "constraints_honored": {
+    "no_windows_number_scan_or_increment": true,
+    "no_windows_dirs_created": true,
+    "window_lock_json_untouched": true,
+    "writes_under_windows_path_only": true,
+    "no_ideas_generated_by_state_reader": true
+  },
+  "completed_at_utc": "2026-08-28T17:42:14Z"
+}

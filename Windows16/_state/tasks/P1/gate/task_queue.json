@@ -1,0 +1,152 @@
+{
+  "queue_id": "P1-wave-A-task-queue",
+  "stage": "P1 Massive Idea Exploration 0->1000+",
+  "pipeline_stage": "Stage 1 (generation, survivors 1000+)",
+  "windows_id": "Windows16",
+  "windows_path": "Windows16",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/windows16-p0-implementation-3255",
+  "created_by": "P1-state-reader",
+  "parent": "WindowsX",
+  "created_at_utc": "2026-08-28T17:42:14Z",
+  "accepted_idea_count_at_creation": 0,
+  "total_target_candidates": 1560,
+  "dispatch_policy": "Dispatch tasks with status ready_to_dispatch as a P1 Wave A Generator batch (3 parallel). When a generator finishes, promote the next queued task (lowest dispatch_order) to ready_to_dispatch and dispatch it. Rotate through all 16 territories until the queue is drained.",
+  "shard_format": "JSONL, one candidate idea per line. Required fields per line: candidate_id (territory-scoped, e.g. samp-0001), territory, title, core_claim, method_sketch, evidence_label (one of the research_state.json evidence_policy labels), novelty_hook, kill_risk. Generators must NOT fabricate citations, benchmark numbers, dataset facts, or experimental results (evidence_policy.forbid_fiction).",
+  "generator_rules": [
+    "Write ONLY to your assigned output_shard_path under Windows16/_state/tasks/P1/.",
+    "Do NOT modify Windows16/_state/window.lock.json, research_state.json, or ideas_master.jsonl (merge into master is a later consolidator's job).",
+    "Do NOT scan or increment Windows numbers and do NOT create Windows directories.",
+    "Hit target_candidate_count within the 80-120 band; prefer breadth and dedupe within your own shard."
+  ],
+  "tasks": [
+    {
+      "task_id": "P1-genA-01-sam-peft",
+      "dispatch_order": 1,
+      "status": "ready_to_dispatch",
+      "territory": "SAM/PEFT: Segment Anything family adaptation, parameter-efficient fine-tuning (LoRA/adapters/prompt tuning) for segmentation foundation models",
+      "target_candidate_count": 110,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-01_sam_peft.jsonl"
+    },
+    {
+      "task_id": "P1-genA-02-medical-seg",
+      "dispatch_order": 2,
+      "status": "ready_to_dispatch",
+      "territory": "Medical segmentation: organs/lesions/tumors, modality-specific challenges (CT/MRI/US/pathology), annotation scarcity, clinical deployment constraints",
+      "target_candidate_count": 110,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-02_medical_seg.jsonl"
+    },
+    {
+      "task_id": "P1-genA-03-smoke-fire-ambiguous",
+      "dispatch_order": 3,
+      "status": "ready_to_dispatch",
+      "territory": "Smoke/fire/ambiguous-boundary targets: wildfire smoke, translucent/amorphous/fuzzy-boundary object segmentation and detection, soft labels for ill-defined extents",
+      "target_candidate_count": 100,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-03_smoke_fire_ambiguous.jsonl"
+    },
+    {
+      "task_id": "P1-genA-04-object-detection",
+      "dispatch_order": 4,
+      "status": "queued",
+      "territory": "Object detection: open-vocabulary, small/dense objects, long-tail classes, label noise, detection-specific training and evaluation gaps",
+      "target_candidate_count": 100,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-04_object_detection.jsonl"
+    },
+    {
+      "task_id": "P1-genA-05-vlm-dense",
+      "dispatch_order": 5,
+      "status": "queued",
+      "territory": "VLM/dense prediction: vision-language models for dense tasks, grounding, referring segmentation, pixel-level alignment between text and image features",
+      "target_candidate_count": 100,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-05_vlm_dense.jsonl"
+    },
+    {
+      "task_id": "P1-genA-06-failure-mining",
+      "dispatch_order": 6,
+      "status": "queued",
+      "territory": "Failure mining: systematic error-case discovery, hard-example mining, model debugging, slice discovery, turning failure taxonomies into methods or benchmarks",
+      "target_candidate_count": 90,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-06_failure_mining.jsonl"
+    },
+    {
+      "task_id": "P1-genA-07-benchmark-weaknesses",
+      "dispatch_order": 7,
+      "status": "queued",
+      "territory": "Benchmark weaknesses: label errors, saturation, shortcut exploitation, metric blind spots, contamination; ideas that expose or repair flawed evaluation",
+      "target_candidate_count": 90,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-07_benchmark_weaknesses.jsonl"
+    },
+    {
+      "task_id": "P1-genA-08-uncertainty",
+      "dispatch_order": 8,
+      "status": "queued",
+      "territory": "Uncertainty: calibration, conformal prediction, epistemic/aleatoric decomposition, selective prediction, uncertainty for dense/pixel tasks and safety-critical use",
+      "target_candidate_count": 100,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-08_uncertainty.jsonl"
+    },
+    {
+      "task_id": "P1-genA-09-synthetic-data",
+      "dispatch_order": 9,
+      "status": "queued",
+      "territory": "Synthetic data: generative/simulated training data, sim-to-real, synthetic-data curricula, contamination-safe eval sets, data-quality vs quantity trade-offs",
+      "target_candidate_count": 100,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-09_synthetic_data.jsonl"
+    },
+    {
+      "task_id": "P1-genA-10-domain-shift",
+      "dispatch_order": 10,
+      "status": "queued",
+      "territory": "Domain shift: domain adaptation/generalization, test-time adaptation, distribution-shift robustness, cross-site/cross-sensor transfer",
+      "target_candidate_count": 100,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-10_domain_shift.jsonl"
+    },
+    {
+      "task_id": "P1-genA-11-negative-results",
+      "dispatch_order": 11,
+      "status": "queued",
+      "territory": "Negative results: rigorous refutations of popular assumptions, 'X does not actually help' studies, reproduction failures reframed as publishable findings",
+      "target_candidate_count": 80,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-11_negative_results.jsonl"
+    },
+    {
+      "task_id": "P1-genA-12-contrarian",
+      "dispatch_order": 12,
+      "status": "queued",
+      "territory": "Contrarian: deliberately against-the-grain bets (simpler-is-better, anti-scaling, anti-foundation-model, revive-old-methods) with falsifiable claims",
+      "target_candidate_count": 80,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-12_contrarian.jsonl"
+    },
+    {
+      "task_id": "P1-genA-13-sr-restoration",
+      "dispatch_order": 13,
+      "status": "queued",
+      "territory": "SR/restoration: super-resolution, denoising, deblurring, low-light, compression artifacts; perceptual vs fidelity trade-offs and restoration-for-downstream-tasks",
+      "target_candidate_count": 90,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-13_sr_restoration.jsonl"
+    },
+    {
+      "task_id": "P1-genA-14-diffusion",
+      "dispatch_order": 14,
+      "status": "queued",
+      "territory": "Diffusion: diffusion/flow models as priors, editors, data engines, or perception backbones; efficiency, controllability, and discriminative uses of generative models",
+      "target_candidate_count": 100,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-14_diffusion.jsonl"
+    },
+    {
+      "task_id": "P1-genA-15-llm-agent",
+      "dispatch_order": 15,
+      "status": "queued",
+      "territory": "LLM/agent: LLM-driven agents for vision/research workflows, tool use, self-verification, agentic data curation and annotation, agent evaluation",
+      "target_candidate_count": 90,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-15_llm_agent.jsonl"
+    },
+    {
+      "task_id": "P1-genA-16-cross-field",
+      "dispatch_order": 16,
+      "status": "queued",
+      "territory": "Cross-field: imports from other disciplines (physics, biology, economics, control, information theory, HCI) into vision/ML problems, and vision techniques exported outward",
+      "target_candidate_count": 120,
+      "output_shard_path": "Windows16/_state/tasks/P1/wave_A/shards/genA-16_cross_field.jsonl"
+    }
+  ]
+}
