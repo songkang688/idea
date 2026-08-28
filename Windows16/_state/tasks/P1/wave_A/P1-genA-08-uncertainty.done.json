@@ -1,0 +1,44 @@
+{
+  "task_id": "P1-genA-08-uncertainty",
+  "role": "Generator",
+  "status": "complete",
+  "window": "Windows16",
+  "territory": "Uncertainty in vision/ML: calibration, conformal prediction, epistemic/aleatoric decomposition, selective prediction, uncertainty for dense/pixel tasks and safety-critical vision systems",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-08_uncertainty.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-08-uncertainty.done.json"
+  ],
+  "candidate_count": 100,
+  "target_band": "80-120",
+  "candidate_id_range": "unct-0001..unct-0100",
+  "clusters": {
+    "calibration": 12,
+    "conformal_prediction": 12,
+    "epistemic_aleatoric_decomposition": 10,
+    "selective_prediction_abstention": 10,
+    "dense_pixel_uncertainty": 12,
+    "detection_instance_uncertainty": 8,
+    "ood_and_shift_interplay": 8,
+    "bayesian_and_ensemble_methods": 10,
+    "safety_critical_vision": 8,
+    "foundation_and_generative_models": 10
+  },
+  "evidence_labels": {
+    "HYPOTHESIS": 86,
+    "MODEL SPECULATION": 14
+  },
+  "schema_notes": "Each JSONL line carries the parent-mandated fields in order (candidate_id, territory, title, one_line_idea, cluster, problem, core_hypothesis, core_claim, method_sketch, falsifiable_prediction, why_important, why_possibly_novel, novelty_hook, minimal_falsification_experiment, main_risk, kill_risk, community_default_belief, why_it_might_be_wrong, fastest_falsifying_experiment, evidence_label). Following the convention of earlier Wave A shards, alias fields mirror their counterparts: core_claim=core_hypothesis, method_sketch=minimal_falsification_experiment, novelty_hook=why_possibly_novel, kill_risk=main_risk. Every candidate states the community default belief, why it might be wrong, and a cheapest/fastest falsifying experiment. The shard was written incrementally in five flushes of 20 lines each and validated for JSON parseability, sequential ids, and field completeness.",
+  "compliance": {
+    "forbid_fiction": "No fabricated papers, citations, benchmark numbers, dataset facts, or experimental results; dataset/model families appear only as proposed experiment subjects and all quantitative statements are phrased as falsifiable predictions under HYPOTHESIS or MODEL SPECULATION labels.",
+    "novelty_claims": "All novelty statements are hedged as possibly-novel and explicitly marked unverified; no verified novelty claimed.",
+    "protected_files": "window.lock.json, research_state.json, ideas_master.jsonl untouched; no Windows directories created; no Windows numbers changed; only the two mandated files written under Windows16/_state/tasks/P1/."
+  },
+  "unresolved_items": [
+    "Novelty of all 100 candidates is unverified against the literature; Wave B dedup plus any novelty-checking stage must vet before promotion.",
+    "Intra-shard conceptual neighbors were minimized but remain for dedup review: unct-0002 vs unct-0012 (input-conditional temperature vs margin-distribution recalibration), unct-0015 vs unct-0088 (hierarchical shrinkage vs importance-weighted rare-class conformal), unct-0020 vs unct-0024 (feature-distance vs TTA-variance nonconformity scores), unct-0027 vs unct-0031 vs unct-0097 (single-pass epistemic proxies via gradient norm, feature density, and cross-layer probe disagreement), unct-0044 vs unct-0027 (pretext-task signals at test time), unct-0068 vs unct-0087 (severity monotonicity as one dimension of the broader audit suite), unct-0053 vs unct-0093 (variance-based hallucination detection in super-resolution vs diffusion restoration).",
+    "Cross-territory overlap likely with genA-02 medical segmentation (unct-0019, unct-0083, unct-0084), genA-04 object detection (unct-0057..unct-0064, unct-0017), genA-05 VLM dense prediction (unct-0091..unct-0100), genA-06 failure mining (unct-0035, unct-0036, unct-0085), genA-07 benchmark weaknesses (unct-0042, unct-0043, unct-0065, unct-0087), and genA-09 synthetic data (unct-0089, unct-0098); dedup should treat these as high-collision zones.",
+    "Human-subject candidates (unct-0016, unct-0084) require small user studies whose ethics-review and recruitment overhead is flagged inside the records but not costed.",
+    "Several candidates (unct-0028, unct-0073, unct-0079) require ensemble or variational training at multiple model scales; their fastest-falsifying experiments are scoped-down small-scale pilots."
+  ],
+  "recommended_next_task_type": "P1-genA-09-synthetic-data"
+}
