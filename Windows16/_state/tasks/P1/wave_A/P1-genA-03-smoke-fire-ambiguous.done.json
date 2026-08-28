@@ -1,0 +1,16 @@
+{
+  "task_id": "P1-genA-03-smoke-fire-ambiguous",
+  "role": "Generator",
+  "status": "complete",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-03_smoke_fire_ambiguous.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-03-smoke-fire-ambiguous.done.json"
+  ],
+  "unresolved_items": [
+    "Novelty of all 105 candidates is unverified (labeled HYPOTHESIS or MODEL SPECULATION per evidence policy); a later verifier/consolidator must check each against real prior work before acceptance.",
+    "No deduplication was performed against sibling shards (genA-01 SAM/PEFT, genA-02 medical-seg) or later territories; cross-shard overlap is possible in foundation-model, uncertainty, and synthetic-data clusters.",
+    "Candidates referencing multi-annotator smoke data, controlled-burn footage, or sensor co-location assume such data can be collected or sourced; feasibility was not checked."
+  ],
+  "recommended_next_task_type": "Promote the next queued Wave A generator task (P1-genA-04-object-detection, dispatch_order 4) per the task_queue.json dispatch policy; merge/dedup of shards into ideas_master.jsonl remains a later consolidator's job.",
+  "candidate_count": 105
+}
