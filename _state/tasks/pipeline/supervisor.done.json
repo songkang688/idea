@@ -1,0 +1,18 @@
+{
+  "task_id": "pipeline-supervisor",
+  "role": "Pipeline Queue Supervisor / Planner (parent: WindowsX)",
+  "status": "done",
+  "output_files": [
+    "/workspace/_state/tasks/pipeline/supervisor.md",
+    "/workspace/_state/tasks/pipeline/queue.json",
+    "/workspace/_state/tasks/pipeline/supervisor.done.json"
+  ],
+  "unresolved_items": [
+    "P0 incomplete: window.lock.json not found anywhere in /workspace (recursive search, 0 hits)",
+    "No P0 decision.json exists in this workspace; 4 conflicting unmerged research_state.json candidates sit on origin P0-init branches (Windows9/10/11/12), none authoritative and none merged to main",
+    "Later-stage gate done.json files (P1/P2/P3/P4/P6) all report blocked with p0_lock_ok=false or equivalent; they are evidence of the P0 gap, not permission to start P1+",
+    "P1-P7 remain BLOCKED_WAITING_FOR_P0; strict order P0->P7 with skip_forbidden=true per queue.json",
+    "Next dispatch must be P0_CONSOLIDATOR_DECISION then P0_IMPLEMENTATION then P0_VERIFICATION; do not dispatch P1_GENERATORS/P2_REVIEWERS/P3_SEARCH/P4_ATTACK/P5_EXPERIMENT/P6_MEETING/P7_PACKAGES"
+  ],
+  "recommended_next_task_type": "P0_CONSOLIDATOR_OR_IMPLEMENTATION"
+}

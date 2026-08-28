@@ -1,0 +1,12 @@
+{
+  "active_stage": "P0",
+  "blocked_stages": ["P1", "P2", "P3", "P4", "P5", "P6", "P7"],
+  "skip_forbidden": true,
+  "p0_lock_ok": false,
+  "next_dispatch": ["P0_CONSOLIDATOR_DECISION", "P0_IMPLEMENTATION", "P0_VERIFICATION"],
+  "do_not_dispatch": ["P1_GENERATORS", "P2_REVIEWERS", "P3_SEARCH", "P4_ATTACK", "P5_EXPERIMENT", "P6_MEETING", "P7_PACKAGES"],
+  "completion_gate": {
+    "P0": ["window.lock.json", "window_locked=true", "P0 verification PASS"],
+    "advance_rule": "only when current stage verification done.json status=complete AND recommended_next_task_type indicates next stage"
+  }
+}
