@@ -1,0 +1,21 @@
+{
+  "task_id": "P2-stage1-inventory",
+  "role": "P2 Stage-1 Inventory Agent",
+  "status": "blocked",
+  "output_files": [
+    "/workspace/_state/tasks/P2/gate/stage1_inventory.md",
+    "/workspace/_state/tasks/P2/gate/stage1_inventory.done.json"
+  ],
+  "unresolved_items": [
+    "window.lock.json not found in the working tree or on any of the 36 origin branches; zero locks exist repo-wide",
+    "research_state.json absent from the working tree; four conflicting unmerged copies exist on origin branches (Windows9/10/11/12 P0-init branches), none authoritative and none merged to main",
+    "No Windows* directory exists in the working tree; no windows_path available to scope the Stage 1 inventory",
+    "ideas_master.jsonl absent from the working tree; all four branch copies are 0 bytes, so accepted_idea_count is factually 0",
+    "stage1_exploration.md not found in the working tree or on any branch",
+    "P0 window-lock initialization was started four times but never completed (no lock written, nothing merged to main); P0 must complete with exactly one authoritative window, then P1 Stage 1 generation must run, before P2 reviewers may start"
+  ],
+  "recommended_next_task_type": "P2_BLOCKED_NEED_P0",
+  "p2_may_start": false,
+  "accepted_idea_count": 0,
+  "windows_path": null
+}
