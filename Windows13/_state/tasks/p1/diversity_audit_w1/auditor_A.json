@@ -1,0 +1,179 @@
+{
+  "task_id": "p1_diversity_audit_w1",
+  "role": "auditor_A_mode_collapse",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "audited_set": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w1-7a58",
+    "records": 248,
+    "wave": "p1_wave_b_w1",
+    "shards": { "gen_a_sam_foundation_peft": 94, "gen_b_hard_domain_dense_prediction": 85, "gen_c_contrarian_eval": 69 }
+  },
+  "audited_at_utc": "2026-08-28T19:16:17Z",
+  "method": "deterministic regex/count analysis over all text fields of all 248 records plus qualitative sampling of largest clusters; reproducible; no records modified",
+  "mode_collapse": {
+    "surface_level": "LOW",
+    "evidence": [
+      "EVIDENCE: 0 near-duplicate one-liner pairs at token-Jaccard >= 0.33 across all 248 records",
+      "EVIDENCE: debunk rhetorical templates cover only 35/248 (14.1%) of one-liners",
+      "EVIDENCE: 36 distinct clusters, largest = 12 ideas (4.8% of portfolio)"
+    ],
+    "genre_level": "HIGH",
+    "genre_evidence": [
+      "EVIDENCE: 248/248 records are contrarian-schema (community_default_belief + why_it_might_be_wrong present)",
+      "EVIDENCE: 0 records propose a method/architecture as primary contribution (crude regex)",
+      "EVIDENCE: 168/248 (67.7%) mention benchmark/evaluation/metric",
+      "HYPOTHESIS: near-uniform debunk/audit genre becomes a collapse axis at the 1000+ scale; constructive capability hypotheses absent"
+    ]
+  },
+  "crowded_clusters": [
+    {
+      "name": "calibration_uncertainty_family",
+      "scope": "cross-shard (all 3 generators independently converged)",
+      "clusters": ["calibration", "iou_head_calibration_uncertainty", "uncertainty_and_calibration", "uncertainty"],
+      "direct_ideas": 31,
+      "share": "12.5%",
+      "mention_count": 46,
+      "evidence_label": "EVIDENCE",
+      "action": "stop_feeding"
+    },
+    {
+      "name": "smoke_amorphous_scattering_media",
+      "scope": "gen_b within-shard fixation",
+      "clusters": ["amorphous_boundary_ontology", "transparent_object_perception", "physics_priors_and_image_formation", "temporal_process_vs_object (partial)"],
+      "direct_ideas": 61,
+      "share": "72% of gen_b (61/85); the word 'smoke' appears in 48/85 (56%) of gen_b ideas",
+      "evidence_label": "EVIDENCE",
+      "action": "ban_examples_next_wave"
+    },
+    {
+      "name": "sam_internals",
+      "scope": "gen_a",
+      "clusters": ["prompt_geometry_failure_modes", "decoder_token_mechanics", "encoder_representation_myths", "sam2_video_memory"],
+      "direct_ideas": 36,
+      "share": "38% of gen_a",
+      "evidence_label": "EVIDENCE",
+      "action": "near_saturation_no_more_sam_generators"
+    },
+    {
+      "name": "peft_on_sam_science",
+      "scope": "gen_a",
+      "clusters": ["what_peft_actually_learns", "adapter_ecosystem_continual", "adaptation_interfaces"],
+      "direct_ideas": 22,
+      "share": "23% of gen_a",
+      "evidence_label": "EVIDENCE",
+      "action": "near_saturation_no_more_peft_generators"
+    },
+    {
+      "name": "annotation_ground_truth_pathology",
+      "scope": "cross-shard",
+      "clusters": ["medical_ambiguity_ground_truth", "data_and_annotation_protocols", "human-baselines-annotation"],
+      "direct_ideas": 21,
+      "share": "8.5% direct; 95/248 (38.3%) mention annotation/rater/ground-truth",
+      "evidence_label": "EVIDENCE",
+      "action": "stop_feeding"
+    },
+    {
+      "name": "eval_measurement_super_cluster",
+      "scope": "portfolio macro-territory",
+      "clusters": ["all 17 eval/measurement clusters incl. gen_c entirely"],
+      "direct_ideas": 108,
+      "share": "43.5%",
+      "evidence_label": "EVIDENCE",
+      "action": "no_additional_eval_critique_generator_next_wave"
+    }
+  ],
+  "permutation_flags": {
+    "sam_plus_x": {
+      "volume": "87/248 (35.1%) mention SAM/SAM2; 77/94 (82%) of gen_a is SAM-specific",
+      "residual_apply_x_to_y_phrasings": ["W13-P1-A-039", "W13-P1-A-097", "W13-P1-C-060", "W13-P1-C-064"],
+      "assessment": "EVIDENCE: accepted ideas are predominantly mechanism-probes, not port-SAM-to-domain permutations; judges already killed unanimous permutation cases (e.g. W13-P1-A-085). Flag level: WATCH. Territory near saturation; prospective permutation risk if another SAM generator runs.",
+      "flag": "watch_saturated"
+    },
+    "lora_plus_x": {
+      "volume": "25/248 (10.1%) mention LoRA; 65/248 (26.2%) mention PEFT/adapter/fine-tuning; gen_a PEFT mass ~22 ideas",
+      "assessment": "EVIDENCE: dominated by mechanistic hypotheses (what PEFT learns / destroys), not LoRA-for-domain-X permutations. Flag level: WATCH. Do not commission further PEFT-centric generation.",
+      "flag": "watch_saturated"
+    },
+    "loss_plus_x": {
+      "volume": "0/248 match new/modified/auxiliary-loss-for-task-X patterns",
+      "assessment": "EVIDENCE: zero loss+X permutation volume. Objective-function science is instead a blind spot (3/248 touch training dynamics/optimization).",
+      "flag": "clear_and_underexplored"
+    }
+  },
+  "blind_spots": [
+    { "topic": "scaling laws / scaling behavior of vision FMs", "count": 0, "share": "0.0%", "evidence_label": "EVIDENCE" },
+    { "topic": "data-centric science (curation, composition, dedup, selection)", "count": 0, "share": "0.0%", "evidence_label": "EVIDENCE" },
+    { "topic": "optical flow", "count": 1, "share": "0.4%", "evidence_label": "EVIDENCE" },
+    { "topic": "privacy / memorization / federated", "count": 1, "share": "0.4%", "evidence_label": "EVIDENCE" },
+    { "topic": "training dynamics / optimization / objective science", "count": 3, "share": "1.2%", "evidence_label": "EVIDENCE" },
+    { "topic": "active learning", "count": 3, "share": "1.2%", "evidence_label": "EVIDENCE" },
+    { "topic": "3D / point cloud / LiDAR / NeRF / Gaussian splatting", "count": 4, "share": "1.6%", "evidence_label": "EVIDENCE" },
+    { "topic": "remote sensing / satellite / aerial", "count": 4, "share": "1.6%", "evidence_label": "EVIDENCE" },
+    { "topic": "self-/semi-supervised pretraining representation science", "count": 4, "share": "1.6%", "evidence_label": "EVIDENCE" },
+    { "topic": "deployment / quantization / hardware", "count": 7, "share": "2.8%", "evidence_label": "EVIDENCE" },
+    { "topic": "generative/diffusion models as perception tools; synthetic data", "count": 10, "share": "4.0%", "evidence_label": "EVIDENCE" },
+    { "topic": "depth estimation", "count": 11, "share": "4.4%", "evidence_label": "EVIDENCE" },
+    { "topic": "VLM/language-vision mechanism (non-eval-critique)", "count": 15, "share": "6.0% and nearly all eval-critique", "evidence_label": "EVIDENCE" },
+    { "topic": "hard domains gen_b ignored: underwater/sonar 0, microscopy 0, driving 1, agriculture 1, industrial defect 2, remote sensing 2 (within gen_b)", "count": 6, "share": "7% of gen_b combined", "evidence_label": "EVIDENCE" },
+    { "topic": "missing contrarian belief-targets: scaling orthodoxy, data-curation orthodoxy, synthetic-data orthodoxy, SSL feature-generality, emergence claims, 3D-consistency of 2D features, optimizer folklore, memorization, language-supervision grounding, psychophysics-style human-model contrasts", "count": null, "share": null, "evidence_label": "HYPOTHESIS (these community defaults are unchallenged in the current 248)" }
+  ],
+  "recommended_next_territories": [
+    {
+      "territory_id": "gen_d_data_centric_scaling",
+      "mandate": "data curation, pretraining-data composition, scaling behavior, synthetic data, contamination/memorization science",
+      "fills": ["scaling laws 0%", "data-centric 0%", "synthetic data ~1 idea", "memorization 0.4%"],
+      "guards": ["SAM-specific ideas <= 10% of shard", "each idea must name a data-level intervention as manipulated variable"],
+      "priority": 1
+    },
+    {
+      "territory_id": "gen_e_3d_geometry_physics",
+      "mandate": "3D/point-cloud/NeRF/splatting, depth, optical flow, multi-view and geometric-consistency beliefs about 2D foundation features",
+      "fills": ["3D 1.6%", "optical flow 0.4%", "depth 4.4%"],
+      "guards": ["falsification experiments must not reduce to 2D segmentation metrics"],
+      "priority": 2
+    },
+    {
+      "territory_id": "gen_f_hard_domain_diversifier",
+      "mandate": "underwater/sonar, microscopy/histology, remote sensing, industrial inspection, agriculture",
+      "fills": ["gen_b blind spots: underwater 0, microscopy 0, remote sensing 2, industrial 2, agriculture 1"],
+      "guards": ["HARD ban on smoke/fire/fog/transparent/amorphous-media examples (gen_b already has 61)", "max 25% medical (portfolio already 24.6% medical/clinical)"],
+      "priority": 3
+    },
+    {
+      "territory_id": "gen_g_vlm_language_vision_interface",
+      "mandate": "mechanism-level hypotheses about text-prompted perception, grounding, language-as-supervision (not eval critique; gen_c owns that)",
+      "fills": ["VLM 6.0% and eval-critique-only"],
+      "guards": ["<= 20% overlap with gen_c vlm-eval-weaknesses framing", "each idea must make a representational or mechanistic claim"],
+      "priority": 4
+    },
+    {
+      "territory_id": "gen_h_training_dynamics_objectives",
+      "mandate": "training dynamics, fine-tuning dynamics, optimizer/schedule folklore, objective-function science",
+      "fills": ["training dynamics 1.2%", "loss-science empty"],
+      "guards": ["HARD ban on add-loss-term-X-to-task-Y permutations; hypotheses must predict when/why an objective matters with a falsifiable mechanism"],
+      "priority": 5
+    },
+    {
+      "territory_id": "gen_i_constructive_capability",
+      "mandate": "enabling-method hypotheses (new capability + falsifiable mechanism claim) to rebalance the 100% debunk-genre portfolio",
+      "fills": ["constructive genre 0%"],
+      "guards": ["falsifiable_prediction schema stays mandatory", "ban beats-SOTA framings without a mechanism claim"],
+      "priority": 6
+    }
+  ],
+  "global_anti_crowding_guards_for_next_wave": [
+    "cap SAM/SAM2-mentioning ideas at 10% per new shard (portfolio already 35.1%)",
+    "ban calibration/uncertainty as a primary cluster (31 direct ideas; 3/3 wave-1 generators converged there)",
+    "ban smoke/fire/transparent-media running examples",
+    "require >= 8 distinct sub-clusters per ~100-idea shard, none > 15% of the shard",
+    "require >= 30% of each shard's falsification experiments to not depend on segmentation metrics (portfolio is 50.4% segmentation)"
+  ],
+  "scope_compliance": {
+    "canonical_files_untouched": ["Windows13/_state/ideas_master.jsonl", "Windows13/_state/research_state.json", "Windows13/_state/window.lock.json", "Windows13/_state/research_ledger.md"],
+    "windows_id_unchanged": true,
+    "force_push": false
+  }
+}
