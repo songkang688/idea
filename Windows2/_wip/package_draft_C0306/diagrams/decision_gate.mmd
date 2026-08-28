@@ -1,0 +1,26 @@
+%% C-0306 — pre-registered gate + stop/pivot logic (proposal.md sections 17/25; roadmap.md)
+flowchart TD
+    START["Day 1: freeze zoo, strata,<br/>thresholds; freshness re-search #1"] --> SCOOP1{"scoop found?<br/>(printed blind-spot measurement or<br/>coverage-preserving suppression)"}
+    SCOOP1 -- yes --> KILLSEAT["KILL matching leg / seat"]
+    SCOOP1 -- no --> CACHEV["validate cache format<br/>(1 detector x COCO)"]
+    CACHEV --> CACHEALL["full caching run<br/>(2-4 GPU-days)"]
+    CACHEALL --> E1["E1 gate matrix +<br/>E1-S GT sensitivity"]
+
+    E1 --> TRIP{"E1-S flips a cell across<br/>the materiality boundary?"}
+    TRIP -- yes --> COND["conditional (blind | detected)<br/>table governs; report discrepancy"]
+    TRIP -- no --> GATE
+    COND --> GATE
+
+    GATE{"worst deployed-plausible<br/>stratum blind rate"}
+    GATE -- ">= 5%" --> OPEN["GATE OPENS:<br/>full method leg E2-E6"]
+    GATE -- "2-5% (crowded only)" --> SCOPE["SCOPE-STOP:<br/>crowded-scenes method paper"]
+    GATE -- "< 1-2% everywhere" --> FAIL["measurement note:<br/>'NMS is conformally safe - measured';<br/>release cache + code; free the slot"]
+
+    OPEN --> E4["E4 frontier:<br/>CPS vs SeqCRC vs WACV-2024<br/>vs soft-NMS vs DETR vs anchors"]
+    SCOPE --> E4
+    E4 --> DOM{"WACV-2024 no-NMS dominates<br/>the whole frontier?"}
+    DOM -- yes --> PIVOT["PIVOT: characterization paper -<br/>'when is suppression compatible<br/>with coverage at all?'"]
+    DOM -- no --> PAPER["full paper<br/>(measurement + certificate +<br/>CPS + frontier)"]
+
+    CLOCK["standing clocks:<br/>start within quarter (Q) |<br/>two-quarter stop-loss (K) |<br/>re-search at both freezes + quarterly"]
+    CLOCK -.binding.-> GATE

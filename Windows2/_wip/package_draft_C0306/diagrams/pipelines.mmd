@@ -1,0 +1,31 @@
+%% C-0306 — the four internal coverage pipelines (proposal.md section 9 table)
+%% A: valid upper bound; B: the silently broken pipeline; C: SeqCRC-style; D: CPS (ours).
+flowchart LR
+    CACHE["full pre-NMS<br/>candidate cache"]
+
+    subgraph PA["A — keep-all + conformal"]
+        A1["calibrate on full cache<br/>at tau"] --> A2["deploy: full cache,<br/>threshold 1 - q_hat"]
+    end
+
+    subgraph PB["B — calibrate pre-NMS, deploy NMS (broken)"]
+        B1["calibrate on full cache<br/>at tau"] --> B2["deploy: NMS survivors,<br/>same threshold"]
+        B3["blind objects:<br/>coverage 0 at ANY threshold"]
+        B2 -.silent loss.-> B3
+    end
+
+    subgraph PC["C — conformal AFTER NMS (SeqCRC-style)"]
+        C1["calibrate on NMS survivors<br/>at tau"] --> C2["deploy: NMS survivors"]
+        C3["if blind + miss > alpha:<br/>q_hat = +inf<br/>(nominal UNACHIEVABLE)"]
+        C1 -.certificate.-> C3
+    end
+
+    subgraph PD["D — coverage-preserving suppression (ours)"]
+        D1["calibrate on full cache<br/>at tau_cal = tau + (1 - kappa)"] --> D2["prediction set"]
+        D2 --> D3["greedy in-set merge at IoU >= kappa,<br/>keep top-r per cluster"]
+        D3 --> D4["guarantee transfers to tau:<br/>coverage >= 1 - alpha, per-scene deterministic"]
+    end
+
+    CACHE --> PA
+    CACHE --> PB
+    CACHE --> PC
+    CACHE --> PD
