@@ -12,12 +12,12 @@
   "supervisor": "Windows15",
   "current_stage": "Stage 1",
   "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
-  "total_ideas": 300,
-  "survivors": 271,
+  "total_ideas": 600,
+  "survivors": 543,
   "final_target": 3,
   "status": "exploring",
   "stage1_progress": {
-    "accepted_in_ideas_master": 271,
+    "accepted_in_ideas_master": 543,
     "target_accepted": 1000,
     "batches": [
       {
@@ -34,6 +34,23 @@
         "accepted_with_mutation_required": 6,
         "decision": "Windows15/_state/tasks/p1/batch_001/decision.json",
         "consolidated_at": "2026-08-28T19:25:00Z"
+      },
+      {
+        "batch": 2,
+        "territories": [
+          "T04 Object detection",
+          "T05 VLM / dense prediction",
+          "T06 failure mining"
+        ],
+        "generated": 300,
+        "accepted": 272,
+        "removed_as_duplicate": 28,
+        "removed_as_duplicate_intra_batch": 23,
+        "removed_as_duplicate_of_master": 5,
+        "quality_dropped": 0,
+        "accepted_with_mutation_required": 11,
+        "decision": "Windows15/_state/tasks/p1/batch_002/decision.json",
+        "consolidated_at": "2026-08-28T21:30:00Z"
       }
     ],
     "diversity_audit_1": {
@@ -118,7 +135,11 @@
       "Windows7",
       "Windows15"
     ],
-    "never_gap_fill": [1, 5, 7],
+    "never_gap_fill": [
+      1,
+      5,
+      7
+    ],
     "max_n": 16,
     "this_round": "Windows15",
     "numbering_decision": "Windows15 per _dispatcher/p0/wave_b/decision.json",

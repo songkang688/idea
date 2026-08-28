@@ -1,0 +1,300 @@
+{"idea_id": "W15-B002-A-001", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-002", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-003", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-004", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-005", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-006", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-007", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-008", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-009", "cluster_id": "B2HC-04", "decision": "merge", "merge_into": "W15-B002-C-059", "duplicate_of": null, "notes": "Same core claim as C-059: aspect-ratio-conditioned recall structure predictable from architecture prior geometry; one recall-vs-aspect-ratio study tests both."}
+{"idea_id": "W15-B002-A-010", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-011", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-012", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-013", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-014", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-015", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-A-067 (runner-up outputs as signal); different use: per-detection localization-error prediction vs label-convention audit."}
+{"idea_id": "W15-B002-A-016", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-017", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-018", "cluster_id": "B2HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-019", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-020", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Distinct from C-060 (fingerprint curve) and C-055 (pre-suppression audit): training-statistics predictability of learned self-suppression."}
+{"idea_id": "W15-B002-A-021", "cluster_id": "B2HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-022", "cluster_id": "B2HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-023", "cluster_id": "B2HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Tension with A-040: A-023 claims a stride floor removable by sub-cell supervision; A-040 claims the information is already encoded and readout suffices. Keep both; one experiment matrix resolves."}
+{"idea_id": "W15-B002-A-024", "cluster_id": "B2HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-025", "cluster_id": "B2HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-026", "cluster_id": "B2HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-027", "cluster_id": "B2HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-028", "cluster_id": "B2HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-029", "cluster_id": "B2HC-03", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-030", "cluster_id": "B2HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-031", "cluster_id": "B2HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of B-068. Template twin of accepted HC-01 family (W15-B001-B-001/B-020: measurement noise vs claimed gains), applied to tiny-object detection with a size-conditioned headroom curve; new instrument, keep."}
+{"idea_id": "W15-B002-A-032", "cluster_id": "B2HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "prior_art_risk: anti-aliased downsampling and shift-variance are documented for classification (unverified); the detection-score periodicity and small-object dose claim is the residual novelty."}
+{"idea_id": "W15-B002-A-033", "cluster_id": "B2HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-034", "cluster_id": "B2HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of C-057 (same context-vs-appearance crossover claim and masking experiment)."}
+{"idea_id": "W15-B002-A-035", "cluster_id": "B2HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-036", "cluster_id": "B2HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-037", "cluster_id": "B2HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Grid-phase claim for detection recall with a half-stride double-inference bound; related to accepted W15-B001-A-003 (SAM sub-patch instability) but different observable and task - keep as template twin."}
+{"idea_id": "W15-B002-A-038", "cluster_id": "B2HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-039", "cluster_id": "B2HC-08", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-040", "cluster_id": "B2HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Tension with A-023 noted; complementary population-coding readout claim."}
+{"idea_id": "W15-B002-A-041", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-042", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-043", "cluster_id": "B2HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with C-058 (threshold recalibration recovers cross-domain failure); A-043 adds the background-shift mechanism and label-free background-patch recalibration - keep both."}
+{"idea_id": "W15-B002-A-044", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-045", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-046", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-047", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-048", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-A-050 (IoU head ranks datasets not instances); here: prior-only baseline decomposition for detector IoU heads. Keep as new instrument."}
+{"idea_id": "W15-B002-A-049", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-050", "cluster_id": "B2HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Tension with C-073 (anisotropic robustness): one-dimensional effective-dose vs weak cross-realization correlation. Both falsifiable; consolidator should pair them in one experiment matrix."}
+{"idea_id": "W15-B002-A-051", "cluster_id": "B2HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-052", "cluster_id": "B2HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-053", "cluster_id": "B2HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-054", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-055", "cluster_id": "B2HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-056", "cluster_id": "B2HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-057", "cluster_id": "B2HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-058", "cluster_id": "B2HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-059", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-060", "cluster_id": "B2HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-061", "cluster_id": "B2HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with C-018 (modal/amodal convention mixture); different observables (per-class AP75 correlation vs extent-interpolation coefficient). Keep both."}
+{"idea_id": "W15-B002-A-062", "cluster_id": "B2HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with C-019 (ignore-region trained suppression); A-062 claims generalization to lookalike non-ignored areas, C-019 claims density-conditioned suppression. Keep both."}
+{"idea_id": "W15-B002-A-063", "cluster_id": "B2HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with C-062 (border misses); A-063 attributes to missing labels, C-062 to crop-labeling policy. Distinct causal claims, keep both."}
+{"idea_id": "W15-B002-A-064", "cluster_id": "B2HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-B-012 (noise fitted late in training); new claim: mid-training checkpoints as label-error detectors."}
+{"idea_id": "W15-B002-A-065", "cluster_id": "B2HC-17", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-066", "cluster_id": "B2HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Box-space template twin of C-017 (mask boundary offset conventions); keep both (boxes vs masks)."}
+{"idea_id": "W15-B002-A-067", "cluster_id": "B2HC-01", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-068", "cluster_id": "B2HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-A-034 (SAM snaps to strong edges); here the bias is annotation-induced and measured with synthetic composites. Keep."}
+{"idea_id": "W15-B002-A-069", "cluster_id": "B2HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-070", "cluster_id": "B2HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-071", "cluster_id": "B2HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-072", "cluster_id": "B2HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "prior_art_risk: AP tail-gaming concerns are discussed in the literature (unverified); the quantified exploit-size-by-implementation claim is the residual contribution."}
+{"idea_id": "W15-B002-A-073", "cluster_id": "B2HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-074", "cluster_id": "B2HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-A-069 (mIoU ties hide boundary regressions); detection version with statistical-power framing. Keep."}
+{"idea_id": "W15-B002-A-075", "cluster_id": "B2HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-076", "cluster_id": "B2HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-077", "cluster_id": "B2HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-078", "cluster_id": "B2HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-079", "cluster_id": "B2HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-080", "cluster_id": "B2HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-081", "cluster_id": "B2HC-12", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-082", "cluster_id": "B2HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-083", "cluster_id": "B2HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-084", "cluster_id": "B2HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-085", "cluster_id": "B2HC-25", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-086", "cluster_id": "B2HC-12", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-087", "cluster_id": "B2HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-088", "cluster_id": "B2HC-23", "decision": "merge", "merge_into": "W15-B002-C-022", "duplicate_of": null, "notes": "Same core claim as C-022: learned position-in-frame prior from corpus framing causes position-conditional failures measurable by controlled placement; A-088's augmentation-tradeoff arm noted as a variant condition."}
+{"idea_id": "W15-B002-A-089", "cluster_id": "B2HC-24", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-090", "cluster_id": "B2HC-24", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-091", "cluster_id": "B2HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-092", "cluster_id": "B2HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Contradiction pair with C-087: A-092 treats flicker as benign threshold noise removable by smoothing; C-087 claims instability is a leading indicator that smoothing destroys. High-value joint experiment."}
+{"idea_id": "W15-B002-A-093", "cluster_id": "B2HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-094", "cluster_id": "B2HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to dropped B-083 / accepted W15-B001-A-016 (normalization statistics carry domain gap); distinct deployment-side claim (batch-1 statistic mismatch localized to few layers)."}
+{"idea_id": "W15-B002-A-095", "cluster_id": "B2HC-24", "decision": "merge", "merge_into": "W15-B002-A-089", "duplicate_of": null, "notes": "Same spatial score-interference template and insertion-at-controlled-distance experiment as A-089; distractor-texture variant and clutter-robustness prediction noted as salvage."}
+{"idea_id": "W15-B002-A-096", "cluster_id": "B2HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with C-002 (size cliffs in architecture units); different mechanism (FPN level assignment vs patch tokenization). Keep both."}
+{"idea_id": "W15-B002-A-097", "cluster_id": "B2HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-098", "cluster_id": "B2HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-099", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-A-100", "cluster_id": "B2HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-001", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "prior_art_risk: high-norm outlier/register tokens are documented (unverified); the causal suppression-vs-decoder-variant comparison for open-vocab segmentation is the residual claim. High leverage if it holds."}
+{"idea_id": "W15-B002-B-002", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-003", "cluster_id": "B2HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-004", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "prior_art_risk: intermediate-layer superiority for dense probing is partially documented (unverified); the layer-selection-beats-adapter-choice comparative claim is the contribution."}
+{"idea_id": "W15-B002-B-005", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-006", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-007", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-008", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of B-014 (same anisotropy/whitening hypothesis)."}
+{"idea_id": "W15-B002-B-009", "cluster_id": "B2HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to B-062 (scoring-side synonym penalty); B-009 is input-query-side ranking instability. Keep both."}
+{"idea_id": "W15-B002-B-010", "cluster_id": "B2HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-011", "cluster_id": "B2HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-012", "cluster_id": "B2HC-17", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-013", "cluster_id": "B2HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-014", "cluster_id": "B2HC-31", "decision": "merge", "merge_into": "W15-B002-B-008", "duplicate_of": null, "notes": "Same core claim as B-008: prompt-ensembling gains are an anisotropy workaround that whitening subsumes; one whitening-vs-ensembling study tests both."}
+{"idea_id": "W15-B002-B-015", "cluster_id": "B2HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-016", "cluster_id": "B2HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-017", "cluster_id": "B2HC-34", "decision": "merge", "merge_into": "W15-B002-B-087", "duplicate_of": null, "notes": "Same core claim as B-087 (relation words unused; nouns drive dense grounding); relation-inversion is one instrument of the conjunction-collapse test."}
+{"idea_id": "W15-B002-B-018", "cluster_id": "B2HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-019", "cluster_id": "B2HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-020", "cluster_id": "B2HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-021", "cluster_id": "B2HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-022", "cluster_id": "B2HC-34", "decision": "merge", "merge_into": "W15-B002-B-087", "duplicate_of": null, "notes": "Same core claim as B-087: proximity-word ablation is another instrument of the relation-words-unused test."}
+{"idea_id": "W15-B002-B-023", "cluster_id": "B2HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-024", "cluster_id": "B2HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of B-030 (attribute-negation variant of the same negation-as-positive-evidence claim). prior_art_risk: negation blindness in CLIP-style encoders is discussed (unverified); the dense/mask-level version is the residual claim."}
+{"idea_id": "W15-B002-B-025", "cluster_id": "B2HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-026", "cluster_id": "B2HC-22", "decision": "merge", "merge_into": "W15-B002-C-021", "duplicate_of": null, "notes": "Same core claim as C-021: hallucination of absent categories predictable from co-occurrence priors; B-026's LLM text-only-prior instrument noted as a variant predictor."}
+{"idea_id": "W15-B002-B-027", "cluster_id": "B2HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-028", "cluster_id": "B2HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-029", "cluster_id": "B2HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-030", "cluster_id": "B2HC-22", "decision": "merge", "merge_into": "W15-B002-B-024", "duplicate_of": null, "notes": "Same negation-as-positive-evidence claim as B-024, attribute variant ('not red' ~ 'red')."}
+{"idea_id": "W15-B002-B-031", "cluster_id": "B2HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-032", "cluster_id": "B2HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-033", "cluster_id": "B2HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-034", "cluster_id": "B2HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with B-092 (query-language substitution recovers gap); B-034 binds the asymptote to the synonym's own level, B-092 benchmarks against vision-side finetuning in specialist domains. Keep both."}
+{"idea_id": "W15-B002-B-035", "cluster_id": "B2HC-17", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-036", "cluster_id": "B2HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-037", "cluster_id": "B2HC-17", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-038", "cluster_id": "B2HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-039", "cluster_id": "B2HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-B-040 (sliding-window artifacts, medical); adds global-context class loss under windowing. Keep."}
+{"idea_id": "W15-B002-B-040", "cluster_id": "B2HC-05", "decision": "merge", "merge_into": "W15-B002-C-002", "duplicate_of": null, "notes": "Same core claim as C-002: patches-per-object detectability floor with patch-size-proportional collapse point; one resize/patch-size sweep tests both."}
+{"idea_id": "W15-B002-B-041", "cluster_id": "B2HC-04", "decision": "merge", "merge_into": "W15-B002-C-003", "duplicate_of": null, "notes": "Same core claim as C-003: resize-geometry distortion drives extreme-aspect failures; B-041's letterbox-vs-stretch class-dependent tradeoff noted as a variant condition."}
+{"idea_id": "W15-B002-B-042", "cluster_id": "B2HC-07", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of C-008; canonical claim: token-reduction damage is concentrated (dense vs VQA; per-object predictability from token similarity)."}
+{"idea_id": "W15-B002-B-043", "cluster_id": "B2HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-044", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with A-033 (frequency-targeted fix beats generic capacity/resolution); different systems (VLM features vs FPN fusion). Keep both."}
+{"idea_id": "W15-B002-B-045", "cluster_id": "B2HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-046", "cluster_id": "B2HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-047", "cluster_id": "B2HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-048", "cluster_id": "B2HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "prior_art_risk: round-number coordinate biases have been observed anecdotally (unverified); the de-biasing recoverable-error quantification is the contribution."}
+{"idea_id": "W15-B002-B-049", "cluster_id": "B2HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-050", "cluster_id": "B2HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-051", "cluster_id": "B2HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "prior_art_risk: CoT-hurts-grounding observations may exist (unverified); the reasoning-length dose-response is the falsifiable core."}
+{"idea_id": "W15-B002-B-052", "cluster_id": "B2HC-36", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-053", "cluster_id": "B2HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-054", "cluster_id": "B2HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Contradiction pair with B-057: text branch atrophied (no-op) vs prompts causally shift metric scale. Both cheap to test; keep both and let evidence decide."}
+{"idea_id": "W15-B002-B-055", "cluster_id": "B2HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-056", "cluster_id": "B2HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-057", "cluster_id": "B2HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "See B-054 contradiction note."}
+{"idea_id": "W15-B002-B-058", "cluster_id": "B2HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-059", "cluster_id": "B2HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-060", "cluster_id": "B2HC-37", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-061", "cluster_id": "B2HC-20", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "high_value: reframes open-vocabulary 'novel class' results as pretraining-frequency stratification; cheap frequency-proxy audit."}
+{"idea_id": "W15-B002-B-062", "cluster_id": "B2HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-063", "cluster_id": "B2HC-18", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-B-053 (detection-vs-delineation decomposition, lesions); referring-segmentation version. Keep."}
+{"idea_id": "W15-B002-B-064", "cluster_id": "B2HC-20", "decision": "merge", "merge_into": "W15-B002-C-025", "duplicate_of": null, "notes": "Same core claim as C-025: near-duplicate contamination stratification reveals inflated results; B-064 is the VLM-dense instance of the same audit."}
+{"idea_id": "W15-B002-B-065", "cluster_id": "B2HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-B-017 (empty/absent scoring conventions decide winners); open-vocab background/ignore-convention version. Keep."}
+{"idea_id": "W15-B002-B-066", "cluster_id": "B2HC-19", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-067", "cluster_id": "B2HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-068", "cluster_id": "B2HC-08", "decision": "merge", "merge_into": "W15-B002-A-031", "duplicate_of": null, "notes": "Same core claim as A-031: small-object method gains sit within inter-annotator noise; identical agreement-vs-gap experiment, VLM-dense instance."}
+{"idea_id": "W15-B002-B-069", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Structured (frequency-tier, region, query-set) miscalibration claim; boundary component overlaps accepted W15-B001-B-076 but the multi-axis structure and query-set axis are new. Keep."}
+{"idea_id": "W15-B002-B-070", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-071", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-C-034/A-066 (prompt-jitter variance as uncertainty, visual prompts); text-paraphrase variant with comparative claim vs MC dropout. Keep."}
+{"idea_id": "W15-B002-B-072", "cluster_id": "B2HC-09", "decision": "drop", "merge_into": null, "duplicate_of": "W15-B001-B-076", "notes": "duplicate_of_master: accepted W15-B001-B-076 already claims boundary-localized spatial miscalibration fixed by distance-to-boundary-conditioned recalibration; this restates it for VLM segmenters with the same experiment."}
+{"idea_id": "W15-B002-B-073", "cluster_id": "B2HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-074", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to C-083 (mechanism of verbalized confidence); B-074 is the dissociation claim, C-083 the generative mechanism. Keep both."}
+{"idea_id": "W15-B002-B-075", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-076", "cluster_id": "B2HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted HC-16/HC-29 forgetting-timescale ideas (W15-B001-A-023/A-024/A-080); new falsifiable core: abrupt early collapse of vocabulary breadth tied to initial gradient norms. Keep."}
+{"idea_id": "W15-B002-B-077", "cluster_id": "B2HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-078", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with A-040 (information present, readout is the bottleneck); different scope (VLM localization probes vs detector sub-stride decoding). Keep both."}
+{"idea_id": "W15-B002-B-079", "cluster_id": "B2HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-080", "cluster_id": "B2HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Extends accepted LoRA-rank ideas (W15-B001-A-012/A-019/A-021) with a dense-vs-classification rank-floor dissociation and boundary-first silent degradation. Keep."}
+{"idea_id": "W15-B002-B-081", "cluster_id": "B2HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-082", "cluster_id": "B2HC-39", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-A-024 (calibration dies before accuracy); paraphrase-robustness-first early-warning version for text alignment. Keep."}
+{"idea_id": "W15-B002-B-083", "cluster_id": "B2HC-39", "decision": "drop", "merge_into": null, "duplicate_of": "W15-B001-A-016", "notes": "duplicate_of_master: accepted W15-B001-A-016 already claims domain gaps act multiplicatively on channel statistics so normalization-affine adaptation suffices; gradient-free statistic recomputation is the same hypothesis' intervention variant. Salvage note: training-free variant worth folding into master idea's experiment plan."}
+{"idea_id": "W15-B002-B-084", "cluster_id": "B2HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-085", "cluster_id": "B2HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of C-046 (same superlinear binding-capacity law with model-specific knee; dense-mask and QA readouts are two arms of one instance-count sweep)."}
+{"idea_id": "W15-B002-B-086", "cluster_id": "B2HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-087", "cluster_id": "B2HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of B-017 and B-022; canonical relation-words-unused claim (conjunction equivalence, inversion invariance, proximity ablation as instruments)."}
+{"idea_id": "W15-B002-B-088", "cluster_id": "B2HC-25", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-089", "cluster_id": "B2HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-090", "cluster_id": "B2HC-35", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-091", "cluster_id": "B2HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-092", "cluster_id": "B2HC-32", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with B-034; specialist-domain lay-rewriting vs finetuning benchmark. Keep both."}
+{"idea_id": "W15-B002-B-093", "cluster_id": "B2HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-094", "cluster_id": "B2HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-095", "cluster_id": "B2HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-096", "cluster_id": "B2HC-40", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-097", "cluster_id": "B2HC-41", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-098", "cluster_id": "B2HC-41", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-A-005/HC-34 (no correction memory in interactive segmentation); language-correction-turn version with exclusion-constraint fix. Keep."}
+{"idea_id": "W15-B002-B-099", "cluster_id": "B2HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-B-100", "cluster_id": "B2HC-41", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-001", "cluster_id": "B2HC-05", "decision": "drop", "merge_into": null, "duplicate_of": "W15-B001-A-003", "notes": "duplicate_of_master: accepted W15-B001-A-003 already claims mask outputs are not shift-stable at sub-patch scale with error periodic in sub-token offset; this restates the same claim for ViT segmenters and even proposes SAM as the test model."}
+{"idea_id": "W15-B002-C-002", "cluster_id": "B2HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of B-040; canonical patches-per-object cliff claim."}
+{"idea_id": "W15-B002-C-003", "cluster_id": "B2HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of B-041; canonical resize-deformation claim with aspect-preserving-tiling control."}
+{"idea_id": "W15-B002-C-004", "cluster_id": "B2HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-005", "cluster_id": "B2HC-31", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "prior_art_risk: artifact/register tokens documented (unverified); spatial co-location with downstream segmentation leaks is the residual claim. Cluster-mate of B-001."}
+{"idea_id": "W15-B002-C-006", "cluster_id": "B2HC-05", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-007", "cluster_id": "B2HC-06", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-008", "cluster_id": "B2HC-07", "decision": "merge", "merge_into": "W15-B002-B-042", "duplicate_of": null, "notes": "Same core claim as B-042: token-merging damage is concentrated and predictable from token similarity; per-object failure predictor noted as salvage for the merged idea."}
+{"idea_id": "W15-B002-C-009", "cluster_id": "B2HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-010", "cluster_id": "B2HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-011", "cluster_id": "B2HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-012", "cluster_id": "B2HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-013", "cluster_id": "B2HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-014", "cluster_id": "B2HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-015", "cluster_id": "B2HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-016", "cluster_id": "B2HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-017", "cluster_id": "B2HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-B-010/B-018/B-003 (systematic boundary bias/annotator style, medical); cross-dataset natural-image offset-fitting version. Keep."}
+{"idea_id": "W15-B002-C-018", "cluster_id": "B2HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with A-061 (modal/amodal mixture); mechanism-level mixing-coefficient prediction. Keep both."}
+{"idea_id": "W15-B002-C-019", "cluster_id": "B2HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with A-062; density-conditioned trained suppression variant with fully-annotated-control experiment. Keep both."}
+{"idea_id": "W15-B002-C-020", "cluster_id": "B2HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-021", "cluster_id": "B2HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of B-026; canonical co-occurrence hallucination law P(B|A)."}
+{"idea_id": "W15-B002-C-022", "cluster_id": "B2HC-23", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of A-088. Template twin of accepted W15-B001-A-097 (orientation prior) and W15-B001-B-026 (absolute-position reliance, medical); position-in-frame fingerprint for natural images. Keep."}
+{"idea_id": "W15-B002-C-023", "cluster_id": "B2HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-A-036 (mask morphology matches annotation style incl. curvature spectra); new falsifiable elements: vertex-budget ceiling mechanism and curvature-rich synthetic supervision lifting it. Keep with flag."}
+{"idea_id": "W15-B002-C-024", "cluster_id": "B2HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-025", "cluster_id": "B2HC-20", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of B-064. Generalizes accepted W15-B001-C-098 (near-duplicate contamination, fire/smoke corpora) into a pretraining-similarity stratification method; keep as the general instrument."}
+{"idea_id": "W15-B002-C-026", "cluster_id": "B2HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-027", "cluster_id": "B2HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-A-085 (correlated errors across SAM-derived models); cross-vendor shared-web-data version bounding ensemble safety. Keep."}
+{"idea_id": "W15-B002-C-028", "cluster_id": "B2HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-A-085; adds lineage decay rate and ancestor identification from failure fingerprints. Keep."}
+{"idea_id": "W15-B002-C-029", "cluster_id": "B2HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-030", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-031", "cluster_id": "B2HC-12", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-032", "cluster_id": "B2HC-14", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-033", "cluster_id": "B2HC-12", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-034", "cluster_id": "B2HC-12", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-035", "cluster_id": "B2HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-036", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-B-076/B-081; new claim is severity-weighted anti-alignment of confidence maps for downstream risk consumers, not the spatial pattern itself. Keep."}
+{"idea_id": "W15-B002-C-037", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-038", "cluster_id": "B2HC-09", "decision": "drop", "merge_into": null, "duplicate_of": null, "notes": "prior_art_risk drop (unverified but high confidence): analytic prior-shift/Bayes-correction recalibration is classical statistics; the residual claim is a validation study rather than a new hypothesis. Consolidator may reinstate if a novelty check disagrees."}
+{"idea_id": "W15-B002-C-039", "cluster_id": "B2HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-040", "cluster_id": "B2HC-42", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-A-050 (IoU head not an instance meter) and A-009; new conditioning variable: prompt-distribution atypicality degrades both mask and score. Keep."}
+{"idea_id": "W15-B002-C-041", "cluster_id": "B2HC-09", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-B-078 (calibration degrades faster than accuracy under shift); adds shift-distance sufficiency and distance-conditioned temperature fix. Keep."}
+{"idea_id": "W15-B002-C-042", "cluster_id": "B2HC-38", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-043", "cluster_id": "B2HC-38", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-044", "cluster_id": "B2HC-34", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-045", "cluster_id": "B2HC-22", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Distinct from B-024 (merged pair): text-encoder-geometry-only forecasting of per-concept negation failure without images. Keep."}
+{"idea_id": "W15-B002-C-046", "cluster_id": "B2HC-35", "decision": "merge", "merge_into": "W15-B002-B-085", "duplicate_of": null, "notes": "Same superlinear binding-capacity-law claim as B-085 with model-specific knee; QA-readout arm of the same instance-count sweep."}
+{"idea_id": "W15-B002-C-047", "cluster_id": "B2HC-38", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-048", "cluster_id": "B2HC-30", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-049", "cluster_id": "B2HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with C-026 (provenance/phrasing determinism); different unit (image-level description-style likelihood vs concept-level language provenance). Keep both."}
+{"idea_id": "W15-B002-C-050", "cluster_id": "B2HC-38", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-051", "cluster_id": "B2HC-38", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-052", "cluster_id": "B2HC-38", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-053", "cluster_id": "B2HC-44", "decision": "merge", "merge_into": "W15-B002-C-092", "duplicate_of": null, "notes": "Same visual serial-position/lost-in-the-middle claim as C-092; multi-image prompts are the discrete-input arm of the same position-controlled evidence experiment."}
+{"idea_id": "W15-B002-C-054", "cluster_id": "B2HC-33", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-055", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "high_value: pre-suppression audit reattributes crowded-scene misses from recognition to deduplication policy; cheap on existing models."}
+{"idea_id": "W15-B002-C-056", "cluster_id": "B2HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-057", "cluster_id": "B2HC-08", "decision": "merge", "merge_into": "W15-B002-A-034", "duplicate_of": null, "notes": "Same core claim as A-034: below a size threshold detection is context-driven with a measurable reliance crossover; identical context-vs-object manipulation experiment."}
+{"idea_id": "W15-B002-C-058", "cluster_id": "B2HC-10", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with A-043; failure-mining reprioritization consequence of threshold miscalibration. Keep both."}
+{"idea_id": "W15-B002-C-059", "cluster_id": "B2HC-04", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of A-009; canonical aspect-ratio cliff claim spanning anchor ratios, query statistics, and assignment geometry."}
+{"idea_id": "W15-B002-C-060", "cluster_id": "B2HC-02", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-061", "cluster_id": "B2HC-17", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "high_value: channel-separated accounting (localization survives, labeling collapses) reattributes open-world misses; cheap audit with existing detectors."}
+{"idea_id": "W15-B002-C-062", "cluster_id": "B2HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Near-duplicate relation with A-063; causal attribution to crop-labeling policy with retraining intervention. Keep both."}
+{"idea_id": "W15-B002-C-063", "cluster_id": "B2HC-43", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-B-021 (topology as primary metric, tubular anatomy); failure-mining protocol version for natural thin structures. Keep."}
+{"idea_id": "W15-B002-C-064", "cluster_id": "B2HC-43", "decision": "drop", "merge_into": null, "duplicate_of": "W15-B001-C-033", "notes": "duplicate_of_master: accepted W15-B001-C-033 already claims mask decoders carry a simply-connected (genus-zero) topology prior producing lower-genus masks than ground truth; hole-filling on donuts/handles is the same hypothesis on natural objects. Salvage note: data-rarity vs architecture attribution experiment could be folded into the master idea."}
+{"idea_id": "W15-B002-C-065", "cluster_id": "B2HC-42", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-A-009 (instability predicts error) and A-094 (granularity instability without scale cues); new elements: intrinsic decision-boundary instability of part-whole choice, margin-predicted flip probability, and claimed non-fixability by prompt engineering. Keep with flag."}
+{"idea_id": "W15-B002-C-066", "cluster_id": "B2HC-43", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-067", "cluster_id": "B2HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-A-039 (transparency behavior is inherited annotation convention) and C-002 (occupancy vs photometric effect); new element: cross-surface-type confusion taxonomy stable across models. Keep with flag."}
+{"idea_id": "W15-B002-C-068", "cluster_id": "B2HC-15", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-A-041 (SAM binds attached shadows at systematic rates); new elements: per-dataset convention mixture and a quantified cross-dataset error floor. Keep with flag."}
+{"idea_id": "W15-B002-C-069", "cluster_id": "B2HC-43", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-A-094 (scale-lessness destabilizes granularity, histopathology); apparent-scale class flips with GSD/metric-cue injection fix. Keep."}
+{"idea_id": "W15-B002-C-070", "cluster_id": "B2HC-42", "decision": "drop", "merge_into": null, "duplicate_of": "W15-B001-A-005", "notes": "duplicate_of_master: accepted W15-B001-A-005 already claims interactive refinement enters limit cycles (correction clicks degrade masks, no correction memory); oscillatory correction dynamics with early-signal prediction restates the same core. Salvage note: stability-as-selection-criterion framing could extend the master idea."}
+{"idea_id": "W15-B002-C-071", "cluster_id": "B2HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-B-050 (cliff-shaped deployment degradation, protocol thresholds); per-instance corruption-threshold version reframing robustness as threshold-shifting. Keep; high leverage."}
+{"idea_id": "W15-B002-C-072", "cluster_id": "B2HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-073", "cluster_id": "B2HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "See A-050 tension note (1-D effective dose vs anisotropy)."}
+{"idea_id": "W15-B002-C-074", "cluster_id": "B2HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-B-029 (reconstruction-kernel texture shortcut, CT); consumer-ISP fingerprint version with RAW reprocessing transfer experiment. Keep."}
+{"idea_id": "W15-B002-C-075", "cluster_id": "B2HC-29", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-076", "cluster_id": "B2HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-077", "cluster_id": "B2HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-078", "cluster_id": "B2HC-28", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-079", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Generalizes accepted W15-B001-A-042 (linear segmentability probe on SAM features) to arbitrary FMs/tasks with cross-head transfer and structured-residual claims; the transfer claims are new falsifiable content. Keep with flag; consolidator may fold scope into the master idea."}
+{"idea_id": "W15-B002-C-080", "cluster_id": "B2HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-081", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template twin of accepted W15-B001-A-009 (click-jitter instability beats IoU head, SAM); input-jitter version for general models plus structured confidence-disagreement claim. Keep with flag."}
+{"idea_id": "W15-B002-C-082", "cluster_id": "B2HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-A-055 (confident-and-wrong is systematic in self-training); failure-mining composition-bias version with retraining outcome prediction. Keep; high leverage."}
+{"idea_id": "W15-B002-C-083", "cluster_id": "B2HC-11", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-084", "cluster_id": "B2HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-085", "cluster_id": "B2HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-086", "cluster_id": "B2HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-087", "cluster_id": "B2HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Contradiction pair with A-092 (smoothing removes flicker harmlessly vs smoothing destroys early-warning signal). Keep both; single video-stream study resolves."}
+{"idea_id": "W15-B002-C-088", "cluster_id": "B2HC-44", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-089", "cluster_id": "B2HC-44", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "prior_art_risk: shuffle/order-invariance critiques exist for action recognition (unverified); modern-VLM order-sensitivity normalization of benchmark scores is the residual claim."}
+{"idea_id": "W15-B002-C-090", "cluster_id": "B2HC-44", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Template relation with accepted W15-B001-C-038 (tracker half-life set by physical timescale); occlusion-duration memory-horizon constant. Keep."}
+{"idea_id": "W15-B002-C-091", "cluster_id": "B2HC-44", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-092", "cluster_id": "B2HC-44", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Merge target of C-053; canonical visual serial-position claim (video and multi-image arms)."}
+{"idea_id": "W15-B002-C-093", "cluster_id": "B2HC-27", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-094", "cluster_id": "B2HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-095", "cluster_id": "B2HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-096", "cluster_id": "B2HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}
+{"idea_id": "W15-B002-C-097", "cluster_id": "B2HC-16", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-B-001 (residual gap is protocol disagreement) and A-061 (disagreement oracle); new elements: failure-set enrichment in contested items and contestedness prediction. Keep."}
+{"idea_id": "W15-B002-C-098", "cluster_id": "B2HC-26", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Cross-territory claim (objective fossils); placed with training-dynamics cluster. Black-box objective identification from error structure is the sharpest falsifiable element."}
+{"idea_id": "W15-B002-C-099", "cluster_id": "B2HC-13", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": "Related to accepted W15-B001-A-055 and W15-B001-B-069 (self-training pathologies); new element: acceptance-threshold-governed amplification law across iterations. Keep."}
+{"idea_id": "W15-B002-C-100", "cluster_id": "B2HC-21", "decision": "keep", "merge_into": null, "duplicate_of": null, "notes": ""}

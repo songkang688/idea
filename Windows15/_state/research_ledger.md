@@ -130,3 +130,19 @@ Stage 1 目录与状态文件已初始化。`ideas_master.jsonl` 为空（0 字�
 **产物：** `tasks/p1/diversity_audit_1/decision.json`（canonical 裁决）、`next_task_queue.json`（queue v3：batch_003 T07/T08/T09 ready；batch_004 T10/T11/T12；batch_005 T13/T14/T15；batch_006 T16 + 视频/交互与安全/理论两个补洞 shard）、`consolidator/report.md`、`consolidator/done.json`。
 
 **下一步：** 派发 batch_003 三个 generator（`p1_wave_a_batch003_gen_A/B/C`）。目标推算：batch_002 合并后约 510–535 条，batch_005 dedup 期间预计越过 1000；checkpoint_2（500 条时触发）负责核查合同 v2 是否真正改变了立场分布。
+
+## Stage 1 — Batch 002 合并（P1 Wave B Consolidator，2026-08-28）
+
+**git 基线（KNOWN FACT）：** 从 `origin/cursor/p1-wave-b-batch001-consolidator-7c96`（`b8d60bc`，ideas_master 271 行）出发，fast-forward 合并 `origin/cursor/p1-diversity-audit-1-consolidator-ea44`（`0fad002`，为前者直接后代，无冲突；audit 未改动 ideas_master），再从六个 shard 分支按路径检出 batch_002 产物（各分支只触及自身 shard 目录，机械无冲突）。分支 head 全部记录于 `tasks/p1/batch_002/decision.json`。
+
+**输入（KNOWN FACT）：** 300 条新想法（gen_A T04 Object detection / gen_B T05 VLM-dense / gen_C T06 failure mining，各 100）；judge_A（聚类+查重）keep 278 / merge 16 / drop 6（其中 5 为对 master 的重复、1 为 prior-art 风险）；judge_B（permutation/可行性）keep 286 / mutate 12 / drop 2；judge_C（对抗性查重）keep 280 / duplicate_of 20 / drop 0。
+
+**裁决规则（decision.json R1–R8）：** 沿用 batch_001 的 R1–R7（查重取并集、链式跟随至存活锚点、质量性 drop 需 ≥2/3 多数、mutate 直通带标记、查重优先于 mutate/drop、不虚构证据）；新增 **R8 方向冲突规则**：当 A、C 两评委认定同一对为重复但幸存者相反（X→Y vs Y→X）时，以专职查重评委 judge_C 的幸存者为准（三对冲突其 confidence 均为 high）：(B-017,B-087)→B-017 存活、(B-085,C-046)→C-046 存活、(C-053,C-092)→C-053 存活；judge_A 指向被淘汰者的边按 R3 链式改写（B-022→B-087→B-017；B-030→B-024→C-045，双评委路径全部收敛）。
+
+**结果（KNOWN FACT）：** 300 生成 → **272 accepted**，28 条并入锚点（23 条批内、5 条并入 batch_001 master 锚点：B-072→W15-B001-B-076、B-083→W15-B001-A-016、C-001→W15-B001-A-003、C-064→W15-B001-C-033、C-070→W15-B001-A-005），0 条质量性删除（3 张 drop 票均为单票——judge_A: C-038，judge_B: A-012/B-079——2:1 保留并打 `stage2_priorart_check_required`）；11 条带 `mutation_required`（judge_B 12 条 mutate 中 B-083 被查重吸收，R6 优先）；一致 keep 255 条。`ideas_master.jsonl` 从 271 行追加至 **543 行**（本次对 batch_001 旧行只追加不改写，5 条 master 吸收关系记录于 decision.json）。未虚构任何引文、基准数或实验结果；全部新想法均为 HYPOTHESIS 等级。
+
+**advisory 延续：** judge_A 的 38 条 master 近重复观察名单与 9 条 prior-art 风险旗标、4 对内部矛盾（各需一个裁决实验矩阵）、judge_C 的 45 个近重复家族与 12 对受保护竞争假设——全部作为 Stage-2 审查指针记录于 accepted.jsonl consolidation 块与 judge 原始产物，不作删除依据。
+
+**产物：** `tasks/p1/batch_002/decision.json`、`accepted.jsonl`、`consolidator/report.md`、`consolidator/done.json`；gen/judge 原始产物已并入本分支存档；`research_state.json` 更新（total 600 / survivors 543 / batches[2]）。
+
+**下一步：** accepted=543 < 1000 → 继续 generator。按 diversity_audit_1 的 queue v3 派发 batch_003 三个 generator（`p1_wave_a_batch003_gen_A/B/C`，T07 benchmark weaknesses / T08 uncertainty-calibration / T09 synthetic data），生成合同 v2（立场配额+骨架冻结）自 batch_003 起强制执行；checkpoint_2 已到触发线（543 > 500），建议父代理在 batch_003 dedup 时执行。

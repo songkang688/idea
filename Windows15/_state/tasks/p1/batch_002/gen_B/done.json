@@ -1,0 +1,29 @@
+{
+  "task_id": "p1_wave_a_batch002_gen_B",
+  "role": "generator",
+  "wave": "A",
+  "batch": 2,
+  "generator": "gen_B",
+  "territory": "T05 VLM / dense prediction",
+  "status": "complete",
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "lock_respected": true,
+  "idea_count": 100,
+  "idea_id_prefix": "W15-B002-B-",
+  "idea_id_range": "W15-B002-B-001..W15-B002-B-100",
+  "cluster_count": 14,
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_002/gen_B/ideas.jsonl",
+    "Windows15/_state/tasks/p1/batch_002/gen_B/report.md",
+    "Windows15/_state/tasks/p1/batch_002/gen_B/done.json"
+  ],
+  "hard_rules_compliance": {
+    "novelty_claims_unverified": true,
+    "no_invented_citations_numbers_results": true,
+    "shard_only_no_canonical_master_rewrite": true,
+    "lock_and_state_identity_untouched": true,
+    "no_new_windows_directories": true
+  },
+  "recommended_next_task_type": "p1_wave_b_dedup_batch002"
+}

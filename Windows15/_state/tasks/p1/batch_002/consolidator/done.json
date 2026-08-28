@@ -1,0 +1,39 @@
+{
+  "task_id": "p1_wave_b_batch002_consolidator",
+  "role": "consolidator",
+  "status": "complete",
+  "windows_path": "Windows15",
+  "batch": 2,
+  "accepted_count": 272,
+  "removed_as_duplicate_count": 28,
+  "quality_dropped_count": 0,
+  "accepted_with_mutation_required": 11,
+  "canonical_idea_count": 543,
+  "git_base": {
+    "canonical_base": "origin/cursor/p1-wave-b-batch001-consolidator-7c96 @ b8d60bce42ab0a9f0f7b35278454d65d59f01331",
+    "merged_in": "origin/cursor/p1-diversity-audit-1-consolidator-ea44 @ 0fad002ef95e37c0a45100d92aa9d91e93d22eab (fast-forward, conflict-free)"
+  },
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_002/decision.json",
+    "Windows15/_state/tasks/p1/batch_002/accepted.jsonl",
+    "Windows15/_state/tasks/p1/batch_002/consolidator/report.md",
+    "Windows15/_state/tasks/p1/batch_002/consolidator/done.json",
+    "Windows15/_state/ideas_master.jsonl",
+    "Windows15/_state/research_state.json",
+    "Windows15/_state/research_ledger.md"
+  ],
+  "unresolved_items": [
+    "3 ideas retained over solo drop votes (W15-B002-A-012, W15-B002-B-079, W15-B002-C-038) carry stage2_priorart_check_required; their prior-art status was never citation-verified by any agent.",
+    "11 accepted ideas (W15-B002-A-007, A-010, A-018, A-035, A-047, A-051, A-073, A-098, B-044, B-081, B-098) carry mutation_required=true and must be reformulated per judge_B salvage notes before Stage-2 promotion.",
+    "5 master absorptions (batch_002 duplicates of batch_001 anchors) are recorded in decision.json only; a future hygiene pass may fold them into absorbed_duplicates on the batch_001 anchor lines (master was append-only this merge per instructions).",
+    "judge_A's 38 master-near-duplicate watch entries and 4 internal-contradiction pairs need scrutiny at the 1000+ -> 200 cut.",
+    "Diversity checkpoint_2 trigger (500 accepted) is now crossed (543); recommend running it alongside batch_003 dedup.",
+    "Generator contract v2 (stance quotas, claim_direction schema, skeleton freeze) binds batch_003 generators per diversity_audit_1 decision."
+  ],
+  "recommended_next_task_type": "continue_generators_until_1000",
+  "next_ready_task_ids": [
+    "p1_wave_a_batch003_gen_A",
+    "p1_wave_a_batch003_gen_B",
+    "p1_wave_a_batch003_gen_C"
+  ]
+}

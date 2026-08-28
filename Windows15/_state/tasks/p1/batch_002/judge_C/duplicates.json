@@ -1,0 +1,674 @@
+{
+  "task_id": "p1_wave_b_batch002_judge_C",
+  "windows_path": "Windows15",
+  "batch": "batch_002",
+  "judge": "C",
+  "role": "adversarial duplicate / intra-batch and vs-master collision auditor",
+  "inputs": {
+    "gen_A": {
+      "branch": "origin/cursor/p1-wave-a-batch002-gen-a-83d7",
+      "territory": "T04 Object detection",
+      "ideas": 100
+    },
+    "gen_B": {
+      "branch": "origin/cursor/p1-wave-a-batch002-gen-b-0edc",
+      "territory": "T05 VLM / dense prediction",
+      "ideas": 100
+    },
+    "gen_C": {
+      "branch": "origin/cursor/p1-wave-a-batch002-gen-c-86e2",
+      "territory": "T06 Failure mining",
+      "ideas": 100
+    },
+    "ideas_master": {
+      "branch": "origin/cursor/p1-wave-b-batch001-consolidator-7c96",
+      "path": "Windows15/_state/ideas_master.jsonl",
+      "ideas": 271
+    }
+  },
+  "dedup_standard": "Two ideas are hard duplicates when they assert the same core scientific claim such that decisively falsifying/verifying one substantially falsifies/verifies the other; a domain re-instantiation counts as distinct only if the domain changes the mechanism or the prediction, not merely the dataset. Entailment, nested claims, and competing mechanisms over one observable are NOT duplicates - they are flagged and protected. Batch-002 additionally audits every idea against the 271 accepted batch-001 master entries; a batch-002 idea that re-instantiates an accepted master claim without changing mechanism or prediction is marked duplicate_of the master ID.",
+  "hard_duplicates": [
+    {
+      "duplicate": "W15-B002-A-037",
+      "canonical": "W15-B002-A-032",
+      "scope": "intra_A",
+      "confidence": "high",
+      "rationale": "Same claim: small-object detection outcome is a periodic function of sampling-grid phase. A-032 states the aliasing mechanism and the anti-aliased-downsampling fix; A-037 restates the phase dependence as miss clustering plus a test-time recovery. Falsifying the phase dependence kills both.",
+      "salvage_in_merge": "Preserve the phase-binned recall analysis (object center modulo effective stride) and the half-stride shifted double-inference recovery protocol with its 2x-cost accounting."
+    },
+    {
+      "duplicate": "W15-B002-A-066",
+      "canonical": "W15-B002-C-017",
+      "scope": "cross_A_C",
+      "confidence": "medium",
+      "rationale": "Same claim: per-dataset annotation tightness/offset conventions are learned by models as systematic localization offsets that confound cross-dataset evaluation and are post-hoc correctable. A-066 is the bounding-box (tightness/size-offset) form of C-017's boundary inset/outset form; mechanism and prediction structure are identical, only the output geometry differs.",
+      "salvage_in_merge": "Preserve the box-tightness formulation and the post-hoc global size-offset correction arm for cross-dataset AP75."
+    },
+    {
+      "duplicate": "W15-B002-A-088",
+      "canonical": "W15-B002-C-022",
+      "scope": "cross_A_C",
+      "confidence": "medium",
+      "rationale": "Same claim: models learn object-position-in-frame priors from photographer/camera framing statistics, and performance degrades away from corpus-typical positions. C-022 states the law with a per-corpus positional-fingerprint measurement; A-088 is the detection instantiation with a training intervention.",
+      "salvage_in_merge": "Preserve the position-shuffled-training intervention and its in-position vs out-of-position AP tradeoff measurement."
+    },
+    {
+      "duplicate": "W15-B002-B-014",
+      "canonical": "W15-B002-B-008",
+      "scope": "intra_B",
+      "confidence": "high",
+      "rationale": "Same claim stated twice across clusters by one generator: embedding anisotropy, not prompt quality, limits zero-shot dense prediction, and whitening removes prompt-ensembling's advantage. Both reduce to the identical 2x2 ablation (whitening on/off x ensembling on/off) with the same sub-additivity prediction.",
+      "salvage_in_merge": "Preserve the framing that reported prompt-ensembling gains for dense tasks are anisotropy artifacts; fold into B-008's 2x2 ablation."
+    },
+    {
+      "duplicate": "W15-B002-B-024",
+      "canonical": "W15-B002-C-045",
+      "scope": "cross_B_C",
+      "confidence": "high",
+      "rationale": "Same claim: negation in prompts is processed as affirmative mention of the negated concept. C-045 carries the text-encoder-geometry diagnosis and text-side intervention; B-024 is the behavioral noun instantiation ('X without Y' raises Y-region activation). Verifying either substantially verifies the other.",
+      "salvage_in_merge": "Preserve the paired-scene behavioral protocol (X-with-Y vs X-without-Y candidates) and the Y-region activation comparison against Y-free prompts."
+    },
+    {
+      "duplicate": "W15-B002-B-026",
+      "canonical": "W15-B002-C-021",
+      "scope": "cross_B_C",
+      "confidence": "medium",
+      "rationale": "Same claim: object hallucination is governed by training-corpus co-occurrence statistics and is predictable from them before inference. C-021 states the quantitative monotone law across detectors and VLMs; B-026 is the same regression restricted to LLM-based dense systems with text-only co-occurrence as the predictor.",
+      "salvage_in_merge": "Preserve the LLM-decoder vs contrastive-matching variance-explained comparison as a system-type moderator arm."
+    },
+    {
+      "duplicate": "W15-B002-B-030",
+      "canonical": "W15-B002-C-045",
+      "scope": "cross_B_C",
+      "confidence": "medium",
+      "rationale": "Same claim as C-045/B-024, attribute instantiation: 'the car that is not red' behaves like 'the red car', i.e. the negated attribute is matched affirmatively. Not a competing no-op claim - matching the negated attribute IS the negation-as-affirmative behavior.",
+      "salvage_in_merge": "Preserve the attribute minimal-pair protocol ('not red' vs 'red') as the attribute-negation arm of the merged idea."
+    },
+    {
+      "duplicate": "W15-B002-B-041",
+      "canonical": "W15-B002-C-003",
+      "scope": "cross_B_C",
+      "confidence": "medium",
+      "rationale": "Same claim: square-input resize policy is the operative failure variable for extreme-aspect-ratio content. C-003 states it for vision models generally via apparent-aspect distortion; B-041 re-instantiates for VLM dense prediction. The evaluation (extreme-aspect imagery under letterbox vs stretch) is the same experiment.",
+      "salvage_in_merge": "Preserve the letterboxing-vs-stretching class-dependent tradeoff arm and the pretraining-resize attribution."
+    },
+    {
+      "duplicate": "W15-B002-B-046",
+      "canonical": "W15-B002-B-049",
+      "scope": "intra_B",
+      "confidence": "medium",
+      "rationale": "Same mechanism-claim: autoregressive drift makes later-generated dense output less accurate, so error is governed by serialization position. B-049 has the cleaner causal design (order reversal relocates the spatial gradient); B-046 restates the same cascade for polygon vertex sequences.",
+      "salvage_in_merge": "Preserve the per-vertex error-cascade measurement and the polygon-vs-raster format crossover by contour complexity."
+    },
+    {
+      "duplicate": "W15-B002-B-064",
+      "canonical": "W15-B002-C-025",
+      "scope": "cross_B_C",
+      "confidence": "high",
+      "rationale": "Same claim: near-duplicate/proximity overlap between web pretraining corpora and evaluation sets inflates measured performance, revealed by contamination-stratified evaluation. C-025 is the general form (nearest-neighbor-distance strata, robustness conclusions); B-064 is the VLM-dense instantiation of the identical stratification.",
+      "salvage_in_merge": "Preserve the public-crawl-index near-duplicate stratification instrument and the open- vs closed-vocabulary inflation comparison."
+    },
+    {
+      "duplicate": "W15-B002-B-068",
+      "canonical": "W15-B002-A-031",
+      "scope": "cross_A_B",
+      "confidence": "medium",
+      "rationale": "Same claim resting on the same multi-annotator small-object relabeling measurement: at small scales, inter-annotator disagreement is large enough that model-vs-GT gaps (A-031) and published method-vs-method gaps (B-068) are inside the annotation-noise band. If the disagreement is small, both die; if large, both follow.",
+      "salvage_in_merge": "Preserve the claim form that published small-object method gaps sit inside the inter-annotator noise band (method-gap meta-analysis arm)."
+    },
+    {
+      "duplicate": "W15-B002-B-072",
+      "canonical": "W15-B001-B-076",
+      "scope": "vs_master",
+      "confidence": "high",
+      "rationale": "Duplicates accepted master idea W15-B001-B-076: miscalibration in segmentation is primarily a function of distance to the boundary and a distance-conditioned (one-dimensional) recalibration fixes most of it. B-072 re-instantiates this for VLM segmentation with no change of mechanism or prediction.",
+      "salvage_in_merge": "Preserve the VLM/open-vocabulary instantiation details: interior-only model re-ranking and per-class conditioning absent from the medical original."
+    },
+    {
+      "duplicate": "W15-B002-B-085",
+      "canonical": "W15-B002-C-046",
+      "scope": "cross_B_C",
+      "confidence": "high",
+      "rationale": "Same claim: attribute-object binding error grows superlinearly (capacity-like law) with the number of attributed instances in the scene. C-046 adds the cross-attention capacity attribution vs a per-object constant error rate; B-085 is the pixel-level restatement.",
+      "salvage_in_merge": "Preserve the pixel-level (dense) binding benchmark protocol and the observation that current benchmarks never probe instance-count scaling."
+    },
+    {
+      "duplicate": "W15-B002-B-087",
+      "canonical": "W15-B002-B-017",
+      "scope": "intra_B",
+      "confidence": "high",
+      "rationale": "Same claim: relational language is not processed by dense VLM grounding; predictions are driven by nouns/object priors. B-017's relation-inversion invariance and B-087's relation-equals-conjunction equivalence are logically coupled tests of one claim on the same two-candidate scenes with the same noun-only baseline.",
+      "salvage_in_merge": "Preserve the conjunction-prompt baseline and the contrastive-tower vs LLM-decoder sensitivity split."
+    },
+    {
+      "duplicate": "W15-B002-B-092",
+      "canonical": "W15-B002-B-034",
+      "scope": "intra_B",
+      "confidence": "medium",
+      "rationale": "Same claim stated twice across clusters: open-vocabulary dense performance is text-frequency-bottlenecked and renaming classes to caption-frequent terms recovers the gap. B-034 states the mechanism and the synonym-performance ceiling; B-092 re-instantiates it for specialist domains.",
+      "salvage_in_merge": "Preserve the specialist-domain arm comparing lay-term renaming against vision-side finetuning at matched budget."
+    },
+    {
+      "duplicate": "W15-B002-B-099",
+      "canonical": "W15-B002-B-018",
+      "scope": "intra_B",
+      "confidence": "medium",
+      "rationale": "Same claim: VLM dense grounding is locked to the camera/viewer reference frame regardless of the requested frame. B-018 states it for object-centric frame requests; B-099 restates it for speaker-relative expressions in egocentric video - a second requested-frame condition, not a new mechanism.",
+      "salvage_in_merge": "Preserve the egocentric-video speaker-relative protocol as an additional requested-frame condition."
+    },
+    {
+      "duplicate": "W15-B002-C-032",
+      "canonical": "W15-B002-C-029",
+      "scope": "intra_C",
+      "confidence": "medium",
+      "rationale": "Same claim: per-instance failures split into a scale/generation-curable population and a persistent population with distinct causal signatures (prior-driven persists, perception-driven cured). C-029 states the bimodality across model generations; C-032 restates it across scale within a family.",
+      "salvage_in_merge": "Preserve the small-to-large scaling-forecast tool and the prior-driven vs perception-driven signature split."
+    },
+    {
+      "duplicate": "W15-B002-C-057",
+      "canonical": "W15-B002-A-034",
+      "scope": "cross_A_C",
+      "confidence": "high",
+      "rationale": "Same claim: small-object detection is context-driven rather than object-pixel-driven, tested by context removal at matched object preservation. A-034 states the full size-conditioned crossover (context vs appearance regimes); C-057 is its small-object half with an inpainting variant. Falsifying A-034's small-object half falsifies C-057 entirely.",
+      "salvage_in_merge": "Preserve the inpainting-based context removal variant (vs masking) and the failure-mining reattribution framing."
+    },
+    {
+      "duplicate": "W15-B002-C-070",
+      "canonical": "W15-B001-A-005",
+      "scope": "vs_master",
+      "confidence": "high",
+      "rationale": "Duplicates accepted master idea W15-B001-A-005: interactive refinement enters oscillatory/non-monotone correction dynamics where added clicks make masks worse. C-070's hypothesis ('a measurable fraction of instances enters oscillatory or divergent correction dynamics') restates the master's core claim.",
+      "salvage_in_merge": "Preserve the early-warning divergence predictor (mask-change-per-click features) and the stability-vs-click-efficiency ranking-disagreement evaluation."
+    },
+    {
+      "duplicate": "W15-B002-C-092",
+      "canonical": "W15-B002-C-053",
+      "scope": "intra_C",
+      "confidence": "high",
+      "rationale": "Same claim stated twice across clusters: a visual lost-in-the-middle effect - evidence in middle positions of the visual context is used less, independent of content. C-053 states it for multi-image prompts; C-092 for long-video timestamps, which reach the model as the same positional token structure.",
+      "salvage_in_merge": "Preserve the long-video timestamp-position stratification and the video-length capability-claim confound."
+    }
+  ],
+  "protected_competing_pairs": [
+    {
+      "ideas": [
+        "W15-B002-B-001",
+        "W15-B002-B-002"
+      ],
+      "rationale": "Why raw VLM patch-text similarity maps fail: a few high-norm outlier tokens (B-001) vs distributed global-gist leakage in all patches (B-002). Same observable, competing mechanisms - both must survive to the experiment."
+    },
+    {
+      "ideas": [
+        "W15-B002-B-017",
+        "W15-B002-B-023"
+      ],
+      "rationale": "Relational grounding: relations contribute nothing and object priors do everything (B-017) vs relation accuracy exists and is predicted by caption-corpus construction frequency (B-023). Competing accounts of whether relational constructions are processed at all."
+    },
+    {
+      "ideas": [
+        "W15-B002-B-045",
+        "W15-B002-B-048"
+      ],
+      "rationale": "Coordinate-output error histograms: quantization signature of the coordinate token vocabulary (B-045) vs round-number spikes from digit-frequency priors (B-048). Same observable, separable mechanisms."
+    },
+    {
+      "ideas": [
+        "W15-B002-B-054",
+        "W15-B002-B-057"
+      ],
+      "rationale": "Text conditioning in language-aware depth: ablating/shuffling prompts is a no-op (B-054) vs scene-description prompts causally shift metric scale (B-057). Direct competition on whether language input causally matters."
+    },
+    {
+      "ideas": [
+        "W15-B002-A-020",
+        "W15-B002-C-060"
+      ],
+      "rationale": "Adjacent/overlapping-pair recall collapse: rate predictable from training-set co-occlusion statistics, i.e. data-driven (A-020) vs collapse point is an architecture signature of the dedup mechanism and 'not of the data' (C-060)."
+    },
+    {
+      "ideas": [
+        "W15-B002-A-061",
+        "W15-B002-C-018"
+      ],
+      "rationale": "Mixed modal/amodal annotation conventions: per-class convention inconsistency acts as label noise predicting AP75 (A-061) vs models blend the two policies into predictions following neither (C-018). Competing mechanistic accounts of convention mixing."
+    },
+    {
+      "ideas": [
+        "W15-B002-A-063",
+        "W15-B002-C-062"
+      ],
+      "rationale": "Border-region misses: missing border annotations make measured border FPs genuine detections, an evaluation artifact (A-063) vs crop augmentation trains 'truncated equals ignorable' suppression, a training artifact (C-062)."
+    },
+    {
+      "ideas": [
+        "W15-B002-C-027",
+        "W15-B002-C-033"
+      ],
+      "rationale": "Cross-model failure correlation: shared web training data across independently developed models (C-027) vs shared frozen backbone weights across downstream heads (C-033). Complementary-competing decompositions of the correlation source."
+    },
+    {
+      "ideas": [
+        "W15-B002-C-080",
+        "W15-B002-C-085"
+      ],
+      "rationale": "What predicts repair collateral damage from finetuning on mined failures: per-instance loss-landscape sharpness (C-080) vs a feature-space locality law (C-085). Same observable, competing predictors."
+    },
+    {
+      "ideas": [
+        "W15-B002-C-081",
+        "W15-B002-C-030"
+      ],
+      "rationale": "Perturbation consistency as a failure signal: jitter instability marks failures better than confidence (C-081) vs shortcut-driven errors are consistently wrong under augmentation, a structured blind spot of exactly that detector class (C-030)."
+    },
+    {
+      "ideas": [
+        "W15-B002-C-035",
+        "W15-B002-C-082"
+      ],
+      "rationale": "Coupled but independently load-bearing: error populations split into confidently-wrong vs diffidently-wrong with mitigation asymmetry (C-035); confidence-based mining therefore recovers a biased sliver (C-082). C-082 survives even if the clean bimodality of C-035 fails - protected as a nested pair, not merged."
+    },
+    {
+      "ideas": [
+        "W15-B002-A-009",
+        "W15-B002-A-018",
+        "W15-B002-A-030",
+        "W15-B002-C-059"
+      ],
+      "rationale": "Elongated/extreme-aspect-ratio failure: competing mechanism quartet - assignment-geometry recall bias (A-009), NMS overlap-measure suppression bias (A-018), loss-side extraction failure with intact features (A-030), and learned box-prior boundary cliffs (C-059). Four different interventions; do not merge."
+    }
+  ],
+  "protected_competing_vs_master": [
+    {
+      "idea": "W15-B002-C-006",
+      "master": "W15-B001-A-035",
+      "rationale": "Thin-structure segmentation failure: governed by orientation relative to the sampling grid, not primarily width (C-006) vs master's width-threshold-at-fixed-fraction-of-patch-size claim (W15-B001-A-035). Competing variable attribution; keep both."
+    },
+    {
+      "idea": "W15-B002-C-036",
+      "master": "W15-B001-B-076",
+      "rationale": "Different quantity than master W15-B001-B-076: C-036 claims confidence is anti-aligned with error SEVERITY (low at tolerable boundary errors, high inside catastrophic interior errors); the master claims a calibration pattern (overconfident at boundaries). Severity-alignment and calibration are separable; do not merge."
+    },
+    {
+      "idea": "W15-B002-C-064",
+      "master": "W15-B001-C-033",
+      "rationale": "Genus/hole-closing deficit: attributed to genus-zero training-corpus statistics (C-064) vs master's architecture-attributable decoder topology prior (W15-B001-C-033). Same observable, competing data-vs-architecture attribution."
+    },
+    {
+      "idea": "W15-B002-C-065",
+      "master": "W15-B001-A-001",
+      "rationale": "SAM part-whole granularity: intrinsically unstable under trivially small input perturbations, not resolvable by prompting (C-065) vs master's deterministic click-geometry granularity dial (W15-B001-A-001). Directly competing characterizations."
+    },
+    {
+      "idea": "W15-B002-A-068",
+      "master": "W15-B001-A-034",
+      "rationale": "Contrast-edge snapping of localization: inherited from annotators who snap boxes to high-contrast edges (A-068) vs master's model-prior edge-snapping account for SAM (W15-B001-A-034). Competing provenance attribution."
+    }
+  ],
+  "protected_master_adjacent_kept": [
+    {
+      "idea": "W15-B002-A-087",
+      "master": "W15-B001-A-086",
+      "rationale": "Count-prior claim; master already retains separate per-domain instantiations (W15-B001-A-086 for SAM, W15-B001-B-058 for lesions), so the detector instantiation is kept per master precedent."
+    },
+    {
+      "idea": "W15-B002-B-070",
+      "master": "W15-B001-B-080",
+      "rationale": "Adjacent to master W15-B001-B-080 (voxelwise conformal margins useless); B-070's new content is the validity mechanism - spatial error autocorrelation breaks effective-sample-size assumptions. Kept."
+    },
+    {
+      "idea": "W15-B002-B-071",
+      "master": "W15-B001-A-009",
+      "rationale": "Adjacent to masters W15-B001-A-009/C-034 (spatial prompt-jitter variance signals); B-071's perturbation is linguistic paraphrase through the text tower, a different mechanism. Kept."
+    },
+    {
+      "idea": "W15-B002-B-083",
+      "master": "W15-B001-A-016",
+      "rationale": "Adjacent to master W15-B001-A-016 (LayerNorm-affine tuning suffices); B-083 claims training-free norm-statistics recomputation, a different operation. Kept."
+    },
+    {
+      "idea": "W15-B002-C-001",
+      "master": "W15-B001-A-003",
+      "rationale": "Adjacent to master W15-B001-A-003 (SAM click sub-token offset instability); C-001's perturbation is image translation with a periodicity law for ViT segmenters generally. Kept."
+    },
+    {
+      "idea": "W15-B002-C-017",
+      "master": "W15-B001-B-003",
+      "rationale": "Adjacent to masters W15-B001-B-003/A-036/B-018 (annotator style decodable; SAM learned annotation morphology; metric blindness to uniform offset); C-017's cross-dataset evaluation-confound claim is the new content. Kept as canonical for A-066."
+    },
+    {
+      "idea": "W15-B002-C-025",
+      "master": "W15-B001-C-098",
+      "rationale": "Generalizes accepted master W15-B001-C-098 (viral-footage near-duplicate leakage in fire/smoke corpora) to ecosystem-wide pretraining/eval contamination; the universality is the new content. Kept."
+    },
+    {
+      "idea": "W15-B002-C-028",
+      "master": "W15-B001-A-085",
+      "rationale": "Adjacent to master W15-B001-A-085 (SAM self-training ancestry monoculture); C-028's transmission channel is distillation/finetuning lineage, not shared machine-generated data. Kept."
+    },
+    {
+      "idea": "W15-B002-C-040",
+      "master": "W15-B001-A-050",
+      "rationale": "Refines master W15-B001-A-050 (IoU head not an instance-quality meter) with a prompt-atypicality moderator and mechanism (prompt-distribution inheritance). Kept."
+    },
+    {
+      "idea": "W15-B002-C-063",
+      "master": "W15-B001-B-021",
+      "rationale": "Adjacent to master W15-B001-B-021 (topology-blindness of overlap metrics for tubular anatomy); C-063's new content is the failure-mining selection-bias consequence. Kept."
+    },
+    {
+      "idea": "W15-B002-C-068",
+      "master": "W15-B001-A-041",
+      "rationale": "Adjacent to master W15-B001-A-041 (SAM binds attached shadows); C-068 is a cross-dataset convention-conflict floor claim, not a single-model audit. Kept."
+    },
+    {
+      "idea": "W15-B002-C-079",
+      "master": "W15-B001-A-042",
+      "rationale": "Generalizes master W15-B001-A-042 (linear segmentability probe on SAM encoder features) to all FM failures plus the decision-layer attribution; universality is the new content. Kept."
+    }
+  ],
+  "near_duplicate_families": {
+    "F01_grid_phase": [
+      "W15-B002-A-032",
+      "W15-B002-A-037",
+      "W15-B002-C-001",
+      "W15-B002-C-006"
+    ],
+    "F02_size_grid_cliffs": [
+      "W15-B002-C-002",
+      "W15-B002-A-096",
+      "W15-B002-B-040",
+      "W15-B002-A-023",
+      "W15-B002-A-040"
+    ],
+    "F03_pe_interpolation": [
+      "W15-B002-B-038",
+      "W15-B002-C-004"
+    ],
+    "F04_window_crop_seams": [
+      "W15-B002-B-039",
+      "W15-B002-B-043",
+      "W15-B002-C-007"
+    ],
+    "F05_outlier_gist_tokens": [
+      "W15-B002-B-001",
+      "W15-B002-B-002",
+      "W15-B002-B-005",
+      "W15-B002-C-005"
+    ],
+    "F06_anisotropy_whitening": [
+      "W15-B002-B-008",
+      "W15-B002-B-014"
+    ],
+    "F07_relation_blindness": [
+      "W15-B002-B-017",
+      "W15-B002-B-087",
+      "W15-B002-B-016",
+      "W15-B002-B-022",
+      "W15-B002-B-023"
+    ],
+    "F08_construct_blindness": [
+      "W15-B002-B-019",
+      "W15-B002-B-020",
+      "W15-B002-B-021",
+      "W15-B002-B-035",
+      "W15-B002-B-037"
+    ],
+    "F09_negation_affirmative": [
+      "W15-B002-C-045",
+      "W15-B002-B-024",
+      "W15-B002-B-030"
+    ],
+    "F10_cooccurrence_hallucination": [
+      "W15-B002-C-021",
+      "W15-B002-B-026",
+      "W15-B002-B-003",
+      "W15-B002-B-029",
+      "W15-B002-A-083"
+    ],
+    "F11_absence_abstention": [
+      "W15-B002-B-025",
+      "W15-B002-B-027",
+      "W15-B002-B-067",
+      "W15-B002-B-073",
+      "W15-B002-B-015"
+    ],
+    "F12_caption_frequency_law": [
+      "W15-B002-B-031",
+      "W15-B002-B-034",
+      "W15-B002-B-092",
+      "W15-B002-B-013",
+      "W15-B002-B-032",
+      "W15-B002-B-033",
+      "W15-B002-B-036",
+      "W15-B002-C-049",
+      "W15-B002-C-054",
+      "W15-B002-C-026",
+      "W15-B002-B-075"
+    ],
+    "F13_ar_serialization": [
+      "W15-B002-B-049",
+      "W15-B002-B-046",
+      "W15-B002-B-045",
+      "W15-B002-B-048",
+      "W15-B002-B-050"
+    ],
+    "F14_binding": [
+      "W15-B002-C-046",
+      "W15-B002-B-085",
+      "W15-B002-B-084",
+      "W15-B002-B-086",
+      "W15-B002-B-090"
+    ],
+    "F15_depth_recognition": [
+      "W15-B002-B-053",
+      "W15-B002-B-055",
+      "W15-B002-B-056",
+      "W15-B002-B-058",
+      "W15-B002-B-059"
+    ],
+    "F16_depth_language_scale": [
+      "W15-B002-B-054",
+      "W15-B002-B-057",
+      "W15-B002-B-060"
+    ],
+    "F17_contamination_leakage": [
+      "W15-B002-C-025",
+      "W15-B002-B-064",
+      "W15-B002-B-061"
+    ],
+    "F18_smallobj_noise_ceiling": [
+      "W15-B002-A-031",
+      "W15-B002-B-068",
+      "W15-B002-C-097",
+      "W15-B002-A-069"
+    ],
+    "F19_convention_offsets": [
+      "W15-B002-C-017",
+      "W15-B002-A-066",
+      "W15-B002-A-068",
+      "W15-B002-A-061",
+      "W15-B002-C-018",
+      "W15-B002-C-068"
+    ],
+    "F20_missing_negative_labels": [
+      "W15-B002-A-063",
+      "W15-B002-C-024",
+      "W15-B002-A-070",
+      "W15-B002-A-062",
+      "W15-B002-C-019",
+      "W15-B002-C-062"
+    ],
+    "F21_context_reliance": [
+      "W15-B002-A-034",
+      "W15-B002-C-057",
+      "W15-B002-A-077",
+      "W15-B002-A-082",
+      "W15-B002-A-084"
+    ],
+    "F22_position_priors": [
+      "W15-B002-C-022",
+      "W15-B002-A-088",
+      "W15-B002-A-087"
+    ],
+    "F23_crowd_dedup": [
+      "W15-B002-C-055",
+      "W15-B002-A-012",
+      "W15-B002-A-020",
+      "W15-B002-C-060",
+      "W15-B002-A-014",
+      "W15-B002-A-016",
+      "W15-B002-A-017"
+    ],
+    "F24_aspect_ratio_mechanisms": [
+      "W15-B002-A-009",
+      "W15-B002-A-018",
+      "W15-B002-A-030",
+      "W15-B002-C-059",
+      "W15-B002-C-003",
+      "W15-B002-B-041"
+    ],
+    "F25_score_localization": [
+      "W15-B002-A-013",
+      "W15-B002-A-015",
+      "W15-B002-A-048",
+      "W15-B002-C-037",
+      "W15-B002-A-027"
+    ],
+    "F26_calibration_structure": [
+      "W15-B002-B-069",
+      "W15-B002-B-072",
+      "W15-B002-C-036",
+      "W15-B002-C-038",
+      "W15-B002-C-041",
+      "W15-B002-A-041",
+      "W15-B002-A-042"
+    ],
+    "F27_perturbation_signal": [
+      "W15-B002-C-081",
+      "W15-B002-C-030",
+      "W15-B002-A-044",
+      "W15-B002-B-071",
+      "W15-B002-A-046"
+    ],
+    "F28_failure_predictability": [
+      "W15-B002-C-079",
+      "W15-B002-A-049",
+      "W15-B002-C-086",
+      "W15-B002-A-001",
+      "W15-B002-A-060"
+    ],
+    "F29_failure_subspace": [
+      "W15-B002-C-031",
+      "W15-B002-C-034",
+      "W15-B002-A-086"
+    ],
+    "F30_lineage_monoculture": [
+      "W15-B002-C-027",
+      "W15-B002-C-028",
+      "W15-B002-C-033"
+    ],
+    "F31_scale_persistence": [
+      "W15-B002-C-029",
+      "W15-B002-C-032"
+    ],
+    "F32_serial_position": [
+      "W15-B002-C-053",
+      "W15-B002-C-092"
+    ],
+    "F33_pipeline_artifacts": [
+      "W15-B002-C-009",
+      "W15-B002-C-010",
+      "W15-B002-C-011",
+      "W15-B002-C-012",
+      "W15-B002-C-013",
+      "W15-B002-C-015",
+      "W15-B002-C-016",
+      "W15-B002-C-074",
+      "W15-B002-C-075",
+      "W15-B002-C-100"
+    ],
+    "F34_token_budget": [
+      "W15-B002-B-042",
+      "W15-B002-C-008",
+      "W15-B002-C-047"
+    ],
+    "F35_interactive_stability": [
+      "W15-B002-C-070",
+      "W15-B002-C-065",
+      "W15-B002-C-040",
+      "W15-B002-B-098"
+    ],
+    "F36_temporal_failure": [
+      "W15-B002-C-093",
+      "W15-B002-C-076",
+      "W15-B002-C-087",
+      "W15-B002-A-092",
+      "W15-B002-C-091"
+    ],
+    "F37_adaptation_collapse": [
+      "W15-B002-B-076",
+      "W15-B002-B-082",
+      "W15-B002-B-079",
+      "W15-B002-B-080",
+      "W15-B002-B-081",
+      "W15-B002-B-083",
+      "W15-B002-A-094"
+    ],
+    "F38_repair_collateral": [
+      "W15-B002-C-080",
+      "W15-B002-C-085"
+    ],
+    "F39_confidence_error_populations": [
+      "W15-B002-C-035",
+      "W15-B002-C-082"
+    ],
+    "F40_topology_metric_blindness": [
+      "W15-B002-C-063",
+      "W15-B002-C-064"
+    ],
+    "F41_eval_protocol_dof": [
+      "W15-B002-B-047",
+      "W15-B002-B-065",
+      "W15-B002-B-066",
+      "W15-B002-A-075",
+      "W15-B002-B-062",
+      "W15-B002-B-009"
+    ],
+    "F42_threshold_transfer": [
+      "W15-B002-C-058",
+      "W15-B002-A-043",
+      "W15-B002-A-081"
+    ],
+    "F43_positive_density": [
+      "W15-B002-A-008",
+      "W15-B002-A-055",
+      "W15-B002-A-056",
+      "W15-B002-A-057"
+    ],
+    "F44_corruption_response": [
+      "W15-B002-A-050",
+      "W15-B002-C-071",
+      "W15-B002-C-039",
+      "W15-B002-C-072",
+      "W15-B002-C-073"
+    ],
+    "F45_high_frequency_deficit": [
+      "W15-B002-A-033",
+      "W15-B002-B-044"
+    ]
+  },
+  "counts": {
+    "ideas_reviewed": 300,
+    "master_ideas_checked": 271,
+    "keep": 280,
+    "duplicate_of": 20,
+    "drop": 0,
+    "hard_duplicates_intra_shard": 8,
+    "hard_duplicates_cross_shard": 10,
+    "hard_duplicates_vs_master": 2,
+    "near_duplicate_families": 45,
+    "protected_competing_pairs": 12,
+    "protected_competing_vs_master": 5,
+    "protected_master_adjacent_kept": 12
+  }
+}

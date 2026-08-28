@@ -1,0 +1,645 @@
+{
+  "task_id": "p1_wave_b_batch002_consolidator",
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "batch": 2,
+  "created_at": "2026-08-28T21:30:00Z",
+  "base_branches": {
+    "canonical_base": {
+      "branch": "origin/cursor/p1-wave-b-batch001-consolidator-7c96",
+      "head": "b8d60bce42ab0a9f0f7b35278454d65d59f01331",
+      "note": "ideas_master.jsonl @ 271 accepted"
+    },
+    "merged_in": {
+      "branch": "origin/cursor/p1-diversity-audit-1-consolidator-ea44",
+      "head": "0fad002ef95e37c0a45100d92aa9d91e93d22eab",
+      "note": "fast-forward merge (descendant of canonical_base); diversity_audit_1 decision + ledger section + research_state pointer; ideas_master untouched by audit (kept all 271)"
+    }
+  },
+  "inputs": {
+    "gen_A": {
+      "branch": "origin/cursor/p1-wave-a-batch002-gen-a-83d7",
+      "head": "decf0b31ced46ed649eb6dee5ae9f136bad2fb0c"
+    },
+    "gen_B": {
+      "branch": "origin/cursor/p1-wave-a-batch002-gen-b-0edc",
+      "head": "a70297e6d0eba4917b89ad96c237c17b2bf9f640"
+    },
+    "gen_C": {
+      "branch": "origin/cursor/p1-wave-a-batch002-gen-c-86e2",
+      "head": "b9a0d1e537c64ef0d38f8ce1d2c6208368f6edaf"
+    },
+    "judge_A": {
+      "branch": "origin/cursor/p1-wave-b-batch002-judge-a-f0d4",
+      "head": "ba3ab588d93380e6434cea9985dcbdfafc851d58"
+    },
+    "judge_B": {
+      "branch": "origin/cursor/p1-wave-b-batch002-judge-b-cc8c",
+      "head": "ed41ffe00d366c41a7c99709aca307c3b0683ce1"
+    },
+    "judge_C": {
+      "branch": "origin/cursor/p1-wave-b-batch002-judge-c-e0c7",
+      "head": "779c40887d8642ab30e708c9f27f8d38621c4c70"
+    }
+  },
+  "input_counts": {
+    "ideas_total": 300,
+    "per_shard": {
+      "gen_A": 100,
+      "gen_B": 100,
+      "gen_C": 100
+    },
+    "judge_A": {
+      "keep": 278,
+      "merge": 16,
+      "drop": 6,
+      "drop_duplicate_of_master": 5,
+      "drop_prior_art_risk": 1
+    },
+    "judge_B": {
+      "keep": 286,
+      "mutate": 12,
+      "drop": 2
+    },
+    "judge_C": {
+      "keep": 280,
+      "duplicate_of": 20,
+      "drop": 0
+    }
+  },
+  "resolution_rules": {
+    "R1_verdict_normalization": "Judge A 'merge' (merge_into) and Judge C 'duplicate_of' are dedup votes with an explicit surviving target. Judge A 'drop' with duplicate_of set names a batch_001 master anchor and is likewise a dedup vote (target lives in canonical master). Judge A 'drop' without a target and Judge B 'drop' are quality/prior-art removal votes. Judge B 'mutate' means keep with required reformulation.",
+    "R2_dedup_union": "An idea is removed as duplicate if >=1 dedup judge (A or C) names an explicit merge/duplicate target, same as batch_001: the duplicate relation is positively evidenced from the two in-corpus idea texts and removal is lossless (recorded as absorbed_duplicates on the surviving anchor, or in this decision file when the anchor is a batch_001 master idea, which is append-only this merge).",
+    "R3_target_survival": "Merge targets must themselves survive. Chains are followed to the final anchor (W15-B002-B-022 -> B-087 -> B-017; W15-B002-B-030 -> B-024 -> C-045); where a removed idea carried targets from both judges, chain-following was asserted to converge on one anchor (10/10 converged). Cycles after R8 resolution would be a hard error; none remained.",
+    "R4_quality_drop_majority": "Removal for prior-art/weakness reasons requires >=2 of 3 judges voting drop, because such drops rest on prior-art claims that were not citation-verified (all three judges disclaim novelty verification). All 3 quality-drop votes in this batch were solo (judge_A: C-038; judge_B: A-012, B-079) with the other two judges voting keep, so the 2-1 keep majority retains them, flagged stage2_priorart_check_required.",
+    "R5_mutation_passthrough": "Judge B 'mutate' verdicts (all falsifiable=true) are accepted with mutation_required=true carrying Judge B's salvage note; Stage 2 must apply the reformulation before further promotion. 11 of 12 pass through; B-083 is consumed by R6.",
+    "R6_precedence": "Dedup removal (R2) takes precedence over mutate and drop votes on the same idea. One overlap this batch: W15-B002-B-083 (judge_B mutate) was dropped by judge_A as duplicate of master W15-B001-A-016; the dedup removal wins and judge_B's salvage note is preserved in this file.",
+    "R7_no_invented_evidence": "The consolidator adds no novelty or prior-art claims of its own; all judge notes remain advisory. No citations were invented. Prior-art-risk flags from judge_A on kept ideas are carried as advisory flags only.",
+    "R8_direction_conflict": "New this batch: when judges A and C agree a pair is one claim but name opposite survivors (X->Y from one judge, Y->X from the other), the pair is a confirmed duplicate relation and judge_C's survivor wins. Rationale: judge_C is the dedicated adversarial duplicate auditor, recorded explicit confidence (high on all 3 conflicted pairs), and audited against master; judge_A's clustering notes on these pairs state 'same core claim' without a survivor argument. Affected pairs: (B-017,B-087)->B-017 survives; (B-085,C-046)->C-046 survives; (C-053,C-092)->C-053 survives. Judge_A's merge edges into the eliminated member are rewritten by R3 chain-following (B-022 -> B-017)."
+  },
+  "outcome_counts": {
+    "accepted": 272,
+    "removed_as_duplicate": 28,
+    "removed_as_duplicate_intra_batch": 23,
+    "removed_as_duplicate_of_master": 5,
+    "quality_dropped": 0,
+    "solo_drop_votes_overridden": 3,
+    "accepted_with_mutation_required": 11,
+    "direction_conflicts_resolved": 3,
+    "unanimous_keep": 255,
+    "canonical_master_before": 271,
+    "canonical_master_after": 543
+  },
+  "dedup_overlap": {
+    "judge_A_only": [
+      "W15-B002-A-009",
+      "W15-B002-A-095",
+      "W15-B002-B-022",
+      "W15-B002-B-040",
+      "W15-B002-B-083",
+      "W15-B002-C-001",
+      "W15-B002-C-008",
+      "W15-B002-C-064"
+    ],
+    "judge_C_only": [
+      "W15-B002-A-037",
+      "W15-B002-A-066",
+      "W15-B002-B-024",
+      "W15-B002-B-046",
+      "W15-B002-B-092",
+      "W15-B002-B-099",
+      "W15-B002-C-032"
+    ],
+    "both_judges_convergent_target": [
+      "W15-B002-A-088",
+      "W15-B002-B-014",
+      "W15-B002-B-026",
+      "W15-B002-B-030",
+      "W15-B002-B-041",
+      "W15-B002-B-064",
+      "W15-B002-B-068",
+      "W15-B002-B-072",
+      "W15-B002-C-057",
+      "W15-B002-C-070"
+    ],
+    "direction_conflict_resolved_R8": [
+      "W15-B002-B-085",
+      "W15-B002-B-087",
+      "W15-B002-C-092"
+    ]
+  },
+  "master_absorptions_append_only_note": "Five batch_002 ideas were removed as duplicates of batch_001 master anchors (B-072 -> W15-B001-B-076, B-083 -> W15-B001-A-016, C-001 -> W15-B001-A-003, C-064 -> W15-B001-C-033, C-070 -> W15-B001-A-005). Per merge instructions ideas_master.jsonl is append-only this pass, so these absorptions are recorded here rather than by rewriting the batch_001 anchor lines; a future hygiene pass may fold them into absorbed_duplicates on the anchors.",
+  "advisory_carryovers": {
+    "judge_A_prior_art_risk_kept_ideas": [
+      "W15-B002-A-032",
+      "W15-B002-A-072",
+      "W15-B002-B-001",
+      "W15-B002-B-004",
+      "W15-B002-B-048",
+      "W15-B002-B-051",
+      "W15-B002-C-005",
+      "W15-B002-C-089"
+    ],
+    "judge_A_master_near_duplicate_watch_count": 38,
+    "judge_A_internal_contradiction_pairs": [
+      [
+        "W15-B002-B-054",
+        "W15-B002-B-057"
+      ],
+      [
+        "W15-B002-A-092",
+        "W15-B002-C-087"
+      ],
+      [
+        "W15-B002-A-050",
+        "W15-B002-C-073"
+      ],
+      [
+        "W15-B002-A-023",
+        "W15-B002-A-040"
+      ]
+    ],
+    "note": "All kept as accepted; see judge_A/clusters.json (master_near_duplicate_relations, cross_shard_near_duplicate_relations, internal_contradictions) and judge_C flags in accepted.jsonl. These are Stage-2 scrutiny pointers, not removals."
+  },
+  "resolution_table_nontrivial": [
+    {
+      "idea_id": "W15-B002-A-009",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-059",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as C-059: aspect-ratio-conditioned recall structure predictable from architecture prior geometry; one recall-vs-aspect-ratio study tests both."
+      }
+    },
+    {
+      "idea_id": "W15-B002-A-037",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-A-032",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_C": "Same claim: small-object detection outcome is a periodic function of sampling-grid phase."
+      }
+    },
+    {
+      "idea_id": "W15-B002-A-066",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-017",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_C": "Same claim: per-dataset annotation tightness/offset conventions are learned by models as systematic localization offsets that confound cross-dataset evaluation and are post-hoc correctable."
+      }
+    },
+    {
+      "idea_id": "W15-B002-A-088",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-022",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as C-022: learned position-in-frame prior from corpus framing causes position-conditional failures measurable by controlled placement; A-088's augmentation-tradeoff arm noted as a variant condition.",
+        "judge_C": "Same claim: models learn object-position-in-frame priors from photographer/camera framing statistics, and performance degrades away from corpus-typical positions."
+      }
+    },
+    {
+      "idea_id": "W15-B002-A-095",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-A-089",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same spatial score-interference template and insertion-at-controlled-distance experiment as A-089; distractor-texture variant and clutter-robustness prediction noted as salvage."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-014",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-B-008",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as B-008: prompt-ensembling gains are an anisotropy workaround that whitening subsumes; one whitening-vs-ensembling study tests both.",
+        "judge_C": "Same claim stated twice across clusters by one generator: embedding anisotropy, not prompt quality, limits zero-shot dense prediction, and whitening removes prompt-ensembling's advantage."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-022",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-B-017",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union+R3_chain_followed",
+      "direct_targets": {
+        "judge_A": "W15-B002-B-087"
+      },
+      "judge_notes": {
+        "judge_A": "Same core claim as B-087: proximity-word ablation is another instrument of the relation-words-unused test."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-024",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-045",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_C": "Same claim: negation in prompts is processed as affirmative mention of the negated concept."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-026",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-021",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as C-021: hallucination of absent categories predictable from co-occurrence priors; B-026's LLM text-only-prior instrument noted as a variant predictor.",
+        "judge_C": "Same claim: object hallucination is governed by training-corpus co-occurrence statistics and is predictable from them before inference."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-030",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-045",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union+R3_chain_followed",
+      "direct_targets": {
+        "judge_A": "W15-B002-B-024",
+        "judge_C": "W15-B002-C-045"
+      },
+      "judge_notes": {
+        "judge_A": "Same negation-as-positive-evidence claim as B-024, attribute variant ('not red' ~ 'red').",
+        "judge_C": "Same claim as C-045/B-024, attribute instantiation: 'the car that is not red' behaves like 'the red car', i."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-040",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-002",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as C-002: patches-per-object detectability floor with patch-size-proportional collapse point; one resize/patch-size sweep tests both."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-041",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-003",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as C-003: resize-geometry distortion drives extreme-aspect failures; B-041's letterbox-vs-stretch class-dependent tradeoff noted as a variant condition.",
+        "judge_C": "Same claim: square-input resize policy is the operative failure variable for extreme-aspect-ratio content."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-046",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-B-049",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_C": "Same mechanism-claim: autoregressive drift makes later-generated dense output less accurate, so error is governed by serialization position."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-064",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-025",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as C-025: near-duplicate contamination stratification reveals inflated results; B-064 is the VLM-dense instance of the same audit.",
+        "judge_C": "Same claim: near-duplicate/proximity overlap between web pretraining corpora and evaluation sets inflates measured performance, revealed by contamination-stratified evaluation."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-068",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-A-031",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as A-031: small-object method gains sit within inter-annotator noise; identical agreement-vs-gap experiment, VLM-dense instance.",
+        "judge_C": "Same claim resting on the same multi-annotator small-object relabeling measurement: at small scales, inter-annotator disagreement is large enough that model-vs-GT gaps (A-031) and published method-vs-method gaps (B-068) are inside the annotation-noise band."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-072",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-B-076",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "duplicate_of_master: accepted W15-B001-B-076 already claims boundary-localized spatial miscalibration fixed by distance-to-boundary-conditioned recalibration; this restates it for VLM segmenters with the same experiment.",
+        "judge_C": "Duplicates accepted master idea W15-B001-B-076: miscalibration in segmentation is primarily a function of distance to the boundary and a distance-conditioned (one-dimensional) recalibration fixes most of it."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-083",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-016",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_B_mutate_vote_overridden": "R6_precedence",
+      "judge_notes": {
+        "judge_A": "duplicate_of_master: accepted W15-B001-A-016 already claims domain gaps act multiplicatively on channel statistics so normalization-affine adaptation suffices; gradient-free statistic recomputation is the same hypothesis' intervention variant. Salvage note: training-free variant worth folding into master idea's experiment plan."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-085",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-046",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union+R8_direction_conflict_judge_C_survivor",
+      "judge_A_wanted_survivor": "W15-B002-B-085",
+      "judge_C_confidence": "high",
+      "judge_notes": {
+        "judge_C": "Same claim: attribute-object binding error grows superlinearly (capacity-like law) with the number of attributed instances in the scene."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-087",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-B-017",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union+R8_direction_conflict_judge_C_survivor",
+      "judge_A_wanted_survivor": "W15-B002-B-087",
+      "judge_C_confidence": "high",
+      "judge_notes": {
+        "judge_C": "Same claim: relational language is not processed by dense VLM grounding; predictions are driven by nouns/object priors."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-092",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-B-034",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_C": "Same claim stated twice across clusters: open-vocabulary dense performance is text-frequency-bottlenecked and renaming classes to caption-frequent terms recovers the gap."
+      }
+    },
+    {
+      "idea_id": "W15-B002-B-099",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-B-018",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_C": "Same claim: VLM dense grounding is locked to the camera/viewer reference frame regardless of the requested frame."
+      }
+    },
+    {
+      "idea_id": "W15-B002-C-001",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-003",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "duplicate_of_master: accepted W15-B001-A-003 already claims mask outputs are not shift-stable at sub-patch scale with error periodic in sub-token offset; this restates the same claim for ViT segmenters and even proposes SAM as the test model."
+      }
+    },
+    {
+      "idea_id": "W15-B002-C-008",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-B-042",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as B-042: token-merging damage is concentrated and predictable from token similarity; per-object failure predictor noted as salvage for the merged idea."
+      }
+    },
+    {
+      "idea_id": "W15-B002-C-032",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-029",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_C": "Same claim: per-instance failures split into a scale/generation-curable population and a persistent population with distinct causal signatures (prior-driven persists, perception-driven cured)."
+      }
+    },
+    {
+      "idea_id": "W15-B002-C-057",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-A-034",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "Same core claim as A-034: below a size threshold detection is context-driven with a measurable reliance crossover; identical context-vs-object manipulation experiment.",
+        "judge_C": "Same claim: small-object detection is context-driven rather than object-pixel-driven, tested by context removal at matched object preservation."
+      }
+    },
+    {
+      "idea_id": "W15-B002-C-064",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-C-033",
+      "flagged_by": [
+        "judge_A"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "duplicate_of_master: accepted W15-B001-C-033 already claims mask decoders carry a simply-connected (genus-zero) topology prior producing lower-genus masks than ground truth; hole-filling on donuts/handles is the same hypothesis on natural objects. Salvage note: data-rarity vs architecture attribution experiment could be folded into the master idea."
+      }
+    },
+    {
+      "idea_id": "W15-B002-C-070",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B001-A-005",
+      "flagged_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union",
+      "judge_notes": {
+        "judge_A": "duplicate_of_master: accepted W15-B001-A-005 already claims interactive refinement enters limit cycles (correction clicks degrade masks, no correction memory); oscillatory correction dynamics with early-signal prediction restates the same core. Salvage note: stability-as-selection-criterion framing could extend the master idea.",
+        "judge_C": "Duplicates accepted master idea W15-B001-A-005: interactive refinement enters oscillatory/non-monotone correction dynamics where added clicks make masks worse."
+      }
+    },
+    {
+      "idea_id": "W15-B002-C-092",
+      "outcome": "removed_as_duplicate",
+      "merged_into": "W15-B002-C-053",
+      "flagged_by": [
+        "judge_C"
+      ],
+      "rule": "R2_dedup_union+R8_direction_conflict_judge_C_survivor",
+      "judge_A_wanted_survivor": "W15-B002-C-092",
+      "judge_C_confidence": "high",
+      "judge_notes": {
+        "judge_C": "Same claim stated twice across clusters: a visual lost-in-the-middle effect - evidence in middle positions of the visual context is used less, independent of content."
+      }
+    },
+    {
+      "idea_id": "W15-B002-A-012",
+      "outcome": "accepted_with_flag",
+      "rule": "R4_solo_drop_overridden_by_2v1_keep_majority",
+      "drop_vote_by": [
+        "judge_B"
+      ],
+      "keep_votes_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "drop_note": "Density-adaptive NMS thresholding for crowded scenes is an established engineering direction; the 'pre-NMS density as sufficient statistic' reframing does not clear the novelty burden, and the payload is a threshold-scheduling tweak. Classic threshold+X permutation.",
+      "consolidator_note": "Drop rationale rests on unverified prior-art/novelty claims (no citation verification was performed by any judge, per task constraints). Per evidence policy, sub-agent prior-art conclusions are not facts; idea retained with mandatory Stage-2 prior-art check."
+    },
+    {
+      "idea_id": "W15-B002-B-079",
+      "outcome": "accepted_with_flag",
+      "rule": "R4_solo_drop_overridden_by_2v1_keep_majority",
+      "drop_vote_by": [
+        "judge_B"
+      ],
+      "keep_votes_by": [
+        "judge_A",
+        "judge_C"
+      ],
+      "drop_note": "Weight-space interpolation between a pretrained CLIP-family model and its finetune to trade zero-shot breadth against target accuracy is an established robust-finetuning technique; porting it to dense finetuning is a technique-task permutation, and the Pareto comparison against joint training does not rescue novelty. main_risk also concedes it breaks when decoders are added.",
+      "consolidator_note": "Drop rationale rests on unverified prior-art/novelty claims (no citation verification was performed by any judge, per task constraints). Per evidence policy, sub-agent prior-art conclusions are not facts; idea retained with mandatory Stage-2 prior-art check."
+    },
+    {
+      "idea_id": "W15-B002-C-038",
+      "outcome": "accepted_with_flag",
+      "rule": "R4_solo_drop_overridden_by_2v1_keep_majority",
+      "drop_vote_by": [
+        "judge_A"
+      ],
+      "keep_votes_by": [
+        "judge_B",
+        "judge_C"
+      ],
+      "drop_note": "prior_art_risk drop (unverified but high confidence): analytic prior-shift/Bayes-correction recalibration is classical statistics; the residual claim is a validation study rather than a new hypothesis. Consolidator may reinstate if a novelty check disagrees.",
+      "consolidator_note": "Drop rationale rests on unverified prior-art/novelty claims (no citation verification was performed by any judge, per task constraints). Per evidence policy, sub-agent prior-art conclusions are not facts; idea retained with mandatory Stage-2 prior-art check."
+    },
+    {
+      "idea_id": "W15-B002-A-007",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "The churn-to-gradient-interference measurement is the strong falsifiable core; EMA-smoothed assignment is a bolt-on fix. Mutate: lead with the instrumentation-only interference measurement and demote the EMA intervention to one validation arm."
+    },
+    {
+      "idea_id": "W15-B002-A-010",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "Payload as written is a training-schedule trick. Mutate: reframe around the falsifiable curriculum claim (cost-based assignment enacts an easy-object-first ordering that suppresses rare-class AP), with the randomized phase as one intervention arm among controls."
+    },
+    {
+      "idea_id": "W15-B002-A-018",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "The shape-conditioned suppression-bias measurement is crisp and inference-only, but the per-axis-normalized-overlap fix lands in a crowded NMS-variant space. Mutate: measurement-first framing; any fix claim requires a prior-art sweep of shape-aware NMS variants."
+    },
+    {
+      "idea_id": "W15-B002-A-035",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "Keep the falsifiable claim that class-conditional resolution-AP optima diverge and are predictable from class size statistics; drop the per-class selection system as the contribution - multi-scale/selective inference is well-trodden engineering."
+    },
+    {
+      "idea_id": "W15-B002-A-047",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "The representation/final-layer separability hypothesis must beat the trivial null: temperature scaling already re-anchors output scaling post hoc (the shard's own protocol includes it). Mutate: surviving claim is advantage over post-hoc recalibration under shift; otherwise dominated."
+    },
+    {
+      "idea_id": "W15-B002-A-051",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "Head-only retraining closely resembles decoupled classifier-retraining practice. Mutate: the idea is the measurable head/backbone convergence mismatch under assignment non-stationarity, not the retuning recipe; frame the recipe as the confirmation experiment."
+    },
+    {
+      "idea_id": "W15-B002-A-073",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "'Predicts realized utility better' hinges on contestable utility simulations - conceded in main_risk. Mutate: restrict to the crisp, cheap core (rankings materially diverge between class-equal and instance-weighted AP, driven by rare-class score arbitrage)."
+    },
+    {
+      "idea_id": "W15-B002-A-098",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "Oracle headroom plus predictability-of-difficulty is the falsifiable core and dies cheaply on a null. Building the router is standard dynamic-resolution engineering; cut the routing system from the claim."
+    },
+    {
+      "idea_id": "W15-B002-B-044",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "Spectral-deficit measurement and the cost-matched boundary-vs-resolution comparison are the falsifiable content; 'inject early-layer skips / edge-aware modulation' is a module graft. Mutate: pathway becomes a validation instrument, not the contribution."
+    },
+    {
+      "idea_id": "W15-B002-B-081",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "As written it is a two-recipe bake-off with delicate matched-compute bookkeeping (conceded in main_risk). Mutate: name the mechanism - which alignment structure finetuning damages and distillation preserves - and pre-register the compute protocol; otherwise it is a permutation comparison."
+    },
+    {
+      "idea_id": "W15-B002-B-098",
+      "outcome": "accepted_with_mutation_required",
+      "rule": "R5_mutation_passthrough",
+      "judge_B_note": "The correction-turn statelessness measurement (repeat rate under 'no, the other one') is cheap and genuinely diagnostic; the exclusion-memory fix is the expected trivial intervention. Mutate: lead with the failure law, demote the fix to validation."
+    }
+  ],
+  "note_on_unlisted_ideas": "All ideas not in resolution_table_nontrivial were unanimous keep (A=keep, B=keep, C=keep) and are accepted without flags (advisory judge_C family flags and judge_A prior-art advisories are carried in accepted.jsonl consolidation blocks)."
+}

@@ -1,0 +1,36 @@
+{
+  "task_id": "p1_wave_a_batch002_gen_A",
+  "role": "generator",
+  "status": "complete",
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "territory": "T04 Object detection",
+  "batch": 2,
+  "idea_count": 100,
+  "idea_id_range": ["W15-B002-A-001", "W15-B002-A-100"],
+  "clusters": [
+    "label_assignment",
+    "duplicate_suppression_nms",
+    "box_regression_loss_geometry",
+    "small_objects_scale",
+    "confidence_calibration",
+    "training_dynamics_optimization",
+    "annotation_noise_gt_ambiguity",
+    "evaluation_metrics",
+    "context_background_cooccurrence",
+    "test_time_robustness_deployment"
+  ],
+  "output_files": [
+    "Windows15/_state/tasks/p1/batch_002/gen_A/ideas.jsonl",
+    "Windows15/_state/tasks/p1/batch_002/gen_A/report.md",
+    "Windows15/_state/tasks/p1/batch_002/gen_A/done.json"
+  ],
+  "hard_rules_followed": {
+    "no_verified_novelty_claims": true,
+    "no_invented_citations_or_results": true,
+    "shard_files_only_in_output_dir": true,
+    "no_canonical_state_modified": true,
+    "no_lock_modified": true
+  },
+  "recommended_next_task_type": "p1_wave_b_dedup_batch002"
+}

@@ -1,0 +1,35 @@
+{
+  "task_id": "p1_wave_b_batch002_judge_B",
+  "role": "judge_B (permutation-kill / feasibility)",
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "batch": "batch_002",
+  "status": "done",
+  "inputs": [
+    "origin/cursor/p1-wave-a-batch002-gen-a-83d7 :: Windows15/_state/tasks/p1/batch_002/gen_A/ideas.jsonl (100 ideas, T04)",
+    "origin/cursor/p1-wave-a-batch002-gen-b-0edc :: Windows15/_state/tasks/p1/batch_002/gen_B/ideas.jsonl (100 ideas, T05)",
+    "origin/cursor/p1-wave-a-batch002-gen-c-86e2 :: Windows15/_state/tasks/p1/batch_002/gen_C/ideas.jsonl (100 ideas, T06)"
+  ],
+  "ideas_reviewed": 300,
+  "counts": {
+    "verdict": { "keep": 286, "mutate": 12, "drop": 2 },
+    "permutation_flagged": 14,
+    "feasibility": { "cheap": 247, "medium": 53, "expensive": 0, "infeasible": 0 },
+    "falsifiable": { "true": 300, "false": 0 }
+  },
+  "drops": ["W15-B002-A-012", "W15-B002-B-079"],
+  "mutates": [
+    "W15-B002-A-007", "W15-B002-A-010", "W15-B002-A-018", "W15-B002-A-035",
+    "W15-B002-A-047", "W15-B002-A-051", "W15-B002-A-073", "W15-B002-A-098",
+    "W15-B002-B-044", "W15-B002-B-081", "W15-B002-B-083", "W15-B002-B-098"
+  ],
+  "outputs": [
+    "Windows15/_state/tasks/p1/batch_002/judge_B/report.md",
+    "Windows15/_state/tasks/p1/batch_002/judge_B/verdict.jsonl",
+    "Windows15/_state/tasks/p1/batch_002/judge_B/done.json"
+  ],
+  "canonical_writes": false,
+  "no_fake_citations": true,
+  "recommended_next_task_type": "p1_wave_b_batch002_consolidator",
+  "completed_at": "2026-08-28T20:35:00Z"
+}
