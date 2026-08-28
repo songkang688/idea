@@ -1,0 +1,50 @@
+{
+  "task_id": "P1-genA-11-negative-results",
+  "role": "Generator",
+  "status": "complete",
+  "window": "Windows16",
+  "territory": "Negative results in vision/ML: rigorous refutations of popular assumptions, studies showing a widely used trick does not actually help, reproduction failures reframed as publishable findings. Academic ML only.",
+  "output_files": [
+    "Windows16/_state/tasks/P1/wave_A/shards/genA-11_negative_results.jsonl",
+    "Windows16/_state/tasks/P1/wave_A/P1-genA-11-negative-results.done.json"
+  ],
+  "candidate_count": 90,
+  "target_band": "80-120",
+  "candidate_id_range": "nres-0001..nres-0090",
+  "clusters": {
+    "augmentation_and_tta_tricks": 8,
+    "regularization_lore": 7,
+    "optimization_lore": 8,
+    "architecture_claims": 8,
+    "ssl_pretraining_claims": 7,
+    "transfer_finetuning_claims": 6,
+    "robustness_claims": 7,
+    "interpretability_claims": 6,
+    "evaluation_benchmark_artifacts": 7,
+    "generative_model_claims": 6,
+    "efficiency_compression_claims": 6,
+    "calibration_uncertainty_claims": 5,
+    "multimodal_vlm_claims": 5,
+    "reproduction_methodology": 4
+  },
+  "evidence_labels": {
+    "HYPOTHESIS": 84,
+    "MODEL SPECULATION": 6
+  },
+  "schema_notes": "Each JSONL line carries the parent-mandated fields (candidate_id, territory, title, one_line_idea, cluster, problem, core_hypothesis, falsifiable_prediction, why_important, why_possibly_novel, minimal_falsification_experiment, main_risk, community_default_belief, why_it_might_be_wrong, fastest_falsifying_experiment, evidence_label) plus the shard_format aliases (core_claim, method_sketch, novelty_hook, kill_risk) mirroring their counterparts, consistent with sibling shards genA-01..09. Every candidate states the community default belief, why it might be wrong, and a cheapest falsifying experiment.",
+  "compliance": {
+    "scope": "All 90 candidates are ordinary academic computer-vision/ML research: refutation studies, strong-baseline audits, equivalence tests, and reproduction attempts of popular tricks, claims, and metrics; no security, intrusion, exploit, or unauthorized-access content.",
+    "forbid_fiction": "No fabricated papers, citations, benchmark numbers, dataset facts, or claimed experimental results; well-known technique names (e.g., mixup, distillation, guidance) are referenced generically, and all quantitative statements are phrased as falsifiable predictions under HYPOTHESIS or MODEL SPECULATION labels.",
+    "novelty_claims": "All novelty statements are hedged as possibly-novel and explicitly marked unverified; no verified novelty claimed.",
+    "protected_files": "window.lock.json, research_state.json, ideas_master.jsonl untouched; no Windows directories created; no Windows numbers changed; only the two listed output files written under Windows16/_state/tasks/P1/."
+  },
+  "unresolved_items": [
+    "Novelty of all 90 candidates is unverified against the literature; Wave B dedup plus any novelty-checking stage must vet before promotion. Refutation targets in particular may already have published partial refutations that a literature pass must surface.",
+    "Intra-shard conceptual neighbors flagged for dedup review: nres-0058 / nres-0064 / nres-0087 / nres-0088 / nres-0089 (meta-level audit-and-statistics family: seed variance, tuning-budget matching, registered replication, equivalence testing, ablation re-tuning); nres-0017 / nres-0067 / nres-0077 / nres-0083 (equal-compute-accounting refutation family applied to different targets); nres-0009 / nres-0079 / nres-0080 (calibration-and-confidence strong-baseline family); nres-0025 / nres-0028 (recipe-vs-architecture attribution family); nres-0052 / nres-0053 (transformer-explanation validity family); nres-0001 is a concrete instance of the meta-audit nres-0064 and could be merged into it.",
+    "Cross-territory overlap likely with genA-07 (benchmark weaknesses) via the evaluation_benchmark_artifacts cluster (nres-0058..0064), with genA-09 (synthetic data) via nres-0067 (diffusion-generated training data), and with genA-06 (failure mining) / any domain-shift shard via nres-0046 and nres-0090; dedup should treat those clusters as high-collision zones.",
+    "Candidates nres-0055, nres-0057, and nres-0060 require human-subject studies whose cost and IRB-equivalent feasibility should be assessed before promotion; nres-0046 additionally requires physical collection of degraded captures.",
+    "Several audit-style candidates (nres-0025, nres-0031, nres-0051, nres-0058, nres-0064, nres-0089) require re-running many published methods and are compute-heavy relative to typical Wave A candidates; feasibility screening should weigh their falsification cost.",
+    "Refutation-style ideas carry an inherent asymmetric-outcome risk: several candidates degrade from clean negative results to boundary-mapping papers if the audited effect survives in some regimes; triage should prefer candidates whose fastest_falsifying_experiment is cheap."
+  ],
+  "recommended_next_task_type": "P1-genA-12-contrarian"
+}
