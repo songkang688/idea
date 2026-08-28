@@ -2254,4 +2254,886 @@
 - **Minimal Experiment:** Train {U-Net-2015, DeepLabv3, SegFormer, Mask2Former} under identical modern recipes at matched compute on 4 benchmarks; decompose the historical gap.
 - **Main Risk:** "Modern recipe" choices favor some architectures; tune recipes per-architecture within a fixed budget for fairness.
 
-<!-- APPEND -->
+---
+
+## Cluster 12 — Few-Shot & Zero-Shot Segmentation (IDEA-A-0246 … 0260)
+
+### IDEA-A-0246
+- **One-sentence idea:** Audit base-class leakage in few-shot segmentation benchmarks: how much of reported FSS performance comes from novel classes resembling base classes seen during episodic training?
+- **Problem:** FSS protocols split classes into base/novel, but visual similarity between splits (novel "sheep" after base "cow") means "few-shot" performance partly measures base-class generalization — the leakage magnitude has never been quantified.
+- **Core Hypothesis (falsifiable):** Per-novel-class FSS performance correlates strongly (ρ > 0.7) with feature-space proximity to the nearest base class, and re-splitting benchmarks to maximize base-novel distance drops reported SOTA by >15 IoU — much of "few-shot learning" is near-class transfer.
+- **Why Important:** If FSS scores are dominated by split geometry, method comparisons are confounded and truly-novel-class deployment expectations are inflated.
+- **Why Possibly Novel:** Class-split criticism exists for few-shot classification; the quantified leakage analysis with distance-controlled re-splits for segmentation is missing.
+- **Minimal Experiment:** Compute base-novel proximity for standard splits (PASCAL-5i/COCO-20i); correlate with per-class results of 5 published methods; construct and evaluate max-distance splits.
+- **Main Risk:** Feature-space proximity depends on the embedding used; replicate with multiple embeddings.
+
+### IDEA-A-0247
+- **One-sentence idea:** Test whether modern frozen-VFM nearest-neighbor matching (DINOv2 features + correspondence) beats a decade of specialized few-shot segmentation architectures — a baseline-resets-the-field audit.
+- **Problem:** FSS architectures grew elaborate while foundation features quietly improved; if training-free feature matching now matches or beats meta-trained specialists, the subfield's architectural accumulation needs reassessment.
+- **Core Hypothesis (falsifiable):** A tuned training-free pipeline (frozen DINOv2 correspondence + SAM refinement) exceeds the published SOTA of episodic meta-learned FSS methods on standard 1-shot benchmarks — the field's architecture stack is dominated by its frozen-feature substrate, falsified if meta-training retains a clear margin.
+- **Why Important:** Establishes the correct 2026 baseline for FSS and tests whether meta-learning adds anything atop foundation features — a question the field has avoided.
+- **Why Possibly Novel:** Training-free baselines appear occasionally but not as tuned, systematic challenges to the full benchmark suite.
+- **Minimal Experiment:** Build the training-free pipeline; tune on validation folds only; compare against published numbers and re-run top methods on identical splits.
+- **Main Risk:** Refinement components (SAM) leak extra pretraining knowledge — that's the point, but scope the claim as "FSS-specific machinery vs foundation substrate."
+
+### IDEA-A-0248
+- **One-sentence idea:** Measure the asymmetric information value of positive versus negative examples in few-shot segmentation: is one negative support (this is NOT the class) worth more or less than one positive?
+- **Problem:** FSS uses positive supports by convention; negatives (visually similar non-instances) might resolve exactly the confusions that positives cannot, but the positive/negative information asymmetry has never been quantified for dense tasks.
+- **Core Hypothesis (falsifiable):** For fine-grained or confusable classes, exchanging one positive for one hard-negative support improves 5-shot performance (>3 IoU), while for distinctive classes it hurts — support-set composition should be confusability-adaptive, falsified if positives always dominate.
+- **Why Important:** Support-set design is the practical interface of FSS; an evidence-based composition rule changes how annotation budgets are spent.
+- **Why Possibly Novel:** Negative supports appear in interactive segmentation but the information-value accounting within FSS budgets is unexplored.
+- **Minimal Experiment:** On FSS benchmarks augmented with hard negatives, sweep support compositions {5+0, 4+1, 3+2} across class-confusability strata; measure the interaction.
+- **Main Risk:** Requires FSS models that accept negatives; adapt matching-based methods (naturally extendable) and note architectural scope.
+
+### IDEA-A-0249
+- **One-sentence idea:** Decompose zero-shot segmentation quality into region-identification versus boundary-delineation components, testing whether open-vocabulary models' weakness is almost entirely boundary-side.
+- **Problem:** Zero-shot segmenters are scored with a single IoU that conflates finding the right region with delineating it; the decomposition determines whether the field needs better vision-language alignment or just better mask refinement.
+- **Core Hypothesis (falsifiable):** Matching OV model region-centroids to a class-agnostic refiner (SAM) recovers >70% of the gap to supervised models — zero-shot failure is mostly boundary-side, falsified if region identification itself accounts for the majority of the gap.
+- **Why Important:** Routes research investment: alignment work vs refinement work address different failure components, and the field currently invests blindly.
+- **Why Possibly Novel:** The two-stage decomposition with recovery accounting has not been used to structure the zero-shot gap.
+- **Minimal Experiment:** On OV benchmarks, evaluate {raw OV, OV+refiner, supervised} triplets; attribute the gap between components per class.
+- **Main Risk:** Refiner failures on certain categories (amorphous) contaminate the decomposition; report per-category attribution.
+
+### IDEA-A-0250
+- **One-sentence idea:** Test whether episodic meta-training helps at all for cross-domain few-shot segmentation (natural→medical/aerial), versus simply fine-tuning a foundation model on the 5 available target images.
+- **Problem:** Meta-learning claims to teach "how to learn from few examples," but for cross-domain deployment the mundane alternative — directly fine-tuning on the shots — is rarely compared fairly; practitioners don't know which to use.
+- **Core Hypothesis (falsifiable):** Direct 5-shot fine-tuning (with modern PEFT and augmentation) beats episodically meta-trained FSS models on cross-domain targets by >5 IoU — meta-training's benefit does not survive domain shift, falsified if meta-trained models win cross-domain.
+- **Why Important:** The comparison determines whether cross-domain FSS research should exist as a distinct enterprise or collapse into few-sample fine-tuning practice.
+- **Why Possibly Novel:** Within-domain comparisons exist; the cross-domain audit with modern fine-tuning baselines is missing.
+- **Minimal Experiment:** 4 cross-domain targets × {meta-trained FSS, PEFT fine-tune, training-free matching} at identical shot budgets; 5 support-set resamples each.
+- **Main Risk:** Fine-tuning needs hyperparameters chosen without target validation data; use a fixed cross-domain-validated recipe to keep it honest.
+
+### IDEA-A-0251
+- **One-sentence idea:** Test the single-prototype assumption of prototype-based FSS: does performance degrade predictably with the intra-class appearance multimodality of the target class, and do multi-prototype methods fix exactly the multimodal classes?
+- **Problem:** Prototype methods compress a class into one vector; classes with multimodal appearance (dogs, chairs) should break this, but the failure has never been tied quantitatively to measured class multimodality — so the fix (multi-prototype) is applied indiscriminately.
+- **Core Hypothesis (falsifiable):** Per-class FSS performance drops linearly with an appearance-multimodality index (clustering dispersion of class features), prototype methods show 2× the slope of matching-based methods, and multi-prototype variants flatten the slope specifically — the assumption's cost is measurable and method-differential.
+- **Why Important:** Provides a diagnostic (multimodality index) that predicts per-class method choice, replacing uniform method application.
+- **Why Possibly Novel:** Multi-prototype methods exist; the quantitative multimodality-performance law and its method-differential verification are not established.
+- **Minimal Experiment:** Compute multimodality indices for benchmark classes; regress per-class performance of {prototype, matching, multi-prototype} methods on the index; compare slopes.
+- **Main Risk:** Multimodality index depends on the feature space; verify slope stability across embeddings.
+
+### IDEA-A-0252
+- **One-sentence idea:** Test whether in-context example *selection* matters more than model choice for in-context segmentation: quantify the performance spread across support-retrieval strategies versus across models.
+- **Problem:** In-context segmentation research optimizes models while treating support choice as given; if retrieval strategy explains more variance than model identity, the field is optimizing the smaller factor.
+- **Core Hypothesis (falsifiable):** The performance spread between worst and best support-retrieval strategies (random vs visual-similarity vs hybrid retrieval) exceeds the spread across current in-context models under fixed supports — selection dominates modeling, falsified if model spread is larger.
+- **Why Important:** Redirects effort toward retrieval infrastructure (cheap, immediately deployable) if selection dominates — a factor-importance result with direct practical reallocation.
+- **Why Possibly Novel:** Example-selection effects are established for LLM in-context learning; the variance-decomposition framing for visual in-context dense tasks is new.
+- **Minimal Experiment:** 3 in-context segmenters × 5 retrieval strategies × 3 benchmarks; two-way variance decomposition of results.
+- **Main Risk:** Retrieval pool composition affects strategy ceilings; standardize pools and report pool sensitivity.
+
+### IDEA-A-0253
+- **One-sentence idea:** Map the trade-off frontier of generalized few-shot segmentation — adding novel classes without degrading base classes — and test whether the frontier's shape is method-invariant (an intrinsic interference law).
+- **Problem:** GFSS methods report single operating points on the base-novel trade-off; without frontier mapping, method comparisons conflate operating-point choice with genuine capability, and the trade-off's intrinsic shape is unknown.
+- **Core Hypothesis (falsifiable):** After sweeping each method's balancing knobs, all current GFSS methods trace statistically indistinguishable base-novel frontiers — reported differences are operating-point artifacts, and the frontier itself (interference law) is method-invariant, falsified if any method Pareto-dominates.
+- **Why Important:** If the frontier is invariant, GFSS progress requires attacking the interference mechanism itself, not re-balancing — a redirection of the subfield.
+- **Why Possibly Novel:** Frontier-based method comparison has not been applied to GFSS; single-point reporting is universal.
+- **Minimal Experiment:** Sweep balancing parameters of 5 GFSS methods on standard benchmarks; overlay frontiers with bootstrap bands.
+- **Main Risk:** Some methods lack explicit balance knobs; add loss-weight sweeps as the common mechanism.
+
+### IDEA-A-0254
+- **One-sentence idea:** Construct a true-zero-shot benchmark from procedurally synthesized never-seen categories to measure how much of "zero-shot segmentation" survives when pretraining exposure is provably zero.
+- **Problem:** Zero-shot claims are untestable on natural categories (everything is in web data somewhere, cf. IDEA-A-0194); provably novel synthetic categories with controllable structure would give the first clean zero-shot measurement.
+- **Core Hypothesis (falsifiable):** On procedurally generated novel object categories (parametric shape-texture grammars, verified absent from training corpora), OV segmentation performance drops >40% relative to matched-difficulty natural categories — a large share of "zero-shot" is memory, falsified if synthetic-novel performance matches natural.
+- **Why Important:** Provides the field's first uncontaminated zero-shot number and a reusable instrument for honest evaluation of future models.
+- **Why Possibly Novel:** Synthetic OOD objects exist for detection robustness; the calibrated-difficulty, contamination-proof zero-shot benchmark for segmentation is new.
+- **Minimal Experiment:** Build the generator with difficulty calibration (human segmentability matching to natural classes); evaluate 5 OV models on matched natural/synthetic pairs.
+- **Main Risk:** Synthetic rendering artifacts confound difficulty matching; use human performance as the difficulty anchor.
+
+### IDEA-A-0255
+- **One-sentence idea:** Quantify FSS robustness to support-annotation quality: how much does a sloppy support mask (loose boundary, missing parts) degrade few-shot performance, and which method families are robust?
+- **Problem:** FSS assumes clean support masks, but real users provide fast, imperfect annotations; sensitivity to support noise determines deployability, and method families plausibly differ (prototype averaging may be robust; matching may propagate errors).
+- **Core Hypothesis (falsifiable):** Boundary-level support noise (±5 px) costs matching-based methods >8 IoU but prototype methods <3 (averaging absorbs noise), while *topological* support errors (missing parts) invert the ranking — robustness is noise-type × method-family structured.
+- **Why Important:** Deployment guidance: which FSS family to use given expected annotation quality — and a robustness dimension for future method evaluation.
+- **Why Possibly Novel:** Support-quality sensitivity has not been systematically measured for FSS; the noise-type × family interaction is unexplored.
+- **Minimal Experiment:** Apply controlled support corruptions (boundary jitter, dilation/erosion, part deletion) across 6 methods on standard benchmarks; map the sensitivity matrix.
+- **Main Risk:** Synthetic corruptions may miss real user error patterns; calibrate with a small set of genuinely user-drawn supports.
+
+### IDEA-A-0256
+- **One-sentence idea:** Test whether one exemplar generalizes to densely repeated instances (counting-and-segmenting all screws in a bin) — does FSS transfer from the "one prominent object" regime to the "hundreds of identical instances" regime?
+- **Problem:** FSS benchmarks feature few prominent instances; industrial/agricultural use needs exemplar-based segmentation of dense repetitions, where matching ambiguity, occlusion, and scale variation differ qualitatively — the regime transfer is unmeasured.
+- **Core Hypothesis (falsifiable):** FSS methods trained/evaluated on standard benchmarks lose >30 IoU-equivalent when applied to dense-repetition scenes at matched per-instance difficulty, with errors dominated by instance merging (not misclassification) — the regime requires instance-aware matching that current FSS lacks.
+- **Why Important:** Dense repetition is the industrial FSS use case; documenting the regime gap and its merging-dominated structure directs method development where deployment need is.
+- **Why Possibly Novel:** Counting and FSS are separate literatures; the regime-transfer audit connecting them is new.
+- **Minimal Experiment:** Build/adapt a dense-repetition exemplar benchmark (FSC-147-style with masks); evaluate FSS methods; classify error types.
+- **Main Risk:** Per-instance difficulty matching across regimes is delicate; use human single-instance segmentability as the anchor.
+
+### IDEA-A-0257
+- **One-sentence idea:** Dissociate semantic from visual similarity in support selection: when the support is semantically correct but visually atypical (a sphynx cat for "cat"), does FSS follow semantics or appearance?
+- **Problem:** Support images are assumed to define classes semantically, but matching-based FSS may propagate the support's specific appearance, silently narrowing the class — the semantics-vs-appearance allegiance of FSS is unmeasured.
+- **Core Hypothesis (falsifiable):** With visually atypical supports, FSS recall on typical class instances drops >25% for matching-based methods (appearance allegiance) but <10% for text-augmented methods (semantic anchor) — support atypicality is a controllable probe of what "the class" means to each method family.
+- **Why Important:** Real-world supports are whatever the user has; understanding allegiance predicts failure and motivates hybrid (text+shot) interfaces where they help (cf. IDEA-A-0259).
+- **Why Possibly Novel:** Support-typicality effects have not been isolated as an experimental variable in FSS.
+- **Minimal Experiment:** Curate typical/atypical support pairs per class; measure recall-on-typical-instances across method families.
+- **Main Risk:** Atypicality is class-relative; use human typicality ratings to construct the axis.
+
+### IDEA-A-0258
+- **One-sentence idea:** Measure the value of *support-selection agency*: if the system can choose which unlabeled image the user should annotate as the support, how much does optimal support choice improve FSS over user-arbitrary supports?
+- **Problem:** FSS treats supports as exogenous; in practice the system sees the unlabeled pool first and could nominate the most informative image for annotation — the value of this agency (and what makes a support optimal) is unquantified.
+- **Core Hypothesis (falsifiable):** Oracle-selected supports beat random supports by >10 IoU at 1-shot, and a learnable selection policy (coverage of the pool's appearance modes) captures >60% of the oracle gain — support nomination is a high-leverage, learnable decision.
+- **Why Important:** A deployable, model-agnostic improvement to every FSS workflow that costs one ranking pass and no model changes.
+- **Why Possibly Novel:** Active learning selects training data generally; the FSS-specific single-support nomination problem with mode-coverage theory is unexplored.
+- **Minimal Experiment:** On FSS benchmarks, compute oracle support rankings; train/evaluate selection policies; measure captured gain across methods.
+- **Main Risk:** Oracle computation cost scales with pool size; subsample pools with stratification.
+
+### IDEA-A-0259
+- **One-sentence idea:** Quantify the marginal value of language once visual shots are available: does adding the class name to a 5-shot visual support set improve segmentation at all, and for which classes?
+- **Problem:** Hybrid text+shot interfaces are built assuming the modalities complement, but 5 good shots may saturate class definition, making text redundant — the marginal-information analysis has never been run.
+- **Core Hypothesis (falsifiable):** Text adds >3 IoU on top of 5 shots only for classes where shots under-span appearance modes (high multimodality per IDEA-A-0251) or where the name disambiguates granularity (part/whole); for typical classes the marginal value is <0.5 IoU — language's role in few-shot regimes is corrective, not additive.
+- **Why Important:** Interface design economics: knowing when to ask users for words vs more clicks vs more examples (completing the triad with IDEA-A-0037).
+- **Why Possibly Novel:** Text+shot methods report aggregate gains; the class-conditional marginal-value decomposition is missing.
+- **Minimal Experiment:** On models supporting both modalities, evaluate {shots, shots+text} across classes; regress the delta on multimodality and granularity-ambiguity covariates.
+- **Main Risk:** Results are model-family-specific; replicate across ≥2 hybrid architectures.
+
+### IDEA-A-0260
+- **One-sentence idea:** Measure human disagreement about what a single support mask *means* (part vs whole vs sub-type vs super-type), establishing the intrinsic ambiguity floor of the 1-shot segmentation task itself.
+- **Problem:** One masked example under-determines the intended class (a masked beagle: beagles? dogs? animals? brown things?); FSS evaluates against one interpretation without measuring how ambiguous the task inherently is — models may be "failing" at an ill-posed task.
+- **Core Hypothesis (falsifiable):** Human annotators given only the support disagree on query-image labeling at rates that impose a ceiling of ~0.7 IoU-equivalent agreement for a substantial fraction of standard episodes — a large share of the remaining FSS "gap to perfect" is task ambiguity, not model deficiency, falsified if human agreement is near-perfect.
+- **Why Important:** Establishes the true headroom of FSS benchmarks and motivates ambiguity-resolving interfaces (text qualifiers, second shots chosen to disambiguate).
+- **Why Possibly Novel:** Task-ambiguity floors have been measured for classification datasets; the 1-shot segmentation version — where ambiguity is about class *extension* — is unmeasured.
+- **Minimal Experiment:** Human study: given supports from standard episodes, annotators segment queries; measure inter-human agreement and compare with model-human gaps.
+- **Main Risk:** Human annotators bring priors models lack (or vice versa); frame the ceiling as "human-consensus headroom," not absolute truth.
+
+---
+
+## Cluster 13 — Weakly-, Semi- & Self-Supervised Segmentation (IDEA-A-0261 … 0280)
+
+### IDEA-A-0261
+- **One-sentence idea:** Decompose the remaining gap in image-label-only weakly supervised semantic segmentation (WSSS) into localization, extent, and boundary components to test whether the CAM paradigm has hit a structural ceiling.
+- **Problem:** WSSS progress has slowed near a performance plateau; without knowing whether the residual gap is in finding objects, estimating their extent, or delineating boundaries, the field cannot tell if the CAM-seed paradigm is exhausted or under-optimized.
+- **Core Hypothesis (falsifiable):** ≥70% of the residual gap to full supervision is extent error (systematic under/over-coverage of discriminative regions), which is *structural* to classification-derived localization — oracle boundary refinement barely helps, and no CAM-family method can close it, falsified if boundary refinement recovers most of the gap.
+- **Why Important:** Declares (with evidence) whether WSSS research should abandon the CAM paradigm for foundation-model-based alternatives, ending a possibly futile optimization race.
+- **Why Possibly Novel:** WSSS papers optimize the pipeline; the component-wise ceiling analysis of the paradigm itself is not published.
+- **Minimal Experiment:** For 5 WSSS methods, replace each pipeline stage with oracles (perfect seeds, perfect extent, perfect boundaries); attribute the residual gap per component.
+- **Main Risk:** Oracle definitions influence attribution; use multiple oracle constructions and report ranges.
+
+### IDEA-A-0262
+- **One-sentence idea:** Measure the information-value curve of point supervision: how does segmentation quality scale with points-per-instance, and where does the marginal point stop paying?
+- **Problem:** Point supervision budgets are set arbitrarily (1 point, 10 points); the value curve's shape — including where it saturates relative to full masks — determines optimal annotation policy, but has never been mapped under modern (foundation-assisted) training.
+- **Core Hypothesis (falsifiable):** With modern pseudo-labeling (points + SAM-class expansion), the value curve saturates at 3–5 well-placed points per instance reaching >90% of full-mask training performance — masks are largely redundant given points plus foundation priors, falsified if the curve keeps climbing to dense supervision.
+- **Why Important:** If 3–5 points ≈ full masks, annotation economics change for every new dataset; the result would immediately reshape labeling practice.
+- **Why Possibly Novel:** Point supervision exists; the saturation analysis in the foundation-model-assisted regime is the new, decision-relevant measurement.
+- **Minimal Experiment:** Train across points-per-instance ladders × {with, without} foundation-prior expansion on 3 datasets; fit saturation curves.
+- **Main Risk:** Point placement policy strongly affects the curve; compare random vs informed placement explicitly.
+
+### IDEA-A-0263
+- **One-sentence idea:** Build the annotation-time-normalized supervision comparison: scribbles vs points vs boxes vs polygons per unit of *measured human time*, with foundation-assisted training as the consumer.
+- **Problem:** Supervision-form comparisons use per-annotation counts, but forms cost wildly different human time; the field lacks the time-normalized value ranking that actual annotation planning needs — especially now that foundation models change each form's downstream value.
+- **Core Hypothesis (falsifiable):** Under time normalization with foundation-assisted training, boxes dominate below ~5 s/instance budgets and scribbles dominate above, while polygon annotation is never optimal — the classic "masks are gold" assumption fails on time-value grounds across all budgets.
+- **Why Important:** Every applied project allocates annotation budgets; a validated time-value ranking (with its budget crossovers) is directly actionable guidance.
+- **Why Possibly Novel:** Isolated time studies exist; the complete time-normalized ranking in the foundation-assisted regime is missing.
+- **Minimal Experiment:** Measure per-form annotation times in a controlled tool; train matched models per form × time budget on 3 datasets; map the dominance regions.
+- **Main Risk:** Tool UX strongly affects times; use two annotation tools and report tool sensitivity.
+
+### IDEA-A-0264
+- **One-sentence idea:** Quantify confirmation-bias dynamics in semi-supervised segmentation: track how initial pseudo-label errors are reinforced over training, and identify the error types that self-amplify versus self-correct.
+- **Problem:** Pseudo-label confirmation bias is invoked to explain semi-supervised failures, but the actual dynamics — which errors grow, which shrink, on what timescale — have never been measured for dense tasks, leaving mitigation design blind.
+- **Core Hypothesis (falsifiable):** Spatially coherent errors (whole-region misclassification) self-amplify (error mass grows across iterations) while incoherent boundary noise self-corrects, and the amplification rate is predicted by the error region's feature-space isolation — bias is structured and forecastable, falsified if error evolution is type-independent.
+- **Why Important:** Predictable amplification enables targeted intervention (verify only self-amplifying regions), making semi-supervised training safely automatable.
+- **Why Possibly Novel:** Confirmation bias is named but its dense-task dynamics and type-structure have not been longitudinally measured.
+- **Minimal Experiment:** Instrument pseudo-label training with per-region error tracking across iterations on 3 datasets; classify error trajectories; fit amplification predictors.
+- **Main Risk:** Tracking requires held-out GT for pool images; use fully labeled datasets with labels hidden from training.
+
+### IDEA-A-0265
+- **One-sentence idea:** Audit which consistency-regularization augmentations encode *valid* invariances for segmentation, testing the hypothesis that some standard perturbations (strong color jitter on material-defined classes, cutout across object boundaries) teach false invariances that cap semi-supervised performance.
+- **Problem:** Consistency training borrows augmentation menus from classification, but segmentation targets are not invariant to all of them (cutout deletes evidence; color jitter destroys material identity); the per-augmentation validity accounting is missing.
+- **Core Hypothesis (falsifiable):** Removing invalidity-flagged augmentations from consistency training improves class-stratified performance on material/color-defined classes by >5 IoU without hurting shape-defined classes — augmentation validity is class-structured and menu pruning is free performance, falsified if the full menu always wins.
+- **Why Important:** Consistency training is the semi-supervised workhorse; a validity-audited augmentation menu upgrades it everywhere at zero cost.
+- **Why Possibly Novel:** Augmentation studies optimize aggregate gains; the invariance-validity framework with class-stratified verification is new for dense tasks.
+- **Minimal Experiment:** Classify augmentations by invariance validity per class type; run menu ablations on 3 semi-supervised benchmarks; test the predicted class × augmentation interaction.
+- **Main Risk:** Class-type taxonomy (shape- vs material-defined) needs care; derive it from human judgments, not intuition.
+
+### IDEA-A-0266
+- **One-sentence idea:** Test whether unsupervised segmentation via SSL-feature clustering discovers *objects* or merely *contiguous texture regions*, using scenes where objecthood and texture segmentation disagree.
+- **Problem:** Unsupervised segmentation methods report improving object metrics, but their clustering substrate may be texture coherence that only correlates with objects in curated benchmarks — on texture-object dissociated scenes the methods' true nature would show.
+- **Core Hypothesis (falsifiable):** On dissociation scenes (multi-texture single objects, uniform-texture multi-object groups), SSL-clustering methods track texture boundaries in >70% of conflicts — "unsupervised object discovery" is largely texture grouping, falsified if methods follow objecthood cues (closure, continuity) over texture.
+- **Why Important:** Clarifies what unsupervised segmentation actually achieves, tempering claims and directing work toward genuine objecthood signals (motion, 3D).
+- **Why Possibly Novel:** The dissociation-scene methodology (borrowed from perception science) has not been applied to audit unsupervised segmentation claims.
+- **Minimal Experiment:** Curate/construct dissociation scenes; evaluate 5 unsupervised methods on texture-vs-object allegiance; compare against human grouping.
+- **Main Risk:** Constructed scenes may be off-distribution for the methods; include natural dissociation cases (striped animals, uniform crowds).
+
+### IDEA-A-0267
+- **One-sentence idea:** Quantify what student models inherit from SAM when trained on SAM pseudo-labels: do students replicate SAM's boundary style, granularity bias, and amorphous-object failures, and at what fidelity?
+- **Problem:** SAM-as-pseudo-labeler is now standard for scaling datasets, but distillation propagates teacher biases (cf. IDEA-A-0007, 0015) into students that will be evaluated as if independent — the inheritance profile is unmeasured.
+- **Core Hypothesis (falsifiable):** Students trained on SAM pseudo-labels reproduce SAM's specific error signature (granularity choices, hole-filling, amorphous shrinkage) at >70% signature-match on cases where independent human GT disagrees with SAM — student "performance" partly measures SAM-agreement, falsified if students average away teacher idiosyncrasies.
+- **Why Important:** The entire SAM-labeled data ecosystem inherits these biases invisibly; measuring inheritance fidelity is prerequisite for trusting SAM-scaled datasets.
+- **Why Possibly Novel:** Distillation bias is known abstractly; the concrete signature-inheritance measurement for the field's dominant pseudo-labeler is new.
+- **Minimal Experiment:** Train students on SAM labels for 3 domains; evaluate on human-GT subsets where SAM errs; measure signature-match rates vs error-averaging.
+- **Main Risk:** Signature matching needs careful definition; use the failure taxonomy from Cluster 1 as the instrument.
+
+### IDEA-A-0268
+- **One-sentence idea:** Run the controlled comparison between classic CAM-based WSSS pipelines and VLM-grounding-based weak supervision (tags → grounded masks) to establish whether the foundation era has obsoleted the CAM literature.
+- **Problem:** Two paradigms now compete for image-label-only segmentation — a decade of CAM machinery vs zero-shot VLM grounding — but no controlled comparison exists, so the field maintains both without knowing if one dominates.
+- **Core Hypothesis (falsifiable):** VLM-grounding pipelines beat the best CAM pipelines on common-class benchmarks (>5 mIoU) but lose on domain-specific vocabularies where VLM grounding is frequency-limited (per IDEA-A-0184) — dominance is vocabulary-conditional, falsified if either paradigm wins uniformly.
+- **Why Important:** Consolidates or retires a large literature; the vocabulary-conditional result would give practitioners a clean selection rule.
+- **Why Possibly Novel:** Both paradigms publish separately; the head-to-head with vocabulary stratification has not been run.
+- **Minimal Experiment:** Best-of-breed pipelines from each paradigm × {common-vocab, domain-vocab} benchmarks under identical supervision; compare with per-class frequency analysis.
+- **Main Risk:** "Best-of-breed" selection invites dispute; use top released systems and document the selection protocol.
+
+### IDEA-A-0269
+- **One-sentence idea:** Test whether classical unsupervised boundary priors (superpixels, edge detectors, CRFs) still add value on top of foundation-model features for label-efficient boundary refinement, or have been fully subsumed.
+- **Problem:** Pre-deep-learning priors linger in label-efficient pipelines by inertia; whether they contribute anything beyond modern feature affinity is unknown, and each adds hyperparameters and compute.
+- **Core Hypothesis (falsifiable):** With DINOv2-affinity-based refinement in place, adding superpixel/CRF stages changes boundary-F within noise on natural images but retains >2-point value on modalities with weak feature affinity (thermal, ultrasound) — classical priors survive only where foundation features are weakest.
+- **Why Important:** Pipeline simplification with a principled exception map; also measures where foundation features remain deficient (echoing IDEA-A-0216).
+- **Why Possibly Novel:** Component audits of label-efficient pipelines against modern feature baselines are absent.
+- **Minimal Experiment:** {feature-affinity only, +superpixels, +CRF, +both} refinement on weak labels across natural/medical/thermal datasets.
+- **Main Risk:** Refinement stages interact; report the full factorial, not just additions.
+
+### IDEA-A-0270
+- **One-sentence idea:** Measure error decorrelation between SAM-derived and CLIP-derived pseudo-labels, testing whether co-training on two foundation teachers with *different pretraining objectives* escapes single-teacher bias.
+- **Problem:** Co-training theory requires conditionally independent views; two foundation teachers (geometry-driven SAM, semantics-driven CLIP-grounding) might provide exactly that independence — or share web-data-induced correlations that defeat the purpose; nobody has measured their error correlation structure.
+- **Core Hypothesis (falsifiable):** SAM and CLIP-grounding pseudo-label errors are substantially decorrelated on extent/boundary errors (φ < 0.3) but correlated on rare-category errors (shared web-data blind spots) — co-training helps geometry, not vocabulary coverage, falsified if errors correlate uniformly.
+- **Why Important:** Defines what multi-teacher pseudo-labeling can and cannot fix, preventing wasted co-training efforts on correlated failure axes.
+- **Why Possibly Novel:** Co-training is classic; the error-correlation anatomy of specific foundation teacher pairs is new and immediately usable.
+- **Minimal Experiment:** Generate both teachers' pseudo-labels on 3 datasets with GT; compute error-correlation matrices by error type; run co-training and verify gains land on decorrelated axes.
+- **Main Risk:** Grounding pipelines vary; use 2 CLIP-grounding variants to check robustness of the correlation structure.
+
+### IDEA-A-0271
+- **One-sentence idea:** Measure the class-distribution drift law of pseudo-label training under imbalance: how fast do minority classes shrink across iterations, and is the drift rate predictable enough to correct pre-hoc?
+- **Problem:** Pseudo-labeling amplifies majority classes (confidence bias), silently deleting minority classes over iterations; the quantitative drift law — needed to design principled corrections — has not been measured for segmentation.
+- **Core Hypothesis (falsifiable):** Minority-class pixel mass decays approximately geometrically across self-training iterations with a rate predicted by the class's initial confidence margin distribution — enabling a pre-computed reweighting that holds class mass constant, falsified if drift is erratic or margin-independent.
+- **Why Important:** A validated drift law converts ad hoc class-balancing heuristics into a principled correction with predictable behavior — important wherever minority classes are the point (defects, lesions).
+- **Why Possibly Novel:** Class bias in pseudo-labeling is known; the quantitative decay law and margin-based prediction are not established.
+- **Minimal Experiment:** Instrument self-training across imbalance levels on 3 datasets; fit decay rates; validate the margin-based predictor and the derived correction.
+- **Main Risk:** Drift may interact with augmentation strength; include augmentation as a factor.
+
+### IDEA-A-0272
+- **One-sentence idea:** Measure the unlabeled-data value curve for domain-specific self-supervised pretraining (fire cameras, endoscopy, aerial): how many domain images before continued SSL on-domain beats a general VFM, if ever?
+- **Problem:** Teams with large unlabeled domain archives face a real decision — continue SSL on-domain vs use general VFMs — with no published guidance on the crossover scale (or whether one exists post-DINOv2).
+- **Core Hypothesis (falsifiable):** Domain-continued SSL overtakes frozen general VFMs only beyond ~10⁵–10⁶ domain images for near-natural domains, but at 10–100× fewer images for statistically distant domains (thermal, ultrasound) — the crossover scale is predicted by domain distance, falsified if general VFMs dominate at all feasible scales.
+- **Why Important:** A crossover law directly prices the "collect more unlabeled data" strategy for every applied domain team.
+- **Why Possibly Novel:** Domain-SSL papers report endpoint wins; the value *curve* with distance-conditioned crossover has not been mapped.
+- **Minimal Experiment:** Continued-SSL ladders (10³–10⁶ images) on 3 domains at graded distance; downstream label-efficient segmentation evaluation; fit crossovers.
+- **Main Risk:** SSL recipe quality affects curves; fix a strong standard recipe and note the dependence.
+
+### IDEA-A-0273
+- **One-sentence idea:** Build a noise taxonomy for alt-text-derived weak segmentation supervision (wrong object, wrong extent, metaphorical language, spam) and measure which noise types training is robust to versus destroyed by.
+- **Problem:** Web alt-text is the cheapest supervision source, but its noise is heterogeneous; robust-learning design needs to know which noise types matter, and the segmentation-relevant noise anatomy has never been published.
+- **Core Hypothesis (falsifiable):** Training is nearly immune to missing-mention noise (objects present but not named) but degrades steeply with metaphorical/wrong-object noise above ~15% contamination — noise *type*, not rate, determines damage, falsified if degradation tracks total noise rate regardless of type.
+- **Why Important:** Enables type-targeted filtering (cheap classifiers for the damaging types only) instead of expensive uniform cleaning, changing the economics of web-supervised dense learning.
+- **Why Possibly Novel:** Label-noise theory is class-flip-centric; the multimodal grounding-noise taxonomy with type-differential damage measurement is new.
+- **Minimal Experiment:** Annotate noise types on a web-pair sample; inject controlled noise-type mixtures into clean training; map the damage matrix.
+- **Main Risk:** Synthetic injection may miss noise-type correlations present in real web data; validate on naturally noisy subsets.
+
+### IDEA-A-0274
+- **One-sentence idea:** Investigate the "canonical exemplar" question in barely-supervised segmentation: with one labeled image per class, what measurable properties of that image predict downstream performance, and how much does optimal choice matter?
+- **Problem:** In the 1-labeled-image regime, anecdote says exemplar choice swings results enormously, but the properties of a good exemplar (typicality? diversity? boundary quality?) have never been identified — leaving the regime's reported results essentially unreproducible.
+- **Core Hypothesis (falsifiable):** Downstream performance varies by >15 mIoU across exemplar choices, and a two-factor model (feature-space typicality + intra-image class diversity) predicts exemplar value at ρ > 0.7 — good exemplars are identifiable a priori from unlabeled statistics, falsified if exemplar value is idiosyncratic.
+- **Why Important:** Makes the extreme-low-label regime reproducible and practical (choose the right image to label), and connects to support-selection science (IDEA-A-0258).
+- **Why Possibly Novel:** Barely-supervised results report means over random exemplars; the exemplar-value prediction problem is unformulated.
+- **Minimal Experiment:** Train across all candidate exemplars (subsampled) on 2 datasets; regress outcomes on exemplar statistics; validate the predictor on a third dataset.
+- **Main Risk:** Full exemplar sweeps are expensive; use efficient proxies (short-training performance) after validating proxy fidelity.
+
+### IDEA-A-0275
+- **One-sentence idea:** Test the validity boundary of optical-flow-consistency self-supervision for static segmentation: which class types (rigid, articulated, deformable, stuff) does motion-derived objecthood help versus actively mislead?
+- **Problem:** Flow-consistency pretext tasks assume "moves together = belongs together," which fails for articulated bodies (parts move separately) and adjacent co-moving objects; the class-conditional validity of this popular signal is unmeasured.
+- **Core Hypothesis (falsifiable):** Flow-derived pretraining improves rigid-object segmentation but *degrades* articulated-object part boundaries relative to appearance-only SSL (the pretext teaches over-grouping), with the effect sign predictable from class articulation ratings — falsified if motion supervision helps uniformly.
+- **Why Important:** Motion supervision is scaling up (video pretraining); knowing its class-conditional validity prevents baked-in over-grouping biases in the next model generation (complements IDEA-A-0221).
+- **Why Possibly Novel:** Flow-based SSL reports aggregate gains; the articulation-conditioned harm hypothesis is untested.
+- **Minimal Experiment:** Pretrain matched models {appearance-SSL, +flow-consistency}; evaluate class-stratified segmentation including part benchmarks; test the sign prediction.
+- **Main Risk:** Flow quality confounds the pretext's validity; use high-quality flow and report flow-error sensitivity.
+
+### IDEA-A-0276
+- **One-sentence idea:** Derive and validate a label-free stopping criterion for curriculum pseudo-labeling — when to stop adding pseudo-labels — testing whether internal signals (agreement rates, feature drift) can replace the validation labels that semi-supervised settings by definition lack.
+- **Problem:** Semi-supervised pipelines tune their stopping point on labeled validation sets that real deployments don't have; the field's reported results thus assume information its setting forbids — an under-acknowledged contradiction needing a label-free solution.
+- **Core Hypothesis (falsifiable):** A label-free criterion (pseudo-label churn rate crossing below inter-seed disagreement) selects stopping points within 1 mIoU of oracle stopping on ≥80% of configurations — the needed signal exists internally, falsified if internal signals systematically mis-time stopping.
+- **Why Important:** Closes a methodological hole in semi-supervised practice and makes reported results honest about their information budget.
+- **Why Possibly Novel:** Early stopping without validation is studied for supervised learning; the pseudo-labeling-specific churn-based criterion is new.
+- **Minimal Experiment:** Instrument 30 semi-supervised runs with candidate internal signals; compare criterion-selected vs oracle stopping across datasets.
+- **Main Risk:** Churn signals may be architecture-dependent; validate across 2 model families.
+
+### IDEA-A-0277
+- **One-sentence idea:** Determine the optimal split of a fixed human budget between *annotating* new samples and *verifying* model pseudo-labels, and how the optimum shifts with model quality.
+- **Problem:** Verification (accept/reject a pseudo-label) is far cheaper than annotation but yields less information; every human-in-the-loop pipeline implicitly chooses a split with no evidence — the verify-vs-annotate frontier is unmapped for segmentation.
+- **Core Hypothesis (falsifiable):** The optimal verification share rises steeply with model quality (near 0% for weak models, >70% once pseudo-label precision exceeds ~85%), following a stable budget-allocation curve across datasets — the split should be adaptive, falsified if a fixed split is near-optimal everywhere.
+- **Why Important:** Directly optimizes the dominant cost of applied segmentation (human time) with a deployable adaptive rule.
+- **Why Possibly Novel:** Active learning and pseudo-labeling are studied separately; the verify/annotate budget-split law is unformulated.
+- **Minimal Experiment:** Simulate budget splits with measured human timing (annotation vs verification) across model-quality checkpoints on 3 datasets; map the optimal-share curve.
+- **Main Risk:** Verification error rates (humans wrongly accepting) must be modeled; measure them empirically in the timing study.
+
+### IDEA-A-0278
+- **One-sentence idea:** Learn label-space priors by masked autoencoding on *unpaired* segmentation masks (no images), and test whether such shape/layout priors improve label-efficient segmentation when injected as a regularizer.
+- **Problem:** Massive mask archives exist without usable images (privacy-stripped medical, licensing-orphaned datasets); whether label-space structure alone — shapes, adjacencies, layouts — carries transferable value has not been tested.
+- **Core Hypothesis (falsifiable):** A mask-MAE prior trained on unpaired masks, used to regularize low-label training (penalizing unlikely label configurations), improves 10-label-regime performance by >3 mIoU on structurally regular domains (anatomy, streets) and ~0 on unstructured ones — label-space structure is real, transferable, and domain-regularity-dependent.
+- **Why Important:** Unlocks a dormant data resource (orphaned masks) and quantifies how much of segmentation is knowable from labels alone.
+- **Why Possibly Novel:** Shape priors are classical; foundation-style pretraining on *unpaired mask corpora* as a portable prior is unexplored.
+- **Minimal Experiment:** Train mask-MAE on pooled mask archives; inject as an energy/regularizer in low-label training across structured/unstructured domains; measure the interaction.
+- **Main Risk:** Priors may encode dataset-specific annotation conventions rather than world structure (cf. IDEA-A-0007); test cross-dataset prior transfer explicitly.
+
+### IDEA-A-0279
+- **One-sentence idea:** Formalize merging heterogeneous label taxonomies across segmentation datasets as partial-label learning, and measure how much the standard practice (mapping-table label unification) loses versus principled partial-label training.
+- **Problem:** Multi-dataset training requires reconciling incompatible taxonomies ("road" vs "road+sidewalk"); ad hoc mapping tables discard information and inject conflicts, but the size of that loss versus partial-label formulations is unmeasured.
+- **Core Hypothesis (falsifiable):** Partial-label training (each dataset supervises only its own label algebra) beats mapping-table unification by >3 mIoU on the union taxonomy, with the gain concentrated in classes whose definitions conflict across sources — taxonomy conflicts are a first-order loss the field routinely eats, falsified if mapping tables are near-lossless.
+- **Why Important:** Multi-dataset training is how large segmentation models are now built; the measured cost of taxonomy handling determines whether the field needs new machinery or the status quo suffices.
+- **Why Possibly Novel:** Partial-label learning exists in theory; the quantified comparison against the field's actual practice at multi-dataset scale is missing.
+- **Minimal Experiment:** Train {mapped, partial-label} models on 4-dataset unions with conflicting taxonomies; evaluate on independently annotated union-taxonomy test sets.
+- **Main Risk:** Building the conflict-free union test set is the main labor; scope to a tractable class subset with documented conflicts.
+
+### IDEA-A-0280
+- **One-sentence idea:** Test whether model uncertainty actually targets the pixels humans most need to label — auditing the core assumption of uncertainty-routed annotation (the model asks for labels where it is uncertain) for dense tasks.
+- **Problem:** Uncertainty-guided labeling assumes uncertain pixels are the valuable ones, but uncertainty concentrates on trivial boundary bands (cf. IDEA-A-0103) while systematic errors are often *confident*; the assumption's validity for dense annotation routing is unverified.
+- **Core Hypothesis (falsifiable):** Labeling budget spent on high-uncertainty regions yields less downstream improvement per pixel than budget spent on confident-but-wrong regions identified by cross-model disagreement — uncertainty routes labels to already-known ambiguity, missing the valuable systematic errors, falsified if uncertainty-routed labeling wins.
+- **Why Important:** Uncertainty routing is being productized in annotation platforms; if it targets the wrong pixels, substantial industry annotation spend is misallocated.
+- **Why Possibly Novel:** Active learning compares acquisition functions on aggregate; the uncertainty-vs-confident-error routing dissociation for dense labels is unexamined.
+- **Minimal Experiment:** On datasets with full GT, simulate annotation routing by {uncertainty, disagreement, random} at matched pixel budgets; compare retraining gains.
+- **Main Risk:** Simulated routing ignores human annotation ergonomics (region coherence); include region-level (not pixel-level) budget accounting.
+
+---
+
+## Cluster 14 — Synthetic Data & Generative Training for Dense Tasks (IDEA-A-0281 … 0295)
+
+### IDEA-A-0281
+- **One-sentence idea:** Measure the label-image misalignment noise floor of diffusion-generated training pairs (image synthesized, mask derived from attention/latents) and its downstream cost relative to human-labeled data.
+- **Problem:** Text-to-image pipelines now mass-produce "labeled" segmentation data by extracting masks from generation internals; the spatial fidelity of those masks — the supervision noise floor — is unmeasured, so nobody knows what quality ceiling such data imposes.
+- **Core Hypothesis (falsifiable):** Generation-derived masks carry systematic boundary misalignment (biased outward/inward by class) of 3–10 px equivalent, and models trained on them inherit a matching boundary bias detectable on real test data — the noise is structured (thus partially correctable), not random, falsified if derived masks match human alignment.
+- **Why Important:** Synthetic-pair pipelines are scaling rapidly; their structured supervision noise will become embedded in the next generation of models unless characterized and corrected now.
+- **Why Possibly Novel:** Synthetic-data papers report end metrics; the supervision-noise anatomy (bias structure, inheritance) of generation-derived masks is unexamined.
+- **Minimal Experiment:** Human-annotate 1k generated images; measure derived-mask misalignment structure; train on derived vs corrected masks; test bias inheritance on real benchmarks.
+- **Main Risk:** Human annotation of generated images has its own ambiguity (what is the "true" object in a synthetic image?); use multi-annotator consensus.
+
+### IDEA-A-0282
+- **One-sentence idea:** Map the synthetic-fraction response curve — performance versus percentage of synthetic data in the training mix — testing for non-monotonicity and a phase transition where synthetic artifacts begin to dominate learned features.
+- **Problem:** Practitioners mix synthetic and real data by rules of thumb; whether the response is monotone, saturating, or non-monotone (synthetic helps then hurts) is unknown, and any phase transition would demand mixing-ratio discipline the field currently lacks.
+- **Core Hypothesis (falsifiable):** Real-data test performance versus synthetic fraction is inverted-U shaped with a domain-dependent optimum (typically 30–70%), and the decline phase coincides with the emergence of synthetic-artifact-sensitive features (detectable by forensic probes on the trained model) — falsified if the response is monotone in either direction.
+- **Why Important:** A mapped response curve with a mechanistic signature gives every synthetic-data user a tuning target and a warning instrument.
+- **Why Possibly Novel:** Mixing ratios are ablated incidentally; the systematic curve with the artifact-feature mechanism is not established for dense tasks.
+- **Minimal Experiment:** Train across synthetic-fraction ladders (0–100%) on 3 task/generator combinations; test real-data performance and forensic-probe activation on trained features.
+- **Main Risk:** The curve depends on generator quality; replicate across 2 generator generations to separate the law from the artifact level.
+
+### IDEA-A-0283
+- **One-sentence idea:** Run factor-controlled sim-to-real for segmentation — independently making geometry, texture, lighting, and sensor-model real versus synthetic — to identify which realism factor actually buys transfer for dense tasks.
+- **Problem:** "Realism" in synthetic data is treated as one axis, but rendering budgets must be allocated across factors; dense prediction may need geometric realism far more than photometric realism (or vice versa) — the factor attribution has not been done for segmentation.
+- **Core Hypothesis (falsifiable):** Sensor-model realism (noise, optics, compression) and geometric layout realism dominate transfer for segmentation (together >70% of the sim-to-real gap closure), while texture photorealism — where most rendering effort goes — contributes <15% — falsified if photorealism dominates.
+- **Why Important:** Reallocates synthetic-data engineering budgets field-wide, and explains why some cheap-looking synthetic datasets transfer well while expensive photoreal ones don't.
+- **Why Possibly Novel:** Factor studies exist for object detection in driving; the dense-segmentation factor decomposition including sensor modeling is missing.
+- **Minimal Experiment:** Render a 2⁴ factorial (each factor real-matched vs naive) on one controllable scene domain; train and evaluate on real data; fit factor effects.
+- **Main Risk:** Factors interact with the target domain; replicate the factorial in a second domain before generalizing.
+
+### IDEA-A-0284
+- **One-sentence idea:** Test whether generative augmentation reduces or *amplifies* dataset bias, measuring the bias-inheritance of generators trained on (or prompted around) the same distributions they augment.
+- **Problem:** Generative augmentation is marketed as diversification, but generators trained on similar web distributions may resample the dataset's existing biases (poses, contexts, demographics) more densely — the direction of the bias effect is assumed, never measured.
+- **Core Hypothesis (falsifiable):** For segmentation datasets with documented context biases, generative augmentation increases the bias metric (context-class correlation) in the training mix and *worsens* worst-group performance, unless prompts are explicitly bias-countering — augmentation amplifies bias by default, falsified if naive augmentation dilutes it.
+- **Why Important:** If the default direction is amplification, a large fraction of current generative-augmentation practice is quietly making robustness worse while improving averages.
+- **Why Possibly Novel:** Generator bias is studied in fairness contexts; its coupling to segmentation augmentation practice and worst-group outcomes is unexamined.
+- **Minimal Experiment:** Measure context-bias statistics of {original, naively augmented, counter-prompted} training mixes; train and compare average vs worst-group segmentation.
+- **Main Risk:** Bias metrics for segmentation contexts need construction; adapt co-occurrence-based measures with human validation.
+
+### IDEA-A-0285
+- **One-sentence idea:** Test whether generating synthetic examples of *rare classes* fixes long-tail segmentation or teaches shortcut detection of generation artifacts on exactly those classes.
+- **Problem:** The obvious long-tail fix — synthesize the rare classes — has a specific failure mode: if rare-class training data is predominantly synthetic, models may learn "rare class = synthetic-looking," failing on real rare instances precisely where the fix was aimed; this coupling is untested.
+- **Core Hypothesis (falsifiable):** When synthetic fraction within a class exceeds ~70%, real-instance recall for that class *decreases* relative to no-augmentation baselines (artifact-shortcut regime), while below it augmentation helps — a within-class mixing threshold that current practice routinely violates for the rarest classes.
+- **Why Important:** Defines a safety rule for the most common synthetic-data use case, preventing the fix from silently inverting on the classes that need it most.
+- **Why Possibly Novel:** Long-tail augmentation papers report per-class gains without the within-class-fraction analysis or real-vs-synthetic recall decomposition.
+- **Minimal Experiment:** Sweep within-class synthetic fractions for rare classes on long-tail benchmarks; measure real-instance recall separately; locate the inversion threshold.
+- **Main Risk:** Threshold likely depends on generator quality (ties to IDEA-A-0282); report thresholds per generator tier.
+
+### IDEA-A-0286
+- **One-sentence idea:** Resolve the copy-paste realism controversy with a controlled study: does blending realism matter for segmentation augmentation, and does the answer flip between object-level and boundary-level metrics?
+- **Problem:** The literature contains contradictory evidence (simple pasting works for detection; blending artifacts allegedly matter elsewhere); a resolution requires metric-decomposed, domain-spanning measurement nobody has performed for segmentation.
+- **Core Hypothesis (falsifiable):** Blending realism is irrelevant for region-level metrics but measurably matters for boundary-F (pasted hard edges teach false boundary priors), and the effect grows with paste density — the controversy persists because studies measured different components, falsified if realism is irrelevant (or crucial) across all components.
+- **Why Important:** Copy-paste is ubiquitous; a component-resolved answer ends recipe churn and explains the conflicting literature.
+- **Why Possibly Novel:** The metric-decomposition resolution of this specific contradiction has not been attempted.
+- **Minimal Experiment:** {hard paste, blended, harmonized} × paste-density ladder × 3 datasets; decompose region vs boundary effects with seed-powered runs.
+- **Main Risk:** Harmonization methods introduce their own artifacts; include forensic checks per condition.
+
+### IDEA-A-0287
+- **One-sentence idea:** Compare procedural (physics/graphics) generation against diffusion-model generation for training data on *out-of-web-distribution* phenomena (smoke, transparency, medical), testing whether generative models can synthesize what they never saw well enough to teach it.
+- **Problem:** Diffusion generators are trained on web data, so their coverage of exactly the phenomena that need synthetic data (rare, hard-to-photograph) is suspect; procedural generation has no such circularity — but the comparison for segmentation training value has not been run.
+- **Core Hypothesis (falsifiable):** For web-underrepresented phenomena, procedural data beats diffusion-generated data as training material (>5 IoU downstream) despite lower photorealism, with diffusion data exhibiting mode-collapse toward web-typical instances (measurable as lower coverage of the phenomenon's physical parameter space) — falsified if diffusion data wins on these domains.
+- **Why Important:** Chooses the right synthesis technology per domain and exposes the circularity limit of generative augmentation — you can't generate your way out of what the generator never learned.
+- **Why Possibly Novel:** The two synthesis paradigms are compared on photorealism, not on training value for web-sparse phenomena.
+- **Minimal Experiment:** Produce matched-size procedural and diffusion datasets for smoke + transparent objects; train identical models; evaluate on real benchmarks; measure parameter-space coverage of both sources.
+- **Main Risk:** Procedural quality depends on engineering effort; fix effort budgets and document them.
+
+### IDEA-A-0288
+- **One-sentence idea:** Characterize model-collapse dynamics for dense prediction: train successive generations on predecessor-segmented data and measure what degrades first (boundary detail, rare classes, calibration) and how fast.
+- **Problem:** Recursive training on model outputs is already happening (SAM-labeled datasets training SAM successors); collapse dynamics are studied for generative text/images but the dense-prediction version — what dies first and at what generational rate — is uncharacterized.
+- **Core Hypothesis (falsifiable):** Under recursive dense training, rare-class coverage and boundary entropy decay measurably per generation (rare classes disappearing fastest), while dominant-class region accuracy is stable for several generations — collapse is selective and its leading indicators are detectable by generation 2, falsified if degradation is uniform or absent.
+- **Why Important:** The field is entering the recursive-data era blind; leading indicators of dense collapse would allow monitoring before ecosystem-level damage accumulates.
+- **Why Possibly Novel:** Model collapse literature covers generative modeling; the dense-prediction recursion with selective-degradation analysis is new.
+- **Minimal Experiment:** Run 4 generations of pseudo-label recursion on 2 datasets; track per-class coverage, boundary statistics, and calibration per generation.
+- **Main Risk:** Realistic recursion mixes fresh real data; include mixed-recursion arms with varying fresh-data fractions.
+
+### IDEA-A-0289
+- **One-sentence idea:** Test whether synthetic *test* sets can rank models in the same order as real test sets — the validity precondition for using synthetic data in evaluation, not just training.
+- **Problem:** Synthetic evaluation is tempting (perfect labels, controllable factors, no privacy issues), but its validity — ranking preservation against real benchmarks — has never been established for segmentation, so the field neither uses nor rejects it on evidence.
+- **Core Hypothesis (falsifiable):** Ranking correlation between synthetic and real test sets exceeds 0.9 for coarse model-family orderings but drops below 0.6 for within-family recipe differences — synthetic evaluation is valid for screening, invalid for fine ranking, falsified if correlation is uniformly high or low.
+- **Why Important:** A validity map for synthetic evaluation would unlock cheap, factor-controlled model screening (and prevent its misuse for fine-grained leaderboard claims).
+- **Why Possibly Novel:** Synthetic-training validity is studied; synthetic-*evaluation* validity for dense tasks is essentially unexamined.
+- **Minimal Experiment:** Evaluate 20 public models on paired synthetic/real test suites across 2 domains; compute ranking correlations at coarse and fine granularity.
+- **Main Risk:** Results depend on synthetic-suite quality; use multiple synthesis sources to separate the concept from the instance.
+
+### IDEA-A-0290
+- **One-sentence idea:** Determine which physical-simulation fidelity dimension (radiative transfer vs turbulence resolution vs particle dynamics) matters for smoke/fire synthetic training data, connecting simulation cost to downstream segmentation value.
+- **Problem:** Physics simulation for fire/smoke spans orders of magnitude in cost depending on fidelity choices; without knowing which fidelity dimension the downstream segmentation model actually exploits, simulation budgets are allocated blind (sharpening IDEA-A-0127 to the physics level).
+- **Core Hypothesis (falsifiable):** Downstream segmentation value saturates at coarse turbulence resolution (large eddies suffice) but depends strongly on radiative-transfer fidelity (correct translucency and glow), making the cheap-turbulence/expensive-rendering configuration optimal — falsified if fine turbulence matters or rendering fidelity doesn't.
+- **Why Important:** A cost-value map for physics fidelity makes physically grounded synthetic data economically rational for safety domains.
+- **Why Possibly Novel:** Simulation fidelity studies target perceptual realism; the downstream-segmentation-value attribution across physics dimensions is new.
+- **Minimal Experiment:** Generate smoke/fire sets across a fidelity grid (turbulence resolution × rendering fidelity); train and evaluate on real benchmarks; fit the value surface.
+- **Main Risk:** Fidelity dimensions interact with scene composition; hold scenes constant across the grid.
+
+### IDEA-A-0291
+- **One-sentence idea:** Test whether conditioning generation on real geometry (depth/layout from real scenes) yields synthetic training data that transfers better than free-form generation — separating the value of real geometry from real appearance.
+- **Problem:** Fully synthetic scenes get geometry and appearance wrong together; conditioning on real depth/layouts isolates whether geometric realism (per IDEA-A-0283) can be injected cheaply via conditioning while appearance stays synthetic — an untested middle path.
+- **Core Hypothesis (falsifiable):** Depth/layout-conditioned generation closes >50% of the transfer gap between free-form synthetic and real training data for segmentation, at no extra generation cost — real geometry is separably injectable, falsified if conditioning adds nothing without real appearance.
+- **Why Important:** If geometry conditioning works, every team with unlabeled real images (geometry extractable) can massively upgrade their synthetic data without labels or rendering pipelines.
+- **Why Possibly Novel:** Conditioned generation exists as a technique; its measured transfer value for dense-task training versus free-form generation is not established.
+- **Minimal Experiment:** Generate {free-form, depth-conditioned, layout-conditioned} training sets from the same generator; train matched segmenters; evaluate on real benchmarks.
+- **Main Risk:** Condition-extraction errors (bad depth) propagate; quantify sensitivity to condition quality.
+
+### IDEA-A-0292
+- **One-sentence idea:** Audit privacy-motivated synthetic medical data for segmentation-relevant signal preservation: does the generative privacy transform destroy exactly the fine structures segmentation needs?
+- **Problem:** Synthetic medical data is promoted as a privacy-preserving substitute for sharing; but privacy comes from *not* reproducing training cases, which plausibly suppresses rare fine structures (small lesions, unusual anatomy) — the utility-privacy tension for segmentation endpoints is unmeasured.
+- **Core Hypothesis (falsifiable):** Models trained on privacy-grade synthetic medical data lose disproportionately on small/rare structures (>2× the loss on common structures) relative to real-data training, and the loss correlates with the generator's memorization-suppression strength — the privacy mechanism and the segmentation signal compete directly, falsified if utility loss is structure-uniform.
+- **Why Important:** Institutions are making data-sharing policy on the assumption that synthetic substitutes preserve utility; the structure-selective loss would materially change those decisions.
+- **Why Possibly Novel:** Synthetic-medical utility is checked with classification/aggregate metrics; the structure-stratified segmentation audit tied to privacy strength is new.
+- **Minimal Experiment:** Train on {real, synthetic at graded privacy strengths}; evaluate structure-stratified segmentation on real test data; correlate losses with privacy parameters.
+- **Main Risk:** Privacy strength is hard to quantify uniformly across generators; use membership-inference resistance as the common scale.
+
+### IDEA-A-0293
+- **One-sentence idea:** Test the breadth-versus-depth question in domain randomization: for a fixed generation budget, do many weak variations beat few strong ones for dense-task transfer?
+- **Problem:** Domain randomization budgets can be spent on breadth (many factors varied mildly) or depth (few factors varied extremely); the allocation question is fundamental to every randomization pipeline and unresolved for segmentation.
+- **Core Hypothesis (falsifiable):** Breadth dominates for texture/appearance factors while depth dominates for geometric factors (extreme viewpoint/scale variation matters more than viewpoint count) — the optimal allocation is factor-type-dependent, falsified if one strategy dominates across factor types.
+- **Why Important:** A factor-conditional allocation rule upgrades all randomization pipelines within existing budgets — pure efficiency gain from understanding.
+- **Why Possibly Novel:** Randomization studies vary factors; the budget-constrained breadth/depth allocation formulation is unexamined.
+- **Minimal Experiment:** Fixed-budget generation grids trading breadth vs depth per factor type; train and evaluate transfer; fit the allocation surface.
+- **Main Risk:** Budget accounting across factor types needs a common unit (generation compute); define it precisely upfront.
+
+### IDEA-A-0294
+- **One-sentence idea:** Develop and test annotation-free real-data supervision via differentiable-rendering fitting: fit parametric object models to real images and use the fitted renders' masks as labels, measuring where fit-derived labels rival human annotation.
+- **Problem:** For object categories with good parametric models (vehicles, furniture, tools), fitting models to real images could produce pixel-accurate masks without humans — the label-quality regime of this approach versus annotation cost has not been mapped.
+- **Core Hypothesis (falsifiable):** Fit-derived masks reach human-annotation agreement (>0.9 IoU) for rigid, well-modeled categories in uncluttered views, degrading predictably with occlusion and articulation — enabling a certifiable auto-labeling regime map, falsified if fit quality is unpredictable or uniformly poor in the wild.
+- **Why Important:** A certified regime where labels are free (and physically consistent) would restructure annotation economics for rigid-object domains (retail, driving, robotics).
+- **Why Possibly Novel:** Differentiable rendering is used for reconstruction; its systematic evaluation as a *labeling instrument* with a validity map is new.
+- **Minimal Experiment:** Fit parametric models for 5 rigid categories on real images with human GT; map agreement vs occlusion/articulation/clutter; train students on fit-derived labels.
+- **Main Risk:** Fitting failures may be silent; develop fit-quality self-diagnostics as part of the study.
+
+### IDEA-A-0295
+- **One-sentence idea:** Test sequencing effects in synthetic-plus-real training: does synthetic-pretrain-then-real-finetune beat mixed training at matched data and compute, and does the answer depend on the synthetic-real gap size?
+- **Problem:** The two standard regimes (sequential vs mixed) are used interchangeably; optimization theory suggests they differ (mixed risks synthetic gradients diluting real signal; sequential risks forgetting synthetic benefits), and the gap-size dependence has never been mapped.
+- **Core Hypothesis (falsifiable):** Sequential training wins when the synthetic-real gap is large (synthetic serves as generic pretraining) while mixed wins when the gap is small (synthetic acts as augmentation), with the crossover predictable from a feature-space gap measure — falsified if one regime dominates regardless of gap.
+- **Why Important:** A gap-conditioned sequencing rule resolves a universal pipeline decision currently made by habit.
+- **Why Possibly Novel:** Individual comparisons exist per-paper; the gap-conditioned crossover law is unformulated.
+- **Minimal Experiment:** {sequential, mixed, interleaved} × 4 synthetic-real pairs spanning gap sizes at matched budgets; test the crossover prediction.
+- **Main Risk:** Schedule hyperparameters interact with regime; tune each arm within fixed budgets.
+
+---
+
+## Cluster 15 — Domain Adaptation & Distribution Shift (IDEA-A-0296 … 0310)
+
+### IDEA-A-0296
+- **One-sentence idea:** Test whether a decade of unsupervised domain adaptation (UDA) methods generalizes beyond the benchmark pairs they were developed on (GTA→Cityscapes), by evaluating them on fresh adaptation pairs they have never been tuned against.
+- **Problem:** UDA method development has iterated on the same few pairs for years; the methods' hyperparameters and design choices may be benchmark-pair-specific, making the literature's reported ordering meaningless for new deployments — the overfitting-to-the-pair magnitude is unmeasured.
+- **Core Hypothesis (falsifiable):** On 4 novel adaptation pairs, the published UDA method ranking scrambles (rank correlation < 0.4 with GTA→Cityscapes ordering) and the average gain over source-only baselines shrinks by >50% — the field has been fitting the benchmark, falsified if rankings and gains transfer.
+- **Why Important:** Determines whether UDA research produced transferable principles or benchmark-specific artifacts — a verdict the field needs before further iteration.
+- **Why Possibly Novel:** UDA criticism exists in commentary; the fresh-pair generalization audit with ranking-transfer statistics has not been executed.
+- **Minimal Experiment:** Re-run 8 published UDA methods (released code, frozen hyperparameters) on 4 new pairs (aerial, medical, underwater, thermal); compare orderings and gain retention.
+- **Main Risk:** Frozen hyperparameters may unfairly penalize methods; add a bounded re-tuning arm to separate brittleness from overfitting.
+
+### IDEA-A-0297
+- **One-sentence idea:** Decompose domain gaps into style (appearance statistics) and content (layout/class distribution) components per benchmark, and measure which component each UDA method family actually addresses.
+- **Problem:** UDA methods are compared on aggregate gains without knowing what portion of each gap is style vs content; a method that only fixes style will excel on style-dominated pairs and fail elsewhere — the method-component mapping would explain and predict transfer (per IDEA-A-0296).
+- **Core Hypothesis (falsifiable):** Style transfer alone (statistical alignment) closes >70% of the gap on synthetic→real pairs but <30% on cross-geography pairs, and each UDA family's gains vanish on pairs where "its" component is absent — method value is component-conditional and predictable, falsified if gains are component-independent.
+- **Why Important:** Converts UDA method selection from trial-and-error to diagnosis (measure your gap's composition, pick the matching method family).
+- **Why Possibly Novel:** Style/content decompositions exist conceptually; the systematic per-benchmark quantification with method-family attribution is missing.
+- **Minimal Experiment:** Construct style-neutralized and content-neutralized versions of 6 benchmark pairs; measure residual gaps; cross-tabulate method gains against gap composition.
+- **Main Risk:** Style neutralization tools (normalization, style transfer) are imperfect; use several and triangulate.
+
+### IDEA-A-0298
+- **One-sentence idea:** Build and validate a collapse detector with automatic rollback for test-time adaptation of segmentation, testing whether TTA can be made deployment-safe with a label-free guardrail.
+- **Problem:** TTA's known failure (silent class collapse, cf. IDEA-A-0239) blocks deployment; a label-free runtime signal that detects collapse onset and triggers rollback would make TTA usable, but no validated guardrail exists.
+- **Core Hypothesis (falsifiable):** Prediction-distribution drift statistics (class-marginal KL from source priors, per-class mass trajectories) detect collapse onset with >90% recall at <5% false alarms within 10 adaptation steps of onset, and rollback-on-detection retains >95% of TTA's benign gains while eliminating catastrophic outcomes — TTA is salvageable with monitoring, falsified if collapse is undetectable before damage.
+- **Why Important:** Converts a promising-but-dangerous technique into a deployable one; the guardrail pattern generalizes to other online-adaptation settings.
+- **Why Possibly Novel:** TTA stabilization exists via conservative updates; the detect-and-rollback formulation with quantified guarantees is new.
+- **Minimal Experiment:** Instrument TTA runs across shift benchmarks with induced collapse conditions; train/validate the detector; measure the guarded system's benefit-retention and harm-elimination.
+- **Main Risk:** Detector thresholds may be dataset-specific; calibrate on source data only to keep the setting honest.
+
+### IDEA-A-0299
+- **One-sentence idea:** Audit the privacy claim of source-free domain adaptation: how much source-domain information (including potentially sensitive attributes) leaks through the model weights that SFDA methods rely on?
+- **Problem:** SFDA is marketed for privacy (no source data shared), but the shared model itself encodes source data; the actual leakage — what an adversary or even the adaptation process can reconstruct about the source domain — is unquantified, making the privacy claim unsubstantiated.
+- **Core Hypothesis (falsifiable):** Model-inversion and membership-style probes recover source-domain statistics (class frequencies, style statistics, site-identifying features) sufficient to identify the source hospital/city among candidates with >80% accuracy — SFDA's privacy advantage over data sharing is much smaller than claimed, falsified if probes recover nothing usable.
+- **Why Important:** Medical/industrial adoption of SFDA rests on the privacy claim; an evidence-based assessment (either way) is prerequisite for policy.
+- **Why Possibly Novel:** Membership inference targets individual samples; the domain-level leakage audit specific to SFDA's claims is new.
+- **Minimal Experiment:** Train source models on identifiable domains; run domain-identification and statistic-reconstruction attacks on weights; quantify leakage against a data-sharing baseline.
+- **Main Risk:** Attack strength defines the bound (absence of leakage under weak attacks proves little); use strong, documented attack suites.
+
+### IDEA-A-0300
+- **One-sentence idea:** Run the confrontation the UDA field has avoided: does zero-shot application of modern foundation backbones (DINOv2-class, frozen or lightly probed) beat the accumulated UDA literature on its own benchmarks, without any adaptation?
+- **Problem:** UDA methods start from weak source-trained backbones by protocol; meanwhile foundation features may have quietly solved the robustness problem UDA targets — if frozen features + linear heads trained on source beat adapted models, the field's protocol is testing an obsolete regime.
+- **Core Hypothesis (falsifiable):** DINOv2-frozen + source-trained decoder exceeds the best published UDA results on ≥half of standard benchmarks with zero target data — foundation robustness dominates specialized adaptation, falsified if UDA methods retain a clear margin over strong frozen baselines.
+- **Why Important:** Either resets UDA baselines field-wide (all methods must now build on foundation backbones) or demonstrates that adaptation machinery retains value atop them — both outcomes redirect substantial research effort.
+- **Why Possibly Novel:** Individual strong-baseline observations circulate; the systematic confrontation across the benchmark suite with protocol implications has not been published.
+- **Minimal Experiment:** Evaluate frozen/probed foundation baselines on 6 UDA benchmarks against published SOTA; additionally combine (UDA methods atop foundation backbones) to test additivity.
+- **Main Risk:** Foundation pretraining may have seen target-domain-like data (contamination, cf. IDEA-A-0194); report contamination analysis alongside.
+
+### IDEA-A-0301
+- **One-sentence idea:** Study continual adaptation under *cyclically returning* domains (day/night, seasons, weather) and test whether current continual-DA methods oscillate — repeatedly re-learning and forgetting each phase — instead of consolidating a cycle-covering solution.
+- **Problem:** Real deployment shift is largely cyclic, not a linear sequence of novel domains, but continual-DA is evaluated on linear sequences; whether methods exploit recurrence (consolidate) or thrash (re-adapt every cycle, accumulating damage) is unknown.
+- **Core Hypothesis (falsifiable):** Standard continual-DA methods show non-decreasing re-adaptation cost across repeated cycles (no consolidation), while an explicit phase-memory design converges to near-zero re-adaptation by cycle 3 — current methods waste the structure of recurrence, falsified if standard methods naturally consolidate.
+- **Why Important:** Cyclic shift is the actual deployment condition for outdoor perception; consolidation-vs-thrashing determines long-run cost and stability of adaptive systems.
+- **Why Possibly Novel:** Continual DA uses linear domain sequences; the cyclic-recurrence protocol and consolidation metrics are new evaluation science.
+- **Minimal Experiment:** Build cyclic benchmarks from time-stamped driving data; run continual-DA methods over 5+ cycles; measure per-cycle adaptation cost trajectories.
+- **Main Risk:** Real cyclic data confounds cycle phase with content drift; complement with controlled synthetic cycles.
+
+### IDEA-A-0302
+- **One-sentence idea:** Meta-evaluate domain-gap measures: does any proposed divergence (MMD, FID-style, proxy a-distance, feature-space measures) actually predict segmentation transfer loss across many domain pairs?
+- **Problem:** Papers justify methods with gap measures, and practitioners want pre-deployment transfer predictions, but no systematic validation exists of *any* measure's predictive power for dense-task transfer — the measures may be decorative.
+- **Core Hypothesis (falsifiable):** Across ≥30 source-target pairs, no standard divergence predicts transfer loss better than ρ = 0.6, but a task-aware measure (disagreement between source model and a foundation reference on target data) exceeds ρ = 0.8 — generic divergences fail where task-aware signals succeed, falsified if a generic measure predicts strongly.
+- **Why Important:** A validated transfer predictor changes deployment practice (risk assessment without labels); invalidating the decorative measures cleans up methodology sections field-wide.
+- **Why Possibly Novel:** Individual measures are proposed constantly; the many-pair predictive meta-evaluation for segmentation is missing.
+- **Minimal Experiment:** Assemble 30+ pairs with measured transfer losses; compute candidate measures; compare predictive correlations with proper cross-validation.
+- **Main Risk:** Pair selection may bias which measure looks best; span pair types (style, content, sensor, geography) deliberately.
+
+### IDEA-A-0303
+- **One-sentence idea:** Test the dichotomy that normalization-statistics adaptation suffices for *sensor* shift but not *semantic* shift, establishing a cheap diagnostic that tells practitioners which adaptation tier a given shift requires.
+- **Problem:** Adaptation machinery spans a cost ladder (norm-stats → norm-params → PEFT → full UDA), but there is no validated diagnostic mapping a given shift to the minimal sufficient tier — practitioners either over-spend or under-adapt (generalizing IDEA-A-0065 beyond medical).
+- **Core Hypothesis (falsifiable):** Recomputing normalization statistics on target data recovers >70% of the drop for sensor/photometric shifts and <15% for semantic/layout shifts across 10 diverse pairs, making norm-recovery-fraction (measurable with unlabeled data in minutes) a reliable shift-tier diagnostic — falsified if recovery fractions don't separate shift types.
+- **Why Important:** A minutes-cheap diagnostic that selects the right adaptation tier would be adopted immediately across applied vision.
+- **Why Possibly Novel:** Norm-based adaptation is known; its formalization as a *diagnostic instrument* with a validated tier-mapping is new.
+- **Minimal Experiment:** 10 shift pairs spanning types × the adaptation-tier ladder; measure recovery fractions per tier; validate the diagnostic's tier predictions.
+- **Main Risk:** Modern norm-free/LN architectures complicate the recipe; define the LN analog (recompute affine calibration) and test both.
+
+### IDEA-A-0304
+- **One-sentence idea:** Explain why crude Fourier amplitude swapping works as domain adaptation — testing whether its success quantitatively measures how much of typical domain gaps is *global spectral*, and building a gap spectroscopy from it.
+- **Problem:** FDA-style amplitude swap is embarrassingly simple yet effective on some pairs, which is itself an unexplained scientific datum: the method's success rate across pairs is an untapped measurement of gap structure.
+- **Core Hypothesis (falsifiable):** The fraction of a pair's gap closed by amplitude swap correlates strongly (ρ > 0.8) with an independent measure of the gap's spectral concentration, making swap-recovery a one-shot "gap spectroscope" — and pairs where swap fails are exactly those needing semantic-tier adaptation (linking to IDEA-A-0303), falsified if swap success is idiosyncratic.
+- **Why Important:** Repurposes a simple trick into a measurement instrument, and explains a standing curiosity in the literature with a testable account.
+- **Why Possibly Novel:** FDA is used as a method; its reinterpretation and validation as gap diagnostics is new.
+- **Minimal Experiment:** Apply amplitude swap across 15 pairs; measure gap-closure fractions; correlate with spectral-concentration measures; validate the spectroscope's predictions on held-out pairs.
+- **Main Risk:** Swap window size is a hidden parameter; sweep it and integrate over the sweep for robustness.
+
+### IDEA-A-0305
+- **One-sentence idea:** Determine whether night-time segmentation is a domain-adaptation problem or an information-deficit problem, by measuring the human ceiling on the same night imagery models fail on.
+- **Problem:** Night segmentation is framed as domain shift (fixable by adaptation), but low-light imagery may simply lack the information — in which case adaptation research chases an impossible target and sensor-side solutions (exposure, NIR) are the answer; the framing has never been tested against a human ceiling.
+- **Core Hypothesis (falsifiable):** On standard night benchmarks, human segmentation (with unlimited time, contrast tools allowed) exceeds the best adapted models by >15 mIoU on structure-rich classes but matches models on severely underexposed regions — the gap decomposes into a recoverable adaptation component and a hard information floor, mapped per region, falsified if humans match models everywhere (pure information deficit) or exceed everywhere (pure adaptation gap).
+- **Why Important:** Splits the night-vision problem into its fixable and unfixable parts, directing adaptation research and sensor investment respectively.
+- **Why Possibly Novel:** Night benchmarks exist; the human-ceiling decomposition of the night gap has not been measured.
+- **Minimal Experiment:** Human annotation study on night benchmark subsets with per-region luminance logging; compare human/model performance stratified by local information content.
+- **Main Risk:** Human tools (contrast stretching) must be standardized; report the tool protocol as part of the ceiling's definition.
+
+### IDEA-A-0306
+- **One-sentence idea:** Build physically parameterized robustness curves for rain and fog — performance as a function of physical density parameters (rain rate mm/h, fog visibility meters) — replacing arbitrary corruption "severity levels" with physics-anchored evaluation.
+- **Problem:** Weather robustness is measured on synthetic severity ladders with no physical units, so results cannot be mapped to deployment conditions ("works up to what visibility?") or compared across studies — the missing physical anchoring blocks operational use of robustness research.
+- **Core Hypothesis (falsifiable):** Model performance versus physical fog density follows a two-regime curve (contrast-limited then information-limited) with a model-dependent breakpoint that predicts real-weather performance (validated on physically measured real fog data) within 10% — synthetic-physical anchoring transfers, falsified if physically calibrated synthetic curves fail to predict real-weather results.
+- **Why Important:** Converts robustness numbers into deployment specifications (certified visibility ranges), which is what regulators and integrators actually need.
+- **Why Possibly Novel:** Weather augmentation exists; the physically calibrated evaluation protocol with real-weather validation is not established practice.
+- **Minimal Experiment:** Generate physically parameterized weather (validated rendering); evaluate models across the physical range; validate curve predictions on real annotated fog/rain data with meteorological metadata.
+- **Main Risk:** Real weather data with metadata is scarce; partner datasets (traffic cameras + weather stations) can supply it.
+
+### IDEA-A-0307
+- **One-sentence idea:** Study UDA under label-space mismatch — target domains containing classes absent from the source — and measure how current methods corrupt known-class performance when forced to explain unexplainable pixels.
+- **Problem:** UDA assumes shared label spaces, but real targets contain novel classes (new vehicle types, region-specific objects); how adaptation methods behave when target pixels have no valid source label — absorb them into known classes? destabilize alignment? — is uncharacterized.
+- **Core Hypothesis (falsifiable):** Standard UDA methods degrade known-class IoU by >5 points when ≥10% of target pixels belong to unknown classes (alignment forces false correspondences), while open-set-aware variants isolate unknowns with minimal known-class damage — the shared-label assumption fails destructively rather than gracefully, falsified if standard UDA degrades gracefully.
+- **Why Important:** Real deployments always have label mismatch; knowing that standard UDA actively corrupts under mismatch (if true) is a deployment warning the literature does not currently issue.
+- **Why Possibly Novel:** Open-set DA exists as a subfield; the destructive-vs-graceful failure characterization of *standard* methods under mismatch — the deployment-relevant question — is unmeasured.
+- **Minimal Experiment:** Inject controlled unknown-class fractions into target sets of standard benchmarks; run 5 UDA methods; track known-class degradation curves vs unknown fraction.
+- **Main Risk:** "Unknown fraction" interacts with unknown-class visual similarity to known classes; stratify by similarity.
+
+### IDEA-A-0308
+- **One-sentence idea:** Test whether multi-source domain adaptation benefits come from source *diversity* or just source *quantity*, with matched-total-data controls that the multi-source literature omits.
+- **Problem:** Multi-source DA papers show gains over single-source, but total training data grows with source count — the diversity-specific effect (the claimed mechanism) has not been isolated from the quantity effect at matched totals.
+- **Core Hypothesis (falsifiable):** At matched total sample counts, 4-source training beats single-source training on held-out targets by a diversity-specific margin that scales with inter-source spread (measured in feature space), and vanishes when sources are near-duplicates — diversity is real but only as spread, falsified if matched-quantity multi-source shows no advantage.
+- **Why Important:** Determines whether applied teams should seek *different* data or just *more* data for robustness — one of the most common data-strategy questions.
+- **Why Possibly Novel:** The matched-quantity control with spread-scaling analysis is absent from multi-source DA evaluations.
+- **Minimal Experiment:** {1, 2, 4} sources at matched totals × controlled inter-source spread levels; evaluate on multiple held-out targets; fit the spread-scaling relationship.
+- **Main Risk:** Source content confounds spread manipulation; construct spread levels by subsampling within a large source pool.
+
+### IDEA-A-0309
+- **One-sentence idea:** Quantify and localize geographic bias in driving-scene segmentation — per-class performance across continents — and identify whether the bias lives in class appearance, class frequency, or scene grammar.
+- **Problem:** Driving models trained on European/North American data deploy globally; the per-class geographic degradation and its cause (rickshaws don't exist in training vs roads look different vs scene layouts differ) determine the fix, but the decomposition has not been published at scale.
+- **Core Hypothesis (falsifiable):** Geographic degradation decomposes into ~50% novel-class/frequency effects, ~30% appearance shift of shared classes, ~20% scene-grammar effects (measured by layout-conditioned error analysis), with the mix varying predictably by region pair — the bias is decomposable and mostly a data-coverage problem, falsified if degradation resists decomposition.
+- **Why Important:** Global deployment equity: the decomposition converts a vague fairness concern into a costed data-collection plan per region.
+- **Why Possibly Novel:** Geographic bias is documented for classification; the segmentation-specific causal decomposition across scene grammar is new.
+- **Minimal Experiment:** Evaluate standard models on geographically diverse driving data; decompose errors by {novel class, shared-class appearance, layout context}; validate with targeted fine-tuning per component.
+- **Main Risk:** Geographically diverse labeled data is limited; combine existing datasets with targeted annotation of underrepresented regions.
+
+### IDEA-A-0310
+- **One-sentence idea:** Locate the limit of adapter-based modality bridging: can PEFT alone carry a natural-image VFM to thermal/depth/event-camera inputs, and what modality-statistics property predicts where adapters fail and full retraining becomes necessary?
+- **Problem:** Teams routinely bolt adapters onto RGB-pretrained VFMs for non-RGB sensors with mixed results; a predictive account of when the frozen features contain enough modality-transferable structure (vs when the input statistics are too alien) would replace expensive trial-and-error.
+- **Core Hypothesis (falsifiable):** Adapter-only transfer quality is predicted (ρ > 0.75) by the preservation of *second-order spatial statistics* between the modality and RGB (edge/gradient structure survives in thermal → adapters work; event streams lack it → adapters fail), defining a measurable adapter-sufficiency criterion — falsified if transfer quality is unpredictable from modality statistics.
+- **Why Important:** A pre-hoc sufficiency test for the cheapest transfer strategy saves substantial compute and guides sensor-specific pretraining investment.
+- **Why Possibly Novel:** Cross-modal adapters are common practice; the predictive sufficiency criterion grounded in modality statistics is unformulated.
+- **Minimal Experiment:** Adapter-transfer a VFM to 5 modalities with graded statistical similarity to RGB; regress transfer quality on candidate statistics; validate the criterion on a held-out modality.
+- **Main Risk:** Adapter capacity choices confound the criterion; sweep capacities and use the envelope.
+
+---
+
+## Cluster 16 — Object Detection Failure Modes (IDEA-A-0311 … 0325)
+
+### IDEA-A-0311
+- **One-sentence idea:** Characterize DETR-family query specialization (spatial/size niches queries learn) and test whether objects falling outside all queries' niches explain a predictable share of missed detections.
+- **Problem:** Detection queries self-organize into spatial/scale niches during training; objects in niche gaps (unusual positions/sizes for the training distribution) may be structurally undetectable, but the niche-gap → miss relationship has not been quantified.
+- **Core Hypothesis (falsifiable):** Miss probability for an object is predicted (AUC > 0.8) by its distance to the nearest query's learned niche center, and niche coverage gaps account for >30% of misses on out-of-distribution layouts — misses are partly an addressing failure, falsified if misses are niche-independent.
+- **Why Important:** An addressing-failure account suggests cheap fixes (query redistribution, test-time query augmentation) distinct from feature improvements, and predicts *where* detectors are blind before deployment.
+- **Why Possibly Novel:** Query behavior has been visualized; the predictive niche-gap analysis of misses with layout-shift testing is new.
+- **Minimal Experiment:** Extract query niche maps from trained DETR-family models; predict per-object misses from niche distance on standard and layout-shifted test sets; test query-redistribution interventions.
+- **Main Risk:** Niche definitions from finite data are noisy; validate stability across seeds.
+
+### IDEA-A-0312
+- **One-sentence idea:** Quantify how NMS and its variants distort detector confidence calibration, and test whether post-NMS scores can be recalibrated to survive the suppression process.
+- **Problem:** Calibration is measured on final detections, but NMS selects score-ordered subsets — a selection process that systematically biases surviving scores upward; the distortion's structure and correctability are unexamined, though downstream systems consume these scores as probabilities.
+- **Core Hypothesis (falsifiable):** Post-NMS confidence exhibits density-dependent overconfidence (worse in crowded regions where suppression competition is fiercest), and density-conditioned recalibration reduces detection ECE by >50% where global recalibration fails — the distortion is systematic and correctable, falsified if miscalibration is density-independent.
+- **Why Important:** Detector scores feed tracking, fusion, and safety logic; a validated density-aware recalibration is directly deployable everywhere detections are consumed.
+- **Why Possibly Novel:** Detector calibration is studied globally; the NMS-selection-effect mechanism and density-conditioned correction are new.
+- **Minimal Experiment:** Measure calibration pre/post NMS stratified by local box density across 5 detectors; fit and evaluate density-conditioned recalibrators.
+- **Main Risk:** End-to-end (NMS-free) detectors need a parallel analysis; include them as the natural control group.
+
+### IDEA-A-0313
+- **One-sentence idea:** Test whether raw input resolution beats all architectural small-object remedies at matched compute — the compute-matched showdown the small-object detection literature has skipped.
+- **Problem:** Dozens of architectural fixes target small-object detection, each compared at fixed resolution; if simply spending the same extra compute on resolution dominates them, the literature's recommendations are misordered for practitioners.
+- **Core Hypothesis (falsifiable):** At matched inference FLOPs, resolution scaling exceeds ≥80% of published architectural small-object remedies on their own benchmarks, with architecture wins confined to memory-bound regimes where resolution cannot be raised — resolution is the dominant currency, falsified if architectures win at matched compute.
+- **Why Important:** Gives practitioners the correct first move for small-object problems and re-baselines the subfield's comparisons.
+- **Why Possibly Novel:** Resolution ablations exist locally; the systematic compute-matched confrontation against the remedy literature has not been assembled.
+- **Minimal Experiment:** Reproduce 6 small-object methods; compare each against its baseline-at-higher-resolution at matched FLOPs across 3 benchmarks.
+- **Main Risk:** FLOPs vs latency vs memory give different "matched compute" verdicts; report all three accountings (ties to IDEA-A-0339).
+
+### IDEA-A-0314
+- **One-sentence idea:** Measure open-vocabulary detector hallucination — confident detections of prompted-but-absent classes — as a function of distribution shift, testing whether OV detection's flexibility costs reliability exactly when deployed off-distribution.
+- **Problem:** OV detectors accept arbitrary class prompts, and their false-positive behavior for absent classes under domain shift is unmeasured — a compounding risk since deployment involves both novel vocabularies and novel domains simultaneously (extends IDEA-A-0185 to detection).
+- **Core Hypothesis (falsifiable):** Absent-class hallucination rates grow 3–5× under moderate domain shift while present-class recall drops only modestly — reliability degrades asymmetrically, with the precision side collapsing first, falsified if hallucination is shift-stable.
+- **Why Important:** The asymmetry means OV detectors fail unsafely (confident false alarms) rather than gracefully under shift — a critical characterization for safety adoption decisions.
+- **Why Possibly Novel:** OV detection is evaluated on in-domain benchmarks; the shift-conditioned hallucination asymmetry has not been characterized.
+- **Minimal Experiment:** Evaluate 4 OV detectors with present/absent prompt batteries across shift ladders (corruption, style, geography); track recall and hallucination curves separately.
+- **Main Risk:** Absence certification under shift requires careful annotation; use exhaustively annotated shifted sets.
+
+### IDEA-A-0315
+- **One-sentence idea:** Decompose long-tail detection failure into classification versus localization components per frequency bin, testing the assumption that the long-tail problem is about classifiers.
+- **Problem:** Long-tail detection methods overwhelmingly re-balance classification (logit adjustment, re-sampling), assuming localization is frequency-neutral; if rare classes also localize worse (fewer box statistics learned), half the problem is being ignored.
+- **Core Hypothesis (falsifiable):** For the rarest frequency bin, localization error (IoU of matched detections) accounts for >40% of the AP gap to common classes — comparable to the classification component — and classification-only fixes leave this share untouched, falsified if rare-class localization matches common-class localization.
+- **Why Important:** If localization is half the tail problem, an entire method family is needed that the current literature doesn't provide.
+- **Why Possibly Novel:** Long-tail analyses use AP aggregates; the classification/localization decomposition across frequency bins is not standard and its result unknown.
+- **Minimal Experiment:** On LVIS-class benchmarks, decompose per-bin AP gaps via error-type analysis (TIDE-style) across 6 detectors including re-balanced ones.
+- **Main Risk:** Rare-class statistics are noisy by definition; aggregate across bins and datasets for power.
+
+### IDEA-A-0316
+- **One-sentence idea:** Stress-test NMS-free (end-to-end) detectors' duplicate-suppression claims in extreme crowding, testing whether learned suppression generalizes beyond the crowding levels seen in training.
+- **Problem:** End-to-end detectors claim to have solved duplicate suppression via bipartite matching, but the mechanism is learned from typical crowding; whether it extrapolates to extreme density (where classical NMS also fails, but predictably) is unknown — and unpredictable failure is worse than predictable failure.
+- **Core Hypothesis (falsifiable):** NMS-free duplicate rates stay near zero up to training-distribution crowding then rise superlinearly beyond it (learned suppression doesn't extrapolate), while NMS-based failure grows smoothly and predictably — the two failure modes cross, defining density regimes where each family is preferable, falsified if learned suppression extrapolates cleanly.
+- **Why Important:** Crowd-heavy applications (retail, events, biology) need to know which suppression mechanism degrades predictably; the crossing map is the deployment guidance.
+- **Why Possibly Novel:** End-to-end vs NMS comparisons use standard benchmarks; the density-extrapolation stress test is not published.
+- **Minimal Experiment:** Evaluate matched detector pairs across a crowding ladder (natural + composited extreme density); measure duplicate and miss rates versus density.
+- **Main Risk:** Composited extreme crowds may have unrealistic occlusion statistics; anchor with natural extreme-density datasets (markets, roosts).
+
+### IDEA-A-0317
+- **One-sentence idea:** Re-annotate a stratified COCO sample to current exhaustive standards and measure how missing-annotation noise has distorted a decade of detector rankings and "progress."
+- **Problem:** COCO's known missing annotations penalize detectors that correctly find unlabeled objects; as detectors improved, this penalty's distortion may have grown (better models suffer more), potentially inverting recent rankings — the magnitude is unmeasured at modern performance levels.
+- **Core Hypothesis (falsifiable):** On exhaustively re-annotated samples, modern detector AP rises 3–6 points with the gain proportional to detector quality — ranking gaps between recent models compress by >30%, and some published orderings invert — falsified if re-annotation shifts all models uniformly.
+- **Why Important:** COCO ordering is the field's currency; quantifying label-noise distortion at the modern frontier recalibrates what recent "progress" means (parallel to IDEA-A-0091 for detection).
+- **Why Possibly Novel:** Missing-label effects were studied years ago at lower performance levels; the modern-frontier re-audit with ranking-inversion analysis is due and absent.
+- **Minimal Experiment:** Exhaustively re-annotate 2k stratified COCO images; re-score 10 detectors spanning eras; compare ranking structures on original vs corrected labels.
+- **Main Risk:** "Exhaustive" annotation of ambiguous small/blurry objects needs a protocol; publish the protocol with the data.
+
+### IDEA-A-0318
+- **One-sentence idea:** Test whether the anchor-based versus anchor-free distinction retains any performance-relevant content under modern training recipes, or has become a distinction without a difference.
+- **Problem:** The anchor debate consumed years of literature; modern recipes (strong augmentation, long schedules, better assignment) may have equalized the paradigms, but the controlled modern-recipe comparison hasn't been run — leaving textbooks and defaults resting on outdated evidence.
+- **Core Hypothesis (falsifiable):** Under identical modern recipes and matched budgets, anchor-based and anchor-free heads on shared backbones differ by <0.5 AP on standard benchmarks with no consistent winner across datasets — the paradigm choice is obsolete, falsified if a systematic gap survives recipe modernization.
+- **Why Important:** Retiring dead distinctions simplifies teaching, defaults, and reviewing; confirming a residual difference would locate what actually matters in assignment design.
+- **Why Possibly Novel:** The comparison exists in historical recipes; the modern-recipe equivalence audit does not.
+- **Minimal Experiment:** {anchor-based, anchor-free} heads × 2 backbones × 3 datasets under one modern recipe, 3 seeds; equivalence testing.
+- **Main Risk:** Head implementations carry confounds beyond anchoring; use minimal-pair implementations differing only in anchor usage.
+
+### IDEA-A-0319
+- **One-sentence idea:** Test whether bounding boxes are the wrong output primitive for amorphous phenomena (smoke, fire, spills, dust) by comparing box-based against blob/level-set-based detection formulations on downstream decision quality.
+- **Problem:** Detection pipelines force amorphous phenomena into boxes whose corners are meaningless (a smoke box is mostly non-smoke); the primitive mismatch plausibly harms both learning and downstream use, but no controlled formulation comparison exists.
+- **Core Hypothesis (falsifiable):** For amorphous targets, blob-primitive detectors (center + soft extent) beat box detectors on downstream decision metrics (alarm localization error, extent-tracking stability) by >20% relative at matched compute, while boxes remain superior for rigid objects — the optimal primitive is phenomenology-dependent, falsified if boxes suffice everywhere.
+- **Why Important:** Output-primitive choice is beneath the field's attention yet shapes everything downstream; a validated phenomenology-to-primitive mapping upgrades safety systems (fire, hazmat) immediately.
+- **Why Possibly Novel:** Alternative primitives exist scatteredly; the controlled formulation comparison judged on downstream decisions is new.
+- **Minimal Experiment:** Implement matched box and blob detectors for smoke/fire datasets; evaluate on downstream-decision suites (localization-for-response, temporal stability); replicate on rigid-object controls.
+- **Main Risk:** Blob GT must be derived from masks consistently; reuse the density-GT machinery from IDEA-A-0121/0122.
+
+### IDEA-A-0320
+- **One-sentence idea:** Probe whether detection features contain sufficient identity information for tracking (re-identification), testing the assumption behind tracking-by-detection that detector embeddings distinguish lookalike instances.
+- **Problem:** Modern trackers reuse detector features for association, assuming instance-discriminative content; but detection training encourages *class*-invariance across instances — the identity information may be systematically absent, explaining crowding failures (parallel to IDEA-A-0005 for SAM2).
+- **Core Hypothesis (falsifiable):** Linear probes on detector features distinguish same-class instance pairs barely above chance (<0.65 AUC) while dedicated re-ID features exceed 0.85 — detection training actively removes identity information (verified by tracking-through-detector-feature ablations), falsified if detector features carry strong identity signal.
+- **Why Important:** If identity is absent by construction, tracking-by-detection has a ceiling that no association logic can fix — redirecting tracker design toward identity-preserving detection training.
+- **Why Possibly Novel:** Tracker papers engineer association; the information-content audit of detector features for identity is not established.
+- **Minimal Experiment:** Probe instance-discrimination on frozen features of 5 detectors vs re-ID models; correlate probe scores with those features' tracking performance in a fixed tracker.
+- **Main Risk:** Feature-layer choice matters; probe multiple layers and report the envelope.
+
+### IDEA-A-0321
+- **One-sentence idea:** Measure whether detectors implicitly learn amodal extent — predicting boxes that include occluded object portions — without amodal supervision, and whether this implicit amodality is consistent enough to exploit.
+- **Problem:** Detectors trained on modal (visible-extent) boxes sometimes predict beyond occluders; whether this is noise or a systematic learned amodal prior (from seeing many occlusion configurations) is unknown — if systematic, free amodal information is available in every detector.
+- **Core Hypothesis (falsifiable):** Detector box predictions on occluded objects extend toward true amodal extent significantly beyond modal GT (covering >40% of the hidden extent on average) with consistency across occlusion configurations — implicit amodality exists and a lightweight readout can extract calibrated amodal boxes, falsified if predictions track modal GT.
+- **Why Important:** Free amodal extent improves downstream planning (robotics grasp clearance, driving gap estimation) without amodal annotation cost.
+- **Why Possibly Novel:** Amodal detection uses explicit supervision; the discovery-and-extraction of *implicit* amodal knowledge in standard detectors is unexamined.
+- **Minimal Experiment:** Evaluate standard detectors on amodal-annotated benchmarks; measure hidden-extent coverage statistics; train readout heads for calibrated amodal prediction.
+- **Main Risk:** Prediction beyond modal GT may reflect regression smoothing, not amodal knowledge; test configuration-consistency to distinguish.
+
+### IDEA-A-0322
+- **One-sentence idea:** Establish the train-test resolution transfer law for detection: how does performance degrade as inference resolution departs from training resolution, and can a single adaptation trick (PE rescaling, BN recalibration) flatten the curve?
+- **Problem:** Deployment often runs at different resolutions than training (hardware constraints, variable inputs); the degradation law and the cheapest flattening intervention are folklore rather than measurement, though every deployment decision touches them.
+- **Core Hypothesis (falsifiable):** Detection AP versus resolution-ratio follows an asymmetric U (down-scaling hurts small objects; up-scaling hurts calibration and large-object regression) with architecture-family-specific shapes, and PE rescaling plus norm recalibration recovers >70% of off-ratio loss without retraining — the curve is flattenable cheaply, falsified if off-ratio loss resists adaptation.
+- **Why Important:** A validated transfer law plus cheap fix converts resolution mismatch from a silent degradation into a managed parameter.
+- **Why Possibly Novel:** Train-test resolution effects are known for classification (FixRes-era); the detection-specific law with intervention benchmarking is missing.
+- **Minimal Experiment:** Evaluate 6 detectors across resolution ratios {0.5–2.0}; decompose degradation by object size and error type; test the adaptation stack.
+- **Main Risk:** Anchors/assignment interact with resolution differently per family; report per-family laws.
+
+### IDEA-A-0323
+- **One-sentence idea:** Decompose cross-dataset detection generality — COCO-trained models on diverse other datasets — into vocabulary, appearance, and annotation-convention components, testing what "general-purpose detector" actually means.
+- **Problem:** COCO-trained detectors are deployed as general tools; their cross-dataset drops conflate missing vocabulary, appearance shift, and annotation-convention mismatch (box tightness, group-boxing rules), so "generality" claims are unresolvable into actionable parts.
+- **Core Hypothesis (falsifiable):** Convention mismatch alone (measurable by convention-translating the predictions) accounts for >25% of cross-dataset AP drops — a large recoverable component nobody corrects for — with the remainder splitting between vocabulary and appearance in dataset-dependent proportions, falsified if convention translation recovers nothing.
+- **Why Important:** The convention component is pure evaluation artifact; quantifying it changes how the field measures (and claims) detector generality.
+- **Why Possibly Novel:** Cross-dataset studies report aggregate drops; the three-way decomposition with convention translation is new instrumentation.
+- **Minimal Experiment:** Evaluate COCO detectors on 6 datasets; fit per-dataset convention translators (box-tightness, grouping) on small calibration sets; re-decompose the drops.
+- **Main Risk:** Convention translation could absorb genuine errors; constrain translators to low capacity and validate on synthetic convention shifts.
+
+### IDEA-A-0324
+- **One-sentence idea:** Map where detection-then-count breaks down versus density regression in extreme-density counting (aerial crowds, cell cultures), testing whether the crossover density is predictable from per-instance resolvability.
+- **Problem:** Counting via detection preserves instance information but fails in extreme density; density regression scales but loses instances; the crossover — where each formulation should be used — is folklore, though applications span the full density range.
+- **Core Hypothesis (falsifiable):** The detection→density crossover occurs where inter-instance spacing falls below ~2× the effective feature-map stride (an architecture-derived, predictable point), and hybrid switching at the predicted crossover beats either pure formulation by >10% counting accuracy — the boundary is computable a priori, falsified if crossovers are unpredictable from resolvability.
+- **Why Important:** A predictable formulation boundary lets systems auto-select or spatially mix formulations — directly useful across surveillance, biology, and agriculture.
+- **Why Possibly Novel:** Both formulations are mature; the predictive crossover law connecting them to architecture stride is unformulated.
+- **Minimal Experiment:** Evaluate both formulations across density-stratified benchmarks with multiple strides; test the crossover prediction; prototype the spatial-mixture system.
+- **Main Risk:** Density varies within images; the analysis must be local (per-region), not per-image.
+
+### IDEA-A-0325
+- **One-sentence idea:** Test whether deblurring preprocessing beats blur-robust training for detection under motion blur — restoration-then-detect versus robustness-in-weights — at matched compute, including the failure case where deblurring hallucinates.
+- **Problem:** Two philosophies compete for handling motion blur (fix the image vs harden the model); modern generative deblurrers can hallucinate structure, potentially creating confident false detections — the comparison including hallucination risk has not been run.
+- **Core Hypothesis (falsifiable):** Robust training matches or beats deblur-then-detect on true AP at matched compute while producing 3–5× fewer hallucination-induced false positives (detections of deblurrer-invented structures) — restoration's apparent gains carry a hidden precision tax, falsified if the deblur pipeline wins on both axes.
+- **Why Important:** The hallucination-tax finding (if confirmed) warns against a plausible-looking pipeline pattern spreading with generative restoration tools — a safety-relevant negative result.
+- **Why Possibly Novel:** Restoration-vs-robustness comparisons exist for classification; the hallucination-aware detection version targeting generative restorers is new.
+- **Minimal Experiment:** {blur-robust training, classical deblur+detect, generative deblur+detect} on blurred benchmarks with real blur; audit false positives for hallucination provenance.
+- **Main Risk:** Attributing false positives to hallucination needs care; use paired sharp frames as ground truth for what structure actually exists.
+
+---
+
+## Cluster 17 — Evaluation Methodology & Benchmark Science (IDEA-A-0326 … 0340)
+
+### IDEA-A-0326
+- **One-sentence idea:** Measure the seed-variance distribution across common segmentation benchmarks and model families, and publish the minimum-seeds-per-benchmark table the field needs to interpret any reported gain.
+- **Problem:** Papers report single-seed gains of 0.3–1.0 points on benchmarks whose seed noise is unknown; without benchmark-specific noise floors, reviewers and readers cannot distinguish signal from luck — the most basic statistical infrastructure is simply missing.
+- **Core Hypothesis (falsifiable):** Seed standard deviation varies by >5× across popular benchmarks (small/medical benchmarks noisiest), implying that a fixed "1 point = real" heuristic is wrong in both directions, and that ≥30% of recent reported gains fall below their benchmark's 2σ noise floor.
+- **Why Important:** A published noise-floor table changes reviewing standards immediately and retroactively contextualizes the literature — high leverage per compute spent.
+- **Why Possibly Novel:** Seed variance is acknowledged; the systematic cross-benchmark quantification as a citable reference does not exist for segmentation.
+- **Minimal Experiment:** 10 benchmarks × 3 model families × 20 seeds under fixed recipes; publish variance tables, power curves, and a reporting-standard proposal.
+- **Main Risk:** Variance depends on recipe details (schedule length); report variance under 2 recipe regimes to bound it.
+
+### IDEA-A-0327
+- **One-sentence idea:** Define and measure "benchmark death" — the point where a benchmark's remaining headroom is below its label-noise floor — across segmentation benchmarks, producing a lifecycle status report for the field's evaluation instruments.
+- **Problem:** Benchmarks silently transition from informative to saturated (progress = noise fitting), but the field lacks a criterion and audit for retirement — dead benchmarks keep collecting papers whose gains are uninterpretable (integrating IDEA-A-0091/0166 into an instrument).
+- **Core Hypothesis (falsifiable):** ≥4 widely used segmentation benchmarks are already dead by the criterion (top-model residual error statistically indistinguishable from inter-annotator disagreement on re-annotated samples), and papers published on them post-death show near-zero cross-benchmark transfer of their claimed gains.
+- **Why Important:** The post-death transfer analysis converts "benchmark is old" grumbling into an evidence standard for retiring evaluation instruments and redirecting the field's attention.
+- **Why Possibly Novel:** Saturation is discussed informally; the formal death criterion plus the post-death transfer validation is new methodology.
+- **Minimal Experiment:** Re-annotate samples from 8 benchmarks (share with IDEA-A-0091); apply the criterion; for dead ones, test whether post-death SOTA improvements transfer to living benchmarks.
+- **Main Risk:** The death criterion's annotator pool choice is contestable; use multiple expert pools and publish sensitivity.
+
+### IDEA-A-0328
+- **One-sentence idea:** Validate (or invalidate) simulated-click protocols for interactive segmentation by measuring ranking agreement with real-user evaluations across the current model generation.
+- **Problem:** Interactive segmentation progress is measured almost entirely through click simulators (cf. IDEA-A-0048); if simulator rankings diverge from human-user rankings for modern models, the subfield's leaderboard is measuring the wrong thing — the protocol validity check is overdue.
+- **Core Hypothesis (falsifiable):** Simulator-based and real-user rankings agree on coarse model tiers but disagree on adjacent pairs in >30% of cases, with disagreement concentrated where models differ in error *placement* (which simulators respond to differently than humans) — simulators are valid for screening, invalid for fine ranking.
+- **Why Important:** Defines the evidentiary weight simulator results can carry — directly affecting how interactive-segmentation papers should be evaluated and written.
+- **Why Possibly Novel:** Small user studies exist per-paper; the protocol-validity study across a model generation with tier/fine-ranking decomposition is missing.
+- **Minimal Experiment:** 25 users × 6 models × standardized tasks with logged interactions; compare ranking structures against 3 simulator protocols.
+- **Main Risk:** User-study variance; within-subject design and pre-registered analysis are mandatory.
+
+### IDEA-A-0329
+- **One-sentence idea:** Build a validated decision tree for segmentation metric selection — which metric to use for which application — anchored in measured human/downstream preference rather than convention.
+- **Problem:** Metric choice (IoU, Dice, boundary-F, HD95, PQ) is conventional per subfield, and metric disagreements are documented (IDEA-A-0116/0173), but nobody has produced a validated *prescription*: given an application's needs, which metric predicts satisfaction of those needs?
+- **Core Hypothesis (falsifiable):** A small set of application factors (boundary criticality, topology criticality, instance-identity need, class balance) predicts which metric best correlates with application-outcome quality (measured via downstream simulations and expert preference) with >85% accuracy — metric choice is systematizable, falsified if the best metric is unpredictable from factors.
+- **Why Important:** Converts the field's most common methodological argument ("wrong metric!") into a lookup — with measurable adoption value for reviewers, benchmark designers, and practitioners.
+- **Why Possibly Novel:** Metric-comparison papers document disagreement; the validated prescription instrument does not exist.
+- **Minimal Experiment:** Define 6 application archetypes with downstream quality measures; evaluate metric-outcome correlations per archetype; fit and validate the decision tree on held-out archetypes.
+- **Main Risk:** Application archetypes may not span real use; recruit practitioners to define them.
+
+### IDEA-A-0330
+- **One-sentence idea:** Quantify baseline drift across the segmentation literature — the same named baseline reported with different numbers across papers — and identify the practices (reimplementation, schedule changes, cherry-picked checkpoints) that drive it.
+- **Problem:** Meta-comparisons assume "DeepLabv3+ 78.5" means something stable, but the same baseline varies by several points across papers; the drift's magnitude and causes are unmeasured, corrupting every comparison table built from cited numbers.
+- **Core Hypothesis (falsifiable):** For 5 common baselines, the cross-paper reported range exceeds 3× the seed noise (per IDEA-A-0326), with variance attributable primarily to schedule/augmentation divergence rather than implementation bugs — most published "improvements over baseline X" are not comparable across papers.
+- **Why Important:** Documents a systemic comparability failure with actionable causes, strengthening the case for standardized baseline registries and artifact requirements.
+- **Why Possibly Novel:** Reproducibility studies re-run single papers; the cross-literature baseline-drift quantification with cause attribution is new.
+- **Minimal Experiment:** Extract reported numbers for 5 baselines across 100+ papers; re-run the baselines under the papers' stated configs where recoverable; decompose the variance.
+- **Main Risk:** Stated configs are often incomplete; treat unrecoverable configs as a finding (documentation failure rate), not a nuisance.
+
+### IDEA-A-0331
+- **One-sentence idea:** Re-analyze published segmentation SOTA claims with proper paired statistics (per-image tests, corrected for multiple comparisons) to measure what fraction of claimed advances are statistically supportable from their own evidence.
+- **Problem:** Segmentation papers compare means without significance testing despite per-image paired data being available; the fraction of recent SOTA claims that would survive elementary paired tests is unknown — a basic epistemic audit the field has skipped.
+- **Core Hypothesis (falsifiable):** Among reproducible recent comparisons on standard benchmarks, >40% of claimed improvements fail paired significance tests at their reported evidence level (single seed, available per-image results) — a large fraction of the leaderboard record is statistically unsupported as stated.
+- **Why Important:** The number itself — whatever it is — recalibrates how the field reads leaderboards and what reviewers should require; it also demonstrates the near-zero cost of doing the tests.
+- **Why Possibly Novel:** Statistical-practice critiques exist in ML broadly; the systematic re-analysis of segmentation claims using recoverable per-image data is unexecuted.
+- **Minimal Experiment:** Recover per-image metrics for 50 published comparisons (released predictions or re-runs); apply paired tests with corrections; report the survival rate.
+- **Main Risk:** Re-run-based recovery introduces its own variance; prioritize comparisons with released predictions.
+
+### IDEA-A-0332
+- **One-sentence idea:** Quantify validation-set overfitting on public segmentation leaderboards by re-evaluating leaderboard-optimized models on fresh private splits drawn from the same distribution.
+- **Problem:** Public test/val servers permit iterated submission; adaptive overfitting theory predicts inflated leaderboard scores, but the actual inflation magnitude for segmentation leaderboards — and its dependence on submission count — has not been measured.
+- **Core Hypothesis (falsifiable):** Models near the top of long-running leaderboards drop measurably more (>1.5 points) on fresh same-distribution splits than models with few submissions, with the drop correlating with the team's submission history — adaptive overfitting is real and dose-dependent, falsified if drops are uniform across submission counts.
+- **Why Important:** Measures the trustworthiness of the field's primary progress signals and quantifies the value of held-out refresh policies for benchmark operators.
+- **Why Possibly Novel:** Adaptive overfitting was measured for classification (CIFAR/ImageNet replications); the segmentation-leaderboard version with dose-response analysis is missing.
+- **Minimal Experiment:** Build fresh splits for 2 leaderboard datasets (new annotation on same-source imagery); re-evaluate 15 leaderboard models spanning submission histories; fit the dose-response.
+- **Main Risk:** "Same distribution" fresh splits are hard to construct perfectly; document distributional checks and use relative (not absolute) drops.
+
+### IDEA-A-0333
+- **One-sentence idea:** Produce contamination-adjusted zero-shot scores for major open-vocabulary segmentation models by jointly applying image-level and concept-level contamination detection, establishing the field's honest zero-shot numbers.
+- **Problem:** Zero-shot claims (cf. IDEA-A-0194/0254) need an integrated accounting: current headline numbers mix truly novel evaluation with pretraining-exposed content in unknown proportions, and no adjusted scores exist for the community to cite.
+- **Core Hypothesis (falsifiable):** Contamination-adjusted zero-shot mIoU is 15–40% relative lower than headline numbers, with adjustment size varying enough across models to change their zero-shot ranking — headline numbers actively misrank models on the capability they claim to measure.
+- **Why Important:** Publishing adjusted scores with methodology would set the citation standard for zero-shot claims, forcing evaluation honesty ecosystem-wide.
+- **Why Possibly Novel:** Contamination methodology exists piecemeal; the integrated adjustment and the reranking demonstration for OV segmentation are new deliverables.
+- **Minimal Experiment:** Apply duplicate detection + concept-exposure estimation to 4 open-data OV models on 3 benchmarks; publish stratified and adjusted scores with the reranking analysis.
+- **Main Risk:** Adjustment methodology choices are contestable; publish multiple adjustment variants with sensitivity analysis.
+
+### IDEA-A-0334
+- **One-sentence idea:** Retrospectively audit how many published segmentation gains survive compute-matched comparison, and propose the compute-reporting protocol that would have prevented the inflation.
+- **Problem:** Methods routinely add compute (extra passes, larger inputs, ensembling components) without compute-matched baselines; the aggregate fraction of literature gains attributable to unacknowledged compute — rather than method content — is unknown but suspected large.
+- **Core Hypothesis (falsifiable):** Among 30 reproducible published methods, ≥40% of the average claimed gain disappears when baselines receive matched compute (longer training, higher resolution, or self-ensembling of equivalent cost) — a quantified compute-inflation coefficient for the field.
+- **Why Important:** The inflation coefficient justifies (with a number) mandatory compute-matched reporting, and the retrospective identifies which method families hold genuine content.
+- **Why Possibly Novel:** Compute-matching is advocated abstractly; the systematic retrospective quantification for segmentation is unexecuted.
+- **Minimal Experiment:** Reproduce 30 methods with released code; grant baselines matched compute via 3 standard channels; report gain-survival distribution by method family.
+- **Main Risk:** Choosing the baseline's compute-spending channel affects results; use the best of the 3 channels per case (conservative for the audit's claim).
+
+### IDEA-A-0335
+- **One-sentence idea:** Measure how adopting worst-class and quantile metrics (instead of mean IoU) would reorder segmentation leaderboards, and test whether mIoU-optimized training systematically sacrifices worst-class performance.
+- **Problem:** Mean metrics hide class collapse (a model can gain mIoU while a safety-critical class degrades); the reordering magnitude under worst-class/quantile metrics — and whether current training implicitly trades tails for means — is undocumented at leaderboard scale.
+- **Core Hypothesis (falsifiable):** Under worst-decile-class IoU, ≥30% of adjacent leaderboard orderings invert, and models trained with longer schedules show mean-tail divergence (means rise while worst-class stagnates or drops) — mean-metric optimization actively grows the tail risk, falsified if mean and tail metrics track each other.
+- **Why Important:** For deployment, the worst class is often the point (rare hazards); demonstrating systematic mean-tail divergence would justify changing default reporting field-wide.
+- **Why Possibly Novel:** Worst-group metrics exist in fairness literature; the segmentation-leaderboard reordering study with training-dynamics analysis is new.
+- **Minimal Experiment:** Re-score 20 public models under mean/worst-class/quantile metrics on 4 benchmarks; analyze training trajectories of 5 models for mean-tail divergence.
+- **Main Risk:** Worst-class metrics are noisy for rare classes; use quantile smoothing and report CIs.
+
+### IDEA-A-0336
+- **One-sentence idea:** Measure human segmentation performance (time-budgeted and unlimited) on standard benchmarks to establish the human floors and ceilings that segmentation evaluation has always lacked.
+- **Problem:** Unlike classification (where human baselines anchored progress narratives), segmentation benchmarks have no published human performance — so "superhuman" claims, headroom estimates, and difficulty comparisons across benchmarks all float without an anchor.
+- **Core Hypothesis (falsifiable):** Human mIoU on standard benchmarks is substantially below 100 (HYPOTHESIS: 75–90 depending on benchmark, driven by class-definition ambiguity rather than perceptual failure), and current top models already exceed time-budgeted human performance on ≥2 benchmarks while trailing unlimited-time humans everywhere — the human anchor reorders our sense of which benchmarks are "hard."
+- **Why Important:** Human anchors recalibrate headroom claims, identify benchmarks where residual "error" is definitional, and give "superhuman" a measurable meaning for dense prediction.
+- **Why Possibly Novel:** Astonishingly, systematic human baselines for major segmentation benchmarks have never been published.
+- **Minimal Experiment:** Trained annotators segment stratified samples of 4 benchmarks under {90 s/image, unlimited} budgets against official GT; report human floors/ceilings with disagreement decomposition.
+- **Main Risk:** "Human performance" depends on training and instructions; standardize and publish the protocol, report across skill levels.
+
+### IDEA-A-0337
+- **One-sentence idea:** Treat annotation instructions as an experimental variable: annotate the same images under different (all-reasonable) instruction documents and measure how much benchmark ground truth — and resulting model rankings — depend on instruction wording.
+- **Problem:** Instructions define what ground truth *is* (occlusion handling, boundary conventions, class edge cases), yet they are unpublished, unversioned, and never varied experimentally; the GT variance induced by instruction choice is a hidden hyperparameter of every benchmark.
+- **Core Hypothesis (falsifiable):** Two reasonable instruction variants produce GT differing by >5 IoU-equivalent on ambiguity-prone classes, sufficient to invert model rankings whose gaps are below that scale — benchmark conclusions are instruction-contingent at the scale of typical SOTA gaps.
+- **Why Important:** Establishes instruction publication and sensitivity reporting as necessary benchmark practice, and bounds the interpretive weight small gaps can carry.
+- **Why Possibly Novel:** Annotation quality is studied as error; instruction wording as a *treatment* in a controlled GT experiment is new methodology.
+- **Minimal Experiment:** Draft 3 defensible instruction variants; annotate 500 images under each (separate annotator pools); quantify GT divergence and re-rank 8 models per variant.
+- **Main Risk:** Annotator pools differ beyond instructions; use crossover assignment to isolate the instruction effect.
+
+### IDEA-A-0338
+- **One-sentence idea:** Measure the correlation between synthetic-corruption robustness benchmarks and real-world degradation performance for segmentation, testing whether the field's standard robustness scores predict anything about deployment.
+- **Problem:** Robustness research optimizes synthetic corruption suites on the assumption they proxy real degradations (weather, sensor aging, compression chains); for segmentation this proxy validity — the correlation between corruption scores and real-degradation scores — has never been measured.
+- **Core Hypothesis (falsifiable):** Model rankings on synthetic corruption suites correlate weakly (ρ < 0.5) with rankings on matched real degradations, with the proxy failing worst for weather and compression (where synthetic models are physically naive) — the field's robustness currency is substantially decoupled from its referent, falsified if correlations exceed 0.8.
+- **Why Important:** If the proxy fails, years of corruption-benchmark progress needs reinterpretation and real-degradation evaluation sets become urgent infrastructure.
+- **Why Possibly Novel:** Synthetic-real robustness gaps are noted for classification; the systematic ranking-correlation measurement for segmentation is missing.
+- **Minimal Experiment:** Assemble paired evaluations (synthetic corruption vs real counterpart: real fog, real low light, real compression pipelines) for 10 models; compute per-degradation ranking correlations.
+- **Main Risk:** Real-degradation sets have content confounds; use paired same-scene captures where possible.
+
+### IDEA-A-0339
+- **One-sentence idea:** Quantify the FLOPs-latency divergence for dense prediction models across real hardware, and measure how efficiency-ranking conclusions in the literature change when measured in deployment latency instead of FLOPs.
+- **Problem:** Efficiency claims for dense models are made in FLOPs, but dense workloads (high-resolution activations, memory-bound upsampling, attention patterns) diverge from FLOPs-predicted latency in hardware-specific ways; the divergence magnitude and its effect on published "efficient model" rankings are unmeasured.
+- **Core Hypothesis (falsifiable):** FLOPs-based and latency-based efficiency rankings of published "efficient segmentation" models disagree for >40% of model pairs on at least one mainstream hardware target, with memory-bandwidth-bound operations (not compute) explaining most divergence — the field's efficiency currency misprices real cost, falsified if rankings largely agree.
+- **Why Important:** Efficiency research guides deployment; if its currency is wrong, the recommended models are wrong — the audit provides the corrected rankings and the operator-level explanation.
+- **Why Possibly Novel:** FLOPs-latency gaps are known anecdotally; the systematic re-ranking study for dense models across hardware targets is not published.
+- **Minimal Experiment:** Benchmark 15 efficient segmentation models on 4 hardware targets (server GPU, edge GPU, CPU, NPU); compare FLOPs vs latency rankings; profile divergence sources.
+- **Main Risk:** Implementation quality (kernel optimization) confounds architecture; use best-available runtimes per model and report optimization status.
+
+### IDEA-A-0340
+- **One-sentence idea:** Apply bootstrap resampling over test sets to published segmentation rankings and measure what fraction of leaderboard orderings are statistically indistinguishable under test-set sampling variation alone.
+- **Problem:** Leaderboards present point-estimate orderings with no test-set-sampling uncertainty; two models differing by 0.4 mIoU on a 2k-image test set may be statistically tied, but the field has never computed ranking confidence at scale — the leaderboard's implied precision is unexamined.
+- **Core Hypothesis (falsifiable):** Under image-level bootstrap, >50% of adjacent-pair orderings on major segmentation leaderboards are within sampling noise (overlapping 95% intervals), and the fraction grows near the top where gaps compress — most fine-grained leaderboard structure is statistically fictional, falsified if orderings are robust under resampling.
+- **Why Important:** A leaderboard confidence layer (cheap to compute, easy to display) would immediately upgrade the field's primary comparison instrument; the measured fiction-fraction makes the case.
+- **Why Possibly Novel:** Bootstrap CIs are standard statistics; their systematic application to segmentation leaderboard structure — with the fiction-fraction as the headline measurement — has not been done.
+- **Minimal Experiment:** Obtain per-image results (released predictions or re-runs) for 20 models on 3 benchmarks; bootstrap ranking distributions; report pairwise distinguishability matrices.
+- **Main Risk:** Bootstrap over images ignores annotation-noise correlation; complement with annotation-perturbation resampling (link to IDEA-A-0337).
+
+---
+
+*End of Batch A: 340 ideas (IDEA-A-0001 … IDEA-A-0340).*
+
