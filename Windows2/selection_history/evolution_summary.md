@@ -34,6 +34,10 @@
 - O COMPLETE: Top 20 in `Windows2/_wip/stage6_agent_O/top20.md`.
 - Q COMPLETE: Top 5 in `Windows2/_wip/stage6_agent_Q/top5.md` — C-0306, B-0114-4arm, A-0028, B-0194+0169, C-0338.
 
+## Stage 7 prototypes
+
+- P COMPLETE: `Windows2/_wip/stage7_proto_C0306/` (synthetic conformal vs NMS; not COCO results).
+
 ## Eliminated (confirmed, do not revive without new evidence)
 
 - W2-B-0136 — Davari et al. CVPR 2022 (representation forgetting / rotation)

@@ -6,24 +6,14 @@
 
 ## Current stage
 
-**Top 5 locked** (`stage6_agent_Q/top5.md`):
-
-1. C-0306 conformal coverage vs NMS (constructive; first GPU-day)
-2. B-0114 4-arm dense VPT-as-registers (+B-0001 arm)
-3. A-0028 SAM2 teleport
-4. B-0194+0169 interactive sycophancy
-5. C-0338 size-resolved human ceiling
-
-S: **5→3**. P/R: prototypes for C-0306 and A-0028.
-
-5→3 must resolve: drop 2 of {B-0114, B-0194, C-0338} while keeping C-0306 + A-0028 unless a new fatal flaw appears. Medical-zero is an accepted Top-5 dissent — S may swap C-0338 for a medical seat only with a silencing experiment.
+Top 5 locked. **C-0306 synthetic prototype COMPLETE** (`stage7_proto_C0306/`). S selecting final 3. R: A-0028 proto. T: B-0114 4-arm proto.
 
 | Agent | Status |
 | --- | --- |
-| Q | COMPLETE — Top 5 |
-| P | RUNNING — C-0306 proto |
-| R | RUNNING — A-0028 proto |
-| S | DISPATCHING — 5→3 |
+| P | COMPLETE — C-0306 proto (CPU, tests) |
+| R | RUNNING — A-0028 |
+| S | RUNNING — 5→3 |
+| T | DISPATCHING — B-0114 4-arm |
 
 ## Git safety
 
