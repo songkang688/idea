@@ -1,0 +1,42 @@
+{
+  "task_id": "p1_diversity_audit_w1",
+  "role": "auditor_B_quality_blindspots",
+  "status": "done",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "completed_at_utc": "2026-08-28T19:26:01Z",
+  "branch": "cursor/p1-diversity-auditor-b-quality-blindspots-0826",
+  "audited_records": 248,
+  "audited_source": "Windows13/_state/ideas_master.jsonl @ origin/cursor/p1-wave-b-consolidator-w1-7a58 (936670f)",
+  "headline_findings": {
+    "field_completeness": "248/248 complete on all 12 core fields incl. contrarian triple; 0 stubs; 0 near-dupes",
+    "top_quality_defects": [
+      "numeric kill thresholds in falsifiable_prediction: 4/248",
+      "structured evidence_label dict: 94/248 (gen_a only; gen_b/gen_c use inline tags)",
+      "32/248 fastest tests need special hardware or human raters (not truly cheap kills)"
+    ],
+    "citations": "13 citation strings, all real papers, 0 fake",
+    "debunk_vs_constructive": "debunk ~60%, characterization ~21%, constructive-capability 46/248 (18.5%); gen_c 0/69 constructive",
+    "priority_list_blind_spots": ["SR/restoration", "diffusion", "LLM/agent", "VLM dense capability", "detection (underweight)"],
+    "saturated": ["SAM/SAM2", "uncertainty/calibration", "PEFT-of-SAM", "annotation pathology", "generic eval critique"]
+  },
+  "recommended_next_territories": [
+    "restoration_x_dense_prediction",
+    "diffusion_for_perception",
+    "vlm_dense_capability",
+    "detection_science",
+    "constructive_eval_repair",
+    "objective_function_science",
+    "cross_field_deployment",
+    "llm_agent_vision_loops",
+    "medical_beyond_ambiguity"
+  ],
+  "outputs": [
+    "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_B.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_B.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w1/done_auditor_B.json"
+  ],
+  "canonical_files_untouched": ["ideas_master.jsonl", "research_state.json", "window.lock.json"],
+  "recommended_next_task_type": "p1_diversity_audit_C_or_consolidator"
+}

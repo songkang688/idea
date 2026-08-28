@@ -1,0 +1,118 @@
+{
+  "task_id": "p1_diversity_audit_w1",
+  "role": "auditor_B_quality_blindspots",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "audited_set": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w1-7a58",
+    "source_commit": "936670f17cf60b6dcfbe492518f3d3564d09f5e7",
+    "records": 248,
+    "wave": "p1_wave_b_w1",
+    "shards": {
+      "gen_a_sam_foundation_peft": 94,
+      "gen_b_hard_domain_dense_prediction": 85,
+      "gen_c_contrarian_eval": 69
+    }
+  },
+  "audited_at_utc": "2026-08-28T19:26:01Z",
+  "independence": "analysis completed before reading Auditor A shard; A read afterwards for cross-check only",
+  "method": "deterministic regex/count analysis over all fields of all 248 records + manual read of all 248 one-liners + spot-reads of full records + hand-labeled constructive classification; no records modified",
+  "hypothesis_quality": {
+    "field_completeness": {
+      "all_12_core_fields_present_and_substantive": "248/248",
+      "contrarian_triple_complete": "248/248 (community_default_belief + why_it_might_be_wrong + fastest_falsification_experiment)",
+      "empty_or_stub_fields": 0,
+      "near_duplicate_one_liners": 0,
+      "evidence_label": "EVIDENCE"
+    },
+    "evidence_labeling_schema": {
+      "structured_evidence_label_dict": "94/248 (gen_a only)",
+      "inline_bracket_tags_only": "154/248 (gen_b + gen_c)",
+      "severity": "top structural defect; downstream programmatic readers of evidence_label will treat 62% of portfolio as unlabeled",
+      "action": "consolidator_normalize_before_stage2",
+      "evidence_label": "EVIDENCE"
+    },
+    "falsifiability": {
+      "predictions_with_hedge_words": "0/248",
+      "predictions_with_numeric_kill_threshold": "4/248 (1.6%)",
+      "records_with_explicit_falsified_if_clause": "91/248",
+      "assessment": "predictions crisp and directional but almost never numerically pre-registered; kill adjudication of 'large fraction'/'substantially' is subjective; single biggest quality gap",
+      "evidence_label": "EVIDENCE"
+    },
+    "cheap_kill": {
+      "fastest_test_present": "248/248",
+      "explicit_time_or_cost_bound_by_shard": { "gen_a": "92/94", "gen_b": "52/85", "gen_c": "33/69" },
+      "fastest_tests_requiring_special_resources": {
+        "count": 32,
+        "kinds": ["human raters/experts/clinicians", "polarization camera", "event camera", "HDR sensor", "thermal/particulate sensors", "phantoms"],
+        "ids": ["W13-P1-A-012", "W13-P1-A-095", "W13-P1-B-002", "W13-P1-B-008", "W13-P1-B-012", "W13-P1-B-017", "W13-P1-B-018", "W13-P1-B-019", "W13-P1-B-020", "W13-P1-B-021", "W13-P1-B-022", "W13-P1-B-024", "W13-P1-B-026", "W13-P1-B-043", "W13-P1-B-044", "W13-P1-B-052", "W13-P1-B-060", "W13-P1-B-061", "W13-P1-B-069", "W13-P1-B-071", "W13-P1-B-072", "W13-P1-B-074", "W13-P1-B-075", "W13-P1-B-083", "W13-P1-B-084", "W13-P1-B-085", "W13-P1-B-086", "W13-P1-B-091", "W13-P1-B-095", "W13-P1-C-065", "W13-P1-C-066", "W13-P1-C-067"],
+        "action": "stage2 ranking should discount claimed cheapness for these"
+      },
+      "evidence_label": "EVIDENCE"
+    },
+    "citations": {
+      "citation_strings_found": 13,
+      "all_real_well_known_papers": true,
+      "fake_citations_found": 0,
+      "location": "gen_a prior_work_basis labels only, each wrapped in VERIFIED-PRIOR-WORK vs MODEL-SPECULATION split",
+      "gen_b_gen_c": "cite nothing; novelty claims are hedged self-assessments (no fabrication risk, but novelty entirely unverified)",
+      "evidence_label": "EVIDENCE"
+    }
+  },
+  "blind_spots_vs_p1_priority_list": [
+    { "topic": "SR/restoration", "primary": 2, "mentions": 3, "verdict": "BLIND_SPOT" },
+    { "topic": "diffusion/generative-for-perception", "primary": 1, "mentions": 4, "verdict": "BLIND_SPOT" },
+    { "topic": "LLM/agent", "primary": 1, "mentions": 1, "verdict": "BLIND_SPOT" },
+    { "topic": "VLM dense prediction (capability, not eval-critique)", "primary": 0, "mentions": 11, "verdict": "BLIND_SPOT (9 primary records are all gen_c eval critiques)" },
+    { "topic": "detection", "primary": 2, "mentions": 35, "verdict": "UNDERWEIGHT (only B-023, C-011 detection-primary)" },
+    { "topic": "synthetic data (constructive generation)", "primary": 12, "mentions": 50, "verdict": "UNDERWEIGHT_AND_CRITIQUE_ONLY" },
+    { "topic": "cross-field beyond physics-of-media (remote sensing, microscopy, 3D/LiDAR, driving, docs)", "primary": 16, "mentions": 35, "verdict": "UNDERWEIGHT (remote sensing 0 primary, 3D/depth 2, microscopy 1, driving 1, document/OCR 0)" },
+    { "topic": "medical beyond ambiguity lens (longitudinal, VLM/report grounding, multi-site methods)", "primary": 33, "mentions": 60, "verdict": "NARROW_LENS" },
+    { "topic": "SAM/SAM2", "primary": 82, "mentions": 90, "verdict": "SATURATED" },
+    { "topic": "uncertainty/calibration", "primary": 57, "mentions": 73, "verdict": "SATURATED" },
+    { "topic": "PEFT", "primary": 37, "mentions": 49, "verdict": "SATURATED_AND_SAM_ONLY" },
+    { "topic": "smoke/fire/transparent", "primary": 48, "mentions": 64, "verdict": "WELL_COVERED" },
+    { "topic": "VFM general", "primary": 36, "mentions": 76, "verdict": "COVERED_AS_CRITIQUE_OBJECT" },
+    { "topic": "domain shift", "primary": 22, "mentions": 55, "verdict": "COVERED" }
+  ],
+  "debunk_vs_constructive": {
+    "debunk_or_critique": "~150/248 (~60%)",
+    "neutral_characterization_laws": "~52/248 (~21%)",
+    "constructive_capability": "46/248 (18.5%)",
+    "constructive_by_shard": { "gen_a": "24/94", "gen_b": "22/85", "gen_c": "0/69" },
+    "constructive_capability_ids": [
+      "W13-P1-A-005", "W13-P1-A-012", "W13-P1-A-017", "W13-P1-A-022", "W13-P1-A-024", "W13-P1-A-025", "W13-P1-A-026", "W13-P1-A-027", "W13-P1-A-029", "W13-P1-A-030", "W13-P1-A-036", "W13-P1-A-041", "W13-P1-A-042", "W13-P1-A-043", "W13-P1-A-045", "W13-P1-A-053", "W13-P1-A-076", "W13-P1-A-078", "W13-P1-A-086", "W13-P1-A-088", "W13-P1-A-090", "W13-P1-A-094", "W13-P1-A-097", "W13-P1-A-100",
+      "W13-P1-B-005", "W13-P1-B-020", "W13-P1-B-024", "W13-P1-B-026", "W13-P1-B-037", "W13-P1-B-050", "W13-P1-B-057", "W13-P1-B-060", "W13-P1-B-061", "W13-P1-B-062", "W13-P1-B-063", "W13-P1-B-065", "W13-P1-B-069", "W13-P1-B-071", "W13-P1-B-072", "W13-P1-B-073", "W13-P1-B-074", "W13-P1-B-080", "W13-P1-B-083", "W13-P1-B-084", "W13-P1-B-090", "W13-P1-B-094"
+    ],
+    "verdict": "debunk-skewed ~3:1; skew is structural (gen_c contrarian-by-design with 0 capability records; other shards default to failure-mode framing); zero constructive records in restoration, diffusion, detection, VLM-dense, LLM/agent territories",
+    "divergence_from_auditor_A": "A's genre regex reported 0 method proposals; manual labeling finds 46 constructive-capability records phrased as testable hypotheses. Debunk-skew conclusion stands but consolidator should protect the 46-record constructive core in Stage 2 balancing.",
+    "evidence_label": "EVIDENCE (counts) + HYPOTHESIS (hand-labeling judgment)"
+  },
+  "recommended_next_territories": [
+    { "queue_rank": 1, "territory": "restoration_x_dense_prediction", "brief": "when restoration pre-processing helps vs hallucinates for downstream dense tasks; perception-distortion tradeoff laws; restoration hallucination risk in medical/scientific imagery", "fills": "SR/restoration blind spot" },
+    { "queue_rank": 2, "territory": "diffusion_for_perception", "brief": "diffusion models as feature extractors, physics-constrained data engines, and uncertainty priors for dense prediction; constructive successor to B-082/B-087/C-064 critiques", "fills": "diffusion + synthetic-data blind spots" },
+    { "queue_rank": 3, "territory": "vlm_dense_capability", "brief": "open-vocabulary/referring/grounded segmentation capability hypotheses; mass-noun grounding (extend B-030); text-prompted dense prediction on hard domains; medical referring segmentation; constructive quota >= 60%", "fills": "VLM dense blind spot" },
+    { "queue_rank": 4, "territory": "detection_science", "brief": "DETR-family query mechanics (mirror gen_a decoder work); small-object/lesion detection vs overlap metrics (extend B-023); detection calibration done right (extend C-011)", "fills": "detection underweight" },
+    { "queue_rank": 5, "territory": "constructive_eval_repair", "brief": "fix-hypotheses for gen_c's strongest diagnosed pathologies: paired/variance-budgeted eval designs, harness-invariant metrics, contamination-robust protocols, each with falsifiable 'repaired protocol changes conclusion X' predictions", "fills": "debunk-to-constructive conversion" },
+    { "queue_rank": 6, "territory": "objective_function_science", "brief": "losses and training targets for dense prediction beyond focal+dice; generalize B-057 log-transmittance, B-080 level-sets, B-024 mixture regression, A-101; Auditor A confirms zero loss+X permutation volume", "fills": "training-objective blind spot" },
+    { "queue_rank": 7, "territory": "cross_field_deployment", "brief": "remote sensing/UAV fire & smoke monitoring; microscopy/pathology dense prediction; 3D/depth/LiDAR interaction with transparency (extend B-014)", "fills": "cross-field blind spots" },
+    { "queue_rank": 8, "territory": "llm_agent_vision_loops", "brief": "LLM-orchestrated segmentation pipelines, self-correcting annotation agents, VLM-as-judge reliability as capability question (extend C-071)", "fills": "LLM/agent blind spot" },
+    { "queue_rank": 9, "territory": "medical_beyond_ambiguity", "brief": "longitudinal/temporal medical (B-072 lone seed); cross-site convention transfer as constructive method (B-085); medical VLM/report-grounded segmentation (0 records)", "fills": "medical narrow-lens" }
+  ],
+  "next_wave_quality_gates": [
+    "every falsifiable_prediction must carry a numeric kill threshold (currently 4/248)",
+    "every record must carry the structured evidence_label dict incl. prior_work_basis (currently 94/248)",
+    "fastest_falsification_experiment must state a time/cost bound and require only public data + single GPU, or explicitly flag needs_special_resources",
+    "per-generator constructive-capability quota >= 50%",
+    "stop-feeding: SAM internals, PEFT-of-SAM, uncertainty/calibration, annotation pathology, generic eval critique (agrees with Auditor A)"
+  ],
+  "no_fake_citations_in_this_audit": true,
+  "files_written": [
+    "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_B.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_B.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w1/done_auditor_B.json"
+  ],
+  "files_not_touched": ["Windows13/_state/ideas_master.jsonl", "Windows13/_state/research_state.json", "Windows13/window.lock.json", "Windows13/_state/window.lock.json"]
+}
