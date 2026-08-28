@@ -1,0 +1,44 @@
+# A-0028 synthetic teleport-probe: default full grid (CPU, ~1-2 min)
+seed: 20260828
+
+world:
+  arena: 256.0
+  app_dim: 32
+  n_prefix: 6         # observed smooth frames before the gap
+  n_post: 8           # observed frames after the manipulation (persistence window)
+  step_sigma: 1.5     # per-step random-walk motion, px
+  drift_rate: 0.12    # per-step world-side appearance drift (gap staleness mechanism)
+  placebo_eps: 0.05   # paste-artifact appearance perturbation (Reviewer-2 control)
+  jump_distractor_dist: 150.0
+
+tracker:              # surrogate memory-bank tracker (NOT SAM2)
+  lambda_loc: 0.5     # ground-truth arbitration: 0 = pure appearance, 1 = pure location
+  sigma_loc: 12.0     # spatial-prior bandwidth, px
+  mem_size: 6
+  mem_decay: 0.65
+  accept_threshold: 0.35
+  score_noise: 0.01
+
+grid:                 # exp_07 (d, g, s) battery
+  displacements: [4, 8, 16, 32, 64]
+  gaps: [1, 2, 4, 8, 16]
+  similarities: [0.2, 0.5, 0.8, 0.95]
+  trials_per_cell: 150
+
+experiments:
+  arbitration_conditions: [swap, jump]
+  baseline_trials_per_cell: 60          # dummy-bracket trackers on the swap grid
+  lambda_sweep: [0.1, 0.3, 0.5, 0.7, 0.9]   # instrument validation
+  lambda_sweep_trials: 100
+  lambda_sweep_subgrid:
+    displacements: [8, 32]
+    gaps: [2, 8]
+    similarities: [0.5, 0.9]
+  persistence:                          # identity-continuation / memory pollution
+    # cell chosen where arbitration is contested: an appearance-leaning
+    # tracker mostly follows the object, a location-leaning one the place
+    cell: {displacement: 16, gap: 4, similarity: 0.5}
+    trials: 300
+    lambdas: [0.2, 0.5, 0.8]
+  placebo_trials: 300                   # Reviewer-2 paste-artifact control
+  appearance_flip_trials: 300

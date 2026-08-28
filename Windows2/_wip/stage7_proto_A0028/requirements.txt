@@ -1,0 +1,9 @@
+# A-0028 synthetic teleport-probe prototype — CPU only, no SAM2 required
+numpy>=1.24
+PyYAML>=6.0
+pytest>=7.0
+
+# OPTIONAL real-SAM2 path (env-gated OFF by default; see src/a0028/sam2_wrapper.py):
+# torch>=2.3
+# pillow>=10.0
+# sam2 @ git+https://github.com/facebookresearch/sam2.git
