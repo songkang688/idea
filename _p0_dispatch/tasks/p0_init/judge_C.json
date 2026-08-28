@@ -1,0 +1,130 @@
+{
+  "task_id": "p0_init",
+  "role": "judge_C_conventions",
+  "wave": "B",
+  "judged_at_utc": "2026-08-28T17:18:00Z",
+  "repository": "https://github.com/songkang688/idea",
+  "branch": "cursor/p0-init-judge-c-conventions-f02e",
+  "scope_compliance": {
+    "created_windows_dir": false,
+    "wrote_decision_json": false,
+    "wrote_window_lock_json": false,
+    "recommendation_only": true
+  },
+  "fresh_scan": {
+    "fetch_commands": ["git fetch origin --prune @ ~17:16Z", "git fetch origin --prune @ ~17:17Z"],
+    "scanned_at_utc": "2026-08-28T17:17:52Z",
+    "scan_scope": ["all_origin_heads_ls_tree", "git_log_all_commit_messages", "content_grep_all_refs", "branch_names"],
+    "top_level_windows_dirs_on_origin_heads": ["Windows2", "Windows4", "Windows6", "Windows8", "Windows9", "Windows10", "Windows11", "Windows12"],
+    "nested_anomaly": {
+      "id": "Windows3",
+      "path": "staging/Windows3_supervisor/",
+      "branches": ["origin/cursor/idea-evolution-windows3-b534", "origin/cursor/w3s1-cluster-b-7ea7"],
+      "ruling": "number 3 counts as occupied; staging layout is legacy, do not repeat"
+    },
+    "occupied_numbers": [2, 3, 4, 6, 8, 9, 10, 11, 12],
+    "never_existed_numbers": [1, 5, 7],
+    "max_n_observed": 12,
+    "windows13_mentions_in_all_history": 0,
+    "main_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+    "main_contains_windows_dirs": false
+  },
+  "verdict_identity": {
+    "windows_id": "Windows13",
+    "windows_number": 13,
+    "windows_path": "Windows13",
+    "basis": "fresh independent scan: max occupied N=12, Windows13 absent from all trees/commits/branch names on all origin heads after two fetches; monotonic max+1 convention; no human identity-freeze instruction applies to this run; all three Wave A workers independently converged on 13",
+    "collision_guard": "Implementation Agent MUST re-run git fetch origin --prune and re-scan all origin heads immediately before creating the tree; if Windows13 is claimed, bump to smallest unused N>13 absent from every origin head (sibling dispatch has signaled intent to claim 14); never gap-fill 1/5/7, never reuse 3"
+  },
+  "verdict_init_scheme": {
+    "template_source": "Windows9-12 P0-init scaffold (verified identical across all four branches) plus new window.lock.json",
+    "files_to_create": [
+      "Windows13/README.md",
+      "Windows13/_state/research_state.json",
+      "Windows13/_state/window.lock.json",
+      "Windows13/_state/ideas_master.jsonl",
+      "Windows13/_state/research_ledger.md",
+      "Windows13/_state/agent_log.md",
+      "Windows13/selection_history/.gitkeep",
+      "Windows13/final_ideas/.gitkeep",
+      "Windows13/artifacts/.gitkeep"
+    ],
+    "ideas_master_init": "empty 0-byte file (Windows9/11/12 convention)",
+    "selection_history_policy": "lazy per-stage evidence files (Windows4/6 precedent); .gitkeep only at init",
+    "json_validity_gate": "validate every .json with python3 -m json.tool before committing (Windows11 research_state.json on origin is invalid JSON: unquoted literal \"wave\": 1b)",
+    "write_boundaries": "only Windows13/ and _p0_dispatch/ bookkeeping; never touch root README.md, other Windows* trees, or other agents' shards; never force-push"
+  },
+  "verdict_research_state_lock_fields": {
+    "windows_id": "Windows13",
+    "windows_number": 13,
+    "windows_path": "Windows13",
+    "window_locked": true,
+    "window_defined_by": "P0",
+    "window_definition_status": "canonical",
+    "note": "NEW fields, no precedent in any prior research_state.json on any ref; add on top of Windows12-schema base fields (repository, branch, base_branch, created_at, supervisor, current_stage, target_pipeline, total_ideas=0, survivors=0, final_target=3, status=initialized, numbering, git_safety, ideas_index, current_ranking, evidence_policy)"
+  },
+  "verdict_window_lock_json": {
+    "path": "Windows13/_state/window.lock.json",
+    "required_fields": {
+      "windows_id": "Windows13",
+      "windows_number": 13,
+      "windows_path": "Windows13",
+      "repository": "https://github.com/songkang688/idea",
+      "branch": "<implementation agent's actual init branch>",
+      "created_at": "<UTC ISO-8601 at init commit time>",
+      "locked": true,
+      "defined_by": "P0"
+    },
+    "write_policy": "written locked=true in the init commit itself, immediately after final re-fetch + overwrite check passes; worker_C's two-phase create-unlocked design is overruled",
+    "precedent": "none — zero lock files exist on any ref; dispatcher schema is authoritative"
+  },
+  "verdict_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+  "verdict_commit_message": "Research Idea Evolution - Windows13 - Initialization",
+  "commit_message_notes": "matches dominant 'Research Idea Evolution - WindowsN - <action>' family (no space before N per Windows2/3/4; do not copy 'Windows 6/8' spaced form); Windows9-12 used 'Initialize WindowsN research workspace (P0)' but dispatcher template is mandatory; a follow-up 'record verified push SHA' commit is permitted per Windows9-12 practice",
+  "contradictions": [
+    {
+      "id": "C1",
+      "vs": "worker_C",
+      "issue": "worker_C proposes window.lock.json created UNLOCKED (windows_id=null, locked=false, locked_by/locked_at) and flipped later",
+      "resolution": "OVERRULED: dispatcher requires locked=true, defined_by=P0 with identity fields at P0; P0 is the locker; committed-unlocked invites sibling claims; worker_C audit extras optional only"
+    },
+    {
+      "id": "C2",
+      "vs": "worker_C vs worker_A/worker_B",
+      "issue": "worker_C windows_ids_absent lists Windows3 (top-level scan) while A/B count 3 as occupied (staging form)",
+      "resolution": "A/B correct: number 3 occupied; worker_C's own windows3_note concurs, scan-scope artifact only; no numbering impact (all agree next=13)"
+    },
+    {
+      "id": "C3",
+      "vs": "repo precedent",
+      "issue": "Windows9-12 init commits used 'Initialize WindowsN research workspace (P0)' not the dispatcher template",
+      "resolution": "dispatcher template mandatory and matches the dominant family; worker_C reached the same conclusion"
+    },
+    {
+      "id": "C4",
+      "vs": "worker_A",
+      "issue": "branch suffix deviation flagged (-05a0 requested vs -1ccf enforced)",
+      "resolution": "informational only; this judge's VM likewise enforces -f02e; no identity/scheme impact"
+    },
+    {
+      "id": "C5",
+      "vs": "post-Wave-A evidence",
+      "issue": "sibling P0 dispatch (identity Windows14) pushed origin/cursor/p0-windows-init-worker-c-f747 at ~17:14Z recommending its run take Windows14, deferring 13 to this run",
+      "resolution": "confirms workers' race warnings; 13 remains correct for this run; mandatory final re-fetch guard stands"
+    },
+    {
+      "id": "C6",
+      "vs": "all workers and Windows9-12 precedent",
+      "issue": "no prior schema includes windows_number (int)",
+      "resolution": "dispatcher adds it; include windows_number=13 in both research_state.json and window.lock.json"
+    }
+  ],
+  "worker_convergence": {
+    "worker_A_recommended": 13,
+    "worker_B_recommended": 13,
+    "worker_C_recommended": 13,
+    "judge_independent_scan": 13,
+    "unanimous": true
+  },
+  "recommended_next_task_type": "wave_b_consolidator"
+}
