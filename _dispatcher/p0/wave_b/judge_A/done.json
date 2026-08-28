@@ -1,0 +1,19 @@
+{
+  "task_id": "p0_wave_b_judge_A",
+  "role": "judge",
+  "status": "complete",
+  "output_files": [
+    "_dispatcher/p0/wave_b/judge_A/report.md",
+    "_dispatcher/p0/wave_b/judge_A/verdict.json",
+    "_dispatcher/p0/wave_b/judge_A/done.json"
+  ],
+  "unresolved_items": [
+    "Residual race on 15: the unattributed fourth wave (_state/tasks/P0/wave_A/, branches cursor/p0-wave-a-worker-a-repo-inspection-6ef7 / p0-wavea-worker-b-safety-6f40 / p0-wave-a-worker-c-workspace-plan-4899) has no judge or consolidator output as of 17:29:31Z and its worker_B conditionally mentioned 15; consolidator MUST re-fetch origin --prune and re-verify Windows15 absence on ALL origin heads immediately before mkdir and before writing window.lock.json, bumping to smallest unused N >= 16 (never 13/14) on collision",
+    "Windows13 implementation by the _p0_dispatch sibling is imminent (consolidator decision.json 17:24:30Z); Windows14 implementation by the windows_init sibling is likely (two judge verdicts); neither directory exists yet - expect both to appear",
+    "No window.lock.json exists anywhere yet (P1/P2/P3 gate agents are blocked on it); first-to-lock wins, so this pipeline's consolidator should proceed to lock without delay",
+    "Hygiene (non-blocking, inherited from Wave A and sibling judges): Windows11/_state/research_state.json on origin/cursor/windows11-p0-init-c0c1 is malformed JSON - implementation must parse-check every .json before commit"
+  ],
+  "recommended_next_task_type": "wave_b_consolidator",
+  "windows_id": "Windows15",
+  "windows_number": 15
+}
