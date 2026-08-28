@@ -1,0 +1,289 @@
+{
+  "queue_version": 3,
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "generated_by": "p1_diversity_audit_1_consolidator",
+  "generated_at": "2026-08-28T20:45:00Z",
+  "supersedes": "Windows15/_state/tasks/p1/batch_001/consolidator/next_task_queue.json (queue_version 2) for batch_003+; batch_002 tasks queued there proceed unchanged with the advisory addendum below",
+  "state_snapshot": {
+    "accepted_ideas_in_master": 271,
+    "target_accepted": 1000,
+    "batches_consolidated": [1],
+    "batch_002_status": "generators dispatched per queue v2 (T04/T05/T06), not yet consolidated",
+    "diversity_audit_1": "complete - see Windows15/_state/tasks/p1/diversity_audit_1/decision.json"
+  },
+  "scheduling_decision": {
+    "decision": "accepted=271 < 1000 -> continue generation. Batches 003-005 cover the registry's remaining territories T07-T15 under the binding generator contract v2 (stance quotas, schema change, skeleton caps). Batch_006 covers T16 plus two audit-mandated coverage-hole second-pass shards. Projection: ~510-535 after batch_002, crossing 1000 during batch_005 dedup; batch_006 provides margin and closes consensus blind spots regardless.",
+    "quota_rationale": "batch_001 corpus is ~39-40% deflationary-skeleton with a 25:1 deflation:rehabilitation ratio and 0 affirmative ideas; the mandatory community_default_belief schema forced an oppose stance on every idea. Contract v2 quotas rebalance stance at generation time; no batch_001 idea is deleted."
+  },
+  "generator_contract_v2_reference": "Windows15/_state/tasks/p1/diversity_audit_1/decision.json#generator_contract_v2 - binding for every generator task below. Summary: per-100-idea shard quotas [deflationary <=25, constructive >=20, rehabilitation/anti-pessimism >=10, quantitative-law >=10, null/equivalence >=5, affirm-default-with-boundary >=3; anti-debunk total >=18]; claim_direction enum mandatory; community_default_belief optional-with-provenance, absolutist intensifiers forbidden; who_would_disagree mandatory; max 5 instances per claim skeleton; negative-control and mechanism-signature statements required; enumeration freeze on HC-23/HC-36/HC-02/HC-30 and the metric_audit_reranking skeleton; >=10 cross-territory ideas per shard; falsification designs diversified beyond correlation studies; no invented citations/benchmarks/results; no verified-novelty claims; shard-only writes.",
+  "batch_002_advisory_addendum": {
+    "generators": "T04/T05/T06 generators proceed under their original (v1) contract; contract v2 quotas are ADVISORY for them (they may already be running).",
+    "judges": "batch_002 Wave B judges MUST apply the enumeration freeze (DR8) at dedup: reject new plain instances of HC-23/HC-36/HC-02/HC-30 and metric_audit_reranking unless competing-mechanism or cross-instance-law; report per-stance counts in the dedup report so checkpoint_2 can track drift."
+  },
+  "tasks": [
+    {
+      "task_id": "p1_wave_a_batch003_gen_A",
+      "type": "generator",
+      "territory": "T07 benchmark/dataset weaknesses",
+      "batch": 3,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_003/gen_A/",
+      "status": "ready",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "WARNING: T07 overlaps the corpus's most saturated family (evaluation critique, 38 ideas; metric_audit_reranking skeleton already at 23 instances - FROZEN). Plain 'metric X hides Y; re-evaluation flips rankings' ideas will be rejected at dedup.",
+        "Required angles instead: MQ-01 oracle-prompting/protocol rehabilitation of reported FM failures (AFFIRMS models, debunks pessimism); MQ-07 grand-synthesis - what fraction of published SOTA deltas do protocol+shortcut+label artifacts JOINTLY explain; MQ-03 which claimed benchmark artifacts flip or vanish with backbone scale; affirmative validity maps - where existing benchmarks DO rank methods correctly (MQ-05 instance); constructive benchmark/dataset design with falsifiable adequacy criteria; dataset weakness repair with measurable downstream effect.",
+        "Stance quota emphasis: this shard's anti-debunk minimum is raised to >=25/100 because its territory is deflation-prone."
+      ]
+    },
+    {
+      "task_id": "p1_wave_a_batch003_gen_B",
+      "type": "generator",
+      "territory": "T08 uncertainty/calibration",
+      "batch": 3,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_003/gen_B/",
+      "status": "ready",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "Grow the starved constructive clusters HC-37 (frozen_foundation_signals, 2 ideas) and HC-38 (consistency_as_supervision, 2 ideas): uncertainty/disagreement/consistency as WORKING supervision signals and free sensors, not only as debunk targets.",
+        "MQ-02 latent decodability: what does the frozen model know that its output interface cannot express (calibration information included)?",
+        "Calibration transfer across domains/adapters; geometric null models as baselines to BEAT, not only as critiques; conformal/abstention deployment claims with falsifiable coverage predictions.",
+        "Avoid re-instancing HC-26 deflations (uncertainty-is-just-geometry, 10 ideas); competing mechanisms or quantitative laws only.",
+        "Stance quota emphasis: constructive_min raised to >=30/100 for this shard."
+      ]
+    },
+    {
+      "task_id": "p1_wave_a_batch003_gen_C",
+      "type": "generator",
+      "territory": "T09 synthetic data",
+      "batch": 3,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_003/gen_C/",
+      "status": "ready",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "MQ-11 lineage feedback: do model-generated labels pollute successive training corpora at ecosystem scale (beyond B-069 self-training collapse)?",
+        "MQ-10 contamination forensics: SA-1B regurgitation, adapter privacy leakage, synthetic-data fingerprints in trained models.",
+        "Physics-grounded synthesis (leverage the corpus's F6 media-physics strength) vs generative synthesis: falsifiable predictions about WHICH gap dimensions synthesis can and cannot close.",
+        "Data-scaling laws for synthetic-to-real mixing ratios (quant_law quota fillers).",
+        "Anti-debunk seeds: where synthetic data DOES silently equal real data (null/equivalence claims); rehabilitation of 'synthetic never transfers' pessimism."
+      ]
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch003",
+      "type": "dedup_consolidator",
+      "territory": "Wave B judges + consolidator for batch_003; dedup against batch_003 shards AND all previously accepted ideas in ideas_master.jsonl; enforce contract v2 quotas and the enumeration freeze; report per-stance counts",
+      "batch": 3,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_003/dedup/",
+      "status": "blocked_until_batch003_generators_done"
+    },
+    {
+      "task_id": "p1_wave_a_batch004_gen_A",
+      "type": "generator",
+      "territory": "T10 domain shift",
+      "batch": 4,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_004/gen_A/",
+      "status": "pending",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "Extend beyond the T01-T03 ceiling: 3D beyond medical, remote sensing, document/industrial/microscopy domains (auditor consensus blind spot).",
+        "Label-shift vs image-shift dissociations (B-047 family opened this; new mechanisms only, skeleton cap applies).",
+        "Fairness/population bias as a shift axis (2 ideas in corpus; medical especially).",
+        "Anti-debunk seeds: domains where shift is ALREADY solved by trivial normalization (null/equivalence); affirmative maps of where current DA defaults hold."
+      ]
+    },
+    {
+      "task_id": "p1_wave_a_batch004_gen_B",
+      "type": "generator",
+      "territory": "T11 negative results",
+      "batch": 4,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_004/gen_B/",
+      "status": "pending",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "This shard is the pipeline's null-result engine: INVERTED quotas - null/equivalence >=40/100, remaining stance classes free; deflationary cap still 25.",
+        "Rigorous no-difference claims: X does not beat Y once Z is controlled (with power analysis in the falsification design, extending the B-020 statistical machinery to NEW substrates, not re-instancing it).",
+        "MQ-12 decision-theoretic worthlessness: which accuracy gains are below clinical/economic action thresholds?",
+        "MQ-08 as counterweight: conditions where human+model exceeds both alone (positive complementarity - the corpus's human-factors slice is exclusively negative).",
+        "Negative-transfer and failed-transfer reports framed as falsifiable boundary claims, not anecdotes."
+      ]
+    },
+    {
+      "task_id": "p1_wave_a_batch004_gen_C",
+      "type": "generator",
+      "territory": "T12 contrarian hypotheses",
+      "batch": 4,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_004/gen_C/",
+      "status": "pending",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "Contrarian INCLUDES contrarian-to-this-corpus: the corpus itself is now a deflationary consensus (~40% 'X is artifact Y'); attacking IT is the contrarian move.",
+        "MQ-05 boundary-of-validity: quantitative domain-of-validity maps for the top ~15 community defaults the corpus attacks - where do the defaults HOLD? (affirm_with_boundary quota fillers).",
+        "MQ-06 meta-critique: are the corpus's critique instruments (counterfactual probes, shortcut measurements, disagreement decompositions) themselves confounded?",
+        "Adversarial-collaboration replications of the corpus's biggest claims (pre-registered two-sided predictions).",
+        "MQ-03 scale-flips: corpus-claimed artifacts that reverse with backbone scale (inverse scaling / emergence).",
+        "Stance quota emphasis: this shard targets 100% confirmatory/null/meta/rehabilitation stances; plain new debunks of field defaults belong to other shards."
+      ]
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch004",
+      "type": "dedup_consolidator",
+      "territory": "Wave B judges + consolidator for batch_004; dedup against all previously accepted ideas; enforce contract v2; report per-stance counts",
+      "batch": 4,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_004/dedup/",
+      "status": "blocked_until_batch004_generators_done"
+    },
+    {
+      "task_id": "p1_wave_a_batch005_gen_A",
+      "type": "generator",
+      "territory": "T13 super-resolution/restoration",
+      "batch": 5,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_005/gen_A/",
+      "status": "pending",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "Ledger scope note: SR/restoration is sanctioned ('允许扩展到超分、修复') but pseudo-innovation to chase the direction is forbidden - mechanism claims only, no 'SR module + segmenter' assemblies (skeleton cap + negative-control rules apply hard here).",
+        "Fertile intersections with corpus strengths: restoration as a probe of what segmentation backbones actually encode; SR hallucination vs boundary fidelity (ties to the A-034 edge-snapping family without re-instancing it); restoration-before-segmentation as a falsifiable causal chain in degraded domains (medical low-dose, smoke-occluded scenes).",
+        "Anti-debunk seeds: where naive bicubic/no-restoration silently matches learned SR for downstream tasks (null/equivalence)."
+      ]
+    },
+    {
+      "task_id": "p1_wave_a_batch005_gen_B",
+      "type": "generator",
+      "territory": "T14 diffusion/generation",
+      "batch": 5,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_005/gen_B/",
+      "status": "pending",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "Generative segmentation is a consensus blind spot (3 mentions in 271 ideas): diffusion models as segmenters/mask priors, generative data augmentation with falsifiable transfer predictions, denoising trajectories as boundary-uncertainty measurements.",
+        "Open-world formulation science: what 'an object' is to a generative model vs a discriminative segmenter (instance/panoptic/amodal/part-whole ontology outside media - 2 mentions in corpus).",
+        "Constructive quota emphasis: generation is inherently constructive territory; constructive_min raised to >=30/100.",
+        "Forbidden: 'diffusion + SAM' module assemblies without a mechanism claim."
+      ]
+    },
+    {
+      "task_id": "p1_wave_a_batch005_gen_C",
+      "type": "generator",
+      "territory": "T15 LLM/agent",
+      "batch": 5,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_005/gen_C/",
+      "status": "pending",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "MQ-04 test-time compute: does inference-time compute (sampling, ensembling, iterative refinement, agentic re-prompting) buy segmentation quality, and what is its scaling curve? (0 ideas in corpus).",
+        "Language-as-mechanism: open-vocabulary/text-prompted segmentation grounding claims at mechanism level (corpus has only deflationary probes here: A-007, B-086, C-032).",
+        "In-context / visual-prompt adaptation WITHOUT weight updates (3 mentions in corpus despite being a T01 adjacency).",
+        "MQ-02 extension: can an LLM/agent decode latent knowledge a frozen vision model cannot express through its mask interface?",
+        "Forbidden: 'LLM plans + SAM executes' workflow assemblies without a falsifiable mechanism claim."
+      ]
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch005",
+      "type": "dedup_consolidator",
+      "territory": "Wave B judges + consolidator for batch_005; dedup against all previously accepted ideas; enforce contract v2; report per-stance counts. NOTE: projected master crosses 1000 accepted here - if so, stage_completion audit unblocks after this consolidation.",
+      "batch": 5,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_005/dedup/",
+      "status": "blocked_until_batch005_generators_done"
+    },
+    {
+      "task_id": "p1_wave_a_batch006_gen_A",
+      "type": "generator",
+      "territory": "T16 cross-field transfer",
+      "batch": 6,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_006/gen_A/",
+      "status": "pending",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "MQ-09 task transfer/interference: how do segmentation and detection/depth/counting transfer or interfere as tasks (headline claims, not passing mentions)?",
+        "Cross-territory synthesis mandate: 60% of batch_001 clusters were single-territory monologues; every idea in this shard must bridge >=2 territories or import a mechanism from outside vision (physics, psychophysics, econometrics, ecology).",
+        "3D/remote-sensing/document/industrial transfer targets welcome (extends T10 coverage)."
+      ]
+    },
+    {
+      "task_id": "p1_wave_a_batch006_gen_B",
+      "type": "generator",
+      "territory": "Second-pass coverage: video/temporal/streaming segmentation + interactive/human-factors (audit-mandated, replaces queue-v1 placeholder per checkpoint re-balancing rule)",
+      "batch": 6,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_006/gen_B/",
+      "status": "pending",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "Consensus blind spot #1 (all three auditors): SAM-2-style memory mechanics, temporal propagation, longitudinal medical change, streaming constraints - OUTSIDE the smoke domain where temporal work already concentrates (HC-30 frozen for plain instances).",
+        "Interactive segmentation dynamics (HC-34 starved at 3 ideas despite interactivity being SAM's defining interface): correction convergence, annotation ergonomics, automation bias AND MQ-08 positive complementarity conditions.",
+        "Anti-debunk emphasis: >=30/100 anti-debunk (rehabilitation of 'video segmentation needs temporal architecture' style defaults; null claims where frame-independent processing suffices)."
+      ]
+    },
+    {
+      "task_id": "p1_wave_a_batch006_gen_C",
+      "type": "generator",
+      "territory": "Second-pass coverage: security/adversarial/memorization/lineage + theory/formal limits + efficiency/scaling laws (audit-mandated, replaces queue-v1 placeholder per checkpoint re-balancing rule)",
+      "batch": 6,
+      "target_count": 100,
+      "output_dir": "Windows15/_state/tasks/p1/batch_006/gen_C/",
+      "status": "pending",
+      "contract": "generator_contract_v2",
+      "audit_directives": [
+        "Security/adversarial/spoofing: 1 idea in 271 (C-099); attack AND defense mechanism claims for adapted foundation models.",
+        "MQ-10/MQ-11 headline claims: regurgitation, adapter privacy leakage, contamination forensics, label-lineage feedback.",
+        "Theory/formal limits: identifiability, information-theoretic impossibility, sample complexity for T01/T02 substrates (corpus has formal ideas only in T03 physics: C-019/C-020/C-027).",
+        "Efficiency/distillation/compute-data scaling laws (~2 ideas in corpus; quant_law quota fillers).",
+        "Continual/lifelong skill ACCUMULATION (not just erosion - corpus's 4 continual ideas are all erosion-adjacent)."
+      ]
+    },
+    {
+      "task_id": "p1_wave_b_dedup_batch006",
+      "type": "dedup_consolidator",
+      "territory": "Wave B judges + consolidator for batch_006; dedup against all previously accepted ideas; enforce contract v2; report per-stance counts",
+      "batch": 6,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/batch_006/dedup/",
+      "status": "blocked_until_batch006_generators_done"
+    },
+    {
+      "task_id": "p1_diversity_audit_checkpoint_2",
+      "type": "diversity_audit",
+      "territory": "Second diversity audit: verify contract-v2 stance quotas actually shifted the accepted-corpus stance mix (target: deflationary share falling toward <=30% corpus-wide, anti-debunk classes all nonzero and growing); re-check skeleton caps, enumeration freeze compliance, cross-territory cluster mixing; re-balance batches beyond 006 if needed.",
+      "batch": 6,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/audits/diversity_checkpoint_2/",
+      "status": "blocked_until_500_accepted"
+    },
+    {
+      "task_id": "p1_stage_completion_auditors",
+      "type": "stage_completion_audit",
+      "territory": "Stage-Completion Auditors: verify >=1000 accepted deduplicated ideas in ideas_master.jsonl, required fields present per idea, no verified-novelty claims by generators, territory coverage across T01-T16 plus second-pass slots, stance-quota compliance summary. ONLY dispatch after >=1000 accepted.",
+      "batch": 99,
+      "target_count": 0,
+      "output_dir": "Windows15/_state/tasks/p1/audits/stage_completion/",
+      "status": "blocked_until_1000_accepted"
+    }
+  ],
+  "hard_rules_carryover": [
+    "Only the Wave B consolidator may append to Windows15/_state/ideas_master.jsonl.",
+    "Nobody modifies window.lock.json or the windows_* identity fields.",
+    "No new Windows directories.",
+    "No invented citations, benchmark numbers, or claimed experimental results.",
+    "No verified-novelty claims by generators; 'Why Possibly Novel' remains a hypothesis label.",
+    "No deletion of accepted ideas without unanimous auditor demand (diversity_audit_1 DR4: none demanded)."
+  ],
+  "scheduling_notes": [
+    "Dispatch batch_003 gen_A/B/C when generator slots free up (batch_002 generators may still be running; batches may overlap only if their dedup runs strictly in batch order against the then-current master).",
+    "Run each batch's Wave B dedup after its 3 generators complete; batch_002 dedup must ALSO apply the enumeration freeze (see batch_002_advisory_addendum).",
+    "checkpoint_2 unblocks at 500 accepted (expected during/after batch_003 dedup) - do not skip it: it is the compliance check for contract v2.",
+    "If accepted >= 1000 before batch_006 completes, batch_006 still runs: its two second-pass shards close consensus coverage holes that Stage 2 selection will otherwise inherit."
+  ]
+}

@@ -35,7 +35,19 @@
         "decision": "Windows15/_state/tasks/p1/batch_001/decision.json",
         "consolidated_at": "2026-08-28T19:25:00Z"
       }
-    ]
+    ],
+    "diversity_audit_1": {
+      "status": "complete",
+      "consolidated_at": "2026-08-28T20:45:00Z",
+      "decision": "Windows15/_state/tasks/p1/diversity_audit_1/decision.json",
+      "next_task_queue": "Windows15/_state/tasks/p1/diversity_audit_1/next_task_queue.json",
+      "verdict": "keep all 271 (0/3 removal demands); moderate deflationary meta-template crowding (~39-40%) and 25:1 deflation:rehabilitation asymmetry corrected via generator contract v2 (stance quotas incl. anti-debunk minimum, claim_direction schema, skeleton caps, enumeration freeze) binding from batch_003",
+      "next_ready_task_ids": [
+        "p1_wave_a_batch003_gen_A",
+        "p1_wave_a_batch003_gen_B",
+        "p1_wave_a_batch003_gen_C"
+      ]
+    }
   },
   "numbering": {
     "scan_scope": [

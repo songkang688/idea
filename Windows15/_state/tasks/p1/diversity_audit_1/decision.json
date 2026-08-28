@@ -1,0 +1,201 @@
+{
+  "task_id": "p1_diversity_audit_1_consolidator",
+  "windows_id": "Windows15",
+  "windows_path": "Windows15",
+  "audit": "diversity_audit_1",
+  "created_at": "2026-08-28T20:45:00Z",
+  "inputs": {
+    "corpus": {
+      "file": "Windows15/_state/ideas_master.jsonl",
+      "branch": "origin/cursor/p1-wave-b-batch001-consolidator-7c96",
+      "head": "b8d60bce42ab0a9f0f7b35278454d65d59f01331",
+      "accepted_ideas": 271
+    },
+    "auditor_A": {
+      "focus": "mode collapse / cluster crowding",
+      "branch": "origin/cursor/p1-diversity-auditor-a-d203",
+      "head": "fc9c24f768a0054a49f044586534b48ea174239e"
+    },
+    "auditor_B": {
+      "focus": "SAM+X / LoRA+X permutation pseudo-innovation",
+      "branch": "origin/cursor/p1-diversity-audit-1-auditor-b-10e4",
+      "head": "829c4765b2a8788df1bb166747a657ee10a478b8"
+    },
+    "auditor_C": {
+      "focus": "contrarian-hypothesis / stance-direction / schema-forcing / blind spots",
+      "branch": "origin/cursor/p1-diversity-audit-1-auditor-c-79d3",
+      "head": "e106a3b0c6af99448dbd5e6160e7c2f5c92135cd"
+    },
+    "merge_note": "All three auditor branches fork from the same corpus head (b8d60bc) and write disjoint paths; git octopus merge was conflict-free. All conflicts resolved below are semantic, not textual."
+  },
+  "resolution_rules": {
+    "DR1_registry_precedence": "Territory IDs and names come from the locked P1 registry (state_reader/task_queue.json T01-T16), which the parent re-confirmed: T07 benchmark/dataset weaknesses, T08 uncertainty/calibration, T09 synthetic data, T10 domain shift, T11 negative results, T12 contrarian hypotheses, T13 SR/restoration, T14 diffusion/generation, T15 LLM/agent, T16 cross-field transfer. Auditor_C's advisory T07-T16 renaming is REJECTED as identifiers (a locked registry is never renumbered) but its ten charters are ACCEPTED as content and remapped into the canonical territories and the batch_006 second-pass slots (mapping in territory_remap).",
+    "DR2_stance_measurement": "Where auditor_A (title-only lexical stance) and auditor_C (full-text hypothesis stance) disagree on magnitude, the full-text measure supersedes: titles under-count constructive framing (~1% by title vs 6.3% by full text). Both measures are retained as advisory heuristics; neither is treated as ground truth. Direction of every disagreement is concordant, so no finding is discarded.",
+    "DR3_concordance_interval": "Where independent methods agree (auditor_A deflationary meta-family mass 40.2% vs auditor_C stance-regex 39.1%), the canonical estimate is the interval ~39-40%, labeled EVIDENCE (heuristic, reproducible from recorded patterns), never KNOWN FACT.",
+    "DR4_removal_unanimity": "Deleting an accepted idea from ideas_master.jsonl would require a unanimous 3/3 auditor demand. Observed demands: 0/3 (A: 'rebalancing pressure, not pruning'; B: 'mutation, not removal'; C: protect list, no removals). Therefore ZERO deletions. ideas_master.jsonl is untouched by this audit.",
+    "DR5_flag_union": "Stage-2 flags are UNIONED across auditors, never intersected, because each auditor probed a different failure mode and a missed flag is cheaper to re-check than a lost one. All flags live in this decision file only; the canonical master file is append-only and owned by Wave B consolidators.",
+    "DR6_quota_adoption": "Numeric generation quotas are taken from auditor_C's cross-cutting contract (the only auditor to propose numbers for every stance class), cross-checked against auditor_A's independent 25% deflationary cap (identical number, adopted). Quotas are binding on batch_003+ generators and enforced by batch judges at dedup; they are advisory for batch_002, which was queued before this audit.",
+    "DR7_schema_supersession": "Auditor_C's schema change (claim_direction enum; community_default_belief demoted to optional-with-provenance-tag; who_would_disagree field) SUPERSEDES auditor_A's weaker 'soften/alternate the belief field' because it subsumes it and auditor_B raised no objection. The ledger's three standing questions remain research values; they are no longer a mandatory per-idea oppositional template.",
+    "DR8_enumeration_freeze": "Auditor_A's saturated-cluster freeze is adopted: HC-23, HC-36, HC-02, HC-30 (and auditor_B's metric_audit_reranking skeleton, 23 instances) accept NO new instances at batch_002+ dedup unless the entrant proposes a competing mechanism or a cross-instance quantitative law. Enforced by judges, not by deleting existing members.",
+    "DR9_evidence_policy": "All audit statistics are regex/manual heuristics by single auditors and remain labeled as such (EVIDENCE or MODEL SPECULATION per their own reports). No novelty verification was performed by anyone; no citations were consulted or invented; no auditor conclusion is promoted to fact."
+  },
+  "canonical_verdict": {
+    "cluster_level_mode_collapse": false,
+    "meta_template_crowding": {
+      "present": true,
+      "severity": "moderate",
+      "evidence": "40 clusters, effective count 32.1, Gini 0.275 (no single-cluster collapse), BUT ~39-40% of the corpus shares one deflationary skeleton ('trusted signal X is actually artifact Y') across three meta-families, uniform across all three generators."
+    },
+    "permutation_pseudo_innovation": {
+      "present": true,
+      "severity": "low",
+      "evidence": "tier1 archetype-dominant = 6/271 (2.2%), all already gated with mutation_required at batch_001 consolidation; full permutation surface 43/271 (15.9%) mostly redeemed by real hypotheses. The generation-time falsifiability gate held."
+    },
+    "stance_direction_asymmetry": {
+      "present": true,
+      "severity": "high",
+      "evidence": "deflation:rehabilitation ~25:1; anti-pessimism ~1.5%, null/equivalence 2.6%, affirmative/boundary-of-validity 0%, meta-critique-of-critique 0%. Root cause: mandatory community_default_belief + why_that_may_be_wrong schema forces an oppose stance on every idea (300/300 filled, 0 affirmations).",
+      "risk": "safe contrarianism against undocumented or intensifier-inflated defaults; Stage-2 novelty scoring could be inflated by manufactured beliefs (belief provenance is currently unscored)."
+    },
+    "coverage_blind_spots_consensus": [
+      "video/temporal/streaming segmentation outside smoke (SAM-2-style memory, longitudinal medical) - flagged by all three auditors",
+      "constructive method/signal-harvesting proposals (HC-37/HC-38 starved at 2 ideas each)",
+      "interactive segmentation / human factors incl. positive complementarity (MQ-08)",
+      "security/adversarial/spoofing (1 idea), memorization/privacy/lineage (0 headline ideas)",
+      "theory/formal limits outside T03 physics (0 ideas in T01/T02)",
+      "scale as an experimental variable (0 ideas), test-time compute scaling (0 ideas)",
+      "efficiency/distillation/scaling laws (~2 ideas), fairness/population bias (2 ideas)",
+      "in-context / visual-prompt adaptation without weight updates (3 mentions)",
+      "instance/panoptic/amodal formulation science outside media (2 mentions)",
+      "3D beyond medical, remote sensing, document/industrial domains (0 ideas - territory ceiling by design)",
+      "cross-territory synthesis (60% of clusters are single-shard monologues)"
+    ],
+    "corpus_action": "KEEP ALL 271. No deletions (DR4). Existing batch_001 flags stand; new advisory flags recorded below for Stage-2.",
+    "generation_action": "Generator contract v2 (stance quotas + schema change + skeleton caps + negative-control requirement) binding from batch_003; territory queue for batches 003-006 written to next_task_queue.json."
+  },
+  "stage2_flag_register": {
+    "note": "Union per DR5. Recorded here, not written into ideas_master.jsonl.",
+    "mutation_required_carryover_from_batch001": [
+      "W15-B001-A-052",
+      "W15-B001-A-056",
+      "W15-B001-A-060",
+      "W15-B001-A-084",
+      "W15-B001-A-100",
+      "W15-B001-C-028"
+    ],
+    "stage2_recenter_diagnostic_tier1_5_auditor_B": [
+      "W15-B001-B-097",
+      "W15-B001-A-096",
+      "W15-B001-B-098",
+      "W15-B001-C-087",
+      "W15-B001-A-064"
+    ],
+    "permutation_surface_watchlist_additions_auditor_B": [
+      "W15-B001-B-012",
+      "W15-B001-B-037",
+      "W15-B001-B-047",
+      "W15-B001-C-003",
+      "W15-B001-C-075",
+      "W15-B001-C-076"
+    ],
+    "stage2_protected_singleton_contrarian_auditor_C": [
+      "W15-B001-A-057",
+      "W15-B001-A-077",
+      "W15-B001-B-065",
+      "W15-B001-B-093",
+      "W15-B001-C-091",
+      "W15-B001-A-028",
+      "W15-B001-C-093",
+      "W15-B001-B-038",
+      "W15-B001-A-031",
+      "W15-B001-B-060",
+      "W15-B001-A-070",
+      "W15-B001-A-078",
+      "W15-B001-C-082",
+      "W15-B001-B-025",
+      "W15-B001-A-004"
+    ],
+    "protection_rule": "Protected singletons must not be cut at the 1000+ -> 200 stage on cluster-size grounds alone; template-family members (metric_audit_reranking 23, frozen_signal_as_free_sensor 14, annotator_artifact_inheritance 14, adapt_only_component 8) must compete WITHIN their family for Stage-2 slots rather than each sending every member forward.",
+    "stage2_priorart_check_required_carryover": [
+      "W15-B001-A-051",
+      "W15-B001-B-022",
+      "W15-B001-B-032",
+      "W15-B001-C-061"
+    ]
+  },
+  "generator_contract_v2": {
+    "applies_to": "batch_003 and later (advisory for batch_002 generators if still running; binding on batch_002 judges for skeleton freeze at dedup)",
+    "stance_quotas_per_100_idea_shard": {
+      "deflationary_max": 25,
+      "constructive_min": 20,
+      "anti_pessimism_or_rehabilitation_min": 10,
+      "quant_law_min": 10,
+      "null_equivalence_min": 5,
+      "affirm_default_with_boundary_min": 3,
+      "anti_debunk_total_min": 18,
+      "anti_debunk_definition": "anti_debunk_total_min = rehabilitation(10) + null/equivalence(5) + affirm-with-boundary(3): every shard MUST contain ideas that AFFIRM a community default (mapping where it holds), or propose a null/equivalence result, or rehabilitate a reported failure as artifact/recoverable."
+    },
+    "schema_changes": [
+      "Add claim_direction enum per idea: debunk | rehabilitate | affirm_with_boundary | new_capability | quantitative_law | null_result.",
+      "community_default_belief / why_that_may_be_wrong become OPTIONAL; when used, the belief must carry a provenance tag: documented_position | practice_default | folk_attribution. Absolutist intensifiers ('only', 'any', 'unconditionally') forbidden unless quoting a documented position.",
+      "Add who_would_disagree: name the sub-community that would bet against the hypothesis."
+    ],
+    "structural_rules": [
+      "Skeleton cap: max 5 instances of any single claim skeleton per shard (auditor_B's four families reached 8-23 in batch_001).",
+      "Negative-control requirement: every idea states the control/dissociation separating its mechanism claim from 'the new combination just works better'.",
+      "Mechanism-signature requirement: any 'method A vs method B on benchmark C' experiment must state the predicted mechanism signature distinguishing a win from generic capacity/tuning effects.",
+      "Enumeration freeze (DR8): no new plain instances of HC-23/HC-36/HC-02/HC-30 or the metric_audit_reranking skeleton; competing mechanisms or cross-instance quantitative laws only.",
+      "Cross-territory prompts: each shard includes >=10 ideas explicitly bridging two territories (counter to 60% single-shard clustering).",
+      "Falsification-design diversity: correlation-only designs capped; factorial, scratch-vs-pretrained, and intervention designs required in the mix.",
+      "Dedup awareness: read ideas_master.jsonl titles/clusters first; avoid re-generating covered claims."
+    ],
+    "missing_question_seeds_adopted": [
+      "MQ-01 oracle-prompting rehabilitation of reported FM failures (-> T07)",
+      "MQ-02 latent decodability of what frozen models know but cannot express (-> T08/T15)",
+      "MQ-03 scale-dependence (emergence/inverse-scaling) of corpus-claimed artifacts (-> T07/T12)",
+      "MQ-04 test-time compute scaling curves for segmentation (-> T15)",
+      "MQ-05 affirmative domain-of-validity maps for community defaults (-> T12)",
+      "MQ-06 meta-critique: are the critique instruments themselves confounded? (-> T12)",
+      "MQ-07 grand-synthesis: what fraction of published SOTA deltas do protocol+shortcut+label artifacts jointly explain? (-> T07)",
+      "MQ-08 positive human+model complementarity conditions (-> T11/batch_006)",
+      "MQ-09 task transfer/interference between segmentation and detection/depth/counting (-> T16)",
+      "MQ-10 regurgitation/privacy/contamination forensics (-> T09/batch_006)",
+      "MQ-11 model-generated-label ecosystem feedback (-> T09)",
+      "MQ-12 decision-theoretically worthless accuracy gains (-> T11)"
+    ]
+  },
+  "territory_remap": {
+    "note": "DR1: auditor_C advisory charters mapped into the canonical locked registry.",
+    "C_T07_capability_rehabilitation": "-> canonical T07 (oracle-protocol arm) + anti_debunk quota (all shards)",
+    "C_T08_scaling_test_time_compute": "-> MQ-03 into T07/T12; MQ-04 into T15; quant_law quota (all shards)",
+    "C_T09_video_temporal": "-> batch_006 gen_B second-pass slot (consensus coverage hole)",
+    "C_T10_constructive_signal_harvesting": "-> canonical T08 charter (uncertainty/consistency as constructive signal) + constructive quota",
+    "C_T11_interactive_human_factors": "-> MQ-08 into T11 charter + batch_006 gen_B second-pass slot",
+    "C_T12_boundary_conditions_adversarial_collab": "-> canonical T12 charter (contrarian includes contrarian-to-the-corpus)",
+    "C_T13_3d_geometry_nonphotographic": "-> canonical T10 charter (domain shift into 3D/remote sensing/document/industrial) + T16",
+    "C_T14_open_world_formulation": "-> canonical T14 charter (generation-based formulation) + batch_006 gen_C",
+    "C_T15_theory_formal_limits": "-> batch_006 gen_C second-pass slot + quant_law quota",
+    "C_T16_security_lineage_memorization": "-> canonical T09 charter (synthetic data lineage/contamination) + batch_006 gen_C"
+  },
+  "target_math": {
+    "accepted_now": 271,
+    "batch_002_in_flight": "300 generated expected (T04/T05/T06), not yet consolidated; batch_001 survival was 90.3%, expect lower vs a 271-idea master (~80-88%)",
+    "projected_after_batch_002": "~510-535",
+    "batches_003_to_005": "900 generated; at 75-85% survival vs growing master -> +675-765",
+    "projected_after_batch_005": "~1185-1300 (crosses 1000)",
+    "batch_006_role": "coverage-hole second pass + margin; keeps pipeline >=1000 even if survival degrades to ~65%",
+    "stage_completion_gate": ">=1000 accepted in ideas_master.jsonl, unchanged"
+  },
+  "canonical_files_modified_by_this_task": [
+    "Windows15/_state/tasks/p1/diversity_audit_1/decision.json",
+    "Windows15/_state/tasks/p1/diversity_audit_1/next_task_queue.json",
+    "Windows15/_state/tasks/p1/diversity_audit_1/consolidator/report.md",
+    "Windows15/_state/tasks/p1/diversity_audit_1/consolidator/done.json",
+    "Windows15/_state/research_ledger.md (audit section appended)",
+    "Windows15/_state/research_state.json (diversity_audit_1 pointer added; windows_* fields preserved)"
+  ],
+  "files_explicitly_not_modified": [
+    "Windows15/_state/ideas_master.jsonl (zero deletions per DR4)",
+    "Windows15/_state/window.lock.json"
+  ]
+}

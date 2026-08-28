@@ -109,3 +109,24 @@ Stage 1 目录与状态文件已初始化。`ideas_master.jsonl` 为空（0 字�
 **产物：** `tasks/p1/batch_001/decision.json`、`accepted.jsonl`、`consolidator/report.md`、`consolidator/next_task_queue.json`、`consolidator/done.json`；gen/judge 原始产物已并入本分支存档。
 
 **下一步：** accepted=271 < 1000 → 继续 batch_002 生成（T04 Object detection / T05 VLM-dense prediction / T06 failure mining）。271 已越过 100–200 的 Diversity Audit 触发窗口（单批产出即超窗），按字面规则本轮不排 audit，但已在 next_task_queue.json 中建议父代理在 batch_002 dedup 时执行 checkpoint_1。
+
+## Stage 1 — Diversity Audit 1（P1 多样性审计合并，2026-08-28）
+
+**输入（KNOWN FACT，head 已记录于 `tasks/p1/diversity_audit_1/decision.json`）：** 对 271 条 accepted（@ `b8d60bc`）的三路独立审计——auditor_A（模式坍缩/簇拥挤，`fc9c24f`）、auditor_B（SAM+X/LoRA+X permutation 伪创新，`829c476`）、auditor_C（反直觉/立场方向/schema 强迫/盲区，`e106a3b`）。三分支路径互斥，git 合并无冲突；语义冲突按 decision.json 的 DR1–DR9 规则裁决。
+
+**canonical 结论（EVIDENCE 级启发式统计，非 KNOWN FACT）：**
+
+1. 无簇级模式坍缩（40 簇、有效簇数 32.1、Gini 0.275）；但约 39–40% 的语料共享同一 deflationary 骨架（"被信任的信号 X 其实是 artifact Y"），三个 generator 均匀出现 → 管线/schema 性质，根因是强制的 `community_default_belief` + `why_that_may_be_wrong` 字段（300/300 填写、0 条肯定默认信念）。
+2. permutation 伪创新占比低：tier1 仅 6/271（2.2%），且全部已在 batch_001 带 `mutation_required` 入库，生成期可证伪性闸门有效。
+3. 立场方向严重失衡：deflation:rehabilitation ≈ 25:1；anti-pessimism ~1.5%、null/equivalence 2.6%、affirmative 0%、对批判工具的元批判 0%。
+4. 共识盲区：视频/时序（烟雾域之外）、交互式分割/人因、安全/对抗/记忆化/数据谱系、理论/形式极限、scale 作为实验变量、test-time compute、效率/scaling law、公平性、跨域合成（60% 单 shard 簇）。
+
+**裁决（decision.json）：** 删除需 3/3 审计一致要求，实际 0/3 → **271 条全部保留，`ideas_master.jsonl` 未改动**。审计旗标取并集记录于 decision.json（不改写 canonical master）：batch_001 的 6 条 mutation_required 与 4 条 stage2_priorart_check_required 延续；auditor_B 新增 5 条 tier1.5（Stage 2 前须把诊断升为主张）与 6 条 permutation 观察名单；auditor_C 的 15 条 singleton 反直觉 idea 受保护（Stage 2 不得仅按簇规模裁掉）。
+
+**领地命名冲突（DR1）：** auditor_C 自拟的 advisory T07–T16 命名被否决——锁定 registry（state_reader queue v1，父代理复确认）的 T07 benchmark/dataset weaknesses、T08 uncertainty/calibration、T09 synthetic data、T10 domain shift、T11 negative results、T12 contrarian hypotheses、T13 SR/restoration、T14 diffusion/generation、T15 LLM/agent、T16 cross-field transfer 为 canonical；auditor_C 的十项 charter 作为内容映射入 canonical 领地与 batch_006 两个 second-pass shard。
+
+**生成合同 v2（batch_003 起生效，batch_002 judge 需执行骨架冻结）：** 每 100 条 shard 配额——deflationary ≤25、constructive ≥20、rehabilitation ≥10、quant-law ≥10、null/equivalence ≥5、affirm-default-with-boundary ≥3（anti-debunk 合计 ≥18：必须有 idea 肯定社区默认并画出成立边界、或提出 null/等价结论、或为被报道的失败翻案）；`claim_direction` 枚举强制、belief 字段改为可选+出处标注、新增 `who_would_disagree`；单一 claim 骨架每 shard ≤5 条；负控制与机制签名必填；HC-23/HC-36/HC-02/HC-30 与 metric-reranking 骨架冻结（仅收竞争机制或跨实例定量律）。
+
+**产物：** `tasks/p1/diversity_audit_1/decision.json`（canonical 裁决）、`next_task_queue.json`（queue v3：batch_003 T07/T08/T09 ready；batch_004 T10/T11/T12；batch_005 T13/T14/T15；batch_006 T16 + 视频/交互与安全/理论两个补洞 shard）、`consolidator/report.md`、`consolidator/done.json`。
+
+**下一步：** 派发 batch_003 三个 generator（`p1_wave_a_batch003_gen_A/B/C`）。目标推算：batch_002 合并后约 510–535 条，batch_005 dedup 期间预计越过 1000；checkpoint_2（500 条时触发）负责核查合同 v2 是否真正改变了立场分布。
