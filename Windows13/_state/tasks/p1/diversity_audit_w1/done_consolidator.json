@@ -1,0 +1,39 @@
+{
+  "task_id": "p1_diversity_audit_w1",
+  "role": "consolidator",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "done",
+  "branch": "cursor/p1-diversity-audit-consolidator-w1-25a0",
+  "completed_at_utc": "2026-08-28T19:44:04Z",
+  "accepted_count_canonical": 248,
+  "ideas_master_modified": false,
+  "next_task_queue_length": 8,
+  "next_task_queue_ids": [
+    "p1_gen_i_restoration_lowlevel",
+    "p1_gen_j_diffusion_model_science",
+    "p1_gen_k_3d_geometry_video",
+    "p1_gen_l_llm_agent_vision",
+    "p1_gen_m_training_dynamics_objectives",
+    "p1_gen_n_scaling_memorization_data_laws",
+    "p1_gen_o_hard_domain_diversifier",
+    "p1_gen_p_constructive_capability"
+  ],
+  "letters_burned_or_in_flight": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f", "gen_g", "gen_h"],
+  "recommended_next_task_type": ["p1_wave_a_more_generators", "p1_wave_b_w2_continue"],
+  "wave2_note": "gen_d/e/f/g (402 ideas) remain off-master pending Wave B w2 judges B/C + Wave2 Consolidator; judge A (dedup) already done on origin/cursor/p1-wave-b-w2-judge-a-dedup-13e5; this task appended nothing to ideas_master.jsonl",
+  "irreconcilable": false,
+  "meta_judge_needed": false,
+  "outputs": [
+    "Windows13/_state/tasks/p1/diversity_audit_w1/decision.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w1/consolidator.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w1/done_consolidator.json"
+  ],
+  "state_updates": [
+    "Windows13/_state/research_ledger.md (appended diversity-audit section)",
+    "Windows13/_state/research_state.json (exploration/diversity-audit fields only; windows_id Windows13, window_locked true, Stage 1 preserved)"
+  ],
+  "no_fake_citations": true,
+  "force_push": false
+}

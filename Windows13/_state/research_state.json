@@ -148,6 +148,51 @@
       }
     }
   },
+  "exploration": {
+    "diversity_audit_w1": {
+      "task_id": "p1_diversity_audit_w1",
+      "completed_at_utc": "2026-08-28T19:44:04Z",
+      "consolidator_branch": "cursor/p1-diversity-audit-consolidator-w1-25a0",
+      "decision_file": "Windows13/_state/tasks/p1/diversity_audit_w1/decision.json",
+      "auditor_branches": {
+        "A_mode_collapse": "origin/cursor/p1-diversity-auditor-a-mode-collapse-3ef2",
+        "B_quality_blindspots": "origin/cursor/p1-diversity-auditor-b-quality-blindspots-0826",
+        "C_adversary": "origin/cursor/p1-diversity-auditor-c-adversary-c2b5"
+      },
+      "portfolio_verdict": {
+        "lexical_duplication": "LOW (max pairwise token-Jaccard 0.20, 0 near-duplicate pairs)",
+        "structural_collapse": "HIGH (SAM/SAM2 ~34-35% subject share; calibration/uncertainty crowded across 3/3 wave-1 shards; gen_b ~72-73% smoke/fire/transparent fixation; eval-critique super-cluster ~43.5%; debunk-genre skew with strict-constructive ~3-4%)",
+        "saturated_stop_feeding": ["sam_internals", "peft_on_sam", "calibration_uncertainty", "annotation_pathology", "generic_eval_critique", "smoke_fire_transparent_media"],
+        "blind_spots_zero_coverage": ["restoration_lowlevel", "diffusion_model_science", "llm_agent_vision", "3d_geometry", "video_beyond_sam2", "scaling_laws", "memorization_privacy", "training_dynamics_objectives"],
+        "fake_citations_found": 0
+      },
+      "reconciliation": {
+        "constructive_count": "A=0 (regex) vs B=46 (loose hand-label) vs C=7-11 (strict) resolved as criterion difference; C strict adopted as headline, B 46-id list protected in Stage 2; no meta-judge needed",
+        "letter_collisions": "A's proposed gen_d..gen_i and C's gen_h collide with pushed wave2 shards gen_d..gen_g and reserved gen_h; queue remapped to fresh letters gen_i..gen_p",
+        "irreconcilable": false
+      },
+      "generator_letters_burned_or_in_flight": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f", "gen_g", "gen_h"],
+      "next_task_queue_ids": [
+        "p1_gen_i_restoration_lowlevel",
+        "p1_gen_j_diffusion_model_science",
+        "p1_gen_k_3d_geometry_video",
+        "p1_gen_l_llm_agent_vision",
+        "p1_gen_m_training_dynamics_objectives",
+        "p1_gen_n_scaling_memorization_data_laws",
+        "p1_gen_o_hard_domain_diversifier",
+        "p1_gen_p_constructive_capability"
+      ],
+      "wave2_pending": {
+        "shards_off_master": ["gen_d_object_detection (100)", "gen_e_vlm_dense_prediction (100)", "gen_f_synthetic_data (102)", "gen_g_domain_shift (100)"],
+        "ideas_off_master": 402,
+        "judge_A_dedup": "done (origin/cursor/p1-wave-b-w2-judge-a-dedup-13e5)",
+        "judges_B_C": "pending",
+        "wave2_consolidator": "pending",
+        "note": "D-G enter ideas_master.jsonl only via the Wave2 Consolidator after wave2 judges finish; this audit appended nothing to master"
+      },
+      "recommended_next_task_type": ["p1_wave_b_w2_continue", "p1_wave_a_more_generators"]
+    }
+  },
   "last_consolidator": {
     "task_id": "p1_wave_b_w1",
     "role": "consolidator",

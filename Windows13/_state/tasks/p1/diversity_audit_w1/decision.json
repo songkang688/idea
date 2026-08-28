@@ -1,0 +1,331 @@
+{
+  "task_id": "p1_diversity_audit_w1",
+  "role": "consolidator",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "ok",
+  "irreconcilable": false,
+  "branch": "cursor/p1-diversity-audit-consolidator-w1-25a0",
+  "decided_at_utc": "2026-08-28T19:44:04Z",
+  "canonical_base": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w1-7a58",
+    "commit": "936670f17cf60b6dcfbe492518f3d3564d09f5e7",
+    "ideas_master_records": 248,
+    "modified_by_this_task": false
+  },
+  "inputs": {
+    "auditor_A_mode_collapse": {
+      "branch": "origin/cursor/p1-diversity-auditor-a-mode-collapse-3ef2",
+      "commit": "bf47c66",
+      "file": "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_A.json"
+    },
+    "auditor_B_quality_blindspots": {
+      "branch": "origin/cursor/p1-diversity-auditor-b-quality-blindspots-0826",
+      "commit": "75beb1e",
+      "file": "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_B.json"
+    },
+    "auditor_C_adversary": {
+      "branch": "origin/cursor/p1-diversity-auditor-c-adversary-c2b5",
+      "commit": "286b4f7",
+      "file": "Windows13/_state/tasks/p1/diversity_audit_w1/auditor_C.json"
+    }
+  },
+  "consensus_findings": [
+    "EVIDENCE (3/3 auditors): lexical/surface duplication in the 248 accepted ideas is LOW (max pairwise token-Jaccard 0.20; 0 near-duplicate pairs); collapse is structural/genre-level, not lexical.",
+    "EVIDENCE (3/3): SAM/SAM2 territory is SATURATED (~34-35% of portfolio subject-share; 82-86% of gen_a); no further SAM-internals or PEFT-on-SAM generation.",
+    "EVIDENCE (3/3): calibration/uncertainty is a crowded cross-shard cluster (all 3 wave-1 generators converged there); banned as a primary cluster in future shards.",
+    "EVIDENCE (2/3, A+C, B concurs on coverage): gen_b fixated on smoke/fire/fog/transparent/scattering media (61-62/85, ~72-73% of shard); hard ban on those running examples in all future shards.",
+    "EVIDENCE (3/3): whole-portfolio genre skew toward debunk/audit/critique; eval/measurement super-cluster is ~43.5% of portfolio; constructive-capability rebalance needed.",
+    "EVIDENCE (3/3): blind spots with ~0% coverage: super-resolution/restoration/low-level imaging, diffusion/generative model science, LLM/agent-vision loops, 3D/point-cloud/NeRF/splatting, scaling laws, data-centric science beyond synthetic data, training dynamics/objective science, cross-field transfer.",
+    "EVIDENCE (B, unchallenged): 0 fake citations in master; 13 citation strings all in gen_a prior_work_basis and all real well-known papers; gen_b/gen_c cite nothing. This audit adds no citations.",
+    "EVIDENCE (C, verified by this consolidator via git ls-tree at consolidation time): wave2 shards gen_d(100), gen_e(100), gen_f(102), gen_g(100) = 402 ideas exist off-master on origin branches and are NOT in ideas_master.jsonl."
+  ],
+  "reconciliation": [
+    {
+      "disagreement": "constructive_count_A_vs_B_vs_C",
+      "positions": {
+        "A": "0/248 method-primary contributions (crude regex over one-liners); genre_level HIGH",
+        "B": "46/248 (18.5%) constructive-capability records by manual hand-labeling of all 248 one-liners",
+        "C": "7-11 (~3-4%) strictly constructive; explicitly notes B's looser criterion post hoc"
+      },
+      "resolution": "NOT a factual conflict: three different operationalizations of 'constructive' (regex on method-primary phrasing vs loose hand-label vs strict enabling-capability criterion). Adopted: strict-constructive 7-11 (C) as the headline scarcity metric; B's 46-id list adopted as the loose upper bound AND as a protected list for Stage 2 (do not cull those 46 ids on genre grounds); A's regex result retained as evidence that no record is method-primary in framing. All three positions agree on the decision-relevant conclusion: the portfolio is debunk-skewed and a constructive-capability rebalance generator plus per-shard genre quotas are required. No meta-judge needed.",
+      "escalation_needed": false
+    },
+    {
+      "disagreement": "letter_collision_A_recommendations_vs_existing_wave2_shards",
+      "positions": {
+        "A": "recommended territories labeled gen_d_data_centric_scaling, gen_e_3d_geometry_physics, gen_f_hard_domain_diversifier, gen_g_vlm_language_vision_interface, gen_h_training_dynamics_objectives, gen_i_constructive_capability",
+        "C": "flagged the collision: letters gen_d..gen_g are already pushed wave2 shards with DIFFERENT mandates (object detection, VLM dense prediction, synthetic data, domain shift); C used gen_h..gen_m instead"
+      },
+      "resolution": "C is correct and this consolidator independently verified via git ls-tree: gen_d..gen_g exist on origin with 402 ideas; gen_h is additionally reserved/in-flight per the parent dispatcher, so C's gen_h_restoration_lowlevel also collides. All recommendations remapped to fresh letters starting at gen_i (gen_i..gen_p). Mapping recorded in letter_registry.remap. A's territory CONTENT survives; only its letters were rejected.",
+      "escalation_needed": false
+    },
+    {
+      "disagreement": "territory_overlap_with_in_flight_wave2_shards",
+      "positions": {
+        "A": "recommended data_centric_scaling and vlm_language_vision_interface territories",
+        "B": "recommended vlm_dense_capability (rank 3) and detection_science (rank 4)",
+        "C": "warned: detection covered off-master by gen_d, do NOT re-commission; gen_e covers VLM dense; gen_f covers synthetic-data engines"
+      },
+      "resolution": "Adopted C's off-master-awareness rule (G6). Dropped from the next queue: detection_science (gen_d in flight, 100 ideas), vlm_dense_capability / vlm_language_vision_interface (gen_e in flight, 100 ideas). Narrowed data_centric_scaling to the residual not covered by gen_f's clusters (gen_f already covers data-centric-curation, synthetic-vs-real-pretraining, scaling-and-economics-of-synthetic-data): the residual is scaling-law science of vision FMs and memorization/privacy, queued as gen_n_scaling_memorization_data_laws with an explicit anti-overlap guard against gen_f.",
+      "escalation_needed": false
+    },
+    {
+      "disagreement": "sam_cap_strictness",
+      "positions": {
+        "A": "cap SAM/SAM2-mentioning ideas at 10% per new shard",
+        "C": "G1: new shards <=5% SAM-subject; drive running master SAM share below 25%"
+      },
+      "resolution": "Adopted the stricter 5% cap (C) for all queued shards except gen_k_3d_geometry_video, which gets 10% (A's cap) because SAM2-video adjacency makes some SAM2 contrast baselines legitimate there. Rationale: portfolio is already 34-35% SAM-subject and wave2 adds more; the adversary's stricter bound is the safer default.",
+      "escalation_needed": false
+    },
+    {
+      "disagreement": "constructive_quota_level",
+      "positions": {
+        "B": "per-generator constructive-capability quota >= 50%",
+        "C": "G4: >=25% constructive/capability per new shard; <=40% pure audit/debunk"
+      },
+      "resolution": "Adopted C's >=25% constructive floor plus <=40% pure-debunk ceiling as the global guard (B's 50% would distort characterization-law territories like restoration science), AND gave the dedicated rebalancer gen_p_constructive_capability a >=80% constructive mandate, which more than recovers B's intent at the portfolio level. B's numeric-kill-threshold, structured-evidence-label, and cost-bound quality gates adopted verbatim.",
+      "escalation_needed": false
+    },
+    {
+      "disagreement": "cross_field_transfer_inclusion",
+      "positions": {
+        "C": "gen_l_cross_field_transfer priority 5 (vision <-> audio/time-series/graphs/scientific imaging)",
+        "A_B": "not recommended by A or B"
+      },
+      "resolution": "Deferred to a later wave (single-auditor support; highest apply-X-to-Y permutation risk of all proposals, per C's own guards). Recorded in deferred_territories so the signal is not lost.",
+      "escalation_needed": false
+    }
+  ],
+  "letter_registry": {
+    "burned_or_in_flight": {
+      "gen_a": "sam_foundation_peft (wave1, in master)",
+      "gen_b": "hard_domain_dense_prediction (wave1, in master)",
+      "gen_c": "contrarian_eval (wave1, in master)",
+      "gen_d": "object_detection (wave2, 100 ideas off-master on origin/cursor/p1-gen-d-object-detection-07a3)",
+      "gen_e": "vlm_dense_prediction (wave2, 100 ideas off-master on origin/cursor/w13-p1-gen-e-vlm-dense-9412)",
+      "gen_f": "synthetic_data (wave2, 102 ideas off-master on origin/cursor/w13-p1-gen-f-synthetic-data-3a94)",
+      "gen_g": "domain_shift (wave2, 100 ideas off-master on origin/cursor/p1-gen-g-domain-shift-0165)",
+      "gen_h": "reserved/in-flight per parent dispatcher; not reused"
+    },
+    "next_queue_letters": "gen_i..gen_p",
+    "remap": {
+      "A.gen_d_data_centric_scaling": "gen_n_scaling_memorization_data_laws (narrowed; gen_f overlap removed)",
+      "A.gen_e_3d_geometry_physics + C.gen_k_3d_geometry_video": "gen_k_3d_geometry_video",
+      "A.gen_f_hard_domain_diversifier + B.cross_field_deployment + B.medical_beyond_ambiguity": "gen_o_hard_domain_diversifier",
+      "A.gen_g_vlm_language_vision_interface + B.vlm_dense_capability": "DROPPED (covered by in-flight gen_e)",
+      "A.gen_h_training_dynamics_objectives + B.objective_function_science": "gen_m_training_dynamics_objectives",
+      "A.gen_i_constructive_capability + C.gen_m_constructive_capability + B.constructive_eval_repair": "gen_p_constructive_capability",
+      "B.detection_science": "DROPPED (covered by in-flight gen_d)",
+      "B.restoration_x_dense_prediction + C.gen_h_restoration_lowlevel": "gen_i_restoration_lowlevel",
+      "B.diffusion_for_perception + C.gen_i_diffusion_model_science": "gen_j_diffusion_model_science",
+      "B.llm_agent_vision_loops + C.gen_j_llm_agent_vision": "gen_l_llm_agent_vision",
+      "C.gen_l_cross_field_transfer": "DEFERRED (see deferred_territories)"
+    }
+  },
+  "global_anti_crowding_guards": [
+    "SAM/SAM2-subject records <= 5% per new shard (10% for gen_k only); running master SAM-subject share must fall below 25% after subsequent consolidations",
+    "BAN calibration/uncertainty as a primary cluster in any new shard (3/3 wave-1 generators converged there; 31+ direct ideas already)",
+    "HARD BAN on smoke/fire/fog/transparent/amorphous-scattering-media running examples (gen_b already holds 61-62)",
+    "BAN template families identified by auditor C: F1 PEFT-factorial-on-SAM, F2 SAM-component-pathology probes, F3 internal-score-as-free-detector, F4 cue-ablation-collapse on scattering organisms, F5 published-deltas-are-noise as primary framing",
+    "Structure quota: >= 8 distinct sub-clusters per ~100-idea shard, none > 15% of the shard",
+    "Metric independence: >= 30% of each shard's falsification experiments must not depend on segmentation/mask metrics (portfolio currently ~50% segmentation-metric-bound)",
+    "Genre quota: >= 25% constructive/capability records per shard; <= 40% pure audit/debunk",
+    "Family fingerprint: every idea tagged (subject_system, manipulated_variable, measurement_family); judges enforce a cap of <= 6 accepted ideas per fingerprint cell across master",
+    "Off-master awareness: every consolidator enumerates generator shards on ALL origin branches before accepting a commissioning plan (this task followed it)"
+  ],
+  "quality_gates_next_wave": [
+    "Every falsifiable_prediction must carry a numeric kill threshold (currently only 4/248)",
+    "Every record must carry the structured evidence_label dict incl. prior_work_basis (currently 94/248, gen_a only)",
+    "fastest_falsification_experiment must state a time/cost bound and require only public data + single GPU, or explicitly set needs_special_resources=true",
+    "No fake citations; prior-work claims labeled VERIFIED PRIOR WORK vs MODEL SPECULATION"
+  ],
+  "next_task_queue": [
+    {
+      "task_id": "p1_gen_i_restoration_lowlevel",
+      "role": "generator",
+      "generator_id": "gen_i_restoration_lowlevel",
+      "priority": 1,
+      "territory": "Super-resolution, denoising, deblurring, low-light, ISP/imaging-pipeline science; perception-distortion tradeoff laws; restoration hallucination risk for downstream dense tasks and medical/scientific imagery; real-vs-synthetic degradation gaps",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_i_restoration_lowlevel/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-I-001..",
+      "fills": "0.0%-coverage blind spot flagged by B (rank 1) and C (priority 1)",
+      "anti_crowding_guards": [
+        "<= 5% SAM/SAM2 mentions; ban SAM/LoRA-for-restoration mashups",
+        ">= 50% restoration-native phenomena (frequency hallucination, perceptual-distortion tradeoffs, real-vs-synthetic degradation gaps)",
+        "falsification must not be PSNR/SSIM-only",
+        "all global guards apply"
+      ]
+    },
+    {
+      "task_id": "p1_gen_j_diffusion_model_science",
+      "role": "generator",
+      "generator_id": "gen_j_diffusion_model_science",
+      "priority": 2,
+      "territory": "Generative/diffusion models as scientific subject: representations, guidance/inversion pathologies, memorization in generators, diffusion-as-feature-extractor and diffusion-for-perception, uncertainty priors for dense prediction",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_j_diffusion_model_science/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-J-001..",
+      "fills": "diffusion model-science gap (master has ~2 eval-critiques only); B rank 2, C priority 2",
+      "anti_crowding_guards": [
+        "<= 10% synthetic-training-data ideas (in-flight gen_f owns that territory)",
+        "ban 'generative eval metric is broken' framing (gen_c/F5 owns it)",
+        "<= 5% SAM/SAM2 mentions",
+        "all global guards apply"
+      ]
+    },
+    {
+      "task_id": "p1_gen_k_3d_geometry_video",
+      "role": "generator",
+      "generator_id": "gen_k_3d_geometry_video",
+      "priority": 3,
+      "territory": "3D/point-cloud/NeRF/Gaussian-splatting, depth estimation, optical flow, multi-view and geometric-consistency beliefs about 2D foundation features; video understanding beyond SAM2 memory",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_k_3d_geometry_video/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-K-001..",
+      "fills": "3D 0 dedicated / optical flow 0.4% / depth 4.4% / general-video gap; A priority 2, C priorities 4-5",
+      "anti_crowding_guards": [
+        "falsification experiments must not reduce to 2D segmentation/mask metrics",
+        "<= 10% SAM/SAM2 mentions (elevated from 5% only for legitimate SAM2-video contrast baselines)",
+        "all global guards apply"
+      ]
+    },
+    {
+      "task_id": "p1_gen_l_llm_agent_vision",
+      "role": "generator",
+      "generator_id": "gen_l_llm_agent_vision",
+      "priority": 4,
+      "territory": "LLM/agent loops around vision: tool use, self-verification, visual programs, test-time compute for perception, LLM-orchestrated segmentation pipelines, self-correcting annotation agents, VLM-as-judge reliability as a capability question",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_l_llm_agent_vision/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-L-001..",
+      "fills": "LLM/agent gap (master has ~3 VLM-eval critiques only); C priority 3, B rank 8",
+      "anti_crowding_guards": [
+        "<= 20% eval-critique genre",
+        "claims must target the loop/system, not merely the underlying VLM",
+        "<= 5% SAM/SAM2 mentions",
+        "all global guards apply"
+      ]
+    },
+    {
+      "task_id": "p1_gen_m_training_dynamics_objectives",
+      "role": "generator",
+      "generator_id": "gen_m_training_dynamics_objectives",
+      "priority": 5,
+      "territory": "Training dynamics, fine-tuning dynamics, optimizer/schedule folklore, objective-function science for dense prediction beyond focal+dice (generalize B-057 log-transmittance, B-080 level-sets, B-024 mixture regression)",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_m_training_dynamics_objectives/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-M-001..",
+      "fills": "training dynamics 1.2%, loss-science empty (A confirms zero loss+X permutation volume); A priority 5, B rank 6, C priority 6",
+      "anti_crowding_guards": [
+        "HARD ban on add-loss-term-X-to-task-Y permutations; each hypothesis must predict WHEN/WHY an objective matters with a falsifiable mechanism",
+        "<= 5% SAM/SAM2 mentions",
+        "all global guards apply"
+      ]
+    },
+    {
+      "task_id": "p1_gen_n_scaling_memorization_data_laws",
+      "role": "generator",
+      "generator_id": "gen_n_scaling_memorization_data_laws",
+      "priority": 6,
+      "territory": "Scaling-law science of vision foundation models; memorization/privacy in vision models; pretraining-data composition effects; contamination science as mechanism (not eval-critique)",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_n_scaling_memorization_data_laws/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-N-001..",
+      "fills": "scaling laws 0%, memorization/privacy 0.4% (A priority 1, narrowed to remove overlap with in-flight gen_f)",
+      "anti_crowding_guards": [
+        "ANTI-OVERLAP: ban synthetic-data-generation/curation-pipeline framings (in-flight gen_f owns data-centric-curation, synthetic-vs-real-pretraining, scaling-and-economics-of-synthetic-data)",
+        "each idea must name a data-level or scale-level intervention as the manipulated variable",
+        "<= 5% SAM/SAM2 mentions",
+        "all global guards apply"
+      ]
+    },
+    {
+      "task_id": "p1_gen_o_hard_domain_diversifier",
+      "role": "generator",
+      "generator_id": "gen_o_hard_domain_diversifier",
+      "priority": 7,
+      "territory": "Hard domains gen_b ignored: underwater/sonar, microscopy/histology, remote sensing/satellite/aerial/UAV, industrial inspection/defect, agriculture, document/OCR; plus medical beyond the ambiguity lens (longitudinal/temporal, cross-site convention transfer, report-grounded tasks)",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_o_hard_domain_diversifier/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-O-001..",
+      "fills": "gen_b blind spots (underwater 0, microscopy 0, remote sensing ~2, industrial 2, agriculture 1, document/OCR 0); A priority 3, B ranks 7+9",
+      "anti_crowding_guards": [
+        "HARD ban on smoke/fire/fog/transparent/amorphous-media examples (gen_b already holds 61-62)",
+        "<= 25% medical records (portfolio already ~24.6% medical/clinical); medical records must use the beyond-ambiguity lens",
+        "<= 5% SAM/SAM2 mentions; no port-model-X-to-domain-Y permutations - each idea needs a domain-native mechanism claim",
+        "all global guards apply"
+      ]
+    },
+    {
+      "task_id": "p1_gen_p_constructive_capability",
+      "role": "generator",
+      "generator_id": "gen_p_constructive_capability",
+      "priority": 8,
+      "territory": "Genre rebalancer: enabling-capability hypotheses (new capability + falsifiable mechanism claim) in any territory, including constructive eval-repair (paired/variance-budgeted designs, harness-invariant metrics, contamination-robust protocols with 'repaired protocol changes conclusion X' predictions)",
+      "shard_path": "Windows13/_state/tasks/p1/generators/gen_p_constructive_capability/ideas_shard.jsonl",
+      "id_seed_range": "W13-P1-P-001..",
+      "fills": "strict-constructive genre ~3-4% of portfolio (C), loose 18.5% (B), method-primary 0% (A); A priority 6, C priority 6, B rank 5 folded in",
+      "anti_crowding_guards": [
+        ">= 80% constructive/capability records; 0% pure-audit genre",
+        "ban beats-SOTA framings without a mechanism claim; falsifiable_prediction schema stays mandatory",
+        "<= 10% SAM/SAM2 mentions",
+        "all global guards apply"
+      ]
+    }
+  ],
+  "deferred_territories": [
+    {
+      "territory": "cross_field_transfer (vision <-> audio/time-series/graphs/scientific imaging)",
+      "source": "auditor C priority 5",
+      "reason": "single-auditor support and highest apply-X-to-Y permutation risk; revisit at the next diversity audit if wave3 leaves cross-field coverage at ~0",
+      "guards_if_commissioned": ["each idea names both fields AND the specific transferred invariance/structure", "hard ban on bare apply-architecture-X-to-field-Y permutations"]
+    },
+    {
+      "territory": "embodied_robotics",
+      "source": "auditor C missing-territories priority 7",
+      "reason": "below cut line for wave3 queue size; revisit at next audit"
+    },
+    {
+      "territory": "efficiency_deployment_non_sam",
+      "source": "auditor C missing-territories priority 6; A blind-spot 2.8%",
+      "reason": "below cut line; partially reachable through gen_m (training/objectives) and gen_o (industrial deployment contexts)"
+    }
+  ],
+  "wave2_off_master_status": {
+    "note": "Wave2 shards D-G still need Wave B judges + consolidator before they enter master. This task did NOT append any wave2 shard to ideas_master.jsonl; that is the Wave2 Consolidator's job after wave2 judges finish.",
+    "shards": [
+      {"shard": "gen_d_object_detection", "ideas": 100, "id_range": "W13-P1-D-001..100", "branch": "origin/cursor/p1-gen-d-object-detection-07a3"},
+      {"shard": "gen_e_vlm_dense_prediction", "ideas": 100, "id_range": "W13-P1-E-001..100", "branch": "origin/cursor/w13-p1-gen-e-vlm-dense-9412"},
+      {"shard": "gen_f_synthetic_data", "ideas": 102, "id_range": "W13-P1-F-001..102", "branch": "origin/cursor/w13-p1-gen-f-synthetic-data-3a94"},
+      {"shard": "gen_g_domain_shift", "ideas": 100, "id_range": "W13-P1-G-001..100", "branch": "origin/cursor/p1-gen-g-domain-shift-0165"}
+    ],
+    "total_ideas_off_master": 402,
+    "wave2_judging_progress": {
+      "judge_A_dedup": "DONE on origin/cursor/p1-wave-b-w2-judge-a-dedup-13e5 (Windows13/_state/tasks/p1/wave_b_w2/judge_A.json present)",
+      "judge_B": "pending",
+      "judge_C": "pending",
+      "wave2_consolidator": "pending"
+    },
+    "recommendation": "run wave2 judges B/C + Wave2 consolidator with the family-fingerprint guard applied at judge time, in parallel with dispatching gen_i..gen_p"
+  },
+  "stage2_selection_notes": [
+    "Apply auditor C's selection-time family caps at the 200->50 cut: F1 keep <=4, F2 keep <=10, F3 keep <=2, F4 keep <=2, F5 keep <=5 (frees ~80 slots for new territories; HYPOTHESIS on slot count)",
+    "Protect auditor B's 46-id constructive-capability list from genre-blind culling in Stage 2 balancing",
+    "Normalize the evidence_label schema across shards before Stage 2 (154/248 records use inline bracket tags instead of the structured dict)",
+    "Discount claimed cheapness for B's 32 special-resource ids when ranking by fastest-falsification cost"
+  ],
+  "counts": {
+    "accepted_count_canonical": 248,
+    "ideas_master_modified": false,
+    "wave2_ideas_off_master": 402,
+    "next_task_queue_length": 8
+  },
+  "recommended_next_task_type": ["p1_wave_b_w2_continue", "p1_wave_a_more_generators"],
+  "no_fake_citations": true,
+  "scope_compliance": {
+    "window_lock_json_untouched": true,
+    "windows_id_unchanged": "Windows13",
+    "ideas_master_jsonl_untouched": true,
+    "research_state_json_changes": "exploration/diversity-audit fields only; windows_id Windows13, window_locked true, Stage 1 preserved",
+    "research_ledger_md_changes": "append-only audit section",
+    "own_branch": "cursor/p1-diversity-audit-consolidator-w1-25a0",
+    "force_push": false
+  }
+}
