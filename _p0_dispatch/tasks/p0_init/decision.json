@@ -1,0 +1,151 @@
+{
+  "task_id": "p0_init",
+  "role": "consolidator",
+  "wave": "B",
+  "decision_scope": "P0 INITIALIZE WINDOWS - single canonical decision for this pipeline run",
+  "decided_at_utc": "2026-08-28T17:24:30Z",
+  "decided_by_branch": "cursor/p0-init-consolidator-9302",
+  "repository": "https://github.com/songkang688/idea",
+  "base_branch": "main",
+  "base_head": "990f3ebc75d7ab03a8960cf0d1e5621cbb29194a",
+
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "window_locked_to_be_set_true_by_implementation": true,
+  "window_defined_by": "P0",
+  "window_definition_status": "canonical",
+  "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+
+  "decision_basis": {
+    "wave_a_worker_recommendations": {"worker_A": 13, "worker_B": 13, "worker_C": 13},
+    "wave_b_judge_verdicts": {"judge_A": 13, "judge_B": 13, "judge_C": 13},
+    "consolidator_independent_rescan": {
+      "fetch_command": "git fetch origin --prune",
+      "fetched_at_utc": "2026-08-28T17:23:33Z",
+      "origin_heads_scanned": 36,
+      "windows_paths_on_origin_heads": [
+        "Windows2 (research-idea-evolution-windows2-c2c9, windows2-stage1-agent-{a,b,c})",
+        "staging/Windows3_supervisor (idea-evolution-windows3-b534, w3s1-cluster-b-7ea7)",
+        "Windows4 (windows4-research-idea-evolution-2962)",
+        "Windows6 (windows6-research-idea-evolution-b55d)",
+        "Windows8 (windows8-research-idea-evolution-cd91)",
+        "Windows9 (windows9-p0-init-3045)",
+        "Windows10 (windows10-p0-init-26ec)",
+        "Windows11 (windows11-p0-init-c0c1)",
+        "Windows12 (windows12-p0-init-a095)"
+      ],
+      "occupied_numbers": [2, 3, 4, 6, 8, 9, 10, 11, 12],
+      "never_existed_numbers": [1, 5, 7],
+      "max_windows_number_observed": 12,
+      "windows13_found_anywhere": false,
+      "window_lock_json_found_anywhere": false,
+      "windows13_plus_in_branch_names_or_commit_messages": false
+    }
+  },
+
+  "files_to_create": [
+    "Windows13/README.md",
+    "Windows13/_state/research_state.json",
+    "Windows13/_state/window.lock.json",
+    "Windows13/_state/ideas_master.jsonl",
+    "Windows13/_state/research_ledger.md",
+    "Windows13/_state/agent_log.md",
+    "Windows13/selection_history/.gitkeep",
+    "Windows13/final_ideas/.gitkeep",
+    "Windows13/artifacts/.gitkeep"
+  ],
+  "files_to_create_notes": {
+    "layout_precedent": "identical scaffold verified on Windows9-12 P0-init branches: WindowsN/{README.md, _state/{research_state.json, ideas_master.jsonl, research_ledger.md, agent_log.md}, selection_history/, final_ideas/, artifacts/}; window.lock.json is NEW this round (zero lock files exist on any ref) and lives at Windows13/_state/window.lock.json per judge_C ruling",
+    "ideas_master_jsonl_init": "empty 0-byte file (Windows9/11/12 convention); one JSON object per idea appended later",
+    "selection_history_policy": "lazy per-stage evidence files; .gitkeep only at init (Windows4/6 precedent)",
+    "json_validity_gate": "Implementation MUST validate every .json with python3 -m json.tool before committing (Windows11 research_state.json on origin is malformed JSON - do not repeat)"
+  },
+
+  "research_state_required_fields": {
+    "windows_id": "Windows13",
+    "windows_number": 13,
+    "windows_path": "Windows13",
+    "window_locked": true,
+    "window_defined_by": "P0",
+    "window_definition_status": "canonical",
+    "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
+    "note": "these fields are additive on top of the Windows12-schema base fields (repository, branch, base_branch, created_at, supervisor, current_stage='Stage 1', target_pipeline, total_ideas=0, survivors=0, final_target=3, status='initialized', numbering evidence block, git_safety block, ideas_index=[], current_ranking=[], evidence_policy)"
+  },
+
+  "window_lock_json_required_fields": {
+    "windows_id": "Windows13",
+    "windows_number": 13,
+    "windows_path": "Windows13",
+    "repository": "https://github.com/songkang688/idea",
+    "branch": "<implementation agent's actual init branch name>",
+    "created_at": "<UTC ISO-8601 at init commit time>",
+    "locked": true,
+    "defined_by": "P0",
+    "write_policy": "written with locked=true inside the init commit itself, immediately after the final re-fetch + overwrite check passes; worker_C's two-phase create-unlocked design is OVERRULED (judge_C ruling C1, ratified here); a committed-unlocked lock invites sibling claims and the P1 gate is already blocked waiting for exactly one authoritative locked file"
+  },
+
+  "commit_message": "Research Idea Evolution - Windows13 - Initialization",
+  "commit_message_notes": "matches dominant 'Research Idea Evolution - WindowsN - <action>' family with no space before N; dispatcher template takes precedence over the 'Initialize WindowsN research workspace (P0)' form used by Windows9-12; a follow-up commit recording the verified push SHA is permitted per Windows9-12 practice; if the number is bumped at implementation time, substitute the bumped N in the message",
+
+  "safe_to_create": true,
+  "overwrite_check": "No overwrite target exists: origin/main tree contains only README.md and has never contained any WindowsN path; Windows13 is absent from every origin head tree, every branch name, and every commit message across all refs as of the consolidator re-fetch at 2026-08-28T17:23:33Z; no window.lock.json exists anywhere on any ref; no variant spellings of Windows13 found; reusing occupied numbers 2,3,4,6,8,9,10,11,12 is forbidden (live unmerged cursor/* branches would collide at merge time); in-repo secret scan clean per worker_B and judge_B (65 commits, all refs). Residual risk is the numbering race only, mitigated by numbering_race_policy.",
+
+  "numbering_race_policy": "Implementation MUST run 'git fetch origin --prune' immediately before mkdir and re-verify on the freshly fetched refs that Windows13 (directory, branch name, commit message, research_state windows_id, or window.lock.json claim) does not exist on ANY origin tip. If Windows13 already exists on any origin tip, bump to the smallest unused N strictly greater than 13 that is absent from every origin tip, and substitute that N everywhere (windows_id, windows_path, all file paths, research_state.json, window.lock.json, commit message). Never gap-fill 1, 5, or 7 (never-existed/burned per ledger records) and never reuse burned numbers 2, 3 (staging/Windows3_supervisor counts as burned), 4, 6, 8, 9, 10, 11, 12. Perform fetch -> verify -> create -> commit -> push as one fast sequence; never force-push. Known active siblings at decision time: family '_state/tasks/p0/windows_init/' targets Windows14 primary and explicitly defers Windows13 to this run; families '_dispatcher/p0/wave_a/' and '_state/tasks/P0/wave_A/' were still in Wave A (no claim) as of 17:23:33Z.",
+
+  "judge_agreement": {
+    "unanimous": true,
+    "judge_A_numbering": {"windows_id": "Windows13", "windows_number": 13, "confidence": 0.92, "status": "complete", "branch": "cursor/p0-init-judge-a-numbering-d175"},
+    "judge_B_safety": {"windows_id": "Windows13", "windows_number": 13, "safe_to_create": true, "overwrite_risk": "LOW", "secret_risk": "clean in-repo", "status": "done", "branch": "cursor/p0-init-judge-b-safety-3255"},
+    "judge_C_conventions": {"windows_id": "Windows13", "windows_number": 13, "commit_message_ratified": true, "lock_policy_ratified": true, "status": "complete", "branch": "cursor/p0-init-judge-c-conventions-f02e"},
+    "conflict_resolution_needed": false,
+    "consolidator_rescan_confirms": true
+  },
+
+  "contradictions_resolved": [
+    {
+      "id": "R1_windows3_classification",
+      "conflict": "worker_C listed Windows3 in windows_ids_absent (top-level scan scope) while worker_A/worker_B counted staging/Windows3_supervisor as occupying number 3",
+      "resolution": "RATIFIED judge_A/judge_C ruling: number 3 is burned by the nested legacy form staging/Windows3_supervisor/; it counts toward numbering and must never be gap-filled; the staging layout is legacy and must not be repeated; no effect on max=12 or the Windows13 verdict"
+    },
+    {
+      "id": "R2_lock_write_policy",
+      "conflict": "worker_C proposed window.lock.json created UNLOCKED (windows_id=null, locked=false) and flipped later by a supervisor; dispatcher and judge_C require locked=true at init",
+      "resolution": "RATIFIED judge_C ruling C1: window.lock.json is written locked=true with full identity fields inside the init commit, immediately after the final re-fetch + overwrite check; P0 is the locker; the blocked P1 gate (branch cursor/p1-gate-state-reader-e933) confirms downstream consumers require exactly one authoritative locked file"
+    },
+    {
+      "id": "R3_commit_message_family",
+      "conflict": "Windows9-12 precedent used 'Initialize WindowsN research workspace (P0)' while the dispatcher mandates 'Research Idea Evolution - WindowsN - Initialization'",
+      "resolution": "dispatcher template is mandatory and matches the dominant repo family (Windows2/3/4 style, no space before N); ratified by judge_C and worker_C independently"
+    },
+    {
+      "id": "R4_wave_a_staleness",
+      "conflict": "all Wave A scans (17:09-17:12Z, 54 commits) predate sibling pipeline pushes (17:16-17:23Z, 65+ commits and 8+ new branches)",
+      "resolution": "staleness, not error: consolidator re-fetch at 17:23:33Z confirms the decision-relevant facts (max=12, Windows13 absent, no lock files) still hold after all sibling pushes"
+    },
+    {
+      "id": "R5_windows_number_field",
+      "conflict": "no prior schema on any ref includes windows_number (integer); Windows9-12 scaffolds lack it",
+      "resolution": "RATIFIED judge_C ruling C6: dispatcher adds it; windows_number=13 is required in decision.json, research_state.json, and window.lock.json"
+    },
+    {
+      "id": "R6_sibling_pipeline_targets",
+      "conflict": "sibling dispatch family '_state/tasks/p0/windows_init/' could have converged on Windows13 (its sequential fallback)",
+      "resolution": "sibling's own worker_C.done.json explicitly recommends Windows14 primary and defers Windows13 to this run (KNOWN FACT from fetched shard at origin/cursor/p0-windows-init-worker-c-f747); its final choice remains HYPOTHESIS, hence the mandatory fetch-verify-bump guard in numbering_race_policy rather than a block"
+    },
+    {
+      "id": "R7_branch_suffix_deviation",
+      "conflict": "worker_A flagged that requested branch suffixes differ from VM-enforced suffixes (e.g. -05a0 requested vs -1ccf enforced)",
+      "resolution": "informational only; every shard was located and read via its real pushed branch; no identity or safety impact"
+    }
+  ],
+
+  "implementation_constraints": [
+    "Implementation Agent (Wave C) creates Windows13/ and writes window.lock.json and research_state.json; NO other agent may",
+    "only write inside Windows13/ and _p0_dispatch/ bookkeeping; never touch root README.md, other Windows* trees, or other agents' shards",
+    "never force-push; record real push results and verify the remote SHA with git ls-remote before reporting success",
+    "validate all JSON files with python3 -m json.tool before committing"
+  ],
+
+  "recommended_next_task_type": "wave_c_implementation"
+}
