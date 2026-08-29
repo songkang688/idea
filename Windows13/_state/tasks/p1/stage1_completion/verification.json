@@ -1,0 +1,85 @@
+{
+  "task_id": "p1_stage1_verification",
+  "role": "verification",
+  "verified_at_utc": "2026-08-29T02:47:00Z",
+  "verdict": "PASS",
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "defined_by": "P0",
+  "verification_branch": "cursor/p1-stage1-verification-ca95",
+  "subject": {
+    "stage1_branch": "cursor/windows13-stage1-exploration-ee41-face",
+    "stage1_commit_hash": "4a94eafb0aed28292b117481d2cb986aec849b13",
+    "stage1_commit_message": "Research Idea Evolution - Windows13 - Stage 1 Exploration",
+    "branch_tip_at_verification": "41726e86e7459c946868c8747dd7896bd5040e43",
+    "p0_reference_branch": "cursor/windows13-p0-init-implementation-d93f",
+    "p0_branch_tip_at_verification": "2a3d1e40e183a8d49299754b0f7d724a7566d45d"
+  },
+  "checks": [
+    {
+      "id": "stage_files_under_windows13",
+      "description": "All research files in the Stage-1 commit live under Windows13/ (repo-root README / _p0_dispatch bootstrap ignored)",
+      "result": "PASS",
+      "evidence": "git diff-tree --no-commit-id --name-status -r 4a94eafb0aed28292b117481d2cb986aec849b13 lists 12 added files, all under Windows13/_state/tasks/p1/stage1_completion/. Additionally, git diff --name-only between the P0 branch and the Stage-1 branch tip returns zero paths outside Windows13/."
+    },
+    {
+      "id": "lock_identity_unchanged",
+      "description": "window.lock.json identity fields unchanged vs P0 (windows_id, windows_number, windows_path, locked, defined_by)",
+      "result": "PASS",
+      "evidence": "Windows13/_state/window.lock.json is byte-identical between origin/cursor/windows13-p0-init-implementation-d93f and origin/cursor/windows13-stage1-exploration-ee41-face (diff empty). Identity fields: windows_id=Windows13, windows_number=13, windows_path=Windows13, locked=true, defined_by=P0.",
+      "identity_fields": {
+        "windows_id": "Windows13",
+        "windows_number": 13,
+        "windows_path": "Windows13",
+        "locked": true,
+        "defined_by": "P0"
+      }
+    },
+    {
+      "id": "no_new_windows_directory",
+      "description": "No new Windows{N} directory created by this stage on this branch",
+      "result": "PASS",
+      "evidence": "Top-level tree of origin/cursor/windows13-stage1-exploration-ee41-face is {README.md, Windows13, _p0_dispatch}, identical to the P0 branch top-level tree. Windows13 is the only Windows{N} directory on the branch."
+    },
+    {
+      "id": "report_exists",
+      "description": "Stage-1 report exists at Windows13/selection_history/stage1_exploration.md",
+      "result": "PASS",
+      "evidence": "File present on the branch (82 lines); reports 1220 accepted ideas, count gate passed, meta-judge PASS_WITH_REMEDIATION, and explicitly states P2 has not been started."
+    },
+    {
+      "id": "master_1220_valid_jsonl",
+      "description": "Windows13/_state/ideas_master.jsonl has exactly 1220 lines, each valid JSON",
+      "result": "PASS",
+      "evidence": "wc -l = 1220; python json.loads succeeded on all 1220 lines (0 invalid, 0 empty); 1220 unique id_seed values with 0 duplicates."
+    },
+    {
+      "id": "done_git_present",
+      "description": "done_git.json present on the Stage-1 branch",
+      "result": "PASS",
+      "evidence": "Windows13/_state/tasks/p1/stage1_completion/done_git.json exists on the branch tip; records commit_hash 4a94eafb0aed28292b117481d2cb986aec849b13, exact commit message, idea_count 1220, push_status verified_success, force_push false."
+    },
+    {
+      "id": "push_verified_on_origin",
+      "description": "Stage-1 branch and commit verified on origin via ls-remote and ancestry",
+      "result": "PASS",
+      "evidence": "git ls-remote origin shows refs/heads/cursor/windows13-stage1-exploration-ee41-face at 41726e86e7459c946868c8747dd7896bd5040e43; git merge-base --is-ancestor confirms 4a94eafb0aed28292b117481d2cb986aec849b13 is an ancestor of that origin tip."
+    },
+    {
+      "id": "commit_message_exact",
+      "description": "Stage-1 commit message matches exactly",
+      "result": "PASS",
+      "evidence": "git log --format=%s of 4a94eafb0aed28292b117481d2cb986aec849b13 is exactly 'Research Idea Evolution - Windows13 - Stage 1 Exploration'."
+    }
+  ],
+  "idea_count": 1220,
+  "report_path": "Windows13/selection_history/stage1_exploration.md",
+  "p1_complete": true,
+  "p2_started": false,
+  "unresolved_items": [],
+  "notes": "Meta-judge verdict on the Stage-1 branch is PASS_WITH_REMEDIATION; all remediation items are selection-side and routed to P2 ranking rules per the report, so they do not block Stage-1 completion. Verification performed read-only against origin refs; no Stage-1 artifacts were modified.",
+  "no_fake_citations": true,
+  "force_push": false
+}
