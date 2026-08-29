@@ -1,5 +1,22 @@
-# AMG vs clustering on one slice (fill paths)
+# Idea_01 — synthetic smoke configuration (card E0).
+#
+# This config drives the CPU harness check, NOT the real protocol. For the
+# pre-registered experiment see e1_killer.yaml.
+#
+# Parsed by src/amgclust/config.py. PyYAML is used when installed; otherwise a
+# restricted flat parser handles this file. Unknown keys raise rather than
+# being ignored, so a silently dropped field is impossible.
+
 window: abdomen
 k_means: [8, 16, 32]
 metrics: [hungarian_iou, ari, boundary_f]
 counterfactuals: [intensity_remap, texture_shuffle]
+amg_points_per_side: [16, 32]
+n_slices: 1
+seed: 0
+boundary_tolerance_px: 2
+slic_n_segments: 64
+slic_compactness: 0.25
+remap_gamma: 0.5
+shuffle_tile: 8
+data_root: ""

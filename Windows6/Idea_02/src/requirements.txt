@@ -1,1 +1,15 @@
+# Idea_02 prototype dependencies.
+#
+# numpy is the only hard requirement. run_smoke.py and all 24 self-checks pass
+# with nothing else installed.
 numpy>=1.24
+
+# Optional. A pure-numpy fallback parser handles the flat configs in this
+# package, so absence changes convenience, not results:
+# pyyaml>=6.0
+
+# The real experiment additionally needs a detector stack (ultralytics/torch)
+# and a smoke corpus. Neither is listed here on purpose: this package must stay
+# runnable without them so a missing dataset fails loudly instead of quietly
+# turning EXPECTED numbers into apparent ACTUAL ones. Card E4 also needs a
+# perceptual-hash library for the dedup rerun.

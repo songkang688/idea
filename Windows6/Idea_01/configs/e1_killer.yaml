@@ -1,0 +1,26 @@
+# Idea_01 — card E1, the killer experiment (experiments.md).
+#
+# STATUS: NOT RUN. Running this needs a SAM ViT-B checkpoint and real CT
+# slices, neither of which ships here; segmenters.sam_amg and
+# data.load_real_ct_slices raise NotImplementedError until they are wired up.
+#
+# n_slices is 100, not 50. The record disagreed with itself (README and the
+# killer list said 50, the Stage-5 engineering block said 100);
+# stage6_battle.md 4.7 logged it and 6 resolved it to the larger figure.
+#
+# Budget: ~2 GPU-h — HYPOTHESIS, an estimate from evolution_summary.md, never
+# a measured runtime.
+
+window: abdomen
+k_means: [8, 16, 32]
+metrics: [hungarian_iou, ari, boundary_f]
+counterfactuals: [intensity_remap, texture_shuffle]
+amg_points_per_side: [32]
+n_slices: 100
+seed: 0
+boundary_tolerance_px: 2
+slic_n_segments: 256
+slic_compactness: 0.25
+remap_gamma: 0.5
+shuffle_tile: 8
+data_root: /path/to/totalsegmentator_or_msd_slices

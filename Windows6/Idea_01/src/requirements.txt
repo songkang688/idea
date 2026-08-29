@@ -1,2 +1,18 @@
+# Idea_01 prototype dependencies.
+#
+# numpy is the only hard requirement. run_smoke.py and all 22 self-checks pass
+# with nothing else installed.
 numpy>=1.24
-scipy>=1.10
+
+# Optional accelerants. Pure-numpy fallbacks exist for both, so absence changes
+# speed, not results:
+#   scipy   -> linear_sum_assignment (Hungarian), ndimage.label (components)
+#   pyyaml  -> full YAML configs instead of the restricted flat parser
+# scipy>=1.10
+# pyyaml>=6.0
+
+# Real AMG additionally needs segment-anything + torch + a ViT-B checkpoint,
+# and real data needs nibabel or pydicom. Install those in the lab. They are
+# deliberately NOT listed as requirements: this package must stay runnable
+# without them so that a missing checkpoint fails loudly instead of quietly
+# turning EXPECTED numbers into apparent ACTUAL ones.

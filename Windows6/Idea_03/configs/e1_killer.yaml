@@ -1,0 +1,35 @@
+# Idea_03 -- card E1, the killer experiment (experiments.md).
+#
+# STATUS: NOT RUN, AND CURRENTLY UNRUNNABLE.
+#
+# GATE-B is open: no base/chat pair has been verified to share a vision encoder
+# and coordinate tokenization. experiments.md calls that a "Hard gate", and
+# data.verify_checkpoint_pair raises until card E-B is done. The checkpoint
+# names below are PLACEHOLDERS -- they record the candidates named in the plan,
+# not a verified pair.
+#
+# tax_mode is meaningless for a real run: on real checkpoints the outcome is
+# MEASURED, not planted. It stays at "none" so that nothing here can be mistaken
+# for a prediction.
+#
+# Budget: <=8 GPU-h -- HYPOTHESIS, an estimate from evolution_summary.md, never
+# a measured runtime. Eval-only; no training. The DPO arm (card E4) is a
+# separate, double-gated config and is not written yet on purpose.
+
+checkpoints: [PLACEHOLDER_base, PLACEHOLDER_chat]
+decode: constrained_xyxy
+probe: linear_visual_tokens
+optional: text_only_dpo_lora
+eval_modes: [freeform, constrained, likelihood_rank]
+tax_mode: none
+n_examples: 2000
+token_dim: 1024
+n_distractors: 16
+image_size: 1.0
+chatty_rate: 0.0
+policy_noise: 0.0
+representation_noise: 0.0
+iou_threshold: 0.5
+gap_tolerance: 0.02
+seed: 0
+data_root: /path/to/refcoco
