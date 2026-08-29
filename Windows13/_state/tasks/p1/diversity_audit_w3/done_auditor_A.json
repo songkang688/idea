@@ -1,0 +1,53 @@
+{
+  "task_id": "p1_diversity_audit_w3",
+  "role": "auditor_A_mode_collapse",
+  "status": "complete",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "branch": "cursor/p1-diversity-audit-w3-auditor-a-9a11",
+  "audited_records": 934,
+  "audited_source": "origin/cursor/p1-wave-b-consolidator-w4-e8e2 @ 2411f9307030b8de4e445d0972a0b624cc451130",
+  "records_added_since_last_audit_at_494": 440,
+  "headline": {
+    "lexical_collapse": "LOW (max jaccard 0.258, 0 pairs >= 0.33 of 435,711; largest cluster 1.5%)",
+    "structural_collapse": "MEDIUM improving (SAM 17.6%->9.6%, annotation 39.3%->29.6%, detection 30.6%->22.2%, VLM 22.5%->11.9%; eval background stable 71.7%)",
+    "template_collapse": "MEDIUM-HIGH new dominant axis (10 judge_C cells over cap 6 in w3/w4 vocabulary: ritual_is_mechanism_in_disguise 19 all-gen_m, cheap_predictor_of_outcome doubled 7->14 cross-shard, 8 single-shard cells at 7-10; plus 14 unconsolidated w1/w2-era cells)",
+    "genre_collapse": "HIGH improving (934/934 contrarian schema, loose-constructive 10.8% overall but 13.4% on w3/w4 additions; resolution rides on in-flight gen_p)",
+    "sam_plus_x": "frozen 2nd consecutive audit (90/934 = 9.6%; +3 gen_k within allowance)",
+    "lora_plus_x": "contained (31/934)",
+    "loss_plus_x": "ban held through gen_m, the maximum-exposure shard",
+    "missing_territories_headline": "cross-field transfer still 0.0% (3rd audit); adversarial/security/fairness orphaned by policy-blocked gen_u; non-LLM TTA 1.2%",
+    "fake_citations_found": 0
+  },
+  "recommended_territory_order": [
+    "gen_r_cross_field_transfer (priority 1, only zero-coverage territory left)",
+    "gen_q_test_time_compute_adaptation (2, non-LLM side; folds psychophysics + active learning)",
+    "gen_w_adversarial_security_fairness (3, NEW letter inheriting policy-blocked gen_u mandate)",
+    "gen_v_model_lifecycle_continual (4, w2 reserve mapping preserved)",
+    "gen_s_embodied_interactive_perception (5, reserve)",
+    "gen_t_efficiency_deployment_science (6, reserve, mandate shrunk to non-distillation)",
+    "gen_x_constructive_capability_2 (contingent only: if post-w5 loose-constructive < 15% after gen_p merges)"
+  ],
+  "letters_not_reused": ["gen_n", "gen_o", "gen_p"],
+  "letters_burned": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f", "gen_g", "gen_h", "gen_i (retired)", "gen_j", "gen_k", "gen_l", "gen_m", "gen_u (policy-blocked, never used)"],
+  "output_files": [
+    "Windows13/_state/tasks/p1/diversity_audit_w3/auditor_A.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w3/auditor_A.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w3/done_auditor_A.json"
+  ],
+  "unresolved_items": [
+    "GATE-8 novelty/prior-art lane overdue: 105 master records carry judge_dissent; w2's 73-id novelty priority list unprocessed; w4 added 3 outvoted kills (K-020, K-069, L-012) + a 20-id watchlist",
+    "14 w1/w2-era over-cap fingerprint cells (annotation_ceiling_conventions 13, realism_not_the_active_ingredient 12, ...) never consolidated - Stage-2 slot-cap debt; flag vocabularies of w1/w2 vs w3/w4 need a mapping before a unified census",
+    "wave2 (D/E/F) schema backfill (evidence_label 0/246, numeric thresholds ~0/246) + GATE-4 asset pinning on 198 gen_k/gen_l records + 7 gen_k qualitative-threshold retrofits: one Stage-2 retrofit lane",
+    "127 gen_g/gen_h records remain at wave_b_w3_gate5/remaining_remand.jsonl awaiting invasive threshold retrofit (extract-only pass exhausted at 46/173)",
+    "w5_NPO judging incomplete at audit time (only judge B on origin); this audit's guard deltas (within-shard template cap <=4, cheap-predictor portfolio freeze, agent-annotation ban extension) should be applied by the w5 judges/consolidator",
+    "genre floor still unmet portfolio-wide (10.8% loose-constructive vs >=25% floor); decision on contingent gen_x deferred to post-w5 audit after gen_p merges",
+    "cross-audit instrument drift documented but not unified: Jaccard tokenizers (0.282 vs 0.250 on the same pair) and citation-string vs citation-record counts (13 vs 14) differ between w2 and w3 auditors"
+  ],
+  "recommended_next_task_type": "p1_diversity_audit_w3_more",
+  "canonical_state_untouched": true,
+  "no_fake_citations": true,
+  "force_push": false,
+  "completed_at_utc": "2026-08-29T01:18:41Z"
+}

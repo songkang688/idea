@@ -1,0 +1,287 @@
+{
+  "task_id": "p1_diversity_audit_w3",
+  "role": "auditor_A_mode_collapse",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "audited_set": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w4-e8e2",
+    "source_commit": "2411f9307030b8de4e445d0972a0b624cc451130",
+    "records": 934,
+    "records_added_since_last_audit_at_494": 440,
+    "waves": ["p1_wave_b_w1", "p1_wave_b_w2", "p1_wave_b_w3", "p1_wave_b_w3_gate5_repair", "p1_wave_b_w4"],
+    "shards": {
+      "gen_a_sam_foundation_peft": 94,
+      "gen_b_hard_domain_dense_prediction": 85,
+      "gen_c_contrarian_eval": 69,
+      "gen_d_object_detection": 79,
+      "gen_e_vlm_dense_prediction": 79,
+      "gen_f_synthetic_data": 88,
+      "gen_g_domain_shift (gate5-repaired subset)": 30,
+      "gen_h_sr_restoration (gate5-repaired subset)": 16,
+      "gen_j_diffusion_model_science": 98,
+      "gen_k_3d_geometry_video": 102,
+      "gen_l_llm_agent_vision": 96,
+      "gen_m_training_dynamics_objectives": 98
+    }
+  },
+  "audited_at_utc": "2026-08-29T01:18:41Z",
+  "method": "deterministic regex/count analysis over the 12 idea-text fields of all 934 records (judge metadata and family_fingerprint read separately, never counted as idea text); full pairwise one-liner token-Jaccard (435,711 pairs, stopword-filtered tokens len>2); tallies of judge_C template:* fingerprint flags, judge_A flags/duplicate_groups, judge genre labels; off-master gen_n/gen_o/gen_p shards enumerated read-only for territory-ownership checks (never merged); prior w1/w2 audits read for baseline deltas only; no records modified; instrument note: my tokenizer differs slightly from the w2 auditor's (the w2 top pair E-034/E-047 measures 0.250 here vs 0.282 there), so cross-audit Jaccard deltas are indicative, not exact",
+  "timeline_note": "KNOWN FACT: wave3 shard gen_j and wave4 shards gen_k/l/m were generated under the w1+w2 guard set; gen_g/gen_h predate it (only their 46 gate5-repaired records are on master). Guard compliance is therefore assessable for J/K/L/M and this audit does assess it.",
+  "mode_collapse": {
+    "surface_level": "LOW",
+    "surface_evidence": [
+      "EVIDENCE: max pairwise one-liner token-Jaccard 0.258 (W13-P1-L-019 vs W13-P1-L-040, which share only the 'matched-budget multi-step visual tasks' framing, not the claim); 0 pairs >= 0.33 across 435,711 pairs",
+      "EVIDENCE: 124 distinct clusters; largest cluster video-understanding-memory = 14/934 (1.5%, was 2.6% at 494)"
+    ],
+    "structural_level": "MEDIUM_improving",
+    "structural_evidence": [
+      "EVIDENCE: every w2 crowded subject diluted: SAM 17.6% -> 9.6% (90/934), annotation pathology 39.3% -> 29.6% (276/934), detection 30.6% -> 22.2%, VLM/open-vocab 22.5% -> 11.9%, synthetic 24.5% -> 17.1%, calibration/uncertainty 20.6% -> 16.5%",
+      "EVIDENCE: eval/benchmark/metric mention-share stable at 71.7% (670/934, was 72.1%) - the debunk-instrument background of the whole portfolio, not a subject cluster",
+      "EVIDENCE: new mandate-driven masses are within their shards: 3D/geometry/depth loose-mention 45.3% (aggregation of gen_k+gen_m+gen_j vocabulary, largest true cluster only 14), training-dynamics 19.9% (gen_m 90/98 by mandate), LLM/agent 8.4% (gen_l 71/96 by mandate), diffusion 8.0% (gen_j 58/98 by mandate)",
+      "EVIDENCE: within-shard cluster spread of new shards respects the >=8-clusters/none>15% guard: J 12 clusters max 10.2%, K 10 max 13.7%, L 10 max 10.4%, M 11 max 10.2% (G 26.7% and H 31.2% are 30/16-record gate5-repaired SUBSETS, not full shards - flagged not sanctioned)"
+    ],
+    "template_level": "MEDIUM_HIGH_new_dominant_axis",
+    "template_evidence": [
+      "EVIDENCE: crowding moved from subjects (w2) to judge-fingerprinted template families INSIDE single shards: ritual_is_mechanism_in_disguise = 19, all gen_m (largest single-shard cell ever recorded in this portfolio; cap is 6); stratified_eval_hidden_failure 10/10 gen_k; boundary_interior_decomposition 10/10 gen_m; acquisition_order_phase 10/10 gen_m (M-051..M-060, a contiguous id block); agent_annotation_loop 8/8 gen_l; hidden_distribution_prior 7/7 gen_k; text_interface_lossiness 7/7 gen_l (L-013..L-019 contiguous); bn_statistics_mechanics 7/7 gen_m",
+      "EVIDENCE: cross-shard template growth despite the w2 <=3-per-shard guard: cheap_predictor_of_outcome doubled 7 -> 14 (J 4, G 2, K 2, L 3, M 3) - per-shard counts near-compliant (gen_j at 4 violates), portfolio total keeps compounding",
+      "EVIDENCE: 10 judge_C template cells over the <=6 cap in the w3/w4 flag vocabulary alone; the 14 over-cap w1/w2-era cells found at the 494 audit (annotation_ceiling_conventions 13, realism_not_the_active_ingredient 12, tf03 10, tf04 10, equalization_null 9, ...) were never consolidated and remain open Stage-2 debt - the two vocabularies do not share cell ids, so the true over-cap census is 10-24 cells depending on vocabulary merging"
+    ],
+    "genre_level": "HIGH_improving_but_unresolved",
+    "genre_evidence": [
+      "EVIDENCE: 934/934 records carry the contrarian schema (community_default_belief + why_it_might_be_wrong); strict constructive-phrased one-liners 0/934 by my regex",
+      "EVIDENCE: loose-constructive 101/934 (10.8%); on the pre-existing 494 subset my instrument reads 42 (8.5%) vs 59/440 (13.4%) on w3/w4 additions - the w1/w2 genre quota is finally bending the curve (gen_l 21/96 = 21.9%, gen_m 13/98 = 13.3%, gen_k 12/102 = 11.8%) but every shard is still below the >=25% constructive floor",
+      "EVIDENCE: judge_C genre labels on the 296 w4 records: characterization 102, constructive_capability 83, debunk_audit 77, eval_critique 11 - by judge labels w4 runs ~28% constructive, corroborating the improvement",
+      "HYPOTHESIS: the genre axis resolves only when in-flight gen_p (104 ideas, 12 capability/repair clusters, in w5_NPO judging) merges; do not commission a second constructive shard before that merge is measured"
+    ]
+  },
+  "crowded_clusters": [
+    {
+      "name": "gen_m_internal_template_monoculture",
+      "scope": "NEW single-shard, gen_m",
+      "share": "ritual_is_mechanism_in_disguise 19 + boundary_interior_decomposition 10 + acquisition_order_phase 10 + bn_statistics_mechanics 7 = 46/98 of gen_m sits in four over-cap template cells (members incl. M-006/007/011/013/014/019/023/024/026/027/031/032/034/047/063/071/076/089/091)",
+      "evidence_label": "EVIDENCE",
+      "action": "Stage-2 slot caps on these four cells; future shards HARD-CAP 'celebrated ritual X is mechanism Y in disguise' framing at <=3 per shard"
+    },
+    {
+      "name": "cheap_free_predictor_of_outcome_genre",
+      "scope": "cross-shard 5/5 new shards, compounding across waves",
+      "share": "judge_C cell 7 -> 14 (J-026/029/049/078, G-021/087, K-001/105, L-030/090/093, M-057/069/097); judge_A cheap_predictor_of_outcome 8 concurs",
+      "evidence_label": "EVIDENCE",
+      "action": "ESCALATE from per-shard cap to PORTFOLIO FREEZE: any new instance must displace an existing family member at Stage-2, not add"
+    },
+    {
+      "name": "annotation_convention_pathology",
+      "scope": "cross-shard legacy + gen_l re-entry through the agent substrate",
+      "share": "mention-share fell 39.3% -> 29.6% (276/934) and gen_m added only 4, BUT gen_l re-fed it: 25 mentions + agent_annotation_loop cell 8/8 (L-051..L-060 block); judge-time hard-ban enforcement fired once (L-054 merged into L-059)",
+      "evidence_label": "EVIDENCE",
+      "action": "keep HARD BAN as primary subject; extend the ban text to explicitly name agent/model-generated-annotation substrates"
+    },
+    {
+      "name": "eval_measurement_background",
+      "scope": "portfolio macro-genre",
+      "share": "71.7% mention (stable from 72.1%); gen_k is the most eval-critique-shaped new shard (96/102 mention + stratified_eval_hidden_failure 10)",
+      "evidence_label": "EVIDENCE",
+      "action": "keep no-new-eval-critique-generator rule and <=20% eval-critique per shard; watch gen_k-style stratified-re-evaluation templates"
+    },
+    {
+      "name": "video_memory_3d_consistency",
+      "scope": "gen_k mandate, now owned",
+      "share": "video-understanding-memory 14 (largest cluster in master), feature-3d-consistency 12, gaussian-splatting-science 11; video/temporal mention 21.1% (+120 since 494)",
+      "evidence_label": "EVIDENCE",
+      "action": "territory owned-and-closed by gen_k; no more 3D/video generators; occlusion_memory_state and video_temporal_shortcut cells (5 each) approach cap"
+    },
+    {
+      "name": "calibration_uncertainty",
+      "scope": "legacy cross-shard, still leaking",
+      "share": "16.5% mention (down from 20.6%) but gen_k added 19 incidental mentions; dispersion_as_uncertainty cell at 6 = exactly at cap with master J-056/J-057/J-058 plus remand H-030/H-037/H-039 adjacent",
+      "evidence_label": "EVIDENCE",
+      "action": "keep primary-cluster ban; dispersion-as-uncertainty family is one accept from over-cap - judge-time merge trigger stays armed for w5_NPO"
+    },
+    {
+      "name": "counting_density_crowding",
+      "scope": "w2 watch item, moved sideways not up",
+      "share": "9.2% mention (86/934, was 13.8% at 494); gen_l added 28 loose mentions (mostly counting-as-agent-task, not dense-objects)",
+      "evidence_label": "EVIDENCE",
+      "action": "keep watch; <=5 primary-cluster instances per new shard"
+    }
+  ],
+  "permutation_flags": {
+    "sam_plus_x": {
+      "volume": "90/934 (9.6%) mention SAM/SAM2: the frozen 87 wave1 records (86 gen_a + 1 gen_b) + 3 gen_k (K-068, K-073, K-079 - SAM2-memory subjects inside gen_k's video mandate, within its 10% allowance)",
+      "assessment": "EVIDENCE: guard held a second consecutive audit; running share now under 10%",
+      "flag": "guard_held_keep_5pct_cap_default"
+    },
+    "lora_plus_x": {
+      "volume": "31/934 (3.3%) mention LoRA (25 gen_a legacy + 1 gen_j + 5 gen_l, all incidental)",
+      "assessment": "EVIDENCE: contained, no growth as subject",
+      "flag": "contained_no_action"
+    },
+    "loss_plus_x": {
+      "volume": "gen_m (98 records) now owns objective-function science by mandate; zero judge_A loss_plus_x_family flags on w4 accepts; gen_m's crowding is template-level (ritual/boundary/acquisition cells), not add-loss-term-X permutation",
+      "assessment": "EVIDENCE: the w1 hard ban on add-loss-term-X-to-task-Y held through the shard that was most exposed to it",
+      "flag": "ban_held_territory_now_filled"
+    },
+    "wave_template_ports": {
+      "volume": "w2's novelty-gate priority list (73 permutation-flagged wave2 accepts) remains unaddressed - GATE-8 novelty lane still not commissioned; w4 added 3 outvoted judge_C kills preserved as dissent (K-020, K-069, L-012) plus a 20-id high_prior_art_risk watchlist on the judge branch; 105/934 records now carry judge_dissent",
+      "assessment": "EVIDENCE (counts) / HYPOTHESIS (that these are the top prior-art risks): cross-wave template reuse remains the top unresolved novelty exposure; new-shard subject-native-mechanism rule appears to be working (w4 judges killed/merged ports at judge time, e.g. K-079 -> A-052 dissent, K-104 -> C-077 merge)",
+      "flag": "GATE8_novelty_lane_overdue_now_105_dissent_records"
+    }
+  },
+  "fingerprint_cells_over_cap6_w3w4_vocabulary": {
+    "cap": 6,
+    "cells": {
+      "ritual_is_mechanism_in_disguise": {"n": 19, "shards": {"M": 19}},
+      "cheap_predictor_of_outcome": {"n": 14, "shards": {"J": 4, "G": 2, "K": 2, "L": 3, "M": 3}},
+      "stratified_eval_hidden_failure": {"n": 10, "shards": {"K": 10}},
+      "boundary_interior_decomposition": {"n": 10, "shards": {"M": 10}},
+      "acquisition_order_phase": {"n": 10, "shards": {"M": 10}},
+      "generator_memorization": {"n": 8, "shards": {"J": 7, "H": 1}},
+      "agent_annotation_loop": {"n": 8, "shards": {"L": 8}},
+      "hidden_distribution_prior": {"n": 7, "shards": {"K": 7}},
+      "text_interface_lossiness": {"n": 7, "shards": {"L": 7}},
+      "bn_statistics_mechanics": {"n": 7, "shards": {"M": 7}}
+    },
+    "at_cap_watch": ["binding_conditioning_pathologies 6", "dispersion_as_uncertainty 6", "gradient_conflict_localization 6", "decorrelation_active_ingredient 6"],
+    "w1w2_era_cells_still_unconsolidated": "the 14 over-cap cells found at 494 (annotation_ceiling_conventions 13, realism_not_the_active_ingredient 12, tf03_silent_capability_erosion 10, tf04_sam_plus_x_ports 10, equalization_null_hidden_budget 9, ...) were deferred to Stage-2 slot caps and remain open; wave1/2 records were never re-fingerprinted in the new vocabulary",
+    "consolidator_concurrence": "the w4 consolidator independently lists 7 still-over-cap cells; my raw-flag tally finds 10 because I count master flags only and it counted family definitions incl. remand context - both instruments agree on the headline members",
+    "enforcement_note": "forced merges would override 2-judge keep majorities (w4 precedent); enforcement point is Stage-2 slot caps + judge-time merge triggers for w5_NPO"
+  },
+  "missing_territories": [
+    {"territory": "cross-field transfer (vision <-> audio/time-series/graphs)", "coverage": "0.0% (0/934, regex audio|time-series|graph neural|spectrogram|seismic)", "owned_by": "NOBODY - w1 deferral revisit rule fired at w2, still unowned two audits later", "evidence_label": "EVIDENCE"},
+    {"territory": "non-LLM test-time adaptation/compute", "coverage": "strict TTA 1.2% (11/934); loose inference-time 4.5%; gen_l owns only the LLM-loop side (test-time-compute-perception cluster, 10 records)", "owned_by": "UNOWNED -> proposed gen_q", "evidence_label": "EVIDENCE"},
+    {"territory": "adversarial robustness / security / fairness", "coverage": "adversarial 4.3% incidental, fairness 1.1%, zero dedicated clusters", "owned_by": "ORPHANED: queued gen_u is policy-blocked; territory needs a fresh letter (proposed gen_w)", "evidence_label": "EVIDENCE (counts) / KNOWN FACT (u blocked per commissioning)"},
+    {"territory": "model lifecycle / continual updates / version churn", "coverage": "7.5% loose mentions, no dedicated primary cluster", "owned_by": "w2 reserve letter gen_v (mapping preserved)", "evidence_label": "EVIDENCE"},
+    {"territory": "embodied / interactive perception", "coverage": "4.5% strict (embodied|robot|egocentric|navigation), mostly gen_k adjacency, no dedicated shard", "owned_by": "w2 reserve gen_s", "evidence_label": "EVIDENCE"},
+    {"territory": "efficiency/deployment science", "coverage": "7.4% strict mentions; distillation partially covered by gen_j/gen_m (judge_A distillation_lossmap 11, distillation_diversity_loss 5)", "owned_by": "w2 reserve gen_t, mandate now SHRUNK to non-distillation efficiency", "evidence_label": "EVIDENCE"},
+    {"territory": "human-vision / psychophysics contrasts", "coverage": "1.2% (11/934)", "owned_by": "fold into gen_q per w2 map", "evidence_label": "EVIDENCE"},
+    {"territory": "active-learning / data-acquisition folklore", "coverage": "0.7% (7/934); NOTE gen_m's acquisition_order_phase cell (10) covers curriculum-order laws, not acquisition folklore", "owned_by": "fold into gen_q per w2 map", "evidence_label": "EVIDENCE"},
+    {"territory": "underwater 0.0% / sonar 0.0% / microscopy 0.2% / document-OCR 0.5% / remote sensing 1.1% / agriculture 1.0% (strict)", "coverage": "still near-zero ON MASTER, but off-master gen_o (100 ideas, enumerated read-only) covers exactly these: underwater-optical 12, sonar-acoustic 12, microscopy-optics 13, histopathology-WSI 12, document-text 12 + document-layout 9, remote-sensing 10 + satellite-temporal 9, industrial-inspection 9, agriculture-UAV 2", "owned_by": "in-flight gen_o (w5_NPO judging) - DO NOT commission a duplicate hard-domain shard", "evidence_label": "EVIDENCE"},
+    {"territory": "scaling laws 1.0% / memorization-privacy 4.2% / emergence", "coverage": "off-master gen_n (100 ideas) covers: scaling-law clusters 22, memorization/membership-inference/privacy clusters 31, emergence-mechanisms 9, contamination 9", "owned_by": "in-flight gen_n (w5_NPO judging)", "evidence_label": "EVIDENCE"}
+  ],
+  "letters_not_reused": {
+    "in_flight_do_not_reuse": ["gen_n", "gen_o", "gen_p"],
+    "in_flight_verified_on_origin": {
+      "gen_n": "origin/cursor/p1-gen-n-scaling-memorization-4814 (100 ideas, w5_NPO judging)",
+      "gen_o": "origin/cursor/p1-gen-o-hard-domain-acc5 (100 ideas, w5_NPO judging)",
+      "gen_p": "origin/cursor/p1-gen-p-constructive-6c3b (104 ideas, w5_NPO judging)",
+      "w5_judge_progress": "origin/cursor/p1-wave-b-w5-judge-b-feasibility-7e74 (judge B pushed; A and C pending at audit time)"
+    },
+    "burned": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f", "gen_g", "gen_h", "gen_j", "gen_k", "gen_l", "gen_m"],
+    "gen_i_status": "retired permanently (w2 ruling)",
+    "gen_u_status": "BLOCKED by policy - its adversarial/security/fairness territory is re-lettered to gen_w below, letter u itself is never used",
+    "remand_lane_not_a_letter": "127 remaining gen_g/gen_h remands live at wave_b_w3_gate5/remaining_remand.jsonl - they are accepted-on-content records awaiting invasive threshold retrofit, NOT a generator slot",
+    "next_free_letters": ["gen_q", "gen_r", "gen_s", "gen_t", "gen_v", "gen_w", "gen_x", "gen_y", "gen_z"]
+  },
+  "recommended_next_territories": [
+    {
+      "territory_id": "gen_r_cross_field_transfer",
+      "status": "carried from w2 (proposed there at priority 6), ELEVATED to 1",
+      "priority": 1,
+      "fills": "the only genuinely zero-coverage territory left: 0.0% at 248, 494 and now 934; no in-flight shard touches it",
+      "guards": ["each idea names both fields AND the transferred invariance/structure", "hard ban on bare apply-architecture-X-to-field-Y permutations", "all global guards incl. the new w3 deltas below"]
+    },
+    {
+      "territory_id": "gen_q_test_time_compute_adaptation",
+      "status": "carried from w2, priority 2",
+      "priority": 2,
+      "fills": "strict TTA 1.2%; psychophysics 1.2% and active-learning folklore 0.7% folded in per the w2 map",
+      "guards": ["ANTI-OVERLAP sharpened with EVIDENCE: gen_l owns the LLM/agent loop INCLUDING its test-time-compute-perception cluster (10 accepted records) and iso-budget-null family; gen_q owns non-LLM test-time mechanisms (TTA/TTT/test-time augmentation laws) for dense/detection/geometry models", "<=5% SAM", "annotation-pathology hard ban incl. agent-annotation substrate", "cheap-predictor family FROZEN (see guard delta)", "all global guards"]
+    },
+    {
+      "territory_id": "gen_w_adversarial_security_fairness",
+      "status": "NEW letter - inherits the mandate of policy-blocked gen_u",
+      "priority": 3,
+      "fills": "adversarial 4.3% incidental / fairness 1.1%, zero dedicated clusters at 934",
+      "mandate": "attack/defense asymmetry laws, robustness-accuracy folklore, certification limits, backdoor/poisoning science, demographic-performance gaps in dense prediction",
+      "guards": ["letter u itself stays unused (policy); do not fold security into gen_q/gen_r", "occupied-ground check vs H-090 (w3 accepted, flagged as gen_u-adjacent ground) mandatory at commissioning", "all global guards"]
+    },
+    {
+      "territory_id": "gen_v_model_lifecycle_continual",
+      "status": "w2 reserve mapping PRESERVED (letters must not be re-mapped once reserved)",
+      "priority": 4,
+      "fills": "7.5% loose mentions, no dedicated primary cluster: update regret, version churn, catastrophic forgetting in deployed FMs, model-swap compatibility",
+      "guards": ["anti-overlap: gen_n owns data-scale laws; gen_v owns the deployed-model time axis", "all global guards"]
+    },
+    {
+      "territory_id": "gen_s_embodied_interactive_perception",
+      "status": "w2 reserve, unchanged",
+      "priority": 5,
+      "fills": "4.5% strict coverage, no dedicated shard; gen_k's video-memory work is adjacent but passive-perception only",
+      "guards": ["commission after gen_q/gen_r/gen_w if w5_NPO acceptance holds", "all global guards"]
+    },
+    {
+      "territory_id": "gen_t_efficiency_deployment_science",
+      "status": "w2 reserve, mandate SHRUNK",
+      "priority": 6,
+      "fills": "7.4% strict mentions but distillation science is now partially owned (judge_A distillation_lossmap 11 across J/M)",
+      "guards": ["EXCLUDE distillation (owned by gen_j/gen_m families); quantization/pruning/latency laws only", "commission only if 1000-margin erodes", "all global guards"]
+    },
+    {
+      "territory_id": "gen_x_constructive_capability_2",
+      "status": "CONTINGENT only - do not commission now",
+      "priority": 7,
+      "trigger": "commission only if the post-w5 audit measures master loose-constructive < 15% AFTER gen_p (104 constructive-mandate ideas) merges; at 10.8% pre-merge the w2 <10% trigger did not fire",
+      "guards": [">=80% constructive/capability, 0% pure-audit", "all global guards"]
+    }
+  ],
+  "capacity_math_toward_1000": {
+    "evidence_label": "HYPOTHESIS (arithmetic on EVIDENCE inputs)",
+    "master_now": 934,
+    "in_flight_raw": "304 (gen_n 100 + gen_o 100 + gen_p 104, w5_NPO judging in progress)",
+    "observed_blended_acceptance": "934/1213 generated = 77.0% (research_state.json counters)",
+    "projection_after_w5_NPO": "~1168",
+    "remand_lane_upside": "0-127 more from remaining_remand.jsonl (the w3 gate5 extract-only pass yielded 46/173 = 26.6%; the remaining 127 need invasive retrofit, yield unknown)",
+    "projection_with_gen_q_r_w": "~1400",
+    "conclusion": "1000 is cleared by w5_NPO alone; all recommended letters are diversity margin, not capacity necessity - so commissioning order should follow coverage holes (r, q, w) not volume"
+  },
+  "guard_updates_delta_to_w2": [
+    "ADD: within-shard template cap - no single judge_C family may exceed 4 accepted records per shard (gen_m reached 19/10/10/7 in four cells; gen_k 10/7; gen_l 8/7); enforce at judge time for w5_NPO and all future shards",
+    "ESCALATE: cheap/free-predictor-of-outcome from <=3-per-shard to PORTFOLIO FREEZE at 14 - new instances must displace an existing member at Stage-2 selection",
+    "ADD: hard-cap 'celebrated ritual X is mechanism Y in disguise' framing at <=3 per shard outside gen_m (cell at 19)",
+    "EXTEND: annotation-pathology hard ban to explicitly name agent/model-generated-annotation substrates (gen_l re-entered the banned territory through the agent substrate: cell 8/8 + 25 mentions)",
+    "KEEP: SAM <=5% default (held at 9.6% portfolio, +3 gen_k within its 10% allowance), calibration primary-cluster ban (dispersion cell at exact cap 6 - merge trigger armed), equalization-null <=3/shard (fired correctly in w4: L-074 merged), eval-critique <=20%/shard, >=8 sub-clusters none >15%, >=25% constructive floor, <=40% pure-debunk ceiling, subject-native-mechanism rule for template ports",
+    "ENFORCE: GATE-8 novelty lane is now the oldest unpaid debt - 105 records carry judge_dissent, the w2 73-id novelty priority list was never processed, and w4 added 3 outvoted kills + a 20-id watchlist"
+  ],
+  "quality_gate_status_w3_w4": {
+    "numeric_kill_thresholds": "EVIDENCE: 420/440 w3+w4 records carry a digit in falsifiable_prediction; the 20 without = 13 gate5-repaired G/H records whose extracted bounds are verbal-exact + 7 gen_k gate1_qualitative_threshold flags - all tracked, zero silently threshold-less",
+    "structured_evidence_label_dict": "EVIDENCE: 440/440 w3+w4 records carry evidence_label dicts (wave2's 0/246 gap remains the outstanding backfill debt)",
+    "gate4_asset_pinning": "EVIDENCE: 198 gen_k/gen_l records carry gate4_deferred=true (keep-and-flag per w4 ruling); retrofit owed at Stage-2",
+    "action": "wave2 (D/E/F) schema backfill + GATE-4 pinning + 7 gen_k numeric retrofits belong to one Stage-2 retrofit lane"
+  },
+  "citation_integrity": {
+    "citation_like_records_in_master": 14,
+    "all_in": "wave1 gen_a records (prior_work_basis / evidence_label fields), the same well-known-paper set verified at w1/w2 (SAM, SAM2, LoRA, VPT, MAE, BitFit, model soups, task arithmetic, DETR, texture-bias, registers, SAM-HQ, CKA); instrument note: w2 counted 13 citation-STRINGS, my instrument counts 14 RECORDS carrying such strings - same underlying set",
+    "added_since_494": 0,
+    "fake_citations_found": 0,
+    "this_audit_adds_citations": false,
+    "evidence_label": "EVIDENCE"
+  },
+  "off_master_enumeration_not_merged": {
+    "gen_n_scaling_memorization_data_laws": "100 ideas @ origin/cursor/p1-gen-n-scaling-memorization-4814 (10 clusters; scaling/memorization/privacy/emergence/contamination)",
+    "gen_o_hard_domain_diversifier": "100 ideas @ origin/cursor/p1-gen-o-hard-domain-acc5 (10 clusters; underwater/sonar/microscopy/histopathology/document/remote-sensing/industrial/agriculture)",
+    "gen_p_constructive_capability": "104 ideas @ origin/cursor/p1-gen-p-constructive-6c3b (12 capability/repair clusters)",
+    "w5_NPO_judging": "in progress: judge B on origin/cursor/p1-wave-b-w5-judge-b-feasibility-7e74; judges A/C not yet on origin at audit time",
+    "remaining_remand": "127 gen_g/gen_h records at Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl (canonical branch) - accepted-on-content, awaiting invasive threshold retrofit",
+    "action_taken_by_this_audit": "NONE - enumerated read-only for territory-ownership and letter-collision checks only"
+  },
+  "scope_compliance": {
+    "canonical_files_untouched": [
+      "Windows13/_state/ideas_master.jsonl",
+      "Windows13/_state/research_state.json",
+      "Windows13/_state/research_ledger.md",
+      "Windows13/_state/window.lock.json"
+    ],
+    "files_written": [
+      "Windows13/_state/tasks/p1/diversity_audit_w3/auditor_A.md",
+      "Windows13/_state/tasks/p1/diversity_audit_w3/auditor_A.json",
+      "Windows13/_state/tasks/p1/diversity_audit_w3/done_auditor_A.json"
+    ],
+    "windows_id_unchanged": true,
+    "own_branch": "cursor/p1-diversity-audit-w3-auditor-a-9a11",
+    "base_commit": "2411f9307030b8de4e445d0972a0b624cc451130 (canonical master tip, branched not modified)",
+    "force_push": false,
+    "independent_of_other_auditors": true
+  }
+}
