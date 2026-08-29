@@ -1,0 +1,733 @@
+{
+ "task_id": "p1_wave_b_w5",
+ "role": "judge_B_feasibility",
+ "wave": "w5_NPO",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "branch": "cursor/p1-wave-b-w5-judge-b-feasibility-7e74",
+ "generated_at_utc": "2026-08-29T01:08:43Z",
+ "inputs": {
+  "gen_n": {
+   "branch": "origin/cursor/p1-gen-n-scaling-memorization-4814",
+   "shard": "Windows13/_state/tasks/p1/generators/gen_n_scaling_memorization_data_laws/ideas_shard.jsonl",
+   "ideas": 100,
+   "schema": "uniform 21-field schema; inline KILL/falsified clause in falsifiable_prediction; evidence_label is a per-field dict; needs_special_resources present; wave field mislabeled p1_wave_a_w3"
+  },
+  "gen_o": {
+   "branch": "origin/cursor/p1-gen-o-hard-domain-acc5",
+   "shard": "Windows13/_state/tasks/p1/generators/gen_o_hard_domain_diversifier/ideas_shard.jsonl",
+   "ideas": 100,
+   "schema": "same uniform 21-field schema as gen_n; no ideas_shard.md companion file on the branch; wave field mislabeled p1_wave_a_w3"
+  },
+  "gen_p": {
+   "branch": "origin/cursor/p1-gen-p-constructive-6c3b",
+   "shard": "Windows13/_state/tasks/p1/generators/gen_p_constructive_capability/ideas_shard.jsonl",
+   "ideas": 104,
+   "schema": "same uniform 21-field schema; wave field mislabeled p1_wave_a_w3"
+  },
+  "canonical_master_read_only": {
+   "branch": "origin/cursor/p1-wave-b-w3-gate5-repair-f611",
+   "file": "Windows13/_state/ideas_master.jsonl",
+   "records": 638,
+   "verification": "wc -l == 638 on this branch base; file untouched by this judge",
+   "use": "cross-wave collision checks only"
+  },
+  "judge_A_w5": {
+   "status": "not_on_origin_at_judging_time",
+   "note": "git ls-remote showed zero w5 judge branches when this judge ran; raw shards judged independently per commission."
+  },
+  "do_not_merge_in": "gen_k/gen_l/gen_m (w4_KLM) outputs excluded from accepted_shard_B per commission"
+ },
+ "method": "Independent feasibility pass over raw shards. Mechanical validation (id contiguity, field census, kill-threshold digit scan, citation-string scan), GATE-4 named-asset detection over both experiment fields against a public dataset/model lexicon built from the shards own proper-noun census then verified by spot-reads (false-negative sources found and fixed: xView3, WSDDN, timm, iNaturalist, MIT-States, UT-Zappos, MIDOG, CTransPath, Phikon, PACO, DocBank; false positives removed: TIDE, IRT, case-insensitive WIT-matches-with), per-idea tier/score from the generators own stated time/device bounds, deep read of top TF-IDF-cosine pairs for merge decisions, cosine collision pass against the 638-record read-only master.",
+ "epistemic_status": "Feasibility and cost judgments only; no novelty ranking (Judge A lane) and no numbers invented anywhere. Scores reflect the generators own stated bounds, sanity-checked against the described protocols.",
+ "scoring_rules": {
+  "tier_T1_inference_or_analysis_only": "stated fastest bound <= 1 GPU-day equivalent AND no from-scratch encoder pretraining (probes, light heads, zoo re-scoring, analysis)",
+  "tier_T2_small_training_gpu_days": "training runs required or bound > 1 GPU-day; all w5 T2 bounds are <= 14 GPU-days on one standard GPU",
+  "tier_T3_gated": "no public pilot path (none in w5)",
+  "score_5": "killable <= 1 GPU-day on public assets by the generators own bound",
+  "score_4": "> 1 to <= 5 GPU-days public",
+  "score_3": "> 5 to <= 14 GPU-days public, or one-point discount for gated-confirmation/human-annotation caveats",
+  "score_2": "generator admits the public pilot is underpowered (N-020 only)"
+ },
+ "counts": {
+  "input_total": 304,
+  "input_by_shard": {
+   "N": 100,
+   "O": 100,
+   "P": 104
+  },
+  "keep": 300,
+  "keep_by_shard": {
+   "N": 99,
+   "O": 100,
+   "P": 101
+  },
+  "merge": 4,
+  "merge_in_wave": 3,
+  "merge_in_wave_cross_shard": 0,
+  "merge_cross_wave_into_master": 1,
+  "kill": 0,
+  "anomalies": 14,
+  "tier_T1_keep": 137,
+  "tier_T2_keep": 163,
+  "tier_T3_keep": 0,
+  "score5_keeps": 136,
+  "score4_keeps": 134,
+  "score3_keeps": 29,
+  "score2_keeps": 1,
+  "duplicate_groups": 4,
+  "co_run_clusters": 27,
+  "gate1_numeric_kill_threshold_full": {
+   "gen_n": 100,
+   "gen_o": 100,
+   "gen_p": 104
+  },
+  "gate1_spelled_out_words_numeric": {
+   "gen_o": 1
+  },
+  "gate4_named_public_assets_full": {
+   "gen_n": 3,
+   "gen_n_full_by_rig_reference": 1,
+   "gen_o": 97,
+   "gen_p": 104
+  },
+  "gate4_retrofit_needed_total": 99,
+  "needs_special_resources_true": {
+   "gen_n": 1,
+   "gen_o": 5,
+   "gen_p": 1
+  },
+  "wave_field_mislabeled_records": 304
+ },
+ "schema_drift": {
+  "summary": "Major improvement over w4: one uniform 21-field schema across all three shards. Two consolidator actions remain: (1) wave field mislabeled p1_wave_a_w3 on ALL 304 records (actual w5_NPO), same defect as w4 gen_m; (2) evidence_label is a per-field dict (problem/core_hypothesis/falsifiable_prediction/... each labeled) versus the masters singular string field - normalization decision needed before append. This judge did not rewrite any generator record.",
+  "uniform_fields": [
+   "id_seed",
+   "one_line_idea",
+   "cluster",
+   "problem",
+   "core_hypothesis",
+   "falsifiable_prediction",
+   "why_important",
+   "why_possibly_novel",
+   "minimal_falsification_experiment",
+   "main_risk",
+   "community_default_belief",
+   "why_it_might_be_wrong",
+   "fastest_falsification_experiment",
+   "genre",
+   "needs_special_resources",
+   "family_fingerprint",
+   "evidence_label",
+   "source_shard",
+   "wave",
+   "novelty_status",
+   "seg_metric_dependent"
+  ],
+  "gen_o_note": "gen_o branch carries no ideas_shard.md companion (jsonl only); cosmetic, not blocking"
+ },
+ "gate_compliance": {
+  "GATE-1_numeric_kill_threshold": {
+   "gen_n": "100/100 numeric inline kill clauses with digits",
+   "gen_o": "100/100 numeric in substance; O-007 spells its numbers in words (factor of two, one-quarter) - formatting normalization only, no content gap, no numbers invented by this judge",
+   "gen_p": "104/104 numeric inline kill clauses with digits"
+  },
+  "GATE-2_evidence_label": "present 304/304 as a per-field dict (richer than w4); inline [KNOWN FACT]/[HYPOTHESIS]/[EXPECTED RESULT]/[MODEL SPECULATION] tags also present in text fields",
+  "GATE-3_time_cost_bound": "304/304 fastest experiments parse to explicit time/device bounds (gen_n 1-10 GPU-days on one A100; gen_o 5-40 GPU-hours on one consumer GPU with dollar figures; gen_p hours to 12 single-A100 days)",
+  "GATE-4_named_dataset_and_model": {
+   "gen_n": "3/100 full (N-001, N-002, N-005) plus N-009 full by explicit reuse of the N-001 grid; 96/100 need asset-naming retrofit - the shard writes generically (public corpora, public checkpoints, small models). Verified by manual spot-reads: a generator style choice exactly parallel to w4 gen_k/gen_l, not a detector artifact. Schema-only remand recommended, not content rejection.",
+   "gen_o": "97/100 full; O-072 names CropHarvest but only a generic temporal transformer; O-077/O-078 name models (ASTRA+MONAI 3D U-Net, VideoMAE/ResNet) but their data is simulation-generated so no public dataset name exists - flagged partial, arguably N/A for simulation-based designs",
+   "gen_p": "104/104 full (COCO/LVIS/ADE20K/PACO/KINS/COCOA + MMDetection/MMSegmentation/DINOv2/timm zoo assets)"
+  },
+  "GATE-5_retrofit_duty": "taken by recommendation only - judges do not rewrite records; gate4 retrofit id list below",
+  "GATE-6_genre_audit": {
+   "gen_n": "67 characterization_law / 25 constructive_capability / 8 audit_debunk",
+   "gen_o": "32 characterization_law / 50 constructive_capability / 18 audit_debunk",
+   "gen_p": "4 characterization_law / 100 constructive_capability / 0 audit_debunk - by commission (constructive lane); wave-level debunk lane is thin (26/304)"
+  },
+  "GATE-7_no_fake_citations": "PASS - zero fabricated citation strings; 6 gen_n why_possibly_novel fields carry name-only attributions (Hernandez et al., Muennighoff et al., Jagielski et al., Maini et al., McKenzie et al., Wei et al.) with no titles/venues/IDs asserted; routed to GATE-8 triage as unverified attributions; O-053 arXiv mention is a corpus descriptor (DocBank), not a citation; this judge cites nothing",
+  "GATE-8_prior_art": "name-only attribution ids: N-007, N-035, N-058, N-072, N-093, N-094 - unverified, need the triage lane before Stage-2"
+ },
+ "gate4_retrofit_ids": [
+  "W13-P1-N-003",
+  "W13-P1-N-004",
+  "W13-P1-N-006",
+  "W13-P1-N-007",
+  "W13-P1-N-008",
+  "W13-P1-N-010",
+  "W13-P1-N-011",
+  "W13-P1-N-012",
+  "W13-P1-N-013",
+  "W13-P1-N-014",
+  "W13-P1-N-015",
+  "W13-P1-N-016",
+  "W13-P1-N-017",
+  "W13-P1-N-018",
+  "W13-P1-N-019",
+  "W13-P1-N-020",
+  "W13-P1-N-021",
+  "W13-P1-N-022",
+  "W13-P1-N-023",
+  "W13-P1-N-024",
+  "W13-P1-N-025",
+  "W13-P1-N-026",
+  "W13-P1-N-027",
+  "W13-P1-N-028",
+  "W13-P1-N-029",
+  "W13-P1-N-030",
+  "W13-P1-N-031",
+  "W13-P1-N-032",
+  "W13-P1-N-033",
+  "W13-P1-N-034",
+  "W13-P1-N-035",
+  "W13-P1-N-036",
+  "W13-P1-N-037",
+  "W13-P1-N-038",
+  "W13-P1-N-039",
+  "W13-P1-N-040",
+  "W13-P1-N-041",
+  "W13-P1-N-042",
+  "W13-P1-N-043",
+  "W13-P1-N-044",
+  "W13-P1-N-045",
+  "W13-P1-N-046",
+  "W13-P1-N-047",
+  "W13-P1-N-048",
+  "W13-P1-N-049",
+  "W13-P1-N-050",
+  "W13-P1-N-051",
+  "W13-P1-N-052",
+  "W13-P1-N-053",
+  "W13-P1-N-054",
+  "W13-P1-N-055",
+  "W13-P1-N-056",
+  "W13-P1-N-057",
+  "W13-P1-N-058",
+  "W13-P1-N-059",
+  "W13-P1-N-060",
+  "W13-P1-N-061",
+  "W13-P1-N-062",
+  "W13-P1-N-063",
+  "W13-P1-N-064",
+  "W13-P1-N-065",
+  "W13-P1-N-066",
+  "W13-P1-N-067",
+  "W13-P1-N-068",
+  "W13-P1-N-069",
+  "W13-P1-N-070",
+  "W13-P1-N-071",
+  "W13-P1-N-072",
+  "W13-P1-N-073",
+  "W13-P1-N-074",
+  "W13-P1-N-075",
+  "W13-P1-N-076",
+  "W13-P1-N-077",
+  "W13-P1-N-078",
+  "W13-P1-N-079",
+  "W13-P1-N-080",
+  "W13-P1-N-081",
+  "W13-P1-N-082",
+  "W13-P1-N-083",
+  "W13-P1-N-084",
+  "W13-P1-N-085",
+  "W13-P1-N-086",
+  "W13-P1-N-087",
+  "W13-P1-N-088",
+  "W13-P1-N-089",
+  "W13-P1-N-090",
+  "W13-P1-N-091",
+  "W13-P1-N-092",
+  "W13-P1-N-093",
+  "W13-P1-N-094",
+  "W13-P1-N-095",
+  "W13-P1-N-096",
+  "W13-P1-N-097",
+  "W13-P1-N-098",
+  "W13-P1-N-099",
+  "W13-P1-N-100",
+  "W13-P1-O-072",
+  "W13-P1-O-077",
+  "W13-P1-O-078"
+ ],
+ "merges": [
+  {
+   "absorbed": "W13-P1-P-065",
+   "into": "W13-P1-P-061",
+   "scope": "in_wave",
+   "basis": "Procrustes orthogonal head-transplant is the constrained arm of P-061s cross-backbone translator family: same rig (fit map on unlabeled images, transplant frozen head, measure recovery); keep the orthogonal-vs-linear-vs-2-layer comparison as arms"
+  },
+  {
+   "absorbed": "W13-P1-P-075",
+   "into": "W13-P1-P-072",
+   "scope": "in_wave",
+   "basis": "support-consistency rescoring is literally one energy term of P-072s relational re-decoding; nested ablation arm on the same harness; keep P-075s floating-object false-positive readout as the first ablation"
+  },
+  {
+   "absorbed": "W13-P1-N-085",
+   "into": "W13-P1-N-084",
+   "scope": "in_wave",
+   "basis": "the scale x similarity-level interaction N-085 predicts is one cell of the (duplication count x similarity x scale) dose-response grid N-084 fits; one controlled-injection grid, two readouts; keep N-085s directional claim (semantic-duplicate inflation ratio rises with scale) as a named secondary endpoint"
+  },
+  {
+   "absorbed": "W13-P1-P-010",
+   "into": "W13-P1-C-048",
+   "scope": "cross_wave_master",
+   "basis": "detection-specific two-way head x backbone factorial instance of master C-048 (frozen-backbone comparisons confounded by heads; protocol-assumptions cluster). Routing recommendation for the w5 consolidator only - master untouched at 638; preserve P-010s additivity readout and published-gain re-attribution as arms"
+  }
+ ],
+ "tensions_kept": [
+  {
+   "ids": [
+    "W13-P1-P-014",
+    "W13-P1-P-064"
+   ],
+   "question": "is annotation-convention control best implemented as input-side convention-token conditioning (P-014) or weight-space interpolation between convention-finetuned checkpoints (P-064)? Same goal, competing mechanisms, shared eval"
+  },
+  {
+   "ids": [
+    "W13-P1-N-053",
+    "W13-P1-N-071"
+   ],
+   "question": "per-image privacy risk direction under scaling: N-053 fits risk growth with capacity at fixed data; N-071 claims dilution dominates along the realistic joint-scaling path - compatible but directionally opposed headlines, one memorization-scaling grid"
+  },
+  {
+   "ids": [
+    "W13-P1-N-022",
+    "W13-P1-A-041 (master)"
+   ],
+   "question": "cross-wave contradiction: N-022 says decoder scaling is dead compute past a small size; master A-041 says decoder depth is the binding constraint for thin structures - co-run on one dense rig would settle the domain split"
+  },
+  {
+   "ids": [
+    "W13-P1-P-004",
+    "W13-P1-P-027"
+   ],
+   "question": "same hierarchical-variance machinery pointed at detection MDD certificates vs segmentation power-tables; kept both as rig mates, not merged - different metrics, different leaderboards"
+  }
+ ],
+ "cross_wave_adjacencies_no_merge": [
+  {
+   "w5": "W13-P1-N-084",
+   "master": "W13-P1-C-023",
+   "note": "contamination family (which absorbed w4 K-100 routing); N-084s quantitative dose-response law is a distinct program from C-023s semantic-duplicate detection claim"
+  },
+  {
+   "w5": "W13-P1-P-048",
+   "master": "W13-P1-D-027",
+   "note": "label-assignment starvation family: occlusion slice (amodal extents) vs tiny-object slice (guaranteed positives)"
+  },
+  {
+   "w5": "W13-P1-N-061",
+   "master": "W13-P1-F-062",
+   "note": "shared mechanism hypothesis (dense fine-tuning reuses spatial features) but different measurements: membership leak vs synthetic-pretraining transfer persistence"
+  },
+  {
+   "w5": "W13-P1-P-019",
+   "master": "W13-P1-E-083",
+   "note": "E-083 measures convention learning; P-019 is the marginalization intervention; also adjacent to P-014/P-064"
+  },
+  {
+   "w5": "W13-P1-P-061",
+   "master": "W13-P1-J-009",
+   "note": "same claim template (representations linearly relatable enables head reuse) on different model classes: general frozen encoders vs diffusion backbones"
+  },
+  {
+   "w5": "W13-P1-P-100",
+   "master": "W13-P1-D-050",
+   "note": "masks-improve-boxes family: annotation refitting (data-side) vs mask-derived training objectives (loss-side)"
+  }
+ ],
+ "anomalies": {
+  "ids": [
+   "W13-P1-N-020",
+   "W13-P1-O-007",
+   "W13-P1-O-019",
+   "W13-P1-O-036",
+   "W13-P1-O-075",
+   "W13-P1-O-077",
+   "W13-P1-O-078",
+   "W13-P1-P-009",
+   "W13-P1-N-007",
+   "W13-P1-N-035",
+   "W13-P1-N-058",
+   "W13-P1-N-072",
+   "W13-P1-N-093",
+   "W13-P1-N-094"
+  ],
+  "detail": {
+   "W13-P1-N-020": "needs_special_resources=true; generator admits the 7-GPU-day single-GPU pilot on 1% SA-1B fractions is underpowered - only runnable_as_stated=false in the wave; score 2",
+   "W13-P1-O-007": "kill threshold numeric in words (factor of two, one-quarter) not digits - formatting normalization only",
+   "W13-P1-O-019": "public SeabedObjects-KLSG pilot first; real-SAS confirmation needs special data access - score discounted to 4",
+   "W13-P1-O-036": "public DeepLIIF pilot first; quantitative-reference confirmation may need lab collaboration - score discounted to 4",
+   "W13-P1-O-075": "public MVTec AD pilot first; fusion arm needs a small custom multi-LED capture rig - score discounted to 4",
+   "W13-P1-O-077": "ASTRA-simulated pilot first; physical validation scans need facility access - score discounted to 4",
+   "W13-P1-O-078": "simulated pulse-thermography pilot first; real-rig confirmation flagged special - score discounted to 4",
+   "W13-P1-P-009": "binding cost is ~20 hours of expert annotation (or ~300 USD crowdsourced) for the human-anchored metric; GPU cost trivial - score discounted to 4, human_annotation_binding_cost flag",
+   "prior_art_attribution_ids": "N-007, N-035, N-058, N-072, N-093, N-094 - name-only attributions, GATE-8 triage"
+  }
+ },
+ "co_run_rigs": {
+  "n_composition_resample_rig": [
+   "W13-P1-N-023",
+   "W13-P1-N-024",
+   "W13-P1-N-025",
+   "W13-P1-N-026",
+   "W13-P1-N-027",
+   "W13-P1-N-028",
+   "W13-P1-N-029",
+   "W13-P1-N-030",
+   "W13-P1-N-031",
+   "W13-P1-N-032",
+   "W13-P1-N-033",
+   "W13-P1-N-034",
+   "W13-P1-N-035",
+   "W13-P1-N-036",
+   "W13-P1-N-037",
+   "W13-P1-N-038",
+   "W13-P1-N-039",
+   "W13-P1-N-040",
+   "W13-P1-N-041",
+   "W13-P1-N-042",
+   "W13-P1-N-043"
+  ],
+  "n_contamination_injection_rig": [
+   "W13-P1-N-084",
+   "W13-P1-N-085",
+   "W13-P1-N-086",
+   "W13-P1-N-087",
+   "W13-P1-N-088",
+   "W13-P1-N-089",
+   "W13-P1-N-090",
+   "W13-P1-N-091",
+   "W13-P1-N-092"
+  ],
+  "n_emergence_grid_rig": [
+   "W13-P1-N-044",
+   "W13-P1-N-045",
+   "W13-P1-N-046",
+   "W13-P1-N-047",
+   "W13-P1-N-048",
+   "W13-P1-N-049",
+   "W13-P1-N-050",
+   "W13-P1-N-051",
+   "W13-P1-N-052",
+   "W13-P1-N-093",
+   "W13-P1-N-094",
+   "W13-P1-N-095",
+   "W13-P1-N-096",
+   "W13-P1-N-097",
+   "W13-P1-N-098",
+   "W13-P1-N-099",
+   "W13-P1-N-100"
+  ],
+  "n_membership_attack_rig": [
+   "W13-P1-N-065",
+   "W13-P1-N-066",
+   "W13-P1-N-067",
+   "W13-P1-N-068",
+   "W13-P1-N-069",
+   "W13-P1-N-070",
+   "W13-P1-N-071",
+   "W13-P1-N-072",
+   "W13-P1-N-073",
+   "W13-P1-N-074"
+  ],
+  "n_memorization_probe_rig": [
+   "W13-P1-N-053",
+   "W13-P1-N-054",
+   "W13-P1-N-055",
+   "W13-P1-N-056",
+   "W13-P1-N-057",
+   "W13-P1-N-058",
+   "W13-P1-N-059",
+   "W13-P1-N-060",
+   "W13-P1-N-061",
+   "W13-P1-N-062",
+   "W13-P1-N-063",
+   "W13-P1-N-064",
+   "W13-P1-N-075",
+   "W13-P1-N-076",
+   "W13-P1-N-077",
+   "W13-P1-N-078",
+   "W13-P1-N-079",
+   "W13-P1-N-080",
+   "W13-P1-N-081",
+   "W13-P1-N-082",
+   "W13-P1-N-083"
+  ],
+  "n_small_pretrain_grid_rig": [
+   "W13-P1-N-001",
+   "W13-P1-N-002",
+   "W13-P1-N-003",
+   "W13-P1-N-004",
+   "W13-P1-N-005",
+   "W13-P1-N-006",
+   "W13-P1-N-007",
+   "W13-P1-N-008",
+   "W13-P1-N-009",
+   "W13-P1-N-010",
+   "W13-P1-N-011",
+   "W13-P1-N-012",
+   "W13-P1-N-013",
+   "W13-P1-N-014",
+   "W13-P1-N-015",
+   "W13-P1-N-016",
+   "W13-P1-N-017",
+   "W13-P1-N-018",
+   "W13-P1-N-019",
+   "W13-P1-N-020",
+   "W13-P1-N-021",
+   "W13-P1-N-022"
+  ],
+  "o_agri_uav_rig": [
+   "W13-P1-O-099",
+   "W13-P1-O-100"
+  ],
+  "o_document_layout_rig": [
+   "W13-P1-O-050",
+   "W13-P1-O-051",
+   "W13-P1-O-052",
+   "W13-P1-O-053",
+   "W13-P1-O-054",
+   "W13-P1-O-055",
+   "W13-P1-O-091",
+   "W13-P1-O-092",
+   "W13-P1-O-093"
+  ],
+  "o_document_ocr_rig": [
+   "W13-P1-O-041",
+   "W13-P1-O-042",
+   "W13-P1-O-043",
+   "W13-P1-O-044",
+   "W13-P1-O-045",
+   "W13-P1-O-046",
+   "W13-P1-O-047",
+   "W13-P1-O-048",
+   "W13-P1-O-049",
+   "W13-P1-O-088",
+   "W13-P1-O-089",
+   "W13-P1-O-090"
+  ],
+  "o_histopath_wsi_rig": [
+   "W13-P1-O-031",
+   "W13-P1-O-032",
+   "W13-P1-O-033",
+   "W13-P1-O-034",
+   "W13-P1-O-035",
+   "W13-P1-O-036",
+   "W13-P1-O-037",
+   "W13-P1-O-038",
+   "W13-P1-O-039",
+   "W13-P1-O-040",
+   "W13-P1-O-086",
+   "W13-P1-O-087"
+  ],
+  "o_industrial_defect_rig": [
+   "W13-P1-O-073",
+   "W13-P1-O-074",
+   "W13-P1-O-075",
+   "W13-P1-O-076",
+   "W13-P1-O-077",
+   "W13-P1-O-078",
+   "W13-P1-O-094",
+   "W13-P1-O-095",
+   "W13-P1-O-096"
+  ],
+  "o_microscopy_psf_rig": [
+   "W13-P1-O-021",
+   "W13-P1-O-022",
+   "W13-P1-O-023",
+   "W13-P1-O-024",
+   "W13-P1-O-025",
+   "W13-P1-O-026",
+   "W13-P1-O-027",
+   "W13-P1-O-028",
+   "W13-P1-O-029",
+   "W13-P1-O-030",
+   "W13-P1-O-083",
+   "W13-P1-O-084",
+   "W13-P1-O-085"
+  ],
+  "o_remote_sensing_physics_rig": [
+   "W13-P1-O-056",
+   "W13-P1-O-057",
+   "W13-P1-O-058",
+   "W13-P1-O-059",
+   "W13-P1-O-060",
+   "W13-P1-O-061",
+   "W13-P1-O-062",
+   "W13-P1-O-063",
+   "W13-P1-O-064",
+   "W13-P1-O-065",
+   "W13-P1-O-066",
+   "W13-P1-O-067",
+   "W13-P1-O-068",
+   "W13-P1-O-069",
+   "W13-P1-O-070",
+   "W13-P1-O-071",
+   "W13-P1-O-072",
+   "W13-P1-O-097",
+   "W13-P1-O-098"
+  ],
+  "o_sonar_sim_rig": [
+   "W13-P1-O-011",
+   "W13-P1-O-012",
+   "W13-P1-O-013",
+   "W13-P1-O-014",
+   "W13-P1-O-015",
+   "W13-P1-O-016",
+   "W13-P1-O-017",
+   "W13-P1-O-018",
+   "W13-P1-O-019",
+   "W13-P1-O-020",
+   "W13-P1-O-081",
+   "W13-P1-O-082"
+  ],
+  "o_underwater_optics_rig": [
+   "W13-P1-O-001",
+   "W13-P1-O-002",
+   "W13-P1-O-003",
+   "W13-P1-O-004",
+   "W13-P1-O-005",
+   "W13-P1-O-006",
+   "W13-P1-O-007",
+   "W13-P1-O-008",
+   "W13-P1-O-009",
+   "W13-P1-O-010",
+   "W13-P1-O-079",
+   "W13-P1-O-080"
+  ],
+  "p_amodal_rig": [
+   "W13-P1-P-047",
+   "W13-P1-P-048",
+   "W13-P1-P-049",
+   "W13-P1-P-050",
+   "W13-P1-P-051",
+   "W13-P1-P-052",
+   "W13-P1-P-053",
+   "W13-P1-P-054"
+  ],
+  "p_benchmark_stats_rig": [
+   "W13-P1-P-026",
+   "W13-P1-P-027",
+   "W13-P1-P-028",
+   "W13-P1-P-029",
+   "W13-P1-P-030",
+   "W13-P1-P-031",
+   "W13-P1-P-032",
+   "W13-P1-P-033",
+   "W13-P1-P-034",
+   "W13-P1-P-035",
+   "W13-P1-P-036"
+  ],
+  "p_compositional_rig": [
+   "W13-P1-P-093",
+   "W13-P1-P-094",
+   "W13-P1-P-095",
+   "W13-P1-P-096",
+   "W13-P1-P-097",
+   "W13-P1-P-098"
+  ],
+  "p_convention_protocol_rig": [
+   "W13-P1-P-014",
+   "W13-P1-P-015",
+   "W13-P1-P-016",
+   "W13-P1-P-017",
+   "W13-P1-P-018",
+   "W13-P1-P-019",
+   "W13-P1-P-020",
+   "W13-P1-P-021",
+   "W13-P1-P-022",
+   "W13-P1-P-023",
+   "W13-P1-P-024",
+   "W13-P1-P-025"
+  ],
+  "p_crosstask_rig": [
+   "W13-P1-P-099",
+   "W13-P1-P-100",
+   "W13-P1-P-101",
+   "W13-P1-P-102",
+   "W13-P1-P-103",
+   "W13-P1-P-104"
+  ],
+  "p_detection_eval_repair_rig": [
+   "W13-P1-P-001",
+   "W13-P1-P-002",
+   "W13-P1-P-003",
+   "W13-P1-P-004",
+   "W13-P1-P-005",
+   "W13-P1-P-006",
+   "W13-P1-P-007",
+   "W13-P1-P-008",
+   "W13-P1-P-009",
+   "W13-P1-P-010",
+   "W13-P1-P-011",
+   "W13-P1-P-012",
+   "W13-P1-P-013"
+  ],
+  "p_interactive_rig": [
+   "W13-P1-P-086",
+   "W13-P1-P-087",
+   "W13-P1-P-088",
+   "W13-P1-P-089",
+   "W13-P1-P-090",
+   "W13-P1-P-091",
+   "W13-P1-P-092"
+  ],
+  "p_longtail_rig": [
+   "W13-P1-P-079",
+   "W13-P1-P-080",
+   "W13-P1-P-081",
+   "W13-P1-P-082",
+   "W13-P1-P-083",
+   "W13-P1-P-084",
+   "W13-P1-P-085"
+  ],
+  "p_model_merging_rig": [
+   "W13-P1-P-063",
+   "W13-P1-P-064",
+   "W13-P1-P-065",
+   "W13-P1-P-066",
+   "W13-P1-P-067",
+   "W13-P1-P-068",
+   "W13-P1-P-069",
+   "W13-P1-P-070"
+  ],
+  "p_structured_output_rig": [
+   "W13-P1-P-071",
+   "W13-P1-P-072",
+   "W13-P1-P-073",
+   "W13-P1-P-074",
+   "W13-P1-P-075",
+   "W13-P1-P-076",
+   "W13-P1-P-077",
+   "W13-P1-P-078"
+  ],
+  "p_upsampling_readout_rig": [
+   "W13-P1-P-055",
+   "W13-P1-P-056",
+   "W13-P1-P-057",
+   "W13-P1-P-058",
+   "W13-P1-P-059",
+   "W13-P1-P-060",
+   "W13-P1-P-061",
+   "W13-P1-P-062"
+  ],
+  "p_weak_supervision_rig": [
+   "W13-P1-P-037",
+   "W13-P1-P-038",
+   "W13-P1-P-039",
+   "W13-P1-P-040",
+   "W13-P1-P-041",
+   "W13-P1-P-042",
+   "W13-P1-P-043",
+   "W13-P1-P-044",
+   "W13-P1-P-045",
+   "W13-P1-P-046"
+  ]
+ },
+ "canonical_state_untouched": true,
+ "no_fake_citations": true,
+ "force_push": false
+}

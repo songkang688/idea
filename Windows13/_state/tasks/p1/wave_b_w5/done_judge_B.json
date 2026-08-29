@@ -1,0 +1,81 @@
+{
+ "task_id": "p1_wave_b_w5",
+ "role": "judge_B_feasibility",
+ "status": "complete",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "w5_NPO",
+ "branch": "cursor/p1-wave-b-w5-judge-b-feasibility-7e74",
+ "generated_at_utc": "2026-08-29T01:08:43Z",
+ "outputs": [
+  "Windows13/_state/tasks/p1/wave_b_w5/judge_B.json",
+  "Windows13/_state/tasks/p1/wave_b_w5/judge_B.md",
+  "Windows13/_state/tasks/p1/wave_b_w5/accepted_shard_B.jsonl",
+  "Windows13/_state/tasks/p1/wave_b_w5/done_judge_B.json"
+ ],
+ "counts": {
+  "input_total": 304,
+  "input_by_shard": {
+   "N": 100,
+   "O": 100,
+   "P": 104
+  },
+  "keep": 300,
+  "keep_by_shard": {
+   "N": 99,
+   "O": 100,
+   "P": 101
+  },
+  "merge": 4,
+  "merge_in_wave": 3,
+  "merge_in_wave_cross_shard": 0,
+  "merge_cross_wave_into_master": 1,
+  "kill": 0,
+  "anomalies": 14,
+  "tier_T1_keep": 137,
+  "tier_T2_keep": 163,
+  "tier_T3_keep": 0,
+  "score5_keeps": 136,
+  "score4_keeps": 134,
+  "score3_keeps": 29,
+  "score2_keeps": 1,
+  "duplicate_groups": 4,
+  "co_run_clusters": 27,
+  "gate1_numeric_kill_threshold_full": {
+   "gen_n": 100,
+   "gen_o": 100,
+   "gen_p": 104
+  },
+  "gate1_spelled_out_words_numeric": {
+   "gen_o": 1
+  },
+  "gate4_named_public_assets_full": {
+   "gen_n": 3,
+   "gen_n_full_by_rig_reference": 1,
+   "gen_o": 97,
+   "gen_p": 104
+  },
+  "gate4_retrofit_needed_total": 99,
+  "needs_special_resources_true": {
+   "gen_n": 1,
+   "gen_o": 5,
+   "gen_p": 1
+  },
+  "wave_field_mislabeled_records": 304
+ },
+ "unresolved_items": [
+  "judge_A w5 output was not on origin at judging time (git ls-remote showed zero w5 judge branches); consolidator must diff this shard against judge_A when it lands - expected friction: 4 merges (P-065->P-061, P-075->P-072, N-085->N-084, P-010->C-048) and the gen_n GATE-4 retrofit list.",
+  "GATE-4 gen_n gap: 96/100 records name at most one public asset in experiment fields (generic public-corpora/public-checkpoints style, verified by spot-reads; only N-001/N-002/N-005 full plus N-009 by rig reference) - schema-only remand recommended before Stage-2, not content rejection; full id list in judge_B.json. gen_o 97/100 and gen_p 104/104 compliant; O-077/O-078 use simulation-generated data so a dataset name is arguably N/A.",
+  "wave field mislabeled p1_wave_a_w3 on ALL 304 records (actual w5_NPO), same defect as w4 gen_m - consolidator must correct on append.",
+  "evidence_label is a per-field dict in all three shards versus the masters singular string field - consolidator must decide normalization before append; this judge rewrote nothing.",
+  "P-010->C-048 cross-wave merge requires consolidator action; canonical master is read-only for judges and was not modified (638 records verified on branch base).",
+  "prior-art name-only attributions (N-007, N-035, N-058, N-072, N-093, N-094) are unverified and need the GATE-8 triage lane before Stage-2; no citations asserted by this judge.",
+  "O-007 kill threshold is numeric in words (factor of two, one-quarter) - formatting normalization only, no content remand."
+ ],
+ "recommended_next_task_type": "p1_wave_b_w5_judge_C_or_consolidator",
+ "canonical_state_untouched": true,
+ "no_fake_citations": true,
+ "force_push": false,
+ "notes": "Independent feasibility pass over raw shards gen_n+gen_o+gen_p (304 ideas; w4 gen_k/gen_l/gen_m explicitly excluded, judge_A not consulted). Keep 300 (N:99, O:100, P:101), merge 4 (3 in-wave, 1 cross-wave routing into master C-048; master file untouched at 638 records), kill 0. Tiers over keeps: T1 137 / T2 163 / T3 0 - no gated-only designs anywhere; all 7 nsr=true records have public pilots (5 gen_o hard-domain confirmations, N-020 underpowered pilot, P-009 human-annotation cost). 136 keeps are killable in <=1 GPU-day per the generators own bounds; gen_o is the cheapest shard ever judged in this window (100/100 within 40 GPU-hours on consumer GPUs with dollar figures). Gate picture: GATE-1 numeric 304/304 (O-007 spelled out in words), GATE-4 bimodal exactly like w4 but inverted by shard - gen_p 104/104 and gen_o 97/100 full versus gen_n 4/100. Schema is uniform 21 fields across shards (big improvement over w4) with one wave-wide defect: wave field mislabeled p1_wave_a_w3 on all 304 records. Canonical state (ideas_master.jsonl 638 records, research_state.json, window.lock.json) present on branch base and untouched."
+}
