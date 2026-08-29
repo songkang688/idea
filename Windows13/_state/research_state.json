@@ -14,7 +14,7 @@
   "supervisor": "Windows13",
   "current_stage": "Stage 1",
   "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
-  "total_ideas": 934,
+  "total_ideas": 1220,
   "survivors": 0,
   "final_target": 3,
   "status": "stage1_exploration_in_progress",
@@ -124,9 +124,9 @@
     ]
   },
   "idea_counts": {
-    "stage1_generated_total": 1213,
-    "stage1_accepted_total": 934,
-    "stage1_merged_total": 141,
+    "stage1_generated_total": 1517,
+    "stage1_accepted_total": 1220,
+    "stage1_merged_total": 159,
     "stage1_killed_total": 11,
     "stage1_target": "1000+",
     "by_wave": {
@@ -225,9 +225,43 @@
         "gate5_note": "gen_k separate kill_threshold field NORMALIZED at consolidation (folded verbatim into falsifiable_prediction; evidence_labels renamed to evidence_label; zero invented numbers) per the w2 commissioning ruling - not a remand case, unlike w3 gen_g/gen_h. 7 gen_k records carry gate1_qualitative_threshold (decisive but non-numeric thresholds; numeric retrofit owed).",
         "gate4_note": "keep-and-flag policy: all 198 appended gen_k/gen_l records flagged gate4_deferred (no named public dataset+model pinned; judge_B 0/205 full compliance, judge_C strict 2/105 + 2/100); gen_m 100/100 compliant; asset pinning owed to the Stage-2 retrofit lane; no assets invented; nothing remanded, shards not dropped",
         "gen_m_metadata_note": "generator-prefilled wave='p1_wave_a_w3' spoof overwritten to p1_wave_b_w4 on all 98 appended gen_m records (original preserved in wave_label_corrected_from)"
+      },
+      "p1_wave_b_w5": {
+        "generators": [
+          "gen_n_scaling_memorization_data_laws",
+          "gen_p_constructive_capability",
+          "gen_o_hard_domain_diversifier"
+        ],
+        "sub_wave": "w5_NPO",
+        "input": 304,
+        "accepted_by_majority": 286,
+        "accepted_appended_to_master": 286,
+        "remanded": 0,
+        "merged": 18,
+        "killed": 0,
+        "accepted_by_shard": {
+          "gen_n": 91,
+          "gen_p": 96,
+          "gen_o": 99
+        },
+        "appended_by_shard": {
+          "gen_n": 91,
+          "gen_p": 96,
+          "gen_o": 99
+        },
+        "accepted_unanimous": 250,
+        "accepted_2_1_majority": 36,
+        "merged_into_wave5_accepted": 18,
+        "merged_into_master": 0,
+        "gate5_note": "w5 is effectively GATE-5 clean (303/304 numeric thresholds; schema uniform 21 fields, gen_j-style evidence_label dicts) - no remand, no normalization block; O-007 flagged gate1_qualitative_threshold (threshold in quantitative words); O-063 '[HYPOTHESis]' case typo normalized mechanically; zero numbers invented",
+        "gate4_note": "keep-and-flag per w4 policy: 89 appended records flagged gate4_deferred (87 gen_n + O-077/O-078; judge_B: gen_n 4/100 full compliance vs gen_p 104/104 and gen_o 97/100); asset pinning owed to the Stage-2 retrofit lane; no assets invented; nothing remanded",
+        "wave_label_note": "generator-prefilled wave='p1_wave_a_w3' spoof found on ALL 304 records across 3/3 shards (independently by judges B+C); overwritten to p1_wave_b_w5 on all 286 appends, original preserved in wave_label_corrected_from",
+        "outvoted_kills_note": "judge_C kills O-002/O-031 (web-verified real prior art: Sea-thru CVPR 2019; Tellez et al. 2018/2019) outvoted 2-1 and kept per the w3/w4 written rule; rationales preserved as judge_dissent, first in line for GATE-8"
       }
     },
-    "stage1_accepted_pending_gate5_retrofit": 127
+    "stage1_accepted_pending_gate5_retrofit": 127,
+    "p1_stage1_count_gate": true,
+    "p1_stage1_count_gate_note": "1220 >= 1000: Stage-1 count gate PASSED at w5_NPO consolidation. Stage-1 exploration report NOT yet written - owed by the Report Writer only after 3 completion auditors + meta-judge PASS"
   },
   "exploration": {
     "diversity_audit_w1": {
@@ -439,13 +473,34 @@
       "gate4_policy": "keep-and-flag: 198 gen_k/gen_l records appended with gate4_deferred=true instead of remand; asset pinning owed to Stage-2 retrofit lane",
       "master_after_append": 934,
       "diversity_audit_due": true
+    },
+    "wave_b_w5_consolidation": {
+      "task_id": "p1_wave_b_w5",
+      "role": "consolidator",
+      "completed_at_utc": "2026-08-29T01:50:52Z",
+      "consolidator_branch": "cursor/p1-wave-b-consolidator-w5-d795",
+      "decision_file": "Windows13/_state/tasks/p1/wave_b_w5/decision.json",
+      "judge_branches": {
+        "A_dedup": "origin/cursor/p1-wave-b-w5-judge-a-dedup-3de9",
+        "B_feasibility": "origin/cursor/p1-wave-b-w5-judge-b-feasibility-7e74",
+        "C_adversary": "origin/cursor/p1-wave-b-w5-judge-c-adversary-f821"
+      },
+      "scope": "N+P+O only; gen_q (in flight, not on origin) not appended; the 127 remanded gen_g/gen_h GATE-5 leftovers untouched",
+      "headline_conflicts": "both judge_C kills (O-002, O-031 - web-verified real prior art) outvoted 2-1 and kept with dissent -> GATE-8; all 8 master-merge proposals outvoted 2-1 (zero merges into master); P-023/P-045 opposite-direction proposals canceled into mutual keeps per the w4 written rule; P-061->P-065 direction conflict resolved by coherent majority (not a tie); zero 3-way splits; meta-judge not needed",
+      "wave_label_policy": "wave-wide 'p1_wave_a_w3' spoof corrected to p1_wave_b_w5 on all 286 appends (original in wave_label_corrected_from)",
+      "gate4_policy": "keep-and-flag: 89 records appended with gate4_deferred=true (87 gen_n + 2 gen_o); no remand",
+      "master_recollision": "77 appended records carry master_recollision_934 (judge_A's 638-base + offmaster-klm flags remapped to master rows 639-934, judge_C's 934-base adjacencies, and the 8 outvoted master-merge targets); all w4 hot spots covered",
+      "master_after_append": 1220,
+      "p1_stage1_count_gate": true,
+      "diversity_audit_due": true,
+      "diversity_audit_note": "diversity_audit_w3 is mid-flight over the 934 master: auditors A+B on origin, auditor C + consolidator pending; that wave must merge before p1_stage1_completion_auditors dispatch"
     }
   },
   "last_consolidator": {
-    "task_id": "p1_wave_b_w4",
+    "task_id": "p1_wave_b_w5",
     "role": "consolidator",
-    "branch": "cursor/p1-wave-b-consolidator-w4-e8e2",
-    "consolidated_at_utc": "2026-08-29T03:05:00Z",
-    "note": "Wave4 sub-wave w4_KLM (generators K+L+M) reconciled from judges A (dedup), B (feasibility), C (adversary) by majority vote: 305 in, 296 accepted (265 unanimous, 31 by 2-1), 9 merged (7 in-wave, 2 into w1/w2 master ids C-023/C-077), 0 killed. All 296 accepted records appended (master 638 -> 934): gen_k normalized (kill_threshold folded verbatim into falsifiable_prediction, evidence_labels -> evidence_label, zero invented numbers), gen_m wave-label spoof corrected (p1_wave_a_w3 -> p1_wave_b_w4), 198 gen_k/gen_l records flagged gate4_deferred (keep-and-flag, no remand). Headline conflicts (K-100 target split, M-061/M-062 opposite-direction merges, 3 outvoted C kills) resolved by majority policy without meta-judge. Novelty of all accepted ideas UNVERIFIED. Stage 1 continues: 934 << 1000 target - Stage-1 NOT complete; w5_NPO consolidation next when NPO judges finish; diversity audit due (296 acceptances on a master last audited at 494). Decision detail: Windows13/_state/tasks/p1/wave_b_w4/decision.json"
+    "branch": "cursor/p1-wave-b-consolidator-w5-d795",
+    "consolidated_at_utc": "2026-08-29T01:50:52Z",
+    "note": "Wave5 sub-wave w5_NPO (generators N+P+O) reconciled from judges A (dedup), B (feasibility), C (adversary) by majority vote: 304 in, 286 accepted (250 unanimous, 36 by 2-1), 18 merged (all in-wave; zero into master - all 8 master-merge proposals outvoted), 0 killed (both C kills outvoted 2-1, dissents -> GATE-8). All 286 appended (master 934 -> 1220): wave-wide 'p1_wave_a_w3' label spoof corrected to p1_wave_b_w5, 89 records gate4_deferred (87 gen_n + 2 gen_o, keep-and-flag), O-007 gate1_qualitative_threshold, O-063 label case normalized, 77 records carry master_recollision_934 flags. Novelty of all accepted ideas UNVERIFIED. STAGE-1 COUNT GATE PASSED: 1220 >= 1000 - exploration report owed by Report Writer only after 3 completion auditors + meta-judge PASS; diversity_audit_w3 consolidator must merge first (auditors A+B on origin, C + consolidator pending). Decision detail: Windows13/_state/tasks/p1/wave_b_w5/decision.json"
   }
 }
