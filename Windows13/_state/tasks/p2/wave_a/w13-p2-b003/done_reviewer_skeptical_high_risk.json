@@ -1,0 +1,56 @@
+{
+  "task_id": "p2_wave_a_w13_p2_b003_reviewer_skeptical_high_risk",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "batch_id": "W13-P2-B003",
+  "candidate_count": 61,
+  "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b003/reviewer_skeptical_high_risk.jsonl",
+  "recommended_next_task_type": "p2_wave_a_review",
+  "complete": true,
+  "reviewer_role": "reviewer_skeptical_high_risk",
+  "input_master": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+    "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+    "master_lines": [
+      123,
+      183
+    ]
+  },
+  "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B003]",
+  "verdict_counts": {
+    "keep_lean": 32,
+    "borderline": 26,
+    "kill_lean": 3
+  },
+  "gate8_flagged_ids": [
+    "W13-P1-B-035",
+    "W13-P1-B-052",
+    "W13-P1-B-053",
+    "W13-P1-B-060",
+    "W13-P1-B-066",
+    "W13-P1-B-084",
+    "W13-P1-C-002",
+    "W13-P1-C-004",
+    "W13-P1-C-006"
+  ],
+  "m4_family_conflicts_flagged": [
+    "B-041 vs B-048: judge_C_adversary voted merge of B-041 into B-048 and B-048's judge_C_meta lists absorbs=['W13-P1-B-041'], yet both sit as separate lines in this batch - B-048 recommended primary; B-041 kill_lean as standalone",
+    "B-046 vs A-035 (cross-batch): judge_C_adversary voted merge of B-046 into A-035 ('boundary-band localization is an analysis choice, not a new hypothesis') yet B-046 retained as its own line - kill_lean as standalone, content survives as an analysis module of A-035",
+    "B-056: only in-batch kill vote (judge_B_feasibility: near-tautological, gap dictated by invented cost maps) - kill_lean bound to that vote",
+    "tf06_cue_ablation_shortcuts crowd: B-042/B-043/B-044/B-045/B-047/B-048 (+absorbed B-041) - six-to-seven members from one shard; pooled family cap; B-048 family primary for media discrimination",
+    "tf07_physics_prior_x crowd: B-057/B-059/B-060/B-061/B-062/B-063 - six members one shard; forced best-of-family at the cut",
+    "dg10/tf18 threshold-pathology: B-033 (primary, absorbed B-007) + B-040 both in batch, with metric-pathology adjacents B-034/B-037 - B-033 recommended primary of the four-member crowd",
+    "dg08 mask-forensics B-035 (absorbed B-081) must be co-adjudicated with B-021 (batch B002) and tf09 member B-085 (this batch) - M4 cross-shard provenance-forensics family spans batches",
+    "dg33 contested merge direction: judge_A absorbed B-015 INTO B-089 while judge_B merged B-089 INTO B-015 ('no failure criterion') - Wave-B must resolve the direction; judge_C flags weak_falsifiability on B-089",
+    "Error-accounting meta-instrument crowd: B-089/B-091/B-094/B-095 all re-partition benchmark error - forced best-of-family; B-091 recommended primary (cheapest validated instrument), B-095 the evaluation-side complement",
+    "temporal_process cluster: seven members B-065..B-071; B-066 vs B-071 attack the same reflection false-alarm pair (frame-spectral vs event-hardware) - forced choice, B-066 cheaper instrument",
+    "hardware-gated crowd B-060/B-071/B-083 (+expert-gated B-072/B-085) - pooled cap for gated lines; none killed for difficulty per queue.json policy",
+    "human-study crowd B-069/B-072/B-075/B-084/B-085/B-093 - M3 pooled eval-subject cap applies to this concentration",
+    "calibration_estimators crowd C-002/C-003/C-006 (+B-049/B-053 calibration-pathology adjacents) - pooled cap; C-003 recommended primary of the C-triple; C-004 joins the cross-batch peft_mechanism_recalibration family (B002)",
+    "decoder_output_space crowd: B-073/B-076/B-077/B-078/B-079/B-080 - six members; dg09 primary B-073 (absorbed B-013)",
+    "Stratification-instrument pair B-058/B-082: same opacity-stratified instrument, different causal story - co-adjudicate as one program",
+    "dg28/tf14 conformal B-053 and dg05/tf13 B-050 are cross-batch family members (with the other dg28 co-primary and C-018 respectively) - Wave-B cross-batch adjudication needed"
+  ],
+  "notes": "Wave-A skeptical/high-risk adversarial review only; final keep/kill authority rests with the Wave-B judge. No edits to ideas_master.jsonl or window.lock.json; stage2_top200.md untouched. All three kill_lean verdicts are bound to record text: B-041 (judge_C merge vote into in-batch primary B-048 + absorbs listing), B-046 (judge_C merge vote into A-035 + record's own conceded margin-artifact triviality), B-056 (judge_B kill vote, near-tautological, effect size dictated by invented cost maps). Hardware/expert-gated records (B-060/B-071/B-072/B-083/B-085) held at borderline on validity grounds with explicit confound retrofits, never killed for difficulty, per queue.json ranking_policy_notes. GATE-8 flags cover all judge prior_art_risk_high/prior_art_risk/verify-prior-art records plus reviewer-suspected adjacencies (B-052 dg06 ensembles-vs-raters, B-053 structure-level conformal, B-066 classical flicker detection) - no external citations asserted. m5_numeric_threshold_retrofit_needed=true for 60/61 records (exception: B-055, whose sign-inversion falsifier is crisp). Novelty unverified for all 61 per policy."
+}
