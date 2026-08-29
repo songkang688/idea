@@ -52,7 +52,7 @@
       "gen_n": "origin/cursor/p1-gen-n-scaling-memorization-4814 (100 ideas; in w5_NPO judging at audit time, IN MASTER as of the concurrent w5 consolidation: 91 accepted)",
       "gen_o": "origin/cursor/p1-gen-o-hard-domain-acc5 (100 ideas; likewise, 99 accepted)",
       "gen_p": "origin/cursor/p1-gen-p-constructive-6c3b (104 ideas; likewise, 96 accepted)",
-      "gen_q": "dispatched by parent dispatcher per commissioning, generation in flight, NOT on origin yet - honored as BURNED/IN-FLIGHT, not re-commissioned (same rule the w2 consolidator applied to unpushed gen_l/gen_m)"
+      "gen_q": "dispatched by parent dispatcher per commissioning - honored as BURNED/IN-FLIGHT, not re-commissioned. Generation observed IN PROGRESS on origin at final pre-push re-fetch: origin/cursor/p1-gen-q-inference-time-f1b9 (batch 1, Q-001..Q-031 pushed; branch cut from the w4 tip with master byte-identical - clean). Enters master only via a future judged sub-wave; the judge-time anti-overlap duties of R4 apply to that wave"
     },
     "w5_NPO_judging_status_at_consolidation": {
       "judge_A_dedup": "origin/cursor/p1-wave-b-w5-judge-a-dedup-3de9 (keep 271 of 304)",
@@ -148,7 +148,7 @@
   "letters_burned_or_in_flight": {
     "in_master": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f", "gen_g", "gen_h", "gen_j", "gen_k", "gen_l", "gen_m", "gen_n", "gen_o", "gen_p"],
     "in_master_note": "gen_g/gen_h are partial (30/16 gate5-repaired records on master; 54/73 more in the remand pool); gen_n/o/p entered master via the w5 consolidator that landed during this consolidation (91/99/96)",
-    "in_flight_generation_unpushed": ["gen_q"],
+    "in_flight_generation": ["gen_q (origin/cursor/p1-gen-q-inference-time-f1b9, batch 1 of ~100 pushed at final re-fetch)"],
     "retired_never_reassign": ["gen_i"],
     "policy_blocked_never_use": ["gen_u"],
     "queued_by_this_decision": ["gen_r", "gen_w", "gen_v"],

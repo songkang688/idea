@@ -30,7 +30,7 @@
   "letters_burned_or_in_flight": {
     "in_master": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f", "gen_g", "gen_h", "gen_j", "gen_k", "gen_l", "gen_m", "gen_n", "gen_o", "gen_p"],
     "in_master_via_concurrent_w5": ["gen_n (91)", "gen_o (99)", "gen_p (96)"],
-    "in_flight_generation_unpushed_honored": ["gen_q"],
+    "in_flight_generation_honored": ["gen_q (observed pushing at final re-fetch: origin/cursor/p1-gen-q-inference-time-f1b9, batch 1 Q-001..Q-031; master byte-identical to w4 tip - clean)"],
     "retired_never_reassign": ["gen_i"],
     "policy_blocked_never_use": ["gen_u"],
     "queued_by_this_decision": ["gen_r", "gen_w", "gen_v"],
