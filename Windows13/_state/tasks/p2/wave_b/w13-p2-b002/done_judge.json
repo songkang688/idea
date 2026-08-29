@@ -1,0 +1,68 @@
+{
+ "schema_version": "1.0",
+ "task_id": "p2_wave_b_w13_p2_b002_judge",
+ "windows_id": "Windows13",
+ "windows_number": 13,
+ "windows_path": "Windows13",
+ "batch_id": "W13-P2-B002",
+ "role": "wave_b_judge",
+ "candidate_count": 61,
+ "keep_count": 43,
+ "borderline_count": 17,
+ "kill_count": 1,
+ "review_queue_count": 29,
+ "gate8_lane_count": 21,
+ "kill_rationale": "One provisional Kill (A-077): zero keep seats, the record itself concedes the central interface asymmetry is an architectural tautology and matched-effort comparison is not fairly definable, and the P1 adversary judge also voted kill; it is routed to both the Wave C review queue and the GATE-8 triage lane, so it is not a silent kill. The batch's other kill_lean vote (B-023, experimentalist) rests on unverified prior art and is therefore parked Borderline in the GATE-8 lane per M1 rather than killed.",
+ "inputs": {
+  "master": {
+   "file": "Windows13/_state/ideas_master.jsonl",
+   "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+   "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+   "lines": "62-122"
+  },
+  "batches": {
+   "file": "Windows13/_state/tasks/p2/state_reader/batches.json",
+   "branch": "origin/cursor/p2-state-reader-05a0-101c"
+  },
+  "policy": {
+   "file": "Windows13/_state/tasks/p2/state_reader/queue.json",
+   "section": "ranking_policy_notes M1-M7"
+  },
+  "wave_a_reviews": [
+   {
+    "role": "reviewer_novelty_significance",
+    "branch": "origin/cursor/p2-wave-a-b002-novelty-05a0",
+    "commit": "a78101678a77c02372b863d74829566987f8802e"
+   },
+   {
+    "role": "reviewer_practical_experimentalist",
+    "branch": "origin/cursor/p2-wave-a-b002-experimentalist-05a0",
+    "commit": "ad6604c9d7ae8f58ad48809447549087cdd61542"
+   },
+   {
+    "role": "reviewer_skeptical_high_risk",
+    "branch": "origin/cursor/p2-wave-a-b002-skeptic-05a0",
+    "commit": "cd7ea63942cbbb98a5dc8a0e6e8a63d62c56b290"
+   }
+  ],
+  "schema_reference": {
+   "branch": "origin/cursor/p2-wave-b-b001-judge-05a0",
+   "path": "Windows13/_state/tasks/p2/wave_b/w13-p2-b001/",
+   "note": "schema aligned; verdicts independently derived from B002 Wave A inputs"
+  }
+ },
+ "policy_applied": {
+  "M1_gate8": "21 records carry suspected-prior-art flags (2 high: B-019, B-023; 9 moderate incl. skeptic-flagged A-086/A-088/A-097; 10 low); all routed to the p1_gate8_novelty_triage lane, none silently killed - including B-023, whose kill_lean vote was prior-art-driven and therefore parked Borderline per M1.",
+  "M4_family": "In-batch families adjudicated provisionally: dg07 (B-018 primary over A-101/B-003, both parked Borderline); click family (A-092 primary, A-094 folded, A-069 merged-member Borderline); dg11 (A-080 audit + A-082 cause pair); distillation crowd (A-081 weakest of five, Borderline); dg32 (B-011 primary, B-012 co-adjudicated Keep); B-002/B-008 pair (B-008 primary); B-025/B-027 (B-025 primary, B-027 Borderline); transfer-predictor pool (A-078 over B-028); B-029/B-031 (B-031 measurement-first); provenance-forensics cross-shard family (A-063 + B-021) left for the cut.",
+  "M5_soft_thresholds": "has_numeric_kill_threshold is false for all 61 records (experimentalist seat); m5_numeric_kill_threshold_present carried per record - every survivor requires numeric retrofit before entering the 200.",
+  "M6_asset_pinning": "m6_asset_pinning_debt is true for all 61 records and carried per record; structural (verdict-conditioning) for A-069, A-092, A-095 (human-click/correction corpora), B-002 and B-008 (commissioned annotation).",
+  "M7_thin_territories": "Largely not triggered: no fairness/bias-social, inference-time compute, embodied, or continual/lifecycle records in this batch; B-030 (cross-modal linguistic typology) noted as thin-territory-adjacent and kept.",
+  "high_risk_high_upside": "A-087 (trajectory reactivation) and B-016 (human-ceiling psychophysics) protected from kill per policy and parked Borderline with explicit construct-specification demands; B-029 parked Borderline rather than killed on compute.",
+  "novelty": "unverified for all 61 records; no citations fabricated."
+ },
+ "recommended_next_task_type": "p2_wave_a_review",
+ "recommended_next_note": "B002 Wave B done; per queue.json dispatch rules the next dispatchable tasks are Wave A reviewer triplets for the remaining batches; a p2_wave_b_judge for another batch becomes dispatchable only once that batch has all 3 Wave A reviews. The 29-record B002 review queue feeds Wave C.",
+ "complete": true,
+ "provisional": true,
+ "final_200_cut": false
+}
