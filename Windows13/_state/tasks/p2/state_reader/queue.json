@@ -1,0 +1,2626 @@
+{
+  "schema_version": "1.0",
+  "pipeline": "P2 Stage-2 triage: 1220 -> ~200 (window 180-220)",
+  "task_id": "p2_state_reader",
+  "windows_id": "Windows13",
+  "windows_number": 13,
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "defined_by": "P0",
+  "generated_at_utc": "2026-08-29T02:54:52Z",
+  "generated_on_branch": "cursor/p2-state-reader-05a0-101c",
+  "canonical_inputs": {
+    "lock": {
+      "path": "Windows13/_state/window.lock.json",
+      "branch": "origin/cursor/windows13-p0-init-implementation-d93f",
+      "init_commit": "38641a7a5813ed06b9b80c560e227ef382f76502",
+      "verified": "windows_id/number/path match, locked=true, defined_by=P0, definition_status=canonical"
+    },
+    "master": {
+      "path": "Windows13/_state/ideas_master.jsonl",
+      "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+      "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+      "commit_message_exact": "Research Idea Evolution - Windows13 - Stage 1 Exploration",
+      "records": 1220,
+      "unique_ids": 1220
+    },
+    "stage1_report": "Windows13/selection_history/stage1_exploration.md (present on Stage-1 commit)",
+    "p1_verification": {
+      "branch": "origin/cursor/p1-stage1-verification-ca95",
+      "p1_complete": true,
+      "verdict": "PASS",
+      "recommended_next_task_type_from_p1": "p2_start"
+    },
+    "p1_meta_judge": {
+      "branch": "origin/cursor/p1-stage1-meta-judge-267c",
+      "verdict": "PASS_WITH_REMEDIATION",
+      "file": "Windows13/_state/tasks/p1/stage1_completion/meta_judge.json"
+    }
+  },
+  "batching": {
+    "batches_file": "Windows13/_state/tasks/p2/state_reader/batches.json",
+    "batch_count": 20,
+    "batch_size": 61,
+    "candidate_count": 1220,
+    "coverage": "20*61=1220, sequential master order, no omission, no duplication",
+    "max_reviewers_per_batch": 3
+  },
+  "ranking_policy_notes": {
+    "source": "P1 meta-judge selection-side remediation (origin/cursor/p1-stage1-meta-judge-267c, verdict PASS_WITH_REMEDIATION). These are P2/selection lanes; Stage-1 generation is FROZEN - do not reopen generators, do not merge any off-master pool into the 1220.",
+    "canonical_master_is_1220": "Authoritative candidate pool = exactly the 1220 records of ideas_master.jsonl @ 4a94eaf. gen_q output (origin/cursor/p1-gen-q-inference-time-f1b9) is OFF-MASTER and must NOT be merged into the 1220 or ranked by P2.",
+    "gen_u": "BLOCKED_NEVER_USE. Its successor is the measurement/defense-oriented gen_w, NOT attack recipes. No P2 task may resurrect, rank, or cite gen_u content.",
+    "M1_gate8_novelty_triage": "BINDING, before the 200-cut. Lane p1_gate8_novelty_triage. First: W13-P1-O-002 (Sea-thru) and W13-P1-O-031 (Tellez stain augmentation), both retained 2-1 with dissents; then outvoted prior-art kills C-016/D-059/K-020/K-069/L-012; then 141 judge_dissent carriers and watchlists (w2 73-id permutation, w4 20-id + w5 27-id high_prior_art_risk, gen_n 23 citation-bearing). Novelty is 100% unverified across all 1220; no record enters the 200 blind to these flags.",
+    "M2_remand_disposition": "BINDING, before 200-cut composition is fixed. Lane p1_wave_b_w3_gate5_repair_2. The 127 GATE-5 remand records (54 gen_g + 73 gen_h at Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl) are a SELECTION-side queue: explicit repair-append or kill-with-decision. They are NOT part of the 1220 and NOT a reason to re-run Stage-1 generation.",
+    "M3_fingerprint_backmap": "BINDING before mechanical slot caps. Lane p1_stage2_retrofit_lane. 680 free-text family_fingerprints must map to the ~30-enum vocabulary before cap enforcement; until then use genre-blind pooled caps (eval-subject pool <= 25% of the 200), the cheap-predictor portfolio-freeze displacement rule, and ONE crowding instrument consistently.",
+    "M4_family_adjudication": "BINDING at the cut: forced best-of-family, never multiple undifferentiated siblings. Minimum families: J-051/J-076; E-029/E-054; B-060/B-065; F-019/F-023; N-061/N-070; C-003/C-004/C-057; gen_e text-encoder-geometry block (E-034/E-047/E-050/E-051/E-052/E-053 + J-070); gen_m pixels-per-batch/gradient-noise block (M-025/M-028/M-030/M-037/M-073/M-082/M-084/M-086); ~13-15-member variance/protocol-artifact family; gen_f sim-to-real cheap-statistics family; cross-shard provenance-forensics family.",
+    "M5_soft_thresholds": "BINDING rank rule: 431 records lack numeric kill thresholds -> down-rank on falsifiability; numeric retrofit required before any such record enters the 200; soft w1/w2 records must not displace GATE-5-compliant records on topic novelty alone. GATE-5-compliant w3-w5 core (726 records) exceeds the target 3.6x.",
+    "M6_asset_pinning": "Tracked debt: 287 gate4_deferred records lack pinned dataset+model; survivors carry this debt forward explicitly (retrofit lane).",
+    "M7_thin_territories": "Protection rule: fairness/bias-social (~1), inference-time compute (~3), embodied (17), continual/lifecycle (10) must not be eliminated purely on volume.",
+    "diversity_w3_lanes": "The diversity-w3 queues (p1_gate8_novelty_triage, p1_stage2_retrofit_lane, p1_wave_b_w3_gate5_repair_2) and the 127-remand queue are selection/P2-side lanes, NOT Stage-1 regeneration. Do not spawn Stage-1 generators for them.",
+    "novelty_default": "novelty = unverified for every record unless a real, checkable citation from the P1 audit trail is quoted. Fabricated citations, benchmark numbers, claimed experiments, or fake push reports are grounds for task FAIL."
+  },
+  "global_constraints": [
+    "window_locked=true: windows_id=Windows13, windows_number=13, windows_path=Windows13 - never rescan for max/latest Windows, never switch because Windows14+ exists, never edit window.lock.json",
+    "all P2 outputs under Windows13/ only; never create new Windows directories",
+    "ideas_master.jsonl is read-only for every P2 task (no edits, no dedup rewrites, no id changes)",
+    "no force-push anywhere in P2; push success only reported after ls-remote confirmation",
+    "final stage-2 commit message exact: 'Research Idea Evolution - Windows13 - Stage 2 Top 200'",
+    "final report path exact: Windows13/selection_history/stage2_top200.md"
+  ],
+  "dispatch_rules": {
+    "wave_a_parallelism": "Wave-A tasks are independent across batches and across reviewer roles; dispatch up to 3 reviewers per batch (never more), any batch order.",
+    "wave_b_gate": "A batch's Wave-B judge dispatches only after its 3 Wave-A reviewers are done.",
+    "checkpoint_gate": "Audit cpN then consolidator cpN dispatch after Wave-B judges of batches (5N-4)..(5N) are done.",
+    "wave_c_gate": "Wave-C border reviewers dispatch after all 4 checkpoint consolidators; meta-judge after the 3 border reviewers.",
+    "global_gate": "Global rankers dispatch only after Wave-C meta-judge confirms M1/M2 dispositions recorded (or escalates BLOCKED).",
+    "completion_chain": "final_stage_judge -> completion_auditor -> report_writer -> git_commit -> verification, strictly serial."
+  },
+  "task_count": 101,
+  "tasks": [
+    {
+      "task_id": "p2_state_reader",
+      "wave": "P2-setup",
+      "role": "state_reader",
+      "status": "complete",
+      "depends_on": [],
+      "outputs": [
+        "Windows13/_state/tasks/p2/state_reader/queue.json",
+        "Windows13/_state/tasks/p2/state_reader/batches.json",
+        "Windows13/_state/tasks/p2/state_reader/lock_identity.json",
+        "Windows13/_state/tasks/p2/state_reader/done.json"
+      ],
+      "notes": "This task. Loads lock + canonical 1220 master, freezes batch membership, emits this queue. Does NOT score, rank, keep/kill, or write stage2_top200.md."
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b001_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B001",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B001]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1,
+          61
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b001/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b001/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b001_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B001",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B001]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1,
+          61
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b001/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b001/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b001_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B001",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B001]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1,
+          61
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b001/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b001/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b002_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B002",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B002]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          62,
+          122
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b002/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b002/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b002_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B002",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B002]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          62,
+          122
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b002/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b002/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b002_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B002",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B002]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          62,
+          122
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b002/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b002/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b003_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B003",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B003]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          123,
+          183
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b003/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b003/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b003_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B003",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B003]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          123,
+          183
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b003/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b003/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b003_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B003",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B003]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          123,
+          183
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b003/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b003/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b004_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B004",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B004]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          184,
+          244
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b004/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b004/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b004_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B004",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B004]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          184,
+          244
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b004/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b004/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b004_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B004",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B004]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          184,
+          244
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b004/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b004/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b005_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B005",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B005]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          245,
+          305
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b005/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b005/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b005_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B005",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B005]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          245,
+          305
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b005/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b005/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b005_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B005",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B005]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          245,
+          305
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b005/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b005/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b006_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B006",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B006]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          306,
+          366
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b006/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b006/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b006_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B006",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B006]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          306,
+          366
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b006/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b006/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b006_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B006",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B006]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          306,
+          366
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b006/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b006/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b007_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B007",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B007]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          367,
+          427
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b007/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b007/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b007_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B007",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B007]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          367,
+          427
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b007/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b007/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b007_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B007",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B007]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          367,
+          427
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b007/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b007/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b008_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B008",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B008]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          428,
+          488
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b008/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b008/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b008_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B008",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B008]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          428,
+          488
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b008/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b008/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b008_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B008",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B008]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          428,
+          488
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b008/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b008/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b009_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B009",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B009]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          489,
+          549
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b009/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b009/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b009_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B009",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B009]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          489,
+          549
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b009/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b009/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b009_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B009",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B009]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          489,
+          549
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b009/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b009/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b010_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B010",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B010]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          550,
+          610
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b010/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b010/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b010_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B010",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B010]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          550,
+          610
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b010/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b010/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b010_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B010",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B010]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          550,
+          610
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b010/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b010/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b011_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B011",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B011]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          611,
+          671
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b011/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b011/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b011_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B011",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B011]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          611,
+          671
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b011/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b011/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b011_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B011",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B011]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          611,
+          671
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b011/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b011/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b012_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B012",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B012]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          672,
+          732
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b012/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b012/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b012_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B012",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B012]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          672,
+          732
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b012/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b012/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b012_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B012",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B012]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          672,
+          732
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b012/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b012/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b013_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B013",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B013]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          733,
+          793
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b013/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b013/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b013_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B013",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B013]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          733,
+          793
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b013/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b013/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b013_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B013",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B013]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          733,
+          793
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b013/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b013/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b014_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B014",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B014]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          794,
+          854
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b014/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b014/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b014_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B014",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B014]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          794,
+          854
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b014/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b014/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b014_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B014",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B014]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          794,
+          854
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b014/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b014/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b015_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B015",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B015]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          855,
+          915
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b015/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b015/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b015_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B015",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B015]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          855,
+          915
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b015/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b015/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b015_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B015",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B015]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          855,
+          915
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b015/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b015/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b016_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B016",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B016]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          916,
+          976
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b016/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b016/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b016_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B016",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B016]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          916,
+          976
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b016/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b016/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b016_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B016",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B016]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          916,
+          976
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b016/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b016/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b017_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B017",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B017]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          977,
+          1037
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b017/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b017/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b017_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B017",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B017]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          977,
+          1037
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b017/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b017/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b017_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B017",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B017]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          977,
+          1037
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b017/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b017/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b018_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B018",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B018]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1038,
+          1098
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b018/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b018/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b018_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B018",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B018]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1038,
+          1098
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b018/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b018/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b018_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B018",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B018]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1038,
+          1098
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b018/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b018/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b019_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B019",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B019]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1099,
+          1159
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b019/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b019/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b019_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B019",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B019]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1099,
+          1159
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b019/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b019/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b019_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B019",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B019]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1099,
+          1159
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b019/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b019/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b020_reviewer_novelty_significance",
+      "wave": "A",
+      "role": "reviewer_novelty_significance",
+      "role_name": "novelty & significance reviewer",
+      "batch_id": "W13-P2-B020",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B020]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess novelty exposure and potential significance. ALL novelty judgements are 'unverified' unless a real, checkable citation is quoted from the record or the P1 audit trail; NEVER invent citations, venues, or numbers. Flag suspected prior-art overlap for the GATE-8 lane instead of silently killing.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1160,
+          1220
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b020/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b020/reviewer_novelty_significance.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b020_reviewer_practical_experimentalist",
+      "wave": "A",
+      "role": "reviewer_practical_experimentalist",
+      "role_name": "practical experimentalist reviewer",
+      "batch_id": "W13-P2-B020",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B020]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Assess cheap-kill feasibility: is the falsifiable prediction testable with the stated (or pinnable) public assets at low cost? Apply M5: records lacking numeric kill thresholds are down-ranked on falsifiability. Note gate4 asset-pinning debt (M6) but do not fabricate datasets.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1160,
+          1220
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b020/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b020/reviewer_practical_experimentalist.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_a_w13_p2_b020_reviewer_skeptical_high_risk",
+      "wave": "A",
+      "role": "reviewer_skeptical_high_risk",
+      "role_name": "skeptical / high-risk adversarial reviewer",
+      "batch_id": "W13-P2-B020",
+      "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B020]",
+      "candidate_count": 61,
+      "status": "pending",
+      "depends_on": [
+        "p2_state_reader"
+      ],
+      "instructions": "Attack each idea: confounds, trivial alternative explanations, template-family redundancy (M4 families), threshold softness, and overclaiming. Recommend Kill only with a stated reason tied to the record text; no invented evidence.",
+      "input": {
+        "master_file": "Windows13/_state/ideas_master.jsonl",
+        "master_branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+        "master_commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+        "master_lines": [
+          1160,
+          1220
+        ]
+      },
+      "output_dir": "Windows13/_state/tasks/p2/wave_a/w13-p2-b020/",
+      "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b020/reviewer_skeptical_high_risk.jsonl",
+      "constraints": [
+        "read-only on ideas_master.jsonl and window.lock.json",
+        "per-record verdict suggestion only (keep_lean/borderline/kill_lean + reasons); the Wave-B judge decides",
+        "novelty labeled unverified by default; no fabricated citations/numbers/experiments"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b001_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B001",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b001_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b001_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b001_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b001/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b001/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b002_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B002",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b002_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b002_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b002_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b002/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b002/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b003_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B003",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b003_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b003_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b003_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b003/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b003/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b004_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B004",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b004_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b004_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b004_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b004/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b004/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b005_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B005",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b005_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b005_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b005_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b005/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b005/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b006_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B006",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b006_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b006_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b006_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b006/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b006/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b007_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B007",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b007_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b007_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b007_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b007/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b007/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b008_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B008",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b008_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b008_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b008_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b008/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b008/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b009_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B009",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b009_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b009_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b009_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b009/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b009/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b010_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B010",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b010_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b010_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b010_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b010/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b010/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b011_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B011",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b011_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b011_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b011_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b011/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b011/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b012_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B012",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b012_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b012_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b012_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b012/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b012/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b013_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B013",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b013_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b013_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b013_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b013/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b013/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b014_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B014",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b014_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b014_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b014_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b014/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b014/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b015_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B015",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b015_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b015_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b015_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b015/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b015/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b016_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B016",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b016_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b016_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b016_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b016/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b016/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b017_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B017",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b017_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b017_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b017_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b017/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b017/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b018_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B018",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b018_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b018_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b018_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b018/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b018/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b019_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B019",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b019_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b019_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b019_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b019/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b019/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_wave_b_w13_p2_b020_judge",
+      "wave": "B",
+      "role": "batch_judge",
+      "batch_id": "W13-P2-B020",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_a_w13_p2_b020_reviewer_novelty_significance",
+        "p2_wave_a_w13_p2_b020_reviewer_practical_experimentalist",
+        "p2_wave_a_w13_p2_b020_reviewer_skeptical_high_risk"
+      ],
+      "instructions": "Combine the 3 Wave-A reviews into a provisional per-record verdict: Keep / Borderline / Kill, each with a one-line reason. Any reviewer disagreement (kill_lean vs keep_lean) or Borderline goes onto the batch review_queue for Wave C. Apply queue-level ranking_policy_notes (M1-M7). Do not finalize the 200-cut.",
+      "output_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b020/judge_verdicts.jsonl",
+      "review_queue_file": "Windows13/_state/tasks/p2/wave_b/w13-p2-b020/review_queue.jsonl",
+      "constraints": [
+        "provisional only",
+        "every one of the batch's 61 ids must receive a verdict line"
+      ]
+    },
+    {
+      "task_id": "p2_audit_cp1",
+      "wave": "audit",
+      "role": "periodic_auditor",
+      "checkpoint": 1,
+      "covers_batches": [
+        "W13-P2-B001",
+        "W13-P2-B002",
+        "W13-P2-B003",
+        "W13-P2-B004",
+        "W13-P2-B005"
+      ],
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_b_w13_p2_b001_judge",
+        "p2_wave_b_w13_p2_b002_judge",
+        "p2_wave_b_w13_p2_b003_judge",
+        "p2_wave_b_w13_p2_b004_judge",
+        "p2_wave_b_w13_p2_b005_judge"
+      ],
+      "instructions": "Audit the 5 finished batches: verdict-line coverage (5x61=305 ids, none missing), no fabricated citations/numbers, no modification of ideas_master.jsonl or window.lock.json, policy notes applied (soft-threshold down-rank M5, thin-territory protection M7). Report drift; do not re-judge.",
+      "output_file": "Windows13/_state/tasks/p2/audit/cp1/audit.json"
+    },
+    {
+      "task_id": "p2_consolidator_cp1",
+      "wave": "consolidate",
+      "role": "checkpoint_consolidator",
+      "checkpoint": 1,
+      "covers_batches": [
+        "W13-P2-B001",
+        "W13-P2-B002",
+        "W13-P2-B003",
+        "W13-P2-B004",
+        "W13-P2-B005"
+      ],
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_b_w13_p2_b001_judge",
+        "p2_wave_b_w13_p2_b002_judge",
+        "p2_wave_b_w13_p2_b003_judge",
+        "p2_wave_b_w13_p2_b004_judge",
+        "p2_wave_b_w13_p2_b005_judge",
+        "p2_audit_cp1"
+      ],
+      "instructions": "Merge the 5 batches' provisional verdicts and review_queues into one checkpoint ledger; running Keep/Borderline/Kill tallies; escalate audit findings.",
+      "output_file": "Windows13/_state/tasks/p2/consolidate/cp1/ledger.jsonl"
+    },
+    {
+      "task_id": "p2_audit_cp2",
+      "wave": "audit",
+      "role": "periodic_auditor",
+      "checkpoint": 2,
+      "covers_batches": [
+        "W13-P2-B006",
+        "W13-P2-B007",
+        "W13-P2-B008",
+        "W13-P2-B009",
+        "W13-P2-B010"
+      ],
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_b_w13_p2_b006_judge",
+        "p2_wave_b_w13_p2_b007_judge",
+        "p2_wave_b_w13_p2_b008_judge",
+        "p2_wave_b_w13_p2_b009_judge",
+        "p2_wave_b_w13_p2_b010_judge"
+      ],
+      "instructions": "Audit the 5 finished batches: verdict-line coverage (5x61=305 ids, none missing), no fabricated citations/numbers, no modification of ideas_master.jsonl or window.lock.json, policy notes applied (soft-threshold down-rank M5, thin-territory protection M7). Report drift; do not re-judge.",
+      "output_file": "Windows13/_state/tasks/p2/audit/cp2/audit.json"
+    },
+    {
+      "task_id": "p2_consolidator_cp2",
+      "wave": "consolidate",
+      "role": "checkpoint_consolidator",
+      "checkpoint": 2,
+      "covers_batches": [
+        "W13-P2-B006",
+        "W13-P2-B007",
+        "W13-P2-B008",
+        "W13-P2-B009",
+        "W13-P2-B010"
+      ],
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_b_w13_p2_b006_judge",
+        "p2_wave_b_w13_p2_b007_judge",
+        "p2_wave_b_w13_p2_b008_judge",
+        "p2_wave_b_w13_p2_b009_judge",
+        "p2_wave_b_w13_p2_b010_judge",
+        "p2_audit_cp2"
+      ],
+      "instructions": "Merge the 5 batches' provisional verdicts and review_queues into one checkpoint ledger; running Keep/Borderline/Kill tallies; escalate audit findings.",
+      "output_file": "Windows13/_state/tasks/p2/consolidate/cp2/ledger.jsonl"
+    },
+    {
+      "task_id": "p2_audit_cp3",
+      "wave": "audit",
+      "role": "periodic_auditor",
+      "checkpoint": 3,
+      "covers_batches": [
+        "W13-P2-B011",
+        "W13-P2-B012",
+        "W13-P2-B013",
+        "W13-P2-B014",
+        "W13-P2-B015"
+      ],
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_b_w13_p2_b011_judge",
+        "p2_wave_b_w13_p2_b012_judge",
+        "p2_wave_b_w13_p2_b013_judge",
+        "p2_wave_b_w13_p2_b014_judge",
+        "p2_wave_b_w13_p2_b015_judge"
+      ],
+      "instructions": "Audit the 5 finished batches: verdict-line coverage (5x61=305 ids, none missing), no fabricated citations/numbers, no modification of ideas_master.jsonl or window.lock.json, policy notes applied (soft-threshold down-rank M5, thin-territory protection M7). Report drift; do not re-judge.",
+      "output_file": "Windows13/_state/tasks/p2/audit/cp3/audit.json"
+    },
+    {
+      "task_id": "p2_consolidator_cp3",
+      "wave": "consolidate",
+      "role": "checkpoint_consolidator",
+      "checkpoint": 3,
+      "covers_batches": [
+        "W13-P2-B011",
+        "W13-P2-B012",
+        "W13-P2-B013",
+        "W13-P2-B014",
+        "W13-P2-B015"
+      ],
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_b_w13_p2_b011_judge",
+        "p2_wave_b_w13_p2_b012_judge",
+        "p2_wave_b_w13_p2_b013_judge",
+        "p2_wave_b_w13_p2_b014_judge",
+        "p2_wave_b_w13_p2_b015_judge",
+        "p2_audit_cp3"
+      ],
+      "instructions": "Merge the 5 batches' provisional verdicts and review_queues into one checkpoint ledger; running Keep/Borderline/Kill tallies; escalate audit findings.",
+      "output_file": "Windows13/_state/tasks/p2/consolidate/cp3/ledger.jsonl"
+    },
+    {
+      "task_id": "p2_audit_cp4",
+      "wave": "audit",
+      "role": "periodic_auditor",
+      "checkpoint": 4,
+      "covers_batches": [
+        "W13-P2-B016",
+        "W13-P2-B017",
+        "W13-P2-B018",
+        "W13-P2-B019",
+        "W13-P2-B020"
+      ],
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_b_w13_p2_b016_judge",
+        "p2_wave_b_w13_p2_b017_judge",
+        "p2_wave_b_w13_p2_b018_judge",
+        "p2_wave_b_w13_p2_b019_judge",
+        "p2_wave_b_w13_p2_b020_judge"
+      ],
+      "instructions": "Audit the 5 finished batches: verdict-line coverage (5x61=305 ids, none missing), no fabricated citations/numbers, no modification of ideas_master.jsonl or window.lock.json, policy notes applied (soft-threshold down-rank M5, thin-territory protection M7). Report drift; do not re-judge.",
+      "output_file": "Windows13/_state/tasks/p2/audit/cp4/audit.json"
+    },
+    {
+      "task_id": "p2_consolidator_cp4",
+      "wave": "consolidate",
+      "role": "checkpoint_consolidator",
+      "checkpoint": 4,
+      "covers_batches": [
+        "W13-P2-B016",
+        "W13-P2-B017",
+        "W13-P2-B018",
+        "W13-P2-B019",
+        "W13-P2-B020"
+      ],
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_b_w13_p2_b016_judge",
+        "p2_wave_b_w13_p2_b017_judge",
+        "p2_wave_b_w13_p2_b018_judge",
+        "p2_wave_b_w13_p2_b019_judge",
+        "p2_wave_b_w13_p2_b020_judge",
+        "p2_audit_cp4"
+      ],
+      "instructions": "Merge the 5 batches' provisional verdicts and review_queues into one checkpoint ledger; running Keep/Borderline/Kill tallies; escalate audit findings.",
+      "output_file": "Windows13/_state/tasks/p2/consolidate/cp4/ledger.jsonl"
+    },
+    {
+      "task_id": "p2_wave_c_border_reviewer_1_novelty_significance",
+      "wave": "C",
+      "role": "borderline_re_reviewer_novelty_significance",
+      "status": "pending",
+      "depends_on": [
+        "p2_consolidator_cp1",
+        "p2_consolidator_cp2",
+        "p2_consolidator_cp3",
+        "p2_consolidator_cp4"
+      ],
+      "instructions": "Re-review every id on the merged Borderline/review_queue (union of all 20 batches) under the stated lens; per-record Keep/Kill recommendation with reason. Novelty stays unverified unless a real citation is quoted.",
+      "input": "union of Windows13/_state/tasks/p2/consolidate/cp*/ledger.jsonl borderline + review_queue entries",
+      "output_file": "Windows13/_state/tasks/p2/wave_c/border_reviewer_1.jsonl"
+    },
+    {
+      "task_id": "p2_wave_c_border_reviewer_2_practical_experimentalist",
+      "wave": "C",
+      "role": "borderline_re_reviewer_practical_experimentalist",
+      "status": "pending",
+      "depends_on": [
+        "p2_consolidator_cp1",
+        "p2_consolidator_cp2",
+        "p2_consolidator_cp3",
+        "p2_consolidator_cp4"
+      ],
+      "instructions": "Re-review every id on the merged Borderline/review_queue (union of all 20 batches) under the stated lens; per-record Keep/Kill recommendation with reason. Novelty stays unverified unless a real citation is quoted.",
+      "input": "union of Windows13/_state/tasks/p2/consolidate/cp*/ledger.jsonl borderline + review_queue entries",
+      "output_file": "Windows13/_state/tasks/p2/wave_c/border_reviewer_2.jsonl"
+    },
+    {
+      "task_id": "p2_wave_c_border_reviewer_3_skeptical_high_risk",
+      "wave": "C",
+      "role": "borderline_re_reviewer_skeptical_high_risk",
+      "status": "pending",
+      "depends_on": [
+        "p2_consolidator_cp1",
+        "p2_consolidator_cp2",
+        "p2_consolidator_cp3",
+        "p2_consolidator_cp4"
+      ],
+      "instructions": "Re-review every id on the merged Borderline/review_queue (union of all 20 batches) under the stated lens; per-record Keep/Kill recommendation with reason. Novelty stays unverified unless a real citation is quoted.",
+      "input": "union of Windows13/_state/tasks/p2/consolidate/cp*/ledger.jsonl borderline + review_queue entries",
+      "output_file": "Windows13/_state/tasks/p2/wave_c/border_reviewer_3.jsonl"
+    },
+    {
+      "task_id": "p2_wave_c_meta_judge",
+      "wave": "C",
+      "role": "meta_judge",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_c_border_reviewer_1_novelty_significance",
+        "p2_wave_c_border_reviewer_2_practical_experimentalist",
+        "p2_wave_c_border_reviewer_3_skeptical_high_risk",
+        "p2_consolidator_cp1",
+        "p2_consolidator_cp2",
+        "p2_consolidator_cp3",
+        "p2_consolidator_cp4"
+      ],
+      "instructions": "Resolve all Borderlines to Keep/Kill using the 3 border re-reviews; verify checkpoint ledgers reconcile to exactly 1220 verdicts; confirm remediation lanes M1 (GATE-8 novelty triage) and M2 (127-remand disposition) have a recorded disposition or an explicit BLOCKED escalation BEFORE the global ranking wave fixes the survivor pool composition.",
+      "output_file": "Windows13/_state/tasks/p2/wave_c/meta_judge.json"
+    },
+    {
+      "task_id": "p2_global_ranker_a_novelty_significance",
+      "wave": "global",
+      "role": "global_ranker_novelty_significance",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_c_meta_judge"
+      ],
+      "instructions": "Rank the post-Wave-C Keep pool under the stated lens. Apply binding policy: M3 genre-blind pooled caps (eval-subject pool <= 25% of the 200) with ONE crowding instrument; M4 forced best-of-family (never multiple undifferentiated siblings); M5 soft-threshold records must not displace GATE-5-compliant records on topic novelty alone; M7 thin territories not eliminated purely on volume. Output an ordered list with per-record one-line rationale. No fabricated evidence.",
+      "output_file": "Windows13/_state/tasks/p2/global/ranker_a.jsonl"
+    },
+    {
+      "task_id": "p2_global_ranker_b_feasibility_cheap_kill",
+      "wave": "global",
+      "role": "global_ranker_feasibility_cheap_kill",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_c_meta_judge"
+      ],
+      "instructions": "Rank the post-Wave-C Keep pool under the stated lens. Apply binding policy: M3 genre-blind pooled caps (eval-subject pool <= 25% of the 200) with ONE crowding instrument; M4 forced best-of-family (never multiple undifferentiated siblings); M5 soft-threshold records must not displace GATE-5-compliant records on topic novelty alone; M7 thin territories not eliminated purely on volume. Output an ordered list with per-record one-line rationale. No fabricated evidence.",
+      "output_file": "Windows13/_state/tasks/p2/global/ranker_b.jsonl"
+    },
+    {
+      "task_id": "p2_global_ranker_c_portfolio_diversity",
+      "wave": "global",
+      "role": "global_ranker_portfolio_diversity",
+      "status": "pending",
+      "depends_on": [
+        "p2_wave_c_meta_judge"
+      ],
+      "instructions": "Rank the post-Wave-C Keep pool under the stated lens. Apply binding policy: M3 genre-blind pooled caps (eval-subject pool <= 25% of the 200) with ONE crowding instrument; M4 forced best-of-family (never multiple undifferentiated siblings); M5 soft-threshold records must not displace GATE-5-compliant records on topic novelty alone; M7 thin territories not eliminated purely on volume. Output an ordered list with per-record one-line rationale. No fabricated evidence.",
+      "output_file": "Windows13/_state/tasks/p2/global/ranker_c.jsonl"
+    },
+    {
+      "task_id": "p2_final_stage_judge",
+      "wave": "global",
+      "role": "final_stage_judge",
+      "status": "pending",
+      "depends_on": [
+        "p2_global_ranker_a_novelty_significance",
+        "p2_global_ranker_b_feasibility_cheap_kill",
+        "p2_global_ranker_c_portfolio_diversity"
+      ],
+      "instructions": "Merge the 3 global rankings into the Stage-2 survivor list, target ~200 (hard window 180-220). Enforce M4 family adjudication and M3 caps at the cut; record for each survivor which remediation debts it carries forward (M5 numeric retrofit owed, M6 asset pinning owed, M1 novelty-triage flags). Every non-survivor gets a kill/park reason. This is the ONLY task that fixes the survivor list.",
+      "output_file": "Windows13/_state/tasks/p2/global/final_survivors.jsonl",
+      "survivor_target": {
+        "nominal": 200,
+        "min": 180,
+        "max": 220
+      }
+    },
+    {
+      "task_id": "p2_completion_auditor",
+      "wave": "completion",
+      "role": "completion_auditor",
+      "status": "pending",
+      "depends_on": [
+        "p2_final_stage_judge"
+      ],
+      "instructions": "Verify: survivor count in [180,220]; survivors + kills + parks == 1220 with zero unaccounted ids; every survivor id exists in the canonical master; no duplicate survivors; M1/M2 dispositions recorded; no fabricated citations/numbers anywhere in P2 outputs; ideas_master.jsonl, window.lock.json, windows numbering untouched; all files under Windows13/.",
+      "output_file": "Windows13/_state/tasks/p2/completion/audit.json"
+    },
+    {
+      "task_id": "p2_report_writer",
+      "wave": "completion",
+      "role": "report_writer",
+      "status": "pending",
+      "depends_on": [
+        "p2_completion_auditor"
+      ],
+      "instructions": "Write Windows13/selection_history/stage2_top200.md: method (batching, waves, policy), survivor list with one-line rationales, kill statistics, remediation-debt table carried into Stage 3. Novelty statements labeled unverified unless a verified citation is quoted from the audit trail.",
+      "output_file": "Windows13/selection_history/stage2_top200.md"
+    },
+    {
+      "task_id": "p2_git_commit",
+      "wave": "completion",
+      "role": "git_agent",
+      "status": "pending",
+      "depends_on": [
+        "p2_report_writer"
+      ],
+      "instructions": "Commit all P2 outputs (all under Windows13/) and push. Commit message must be EXACTLY, character for character: 'Research Idea Evolution - Windows13 - Stage 2 Top 200'. No force-push. Verify with git ls-remote after push; report real SHA only.",
+      "commit_message_exact": "Research Idea Evolution - Windows13 - Stage 2 Top 200"
+    },
+    {
+      "task_id": "p2_verification",
+      "wave": "completion",
+      "role": "verification",
+      "status": "pending",
+      "depends_on": [
+        "p2_git_commit"
+      ],
+      "instructions": "Independently verify: commit exists on origin with the exact message; all P2 files under Windows13/; lock identity (windows_id=Windows13, windows_number=13, windows_path=Windows13, locked=true, defined_by=P0) unchanged vs origin/cursor/windows13-p0-init-implementation-d93f; survivor count in window; write done_verification.json with p2_complete and recommended_next_task_type=p3_start on PASS.",
+      "output_file": "Windows13/_state/tasks/p2/completion/done_verification.json"
+    }
+  ],
+  "recommended_next_task_type": "p2_wave_a_review",
+  "recommended_first_dispatch": [
+    "p2_wave_a_w13_p2_b001_reviewer_novelty_significance",
+    "p2_wave_a_w13_p2_b001_reviewer_practical_experimentalist",
+    "p2_wave_a_w13_p2_b001_reviewer_skeptical_high_risk"
+  ]
+}

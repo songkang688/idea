@@ -1,0 +1,33 @@
+{
+  "task_id": "p2_state_reader",
+  "read_at_utc": "2026-08-29T02:54:52Z",
+  "lock_file": "Windows13/_state/window.lock.json",
+  "lock_read_from_branch": "origin/cursor/windows13-p0-init-implementation-d93f",
+  "lock_fields_echo": {
+    "windows_id": "Windows13",
+    "windows_number": 13,
+    "windows_path": "Windows13",
+    "repository": "https://github.com/songkang688/idea",
+    "branch": "cursor/windows13-p0-init-implementation-d93f",
+    "created_at": "2026-08-28T17:31:30Z",
+    "locked": true,
+    "defined_by": "P0",
+    "definition_status": "canonical",
+    "pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3"
+  },
+  "research_state_checked": {
+    "path": "Windows13/_state/research_state.json",
+    "exists": true,
+    "windows_id": "Windows13",
+    "windows_number": 13,
+    "windows_path": "Windows13",
+    "window_locked": true,
+    "window_defined_by": "P0",
+    "init_commit": "38641a7a5813ed06b9b80c560e227ef382f76502"
+  },
+  "expected_init_commit": "38641a7a5813ed06b9b80c560e227ef382f76502",
+  "identity_consistent": true,
+  "conflicts_found": [],
+  "lock_modified_by_this_task": false,
+  "verdict": "LOCK_OK"
+}
