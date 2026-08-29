@@ -1,13 +1,130 @@
-# stage5_top5.md
-count=10
+# Stage 5 → Top-5 (Windows8)
 
-- IDEA-X-0004 | IDEA-X-0004 | hand | mixed | Spectral LoRA audit: FFT of (LoRA-adapted − frozen) feature maps.
-- IDEA-X-0001 | IDEA-X-0001 | hand | mixed | Exclusion-region prompting: Amorphous targets need prompts that specify what is NOT the target.
-- IDEA-X-0003 | IDEA-X-0003 | hand | mixed | IoU-token reject option: Use SAM IoU head as a selective-prediction gate.
-- IDEA-X-0007 | IDEA-X-0007 | hand | mixed | Replay for promptability: Mix 1% synthetic click-segmentation while medical PEFT.
-- IDEA-X-0002 | IDEA-X-0002 | hand | mixed | Density decoder on frozen SAM: Replace binary mask decoder with density regression head on frozen embeddings.
-- IDEA-X-0005 | IDEA-X-0005 | hand | mixed | Equal-annotation-minute bakeoff: nnU-Net vs SAM-PEFT vs linear probe under fixed labeling minutes.
-- IDEA-X-0006 | IDEA-X-0006 | hand | mixed | Prompt-tightness confound: Re-run SAM prompt papers with boxes jittered to matched tightness.
-- IDEA-X-0009 | IDEA-X-0009 | hand | mixed | Patch/lesion diameter law: Failure probability ~ f(lesion_diameter / patch_size).
-- IDEA-X-0008 | IDEA-X-0008 | hand | mixed | Rater-as-model: Train on rater A, test on rater B.
-- IDEA-X-0010 | IDEA-X-0010 | hand | mixed | Language does not group pixels: CLIP/VLM text features improve class presence AUC but not mask NSD when the visual grouper is frozen.
+count=5
+
+- **Audit date:** 2026-08-29 (UTC+8), rewritten by the Stage-5 audit/recorder pass.
+- **Input:** 19 candidates from `stage4_top20.md` (that file declares `count=19`: `IDEA-X-0001..0010` plus 9 `IDEA-A` grid entries).
+- **Output:** 5 candidates. `count` above is 5 and the table below has exactly 5 rows, so the file now agrees with its own name.
+- **Stage-5 criterion (as recorded):** `evolution_summary.md` → "5 Engineering | ~5 | **5** | ROI = information per GPU-hour."
+
+## Why this file was rewritten
+
+**FACT.** The previous version of this file declared `count=10` and listed exactly the ten hand ideas `IDEA-X-0001..0010`. That is the X-subset of `stage4_top20.md` copied forward verbatim — not a Stage-5 selection. It also dropped all 9 `IDEA-A` entries that `stage4_top20.md` carries, with no recorded reason, and it never stated which stage-4 ID each packaged Idea (`Idea_01/02/03`) descends from. This rewrite fixes the count, adds the 19→5 drop log, and adds the lineage map. **No selection decision was re-made in this pass**: the Top-5 below is transcribed from the only place in the tree where a real five-item Stage-5 list exists, `evolution_summary.md` → "Stage 5 Top 5 (ROI order)". `Idea_01/`, `Idea_02/`, `Idea_03/`, `stage2_top200.md`, `stage3_top50.md` and `stage4_top20.md` were not modified.
+
+## 1. Top-5 (ROI order)
+
+Source of the ordering: `evolution_summary.md`, section "Stage 5 Top 5 (ROI order)".
+Hypotheses, minimal experiments and risks are transcribed from `raw/batch_X_hand.md` (fields `Hypothesis` / `MinExp` / `Risk`) and, where a package exists, cross-checked against that package's `experiments.md`.
+
+| # | ID | Codename | Scientific hypothesis (one line) | Minimal killer experiment | Largest risk | In Final 3? |
+|---|----|----------|----------------------------------|---------------------------|--------------|-------------|
+| 1 | `IDEA-X-0004` | Spectral LoRA audit | **HYPOTHESIS** >80% of the energy of the (LoRA-adapted − frozen) feature delta lies below a spatial-frequency cutoff that cannot represent 1-px boundaries. | One GPU: save feature deltas on 64 images, FFT (`batch_X_hand.md`). Package form: three PEFT variants, frozen vs adapted encoder feature maps, radial FFT energy (`Idea_02/experiments.md` → "Killer"). | **HYPOTHESIS** Needs careful layer choice; result may be an artifact of which block is probed. | **Yes — Idea_02** |
+| 2 | `IDEA-X-0001` | Exclusion-region prompting | **HYPOTHESIS** Exclusion-region prompts raise NSD on smoke / infiltrative tumor without encoder fine-tuning, and do **not** help COCO objects. | Paint a negative ring around smoke; compare to GT-box SAM (`batch_X_hand.md`). Package form: condition C of `Idea_01/experiments.md` E0, with the exclusion channel on/off ablation. | **HYPOTHESIS** Users will not draw rings (deployment validity). Package adds a second risk: if the ring leaks GT, the effect is an artifact — `Idea_01/experiments.md` requires ablating ring width independently of GT. | **Yes — Idea_01** |
+| 3 | `IDEA-X-0003` | IoU-token reject option | **HYPOTHESIS** Thresholding SAM IoU tokens raises risk-coverage Dice more than Med-SA of equal extra parameters on amorphous tests. | Plot risk-coverage on Trans10K and a smoke set (`batch_X_hand.md`). Package form: `Idea_03/experiments.md` E0, reliability diagrams COCO vs amorphous, **no training**; "Kill if E0 does not show a domain gap in calibration." | **HYPOTHESIS** The IoU head may simply be uninformative, in which case there is no selective-prediction signal to recalibrate. | **Yes — Idea_03** |
+| 4 | `IDEA-X-0007` | Replay for promptability | **HYPOTHESIS** Mixing 1% synthetic click-segmentation during medical PEFT preserves COCO-prompt mIoU with <1 Dice drop on the medical target. | COCO-proxy 200 images + LoRA (`batch_X_hand.md`). | **HYPOTHESIS** Synthetic clicks are not SA-1B, so preserved promptability may not transfer to the real prompt distribution. | **No — alternate** |
+| 5 | `IDEA-X-0002` | Density decoder on frozen SAM | **HYPOTHESIS** Frozen SAM tokens + 1×1 conv density head beat prompted SAM on smoke IoU after matching annotation time. | Train a 1×1 head on 200 smoke frames (`batch_X_hand.md`). Package form: `Idea_01/experiments.md` E0 conditions A/B/C, <8 h on one 12–24 GB GPU including the embedding cache. | **HYPOTHESIS** Density GT is itself ambiguous; also "predicts the whole sky" degenerate solutions must be caught by precision (recorded in `Idea_01/experiments.md` → Failure analysis). | **Yes — Idea_01** (merged into the Idea_01 method) |
+
+### Note on the composition of this Top-5
+
+**FACT.** The recorded Top-5 is **4 Final-3 lineage entries + 1 alternate**, not 3 + 2. `Idea_01` consumes two of the five slots (`IDEA-X-0001` exclusion + `IDEA-X-0002` density), which is consistent with `README.md` describing Idea_01 as "frozen SAM embeddings + density/**exclusion** vs prompted SAM". The single alternate is `IDEA-X-0007`, and its recorded ground for being valued is `eliminated_ideas_summary.md` → "Parked high-ROI (not final 3) | X-0007 Replay promptability | **Strong**; overlaps Idea_02 forgetting subplot | Revive if: Idea_02 killer is negative and forgetting is the remaining story." I did not promote a sixth item to manufacture a second alternate.
+
+## 2. Drop log: 19 → 5 (14 entries)
+
+Admissible sources for a drop reason, per the audit rules: prior-work attacks already recorded in `stage3_top50.md` / `stage4_top20.md`, `reviewer_summary.md`, `eliminated_ideas_summary.md`, or an explicit funnel rule. Where none of those covers a specific ID, it is marked `NO RECORDED REASON` rather than given an invented justification.
+
+Caveat on citations: the arXiv identifiers and venue names below are transcribed **as recorded** in `reviewer_summary.md`. This audit did not independently re-verify them. They are therefore labelled **VERIFIED PRIOR WORK (as recorded)**.
+
+### 2a. Dropped hand ideas (`IDEA-X`), 5 entries — all have a recorded reason
+
+| ID | Codename | Recorded drop reason | Source | Label |
+|----|----------|----------------------|--------|-------|
+| `IDEA-X-0005` | Equal-annotation-minute bakeoff | "Important control, not a method." Revive rule: "Use inside Idea_01 Week 2." Confirmed absorbed: it appears as `Idea_01/experiments.md` E4 "Equal annotation minutes vs nnU-Net" and in baseline 4. | `eliminated_ideas_summary.md` → "Parked high-ROI (not final 3)"; `Idea_01/experiments.md` | FACT |
+| `IDEA-X-0006` | Prompt-tightness confound | Two records. (i) Stage-3 prior-work attack: "Box prompts beat points on fire" vs arXiv:2510.21782 → "**Kill.** Mutate to tightness-matched confounder study (X-0006, **not in final 3**)". (ii) "Cheap workshop paper", revive "After Idea_01 prompt experiments." Confirmed absorbed as `Idea_01/experiments.md` E1 "Prompt tightness matched, jitter boxes to IoU∈{0.5,0.7,0.9}". | `reviewer_summary.md` → "Prior-work kills (Stage 3) — EVIDENCE"; `eliminated_ideas_summary.md`; `Idea_01/experiments.md` | VERIFIED PRIOR WORK (as recorded) + FACT |
+| `IDEA-X-0008` | Rater-as-model | "Needs LIDC multi-rater discipline." Revive rule: "Medical-only pivot." | `eliminated_ideas_summary.md` → "Parked high-ROI (not final 3)" | FACT |
+| `IDEA-X-0009` | Patch/lesion diameter law | "Maybe too simple; still a killer plot." Revive rule: "Add as Idea_01 analysis figure." | `eliminated_ideas_summary.md` → "Parked high-ROI (not final 3)" | FACT |
+| `IDEA-X-0010` | Language does not group pixels | "Open-vocab VLM dense papers that cannot freeze the grouper fairly (**X-0010 parked**)." This matches the idea's own recorded risk, "Hard to freeze fairly" (`raw/batch_X_hand.md`). | `eliminated_ideas_summary.md` → "Reviewer #2 unsound (Stage 4)" | FACT |
+
+**Bookkeeping inconsistency, flagged not fixed.** `eliminated_ideas_summary.md` files the `X-0010` park under the heading "Reviewer #2 unsound (**Stage 4**)", yet `X-0010` is still present in `stage4_top20.md` (`count=19`). One of the two files is off by one stage. `stage4_top20.md` is out of scope for this task, so this is recorded for human resolution and the drop is booked at Stage 5 here.
+
+### 2b. Dropped grid ideas (`IDEA-A`), 9 entries — each accounted for individually
+
+All 9 resolve to `raw/pool.jsonl` / `raw/batch_A_prior.md` (see §4 on the ID namespace collision). **FACT:** every one of them carries the same template text in `pool.jsonl` — `problem` = "Community default explanations for failures in *domain* may be wrong; we test core *CORE*", `min_exp` = "Two-condition A/B on a public *domain* split; freeze all but the hypothesized component; report Dice/NSD/IoU-cal plus a control metric", `risk` = "Closest eval papers may already contain the observation without the intervention". None of them names a dataset, a budget, or a concrete instrument. That is relevant to the Stage-5 rule "ROI = information per GPU-hour", but it is a property of the whole `IDEA-A` family and therefore cannot by itself explain why these 9 in particular were dropped while others were kept. It is recorded as context, not as a per-ID reason.
+
+| ID | Codename | Status | Recorded reason / gap | Source | Label |
+|----|----------|--------|-----------------------|--------|-------|
+| `IDEA-A-0001` | SAM-OBJECTNESS | **Merged, not killed** | Dropped as a standalone Stage-5 row, but retained as a sub-hypothesis of Idea_01: the Final-3 table gives Idea_01's origin IDs as "X-0001 + X-0002 + **SAM-OBJECTNESS** + LINEAR-PROBE". The hypothesis text also matches `README.md` line 12 ("frozen SAM embeddings + density/exclusion vs prompted SAM … with a COCO control") and the title "Objectness, Not Features". **Gap:** the merge is recorded only at the Final-3 level; no file records the Stage-5 merge decision itself. | `evolution_summary.md` → "Final 3" table, Idea_01 row; `README.md`; `research_summary.md` | FACT (partially recorded) |
+| `IDEA-A-0064` | SAM-IOU-CAL | **Merged, not killed** | Same pattern: Final-3 table gives Idea_03's origin IDs as "X-0003 + **SAM-IOU-CAL** + SELECTIVE". Its claim (IoU tokens calibrated on SA-1B objects, miscalibrated on low-contrast/amorphous masks) is the domain-gap premise that `Idea_03/experiments.md` E0 is built to kill. **Gap:** as above, the merge is recorded only at the Final-3 level. | `evolution_summary.md` → "Final 3" table, Idea_03 row; `Idea_03/experiments.md` | FACT (partially recorded) |
+| `IDEA-A-0022` | SAM-TEXTURE | Killed at cluster level | Stage-3 prior-work attack: "Failures are texture / tree-likeness" vs arXiv:2412.04243 → "Do not repeat their metric. Test a **competing** mechanism: objectness decoder vs texture encoder." The texture mechanism was deliberately assigned the role of the rival hypothesis rather than the lead idea, and Idea_01 takes the objectness side. Reinforced by `Idea_01/experiments.md` → "Negative result interpretation: H1 false + random-features also fails → encoder limit (align 2412.04243)". | `reviewer_summary.md` → "Prior-work kills (Stage 3) — EVIDENCE"; `Idea_01/experiments.md` | VERIFIED PRIOR WORK (as recorded) |
+| `IDEA-A-0043` | SAM-PROMPT-GEOM | Killed at cluster level | Stage-3 prior-work attack: "Box prompts beat points on fire" vs arXiv:2510.21782 → "**Kill.** Mutate to tightness-matched confounder study (X-0006, not in final 3)." The prompt-geometry line therefore survives only as `X-0006`, which is itself parked (§2a). Both the mechanism and its mutation are out. | `reviewer_summary.md` → "Prior-work kills (Stage 3) — EVIDENCE" | VERIFIED PRIOR WORK (as recorded) |
+| `IDEA-A-0085` | SAM-NEGCLICK | Dropped | **NO RECORDED REASON — dropped silently in the original run，需人工确认.** Nothing in `reviewer_summary.md`, `eliminated_ideas_summary.md`, `evolution_summary.md` or `research_ledger.md` mentions negative clicks, hole-punching, or this ID. Closest adjacent item: `IDEA-X-0001` exclusion-region prompting occupies the same "negative / exclusion prompt semantics" territory and was kept at rank 2. Whether `X-0001` was intended to subsume `A-0085` is **SPECULATION** by this auditor and is **not** used as the drop reason. | — | NO RECORDED REASON |
+| `IDEA-A-0106` | SAM-MULTIMASK | Dropped | **NO RECORDED REASON — dropped silently in the original run，需人工确认.** No file mentions multi-mask ambiguity ranking, this codename, or this ID outside the `stage2/3/4` listings and the raw pool. | — | NO RECORDED REASON |
+| `IDEA-A-0127` | SAM2-MEMORY | Dropped | **NO RECORDED REASON — dropped silently in the original run，需人工确认.** Closest adjacent record is `eliminated_ideas_summary.md` → "Exact or conceptual duplicates of prior work (Stage 3): 'Evaluate SAM2 on fire with boxes'", but that concerns box prompting on fire, not video-memory identity leakage across independently moving plumes, so it does not cover this claim. Treating it as a duplicate would be **SPECULATION**. | — | NO RECORDED REASON |
+| `IDEA-A-0169` | HQ-BOUNDARY | Dropped | **NO RECORDED REASON — dropped silently in the original run，需人工确认.** Closest adjacent record is the Stage-3 row "SAM fails on context-dependent / fire / transparent" vs "Trans10K + SAM evals" → "**Kill as an evaluation-only paper.**" That row does not name HQ-SAM or the high-quality token, and `A-0169` proposes a component-level claim rather than a plain evaluation, so the row is insufficient. Extending it would be **SPECULATION**. | — | NO RECORDED REASON |
+| `IDEA-A-0190` | FT-FORGET | Dropped | **NO RECORDED REASON — dropped silently in the original run，需人工确认.** Closest adjacent record: `IDEA-X-0007` (Replay for promptability) asks the same forgetting question as an intervention and was kept at rank 4, and `raw/batch_X_hand.md` notes for `X-0007` that "Med-SA claims PEFT avoids forgetting without measuring promptable zero-shot". No file states that `X-0007` replaced `A-0190`; asserting it would be **SPECULATION**. Note also that the Stage-3 kill "Adapt SAM to medical with adapters/LoRA … Kill as a method paper. Keep only *mechanism* questions PEFT does not answer" would, if anything, argue for **keeping** `A-0190`, since it is a mechanism question. | — | NO RECORDED REASON |
+
+### Drop-log tally
+
+| Bucket | Count |
+|--------|-------|
+| Recorded reason (parked / prior-work kill / reviewer-unsound) | 7 (`X-0005`, `X-0006`, `X-0008`, `X-0009`, `X-0010`, `A-0022`, `A-0043`) |
+| Recorded as merged into a Final-3 package rather than killed | 2 (`A-0001`, `A-0064`) |
+| `NO RECORDED REASON` — needs human confirmation | 5 (`A-0085`, `A-0106`, `A-0127`, `A-0169`, `A-0190`) |
+| **Total dropped** | **14** |
+
+5 kept + 14 dropped = 19 in, which reconciles with `stage4_top20.md` `count=19`.
+
+## 3. ID lineage map: Final 3 ← stage-4 IDs
+
+Merge authority for every row below is one sentence: `evolution_summary.md` → section "Final 3", table column "Origin IDs". The three rows read verbatim:
+
+- `| Idea_01 | Objectness, Not Features | X-0001 + X-0002 + SAM-OBJECTNESS + LINEAR-PROBE |`
+- `| Idea_02 | Spectral Locality of Dense PEFT | X-0004 + PEFT-SPECTRAL |`
+- `| Idea_03 | Selective SAM via IoU-token Recalibration | X-0003 + SAM-IOU-CAL + SELECTIVE |`
+
+| Package | Lineage that **is** traceable to `stage4_top20.md` | Verdict on the question "X or A?" | Lineage components that are **not** traceable to stage 4 |
+|---------|---------------------------------------------------|-----------------------------------|----------------------------------------------------------|
+| `Idea_01` Objectness, Not Features | `IDEA-X-0001` (Top-5 #2) + `IDEA-X-0002` (Top-5 #5) + `IDEA-A-0001` SAM-OBJECTNESS (stage 4, merged at §2b) | **Merged — all three, not one.** `IDEA-X-0002` supplies the density decoder, `IDEA-X-0001` the exclusion region, `IDEA-A-0001` the objectness-vs-features causal framing. Corroborated by `README.md` line 12 ("frozen SAM embeddings + **density/exclusion** vs prompted SAM on amorphous targets, with a COCO control") and by `Idea_01/experiments.md`, whose E0 runs the density head, whose ablation toggles the exclusion channel, and whose control is the COCO object split. | `LINEAR-PROBE` = `IDEA-A-0316`: in `stage3_top50.md` only, in neither `stage2_top200.md` nor `stage4_top20.md`. **UNRESOLVED** (§5.1). |
+| `Idea_02` Spectral Locality of Dense PEFT | `IDEA-X-0004` (Top-5 #1) | **`IDEA-X-0004`, confirmed.** Sole stage-4-traceable ancestor. | `PEFT-SPECTRAL` = `IDEA-A-0211`: in `stage3_top50.md` only, in neither `stage2_top200.md` nor `stage4_top20.md`. **UNRESOLVED** (§5.2). |
+| `Idea_03` Selective SAM via IoU-token Recalibration | `IDEA-X-0003` (Top-5 #3) + `IDEA-A-0064` SAM-IOU-CAL (stage 4, merged at §2b) | **Merged — both.** `IDEA-X-0003` supplies the reject-option / risk-coverage method; `IDEA-A-0064` supplies the anti-calibration domain-gap premise that `Idea_03/experiments.md` E0 exists to test and that `reviewer_summary.md` names as the only way to answer "Everyone already thresholds SAM IoU". | `SELECTIVE` = grid core with 53 records, representative `IDEA-A-1051`: present in `raw/pool.jsonl`, absent from **all** of stage 2 / 3 / 4. **UNRESOLVED** (§5.3). |
+
+## 4. Known defects in the idea pool (FACT — self-reported in existing files, plus this audit's counts)
+
+**FACT (self-reported).** `research_summary.md` → "Unresolved risks": "Cloud sub-agents failed or hung; pool is Supervisor-generated from **52 cores × mutations** (documented), plus **10 hand ideas**." Raw count declared as 2766 in `research_summary.md` ("Raw ideas: 2766 (≥1000)") and in `research_ledger.md` ("2766 raw IDs in `selection_history/raw/pool.jsonl`").
+
+**FACT (self-reported).** `supervisor_log.md` → "Stage 1 recovery (t1)": all three cloud sub-agents for batches A/B/C returned ERROR, "`request is required and could not be loaded from cloud agent state`". Recovery: batch C retried on cloud (`bc-7a636a75-321a-50bf-bd04-7ae953ed578d`, succeeded, 350 ideas); batch A produced by a **local** file-writer (350 ideas); batch B produced by a **local** file-writer (`bc-fb91c4d2-b3c2-5ef7-bb3f-59ac95cf0894`, 350 ideas). So the independence of the three Stage-1 generators is weaker than the original three-cloud-agent design in "Stage 1 dispatch (t0)".
+
+**FACT (verified in this audit, by counting).** `raw/pool.jsonl` contains exactly 2766 JSON lines, composed of `batch` = A 1092, B 1248, C 416, plus `A-extra` 3 / `B-extra` 3 / `C-extra` 4 = 10. The 10 "extra" records are precisely the hand ideas `IDEA-X-0001..0010`. Distinct `core` values = 62, i.e. **52 grid cores + the 10 hand ideas**, which matches the "52 cores" claim exactly. The per-file grid headers agree: `batch_A_prior.md` `count=1092`, `batch_B_prior.md` `count=1248`, `batch_C_prior.md` `count=416`.
+
+**FACT (verified in this audit) — ID namespace collision, and it affects auditability.** There are two disjoint `IDEA-A-####` namespaces in `raw/`:
+
+- the **grid**, in `raw/batch_A_prior.md` and `raw/pool.jsonl`, where `IDEA-A-0001` = "SAM-OBJECTNESS on natural-COCO-objects", cluster `SAM-OBJECTNESS`;
+- the **350-idea generated list**, in `raw/batch_A.md`, whose header declares "exactly 350 ideas, IDEA-A-0001 .. IDEA-A-0350" and whose `IDEA-A-0001` is a different idea entirely — "SAM's mask boundaries systematically snap to the locally strongest image gradient", cluster tag `SAM-FAIL`.
+
+The `IDEA-A` IDs used in `stage2_top200.md` / `stage3_top50.md` / `stage4_top20.md` resolve to the **grid**, not to `batch_A.md`. Verified by resolving every row of all three stage files against `pool.jsonl`: 200 / 50 / 19 rows, **zero unresolved IDs and zero `core` mismatches**, and the extra columns (`core | mutation | domain`, e.g. `SAM-OBJECTNESS | invert | natural-COCO-objects`) exist only in grid records. The same collision exists for B and C (`batch_B.md` `IDEA-B-0001..0350` plus `IDEA-B-M-*` / `IDEA-B-X-*` vs `batch_B_prior.md` `IDEA-B-0001..1248`; `batch_C.md` `IDEA-C-0001..` vs `batch_C_prior.md` `IDEA-C-0001..416`). **Consequence:** the three 350-idea generated lists — the only Stage-1 output that is not template-generated — never entered the funnel under a resolvable ID. This is consistent with `evolution_summary.md`'s own note that "A/B/C hand lists **reinforce** objectness, PEFT spectrum, IoU/eval calibration rather than displacing them", but that sentence is an assertion, not a traceable per-ID audit. Flagged for human review; no `stage2/3/4` file was touched.
+
+**FACT (verified in this audit) — the funnel is not monotonic between Stage 2 and Stage 3, and `stage2_top200.md` looks mechanical rather than scored.** Two measurements:
+
+- **30 of the 50 IDs in `stage3_top50.md` are absent from `stage2_top200.md`** (`IDEA-A-0211`, `0232`, `0253`, `0274`, `0295`, `0316`, `0337`, `0358`, `0379`, `0400`, `0421`, `0442`, `0463`, `0484`, `0505`, `0526`, `0547`, `0568`, `0589`, `0610`, `0631`, `0652`, `0673`, `0694`, `0715`, `0736`, `0757`, `0778`, `0799`, `0820`). An ID cannot legitimately be in the 50 without being in the 200. By contrast `stage4_top20.md` ⊆ `stage3_top50.md` is clean (0 additions), so the break is confined to the 2→3 step.
+- **`stage2_top200.md` is a prefix of the grid, not a top-200.** Its 200 rows are the 10 hand ideas plus 190 `IDEA-A` rows spanning `IDEA-A-0001..0210` with 20 gaps falling in a perfectly regular pattern (indices ≡ 5, 6 mod 21 — exactly 2 removed from each 21-row core block, giving 10 × 19 = 190). Those 190 rows cover only **10 of the 52 cores**, all SAM-family: SAM-OBJECTNESS, SAM-TEXTURE, SAM-PROMPT-GEOM, SAM-IOU-CAL, SAM-NEGCLICK, SAM-MULTIMASK, SAM2-MEMORY, SAM2-CD, HQ-BOUNDARY, FT-FORGET. The remaining 42 cores — including PEFT-SPECTRAL, LINEAR-PROBE and SELECTIVE, all three of which the Final-3 lineage depends on — were never represented at Stage 2 at all.
+
+This is the root cause of the three lineage breaks in §5.1–§5.3, and it means the "1000 → 200" review recorded in `evolution_summary.md` ("2 Review | ~200 | **200** | Priority: causal tests, cheap falsifiers, high-risk/high-reward, reviewer disagreement") is not reproducible from the artifacts. Recording only; `stage2_top200.md` is out of scope for this task and was not touched.
+
+## 5. UNRESOLVED — for human adjudication
+
+Per the audit rules, nothing below was decided unilaterally, and none of it changes `Idea_01/02/03`.
+
+1. **`LINEAR-PROBE` (`IDEA-A-0316`) in Idea_01's lineage — appears at exactly one stage.** **FACT (verified in this audit):** `A-0316` is absent from `stage2_top200.md`, present in `stage3_top50.md`, absent again from `stage4_top20.md`. Root cause in §4: it belongs to one of the 42 cores that Stage 2 never covered. Two readings: (a) `stage2_top200.md` is incomplete and `A-0316` genuinely survived Stage 2, then was cut at Stage 4 for an unrecorded reason; (b) the Final-3 table is using `LINEAR-PROBE` loosely as a description of the frozen-encoder probe design rather than as a funnel ID, in which case Idea_01's real lineage is `X-0001 + X-0002 + A-0001`. Evidence for (b): `Idea_01/experiments.md` treats the probe as a baseline, and `reviewer_summary.md` records "'Linear probe is not CVPR.' Shut up by: probe vs prompted SAM vs Med-SA on *same frozen encoder*" — i.e. a control, not the lead idea. Not resolvable from the files.
+2. **`PEFT-SPECTRAL` (`IDEA-A-0211`) in Idea_02's lineage — the same pattern.** **FACT:** absent from `stage2_top200.md`, present in `stage3_top50.md`, absent from `stage4_top20.md`. Its hypothesis ("LoRA updates for dense tasks are spectrally low-pass; extra rank does not buy boundary frequencies") is a near-restatement of `IDEA-X-0004`, so it may be a duplicate that was collapsed into `X-0004` — but no file says so, and that would not explain its appearance in the 50 after being outside the 200.
+3. **`SELECTIVE` in Idea_03's lineage — never entered the funnel.** **FACT (verified in this audit):** `SELECTIVE` is a real grid core, not a typo. `raw/pool.jsonl` holds **53** records with `core = SELECTIVE`; the canonical representative is **`IDEA-A-1051`** (`invert` / `natural-COCO-objects`), one-liner "A reject option on SAM IoU tokens raises effective Dice more than any adapter of equal compute." But the string `SELECTIVE` and the ID `IDEA-A-1051` appear in **none** of `stage2_top200.md`, `stage3_top50.md`, `stage4_top20.md`. So `evolution_summary.md` credits Idea_03 to an ancestor that was cut at Stage 2 (or never scored at all) and never reappeared. Either the Final-3 table means "selective prediction" as prose, or a genuine candidate was resurrected from the raw pool after Stage 2 without a record. Needs human adjudication; note that `IDEA-A-1051`'s claim overlaps `IDEA-X-0003` almost exactly, so nothing scientific is lost either way — only the audit trail.
+4. **The 5 silent drops** (`A-0085`, `A-0106`, `A-0127`, `A-0169`, `A-0190`) each need either a retro-recorded reason from whoever ran Stage 5, or reinstatement into the candidate set. This auditor did not invent reasons for them.
+5. **The `X-0010` stage attribution** (§2a) — `eliminated_ideas_summary.md` books it as a Stage-4 kill while `stage4_top20.md` still lists it.
+6. **Final-3 selection itself was not revisited.** The audit rules forbid changing it, and nothing found here contradicts it; the three unresolved lineage tokens above are bookkeeping defects, not evidence that a different idea should have been packaged.
+
+## 6. Evidence-grade statement for this file
+
+- **FACT** — statements about what a file in this tree says, and counts this auditor recomputed from `raw/pool.jsonl` and the `raw/*_prior.md` headers.
+- **VERIFIED PRIOR WORK (as recorded)** — the prior-work kills and their identifiers (Med-SA arXiv:2304.12620 / MedIA 2025; SAMed; LoRA-MedSAM; arXiv:2412.01240; arXiv:2510.21782; arXiv:2412.04243; Trans10K + SAM evals; CC-Dice AAAI 2025) are transcribed from `reviewer_summary.md` and `eliminated_ideas_summary.md`. This audit did not re-verify them against the literature, and no paper, citation or venue was added.
+- **HYPOTHESIS** — every claim in the Top-5 table's hypothesis, experiment and risk columns.
+- **SPECULATION** — explicitly marked inline, and never used as a drop reason.
+- **EXPECTED RESULT** — only where a source file already frames a prediction, e.g. `Idea_02/experiments.md` "Predicted: random 3×3 ≈ LoRA extra rank (no NSD gain)"; `Idea_01/experiments.md` "Random-features encoder (break \(E\)): **EXPECTED** collapse if H1 uses real SAM features".
+- **ACTUAL RESULT — none.** The label is not applied to any statement or number in this file; this bullet is its only appearance. `evolution_summary.md` states "No actual experimental numbers were produced in this round." The only numeric outputs in the tree are toy/synthetic and self-labelled as such: `Idea_01/outputs/idea01_e0/toy_report.txt` ("TOY RUN (FakeEncoder). NOT a scientific result."), `Idea_02/outputs/idea02_fft/toy_report.txt` ("TOY LoRA on random tensors. NOT a scientific result."), `Idea_03/outputs/idea03_e0/toy_report.txt` ("SYNTHETIC illustration of H1/H2. NOT measured on SAM."). Per `README.md`, "Do not report FakeEncoder numbers as results" — so none of those numbers is reproduced here as evidence for any hypothesis.
