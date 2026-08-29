@@ -1,0 +1,35 @@
+{
+  "task_id": "p0_wave_b_consolidator",
+  "role": "consolidator",
+  "pipeline": "P0 Initialize Windows",
+  "parent_dispatcher_identity": "Windows15",
+  "status": "complete",
+  "completed_at_utc": "2026-08-28T17:42:00Z",
+  "branch": "cursor/p0-wave-b-consolidator-decision-b9e0",
+  "output_files": [
+    "_dispatcher/p0/wave_b/decision.json",
+    "_dispatcher/p0/wave_b/consolidator/report.md",
+    "_dispatcher/p0/wave_b/consolidator/done.json"
+  ],
+  "windows_id": "Windows15",
+  "windows_number": 15,
+  "decision_status": "decided",
+  "judge_consensus": "3/3 unanimous Windows15 (judges A, B, C)",
+  "unresolved_items": [
+    "Residual race window on 15 (uncloseable by scanning): a not-yet-pushed run could still claim Windows15 between this decision (final fresh scan 2026-08-28T17:40:57Z, 70 origin refs) and Wave C's lock. Wave C MUST run `git fetch origin --prune` and re-verify Windows15 absent (path any casing/nesting, branch name, window.lock.json claim, research_state windows_id) on every origin head immediately before mkdir AND again immediately before writing Windows15/_state/window.lock.json; on collision bump to smallest unused N >= 16 (never 13/14, never reuse 1/5/7/2-13/16; effective first candidate 17 as of this scan - re-derive fresh).",
+    "Windows14 is consolidated by the 14-era sibling (decision 17:36:44Z) but its directory has not yet appeared; when it lands, any scan stating max=16 goes stale - re-derive at lock time.",
+    "Hygiene (non-blocking, inherited): Windows11/_state/research_state.json on its branch is malformed JSON - Wave C must parse-check every .json before commit; Windows8 branch carries an unscannable binary density_head.pt; never commit VM git remote URLs or .git/config contents.",
+    "P1/P2/P3 gate agents are blocked awaiting a window.lock.json - Wave C should proceed promptly."
+  ],
+  "constraints_respected": {
+    "sole_writer_of_decision_json": true,
+    "decision_json_absent_on_all_other_refs_verified": true,
+    "created_windows_dir": false,
+    "wrote_window_lock_json": false,
+    "wrote_research_state_json": false,
+    "force_push": false,
+    "refetched_independently": true,
+    "rescanned_all_origin_refs": true
+  },
+  "recommended_next_task_type": "wave_c_implementation"
+}
