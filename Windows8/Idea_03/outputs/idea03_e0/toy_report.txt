@@ -1,0 +1,4 @@
+SYNTHETIC illustration of H1/H2. NOT measured on SAM.
+rho_object=0.952 rho_amorphous=-0.947
+ece_object=0.012 ece_amorphous=0.279
+reject_tau=0.5 amorphous_reject_rate=0.470

@@ -1,0 +1,53 @@
+# stage3_top50
+count=50
+
+- IDEA-X-0001 | IDEA-X-0001 | Exclusion-region prompting: Amorphous targets need prompts that specify what is NOT the target.
+- IDEA-X-0002 | IDEA-X-0002 | Density decoder on frozen SAM: Replace binary mask decoder with density regression head on frozen embeddings.
+- IDEA-X-0003 | IDEA-X-0003 | IoU-token reject option: Use SAM IoU head as a selective-prediction gate.
+- IDEA-X-0004 | IDEA-X-0004 | Spectral LoRA audit: FFT of (LoRA-adapted − frozen) feature maps.
+- IDEA-X-0005 | IDEA-X-0005 | Equal-annotation-minute bakeoff: nnU-Net vs SAM-PEFT vs linear probe under fixed labeling minutes.
+- IDEA-X-0006 | IDEA-X-0006 | Prompt-tightness confound: Re-run SAM prompt papers with boxes jittered to matched tightness.
+- IDEA-X-0007 | IDEA-X-0007 | Replay for promptability: Mix 1% synthetic click-segmentation while medical PEFT.
+- IDEA-X-0008 | IDEA-X-0008 | Rater-as-model: Train on rater A, test on rater B.
+- IDEA-X-0009 | IDEA-X-0009 | Patch/lesion diameter law: Failure probability ~ f(lesion_diameter / patch_size).
+- IDEA-X-0010 | IDEA-X-0010 | Language does not group pixels: CLIP/VLM text features improve class presence AUC but not mask NSD when the visual grouper is frozen.
+- IDEA-A-0001 | SAM-OBJECTNESS | SAM-OBJECTNESS on natural-COCO-objects: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
+- IDEA-A-0022 | SAM-TEXTURE | SAM-TEXTURE on natural-COCO-objects: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
+- IDEA-A-0043 | SAM-PROMPT-GEOM | SAM-PROMPT-GEOM on natural-COCO-objects: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box i
+- IDEA-A-0064 | SAM-IOU-CAL | SAM-IOU-CAL on natural-COCO-objects: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
+- IDEA-A-0085 | SAM-NEGCLICK | SAM-NEGCLICK on natural-COCO-objects: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
+- IDEA-A-0106 | SAM-MULTIMASK | SAM-MULTIMASK on natural-COCO-objects: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
+- IDEA-A-0127 | SAM2-MEMORY | SAM2-MEMORY on natural-COCO-objects: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
+- IDEA-A-0148 | SAM2-CD | SAM2-CD on natural-COCO-objects: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
+- IDEA-A-0169 | HQ-BOUNDARY | HQ-BOUNDARY on natural-COCO-objects: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
+- IDEA-A-0190 | FT-FORGET | FT-FORGET on natural-COCO-objects: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
+- IDEA-A-0211 | PEFT-SPECTRAL | PEFT-SPECTRAL on natural-COCO-objects: LoRA updates for dense tasks are spectrally low-pass; extra rank does not buy boundary frequencies.
+- IDEA-A-0232 | PEFT-SITE | PEFT-SITE on natural-COCO-objects: LoRA placement on Q vs V vs MLP has different effects on localization vs recognition.
+- IDEA-A-0253 | PEFT-DECODER | PEFT-DECODER on natural-COCO-objects: Decoder-only FT matches full FT on large organs and fails on small lesions, revealing where the encoder was actually neede
+- IDEA-A-0274 | PEFT-RANK-COLLAPSE | PEFT-RANK-COLLAPSE on natural-COCO-objects: PEFT adapters collapse to rank-1 spatial maps that ignore instance count.
+- IDEA-A-0295 | BN-VS-LORA | BN-VS-LORA on natural-COCO-objects: On tiny medical sets, unfreezing BN/LN dominates LoRA; reported LoRA gains are actually norm adaptation.
+- IDEA-A-0316 | LINEAR-PROBE | LINEAR-PROBE on natural-COCO-objects: A linear head on frozen SAM embeddings beats prompted SAM on amorphous targets if objectness is the bottleneck.
+- IDEA-A-0337 | DICE-RANK | DICE-RANK on natural-COCO-objects: Method ranking on medical VFMs reverses under size-stratified Dice / NSD / CC-Dice vs mean Dice.
+- IDEA-A-0358 | LEAKAGE | LEAKAGE on natural-COCO-objects: Apparent MedSAM generalization is partly patient/scanner/hospital leakage in official splits.
+- IDEA-A-0379 | PRETRAIN-OVERLAP | PRETRAIN-OVERLAP on natural-COCO-objects: Zero-shot SAM 'wins' on some medical tests because of SA-1B / web-image overlap with textbook anatomies.
+- IDEA-A-0400 | LABEL-NOISE | LABEL-NOISE on natural-COCO-objects: Inter-rater disagreement geometry, not model capacity, caps Dice on ambiguous lesions; methods overfit rater A.
+- IDEA-A-0421 | SLICE-INCONSIST | SLICE-INCONSIST on natural-COCO-objects: 2D SAM-per-slice is inconsistent in 3D because prompts are i.i.d.; the bug is prompt independence not 2D kernels.
+- IDEA-A-0442 | ANISO | ANISO on natural-COCO-objects: Anisotropic CT spacing fools ViT patch geometry; failures attributed to 'domain' are resampling artifacts.
+- IDEA-A-0463 | SMALL-OBJ-INTERP | SMALL-OBJ-INTERP on natural-COCO-objects: Small-object error is dominated by input resampling, not architecture; same model at native resolution closes the gap.
+- IDEA-A-0484 | CALIB-SEG | CALIB-SEG on natural-COCO-objects: Pixel confidence of VFMs is anti-correlated with error on boundaries; temperature scaling on pixels fails.
+- IDEA-A-0505 | SYN-PHOTO | SYN-PHOTO on natural-COCO-objects: Photorealistic synthetic data helps classification probes but not boundaries; geometric label-perfect renders transfer more.
+- IDEA-A-0526 | SYN-DOMAIN | SYN-DOMAIN on natural-COCO-objects: Synthetic-to-real gap for smoke is lighting/scattering, not texture GAN fidelity.
+- IDEA-A-0547 | VLM-POOL | VLM-POOL on natural-COCO-objects: VLM global pooling destroys the spatial signal needed for dense prediction; language helps class identity not masks.
+- IDEA-A-0568 | VLM-TOKEN | VLM-TOKEN on natural-COCO-objects: Open-vocab segmentation is retrieval of class tokens, not pixel grouping; grouping still needs an objectness model.
+- IDEA-A-0589 | PROMPT-LEARN | PROMPT-LEARN on natural-COCO-objects: Prompt embeddings memorize dataset names rather than visual concepts; they fail on renamed classes.
+- IDEA-A-0610 | FEWSHOT-OVERLAP | FEWSHOT-OVERLAP on natural-COCO-objects: Few-shot medical segmentation is secretly many-shot via pretraining overlap with the same public organs.
+- IDEA-A-0631 | WEAK-BOX | WEAK-BOX on natural-COCO-objects: Box-supervised SAM self-training confirms box bias and never recovers concavities.
+- IDEA-A-0652 | SELF-TRAIN-BIAS | SELF-TRAIN-BIAS on natural-COCO-objects: Pseudo-label self-training on SAM increases precision on easy objects and decreases recall on amorphous ones.
+- IDEA-A-0673 | DA-TEXTURE | DA-TEXTURE on natural-COCO-objects: Unsupervised DA matches stain/texture and ignores anatomy; target Dice rises while topology errors rise.
+- IDEA-A-0694 | LONGTAIL-DET | LONGTAIL-DET on natural-COCO-objects: Detection AP gains from VFMs are concentrated in frequent classes; tail classes regress.
+- IDEA-A-0715 | UNCERT-ERROR | UNCERT-ERROR on natural-COCO-objects: MC-dropout / ensembles on SAM do not track true error on transparent objects.
+- IDEA-A-0736 | CLICK-BUDGET | CLICK-BUDGET on natural-COCO-objects: Interactive SAM annotation has diminishing returns after 2 clicks on objects and no returns on smoke.
+- IDEA-A-0757 | NEGRESULT-SCALE | NEGRESULT-SCALE on natural-COCO-objects: Scaling SAM decoder width does not fix amorphous targets; encoder objectness is the bottleneck.
+- IDEA-A-0778 | NEGRESULT-DATA | NEGRESULT-DATA on natural-COCO-objects: More in-domain labeled smoke images beat any prompt engineering given equal annotation minutes.
+- IDEA-A-0799 | COMPUTE-FAIR | COMPUTE-FAIR on natural-COCO-objects: Published VFM wins disappear under equal-FLOP / equal-annotation budgets vs nnU-Net.
+- IDEA-A-0820 | TTA-PROMPT | TTA-PROMPT on natural-COCO-objects: Test-time prompt ensembling helps more than extra training for SAM on medical organs.
