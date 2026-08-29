@@ -1,0 +1,58 @@
+%% B-0114 real-experiment architecture (Stage-7 package, Agent W)
+%% Rendered inline in proposal.md §9. The prototype's own (sandbox) diagram lives in
+%% src/prototype/ARCHITECTURE.md.
+flowchart TB
+    subgraph GATE["exp_02 GATE (binding: runs BEFORE the grid is funded)"]
+        E2["B-0001 stratified audit<br/>norm-map vs 4 free baselines<br/>fg/bg x boundary-distance strata<br/>~1 GPU-week"]
+        E2 -->|"norm map loses within-foreground"| DROP["DROP B-0001 arm<br/>pure mechanism paper"]
+        E2 -->|"norm map wins strata"| KEEP["KEEP B-0001 arm<br/>(reported under B-0001, not here)"]
+    end
+
+    subgraph DATA["data"]
+        ADE["ADE20K train/val<br/>(killer)"]
+        EXT["Cityscapes seg + NYUv2 depth<br/>(full matrix)"]
+        CLS["VTAB-style classification triplet<br/>(Fig. 11 control)"]
+    end
+
+    subgraph BB["frozen backbone pair (never updated)"]
+        D2["DINOv2 ViT-B/14<br/>register-FREE"]
+        D2R["DINOv2 ViT-B/14 + registers<br/>register-EQUIPPED sibling"]
+    end
+
+    subgraph ARMS["arm layer (owns all trainable prompt-side params)"]
+        A["(a) learned VPT<br/>K tokens, shallow/deep"]
+        B["(b) frozen_random<br/>K tokens, never trained"]
+        C["(c) attention_bias<br/>test-time-registers construction<br/>NO token appended"]
+        D["(d) no_token"]
+        E["(e) sink_only control<br/>values force-zeroed"]
+    end
+
+    subgraph HEAD["dense head (one class for all arms)"]
+        LIN["linear per-patch probe"]
+        DEC["light decoder (both reported)"]
+    end
+
+    DATA --> BB
+    BB --> ARMS
+    ARMS --> HEAD
+    HEAD --> METRIC["mIoU / RMSE per arm<br/>3 seeds"]
+
+    METRIC --> DECOMP["decomposition table<br/>learned = a - max(b,c)<br/>register-bias = c - d<br/>insertion = b - d"]
+    METRIC --> H2["H2 directional test<br/>gain(free) vs gain(equipped)<br/>seed-paired, one-sided"]
+
+    subgraph SIG["signature analyzer (same runs)"]
+        S1["attention-sink mass<br/>per layer"]
+        S2["NOP vs broadcast<br/>classification (2606.08105)"]
+        S3["norm stats + outlier fracs<br/>(PH-Reg low-norm caveat)"]
+        S4["register competition<br/>on equipped backbone"]
+    end
+    ARMS -. "captured attention/activations" .-> SIG
+
+    DECOMP --> TABLE["pre-registered interpretation table (experiments.md section 18)"]
+    H2 --> TABLE
+    SIG --> TABLE
+    CLS --> BUGDET["classification control:<br/>must reproduce Prompt-Fixed ~= Linear<br/>(implementation-bug detector)"]
+    BUGDET -->|fails| HALT["HALT: fix implementation,<br/>results embargoed"]
+    TABLE -->|"kill cell K1: b,c < 5% each AND H2 < 2x sd"| STOPNODE["STOP mechanism claim:<br/>Fig. 11 replica on dense tasks<br/>ship deflationary note"]
+    TABLE -->|"cell P1: arm (c) >= 50% of gain"| PIVOT["PIVOT: training-free retrofit paper"]
+    TABLE -->|"mechanism cells M1/M2/K2"| PAPER["mechanism paper"]

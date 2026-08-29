@@ -1,0 +1,33 @@
+%% B-0114 decision-gate flow (binding conditions from Q top5.md / S final3.md / PI_BINDING.md)
+flowchart TD
+    START["seat start (quarter clock running)"] --> FRESH1["freshness re-search @ proposal freeze<br/>(queries logged, roadmap.md section 26)"]
+    FRESH1 -->|"dense-task token-arm mechanism paper printed"| KILLSCOOP["KILL seat (scoop)<br/>B-0194 activates without new battle"]
+    FRESH1 -->|clear| WEEK1
+
+    subgraph WEEK1["week 1 (co-scheduled)"]
+        EXP02["launch exp_02 gate<br/>(~1 GPU-week, BINDING: before grid commit)"]
+        INFRA["infrastructure: token wrapper +<br/>attention-bias module (2506.08010)"]
+        E0["E0 classification control<br/>must reproduce VPT Fig. 11<br/>Prompt-Fixed ~= Linear"]
+    end
+
+    E0 -->|fails| HALT["HALT: implementation bug<br/>all results embargoed until control reproduces print"]
+    E0 -->|passes| WAIT["hold for gate verdict"]
+
+    EXP02 -->|"norm map loses within-foreground<br/>on register-free models"| DROPARM["DROP B-0001 arm<br/>pure mechanism paper"]
+    EXP02 -->|"norm map wins strata"| KEEPARM["KEEP B-0001 arm<br/>reported under B-0001 only<br/>(no uncertainty claims here)"]
+
+    DROPARM --> COMMIT
+    KEEPARM --> COMMIT
+    WAIT --> COMMIT["COMMIT the 24-run killer grid (E1)<br/>4 arms x 2 backbones x 3 seeds, ADE20K"]
+
+    COMMIT --> READ["read E1 against the pre-registered<br/>interpretation table (experiments.md section 18)"]
+
+    READ -->|"K1: b,c each < 5% of VPT gain<br/>AND H2 gap < 2x seed sd"| STOPK1["STOP mechanism claim<br/>dense Fig. 11 replica<br/>deflationary note / merged exp_02 note<br/>PI decides B-0194 activation"]
+    READ -->|"P1: arm (c) >= 50%"| PIVOT["PIVOT: training-free VPT substitute<br/>(retrofit recipe paper)"]
+    READ -->|"M1/M2/K2/X cells"| FULL["fund full matrix E2-E7<br/>per table row"]
+    READ -->|"outside every cell"| MUSH["MUSH handling: no headline;<br/>merged-note mechanism half;<br/>PI replacement decision"]
+
+    FULL --> FRESH2["freshness re-search @ experiment freeze"]
+    FRESH2 --> PAPERS["branch paper (titles proposal.md section 1)"]
+
+    QCLOCK["quarter boundary reached<br/>without execution start"] -.-> KILLCAL["calendar KILL review<br/>(obsolescence clock, binding)"]

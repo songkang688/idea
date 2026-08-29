@@ -1,0 +1,22 @@
+# Stage-5 Agent N — index: diversified 10, ranked by Research ROI after killer experiment
+
+**ROI definition used:** (expected decision-information + expected paper value, conditional on the killer experiment having resolved the idea's primary uncertainty) ÷ (cost to reach that resolution: GPU + annotation + calendar/scoop risk). This is a ranking of *what to start next week*, not a significance ranking — the PI weighs flagship upside separately. No M `top50.md` existed at write time (checked); no I `provisional_200.md` beyond G's partial (checked); names align with G's ledger and PI_BINDING.
+
+**Substitutions: NONE.** All ten mandated IDs are alive in their mandated forms after K and this session's fresh scoop-checks (details in AGENT_REPORT). Two required repositioning, not substitution: A-0028 (new distractor-memory literature found this session — probe unclaimed, framing updated) and C-0082-mut (learned-monitor competitors found this session — wedge narrowed, baseline added).
+
+| Rank | File | ID | Killer-experiment cost | Why this ROI position |
+|---|---|---|---|---|
+| 1 | exp_05 | **C-0306** conformal coverage vs NMS | 2–4 GPU-days, analysis-only gate | Cheapest decisive gate in the set; opens onto a constructive method with a formal-novelty moat; satisfies the PI's C-idea gravity requirement; on a months-scale scoop clock (execute first). |
+| 2 | exp_06 | **C-0338** size-resolved human ceiling | 1-day census gate + 1–2 GPU-days | One figure decides the claim; either outcome (crossing / no crossing) is field-moving; shares infrastructure with the whole GT-epistemology family; contingent annotation cost is the only overhang. |
+| 3 | exp_03 | **A-0061** topology at checkpoint selection | 2–3 GPU-weeks, no annotation | Either outcome publishes (free gains vs validation of the loss literature); the noise-null design is the moat over arXiv:2601.06067; window is this-cycle, not comfortable. |
+| 4 | exp_07 | **A-0028** SAM2 teleport test | 1 GPU-day killer | Highest information-per-dollar in the set and the only video-memory coverage; discounted one rank because it never had an external Reviewer-2 pass (built into exp_07) and the memory-design field is moving. |
+| 5 | exp_01 | **B-0114** 4-arm dense-task VPT-as-registers | 1–1.5 GPU-weeks killer | Best mechanism bet (H); every outcome cell interpretable; costlier than ranks 1–4 and carries the register micro-field's obsolescence risk; naive form is struck per PI binding. |
+| 6 | exp_08 | **A-0199-mut** classical-segmenter dose-response | 2 GPU-days pilot gate | Cheap pilot gate; the surviving version is scientifically stronger than J's "sliver" (L); capped by the mandatory deference to the VLM papers and by inpainting-confound litigation. |
+| 7 | exp_04 | **A-0206** SAM fingerprint + inheritance | annotation-heavy corpus + 1–2 GPU-weeks | Highest flagship ceiling in the set, but the killer experiment is the *expensive* part (controlled-provenance corpus, weeks of calendar); ROI-per-week is mid-table even though ROI-if-it-lands is top. |
+| 8 | exp_09 | **C-0082-mut** SAM failure-prediction law | 2–4 GPU-days | Inference-only and cheap, but this session's scoop-check found learned-monitor competitors (RUAC, TCSR-Monitor) that narrow the wedge to interpretability+extrapolation; highest kill-probability at the gate after exp_02. |
+| 9 | exp_10 | **A-0100+A-0090** smoke leakage + TTD | 2 GPU-days + curation | Cheap, decisive, guaranteed shipping artifact, covers the safety-diversity mandate — but applications-track ceiling caps paper value (J's honesty caveat), and curation dominates cost. |
+| 10 | exp_02 | **B-0001** register-norm UQ audit | ~1 GPU-week | Ranked last *as a standalone bet* because the honest modal outcome is deflationary (H, endorsed here); its real role is the 1-GPU-week decision experiment that determines whether the register micro-field ships one merged paper or two dissociated ones — as a decision instrument its ROI is high, as a paper bet it is the weakest. |
+
+## Execution-order note (independent of ranking)
+
+Scoop clocks argue for starting ranks 1, 2, 4, 6, 8 (all ≤1-week gates) **in parallel within one quarter** — they are cheap enough to co-schedule, and H measured ~1/3-per-year scoop hazard for exactly this price class. exp_02 should run before any final commitment to exp_01's full study (the merge decision gates the register micro-field's slot count). exp_04's corpus commissioning should start immediately if A-0206 enters the Stage-6 battle, because annotation calendar time, not GPU, is its critical path.

@@ -1,0 +1,33 @@
+%% C-0306 system architecture — modules 1-5 (proposal.md section 8/9)
+%% Render with any mermaid renderer; also embedded in proposal.md section 9.
+flowchart TB
+    subgraph DATA["Module 1 — candidate-cache harvester"]
+        DET["5-8 public detectors,<br/>post-processing disabled"]
+        DS["COCO val / LVIS / CrowdHuman<br/>+ crowdedness strata"]
+        CACHE["pre-NMS candidate cache<br/>(gt_boxes, cand_boxes, cand_scores)"]
+        DET --> CACHE
+        DS --> CACHE
+        SYN["synthetic generator<br/>(prototype stand-in, src/)"] -.drop-in.-> CACHE
+    end
+
+    CACHE --> SPLIT["image-level split:<br/>calibration / test"]
+
+    subgraph GATE["Module 2 — blind-spot analyzer (H1 gate)"]
+        BS["per-GT: detected pre-NMS?<br/>all covering candidates suppressed?"]
+        BST["blind-spot table:<br/>detector x dataset x NMS-iou x crowdedness"]
+        BS --> BST
+    end
+    CACHE --> BS
+    NMS["standard greedy NMS<br/>(theta grid, score floor)"] --> BS
+
+    BST --> DECIDE{"gate: blind rate >= 5%<br/>in a deployed stratum?"}
+    DECIDE -- "no (<1-2% everywhere)" --> NOTE["ship measurement note<br/>(negative result)"]
+    DECIDE -- yes --> METHOD
+
+    subgraph METHOD["Modules 3-5 — method leg"]
+        CAL["Module 3 conformal layer:<br/>split-conformal q_hat (may be +inf)"]
+        CPS["Module 4 CPS:<br/>calibrate at tau_cal = tau + (1-kappa),<br/>suppress in-set at IoU >= kappa,<br/>redundancy budget r"]
+        FRONT["Module 5 frontier evaluator:<br/>coverage vs set size vs duplicates,<br/>pipelines A-D + external baselines"]
+        CAL --> CPS --> FRONT
+    end
+    SPLIT --> CAL

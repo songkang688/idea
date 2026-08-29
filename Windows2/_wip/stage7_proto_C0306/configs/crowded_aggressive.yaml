@@ -1,0 +1,40 @@
+# C-0306 prototype — stress config: crowded scenes + aggressive NMS (iou 0.3).
+# This is the regime exp_05 hypothesises the blind spot lives in
+# (dense pedestrians / cluttered shelves + aggressive suppression).
+# All data synthetic; see README.md.
+
+seed: 7
+n_scenes: 400
+calib_fraction: 0.5
+alpha: 0.1
+tau_iou: 0.5
+
+nms_iou_grid: [0.3, 0.4, 0.5]
+nms_deploy_iou: 0.3     # aggressive suppression at deploy time
+nms_score_floor: 0.05
+
+cps_kappa: 0.75
+cps_redundancy: 1
+
+crowd_levels:
+  crowded:
+    objects_per_scene: 14.0
+    cluster_fraction: 0.85
+    max_cluster_size: 5
+    cluster_spread: 0.30
+  very_crowded:
+    objects_per_scene: 20.0
+    cluster_fraction: 0.95
+    max_cluster_size: 6
+    cluster_spread: 0.25
+
+detector:
+  candidates_per_object: 8.0
+  center_jitter: 0.07
+  scale_jitter: 0.07
+  score_iou_gain: 6.0
+  score_bias: -3.2
+  score_noise: 0.7
+  difficulty_sd: 0.6
+  fp_per_scene: 12.0
+  fp_score_bias: -2.2

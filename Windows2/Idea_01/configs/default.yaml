@@ -1,0 +1,43 @@
+# C-0306 prototype — default config: three crowdedness strata, moderate NMS.
+# All data synthetic; see README.md.
+
+seed: 0
+n_scenes: 400          # per crowd level; ~50/50 calib/test split
+calib_fraction: 0.5
+alpha: 0.1             # nominal coverage 0.90
+tau_iou: 0.5           # a GT counts as covered if some set box has IoU >= 0.5
+
+nms_iou_grid: [0.3, 0.5, 0.7]   # blind-spot sweep (lower = more aggressive)
+nms_deploy_iou: 0.5             # operating point for the coverage pipelines
+nms_score_floor: 0.05
+
+cps_kappa: 0.75        # CPS merge threshold -> tau_cal = tau + (1 - kappa) = 0.75
+cps_redundancy: 1      # keep top-1 per cluster (maximal suppression)
+
+crowd_levels:          # listed sparse -> crowded (H1 monotonicity read-out)
+  sparse:
+    objects_per_scene: 4.0
+    cluster_fraction: 0.05
+    max_cluster_size: 2
+    cluster_spread: 0.45
+  medium:
+    objects_per_scene: 8.0
+    cluster_fraction: 0.45
+    max_cluster_size: 3
+    cluster_spread: 0.35
+  crowded:
+    objects_per_scene: 14.0
+    cluster_fraction: 0.85
+    max_cluster_size: 5
+    cluster_spread: 0.30
+
+detector:
+  candidates_per_object: 8.0
+  center_jitter: 0.07    # tight candidate clouds (anchor-grid-like near-duplicates)
+  scale_jitter: 0.07
+  score_iou_gain: 6.0
+  score_bias: -3.2
+  score_noise: 0.7
+  difficulty_sd: 0.6
+  fp_per_scene: 12.0
+  fp_score_bias: -2.2

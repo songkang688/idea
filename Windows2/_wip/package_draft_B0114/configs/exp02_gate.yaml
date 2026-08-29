@@ -1,0 +1,36 @@
+# exp_02 — the BINDING pre-grid gate (N stage5 exp_02; Q Round-3 ordering lock).
+# Decides the B-0001 arm: drop vs keep (reported under B-0001 only — no uncertainty claims in B-0114).
+# Spec draft — not runnable against src/prototype.
+name: exp02_gate
+seeds: [0]                       # one probe-training pass per (backbone, dataset); analysis-dominated
+
+backbone_regimes:
+  - {id: register_free,      arch: dinov2_vitb14,     ckpt: TODO@execution}
+  - {id: register_equipped,  arch: dinov2_vitb14_reg, ckpt: TODO@execution}
+  - {id: tt_register_patched, arch: dinov2_vitb14, patch: test_time_registers, ckpt: TODO@execution}
+
+datasets: [ade20k, cityscapes]
+
+probe: {kind: linear_per_patch, trainable: [head]}
+
+predictor_maps:                  # 5 predictors, all free, all mandatory (H's "embarrassing baselines")
+  - token_norm_map               # the B-0001 candidate signal
+  - softmax_entropy
+  - distance_to_predicted_boundary
+  - local_edge_density
+  - feature_prototype_distance
+
+evaluation:
+  target: per_pixel_probe_error
+  metrics: [auroc, auprc, risk_coverage]
+  strata:
+    - foreground_vs_background
+    - distance_to_boundary_bands: [0-2, 2-8, 8-32, 32+]   # in pixels at eval resolution
+  extra: [norm_vs_error_monotonicity_within_foreground, low_norm_artifact_prevalence]  # PH-Reg caveat
+
+gate_rule:                       # pre-registered (experiments.md section 15)
+  drop_b0001_arm_if: "token_norm_map loses to ANY baseline within foreground strata on register_free"
+  keep_b0001_arm_if: "token_norm_map wins within-foreground AND boundary bands"
+  note: "keep => reported under B-0001's own paper; B-0114 makes no uncertainty claims either way"
+
+budget: {gpu: 24-40gb_single, est_total: ~1_gpu_week}

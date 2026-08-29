@@ -1,0 +1,24 @@
+# E3 — token-count sweep: bounds the softmax-denominator/temperature confound (H attack A3).
+# Register absorption should saturate at small K (Darcet: ~4 registers suffice);
+# generic capacity/temperature effects scale with K — divergent signatures.
+# Runs after E1 lands in a live interpretation-table cell. Spec draft — not runnable against src/prototype.
+name: token_sweep
+seeds: [0, 1, 2]
+
+backbones:
+  - {id: register_free, arch: dinov2_vitb14, ckpt: TODO@execution}
+
+arms: [frozen_random, learned]
+sweep:
+  num_prompts: [1, 4, 16, 64]
+  insertion: shallow
+
+dataset: {name: ade20k, root: TODO@execution, crop: 518}
+heads: [{kind: linear_per_patch}]
+train: {trainable: [prompts_or_head], epochs: 40, batch_size: 16, lr: 1.0e-3}
+
+readouts:
+  per_k: [miou_gain_over_no_token, attention_sink_mass, nop_broadcast_shares]
+  decision_axis: "saturating-in-K gain+sink => register-like; monotone-in-K => capacity/temperature-like"
+
+budget: {gpu: a100_40gb, est_total: ~3_gpu_days}

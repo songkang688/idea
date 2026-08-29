@@ -1,0 +1,29 @@
+# B-0114 prototype — default: the 4 mandated arms x 2 backbones x 3 seeds.
+name: default
+seeds: [0, 1, 2]
+backbones: [register_free, register_equipped]
+arms: [no_token, frozen_random, learned, learned_frozen]
+num_prompts: 4
+num_registers: 4
+head_kind: linear
+
+data:
+  image_size: 32
+  patch_size: 4
+  num_classes: 4
+
+model:
+  dim: 48
+  depth: 3
+  heads: 4
+  mlp_ratio: 2.0
+
+train:
+  pretrain_steps: 300
+  pretrain_lr: 3.0e-3
+  arm_steps: 400
+  arm_lr: 3.0e-3
+  batch_size: 32
+  train_scenes: 512
+  val_scenes: 192
+  paired_scenes: 64

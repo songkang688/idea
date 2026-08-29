@@ -1,0 +1,57 @@
+# E1 — the killer grid: 4 arms x 2 backbones x 3 seeds = 24 runs on ADE20K.
+# BINDING: do not launch until exp02_gate.yaml has returned its verdict (experiments.md section 15).
+# Spec draft — not runnable against src/prototype.
+name: killer_ade20k
+seeds: [0, 1, 2]                # paired across backbones (same init streams) for the H2 test
+
+backbones:
+  - id: register_free
+    arch: dinov2_vitb14
+    ckpt: TODO@execution        # pin by hash from the DINOv2 release
+    registers: 0
+  - id: register_equipped
+    arch: dinov2_vitb14_reg
+    ckpt: TODO@execution        # Darcet et al. register checkpoints, same release
+    registers: 4
+
+arms: [no_token, frozen_random, learned, attention_bias]
+prompt:
+  num_prompts: 16               # K matched across token arms; VPT-shallow for the killer
+  insertion: shallow
+  init: vpt_default             # arm (b) must reproduce VPT Prompt-Fixed init exactly
+attention_bias:                 # arm (c) — test-time-registers construction, NO appended token
+  method: test_time_registers   # arXiv:2506.08010, pinned repo commit TODO@execution
+  register_neuron_ident: on_register_free_backbone
+  frozen_during_head_training: true
+
+dataset:
+  name: ade20k
+  root: TODO@execution
+  crop: 518                     # ViT-B/14-compatible
+  classes: 150
+
+heads:                          # both reported for every arm (confound 21.2)
+  - kind: linear_per_patch
+  - kind: light_decoder
+
+train:
+  trainable: [prompts_or_bias, head]   # backbone frozen, bit-identical across arms per (backbone, seed)
+  epochs: 40
+  batch_size: 16
+  lr: 1.0e-3
+  schedule: cosine
+
+readouts:
+  task_metric: miou
+  decomposition: [total, insertion, register_bias, learned_content]   # telescoping asserted per seed
+  h2_directional: {pairing: seed, threshold_sd_multiple: 2.0}
+  signatures:
+    - attention_sink_mass_per_layer
+    - nop_broadcast_classification    # arXiv:2606.08105 diagnostics (mandatory per L audit)
+    - norm_outlier_fraction           # secondary only (PH-Reg low-norm caveat)
+    - register_competition            # equipped backbone: prompt vs built-in register mass
+
+budget:
+  gpu: a100_40gb
+  est_hours_per_run: [6, 10]
+  total_runs: 24

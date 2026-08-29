@@ -1,0 +1,65 @@
+# A-0028 KILLER BATTERY SPEC — SAM2.1-L, 1 GPU-day (pre-registered; experiments.md Section 20)
+#
+# STATUS: pre-registered specification for the REAL-MODEL runner (built days 1-3 of week one).
+# This file is NOT consumed by src/run_synthetic.py (which takes configs/default.yaml or smoke.yaml
+# and runs the synthetic surrogate only). No number in the package was produced from this spec.
+# Binding schedule: runs day 4 of week one, placebo arm FIRST (validity gate V).
+
+seed: 20260904            # frozen at experiment freeze, day 4
+
+subject:
+  model: sam2.1_hiera_large
+  checkpoint: sam2.1_hiera_large.pt          # official SAM2.1 release
+  model_cfg: configs/sam2.1/sam2.1_hiera_l.yaml
+  prompt: frame0_positive_point_at_target_center
+  reprompting: none
+  inference: default                          # no test-time modifications
+
+stimuli:
+  resolution: [854, 480]                      # 480p, d specified resolution-independently below
+  clip_frames: 15                             # 6 prefix + 1 manipulation + 8 post
+  compositing: poisson_blend                  # Perez et al. 2003; per-frame jitter for video plausibility
+  donors:
+    objects: [coco2017_val_instances, lvis_v1_rare]
+    backgrounds: [davis2017, sa_v_frames, mose_crowded]
+  cache: rendered_clips_shared_across_subjects   # byte-identical stimuli for every later subject
+
+grid:                                          # pre-registered; no post-hoc cells
+  displacements_diag_frac: [0.05, 0.10, 0.20, 0.40, 0.60]
+  gaps_frames: [1, 2, 4, 8, 16]                # frame-drop, NOT frozen frames (experiments.md S16)
+  similarity_tiers: [same_instance, same_class, different_class_size_matched]
+  log_clip_similarity: true                    # continuous covariate for the psychometric fit
+  trials_per_cell: 130                         # 75 cells -> ~9750 swap clips ~= 1e4
+
+arms:
+  placebo:                                     # runs FIRST - gate V
+    trials: 300
+    rule: identical compositing, nothing moves
+  jump:
+    cells: full_grid_subsample_25
+    trials_per_cell: 60
+  dummies:                                     # bracket baselines on the same clips
+    - template_matcher_frame0                  # NCC or frozen-DINO feature match
+    - static_location
+
+scoring:                                       # pre-registered trichotomy (experiments.md S19)
+  follow_object: {iou_new_location_min: 0.5, iou_old_occupant_max: 0.1}
+  follow_place: {iou_old_occupant_min: 0.5, iou_new_location_max: 0.1}
+  lost: {mask_area_frac_max: 0.001}
+  threshold_sensitivity_appendix: [0.3, 0.5, 0.7]
+
+gates:                                         # decision rules, evaluated day 5 (experiments.md S20)
+  V_validity: {placebo_disruption_wilson_upper_max: 0.05, on_fail: fix_compositing_once_then_KILL}
+  A_location_prior_law:
+    spearman_min_each_of_d_and_g: 0.8
+    marginal_range_min: 0.15
+    ci_separation: non_overlapping_95
+  B_appearance_dominance: {follow_object_min_every_cell: 0.90, ci_lower_min: 0.85}
+  C_unsystematic: {rule: neither_A_nor_B, verdict: STOP_multi_model_extension}
+  partial: monotone_on_one_axis_counts_as_A_with_flat_axis_reported
+
+budget:
+  gpu: 1x 24GB (A10G / RTX3090 / RTX4090 class)
+  frames_total: ~1.6e5
+  wall_clock: <= 1 GPU-day including I/O, scoring, dummies
+  storage_gb: ~20

@@ -1,0 +1,190 @@
+# Agent D Kill List — Batch C
+
+180 of 345 ideas eliminated. Every kill has a one-line reason below; two-sentence critiques for each are in `scores.jsonl`. Killing criteria were **not** low averages: an idea died only for (a) direct prior-work occupation with nothing left to claim, (b) instrument/confound problems that no cheap redesign fixes, (c) predictable outcomes with low information value, (d) venue mismatch for this portfolio, or (e) subsumption by a stronger sibling in the batch.
+
+## False-kill audit (metaresearch protection)
+
+Per the mandate I re-checked every killed idea tagged meta/eval-science before finalizing. Reversals made during that pass: none needed reversal into keep, but three metaresearch kills were downgraded to mutate earlier in scoring (0049, 0050, 0286) rather than killed, and the following kills were double-checked and stand because a stronger sibling survives: 0244 (subsumed by 0243), 0288 (subsumed by 0290), 0295 (mechanism already understood), 0297 (direct port of Recht/Roelofs-line adaptive-overfitting work), 0301 (Green-AI genre, soft data), 0336 (learning-curve-extrapolation literature owns it). Metaresearch ideas killed for being *predictable* rather than *occupied* were the highest false-kill risk; I kept 0294, 0312, 0300, 0291 partly for that reason.
+
+## Kills (by ID)
+
+- **W2-C-0002** — Small-object gains from resolution are sampling-density artifacts — Confounded design, low upside, well-trodden ablation space.
+- **W2-C-0004** — Synthetic occluders overestimate real occlusion robustness — Moderate insight, limited downstream consequence.
+- **W2-C-0005** — Temporal aggregation in video detectors mostly re-ranks confidence, not fixes localization — Niche and shrinking area; fold into 0012-style stability work.
+- **W2-C-0006** — Open-vocab detectors fail on negated and attribute-composed prompts — Compositionality failures already established for VLM-based systems.
+- **W2-C-0008** — Detection AP saturates where counting error explodes: density-conditioned evaluation — Known task mismatch; limited new information.
+- **W2-C-0009** — Tiling for small objects: gains vs boundary double-counting — Engineering detail with existing tooling literature.
+- **W2-C-0010** — Truncation vs occlusion: two conflated failure modes — Instrumentation (flags) too noisy to support the headline claim alone.
+- **W2-C-0014** — Amodal vs modal box conventions silently corrupt cross-dataset evaluation — Subsumed by 0208 (label conventions as a domain).
+- **W2-C-0015** — Confidence calibration collapses as instance count grows — Detection calibration conditioning already an active, crowded thread.
+- **W2-C-0016** — Open-vocab detectors inherit bag-of-words behavior on spatial-relation prompts — Headline conclusion already established in adjacent benchmarks.
+- **W2-C-0017** — Extreme aspect ratios: wires, poles, and the IoU-anchor blind spot — Niche geometry issue with existing community workaround.
+- **W2-C-0018** — Motion-blur-stratified evaluation for video detection — Routine stratification, no new decision value.
+- **W2-C-0019** — Copy-paste augmentation gains: appearance learning or label rebalancing — Mechanism partially ablated in original augmentation papers; aging target.
+- **W2-C-0021** — Synonym collisions in open-vocab NMS: person vs pedestrian — Engineering bug report, not a research finding.
+- **W2-C-0022** — Visible-fraction confounds in reported occlusion robustness — Correction without consequence; no standalone paper.
+- **W2-C-0023** — The impossibility zone: objects smaller than effective stride — Architecture-geometry floor largely community knowledge.
+- **W2-C-0024** — Density distribution shift between train and test in crowded benchmarks — Single-benchmark reweighting exercise, low upside.
+- **W2-C-0025** — Error decomposition for video detection mAP: association vs detection — Redundant with 0012/0190 flicker line.
+- **W2-C-0027** — Aerial vs natural small objects: one scaling law does not fit both — Subsumed by 0260 cross-benchmark rank study.
+- **W2-C-0028** — Occlusion ordering as an unsupervised probe of detector 3D awareness — Probing study with fragile inference and low stakes.
+- **W2-C-0029** — Object permanence in long video: detectors plus trackers vs a Kalman baseline — Simple-motion-model superiority substantially established in tracking literature.
+- **W2-C-0031** — Do feature-upsampling modules improve localization or classification for small objects — Routine error-decomposition ablation.
+- **W2-C-0033** — Does amodal completion pretraining causally improve occluded detection — Expensive causal test with weak power and modest stakes.
+- **W2-C-0034** — Temporal modeling gains vanish under strong single-frame backbones — Duplicated by 0148 with a stronger design.
+- **W2-C-0035** — Compression-stratified detection curves as a standard report — Applied documentation; partially covered by corruption/VCM literature.
+- **W2-C-0036** — Ignore regions teach detectors miscalibrated confidence — Fuzzy mechanism, weak measurement plan.
+- **W2-C-0037** — Hierarchical label confusion is mis-scored in open-vocab evaluation — Incremental scoring variant; consolidate elsewhere.
+- **W2-C-0038** — Axis-aligned IoU systematically undervalues oriented detection of elongated objects — Correct but consequence-free for communities that already switched metrics.
+- **W2-C-0039** — Saliency-biased backbones and the camouflage blind spot — Heavy instrumentation for a niche correlational claim.
+- **W2-C-0044** — The 101-point AP interpolation bias in low-data regimes — Implementation footnote; absorb into metrology budget (0311).
+- **W2-C-0045** — Macro-mAP vs instance-weighted detection quality: whose average is it — Known convention sensitivity; consolidate into 0066.
+- **W2-C-0047** — When does boundary quality matter: an adoption analysis for Boundary IoU — Original metric paper already covers the divergence analysis.
+- **W2-C-0048** — Detector confidences are not comparable across models, breaking threshold-based comparisons — Known in practice; calibration literature covers the fix.
+- **W2-C-0051** — Dice vs boundary-F1 disagreement as a taxonomy of segmentation errors — Metric-selection guidance already codified in Metrics Reloaded.
+- **W2-C-0052** — Panoptic Quality is unstable for rare things: decomposing PQ noise — Corollary of 0032 with smaller audience.
+- **W2-C-0053** — AP is not a proper scoring rule for detection: constructing and measuring exploitation — Core result published (LVIS gameability + proper-scoring-rule formalization).
+- **W2-C-0056** — Arbitrary size buckets: continuous size-AP curves change conclusions — Diagnostic figure; consolidate with 0074.
+- **W2-C-0058** — Duplicate-annotation policies are a hidden metric hyperparameter — Small-population artifact; absorb into metrology budget.
+- **W2-C-0059** — Slice-wise vs volume-wise aggregation flips 3D medical segmentation rankings — Aggregation pitfall already codified in MICCAI metrics guidance.
+- **W2-C-0061** — mAP is blind to score magnitudes: what monotone-invariance hides — Redundant with 0339/0182 confidence-information line.
+- **W2-C-0063** — Cost-sensitive AP: confusion costs from real applications — Cost-matrix credibility problem; adjacent metrics exist.
+- **W2-C-0067** — Tracking metrics are threshold-tuned on test: MOTA/HOTA sensitivity audit — Tracking-metrics community already litigating this.
+- **W2-C-0068** — Synonym mismatches counted as errors in open-vocab evaluation — Consolidate; no standalone weight.
+- **W2-C-0069** — Box AP overstates localization quality for articulated objects — Expected result, low stakes.
+- **W2-C-0072** — NMS and threshold tuning as unreported test leakage — Absorbed by the tuning-fairness cluster (0285/0292).
+- **W2-C-0073** — The empty-mask convention silently decides medical segmentation winners — Convention pitfall already codified in Metrics Reloaded.
+- **W2-C-0075** — Evaluation-server vs local-eval discrepancies as a reproducibility hazard — Operational audit, not research.
+- **W2-C-0076** — Annotation style drift across dataset versions invalidates cross-version claims — Subsumed by 0298 + 0208.
+- **W2-C-0077** — Minimum-support reporting standards for tail metrics — Policy corollary of 0032.
+- **W2-C-0079** — Why probabilistic detection metrics failed to be adopted: an empirical autopsy — Core question resolved by proper-scoring-rule literature.
+- **W2-C-0083** — Is more finetuning data always better: the noisy-web-data inflection point — Confirms theory at nontrivial training cost.
+- **W2-C-0084** — Does mask supervision causally improve box detection — Conclusion hostage to contested cost ratio.
+- **W2-C-0085** — Is multi-scale training still necessary with modern backbones — Recipe-dependent null with short shelf life.
+- **W2-C-0086** — Frozen foundation backbones for detection: is finetuning overrated — Frozen-backbone competitiveness already in foundation-model reports.
+- **W2-C-0087** — Longer detection training past the recipe: mapping the overfitting onset — High compute for known-shape curve.
+- **W2-C-0088** — Domain randomization vs realism matching: which synthetic recipe wins where — Core DR trade-off heavily explored.
+- **W2-C-0090** — Video pretraining for video detection: does temporal pretraining pay for itself — Uncontrollable confounds with public checkpoints.
+- **W2-C-0091** — Self-supervised vs supervised pretraining for dense tasks: a decontaminated comparison — Expensive; core confound already documented.
+- **W2-C-0092** — Augmentation gains do not transfer across detector families — Interaction study with poor generality-per-compute.
+- **W2-C-0093** — Detection does not need large batches: small-batch recipes revisited — Answered by GroupNorm-era work.
+- **W2-C-0094** — When does EMA hurt: mapping the EMA failure regime for detection — Tuning lore, not research.
+- **W2-C-0095** — Why mosaic works: scale jitter or context diversity — Partial ablations exist; modest ceiling.
+- **W2-C-0096** — Is deformable attention still necessary at modern scale — Perishable architecture null.
+- **W2-C-0097** — Monocular depth cues are already inside detection features — Probing literature already covers this.
+- **W2-C-0098** — Label smoothing in detection heads: calibration help or NMS poison — Micro-mechanism, low stakes.
+- **W2-C-0100** — Are transformers really more robust than CNNs for dense prediction — Classification verdict likely transfers; costly to confirm.
+- **W2-C-0103** — Frozen BN folklore in small-batch finetuning: retest on modern stacks — Settled practice.
+- **W2-C-0104** — Are larger models more label-efficient for detection specifically — Underpowered at academic budget.
+- **W2-C-0105** — Pretrain-finetune resolution matching: how much does it really matter — Answered in ViT adaptation literature.
+- **W2-C-0107** — SAM pseudo-masks as training data: characterizing the noise ceiling — Engineering guidance; theory already predicts the shape.
+- **W2-C-0108** — VLM benchmark scores do not predict grounding: captioning vs detection dissociation — Racing a fast-moving VLM-eval literature.
+- **W2-C-0109** — Was hard negative mining actually made obsolete by focal loss — Dated question.
+- **W2-C-0110** — Multi-task learning with segmentation and depth: measuring interference honestly — MTL interference literature covers the claim.
+- **W2-C-0111** — Resolution scaling vs model scaling for small objects: the real exchange rate — Local answer, short shelf life.
+- **W2-C-0112** — Does crop augmentation teach translation equivariance, or do we just believe it does — Anti-aliasing literature covers the mechanism.
+- **W2-C-0113** — Is the syn2real gap mostly texture: a shape-texture decomposition for detection — Stylization-transfer studies already bound the texture share.
+- **W2-C-0114** — Does CLIP robustness survive a detection head: robustness inheritance audit — Missing shifted-detection instrumentation; heavy for the return.
+- **W2-C-0117** — Compression fingerprints: does re-encoding test images toward the training distribution raise AP — Weak identification, likely inconclusive.
+- **W2-C-0118** — How far do random features go: detection with frozen random backbones — Known random-feature story.
+- **W2-C-0121** — Action at a distance: local perturbations flip detections elsewhere in the image — NMS-mediated attacks already published.
+- **W2-C-0123** — Does double descent exist for dense prediction — Costly curiosity with high ambiguity risk.
+- **W2-C-0126** — Canonical-orientation advantage survives rotation augmentation — Predictable, low stakes.
+- **W2-C-0127** — Early checkpoints are OOD-robust: the robustness-accuracy trade along training time — Confirmatory of known training-dynamics results.
+- **W2-C-0130** — White balance flips classes: color constancy failures in detection — Corruption benchmarks cover the phenomenon class.
+- **W2-C-0131** — Training with box jitter improves calibration for free — Micro-method, off the evaluation-science mission.
+- **W2-C-0132** — Batch composition effects: who shares your batch changes what you learn — Likely tiny effect, weak identification.
+- **W2-C-0134** — Asymmetric cross-dataset generalization: why does A beat B transfer to B but not vice versa — Mechanism better identified by 0208's dual-annotation design.
+- **W2-C-0137** — The interpolation-kernel hyperparameter nobody reports — Documented practitioner knowledge; absorb into metrology budget.
+- **W2-C-0138** — Dataset-of-origin is readable from local patches: fingerprints and their leakage — Settled by Name-That-Dataset lineage.
+- **W2-C-0140** — Partial freezing beats full finetuning: mapping implicit regularization — Transfer-learning lore.
+- **W2-C-0141** — Border effects: padding values leak into detections at image edges — Border-effect literature already exists.
+- **W2-C-0142** — Semantic instability of class names: person vs human vs pedestrian — Subsumed by 0011.
+- **W2-C-0143** — Left-right asymmetry: photographer bias becomes model bias — Negligible practical consequence.
+- **W2-C-0144** — Mixed precision changes small-object results beyond noise — Infrastructure footnote.
+- **W2-C-0146** — Attention maps fail sanity checks as detection explanations — Predictable port of settled sanity-check results.
+- **W2-C-0147** — Web-scale pretraining saturates for detection: the flat tail of the data curve — Confounded instrument for a heavily contested claim.
+- **W2-C-0151** — Curriculum learning does nothing for detection: a preregistered replication — Null already widely suspected and partially documented.
+- **W2-C-0152** — Learned augmentation policies for detection: no transfer, no gain — Direction already established by RandAugment lineage.
+- **W2-C-0153** — FPN variants under equal tuning: does neck research replicate — Instance of 0285's general design.
+- **W2-C-0155** — SAM auto-labels cap student quality in crowded scenes — Duplicate of 0107 mechanism.
+- **W2-C-0156** — Synthetic pretraining gains vanish under a properly tuned real-data schedule — Instance of the stale-baseline program.
+- **W2-C-0157** — Distilling open-vocab teachers loses exactly the rare classes — Merge into 0101 distillation-cost audit.
+- **W2-C-0160** — CAM-style weak localization does not beat gradient-norm baselines — Done by Choe et al. 2020.
+- **W2-C-0161** — Test-time adaptation collapses under continual shift for detection — Classification collapse results likely transfer; confirmatory.
+- **W2-C-0162** — Adversarial training buys less than it costs for deployed detectors — Well-litigated trade-off, small twist.
+- **W2-C-0163** — Bigger vocabularies hurt base classes: negative transfer in open-vocab training — Training-side version dominated by cheap inference-side 0145.
+- **W2-C-0164** — Mask refinement modules polish metrics, not measurements — No public physical-truth instrumentation.
+- **W2-C-0165** — Depth-aware detection heads die by estimated depth — Known ablation pattern.
+- **W2-C-0167** — Positional-encoding variants for detection transformers: a null at scale — Expensive perishable null.
+- **W2-C-0168** — Loss reweighting equals resampling for long-tail detection — Equivalence largely documented in long-tail re-benchmarks.
+- **W2-C-0169** — Semi-supervised detection dies on truly out-of-distribution unlabeled data — Classification result canonical; detection port confirmatory.
+- **W2-C-0170** — Why model soups fail for detection heads — Mechanism noted in soup literature.
+- **W2-C-0171** — NAS-found detection architectures do not transfer across datasets — NAS-evaluation literature covers it.
+- **W2-C-0172** — Region-contrastive pretraining does not beat plain supervised pretraining, compute-matched — Relitigation of dense-SSL wave at pretraining cost.
+- **W2-C-0173** — Saliency explanations fail the deletion test for detection — Fold into 0307; classification XAI precedents.
+- **W2-C-0174** — Progressive resizing and multi-stage recipes: no benefit at matched compute — Recipe trivia.
+- **W2-C-0175** — Auxiliary geometric tasks do not help detection at matched budgets — Duplicate of 0110; both dominated by existing MTL accounting.
+- **W2-C-0176** — One temperature does not fit all classes: class-conditional calibration structure — Class-wise calibration already in current baselines.
+- **W2-C-0179** — How to ensemble boxes: fusion rules change calibration more than accuracy — Tooling-level insight.
+- **W2-C-0182** — Detectors cannot abstain: risk-coverage as a standard detection report — Selective-prediction port already underway in UQ literature.
+- **W2-C-0183** — Label-noise dose-response curves for detection losses — Dose-response curves exist in noisy-label detection papers.
+- **W2-C-0184** — Real fog vs rendered fog: the atmospheric-model gap — Subsumed by 0178.
+- **W2-C-0185** — Do learned box variances mean anything: testing aleatoric UQ against controlled ambiguity — Niche model class; fold conclusion into UQ audit (0149/0181).
+- **W2-C-0186** — Rare classes are overconfident: calibration under class imbalance — Special case of 0176; crowded space.
+- **W2-C-0187** — Focal length and distortion sweeps: detection robustness to camera intrinsics — Instrumentation confounds undermine the sweep.
+- **W2-C-0189** — Universal patch vulnerability: transfer structure across detector families — Patch-transfer literature covers it.
+- **W2-C-0192** — Scaling attacks: detection failures induced by downsampling pipelines — Scaling-attack literature already exists.
+- **W2-C-0194** — Perturb-and-agree: cheap input-perturbation UQ vs deep ensembles — Crowded UQ-efficiency space, soft claim.
+- **W2-C-0195** — Does adversarial pretraining transfer robustness to detection finetunes — Expected result from robust-transfer literature.
+- **W2-C-0196** — Low-light detection: ISP-aware augmentation vs raw-domain training — Raw-noise training literature covers it.
+- **W2-C-0198** — Score-distribution drift as an early-warning system for silent model decay — MLOps practice, not research.
+- **W2-C-0199** — Gaussian augmentation does not model sensors: shot-noise-matched robustness — Settled in low-light imaging literature.
+- **W2-C-0200** — Calibrated counting: prediction intervals for object counts from detections — Racing conformal literature's natural extension.
+- **W2-C-0202** — Fidelity return-on-effort curves for simulation axes — Effort proxies too soft to support conclusions.
+- **W2-C-0203** — Synthetic data only for the tail: hybrid real-head syn-tail training — Allocation detail within existing augmentation line.
+- **W2-C-0204** — Per-class geography sensitivity of AV detection — Subsumed by 0252.
+- **W2-C-0205** — Small objects break sim transfer first: size-stratified syn2real analysis — Simulator engineering guidance.
+- **W2-C-0207** — Physics-based weather rendering vs GAN translation at matched effort — Bake-off space crowded.
+- **W2-C-0209** — Scaling laws for rendered data: where does synthetic volume saturate — Overlaps 0213 and DR diversity studies.
+- **W2-C-0210** — What transfers to exotic sensors: RGB-trained detectors on thermal, event, and fisheye — Piecewise prior work; modest payoff.
+- **W2-C-0211** — UDA benchmark rankings vs real deployment pairs: external validity check — Dominated by cheaper UDA attacks (0150, 0221).
+- **W2-C-0213** — Asset diversity vs asset count: what actually drives sim transfer — DR literature covers diversity-vs-volume.
+- **W2-C-0214** — Randomization breadth vs volume: isolating the active ingredient — Duplicate axis of 0213/0088.
+- **W2-C-0215** — Can simulators evaluate detectors: real2sim validity for rankings — Matched-scene instrumentation gap.
+- **W2-C-0216** — Watching confirmation bias happen: class drift in pseudo-label adaptation — Drift and anchoring fixes already published.
+- **W2-C-0218** — The HD-to-SD gap: cross-resolution deployment as a neglected domain axis — Applied guidance, standard methods.
+- **W2-C-0219** — Seasonal decay curves: measuring detection model rot in fixed deployments — Data instrument does not exist publicly.
+- **W2-C-0220** — Synthetic occlusions are too clean: an occlusion-statistics audit of sim datasets — Scene-statistics engineering.
+- **W2-C-0222** — Known objects in unknown places: compositional shift without appearance shift — Subsumed by 0135 + prior transplant studies.
+- **W2-C-0223** — Sim-trained auto-labelers plus human verification: the cost curve nobody published — Industry-known cost curves; service publication.
+- **W2-C-0224** — Renderer fingerprints: does mixing renderers prevent sim-specific overfitting — Expected synthetic analog of dataset fingerprints.
+- **W2-C-0225** — Depth-sensor simulation gap for RGB-D detection — Robotics-sim practice.
+- **W2-C-0229** — Denoise-then-detect vs noise-robust training: an end-to-end accounting — Comparison already run in low-light literature.
+- **W2-C-0232** — Generative vs physically-consistent deblurring for video analytics truthfulness — Expected; fold into restoration-harm bundle.
+- **W2-C-0233** — The bitrate threshold below which artifact removal helps detection — Tuning table.
+- **W2-C-0235** — Diversity beats fidelity for generative tail-class data — Direction established in generative-data literature.
+- **W2-C-0237** — Task-loss SR overfits its detector: transferability of detection-aware SR — Small literature, expected result.
+- **W2-C-0239** — Feature-space SR vs pixel-space SR: where is the small-object bottleneck — Feature-SR heads already published.
+- **W2-C-0240** — Training on generated images plants fingerprints: bias transfer from diffusion data to detectors — Fragile behavioral-probe instrumentation.
+- **W2-C-0244** — Annotation misalignment when training on SR images with original boxes — Likely small effect; subsumed by 0243's more general geometric-corruption framing.
+- **W2-C-0247** — Detection-grounded evaluation of generative models: counting and layout fidelity — Crowded T2I-evaluation space; low likelihood of being first.
+- **W2-C-0249** — Enhancement for humans vs enhancement for detectors: two different optima — Theme already established; marginal delta over existing enhancement-hurts-detection findings.
+- **W2-C-0257** — Watermarks and stock-photo artifacts as shortcut features in web-scraped detection data — Narrow effect, confounded instrument; better as a section in a broader shortcut audit.
+- **W2-C-0262** — Repeat-factor sampling hyperparameters as test-distribution leakage — Expected result, moderate compute, low ceiling.
+- **W2-C-0270** — Consent and licensing constraints shape dataset content: an absence audit — Confounded comparison; policy-relevant but not cleanly answerable with public artifacts.
+- **W2-C-0274** — Occlusion and truncation flags are class-biased: an annotation-quality audit — Narrow stakes; fold into a broader annotation-quality audit if needed.
+- **W2-C-0280** — Dataset dignity for stuff classes: what detection loses by ignoring the uncountable — Vague instrument; panoptic literature already carries the core argument.
+- **W2-C-0288** — CUDA and cuDNN versions as silent result modifiers — Low ceiling; covered by the determinism audit.
+- **W2-C-0295** — Gradient accumulation is not large-batch training: the BN discrepancy audit — Mechanism already understood; confirmation has low ceiling.
+- **W2-C-0297** — How much does val reuse cost: adaptive overfitting to validation sets — Direct port of established classification-side findings; low novelty confidence.
+- **W2-C-0301** — Energy-honest efficiency claims: end-to-end accounting including search — Established genre, soft data; low marginal insight.
+- **W2-C-0314** — Detection as sequential evidence gathering: information-gain evaluation for active perception — Niche audience, heavy simulation scaffolding, uncertain transfer.
+- **W2-C-0316** — Bandit-allocated annotation: regret-minimizing labeling across classes — Active-learning adjacency too strong; low novelty confidence.
+- **W2-C-0318** — Complementarity-optimal routing between human and detector — Learning-to-defer literature covers the core; simulation-only humans weaken the claim.
+- **W2-C-0320** — Shard Shapley: data valuation for detection at practical granularity — Established method applied sideways; compute-heavy for the marginal claim.
+- **W2-C-0323** — Queueing-aware detection: accuracy under frame-drop policies as a co-design problem — Wrong venue for this portfolio; systems literature adjacency too strong.
+- **W2-C-0324** — Uncertainty cartography: decision-quality evaluation of detection-map visualization — Venue mismatch; HCI methodology outside batch competency.
+- **W2-C-0336** — Epoch-1 validation predicts final ranking — Learning-curve-prediction literature owns this; detection number is incremental.
+- **W2-C-0337** — Random boxes teach detection: how little box supervision quality matters early — Strong form implausible, weak form uninteresting.
+- **W2-C-0343** — Coarse features already solve fine-grained detection classification — Standard probe methodology, predictable result.

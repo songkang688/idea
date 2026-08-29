@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conformal-nms-proto"
+version = "0.1.0"
+description = "C-0306 prototype: split-conformal coverage vs NMS on synthetic detection scenes"
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.24", "PyYAML>=6.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
