@@ -1,0 +1,952 @@
+{
+ "task_id": "p1_wave_b_w5",
+ "role": "judge_C_adversary",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "w5_NPO",
+ "branch": "cursor/p1-wave-b-w5-judge-c-adversary-f821",
+ "generated_at_utc": "2026-08-29T01:38:51Z",
+ "inputs": {
+  "gen_n_scaling_memorization_data_laws": {
+   "branch": "origin/cursor/p1-gen-n-scaling-memorization-4814",
+   "ideas": 100,
+   "schema": "FULL canonical gen_j gate schema 100/100 (numeric kill thresholds inside falsifiable_prediction, evidence_label dict, family_fingerprint dict, genre, needs_special_resources, seg_metric_dependent) PLUS generator-prefilled pipeline metadata with the WRONG wave value 'p1_wave_a_w3' on all 100 records (same spoof pattern as w4 gen_m); ~23 records carry REAL named-author literature references hedged as 'model recall, unverified here' (gen_a precedent) - none fabricated"
+  },
+  "gen_p_constructive_capability": {
+   "branch": "origin/cursor/p1-gen-p-constructive-6c3b",
+   "ideas": 104,
+   "schema": "FULL canonical schema 104/104; numeric thresholds 104/104 ('kill the idea if' phrasing); wave value 'p1_wave_a_w3' WRONG on all 104; zero citations; seg_metric_dependent true on 57/104 (plausible for mask-heavy shard)"
+  },
+  "gen_o_hard_domain_diversifier": {
+   "branch": "origin/cursor/p1-gen-o-hard-domain-acc5",
+   "ideas": 100,
+   "schema": "FULL canonical schema 100/100; numeric thresholds 99/100 + 1 quantitative-verbal (O-007: 'factor of two'/'one-quarter' spelled out - decisive, gate1-flag not remand); wave value 'p1_wave_a_w3' WRONG on all 100; one label case typo (O-063 '[HYPOTHESis]'); 'arXiv' string in O-053 is a dataset description (DocBank provenance), not a citation"
+  },
+  "master_read_only": {
+   "branch": "origin/cursor/p1-wave-b-consolidator-w4-e8e2",
+   "commit": "2411f93",
+   "records": 934,
+   "modified": false,
+   "note": "canonical 934-line master (638 + 296 w4 appends) verified untouched on this branch; re-fetch with --prune at finalization confirmed it is still the newest canonical tip (no w5 consolidator on origin)"
+  },
+  "commissioning": {
+   "branch": "origin/cursor/p1-diversity-audit-consolidator-w2-942c",
+   "used_for": "family-cap <=6 as MERGE TRIGGER vs master+wave, banned clusters (calibration/uncertainty primary, smoke/fire/fog/transparent/scattering running examples, annotation/convention/label-noise HARD BAN as primary subject, F1-F5, realism-not-active-ingredient outside gen_f), caps (cheap-predictor <=3/shard, equalization-null <=3/shard, small/dense/counting <=5/shard), per-shard guards (gen_p >=80% constructive 0% pure audit <=10% SAM; gen_o underwater/microscopy/doc emphasis <=25% medical; gen_n anti-overlap vs accepted gen_f data-composition ids, emergence audit, no synthetic-pipeline framings), GATE-4/5/6 duties"
+  },
+  "w4_hot_spots_inherited": "K-054 vs N-027/N-014; K-077 vs O-032; K-018/K-094 vs O-005; M-057 vs N-049; M-055 vs P-059 - all five re-collided below with full-text reads",
+  "judges_A_B_w5": "origin/cursor/p1-wave-b-w5-judge-a-dedup-3de9 and origin/cursor/p1-wave-b-w5-judge-b-feasibility-7e74 exist on origin but were NOT read (commission: judge raw shards, independent of A/B); zero adoption from either",
+  "web_verification": "two targeted web searches were run ONLY to verify prior-art grounds for the two kills (Sea-thru CVPR 2019; Tellez et al. 2018/2019) - both verified real; no other external material consulted; no citations fabricated anywhere"
+ },
+ "epistemic_status": "Novelty remains UNVERIFIED for every kept idea. The 2 kills cite REAL, web-verified prior art (an upgrade over w4's unverified-recall kills); all other prior-art remarks (27-entry watchlist) are unverified model recall for the GATE-8 lane. No new ideas added. No numeric thresholds, labels, or asset names invented - all GATE-4/GATE-5 duties are flags for the mechanical retrofit lane.",
+ "method": [
+  "Pass 1 - hygiene: parse all 304; provenance audit caught the wave-label spoof 'p1_wave_a_w3' on 304/304 records (3/3 generators; consolidator must overwrite to p1_wave_b_w5 per the w4 gen_m rule 'never trust generator-supplied provenance'); citation scan: gen_n carries ~23 records with real named-author references hedged as unverified model recall (Hoffmann, Zhai/Cherti, Udandarao, Hernandez, Muennighoff, Schaeffer, Meehan, Somepalli, Carlini, Jagielski, Shokri, Maini, McKenzie, Wei, Yang) - gen_a precedent, none fabricated, all flagged citation_bearing; gen_p/gen_o zero citations; hedging labels intact 304/304 (one case typo O-063).",
+  "Pass 2 - banned clusters: smoke/fire/fog/transparent/scattering scan - all hits are physics vocabulary in commissioned territories (sonar scattering models, phase-contrast 'transparent-phase objects', PSF physics), zero banned running examples; calibration/uncertainty - zero primary-cluster members (all hits are metrological/statistical usage); annotation HARD BAN - gen_p's annotation-protocol-capability cluster ruled ALLOWED as constructive protocol capability (w4 L-059 boundary precedent), 15 keeps flagged annotation_ban_boundary, zero convention-pathology-audit primaries kept; F1-F5 zero members; realism-framing zero members; small/dense/counting <=5/shard PASS (0-1 per shard); equalization-null <=3/shard PASS; SAM: gen_n 1 subject record (N-020, self-capped <=5%), gen_p 2 tool-only mentions - PASS.",
+  "Pass 3 - template families: 45 families named; the wave's three mandated mega-templates (gen_n memorization/transfer-scaling laws, gen_p constructive protocol conversions, gen_o physics-native audits/repairs) treated per the w4 ritual_is_mechanism precedent: fingerprint-cell granularity, flags not culls; non-mandated over-cap cells compressed by merges.",
+  "Pass 4 - permutation attack: 33 within-wave substrate-swap/one-falsification-unit merges (15 gen_n, 14 gen_p, 4 gen_o), zero cross-shard merges (territories disjoint; cross-shard attractors flagged instead); ports of VERIFIED published results killed, not merged (2 gen_o kills).",
+  "Pass 5 - master collision audit vs all 934 accepted ids: all 5 w4 pre-flagged hot spots re-collided with full-text reads; chronic cells (contamination C-023/C-024, harness C-077, dispersion J-056/J-057/J-058+L-058, metric-scale side channel, iso-budget C-058) audited; lexical Jaccard screen max 0.222 vs master (family-level, not lexical); 2 merges into master (N-052 -> C-024, P-005 -> D-090); 28 keeps carry master_adjacent flags.",
+  "Pass 6 - GATE-4/5/6 instruments: digit-in-prediction scan (303/304 numeric, 1 quantitative-verbal); strict dataset-AND-model recognizer over experiment fields (instrument has false negatives - recorded); time/cost bound on fastest test 304/304 PASS; genre self-label vs judge-label audit with per-record judge_genre stored on every keep.",
+  "Pass 7 - fingerprint cells vs cap <=6 counting master + this wave's keeps: 22 cells audited; 6 AT CAP after merges; 7 over cap coarse of which 6 are mandated-territory (flags + Stage-2 duty) and 1 (illumination_geometry_confounds, 7 members) is a true cross-domain overflow left to consolidator arbitration."
+ ],
+ "counts": {
+  "input_total": 304,
+  "input_by_shard": {
+   "gen_n": 100,
+   "gen_p": 104,
+   "gen_o": 100
+  },
+  "keep": 267,
+  "keep_by_shard": {
+   "gen_n": 84,
+   "gen_p": 89,
+   "gen_o": 94
+  },
+  "merge": 35,
+  "merge_by_shard": {
+   "gen_n": 16,
+   "gen_p": 15,
+   "gen_o": 4
+  },
+  "merge_within_wave5": 33,
+  "merge_within_wave5_cross_shard": 0,
+  "merge_into_master": 2,
+  "kill": 2,
+  "kill_by_shard": {
+   "gen_n": 0,
+   "gen_p": 0,
+   "gen_o": 2
+  },
+  "template_families": 45,
+  "fingerprint_cells_audited": 22,
+  "fingerprint_cells_at_cap_after_merges": 6,
+  "fingerprint_cells_over_cap_after_merges": 7,
+  "of_which_mandated_territory": 6,
+  "anomalies_protected": 41,
+  "deliberate_tensions_kept": 4,
+  "cross_shard_attractors": 9,
+  "high_prior_art_watchlist": 27,
+  "master_adjacent_keeps": 28,
+  "annotation_ban_boundary_keeps": 15,
+  "citation_bearing_keeps": 18,
+  "wave_label_spoofed_records": 304,
+  "check_sum": "267 + 35 + 2 = 304"
+ },
+ "verdicts": {
+  "keep_ids": [
+   "W13-P1-N-001",
+   "W13-P1-N-002",
+   "W13-P1-N-003",
+   "W13-P1-N-004",
+   "W13-P1-N-006",
+   "W13-P1-N-007",
+   "W13-P1-N-008",
+   "W13-P1-N-010",
+   "W13-P1-N-011",
+   "W13-P1-N-012",
+   "W13-P1-N-013",
+   "W13-P1-N-014",
+   "W13-P1-N-015",
+   "W13-P1-N-016",
+   "W13-P1-N-017",
+   "W13-P1-N-018",
+   "W13-P1-N-019",
+   "W13-P1-N-020",
+   "W13-P1-N-021",
+   "W13-P1-N-022",
+   "W13-P1-N-023",
+   "W13-P1-N-024",
+   "W13-P1-N-025",
+   "W13-P1-N-026",
+   "W13-P1-N-027",
+   "W13-P1-N-028",
+   "W13-P1-N-029",
+   "W13-P1-N-030",
+   "W13-P1-N-031",
+   "W13-P1-N-032",
+   "W13-P1-N-033",
+   "W13-P1-N-035",
+   "W13-P1-N-036",
+   "W13-P1-N-037",
+   "W13-P1-N-038",
+   "W13-P1-N-040",
+   "W13-P1-N-041",
+   "W13-P1-N-042",
+   "W13-P1-N-044",
+   "W13-P1-N-045",
+   "W13-P1-N-046",
+   "W13-P1-N-047",
+   "W13-P1-N-048",
+   "W13-P1-N-050",
+   "W13-P1-N-053",
+   "W13-P1-N-054",
+   "W13-P1-N-055",
+   "W13-P1-N-056",
+   "W13-P1-N-057",
+   "W13-P1-N-058",
+   "W13-P1-N-059",
+   "W13-P1-N-060",
+   "W13-P1-N-061",
+   "W13-P1-N-062",
+   "W13-P1-N-063",
+   "W13-P1-N-064",
+   "W13-P1-N-065",
+   "W13-P1-N-066",
+   "W13-P1-N-068",
+   "W13-P1-N-069",
+   "W13-P1-N-070",
+   "W13-P1-N-071",
+   "W13-P1-N-072",
+   "W13-P1-N-073",
+   "W13-P1-N-075",
+   "W13-P1-N-076",
+   "W13-P1-N-077",
+   "W13-P1-N-078",
+   "W13-P1-N-079",
+   "W13-P1-N-083",
+   "W13-P1-N-084",
+   "W13-P1-N-086",
+   "W13-P1-N-087",
+   "W13-P1-N-089",
+   "W13-P1-N-090",
+   "W13-P1-N-091",
+   "W13-P1-N-092",
+   "W13-P1-N-093",
+   "W13-P1-N-094",
+   "W13-P1-N-095",
+   "W13-P1-N-096",
+   "W13-P1-N-098",
+   "W13-P1-N-099",
+   "W13-P1-N-100",
+   "W13-P1-P-001",
+   "W13-P1-P-002",
+   "W13-P1-P-003",
+   "W13-P1-P-004",
+   "W13-P1-P-006",
+   "W13-P1-P-007",
+   "W13-P1-P-009",
+   "W13-P1-P-010",
+   "W13-P1-P-011",
+   "W13-P1-P-012",
+   "W13-P1-P-014",
+   "W13-P1-P-015",
+   "W13-P1-P-016",
+   "W13-P1-P-018",
+   "W13-P1-P-019",
+   "W13-P1-P-020",
+   "W13-P1-P-021",
+   "W13-P1-P-022",
+   "W13-P1-P-024",
+   "W13-P1-P-025",
+   "W13-P1-P-026",
+   "W13-P1-P-029",
+   "W13-P1-P-031",
+   "W13-P1-P-032",
+   "W13-P1-P-033",
+   "W13-P1-P-034",
+   "W13-P1-P-035",
+   "W13-P1-P-036",
+   "W13-P1-P-037",
+   "W13-P1-P-038",
+   "W13-P1-P-039",
+   "W13-P1-P-040",
+   "W13-P1-P-041",
+   "W13-P1-P-042",
+   "W13-P1-P-043",
+   "W13-P1-P-044",
+   "W13-P1-P-045",
+   "W13-P1-P-046",
+   "W13-P1-P-047",
+   "W13-P1-P-048",
+   "W13-P1-P-050",
+   "W13-P1-P-052",
+   "W13-P1-P-053",
+   "W13-P1-P-054",
+   "W13-P1-P-055",
+   "W13-P1-P-056",
+   "W13-P1-P-057",
+   "W13-P1-P-058",
+   "W13-P1-P-059",
+   "W13-P1-P-060",
+   "W13-P1-P-062",
+   "W13-P1-P-064",
+   "W13-P1-P-065",
+   "W13-P1-P-066",
+   "W13-P1-P-067",
+   "W13-P1-P-068",
+   "W13-P1-P-069",
+   "W13-P1-P-070",
+   "W13-P1-P-071",
+   "W13-P1-P-072",
+   "W13-P1-P-073",
+   "W13-P1-P-074",
+   "W13-P1-P-076",
+   "W13-P1-P-077",
+   "W13-P1-P-078",
+   "W13-P1-P-079",
+   "W13-P1-P-080",
+   "W13-P1-P-081",
+   "W13-P1-P-082",
+   "W13-P1-P-083",
+   "W13-P1-P-085",
+   "W13-P1-P-086",
+   "W13-P1-P-087",
+   "W13-P1-P-088",
+   "W13-P1-P-090",
+   "W13-P1-P-091",
+   "W13-P1-P-092",
+   "W13-P1-P-093",
+   "W13-P1-P-094",
+   "W13-P1-P-095",
+   "W13-P1-P-096",
+   "W13-P1-P-097",
+   "W13-P1-P-098",
+   "W13-P1-P-099",
+   "W13-P1-P-100",
+   "W13-P1-P-101",
+   "W13-P1-P-102",
+   "W13-P1-P-103",
+   "W13-P1-P-104",
+   "W13-P1-O-001",
+   "W13-P1-O-003",
+   "W13-P1-O-004",
+   "W13-P1-O-005",
+   "W13-P1-O-006",
+   "W13-P1-O-008",
+   "W13-P1-O-009",
+   "W13-P1-O-011",
+   "W13-P1-O-012",
+   "W13-P1-O-013",
+   "W13-P1-O-014",
+   "W13-P1-O-015",
+   "W13-P1-O-016",
+   "W13-P1-O-017",
+   "W13-P1-O-018",
+   "W13-P1-O-019",
+   "W13-P1-O-020",
+   "W13-P1-O-021",
+   "W13-P1-O-022",
+   "W13-P1-O-023",
+   "W13-P1-O-024",
+   "W13-P1-O-025",
+   "W13-P1-O-026",
+   "W13-P1-O-027",
+   "W13-P1-O-028",
+   "W13-P1-O-029",
+   "W13-P1-O-030",
+   "W13-P1-O-032",
+   "W13-P1-O-033",
+   "W13-P1-O-034",
+   "W13-P1-O-035",
+   "W13-P1-O-036",
+   "W13-P1-O-037",
+   "W13-P1-O-038",
+   "W13-P1-O-039",
+   "W13-P1-O-041",
+   "W13-P1-O-042",
+   "W13-P1-O-043",
+   "W13-P1-O-044",
+   "W13-P1-O-045",
+   "W13-P1-O-046",
+   "W13-P1-O-047",
+   "W13-P1-O-048",
+   "W13-P1-O-049",
+   "W13-P1-O-050",
+   "W13-P1-O-051",
+   "W13-P1-O-052",
+   "W13-P1-O-053",
+   "W13-P1-O-054",
+   "W13-P1-O-055",
+   "W13-P1-O-056",
+   "W13-P1-O-057",
+   "W13-P1-O-058",
+   "W13-P1-O-059",
+   "W13-P1-O-060",
+   "W13-P1-O-061",
+   "W13-P1-O-062",
+   "W13-P1-O-063",
+   "W13-P1-O-064",
+   "W13-P1-O-065",
+   "W13-P1-O-066",
+   "W13-P1-O-067",
+   "W13-P1-O-068",
+   "W13-P1-O-069",
+   "W13-P1-O-070",
+   "W13-P1-O-071",
+   "W13-P1-O-073",
+   "W13-P1-O-074",
+   "W13-P1-O-075",
+   "W13-P1-O-076",
+   "W13-P1-O-077",
+   "W13-P1-O-078",
+   "W13-P1-O-079",
+   "W13-P1-O-080",
+   "W13-P1-O-081",
+   "W13-P1-O-082",
+   "W13-P1-O-083",
+   "W13-P1-O-084",
+   "W13-P1-O-085",
+   "W13-P1-O-086",
+   "W13-P1-O-087",
+   "W13-P1-O-088",
+   "W13-P1-O-089",
+   "W13-P1-O-090",
+   "W13-P1-O-091",
+   "W13-P1-O-092",
+   "W13-P1-O-093",
+   "W13-P1-O-094",
+   "W13-P1-O-095",
+   "W13-P1-O-096",
+   "W13-P1-O-097",
+   "W13-P1-O-098",
+   "W13-P1-O-099",
+   "W13-P1-O-100"
+  ],
+  "merge_map": {
+   "W13-P1-N-005": {
+    "target": "W13-P1-N-029",
+    "scope": "in_wave",
+    "reason": "same law, micro/macro: the per-concept shared-exponent power law (N-029) is the micro-foundation of the Zipf-tail-sets-the-exponent claim (N-005); one per-concept-count grid answers both; the tail-reshaping intervention arm travels"
+   },
+   "W13-P1-N-009": {
+    "target": "W13-P1-N-001",
+    "scope": "in_wave",
+    "reason": "one falsification unit: the same small-run allocation grid fits the compute-optimal parameter-data split; N-001 reads it against the language ratio, N-009 against the upstream-loss optimum - two readouts of one fitted frontier; the downstream-shift arm travels"
+   },
+   "W13-P1-N-034": {
+    "target": "W13-P1-N-023",
+    "scope": "in_wave",
+    "reason": "log-additivity (N-034) is the structural assumption inside N-023's mixture-response law; single-domain-sweep superposition is the mechanism arm of the same pilot-grid experiment"
+   },
+   "W13-P1-N-039": {
+    "target": "W13-P1-N-035",
+    "scope": "in_wave",
+    "reason": "same claim: augmentation-governed repetition tolerance in vision; N-039 is the one-epoch-folklore-debunk framing of N-035's per-epoch decay-constant law; the optimal-epoch-count readout travels"
+   },
+   "W13-P1-N-043": {
+    "target": "W13-P1-N-027",
+    "scope": "in_wave",
+    "reason": "same law: effective dataset size is a functional of the duplication histogram; cluster-count collapse (N-027) and sublinear-downweight ESS formula (N-043) are two parameterizations of one curve; family effective_diversity_not_raw_count with master K-054/K-014 adjacency"
+   },
+   "W13-P1-N-049": {
+    "target": "W13-P1-N-045",
+    "scope": "in_wave",
+    "reason": "same early-warning claim: representational precursors precede behavioral capability along scale ladders and forecast onsets; supervised probes (N-045) and unsupervised geometry indices (N-049) are two instruments on one forecaster; merge also fires the cheap-predictor <=3/shard guard; master-adjacent M-057 (within-run attention-transition readiness marker)"
+   },
+   "W13-P1-N-051": {
+    "target": "W13-P1-N-044",
+    "scope": "in_wave",
+    "reason": "same mechanism: capability onset is exposure-dose-governed, not capacity-governed; exemplar injection (N-044) and slice-targeted reweighting (N-051) are two dose knobs on one iso-count emergence curve"
+   },
+   "W13-P1-N-067": {
+    "target": "W13-P1-N-054",
+    "scope": "in_wave",
+    "reason": "same dose-response: N-067's low-FPR vulnerable tail (size set by the duplication/density spectrum) is the population consequence of N-054's per-image duplication knee; the tail-size readout travels; master-adjacent J-038 (diffusion verbatim-memorization duplication threshold)"
+   },
+   "W13-P1-N-074": {
+    "target": "W13-P1-N-072",
+    "scope": "in_wave",
+    "reason": "textbook substrate swap: aggregate weak per-image membership signals over a natural grouping until the test becomes decisive; photographer/institution collection (N-072) and user (N-074) are two grouping keys on one covariate-adjusted aggregate test"
+   },
+   "W13-P1-N-080": {
+    "target": "W13-P1-N-075",
+    "scope": "in_wave",
+    "reason": "one invertibility-law study on two axes: encoder scale (N-075) and cut depth (N-080); N-080 itself claims the depth-leakage curve is stable across scales, so the axes interlock into one reconstruction grid"
+   },
+   "W13-P1-N-081": {
+    "target": "W13-P1-N-057",
+    "scope": "in_wave",
+    "reason": "same mechanism (context-instance binding of memorized rare instances in dense models); spontaneous replay under similar context (N-057) and probe-image-elicited extraction (N-081) are passive/active elicitations of one leak"
+   },
+   "W13-P1-N-082": {
+    "target": "W13-P1-N-076",
+    "scope": "in_wave",
+    "reason": "same linkage-risk claim: N-076 already scales linkage success with embedding-model quality; N-082 is that axis read as attacker vintage over time; the cross-encoder-alignment attack arm travels"
+   },
+   "W13-P1-N-085": {
+    "target": "W13-P1-N-084",
+    "scope": "in_wave",
+    "reason": "N-085 (semantic-vs-exact duplicate inflation ratio rising with model scale) is a cross-section of N-084's fitted contamination dose-response surface in (duplication count, similarity level, model scale); master-adjacent C-023"
+   },
+   "W13-P1-N-088": {
+    "target": "W13-P1-N-058",
+    "scope": "in_wave",
+    "reason": "same power-law decay of memorized/leaked content under continued clean training; contamination half-life by stream position (N-088) and clean-tail purge mitigation (N-058) are audit and repair arms of one forgetting law"
+   },
+   "W13-P1-N-097": {
+    "target": "W13-P1-N-012",
+    "scope": "in_wave",
+    "reason": "same mechanism sentence (late upstream-loss gains model detail irrelevant downstream); the nonstationary loss-to-capability exchange rate (N-097) and its knee for dense transfer (N-012) are one upstream-to-downstream mapping study"
+   },
+   "W13-P1-N-052": {
+    "target": "W13-P1-C-024",
+    "scope": "cross_wave_into_master",
+    "reason": "MASTER MERGE: emergence-as-memorization is the emergence instance of accepted C-024's seen-shot protocol - restrict test items by verified distance (embedding and pixel space) from pretraining content and watch the capability collapse; same similarity-stratified instrument, the emergence-curve readout travels; master record NOT modified by this judge"
+   },
+   "W13-P1-P-008": {
+    "target": "W13-P1-P-031",
+    "scope": "in_wave",
+    "reason": "occlusion-stratified deployment-weighted scoring (P-008) is the occlusion special case of P-031's declared-prior evaluation interface; same stratum-reweighting machinery, same model-selection-flip readout"
+   },
+   "W13-P1-P-013": {
+    "target": "W13-P1-P-010",
+    "scope": "in_wave",
+    "reason": "one rig: heads x frozen shared backbones; P-013's rank-preservation validity claim is the enabling premise (and mandatory control arm) of P-010's head-vs-backbone attribution harness"
+   },
+   "W13-P1-P-017": {
+    "target": "W13-P1-P-007",
+    "scope": "in_wave",
+    "reason": "one instrument, two readouts: heterogeneous-detector consensus completes missing labels (P-007) and its divergence routes a fixed human relabeling budget (P-017); both are validated against the same human-relabel conclusion changes; merge also fires the chronic dispersion/disagreement-as-signal family cap (master J-056/J-057/J-058 + w4 L-058 lineage, over cap since w3)"
+   },
+   "W13-P1-P-023": {
+    "target": "W13-P1-P-045",
+    "scope": "in_wave",
+    "reason": "same mechanism sentence in both records: corrupted negative supervision is the dominant cost of missing labels; purchased certified-empty regions (P-023) and already-shipped Open Images verified negatives (P-045) are one per-label-value claim; P-045 is the cheaper falsification, P-023's budget-purchase arm travels"
+   },
+   "W13-P1-P-027": {
+    "target": "W13-P1-P-004",
+    "scope": "in_wave",
+    "reason": "substrate swap detection<->segmentation of one hierarchical variance-decomposition power/MDD gate with the same conclusion-flip readout (leaderboards refuse deltas below resolvable thresholds)"
+   },
+   "W13-P1-P-028": {
+    "target": "W13-P1-P-006",
+    "scope": "in_wave",
+    "reason": "same claim (drastically fewer test images, same accept/reject decisions); IRT-selected fixed informative subset (P-006) and anytime-valid sequential stopping (P-028) are static/adaptive instruments of one evaluation-compression primary; also resolves the cheap-eval-proxy <=3/shard pressure"
+   },
+   "W13-P1-P-030": {
+    "target": "W13-P1-P-002",
+    "scope": "in_wave",
+    "reason": "one factorized harness-variance-attribution experiment: to show the decoding stage dominates (P-002) the software stack must be pinned (P-030) and vice versa; frozen reference decoder + containerized scorer are two layers of one frozen evaluation contract; master-adjacent C-077 (harness variance, which already absorbed G-078/H-058/K-104)"
+   },
+   "W13-P1-P-049": {
+    "target": "W13-P1-P-047",
+    "scope": "in_wave",
+    "reason": "one pipeline: the junction-geometry classifier (P-049) manufactures exactly the pairwise occlusion-order labels whose sufficiency for amodal completion P-047 claims; supply arm + sufficiency claim = one falsification chain; adjacent to master J-015 (occlusion order from diffusion attention)"
+   },
+   "W13-P1-P-051": {
+    "target": "W13-P1-P-048",
+    "scope": "in_wave",
+    "reason": "same insight (occlusion failures are visible-box bookkeeping artifacts): amodal-extent anchor assignment at training (P-048) and amodal-overlap suppression at inference (P-051) are two stages of one amodal-extent bookkeeping study with one occluded-recall readout"
+   },
+   "W13-P1-P-061": {
+    "target": "W13-P1-P-065",
+    "scope": "in_wave",
+    "reason": "same claim: frozen-backbone feature spaces are approximately linearly relatable from unlabeled data, enabling cross-backbone head reuse; orthogonal Procrustes (P-065) and light learned translator (P-061) are constrained/relaxed instruments of one alignment study; master-adjacent J-009 (linear head adapters across diffusion backbones) and M-047"
+   },
+   "W13-P1-P-063": {
+    "target": "W13-P1-P-070",
+    "scope": "in_wave",
+    "reason": "same governing-condition claim: decoder/assignment-mechanism identity gates dense-model mergeability; P-070 states the checkable rule, P-063 is its constructive demonstration arm on detection+segmentation specialists"
+   },
+   "W13-P1-P-075": {
+    "target": "W13-P1-P-072",
+    "scope": "in_wave",
+    "reason": "support-consistency rescoring (P-075) is the flagship instance - named first in P-072's own relation list - of P-072's learned relational-energy re-decoding; one rescoring pass, one relation-violating-false-positive readout"
+   },
+   "W13-P1-P-084": {
+    "target": "W13-P1-P-082",
+    "scope": "in_wave",
+    "reason": "same mechanism: exemplar/prototype embeddings define tail categories on frozen detectors; 10-example prototype attachment (P-082) and exemplar-vs-name anchors (P-084) are one prototype-head study; the name-anchor comparison arm travels"
+   },
+   "W13-P1-P-089": {
+    "target": "W13-P1-P-086",
+    "scope": "in_wave",
+    "reason": "same transport mechanism: dense-feature correspondence propagates one human input across many images; corrections (P-086) and prompts (P-089) are two payloads with one quality-vs-interaction-budget readout"
+   },
+   "W13-P1-P-005": {
+    "target": "W13-P1-D-090",
+    "scope": "cross_wave_into_master",
+    "reason": "MASTER MERGE: accepted D-090 already runs optimal-bipartite re-scoring of cached detections and predicts method-dependent AP shifts with leaderboard rank flips; P-005 promotes the same instrument to a benchmark metric with the same cross-family (end-to-end vs NMS) rank-flip prediction; the DETR-style composite-cost framing travels as an arm; master record NOT modified by this judge"
+   },
+   "W13-P1-O-007": {
+    "target": "W13-P1-O-001",
+    "scope": "in_wave",
+    "reason": "same instrument (physically parameterized synthetic re-attenuation) and same causal claim (water-column optics, not habitat covariates, drives the decline); detector confidence-shift agreement (O-001) and classification accuracy-vs-path-length slope (O-007) are two readouts of one re-attenuation causality study; O-007's quantitative-verbal threshold note travels with the merge"
+   },
+   "W13-P1-O-010": {
+    "target": "W13-P1-O-006",
+    "scope": "in_wave",
+    "reason": "same design: a narrowband physically-sourced temporal nuisance in shallow-water video is isolated and removed in the frequency domain; caustic flicker (~1-10 Hz, tracking, O-006) and surge motion (~0.05-0.3 Hz, change detection, O-010) are two bands of one spatiotemporal-spectrum study"
+   },
+   "W13-P1-O-040": {
+    "target": "W13-P1-O-033",
+    "scope": "in_wave",
+    "reason": "same defect (weak cross-magnification/pyramid consistency of WSI models), two intervention points: pyramid-consistency pretraining term (O-033) and inference-time cross-level agreement ensemble (O-040, the zero-training control arm of the same claim)"
+   },
+   "W13-P1-O-072": {
+    "target": "W13-P1-O-065",
+    "scope": "in_wave",
+    "reason": "same claim: calendar time is the wrong axis for satellite crop time series; phenology-native re-parameterization via accumulated growing-degree-days (O-065) or per-location vegetation-index phase (O-072) - two derivations of one phase variable, one cross-region/season transfer readout"
+   }
+  },
+  "kill_reasons": {
+   "W13-P1-O-002": "VERIFIED prior art (web-checked during this pass, real citations): Sea-thru (Akkaynak & Treibitz, CVPR 2019, doi:10.1109/cvpr.2019.00178) is exactly per-pixel range-dependent attenuation inversion using a range map, demonstrated to beat atmospheric-model/global corrections on 1,100+ real underwater images; public implementations (e.g. hainh/sea-thru) already substitute monocular depth (Monodepth2) for the SfM range map, which is O-002's claimed novel residual, and color-chart evaluation is part of that literature. The record itself concedes 'physics-based underwater correction exists'. Remaining residual (pre-registered range-dependence kill criterion) is protocol-level; it travels as a flag on kept O-079/O-080. Recoverable via GATE-8 if the consolidator disagrees.",
+   "W13-P1-O-031": "VERIFIED prior art (web-checked during this pass, real citations): stain augmentation in HED/optical-density space via color deconvolution is the established Tellez et al. 2018 method, and Tellez et al., Medical Image Analysis 2019 (doi:10.1016/j.media.2019.101544) already ran the multi-center HED-vs-RGB/HSV comparison, concluding stain color augmentation should always be used for cross-center generalization. The record concedes 'stain augmentation tools exist and are popular'. Remaining residual (matched feature-space-diversity best-vs-best control) is protocol nuance; it travels as a flag on kept O-037. Recoverable via GATE-8."
+  }
+ },
+ "hot_spot_reconciliation": {
+  "K-054_vs_N-027_N-014": "KEEP both N-027 and N-014 with master_adjacent flags. K-054 (3D reconstruction scaling governed by unique-SCENE count) and K-014 (depth generalization governed by layout diversity) state the effective-diversity law on 3D/depth substrates; N-027 states it for 2D web-encoder transfer via near-duplicate cluster count with a pre-registered collapse test, and N-014 is an exponent ATLAS (different deliverable). In-shard duplicate N-043 (ESS formula) merged into N-027. Family effective_diversity_not_raw_count = master 2 + kept 4 (N-027, N-040, N-096, O-096) = 6 AT CAP; tension N-027 vs N-040 protected inside.",
+  "K-077_vs_O-032": "KEEP O-032 with master_adjacent [K-077, K-074]. Same family (compression side channel) but disjoint subject/measurement: video motion-task probes (K-077) vs WSI cross-site evaluation contamination with vendor/quality decoding and harmonization repair (O-032). Domain-native mechanism (8x8 JPEG blocks x cell-scale texture) satisfies the template-port rule. Cell at 2 - under cap.",
+  "K-018_K-094_vs_O-005": "KEEP O-005 with master_adjacent [K-018, K-094]. Identical design shape (radial projection-mismatch bias of monocular depth + physics-derived pre-warp repair) but the mechanism is flat-port Snell refraction with a quantitative physics-predicted magnification curve - the underwater-native instance the shard was commissioned for. Cell radial_projection_bias_depth = 3 (2 master + 1) - under cap. Judge B/consolidator may still prefer a merge into K-018; recorded as the closest call among the five hot spots.",
+  "M-057_vs_N-049": "MERGED N-049 -> N-045 (in-wave), which concentrates the representational-precursor early-warning claim in one primary; N-045 carries master_adjacent M-057 (M-057 is the WITHIN-RUN attention-transition marker; N-045/N-049 are the ACROSS-SCALE-LADDER forecaster - adjacent, not duplicate). Also fires the cheap-predictor <=3/shard guard (gen_n now exactly at 3: N-006, N-045, N-055).",
+  "M-055_vs_P-059": "KEEP P-059 with master_adjacent M-055. Complementary, not duplicate: M-055 is a training-schedule critical-period claim, P-059 a stem-architecture aliasing claim; both live in the cross-shard sampling_limit_information_floor family (6 coarse AT CAP: N-018, N-095, O-085, O-089, P-059 + master M-055) - flags, protect O-089 and N-095."
+ },
+ "banned_cluster_audit": {
+  "smoke_fire_fog_transparent_scattering": "PASS - zero banned running examples; all lexical hits are physics vocabulary inside commissioned hard domains (sonar acoustic scattering models O-014/O-017/O-057/O-081, phase-contrast transparent-phase objects O-021/O-030, PSF scattering O-084) plus one verb ('detectors fire on ghosts', O-015)",
+  "calibration_uncertainty_primary": "PASS - no such cluster in any shard; all hits are metrological calibration (sensor gain, noise-model fitting) or statistical uncertainty of benchmark scores (P-001/P-027/P-032/P-034), not model-confidence calibration",
+  "annotation_convention_hard_ban": "ENFORCED with the w4 L-059 boundary ruling: gen_p's annotation-protocol-capability cluster (12 records) + P-064/P-045/P-034/P-007 are CONSTRUCTIVE protocol capabilities (convention control, budget allocation, label repair, verified negatives) - the commissioned debunk-to-repair conversion of the banned pathology cluster; ALLOWED with annotation_ban_boundary flags on all 15 kept members; ZERO convention-pathology audits kept as primaries; the closest-to-the-line record (P-064, convention directions in weight space) is kept because its claim is a weight-space control capability, not a convention-mismatch pathology",
+  "F1_F5": "PASS - zero members (F1 PEFT-factorial-on-SAM, F2 SAM-component-pathology, F3 internal-score-as-free-detector, F4 cue-ablation-collapse on scattering organisms, F5 published-deltas-are-noise as primary framing); gen_p's statistical-rigor family is the constructive REPAIR of the F5 territory, not the banned debunk framing",
+  "realism_not_active_ingredient": "PASS - zero members (two incidental 'realism check' phrases about simulator validation, O-030/O-049)",
+  "small_dense_crowded_counting_cap": "PASS - <=1 incidental mention per shard, zero primaries",
+  "equalization_null_cap": "PASS - <=2 per shard as primaries (N-011 architecture-constant claim is the strongest member; O-096 nominal-redundancy null); under the <=3/shard cap",
+  "cheap_predictor_cap": "AT CAP after merges in all three shards: gen_n {N-006, N-045(+N-049), N-055}, gen_o {O-018, O-092, O-095}, gen_p proxy-evaluation {P-006(+P-028), P-010(+P-013), P-57=P-057}; chronic cross-wave family - Stage-2 T6 duty",
+  "sam_guards": "PASS - gen_n 1 SAM-subject record (N-020, self-declared within its <=5% cap), gen_p 2 tool-only usages (P-089/P-090 use the public SAM checkpoint as apparatus), gen_o 0",
+  "gen_n_specific": "anti-overlap vs gen_f data-composition territory AUDITED: closest approach is N-023(+N-034) vs master F-097 (real-synthetic mixture law) - kept with master_adjacent flag because N-023 is real-domain mixtures only; ZERO synthetic-pipeline framings (1 incidental 'synthetic' hit = N-043's controlled-duplication construction); emergence audit commissioned and delivered (cluster judged, 2 merges applied, N-052 merged into master C-024)",
+  "gen_o_specific": "medical share: 12/100 histopathology + 2 bio-adjacent microscopy records - PASS <=25%; underwater/microscopy/document emphasis delivered (12/13/14 records)",
+  "gen_p_specific": "see GATE-6: >=80% constructive PASS on self-labels (100/104) and on judge hand-read capability-or-protocol-repair (~96% of keeps); strict model-capability constructive is 69/89 keeps (77.5%) - instrument variance recorded, not a violation, because the commissioned target was debunk-to-repair conversion and the protocol repairs ARE the conversion; 0% pure audit PASS (zero pure-debunk primaries kept)"
+ },
+ "fingerprint_cells": {
+  "effective_diversity_not_raw_count": {
+   "master": 2,
+   "kept": 4,
+   "status": "AT CAP 6 after N-043->N-027; tension N-027 vs N-040 protected; cross-shard member O-096"
+  },
+  "contamination_memorization_dose_response": {
+   "master": 3,
+   "kept": 6,
+   "status": "OVER CAP coarse (9) - gen_n MANDATED territory; 2 in-shard merges (N-085->N-084, N-088->N-058) + 1 master merge (N-052->C-024) applied; distinct channels at fingerprint granularity (dose-response law, halo, label-free SSL exposure, fine-tuning persistence, text-side, scaling-law free-rider); protect N-091/N-092; Stage-2 balance duty"
+  },
+  "membership_inference_vision": {
+   "master": 0,
+   "kept": 8,
+   "status": "OVER CAP coarse - MANDATED cluster; merges N-074->N-072, N-067->N-054 applied; tension N-069 vs N-073 protected inside; distinct cells (capacity law, dense-spatial, shadow-free economics, cross-model, distillation, joint-scaling, aggregation, confound); Stage-2 duty"
+  },
+  "feature_release_leakage": {
+   "master": 0,
+   "kept": 6,
+   "status": "AT CAP after N-080->N-075 and N-082->N-076"
+  },
+  "memorization_dose_response": {
+   "master": 1,
+   "kept": 12,
+   "status": "OVER CAP coarse - gen_n MANDATED core; J-038 master-adjacent on N-054; 3 merges applied (N-067->N-054, N-081->N-057, N-088->N-058); Stage-2 balance duty"
+  },
+  "dense_transfer_exponents": {
+   "master": 0,
+   "kept": 11,
+   "status": "OVER CAP coarse - MANDATED core; 1 merge (N-097->N-012); tension N-003 vs N-008 protected; hot-spot flags carried; Stage-2 duty"
+  },
+  "emergence_mechanisms": {
+   "master": 0,
+   "kept": 6,
+   "status": "AT CAP after N-051->N-044, N-049->N-045 and master merge N-052->C-024; commissioned emergence audit delivered"
+  },
+  "scaling_anomalies": {
+   "kept": 5,
+   "status": "OK"
+  },
+  "repetition_effective_data": {
+   "kept": 6,
+   "status": "AT CAP after N-039->N-035"
+  },
+  "benchmark_statistical_rigor": {
+   "kept": 5,
+   "status": "OK after P-027->P-004 and P-028->P-006"
+  },
+  "harness_variance_repair": {
+   "master": 1,
+   "kept": 1,
+   "status": "chronic master-side cell (C-077 absorbed G-078/H-058/K-104); P-030->P-002 applied; kept P-002 carries master_adjacent flag"
+  },
+  "benchmark_metric_redesign": {
+   "kept": 4,
+   "status": "OK after P-008->P-031 and master merge P-005->D-090"
+  },
+  "annotation_protocol_capability": {
+   "kept": 14,
+   "status": "OVER CAP coarse - gen_p MANDATED conversion territory under the HARD-BAN boundary ruling; subfamilies under cap (convention-control 4, budget 3, label-repair 2, rater 2, negatives 1(+merge), taxonomy-bridge 1); all flagged annotation_ban_boundary; Stage-2 duty"
+  },
+  "weight_space_task_arithmetic": {
+   "kept": 6,
+   "status": "AT CAP after P-063->P-070 (P-065 counted in cross_backbone_portability)"
+  },
+  "constraint_projected_decoding": {
+   "kept_gen_p": 6,
+   "kept_gen_o": 2,
+   "status": "gen_p AT CAP after P-075->P-072 (P-077 reclassified to output_symmetry_priors); cross-wave coarse 8 with O-046/O-055 - subject systems disjoint (detection/pose vs tables/math), flags + Stage-2 balance, NO cross-shard merge"
+  },
+  "amodal_occlusion_capability": {
+   "kept": 6,
+   "status": "AT CAP after P-049->P-047 and P-051->P-048; protect P-052"
+  },
+  "interactive_prompting": {
+   "kept": 6,
+   "status": "AT CAP after P-089->P-086"
+  },
+  "long_tail_capability": {
+   "kept": 6,
+   "status": "AT CAP after P-084->P-082"
+  },
+  "sampling_limit_information_floor": {
+   "master": 1,
+   "kept": 5,
+   "status": "AT CAP 6 coarse cross-shard (N-018, N-095, O-085, O-089, P-059 + master M-055) - distinct fingerprint cells, flags only; protect O-089, N-095"
+  },
+  "metric_scale_side_channel": {
+   "master": 5,
+   "kept": 1,
+   "status": "AT CAP 6 with O-079 as the sixth member (master cell already carries K-017+K-095, K-022, K-058+K-089, K-091, K-092); broader physical_side_channel_metrology (O-011, O-021, O-030, O-069, O-071) is cross-domain with distinct cells - flags"
+  },
+  "illumination_geometry_confounds": {
+   "kept": 7,
+   "status": "OVER CAP by 1 (O-003, O-012, O-058, O-061, O-075, O-082, O-099) - distinct sensors/mechanisms across mandated hard domains; NO forced merge (would override mechanistic distinctness); consolidator arbitration requested"
+  },
+  "dispersion_disagreement_as_signal": {
+   "master": "4 (+3 remand, chronic since w3)",
+   "kept": 0,
+   "status": "MERGE ENFORCED at judge time: the wave's only new member P-017 merged into P-007 (whose primary claim is consensus-completion, not dispersion-as-uncertainty)"
+  }
+ },
+ "gate5_gate1": {
+  "numeric_thresholds": "303/304 records carry digit-bearing pre-registered kill thresholds inside falsifiable_prediction; O-007 (merged into O-001) is quantitative-verbal ('within a factor of two', 'less than one-quarter') - decisive, flagged gate1_qualitative_threshold, NOT a remand case",
+  "wave_label_spoof": "ALL 304 records prefill wave='p1_wave_a_w3' (wrong) - identical to the w4 gen_m spoof, now 3/3 generators; consolidator MUST overwrite to p1_wave_b_w5 with wave_label_corrected_from preserved; novelty_status 'unverified' and source_shard values verified correct",
+  "schema_completeness": "first wave with 3/3 fully canonical shards (no normalization lane needed beyond the wave label and one case typo O-063)",
+  "kill_language_drift": "gen_n writes 'the idea is falsified if' (100/100), gen_p/gen_o write 'kill the idea if' - stylistic only, decisive rules everywhere; no normalization required"
+ },
+ "gate4": {
+  "instrument": "strict recognizer requiring BOTH a named public dataset AND a named public model in the experiment fields (recognizer has false negatives on niche domain assets - counts are lower bounds)",
+  "by_shard_keeps": {
+   "gen_n": {
+    "both_named": 2,
+    "dataset_only": 10,
+    "model_only": 5,
+    "neither": 67
+   },
+   "gen_p": {
+    "both_named": 50,
+    "dataset_only": 29,
+    "model_only": 9,
+    "neither": 1
+   },
+   "gen_o": {
+    "both_named": 42,
+    "dataset_only": 12,
+    "model_only": 25,
+    "neither": 15
+   }
+  },
+  "verdict": "gen_n reproduces the w4 gen_k/gen_l STYLE failure ('public pool', 'public checkpoints', 'public galleries' without names) - keep-and-flag per the w4 GATE-4 policy, gate4_missing recorded per keep, asset pinning owed to the mechanical retrofit lane; gen_p is the most GATE-4-compliant shard to date; gen_o is mixed (hard-domain assets often named: DocBank/LayoutLMv3, LIVECell, Sentinel-1/2, MVTec; some records name only one side); NO assets invented by this judge"
+ },
+ "gate6_genre": {
+  "self_labels": {
+   "gen_n": {
+    "characterization_law": 67,
+    "constructive_capability": 25,
+    "audit_debunk": 8
+   },
+   "gen_p": {
+    "constructive_capability": 100,
+    "characterization_law": 4
+   },
+   "gen_o": {
+    "constructive_capability": 50,
+    "characterization_law": 32,
+    "audit_debunk": 18
+   }
+  },
+  "judge_labels_on_keeps": {
+   "gen_n": {
+    "characterization_law": 63,
+    "debunk_audit": 5,
+    "measurement_instrument": 11,
+    "constructive_capability": 5
+   },
+   "gen_p": {
+    "measurement_instrument": 17,
+    "constructive_capability": 69,
+    "characterization_law": 3
+   },
+   "gen_o": {
+    "characterization_law": 30,
+    "constructive_capability": 45,
+    "debunk_audit": 16,
+    "measurement_instrument": 3
+   }
+  },
+  "gen_n": "self 25% constructive vs judge 6% strict capability (5/84 keeps) + 13% measurement instruments - inflation ~2x-4x depending on instrument, same direction as every prior wave; gen_n is a characterization-law shard by mandate: record-not-reject; pure debunk ~6% PASS",
+  "gen_p": "self 96% constructive; judge: 69/89 keeps strict model-capability constructive (77.5%), +17 measurement-instrument protocol repairs, +3 laws; commissioned >=80% constructive quota PASSES on self-labels and on the capability-or-protocol-repair hand-read (~96%); strict-capability instrument reads 77.5% - recorded as instrument variance, not violation (the shard was aimed at converting debunk clusters INTO protocols); 0% pure audit PASS",
+  "gen_o": "self 50% constructive; judge on keeps: ~45 constructive (48%), ~15 pure debunk (16%) - both quotas PASS (constructive >=25%, pure-debunk <=40%)",
+  "vocabulary": "all three shards use the canonical genre enum (first wave with no genre-vocabulary drift)"
+ },
+ "master_collision_audit": {
+  "jaccard": "token-Jaccard screen of every wave-5 record against all 934 master records: max 0.222 (P-061 vs J-009, a true family adjacency caught independently by the semantic pass) - collapse remains family-level, not lexical",
+  "merges_into_master": {
+   "W13-P1-N-052": "W13-P1-C-024",
+   "W13-P1-P-005": "W13-P1-D-090"
+  },
+  "master_not_modified": true,
+  "adjacent_flags": {
+   "W13-P1-N-027": [
+    "W13-P1-K-054",
+    "W13-P1-K-014"
+   ],
+   "W13-P1-N-014": [
+    "W13-P1-K-054"
+   ],
+   "W13-P1-N-096": [
+    "W13-P1-K-054"
+   ],
+   "W13-P1-N-040": [
+    "W13-P1-K-014"
+   ],
+   "W13-P1-N-054": [
+    "W13-P1-J-038"
+   ],
+   "W13-P1-N-045": [
+    "W13-P1-M-057"
+   ],
+   "W13-P1-N-084": [
+    "W13-P1-C-023"
+   ],
+   "W13-P1-N-086": [
+    "W13-P1-C-023"
+   ],
+   "W13-P1-N-087": [
+    "W13-P1-C-023",
+    "W13-P1-C-024"
+   ],
+   "W13-P1-N-090": [
+    "W13-P1-C-023"
+   ],
+   "W13-P1-N-091": [
+    "W13-P1-C-023"
+   ],
+   "W13-P1-N-092": [
+    "W13-P1-C-023",
+    "W13-P1-C-024"
+   ],
+   "W13-P1-N-023": [
+    "W13-P1-F-097"
+   ],
+   "W13-P1-N-003": [
+    "W13-P1-E-008"
+   ],
+   "W13-P1-O-032": [
+    "W13-P1-K-077",
+    "W13-P1-K-074"
+   ],
+   "W13-P1-O-005": [
+    "W13-P1-K-018",
+    "W13-P1-K-094"
+   ],
+   "W13-P1-O-021": [
+    "W13-P1-K-091"
+   ],
+   "W13-P1-O-079": [
+    "W13-P1-K-092",
+    "W13-P1-K-017",
+    "W13-P1-K-058"
+   ],
+   "W13-P1-O-096": [
+    "W13-P1-C-058"
+   ],
+   "W13-P1-O-041": [
+    "W13-P1-L-022"
+   ],
+   "W13-P1-P-002": [
+    "W13-P1-C-077"
+   ],
+   "W13-P1-P-057": [
+    "W13-P1-C-046"
+   ],
+   "W13-P1-P-065": [
+    "W13-P1-J-009",
+    "W13-P1-M-047"
+   ],
+   "W13-P1-P-047": [
+    "W13-P1-J-015"
+   ],
+   "W13-P1-P-059": [
+    "W13-P1-M-055"
+   ],
+   "W13-P1-P-026": [
+    "W13-P1-C-023"
+   ],
+   "W13-P1-P-033": [
+    "W13-P1-C-023"
+   ],
+   "W13-P1-P-035": [
+    "W13-P1-C-023"
+   ]
+  },
+  "notes": "P-057 vs C-046 is the closest keep-side call: the nonlinear-probes-rerank arm duplicates C-046; kept for the dense/finetune-fidelity residual with the duplication recorded for the GATE-8 lane. N-023 vs F-097 is the gen_f anti-overlap closest approach (mixture-law template on a different mixture axis) - kept with flag."
+ },
+ "deliberate_tensions_kept": [
+  {
+   "a": "W13-P1-N-003",
+   "b": "W13-P1-N-008",
+   "statement": "parameter scaling buys almost nothing for localization at fixed token count (N-003) vs parameters buy localization precision, data buys semantic coverage (N-008) - adjudicate by the same error-taxonomy experiment, do NOT merge"
+  },
+  {
+   "a": "W13-P1-N-027",
+   "b": "W13-P1-N-040",
+   "statement": "near-duplicates contribute sublinearly / effective size is cluster count (N-027) vs near-duplicates of the same instance are free hard positives for fine-grained tasks (N-040) - the dedup-threshold optimum is the shared experiment"
+  },
+  {
+   "a": "W13-P1-N-069",
+   "b": "W13-P1-N-073",
+   "statement": "cross-crawl membership correlation exploited as an attack capability (N-069) vs the same correlation as a confound inflating reported MIA success (N-073) - one distribution-matched experiment decides both"
+  },
+  {
+   "a": "W13-P1-N-004",
+   "b": "W13-P1-N-014",
+   "statement": "vision scaling-law fits are functional-form-degenerate and cannot support extrapolation (N-004) vs a per-task exponent atlas forecasts next-generation gains within useful tolerance (N-014) - the atlas's held-out-checkpoint validation is the arbiter"
+  }
+ ],
+ "anomaly_notes": [
+  "W13-P1-N-024",
+  "W13-P1-N-031",
+  "W13-P1-N-042",
+  "W13-P1-N-046",
+  "W13-P1-N-047",
+  "W13-P1-N-057",
+  "W13-P1-N-064",
+  "W13-P1-N-071",
+  "W13-P1-N-077",
+  "W13-P1-N-078",
+  "W13-P1-N-083",
+  "W13-P1-N-091",
+  "W13-P1-N-092",
+  "W13-P1-N-094",
+  "W13-P1-N-095",
+  "W13-P1-N-100",
+  "W13-P1-O-004",
+  "W13-P1-O-009",
+  "W13-P1-O-011",
+  "W13-P1-O-019",
+  "W13-P1-O-021",
+  "W13-P1-O-029",
+  "W13-P1-O-030",
+  "W13-P1-O-035",
+  "W13-P1-O-044",
+  "W13-P1-O-071",
+  "W13-P1-O-082",
+  "W13-P1-O-086",
+  "W13-P1-O-087",
+  "W13-P1-O-089",
+  "W13-P1-O-091",
+  "W13-P1-O-093",
+  "W13-P1-O-098",
+  "W13-P1-P-033",
+  "W13-P1-P-052",
+  "W13-P1-P-059",
+  "W13-P1-P-064",
+  "W13-P1-P-090",
+  "W13-P1-P-097",
+  "W13-P1-P-099",
+  "W13-P1-P-102"
+ ],
+ "high_prior_art_risk": {
+  "W13-P1-N-053": "deja-vu memorization demonstrated by Meehan et al.; residual here is the scaling-law-in-model-size fit",
+  "W13-P1-N-062": "canary/secret-sharer exposure methodology established for language (Carlini et al.); residual is the standardized vision dosimetry panel",
+  "W13-P1-N-065": "MIA-vs-overfitting links established since Shokri et al./Carlini et al.; residual is the params-per-unique-image collapse",
+  "W13-P1-N-066": "membership inference literature is large; residual is spatially-resolved dense-residual attacks",
+  "W13-P1-N-076": "embedding-based re-identification is adjacent to deployed face-recognition practice; residual is the general-purpose-encoder linkage-rate curves",
+  "W13-P1-N-093": "inverse-scaling prize documented for language (McKenzie et al.); residual is the curated vision battery",
+  "W13-P1-P-006": "IRT-based benchmark compression exists in NLP evaluation; residual is the detection instantiation with adaptive subsets",
+  "W13-P1-P-033": "canary items are known in LLM contamination practice; residual is the statistically-powered vision benchmark protocol",
+  "W13-P1-P-038": "box-plus-point weak supervision variants exist in the WSIS literature; residual is the figure-ground-ambiguity accounting",
+  "W13-P1-P-040": "SSL-feature seeds for weakly supervised segmentation are an active literature; residual is the controlled same-pipeline comparison",
+  "W13-P1-P-060": "register tokens are published (ViT artifact-token line); residual is the retrofit-to-existing-checkpoints recipe",
+  "W13-P1-P-068": "re-basin/permutation alignment is published for classifiers and the record concedes the extension framing; residual is dense/segmentation extension with federated averaging",
+  "W13-P1-P-074": "hierarchy-aware classification and severe-mistake literature is substantial; residual is decode-time-projection-only equal-top-1 claim",
+  "W13-P1-P-087": "next-click policy learning overlaps active/interactive segmentation literature; residual is the cross-dataset click-budget claim",
+  "W13-P1-P-100": "boxes-from-masks refitting is a known practical trick; residual is the tight-IoU metric quantification",
+  "W13-P1-P-102": "SSL attention objectness priors for proposals are studied; residual is open-set recall with zero known-class cost",
+  "W13-P1-O-013": "speckle-statistics-native processing is standard in SAR/sonar signal processing; residual is the augmentation/consistency-training comparison",
+  "W13-P1-O-020": "physics-pretext self-supervision for sonar may exist in the applied literature; residual is the shadow-from-highlight task",
+  "W13-P1-O-025": "physical-pixel-size conditioning appears in some microscopy/pathology pipelines; residual is the controlled cross-magnification comparison",
+  "W13-P1-O-034": "graph-based tissue-architecture pathology is a large literature; residual is the centroid-only-graph increment over appearance MIL",
+  "W13-P1-O-038": "MIL attention-localization critiques exist; residual is the field-effect mechanism claim with lesion-size stratification",
+  "W13-P1-O-045": "stroke-dynamics recovery for offline handwriting is a known research direction; residual is the pretraining-transfer framing",
+  "W13-P1-O-054": "developable/cylinder page models are classical dewarping; residual is the OOD-generalization comparison vs free-form flows",
+  "W13-P1-O-056": "local-incidence-angle inputs are used in SAR practice; residual is the data-equivalence quantification",
+  "W13-P1-O-088": "FFT descreening is classical prepress/document practice; residual is the per-page measured-notch OCR comparison",
+  "W13-P1-O-091": "projection-profile line analysis is classical document layout; residual is the grid-veto error-class accounting on modern parsers",
+  "W13-P1-O-097": "multitemporal SAR despeckling/multilooking is standard practice; residual is the equal-compute crop-classification comparison"
+ },
+ "cross_shard_attractors": [
+  "sampling_limit_information_floor (N-018/N-095 + O-085/O-089 + P-059, master M-055)",
+  "constraint_projected_decoding (gen_p x6 + O-046/O-055)",
+  "effective_diversity_not_raw_count (N-027/N-040/N-096 + O-096, master K-014/K-054)",
+  "canary_injection (N-062 training-side dosimetry + P-033 test-side contamination canaries)",
+  "low_dim_physical_transform_normalization (O-037 scanner color + O-080 water attenuation)",
+  "cheap_predictor_of_outcome at 3/shard in all three shards (chronic cross-wave)",
+  "prior_vs_pixel_hallucination (O-041/O-048/O-090, master L-022 adjacency)",
+  "physics_prior_label_efficiency (O-020/O-045/O-057)",
+  "benchmark_contamination_defense (P-026/P-033/P-035 + N-084 corrections, master C-023 family)"
+ ],
+ "canonical_state_untouched": true,
+ "no_fake_citations": true,
+ "no_new_ideas": true,
+ "force_push": false
+}
