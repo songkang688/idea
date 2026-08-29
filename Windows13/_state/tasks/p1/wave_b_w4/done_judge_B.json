@@ -1,0 +1,52 @@
+{
+  "task_id": "p1_wave_b_w4",
+  "role": "judge_B_feasibility",
+  "status": "complete",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "wave": "w4_KLM",
+  "branch": "cursor/p1-wave-b-w4-judge-b-feasibility-331c",
+  "generated_at_utc": "2026-08-29T00:21:00Z",
+  "outputs": [
+    "Windows13/_state/tasks/p1/wave_b_w4/judge_B.json",
+    "Windows13/_state/tasks/p1/wave_b_w4/judge_B.md",
+    "Windows13/_state/tasks/p1/wave_b_w4/accepted_shard_B.jsonl",
+    "Windows13/_state/tasks/p1/wave_b_w4/done_judge_B.json"
+  ],
+  "counts": {
+    "input_total": 305,
+    "input_by_shard": {"K": 105, "L": 100, "M": 100},
+    "keep": 301,
+    "keep_by_shard": {"K": 103, "L": 98, "M": 100},
+    "merge": 4,
+    "merge_in_wave": 3,
+    "merge_in_wave_cross_shard": 0,
+    "merge_cross_wave_into_master": 1,
+    "kill": 0,
+    "anomalies": 6,
+    "tier_T1_keep": 152,
+    "tier_T2_keep": 149,
+    "tier_T3_keep": 0,
+    "score5_keeps": 159,
+    "duplicate_groups": 4,
+    "co_run_clusters": 19,
+    "gate1_qualitative_kill_threshold": {"gen_k": 5, "gen_l": 0, "gen_m": 0},
+    "gate4_named_public_assets_full": {"gen_k": 0, "gen_l": 0, "gen_m": 100},
+    "needs_special_resources_true": {"gen_k": 0, "gen_l": 0, "gen_m": 1}
+  },
+  "unresolved_items": [
+    "judge_A w4 output was not on origin at judging time (git ls-remote showed zero w4 branches); consolidator must diff this shard against judge_A when it lands - expected friction: 4 merges (K-043->K-037, L-011->L-015, L-069->L-097, K-100->C-023) and 5 gen_k qualitative kill thresholds.",
+    "GATE-4 wave-wide gap: gen_k 0/105 and gen_l 0/100 name both a public dataset and model in experiment fields (generator style choice verified by spot-reads; gen_m 100/100 compliant) - 205 records need asset-naming retrofit before Stage-2; recommendation is schema-only remand, not content rejection.",
+    "GATE-1 gap: 5 gen_k ids (K-035, K-039, K-065, K-083, K-094) carry qualitative kill thresholds; numeric retrofit belongs to the generator or consolidator - this judge invented no numbers.",
+    "Schema normalization before append: gen_k separate kill_threshold field + plural evidence_labels; gen_m extra fields with wave mislabeled 'p1_wave_a_w3' on all 100 records (actual w4_KLM) - consolidator must correct on append.",
+    "Family-cap pressure escalated unresolved: shared_percept_decorrelation (6 L ids at cap), head_backbone_interface (6 M ids at cap, 2 adjacent), bn_norm_statistics_mechanics (8 M ids over cap) - recommend Stage-2 slot caps rather than judge-time forced merges.",
+    "prior_art_risk flags (L-074, M-023, M-031) are unverified and need the GATE-8 triage lane before Stage-2; no citations asserted.",
+    "K-100->C-023 cross-wave merge requires consolidator action; canonical master is read-only for judges and was not modified."
+  ],
+  "recommended_next_task_type": "p1_wave_b_w4_judge_C_or_consolidator",
+  "canonical_state_untouched": true,
+  "no_fake_citations": true,
+  "force_push": false,
+  "notes": "Independent feasibility pass over raw shards gen_k+gen_l+gen_m (305 ideas; gen_n/gen_o/gen_p explicitly not read, judge_A not consulted). Keep 301 (K:103, L:98, M:100), merge 4 (3 in-wave, 1 cross-wave into master C-023 contamination family as a routing recommendation; master file untouched at 592 records), kill 0. Tiers: T1 152 / T2 149 / T3 0 - no gated resources anywhere; sole nsr=true is M-030 (8-GPU node for the full batch ladder, single-GPU fallback exists, stays T2). 159 keeps are killable in <=1 GPU-day per the generators' own bounds. Gate picture is bimodal on GATE-4 exactly opposite to w3's GATE-5 split: gen_m 100/100 names both dataset+model, gen_k/gen_l 0/205 full compliance. Schema drift flagged as commissioned (gen_k separate kill_threshold field). Canonical state (ideas_master.jsonl 592 records, research_state.json, window.lock.json) present on branch base and untouched."
+}
