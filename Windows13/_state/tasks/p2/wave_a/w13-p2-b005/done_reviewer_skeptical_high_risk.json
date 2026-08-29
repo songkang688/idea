@@ -1,0 +1,55 @@
+{
+ "task_id": "p2_wave_a_w13_p2_b005_reviewer_skeptical_high_risk",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "batch_id": "W13-P2-B005",
+ "candidate_count": 61,
+ "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b005/reviewer_skeptical_high_risk.jsonl",
+ "recommended_next_task_type": "p2_wave_a_review",
+ "complete": true,
+ "reviewer_role": "reviewer_skeptical_high_risk",
+ "input_master": {
+  "file": "Windows13/_state/ideas_master.jsonl",
+  "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+  "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+  "master_lines": [
+   245,
+   305
+  ]
+ },
+ "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B005]",
+ "verdict_counts": {
+  "keep_lean": 35,
+  "borderline": 25,
+  "kill_lean": 1
+ },
+ "gate8_flagged_ids": [
+  "W13-P1-C-095",
+  "W13-P1-C-103",
+  "W13-P1-D-001",
+  "W13-P1-D-022",
+  "W13-P1-D-045",
+  "W13-P1-D-047",
+  "W13-P1-D-059",
+  "W13-P1-D-074"
+ ],
+ "m4_family_conflicts_flagged": [
+  "context_cooccurrence_reliance six-member crowd D-010/D-023/D-028/D-037/D-041/D-058 (three share corun:compositing_harness; D-037 carries a judge_C merge vote; D-028 is judge_C-anomaly-differentiated) - forced co-adjudication with D-010 (dg09 primary, absorbs D-062) as recommended anchor; D-058 must additionally be co-adjudicated with B004's flagged tf11 hallucination trio C-089/C-090/C-092",
+  "metric-substitution/re-scoring six-member family D-018/D-024/D-038/D-047/D-053/D-073 ('alternative scoring reorders methods') - pooled cap; D-047 (dg19 primary, downstream-validation arm, GATE-8 flagged) and D-073 recommended anchors; D-038 carries a judge_C merge vote and also belongs to the oracle_decomposition family",
+  "vocabulary-sweep corun block D-002 (dg02 primary, absorbs E-025) / D-003 (dg03 primary, absorbs D-016+E-026) / D-011 (judge_C merge vote) - D-011 folds as the size-scaling arm of D-002's instability audit; D-003/D-070 form the abstention pair (vocabulary scope vs image scope) and should be co-adjudicated",
+  "caption-frequency proximity family D-001 (dg01 primary, absorbs E-005) / D-034 (judge_C merge vote, corun:frequency_strat) - same proximity_predicts_performance template, D-001 recommended primary",
+  "naming_vs_finding block: anchor D-071 (dg04 primary, absorbs D-004, cheap_kill_first_batch) with members D-055/D-063/D-073 and protected anti-theses D-044 (judge_C anomaly, tension with D-071) and D-072 (judge_C anomaly, two-stream counter-claim) - adjudicate as one block; tensions must ride as arms, not be pooled away",
+  "web_photo_priors family D-061/D-064/D-067 (D-067 judge_C merge vote) - D-061 recommended anchor (only member with a causal rescaling arm); D-069 (state-space anomaly) is adjacent but axis-distinct and should stay separate",
+  "score_calibration_operating_point family D-013 (dg11 primary, absorbs D-040) / D-031 (cheap_kill_first_batch) / D-074 (GATE-8, prior_art_risk_box_uncertainty) - one pooled calibration instrument; adjacent to B004/wave-1 calibration crowd C-002..C-012",
+  "density_crowding_counting block D-021 (dg15 primary but judge_C merge vote) / D-024 / D-025 / D-029 (triple anomaly, do not pool away) - dense-scene pooled adjudication",
+  "pretraining-objective attribution pair D-020 (judge_C merge vote, confound:matched_compute_hard) / D-055 (tension:D-077) - one controlled attribution program should carry both",
+  "mask-annotation-value pair D-045 (GATE-8, prior_art_risk_box_supervised_seg) / D-052 (scale_gap_mild) - one reconciled verdict on the value of mask supervision before the cut; D-046/D-050 form the direction-inversion pair (inference-side vs training-side) and should be co-adjudicated",
+  "judge_C merge-vote 2-1 keeps requiring explicit Wave-B resolution: D-011, D-020, D-021, D-034, D-037, D-038, D-054, D-067, D-070",
+  "D-054 wave-1 collision risk with B-026/A-005 (prompt-jitter consistency instrument) flagged by judge_A and judge_B - cross-batch jitter-family adjudication before seating",
+  "rankings_dont_transfer pair D-026/D-036; D-036 is wave1-adjacent to C-042, which sits inside B004's flagged dg19/tf12 reweighting-instability block - cross-batch co-adjudication",
+  "correlated-error instrument pair D-048 (pipeline stages) / D-060 (dg32 primary, absorbs F-033; model families) - one instrument, two substrates",
+  "interface_not_perception pair D-065/D-066 (D-066 double anomaly) - co-adjudicate as inference+mechanism pair",
+  "dg absorptions that must not leak back at the cut: C-095->C-094, D-001->E-005, D-002->E-025, D-003->D-016+E-026, D-010->D-062, D-013->D-040, D-047->E-067, D-057->D-007, D-060->F-033, D-068->E-071, D-071->D-004"
+ ],
+ "notes": "Wave-A skeptical/high-risk adversarial review only; final keep/kill authority rests with the Wave-B judge. No edits to ideas_master.jsonl or window.lock.json. Single kill_lean (D-059, typographic attacks) is bound to record text: judge_C_adversary kill vote, judge_A wave1 flag 'prior-art check required: typographic attacks on CLIP are documented' (wave-1 A-077 defense-side sibling), judge_B technique_port + prior_art_risk_typographic flags, and the record's own concession that 'typographic attacks are established for classification' - killed for conceded-known content with a thin readout-port delta, not for difficulty; queue.json M1 already routes D-059 through GATE-8 as an outvoted prior-art kill. All nine judge_C merge-vote 2-1 keeps were held at borderline rather than killed, consistent with kill-requires-record-text policy. All 61 records lack numeric kill thresholds (m5_numeric_threshold_retrofit_needed=true throughout, consistent with the M5 431-record debt). This batch is 4 gen_c contrarian-eval records plus 57 gen_d object-detection records; dominant template pressure comes from the six-member context_cooccurrence_reliance crowd, the six-member metric-substitution crowd, and the naming_vs_finding block with its two protected anti-theses (D-044, D-072). 8 GATE-8 flags reflect judge prior_art_risk / prior-art-check flags plus in-record concessions, not invented citations. Novelty unverified for all 61 records; no external citations introduced beyond those already present in record text."
+}
