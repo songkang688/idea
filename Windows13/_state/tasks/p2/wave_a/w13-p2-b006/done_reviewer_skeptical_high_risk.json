@@ -1,0 +1,59 @@
+{
+ "task_id": "p2_wave_a_w13_p2_b006_reviewer_skeptical_high_risk",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "batch_id": "W13-P2-B006",
+ "candidate_count": 61,
+ "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b006/reviewer_skeptical_high_risk.jsonl",
+ "recommended_next_task_type": "p2_wave_a_review",
+ "complete": true,
+ "reviewer_role": "reviewer_skeptical_high_risk",
+ "input_master": {
+  "file": "Windows13/_state/ideas_master.jsonl",
+  "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+  "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+  "master_lines": [
+   306,
+   366
+  ]
+ },
+ "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B006]",
+ "verdict_counts": {
+  "keep_lean": 28,
+  "borderline": 33,
+  "kill_lean": 0
+ },
+ "gate8_flagged_ids": [
+  "W13-P1-D-078",
+  "W13-P1-D-080",
+  "W13-P1-D-082",
+  "W13-P1-D-086",
+  "W13-P1-E-004",
+  "W13-P1-E-009",
+  "W13-P1-E-013",
+  "W13-P1-E-031",
+  "W13-P1-E-040",
+  "W13-P1-E-046",
+  "W13-P1-E-048",
+  "W13-P1-E-051"
+ ],
+ "m4_family_conflicts_flagged": [
+  "annotation_ceiling_conventions eight-member crowd D-075/D-093/D-094/D-095/D-096/D-097/D-098/D-099 (plus E-043 as language-side extension via wave1 A-079) - D-096 (dg16 primary, absorbs D-017+E-065, wave1 C-025/C-066/B-091 flag) recommended anchor; D-097 (triple anomaly) and D-099 (double anomaly) protected; D-075 carries a judge_C merge vote into D-096 and must be co-adjudicated as its mechanism arm; corun:annotation_repool binds D-093/D-096/D-097 to one multi-annotator collection; absorptions D-093->D-033, D-095->D-084, D-096->D-017+E-065 must not leak back at the cut",
+  "text_geometry_forecast six-member crowd E-047/E-048/E-049/E-050/E-051/E-034 - E-047 (dg05 primary, absorbs D-005, cheap_kill_first_batch) recommended anchor; E-034 carries a judge_C merge vote into E-047 ('same text-geometry instrument'); E-048 (technique_port) and E-051 (prior_art_risk_bag_of_words) GATE-8 flagged; pooled cap with one corun:text_geometry_toolkit seat; E-049/E-050/E-030 claim overlapping slices of the same per-class bias variance and must not each take a seat",
+  "density_crowding_counting six-member family D-078/D-079/D-080/D-081/D-082/D-083 - D-079 carries a judge_A merge vote into B005's D-021 (dg15 primary): forced cross-batch co-adjudication with B005's density block D-021/D-024/D-025/D-029; D-082 (judge_C anomaly) and D-083 (triple anomaly) must not be pooled away; D-078/D-080/D-082 GATE-8 flagged",
+  "input_geometry_artifacts five-member family E-023/E-036/E-038/E-039/E-044 - pooled best-of-family cap; recommended arms E-044 (protocol audit; doubles as hidden_budget permutation) + E-038 (mechanistic recalibration arm); E-044 and D-091 both ride the wave1 C-045 hidden-budget line with B005 and must be adjudicated once across both families",
+  "abstention_none_of_the_above four-member family E-018/E-027/E-032/E-042 - co-adjudicate with B005's abstention pair D-003/D-070; E-042 recommended anchor (dense-vs-verbal within-model asymmetry); E-027 additionally sits in the cross-batch calibration crowd",
+  "metric-substitution cross-batch pressure: D-090 (greedy-vs-optimal matching) and E-028 (hierarchy-aware credit, judge_B pairs_with:D-038) functionally extend B005's six-member 'alternative scoring reorders methods' family D-018/D-024/D-038/D-047/D-053/D-073 - pooled cap, one cached-prediction re-scoring harness shared with D-089",
+  "score_calibration_operating_point: D-086 (wave1_flag C-021, conceded-old critique, GATE-8) extends B005's calibration family D-013/D-031/D-074 - cross-batch pooled calibration instrument",
+  "context_cooccurrence_reliance cross-batch: D-076/E-006/E-010 extend B005's six-member crowd D-010/D-023/D-028/D-037/D-041/D-058; E-010 (dg10 primary, absorbs E-073, double anomaly, corun:compositing_harness) shares the compositing harness with the B005 crowd - the family must not take two seats for one instrument",
+  "oracle_decomposition pair D-077 (judge_C merge vote into B005's D-055; judge_B tension:D-020/D-055) and E-002 (dg26 primary, absorbs E-064, naming_vs_finding) - D-077 must ride B005's pretraining-attribution pair D-020/D-055; E-002 must ride B005's naming_vs_finding block (anchor D-071) as its segmentation arm",
+  "interface_not_perception: E-041 (judge_A anomaly) and E-019 (set-decoding arm) co-adjudicate with B005's D-065/D-066 inference+mechanism pair; corun:layer_probe_toolkit binds E-041 and E-046 to one probing toolkit",
+  "consistency_as_free_signal: E-022 (judge_C anomaly) and E-029 (dg06 primary absorbing D-006/D-009/D-042/E-063; judge_C family label synonym_instability_wave1_C052 names an explicit wave-1 sibling) - cross-wave collision check against wave-1 C-052 and B005's D-054 jitter instrument before seating; E-029's four absorptions must not leak back",
+  "rankings_are_noise_bootstrap pair D-085 (dg14 primary, absorbs D-032, corun:bootstrap_harness) / D-088 (wave1 C-023/C-024 port flags) - one bootstrap harness shared with the B004/B005 bootstrap crowd per M3 single-instrument rule",
+  "protocol_harness_drift trio D-089/D-090 (+E-028) - one cached-prediction re-scoring harness; D-089's cap fix is design-entangled with D-086's operating-point family",
+  "tower-attribution pair E-030/E-033 ('which tower binds') - co-adjudicate; E-030 additionally capped under B005's caption-frequency family (D-001 dg01 anchor, D-034) with corun:synonym_harness shared with E-029",
+  "judge merge-vote 2-1 keeps requiring explicit Wave-B resolution: D-075 (->D-096), D-077 (->B005 D-055), D-079 (->B005 D-021), E-034 (->E-047)",
+  "dg absorptions that must not leak back at the cut: D-085->D-032, D-093->D-033, D-095->D-084, D-096->D-017+E-065, E-002->E-064, E-010->E-073, E-011->E-045, E-013->E-014+E-015+E-020, E-028->D-014, E-029->D-006+D-009+D-042+E-063, E-046->E-001, E-047->D-005"
+ ],
+ "notes": "Wave-A skeptical/high-risk adversarial review only; final keep/kill authority rests with the Wave-B judge. No edits to ideas_master.jsonl or window.lock.json. Zero kill_lean this batch: unlike B005 (D-059), no B006 member carries a judge kill vote, none appears in queue.json M1's outvoted prior-art kill list, and per policy suspected prior art is routed through GATE-8 rather than killed pre-verification - the 12 GATE-8 flags cover every judge prior_art_risk / technique_port / prior-art-check flag plus in-record concessions (e.g. D-086 'the critique of full-curve integration is old', E-013 'language-ablation baselines have appeared for older datasets', E-048 'standard in cross-modal retrieval'), with no invented citations. All four judge merge-vote 2-1 keeps (D-075, D-077, D-079, E-034) held at borderline for explicit Wave-B resolution, consistent with kill-requires-record-text policy. All 61 records lack numeric kill thresholds (m5_numeric_threshold_retrofit_needed=true throughout, consistent with the M5 431-record debt). Batch composition: 22 gen_d object-detection records (annotation/eval-protocol heavy) plus 39 gen_e vlm-dense-prediction records. Dominant template pressure: the eight-member annotation_ceiling_conventions crowd, the six-member text_geometry_forecast crowd, the six-member density_crowding_counting family, the five-member input_geometry_artifacts family, and heavy cross-batch coupling into B005's flagged blocks (naming_vs_finding, metric-substitution, calibration, context co-occurrence, hidden budget, jitter/consistency). Eight anomaly-protected records (D-082, D-083, D-097, D-099, E-009, E-010, E-022, E-041) were not pooled away. Novelty unverified for all 61 records; no external citations introduced beyond those already present in record text."
+}
