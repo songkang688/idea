@@ -1,193 +1,180 @@
-# Idea_01 — Reviewer attacks & answers
+# Idea_01 —— 评审攻击与应答
 
-Source of the A-series: [Reviewer2 attack top5 cheap](bc-ad2f6983-8ed1-53a5-b2ad-1c36114708f3),
-recorded in `stage4_reviewer2_cheap5.jsonl`. The B- and C-series are our own
-red team. **No attack is listed without the evidence that answers it**; an
-attack with no shut-up experiment is an unmitigated risk and is labelled as one.
-
----
-
-## A. The Stage-4 attacks (binding — these are why the idea survived)
-
-### A1. "Windowing manufactures the result"
-
-**The attack.** Windowing is a monotone intensity map. Choose the window that
-compresses tissue contrast and any intensity clusterer will agree with anything.
-Run one window and the finding is a preprocessing artifact.
-
-**Why it is dangerous.** It is correct as stated. `proposal.md` §7 concedes it
-outright.
-
-**Evidence that shuts it.** E2: three clinical windows (abdomen 400/40, bone
-2000/400, lung 1500/−600), **every cell reported**, H1 required on ≥2 of 3.
-Holding on exactly one window is a pre-declared **pivot**, not a footnote.
-
-### A2. "Agreement is not mechanism"
-
-**The attack.** AMG correlating with k-means shows the two produce similar
-partitions. It does not show AMG is *computing* intensity clustering. Two
-methods can agree because CT anatomy is genuinely intensity-separable.
-
-**Evidence that shuts it.** E3, the double dissociation: an intensity remap
-that freezes edges versus a texture shuffle that freezes local mean intensity.
-Both arms carry enforced validity checks, and the code refuses to emit a number
-when a check fails. This is the residual obligation, verbatim: *"Must earn
-mechanistic via intensity vs texture counterfactuals; else evaluation note."*
-
-### A3. "k-means is one of many cheap baselines"
-
-**The attack.** Beating chance is not the bar. If AMG merely agrees with
-*something* cheap, the claim is empty.
-
-**Evidence that shuts it.** Multi-Otsu and GMM as intensity-family controls,
-and **SLIC as the discriminative spatial baseline**. The clusterers must beat
-*superpixels*, not merely correlate with AMG. `cardinality_ratio` is reported so
-nobody can claim the win is a mask-counting artifact.
-
-### A4. "Metric shopping"
-
-**The attack.** Pick the agreement metric that flatters the hypothesis.
-
-**Evidence that shuts it.** Three metrics pre-registered — Hungarian IoU, ARI,
-boundary-F — all reported on every card. The code has no "best metric" helper,
-and `run_smoke.py` prints all three verdicts side by side including the ones
-that disagree. Metric-selection discipline is anchored to Metrics Reloaded
-(Nature Methods 2024, **VERIFIED PRIOR WORK**) — the same paper that killed the
-sibling idea `F-022`, which is a standing reminder of the cost of getting this
-wrong.
-
-### A5. "'SAM is bad on CT' is already known"
-
-**The attack.** arXiv 2408.11210 and arXiv 2408.04212 (**VERIFIED PRIOR WORK**)
-already report CT weakness and window sensitivity.
-
-**Evidence that shuts it.** Framing discipline. The paper ships **mechanism**,
-not Dice tables, and must never claim CT weakness as a finding. `proposal.md`
-§8 and §23 bind this; the closest-work table in §9 states for each paper why it
-does not pre-empt us. If the paper ends up arguing "SAM is bad on CT", it has
-already failed review.
-
-### A6. "Hyperparameter brittleness"
-
-**The attack.** One AMG setting is a lucky draw.
-
-**Evidence that shuts it.** E2 sweeps `points_per_side` ∈ {16, 32} crossed with
-k ∈ {8, 16, 32}. H3 requires the effect on ≥2 settings.
+A 系列的来源：[Reviewer2 attack top5 cheap](bc-ad2f6983-8ed1-53a5-b2ad-1c36114708f3)，
+记录在 `stage4_reviewer2_cheap5.jsonl` 中。B 系列与 C 系列是我们自己的
+红队。**任何攻击都不会在没有配上能回应它的证据的情况下被列出**；
+一条没有封嘴实验的攻击就是一项未缓解的风险，并会被如实标注为此。
 
 ---
 
-## B. The downgrade attack — the one that decides what this paper *is*
+## A. Stage-4 的攻击（有约束力 —— 这些正是这个想法得以存活的原因）
 
-### B1. "This is an evaluation note, not a mechanistic finding"
+### A1. "窗宽窗位是在制造结论"
 
-**This is the highest-probability outcome, not a hypothetical.** It is written
-into the Stage-4 record as the explicit failure mode: *"…else evaluation note."*
-A reviewer will apply it the moment E3 is weak, and they will be right to.
+**攻击内容。** 窗宽窗位是一个单调的强度映射。只要选一个把组织对比度压缩掉的
+窗，任何强度聚类器都会跟任何东西一致。只跑一个窗，这个发现就是预处理假象。
 
-**What triggers it.**
-- E3 shows \(s_{\mathrm{int}} \approx s_{\mathrm{tex}}\) — no dissociation.
-- Or E3 is not run at all.
-- Or the dissociation appears on one window and one AMG setting only.
+**为什么危险。** 这条攻击本身就是对的。`proposal.md` §7 直接承认了它。
 
-**What answering it requires.** A **clean** dissociation: the intensity arm
-moving AMG substantially more than the texture arm, on ≥2 windows and ≥2 AMG
-settings, with both validity gates passing. Nothing weaker converts a
-correlation into a mechanism, and nothing weaker should be submitted as one.
+**能封嘴的证据。** E2：三个临床窗（腹部 400/40、骨 2000/400、
+肺 1500/−600），**每个单元格都报告**，且要求 H1 在 3 个中至少 2 个成立。
+只在恰好一个窗上成立，是一个预先声明的 **pivot**，不是一条脚注。
 
-**Standing conflict that must be resolved before writing (FACT).** The record
-gives two incompatible instructions for this contingency:
+### A2. "一致性不等于机制"
 
-| Source | Instruction |
+**攻击内容。** AMG 与 k-means 相关，只说明两者产生了相似的划分，
+并不说明 AMG 就是在*计算*强度聚类。两个方法可以只是因为 CT 解剖结构
+本身就是强度可分的而彼此一致。
+
+**能封嘴的证据。** E3，即双重解离：一条是冻结边位置的强度重映射，
+另一条是冻结局部平均强度的纹理置乱。两条臂都带强制的有效性检查，
+而且检查不通过时代码拒绝输出任何数字。这就是那条残余义务，原文照引：
+*"Must earn mechanistic via intensity vs texture counterfactuals; else evaluation note."*
+
+### A3. "k-means 只是众多廉价基线之一"
+
+**攻击内容。** 胜过随机水平不是门槛。如果 AMG 只是与*某个*便宜方法一致，
+这个主张就是空的。
+
+**能封嘴的证据。** 把 multi-Otsu 与 GMM 作为强度家族内的对照，
+并**把 SLIC 作为有区分力的空间基线**。聚类器必须胜过*超像素*，
+而不只是与 AMG 相关。`cardinality_ratio` 会被报告，这样谁都不能声称
+这次取胜只是掩码计数造成的假象。
+
+### A4. "指标挑选（metric shopping）"
+
+**攻击内容。** 挑一个最迎合假设的一致性指标。
+
+**能封嘴的证据。** 三个预先注册的指标 —— Hungarian IoU、ARI、
+boundary-F —— 每张卡片上都全部报告。代码里没有"选最好的指标"这种辅助函数，
+而 `run_smoke.py` 会把三个裁决并排打印出来，包括那些相互矛盾的。
+指标选择的纪律锚定在 Metrics Reloaded
+（Nature Methods 2024，**VERIFIED PRIOR WORK**）—— 正是这篇论文杀掉了
+同胞想法 `F-022`，它长期提醒着在这一点上出错的代价。
+
+### A5. "'SAM 在 CT 上不行'早就是已知的了"
+
+**攻击内容。** arXiv 2408.11210 与 arXiv 2408.04212（**VERIFIED PRIOR WORK**）
+已经报告过 CT 上的弱点以及窗宽窗位敏感性。
+
+**能封嘴的证据。** 表述纪律。这篇论文交付的是**机制**，
+不是 Dice 表格，而且绝不能把"CT 上表现差"当作发现来主张。`proposal.md`
+§8 与 §23 对此有约束；§9 的最近工作表格逐篇说明为什么它不构成抢先。
+如果这篇论文最后变成在论证"SAM 在 CT 上不行"，那它在评审阶段就已经失败了。
+
+### A6. "超参数脆弱性"
+
+**攻击内容。** 单一 AMG 设置只是运气好抽中的一次。
+
+**能封嘴的证据。** E2 扫描 `points_per_side` ∈ {16, 32} 与
+k ∈ {8, 16, 32} 的交叉组合。H3 要求该效应在至少 2 组设置上成立。
+
+---
+
+## B. 降级攻击 —— 决定这篇论文*是什么*的那一条
+
+### B1. "这是一篇 evaluation note，不是机制性发现"
+
+**这是概率最高的结局，不是一个假想。** 它被写进 Stage-4 记录，作为明确的
+失效模式：*"…else evaluation note."*。一旦 E3 结果偏弱，评审就会套用它，
+而且他们那样做是对的。
+
+**什么会触发它。**
+- E3 显示 \(s_{\mathrm{int}} \approx s_{\mathrm{tex}}\) —— 没有解离。
+- 或者 E3 根本没跑。
+- 或者解离只在一个窗、一组 AMG 设置上出现。
+
+**回应它需要什么。** 一次**干净的**解离：强度臂对 AMG 的扰动显著大于
+纹理臂，在 ≥2 个窗和 ≥2 组 AMG 设置上成立，且两个有效性门禁都通过。
+任何比这更弱的东西都不能把相关性转化为机制，也都不该被当作机制投出去。
+
+**动笔前必须解决的长期冲突（FACT）。** 记录对这个情形给出了两条
+互不相容的指令：
+
+| 来源 | 指令 |
 |---|---|
-| `stage4_reviewer2_cheap5.jsonl` | *"else evaluation note"* — **downgrade** |
-| This file, original version | *"If we cannot run the causal arm, do not submit."* — **withhold** |
+| `stage4_reviewer2_cheap5.jsonl` | *"else evaluation note"* —— **降级** |
+| 本文件的原始版本 | *"If we cannot run the causal arm, do not submit."* —— **扣下不发** |
 
-`stage6_battle.md` §4.4 logged this as unresolved. It decides whether a failed
-H2 yields a shorter paper or no paper. **Settle it before writing.** This file
-does not settle it unilaterally, because the Stage-4 record outranks a package
-note and the package note is the stricter reading — the disagreement is real
-and belongs to the supervisor.
+`stage6_battle.md` §4.4 已把它登记为未解决。它决定了 H2 失败时得到的是
+一篇更短的论文还是没有论文。**动笔之前先把它定下来。** 本文件不单方面
+裁定它，因为 Stage-4 记录的层级高于一条 package 备注，而这条 package
+备注又是更严格的读法 —— 这个分歧是真实的，且属于 supervisor 的职权。
 
-### B2. "You have proven a definitional property"
+### B2. "你证明的是一条定义性性质"
 
-**The attack.** Of course a segmenter on a single-channel calibrated modality
-agrees with intensity clustering — CT *is* intensity. The finding is true by
-construction.
+**攻击内容。** 一个分割器在单通道、经过标定的模态上当然会与强度聚类
+一致 —— CT *本身就是*强度。这个发现按构造为真。
 
-**Why it is dangerous.** This is precisely the attack that **killed the sibling
-idea `F-022`**: *"Near-definitional Dice property; Metrics Reloaded; no
-leaderboard preds."* The same reviewer reflex applies here.
+**为什么危险。** 这恰恰就是**杀掉同胞想法 `F-022`** 的那条攻击：
+*"Near-definitional Dice property; Metrics Reloaded; no
+leaderboard preds."*。同样的评审条件反射在这里也适用。
 
-**Evidence that shuts it.** The **SLIC baseline** and the **COCO control**
-(E4). If the result were definitional, a spatial superpixel method on the same
-single-channel input would agree equally well — it does not, or H1 fails. And
-if AMG behaved this way on natural images too, the claim would not be about CT
-at all, which is why E4 can kill the CT-specificity claim outright.
+**能封嘴的证据。** **SLIC 基线**与 **COCO 对照**
+（E4）。如果结论是定义性的，那么在同一个单通道输入上的空间超像素方法
+也应当同样一致 —— 而它并没有，否则 H1 就失败了。而如果 AMG 在自然图像上
+也表现成这样，那这个主张就根本不是关于 CT 的，这正是 E4 能够直接杀掉
+"CT 特异性"这一主张的原因。
 
 ---
 
-## C. Our own red team (anticipated next-round attacks)
+## C. 我们自己的红队（预判下一轮的攻击）
 
-### C1. "Your texture shuffle is just adding noise"
+### C1. "你的纹理置乱只是在加噪声"
 
-Permuting a residual raises high-frequency energy, and any region-growing
-method fragments under noise for reasons unrelated to objectness. **Answer:**
-sweep `shuffle_tile` ∈ {4, 8, 16}; if the H2 direction flips with tile size the
-arm is measuring tile size and the result is void (pre-declared in E3). Report
-the tile sweep whatever it shows. **This attack is only partly mitigated** —
-matched high-frequency energy between the two arms would be a stronger design
-and is not currently specified.
+置换残差会提高高频能量，而任何区域增长类方法在噪声下都会碎裂，
+其原因与 objectness 无关。**应答：** 扫描 `shuffle_tile` ∈ {4, 8, 16}；
+若 H2 的方向随 tile 尺寸翻转，那这条臂测的就是 tile 尺寸，结果作废
+（已在 E3 中预先声明）。无论 tile 扫描显示什么都照实报告。
+**这条攻击只被部分缓解** —— 让两条臂的高频能量对齐会是更有力的设计，
+而目前尚未规定这样的设计。
 
-### C2. "AMG returns nested masks; your matching is ill-posed"
+### C2. "AMG 返回嵌套掩码；你的匹配是不良定义的"
 
-AMG produces overlapping, nested masks; clusterers produce partitions. Matching
-one to the other is not obviously well defined. **Answer:** Hungarian one-to-one
-normalised by `min(|A|,|B|)` for match quality, `coverage_iou` for the
-directional many-to-one question, and `cardinality_ratio` reported explicitly so
-the mismatch is visible rather than absorbed. `proposal.md` §15 states why
-normalising by `|A|` was wrong.
+AMG 产生互相重叠、嵌套的掩码；聚类器产生划分。把一者匹配到另一者
+并不显然是良定义的。**应答：** 用按 `min(|A|,|B|)` 归一化的 Hungarian
+一对一匹配来衡量匹配质量，用 `coverage_iou` 回答有方向的多对一问题，
+并显式报告 `cardinality_ratio`，使这种不匹配可见而不是被吸收掉。
+`proposal.md` §15 说明了为什么按 `|A|` 归一化是错的。
 
-### C3. "Slice selection favours the hypothesis"
+### C3. "切片选择偏向了假设"
 
-**Answer:** the slice list is pre-registered before E1 (cross-cutting rule 1).
-If it is not, every later card is confirmation.
+**应答：** 切片清单在 E1 之前就已预先注册（横切规则 1）。
+如果没有，那么后面每一张卡片都只是在确认偏见。
 
-### C4. "Frozen SAM only — fine-tuned models may differ"
+### C4. "只用了冻结的 SAM —— 微调过的模型可能不同"
 
-**Answer:** honest scope. The title names SAM ViT-B unless E5 shows SAM2 agrees.
-MedSAM-family adaptation (arXiv 2408.03322, arXiv 2504.02008, **VERIFIED PRIOR
-WORK**) is context, not subject; §23 puts it out of scope.
+**应答：** 如实界定范围。除非 E5 显示 SAM2 也一致，标题只点名 SAM ViT-B。
+MedSAM 家族的适配工作（arXiv 2408.03322、arXiv 2504.02008，**VERIFIED PRIOR
+WORK**）属于背景，不是研究对象；§23 把它划在范围之外。
 
-### C5. "100 slices is small"
+### C5. "100 张切片太少"
 
-**Answer:** per-slice paired comparison with bootstrap CI over slices, and the
-H1 verdict requires the same direction on three metrics across two windows and
-two AMG settings — a conjunction that is much harder to hit by chance than a
-single significance test on a larger n. If CIs are still wide after E2, raise n
-before raising claims.
+**应答：** 采用逐切片的配对比较 + 在切片上做 bootstrap 置信区间，
+而且 H1 的裁决要求在两个窗、两组 AMG 设置下、三个指标上方向一致 ——
+这个合取条件比在更大 n 上做单次显著性检验要难得多靠运气命中。
+如果 E2 之后置信区间仍然很宽，那就先提高 n，再提高主张。
 
-### C6. "You are re-deriving HQ-SAM's point"
+### C6. "你是在重新推导 HQ-SAM 的论点"
 
-**Answer:** no. HQ-SAM (NeurIPS 2023, arXiv 2306.01567) and SAMRefiner
-(arXiv 2502.06756) are **VERIFIED PRIOR WORK** on mask-quality refinement, and
-`literature.md` carries the standing constraint *"we do not claim filter=HQ"*.
-That framing belonged to the adjacent `F-012`, which `stage2_ABCF_summary.md`
-explicitly forbids restating.
+**应答：** 不是。HQ-SAM（NeurIPS 2023, arXiv 2306.01567）与 SAMRefiner
+（arXiv 2502.06756）是关于掩码质量精修的 **VERIFIED PRIOR WORK**，而
+`literature.md` 里带着那条长期约束 *"we do not claim filter=HQ"*。
+那种表述属于邻近的 `F-012`，而 `stage2_ABCF_summary.md` 明确禁止重述它。
 
-### C7. "Boundary-F will agree trivially"
+### C7. "Boundary-F 会平凡地一致"
 
-Both families place edges at high-gradient locations, so boundary-F may be the
-least discriminative of the three metrics. **Answer:** predicted in advance
-(`proposal.md` §19) and reported anyway. A pre-registered metric that turns out
-uninformative is reported as uninformative, not dropped.
+两个家族都把边放在高梯度位置上，因此 boundary-F 可能是三个指标里
+区分力最弱的。**应答：** 这一点已被事先预测
+（`proposal.md` §19），并且仍然照样报告。一个预先注册的指标如果结果证明
+没有信息量，就如实报告它没有信息量，而不是把它删掉。
 
 ---
 
-## Standing discipline
+## 长期纪律
 
-1. Never claim "SAM is bad on CT". That is known and is not this paper.
-2. Never report a subset of the three metrics.
-3. Never report a number from an arm whose validity gate failed.
-4. Never relabel EXPECTED as ACTUAL. Windows6 has zero ACTUAL RESULTS.
-5. If E3 does not deliver a clean dissociation, resolve B1's standing conflict
-   **before** deciding what to write.
+1. 绝不主张"SAM 在 CT 上不行"。那是已知的，也不是这篇论文。
+2. 绝不只报告三个指标中的一部分。
+3. 绝不报告某条有效性门禁未通过的臂产出的数字。
+4. 绝不把 EXPECTED 改标为 ACTUAL。Windows6 的 ACTUAL RESULTS 为零。
+5. 如果 E3 没能给出干净的解离，先解决 B1 的长期冲突，**再**决定要写什么。
