@@ -1,0 +1,79 @@
+{
+ "schema_version": "1.0",
+ "task_id": "p2_wave_b_w13_p2_b005_judge",
+ "windows_id": "Windows13",
+ "windows_number": 13,
+ "windows_path": "Windows13",
+ "batch_id": "W13-P2-B005",
+ "role": "wave_b_judge",
+ "candidate_count": 61,
+ "keep_count": 36,
+ "borderline_count": 25,
+ "kill_count": 0,
+ "review_queue_count": 31,
+ "gate8_lane_count": 46,
+ "kill_rationale": "Zero provisional kills. The batch's only kill_lean votes are both on D-059 (experimentalist + skeptic, typographic-attack port), and M1 explicitly lists D-059 among the outvoted prior-art kills that must clear the p1_gate8_novelty_triage lane before any 200-cut entry - it is parked Borderline in the lane per the no-silent-kill policy, with the kill-or-retain decision assigned to the M1-mandated triage. Every other contested record has at least two seats above kill; prior-art pressure (D-031 NorCal lineage, D-045 BoxInst lineage, D-047 Boundary IoU, D-074 KL-Loss/PDQ, D-018 NWD, C-103 Babel-ImageNet, D-072 decoupled heads) is routed to the GATE-8 lane rather than converted to silent kills, and cost-driven doubts (T2 training grids on D-020/D-026/D-036/D-041/D-045/D-052/D-055) are parked Borderline with explicit Wave C budget decisions demanded - policy forbids killing on difficulty alone.",
+ "inputs": {
+  "master": {
+   "file": "Windows13/_state/ideas_master.jsonl",
+   "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+   "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+   "lines": "245-305"
+  },
+  "batches": {
+   "file": "Windows13/_state/tasks/p2/state_reader/batches.json",
+   "branch": "origin/cursor/p2-state-reader-05a0-101c"
+  },
+  "policy": {
+   "file": "Windows13/_state/tasks/p2/state_reader/queue.json",
+   "section": "ranking_policy_notes M1-M7"
+  },
+  "wave_a_reviews": [
+   {
+    "role": "reviewer_novelty_significance",
+    "branch": "origin/cursor/p2-wave-a-b005-novelty-05a0",
+    "commit": "06e977270c0aec3a7d47b442e739860521417991"
+   },
+   {
+    "role": "reviewer_practical_experimentalist",
+    "branch": "origin/cursor/p2-wave-a-b005-experimentalist-05a0",
+    "commit": "ee928296506410152628cd2e5921f1b7be834f63"
+   },
+   {
+    "role": "reviewer_skeptical_high_risk",
+    "branch": "origin/cursor/p2-wave-a-b005-skeptic-05a0",
+    "commit": "43ffb579297a4592f8a53e306a57d3717971f72a"
+   }
+  ],
+  "schema_reference": {
+   "branches": [
+    "origin/cursor/p2-wave-b-b001-judge-05a0",
+    "origin/cursor/p2-wave-b-b002-judge-05a0",
+    "origin/cursor/p2-wave-b-b003-judge-05a0",
+    "origin/cursor/p2-wave-b-b004-judge-05a0"
+   ],
+   "note": "schema aligned; verdicts independently derived from B005 Wave A inputs, no verdicts copied"
+  }
+ },
+ "consensus_census": {
+  "unanimous_keep": 30,
+  "majority_keep_one_borderline": 14,
+  "majority_borderline": 7,
+  "unanimous_borderline": 9,
+  "split_kill_vs_borderline": 1
+ },
+ "policy_applied": {
+  "M1_gate8": "46 of 61 records carry suspected-prior-art flags (10 high: C-095, C-103, D-001, D-018, D-031, D-045, D-047, D-059, D-072, D-074; 21 medium; 15 low); all routed to the p1_gate8_novelty_triage lane, none silently killed. D-059 - the only M1 outvoted-prior-art-kill list member in this batch - is parked Borderline in the lane despite two kill_lean votes, with the kill-or-retain decision assigned to the mandated triage against the typographic-attack literature and its wave-1 defense-side sibling A-077.",
+  "M4_family": "In-batch families adjudicated provisionally: context family (D-010 anchor kept; D-023/D-037/D-041/D-058 parked as arms; D-028 kept on its anomaly differentiator); vocabulary-sweep family (D-002 anchor kept, D-011 parked to fold in); caption-frequency family (D-001 anchor kept, D-034 parked as the displacement arm); abstention family (D-003 anchor kept, D-070 parked as the scope arm); web-prior family (D-061 anchor kept, D-064/D-067 parked as arms); pretraining-attribution lane (D-020/D-055 paired, both parked); mask-annotation-value pair (D-045/D-052 co-adjudicated, both parked); convention family (D-053 anchor kept, D-049 kept as its occlusion arm); MLLM pair (D-065/D-066 both kept as complementary instruments); tension trio D-071/D-044/D-072 preserved by design with D-072 parked in the GATE-8 lane. Cross-batch flags: D-054 vs wave-1 B-026/A-005 (prompt-jitter), D-058 vs wave-1 C-089 hallucination family (B004 dg22/dg23), D-038 with E-028 (naming_vs_finding), D-057 with E-053 (binding harness), D-043 with B004 C-008/C-044 (aggregate-conceals-tail).",
+  "M5_soft_thresholds": "has_numeric_kill_threshold is false for all 61 records (experimentalist seat); m5_numeric_kill_threshold_present carried per record - every survivor requires a numeric retrofit before entering the 200.",
+  "M6_asset_pinning": "m6_asset_pinning_debt is true for all 61 records and carried per record; notable purpose-built asset debts: D-029/D-051/D-069 (curated physical or photographed test scenes), D-064 (raw-rendering shift suite), D-057 (swapped-attribute composites), C-097 (ethics-gated grader protocol).",
+  "M7_thin_territories": "Triggered once: D-068 (breadth-vs-domain forgetting) is continual/lifecycle-adjacent territory (~10 records window-wide) and is noted as protected from volume-based elimination; no fairness/bias-social, inference-time compute, or embodied records in this batch.",
+  "high_risk_high_upside": "C-097 (safety-leaderboard validity, the batch's highest-stakes claim) held Borderline rather than killed despite the ethics-gated instrument; anomaly bets D-029 (pattern-completion hallucination), D-051 (nested-instance blind spot), D-069 (state-vs-category inversion), D-050 (mask-mediated box learning), and D-066 (coordinate-lattice forensics) all kept.",
+  "novelty": "unverified for all 61 records; no citations fabricated."
+ },
+ "recommended_next_task_type": "p2_audit_cp1",
+ "recommended_next_note": "B001-B004 Wave B judge outputs are all present and complete on origin (verified done_judge.json on each branch: B001 42/19/0, B002 43/17/1, B003 42/18/1, B004 39/22/0); with this B005 judgment (36/25/0) all five Wave B batches are done, so the next dispatchable task is the p2_audit_cp1 checkpoint. The 31-record B005 review queue feeds Wave C.",
+ "complete": true,
+ "provisional": true,
+ "final_200_cut": false
+}
