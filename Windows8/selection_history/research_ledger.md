@@ -1,21 +1,21 @@
-# Windows8 Research Ledger (final)
+# Windows8 研究总账（final）
 
-**Stage:** 7–8 complete for archival. Experiments not run on real SAM.
+**Stage：** 7–8 已完成归档。实验未在真实 SAM 上跑过。
 
-**Pool:** 2766 raw IDs in `selection_history/raw/pool.jsonl`
+**池子：** `selection_history/raw/pool.jsonl` 中有 2766 条原始 ID
 
-**Top candidates:** Idea_01, Idea_02, Idea_03 as packaged.
+**头部候选：** 已打包的 Idea_01、Idea_02、Idea_03。
 
-## Novelty status
+## 新颖性状态
 
-- Idea_01: remaining novelty = causal locus (encoder vs objectness interface). Confidence medium.
-- Idea_02: remaining novelty = PEFT-delta spectrum + HP vs rank. Confidence medium-low (venue fit).
-- Idea_03: remaining novelty = anti-calibration of SAM IoU head. Confidence medium; dies on E0.
+- Idea_01：剩余新颖性 = 因果部位（编码器 vs objectness 接口）。信心中等。
+- Idea_02：剩余新颖性 = PEFT 特征差的谱 + HP vs rank。信心中偏低（主要是会议契合度问题）。
+- Idea_03：剩余新颖性 = SAM IoU 头的反校准现象。信心中等；E0 一出结果就可能死。
 
-## Major risks
+## 主要风险
 
-Cloud agent failures; dataset/checkpoint absence; desk-reject of probe/calibration papers.
+云端 agent 失败；数据集／checkpoint 缺失；probe 类与校准类论文被 desk-reject。
 
-## Survival reasons
+## 存活理由
 
-See `evolution_summary.md` and `eliminated_ideas_summary.md`.
+见 `evolution_summary.md` 与 `eliminated_ideas_summary.md`。

@@ -1,34 +1,34 @@
-# Eliminated ideas (compressed)
+# 被淘汰的想法（压缩记录）
 
-Raw pool: 2766. This file records **classes** of kills, not every ID.
+原始池：2766 条。本文件记录被杀掉的**类别**，而不是逐个 ID。
 
-## Pseudo-innovation (never entered Stage 2)
+## 伪创新（从未进入 Stage 2）
 
-Module stacking, backbone swaps, “SAM + attention”, “apply Transformer to medical” — forbidden at generation.
+模块堆叠、backbone 替换、"SAM + attention"、"把 Transformer 用到医学上"——在生成阶段就被禁止。
 
-## Exact or conceptual duplicates of prior work (Stage 3)
+## 与 prior work 完全重复或概念重复（Stage 3）
 
-- Medical SAM Adapter / SAMed / LoRA-MedSAM as the paper.
-- “Evaluate SAM2 on fire with boxes.”
-- “SAM struggles with CD concepts / transparency” without a new mechanism.
-- “Propose CC-Dice / size-stratified Dice” as the contribution.
+- 把 Medical SAM Adapter / SAMed / LoRA-MedSAM 本身当成论文。
+- "用框在火焰数据上评测 SAM2。"
+- "SAM 在 CD 概念／透明物体上表现挣扎"，但不给出新机制。
+- 把"提出 CC-Dice / 按尺寸分层的 Dice"当作贡献点。
 
-## Reviewer #2 unsound (Stage 4)
+## Reviewer #2 判定不成立（Stage 4）
 
-- SA-1B membership leakage as a main claim (cannot audit cheaply).
-- SAM2-CD “language vs vision” without an interface.
-- Open-vocab VLM dense papers that cannot freeze the grouper fairly (X-0010 parked).
+- 把 SA-1B 成员泄漏当作主要主张（无法用低成本手段审计）。
+- SAM2-CD 的"语言 vs 视觉"之争，但没有给出接口层面的抓手。
+- 无法公平冻结 grouper 的开放词表 VLM 稠密预测论文（X-0010 被搁置）。
 
-## Parked high-ROI (not final 3)
+## 被搁置的高 ROI 想法（未进 Final 3）
 
-| ID | Why parked | Revive if |
+| ID | 搁置原因 | 复活条件 |
 |----|------------|-----------|
-| X-0007 Replay promptability | Strong; overlaps Idea_02 forgetting subplot | Idea_02 killer is negative and forgetting is the remaining story |
-| X-0005 Equal annotation minutes | Important control, not a method | Use inside Idea_01 Week 2 |
-| X-0006 Box tightness confound | Cheap workshop paper | After Idea_01 prompt experiments |
-| X-0008 Rater-as-model | Needs LIDC multi-rater discipline | Medical-only pivot |
-| X-0009 Diameter/patch law | Maybe too simple; still a killer plot | Add as Idea_01 analysis figure |
+| X-0007 Replay 保持可提示性 | 很强；但与 Idea_02 的遗忘子情节重叠 | Idea_02 的 killer 实验为负结果，而遗忘成为剩下唯一的故事 |
+| X-0005 同等标注工时 | 是重要对照，但不是一种方法 | 放进 Idea_01 第 2 周里用 |
+| X-0006 框紧致度混淆因素 | 一篇便宜的 workshop 论文 | 在 Idea_01 的提示实验之后 |
+| X-0008 把标注者当模型 | 需要 LIDC 多标注者的严格流程 | 转向纯医学方向时 |
+| X-0009 直径／patch 尺度律 | 可能过于简单；但仍是一张有杀伤力的图 | 作为 Idea_01 的分析图补充进去 |
 
-## Revive rule
+## 复活规则
 
-A killed idea is revived only if a new experiment would change the final-3 ranking. Metric papers stay dead as lead ideas.
+一个被杀掉的想法，只有在"某个新实验会改变 Final 3 的排名"时才复活。纯指标类论文作为主打想法一律保持死亡状态。

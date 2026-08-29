@@ -1,27 +1,27 @@
-# Reviewer summary — Windows8
+# 评审总结（Reviewer summary）—— Windows8
 
-## Independent review dimensions (Stage 2)
+## 独立评审维度（Stage 2）
 
-Novelty, significance, scientific question, soundness, feasibility, compute, datasets, baselines, already-published risk, experimental clarity, venue potential, risk, upside, ROI.
+新颖性、重要性、科学问题、论证严密性、可行性、算力、数据集、基线、已被发表的风险、实验清晰度、可投会议层次、风险、上限收益、ROI。
 
-Scoring was **not** a mean-rank. Protected: high-risk/high-reward, cheap-to-kill, reviewer-divergent, anti-modular.
+打分**不是**取平均排名。受保护的类别：高风险高回报、便宜就能杀掉的、评审意见分歧大的、反模块化的。
 
-## Prior-work kills (Stage 3) — EVIDENCE
+## Prior-work 杀伤（Stage 3）—— EVIDENCE
 
-| Claim we might have made | Closest work | Decision |
+| 我们本可能提出的主张 | 最接近的工作 | 决定 |
 |--------------------------|--------------|----------|
-| Adapt SAM to medical with adapters/LoRA | Med-SA (Wu et al., arXiv:2304.12620, MedIA 2025); SAMed; LoRA-MedSAM | **Kill as a method paper.** Keep only *mechanism* questions PEFT does not answer. |
-| SAM fails on context-dependent / fire / transparent | arXiv:2412.01240 (CD concepts); arXiv:2510.21782 (fire + boxes); Trans10K + SAM evals | **Kill as an evaluation-only paper.** Mutate to causal intervention (exclusion/density, frozen linear probe). |
-| Failures are texture / tree-likeness | arXiv:2412.04243 | Do not repeat their metric. Test a *competing* mechanism: objectness decoder vs texture encoder. |
-| Dice ranking ≠ boundary/small-lesion ranking | CC-Dice, AAAI 2025 | **Kill metric-only.** Use NSD/CC-Dice as *tools*, not the contribution. |
-| Box prompts beat points on fire | 2510.21782 | **Kill.** Mutate to tightness-matched confounder study (X-0006, not in final 3). |
+| 用 adapter/LoRA 把 SAM 适配到医学 | Med-SA（Wu et al., arXiv:2304.12620, MedIA 2025）；SAMed；LoRA-MedSAM | **作为方法论文杀掉。** 只保留 PEFT 回答不了的*机制*问题。 |
+| SAM 在依赖上下文／火焰／透明物体上失败 | arXiv:2412.01240（CD 概念）；arXiv:2510.21782（火焰 + 框）；Trans10K + SAM 评测 | **作为纯评测论文杀掉。** 变异为因果干预（排除区／密度，冻结线性探针）。 |
+| 失败源于纹理 / tree-likeness | arXiv:2412.04243 | 不要重复他们的指标。去检验一个*竞争性*机制：objectness decoder vs 纹理 encoder。 |
+| Dice 排名 ≠ 边界／小病灶排名 | CC-Dice, AAAI 2025 | **纯指标类杀掉。** 把 NSD/CC-Dice 当*工具*用，不作为贡献点。 |
+| 在火焰上框提示胜过点提示 | 2510.21782 | **杀掉。** 变异为紧致度对齐的混淆因素研究（X-0006，未进 Final 3）。 |
 
-## Reviewer #2 attacks that survived only if a killer experiment exists
+## 只有在存在 killer 实验时才得以存活的 Reviewer #2 攻击
 
-- “Linear probe is not CVPR.” Shut up by: probe vs prompted SAM vs Med-SA on *same frozen encoder*; if probe wins on smoke and loses on COCO, the story is causal.
-- “LoRA is low-rank by definition so spectrum is obvious.” Shut up by: comparing rank-64 LoRA vs rank-4 + high-frequency residual; prediction is NSD gap not Dice gap.
-- “Everyone already thresholds SAM IoU.” Shut up by: reliability diagrams showing **anti-calibration** (higher IoU token → higher error) on amorphous sets.
+- "线性探针不够 CVPR。"闭嘴方式：在*同一个冻结编码器*上比较 probe vs 带提示 SAM vs Med-SA；如果 probe 在烟雾上赢、在 COCO 上输，这个故事就是因果性的。
+- "LoRA 按定义就是低秩的，所以谱的结论显而易见。"闭嘴方式：比较 rank-64 LoRA 与 rank-4 + 高频残差；预测的是 NSD 上的差距，而不是 Dice 上的差距。
+- "大家早就在对 SAM 的 IoU 做阈值了。"闭嘴方式：用可靠性图展示在无定形数据集上存在**反校准**（IoU token 越高 → 误差越大）。
 
-## Echo-chamber audit (Supervisor self-check)
+## 回音室审计（Supervisor 自查）
 
-Bias risk: over-weighting SAM. Mitigation: equal-annotation bakeoff and nnU-Net remain in Idea_01 controls. Bias risk: over-weighting smoke. Mitigation: Trans10K + infiltrative tumor as required generalization axes.
+偏见风险：过度偏重 SAM。缓解措施：同等标注工时的横向比拼以及 nnU-Net 仍保留在 Idea_01 的对照中。偏见风险：过度偏重烟雾。缓解措施：把 Trans10K + 浸润性肿瘤列为必需的泛化性验证轴。

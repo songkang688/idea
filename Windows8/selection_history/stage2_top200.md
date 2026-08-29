@@ -1,203 +1,203 @@
 # stage2_top200.md
 count=200
 
-- IDEA-X-0001 | IDEA-X-0001 | hand | mixed | Exclusion-region prompting: Amorphous targets need prompts that specify what is NOT the target.
-- IDEA-X-0002 | IDEA-X-0002 | hand | mixed | Density decoder on frozen SAM: Replace binary mask decoder with density regression head on frozen embeddings.
-- IDEA-X-0003 | IDEA-X-0003 | hand | mixed | IoU-token reject option: Use SAM IoU head as a selective-prediction gate.
-- IDEA-X-0004 | IDEA-X-0004 | hand | mixed | Spectral LoRA audit: FFT of (LoRA-adapted − frozen) feature maps.
-- IDEA-X-0005 | IDEA-X-0005 | hand | mixed | Equal-annotation-minute bakeoff: nnU-Net vs SAM-PEFT vs linear probe under fixed labeling minutes.
-- IDEA-X-0006 | IDEA-X-0006 | hand | mixed | Prompt-tightness confound: Re-run SAM prompt papers with boxes jittered to matched tightness.
-- IDEA-X-0007 | IDEA-X-0007 | hand | mixed | Replay for promptability: Mix 1% synthetic click-segmentation while medical PEFT.
-- IDEA-X-0008 | IDEA-X-0008 | hand | mixed | Rater-as-model: Train on rater A, test on rater B.
-- IDEA-X-0009 | IDEA-X-0009 | hand | mixed | Patch/lesion diameter law: Failure probability ~ f(lesion_diameter / patch_size).
-- IDEA-X-0010 | IDEA-X-0010 | hand | mixed | Language does not group pixels: CLIP/VLM text features improve class presence AUC but not mask NSD when the visual grouper is frozen.
-- IDEA-A-0001 | SAM-OBJECTNESS | invert | natural-COCO-objects | SAM-OBJECTNESS on natural-COCO-objects: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0002 | SAM-OBJECTNESS | measure | natural-COCO-objects | SAM-OBJECTNESS on natural-COCO-objects: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0003 | SAM-OBJECTNESS | population | natural-COCO-objects | SAM-OBJECTNESS on natural-COCO-objects: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0004 | SAM-OBJECTNESS | invert | medical-CT-organs | SAM-OBJECTNESS on medical-CT-organs: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0007 | SAM-OBJECTNESS | invert | medical-small-lesions | SAM-OBJECTNESS on medical-small-lesions: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0008 | SAM-OBJECTNESS | measure | medical-small-lesions | SAM-OBJECTNESS on medical-small-lesions: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0009 | SAM-OBJECTNESS | population | medical-small-lesions | SAM-OBJECTNESS on medical-small-lesions: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0010 | SAM-OBJECTNESS | invert | medical-vessels | SAM-OBJECTNESS on medical-vessels: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0011 | SAM-OBJECTNESS | measure | medical-vessels | SAM-OBJECTNESS on medical-vessels: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0012 | SAM-OBJECTNESS | population | medical-vessels | SAM-OBJECTNESS on medical-vessels: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0013 | SAM-OBJECTNESS | invert | smoke | SAM-OBJECTNESS on smoke: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0014 | SAM-OBJECTNESS | measure | smoke | SAM-OBJECTNESS on smoke: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0015 | SAM-OBJECTNESS | population | smoke | SAM-OBJECTNESS on smoke: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0016 | SAM-OBJECTNESS | invert | fire | SAM-OBJECTNESS on fire: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0017 | SAM-OBJECTNESS | measure | fire | SAM-OBJECTNESS on fire: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0018 | SAM-OBJECTNESS | population | fire | SAM-OBJECTNESS on fire: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0019 | SAM-OBJECTNESS | invert | transparent-glass | SAM-OBJECTNESS on transparent-glass: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0020 | SAM-OBJECTNESS | measure | transparent-glass | SAM-OBJECTNESS on transparent-glass: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0021 | SAM-OBJECTNESS | population | transparent-glass | SAM-OBJECTNESS on transparent-glass: SAM family fails on amorphous targets because it encodes an objectness prior, not because the encoder lacks features.
-- IDEA-A-0022 | SAM-TEXTURE | invert | natural-COCO-objects | SAM-TEXTURE on natural-COCO-objects: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0023 | SAM-TEXTURE | measure | natural-COCO-objects | SAM-TEXTURE on natural-COCO-objects: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0024 | SAM-TEXTURE | population | natural-COCO-objects | SAM-TEXTURE on natural-COCO-objects: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0025 | SAM-TEXTURE | invert | medical-CT-organs | SAM-TEXTURE on medical-CT-organs: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0028 | SAM-TEXTURE | invert | medical-small-lesions | SAM-TEXTURE on medical-small-lesions: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0029 | SAM-TEXTURE | measure | medical-small-lesions | SAM-TEXTURE on medical-small-lesions: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0030 | SAM-TEXTURE | population | medical-small-lesions | SAM-TEXTURE on medical-small-lesions: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0031 | SAM-TEXTURE | invert | medical-vessels | SAM-TEXTURE on medical-vessels: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0032 | SAM-TEXTURE | measure | medical-vessels | SAM-TEXTURE on medical-vessels: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0033 | SAM-TEXTURE | population | medical-vessels | SAM-TEXTURE on medical-vessels: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0034 | SAM-TEXTURE | invert | smoke | SAM-TEXTURE on smoke: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0035 | SAM-TEXTURE | measure | smoke | SAM-TEXTURE on smoke: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0036 | SAM-TEXTURE | population | smoke | SAM-TEXTURE on smoke: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0037 | SAM-TEXTURE | invert | fire | SAM-TEXTURE on fire: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0038 | SAM-TEXTURE | measure | fire | SAM-TEXTURE on fire: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0039 | SAM-TEXTURE | population | fire | SAM-TEXTURE on fire: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0040 | SAM-TEXTURE | invert | transparent-glass | SAM-TEXTURE on transparent-glass: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0041 | SAM-TEXTURE | measure | transparent-glass | SAM-TEXTURE on transparent-glass: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0042 | SAM-TEXTURE | population | transparent-glass | SAM-TEXTURE on transparent-glass: SFM failures on vessels/smoke are caused by texture-as-object confusion, not missing capacity.
-- IDEA-A-0043 | SAM-PROMPT-GEOM | invert | natural-COCO-objects | SAM-PROMPT-GEOM on natural-COCO-objects: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a unive
-- IDEA-A-0044 | SAM-PROMPT-GEOM | measure | natural-COCO-objects | SAM-PROMPT-GEOM on natural-COCO-objects: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a unive
-- IDEA-A-0045 | SAM-PROMPT-GEOM | population | natural-COCO-objects | SAM-PROMPT-GEOM on natural-COCO-objects: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a unive
-- IDEA-A-0046 | SAM-PROMPT-GEOM | invert | medical-CT-organs | SAM-PROMPT-GEOM on medical-CT-organs: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universa
-- IDEA-A-0049 | SAM-PROMPT-GEOM | invert | medical-small-lesions | SAM-PROMPT-GEOM on medical-small-lesions: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a univ
-- IDEA-A-0050 | SAM-PROMPT-GEOM | measure | medical-small-lesions | SAM-PROMPT-GEOM on medical-small-lesions: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a univ
-- IDEA-A-0051 | SAM-PROMPT-GEOM | population | medical-small-lesions | SAM-PROMPT-GEOM on medical-small-lesions: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a univ
-- IDEA-A-0052 | SAM-PROMPT-GEOM | invert | medical-vessels | SAM-PROMPT-GEOM on medical-vessels: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universal 
-- IDEA-A-0053 | SAM-PROMPT-GEOM | measure | medical-vessels | SAM-PROMPT-GEOM on medical-vessels: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universal 
-- IDEA-A-0054 | SAM-PROMPT-GEOM | population | medical-vessels | SAM-PROMPT-GEOM on medical-vessels: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universal 
-- IDEA-A-0055 | SAM-PROMPT-GEOM | invert | smoke | SAM-PROMPT-GEOM on smoke: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universal rule.
-- IDEA-A-0056 | SAM-PROMPT-GEOM | measure | smoke | SAM-PROMPT-GEOM on smoke: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universal rule.
-- IDEA-A-0057 | SAM-PROMPT-GEOM | population | smoke | SAM-PROMPT-GEOM on smoke: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universal rule.
-- IDEA-A-0058 | SAM-PROMPT-GEOM | invert | fire | SAM-PROMPT-GEOM on fire: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universal rule.
-- IDEA-A-0059 | SAM-PROMPT-GEOM | measure | fire | SAM-PROMPT-GEOM on fire: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universal rule.
-- IDEA-A-0060 | SAM-PROMPT-GEOM | population | fire | SAM-PROMPT-GEOM on fire: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universal rule.
-- IDEA-A-0061 | SAM-PROMPT-GEOM | invert | transparent-glass | SAM-PROMPT-GEOM on transparent-glass: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universa
-- IDEA-A-0062 | SAM-PROMPT-GEOM | measure | transparent-glass | SAM-PROMPT-GEOM on transparent-glass: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universa
-- IDEA-A-0063 | SAM-PROMPT-GEOM | population | transparent-glass | SAM-PROMPT-GEOM on transparent-glass: Point vs box vs mask prompt performance gaps are explained by spatial support mismatch with target topology, not 'box is better' as a universa
-- IDEA-A-0064 | SAM-IOU-CAL | invert | natural-COCO-objects | SAM-IOU-CAL on natural-COCO-objects: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0065 | SAM-IOU-CAL | measure | natural-COCO-objects | SAM-IOU-CAL on natural-COCO-objects: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0066 | SAM-IOU-CAL | population | natural-COCO-objects | SAM-IOU-CAL on natural-COCO-objects: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0067 | SAM-IOU-CAL | invert | medical-CT-organs | SAM-IOU-CAL on medical-CT-organs: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0070 | SAM-IOU-CAL | invert | medical-small-lesions | SAM-IOU-CAL on medical-small-lesions: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0071 | SAM-IOU-CAL | measure | medical-small-lesions | SAM-IOU-CAL on medical-small-lesions: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0072 | SAM-IOU-CAL | population | medical-small-lesions | SAM-IOU-CAL on medical-small-lesions: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0073 | SAM-IOU-CAL | invert | medical-vessels | SAM-IOU-CAL on medical-vessels: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0074 | SAM-IOU-CAL | measure | medical-vessels | SAM-IOU-CAL on medical-vessels: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0075 | SAM-IOU-CAL | population | medical-vessels | SAM-IOU-CAL on medical-vessels: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0076 | SAM-IOU-CAL | invert | smoke | SAM-IOU-CAL on smoke: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0077 | SAM-IOU-CAL | measure | smoke | SAM-IOU-CAL on smoke: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0078 | SAM-IOU-CAL | population | smoke | SAM-IOU-CAL on smoke: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0079 | SAM-IOU-CAL | invert | fire | SAM-IOU-CAL on fire: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0080 | SAM-IOU-CAL | measure | fire | SAM-IOU-CAL on fire: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0081 | SAM-IOU-CAL | population | fire | SAM-IOU-CAL on fire: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0082 | SAM-IOU-CAL | invert | transparent-glass | SAM-IOU-CAL on transparent-glass: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0083 | SAM-IOU-CAL | measure | transparent-glass | SAM-IOU-CAL on transparent-glass: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0084 | SAM-IOU-CAL | population | transparent-glass | SAM-IOU-CAL on transparent-glass: SAM IoU tokens are calibrated on SA-1B objects and systematically miscalibrated on low-contrast/amorphous masks.
-- IDEA-A-0085 | SAM-NEGCLICK | invert | natural-COCO-objects | SAM-NEGCLICK on natural-COCO-objects: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0086 | SAM-NEGCLICK | measure | natural-COCO-objects | SAM-NEGCLICK on natural-COCO-objects: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0087 | SAM-NEGCLICK | population | natural-COCO-objects | SAM-NEGCLICK on natural-COCO-objects: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0088 | SAM-NEGCLICK | invert | medical-CT-organs | SAM-NEGCLICK on medical-CT-organs: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0091 | SAM-NEGCLICK | invert | medical-small-lesions | SAM-NEGCLICK on medical-small-lesions: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0092 | SAM-NEGCLICK | measure | medical-small-lesions | SAM-NEGCLICK on medical-small-lesions: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0093 | SAM-NEGCLICK | population | medical-small-lesions | SAM-NEGCLICK on medical-small-lesions: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0094 | SAM-NEGCLICK | invert | medical-vessels | SAM-NEGCLICK on medical-vessels: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0095 | SAM-NEGCLICK | measure | medical-vessels | SAM-NEGCLICK on medical-vessels: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0096 | SAM-NEGCLICK | population | medical-vessels | SAM-NEGCLICK on medical-vessels: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0097 | SAM-NEGCLICK | invert | smoke | SAM-NEGCLICK on smoke: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0098 | SAM-NEGCLICK | measure | smoke | SAM-NEGCLICK on smoke: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0099 | SAM-NEGCLICK | population | smoke | SAM-NEGCLICK on smoke: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0100 | SAM-NEGCLICK | invert | fire | SAM-NEGCLICK on fire: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0101 | SAM-NEGCLICK | measure | fire | SAM-NEGCLICK on fire: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0102 | SAM-NEGCLICK | population | fire | SAM-NEGCLICK on fire: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0103 | SAM-NEGCLICK | invert | transparent-glass | SAM-NEGCLICK on transparent-glass: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0104 | SAM-NEGCLICK | measure | transparent-glass | SAM-NEGCLICK on transparent-glass: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0105 | SAM-NEGCLICK | population | transparent-glass | SAM-NEGCLICK on transparent-glass: Negative clicks help objects but harm density fields (smoke/infiltrative tumor) by punching holes in the support.
-- IDEA-A-0106 | SAM-MULTIMASK | invert | natural-COCO-objects | SAM-MULTIMASK on natural-COCO-objects: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0107 | SAM-MULTIMASK | measure | natural-COCO-objects | SAM-MULTIMASK on natural-COCO-objects: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0108 | SAM-MULTIMASK | population | natural-COCO-objects | SAM-MULTIMASK on natural-COCO-objects: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0109 | SAM-MULTIMASK | invert | medical-CT-organs | SAM-MULTIMASK on medical-CT-organs: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0112 | SAM-MULTIMASK | invert | medical-small-lesions | SAM-MULTIMASK on medical-small-lesions: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0113 | SAM-MULTIMASK | measure | medical-small-lesions | SAM-MULTIMASK on medical-small-lesions: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0114 | SAM-MULTIMASK | population | medical-small-lesions | SAM-MULTIMASK on medical-small-lesions: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0115 | SAM-MULTIMASK | invert | medical-vessels | SAM-MULTIMASK on medical-vessels: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0116 | SAM-MULTIMASK | measure | medical-vessels | SAM-MULTIMASK on medical-vessels: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0117 | SAM-MULTIMASK | population | medical-vessels | SAM-MULTIMASK on medical-vessels: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0118 | SAM-MULTIMASK | invert | smoke | SAM-MULTIMASK on smoke: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0119 | SAM-MULTIMASK | measure | smoke | SAM-MULTIMASK on smoke: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0120 | SAM-MULTIMASK | population | smoke | SAM-MULTIMASK on smoke: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0121 | SAM-MULTIMASK | invert | fire | SAM-MULTIMASK on fire: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0122 | SAM-MULTIMASK | measure | fire | SAM-MULTIMASK on fire: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0123 | SAM-MULTIMASK | population | fire | SAM-MULTIMASK on fire: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0124 | SAM-MULTIMASK | invert | transparent-glass | SAM-MULTIMASK on transparent-glass: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0125 | SAM-MULTIMASK | measure | transparent-glass | SAM-MULTIMASK on transparent-glass: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0126 | SAM-MULTIMASK | population | transparent-glass | SAM-MULTIMASK on transparent-glass: Multi-mask ambiguity ranking is inverted on medical/amorphous images versus COCO.
-- IDEA-A-0127 | SAM2-MEMORY | invert | natural-COCO-objects | SAM2-MEMORY on natural-COCO-objects: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0128 | SAM2-MEMORY | measure | natural-COCO-objects | SAM2-MEMORY on natural-COCO-objects: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0129 | SAM2-MEMORY | population | natural-COCO-objects | SAM2-MEMORY on natural-COCO-objects: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0130 | SAM2-MEMORY | invert | medical-CT-organs | SAM2-MEMORY on medical-CT-organs: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0133 | SAM2-MEMORY | invert | medical-small-lesions | SAM2-MEMORY on medical-small-lesions: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0134 | SAM2-MEMORY | measure | medical-small-lesions | SAM2-MEMORY on medical-small-lesions: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0135 | SAM2-MEMORY | population | medical-small-lesions | SAM2-MEMORY on medical-small-lesions: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0136 | SAM2-MEMORY | invert | medical-vessels | SAM2-MEMORY on medical-vessels: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0137 | SAM2-MEMORY | measure | medical-vessels | SAM2-MEMORY on medical-vessels: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0138 | SAM2-MEMORY | population | medical-vessels | SAM2-MEMORY on medical-vessels: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0139 | SAM2-MEMORY | invert | smoke | SAM2-MEMORY on smoke: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0140 | SAM2-MEMORY | measure | smoke | SAM2-MEMORY on smoke: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0141 | SAM2-MEMORY | population | smoke | SAM2-MEMORY on smoke: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0142 | SAM2-MEMORY | invert | fire | SAM2-MEMORY on fire: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0143 | SAM2-MEMORY | measure | fire | SAM2-MEMORY on fire: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0144 | SAM2-MEMORY | population | fire | SAM2-MEMORY on fire: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0145 | SAM2-MEMORY | invert | transparent-glass | SAM2-MEMORY on transparent-glass: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0146 | SAM2-MEMORY | measure | transparent-glass | SAM2-MEMORY on transparent-glass: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0147 | SAM2-MEMORY | population | transparent-glass | SAM2-MEMORY on transparent-glass: SAM2 memory helps video objects but leaks identity across independently moving fire/smoke plumes.
-- IDEA-A-0148 | SAM2-CD | invert | natural-COCO-objects | SAM2-CD on natural-COCO-objects: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0149 | SAM2-CD | measure | natural-COCO-objects | SAM2-CD on natural-COCO-objects: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0150 | SAM2-CD | population | natural-COCO-objects | SAM2-CD on natural-COCO-objects: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0151 | SAM2-CD | invert | medical-CT-organs | SAM2-CD on medical-CT-organs: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0154 | SAM2-CD | invert | medical-small-lesions | SAM2-CD on medical-small-lesions: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0155 | SAM2-CD | measure | medical-small-lesions | SAM2-CD on medical-small-lesions: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0156 | SAM2-CD | population | medical-small-lesions | SAM2-CD on medical-small-lesions: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0157 | SAM2-CD | invert | medical-vessels | SAM2-CD on medical-vessels: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0158 | SAM2-CD | measure | medical-vessels | SAM2-CD on medical-vessels: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0159 | SAM2-CD | population | medical-vessels | SAM2-CD on medical-vessels: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0160 | SAM2-CD | invert | smoke | SAM2-CD on smoke: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0161 | SAM2-CD | measure | smoke | SAM2-CD on smoke: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0162 | SAM2-CD | population | smoke | SAM2-CD on smoke: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0163 | SAM2-CD | invert | fire | SAM2-CD on fire: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0164 | SAM2-CD | measure | fire | SAM2-CD on fire: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0165 | SAM2-CD | population | fire | SAM2-CD on fire: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0166 | SAM2-CD | invert | transparent-glass | SAM2-CD on transparent-glass: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0167 | SAM2-CD | measure | transparent-glass | SAM2-CD on transparent-glass: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0168 | SAM2-CD | population | transparent-glass | SAM2-CD on transparent-glass: Context-dependent concepts fail because prompts cannot name relations; failure is linguistic not visual.
-- IDEA-A-0169 | HQ-BOUNDARY | invert | natural-COCO-objects | HQ-BOUNDARY on natural-COCO-objects: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0170 | HQ-BOUNDARY | measure | natural-COCO-objects | HQ-BOUNDARY on natural-COCO-objects: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0171 | HQ-BOUNDARY | population | natural-COCO-objects | HQ-BOUNDARY on natural-COCO-objects: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0172 | HQ-BOUNDARY | invert | medical-CT-organs | HQ-BOUNDARY on medical-CT-organs: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0175 | HQ-BOUNDARY | invert | medical-small-lesions | HQ-BOUNDARY on medical-small-lesions: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0176 | HQ-BOUNDARY | measure | medical-small-lesions | HQ-BOUNDARY on medical-small-lesions: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0177 | HQ-BOUNDARY | population | medical-small-lesions | HQ-BOUNDARY on medical-small-lesions: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0178 | HQ-BOUNDARY | invert | medical-vessels | HQ-BOUNDARY on medical-vessels: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0179 | HQ-BOUNDARY | measure | medical-vessels | HQ-BOUNDARY on medical-vessels: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0180 | HQ-BOUNDARY | population | medical-vessels | HQ-BOUNDARY on medical-vessels: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0181 | HQ-BOUNDARY | invert | smoke | HQ-BOUNDARY on smoke: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0182 | HQ-BOUNDARY | measure | smoke | HQ-BOUNDARY on smoke: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0183 | HQ-BOUNDARY | population | smoke | HQ-BOUNDARY on smoke: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0184 | HQ-BOUNDARY | invert | fire | HQ-BOUNDARY on fire: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0185 | HQ-BOUNDARY | measure | fire | HQ-BOUNDARY on fire: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0186 | HQ-BOUNDARY | population | fire | HQ-BOUNDARY on fire: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0187 | HQ-BOUNDARY | invert | transparent-glass | HQ-BOUNDARY on transparent-glass: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0188 | HQ-BOUNDARY | measure | transparent-glass | HQ-BOUNDARY on transparent-glass: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0189 | HQ-BOUNDARY | population | transparent-glass | HQ-BOUNDARY on transparent-glass: HQ-SAM high-quality token improves natural edges but not refractive/transparent boundaries.
-- IDEA-A-0190 | FT-FORGET | invert | natural-COCO-objects | FT-FORGET on natural-COCO-objects: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0191 | FT-FORGET | measure | natural-COCO-objects | FT-FORGET on natural-COCO-objects: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0192 | FT-FORGET | population | natural-COCO-objects | FT-FORGET on natural-COCO-objects: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0193 | FT-FORGET | invert | medical-CT-organs | FT-FORGET on medical-CT-organs: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0196 | FT-FORGET | invert | medical-small-lesions | FT-FORGET on medical-small-lesions: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0197 | FT-FORGET | measure | medical-small-lesions | FT-FORGET on medical-small-lesions: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0198 | FT-FORGET | population | medical-small-lesions | FT-FORGET on medical-small-lesions: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0199 | FT-FORGET | invert | medical-vessels | FT-FORGET on medical-vessels: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0200 | FT-FORGET | measure | medical-vessels | FT-FORGET on medical-vessels: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0201 | FT-FORGET | population | medical-vessels | FT-FORGET on medical-vessels: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0202 | FT-FORGET | invert | smoke | FT-FORGET on smoke: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0203 | FT-FORGET | measure | smoke | FT-FORGET on smoke: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0204 | FT-FORGET | population | smoke | FT-FORGET on smoke: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0205 | FT-FORGET | invert | fire | FT-FORGET on fire: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0206 | FT-FORGET | measure | fire | FT-FORGET on fire: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0207 | FT-FORGET | population | fire | FT-FORGET on fire: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0208 | FT-FORGET | invert | transparent-glass | FT-FORGET on transparent-glass: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0209 | FT-FORGET | measure | transparent-glass | FT-FORGET on transparent-glass: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
-- IDEA-A-0210 | FT-FORGET | population | transparent-glass | FT-FORGET on transparent-glass: Full fine-tuning MedSAM-style destroys promptable zero-shot more than PEFT, but PEFT still destroys it on other modalities.
+- IDEA-X-0001 | IDEA-X-0001 | hand | mixed | 排除区提示：无定形目标需要的提示，是指明“什么不是目标”。
+- IDEA-X-0002 | IDEA-X-0002 | hand | mixed | 冻结 SAM 上的密度解码器：在冻结 embedding 上用密度回归头替换二值 mask decoder。
+- IDEA-X-0003 | IDEA-X-0003 | hand | mixed | IoU-token 拒答选项：把 SAM 的 IoU 头当作选择性预测的门控。
+- IDEA-X-0004 | IDEA-X-0004 | hand | mixed | Spectral LoRA audit：对（LoRA 适配后 − 冻结）特征图做 FFT。
+- IDEA-X-0005 | IDEA-X-0005 | hand | mixed | 同等标注工时横向比拼：在固定标注分钟数下比较 nnU-Net vs SAM-PEFT vs 线性探针。
+- IDEA-X-0006 | IDEA-X-0006 | hand | mixed | 提示紧致度混淆因素：把 SAM 提示类论文用抖动到同等紧致度的框重跑一遍。
+- IDEA-X-0007 | IDEA-X-0007 | hand | mixed | 用 replay 保持可提示性：在医学 PEFT 过程中混入 1% 的合成点击分割数据。
+- IDEA-X-0008 | IDEA-X-0008 | hand | mixed | 把标注者当模型：在标注者 A 上训练，在标注者 B 上测试。
+- IDEA-X-0009 | IDEA-X-0009 | hand | mixed | patch／病灶直径尺度律：失败概率 ~ f(lesion_diameter / patch_size)。
+- IDEA-X-0010 | IDEA-X-0010 | hand | mixed | 语言不做像素分组：当视觉 grouper 被冻结时，CLIP/VLM 的文本特征只提升类别存在性 AUC，不提升掩码 NSD。
+- IDEA-A-0001 | SAM-OBJECTNESS | invert | natural-COCO-objects | SAM-OBJECTNESS on natural-COCO-objects: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0002 | SAM-OBJECTNESS | measure | natural-COCO-objects | SAM-OBJECTNESS on natural-COCO-objects: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0003 | SAM-OBJECTNESS | population | natural-COCO-objects | SAM-OBJECTNESS on natural-COCO-objects: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0004 | SAM-OBJECTNESS | invert | medical-CT-organs | SAM-OBJECTNESS on medical-CT-organs: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0007 | SAM-OBJECTNESS | invert | medical-small-lesions | SAM-OBJECTNESS on medical-small-lesions: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0008 | SAM-OBJECTNESS | measure | medical-small-lesions | SAM-OBJECTNESS on medical-small-lesions: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0009 | SAM-OBJECTNESS | population | medical-small-lesions | SAM-OBJECTNESS on medical-small-lesions: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0010 | SAM-OBJECTNESS | invert | medical-vessels | SAM-OBJECTNESS on medical-vessels: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0011 | SAM-OBJECTNESS | measure | medical-vessels | SAM-OBJECTNESS on medical-vessels: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0012 | SAM-OBJECTNESS | population | medical-vessels | SAM-OBJECTNESS on medical-vessels: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0013 | SAM-OBJECTNESS | invert | smoke | SAM-OBJECTNESS on smoke: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0014 | SAM-OBJECTNESS | measure | smoke | SAM-OBJECTNESS on smoke: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0015 | SAM-OBJECTNESS | population | smoke | SAM-OBJECTNESS on smoke: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0016 | SAM-OBJECTNESS | invert | fire | SAM-OBJECTNESS on fire: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0017 | SAM-OBJECTNESS | measure | fire | SAM-OBJECTNESS on fire: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0018 | SAM-OBJECTNESS | population | fire | SAM-OBJECTNESS on fire: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0019 | SAM-OBJECTNESS | invert | transparent-glass | SAM-OBJECTNESS on transparent-glass: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0020 | SAM-OBJECTNESS | measure | transparent-glass | SAM-OBJECTNESS on transparent-glass: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0021 | SAM-OBJECTNESS | population | transparent-glass | SAM-OBJECTNESS on transparent-glass: SAM 系列在无定形目标上失败，是因为它编码了 objectness 先验，而不是因为编码器缺少特征。
+- IDEA-A-0022 | SAM-TEXTURE | invert | natural-COCO-objects | SAM-TEXTURE on natural-COCO-objects: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0023 | SAM-TEXTURE | measure | natural-COCO-objects | SAM-TEXTURE on natural-COCO-objects: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0024 | SAM-TEXTURE | population | natural-COCO-objects | SAM-TEXTURE on natural-COCO-objects: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0025 | SAM-TEXTURE | invert | medical-CT-organs | SAM-TEXTURE on medical-CT-organs: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0028 | SAM-TEXTURE | invert | medical-small-lesions | SAM-TEXTURE on medical-small-lesions: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0029 | SAM-TEXTURE | measure | medical-small-lesions | SAM-TEXTURE on medical-small-lesions: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0030 | SAM-TEXTURE | population | medical-small-lesions | SAM-TEXTURE on medical-small-lesions: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0031 | SAM-TEXTURE | invert | medical-vessels | SAM-TEXTURE on medical-vessels: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0032 | SAM-TEXTURE | measure | medical-vessels | SAM-TEXTURE on medical-vessels: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0033 | SAM-TEXTURE | population | medical-vessels | SAM-TEXTURE on medical-vessels: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0034 | SAM-TEXTURE | invert | smoke | SAM-TEXTURE on smoke: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0035 | SAM-TEXTURE | measure | smoke | SAM-TEXTURE on smoke: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0036 | SAM-TEXTURE | population | smoke | SAM-TEXTURE on smoke: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0037 | SAM-TEXTURE | invert | fire | SAM-TEXTURE on fire: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0038 | SAM-TEXTURE | measure | fire | SAM-TEXTURE on fire: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0039 | SAM-TEXTURE | population | fire | SAM-TEXTURE on fire: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0040 | SAM-TEXTURE | invert | transparent-glass | SAM-TEXTURE on transparent-glass: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0041 | SAM-TEXTURE | measure | transparent-glass | SAM-TEXTURE on transparent-glass: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0042 | SAM-TEXTURE | population | transparent-glass | SAM-TEXTURE on transparent-glass: SFM 在血管／烟雾上的失败是由“把纹理当物体”的混淆造成的，不是容量不足。
+- IDEA-A-0043 | SAM-PROMPT-GEOM | invert | natural-COCO-objects | SAM-PROMPT-GEOM on natural-COCO-objects: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a unive`]
+- IDEA-A-0044 | SAM-PROMPT-GEOM | measure | natural-COCO-objects | SAM-PROMPT-GEOM on natural-COCO-objects: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a unive`]
+- IDEA-A-0045 | SAM-PROMPT-GEOM | population | natural-COCO-objects | SAM-PROMPT-GEOM on natural-COCO-objects: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a unive`]
+- IDEA-A-0046 | SAM-PROMPT-GEOM | invert | medical-CT-organs | SAM-PROMPT-GEOM on medical-CT-organs: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universa`]
+- IDEA-A-0049 | SAM-PROMPT-GEOM | invert | medical-small-lesions | SAM-PROMPT-GEOM on medical-small-lesions: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a univ`]
+- IDEA-A-0050 | SAM-PROMPT-GEOM | measure | medical-small-lesions | SAM-PROMPT-GEOM on medical-small-lesions: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a univ`]
+- IDEA-A-0051 | SAM-PROMPT-GEOM | population | medical-small-lesions | SAM-PROMPT-GEOM on medical-small-lesions: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a univ`]
+- IDEA-A-0052 | SAM-PROMPT-GEOM | invert | medical-vessels | SAM-PROMPT-GEOM on medical-vessels: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universal `]
+- IDEA-A-0053 | SAM-PROMPT-GEOM | measure | medical-vessels | SAM-PROMPT-GEOM on medical-vessels: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universal `]
+- IDEA-A-0054 | SAM-PROMPT-GEOM | population | medical-vessels | SAM-PROMPT-GEOM on medical-vessels: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universal `]
+- IDEA-A-0055 | SAM-PROMPT-GEOM | invert | smoke | SAM-PROMPT-GEOM on smoke: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universal `]rule.
+- IDEA-A-0056 | SAM-PROMPT-GEOM | measure | smoke | SAM-PROMPT-GEOM on smoke: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universal `]rule.
+- IDEA-A-0057 | SAM-PROMPT-GEOM | population | smoke | SAM-PROMPT-GEOM on smoke: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universal `]rule.
+- IDEA-A-0058 | SAM-PROMPT-GEOM | invert | fire | SAM-PROMPT-GEOM on fire: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universal `]rule.
+- IDEA-A-0059 | SAM-PROMPT-GEOM | measure | fire | SAM-PROMPT-GEOM on fire: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universal `]rule.
+- IDEA-A-0060 | SAM-PROMPT-GEOM | population | fire | SAM-PROMPT-GEOM on fire: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universal `]rule.
+- IDEA-A-0061 | SAM-PROMPT-GEOM | invert | transparent-glass | SAM-PROMPT-GEOM on transparent-glass: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universa`]
+- IDEA-A-0062 | SAM-PROMPT-GEOM | measure | transparent-glass | SAM-PROMPT-GEOM on transparent-glass: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universa`]
+- IDEA-A-0063 | SAM-PROMPT-GEOM | population | transparent-glass | SAM-PROMPT-GEOM on transparent-glass: 点／框／掩码提示之间的性能差距，应由空间支撑与目标拓扑的不匹配来解释，而不是把“框更好”当成一条普适规律[原文在此处被截断：`as a universa`]
+- IDEA-A-0064 | SAM-IOU-CAL | invert | natural-COCO-objects | SAM-IOU-CAL on natural-COCO-objects: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0065 | SAM-IOU-CAL | measure | natural-COCO-objects | SAM-IOU-CAL on natural-COCO-objects: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0066 | SAM-IOU-CAL | population | natural-COCO-objects | SAM-IOU-CAL on natural-COCO-objects: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0067 | SAM-IOU-CAL | invert | medical-CT-organs | SAM-IOU-CAL on medical-CT-organs: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0070 | SAM-IOU-CAL | invert | medical-small-lesions | SAM-IOU-CAL on medical-small-lesions: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0071 | SAM-IOU-CAL | measure | medical-small-lesions | SAM-IOU-CAL on medical-small-lesions: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0072 | SAM-IOU-CAL | population | medical-small-lesions | SAM-IOU-CAL on medical-small-lesions: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0073 | SAM-IOU-CAL | invert | medical-vessels | SAM-IOU-CAL on medical-vessels: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0074 | SAM-IOU-CAL | measure | medical-vessels | SAM-IOU-CAL on medical-vessels: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0075 | SAM-IOU-CAL | population | medical-vessels | SAM-IOU-CAL on medical-vessels: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0076 | SAM-IOU-CAL | invert | smoke | SAM-IOU-CAL on smoke: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0077 | SAM-IOU-CAL | measure | smoke | SAM-IOU-CAL on smoke: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0078 | SAM-IOU-CAL | population | smoke | SAM-IOU-CAL on smoke: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0079 | SAM-IOU-CAL | invert | fire | SAM-IOU-CAL on fire: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0080 | SAM-IOU-CAL | measure | fire | SAM-IOU-CAL on fire: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0081 | SAM-IOU-CAL | population | fire | SAM-IOU-CAL on fire: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0082 | SAM-IOU-CAL | invert | transparent-glass | SAM-IOU-CAL on transparent-glass: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0083 | SAM-IOU-CAL | measure | transparent-glass | SAM-IOU-CAL on transparent-glass: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0084 | SAM-IOU-CAL | population | transparent-glass | SAM-IOU-CAL on transparent-glass: SAM 的 IoU token 在 SA-1B 物体上是良好校准的，在低对比度／无定形掩码上则系统性误校准。
+- IDEA-A-0085 | SAM-NEGCLICK | invert | natural-COCO-objects | SAM-NEGCLICK on natural-COCO-objects: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0086 | SAM-NEGCLICK | measure | natural-COCO-objects | SAM-NEGCLICK on natural-COCO-objects: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0087 | SAM-NEGCLICK | population | natural-COCO-objects | SAM-NEGCLICK on natural-COCO-objects: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0088 | SAM-NEGCLICK | invert | medical-CT-organs | SAM-NEGCLICK on medical-CT-organs: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0091 | SAM-NEGCLICK | invert | medical-small-lesions | SAM-NEGCLICK on medical-small-lesions: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0092 | SAM-NEGCLICK | measure | medical-small-lesions | SAM-NEGCLICK on medical-small-lesions: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0093 | SAM-NEGCLICK | population | medical-small-lesions | SAM-NEGCLICK on medical-small-lesions: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0094 | SAM-NEGCLICK | invert | medical-vessels | SAM-NEGCLICK on medical-vessels: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0095 | SAM-NEGCLICK | measure | medical-vessels | SAM-NEGCLICK on medical-vessels: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0096 | SAM-NEGCLICK | population | medical-vessels | SAM-NEGCLICK on medical-vessels: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0097 | SAM-NEGCLICK | invert | smoke | SAM-NEGCLICK on smoke: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0098 | SAM-NEGCLICK | measure | smoke | SAM-NEGCLICK on smoke: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0099 | SAM-NEGCLICK | population | smoke | SAM-NEGCLICK on smoke: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0100 | SAM-NEGCLICK | invert | fire | SAM-NEGCLICK on fire: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0101 | SAM-NEGCLICK | measure | fire | SAM-NEGCLICK on fire: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0102 | SAM-NEGCLICK | population | fire | SAM-NEGCLICK on fire: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0103 | SAM-NEGCLICK | invert | transparent-glass | SAM-NEGCLICK on transparent-glass: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0104 | SAM-NEGCLICK | measure | transparent-glass | SAM-NEGCLICK on transparent-glass: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0105 | SAM-NEGCLICK | population | transparent-glass | SAM-NEGCLICK on transparent-glass: 负点击对物体有帮助，但会在密度场（烟雾／浸润性肿瘤）的支撑区上“打洞”从而造成损害。
+- IDEA-A-0106 | SAM-MULTIMASK | invert | natural-COCO-objects | SAM-MULTIMASK on natural-COCO-objects: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0107 | SAM-MULTIMASK | measure | natural-COCO-objects | SAM-MULTIMASK on natural-COCO-objects: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0108 | SAM-MULTIMASK | population | natural-COCO-objects | SAM-MULTIMASK on natural-COCO-objects: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0109 | SAM-MULTIMASK | invert | medical-CT-organs | SAM-MULTIMASK on medical-CT-organs: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0112 | SAM-MULTIMASK | invert | medical-small-lesions | SAM-MULTIMASK on medical-small-lesions: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0113 | SAM-MULTIMASK | measure | medical-small-lesions | SAM-MULTIMASK on medical-small-lesions: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0114 | SAM-MULTIMASK | population | medical-small-lesions | SAM-MULTIMASK on medical-small-lesions: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0115 | SAM-MULTIMASK | invert | medical-vessels | SAM-MULTIMASK on medical-vessels: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0116 | SAM-MULTIMASK | measure | medical-vessels | SAM-MULTIMASK on medical-vessels: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0117 | SAM-MULTIMASK | population | medical-vessels | SAM-MULTIMASK on medical-vessels: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0118 | SAM-MULTIMASK | invert | smoke | SAM-MULTIMASK on smoke: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0119 | SAM-MULTIMASK | measure | smoke | SAM-MULTIMASK on smoke: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0120 | SAM-MULTIMASK | population | smoke | SAM-MULTIMASK on smoke: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0121 | SAM-MULTIMASK | invert | fire | SAM-MULTIMASK on fire: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0122 | SAM-MULTIMASK | measure | fire | SAM-MULTIMASK on fire: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0123 | SAM-MULTIMASK | population | fire | SAM-MULTIMASK on fire: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0124 | SAM-MULTIMASK | invert | transparent-glass | SAM-MULTIMASK on transparent-glass: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0125 | SAM-MULTIMASK | measure | transparent-glass | SAM-MULTIMASK on transparent-glass: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0126 | SAM-MULTIMASK | population | transparent-glass | SAM-MULTIMASK on transparent-glass: 多掩码歧义排序在医学／无定形图像上相对 COCO 是反过来的。
+- IDEA-A-0127 | SAM2-MEMORY | invert | natural-COCO-objects | SAM2-MEMORY on natural-COCO-objects: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0128 | SAM2-MEMORY | measure | natural-COCO-objects | SAM2-MEMORY on natural-COCO-objects: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0129 | SAM2-MEMORY | population | natural-COCO-objects | SAM2-MEMORY on natural-COCO-objects: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0130 | SAM2-MEMORY | invert | medical-CT-organs | SAM2-MEMORY on medical-CT-organs: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0133 | SAM2-MEMORY | invert | medical-small-lesions | SAM2-MEMORY on medical-small-lesions: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0134 | SAM2-MEMORY | measure | medical-small-lesions | SAM2-MEMORY on medical-small-lesions: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0135 | SAM2-MEMORY | population | medical-small-lesions | SAM2-MEMORY on medical-small-lesions: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0136 | SAM2-MEMORY | invert | medical-vessels | SAM2-MEMORY on medical-vessels: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0137 | SAM2-MEMORY | measure | medical-vessels | SAM2-MEMORY on medical-vessels: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0138 | SAM2-MEMORY | population | medical-vessels | SAM2-MEMORY on medical-vessels: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0139 | SAM2-MEMORY | invert | smoke | SAM2-MEMORY on smoke: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0140 | SAM2-MEMORY | measure | smoke | SAM2-MEMORY on smoke: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0141 | SAM2-MEMORY | population | smoke | SAM2-MEMORY on smoke: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0142 | SAM2-MEMORY | invert | fire | SAM2-MEMORY on fire: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0143 | SAM2-MEMORY | measure | fire | SAM2-MEMORY on fire: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0144 | SAM2-MEMORY | population | fire | SAM2-MEMORY on fire: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0145 | SAM2-MEMORY | invert | transparent-glass | SAM2-MEMORY on transparent-glass: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0146 | SAM2-MEMORY | measure | transparent-glass | SAM2-MEMORY on transparent-glass: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0147 | SAM2-MEMORY | population | transparent-glass | SAM2-MEMORY on transparent-glass: SAM2 的记忆机制对视频物体有帮助，但会在各自独立运动的火焰／烟雾羽流之间泄漏身份。
+- IDEA-A-0148 | SAM2-CD | invert | natural-COCO-objects | SAM2-CD on natural-COCO-objects: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0149 | SAM2-CD | measure | natural-COCO-objects | SAM2-CD on natural-COCO-objects: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0150 | SAM2-CD | population | natural-COCO-objects | SAM2-CD on natural-COCO-objects: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0151 | SAM2-CD | invert | medical-CT-organs | SAM2-CD on medical-CT-organs: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0154 | SAM2-CD | invert | medical-small-lesions | SAM2-CD on medical-small-lesions: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0155 | SAM2-CD | measure | medical-small-lesions | SAM2-CD on medical-small-lesions: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0156 | SAM2-CD | population | medical-small-lesions | SAM2-CD on medical-small-lesions: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0157 | SAM2-CD | invert | medical-vessels | SAM2-CD on medical-vessels: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0158 | SAM2-CD | measure | medical-vessels | SAM2-CD on medical-vessels: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0159 | SAM2-CD | population | medical-vessels | SAM2-CD on medical-vessels: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0160 | SAM2-CD | invert | smoke | SAM2-CD on smoke: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0161 | SAM2-CD | measure | smoke | SAM2-CD on smoke: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0162 | SAM2-CD | population | smoke | SAM2-CD on smoke: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0163 | SAM2-CD | invert | fire | SAM2-CD on fire: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0164 | SAM2-CD | measure | fire | SAM2-CD on fire: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0165 | SAM2-CD | population | fire | SAM2-CD on fire: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0166 | SAM2-CD | invert | transparent-glass | SAM2-CD on transparent-glass: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0167 | SAM2-CD | measure | transparent-glass | SAM2-CD on transparent-glass: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0168 | SAM2-CD | population | transparent-glass | SAM2-CD on transparent-glass: 依赖上下文的概念之所以失败，是因为提示无法命名关系；失败是语言层面的，不是视觉层面的。
+- IDEA-A-0169 | HQ-BOUNDARY | invert | natural-COCO-objects | HQ-BOUNDARY on natural-COCO-objects: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0170 | HQ-BOUNDARY | measure | natural-COCO-objects | HQ-BOUNDARY on natural-COCO-objects: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0171 | HQ-BOUNDARY | population | natural-COCO-objects | HQ-BOUNDARY on natural-COCO-objects: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0172 | HQ-BOUNDARY | invert | medical-CT-organs | HQ-BOUNDARY on medical-CT-organs: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0175 | HQ-BOUNDARY | invert | medical-small-lesions | HQ-BOUNDARY on medical-small-lesions: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0176 | HQ-BOUNDARY | measure | medical-small-lesions | HQ-BOUNDARY on medical-small-lesions: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0177 | HQ-BOUNDARY | population | medical-small-lesions | HQ-BOUNDARY on medical-small-lesions: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0178 | HQ-BOUNDARY | invert | medical-vessels | HQ-BOUNDARY on medical-vessels: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0179 | HQ-BOUNDARY | measure | medical-vessels | HQ-BOUNDARY on medical-vessels: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0180 | HQ-BOUNDARY | population | medical-vessels | HQ-BOUNDARY on medical-vessels: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0181 | HQ-BOUNDARY | invert | smoke | HQ-BOUNDARY on smoke: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0182 | HQ-BOUNDARY | measure | smoke | HQ-BOUNDARY on smoke: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0183 | HQ-BOUNDARY | population | smoke | HQ-BOUNDARY on smoke: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0184 | HQ-BOUNDARY | invert | fire | HQ-BOUNDARY on fire: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0185 | HQ-BOUNDARY | measure | fire | HQ-BOUNDARY on fire: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0186 | HQ-BOUNDARY | population | fire | HQ-BOUNDARY on fire: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0187 | HQ-BOUNDARY | invert | transparent-glass | HQ-BOUNDARY on transparent-glass: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0188 | HQ-BOUNDARY | measure | transparent-glass | HQ-BOUNDARY on transparent-glass: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0189 | HQ-BOUNDARY | population | transparent-glass | HQ-BOUNDARY on transparent-glass: HQ-SAM 的 high-quality token 改善自然物体边缘，但改善不了折射／透明边界。
+- IDEA-A-0190 | FT-FORGET | invert | natural-COCO-objects | FT-FORGET on natural-COCO-objects: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0191 | FT-FORGET | measure | natural-COCO-objects | FT-FORGET on natural-COCO-objects: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0192 | FT-FORGET | population | natural-COCO-objects | FT-FORGET on natural-COCO-objects: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0193 | FT-FORGET | invert | medical-CT-organs | FT-FORGET on medical-CT-organs: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0196 | FT-FORGET | invert | medical-small-lesions | FT-FORGET on medical-small-lesions: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0197 | FT-FORGET | measure | medical-small-lesions | FT-FORGET on medical-small-lesions: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0198 | FT-FORGET | population | medical-small-lesions | FT-FORGET on medical-small-lesions: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0199 | FT-FORGET | invert | medical-vessels | FT-FORGET on medical-vessels: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0200 | FT-FORGET | measure | medical-vessels | FT-FORGET on medical-vessels: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0201 | FT-FORGET | population | medical-vessels | FT-FORGET on medical-vessels: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0202 | FT-FORGET | invert | smoke | FT-FORGET on smoke: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0203 | FT-FORGET | measure | smoke | FT-FORGET on smoke: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0204 | FT-FORGET | population | smoke | FT-FORGET on smoke: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0205 | FT-FORGET | invert | fire | FT-FORGET on fire: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0206 | FT-FORGET | measure | fire | FT-FORGET on fire: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0207 | FT-FORGET | population | fire | FT-FORGET on fire: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0208 | FT-FORGET | invert | transparent-glass | FT-FORGET on transparent-glass: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0209 | FT-FORGET | measure | transparent-glass | FT-FORGET on transparent-glass: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
+- IDEA-A-0210 | FT-FORGET | population | transparent-glass | FT-FORGET on transparent-glass: MedSAM 式的全量微调对可提示 zero-shot 能力的破坏比 PEFT 更严重，但 PEFT 在其他模态上同样会破坏它。
