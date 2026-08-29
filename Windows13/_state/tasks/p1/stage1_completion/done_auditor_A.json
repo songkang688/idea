@@ -1,0 +1,44 @@
+{
+  "task_id": "p1_stage1_completion",
+  "role": "auditor_A_count_dedup",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "done",
+  "verdict": "PASS",
+  "idea_count": 1220,
+  "unique_ids": 1220,
+  "audited_master": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w5-d795",
+    "commit": "7338e5490f910a5079ce64bf2367a3c9a0619876",
+    "file": "Windows13/_state/ideas_master.jsonl"
+  },
+  "evidence_summary": {
+    "valid_jsonl_records": 1220,
+    "invalid_lines": 0,
+    "duplicate_id_seeds": 0,
+    "normalized_id_collisions": 0,
+    "zero_padding_id_collisions": 0,
+    "pairwise_pairs_scanned": 743590,
+    "near_duplicate_pairs_jaccard_ge_0.80": 0,
+    "pairs_jaccard_ge_0.60": 0,
+    "max_pairwise_jaccard": 0.242,
+    "exact_duplicate_hypothesis_texts": 0,
+    "records_outside_windows13": 0,
+    "count_gate": "1220 >= 1000 PASSED (independently recounted)"
+  },
+  "output_files": [
+    "Windows13/_state/tasks/p1/stage1_completion/auditor_A.json",
+    "Windows13/_state/tasks/p1/stage1_completion/auditor_A.md",
+    "Windows13/_state/tasks/p1/stage1_completion/done_auditor_A.json"
+  ],
+  "unresolved_items": [
+    "127 accepted gen_g/gen_h records remain remanded off-master (GATE-5) in Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl; correctly excluded from the 1220, but Stage-2 must not silently drop them",
+    "internal dedup only: external prior-art novelty out of Auditor A scope (O-002/O-031 dissents queued for GATE-8)",
+    "gate4_deferred asset pinning (287 records) and threshold retrofits are Stage-2 retrofit-lane debts outside the count/uniqueness gate"
+  ],
+  "recommended_next_task_type": "p1_stage1_completion_more_auditors",
+  "canonical_state_untouched": true,
+  "no_fake_citations": true,
+  "force_push": false
+}

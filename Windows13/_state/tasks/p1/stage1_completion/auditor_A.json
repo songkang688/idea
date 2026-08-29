@@ -1,0 +1,163 @@
+{
+  "task_id": "p1_stage1_completion",
+  "role": "auditor_A_count_dedup",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "audited_at_utc": "2026-08-29T02:00:48Z",
+  "audited_master": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w5-d795",
+    "commit": "7338e5490f910a5079ce64bf2367a3c9a0619876",
+    "file": "Windows13/_state/ideas_master.jsonl"
+  },
+  "verdict": "PASS",
+  "checks": {
+    "1_jsonl_validity_and_count": {
+      "result": "PASS",
+      "total_lines": 1220,
+      "valid_json_object_records": 1220,
+      "invalid_lines": [],
+      "empty_lines": 0,
+      "trailing_newline_present": true,
+      "exact_duplicate_whole_lines": 0,
+      "stage1_target": "1000+",
+      "count_gate": "1220 >= 1000 -> PASSED (independently recounted)",
+      "matches_canonical_claims": {
+        "research_state.total_ideas": 1220,
+        "research_state.idea_counts.stage1_accepted_total": 1220,
+        "research_state.idea_counts.p1_stage1_count_gate": true,
+        "all_equal_1220_and_true": true
+      }
+    },
+    "2_id_seed_uniqueness": {
+      "result": "PASS",
+      "records_missing_id_seed": [],
+      "unique_id_seeds": 1220,
+      "duplicate_id_seeds": {},
+      "normalized_collisions_case_whitespace": {},
+      "zero_padding_collisions": {},
+      "nonstandard_id_format": [],
+      "ids_not_prefixed_W13": [],
+      "id_format": "all 1220 match ^W13-P1-[A-Z]-\\d{3}$",
+      "per_generator_counts": {
+        "A": 94,
+        "B": 85,
+        "C": 69,
+        "D": 79,
+        "E": 79,
+        "F": 88,
+        "G": 30,
+        "H": 16,
+        "J": 98,
+        "K": 102,
+        "L": 96,
+        "M": 98,
+        "N": 91,
+        "O": 99,
+        "P": 96
+      },
+      "per_generator_counts_match_research_state_by_shard": {
+        "w1 (A=94,B=85,C=69)=248": true,
+        "w2 (D=79,E=79,F=88)=246": true,
+        "w3 appended (G=30,H=16,J=98)=144": true,
+        "w4 (K=102,L=96,M=98)=296": true,
+        "w5 (N=91,P=96,O=99)=286": true
+      },
+      "number_gap_note": "in-range numbering gaps per generator (e.g. gen_h holds only 16 of 1..98) are consistent with judged merges/kills and the 127-record gen_g/gen_h GATE-5 remand queue; they are absences, not collisions"
+    },
+    "3_hypothesis_level_dedup": {
+      "result": "PASS",
+      "method": "full pairwise token-Jaccard over core_hypothesis + one_line_idea (stopworded, len>2 tokens); exact-match scan on normalized core_hypothesis / one_line_idea / falsifiable_prediction; deterministic every-122nd-record nearest-neighbor sample",
+      "pairs_total": 743590,
+      "pairs_evaluated_past_length_prune": 732188,
+      "near_duplicate_pairs_jaccard_ge_0.80": [],
+      "high_similarity_pairs_0.60_to_0.80": 0,
+      "max_pairwise_jaccard": 0.242,
+      "max_pair": [
+        "W13-P1-E-029",
+        "W13-P1-E-054"
+      ],
+      "max_pair_manual_review": "W13-P1-E-029 (synonym-consistency audit of open-vocab masks) vs W13-P1-E-054 (cross-lingual translated-query mask consistency): shared instrument family, clearly distinct hypotheses and interventions -> NOT duplicates",
+      "exact_duplicate_core_hypothesis": 0,
+      "exact_duplicate_one_line_idea": 0,
+      "exact_duplicate_falsifiable_prediction": 0,
+      "systematic_sample_nearest_neighbor": [
+        {
+          "probe": "W13-P1-A-001",
+          "nearest": "W13-P1-A-062",
+          "jaccard": 0.178
+        },
+        {
+          "probe": "W13-P1-B-032",
+          "nearest": "W13-P1-B-025",
+          "jaccard": 0.093
+        },
+        {
+          "probe": "W13-P1-C-095",
+          "nearest": "W13-P1-B-047",
+          "jaccard": 0.161
+        },
+        {
+          "probe": "W13-P1-E-052",
+          "nearest": "W13-P1-E-040",
+          "jaccard": 0.135
+        },
+        {
+          "probe": "W13-P1-F-097",
+          "nearest": "W13-P1-N-023",
+          "jaccard": 0.188
+        },
+        {
+          "probe": "W13-P1-G-042",
+          "nearest": "W13-P1-G-037",
+          "jaccard": 0.152
+        },
+        {
+          "probe": "W13-P1-K-096",
+          "nearest": "W13-P1-K-003",
+          "jaccard": 0.089
+        },
+        {
+          "probe": "W13-P1-M-020",
+          "nearest": "W13-P1-N-020",
+          "jaccard": 0.108
+        },
+        {
+          "probe": "W13-P1-N-046",
+          "nearest": "W13-P1-N-026",
+          "jaccard": 0.095
+        },
+        {
+          "probe": "W13-P1-P-082",
+          "nearest": "W13-P1-P-013",
+          "jaccard": 0.112
+        }
+      ],
+      "sample_conclusion": "10/10 probes: nearest neighbor Jaccard <= 0.188; no near-duplicate found in sample"
+    },
+    "4_records_location": {
+      "result": "PASS",
+      "ideas_master_files_in_tree": [
+        "Windows13/_state/ideas_master.jsonl"
+      ],
+      "w13_p1_id_seeds_outside_Windows13": "none (git grep over HEAD excluding Windows13/)",
+      "tree_content_outside_Windows13": "repo README.md + _p0_dispatch/ P0 bootstrap records only (no idea records)",
+      "wave_distribution_in_master": {
+        "p1_wave_b_w1": 248,
+        "p1_wave_b_w2": 246,
+        "p1_wave_b_w3": 144,
+        "p1_wave_b_w4": 296,
+        "p1_wave_b_w5": 286
+      },
+      "wave_sum": 1220
+    }
+  },
+  "unresolved_items": [
+    "127 accepted gen_g/gen_h records remain remanded off-master in Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl (GATE-5, no extractable numeric threshold); they are correctly NOT in the 1220 and are not needed for the 1000+ gate, but Stage-2 must not silently drop them",
+    "internal dedup only: novelty vs external prior art is out of Auditor A scope (O-002/O-031 judge_C prior-art dissents remain queued for GATE-8)",
+    "gate4_deferred asset-pinning flags (287 records across w4/w5) and 127+7 threshold retrofits are quality debts outside the count/uniqueness gate, owned by the Stage-2 retrofit lane"
+  ],
+  "canonical_state_untouched": true,
+  "no_fake_citations": true,
+  "note_to_meta_judge": "Auditor A affirms quantity (1220 valid, unique, correctly located records >= 1000) and internal uniqueness only; feasibility/evidence-policy/adversarial checks belong to auditors B/C."
+}
