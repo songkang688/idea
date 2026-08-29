@@ -13,11 +13,14 @@
 | # | Codename | ID | One sentence | Cost |
 |---|---|---|---|---|
 | **01** | **SupportAudit** | B-0121 | Feed few-shot segmentation methods the *wrong* support image and measure how much accuracy survives. | **~5 GPU-h** |
-| 02 | MemorySurgeon | A-0017 | Delete SAM2's corrupted memory entries mid-failure and measure how much tracking failure is memory-borne rather than perception-borne. | ~140–180 GPU-h |
+| 02 | MemorySurgeon | A-0017 | Delete SAM2's corrupted memory entries mid-failure and measure how much tracking failure is memory-borne rather than perception-borne — **and ship the surgery as a wrapper if it works**. | ~180–220 GPU-h |
 | 03 | RehearsalGrid | C-0090 | Destroy the *content* of rehearsal text while matching its gradient scale, and find out whether rehearsal curation buys anything. | ~2,450 A100-h |
 
-All three are **measurement projects**. None proposes a new module, and that is deliberate: each one
-tests a load-bearing assumption the field currently acts on without evidence.
+**One evaluation-validity audit, one causal-mechanism tool with a mandatory method arm, one
+training-mechanism test.** Not three measurement papers — the Stage-6 meta-review found the locked
+Top 5 was measurement-tilted and made Idea_02's method arm a required deliverable rather than an
+optional extension. What the three share is that each attacks a load-bearing assumption the field
+currently acts on without evidence.
 
 ---
 
@@ -139,6 +142,17 @@ Each idea directory carries `README.md`, `proposal.md` (28 sections), `literatur
 3. **Request SAM3 tracking-zoo access** (gated, slow) even though Idea_02's E7 does not run for weeks.
 4. **Do not start Idea_03** until an allocation is confirmed that can absorb 800 A100-h before a
    go/no-go.
+
+Two Stage-6 items sit outside these three packages and are easy to lose track of, so they are
+recorded here as well:
+
+- **C-0028's zero-GPU offline gate** should run now. It costs nothing and it is what makes the first
+  fallback rung real rather than aspirational.
+- **B-0212's 3-arm MVE** (~6 A100-days) was funded at Stage 6 as the immediately promotable second
+  alternate. It is the designated successor on two separate rungs of the fallback ladder.
+
+The pre-committed fallback ladder is in `selection_history/reviewer_summary.md`. It exists so that a
+failure does not reopen the selection debate.
 
 ---
 

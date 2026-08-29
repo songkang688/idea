@@ -87,6 +87,31 @@ data:
   medical_arm: one_public_medical_video_set   # E8
   didi_access_confirmed: false                # HARD day-1 dependency, no mirror
 
+mandatory_method_arm:
+  # Stage-6 revival clause. Elevated from optional secondary analysis to a REQUIRED
+  # deliverable: A-0017 is the only Top-5 idea that can graduate from measurement to
+  # method inside one budget, so the Research Package must budget the head-to-head runs.
+  experiment: E9
+  trigger_condition: "P2 passes (targeted - reset >= 0.10 on the H2-testable subset)"
+  deliverable: training-free SAM2 memory-surgery wrapper
+  head_to_head_against: [SAMURAI, DAM4SAM]
+  benchmarks: [LVOS_v2_val, DiDi]
+  metric: J_and_F                # standard benchmark surface, NOT recovery rate on our corpus
+  requires_failure_trigger: true
+  trigger_candidates:
+    - sustained_low_mask_confidence
+    - mask_area_collapse
+    - conditioning_frame_attention_collapse   # the E5 signal; the mechanism itself
+  expected_gain_vs_ceiling: strictly_below
+  note: >
+    Everything upstream applies surgery at the ground-truth recovery frame t_r. A deployable
+    wrapper has no oracle and must detect its own failure, so the wrapper's gain is bounded
+    below the measured ceiling by the trigger's precision and recall. E6's t_r +/- delta
+    dose-response bounds that loss BEFORE E9 runs, which is why E6 was promoted from ablation
+    to a main result. Stating the expectation in advance is what stops a below-ceiling wrapper
+    from being spun as a disappointment or a ceiling-matching one from going unquestioned.
+    If P2 fails, E9 does not run: with no margin over a bank reset there is nothing to ship.
+
 budget_gpu_hours:
   harvest: 12
   surgery_replays: 25
@@ -97,4 +122,6 @@ budget_gpu_hours:
   medical_arm: 10
   timing_dose_response: 15
   with_mandatory_arms: [140, 180]
+  method_arm_e9: 40              # conditional on P2; never spent on the failing branch
+  with_method_arm: [180, 220]
   training: none

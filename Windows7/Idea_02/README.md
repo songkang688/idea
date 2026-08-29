@@ -15,13 +15,21 @@ repair heuristic into a decomposition instrument: it must beat a full reset, it 
 sham, and the per-sequence reversible fraction must predict independent prevention methods' gains
 **after generic sequence difficulty is partialled out**.
 
+**And if it survives, it must ship.** `KNOWN FACT` The Stage-6 meta-review made the method arm a
+**required deliverable**: if targeted deletion beats a full reset by the pre-registered ≥10-point
+margin, the paper must package the surgery as a training-free SAM2 wrapper and benchmark it
+head-to-head against SAMURAI and DAM4SAM (E9, ~40 GPU-h, conditional on P2). This is the one project
+in Windows7 that can graduate from measurement to method inside a single budget — and the one honest
+difficulty is that the measurement is **oracle-timed** while a wrapper is not, so E9 needs a failure
+trigger and its gain will land strictly below the measured ceiling.
+
 ## Files
 
 | File | What is in it |
 |---|---|
 | `proposal.md` | The full 28-section research package. Start here. |
 | `literature.md` | The crowded 2025–2026 SAM-memory lane, and our exact remaining difference |
-| `experiments.md` | E0–E8, arms, ablations, decision rules |
+| `experiments.md` | E0–E9, arms, ablations, decision rules |
 | `reviewer_attacks.md` | A1–A6 and expert disagreements D1–D2, with the experiment answering each |
 | `roadmap.md` | Day 1 → Week 4 |
 | `diagrams/architecture.md` | Mermaid: surgery arms, decision flow, validity design |
@@ -32,9 +40,8 @@ sham, and the per-sequence reversible fraction must predict independent preventi
 ## Run the prototype now
 
 ```bash
-cd src
-pip install -r ../requirements.txt
-python run_pilot.py --failures 400 --sequences 60 --seed 0
+pip install -r requirements.txt
+python src/run_pilot.py
 ```
 
 No GPU, no checkpoints. It runs the pilot decision rule against a simulator whose failure
@@ -123,6 +130,12 @@ Also on day 1: confirm DiDi access (`go.vicos.si/didi` — no mirror exists).
 
 ≥200 organic failures. `targeted` must beat `no_op` by ≥30 points, `reset` by ≥10, and `sham` by
 ≥10; and `min_{c ∈ frozen} partial r > 0.4`. Either miss kills the instrument claim. ≈60 GPU-h.
+Passing the reset margin also **triggers the mandatory method arm** (E9).
+
+## Budget
+
+Core ≈80–120 GPU-h · with the Stage-6 mandatory arms ≈140–180 · with E9 ≈180–220. Zero training
+throughout, 1× A100-40GB. E9 only ever runs on the branch where the project has already succeeded.
 
 ## Biggest risk
 

@@ -1,7 +1,8 @@
 # Idea_02 — Experiment Plan
 
 Zero training. 1× A100-40GB, peak VRAM ≈16–24 GB.
-**Core ≈80–120 GPU-h; with the Stage-6 mandatory arms ≈140–180 GPU-h.**
+**Core ≈80–120 GPU-h; with the Stage-6 mandatory arms ≈140–180 GPU-h; with the E9 method arm
+≈180–220 GPU-h** (E9 is conditional on P2 and never runs on the failing branch).
 
 ---
 
@@ -120,9 +121,37 @@ simulated world with *zero* memory-borne failure where the tracker merely prefer
 
 Why partial rather than raw: reversible fraction and prevention-method gains are both downstream of
 sequence difficulty, so a raw `r > 0.6` is exactly what a shared-difficulty confound produces with
-no validity at all. In the prototype, naive correlations of 0.93 fell to 0.55 / 0.56 / **0.12** after
-partialling — and the minimum-over-set rule is what stops the 0.12 comparator from being quietly
-dropped.
+no validity at all. In the prototype, naive correlations of 0.95 / 0.92 / 0.86 fell to 0.68 / 0.40 /
+**0.03** after partialling — and the minimum-over-set rule is what stops the 0.03 comparator from
+being quietly dropped.
+
+---
+
+## E9 — the mandatory method arm (~40 GPU-h, conditional on P2)
+
+`KNOWN FACT` The Stage-6 meta-review elevated this from optional secondary analysis to a **required
+deliverable**: if `targeted` beats `reset` by the pre-registered ≥10-point margin, the paper must
+ship the surgery as a training-free SAM2 wrapper, benchmarked **head-to-head against SAMURAI and
+DAM4SAM** on standard benchmarks. The stated reasoning was that A-0017 is the only Top-5 idea that
+can graduate from measurement to method inside one budget.
+
+Two things this requires that E3 does not:
+
+1. **A trigger.** Everything upstream applies surgery at the ground-truth recovery frame `t_r`. A
+   deployable wrapper has no oracle and must detect its own failure, so E9 needs a detector —
+   candidates: sustained low mask confidence, mask-area collapse, conditioning-frame attention
+   collapse (the E5 signal, which is the most interesting because it is the mechanism itself).
+2. **A different comparison surface.** Head-to-head means standard LVOS v2 + DiDi J&F, not recovery
+   rate on our harvested corpus. The comparators stop being validity instruments and become the bar.
+
+**Expected, and stated in advance so it cannot be spun later:** the wrapper's gain is **strictly
+below** the measured ceiling, by an amount the trigger's precision and recall set. E6's `t_r ± δ`
+dose–response bounds that loss before E9 runs, which is the second reason E6 was promoted out of the
+ablation list.
+
+**Conditional by construction.** If P2 fails, targeted deletion is no better than a bank reset and
+there is nothing worth shipping — a practitioner would simply reset. E9's cost never lands on the
+branch where the project fails.
 
 ---
 

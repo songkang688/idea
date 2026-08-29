@@ -6,13 +6,19 @@
 
 ## The shape of the round
 
-The Final 3 are all **measurement projects**, and none of them proposes a new module. That was not
-the plan; it is what survived.
+The Final 3 are **one evaluation-validity audit, one causal-mechanism tool with a mandatory method
+arm, and one training-mechanism test**. That composition was not the plan; it is what survived, plus
+one deliberate correction.
 
 Every "new architecture" idea that entered Stage 3 died there or at Stage 4, for the same reason each
 time: the closest prior work had already done the thing, or Reviewer #2 could name a confound that no
-affordable experiment could remove. What survived were three ideas that attack a *load-bearing
-assumption the field currently acts on without evidence*:
+affordable experiment could remove. `KNOWN FACT` The Stage-6 audit recorded this as an **extinction,
+not a close call** — no METHOD-genre paper reached nominee grade anywhere in the funnel — and
+responded by making Idea_02's method arm a required deliverable rather than an optional extension.
+It also recommended re-instructing the Stage-1 generators next window so this does not repeat.
+
+What the three share is that each attacks a *load-bearing assumption the field currently acts on
+without evidence*:
 
 | Idea | The assumption it attacks |
 |---|---|
@@ -21,7 +27,7 @@ assumption the field currently acts on without evidence*:
 | **RehearsalGrid** | that rehearsal-data *content* is what prevents multimodal forgetting |
 
 Each has a control arm that no adjacent paper runs: a wrong support, a vacuous sham, a token-shuffled
-corpus. That is the round's signature — the contribution is the control, not the method.
+corpus. That is the round's signature — in each case the contribution is the control.
 
 ---
 
@@ -62,6 +68,13 @@ modified.
 **Why it matters.** Every memory-policy paper (SAMURAI, DAM4SAM, SAM2Long) implicitly claims a
 headroom it never measures. This produces the headroom table: what share of the oracle-timed ceiling
 each published policy actually captures.
+
+**And it has to graduate.** `KNOWN FACT` The Stage-6 audit found the Top 5 measurement-tilted and made
+the method arm a **required deliverable**: if targeted deletion clears the ≥10-point margin over a
+full reset, the paper must ship the surgery as a training-free wrapper benchmarked head-to-head
+against SAMURAI and DAM4SAM (E9, ~40 GPU-h, conditional). The honest wrinkle, stated in the package
+rather than discovered later: the measurement is **oracle-timed** and a wrapper is not, so E9 needs a
+failure trigger and its gain will land strictly below the measured ceiling.
 
 **What the prototype changed, twice.**
 
@@ -126,6 +139,10 @@ invite one more seed and one more arm.
   paper — which is exactly why it is the one to run first.
 - **All three have literature-verification debt.** Several sources are known only through secondary
   citation and must be read directly before any submission. Logged per idea.
+- **Idea_02's method arm is the least-specified part of the round.** E9 requires a failure trigger
+  that does not yet exist, and its design is sketched (attention collapse, confidence, mask-area) but
+  not chosen. It is conditional on P2 and runs last, which is the right sequencing, but it is the
+  place where a reader should expect the package to be thinnest.
 
 ---
 

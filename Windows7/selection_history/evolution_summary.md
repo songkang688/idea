@@ -90,8 +90,10 @@ The killing criterion was **cost-per-decision** — the price of the cheapest ex
 whether to continue. Several scientifically interesting ideas died here purely on cost, which is the
 correct outcome for a group that must actually run them.
 
-**Top 5:** B-0121 (SupportAudit), A-0017 (MemorySurgeon), C-0090 (RehearsalGrid), C-0028 (decision
-triple), A-0044 (temporal calibration).
+**Supervisor-locked Top 5:** A-0017, B-0121, A-0061 (Boundary Nyquist), B-0212 (blending-artifact
+transfer-gap law), C-0090.
+
+**Alternates carried alongside:** A-0002, M5, C-0028, A-0178, C-0302, B-0230, A-0107.
 
 ---
 
@@ -99,15 +101,26 @@ triple), A-0044 (temporal calibration).
 
 Multi-round group battle: PI, skeptical PI, domain experts, Reviewer #2, methodology and
 reproducibility reviewers, the engineer who has to build it, one researcher hunting fatal flaws and
-one hunting hidden upside, plus a meta-auditor.
+one hunting hidden upside, plus a meta-auditor who ran a full-funnel bias audit.
 
-**Selected:** B-0121, A-0017, C-0090.
-**Cut:** C-0028 (overlapped C-0090's territory at higher cost), A-0044 (calibration claim could not
-be separated from a difficulty confound within budget).
+**Selected:** B-0121 (#1), A-0017 (#2), C-0090 (#3) — one per cluster, which also decorrelates the
+three independent Stage-2→5 reviewer lineages so no single chain's blind spot touches more than one
+pick.
 
-The panel attached **mandatory conditions** to all three survivors rather than approving them as
-written. Those conditions are folded into the proposals' method and experiment sections, not appended
-as caveats. See `reviewer_summary.md`.
+**Dropped from the locked Top 5, with compensation:**
+
+- **A-0061** (Boundary Nyquist) — a second pure-measurement paper with the lowest ceiling in the Top
+  5; its strongest possible outcome is negative design advice. **Cut on genre and ceiling, not
+  validity**, and kept as an idle-cycle rider (~15–20 GPU-h).
+- **B-0212** (blending-artifact transfer-gap law) — lost the slot on **portfolio arithmetic, not
+  merit**: only one Cluster-B slot existed, and B-0121 dominates it roughly 9× on cost-to-decision
+  while covering the same evaluation-validity axis. Compensation: **B-0212's 3-arm MVE (~6 A100-days,
+  including the probe sanity gate) is funded now**, making it the immediately promotable second
+  alternate.
+
+The panel attached **mandatory conditions** to the survivors rather than approving them as written,
+and made one **revival**. Those are folded into the proposals' method and experiment sections rather
+than appended as caveats. See `reviewer_summary.md`.
 
 ---
 

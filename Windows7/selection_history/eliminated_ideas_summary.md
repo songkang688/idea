@@ -81,41 +81,67 @@ scientific ones, and the distinction should be preserved if this pool is revisit
 
 ---
 
-## Stage 6 — the final two
+## Stage 6 — the two dropped from the locked Top 5
 
-### C-0028 — the decision triple
+Neither was killed on validity, and both keep funded footholds.
 
-Well-designed and genuinely interesting. Cut for **territory overlap with C-0090 at higher cost**:
-both probe multimodal fine-tuning dynamics, and C-0090's content-free grid was judged the sharper
-instrument for a similar budget.
+### A-0061 — Boundary Nyquist
 
-**Revival condition:** if C-0090 fails its power gate at E1 — the outcome we consider most likely —
-C-0028 is the natural successor and inherits the harness, the eval configs and the pre-registration
-discipline. The E1 failure would also be *evidence about* C-0028's premise, so the revival would
-start better informed than the original.
+A second pure-measurement paper, with the **lowest ceiling in the Top 5**: its strongest possible
+outcome is negative design advice. It also had the weakest cross-cluster legitimacy under the
+auditor's asymmetric-standards finding.
 
-### A-0044 — temporal calibration
+**Cut on genre and ceiling, not validity.** Kept as an **idle-cycle rider** (~15–20 GPU-h), so it
+runs whenever the node is otherwise free.
 
-Cut because the calibration claim could not be separated from a difficulty confound within budget.
-The partial-correlation machinery built for A-0017's validity test is exactly what it needed, and did
-not have.
+### B-0212 — blending-artifact transfer-gap law
 
-**Revival condition:** after A-0017 completes. The comparator infrastructure and the partialled
-validity design transfer directly, which changes the cost calculation that killed it.
+Lost the slot on **portfolio arithmetic, not merit**. Only one Cluster-B slot existed, and B-0121
+dominates it roughly **9× on cost-to-decision** while covering the same evaluation-validity axis.
+
+**Compensation, already funded:** B-0212's **3-arm MVE (~6 A100-days, including the probe sanity
+gate) runs now**, making it the immediately promotable second alternate and preserving the
+intervention-law lane. It is the designated successor on **two** separate rungs of the fallback
+ladder.
 
 ---
 
-## Ideas considered for revival and not revived
+## What was actually revived
 
-The meta-auditor reviewed the Stage-3 kill list for high-risk / high-reward ideas eliminated too
-readily, and revived none.
+Two revivals, both driven by the meta-auditor's finding that the locked Top 5 was
+**measurement-tilted**.
 
-**Reasoning:** the Stage-3 kills were mechanism-level rather than framing-level. When only the framing
-was dead, the idea was **mutated in place** rather than eliminated — which is how both B-0121 and
-A-0017 reached the final. There was no residual pool of wrongly-killed ideas to draw from.
+### A-0017's method arm — from optional to mandatory
 
-**Caveat, recorded honestly.** The auditor also flagged a convergence bias: reviewers increasingly
-favoured measurement projects as the round progressed, and all three finalists are measurement
-projects. The audit could not name a specific method idea that was wrongly killed, so no revival
-followed — but the bias is real, and a future round should seed at least one method-side idea into
-Stage 5 deliberately rather than letting selection pressure decide.
+Not a new idea but a **restored scope**: the training-free memory-surgery wrapper, benchmarked
+head-to-head against SAMURAI and DAM4SAM, was elevated from optional secondary analysis to a required
+deliverable. The audit was explicit that this is a real scope change and the package must budget the
+comparison runs — it is now E9 in `Idea_02/experiments.md`.
+
+This is why the Final 3 is not three measurement papers.
+
+### C-0028 — decision triple, revived to funded first alternate
+
+Its **zero-GPU offline dry-run gate** (H-arm constructibility: KS < 0.05 similarity matching plus
+noun-rate checks on 10K generated batches) runs immediately, so a fully de-risked training-recipe
+flagship is on the shelf before it is needed.
+
+**Deliberately not co-picked with C-0090:** two VLM-training studies sharing eval infrastructure
+would recreate monoculture in the opposite direction. C-0090 won the single training slot on being
+2.2× cheaper with zero feasibility gates remaining.
+
+**Promotion condition:** C-0090 dying at its power gate — the outcome we consider most likely. By
+then C-0028's offline gate has already passed, and the E1 failure is itself *evidence about* C-0028's
+premise, so the promotion starts better informed than the original nomination.
+
+---
+
+## The bias that was flagged and not fully fixed
+
+`KNOWN FACT` The audit documented that **no METHOD-genre paper reached nominee grade anywhere in the
+funnel** — an extinction, not a close call. Interim exposure is A-0017's mandatory method arm plus
+the B-0112+M4 Leg-1 rider.
+
+The recommendation attached to it: **re-instruct the Stage-1 generators for the next window** so this
+does not become a three-peat. Seeding method-side ideas deliberately is a better fix than hoping
+selection pressure produces one.

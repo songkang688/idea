@@ -64,9 +64,14 @@ partial `r < 0.2` ⇒ stop before the comparator passes; release corpus and tool
 
 ---
 
-## Week 4 — generational arm and release
+## Week 4 — generational arm, the method arm, and release
 
 - [ ] **E7** SAM3 arm (~30 GPU-h): identical protocol on SAM2.1 and SAM3.
+- [ ] **E9 — the mandatory method arm (~40 GPU-h), if and only if P2 passed.** Build a failure
+      trigger (the E5 attention-collapse signal is the first candidate), then benchmark the
+      training-free wrapper **head-to-head against SAMURAI and DAM4SAM** on LVOS v2 + DiDi J&F.
+      `KNOWN FACT` Stage 6 made this a required deliverable, not an optional extension. Budget it
+      from day 1 even though it runs last, because the trigger work cannot start the week it is due.
 - [ ] Release the organic-failure corpus and the surgery toolkit.
 - [ ] Paper draft, decomposition-first framing.
 
@@ -93,6 +98,7 @@ partial `r < 0.2` ⇒ stop before the comparator passes; release corpus and tool
 | <80 usable failures even with SA-V | descope to a bounded pilot report |
 | H2-testable share very small | keep P1/P3, descope P2 explicitly |
 | `targeted ≈ sham` | **kill the instrument claim**; publish deletion-mechanics note |
-| `targeted ≈ reset` | publish as a bounded diagnostic post-mortem |
+| `targeted ≈ reset` (P2 fails) | publish as a bounded diagnostic post-mortem. **E9 does not run** — with no margin over a bank reset there is nothing worth shipping |
 | partial `r < 0.2` | pre-registered negative + corpus + toolkit |
-| all pass | headroom table becomes the subfield's reference artifact |
+| **P2 passes** | **E9 is now obligatory**, not optional: build the trigger and run the head-to-head |
+| all pass | headroom table becomes the subfield's reference artifact, and the wrapper is a candidate tracker improvement |

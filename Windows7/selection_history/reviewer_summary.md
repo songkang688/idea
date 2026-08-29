@@ -62,21 +62,57 @@ list above:
 
 ---
 
-## The one disagreement nobody resolved
+## The revival: Idea_02's method arm became mandatory
 
-**Should Idea_03 be in this round at all?**
+The meta-auditor's bias audit found the locked Top 5 was **measurement-tilted**, and issued a
+mandatory clause rather than a recommendation.
 
-The segmentation reviewer's position: a language-retention study in a portfolio otherwise built on
-segmentation and tracking dilutes the round, and the same 2,450 A100-h would buy more on C-0028's
-decision triple.
+**A-0017's method arm was elevated from optional secondary analysis to a required deliverable.** If
+targeted deletion beats a full reset by the pre-registered ≥10-point margin, the paper *must* ship
+the surgery as a training-free SAM2 wrapper benchmarked head-to-head against SAMURAI and DAM4SAM.
+The audit was explicit that this is **a real scope change, not relabeling: the Research Package must
+budget the head-to-head comparison runs.** It is now E9 (~40 GPU-h, conditional on P2) and it is why
+Idea_02 is not a pure measurement paper.
 
-The panel's position, which prevailed: a Final 3 composed entirely of inference-only diagnostics is
-itself a portfolio risk, and Idea_03 is the only project of the three that changes what practitioners
-*do* rather than how they *measure*.
+The reasoning: A-0017 is the only Top-5 idea that can graduate from measurement to method inside one
+budget, converting an "upper-bound diagnostic" into a candidate tracker improvement.
 
-**This was a portfolio judgement, not a scientific one, and no experiment settles it.** It is recorded
-here rather than smoothed over because it is the single most likely thing to be second-guessed later,
-and the reasoning should be inspectable when that happens.
+**C-0028 was revived to *funded first alternate*.** Its zero-GPU offline dry-run gate (H-arm
+constructibility: KS < 0.05 similarity matching plus noun-rate checks on 10K generated batches) runs
+immediately, so a fully de-risked training-recipe flagship sits on the shelf if C-0090 dies at its
+power gate. It was deliberately **not** co-picked with C-0090 — two VLM-training studies sharing eval
+infrastructure would recreate monoculture in the opposite direction.
+
+---
+
+## The pre-committed fallback ladder
+
+Agreed in advance so that a failure does not reopen the selection debate:
+
+1. **C-0090 dies at its power gate** → promote **C-0028** (offline gate already passed by then; the
+   decision triple alone, 9 runs ≈ 3,600 A100-h, settles it).
+2. **B-0121 proves infeasible** (benchmark degeneracy so total that even the certification branch is
+   vacuous) → promote **M5** if its $0 desk survey found ≥15 auditable pairs; else **B-0212** off its
+   passed MVE.
+3. **A-0017 is scooped before the margin test runs** → promote **B-0212** off its passed MVE;
+   **A-0002** (same cluster, ~30 GPU-h killer battery, cleanest causal design in Cluster A) is the
+   cheap stopgap if B-0212's MVE failed.
+
+---
+
+## The disagreement nobody resolved
+
+**Should Idea_03 be in this round at all?** It is a language-retention study in a portfolio otherwise
+built on segmentation and tracking, and the same 2,450 A100-h would buy the C-0028 decision triple.
+
+The panel's position, which prevailed: C-0090 is the **deliberate expensive pick and the direct
+counterweight to the funnel's documented cheapness bias** — the only Top-5 idea whose every outcome
+branch changes how people *train*. It was chosen over C-0028 for the single training slot on being
+2.2× cheaper, having zero feasibility gates left, and having been ranked #1 on ROI by its own
+cluster.
+
+**This was a portfolio judgement, not a scientific one, and no experiment settles it.** Recorded
+rather than smoothed over, because it is the most likely thing to be second-guessed later.
 
 ---
 
@@ -84,7 +120,9 @@ and the reasoning should be inspectable when that happens.
 
 | Finding | Resolution |
 |---|---|
-| Reviewer opinions converging toward "measurement projects are safe" | Acknowledged. All three survivors *are* measurement projects. The audit could not identify a specific method idea that was wrongly killed, but flags the bias as real. |
+| The locked Top 5 was measurement-tilted | **Acted on, not just noted**: A-0017's method arm made a mandatory deliverable (see above). |
+| No METHOD-genre paper reached nominee grade anywhere in the funnel | Extinction documented in the audit. Interim exposure is A-0017's mandatory method arm; the B-0112+M4 Leg-1 rider keeps the lane alive; **Stage-1 generator re-instruction is recommended for the next window** so this is not a three-peat. |
 | Novelty claims resting on secondary citation | Verification debt logged per idea in `references/`; must clear before submission. |
-| No revived ideas this round | Reviewed and accepted. Stage-3 kills were mechanism-level and the mutations were already applied in place. |
-| Cost concentration: one project is 20× the other two combined | Accepted, conditional on Idea_03's power gate being a **hard** stop rather than a checkpoint. |
+| Asymmetric anti-audit enforcement (Cluster C harsh, Cluster B lenient) and a 12× cross-cluster cost-bar inconsistency (A-0107 dropped at 450 GPU-h while C-0028 was nominated at 5,300) | **Uncorrected at source.** Both Final-3-relevant consequences were neutralised in the Stage-6 selection, but the next window should issue uniform Stage-4/5 criteria. |
+| Frozen-checkpoint dependency for B-0121 and A-0017 | Availability verified in-session; a pulled checkpoint or licence change would force substitutions (low probability, low impact — the panels are 7 and 3+ methods deep). |
+| Cost concentration: one project is ~20× the other two combined | Accepted, conditional on Idea_03's power gate being a **hard** stop rather than a checkpoint. |

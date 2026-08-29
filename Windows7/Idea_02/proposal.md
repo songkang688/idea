@@ -339,8 +339,32 @@ annotations.
 ## 13. Baselines
 
 `no-op` (natural recovery) · `reset` (the "decades-old heuristic" arm) · **`sham`** (temporal-encoding
-control) · `random-k` (count-matched, tests *which* entries matter) · SAMURAI / DAM4SAM / SAM2Long
-and further training-free wrappers as **comparators for validity, not competitors**.
+control) · `random-k` (count-matched, tests *which* entries matter).
+
+SAMURAI / DAM4SAM / SAM2Long play **two distinct roles**, and conflating them is a mistake:
+
+1. **As validity comparators** (§10, E4) they are the frozen set over which the minimum partial `r`
+   is computed. Here they are not competitors — we are measuring whether our instrument predicts
+   their gains.
+2. **As head-to-head competitors** (E9, below) they are the bar the deliverable wrapper must be
+   measured against, on standard benchmarks rather than on our harvested corpus.
+
+> **Mandatory method arm (Stage-6 revival clause).** The Stage-6 meta-review elevated what had been
+> an optional secondary analysis into a **required deliverable**, on the reasoning that A-0017 is the
+> only Top-5 idea that can graduate from measurement to method inside one budget. The clause:
+> **if `targeted` beats `reset` by the pre-registered ≥10-point margin, the paper must ship the
+> surgery as a training-free SAM2 wrapper, benchmarked head-to-head against SAMURAI and DAM4SAM.**
+>
+> This is a scope change, not a relabeling, and it is budgeted as E9. It also changes what the
+> project *is*: the "upper-bound diagnostic" becomes a candidate tracker improvement, and the Final 3
+> stops being three pure measurement papers.
+>
+> **The honest difficulty, stated rather than buried.** The measurement uses an **oracle-timed**
+> intervention — surgery is applied at the ground-truth recovery frame `t_r`. A deployable wrapper
+> has no oracle and must detect the failure itself. So E9 is not "package up E3"; it requires a
+> **trigger**, and the wrapper's gain will be strictly below the measured ceiling by an amount the
+> trigger's precision and recall determine. E6's `t_r ± δ` dose–response is what bounds that loss in
+> advance, which is the other reason E6 was promoted from ablation to a main result.
 
 ---
 
@@ -366,9 +390,14 @@ ceiling each prevention method captures). Everything stratified by the ambiguity
 | E6 | Deletion-scope + timing dose–response `t_r ± δ` | ~15 GPU-h | oracle-strength sensitivity |
 | E7 | SAM3 generational arm | ~30 GPU-h | significance / A3 |
 | E8 | Medical-video arm | ~10 GPU-h | portfolio fit (D2) |
+| **E9** | **Deployable wrapper: trigger + head-to-head vs SAMURAI / DAM4SAM on LVOS v2 + DiDi** | **~40 GPU-h** | **the mandatory method arm (§13)** |
 
-**Core ≈80–120 GPU-h; with the Stage-6 mandatory arms ≈140–180 GPU-h.** Zero training. 1× A100-40GB,
-peak VRAM ≈16–24 GB.
+**Core ≈80–120 GPU-h; with the Stage-6 mandatory arms ≈140–180 GPU-h; with E9 ≈180–220 GPU-h.**
+Zero training throughout. 1× A100-40GB, peak VRAM ≈16–24 GB.
+
+**E9 runs only if P2 passes.** It is conditional by construction: if targeted deletion does not beat
+a full reset, there is no wrapper worth shipping — a practitioner would just reset the bank. Its cost
+therefore never appears on the branch where the project fails.
 
 ---
 
@@ -395,7 +424,7 @@ peak VRAM ≈16–24 GB.
 > before any comparator runs.
 >
 > Either miss kills the instrument claim. Both passing makes it the reference diagnostic for the
-> SAM2-memory subfield. **≈60 GPU-h.**
+> SAM2-memory subfield **and triggers the mandatory method arm (E9)**. **≈60 GPU-h.**
 
 **Pilot gate first (E2, ~10 GPU-h, 50 failures).** All five arms plus the partialled regression at
 pilot scale. `targeted ≈ sham` ⇒ **stop**, the instrument story is dead and the honest report is
@@ -415,6 +444,7 @@ comparator passes; release corpus and tooling as a tech note.
 | `targeted − sham` | **unknown — this is the arm we are least able to predict, which is why it exists** |
 | Partial `r` (min over comparators) | 0.4–0.6 (note: *lower* than Stage 5's raw `r ≥ 0.6–0.75`, because partialling removes the shared-difficulty component) |
 | Prevention methods' share of the ceiling | 50–80% |
+| E9 wrapper gain vs SAMURAI / DAM4SAM | `HYPOTHESIS` **strictly below the measured ceiling**, by an amount the trigger's precision and recall set. A wrapper that matched the oracle-timed ceiling would mean the trigger is free, which it is not. |
 
 `HYPOTHESIS` The most likely way this project ends badly is not P1 or P2 — it is P3. If the
 targeted-vs-reset gap turns out to be substantially a recency-slot artifact, the sham arm will say
@@ -495,6 +525,8 @@ so, and it will say so at pilot scale for ~10 GPU-h.
 | Medical arm (E8) | ~10 |
 | Timing dose–response (E6) | ~15 |
 | **Total with mandatory arms** | **~140–180** |
+| Method arm (E9) — conditional on P2 | ~40 |
+| **Total with the method arm** | **~180–220** |
 
 ---
 
