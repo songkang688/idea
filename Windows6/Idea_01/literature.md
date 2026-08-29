@@ -1,84 +1,82 @@
-# Idea_01 — Literature (verified entries only)
+# Idea_01 —— 文献（只收已核实的条目）
 
-**Sourcing rule for this file.** An entry may appear here only if it already
-exists in `selection_history/literature_anchors.md` or in the original version
-of this file — i.e. only if a Stage-3/4 agent actually web-searched it. Nothing
-was added from memory. Where the argument needs a reference that could not be
-verified against those two sources, the slot reads
-`CITATION NEEDED — 待人工核验` rather than a guessed citation.
+**本文件的取材规则。** 一个条目只有在它已经存在于
+`selection_history/literature_anchors.md` 或本文件的原始版本中时才可以出现在
+这里 —— 也就是说，只有当某个 Stage-3/4 agent 真的做过网页检索时才收。没有任何
+一条是凭记忆添加的。凡论证需要某个引用、而它无法与那两个来源核对上的地方，
+该位置写的是 `CITATION NEEDED — 待人工核验`，而不是一个猜出来的引用。
 
-**We do not claim to have re-run anyone's tables.** Every entry is **VERIFIED
-PRIOR WORK** in the sense "recorded as searched and used to kill or mutate an
-idea", not "replicated".
+**我们不声称重跑过任何人的表格。** 每个条目都是 **VERIFIED
+PRIOR WORK**，其含义是"有记录表明它被检索过、并被用来杀掉或变异某个
+想法"，而不是"被复现过"。
 
 ---
 
-## A. Core — the gap this project occupies
+## A. 核心 —— 本项目所占据的那处空缺
 
-| Paper | Year | Venue / ID | Relation |
+| 论文 | 年份 | 会议／ID | 与本课题的关系 |
 |---|---|---|---|
-| Segment Anything | 2023 | ICCV | Defines AMG, the object of study |
-| SAM2 CT review | 2024 | arXiv 2408.11210 | Black-box CT evaluation. Filed in `literature_anchors.md` under *"Remaining-novelty targets"* precisely because it is **not** an AMG-vs-clustering test |
-| SAM/SAM2 low-contrast CT | 2024 | arXiv 2408.04212 | **Closest adjacency.** Establishes intensity/window dependence; cited by Reviewer #2. Shows sensitivity, not equivalence, and runs no texture control |
+| Segment Anything | 2023 | ICCV | 定义了 AMG，即本研究对象 |
+| SAM2 CT review | 2024 | arXiv 2408.11210 | 黑箱式的 CT 评测。它在 `literature_anchors.md` 里被归入 *"Remaining-novelty targets"*，正因为它**不是**一项 AMG-vs-聚类的检验 |
+| SAM/SAM2 low-contrast CT | 2024 | arXiv 2408.04212 | **最接近的邻近工作。** 它确立了对强度／窗宽窗位的依赖性；被 Reviewer #2 引用。它展示的是敏感性而非等价性，而且没有做任何纹理对照 |
 
-**Gap (FACT, carried forward verbatim from the original file):** *"no AMG vs
+**空缺（FACT，原样沿用自本文件的原始版本）：** *"no AMG vs
 k-means Hungarian/ARI study with texture-vs-intensity counterfactuals."*
-Stage-3 novelty confidence **0.6** — the highest in Windows6.
+Stage-3 新颖性信心 **0.6** —— Windows6 中最高的。
 
-## B. Constrains what we may claim
+## B. 约束我们能主张什么
 
-| Paper | Year | Venue / ID | Constraint it imposes |
+| 论文 | 年份 | 会议／ID | 它施加的约束 |
 |---|---|---|---|
-| HQ-SAM | 2023 | NeurIPS, arXiv 2306.01567 | Mask-quality refinement. Standing constraint: **we do not claim filter = HQ-SAM.** That framing belonged to the adjacent `F-012`, which `stage2_ABCF_summary.md` forbids restating |
-| SAMRefiner | 2025 | arXiv 2502.06756 | Same family; refinement is not mechanism |
-| MedSAM-related CT notes | 2024 | arXiv 2408.03322 | Benchmark context, cited by Reviewer #2 as MedSAM framing |
-| MedSAM TTA without parametric updates | 2025 | arXiv 2504.02008 | Adaptation context. Out of scope per `proposal.md` §23 — adaptation is not our subject |
-| Metrics Reloaded | 2024 | Nature Methods | Metric-selection discipline. **The paper that killed sibling idea `F-022`** for reporting a near-definitional property. Standing warning against the same mistake here |
+| HQ-SAM | 2023 | NeurIPS, arXiv 2306.01567 | 掩码质量精修。长期约束：**我们不主张"滤波器 = HQ-SAM"。** 那种表述属于邻近的 `F-012`，而 `stage2_ABCF_summary.md` 明确禁止重述它 |
+| SAMRefiner | 2025 | arXiv 2502.06756 | 同一族；精修不是机制 |
+| MedSAM 相关的 CT 笔记 | 2024 | arXiv 2408.03322 | 基准背景，被 Reviewer #2 作为 MedSAM 式表述引用 |
+| MedSAM TTA without parametric updates | 2025 | arXiv 2504.02008 | 适配相关背景。按 `proposal.md` §23 属于范围之外 —— 适配不是我们的研究对象 |
+| Metrics Reloaded | 2024 | Nature Methods | 指标选择的纪律。**正是这篇论文杀掉了同胞想法 `F-022`**，因为后者报告的是一条近乎定义性的性质。它在这里作为长期警告，防止我们犯同样的错 |
 
-## C. Slots that need human verification before submission
+## C. 投稿前需要人工核验的位置
 
-None of these could be verified against `literature_anchors.md` or the original
-`literature.md`, so none is cited with a year, venue or ID.
+以下没有一条能与 `literature_anchors.md` 或原始 `literature.md` 核对上，
+因此没有一条被标注年份、会议或 ID。
 
-| Needed for | Slot |
+| 用在何处 | 位置 |
 |---|---|
-| SLIC superpixels (the spatial control, §13) | `CITATION NEEDED — 待人工核验` |
-| Otsu / multi-Otsu thresholding | `CITATION NEEDED — 待人工核验` |
-| Adjusted Rand Index (Hubert & Arabie or equivalent) | `CITATION NEEDED — 待人工核验` |
-| Hungarian / Kuhn–Munkres assignment | `CITATION NEEDED — 待人工核验` |
-| Boundary-F / contour F-measure protocol | `CITATION NEEDED — 待人工核验` |
-| TotalSegmentator dataset | `CITATION NEEDED — 待人工核验` |
+| SLIC 超像素（空间对照，§13） | `CITATION NEEDED — 待人工核验` |
+| Otsu / multi-Otsu 阈值化 | `CITATION NEEDED — 待人工核验` |
+| Adjusted Rand Index（Hubert & Arabie 或等价文献） | `CITATION NEEDED — 待人工核验` |
+| Hungarian / Kuhn–Munkres 分配算法 | `CITATION NEEDED — 待人工核验` |
+| Boundary-F / 轮廓 F-measure 协议 | `CITATION NEEDED — 待人工核验` |
+| TotalSegmentator 数据集 | `CITATION NEEDED — 待人工核验` |
 | Medical Segmentation Decathlon (MSD) | `CITATION NEEDED — 待人工核验` |
-| COCO (E4 control) | `CITATION NEEDED — 待人工核验` |
+| COCO（E4 对照） | `CITATION NEEDED — 待人工核验` |
 
-These are all standard and almost certainly easy to fill. They are left empty
-on purpose: a plausible-looking bibtex entry reconstructed from memory is worse
-than a visible hole, because the hole gets checked and the entry does not.
+这些全都是标准内容，几乎肯定很容易补上。它们被有意留空：一个凭记忆
+重建、看起来合理的 bibtex 条目比一个看得见的空洞更糟，因为空洞会被
+去核查，而条目不会。
 
-## D. Deliberately NOT cited, and why
+## D. 有意不引用的工作，以及原因
 
-| Work | Why it is excluded |
+| 工作 | 为什么被排除 |
 |---|---|
-| SAM-U (arXiv 2307.04973), UR-SAM (arXiv 2311.10529) | Prompt-jitter uncertainty. Used in Stage 3 to **kill** `prompt-jitter-uncertainty`; unrelated to our mechanism claim |
-| RITM (arXiv 2102.06583), Stable Segment Anything (ICLR 2025) | Interactive-click behaviour. Killed the `multiclick-nonmonotonic` idea; not our subject |
-| LN-TTA (WACV 2026), IGTTA (IEEE TMI 2025) | Test-time adaptation; killed `F-014` |
-| KiTS23 (arXiv 2309.02001), Randomized Histogram Matching (arXiv 2104.14032) | Intensity-alignment domain adaptation; killed `histogram-matching-da`. Adjacent to our intensity theme but a different question — they *fix* intensity shift, we *diagnose* intensity dependence |
-| LoRA vs Full Fine-tuning (arXiv 2410.21228) | PEFT; killed `lora-effective-rank`. Different cluster |
-| Mehrtash et al. (IEEE TMI 2020) | Dice-vs-CE calibration; killed `dice-vs-ce-calibration` |
+| SAM-U (arXiv 2307.04973), UR-SAM (arXiv 2311.10529) | 提示抖动做不确定性。Stage 3 用它们**杀掉**了 `prompt-jitter-uncertainty`；与我们的机制主张无关 |
+| RITM (arXiv 2102.06583), Stable Segment Anything (ICLR 2025) | 交互式点击行为。杀掉了 `multiclick-nonmonotonic` 那个想法；不是我们的研究对象 |
+| LN-TTA (WACV 2026), IGTTA (IEEE TMI 2025) | 测试时适配；杀掉了 `F-014` |
+| KiTS23 (arXiv 2309.02001), Randomized Histogram Matching (arXiv 2104.14032) | 强度对齐式的域适应；杀掉了 `histogram-matching-da`。与我们的强度主题邻近，但问题不同 —— 他们是去*修*强度偏移，我们是去*诊断*强度依赖性 |
+| LoRA vs Full Fine-tuning (arXiv 2410.21228) | PEFT；杀掉了 `lora-effective-rank`。属于不同的簇 |
+| Mehrtash et al. (IEEE TMI 2020) | Dice-vs-CE 校准；杀掉了 `dice-vs-ce-calibration` |
 
-Listing these matters: a reviewer who sees the SAM-uncertainty literature
-uncited may assume ignorance. It was searched and deliberately excluded.
+把这些列出来是有意义的：一个看到 SAM 不确定性文献没被引用的评审可能会
+以为我们不知道这些工作。它们其实被检索过，并且是被有意排除的。
 
-## E. How each core citation is used in the argument
+## E. 每条核心引用在论证中的用法
 
-- **arXiv 2408.04212** is the paper that makes our hypothesis plausible *and*
-  the one that most nearly pre-empts it. `proposal.md` §9 states the difference
-  explicitly: it demonstrates window sensitivity; it does not test equivalence
-  against a clusterer and it runs no intensity/texture dissociation.
-- **arXiv 2408.11210** is cited to establish that CT evaluation of SAM-family
-  models is black-box — which is exactly the gap a mechanistic study fills.
-- **Segment Anything (ICCV 2023)** is cited only for the AMG definition. We
-  make no claim about SAM's design intent.
-- **Metrics Reloaded** is cited defensively, in the metric-selection section,
-  because the sibling idea died on that ground.
-- **HQ-SAM / SAMRefiner** are cited to fence off the `F-012` framing.
+- **arXiv 2408.04212** 既是让我们的假设显得可信的那篇论文，*也是*最接近
+  抢先它的那篇。`proposal.md` §9 明确写出了差别：它证明了窗宽窗位敏感性；
+  它没有拿聚类器去检验等价性，也没有做任何强度／纹理的解离实验。
+- **arXiv 2408.11210** 被引用是为了确立"SAM 系列模型在 CT 上的评测是黑箱式的"
+  这一点 —— 而这恰恰就是一项机制性研究要填的空缺。
+- **Segment Anything (ICCV 2023)** 只被引用来给出 AMG 的定义。我们不对
+  SAM 的设计意图作任何主张。
+- **Metrics Reloaded** 是在指标选择那一节里被防御性地引用的，
+  因为同胞想法正是死在这一点上。
+- **HQ-SAM / SAMRefiner** 被引用是为了圈开 `F-012` 那种表述。

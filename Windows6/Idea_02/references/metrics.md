@@ -1,118 +1,107 @@
-# Metrics & split protocol (Idea_02)
+# 指标与划分协议（Idea_02）
 
-Definitions for the metrics and the three split protocols. Implemented in
-`src/camsplit/`; every property asserted below is covered by a self-check in
-`tests/test_smoke.py`.
+各指标与三种划分协议的定义。实现在
+`src/camsplit/`；下文断言的每一条性质都有
+`tests/test_smoke.py` 中的自检覆盖。
 
-Formal citations for these constructions are `CITATION NEEDED — 待人工核验`
-(see `literature.md` §C) — none could be verified against
-`selection_history/literature_anchors.md`, and a bibtex entry reconstructed
-from memory is worse than a visible hole.
+这些构造的正式引用为 `CITATION NEEDED — 待人工核验`
+（见 `literature.md` §C）—— 没有一条能与
+`selection_history/literature_anchors.md` 核对上，而凭记忆重建的 bibtex
+条目比留一个看得见的空洞更糟。
 
-## 1. The three protocols, defined by what they break
+## 1. 三种协议，由"它们打断了什么"来定义
 
-A corpus has nested groupings **camera** ⊃ **event** ⊃ **frame**. Write
-\(C(i)\) for the camera of frame \(i\) and \(E(i)\) for its event. A split is a
-partition \((\mathcal{T}, \mathcal{V})\) of frame indices.
+一份语料具有嵌套的分组关系 **相机** ⊃ **事件** ⊃ **帧**。记
+\(C(i)\) 为帧 \(i\) 的相机，\(E(i)\) 为它的事件。一次划分就是帧下标的
+一个划分 \((\mathcal{T}, \mathcal{V})\)。
 
-| Protocol | Constraint |
+| 协议 | 约束 |
 |---|---|
-| random | none beyond \(\mathcal{T}\cap\mathcal{V}=\emptyset\) |
+| random | 除 \(\mathcal{T}\cap\mathcal{V}=\emptyset\) 之外没有约束 |
 | event-disjoint | \(E(\mathcal{T}) \cap E(\mathcal{V}) = \emptyset\) |
 | camera-disjoint | \(C(\mathcal{T}) \cap C(\mathcal{V}) = \emptyset\) |
 
-**Camera-disjoint implies event-disjoint; the converse does not hold.** That
-asymmetry is the entire hypothesis. `camera_overlap` and `event_overlap` report
-\(|C(\mathcal{T})\cap C(\mathcal{V})|\) and \(|E(\mathcal{T})\cap E(\mathcal{V})|\)
-so the difference is checkable rather than assertable, and
-`test_event_disjoint_STILL_shares_cameras` fails if a refactor ever collapses
-the two protocols into one.
+**按相机划分蕴含按事件划分；反之不成立。** 这个
+不对称性就是全部假设所在。`camera_overlap` 与 `event_overlap` 会报告
+\(|C(\mathcal{T})\cap C(\mathcal{V})|\) 与 \(|E(\mathcal{T})\cap E(\mathcal{V})|\)，
+使这个差别可以被核查而不只是被断言，而且
+`test_event_disjoint_STILL_shares_cameras` 会在某次重构把两种协议
+坍缩成一种时报错。
 
-**Empty frames** carry \(E(i) = -1\) and are excluded from event-overlap
-counting. They follow their camera's majority side under event-disjoint
-splitting so the negative pool stays usable for H4.
+**空帧**携带 \(E(i) = -1\)，并被排除在事件重叠计数之外。在按事件划分时
+它们跟随其相机的多数所属一侧，好让负样本池对 H4 仍然可用。
 
-## 2. Equal-N, ratio-matched comparison
+## 2. 等 N、类别比例对齐的对比
 
-Protocols produce test sets of different size and class balance, so a raw AP
-difference conflates leakage with the comparison itself. `match_equal_n`
-subsamples the test side towards the training-set positive ratio within
-`tolerance` (default 0.02), and **raises** when it cannot — an unmatched
-comparison produces no number rather than a misleading one.
+不同协议产生的测试集在规模和类别平衡上都不同，因此原始的 AP 差值
+会把泄漏与对比本身混在一起。`match_equal_n` 会把测试侧下采样，
+使其正样本比例向训练集靠拢，容差为 `tolerance`（默认 0.02），
+若做不到就**抛异常** —— 一个没有对齐的对比宁可不产出数字，也不产出
+一个误导性的数字。
 
 ## 3. Average precision
 
-With scores \(s_i\) and labels \(y_i \in \{0,1\}\), sort descending and
-accumulate
-\(\mathrm{AP} = \sum_k P(k)\,\big[R(k) - R(k-1)\big]\)
-over the step-wise precision–recall curve. Returns `nan` when there are no
-positives — not 0, which would be indistinguishable from a real failure.
+给定分数 \(s_i\) 与标签 \(y_i \in \{0,1\}\)，按降序排序后在阶梯式
+precision–recall 曲线上累加
+\(\mathrm{AP} = \sum_k P(k)\,\big[R(k) - R(k-1)\big]\)。
+没有正样本时返回 `nan` —— 而不是 0，因为 0 会与真实的失败无从区分。
 
-## 4. FAR at fixed recall
+## 4. 固定召回下的 FAR
 
-Take the threshold where recall first reaches \(r\) (default 0.8) and report
-\(\mathrm{FAR} = \mathrm{FP}/N_{\text{neg}}\) there. Returns `nan` when \(r\) is
-unreachable, rather than silently substituting the nearest operating point.
+取召回首次达到 \(r\)（默认 0.8）的那个阈值，并在该处报告
+\(\mathrm{FAR} = \mathrm{FP}/N_{\text{neg}}\)。当 \(r\) 无法达到时返回 `nan`，
+而不是悄悄替换成最近的工作点。
 
-**Why FAR is primary alongside AP.** The operational question for a wildfire
-tower is *how many false alarms at the recall we are required to hit*, not how
-tight the box is. `proposal.md` §15 makes IoU secondary for this reason.
+**为什么 FAR 与 AP 并列为主指标。** 对一座野火瞭望塔来说，实际要问的是
+*在被要求达到的召回下会有多少次误报*，而不是框有多紧。`proposal.md` §15
+正因此把 IoU 列为次要指标。
 
-## 5. Cluster bootstrap over events
+## 5. 按事件的聚类 bootstrap
 
-Resample **whole events** with replacement, recompute the statistic, take
-percentile bounds.
+以**整个事件**为单位有放回重采样，重新计算统计量，取分位数区间。
 
-**Why not frames.** Consecutive frames of one plume from one tower are heavily
-correlated. A frame-level bootstrap treats \(n\) correlated frames as \(n\)
-independent observations and reports an interval roughly \(\sqrt{n_{\text{eff}}/n}\)
-too narrow — the specific way an audit like this overstates its own confidence.
-`cluster_bootstrap_ci` offers no frame-level option, so the wrong version is not
-available to reach for.
+**为什么不按帧。** 来自同一座塔、同一团羽流的连续帧高度相关。
+帧级 bootstrap 会把 \(n\) 个相关的帧当成 \(n\) 个独立观测，报出的区间
+大约窄了 \(\sqrt{n_{\text{eff}}/n}\) 倍 —— 这正是这类审计高估自身
+置信度的具体方式。`cluster_bootstrap_ci` 不提供帧级选项，
+所以那个错误版本根本不在手边可取。
 
-Returns `(nan, nan)` with fewer than two clusters: a bootstrap over one cluster
-is not a bootstrap.
+聚类数少于两个时返回 `(nan, nan)`：在一个聚类上做 bootstrap 不叫 bootstrap。
 
-## 6. The camera-ID probe
+## 6. 相机 ID 探针
 
-Multinomial logistic regression on frozen features, reported as
-`accuracy`, `chance` (majority-class rate) and `margin = accuracy − chance`.
+在冻结特征上做多分类逻辑回归，报告
+`accuracy`、`chance`（多数类比例）以及 `margin = accuracy − chance`。
 
-**Two constraints on the split, both load-bearing:**
+**对划分的两条约束，两条都是承重的：**
 
-1. **Train and evaluate within training cameras.** Asking a classifier to name a
-   camera it never saw is meaningless, so camera-disjoint indices are the wrong
-   input.
-2. **Evaluate event-disjoint.** On a random split the probe can name the camera
-   by recognising the *episode* shared across the split. **Measured during
-   W6-T3:** with the camera signature switched off entirely, a random-split
-   probe still beat chance by ≈0.17 — pure event leakage. Two self-checks pin
-   this, one asserting the event-disjoint control is near chance and one
-   asserting the random-split version *is* confounded.
+1. **在训练集的相机内部训练并评测。** 让分类器去说出一台它从未见过的
+   相机的名字毫无意义，因此按相机划分的下标是错误的输入。
+2. **在按事件划分下评测。** 在随机划分上，探针可以靠识别跨划分共享的
+   *事件*来说出相机是哪一台。**W6-T3 期间实测：** 在把相机签名完全
+   关掉之后，随机划分下的探针仍然比随机猜测高出约 0.17 —— 纯粹是事件
+   泄漏。有两项自检钉住这一点，一项断言按事件划分的对照接近随机水平，
+   另一项断言随机划分的版本*确实*被混淆了。
 
-## 7. The empty-frame gap (H4)
+## 7. 空帧差距（H4）
 
-\(\Delta = \mathrm{FPR}_{\text{seen cameras}} - \mathrm{FPR}_{\text{unseen cameras}}\)
-over frames containing no smoke.
+在不含烟雾的帧上计算
+\(\Delta = \mathrm{FPR}_{\text{见过的相机}} - \mathrm{FPR}_{\text{未见过的相机}}\)。
 
-**Two protocol details, both got wrong first:**
+**两处协议细节，一开始两处都做错了：**
 
-1. The detector trains on **non-empty frames only**, so every empty frame is
-   held out and both sides are scored under identical conditions.
-2. Empty frames are partitioned by whether their **camera** was seen in
-   training, regardless of which side of the split they fell on. Restricting to
-   the test side puts every empty frame on the unseen side under a
-   camera-disjoint split, which produced a `nan` seen-camera FPR when this was
-   first written.
+1. 检测器**只在非空帧上训练**，因此每一张空帧都被留出，两侧都在完全
+   相同的条件下被评分。
+2. 空帧按其**相机**是否在训练中被见过来划分，与它落在划分的哪一侧无关。
+   若限制在测试侧，按相机划分时会把每一张空帧都推到未见过那一侧，
+   这在最初写这段时导致"见过的相机"FPR 算出 `nan`。
 
-\(\Delta\) is `nan` when the split shares every camera. That is a real
-limitation of random and event-disjoint protocols, not a bug: **H4 only exists
-under camera-disjoint splitting.**
+当划分共享了全部相机时 \(\Delta\) 为 `nan`。这是随机划分与按事件划分
+的一项真实局限，不是 bug：**H4 只在按相机划分下才存在。**
 
-## 8. No trained loss of our own
+## 8. 我们自己没有训练任何损失函数
 
-`TinyDetector` is logistic regression on frame features — a placeholder so the
-split machinery has something to score with. It has no convolution, no image
-input and no localisation, which is why the package reports image-level AP and
-never mAP. The real detector (`train_real_detector`) raises
-`NotImplementedError`. **Windows6 has no smoke mAP.**
+`TinyDetector` 只是在帧特征上做逻辑回归 —— 一个占位件，让划分机制有
+东西可以打分。它没有卷积、没有图像输入、也不做定位，这正是本 package
+只报告图像级 AP、从不报 mAP 的原因。真正的检测器（`train_real_detector`）
+会抛出 `NotImplementedError`。**Windows6 没有烟雾 mAP。**

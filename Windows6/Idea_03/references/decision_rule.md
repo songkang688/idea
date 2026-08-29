@@ -1,35 +1,34 @@
-# The O1/O2/O3 decision rule (Idea_03)
+# O1/O2/O3 决策规则（Idea_03）
 
-The pre-registered rule that converts measurements into the paper's claim.
-Implemented as `pipeline.classify_outcome` — a pure function with no model
-access, so it is unit-testable and releasable. Readers can apply it to their own
-numbers.
+这条预先注册的规则负责把测量值转化为论文的主张。
+实现为 `pipeline.classify_outcome` —— 一个不访问模型的纯函数，
+因此可做单元测试、也可对外发布。读者可以把它套用到自己的数字上。
 
-Formal citations for the underlying methods (constrained decoding, linear
-probing, DPO) are `CITATION NEEDED — 待人工核验`; see `literature.md` §C.
+底层方法（受限解码、线性探针、DPO）的正式引用为
+`CITATION NEEDED — 待人工核验`；见 `literature.md` §C。
 
-## 1. Measured quantities
+## 1. 被测量的量
 
-All gaps are **base minus chat**; positive means the chat checkpoint is worse.
+所有差距都是**base 减 chat**；为正表示 chat checkpoint 更差。
 
-| Symbol | Definition | Confound still present |
+| 符号 | 定义 | 仍然存在的混淆因素 |
 |---|---|---|
-| \(g_{\mathrm{free}}\) | Free-form IoU gap | Prose wrapper, parsing, decoding policy |
-| \(g_{\mathrm{con}}\) | Grammar-constrained IoU gap | Decoding policy |
-| \(g_{\mathrm{lik}}\) | Likelihood rank-acc@1 gap | **None generative** |
-| \(g_{\mathrm{probe}}\) | \((\mathrm{MAE}_{\mathrm{chat}} - \mathrm{MAE}_{\mathrm{base}})/s\), image-scale normalised | Probe capacity, layer choice |
+| \(g_{\mathrm{free}}\) | 自由生成下的 IoU 差距 | 文风包装、解析、解码策略 |
+| \(g_{\mathrm{con}}\) | 语法受限下的 IoU 差距 | 解码策略 |
+| \(g_{\mathrm{lik}}\) | 似然排序 acc@1 的差距 | **没有任何生成相关的混淆** |
+| \(g_{\mathrm{probe}}\) | \((\mathrm{MAE}_{\mathrm{chat}} - \mathrm{MAE}_{\mathrm{base}})/s\)，按图像尺度归一化 | 探针容量、层的选择 |
 
-\(g_{\mathrm{lik}}\) is the only one that survives removal of generation, which
-is why it is the only one the rule treats as decisive.
+\(g_{\mathrm{lik}}\) 是唯一在去掉生成环节后仍然成立的量，
+这正是规则只把它当作决定性依据的原因。
 
-## 2. The rule
+## 2. 规则
 
-With pre-registered tolerance \(\tau = 0.02\):
+取预先注册的容差 \(\tau = 0.02\)：
 
 \[
 \text{outcome}=
 \begin{cases}
-\textbf{refuse} & g_{\mathrm{lik}} \text{ not measured}\\[2pt]
+\textbf{refuse} & g_{\mathrm{lik}} \text{ 未被测量}\\[2pt]
 \textbf{format (O1)} & g_{\mathrm{lik}} \le \tau \ \wedge\ (g_{\mathrm{free}} > \tau \vee g_{\mathrm{con}} > \tau)\\[2pt]
 \textbf{none} & g_{\mathrm{lik}} \le \tau \ \wedge\ g_{\mathrm{free}} \le \tau \ \wedge\ g_{\mathrm{con}} \le \tau\\[2pt]
 \textbf{representation (O3)} & g_{\mathrm{lik}} > \tau \ \wedge\ g_{\mathrm{probe}} > \tau\\[2pt]
@@ -37,71 +36,64 @@ With pre-registered tolerance \(\tau = 0.02\):
 \end{cases}
 \]
 
-## 3. Why the refusal branch exists
+## 3. 为什么要有 refuse 这一支
 
-Without \(g_{\mathrm{lik}}\), a free-form or constrained gap cannot be separated
-from the format confound. Reporting a "tax" from generation alone is the easiest
-way to publish a wrong result here, and it is the exact failure the
-pre-registered kill rule targets: *"Kill if H1 fails under constrained decoding
-(formatting confound)."*
+没有 \(g_{\mathrm{lik}}\)，自由生成或受限生成得到的差距就无法与格式
+混淆因素分离。只凭生成结果去报告一项"税"，是在这里发表错误结果最
+容易的途径，而它正是那条预先注册的 kill 规则所针对的失效：
+*"Kill if H1 fails under constrained decoding (formatting confound)."*
 
-So `classify_outcome` raises rather than guessing. The discipline is in the
-code, not only in the prose, because prose does not run.
+所以 `classify_outcome` 选择抛异常而不是猜。这份纪律在代码里，
+不只在正文里，因为正文不会被执行。
 
-## 4. Validation: the round trip
+## 4. 验证：往返测试
 
-`data.make_pair` can plant any of the four answers — `none`, `format`,
-`policy`, `representation` — by degrading different parts of the simulated
-chat model:
+`data.make_pair` 可以通过降级被模拟的 chat 模型的不同部分，来植入四种
+答案中的任意一种 —— `none`、`format`、`policy`、`representation`：
 
-| Planted mode | What is degraded | Expected signature |
+| 植入的模式 | 被降级的部分 | 预期特征 |
 |---|---|---|
-| `none` | nothing | all gaps ≈ 0 |
-| `format` | free-form wrapper only | \(g_{\mathrm{free}} > 0\), \(g_{\mathrm{lik}} \approx 0\) |
-| `policy` | decoder estimate; tokens intact | \(g_{\mathrm{lik}} > 0\), \(g_{\mathrm{probe}} \approx 0\) |
-| `representation` | visual tokens too | \(g_{\mathrm{lik}} > 0\), \(g_{\mathrm{probe}} > 0\) |
+| `none` | 什么都不降 | 所有差距 ≈ 0 |
+| `format` | 只降自由生成的文风包装 | \(g_{\mathrm{free}} > 0\)，\(g_{\mathrm{lik}} \approx 0\) |
+| `policy` | 降解码器估计；token 完好 | \(g_{\mathrm{lik}} > 0\)，\(g_{\mathrm{probe}} \approx 0\) |
+| `representation` | 视觉 token 也降 | \(g_{\mathrm{lik}} > 0\)，\(g_{\mathrm{probe}} > 0\) |
 
-`run_smoke.py` plants each in turn and exits non-zero unless all four
-round-trip. A decision function that cannot recover a planted answer must not be
-pointed at a real one. **This validates the ruler, not the object measured.**
+`run_smoke.py` 会逐个植入，若四种都不能往返还原就以非零状态退出。
+一个连植入的答案都还原不出来的决策函数，绝不能拿去对准一个真实答案。
+**这验证的是尺子，不是被测量的对象。**
 
-## 5. Metric definitions
+## 5. 指标定义
 
-**IoU.** Standard intersection over union on axis-aligned boxes. `parse_box`
-normalises inverted corners so a model emitting `x2 y2 x1 y1` is not scored as a
-localisation failure.
+**IoU。** 轴对齐框上的标准交并比。`parse_box` 会把颠倒的角点归一化，
+使一个输出 `x2 y2 x1 y1` 的模型不会被当成定位失败来打分。
 
-**Parse-failure rate.** Fraction of outputs containing fewer than four numbers.
-Reported **separately, always**. `mean_iou` offers `count_failures=True` (failures
-as 0) and `False` (parseable only); **the difference between them is the format
-tax, quantified**. Folding failures into the mean is what makes a chat model look
-unable to localise when it is merely talking.
+**解析失败率。** 输出中数字少于四个的比例。**始终单独报告**。
+`mean_iou` 提供 `count_failures=True`（把失败当作 0）与
+`False`（只统计可解析的）两种模式；**两者之差就是被量化出来的格式税**。
+把解析失败折进均值里，正是让一个只是话多的 chat 模型看起来"不会定位"的原因。
 
-**Rank acc@1.** Fraction of examples where the gold box outranks all \(k \le 16\)
-distractors. Distractors are **shared** between checkpoints — otherwise a
-likelihood gap could reflect an easier candidate set rather than a better model.
+**Rank acc@1。** 金标框排名高于全部 \(k \le 16\) 个干扰项的样本比例。
+干扰项在两个 checkpoint 之间是**共享的** —— 否则似然差距可能反映的是
+候选集更容易，而不是模型更好。
 
-**Probe MAE.** Mean absolute coordinate error of a ridge-regularised linear map
-from frozen visual tokens to box, fit on a train split and evaluated held out.
+**探针 MAE。** 从冻结视觉 token 到框的 ridge 正则线性映射的坐标平均绝对
+误差，在训练划分上拟合、在留出集上评测。
 
-## 6. Why the probe is ridged
+## 6. 探针为什么要加 ridge 正则
 
-With a small train split and correlated token dimensions, an **unregularised**
-least-squares fit can recover a box from noise. It would then report
-"representation intact" for a checkpoint whose representation was destroyed —
-biasing the rule towards **O2** exactly when **O3** is true, which is the more
-consequential finding. The bias column is never penalised. `reviewer_attacks.md`
-C3 requires reporting a penalty sweep so the conclusion is visibly not a
-function of one hyperparameter.
+在训练划分很小、token 维度之间又相关的情况下，**不加正则**的最小二乘
+拟合可以从噪声里还原出一个框。那样它就会对一个表征已被破坏的
+checkpoint 报告"表征完好" —— 恰恰在 **O3** 为真时把规则偏向 **O2**，
+而 O3 才是后果更重的那个发现。偏置列从不受惩罚。`reviewer_attacks.md`
+的 C3 要求报告一次惩罚系数扫描，使结论可见地不依赖于单个超参数。
 
-## 7. Known incompleteness
+## 7. 已知的不完备之处
 
-- **Layer choice.** \(g_{\mathrm{probe}}\) is measured at one depth. Card E3
-  sweeps layers; a gap at one layer only downgrades the claim to a sweep report.
-- **Probe capacity.** Absence of *linear* decodability is not absence of
-  information. If a linear probe drops and an MLP probe does not, the finding is
-  *"present but not linearly accessible"* — distinct from O3 and reported as
-  such, not folded into it.
-- **\(\tau\) is a single global tolerance.** A per-metric tolerance would be
-  better justified; 0.02 is pre-registered for all four gaps and applied
-  uniformly so it cannot be tuned per outcome.
+- **层的选择。** \(g_{\mathrm{probe}}\) 只在一个深度上测量。卡片 E3 会
+  扫描各层；如果只在某一层出现差距，主张就降级为一份扫描报告。
+- **探针容量。** 没有*线性*可解码性并不等于没有信息。如果线性探针下降
+  而 MLP 探针没有下降，那么这个发现是
+  *"信息仍在，但不再线性可及"* —— 它与 O3 不同，应如实这样报告，
+  不得被折进 O3 里。
+- **\(\tau\) 是一个全局单一容差。** 按指标分别设定容差在论证上会更站得住；
+  0.02 是对全部四个差距预先注册的，且统一施加，因此它不可能被按结果调参。
