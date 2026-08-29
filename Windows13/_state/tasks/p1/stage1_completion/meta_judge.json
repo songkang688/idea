@@ -1,0 +1,135 @@
+{
+  "task_id": "p1_stage1_completion",
+  "role": "meta_judge",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "decided_at_utc": "2026-08-29T02:28:00Z",
+  "branch": "cursor/p1-stage1-meta-judge-267c",
+  "verdict": "PASS_WITH_REMEDIATION",
+  "verdict_one_line": "Stage-1 exploration of Windows13 is COMPLETE at 1220 accepted ideas (>= 1000 gate, independently recounted): all three completion auditors pass the master on count/uniqueness, quality/diversity, and mode-collapse axes with zero fabrication found; the tracked debts (novelty triage, threshold/asset retrofits, remand disposition, family adjudication, fingerprint back-mapping) are selection-side remediation items handed to P2 and the already-queued named lanes - none requires more Stage-1 generation.",
+  "canonical_master": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w5-d795",
+    "commit": "7338e5490f910a5079ce64bf2367a3c9a0619876",
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "records": 1220,
+    "count_gate": "1220 >= 1000 PASSED (research_state.idea_counts.p1_stage1_count_gate = true, re-verified by auditor A full recount and auditor C independent parse)",
+    "modified_by_this_task": false
+  },
+  "inputs": {
+    "auditor_A_count_dedup": {
+      "branch": "origin/cursor/p1-stage1-completion-auditor-a-0e29",
+      "commit": "e66065c",
+      "verdict": "PASS",
+      "audited_commit": "7338e54",
+      "headline": "1220 valid unique JSONL records, 0 duplicate/colliding id_seeds (all match ^W13-P1-[A-Z]-\\d{3}$), 0 near-duplicate pairs at Jaccard >= 0.60 over all 743,590 pairs (max 0.242, manually cleared), 0 records outside Windows13/, per-shard counts reconcile with research_state by wave"
+    },
+    "auditor_B_quality_diversity": {
+      "branch": "origin/cursor/p1-stage1-completion-auditor-b-97f0",
+      "commit": "daaa158",
+      "verdict": "PASS_WITH_REMEDIATION",
+      "audited_commit": "7338e54",
+      "headline": "GATE-5-compliant w3-w5 core of 726 records (97.5-100% numeric kills) alone exceeds the 200-idea Stage-2 target 3.6x; 156 clusters, max share 1.15%, SAM 6.6%, genre monoculture broken; 0 unlabeled records, 0 fake citations (36 distinct strings all verified real), 0 invented numbers, 0 claimed experiments; debts: 431 soft thresholds, 287 unpinned assets, novelty 100% unverified - all per-record-flagged and lane-owned",
+      "remediation_ids_submitted": ["R1", "R2", "R3", "R4", "R5", "R6", "R7"]
+    },
+    "auditor_C_mode_collapse": {
+      "branch": "origin/cursor/p1-stage1-completion-auditor-c-3c0d",
+      "commit": "d8b7143",
+      "verdict": "PASS_WITH_REMEDIATION",
+      "audited_commit": "7338e54",
+      "headline": "residual collapse is template-family-level (23.5% of records in loose multi-member components, sizes 2-15) and prior-art-exposure-level (novelty unverified 1220/1220; O-002/O-031 verified real prior art retained 2-1 with dissents), NOT subject- or lexical-level (SAM 7.1% and falling, max Jaccard 0.237, 156 clusters max 1.1%); more_generators_required = false with explicit reasoning that generation volume feeds template growth while the cure is selection-side; zero fake citations (exhaustive extraction, Sea-thru DOI live re-verified)",
+      "binding_remediation_ids_submitted": ["R1_gate8_before_cut", "R2_fingerprint_backmap_before_caps", "R3_remand_disposition_before_cut", "R4_family_adjudication_at_cut"]
+    },
+    "diversity_audit_w3_decision_context": {
+      "branch": "origin/cursor/p1-diversity-audit-consolidator-w3-2535",
+      "commit": "9ab4003",
+      "status": "ok, irreconcilable=false, meta_judge_needed=false",
+      "relevance": "queued the selection-integrity lanes (p1_gate8_novelty_triage, p1_stage2_retrofit_lane, p1_wave_b_w3_gate5_repair_2) that this verdict binds the remediation items to; its guard-trend findings at 934 were independently reproduced at 1220 by completion auditor C"
+    },
+    "count_consolidator": {
+      "branch": "origin/cursor/p1-wave-b-consolidator-w5-d795",
+      "commit": "7338e54",
+      "relevance": "canonical 1220 master; recorded p1_stage1_count_gate = true; base of this meta-judge branch"
+    }
+  },
+  "combination_rule": "PASS + PASS_WITH_REMEDIATION + PASS_WITH_REMEDIATION, no inter-auditor factual conflicts (A/B and A/C cross-references each report 'none'; B and C agree on every shared statistic within instrument tolerance: max Jaccard 0.242 vs 0.237 on different tokenizers, SAM 6.6% vs 7.1% on different mention scopes, identical 156-cluster census, identical zero-fabrication finding) -> combined verdict PASS_WITH_REMEDIATION. No auditor returned FAIL; auditor C, whose mandate was specifically to demand more generators if collapse warranted it, explicitly concluded more generators are NOT required and would worsen the measured failure mode.",
+  "stage1_exploration": {
+    "ended": true,
+    "meaning": "Stage-1 idea GENERATION for Windows13 is frozen at the 1220-record master. No further Stage-1 generator waves are required or authorized by this verdict. All remediation items below are selection-side and go to P2 and the named lanes queued at the w3 diversity consolidation - they are preconditions on the Stage-2 200-cut, not on Stage-1 completion.",
+    "queued_diversity_plays_disposition": "gen_r / gen_w / gen_v (queued at w3 as coverage plays) and gen_q (in flight, off-master, batch 1 observed on origin) are NOT Stage-1 obligations under this verdict. The 1220 master does not depend on them. Whether any of them is judged into a supplementary pool for 200-cut coverage or archived is a decision for the P2 / named-lane supervision, consistent with auditor C's explicit_non_requirements. This verdict neither dispatches nor cancels them; it records that Stage-1 completion does not gate on them.",
+    "p2_not_started": "This verdict ends Stage-1 exploration only. P2 ranking has NOT been started, dispatched, or performed by this task."
+  },
+  "remediation_items": [
+    {
+      "id": "M1_gate8_novelty_triage_before_200_cut",
+      "binding": true,
+      "sources": ["B.R3", "C.R1_gate8_before_cut", "A.unresolved(scope note)"],
+      "owner_lane": "p1_gate8_novelty_triage (queued at diversity w3 consolidation, unstarted)",
+      "requirement": "GATE-8 novelty triage must complete (priority items 1-4 as enumerated in the w3 decision) before the Stage-2 200-cut. First in line: W13-P1-O-002 (Sea-thru, Akkaynak & Treibitz CVPR 2019 - independently web-re-verified by auditor C) and W13-P1-O-031 (Tellez et al. 2018/2019 stain augmentation - judge-C web-verified), both retained 2-1 with dissents; then the five outvoted judge_C prior-art kills (C-016, D-059, K-020, K-069, L-012); then the 141 judge_dissent carriers and the watchlists (w2 73-id permutation list, w4 20-id and w5 27-id high_prior_art_risk lists, gen_n's 23 citation-bearing records). Novelty is 100% unverified across all 1220 records; no record may be ranked into the 200 blind to these flags."
+    },
+    {
+      "id": "M2_remand_pool_disposition_before_cut",
+      "binding": true,
+      "sources": ["A.unresolved", "B.R5", "C.R3_remand_disposition_before_cut"],
+      "owner_lane": "p1_wave_b_w3_gate5_repair_2 (queued at diversity w3 consolidation, unstarted)",
+      "requirement": "The 127 accepted-on-content gen_g/gen_h records remanded off-master at Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl (54 G + 73 H, line count re-verified by auditors) must receive an explicit disposition (repair-append or kill-with-decision) before the 200-cut composition is fixed. They are correctly excluded from the 1220 and not needed for the count gate, but 73 gen_h records are the difference between a covered and a re-opened restoration blind spot, and the queue must not be silently dropped."
+    },
+    {
+      "id": "M3_fingerprint_backmap_before_mechanical_caps",
+      "binding": true,
+      "sources": ["C.R2_fingerprint_backmap_before_caps", "C.F4"],
+      "owner_lane": "p1_stage2_retrofit_lane (queued at diversity w3 consolidation, unstarted)",
+      "requirement": "All 680 free-text family_fingerprint strings must be back-mapped onto the controlled ~30-enum vocabulary mandated by the w3 decision before any mechanical slot-cap enforcement at the 200-cut (the field is currently 680/680 distinct - cap-unenforceable). Until the back-mapping lands, the cut applies the w3 genre-blind pooled caps (eval-subject pool <= 25% of the 200) and the cheap-predictor portfolio-freeze displacement rule using the judge flag lists, and Stage-2 must adopt ONE crowding instrument consistently (the 33-loose-regex vs 14-judge-fingerprint census divergence is an instrument artifact, not a factual conflict)."
+    },
+    {
+      "id": "M4_forced_best_of_family_adjudication_at_cut",
+      "binding": true,
+      "sources": ["C.R4_family_adjudication_at_cut", "diversity_w3.stage2_selection_notes"],
+      "owner_lane": "P2 rankers / Stage-2 selection",
+      "requirement": "The named template-family sibling sets must receive forced best-of-family adjudication at the 200-cut - select best-of-family, never multiple undifferentiated siblings: at minimum J-051/J-076, E-029/E-054, B-060/B-065, F-019/F-023, N-061/N-070, C-003/C-004/C-057, the gen_e text-encoder-geometry block (E-034/E-047/E-050/E-051/E-052/E-053 + J-070), the gen_m pixels-per-batch/gradient-noise mechanics block (M-025/M-028/M-030/M-037/M-073/M-082/M-084/M-086), the ~13-15-member variance/protocol-artifact family, the gen_f sim-to-real cheap-statistics family, and the cross-shard provenance-forensics family."
+    },
+    {
+      "id": "M5_soft_threshold_downrank_or_retrofit",
+      "binding": true,
+      "sources": ["B.R1", "B.R6"],
+      "owner_lane": "P2 rankers (down-rank rule) + p1_stage2_retrofit_lane (numeric retrofit)",
+      "requirement": "431 records (176 w1 + 237 w2 + 15 w3 + 3 w4) lack numeric kill thresholds: P2 must down-rank them on falsifiability, and any such record must be numeric-retrofitted before it enters the 200-survivor list; soft w1/w2 records must not displace GATE-5-compliant records on topic novelty alone. Additionally the 8 gate1_qualitative_threshold records (7 gen_k + O-007, thresholds decisive but stated in words) owe a numeric-format retrofit. The GATE-5-compliant w3-w5 core (726 records) exceeds the 200 target 3.6x, so no soft record needs to advance by necessity."
+    },
+    {
+      "id": "M6_gate4_asset_pinning_retrofit",
+      "binding": false,
+      "sources": ["B.R2", "A.unresolved"],
+      "owner_lane": "p1_stage2_retrofit_lane",
+      "requirement": "287 gate4_deferred records lack a pinned public dataset+model for their cheap-kill experiment; per-record gate4_missing lists exist. Pinning is owed by the Stage-2 retrofit lane; a record entering the 200 without pinned assets carries this debt forward explicitly."
+    },
+    {
+      "id": "M7_thin_territory_protection",
+      "binding": false,
+      "sources": ["B.R4", "C.F8", "C.explicit_non_requirements"],
+      "owner_lane": "P2 rankers (protection rule); later-stage supervision (portfolio limitation note)",
+      "requirement": "Fairness/bias-social (~1 record), inference-time compute (~3), embodied (17), and continual/lifecycle (10) territories are thin: P2 must not eliminate these records purely on volume, and later stages must note the frozen portfolio cannot yield a final top-3 in those territories without new generation (which this verdict does not authorize as Stage-1 work; see queued_diversity_plays_disposition)."
+    },
+    {
+      "id": "M8_ordering_concern_waived",
+      "binding": false,
+      "sources": ["B.R7"],
+      "owner_lane": "resolved by this meta-judge",
+      "requirement": "RESOLVED - WAIVED. Auditor B asked the meta-judge to confirm or waive the dispatch-ordering slip: the w5 consolidator required the diversity_audit_w3 consolidation to merge before stage1_completion auditors dispatch, and completion auditor A pushed at 02:02:15Z, seven minutes before the diversity-w3 consolidator landed at 02:09:23Z (B and C pushed after it, at 02:11:45Z and 02:24:25Z). WAIVER RATIONALE: (1) auditor A's scope (count/uniqueness/location) has no dependency on the diversity decision's content; (2) the diversity-w3 consolidation subsequently landed cleanly (status ok, irreconcilable=false, meta_judge_needed=false) and its guard-trend findings were independently reproduced at the 1220 master by completion auditor C's own instruments; (3) all three completion auditors audited the identical commit 7338e54, so no state divergence occurred. No re-audit required."
+    }
+  ],
+  "remediation_routing": "All items route to P2 ranking rules or to the three named selection-integrity lanes already queued with owners at the w3 diversity consolidation (p1_gate8_novelty_triage, p1_wave_b_w3_gate5_repair_2, p1_stage2_retrofit_lane). None routes to a Stage-1 generator: per the verdict rule, remediation via more Stage-1 generation is only available under FAIL, and auditor C's evidence shows added generation volume would grow the template families that constitute the residual collapse.",
+  "integrity_attestations": {
+    "no_fake_citations": true,
+    "citations_note": "This meta-judge introduces NO new citations. Every citation named in this file (Sea-thru / Akkaynak & Treibitz CVPR 2019; Tellez et al. 2018/2019) is quoted from the auditors' verified findings: auditor C live-re-verified the Sea-thru DOI during its audit and judge_C web-verified Tellez at w5. Auditors A/B/C independently reported zero fabricated citations, zero invented benchmark numbers, and zero claimed experimental results across all 1220 records.",
+    "canonical_state_untouched": "ideas_master.jsonl, research_state.json, and window.lock.json were not modified by this task; outputs written only under Windows13/_state/tasks/p1/stage1_completion/",
+    "p2_not_started": true,
+    "force_push": false
+  },
+  "recommended_next_task_type": "p1_stage1_report_writer",
+  "recommended_next_task_note": "p1_stage1_report_writer writes the Stage-1 completion report from this verdict, then the git agent consolidates. The selection-integrity lanes (M1/M2/M3) run on their own queued track and must complete before the Stage-2 200-cut; they do not block the report writer.",
+  "output_files": [
+    "Windows13/_state/tasks/p1/stage1_completion/meta_judge.json",
+    "Windows13/_state/tasks/p1/stage1_completion/meta_judge.md",
+    "Windows13/_state/tasks/p1/stage1_completion/done_meta_judge.json"
+  ]
+}

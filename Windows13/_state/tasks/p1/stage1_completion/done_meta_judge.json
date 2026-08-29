@@ -1,0 +1,56 @@
+{
+  "task_id": "p1_stage1_completion",
+  "role": "meta_judge",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "done",
+  "verdict": "PASS_WITH_REMEDIATION",
+  "idea_count": 1220,
+  "canonical_master": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w5-d795",
+    "commit": "7338e5490f910a5079ce64bf2367a3c9a0619876",
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "count_gate": "1220 >= 1000 PASSED"
+  },
+  "auditor_verdicts": {
+    "auditor_A_count_dedup": {
+      "branch": "origin/cursor/p1-stage1-completion-auditor-a-0e29",
+      "verdict": "PASS"
+    },
+    "auditor_B_quality_diversity": {
+      "branch": "origin/cursor/p1-stage1-completion-auditor-b-97f0",
+      "verdict": "PASS_WITH_REMEDIATION"
+    },
+    "auditor_C_mode_collapse": {
+      "branch": "origin/cursor/p1-stage1-completion-auditor-c-3c0d",
+      "verdict": "PASS_WITH_REMEDIATION",
+      "more_generators_required": false
+    }
+  },
+  "remediation_items": [
+    "M1 (binding, before 200-cut): GATE-8 novelty triage priority 1-4 - O-002 (Sea-thru) and O-031 (Tellez) verified-prior-art dispositions, 5 outvoted judge_C prior-art kills (C-016, D-059, K-020, K-069, L-012), 141 dissent carriers, w2/w4/w5 watchlists; owner p1_gate8_novelty_triage",
+    "M2 (binding, before 200-cut): disposition of the 127-record gen_g/gen_h remand pool (wave_b_w3_gate5/remaining_remand.jsonl) - repair-append or kill-with-decision, never silent drop; owner p1_wave_b_w3_gate5_repair_2",
+    "M3 (binding, before mechanical slot caps): controlled-vocabulary back-mapping of 680 free-text family_fingerprint strings; interim w3 pooled caps (eval-subject <= 25%) and cheap-predictor freeze rule apply; owner p1_stage2_retrofit_lane",
+    "M4 (binding, at 200-cut): forced best-of-family adjudication of named sibling sets (J-051/J-076, E-029/E-054, B-060/B-065, F-019/F-023, N-061/N-070, C-003/C-004/C-057, gen_e text-geometry block, gen_m mechanics block, variance/protocol-artifact, sim-to-real, provenance-forensics families); owner P2 rankers",
+    "M5 (binding, ranking rule): 431 no-numeric-threshold records down-ranked on falsifiability and numeric-retrofitted before entering the 200; soft w1/w2 must not displace GATE-5-compliant records; 8 qualitative-threshold records owe numeric-format retrofit; owners P2 rankers + p1_stage2_retrofit_lane",
+    "M6 (tracked): 287 gate4_deferred records owe dataset+model pinning; owner p1_stage2_retrofit_lane",
+    "M7 (tracked): thin territories (fairness ~1, inference-time compute ~3, embodied 17, continual 10) protected from volume-based elimination at P2; portfolio cannot yield top-3 there without new generation (not authorized as Stage-1 work)",
+    "M8 (resolved): auditor B's R7 dispatch-ordering concern WAIVED by this meta-judge - auditor A pushed 7 minutes before the diversity-w3 consolidator landed, but A's scope had no dependency on it, the consolidation landed cleanly, its findings were independently reproduced at 1220 by auditor C, and all three auditors audited the identical commit 7338e54; no re-audit required"
+  ],
+  "recommended_next_task_type": "p1_stage1_report_writer",
+  "recommended_next_task_note": "then git agent; selection-integrity lanes M1/M2/M3 run on their own queued track before the Stage-2 200-cut and do not block the report writer",
+  "p1_stage1_complete": true,
+  "stage1_generation_frozen": true,
+  "p2_started": false,
+  "no_fake_citations": true,
+  "canonical_state_untouched": true,
+  "force_push": false,
+  "output_files": [
+    "Windows13/_state/tasks/p1/stage1_completion/meta_judge.json",
+    "Windows13/_state/tasks/p1/stage1_completion/meta_judge.md",
+    "Windows13/_state/tasks/p1/stage1_completion/done_meta_judge.json"
+  ],
+  "branch": "cursor/p1-stage1-meta-judge-267c",
+  "completed_at_utc": "2026-08-29T02:28:00Z"
+}
