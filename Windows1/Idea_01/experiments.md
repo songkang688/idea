@@ -1,47 +1,47 @@
-# Idea_01 experiments
+# Idea_01 实验设计
 
-All outcomes below are EXPECTED unless labeled ACTUAL (none are ACTUAL).
+除标明 ACTUAL 外，下方所有结果皆为 EXPECTED（目前无 ACTUAL）。
 
-## Killer experiment (Week 1)
+## Killer 实验（第 1 周）
 
-| Item | Spec |
+| 项目 | 规范 |
 |---|---|
-| Backbone | SAM ViT-B official |
-| Target | Kvasir-SEG, official split |
-| Naive FT | decoder + encoder last 2 blocks, AdamW, 20 epochs, lr 1e-4/1e-5 |
-| Constrained | same + replay 50% batch from COCO train, λ∈{0.3,1,3} |
-| WiSE-FT | 11-point interpolation naive↔θ₀ |
-| Generic eval | COCO val 500-image subset; random 1/3 clicks; center-of-error 1/3; GT-box |
-| Seeds | 2 for killer, 3 for paper |
-| Kill | constrained does not dominate interpolation at ≥2 λ-matched operating points |
+| Backbone | SAM ViT-B 官方 |
+| 目标域 | Kvasir-SEG，官方划分 |
+| 简单微调 | 解码器 + 编码器最后 2 个 block，AdamW，20 epochs，学习率 1e-4/1e-5 |
+| 约束微调 | 相同设置 + 50% 批次来自 COCO train 的 replay，λ∈{0.3,1,3} |
+| WiSE-FT | 简单微调 ↔ θ₀ 之间的 11 点插值 |
+| 通用评测 | COCO val 500 张图像子集；随机 1/3 次点击；误差中心 1/3 次；GT 框 |
+| 随机种子 | killer 用 2 个，论文用 3 个 |
+| Kill 条件 | 约束微调在 ≥2 个 λ 匹配的工作点上未能支配插值曲线 |
 
-## Full matrix
+## 完整矩阵
 
-Domains: Kvasir-SEG, ISIC, COD10K.
-Methods: zero-shot, decoder-only, LoRA-r8, full FT, EWC, constrained, WiSE-FT on each naive run.
-Prompt types: click, box, mixed.
-Report Pareto plots, not only best Dice.
+领域：Kvasir-SEG、ISIC、COD10K。
+方法：zero-shot、仅解码器、LoRA-r8、全量微调、EWC、约束微调、每个简单运行上的 WiSE-FT。
+提示类型：点击、框、混合。
+报告 Pareto 图，不仅报最佳 Dice。
 
-## Ablations
+## 消融实验
 
-λ, replay buffer size, freeze encoder vs not, LoRA vs full under same L_ret, teacher = θ₀ vs EMA student.
+λ、replay 缓冲区大小、冻结编码器 vs 不冻结、相同 L_ret 下 LoRA vs 全量、教师模型 = θ₀ vs EMA 学生模型。
 
-## Controls
+## 对照实验
 
-Equal steps, equal peak LR grid (unfair LR is the classic confound), identical prompt sampler for eval.
+步数对齐、对齐的峰值学习率网格（不公平的学习率是经典的混淆因素）、评测采用完全相同的提示采样器。
 
-## Robustness
+## 鲁棒性
 
-JPEG 50, spatial shift of clicks ±4px, unseen object categories on LVIS.
+JPEG 50、点击空间位移 ±4px、LVIS 上的未见物体类别。
 
-## Generalization
+## 泛化性
 
-Train medical, eval generic; train COD10K, eval generic; never tune on generic eval split.
+训练医学，评测通用；训练 COD10K，评测通用；绝不在通用评测划分上调参。
 
-## Failure analysis
+## 失效分析
 
-Per-class COCO drop; thin structures; holes; multi-mask IoU token calibration.
+逐类别 COCO 下降；细长结构；孔洞；多掩码 IoU token 校准。
 
-## Stop conditions
+## 停止条件
 
-See README §25.
+见 README §25。

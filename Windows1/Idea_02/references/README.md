@@ -1,1 +1,1 @@
-See literature.md in this idea folder.
+规范引用见 literature.md。

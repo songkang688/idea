@@ -1,9 +1,9 @@
 # Idea_02 Reviewer #2
 
-Fatal: synthetic insertion artifacts. Response: H1 τ or death.
+致命攻击：合成插入假象。应答：H1 的 τ 或死亡。
 
-Second: characterization without a method. Response: safety spec is the contribution; do not overclaim universality.
+次要攻击：没有方法的表征研究。应答：安全规范是贡献点；不夸大普适性。
 
-Third: detector D is not a reader. Response: rank-order vs LIDC, not absolute AUC vs humans, in the killer. Full paper can add CHO.
+第三项攻击：检测器 D 不是人类读者。应答：在 killer 实验中对比 LIDC 的是排名顺序，而非相对于人类的绝对 AUC。完整论文可加 CHO。
 
-Cherry-pick risk: bin merging. Pre-register bins.
+挑拣风险：分组合并。预先注册分组。

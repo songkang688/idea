@@ -1,19 +1,19 @@
-# Idea_02 experiments
+# Idea_02 实验设计
 
-## Killer (H1)
+## Killer 实验（H1）
 
-1. Define bins: diameter {4,6,8,10} mm × CNR {1,2,3,5} (CT slice units — finalize with LIDC metadata).
-2. Synthetic: insert Gaussian/soft-edged blobs into nodule-free LIDC slices; N≥30 per bin.
-3. Real: LIDC nodules mapped into the same bins (may be sparse — pre-register merge rule).
-4. Pipeline: one CNN denoiser at 3 strengths + identity.
-5. Frozen 2D nnU-Net or a simple blob detector for MVE (declare if blob detector: then full paper must upgrade to nnU-Net).
-6. τ(synthetic suppression, real miss-rate increase vs identity).
-7. **Kill if τ CI includes 0 or any bin sign-flip vs prediction of H2.**
+1. 定义分组：直径 {4,6,8,10} mm × CNR {1,2,3,5}（CT 切片单位 —— 根据 LIDC 元数据最终确定）。
+2. 合成：将高斯／软边缘斑块插入无结节 LIDC 切片；每组 N ≥ 30。
+3. 真实：将 LIDC 结节映射到相同的分组中（可能稀疏 —— 预先注册合并规则）。
+4. 管线：一个 CNN 去噪器在 3 种强度下运行 + 恒等映射（未处理）。
+5. 冻结的 2D nnU-Net 或针对最小可行实验（MVE）的简单斑块检测器（若声明为斑块检测器：则完整论文必须升级为 nnU-Net）。
+6. τ（合成抑制率，相对于恒等映射的真实漏诊率增加值）。
+7. **若 τ 的置信区间包含 0 或任何分组符号与 H2 预测相反，则 Kill。**
 
-## Full
+## 完整实验
 
-Add BM3D, SR; MRI arm; mini radiologist check optional.
+增加 BM3D、SR；MRI 臂；可选放射科医生微型检查。
 
-## Controls
+## 对照实验
 
-Same lesions across strengths; noise matching; no train/test detector leakage onto enhanced images.
+跨强度采用相同病灶；噪声匹配；增强图像上没有训练／测试检测器泄漏。

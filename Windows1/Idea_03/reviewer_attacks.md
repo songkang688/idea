@@ -1,6 +1,6 @@
 # Idea_03 Reviewer #2
 
-1. TS on target val — forbidden; source-only TS.
-2. ECE matching is irrelevant; they will say ECE is the standard — we pre-commit to AURC.
-3. Scanner metadata missing → proxy shift is synthetic and weak. Must disclose.
-4. Soft labels = label smoothing. Control: uniform label smoothing vs rater-frequency f. If uniform matches, kill (not disagreement, just smoothness).
+1. 目标域验证集上的 TS —— 严厉禁止；仅限源域 TS。
+2. 匹敌 ECE 是无关紧要的；他们会说 ECE 是标准 —— 我们预先承诺以 AURC 为准。
+3. 缺失扫描仪元数据 → 代理偏移是合成且较弱的。必须披露。
+4. 软标签 = 标签平滑。对照：均匀标签平滑 vs 标注者频率 f。若均匀平滑匹敌表现，则 kill（不是分歧在起作用，只是平滑度）。

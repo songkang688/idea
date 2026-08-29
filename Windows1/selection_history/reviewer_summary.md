@@ -1,14 +1,14 @@
-# Reviewer summary
+# 评审总结（Reviewer summary）
 
-Independent Stage-2 SEG review: 31 KEEP200 / 8 PROTECT-HRHR / 14 MUTATE / 4 KILL among named ideas.
+独立的 Stage-2 SEG 评审：在点名的想法中包括 31 条 KEEP200 / 8 条 PROTECT-HRHR / 14 条 MUTATE / 4 条 KILL。
 
-Stage-3 default “already published”: strongest remaining SEG science was 0252, 0250, 0275, 0276-M; medical 0085-M mutated to a suppression *law/spec*; 0074 original killed, mutation to disagreement-calibration revived by auditor + Stage 6.
+Stage-3 默认判定为"已被发表"：SEG 剩余最强的科学问题为 0252、0250、0275、0276-M；医学 0085-M 变异为抑制*定律／规范*；0074 原始版本被杀，变异为分歧校准的版本被审计员 + Stage 6 复活。
 
-Stage-4: **no idea earned unconditional KEEP**. All finalists are KEEP-IF-EXPERIMENT.
+Stage-4：**没有任何想法获得无条件的 KEEP**。所有入围者均为 KEEP-IF-EXPERIMENT。
 
-Stage-6 dissent on record:
-- Reviewer #2 preferred 0276-M over LesionSuppress (characterization vs geometry law).
-- Engineer wanted 0046-M as cheap insurance.
-- 0276 designer recommended displacing RetainSAM.
+Stage-6 记录在案的分歧：
+- Reviewer #2 偏好 0276-M 胜过 LesionSuppress（表征研究 vs 几何定律）。
+- 工程师希望将 0046-M 作为低成本保险。
+- 0276 设计者建议取代 RetainSAM。
 
-Supervisor locked A/B/D to keep one method, one safety spec, one uncertainty method, and because RetainSAM’s kill test is the cheapest portfolio de-risk.
+Supervisor 锁定了 A/B/D 以保留一个方法、一个安全规范、一个不确定性方法，并且因为 RetainSAM 的 kill 测试是投资组合中成本最低的去风险项。

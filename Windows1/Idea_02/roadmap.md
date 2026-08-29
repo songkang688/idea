@@ -1,9 +1,9 @@
-# Idea_02 roadmap
+# Idea_02 路线图
 
-| When | Work |
+| 时间 | 工作 |
 |---|---|
-| Day 1 | 2D Gaussian insertion prototype; identity vs blur as fake “denoiser”; unit tests |
-| Day 2–3 | LIDC I/O; bin real nodules; one public denoiser |
-| Week 1 | Killer τ |
-| Week 2 | Second family; plot P curves |
-| Paper | MRI arm only if CT H1 passed |
+| Day 1 | 2D 高斯插入原型；恒等映射 vs 模糊作为假"去噪器"；单元测试 |
+| Day 2–3 | LIDC 输入输出；真实结节分组；一个公开去噪器 |
+| Week 1 | Killer 实验 τ |
+| Week 2 | 第二个管线族；绘制 P 曲线 |
+| 论文 | 仅在 CT H1 通过后开展 MRI 臂 |

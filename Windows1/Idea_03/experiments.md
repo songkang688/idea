@@ -1,14 +1,14 @@
-# Idea_03 experiments
+# Idea_03 实验设计
 
-## Killer
+## Killer 实验
 
-Model: 2D U-Net, 3 seeds.
-Train: LIDC slices with ≥2 raters; f = mean vote.
-Splits: leave-one-scanner-out if scanner IDs usable; else intensity/noise shift as declared proxy.
-Methods: hard CE; hard CE+TS (T on source val); soft BCE to f; optional ensemble.
-Metric: sparsification AURC on target domain, plus Dice.
-Kill: soft AURC not better than hard+TS by a pre-registered margin (e.g. 5% relative) with overlapping CIs.
+模型：2D U-Net，3 个随机种子。
+训练：具有 ≥2 位标注者的 LIDC 切片；f = 平均投票。
+划分：若扫描仪 ID 可用则留一扫描仪；否则将强度／噪声偏移作为声明的代理。
+方法：硬 CE；硬 CE+TS（T 仅在源域验证集上拟合）；对 f 的软 BCE；可选集成。
+指标：目标域上的稀疏化 AURC，外加 Dice。
+Kill 条件：软标签 AURC 未能以预先注册的余量（例如相对 5%）胜过硬标签+TS 且置信区间重叠。
 
-## Full
+## 完整方案
 
-QUBIQ; stain perturbation; annotator-id model; risk-coverage.
+QUBIQ；染色扰动；标注者 ID 模型；风险覆盖率。

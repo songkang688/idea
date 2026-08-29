@@ -1,11 +1,11 @@
-# Idea_01 roadmap
+# Idea_01 路线图
 
-| When | Work | Stop check |
+| 时间 | 工作 | 停止检查点 |
 |---|---|---|
-| Day 1 | Install SAM; WiSE-FT interpolation on **one already-FT public MedSAM-class checkpoint if available**, else start naive FT overnight; implement prompt suite | Suite reproduces ballpark zero-shot SAM COCO clicks |
-| Day 2–3 | Finish naive FT; 11-α curve; implement constrained loss | If naive already within ε on COCO, switch target to farther domain |
-| Week 1 | Constrained λ sweep; domination test | **Kill method if no domination** |
-| Week 2 | LoRA/EWC/COCO-pixels controls; 2nd domain | |
-| Full paper | ViT-H, 3 seeds, human click micro-study, SAM2 variant | |
+| Day 1 | 安装 SAM；在**已有的公开 MedSAM 类 checkpoint 上做 WiSE-FT 插值（若可用）**，否则连夜启动简单微调；实现提示套件 | 套件能大致复现 zero-shot SAM 在 COCO 上的点击指标 |
+| Day 2–3 | 完成简单微调；11 点 α 曲线；实现约束损失 | 若简单微调在 COCO 上本就处于 ε 内，将目标域切换至更远领域 |
+| Week 1 | 约束微调 λ 扫描；支配性测试 | **若无支配性则 kill 该方法** |
+| Week 2 | LoRA/EWC/COCO 像素对照；第 2 个领域 | |
+| 完整论文 | ViT-H，3 个种子，人类点击微型实验，SAM2 变体 | |
 
-Code entry: `src/train_retain.py` (prototype).
+代码入口：`src/train_retain.py`（原型）。

@@ -1,14 +1,14 @@
-# LesionSuppress
+# LesionSuppress 架构
 
 ```mermaid
 flowchart TB
-  BG[Background slice] --> Ins[Insert lesion size, CNR]
-  Ins --> T[Enhancement T_s]
-  Ins --> D0[Frozen detector on raw]
-  T --> D1[Frozen detector on enhanced]
-  D0 --> Cmp{Detected raw?}
+  BG[背景切片] --> Ins[插入病灶 尺寸, CNR]
+  Ins --> T[增强算子 T_s]
+  Ins --> D0[原始图像上的冻结检测器]
+  T --> D1[增强图像上的冻结检测器]
+  D0 --> Cmp{原始图像上是否检出?}
   D1 --> Cmp
-  Cmp --> S[Suppression event]
-  S --> Fit[Per-family logistic P]
-  Fit --> Tau[Kendall τ vs real LIDC bins]
+  Cmp --> S[抑制事件]
+  S --> Fit[逐家族逻辑回归 P]
+  Fit --> Tau[对比真实 LIDC 分组的 Kendall τ]
 ```

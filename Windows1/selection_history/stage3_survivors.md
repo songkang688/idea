@@ -1,164 +1,97 @@
-# Stage 3 → survivors (Windows1) — reconstructed
+# Stage 3 → 存活者（Windows1）—— 重建
 
-Status: **retrospective reconstruction.** Windows1 kept two Stage-3 *kill* sheets but never wrote a
-Stage-3 survivor list. This file derives the survivor set by inversion from those two sheets.
+状态：**事后重建。** Windows1 保留了两份 Stage-3 *击杀*清单，但从未写出一份 Stage-3 存活者清单。本文件通过对那两份清单的反推导出存活者集合。
 
-Sources, and nothing else:
-- `research_ledger/stage3_priorwork_kill.md` — SEG slice (5 KILL / 4 SURVIVE / 11 MUTATE)
-- `research_ledger/stage3_vfm_kills.md` — VFM slice (4 KILL / 8 MUTATE / 1 WEAK SURVIVE)
-- one-line hypotheses from `research_ledger/stage1_seg_keepers.md`,
-  `research_ledger/stage1_vfma_asma_keepers.md`, `research_ledger/stage1_vfm_local_pool.md`
-- "advanced?" column verified against the recovered Stage-4 panel (see `stage4_candidates.md`)
+来源（除此外无其他）：
+- `research_ledger/stage3_priorwork_kill.md` —— SEG 切片（5 KILL / 4 SURVIVE / 11 MUTATE）
+- `research_ledger/stage3_vfm_kills.md` —— VFM 切片（4 KILL / 8 MUTATE / 1 WEAK SURVIVE）
+- 来自 `research_ledger/stage1_seg_keepers.md`、`research_ledger/stage1_vfma_asma_keepers.md`、`research_ledger/stage1_vfm_local_pool.md` 的一句话假设
+- "是否推进？"一列与找回的 Stage-4 评审组记录核对（见 `stage4_candidates.md`）
 
-Epistemic labels per `Windows1/README.md`. Every row is a *decision record*, never a measurement.
-`stage3_priorwork_kill.md` carries its own caveat, which applies to every citation-based kill below:
-"citations claimed web-verified; still treat 2025–2026 items as **EVIDENCE-FROM-AGENT** until
-re-checked in final packages."
+认知标签遵循 `Windows1/README.md`。每行都是*决策记录*，绝非测量值。
+`stage3_priorwork_kill.md` 携带自身警示，适用于下文每项基于引用的击杀：
+"citations claimed web-verified; still treat 2025–2026 items as **EVIDENCE-FROM-AGENT** until re-checked in final packages."
 
-Rows with no supporting text in any ledger file are stamped **`NO RECORDED REASON — 需人工确认`**.
-No verdict rationale in this file is invented.
+在任何总账文件中均无支撑文本的行盖戳 **`NO RECORDED REASON — 需人工确认`**。
+本文件中没有任何裁决理由是编造的。
 
 ---
 
-## 1. Scoreboard
+## 1. 记分牌
 
-| Slice | KILL | MUTATE | SURVIVE | WEAK SURVIVE | Decision units | Survivors |
+| 切片 | KILL | MUTATE | SURVIVE | WEAK SURVIVE | 决策单元 | 存活者 |
 |---|---|---|---|---|---|---|
 | SEG (`stage3_priorwork_kill.md`) | 5 | 11 | 4 | 0 | **20** | **15** |
 | VFM/ASM (`stage3_vfm_kills.md`) | 4 | 8 | 0 | 1 | **13** | **9** |
-| Total | 9 | 19 | 4 | 1 | **33** | **24** |
+| 合计 | 9 | 19 | 4 | 1 | **33** | **24** |
 
-**KNOWN FACT.** The SEG slice contains exactly 20 decision units, which reproduces the
-"Stage 3 | ~20 attacked" row of `Windows1/research_summary.md` exactly. The 13 VFM/ASM units appear
-**not** to be counted in that "~20". Recorded in `FUNNEL_DEVIATION.md` §2.
+**KNOWN FACT。** SEG 切片恰好包含 20 个决策单元，精确复现了 `Windows1/research_summary.md` 中的 "Stage 3 | ~20 attacked" 行。13 个 VFM/ASM 单元似乎**未**被计入那个"约 20"中。记录于 `FUNNEL_DEVIATION.md` §2。
 
-**KNOWN FACT.** 24 survivors entered the Stage-4 boundary but the Stage-4 panel attacked only 12.
-The 12 dropped units are itemised in §4; most have no recorded reason.
+**KNOWN FACT。** 24 个存活者进入了 Stage-4 边界，但 Stage-4 评审组仅攻击了 12 个。被淘汰的 12 个单元在 §4 中逐项列出；大部分没有记录理由。
 
 ---
 
-## 2. SEG slice — survivors
+## 2. SEG 切片 —— 存活者
 
-Verdict values are exactly as written in `stage3_priorwork_kill.md`. "Territory rank" is that file's
-own ranked list "## Current top scientific territory" (1–10); a dash means the ID is absent from it.
+裁决数值与 `stage3_priorwork_kill.md` 中完全一致。"领地排名"是该文件自身的已排序列表 "## Current top scientific territory" (1–10)；破折号表示该 ID 不在其中。
 
-| ID | One-sentence hypothesis | Stage-3 verdict | Territory rank | Rationale source | Advanced to Stage 4? |
+| ID | 一句话假设 | Stage-3 裁决 | 领地排名 | 理由来源 | 是否推进到 Stage 4？ |
 |---|---|---|---|---|---|
-| **SEG-0252** | Model-in-the-loop labelling amplifies annotation conventions across generations (label ecology). | SURVIVE | 1 | `stage3_priorwork_kill.md`; hypothesis from `stage1_seg_keepers.md` Top-30 | **Yes** — panel P1 |
-| **SEG-0250** | At matched frequency, rare *object states* cost more accuracy than rare *classes*. | SURVIVE | 2 | `stage3_priorwork_kill.md` territory #2 "matched-frequency state-tail vs class-tail" | **Yes** — panel P2 |
-| **SEG-0275** | Post-cutoff concept names test open-vocabulary grounding without contamination (temporal holdout). | SURVIVE | 3 | `stage3_priorwork_kill.md`; `stage1_seg_keepers.md` Top-30 | **Yes** — panel P3 |
-| **SEG-0285** | In-image printed text physically redirects masks, not just captions. | SURVIVE **(weak)** | 9 | `stage3_priorwork_kill.md` marks it `0285(weak)` and territory #9 "physical typographic injection moving masks" | **Yes** — panel P9 |
-| **SEG-0276** | A per-category prior-shape field interpolates against local evidence with a transferable coefficient α, interacting with SAM prompt sensitivity. | MUTATE | 4 | `stage3_priorwork_kill.md` territory #4 | **Yes** — panel P4 |
-| **SEG-0355** | "Undefined" and "uncertain" are conflated: no monotone score on existing heads separates them. | MUTATE | 5 | `stage3_priorwork_kill.md` territory #5 | **Yes** — panel P5 |
-| **SEG-0002** | Human boundary jitter sets a noise floor; subtracting it re-ranks reported SOTA. | MUTATE | 6 | `stage3_priorwork_kill.md` territory #6; `stage1_seg_keepers.md` Top-30 | **Yes** — panel P6 |
-| **SEG-0240** | The sampling-vs-reweighting gap is a context-statistics mechanism, not an optimisation artifact. | MUTATE | 7 | `stage3_priorwork_kill.md` territory #7 | **Yes** — panel P7 |
-| **SEG-0085** | Denoising/SR pipelines suppress small low-contrast lesions as a function of enhancement strength. | MUTATE | 8 | `stage3_priorwork_kill.md` territory #8; `stage1_seg_keepers.md` Top-30 | **Yes** — panel P8 → **Idea_02** |
-| **SEG-0193** | Test-set replica injection yields a causal ΔmIoU inflation curve. | MUTATE | 10 | `stage3_priorwork_kill.md` territory #10 | **Yes** — panel P10 (then the round's only Stage-4 KILL) |
-| **SEG-0103 / SEG-0125** *(one merged unit)* | 0103: a go/no-go statistic for unsupervised domain adaptation. 0125: a self-training error-amplification law readable from round 1. | MUTATE | — | Recorded as the single unit `0103/0125` in `stage3_priorwork_kill.md`; both one-liners from `stage1_seg_keepers.md` Top-30 | **Yes** — panel P11 ("UDA amplification exponent vs GDA theory; churn stopping rule") carries both halves |
-| **SEG-0019** | Boundary hallucination is evidence-free: masking local evidence still yields confident contours. | MUTATE | — | Verdict is recorded; **no rationale for its later disappearance** | **No** — `NO RECORDED REASON — 需人工确认` |
-| **SEG-0054** | Pre-visibility smoke is detectable from temporal flicker spectra. | MUTATE | — | Verdict is recorded; **no rationale for its later disappearance** | **No** — `NO RECORDED REASON — 需人工确认` |
-| **SEG-0031** | `NO RECORDED HYPOTHESIS` — 0031 is absent from the `stage1_seg_keepers.md` Top-30 and appears only as `0031(P)` in the Stage-2 promotions list. | MUTATE | — | Verdict is recorded; hypothesis text and later disposition both absent | **No** — `NO RECORDED REASON — 需人工确认` |
-| **SEG-0122** | `NO RECORDED HYPOTHESIS` — 0122 appears only in the Stage-2 under-ranked promotions list. | MUTATE | — | Verdict is recorded; hypothesis text and later disposition both absent | **No** — `NO RECORDED REASON — 需人工确认` |
+| **SEG-0252** | 人机协同标注会在世代间放大标注约定惯例（标签生态学）。 | SURVIVE | 1 | `stage3_priorwork_kill.md`；假设来自 `stage1_seg_keepers.md` Top-30 | **是** —— 评审组 P1 |
+| **SEG-0250** | 在频率匹配时，罕见的*物体状态*相比罕见的*类别*导致更大的精度损失。 | SURVIVE | 2 | `stage3_priorwork_kill.md` 领地 #2 "matched-frequency state-tail vs class-tail" | **是** —— 评审组 P2 |
+| **SEG-0275** | 知识截断点之后的概念名称可在无污染情况下测试开放词表接地（时间留出）。 | SURVIVE | 3 | `stage3_priorwork_kill.md`；`stage1_seg_keepers.md` Top-30 | **是** —— 评审组 P3 |
+| **SEG-0285** | 图像内的印刷文本能在物理上重定向掩码，而不仅是字幕。 | SURVIVE **(weak)** | 9 | `stage3_priorwork_kill.md` 标注为 `0285(weak)` 且领地 #9 "physical typographic injection moving masks" | **是** —— 评审组 P9 |
+| **SEG-0276** | 逐类别先验形状场通过可迁移系数 α 与局部证据插值，并与 SAM 提示敏感性产生交互。 | MUTATE | 4 | `stage3_priorwork_kill.md` 领地 #4 | **是** —— 评审组 P4 |
+| **SEG-0355** | "未定义"与"不确定"被混淆：现有头部上的单调打分无法区分它们。 | MUTATE | 5 | `stage3_priorwork_kill.md` 领地 #5 | **是** —— 评审组 P5 |
+| **SEG-0002** | 人类边界抖动构成了噪声底线；减去它可对报道的 SOTA 重新排序。 | MUTATE | 6 | `stage3_priorwork_kill.md` 领地 #6；`stage1_seg_keepers.md` Top-30 | **是** —— 评审组 P6 |
+| **SEG-0240** | 采样 vs 重新加权的差距是一项上下文统计机制，而非优化假象。 | MUTATE | 7 | `stage3_priorwork_kill.md` 领地 #7 | **是** —— 评审组 P7 |
+| **SEG-0085** | 去噪／SR 管线对微小低对比度病灶的抑制是增强强度的函数。 | MUTATE | 8 | `stage3_priorwork_kill.md` 领地 #8；`stage1_seg_keepers.md` Top-30 | **是** —— 评审组 P8 → **Idea_02** |
+| **SEG-0193** | 测试集复制注入可产出因果 ΔmIoU 虚高曲线。 | MUTATE | 10 | `stage3_priorwork_kill.md` 领地 #10 | **是** —— 评审组 P10（随后成为整轮唯一的 Stage-4 KILL） |
+| **SEG-0103 / SEG-0125** *(合并单元)* | 0103：无监督域适应的走／停统计量。0125：在第 1 轮即可读出的自训练误差放大定律。 | MUTATE | — | 在 `stage3_priorwork_kill.md` 中记录为单一单元 `0103/0125`；假设来自 `stage1_seg_keepers.md` Top-30 | **是** —— 评审组 P11（"UDA amplification exponent vs GDA theory; churn stopping rule"）承载了前后两半 |
+| **SEG-0019** | 边界幻觉是缺乏证据的：遮蔽局部证据依然能产出高置信度轮廓。 | MUTATE | — | 裁决已记录；**其后续消失无理由** | **否** —— `NO RECORDED REASON — 需人工确认` |
+| **SEG-0054** | 可见度之前的烟雾可从时间闪烁光谱中检测。 | MUTATE | — | 裁决已记录；**其后续消失无理由** | **否** —— `NO RECORDED REASON — 需人工确认` |
+| **SEG-0031** | `NO RECORDED HYPOTHESIS` —— 0031 在 `stage1_seg_keepers.md` Top-30 中缺席，仅作为 `0031(P)` 出现在 Stage-2 提升列表中。 | MUTATE | — | 裁决已记录；假设文本与后续处置均缺席 | **否** —— `NO RECORDED REASON — 需人工确认` |
+| **SEG-0122** | `NO RECORDED HYPOTHESIS` —— 0122 仅出现在 Stage-2 被低估提升列表中。 | MUTATE | — | 裁决已记录；假设文本与后续处置均缺席 | **否** —— `NO RECORDED REASON — 需人工确认` |
 
-### SEG slice — killed at Stage 3 (for completeness)
+### SEG 切片 —— Stage 3 被击杀项（为完整性列出）
 
-All five have a recorded prior-work reason, and all five are independently confirmed in
-`Windows1/selection_history/eliminated_ideas_summary.md`. Treat the citations as EVIDENCE-FROM-AGENT
-per the source file's own caveat.
+全部五项均有记录在案的 prior-work 理由，且全部在 `Windows1/selection_history/eliminated_ideas_summary.md` 中得到独立证实。依据源文件自身的警示，将这些引用视为 EVIDENCE-FROM-AGENT。
 
-| ID | One-sentence hypothesis | Recorded kill reason | Confirmed in eliminated_ideas_summary? |
+| ID | 一句话假设 | 记录的击杀理由 | 在 eliminated_ideas_summary 中证实？ |
 |---|---|---|---|
-| SEG-0074 | Infiltration probability fields instead of hard contours. | Prior work: MRI–histo probability maps + patient-level calibration already exist | Yes — "SEG-0074 original" |
-| SEG-0206 | Watermark/logo learnability as a dataset pathology. | ImageNet-W; watermark learning is often the *design goal* | Yes |
-| SEG-0185 | Frozen dense probes predict fine-tune rank at ~1% compute. | LogME / OTCE-seg | Yes |
-| SEG-0046 | Smoke as optical-density regression, not a binary mask. | SMOKE+ / dehazing / AAAI 2022 transmission-guided smoke | Yes — "SEG-0046 framing" |
-| SEG-0113 | Predict deployment mIoU from an unlabeled stream. | Bar CVPRW 2022 / AutoEval / SPE | Yes |
+| SEG-0074 | 用浸润概率场替代硬轮廓。 | 既有工作：MRI–病理概率图 + 患者级校准已经存在 | 是 —— "SEG-0074 original" |
+| SEG-0206 | 水印／Logo 可学习性作为数据集病理。 | ImageNet-W；水印学习往往本身就是*设计目标* | 是 |
+| SEG-0185 | 冻结稠密探针以约 1% 算力预测微调排名。 | LogME / OTCE-seg | 是 |
+| SEG-0046 | 将烟雾作为光密度回归，而非二值掩码。 | SMOKE+ / 去雾 / AAAI 2022 透射率引导烟雾 | 是 —— "SEG-0046 framing" |
+| SEG-0113 | 从无标签数据流预测部署 mIoU。 | Bar CVPRW 2022 / AutoEval / SPE | 是 |
 
-**Note on partial resurrection (EVIDENCE).** Two of these five were later revived in *mutated* form by
-`research_ledger/meta_audit.md`: "revive 0046 as transmittance-vs-binary hypothesis (not 'framing
-paper')" and "revive 0074 only as cross-stain calibration of disagreement fields". `meta_audit.md`
-also records the supervisor **rejecting** the broader claim: "REJECTS: treating 0074 original as
-wrongly killed — original form IS published (RAPSODI/calibration). Only mutation survives."
-SEG-0074-M went on to become **Idea_03 DisagreeShift**. So a Stage-3 kill produced a finalist through
-an explicitly narrowed mutation, and the ledger is unusually clear about the limits of that revival.
+**部分复活说明（EVIDENCE）。** 这五项中有两项后来由 `research_ledger/meta_audit.md` 以*变异*形态复活："revive 0046 as transmittance-vs-binary hypothesis (not 'framing paper')" 以及 "revive 0074 only as cross-stain calibration of disagreement fields"。`meta_audit.md` 亦记录了 supervisor **拒绝**更宽泛的主张："REJECTS: treating 0074 original as wrongly killed — original form IS published (RAPSODI/calibration). Only mutation survives."。SEG-0074-M 随后演变为 **Idea_03 DisagreeShift**。因此 Stage-3 击杀项通过明确收敛的变异产出了一项入围方案，总账对该复活的限制异常清晰。
 
 ---
 
-## 3. VFM / ASM slice — survivors
+## 3. VFM / ASM 切片 —— 存活者
 
-Verdicts exactly as written in `stage3_vfm_kills.md`. One-liners from
-`stage1_vfma_asma_keepers.md` (A-namespace) and `stage1_vfm_local_pool.md` (VFM-namespace).
+裁决完全按 `stage3_vfm_kills.md` 记录。一句话假设来自 `stage1_vfma_asma_keepers.md`（A 命名空间）与 `stage1_vfm_local_pool.md`（VFM 命名空间）。
 
-| ID | One-sentence hypothesis | Stage-3 verdict | Recorded mutation direction | Advanced to Stage 4? |
+| ID | 一句话假设 | Stage-3 裁决 | 记录的变异方向 | 是否推进到 Stage 4？ |
 |---|---|---|---|---|
-| **VFM-0263 / VFM-0274** | 0263: maximise target Dice subject to an SA-1B promptability drop < ε. 0274: retain SA-1B AMG quality and COCO fine-tuning as a dual objective. | MUTATE *(written as `A0263` — namespace error, see below)* | "HQ-SAM Table 9 already measured drop; WiSE-FT is the α dial; need retention BENCHMARK + method that beats WiSE-FT" | **Yes** — panel P12 → **Idea_01** |
-| A0051 | Encoder/decoder probe gap in promptable segmenters. | MUTATE | "prompt-conditioned credit assignment" | **No** — `NO RECORDED REASON — 需人工确认` |
-| A0028 | Cross-prompt disagreement predicts error. | MUTATE | "cross-modality (not within-type) disagreement" | **No** — `NO RECORDED REASON — 需人工确认` |
-| A0166 | SA-1B / eval near-duplicate leakage. | MUTATE | "SA-1B stats as audit not hypothesis" | **No** — `NO RECORDED REASON — 需人工确认` |
-| A0121 | A frozen-vs-tuned data-scale crossover point n\*. | MUTATE | "crossover + a priori selector" | **No panel slot, but it did continue.** See §5 — it reappears as "Frozen/tuned crossover law" in `meta_audit.md` Top-8 #2 and "Frozen/tuned n\*" in the Stage-5 engineer Top-5 #2. Recorded reason for its eventual death: `eliminated_ideas_summary.md` "Frozen/tuned n\* \| Selector circularity; worst cost-to-kill". |
-| A0153 | A linear map aligns CLIP patch features to DINOv2 spatial correspondence. | MUTATE — flagged "**BEST VFM crack**" | "linear CLIP-patch→DINOv2 correspondence" | **No.** Recorded reason exists: killed by prior work — `eliminated_ideas_summary.md` "VFM-A0153 \| CLIP-DINOiser / ProxyCLIP / Platonic Representation Hypothesis", and `evolution_summary.md` lists "linear CLIP→DINOv2 as lead (Platonic / CLIP-DINOiser)" among kills. Note the reversal: Stage 3's highest-rated VFM item died without ever reaching Reviewer #2. |
-| A0073 | Prompt-tuning vs LoRA under distribution shift. | MUTATE | "vision instantiation" | **No** — `NO RECORDED REASON — 需人工确认` |
-| A0021 | Overtrained-small vs Chinchilla-optimal for dense prediction. | MUTATE | "ride public grids only" | **No** — `NO RECORDED REASON — 需人工确认` |
-| A0109 | Seed and split variance exceeds published method deltas. | **WEAK SURVIVE** | (none recorded) | **No** — `NO RECORDED REASON — 需人工确认`. Note the topic overlaps SEG-0002-M (panel P6), whose panel text lists "training-seed variance" as a required baseline; whether A0109 was absorbed there is **not recorded**. |
+| **VFM-0263 / VFM-0274** | 0263：在 SA-1B 可提示性下降 < ε 的约束下最大化目标 Dice。0274：将保留 SA-1B AMG 质量与 COCO 微调作为双重目标。 | MUTATE *(写作 `A0263` —— 命名空间错误，见下文)* | "HQ-SAM Table 9 already measured drop; WiSE-FT is the α dial; need retention BENCHMARK + method that beats WiSE-FT" | **是** —— 评审组 P12 → **Idea_01** |
+| A0051 | 可提示分割器中的编码器／解码器探针差距。 | MUTATE | "prompt-conditioned credit assignment" | **否** —— `NO RECORDED REASON — 需人工确认` |
+| A0028 | 跨提示分歧预测误差。 | MUTATE | "cross-modality (not within-type) disagreement" | **否** —— `NO RECORDED REASON — 需人工确认` |
+| A0166 | SA-1B / 评测近重复泄漏。 | MUTATE | "SA-1B stats as audit not hypothesis" | **否** —— `NO RECORDED REASON — 需人工确认` |
+| A0121 | 冻结 vs 微调的数据规模交叉点 n\*。 | MUTATE | "crossover + a priori selector" | **无评审组席位，但确实继续推进了。** 见 §5 —— 它以 "Frozen/tuned crossover law" 重现于 `meta_audit.md` Top-8 #2，并在 Stage-5 工程师 Top-5 #2 中重现为 "Frozen/tuned n\*"。记录的最终死因：`eliminated_ideas_summary.md` "Frozen/tuned n\* \| Selector circularity; worst cost-to-kill"。 |
+| A0153 | 线性映射对齐 CLIP patch 特征与 DINOv2 空间对应性。 | MUTATE —— 标注为 "**BEST VFM crack**" | "linear CLIP-patch→DINOv2 correspondence" | **否。** 存在记录的原因：被 prior work 击杀 —— `eliminated_ideas_summary.md` "VFM-A0153 \| CLIP-DINOiser / ProxyCLIP / Platonic Representation Hypothesis"，`evolution_summary.md` 将 "linear CLIP→DINOv2 as lead (Platonic / CLIP-DINOiser)" 列在击杀项中。注意反转：Stage 3 评分最高的 VFM 项在未到达 Reviewer #2 的情况下死亡。 |
+| A0073 | 分布偏移下的 Prompt-tuning vs LoRA。 | MUTATE | "vision instantiation" | **否** —— `NO RECORDED REASON — 需人工确认` |
+| A0021 | 针对稠密预测的过度训练小模型 vs Chinchilla 最优模型。 | MUTATE | "ride public grids only" | **否** —— `NO RECORDED REASON — 需人工确认` |
+| A0109 | 随机种子与划分方差超过已发表的方法差值。 | **WEAK SURVIVE** | （无记录） | **否** —— `NO RECORDED REASON — 需人工确认`。注意主题与 SEG-0002-M（评审组 P6）重叠，后者的评审组文本将"训练种子方差"列为必需基线；A0109 是否被吸收进该项**未有记录**。 |
 
-### VFM slice — killed at Stage 3
+### VFM 切片 —— Stage 3 被击杀项
 
-| ID | One-sentence hypothesis | Recorded kill reason | Confirmed in eliminated_ideas_summary? |
+| ID | 一句话假设 | 记录的击杀理由 | 在 eliminated_ideas_summary 中证实？ |
 |---|---|---|---|
-| A0022 | Worst-case *valid* click sequences for interactive segmentation. | TETRIS | Yes — "VFM-A0022 \| TETRIS AAAI 2024" |
-| A0168 | Oracle-click simulation leaks relative to human clicks. | RClicks | Yes — "VFM-A0168 \| RClicks 2024" |
-| A0077 | Effective LoRA rank via SVD truncation. | PARA | Yes — "VFM-A0077 \| PARA / AdaLoRA" |
-| A0148 | Outlier / high-norm token renormalisation in ViTs. | Registers | Yes — "VFM-A0148 \| DINOv2 registers" |
+| A0022 | 针对交互式分割的最坏情况*有效*点击序列。 | TETRIS | 是 —— "VFM-A0022 \| TETRIS AAAI 2024" |
+| A0168 | Oracle 点击模拟相对于人类点击存在泄漏。 | RClicks | 是 —— "VFM-A0168 \| RClicks 2024" |
+| A0077 | 通过 SVD 截断的有效 LoRA 秩。 | PARA | 是 —— "VFM-A0077 \| PARA / AdaLoRA" |
+| A0148 | ViT 中的离群／高范数 token 重归一化。 | Registers | 是 —— "VFM-A0148 \| DINOv2 registers" |
 
-**Recorded resurrection as a merge (EVIDENCE).** A0022 and A0168 were killed individually here, then
-recombined: `meta_audit.md` instructs "merge worst-case clicks with oracle-click leak" and lists the
-result as Top-8 #7 "Worst-case/oracle-click interactive eval merge". It reached the Stage-5 engineer
-Top-5 (#5, "Interactive eval merge") before dying at Stage 6 —
-`eliminated_ideas_summary.md`: "Interactive eval merge \| Occupied by TETRIS + RClicks", i.e. it was
-finally killed by the same two papers that killed its two parents.
-
-`stage3_vfm_kills.md` anticipated exactly this: "**IMPLICATION:** Stage-5 'interactive eval merge' is
-DEAD as stated."
-
----
-
-## 4. The 24 → 12 narrowing at the Stage-4 boundary
-
-**KNOWN FACT.** 24 units survived Stage 3; the recovered Stage-4 panel attacked 12. No ledger file
-documents the selection of those 12.
-
-| Disposition | Count | Units |
-|---|---|---|
-| Advanced to the Stage-4 R2 panel | 11 SEG units (12 SEG IDs, since `0103/0125` is one merged unit) + 1 VFM unit = **12 panel proposals** | P1–P12 |
-| Dropped with a recorded reason found elsewhere | 2 | A0153 (prior work), A0121 (continued outside the panel, later killed on selector circularity) |
-| Dropped with **no** recorded reason | 10 | SEG-0019, SEG-0054, SEG-0031, SEG-0122, A0051, A0028, A0166, A0073, A0021, A0109 |
-
-**MODEL SPECULATION, flagged as such and not to be cited as a reason:** the 12 panel proposals are
-exactly the 10 entries of the `stage3_priorwork_kill.md` "top scientific territory" list, plus the
-`0103/0125` unit, plus the constrained SAM-FT unit. That is consistent with the territory ranking
-having been used as the Stage-4 shortlist. The ledger never says so, so it is not asserted.
-
----
-
-## 5. Two structural findings about the survivor set
-
-**A. Idea_01's ancestor never passed a Stage-2 review (KNOWN FACT).**
-`VFM-0263` and `VFM-0274` come from `stage1_vfm_local_pool.md`, the 350-idea supervisor-backup pool.
-The only Stage-2 review sheet in the ledger is `stage2_seg_review.md`, which covers the **SEG** slice
-and closes with "Global 1000 not yet complete: waiting VFM + ASM pools." No VFM/ASM Stage-2 sheet was
-ever written. So the eventual **#1 recommendation** entered the funnel at Stage 3, straight from
-Stage-1 generation, with no independent Stage-2 scoring. Recorded in `FUNNEL_DEVIATION.md` §3b/§4-B.
-This is a gap in the *process record*; it is not a claim that Idea_01 is unsound, and `stage4_reviewer2.md`
-plus the recovered panel show it was attacked hard at Stage 4.
-
-**B. Two namespace hazards a future auditor will trip over (KNOWN FACT).**
-
-1. `stage3_vfm_kills.md` writes **`A0263`**. The A-namespace (VFM-A / ASM-A) holds 180 ideas per
-   `stage1_vfma_asma_keepers.md`, so `A0263` cannot exist there. The referent is `VFM-0263` in the
-   local 350-idea pool, which `stage4_reviewer2.md` cites correctly as `VFM-0263/0274`.
-   Flagged, not corrected — the ledger is not modified by this backfill.
-2. **`0274` is two different ideas.** `SEG-0274` was KILLed at Stage 2
-   (`stage2_seg_review.md`: `KILL: 0048, 0061, 0170, 0274`, and it also appears in that file's
-   "Over-ranked (eval-only / known genre)" list). `VFM-0274` is "Retain SA-1B AMG quality + COCO FT
-   as the dual objective" and is a direct ancestor of **Idea_01**. A bare "0274" in this archive is
-   ambiguous; always carry the `SEG-` or `VFM-` prefix.
+**记录在案的合并复活（EVIDENCE）。** A0022 与 A0168 单独在此被杀，随后被重组：`meta_audit.md` 指示 "merge worst-case clicks with oracle-click leak" 并将结果列为 Top-8 #7 "Worst-case/oracle-click interactive eval merge"。它进入了 Stage-5 工程师 Top-5（#5, "Interactive eval merge"），随后在 Stage 6 死亡 —— `eliminated_ideas_summary.md`："Interactive eval merge \| Occupied by TETRIS + RClicks"，即最终被击杀了其两个母项的相同两篇论文所击杀。

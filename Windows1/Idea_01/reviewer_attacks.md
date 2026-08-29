@@ -1,34 +1,34 @@
 # Idea_01 Reviewer #2
 
-## Most dangerous rejection
+## 最危险的拒稿理由
 
-“This is WiSE-FT with extra distillation. HQ-SAM already reported the COCO drop. RobustSAM already preserves SAM via consistency. MedSAM already fine-tunes SAM. No new mechanism.”
+"这只是带额外蒸馏的 WiSE-FT。HQ-SAM 已经报告了 COCO 的下降。RobustSAM 已经通过一致性保留了 SAM。MedSAM 已经微调了 SAM。没有新机制。"
 
-## Hidden assumption
+## 隐含假设
 
-That COCO click mIoU is a valid proxy for SA-1B promptability, and that interpolation in weight space is the right null.
+COCO 点击 mIoU 是 SA-1B 可提示性的有效代理，且权重空间插值是正确的零假设。
 
-## Confounders
+## 混淆因素
 
-- Extra replay data = extra regularization, not “constraint.”
-- Teacher masks inherit SAM errors; student copies SAM’s ontology.
-- Interactive eval simulation ≠ humans (RClicks).
+- 额外 replay 数据 = 额外正则化，而不是"约束"。
+- 教师掩码继承了 SAM 的错误；学生模型复制了 SAM 的本体论。
+- 交互评测模拟 ≠ 人类真实操作（RClicks）。
 
-## Missing baselines
+## 缺失的基线
 
-WiSE-FT, RobustSAM-style frozen consistency, R-Adapter interpolation, model soup of epoch checkpoints, EWC, LoRA at matched train time, decoder-only.
+WiSE-FT、RobustSAM 风格的冻结一致性、R-Adapter 插值、epoch checkpoint 的模型汤（model soup）、EWC、训练时间匹配的 LoRA、仅解码器。
 
-## Unfairness
+## 不公平性
 
-Constrained method sees COCO images; naive FT does not. **Control:** naive FT with COCO images but **classification/misc loss** or **unrelated reconstruction**, to test “any COCO pixels” vs prompt-replay.
+约束方法见过 COCO 图像；简单微调没有。**对照：** 带 COCO 图像但采用**分类／杂项损失**或**无关重构**的简单微调，以测试"任何 COCO 像素" vs "提示重放"。
 
-## Trivial alternative
+## 平凡替代方案
 
-Pick α on val Dice subject to J_gen ≥ ε — no new training.
+在 J_gen ≥ ε 约束下在验证集 Dice 上挑选 α —— 无需新训练。
 
-## Rebuttal experiments (must run before submission)
+## 答辩实验（投稿前必须运行）
 
-1. Domination vs WiSE-FT (fatal).
-2. Naive + COCO images without prompt distillation.
-3. Human 8-user click subset (small) to show ranking not reversed vs simulation.
-4. LVIS tail classes: retention not only COCO head classes.
+1. 对比 WiSE-FT 的支配性（致命项）。
+2. 无提示蒸馏的简单微调 + COCO 图像。
+3. 人类 8 用户点击子集（小型），证明排名相对于模拟未发生反转。
+4. LVIS 尾部类别：保留能力不局限于 COCO 头部类别。

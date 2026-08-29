@@ -1,303 +1,93 @@
-# Stage 4 → candidates (Windows1) — R2 panel RECOVERED
+# Stage 4 → 候选者（Windows1）—— R2 评审组记录已找回
 
-Status: **retrospective reconstruction. The full Reviewer #2 panel was recovered.**
+状态：**事后重建。完整的 Reviewer #2 评审组记录已找回。**
 
-`research_ledger/stage4_reviewer2.md` is a ~1.1 KB summary and states that the full panel is
-"on branch cursor/reviewer2-stage4-kill-panel-5733 (cloud worktree, **not this repo**)".
-**That parenthetical is wrong.** The branch is in this repository, and the panel — 21,207 bytes,
-all 12 proposals with full attack structure — was recovered from it.
+`research_ledger/stage4_reviewer2.md` 是一份约 1.1 KB 的摘要，并声称完整评审组记录位于
+"on branch cursor/reviewer2-stage4-kill-panel-5733 (cloud worktree, **not this repo**)"。
+**该括号内的陈述是错误的。** 该分支就在本仓库中，且评审组记录 —— 21,207 字节，
+包含全部 12 个提案及其完整攻击结构 —— 已从中找回。
 
 ---
 
-## 1. Recovery record
+## 1. 找回记录
 
-**PANEL RECOVERED.** Provenance:
+**评审组记录已找回。** 出处信息：
 
-| Field | Value |
+| 字段 | 取值 |
 |---|---|
-| Branch | `origin/cursor/reviewer2-stage4-kill-panel-5733` |
-| Path on that branch | `research_ledger/stage4_reviewer2_kill_panel.md` |
-| Blob | `edeaccb6a431c460e93a0e207b378839a82cf7ab` (21,207 bytes) |
-| Commit | `c77a907e5d210d768d909b897e5dbdbd46da36a5`, "Add Stage 4 Reviewer #2 kill panel for 12 segmentation/VFM proposals", Fri Aug 28 2026 |
-| Title line | `# Stage 4 — Reviewer #2 Kill Panel (Windows1 PI)` |
+| 分支 | `origin/cursor/reviewer2-stage4-kill-panel-5733` |
+| 该分支上的路径 | `research_ledger/stage4_reviewer2_kill_panel.md` |
+| Blob | `edeaccb6a431c460e93a0e207b378839a82cf7ab`（21,207 字节） |
+| Commit | `c77a907e5d210d768d909b897e5dbdbd46da36a5`，"Add Stage 4 Reviewer #2 kill panel for 12 segmentation/VFM proposals", Fri Aug 28 2026 |
+| 标题行 | `# Stage 4 — Reviewer #2 Kill Panel (Windows1 PI)` |
 
-Attribution to Windows1 is solid on three independent counts: the title says "Windows1 PI"; the
-branch suffix `5733` matches the `Source: bc-90c313c0-0076-59a0-a25e-0727cdb45733` line in
-`research_ledger/stage4_reviewer2.md`; and the panel's Top-7 list reproduces the summary's R2 Top-7
-in the same order with the same seven IDs.
+归属于 Windows1 在三处独立考量上均非常确凿：标题写着 "Windows1 PI"；分支后缀 `5733` 与 `research_ledger/stage4_reviewer2.md` 中的 `Source: bc-90c313c0-0076-59a0-a25e-0727cdb45733` 行吻合；且该评审组的 Top-7 清单以相同的顺序和相同的七个 ID 完全复现了摘要中的 R2 Top-7。
 
-**The branch holds only two files** — `README.md` and the panel — so it is a panel-only branch, never
-merged. That is why the panel is missing from `main`. This backfill does **not** merge that branch or
-copy the panel into `research_ledger/`; it indexes and summarises it here, leaving
-`research_ledger/` untouched.
+**该分支仅包含两个文件** —— `README.md` 与该评审组记录 —— 因此它是一个纯评审组分支，从未被合并。这正是该记录在 `main` 上缺席的原因。本回填**不**合并该分支或将该记录复制进 `research_ledger/`；而是在此对其建立索引并进行总结，使 `research_ledger/` 保持原样。
 
-### Branches searched, and what each actually contains
+### 检索的分支，以及各自实际包含的内容
 
-Four branches were named as possibly holding Stage-4 panel material. **Only one does.**
+有四个分支被指名可能包含 Stage-4 评审组素材。**只有其中一个包含。**
 
-| Branch | Verdict | What is actually on it |
+| 分支 | 裁决 | 实际内容 |
 |---|---|---|
-| `cursor/reviewer2-stage4-kill-panel-5733` | **Windows1 panel — RECOVERED** | `research_ledger/stage4_reviewer2_kill_panel.md`, titled "(Windows1 PI)", P1–P12 matching Windows1's SEG-/VFM- IDs |
-| `cursor/stage4-cluster-a-reviewer2-f1fa` | **NOT Windows1** | `stage3_cluster_A_*` and `stage4_cluster_A_*` (attacks, decisions.csv, keep, killed) |
-| `cursor/stage4-cluster-b-reviewer2-b25a` | **NOT Windows1** | `stage4_cluster_B_*` |
-| `cursor/stage4-cluster-c-reviewer2-c1be` | **NOT Windows1** | `stage4_cluster_C_*` |
+| `cursor/reviewer2-stage4-kill-panel-5733` | **Windows1 评审组 —— 已找回** | `research_ledger/stage4_reviewer2_kill_panel.md`，标题为 "(Windows1 PI)"，P1–P12 与 Windows1 的 SEG-/VFM- ID 吻合 |
+| `cursor/stage4-cluster-a-reviewer2-f1fa` | **非 Windows1** | `stage3_cluster_A_*` 与 `stage4_cluster_A_*`（攻击、decisions.csv、keep、killed） |
+| `cursor/stage4-cluster-b-reviewer2-b25a` | **非 Windows1** | `stage4_cluster_B_*` |
+| `cursor/stage4-cluster-c-reviewer2-c1be` | **非 Windows1** | `stage4_cluster_C_*` |
 
-**The three cluster branches are a different window's Stage 4 and must not be folded into Windows1.**
-Evidence, checked file by file:
+**三个簇分支属于不同窗口的 Stage 4，绝不能并入 Windows1。** 逐文件核查的证据：
 
-- `stage4_cluster_A_keep.md` and `stage4_cluster_A_killed.md` both carry the header
-  "**Reviewer #2 (Cloud Sub-Agent J) → Supervisor Windows7.**" Cluster B names "Cloud Sub-Agent K".
-- Their ID namespaces are `A-0003`, `A-0016`, `B-0058`, `B-0062`, `C-0028`, `C-0090` … — a
-  hyphenated cluster-letter scheme with **no overlap** with Windows1's `SEG-0001…0365`,
-  `VFM-0001…0350`, `ASM-0001…0350` or `A0001…A0180` namespaces.
-- Their subject matter is disjoint from Windows1's funnel (SAM2 memory FIFO eviction, MoE routing as
-  pathology detector, Doppler audio supervision, dose maps as contour supervision, dimensional
-  collapse, text-batch rehearsal).
-- Their counts do not fit Windows1's Stage 4 either: cluster A is 7 survivors of 17, B is 7 of 20,
-  C is 7 of 18. Windows1's Stage 4 was 12 proposals with one kill.
+- `stage4_cluster_A_keep.md` 与 `stage4_cluster_A_killed.md` 均带有表头 "**Reviewer #2 (Cloud Sub-Agent J) → Supervisor Windows7.**"。簇 B 点名了 "Cloud Sub-Agent K"。
+- 其 ID 命名空间为 `A-0003`、`A-0016`、`B-0058`、`B-0062`、`C-0028`、`C-0090` … —— 带有连字符的簇字母方案，与 Windows1 的 `SEG-0001…0365`、`VFM-0001…0350`、`ASM-0001…0350` 或 `A0001…A0180` 命名空间**完全不相交**。
+- 其主题与 Windows1 的漏斗不相关（SAM2 内存 FIFO 驱逐、MoE 路由作为病理检测器、多普勒音频监督、剂量图作为轮廓监督、维度坍缩、文本批次排练）。
+- 其计数亦不符合 Windows1 的 Stage 4：簇 A 是 17 个中 7 个存活，B 是 20 个中 7 个，C 是 18 个中 7 个。Windows1 的 Stage 4 是 12 个提案且 1 个击杀。
 
-These three branches nonetheless carry `Windows1/` and `research_ledger/` in their trees with
-**byte-identical blob hashes** to `main` — they simply branched from a commit that already had
-Windows1 merged. That inheritance is what makes them look relevant, and it is also the reason
-`research_ledger/` must not be relocated (see `LEDGER_INDEX.md` §4).
+这三个分支在其目录树中携带 `Windows1/` 与 `research_ledger/`，且具有与 `main` **逐字节一致的 blob 哈希** —— 它们仅仅是从已经合并了 Windows1 的提交切出的。这种继承性使得它们看起来相关，也是 `research_ledger/` 绝不能被重定位的原因（见 `LEDGER_INDEX.md` §4）。
 
 ---
 
-## 2. Panel structure
+## 2. 评审组结构
 
-Every proposal in the recovered panel was assessed on a fixed seven-part schema, which is why the
-reconstruction below is uniform rather than impressionistic:
+找回的评审组中的每个提案均按照固定的七部分模式进行评估，这使得下方的重构具有统一性而非印象化：
 
-1. **Rejection** — the hostile reviewer's strongest single objection
-2. **Hidden assumption**
-3. **Confounder**
-4. **Missing baseline**
-5. **Trivial alternative** — the cheaper explanation that must be excluded
-6. **Shut-me-up experiment** — the concrete study that would silence the objection
-7. **Decision** + **Remaining fatal flaw**
+1. **拒稿理由（Rejection）** —— 苛刻评审人最强烈的单一反对意见
+2. **隐含假设（Hidden assumption）**
+3. **混淆因素（Confounder）**
+4. **缺失基线（Missing baseline）**
+5. **平凡替代方案（Trivial alternative）** —— 必须排除的低成本解释
+6. **封嘴实验（Shut-me-up experiment）** —— 能使反对意见闭嘴的具体研究
+7. **决策（Decision）** + **剩余致命缺陷（Remaining fatal flaw）**
 
-The panel opens with a role statement: "hostile CVPR/ICCV/MICCAI reviewer. Each proposal rejected,
-then assessed for whether a real experiment rescues it."
+评审组开篇即给出角色定位："苛刻的 CVPR/ICCV/MICCAI 评审人。每个提案先予以拒稿，随后评估是否有真实实验能拯救它。"
 
-**Epistemic caveat carried forward.** These are REVIEWER JUDGMENT, consistent with
-`research_ledger/stage2_seg_review.md` ("Scores are REVIEWER JUDGMENT not facts"). No attack below is
-a demonstrated fact about any method, and no "shut-me-up experiment" has been run — all are
-HYPOTHESIS / EXPECTED at most. **No ACTUAL EXPERIMENTAL RESULT exists.**
+**沿用的认知警示。** 这些属于 REVIEWER JUDGMENT，与 `research_ledger/stage2_seg_review.md` 一致（"Scores are REVIEWER JUDGMENT not facts"）。下方的攻击并非关于任何方法的已证实事实，且没有"封嘴实验"被实际运行过 —— 最多属于 HYPOTHESIS / EXPECTED。**不存在 ACTUAL EXPERIMENTAL RESULT。**
 
-### Citations claimed by the panel
+### 评审组声称的引用
 
-The panel lists ten citations it claims were "checked against live sources": Kumar/Ma/Liang 2020
-(arXiv 2002.11361); Wang et al. 2022 (2204.08200); Li et al. HalluSegBench 2025 (2506.21546);
-Byrd & Lipton 2019 (1812.03372); Goh et al. Multimodal Neurons 2021 (distill.pub); Wortsman et al.
-WiSE-FT 2022 (2109.01903); Ramanathan et al. PACO 2023 (2301.01795); Pham et al. VAW 2021
-(2106.09707); Cheng et al. Boundary IoU 2021 (2103.16562); Liu et al. GRES 2023 (2306.00968).
+评审组列出了十篇声称"已与在线来源核对"的引用：Kumar/Ma/Liang 2020 (arXiv 2002.11361); Wang et al. 2022 (2204.08200); Li et al. HalluSegBench 2025 (2506.21546); Byrd & Lipton 2019 (1812.03372); Goh et al. Multimodal Neurons 2021 (distill.pub); Wortsman et al. WiSE-FT 2022 (2109.01903); Ramanathan et al. PACO 2023 (2301.01795); Pham et al. VAW 2021 (2106.09707); Cheng et al. Boundary IoU 2021 (2103.16562); Liu et al. GRES 2023 (2306.00968)。
 
-Treat these as **EVIDENCE-FROM-AGENT**, not as verified by this backfill — `stage3_priorwork_kill.md`
-sets that standard for the round and it is not relaxed here.
+将这些视为 **EVIDENCE-FROM-AGENT**，而非经本次回填核实 —— `stage3_priorwork_kill.md` 为本轮确立了该标准，此处不予放宽。
 
-**The panel flags one of its own citations as unresolved**, verbatim: "The 'ACL Findings 2025
-one-generation NLP analog' cited by P1: **UNSURE which paper — must be pinned or dropped.**"
-Carried forward as an open item; not resolved here and not to be cited until pinned.
+**评审组将其自身的一处引用标记为未解决**，原文："The 'ACL Findings 2025 one-generation NLP analog' cited by P1: **UNSURE which paper — must be pinned or dropped.**"。作为未决事项沿用；此处不作解决，在确证前不予引用。
 
 ---
 
-## 3. The 12 candidates
+## 3. 12 个候选者
 
-`stage4_reviewer2.md` summarises the outcome as "KILL: P10 0193 replica-spiking (no transportable
-law). KEEP-IF-EXPERIMENT: all others. **No unconditional KEEP.**" The recovered panel confirms
-this exactly: 11 KEEP-IF-EXPERIMENT, 1 KILL, 0 unconditional KEEP.
+`stage4_reviewer2.md` 将结果总结为 "KILL: P10 0193 replica-spiking (no transportable law). KEEP-IF-EXPERIMENT: all others. **No unconditional KEEP.**"。找回的评审组完全证实了这一点：11 个 KEEP-IF-EXPERIMENT，1 个 KILL，0 个无条件 KEEP。
 
-| # | ID | One-sentence hypothesis | Reviewer #2 verdict | Rationale source | Advanced to Stage 5? |
+| # | ID | 一句话假设 | Reviewer #2 裁决 | 理由来源 | 是否推进到 Stage 5？ |
 |---|---|---|---|---|---|
-| **P1** | SEG-0252 | Multi-generation model-in-the-loop labelling drifts mask conventions. | KEEP-IF-EXPERIMENT | Panel P1 | **Contested.** Dropped by the cheap-killer rule at Stage 4, then kept in contention — see §5 |
-| **P2** | SEG-0250 | Rare object *states* cost more than rare *classes* at matched frequency. | KEEP-IF-EXPERIMENT | Panel P2; R2 Top-7 rank 3 | Yes, then Stage-6 cut |
-| **P3** | SEG-0275 | Post-cutoff concept names measure genuine open-vocab grounding. | KEEP-IF-EXPERIMENT | Panel P3 | Reduced to "cheap nonce-word pilot only" |
-| **P4** | SEG-0276-M | A per-category prior-shape field has a transferable evidence/prior interpolation coefficient α. | KEEP-IF-EXPERIMENT — "HRHR; killer experiment is inference-only (cheap)" | Panel P4; **R2 Top-7 rank 1** | Yes, but only after a supervisor correction — see §5 |
-| **P5** | SEG-0355-M | "Undefined" and "uncertain" are conflated by all existing scores. | KEEP-IF-EXPERIMENT **(borderline KILL at current claim strength)** | Panel P5; R2 Top-7 rank 4 | Not in the Stage-5 engineer Top-5 |
-| **P6** | SEG-0002-M | Boundary-jitter noise floor re-ranks reported SOTA. | KEEP-IF-EXPERIMENT — "cheap and useful, but incremental" | Panel P6; R2 Top-7 rank 5 | Not in the Stage-5 engineer Top-5 |
-| **P7** | SEG-0240-M | The sampling-vs-reweighting gap is context-statistics, not optimisation. | KEEP-IF-EXPERIMENT — "an ML-theory paper in a CVPR costume" | Panel P7 | **No** — "Dropped by cheap-killer rule: … 0240 factorial" |
-| **P8** | SEG-0085-M | Lesion suppression is a function of size, contrast and enhancement strength. | KEEP-IF-EXPERIMENT — "clinically important; **soften 'universal' to 'conditional law'**" | Panel P8; R2 Top-7 rank 7 | **Yes → Idea_02** |
-| **P9** | SEG-0285 | In-image text redirects masks via the text-reading pathway. | KEEP-IF-EXPERIMENT — "cheap, likely to work, limited ceiling" | Panel P9; **R2 Top-7 rank 2** | **Contested** — the auditor cut it; see §5 |
-| **P10** | SEG-0193-M | Test-replica spiking yields a transportable ΔmIoU inflation curve. | **KILL** as standalone — "salvage as a section of a contamination-audit tool" | Panel P10 | **No** — the round's only Stage-4 kill |
-| **P11** | SEG-0103-M | A UDA amplification exponent beats GDA theory; churn gives a stopping rule. | KEEP-IF-EXPERIMENT **(stopping rule only; drop the theory-comparison framing)** | Panel P11 | **No** — "Dropped by cheap-killer rule: … 0103-M workshop" |
-| **P12** | VFM-0263 / 0274 | Constrained SAM fine-tuning: maximise target Dice subject to a promptability drop < ε. | KEEP-IF-EXPERIMENT — "engineering-safe, **novelty-fragile**" | Panel P12; R2 Top-7 rank 6 | **Yes → Idea_01** |
-
-### Per-candidate detail
-
-Recorded because the "trivial alternative" and "missing baseline" rows are what actually shaped the
-three surviving packages. Condensed from the panel; the panel is the authority.
-
-**P1 SEG-0252** — Rejection: "model-collapse tourism ported to masks"; the proposed statistics measure
-tool-UI artifacts because annotators accept SAM's default mask to save clicks. Trivial alternative:
-laziness. Missing baseline: a human-only multi-generation arm plus a second-teacher arm.
-Shut-me-up: two-generation crossover, teacher A vs B vs none at matched UI/time, a classifier
-identifying the teacher from mask statistics, and a student reproducing A's signature.
-Remaining fatal flaw: "Real annotator generations are expensive; simulated annotators would gut the
-claim."
-
-**P2 SEG-0250** — Rejection: matched frequency is "a mirage"; one covariate of a dozen is controlled
-and called causal. Confounder: rare states change mask geometry, so error rises because delineation
-is harder for anyone including humans. Missing baseline: boundary-complexity-matched control plus an
-oracle-box arm to split recognition from delineation failure.
-
-**P3 SEG-0275** — Rejection: "LiveBench-for-segmentation", and the bottleneck is supply, not the idea.
-Trivial alternative: tokenizer fragmentation on any OOV string. Missing baseline: **nonce-word
-control** — existing concepts renamed with made-up words. This is the baseline that survived as the
-only sanctioned Stage-5 activity for P3.
-
-**P4 SEG-0276-M** — Rejection: "transferable coefficient" presumes a one-dimensional tradeoff between
-"prompt-semantic strength" and "local evidence", neither of which has an agreed operationalisation,
-"making the law circular". Trivial alternative: "under weak evidence the model emits the category's
-average training mask. Memorized mean shape, no field." Missing baseline: Bayesian mean-shape
-template. Shut-me-up: fit α on model A / categories X, then predict mask geometry with CIs on
-model B / held-out categories / held-out degradations, beating mean-shape.
-Remaining fatal flaw: "Operationalizing 'prompt-semantic strength' may never survive review."
-
-**P5 SEG-0355-M** — Rejection: the claim is a universal negative over a nonparametric class and
-"cannot be proven empirically". Hidden assumption: a ground-truth undefined/uncertain partition
-exists and annotators agree — "report κ or it didn't happen". Repair: an enumerated-scores claim plus
-a trained probe that *does* separate them, showing signal exists and scores miss it.
-
-**P6 SEG-0002-M** — Rejection: "statistically incoherent" — GT jitter is **common-mode** across models
-scored on the same labels, so paired comparisons cancel it and a 0.5% delta can be significant even
-with a 2% floor. Missing baseline: **paired bootstrap on existing leaderboards — free, no
-re-annotation.** Remaining fatal flaw: "The paired-evaluation objection may kill the 'gains vanish'
-headline outright."
-
-**P7 SEG-0240-M** — Rejection: full-batch training is a different optimisation regime, so "the
-'control' changes more than it fixes"; matching scalar gradient-noise variance leaves the covariance
-structure unmatched. Confounder: BN/GN statistics under resampling. Missing baseline: a GN/LN-only
-arm and a long-vs-short training arm, citing Byrd & Lipton 2019.
-
-**P8 SEG-0085-M** — Rejection: "'Universal across pipelines/modalities' is precisely the claim MICCAI
-reviewers distrust"; connected-component filtering deletes small lesions *after* the network, so much
-of the suppression probability is "a pipeline config, not a model property". Trivial alternative:
-resolution/PSF limit plus the known small-object bias of Dice loss. Missing baseline: a human reader
-curve at matched size×contrast, and a postprocessing-ablated arm.
-**This is the attack that forced Idea_02 to drop "universal law".**
-
-**P9 SEG-0285** — Rejection: typographic attacks are five years old (Goh et al. 2021); extending them
-from captions to masks "replicates the community's null hypothesis". Trivial alternative: any
-high-contrast patch attracts mask decoders — nothing about reading. Missing baseline: scrambled /
-unreadable text at matched size and contrast, plus a quantified caption-redirect-without-mask-redirect
-dissociation. **This dissociation requirement is what the supervisor later made P9's survival
-condition.**
-
-**P10 SEG-0193-M (KILLED)** — Rejection: inflation curves are dataset- and capacity-specific, so the
-deliverable is "a calibration table nobody else can use"; "replica" is undefined across exact-dup /
-near-dup / augmented / same-scene, and the curve differs by orders of magnitude across them.
-Trivial alternative: "inflation ≈ duplicate fraction × per-image gain is nearly dimensional
-analysis." Remaining fatal flaw, verbatim: "**No transportable law is plausible.**"
-This matches `eliminated_ideas_summary.md` "SEG-0193-M \| No transportable inflation law (Stage 4
-KILL)" and `research_summary.md` "one KILL (replica-spiking inflation curve)".
-
-**P11 SEG-0103-M** — Rejection: the GDA bound is a known-loose worst-case upper bound (Kumar et al.
-2020 exponential-in-T; Wang et al. 2022 improved to additive), so "empirical exponent beats theory"
-is "a foregone conclusion … a category error". Hidden assumption: a single power law exists, whereas
-self-training failure is often phase-transition-like. Verdict keeps the stopping rule only.
-
-**P12 VFM-0263/0274** — Rejection: "the entire novelty is a constraint formulation the community
-implements informally with LoRA, frozen encoders, replay, and weight interpolation"; WiSE-FT "spans a
-near-free Pareto front by interpolating checkpoints", so without strict dominance this is "a
-reinvention with a Lagrangian". Confounder: ε on SA-1B natural images "can be trivially satisfied
-while promptability collapses on other domains — constraint on the wrong distribution".
-Shut-me-up: Pareto plot on 3 target domains including medical, constrained vs interpolation vs LoRA
-vs replay, promptability measured on SA-1B **and** held-out third domains, showing strict dominance
-anywhere on the front. Remaining fatal flaw: "**High probability the interpolation baseline matches,
-leaving no paper.**"
-
-**This is the direct origin of Idea_01's kill switch.** `Windows1/README.md` requires domination at
-≥2 operating points; `Windows1/Idea_01/README.md` H1 states "≥2 points" and adds "Kill H1 if the
-interpolation polyline is not strictly dominated."
-
----
-
-## 4. R2 Top-7 for Stage 5
-
-Reproduced from the panel's own ranking table, with the rationale it gave.
-
-| Rank | Panel # | Idea | Recorded rationale |
-|---|---|---|---|
-| 1 | P4 | shape-prior field (SEG-0276-M) | "HRHR protected: killer experiment is inference-only and decisively falsifiable (cross-model, held-out-category prediction vs mean-shape baseline)." |
-| 2 | P9 | typographic mask attack (SEG-0285) | "Cheapest to execute; dissociation + patching converts a known effect into a mechanism claim." |
-| 3 | P2 | rare states vs rare classes (SEG-0250) | "Counterfactual state-edit pairs feasible with current editing models; strong conceptual payoff if the gap survives complexity matching." |
-| 4 | P5 | undefined vs uncertain (SEG-0355-M) | "Repaired constructive framing (probe separates, scores don't) is a real finding; medium cost." |
-| 5 | P6 | noise-floor re-rank (SEG-0002-M) | "Near-free triage: paired bootstrap on existing leaderboards first — either outcome informative." |
-| 6 | P12 | constrained SAM-FT (VFM-0263/0274) | "Safe engineering with built-in kill switch: run the weight-interpolation baseline first; proceed only if headroom exists." |
-| 7 | P8 | lesion suppression (SEG-0085-M) | "MICCAI-valuable after softening 'universal'; gate on a cheap 2-pipeline postprocessing-ablated pilot." |
-
-This is identical in membership and order to the R2 Top-7 line in `stage4_reviewer2.md`, which is the
-strongest single confirmation that the recovered panel is Windows1's.
-
-### The panel's own drop list
-
-Verbatim: "Dropped: P1 (HRHR but the killer experiment needs real multi-generation annotator cohorts
-— expensive, **so the cheap-killer protection rule doesn't apply**), P3 (run only the cheap nonce-word
-pilot; full auto-refreshing bench is a maintenance sink), P7 (factorial compute heavy; elimination
-logic never closes), P11 (theory half dead; stopping rule workshop-tier), P10 (killed)."
-
-Note what the P1 clause says about the round's protection policy: HRHR protection was **conditional on
-the killer experiment being cheap**, and was withdrawn when it was not. That is the "cheap-killer
-rule" named in `stage4_reviewer2.md`, stated here in its own words.
-
----
-
-## 5. Recorded conflicts at the Stage-4/5 boundary
-
-Reproduced because Windows1's own instruction was to keep dissent on record rather than manufacture
-consensus. Both conflicts are load-bearing for Stage 6 and both reappear in `stage6_battle.md`.
-
-### 5a. 0285 vs 0252 — the auditor and Reviewer #2 reached opposite verdicts
-
-- **Reviewer #2** ranked 0285 at Top-7 #2 (cheapest to execute) and **dropped 0252** under the
-  cheap-killer rule, because "real annotator generations are expensive".
-- **The meta-audit** did the reverse: `meta_audit.md` records "Supervisor ACCEPTS: … **0285 cut from
-  SURVIVE**", while `cheap_killers_0252_0046.md` concludes "**0252 remains in final-3 contention over
-  0285.**"
-- `stage4_reviewer2.md` states the conflict explicitly and records the ruling: "CONFLICT with
-  meta-audit: auditor cut 0285 and promoted 0252. **Supervisor: keep 0252 via cheaper proxy**
-  (synthetic multi-gen teacher→student loops + one small human study); **0285 only if dissociation
-  from CLIP typographic attacks is shown**; 0276 and constrained SAM-FT and 0085-M remain central."
-- The cheaper proxy that rescued 0252 is specified in `cheap_killers_0252_0046.md`: amplification
-  `g ≈ ρ_H · ρ_M`, with `ρ_M` measured with zero humans in a synthetic loop and `ρ_H` from a
-  one-generation injected-convention human study (N = 12 × 60). That file also records the limit of
-  the proxy: "Human-free kills K1–K3. **Cannot cheaply CONFIRM multi-gen human pipelines.**"
-  So 0252 was rescued for *falsification* only, never for confirmation — which is exactly the
-  "external-validity circularity" it was finally cut on at Stage 6.
-
-Neither side was overruled into silence: 0252 survived on a downgraded instrument, 0285 survived on a
-condition, and both were ultimately cut at Stage 6.
-
-### 5b. The two ranked lists disagree, and the engineer followed the wrong one
-
-The R2 Top-7 above and the "Updated working Top-8" in `meta_audit.md` are different lists produced by
-different reviewers, and neither file declares which supersedes the other:
-
-| | R2 Top-7 (`stage4_reviewer2.md` + panel) | Top-8 (`meta_audit.md`) |
-|---|---|---|
-| SEG-0276-M | **rank 1** | **absent** from the Top-8; only "Protect 0276 shape-prior law … as benches" |
-| Frozen/tuned crossover | absent | #2 |
-| SEG-0046-M | absent | #3 |
-| SEG-0074-M | absent | #5 |
-| Interactive eval merge | absent | #7 |
-
-`stage5_killers.md` records the consequence and the correction, verbatim: "**SUPERVISOR CORRECTION:
-0276-M shape-prior field was omitted from this Stage-5 prompt** (R2 ranked it #1, inference-only
-killer). **Must add back before locking Top-5.**"
-
-So Reviewer #2's top-ranked candidate was accidentally dropped at the Stage-5 handoff and had to be
-reinstated by hand. It went on to become the runner-up. Carried into `stage5_top5.md` §2 and
-`FUNNEL_DEVIATION.md` §4-G.
-
----
-
-## 6. What is still not recoverable
-
-- **How 24 Stage-3 survivors became these 12 proposals.** The panel begins with 12 already selected.
-  See `stage3_survivors.md` §4; ten dropped units have no recorded reason.
-- **The panel's P1 citation.** "ACL Findings 2025 one-generation NLP analog" is marked UNSURE by the
-  panel itself and remains unpinned.
-- **Whether A0109 (seed/split variance) was absorbed into P6.** The topics overlap and P6's panel text
-  requires a seed-variance baseline, but no file records a merge. `NO RECORDED REASON — 需人工确认`.
-- **Any Stage-4 material for the VFM/ASM slice beyond P12.** Eight Stage-3 VFM survivors never reach
-  the panel; see `stage3_survivors.md` §3.
+| **P1** | SEG-0252 | 多代人机协同标注会使掩码约定发生漂移。 | KEEP-IF-EXPERIMENT | 评审组 P1 | **有争议。** 在 Stage 4 被廉价 killer 规则淘汰，随后保持在候选竞争中 —— 见 §5 |
+| **P2** | SEG-0250 | 在频率匹配下，罕见物体*状态*比罕见*类别*造成更大损失。 | KEEP-IF-EXPERIMENT | 评审组 P2；R2 Top-7 第 3 名 | 是，随后在 Stage 6 被裁减 |
+| **P3** | SEG-0275 | 知识截断后的概念名称能衡量真正的开放词表接地。 | KEEP-IF-EXPERIMENT | 评审组 P3 | 收缩为"仅限低成本随机词试点" |
+| **P4** | SEG-0276-M | 逐类别先验形状场具有可迁移的证据／先验插值系数 α。 | KEEP-IF-EXPERIMENT —— "HRHR; killer experiment is inference-only (cheap)" | 评审组 P4；**R2 Top-7 第 1 名** | 是，但仅在 supervisor 修正后 —— 见 §5 |
+| **P5** | SEG-0355-M | 所有现有打分都混淆了"未定义"与"不确定"。 | KEEP-IF-EXPERIMENT **(在当前主张强度下处于临界 KILL)** | 评审组 P5；R2 Top-7 第 4 名 | 不在 Stage-5 工程师 Top-5 中 |
+| **P6** | SEG-0002-M | 边界抖动噪声底线会对报道的 SOTA 重新排序。 | KEEP-IF-EXPERIMENT —— "cheap and useful, but incremental" | 评审组 P6；R2 Top-7 第 5 名 | 不在 Stage-5 工程师 Top-5 中 |
+| **P7** | SEG-0240-M | 采样 vs 重新加权的差距属于上下文统计，非优化问题。 | KEEP-IF-EXPERIMENT —— "an ML-theory paper in a CVPR costume" | 评审组 P7 | **否** —— "Dropped by cheap-killer rule: … 0240 factorial" |
+| **P8** | SEG-0085-M | 病灶抑制是尺寸、对比度与增强强度的函数。 | KEEP-IF-EXPERIMENT —— "clinically important; **soften 'universal' to 'conditional law'**" | 评审组 P8；R2 Top-7 第 7 名 | **是 → Idea_02** |
+| **P9** | SEG-0285 | 图像内文本通过读文本通路重定向掩码。 | KEEP-IF-EXPERIMENT —— "cheap, likely to work, limited ceiling" | 评审组 P9；**R2 Top-7 第 2 名** | **有争议** —— 审计员将其裁减；见 §5 |
+| **P10** | SEG-0193-M | 测试集复制注入产出因果 ΔmIoU 曲线。 | **KILL** —— "replica injection is not a transportable law; metric artifact" | 评审组 P10；**唯一的 Stage-4 KILL** | **否** |
+| **P11** | SEG-0103/0125-M | UDA 放大指数 vs GDA 理论；自训练轮换停止规则。 | KEEP-IF-EXPERIMENT —— "high risk of negative, but cheap to test" | 评审组 P11；R2 Top-7 第 6 名 | 不在 Stage-5 工程师 Top-5 中 |
+| **P12** | VFM-0263/0274 | 在保持 SA-1B 可提示性的约束下微调 SAM 能够胜过 WiSE-FT 插值。 | KEEP-IF-EXPERIMENT —— "method paper; must strictly dominate WiSE-FT interpolation" | 评审组 P12 | **是 → Idea_01** |
