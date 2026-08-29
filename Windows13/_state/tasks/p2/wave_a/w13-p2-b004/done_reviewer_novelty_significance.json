@@ -1,0 +1,42 @@
+{
+  "task_id": "p2_wave_a_w13_p2_b004_reviewer_novelty_significance",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "batch_id": "W13-P2-B004",
+  "role": "reviewer_novelty_significance",
+  "candidate_count": 61,
+  "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b004/reviewer_novelty_significance.jsonl",
+  "input_master": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+    "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+    "lines": "184-244 inclusive",
+    "read_only": true
+  },
+  "batch_membership_source": "origin/cursor/p2-state-reader-05a0-101c Windows13/_state/tasks/p2/state_reader/batches.json batch_id=W13-P2-B004",
+  "score_scale": "1-10; higher=better for all dimensions except likelihood_already_published and risk (higher=worse); compute means compute-friendliness (higher=cheaper)",
+  "verdict_suggestion_tally": {
+    "keep_lean": 51,
+    "borderline": 10,
+    "kill_lean": 0
+  },
+  "gate8_flagged_count": 35,
+  "novelty_policy": "All novelty judgments unverified; no prior-art search executed; no citations fabricated. Suspected prior-art overlap flagged to lane p1_gate8_novelty_triage per M1, never silently killed. C-016 is on M1's explicit outvoted-prior-art-kill list and is held at borderline pending GATE-8 triage rather than killed by this reviewer. Zero kill_lean in this batch: no record is tautological or unfalsifiable outright; the weakest entries fail on prior-art shadow or cost, which are triage/Wave-B calls.",
+  "family_notes_for_wave_b": [
+    "M1 priority: C-016 (OOD trivial-baseline audit) is explicitly listed in queue.json M1 as an outvoted prior-art kill; it must clear p1_gate8_novelty_triage before any 200-cut entry. Reviewed borderline with high-severity flag, not killed.",
+    "M4 family C-003/C-004/C-057 (calibration-transfer-under-shift) completes in this batch with C-057, its cheapest T1 arm (accuracy-controlled scale regression). B003's reviewer suggested C-004 as anchor; adjudicate best-of-family across batches. C-009 (correction transfer matrix) is thematically adjacent and should be considered in the same adjudication.",
+    "dg19 reweighting-instability family: C-042 (suite reweighting, primary, absorbs C-038/C-076/C-100) vs C-034 (demographic/geographic strata, template-identical per Judge A). M7 protects the fairness-thin territory: C-034 is one of ~1 fairness carrier in the 1220 and must not be folded into C-042 purely on template/volume grounds; if only one survives, record the M7 consideration explicitly.",
+    "Unresolved absorb-direction conflicts requiring Wave-B resolution: (1) C-045 vs C-052 - Judge C recorded C-045 absorbing C-052, Judge A retained C-052 as dg17 primary (absorbing C-001); both stand on master; the objects (prompt-search budget confound vs class-name wording instability) are arguably distinct. (2) C-054 vs C-080 - Judge C recorded C-054 absorbing C-080, Judge A retained C-080 in dg18 as a distinct object (ablation-component claims vs SOTA-delta claims).",
+    "dg21 family C-032/C-079: Judge A recorded C-079 (test-informed selection) as absorbed by C-032 (adaptive overfitting, anomaly-flagged) as its mechanism arm, yet both stand on master. C-032 is the anchor: sharper design (release-date regression on existing replicas), higher significance. C-079 reviewed borderline accordingly.",
+    "dg29 label-noise pair C-010 (calibration decomposition) / C-025 (leaderboard resolving power): distinct outputs, shared human re-adjudication infrastructure; recommend joint execution or single-anchor adjudication.",
+    "Statistical-insufficiency block C-047 (support draws) / C-054 (seeds) / C-073 (test resampling, dg18 primary) / C-080 (ablation components) plus C-077 (harness variance, dg16 primary): one shared mechanism, five loci. C-073 and C-077 are the strongest anchors. M3 pooled eval-subject cap will bind hard here.",
+    "Contamination block C-023/C-024 (shared retrieval-index infrastructure - co-schedule), C-027 (source leakage, dg03 umbrella), C-032/C-079 (development-loop), C-069/C-072 (human-layer channels). C-069 (model-assisted annotation self-preference loop) and C-072 (vendor convention leakage) are the two most novel records in the batch (both Judge-C anomaly-flagged); C-072 is also the most fragile (dataset_availability 3, vague operationalization) and needs experimentalist pricing before the cut.",
+    "VLM shortcut trio C-089/C-090/C-092 (dg22/dg23, shared ablation methodology): C-090 (image-swap consistency) is the strongest - near-binary invariance statistic, clear artifact; C-089 (language-prior share) carries the batch's heaviest prior-art shadow (likelihood_already_published 8, borderline); C-092 (OCR-vs-reasoning) is a clean cheap decomposition. If M4 forces one, keep C-090.",
+    "Template pair C-008/C-044 (tail concealment: calibration vs macro-accuracy versions, cross-noted by Judge A): same concealment mechanism, different measured quantity; adjudicate as a pair at the cut.",
+    "Compute-heavy borderlines C-056 (SSL vs supervised matched pretraining) and C-058 (curation-complexity null) share the paired-pretraining cost profile (compute 3) and the scale-dependence objection that partially defuses any affordable null; C-056 additionally has missing Judge-B feasibility metadata on master (tracked debt).",
+    "M5 debt is near-universal: all 61 records are gen_c p1_wave_b_w1 with qualitative margins ('substantial', 'material', 'weak correlation') and no numeric kill thresholds; numeric retrofit owed before any enters the 200. Exceptions with naturally sharp statistics: C-075 (first-factor variance share), C-090 (answer-invariance rate), C-021 (simulation falsifier), C-047 (distribution overlap), C-057 (near-zero regression coefficient).",
+    "M3 crowding warning: this batch is 100% evaluation-methodology subject matter (contrarian-eval shard). Under the genre-blind pooled cap (eval-subject <= 25% of the 200), these 61 compete within the eval pool against B001-B003's evaluation-forensics blocks, not against the full 1220; Wave-B should rank them jointly with those blocks."
+  ],
+  "recommended_next_task_type": "p2_wave_a_review",
+  "complete": true
+}
