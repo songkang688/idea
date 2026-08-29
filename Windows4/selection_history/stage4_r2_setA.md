@@ -1,214 +1,214 @@
-# Stage 4 — Reviewer #2, Set A (50→20)
+# Stage 4 — Reviewer #2 评审攻击，集合 A (50→20)
 
-Date: 2026-08-28. Role: **Reviewer #2. Goal: REJECT.**
-Survival rule (from `evaluation_rubric.md`): a project survives **only if a REALISTIC experiment would silence the core attack**. Attacks that are philosophical, require a new foundation-model pretrain, or cannot be experimentally controlled ⇒ **KILL**.
+日期：2026-08-28。角色：**Reviewer #2。目标：拒稿（REJECT）。**
+存活规则（引自 `evaluation_rubric.md`）：一个项目存活的**唯一充分必要条件是一项现实可行的实验能够使核心攻击彻底哑口无言（silence the core attack）**。凡属哲学层面的、需要重新预训练新的基础模型的、或无法进行实验控制的攻击 ⇒ **KILL**。
 
-Epistemic status: **REVIEW JUDGMENT**. Citation policy: every named paper below either (a) appears in `stage3_kill_*.md` with an arXiv id claimed web-verified by the Stage-3 assassins, or (b) is a well-known public artifact cited from reviewer memory **without** an invented identifier and flagged for run-time verification. Architecture/dataset facts marked KNOWN FACT (code) are verifiable in the released `segment-anything` / `sam2` repositories or dataset cards. No fabricated papers, no fabricated numbers.
+认识状态（Epistemic status）：**评审判断（REVIEW JUDGMENT）**。引文政策：下文提及的每篇已命名论文要么 (a) 出现于 `stage3_kill_*.md` 中且附带由 Stage-3 狙杀者声称经过网络核实的 arXiv ID，要么 (b) 为审稿人凭借记忆引用的知名公开成果（**未**编造任何标识符，并已标记待运行时核实）。标有 KNOWN FACT (code) 的架构/数据集事实可在已开源的 `segment-anything` / `sam2` 代码库或数据集卡片中核实。绝无虚构论文，绝无虚构数据。
 
-Targets (assigned): P14, P101, P079, P103, P063, P060, P001, P004, P007.
-Set-A scoreboard: **4 REJECT / 5 WEAK ACCEPT** (all accepts conditional; cut order at the end).
-
----
-
-## P14 — S-014 / S-604 — Ablate image tokens inside a tight box, prompt fixed
-
-**Claim.** With tight GT boxes, destroying image evidence inside the box (embedding-zeroing, patch-shuffle, matched noise) barely changes Dice ⇒ SAM is a box-to-mask interpolator, not a model that "sees."
-
-**Strongest reject paragraph.** The proposed intervention cannot identify the claim. (i) It is off-manifold: zeroed/mean image embeddings and patch-shuffled interiors are inputs no natural image produces; decoder behavior under them licenses no conclusion about what the decoder consults on natural inputs — the standard ablation fallacy of interpretability. (ii) It is not even localized: the ViT encoder is global, so pixel-level corruption inside the box changes embeddings *everywhere* via attention, and embedding-level zeroing inside the box creates activation statistics the decoder has never seen; "image evidence inside the box" is not a manipulable variable at either level. (iii) A degenerate positive is guaranteed by architecture: SAM's decoder re-injects positional encodings into the image-embedding side of cross-attention at every layer (KNOWN FACT, code/paper appendix), so with features destroyed the decoder still receives a full positional scaffold — emitting a clean box-shaped mask from positions alone is what the machinery *should* do and reveals no discovered "prior." (iv) The payoff is asymmetric: if Dice collapses, the result is the null everyone already believes ("SAM sees") — Stage 3's own kill-condition concedes this; if Dice persists, points (i)–(iii) plus dataset geometry explain it without any interpolator claim.
-
-**Hidden assumption.** "Dice invariant under interior ablation ⇒ decoder ignores image evidence." The alternative with the identical signature: the *task* is degenerate — tight boxes on convex objects are near-sufficient statistics for the mask, so any mechanism (including a trivial one) scores high with or without image evidence.
-
-**Confounder.** Object convexity/solidity jointly drives both the box-fill null and the intact score; contrast stratification alone does not control it. The padding sweep {0,4,8,16 px} conflates prompt informativeness with ablated area.
-
-**Missing baselines.** (1) Prompt-only decoder — replace the *entire* image embedding with the dataset mean; that is the interpolator claim in one number. (2) A tiny trained box→mask regressor with no image input — if it matches ablated-SAM, "interpolation" is a property of label statistics, not of SAM. (3) Per-instance convexity-matched box-fill null, not a global one.
-
-**Why significance fails (as designed).** BREPS (arXiv:2601.15123, Stage-3-verified) and the box-artifact literature already discredited tight-box protocols on natural images; "tight-box evaluation is degenerate" is priced in. The only regime where a positive indicts *published numbers* is low-contrast medical, where tight boxes are the deployed protocol (MedSAM-class evaluation) — and the current design treats medical as one of two symmetric arms instead of the point.
-
-**Can an experiment shut me up? YES.** Redesign: (a) make **on-manifold natural counterfactuals** the primary intervention — diffusion-inpaint the object out (or swap in a different object) with the box held fixed; image evidence changes, input statistics stay natural, prompt constant; (b) demote embedding-zeroing / S-604 patch-shuffle to secondary convergence checks; (c) add the prompt-only and learned box→mask nulls, matched per instance on convexity; (d) make low-contrast medical the primary endpoint: report what fraction of MedSAM-protocol box-prompt Dice is reachable by the no-image-evidence null. If ablated/inpainted Dice ≈ intact Dice ≈ learned no-image null in the medical regime, while masks fail to track swapped-in content, the interpolator claim stands on manifold and I am silenced. **Pool note:** intervention (a) is the same instrument as P107v (B1-107 inpaint-object-out); merge or explicitly coordinate — do not spend two of 20 slots on one instrument.
-
-**Verdict: WEAK ACCEPT** (survive to 20), conditional on the redesign and the P107v merge. The original S-014 embedding-zeroing instrument alone: REJECT.
+分配目标：P14, P101, P079, P103, P063, P060, P001, P004, P007。
+集合 A 记分板：**4 个 REJECT / 5 个 WEAK ACCEPT**（所有 accept 均为条件性的；文末附有砍伐优先级排序）。
 
 ---
 
-## P101 — A1-101 — Prompt-embedding norm as training-free granularity knob
+## P14 — S-014 / S-604 — 提示固定下消融紧框内的图像 token
 
-**Claim.** Multiplying sparse prompt-token embeddings by a scalar α monotonically steers frozen SAM between part and whole; a latent, training-free granularity control.
+**主张（Claim）。** 在紧 GT 边界框下，销毁框内的图像证据（嵌入归零、patch 打乱、匹配噪声）几乎不改变 Dice ⇒ SAM 是一个框到 mask 的插值器，而非具备“视觉”能力的模型。
 
-**Strongest reject paragraph.** The pre-registered headline experiment cannot distinguish the interesting hypothesis (granularity is *encoded* in prompt-token norm) from the boring one (norm is attention temperature). Scaling a prompt token scales its attention logits: α→0 approaches the unprompted condition, where SAM defaults to large salient wholes; α→∞ saturates attention on the point. A monotone α→mask-area curve over this range is therefore close to guaranteed by construction, and the planned success criterion (Spearman monotonicity of α vs mask area) will be met whether or not any granularity code exists. Worse, *area is not granularity*: area can grow by bleeding into background or neighboring instances — degradation, not whole-level segmentation. And with multimask output on, α modulates which of the three heads the predicted-IoU selector picks, so the apparent continuous knob may be SAM's documented discrete whole/part/subpart design observed through a selector.
+**最强拒稿段落（Strongest reject paragraph）。** 所提议的干预无法确证该主张。(i) 处于流形之外（off-manifold）：归零/均值图像嵌入和 patch 打乱的内部是任何自然图像都不会产生的输入；decoder 在其之下的行为无法推断 decoder 在自然输入下查阅了什么 — 这是可解释性研究中的标准消融谬误。(ii) 它甚至不是局部的：ViT encoder 是全局的，因此框内像素级破坏会通过注意力机制改变*各处*的嵌入，而框内嵌入级归零创造了 decoder 从未见过的激活统计量；“框内的图像证据”在任一层次上都不是可单独操纵的变量。(iii) 架构上注定了平凡的正结果：SAM 的 decoder 在每层的交叉注意力图像嵌入端重新注入了位置编码（KNOWN FACT，代码/论文附录），因此在特征被销毁时，decoder 仍接收到完整的位置支架 — 仅凭位置信息发射出干净的框状 mask 正是该机制*应当*具备的功能，并不揭示任何新发现的“先验”。(iv) 回报是非对称的：若 Dice 崩塌，结果是每个人早已相信的零假设（"SAM sees"）— Stage 3 自身的淘汰条件已承认这一点；若 Dice 保持不变，点 (i)–(iii) 外加数据集几何结构足以解释它，无需任何插值器主张。
 
-**Hidden assumption.** Mask area is a proxy for position in the *same object's* part–whole hierarchy. Only nested GT can test that; area cannot.
+**隐藏假设（Hidden assumption）。** “内部消融下 Dice 保持不变 ⇒ decoder 忽略图像证据”。具有完全相同表现的替代解释：*任务*本身是退化的 — 凸物体上的紧框几乎是 mask 的充分统计量，因此任何机制（包括平凡机制）无论有无图像证据都能拿到高分。
 
-**Confounder.** (1) IoU-head mask selection (the output head must be fixed). (2) LayerNorm inside the decoder re-normalizes the scaled token layer by layer, so the effective intervention is non-linear in α and layer-dependent — "norm" is not a clean coordinate.
+**混淆项（Confounder）。** 目标凸度/密实度共同决定了框填充零假设和完整图像得分；仅按对比度分层并不能控制它。填充扫描 padding {0,4,8,16 px} 将提示信息量与消融面积混淆在一起。
 
-**Missing baselines.** (1) Logit-threshold sweep on one fixed head — also training-free, also monotone in area, zero novelty; the comparison must be part/whole agreement at *matched mask area*. (2) Selecting among SAM's own three multimask outputs (Stage 3 already required this). (3) Direction control: rotate the prompt embedding to a random direction at identical norm — if "granularity" tracks norm regardless of direction, it is temperature, not a code. (4) GraCo (arXiv:2405.00587), if any capability claim survives.
+**缺失基线（Missing baselines）。** (1) 纯提示 decoder（Prompt-only decoder）— 将*整个*图像嵌入替换为数据集均值；这是一个数字即可表达的插值器主张。(2) 无图像输入的微型训练框→mask 回归器 — 若它匹敌消融后的 SAM，则“插值”是标签统计学的属性，而非 SAM 的属性。(3) 逐实例凸度匹配的框填充零假设，而非全局零假设。
 
-**Why significance fails.** GraCo and Semantic-SAM own the capability. If the knob merely interpolates within/between SAM's three designed levels, the finding is a re-parameterization of known structure. The mechanism nugget matters only if it beats the trivial baselines at matched area on nested part GT (PartImageNet / PACO-class part annotations — KNOWN real datasets, verify at run time) *and* generalizes beyond one checkpoint (SAM2, HQ-SAM); otherwise it is a single-model curiosity at workshop scale.
+**为何重要性（significance）不足（按原设计）。** BREPS (arXiv:2601.15123，经 Stage-3 核实) 和边界框伪影文献已经在自然图像上否定了紧框协议；“紧框评估是退化的”已被学界消化。正结果唯一能够质疑*已发表数据*的领域是低对比度医学影像，其中紧框是实际部署协议（MedSAM 类评估）— 而当前设计将医学影像视为两个对称分支之一，未将其作为核心重点。
 
-**Can an experiment shut me up? YES**, in 1–2 GPU-days: fix the mask head; sweep α; compare against threshold-sweep and three-head-selection at matched mask area on nested part/whole GT; run the fixed-norm random-direction control; require demonstrably valid *intermediate* granularities (masks matching a genuine intermediate level that no discrete head or threshold reaches); replicate on SAM2. If α beats both trivial baselines on part/whole agreement at matched area, direction matters, and intermediates are real, the temperature explanation dies and I am silenced.
+**实验能否让我闭嘴？能（YES）。** 重新设计：(a) 将**流形上的自然反事实**作为主要干预手段 — 在边界框保持固定的前提下，通过扩散模型 inpaint 擦除目标（或替换为不同目标）；图像证据改变，输入统计保持自然，提示恒定；(b) 将嵌入归零 / S-604 patch 打乱降级为次要收敛性检验；(c) 增加纯提示及学习得到的框→mask 零假设，在逐实例凸度上进行匹配；(d) 将低对比度医学影像作为主要终点：报告 MedSAM 协议框提示 Dice 中有多大比例可由无图像证据零假设达到。如果在医学体系下消融/inpainted Dice ≈ 完整 Dice ≈ 学习得到的无图像零假设，同时 mask 无法追踪替换进来的内容，则插值器主张在流形上成立，我将哑口无言。**候选池备忘：** 干预 (a) 与 P107v (B1-107 inpaint 擦除对象) 使用了相同的工具；应合并或明确协同 — 切勿在同一个工具上耗费 20 个名额中的 2 个。
 
-**Verdict: WEAK ACCEPT** — lowest tier; first to cut if the 20-slot quota binds. Without the matched-area baseline table: REJECT.
-
----
-
-## P079 — S-079 — SAM2 memory: position vs appearance collapse
-
-**Claim.** SAM2 memory embeddings encode position/order rather than appearance; shown by linear probes plus a causal permutation of temporal-position encodings.
-
-**Strongest reject paragraph.** As designed, the probe rediscovers the architecture's documented inputs. SAM2's memory entries carry *explicit learned temporal-position encodings* (KNOWN FACT, code — Stage 3 already noted the small fixed set of temporal encodings in `facebookresearch/sam2`); "position is linearly decodable from memory" is therefore true by construction, and a headline to that effect is code-reading with a probe. On the appearance side the probe is confounded by the data: in videos and volumes, position and appearance are strongly correlated — adjacent slices look alike, anatomy varies smoothly with index — so slice-index decodability may be appearance leaking through and vice versa; linear probes on correlated nuisances identify nothing without decorrelation. Finally, the causal arm (permute temporal encodings, measure Dice damage) shows only that the model *uses* position — unsurprising for a tracker built on recency — not that appearance is absent, and not that positional dominance *causes* the known 3D failures.
-
-**Hidden assumption.** That "position vs appearance" is a dichotomy recoverable by observational probes on natural sequences. It is not, absent decorrelated inputs.
-
-**Confounder.** (1) The additive, *known* positional code — must be subtracted/regressed out before any content claim. (2) Position–appearance correlation intrinsic to natural volumes and videos. (3) Probe capacity and the memory-features-vs-object-pointer distinction (different tensors, different claims).
-
-**Missing baselines.** (1) Identical probes on pre-memory image-encoder features — ViT positional embeddings make position decodable there too; the claim is only about memory if the position:appearance ratio *changes* at the memory bank. (2) Probe transfer across videos/volumes (generalization, not in-sequence curve-fitting). (3) Constructed decorrelation sequences — cut-together videos where appearance changes abruptly on a fixed positional schedule, and reordered-slice volumes doing the reverse.
-
-**Why significance fails (as designed).** The fix-market already concluded that recency/order assumptions fail and shipped five replacements (MedSAM-2 arXiv:2408.00874, SAM2Long arXiv:2410.16268, SAMURAI arXiv:2411.11922, DAM4SAM arXiv:2411.17576, SLM-SAM2 arXiv:2505.01854 — all Stage-3-verified). A probe that post-hoc explains what the fixes already exploit is commentary unless the probe statistic *predicts failure* out-of-sample better than trivial covariates (slice spacing, object size, motion magnitude). Scoop risk is live (the SAM2-analysis line, arXiv:2503.00042).
-
-**Can an experiment shut me up? YES.** Mandatory redesign: (a) regress out the known temporal encodings, probe the residual; (b) report the position:appearance information ratio at encoder vs memory — the *delta* is the claim; (c) run the constructed decorrelation sequences; (d) pre-register the predictive test: position-dominance computed on the prompted first half of a sequence must predict propagation collapse in the second half, benchmarked against the trivial covariates; (e) keep the causal permutation as the closing check. All frozen-model, cheap. If the ratio shifts toward position specifically at the memory stage after removing the explicit code, and the statistic predicts failure out-of-sample beyond covariates, I am silenced.
-
-**Verdict: WEAK ACCEPT**, conditional on (a) and (b) being mandatory. The headline as originally designed: REJECT.
+**裁决：WEAK ACCEPT**（存活至 20 强），取决于重新设计以及与 P107v 的合并。原有的 S-014 纯嵌入归零工具单独立项：REJECT。
 
 ---
 
-## P103 — S-103 — Portrait-matting pretrain → smoke transfer
+## P101 — A1-101 — 提示嵌入范数作为免训练的粒度旋钮
 
-**Claim.** Matting-pretrained models transfer to smoke better than COCO-segmentation-pretrained models; mechanism = shared soft-boundary structure.
+**主张（Claim）。** 将稀疏提示 token 嵌入乘以标量 α 能单调地引导冻结 SAM 输出在局部与整体之间切换；一种潜在的、免训练的粒度控制。
 
-**Strongest reject paragraph.** The evaluation is circular where it is measurable and unmeasurable where it is honest. The only smoke benchmarks with alpha ground truth (DS01–03 class, per Yuan et al. arXiv:1809.00774) are *synthetic alpha composites* — produced by exactly the compositing operation matting models are trained to invert. A matting-pretrained model winning alpha-MAE there demonstrates alignment with the benchmark's generative process, not transfer to smoke. On real smoke (SMOKE5K-real class), labels are binary and noisy (Stage 3's own inter-rater evidence: arXiv:2602.10858), so the soft-boundary mechanism — the entire scientific content — is untestable exactly where the claim needs to hold. Meanwhile the pretraining arms are confounded twice: (1) scale/diversity — matting corpora are ~10³–10⁴ images against 10⁵–10⁷ for segmentation pretraining, so either outcome is attributable to budget mismatch; (2) output-space alignment — the matting-pretrained network arrives with an alpha-regression head trained on alpha targets, while the COCO arm must learn one during fine-tuning; "matting wins" may reduce to "regression-head warm-start wins," which has nothing to do with smoke or soft boundaries.
+**最强拒稿段落（Strongest reject paragraph）。** 预注册的头条实验无法将有趣的假设（粒度*编码*在提示 token 范数中）与乏味的解释（范数就是注意力温度）区分开来。缩放提示 token 会缩放其注意力 logits：α→0 逼近无提示条件，此时 SAM 默认输出大尺度的显著整体；α→∞ 会使注意力在点上饱和。因此在该范围内单调的 α→mask 面积曲线在构造上几乎必然成立，计划的成功标准（α vs mask 面积的 Spearman 单调性）无论是否存在粒度编码都会被满足。更糟糕的是，*面积不等于粒度*：面积增大可以通过渗透到背景或邻近实例实现 — 这是性能退化，而非整体级别的分割。在开启 multimask 输出时，α 调节了 predicted-IoU 选择器选中三个头中的哪一个，因此表面上的连续旋钮可能只是通过选择器观察到的 SAM 既定离散整体/部分/子部分设计。
 
-**Hidden assumption.** That synthetic-composite alpha is a valid proxy for physical smoke transmittance, and that portrait/object matting boundary statistics (hair, fur — high-frequency thin geometry) resemble volumetric-media boundaries (low-frequency density ramps). Neither is established.
+**隐藏假设（Hidden assumption）。** mask 面积代表*同一目标*部分-整体层级中的位置。只有嵌套 GT 才能检验这一点；面积无法检验。
 
-**Confounder.** Pretrain scale/diversity; head alignment; synthetic-GT provenance shared with the pretraining task.
+**混淆项（Confounder）。** (1) IoU 头的 mask 选择机制（必须固定输出头）。(2) decoder 内部的 LayerNorm 逐层对缩放后的 token 重新归一化，因此有效干预在 α 上非线性且依赖于层深度 — “范数”并非一个干净的坐标。
 
-**Missing baselines.** (1) **Matting-pretrain-with-binarized-labels arm** — same images, same budget, soft labels destroyed: the one arm that isolates the soft-label mechanism from data provenance. (2) Segmentation-pretrain + brief alpha-head calibration on generic synthetic composites (head-alignment control). (3) Matched-budget subsample of the segmentation corpus. (4) Dark-channel transmission floor (already planned — keep).
+**缺失基线（Missing baselines）。** (1) 单一固定头上的 Logit 阈值扫描 — 同样免训练，在面积上同样单调，零新颖性；对比必须是在*匹配 mask 面积*下的部分/整体一致性。(2) 在 SAM 自身三个 multimask 输出之间进行选择（Stage 3 已要求）。(3) 方向对照：在相同范数下将提示嵌入旋转到随机方向 — 若“粒度”仅取决于范数而与方向无关，则它就是温度，而非编码。(4) GraCo (arXiv:2405.00587)，若保留任何能力主张。
 
-**Why significance fails (as designed).** "Pretrain provenance A beats B on niche domain C," without mechanism isolation, is a data point, not a law; smoke segmentation is a small field and the practitioner-actionable content ("start from a matting checkpoint") is consumed in one line.
+**为何重要性不足。** GraCo 和 Semantic-SAM 占据了该能力。若该旋钮仅在 SAM 设计的三个级别之间/内部进行插值，该发现只是已知结构的重新参数化。机制内核唯有在以下条件才具有价值：在嵌套部分 GT（PartImageNet / PACO 类部分标注 — KNOWN 真实数据集，运行时核实）上*且*在匹配面积下击败平凡基线，并能泛化到单个 checkpoint 之外（SAM2, HQ-SAM）；否则它只是 workshop 规模下针对单一模型的好奇探索。
 
-**Can an experiment shut me up? YES.** Four-arm pretrain design {COCO-seg, matting, matting-binarized, scratch} at matched fine-tune budgets and matched pretrain image counts where feasible; **primary endpoint on real smoke** (binary IoU + boundary-F) with sample-efficiency curves; synthetic alpha metrics demoted to secondary with the circularity caveat printed in the paper. The claim lives only if the ordering matting > matting-binarized > COCO holds on real smoke at low data budgets and the gap grows as smoke data shrinks. If matting ≈ matting-binarized, the soft-boundary mechanism is dead even if the transfer helps — report that and stop.
+**实验能否让我闭嘴？能（YES）**，需 1–2 GPU 天：固定 mask 输出头；扫描 α；在嵌套部分/整体 GT 上与匹配 mask 面积下的阈值扫描和三头选择进行对比；运行固定范数随机方向对照；要求展示出可证明有效的*中间*粒度（匹配真实中间级别的 mask，且无任何离散头或阈值能够达到）；在 SAM2 上复现。若 α 在匹配面积下的部分/整体一致性上击败两个平凡基线、方向具有决定性影响、且中间粒度真实存在，则温度解释被推翻，我将闭嘴。
 
-**Verdict: WEAK ACCEPT**, conditional on the binarized arm and the real-smoke primary endpoint. As designed (alpha-MAE on synthetic composites as headline): REJECT.
-
----
-
-## P063 — A1-063 + A1-067 — Refraction feature physics (glass)
-
-**Claim.** (063) Feature-flow vs pixel-flow mismatch from two ordinary frames localizes refractive regions, training-free. (067) ViT feature displacement through glass regresses on optically predicted refraction warp (Mitsuba renders).
-
-**Strongest reject paragraph.** For A1-063 the detector's signal is confounded with its own measurement error. Glass regions are precisely where the pixel-flow estimator's assumptions (brightness constancy, local rigidity) fail, so "foundation-feature flow disagrees with RAFT flow" fires wherever RAFT is wrong — specular highlights, motion blur, disocclusions, textureless regions — and glass co-occurs with all of them. The paper would then be measuring flow-estimator failure and rebranding it foundation-feature physics; the one baseline that tests this — RAFT forward–backward inconsistency alone, no foundation features anywhere — is absent from the Stage-3 design. For A1-067 the mechanistic regression is squeezed from both sides: refraction warps through common glassware are frequently sub-patch (<16 px), invisible to patch-quantized ViT features, so R²≈0 there is a resolution artifact, not absent physics; supra-patch warps are trackable by raw pixel correspondence, so R²>0 there is optics 101 for *any* feature, including color patches. Neither outcome says anything about representations unless the ViT is compared against a pixel-level null. Practically: Trans10K/GDD are single-image benchmarks, so the two-frame method needs re-shot or newly captured data — the headline comparison against supervised glass methods will happen on a small home-made set no reviewer will weight.
-
-**Hidden assumption.** That frozen-ViT feature-correspondence flow is a meaningful physical observable at sub-patch scales, and that the mismatch is specific to *refraction* rather than generic non-Lambertian weirdness.
-
-**Confounder.** Flow-estimator error spatially co-located with glass; attention context (a patch's feature moves because its *context* moved, not because its content refracted); camera-motion parallax at depth discontinuities mimicking refractive warp.
-
-**Missing baselines.** (1) RAFT forward–backward inconsistency / flow-uncertainty alone (RAFT: Teed & Deng, ECCV 2020 — KNOWN). (2) Pixel/color-patch correspondence as the null regressor in the Mitsuba arm — the ViT claim must beat "pixels track warp." (3) Saliency and monodepth-discontinuity baselines (planned — keep). (4) The mirror/specular-metal negative control (planned — keep; it is the only thing separating this from a generic weirdness detector).
-
-**Why significance fails (as designed).** Training-free two-frame glass detection is a capability without a customer — robotics stacks use learned models plus active sensing, and the supervised ceiling (GDNet/EBLNet line) sits far above any plausible training-free AUROC. The project's worth therefore rests entirely on the mechanism finding, which the 063-first ordering leaves unidentified.
-
-**Can an experiment shut me up? YES — if the program is reordered.** Run A1-067 first, fully controlled: Mitsuba scenes with an IOR sweep including IOR = 1.0 twins (identical geometry/lighting, no refraction) as the within-scene control; matched camera baselines; regress per-patch feature displacement on predicted optical warp **with pixel-correspondence R² as the printed null**; the representation-science claim is the *residual structure* — where ViT features under/over-shoot the optical prediction (attention-context signature) — not raw R²; use multi-resolution feature extraction (stride/dilation) to address sub-patch blindness. Only if a feature-specific, IOR-monotone signal exists beyond the pixel null does A1-063 proceed — with the FB-inconsistency and mirror controls mandatory — as an application section, not a standalone paper.
-
-**Verdict: WEAK ACCEPT** for the reordered program (A1-067 mechanism-first; A1-063 demoted to application). A1-063 as standalone flagship: REJECT.
+**裁决：WEAK ACCEPT** — 处于最低梯队；若 20 个名额吃紧则首当其冲被砍。若无匹配面积基线表：REJECT。
 
 ---
 
-## P060 — A1-060 — Depth-edge auto-prompts for glass
+## P079 — S-079 — SAM2 记忆机制：位置 vs 外观崩塌
 
-**Claim.** Monodepth depth-discontinuity boxes → SAM recovers most of manual-prompt IoU on glassware; chains two frozen models where each alone fails.
+**主张（Claim）。** SAM2 记忆嵌入编码的是位置/顺序而非外观；通过线性探针以及时间位置编码的因果置换证明。
 
-**Strongest reject paragraph.** The hypothesis has no physical content, because monocular depth is a *function of the RGB image*. Whatever edge the depth model draws at a glass boundary was computed from RGB evidence; "depth edges succeed where RGB edges fail" cannot mean depth contributes information beyond RGB — it can only mean "a large trained network extracts glass-relevant contours better than Canny," which is true of essentially any large model and is scientifically empty. The fair control is not RGB-Canny but a learned RGB boundary detector of comparable capacity; against that, the depth model's only remaining advantage is whatever glass supervision leaked into its training corpus — at which point the chain is a weakly-supervised glass detector assembled by accident, not "two frozen models where each alone fails." The design also hides its degrees of freedom in the unsolved middle step: edge maps do not give instances, and the edge→box grouping (contour closure, thresholds, NMS) will be tuned on Trans10K — training in disguise under a training-free banner.
+**最强拒稿段落（Strongest reject paragraph）。** 按照当前设计，探针只是重新发现了架构中明确记录的输入。SAM2 的记忆条目带有*显式学习的时间位置编码*（KNOWN FACT，代码 — Stage 3 已指出 `facebookresearch/sam2` 中存在少量固定时间编码）；因此“位置可从记忆中线性解码”在构造上必然属实，以此为头条无异于用探针去读代码。在外观方面，探针受到数据的混淆：在视频和体数据中，位置与外观高度相关 — 相邻切片看起来相似，解剖结构随索引平滑变化 — 因此切片索引的可解码性可能是外观信息泄漏的结果，反之亦然；在没有去相关的情况下，针对相关干扰变量的线性探针无法确证任何结论。最后，因果分支（置换时间编码，测量 Dice 损伤）仅表明模型*利用了*位置 — 这对于基于邻近性构建的跟踪器而言毫不意外 — 并不能证明外观缺失，也不能证明位置主导性*导致了*已知的 3D 失效。
 
-**Hidden assumption.** That depth *edges* are reliable on glass while depth *values* are not. Untested, and for clean transparent glass modern monodepth (Depth Anything class — KNOWN) often reports the background's depth straight through, yielding *no* boundary at the glass surface; the edge that does appear sits at the frame — which is an RGB edge.
+**隐藏假设（Hidden assumption）。** “位置 vs 外观”是可以通过自然序列上的观察性探针恢复的二分对立。在缺乏去相关输入的情况下，事实并非如此。
 
-**Confounder.** Glass supervision inside the depth model's training data; grouping-heuristic tuning; glass-type mix (framed vs frameless) dominating aggregate numbers.
+**混淆项（Confounder）。** (1) 加性的、*已知的*位置编码 — 在得出任何内容结论之前必须将其减去/回归剥离。(2) 自然体数据和视频中固有的位置-外观相关性。(3) 探针容量以及记忆特征 vs 对象指针之间的区别（不同张量，不同主张）。
 
-**Missing baselines.** Learned RGB boundary detector at matched capacity; SAM automatic-mask-generator + transparency scoring; a 100-label weakly-supervised detector (if that beats the chain, the zero-training constraint is theater); supervised ceiling (GDNet / EBLNet — planned).
+**缺失基线（Missing baselines）。** (1) 在记忆前图像 encoder 特征上的相同探针 — ViT 位置嵌入使位置在那里同样可解码；唯有当位置:外观比例在记忆库处*发生改变*时，该主张才特异于记忆机制。(2) 跨视频/体数据的探针迁移（泛化性，而非序列内曲线拟合）。(3) 构建的去相关序列 — 外观在固定位置时间表上突变的拼接视频，以及打乱切片顺序的体数据进行相反操作。
 
-**Why significance fails.** Even the best outcome — recovering "most of manual-prompt IoU" — recovers most of a number Han et al. (arXiv:2305.00278) showed is poor. The deliverable is a systems note in a niche with an existing supervised solution and no deployment story for the zero-training constraint. Stage 3 itself graded it junior-scope; at 50→20, junior-scope is fatal.
+**为何重要性不足（按原设计）。** 修复市场早已得出邻近性/顺序假设失效的结论，并交付了五种替代方案（MedSAM-2 arXiv:2408.00874, SAM2Long arXiv:2410.16268, SAMURAI arXiv:2411.11922, DAM4SAM arXiv:2411.17576, SLM-SAM2 arXiv:2505.01854 — 均经 Stage-3 核实）。事后解释修复方案早已利用的特性的探针只是评论性文章，除非该探针统计量在样本外*预测失效*的能力优于平凡协变量（切片间距、目标大小、运动幅度）。被抢跑风险非常真实（SAM2 分析线，arXiv:2503.00042）。
 
-**Can an experiment shut me up? NO.** The learned-RGB-boundary control is realistic to run — but any *positive* outcome remains attributable to "bigger trained model finds contours better than a filter," because monodepth is RGB-derived; no experiment in this design can make depth edges carry information beyond RGB, and the significance ceiling (systems note) is not experiment-addressable. → KILL.
+**实验能否让我闭嘴？能（YES）。** 强制重新设计：(a) 回归剥离已知的时间编码，探测残差；(b) 报告 encoder 处 vs 记忆库处的位置:外观信息比率 — 该 *delta* 才是核心主张；(c) 运行构建的去相关序列；(d) 预注册预测性测试：在序列提示的前半段计算出的位置主导性必须能够预测后半段的传播崩塌，对比平凡协变量；(e) 保留因果置换作为收尾检验。全部在冻结模型上进行，成本极低。若在去除显式编码后，比率在记忆阶段特异性地向位置偏移，且该统计量在样本外超出协变量地预测了失效，我将闭嘴。
 
-**Verdict: REJECT.**
-
----
-
-## P001 — C1-001 — SA-1B ↔ benchmark near-duplicate leakage audit
-
-**Claim.** SSCD/pHash near-dup retrieval between SA-1B and SA-23 / COCO / LVIS / DAVIS vals; if overlap exists, zero-shot SAM numbers are inflated.
-
-**Strongest reject paragraph.** This is a lottery ticket priced as a project. The modal outcome is null — SA-1B's licensed-photo-provider provenance (Stage-3-noted, from the SAM paper) makes benchmark overlap structurally unlikely, and Stage 3 already conceded "a null here is a tweet, not a paper." The positive branch is weaker than advertised: near-duplication is not contamination-caused inflation. Overlapped images are not exchangeable with clean ones — photographic style, scene type, and difficulty differ — so "overlapped subset scores higher than clean subset" is confounded by difficulty from the start. Establishing *inflation* requires matched-difficulty controls and, more fundamentally, a *relative* claim: SAM's margin over baselines must shrink on clean subsets — but the baselines carry their own contamination with COCO/LVIS training data, collapsing the comparison lattice. Technically the audit is not even clean: SA-1B was released downscaled with face/license-plate blurring (KNOWN FACT, dataset card — verify at run time), which perturbs both pHash and SSCD retrieval against benchmark originals; the measured overlap is a lower bound with unknown miss rate, and at 11M × val-set scale, false-positive near-dups (landmarks, sunsets, stock scenes) demand manual adjudication the "kills-or-dies-in-days" budget ignores.
-
-**Hidden assumption.** That overlap, if found, causally explains score differences rather than shared-difficulty confounding; that dedup tooling calibrated on web scrapes (Webster et al., arXiv:2303.12733 genre) transfers to blurred, downscaled licensed imagery.
-
-**Confounder.** Difficulty non-exchangeability of duplicate images; baseline contamination symmetric with SAM contamination.
-
-**Missing baselines.** Matched-difficulty clean control subsets; a positive-control calibration run — inject known duplicates at known transformation levels (downscale + blur) to estimate retrieval recall under SA-1B-style processing before believing any overlap rate.
-
-**Why significance fails.** SAM's zero-shot claims do not rest on margins small enough for plausible overlap rates (<1%) to overturn; even a confirmed overlap yields "numbers move ε on subset X" — a correction footnote. The only world where this is a paper is a large, verified, difficulty-controlled overlap that *reverses a margin* — a conjunction of unlikelihoods.
-
-**Can an experiment shut me up? NO** — my attack is on the payoff distribution, not on the method. The audit is competently designed and cheap; no experimental refinement changes the fact that its modal and median outcomes are unpublishable. Exactly as Stage 3 said: gating audit, not flagship. Run it as pre-registered hygiene (with the existing ≥0.5% stop rule) inside whichever eval paper survives; do not spend a Top-20 slot on it. → KILL as a project.
-
-**Verdict: REJECT** (as a Top-20 project; retain as an internal hygiene gate).
+**裁决：WEAK ACCEPT**，条件是 (a) 和 (b) 必须强制执行。原设计的头条版本：REJECT。
 
 ---
 
-## P004 — A1-004 — Topology/holes: prior vs convention vs postprocess decomposition
+## P103 — S-103 — 人像抠图预训练 → 烟雾迁移
 
-**Claim.** Three-way causal decomposition of SAM's missing genus>0 masks — decoder prior vs annotation convention vs postprocessing — via raw logits evaluated on COCO-ReM's genuinely-holed GT.
+**主张（Claim）。** 抠图预训练模型比 COCO 分割预训练模型能更好地迁移到烟雾；机制 = 共享的软边界结构。
 
-**Strongest reject paragraph.** Two of the three arms are already answered in public artifacts, and the third is unidentifiable without a forbidden intervention. Postprocessing: SAM's released pipeline fills holes below an area threshold (KNOWN FACT, code — `min_mask_region_area`); documenting that is code-reading, not research. Convention: COCO-ReM (arXiv:2403.18819) already established that COCO-2017 GT contained zero true holes, so no COCO-trained or COCO-evaluated model is rewarded for genus>0 output — published. The remaining arm, "decoder prior," has no independent mechanistic content: SAM's mask head is a per-pixel dot-product readout that can represent arbitrary spatial patterns, so there is no *architectural* obstruction to holes; any hole-aversion is training-label statistics. And the provenance of those statistics is the killer: SA-1B's final-stage masks were generated by the model pipeline itself (the data engine's fully automatic stage, per the SAM paper) with hole-filling in the loop — so "decoder prior" and "label convention" are the same variable at one remove. Separating them requires retraining SAM on hole-preserving labels — a new foundation pretrain, which the survival rules forbid. The remaining observational move (negative click inside the donut hole: can SAM emit genus>0 at all?) is a one-figure capability check that is a footnote whichever way it lands.
+**最强拒稿段落（Strongest reject paragraph）。** 该评估在可测量之处是循环论证，在诚实之处是不可测量的。唯一带有 alpha ground truth 的烟雾 benchmark（DS01–03 类，引自 Yuan et al. arXiv:1809.00774）是*合成 alpha 混合物* — 恰好由抠图模型被训练去逆向反解的混合操作所生成。抠图预训练模型在那里赢得 alpha-MAE 证明了其与 benchmark 生成过程的一致性，而非证明其迁移到了真实烟雾。在真实烟雾（SMOKE5K-real 类）上，标签是二值的且充满噪声（Stage 3 自身的标注者间证据：arXiv:2602.10858），因此软边界机制 — 即全部科学内容 — 在主张最需要成立的地方根本无法测试。与此同时，预训练分支受到双重混淆：(1) 规模/多样性 — 抠图语料库约为 10³–10⁴ 张图像，而分割预训练为 10⁵–10⁷ 张，因此任何结果都可归因于预算不匹配；(2) 输出空间对齐 — 抠图预训练网络自带针对 alpha 目标训练的 alpha 回归头，而 COCO 分支在微调期间必须从头学习一个；“抠图胜出”可能退化为“回归头热启动胜出”，这与烟雾或软边界毫无关系。
 
-**Hidden assumption.** That prior/convention/postprocess are separable by evaluation-only experiments. They are not: the interesting split (architecture vs training statistics) needs interventions on training.
+**隐藏假设（Hidden assumption）。** 合成混合 alpha 是物理烟雾透射率的有效代理，且人像/物体抠图的边界统计（毛发、羽毛 — 高频精细几何）类似于体积介质的边界（低频密度坡道）。两者均未确立。
 
-**Confounder.** SA-1B label provenance (model-annotated, hole-filled) collapses two arms of the decomposition into one.
+**混淆项（Confounder）。** 预训练规模/多样性；head 对齐状态；与预训练任务共享的合成 GT 来源。
 
-**Missing baselines.** Topology-capable baselines under the identical raw-logit protocol (U-Net, clDice-line methods) — though supplying them only sharpens a comparison whose conclusion (SAM under-represents holes; the causes are documented) is already assembled from published parts.
+**缺失基线（Missing baselines）。** (1) **带有二值化标签的抠图预训练分支** — 相同图像，相同预算，软标签被销毁：这是将软标签机制从数据来源中剥离出来的唯一分支。(2) 分割预训练 + 在通用合成混合物上对 alpha 头进行简短校准（head 对齐对照）。(3) 分割语料库的同等预算子采样。(4) 暗通道透射率底线（已有计划 — 保留）。
 
-**Why significance fails.** Topology-aware segmentation owns the metrics and the fixes (Hu et al. NeurIPS 2019; clDice CVPR 2021 — Stage-3-verified); COCO-ReM owns the GT diagnosis; SAM's code owns the postprocessing confession. A paper gluing these into a "decomposition" contributes attribution bookkeeping on a behavior nobody disputes, delivers no fix and no capability, and its practitioner-actionable content — "disable hole-filling and don't trust COCO-style GT" — is two sentences.
+**为何重要性不足（按原设计）。** “在细分领域 C 上预训练来源 A 优于 B”，若缺乏机制剥离，只是一个数据点而非规律；烟雾分割是一个小领域，从业者可操作的内容（“从抠图 checkpoint 开始”）一句话就能讲完。
 
-**Can an experiment shut me up? NO** within allowed budgets. The only experiment that would isolate a genuine decoder prior from label convention is retraining on hole-preserving labels (new pretrain → forbidden by rule). Everything runnable — raw-logit eval on COCO-ReM, negative-click probes — leaves the attack intact because both outcomes are footnotes. → KILL.
+**实验能否让我闭嘴？能（YES）。** 四分支预训练设计 {COCO 分割, 抠图, 抠图二值化, 从头训练}，在匹配微调预算以及可行情况下匹配预训练图像数量下进行；**主要终点建立在真实烟雾上**（二值 IoU + boundary-F）并附带样本效率曲线；合成 alpha 指标降级为次要，且论文中需印出循环论证 caveat 警告。该主张仅在以下情况下存活：在真实烟雾和低数据预算下，保持 抠图 > 抠图二值化 > COCO 的排序，且随着烟雾数据减少差距拉大。若 抠图 ≈ 抠图二值化，则即便迁移有帮助，软边界机制也宣告破产 — 报告该结论并停止。
 
-**Verdict: REJECT.**
-
----
-
-## P007 — S-007 — Scorer validity of test-time prompt evolution
-
-**Claim (Stage-3 mutated form).** Audit across unsupervised scorer families (CRF energy, NCut, predicted-IoU head, learned regressors) × datasets: when do test-time prompt-evolution proxies anti-correlate with clinical Dice.
-
-**Strongest reject paragraph.** This is a survey of Goodhart's law in a niche with one inhabitant. The qualitative conclusion — unsupervised quality proxies can be maximized away from the clinical target — is conceded *in the target paper itself*: SAMPOT's own failure analysis (arXiv:2310.17128, Stage-3-verified) reports the optimized prompt drifting out of the lung field because the scorer prefers wrong high-scoring masks. What the audit adds is an enumeration over an unbounded design space: scorer families × datasets × evolution operators have no natural boundary, so any reported "regime map" is a sample the authors chose — a different scorer or dataset can always be added or removed — and "when does it invert" has no out-of-sample content unless a *predictive law* is pre-registered (a measurable scene statistic forecasting inversion before the optimizer runs). Stage 1 flagged exactly this failure mode: "scorer choice cherry-pick." Absent the law, the deliverable is a table of anecdotes with confidence intervals.
-
-**Hidden assumption.** That "scorer validity" is a stable property of the scorer, rather than of the scorer × image-statistics × optimizer-budget interaction. If the latter, the audit's cells do not transfer and the map is dataset-bound.
-
-**Confounder.** Optimizer strength: a weak optimizer fails to exploit any scorer (everything looks safe); a strong one breaks all of them (everything looks unsafe). Apparent scorer differences may be optimization-budget artifacts unless budgets are equalized and pre-registered.
-
-**Missing baselines.** Random-walk prompt perturbation at matched step budget (present in the original S-007 sketch — must stay); a small *supervised* IoU-regressor scorer as the ceiling, bounding what any proxy could achieve.
-
-**Why significance fails.** Test-time prompt evolution is not deployed practice; its published corpus is essentially SAMPOT. A rigorous negative audit of a method nobody uses protects nobody — "who is wrong if we're right" returns approximately one author team, who already agreed with the finding in their own failure analysis. Executed perfectly, the venue ceiling is a negative-results workshop track.
-
-**Can an experiment shut me up? NO** as scoped. The rescue exists in principle — pre-register a scene-statistic predictor of scorer inversion and validate it out-of-sample, tying into predicted-IoU miscalibration — but that is a different, harder paper (failure *prediction*), it belongs inside the P031 calibration/IoU-head cluster, and it inherits the niche's significance ceiling either way. The audit as proposed cannot answer "unbounded design space + known conclusion + no customer" with any experiment. → KILL; fold the predicted-IoU-miscalibration fragment into P031.
-
-**Verdict: REJECT.**
+**裁决：WEAK ACCEPT**，条件是必须包含二值化分支并以真实烟雾为主要终点。原设计（以合成混合物上的 alpha-MAE 为头条）：REJECT。
 
 ---
 
-## Set-A verdict table
+## P063 — A1-063 + A1-067 — 折射特征物理学（玻璃）
 
-| Project | IDs | Core attack | Experiment silences it? | Verdict |
+**主张（Claim）。** (063) 来自两张普通帧的特征光流 vs 像素光流不匹配可在免训练条件下定位折射区域。(067) 透过玻璃的 ViT 特征位移对光学预测折射扭曲进行回归（Mitsuba 渲染）。
+
+**最强拒稿段落（Strongest reject paragraph）。** 对于 A1-063，检测器的信号与其自身的测量误差混淆在一起。玻璃区域恰恰是像素光流估计器假设（亮度恒定、局部刚性）失效的地方，因此“基础特征流与 RAFT 流不一致”会在 RAFT 出错的任何地方触发 — 镜面高光、运动模糊、遮挡消除、无纹理区域 — 而玻璃与这些现象全部共存。该论文届时衡量的将是光流估计器的失效，并将其重塑为基础模型特征物理学；测试这一点的唯一基线 — 单独的 RAFT 前后向不一致性（forward–backward inconsistency），完全不引入基础特征 — 在 Stage-3 设计中缺失。对于 A1-067，机制回归受到两头夹击：常见玻璃器皿的折射扭曲通常是子 patch 级别（<16 px），对 patch 量化的 ViT 特征不可见，因此那里的 R²≈0 是分辨率伪影而非物理缺失；超 patch 扭曲可通过原始像素对应追踪，因此那里的 R²>0 对*任何*特征（包括颜色块）都是光学常识。两类结果都不能说明表征的特性，除非将 ViT 与像素级零假设进行对比。在实践上：Trans10K/GDD 是单图像 benchmark，因此双帧方法需要重拍或新采集数据 — 与监督玻璃分割方法的头条对比将发生在一个审稿人不会重视的自制微型数据集上。
+
+**隐藏假设（Hidden assumption）。** 冻结 ViT 特征对应流在子 patch 尺度上是有意义的物理可观测量，且该不匹配特异于*折射*而非通用的非朗伯体异常。
+
+**混淆项（Confounder）。** 与玻璃空间共存的光流估计器误差；注意力上下文（patch 的特征发生移动是因为其*上下文*移动了，而非其内容发生了折射）；深度不连续处的相机运动视差模拟了折射扭曲。
+
+**缺失基线（Missing baselines）。** (1) 单独的 RAFT 前后向不一致性 / 光流不确定性（RAFT: Teed & Deng, ECCV 2020 — KNOWN）。(2) Mitsuba 分支中作为零假设回归器的像素/颜色块对应关系 — ViT 主张必须击败“像素追踪扭曲”。(3) 显著性和单目深度不连续性基线（已有计划 — 保留）。(4) 镜子/镜面金属负对照（已有计划 — 保留；这是将其与通用异常检测器区分开来的唯一要素）。
+
+**为何重要性不足（按原设计）。** 免训练的双帧玻璃检测是一个没有需求场景的能力 — 机器人技术栈使用学习模型加主动传感，而监督上限（GDNet/EBLNet 谱系）远高于任何合理的免训练 AUROC。因此该项目的价值完全取决于机制发现，而 063 在前的顺序使其未能确证。
+
+**实验能否让我闭嘴？能（YES） — 前提是重新排列研究顺序。** 首先运行 A1-067，进行完全受控的实验：Mitsuba 场景配合 IOR 扫描，包括作为场景内对照的 IOR = 1.0 孪生场景（完全相同的几何/光照，无折射）；匹配的相机基线；将逐 patch 特征位移对预测光学扭曲进行回归，**并将像素对应 R² 作为印在文中的零假设**；表征科学主张在于*残差结构* — 即 ViT 特征在何处欠调/超调于光学预测（注意力上下文特征）— 而非原始 R²；使用多分辨率特征提取（stride/dilation）解决子 patch 盲区。唯有在像素零假设之外存在特异于特征且在 IOR 上单调的信号时，A1-063 才能继续推进 — 且必须包含前后向不一致性和镜面控制 — 作为应用章节，而非独立论文。
+
+**裁决：WEAK ACCEPT**（针对重新排序后的方案：A1-067 机制优先；A1-063 降级为应用）。A1-063 作为独立旗舰：REJECT。
+
+---
+
+## P060 — A1-060 — 玻璃的深度边缘自动提示
+
+**主张（Claim）。** 单目深度不连续性边界框 → SAM 恢复了玻璃器皿上手动提示的大部分 IoU；级联了两个单独使用时均会失效的冻结模型。
+
+**最强拒稿段落（Strongest reject paragraph）。** 该假设缺乏物理内涵，因为单目深度是 *RGB 图像的函数*。深度模型在玻璃边界绘制的任何边缘都是从 RGB 证据中计算出来的；“深度边缘在 RGB 边缘失败处成功”不可能意味着深度贡献了 RGB 之外的信息 — 它只能意味着“一个大型训练网络比 Canny 能更好地提取玻璃相关轮廓”，这对于几乎任何大型模型都是成立的，在科学上毫无内容。公平的对照不是 RGB-Canny，而是相当容量的学习型 RGB 边界检测器；与此相比，深度模型唯一剩余的优势就是其训练语料中泄漏的玻璃监督信号 — 此时该级联只是偶然拼凑出的弱监督玻璃检测器，而非“两个单独失效的冻结模型”。该设计还将自由度隐藏在未解决的中间步骤中：边缘图不提供实例，边缘→框的成组（轮廓闭合、阈值、NMS）将在 Trans10K 上调优 — 属于打着免训练旗号的变相训练。
+
+**隐藏假设（Hidden assumption）。** 深度*边缘*在玻璃上可靠，而深度*数值*不可靠。此点未经检验，且对于干净的透明玻璃，现代单目深度（Depth Anything 类 — KNOWN）通常直接穿透报告背景的深度，在玻璃表面产生*零*边界；出现的边缘位于边框处 — 这本身就是 RGB 边缘。
+
+**混淆项（Confounder）。** 深度模型训练数据中的玻璃监督；成组启发式调优；主导聚合数据的玻璃类型配比（带框 vs 无框）。
+
+**缺失基线（Missing baselines）。** 匹配容量的学习型 RGB 边界检测器；SAM 自动 mask 生成器 + 透明度评分；100 标签的弱监督检测器（若击败该级联，零训练约束就是演戏）；监督上限（GDNet / EBLNet — 已有计划）。
+
+**为何重要性不足。** 即便最理想的结果 — 恢复“手动提示的大部分 IoU” — 恢复的也只是 Han et al. (arXiv:2305.00278) 指出效果很差的数值。交付成果是已有监督解决方案且缺乏免训练约束落地故事的小众系统简报。Stage 3 自身将其评为初级初阶规模（junior-scope）；在 50→20 筛选中，初阶规模是致命的。
+
+**实验能否让我闭嘴？不能（NO）。** 学习型 RGB 边界对照在运行上是可行的 — 但任何*正*结果仍然归因于“更大模型比滤波器更能找轮廓”，因为单目深度源自 RGB；该设计中的任何实验都无法使深度边缘携带 RGB 之外的信息，且重要性上限（系统简报）无法通过实验解决。→ KILL。
+
+**裁决：REJECT。**
+
+---
+
+## P001 — C1-001 — SA-1B ↔ Benchmark 近似重复泄漏审计
+
+**主张（Claim）。** SA-1B 与 SA-23 / COCO / LVIS / DAVIS 验证集之间的 SSCD/pHash 近似重复检索；若重合存在，则 zero-shot SAM 数据虚高。
+
+**最强拒稿段落（Strongest reject paragraph）。** 这是被当作项目定价的彩票。最大概率的结果是零结果 — SA-1B 的商业图库授权来源（Stage 3 已注意到，源自 SAM 论文）使得与 benchmark 的重合在结构上概率极低，Stage 3 已承认“此处的零结果只是一条社交媒体动态，而非论文”。正结果分支比宣传的更弱：近似重复并不等同于污染引起的虚高。重合图像与干净图像不可交换 — 摄影风格、场景类型和难度均有差异 — 因此“重合子集得分高于干净子集”从一开始就受到难度的混淆。确立*虚高*需要匹配难度的对照，更根本的是需要*相对*主张：SAM 相对基线的优势在干净子集上必须缩小 — 但基线自身带有与 COCO/LVIS 训练数据的污染，导致对比体系崩塌。技术上该审计甚至不够干净：SA-1B 发布时经过下采样并对人脸/车牌打码（KNOWN FACT，数据集卡片 — 运行时核实），这扰乱了针对原始 benchmark 的 pHash 和 SSCD 检索；测得的重合是漏报率未知的下界，且在 1100 万 × 验证集规模下，假阳性近似重复（地标、日落、素材库场景）需要人工判定，这被“数天内决定生死”的预算所忽略。
+
+**隐藏假设（Hidden assumption）。** 若发现重合，其因果解释了分数差异而非共享难度混淆；在网络爬取数据上校准的去重工具（Webster et al., arXiv:2303.12733 类）可迁移到打码、下采样的授权图像。
+
+**混淆项（Confounder）。** 重复图像的难度不可交换性；与 SAM 污染对称的基线污染。
+
+**缺失基线（Missing baselines）。** 难度匹配的干净对照子集；正对照校准运行 — 在已知变换水平（下采样 + 模糊）下注入已知重复项，以在相信任何重合率之前评估 SA-1B 风格处理下的检索召回率。
+
+**为何重要性不足。** SAM 的 zero-shot 主张所依赖的优势幅度，绝非合理的重合率（<1%）所能推翻的；即使确认了重合，得到的也只是“子集 X 上的数字变动了 ε” — 只是一个更正脚注。该工作成为论文的唯一下场是发现大规模、经核实、难度受控且*逆转了相对优势*的重合 — 这是极低概率事件的交集。
+
+**实验能否让我闭嘴？不能（NO）** — 我的攻击针对的是收益分布（payoff distribution），而非方法本身。该审计设计合格且成本低廉；任何实验改进都无法改变其中位数与最大概率结果均不可发表的事实。正如 Stage 3 所言：守门审计，而非旗舰。将其作为预注册的基本规范（采用既有的 ≥0.5% 停止规则）放在存活的评估论文中运行；不要为其消耗 Top-20 名额。→ 作为项目予以 KILL。
+
+**裁决：REJECT**（作为 Top-20 项目拒稿；保留作为内部规范守门机制）。
+
+---
+
+## P004 — A1-004 — 拓扑/孔洞：先验 vs 惯例 vs 后处理分解
+
+**主张（Claim）。** 通过在 COCO-ReM 真实带孔 GT 上评估的原始 logits，对 SAM 缺失 genus>0 mask 进行三方因果分解 — decoder 先验 vs 标注惯例 vs 后处理。
+
+**最强拒稿段落（Strongest reject paragraph）。** 三个分支中有两个已经在公开成果中得到解答，第三个在没有违禁干预的情况下无法确证。后处理：SAM 发布的 pipeline 会填充低于面积阈值的孔洞（KNOWN FACT，代码 — `min_mask_region_area`）；记录这一点属于代码阅读，而非学术研究。惯例：COCO-ReM (arXiv:2403.18819) 已经确立了 COCO-2017 GT 包含零真实孔洞，因此没有任何在 COCO 风格 mask 上训练或评估的模型会因 genus>0 输出而获得奖励 — 已发表。剩余分支“decoder 先验”没有独立的机制内涵：SAM 的 mask 头是逐像素的点积读出，可以表示任意空间模式，因此在*架构*上不存在孔洞障碍；任何孔洞厌恶都源自训练标签统计。而这些统计的来源更是致命的：SA-1B 最终阶段的 mask 是由模型 pipeline 自身生成的（数据引擎的全自动阶段，引自 SAM 论文），且循环中包含了孔洞填充 — 因此“decoder 先验”和“标签惯例”隔了一层实质上是同一个变量。将它们分开需要使用保留孔洞的标签重新训练 SAM — 这需要新的基础模型预训练，属于生存规则所禁止的范畴。剩余的观察性手段（在甜甜圈孔洞内进行负点击：SAM 究竟能否输出 genus>0？）是一张插图级的能力检验，无论结果如何都只是脚注。
+
+**隐藏假设（Hidden assumption）。** 先验/惯例/后处理可以通过纯评估实验进行分离。事实并非如此：有趣的划分（架构 vs 训练统计）需要对训练过程进行干预。
+
+**混淆项（Confounder）。** SA-1B 标签来源（模型标注、孔洞填充）将分解中的两个分支坍缩为一个。
+
+**缺失基线（Missing baselines）。** 相同原始 logit 协议下的具备拓扑能力的基线（U-Net, clDice 谱系方法）— 尽管提供它们只会使对比更加尖锐，而其结论（SAM 低估孔洞；原因已被记录）已由已发表的部分组装完毕。
+
+**为何重要性不足。** 感知拓扑的分割拥有现成的指标和修复方案（Hu et al. NeurIPS 2019; clDice CVPR 2021 — 经 Stage-3 核实）；COCO-ReM 拥有 GT 诊断；SAM 代码拥有后处理的坦白。将这些拼凑成“因果分解”的论文，只是对无人争议的行为进行归因簿记，没有提供修复方案和新能力，其对从业者有价值的内容 — “禁用孔洞填充且不要相信 COCO 风格的 GT” — 只有两句话。
+
+**实验能否让我闭嘴？在允许的预算内不能（NO）。** 唯一能将真实 decoder 先验从标签惯例中剥离出来的实验是使用保留孔洞的标签重新训练（新预训练 → 规则禁止）。所有可运行的实验 — COCO-ReM 上的原始 logit 评估、负点击探针 — 都无法消解该攻击，因为两种结局都是脚注。→ KILL。
+
+**裁决：REJECT。**
+
+---
+
+## P007 — S-007 — 测试期提示演化的评分器有效性
+
+**主张（Claim，Stage-3 变体形式）。** 跨无监督评分器家族（CRF 能量、NCut、predicted-IoU 头、学习回归器）× 数据集的审计：测试期提示演化代理在何时会与临床 Dice 呈负相关。
+
+**最强拒稿段落（Strongest reject paragraph）。** 这是在只有一个住户的细分领域里对古德哈特定律（Goodhart's law）的调查。定性结论 — 无监督质量代理可能被最大化偏离临床目标 — *在目标论文自身中已被承认*：SAMPOT 自身的失效分析 (arXiv:2310.17128，经 Stage-3 核实) 报告了优化后的提示漂移出了肺野，因为评分器偏好得分高但错误的 mask。该审计增加的内容只是在无界设计空间上的枚举：评分器家族 × 数据集 × 演化算子没有天然边界，因此任何报告的“体系图谱”都是作者选取的样本 — 随时可以添加或删除不同的评分器或数据集 — 且“何时发生反转”如果不预注册*预测定律*（在优化器运行前预测反转的可测量场景统计量），就没有任何样本外价值。Stage 1 恰恰指出了这种失效模式：“评分器选择存在 cherry-pick”。若无定律，交付成果只是一份附带置信区间的案例表格。
+
+**隐藏假设（Hidden assumption）。** “评分器有效性”是评分器的稳定属性，而非评分器 × 图像统计 × 优化器预算相互作用的属性。若是后者，审计的单元格无法迁移，图谱受限于具体数据集。
+
+**混淆项（Confounder）。** 优化器强度：弱优化器无法利用任何评分器（看起来都安全）；强优化器会破坏所有评分器（看起来都不安全）。除非优化预算对齐并预注册，否则表面上的评分器差异可能是优化预算伪影。
+
+**缺失基线（Missing baselines）。** 匹配步长预算下的随机游走提示微扰（存在于原始 S-007 草案中 — 必须保留）；作为上限的小型*监督* IoU 回归器评分器，界定任何代理所能达到的极限。
+
+**为何重要性不足。** 测试期提示演化并非部署实践；其已发表语料库实质上只有 SAMPOT。对无人使用的方法进行严格的负面审计无法保护任何人 — “若我们正确谁被证明是错的”大致只能对应一个作者团队，而他们已经在自己的失效分析中同意了这一发现。即使执行得完美无缺，其发表上限也只是负结果 workshop track。
+
+**实验能否让我闭嘴？按现有范围不能（NO）。** 救赎方案在原理上存在 — 预注册评分器反转的场景统计量预测因子并在样本外进行验证，与 predicted-IoU 校准失真关联 — 但那是另一篇难度更大的论文（失效*预测*），且它属于 P031 校准/IoU 头聚类，无论如何都会继承该领域的狭窄重要性上限。所提议的审计无法通过任何实验解答“无界设计空间 + 已知结论 + 无实际受众”。→ KILL；将 predicted-IoU 校准失真片段并入 P031。
+
+**裁决：REJECT。**
+
+---
+
+## 集合 A 裁决表（Set-A verdict table）
+
+| 项目 | ID 列表 | 核心攻击 | 实验能否使其闭嘴？ | 裁决 |
 |---|---|---|---|---|
-| P14 | S-014/S-604 | Off-manifold intervention + positional leakage + degenerate-task alternative | YES — on-manifold counterfactuals (inpaint/swap), prompt-only & learned box→mask nulls, medical primary endpoint | **WEAK ACCEPT** (merge with P107v) |
-| P101 | A1-101 | Attention-temperature artifact; area ≠ granularity; head-selection confound | YES — matched-area vs threshold-sweep & 3-head baselines, direction control, nested GT | **WEAK ACCEPT** (lowest tier) |
-| P079 | S-079 | Probe rediscovers explicit positional code; position–appearance correlation | YES — subtract known encodings, encoder-vs-memory ratio delta, decorrelated sequences, out-of-sample failure prediction | **WEAK ACCEPT** (conditional) |
-| P103 | S-103 | Synthetic-alpha circularity; pretrain-scale & head-alignment confounds | YES — binarized-matting arm, real-smoke primary endpoint, matched budgets | **WEAK ACCEPT** (conditional) |
-| P063 | A1-063/A1-067 | Flow-error confound (063); sub-patch/pixel-null squeeze (067) | YES — 067-first with IOR=1.0 twins + pixel-correspondence null; 063 demoted to application with FB-inconsistency & mirror controls | **WEAK ACCEPT** (restructured) |
-| P060 | A1-060 | Monodepth is RGB-derived ⇒ no information beyond RGB possible; junior-scope ceiling | NO — any positive is "big model beats Canny"; significance not experiment-addressable | **REJECT** |
-| P001 | C1-001 | Modal outcome null; positive branch difficulty-confounded; ε-sized stakes | NO — attack is on the payoff distribution, not the method | **REJECT** (keep as hygiene gate) |
-| P004 | A1-004 | Two arms already published; prior-vs-convention split needs retraining SAM (forbidden) | NO — identification requires new foundation pretrain | **REJECT** |
-| P007 | S-007 | Goodhart survey, unbounded design space, one-paper niche, conclusion pre-conceded | NO — rescue is a different paper inside P031; significance ceiling immovable | **REJECT** |
+| P14 | S-014/S-604 | 偏离流形的干预 + 位置信息泄漏 + 退化任务的替代解释 | 能（YES） — 流形上的反事实（inpaint/swap），纯提示与学习的框→mask 零假设，以医学为主要终点 | **WEAK ACCEPT** (与 P107v 合并) |
+| P101 | A1-101 | 注意力温度伪影；面积 ≠ 粒度；选头机制混淆 | 能（YES） — 匹配面积下对比阈值扫描与 3 头基线，方向对照，嵌套 GT | **WEAK ACCEPT** (最低梯队) |
+| P079 | S-079 | 探针重新发现显式位置编码；位置-外观相关性 | 能（YES） — 减去已知编码，encoder vs 记忆比率差值，去相关序列，样本外失效预测 | **WEAK ACCEPT** (条件性) |
+| P103 | S-103 | 合成 alpha 循环论证；预训练规模与 head 对齐混淆 | 能（YES） — 二值化抠图分支，以真实烟雾为主要终点，匹配预算 | **WEAK ACCEPT** (条件性) |
+| P063 | A1-063/A1-067 | 光流误差混淆 (063)；子 patch/像素零假设夹击 (067) | 能（YES） — 067 优先配合 IOR=1.0 孪生场景 + 像素对应零假设；063 降级为带有前后向不一致与镜面控制的应用 | **WEAK ACCEPT** (重构结构) |
+| P060 | A1-060 | 单目深度源自 RGB ⇒ 不可能带来 RGB 之外的信息；初阶上限 | 不能（NO） — 任何正结果都是“大模型击败 Canny”；重要性无法通过实验解决 | **REJECT** |
+| P001 | C1-001 | 最大概率为零结果；正结果分支受难度混淆；ε 级别的微小利害 | 不能（NO） — 攻击针对的是收益分布，而非方法本身 | **REJECT** (保留作为规范守门) |
+| P004 | A1-004 | 两个分支已发表；先验 vs 惯例划分需要重新训练 SAM (规则禁止) | 不能（NO） — 确证需要新的基础预训练 | **REJECT** |
+| P007 | S-007 | 古德哈特调查，无界设计空间，单论文小众领域，结论已被预先承认 | 不能（NO） — 挽救方案是 P031 内部的另一篇论文；重要性上限不可撼动 | **REJECT** |
 
-## Consequences for the pool (supervisor notes)
+## 对候选池的影响（致导师备忘）
 
-1. **Slot arithmetic.** Set A: 5 survive / 4 die. If the global 20-slot quota binds after Set B/C reviews, cut my accepts in this order: P101 first, P103 second — both are lowest-tier conditional accepts.
-2. **Merge P14 into/with P107v.** The redesigned P14 and B1-107 share the inpaint-object-out instrument. One paper, one slot. Failing to merge wastes a slot and invites a self-scoop.
-3. **Glass program shrinks from 3 slots to 1.** A1-067-led mechanism paper with A1-063 as its application section; A1-060 dead. The pool should not carry "glass" as a theme — it carries one representation-physics question.
-4. **P007's residue** (predicted-IoU miscalibration as an unsafe optimization target) belongs inside P031 (C1-031 calibration cluster), not as a standalone.
-5. **P001 stays in the process, out of the Top 20:** pre-registered hygiene gate with the Stage-3 stop rule (≥0.5% overlap → escalate; else one paragraph in an eval-hygiene appendix).
-6. **Pattern warning for Set B/C reviewers:** three of my four kills failed the same test — the *positive* branch of the experiment was not publishable (P060: attributable to model scale; P001: ε-stakes; P004: attribution bookkeeping). Check every remaining project's best-case outcome, not just its falsifiability.
+1. **名额核算。** 集合 A：5 个存活 / 4 个淘汰。若在 Set B/C 评审后全局 20 个名额吃紧，按以下顺序砍掉我的 accept：首先 P101，其次 P103 — 两者均为最低梯队的条件性 accept。
+2. **将 P14 并入/协同 P107v。** 重新设计的 P14 与 B1-107 共享 inpaint 擦除对象的工具。一篇论文，一个名额。不进行合并将浪费名额并导致自我撞车。
+3. **玻璃研究计划从 3 个名额缩减为 1 个。** 由 A1-067 主导的机制论文，以 A1-063 作为其应用章节；A1-060 淘汰。候选池不应将“玻璃”作为一个主题保留 — 它只承载一个表征物理学问题。
+4. **P007 的残留部分**（predicted-IoU 校准失真作为不安全的优化目标）归入 P031（C1-031 校准聚类），而非单独成文。
+5. **P001 留在流程中，排除在 Top 20 之外：** 作为带有 Stage-3 停止规则的预注册规范守门机制（≥0.5% 重合 → 升级处理；否则在评估规范附录中写一段话）。
+6. **对 Set B/C 评审员的模式预警：** 我的四个 kill 项中有三个未能通过同一项检验 — 实验的*正结果*分支不具备可发表性（P060：归因于模型规模；P001：ε 级别利害；P004：归因簿记）。请检查每个剩余项目的最佳情况结局，而不仅仅是其可证伪性。

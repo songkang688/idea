@@ -1,174 +1,111 @@
-# AlphaSmoke — Metrics & Measurement Protocol
+# AlphaSmoke — 评估指标与测量协议规范
 
-Status: PROTOCOL SPECIFICATION. Definitions below are what `src/alphasmoke` implements;
-every formula is standard and attributed. Before any paper-bound number is produced,
-implementations must be cross-checked against released evaluation code of the cited
-protocols (runbook step R1) — noted per metric as **verify-against**.
+状态说明：PROTOCOL SPECIFICATION。以下定义为 `src/alphasmoke` 所实现的内容；每个公式均为标准公式并注明了来源出处。在生成任何用于论文的数据之前，所有实现必须与所引用协议公开发布的评测代码进行交叉比对核验（运行手册步骤 R1）—— 在各指标下标记为 **verify-against（核对目标）**。
 
-Notation: prediction `p ∈ [0,1]^{H×W}` (soft map), alpha GT `a ∈ [0,1]^{H×W}`, binary
-GT `g ∈ {0,1}^{H×W}`, binarized prediction `p̂ = 1[p ≥ τ_op]` under the frozen
-operating rule (experiments.md §1.1).
+数学符号约定：模型预测 `p ∈ [0,1]^{H×W}`（软掩码/概率图），alpha GT `a ∈ [0,1]^{H×W}`，二值 GT `g ∈ {0,1}^{H×W}`，在冻结运行规则下的二值化预测 `p̂ = 1[p ≥ τ_op]`（详见 experiments.md §1.1）。
 
 ---
 
-## 1. Alpha-error family (Rhemann et al., CVPR 2009 suite `[S3]`)
+## 1. Alpha 误差指标族（Rhemann et al., CVPR 2009 评测套件 `[S3]`）
 
-Implemented in `src/alphasmoke/metrics/alpha_metrics.py`.
+实现位于 `src/alphasmoke/metrics/alpha_metrics.py`。
 
-| Metric | Definition | Notes |
+| 指标 | 精确数学定义 | 备注说明 |
 |---|---|---|
-| MAE | mean(&#124;p − a&#124;) over evaluation region | headline alpha metric for Part A tertiary endpoint |
-| SAD | Σ&#124;p − a&#124; (reported ÷1000 by matting convention) | scale-dependent; report with resolution |
-| MSE | mean((p − a)²) | per-image; dataset aggregate = mean over images |
-| Gradient (Grad) | Σ(‖∇σ p‖ − ‖∇σ a‖)² with ∇σ = first-order Gaussian derivative, σ=1.4 | verify-against: matting-benchmark ports differ in σ and normalization |
-| Connectivity (Conn) | Rhemann connectivity with threshold ladder step 0.1, θ=0.15 | uses largest connected component of thresholded p∧a per level; verify-against: community Python ports |
+| MAE | 评估区域上的 mean(&#124;p − a&#124;) | Part A 第三终点的核心 alpha 指标 |
+| SAD | Σ&#124;p − a&#124;（按抠图领域惯例除以 1000 报告） | 依赖分辨率；报告时需注明图像分辨率 |
+| MSE | mean((p − a)²) | 逐图像计算；数据集聚合 = 跨图像均值 |
+| 梯度误差 (Grad) | Σ(‖∇σ p‖ − ‖∇σ a‖)²，其中 ∇σ 为一阶高斯导数，σ=1.4 | 核对目标：抠图基准的不同实现版本在 σ 和归一化方式上可能存在差异 |
+| 连通性误差 (Conn) | Rhemann 连通性，阈值阶梯步长 0.1，θ=0.15 | 对每个阈值级别使用阈值化 p∧a 的最大连通分量；核对目标：开源社区 Python 实现 |
 
-Evaluation region: full frame for smoke (no trimap exists); where a benchmark defines
-an unknown-region trimap, both full-frame and trimap-region variants are reported.
+评估区域：烟雾图像采用全画幅评估（因烟雾不存在 trimap 三分图）；若某些基准定义了未知区域 trimap，则同时报告全画幅与 trimap 区域两种变体。
 
-## 2. Binary-overlap family
+## 2. 二值重叠指标族
 
-Implemented in `src/alphasmoke/metrics/binary_metrics.py`.
+实现位于 `src/alphasmoke/metrics/binary_metrics.py`。
 
 ### 2.1 IoU / Dice
 
-Standard set overlap of `p̂` vs `g`; per-image, then dataset mean (mIoU). Empty-∪-empty
-convention: score 1.0 when both prediction and GT are empty (convention printed in the
-paper; smoke test sets contain no-smoke frames).
+`p̂` 与 `g` 的标准集合重叠度；逐图像计算后取数据集均值（mIoU）。空集对空集约定：当预测与 GT 均为空时得分为 1.0（该约定将在论文中明确打印；烟雾测试集中包含无烟图像帧）。
 
-### 2.2 Fβ (B4 column)
+### 2.2 Fβ（B4 评估列）
 
-Fβ = (1+β²)·P·R / (β²·P + R) with **β² = 0.3** (saliency/smoke convention used by the
-SMOKE5K line — FoSp AAAI 2024 `[V]`). **verify-against:** FoSp released eval code —
-whether P/R are computed from a per-image adaptive threshold (2×mean saliency
-convention) or a fixed threshold, and whether the dataset aggregate is mean-of-Fβ or
-Fβ-of-means. The choice found in the released code is frozen as `τ_op` for all arms.
+Fβ = (1+β²)·P·R / (β²·P + R)，其中 **β² = 0.3**（SMOKE5K 系列所采用的显著性/烟雾分割惯例 — FoSp AAAI 2024 `[V]`）。**核对目标：** FoSp 公开发布的评测代码 —— 查明 P/R 是基于逐图像自适应阈值（2×均值显著性惯例）计算还是基于固定阈值计算，以及数据集聚合是各图 Fβ 的均值还是基于均值 P/R 计算的 Fβ。在开源代码中确认的选择将被冻结为所有分支通用的 `τ_op`。
 
-### 2.3 mMse (B4 column)
+### 2.3 mMse（B4 评估列）
 
-Per-image MSE between the *soft* prediction and the **binary** GT, averaged over the
-dataset — the SMOKE5K protocol's mMse (Yan et al. AAAI 2022 `[S3]`; FoSp `[V]`).
-**verify-against:** released SMOKE5K/FoSp eval code (scaling ×100 vs raw; soft-vs-
-binarized prediction input). This column is load-bearing: pre-registered kill K-B1
-compares rankings under mMse-on-binary-GT with alpha-MAE-on-alpha-GT.
+*软*预测概率图与**二值** GT 之间的逐图像 MSE 在数据集上的平均值 —— SMOKE5K 协议的 mMse（Yan et al. AAAI 2022 `[S3]`; FoSp `[V]`）。**核对目标：** 已发布的 SMOKE5K/FoSp 评测代码（缩放系数 ×100 还是原始值；软预测输入还是二值化预测输入）。该列具有承重作用：预注册终止条件 K-B1 将二值 GT 上的 mMse 排名与 alpha GT 上的 alpha-MAE 排名进行对比。
 
-### 2.4 Boundary-F (primary-endpoint component)
+### 2.4 Boundary-F（主要终点组成部分）
 
-BF-style boundary F1: boundary pixels of `p̂` and `g` matched within distance tolerance
-θ_d = 2 px via distance transforms; precision/recall over matched boundary pixels;
-report also at θ_d ∈ {1, 5} px in the appendix. verify-against: BSDS/DAVIS-style
-implementations differ in boundary extraction (4- vs 8-neighborhood).
+BF 风格的边界 F1 分数：`p̂` 与 `g` 的边界像素通过距离变换在距离容差 θ_d = 2 px 范围内进行匹配；计算匹配边界像素的 Precision/Recall；在附录中亦报告 θ_d ∈ {1, 5} px 时的结果。核对目标：BSDS/DAVIS 风格实现在边界提取邻域（4-邻域 vs 8-邻域）上的差异。
 
-## 3. Rank agreement (Part B pillar 1)
+## 3. 排名一致性协议（Part B 支柱 1）
 
-Implemented in `src/alphasmoke/metrics/rank_agreement.py`.
+实现位于 `src/alphasmoke/metrics/rank_agreement.py`。
 
-1. For each metric m and checkpoint c: per-image scores → dataset score S_m(c).
-2. **Sign alignment:** each metric declares a direction (higher-better: IoU, Dice, Fβ,
-   boundary-F; lower-better: MAE, SAD, MSE, mMse, Grad, Conn). Lower-better scores are
-   negated before ranking so τ = +1 always means "same ordering of model quality."
-3. Kendall τ (τ-b, tie-aware) for every metric pair → symmetric τ matrix.
-4. **Reversal enumeration:** for every metric pair, the set of checkpoints in the
-   top-3 under one metric but not the other, with rank displacements — the qualitative
-   payload Stage 3 asked for ("reversal cases among top-3 ranks").
-5. **Uncertainty:** bootstrap over images (resample image set with replacement,
-   recompute S_m(c), recompute τ; 10⁴ resamples; percentile CIs).
+1. 对于每个指标 m 和 checkpoint c：逐图像计算得分 → 得到数据集总得分 S_m(c)。
+2. **符号对齐（Sign alignment）：** 每个指标声明其优化方向（越大越好：IoU, Dice, Fβ, boundary-F；越小越好：MAE, SAD, MSE, mMse, Grad, Conn）。越小越好的指标在排名前取负数，使得 τ = +1 始终严格代表“模型质量排序完全相同”。
+3. 针对每对指标计算 Kendall τ（支持同秩处理的 τ-b）→ 构成对称的 τ 矩阵。
+4. **逆序反转枚举：** 针对每对指标，列出在某一指标下排进前 3（top-3）而在另一指标下未排进前 3 的 checkpoint 集合及其具体位移 —— 提供 Stage 3 所要求的定性佐证（“top-3 排名中的逆序案例”）。
+5. **不确定性度量：** 在图像层面上进行 Bootstrap（对图像集进行有放回重采样，重新计算 S_m(c)，重新计算 τ；10⁴ 次重采样；百分位数置信区间）。
 
-## 4. Measured-alpha recovery (Part B pillar 2, B3)
+## 4. 实测 Alpha 恢复算法（Part B 支柱 2, B3）
 
-Implemented in `src/alphasmoke/alpha_recovery/background_inversion.py`.
+实现位于 `src/alphasmoke/alpha_recovery/background_inversion.py`。
 
-### 4.1 Model
+### 4.1 物理光学模型
 
-Single-scattering compositing on a static, exposure-locked camera:
+在静态、锁定曝光相机下的单次散射图像合成模型：
 
     I(x) = α(x)·F + (1 − α(x))·B(x)
 
-- `B(x)`: per-pixel clean background, estimated as the temporal median of ≥ K pre-smoke
-  frames (default K=10; median suppresses transient motion).
-- `F`: smoke color, assumed locally uniform per frame; estimated from the densest
-  smoke region (pixels with largest ‖I−B‖, top quantile q=0.02) or supplied from a
-  calibrated lab target.
-- Per-pixel least squares across channels:
+- `B(x)`：逐像素纯净背景，估计为 ≥ K 帧烟雾出现前背景帧的时间中位数（默认 K=10；中位数可有效滤除瞬态微小运动）。
+- `F`：烟雾自身颜色，假设单帧内局部均匀；从最浓密烟雾区域（‖I−B‖ 最大的像素，top 分位数 q=0.02）估计得到，或由经过校准的实验室标定目标提供。
+- 跨颜色通道的逐像素最小二乘解析解：
 
-    α(x) = ⟨I(x)−B(x), F−B(x)⟩ / ‖F−B(x)‖² , clipped to [0,1].
+    α(x) = ⟨I(x)−B(x), F−B(x)⟩ / ‖F−B(x)‖²，截断至 [0,1]。
 
-### 4.2 Validity mask (all exclusions binding, from the Set-C verdict)
+### 4.2 有效性掩码（所有排除条件均具约束力，源自 Set-C 评审裁决）
 
-A pixel enters evaluation only if **all** hold:
+仅当**全部**满足以下条件时，像素方可纳入评估：
 
-1. not saturated in I or B (any channel outside [ε, 1−ε], default ε = 2/255);
-2. conditioning: ‖F − B(x)‖ ≥ δ (default δ = 0.08 in [0,1] units) — where smoke color
-   ≈ background color, α is unidentifiable;
-3. sensitivity: std of α(x) under F perturbed by ±Δ (default Δ = 0.05 per channel,
-   8 perturbations) ≤ s_max (default 0.10). Sensitivity maps are released with the
-   dataset.
+1. 在 I 或 B 中均未过曝/欠曝饱和（任何通道均处于 [ε, 1−ε] 内，默认 ε = 2/255）；
+2. 适定条件：‖F − B(x)‖ ≥ δ（在 [0,1] 尺度下默认 δ = 0.08）—— 当烟雾颜色与背景颜色过于接近时，α 在物理上是不可辨识的；
+3. 敏感性约束：在 F 受到 ±Δ 扰动（默认每通道 Δ = 0.05，共 8 种扰动组合）下 α(x) 的标准差 ≤ s_max（默认 0.10）。敏感性图谱将随数据集公开发布。
 
-Frame-level QC: exposure lock verified from EXIF/camera log; frames with global
-illumination change vs background (median |I−B| on smoke-free border region > 0.02)
-are dropped; backlit/plume-shadow scenes excluded by protocol
-(`configs/alpha_capture.yaml`).
+帧级别质检：从 EXIF/相机日志中验证曝光锁定；相对于背景存在全局光照变化的帧（无烟边缘区域的中位数 |I−B| > 0.02）予以剔除；协议中明确排除强逆光/羽流自阴影场景（`configs/alpha_capture.yaml`）。
 
-### 4.3 What this does and does not claim
+### 4.3 该方法宣称与未宣称的内容
 
-- **KNOWN FACT:** the compositing identity is exact for a single non-emissive
-  scattering layer with locally uniform effective color; it is the same model that
-  generated DS0x synthetic GT — but here α is *measured from real smoke optics*, not
-  authored, which is precisely what breaks the circularity attack.
-- **MODEL SPECULATION (bounded):** real smoke violates local-uniform-F under strong
-  multiple scattering / self-shadowing; the sensitivity mask converts this from a
-  silent bias into an explicit exclusion + released uncertainty map.
+- **KNOWN FACT：** 对于局部有效颜色均匀且无自发光的单层散射介质，该合成恒等式在物理上是精确成立的；它与生成 DS0x 合成 GT 的物理模型完全相同 —— 但此处的 α 是*从真实烟雾光学中测得*而非人工合成的，这彻底化解了循环论证攻击。
+- **MODEL SPECULATION（有界控制）：** 真实烟雾在强多次散射/自阴影下会违背局部均匀 F 假设；敏感性掩码将此问题从隐性偏差转化为了显式的排除机制 + 随数据发布的量化不确定性图谱。
 
-## 5. Rater ceiling (Part B pillar 3, B5)
+## 5. 标注员上限测算（Part B 支柱 3, B5）
 
-Implemented in `src/alphasmoke/rater/ceiling.py`.
+实现位于 `src/alphasmoke/rater/ceiling.py`。
 
-- Sampling: 150 images per dataset (SMOKE5K-real, SSD), stratified by smoke-density
-  tercile (density proxy: mean HSV smoke score of the GT region, so stratification
-  does not use any model under test).
-- Raters: 3–5, instructed with the dataset's own original annotation guideline (no
-  new definition of "smoke boundary" — the ceiling must reflect the benchmark as
-  used).
-- Statistics: pairwise IoU over all rater pairs per image (binary task); pairwise MAE
-  on the soft-annotation subset; report distribution (median, IQR) per stratum and
-  pooled — a mean alone hides the bimodality the hyperspectral study found
-  (arXiv:2602.10858 `[S3]`).
-- Confrontation table: per benchmark, ceiling (1 − median pairwise IoU) vs the
-  published method deltas collected in `datasets.md` (e.g., AusSmoke's 1–3 IoU-point
-  SOTA gaps `[V]`); a delta is flagged "sub-ceiling" if smaller than the ceiling gap.
-- Pre-registered demotion K-B4 (ceiling > 0.85 → appendix).
+- 抽样方案：每数据集抽取 150 张图像（SMOKE5K-real, SSD），按烟雾密度三分位数分层（密度代理指标：GT 区域的平均 HSV 烟雾得分，确保分层过程完全独立于任何被测模型）。
+- 标注员：3–5 名，严格遵循各数据集原有的原始标注指南进行操作（不人为引入新的“烟雾边界”定义 —— 上限必须客观反映该基准在实际使用中的真实噪声）。
+- 统计量：每张图像在所有标注员对之间计算成对 IoU（二值任务）；在软标注子集上计算成对 MAE；按分层（密度三分位数）及全量报告分布情况（中位数、四分位距 IQR）—— 单纯的均值会掩盖高光谱研究中所发现的双峰分布现象（arXiv:2602.10858 `[S3]`）。
+- 对照表格：按基准对比 上限（1 − 中位数成对 IoU）与 `datasets.md` 中收集的已发表方法性能增量（例如 AusSmoke 的 1–3 个 IoU 点 SOTA 差距 `[V]`）；若某方法的性能提升幅度小于上限差距，则标记为“低于上限不确定区间（sub-ceiling）”。
+- 预注册降级规则 K-B4（上限 > 0.85 → 移入附录）。
 
-## 6. Physics floors (B6)
+## 6. 物理底线模型（B6）
 
-Implemented in `src/alphasmoke/baselines/`.
+实现位于 `src/alphasmoke/baselines/`。
 
-- **Dark channel** (He, Sun & Tang CVPR 2009 `[S3]`): dark = min-filter over channels
-  and patch (default 15 px); atmospheric light A from top 0.1% dark-channel pixels;
-  transmission t = 1 − ω·dark(I/A), ω = 0.95; smoke alpha floor α_DC = 1 − t. Optional
-  edge-aware smoothing; no training.
-- **HSV low-chroma rule**: smoke score = w_s·(1−S) ⊙ band(V) ⊙ (1−spread(RGB)), where
-  spread = (max−min channel); weights fixed a priori in
-  `configs/eval_protocol.yaml` and **never tuned on any test set** (tuning allowed
-  only on a held-out train split, logged). Classical color-rule smoke detection is a
-  decades-old family; we implement the rule as a control, and any specific historical
-  citation used in the draft is `[M]` until re-verified.
+- **暗通道先验**（He, Sun & Tang CVPR 2009 `[S3]`）：暗通道 = 跨通道与局部 patch 的最小值滤波（默认 15 px）；大气光 A 取自暗通道前 0.1% 像素；透射率 t = 1 − ω·dark(I/A)，ω = 0.95；烟雾 alpha 底线 α_DC = 1 − t。可选边缘感知平滑；完全无需训练。
+- **HSV 低饱和度规则**：烟雾得分 = w_s·(1−S) ⊙ band(V) ⊙ (1−spread(RGB))，其中 spread = (max−min 通道)；权重先验固定在 `configs/eval_protocol.yaml` 中，**绝不在任何测试集上进行参数调优**（仅允许在隔离的训练划分上微调并记录日志）。经典颜色规则烟雾检测是一个已有数十年历史的研究领域；我们将其实现为基准对照，草案中引用的任何具体历史文献在核实前均打上 `[M]` 标签。
 
-Both floors emit soft maps in [0,1] and are scored under the identical protocol as
-every learned arm (same τ_op, same metrics), entering every Part-A results table and
-the Part-B pool.
+两种底线模型均输出 [0,1] 的软掩码，并在与所有可学习模型完全相同的评测协议下计分（相同的 τ_op，相同的指标），列入所有 Part-A 结果表及 Part-B 模型池。
 
-## 7. Linear probe protocol (Part A week-1 killer)
+## 7. 线性探针协议（Part A 第 1 周杀手级实验）
 
-Implemented in `src/alphasmoke/probes/encoder_linear_probe.py`.
+实现位于 `src/alphasmoke/probes/encoder_linear_probe.py`。
 
-- Encoders: (a) matting-pretrained (MAM/ViTMatte-class public checkpoint — exact
-  checkpoint recorded in `configs/linear_probe.yaml` at run time), (b) COCO-seg /
-  SAM-class encoder at matched backbone size, (c) ImageNet-only control.
-- Probe: single 1×1 conv from frozen patch features → logit map, bilinear upsample to
-  input; no decoder, no adapter — the probe measures *linearly available* smoke
-  evidence in the frozen representation.
-- Training: N ∈ {25, 50, 100, 250} real-smoke images × 3 seeds; AdamW; early stop on
-  held-out probe-val split; identical schedule for all encoders.
-- Endpoint: real-smoke test mIoU (+ Fβ, mMse for continuity), CI over seeds ×
-  image-bootstrap.
-- Decision rule K-A1 (experiments.md §2).
+- 编码器对比：(a) 抠图预训练编码器（MAM/ViTMatte 级别的公开 checkpoint — 具体 checkpoint 在运行时记录于 `configs/linear_probe.yaml`），(b) 匹配骨干网络尺寸的 COCO 分割 / SAM 级别编码器，(c) 纯 ImageNet 初始化对照。
+- 探针结构：从冻结的 patch 特征出发的单个 1×1 卷积 → 输出 logit 图，双线性上采样至输入尺寸；无复杂解码器，无适配器 —— 探针直接衡量冻结表征中*线性可提取*的烟雾特征证据。
+- 训练方案：N ∈ {25, 50, 100, 250} 张真实烟雾图像 × 3 个随机种子；AdamW 优化器；在隔离的探针验证划分上早停；所有编码器采用严格一致的训练超参数与学习率调度。
+- 终点指标：真实烟雾测试集 mIoU（+ 保持指标连续性的 Fβ, mMse），在 种子 × 图像-Bootstrap 上的置信区间。
+- 决策规则：依据 K-A1 执行（experiments.md §2）。

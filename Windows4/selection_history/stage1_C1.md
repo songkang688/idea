@@ -1,136 +1,136 @@
-# Stage 1 Idea Catalog — Batch C1
+# Stage 1 创意目录 — Batch C1
 
-Scope: evaluation leakage, metric mismatch, calibration, robustness, PEFT science for dense prediction, catastrophic forgetting of mask decoders, when adaptation hurts zero-shot, unproven community assumptions, negative-result papers, new problem formulations. Domain focus: promptable / foundation-model segmentation and dense prediction (SAM-style, open-vocab seg, medical seg).
+范围：评估泄漏、指标不匹配、校准、鲁棒性、密集预测的 PEFT 科学、掩码解码器的灾难性遗忘、自适应何时损害零样本、未经证实的社区假设、负面结果论文、新问题形式化。领域重点：可提示/基础模型分割与密集预测（SAM 风格、开放词汇分割、医学分割）。
 
-Rules honored: no fabricated papers/numbers/results; no module-stacking; each idea has a falsifiable hypothesis and a cheap minimal experiment.
+遵守的规则：无虚构论文/数字/结果；无模块堆叠；每个创意均具有可证伪假设和低成本最小实验。
 
 | ID | OneLiner | Problem | Hypothesis | WhyNovel | MinExp | Risk | Cluster |
 |---|---|---|---|---|---|---|---|
-| C1-001 | SA-1B↔benchmark near-dup leakage | Zero-shot SAM scores may be inflated by pretrain/test overlap | Dedup-clean eval subsets score lower than overlapped subsets | Overlap never audited for SA-1B vs seg benchmarks | pHash/SSCD dedupe 3 val sets; compare subset scores | Overlap tiny; null result | Leak |
-| C1-002 | Caption leakage of "unseen" classes | Open-vocab seg zero-shot ignores class mentions in pretrain captions | Per-class zero-shot IoU correlates with pretrain caption frequency | Frequency-vs-zero-shot unquantified for dense tasks | Regress per-class IoU on corpus word counts (existing index) | Frequency confounded with class difficulty | Leak |
-| C1-003 | Oracle click simulation leaks GT | Simulated clicks derived from GT masks encode boundary info | Human-click NoC systematically worse than simulated-click NoC | Click-sim assumed equivalent to real users | 50-image human vs simulated click study | Small-N noise | Leak |
-| C1-004 | Slice-level splits in medical FT | Slice-wise CV leaks patient anatomy across splits | Patient-level resplit drops Dice vs slice-level | Flaw known anecdotally, rarely quantified across datasets | Resplit 3 public sets; rerun one baseline | Low novelty to insiders | Leak |
-| C1-005 | Test-set HP tuning in PEFT papers | PEFT works often tune LR/rank on the test set | Honest-val tuning shrinks reported PEFT-vs-baseline gaps | Inflation size never measured for seg PEFT | Rerun 2 PEFT methods with true val split | Protocol reading disputed | Leak |
-| C1-006 | Frame-1 GT dominates VOS scores | J&F mostly measures propagation from oracle init | J&F variance largely explained by frame-1 mask quality | Decomposition not standard practice | Regress J&F on frame-1 IoU across methods | Long-video sets behave differently | Leak |
-| C1-007 | Benchmark lineage pseudo-independence | COCO-derived benchmarks share images/masks | Gains transfer within lineage, not across lineages | Lineage graph of seg benchmarks unbuilt | Cross-lineage transfer matrix with public ckpts | Provenance hard to trace fully | Leak |
-| C1-008 | In-benchmark internal dupes | Downstream sets contain train/val near-duplicates | Dedup lowers reported fine-tuned scores | Internal dupes unaudited for ADE/Cityscapes | pHash within-set dedupe + re-eval | Few dupes → null | Leak |
-| C1-009 | Per-benchmark TTA tuning | TTA configs chosen per test set act as leakage | Unified TTA changes method rankings | TTA as leakage vector unexamined | Re-eval public ckpts with one fixed TTA | Rankings robust → null | Leak |
-| C1-010 | Crop-prior leakage via augmentation | Object-centric crops encode position priors matching eval | Removing center bias drops scores on center-biased sets | Aug/eval prior coupling unmeasured | Random vs centered crops; bias-stratified eval | Effect small | Leak |
-| C1-011 | Prompt templates fit on test | Text templates for open-vocab seg selected by test score | Template cross-validation shows high variance, lower mean | Template-selection variance unreported | K-fold template selection on 2 models | Many eval runs | Leak |
-| C1-012 | Checkpoint drift breaks comparisons | Papers silently compare against older foundation ckpts | Re-eval on one pinned ckpt reorders methods | No version-controlled comparison protocol | Re-eval 3 methods on pinned ckpt | Ckpt diffs negligible | Leak |
-| C1-013 | mIoU blind to boundaries | mIoU saturates while boundary quality differs | Boundary-F1 reranks PEFT methods vs mIoU | Metric rank-correlation unquantified for PEFT-seg | BF1+mIoU rank corr on public ckpts | Metrics correlate highly | Metric |
-| C1-014 | Size-stratified Dice | Organ-mean Dice hides small-lesion failure | Rankings flip under size-stratified Dice | Stratified reporting not standard in FM medseg | Restratify existing predictions by object size | Predictions unavailable → rerun cost | Metric |
-| C1-015 | NoC vs real user effort | NoC ignores click difficulty and time | Human time poorly correlated with NoC | No effort model for interactive seg | 50-image timed user proxy study | User-study noise | Metric |
-| C1-016 | Annotation noise floor | SOTA deltas may sit within annotator disagreement | Top-method gaps < inter-annotator IoU spread | Noise floor unpublished for major seg sets | Dual-annotate 100 images; compare to method gap | Annotator recruitment | Metric |
-| C1-017 | Class-mean hides regressions | mIoU mean masks per-class harm from adaptation | Adaptation causes per-class regressions invisible in mean | Regression-count reporting unused | Per-class delta histograms + sign test | Uniform gains → null | Metric |
-| C1-018 | PQ gain decomposition | PQ gains ambiguous between recognition/segmentation | Recent PQ gains are mostly RQ, not SQ | Decomposition rarely reported | Decompose released panoptic results | Mixed outcomes muddy story | Metric |
-| C1-019 | Mask-AP error-type audit | AP sensitivity to error types unknown | AP near-blind to over-segmentation errors | Synthetic perturbation audit new for mask AP | Inject controlled errors into GT copies; score | Perturbation realism | Metric |
-| C1-020 | Temporal stability gap in VOS | J&F ignores flicker users care about | Stability metric reranks VOS models vs J&F | Flicker absent from standard suites | Temporal-consistency metric on released predictions | Metric definition contested | Metric |
-| C1-021 | Leaderboards ignore ECE | Accuracy-only boards hide calibration | Pixel-ECE uncorrelated with mIoU across ckpts | Joint accuracy+calibration reporting absent | ECE for 10 public ckpts; scatter plot | Correlation exists → weaker claim | Metric |
-| C1-022 | Thin-structure blindness | mIoU underweights vessels/wires | clDice reranks models on thin-structure data | Topology metrics unused in FM seg evals | Re-score public ckpts with clDice | Limited thin-structure data | Metric |
-| C1-023 | Boundary tolerance bands | Hard boundaries penalize plausible masks | Band-tolerant metric shrinks method gaps | Tolerance-band eval not standardized | Multi-annotator band on 100 images | Band width arbitrary | Metric |
-| C1-024 | Aggregation choice reranks | Arithmetic dataset-mean favors outlier wins | Geometric mean reorders zero-shot leaderboards | Aggregation sensitivity unreported | Recompute released per-dataset numbers both ways | Rankings stable → null | Metric |
-| C1-025 | PEFT preserves calibration | Full FT may wreck calibration PEFT keeps | LoRA ECE < full-FT ECE at matched mIoU | Calibration absent from PEFT-seg papers | Train both; compare reliability diagrams | Both equally miscalibrated | Calib |
-| C1-026 | SAM IoU-head OOD miscalibration | Predicted-IoU used for filtering without OOD audit | IoU head overconfident on medical/aerial images | IoU-head calibration unaudited OOD | Reliability diagrams across 4 domains | Partly known anecdotally | Calib |
-| C1-027 | Classwise temperature scaling | Global T suboptimal for long-tail seg | Per-class T beats global T on ECE | Classwise TS untested for dense prediction | Fit both on val; test | Gain marginal | Calib |
-| C1-028 | Boundary-localized miscalibration | Source of pixel ECE unlocalized | Miscalibration concentrates within 5px of boundaries | Distance-stratified ECE new | Stratify ECE by distance-to-boundary | Finding seen as expected | Calib |
-| C1-029 | Calibration decays faster than accuracy | Joint decay under shift unknown for seg | ECE degrades superlinearly vs mIoU under corruption | Dense joint decay curves absent | Corruption sweep; plot ECE and mIoU | Mirrors known cls result | Calib |
-| C1-030 | Prompt-jitter ensembles for UQ | SAM uncertainty needs no extra nets | Click-jitter variance predicts errors ≈ deep ensembles at fraction of cost | Prompt-space ensembling unstudied | Error-detection AUROC: jitter vs ensemble | Jitter variance uninformative | Calib |
-| C1-031 | FT silently breaks IoU head | Decoder FT may desync confidence head | Post-FT predicted-IoU calibration collapses while Dice rises | Head-desync unmeasured | Track IoU-head calibration during FT | Easy fix reduces impact | Calib |
-| C1-032 | Focal loss harms dense calibration | Focal effects on pixel calibration unknown | Focal worsens ECE vs CE at equal mIoU | Contradicts classification lore | Same-backbone CE vs focal | Mixed across datasets | Calib |
-| C1-033 | Smoothing vs thin structures | Label smoothing trade-off for masks uncharted | Smoothing helps boundary ECE, hurts thin-structure recall | Trade-off uncharacterized | Ablate smoothing; stratified metrics | Two small effects | Calib |
-| C1-034 | Pixel vs mask abstention | Granularity for selective prediction unclear | Pixel-level abstention dominates mask-level risk-coverage | Selective dense prediction underexplored | Risk-coverage curves at both granularities | Use-case dependent | Calib |
-| C1-035 | Calibration not prompt-portable | Calibration fit per prompt type? | Point-fit calibration fails on box prompts | Prompt-conditional calibration unstudied | Fit on points; test on boxes | Small effect | Calib |
-| C1-036 | Multimask output = free aleatoric UQ | SAM 3-proposal output unused for uncertainty | Cross-proposal variance predicts error better than confidence | Free UQ signal unexploited | Variance-vs-error AUROC | Proposals collapse post-FT | Calib |
-| C1-037 | PEFT loses backbone robustness | Tuning may erase pretrain robustness | LoRA-tuned drops more under corruption than frozen-probe | Robustness cost of PEFT unmeasured for seg | Corrupted-val eval frozen vs LoRA | Both degrade equally | Robust |
-| C1-038 | Click variance > model variance | Prompt placement may dominate outcomes | Output variance from click jitter exceeds inter-model variance | Variance decomposition new | ANOVA clicks × checkpoints on 200 images | Domain-dependent | Robust |
-| C1-039 | Resolution is the hidden axis | Test-res shift unbenchmarked vs corruptions | Res shift hurts ViT-seg more than most corruptions | Res robustness rarely isolated | Resolution sweep vs corruption suite | Pos-embed interp mitigates | Robust |
-| C1-040 | JPEG hits boundaries first | Compression effects unstratified | BF1 degrades much faster than mIoU under JPEG | Compression-boundary link unquantified | Quality sweep; both metrics | Codec-specific artifact | Robust |
-| C1-041 | Patch attacks vs promptable seg | Cls patch attacks may not transfer | Released patches barely move SAM masks | Transfer to promptable seg untested | Apply existing patches; measure ΔIoU | Negative-only outcome | Robust |
-| C1-042 | Annotation-style shift | Polygon-trained models fail pixel-precise eval | Cross-style eval drops BF1 sharply, mIoU mildly | Style shift unrecognized robustness axis | Cross-eval polygon vs pixel-labeled sets | Domain confound | Robust |
-| C1-043 | High-frequency shortcut from tuning | Adaptation may induce texture reliance | Low-pass test hurts tuned models more than frozen features | Frequency reliance of PEFT unknown | Low-pass filtered eval, both models | Effect small | Robust |
-| C1-044 | Background reliance | Mask quality leans on context crutch | Background swap drops object IoU substantially | Context ablation not run for SAM-like models | Paste objects on shuffled backgrounds | Paste artifacts confound | Robust |
-| C1-045 | Small rotations break seg FMs | Rotation robustness unassessed vs corruptions | ±15° hurts more than mid-severity corruptions | Rotation absent from seg robustness suites | Rotation sweep eval | Tied to aug details | Robust |
-| C1-046 | Norm-stats mismatch audit | Wrong mean/std silently common cross-domain | Stat swap costs measurable mIoU, unreported | Hygiene audit novel | Swap norm stats; quantify on 3 sets | Small effect | Robust |
-| C1-047 | Natural overlays vs synthetic occlusion | Occlusion benchmarks unrealistic | Ranking under text/sticker overlays ≠ random-erase ranking | Natural-occlusion seg testbed absent | 200-image overlay eval from existing data | Curation effort | Robust |
-| C1-048 | Regularization confound in robustness | PEFT robustness claims confounded with shorter training | Matched-budget full FT closes the robustness gap | Confound rarely controlled | Match epochs/wd; re-compare | PEFT still wins → claim stands | Robust |
-| C1-049 | LoRA rank scales with resolution | Rank guidance ignores output density | Optimal rank grows with output res, not data size | Rank-resolution scaling unmeasured | Rank × resolution grid on one dataset | Weak interaction | PEFT |
-| C1-050 | Adapter placement for dense tasks | Cls-derived placement heuristics may misfit seg | One late-encoder adapter captures most of the gain | Layer-wise attribution for dense unknown | Single-adapter-per-layer sweep | Backbone-specific | PEFT |
-| C1-051 | BitFit: domain vs task shift | When bias-only tuning suffices is unclear | BitFit matches LoRA on domain shift, fails on task shift | Shift-type taxonomy for PEFT new | 2 domain-shift + 2 task-shift pairs | Taxonomy fuzzy | PEFT |
-| C1-052 | Attention vs MLP LoRA for seg | In-block placement unexplored for dense | Attention-LoRA beats MLP-LoRA at matched params | Matched-param placement study missing | Swap placements at equal budget | Small deltas | PEFT |
-| C1-053 | PEFT gains vs tuned full FT | Full-FT baselines often undertuned | LR-swept full FT matches most published PEFT-seg gains | Baseline-strength audit absent | LR/wd sweep full FT vs 2 PEFT methods | Sweep cost | PEFT |
-| C1-054 | Tuning location × shift type | Encoder vs decoder tuning conditions on shift | Decoder-only suffices in-domain; encoder needed cross-domain | Location × shift interaction unmapped | 2×2 grid experiment | Dataset confounds | PEFT |
-| C1-055 | LN-tuning explains adapter gains | LN affine may drive reported adapter wins | LN-only recovers most of adapter gain | LN-only baseline missing from seg-PEFT lit | Add LN-only arm to 2 benchmarks | Gap remains large | PEFT |
-| C1-056 | PEFT gain shrinks with scale | PEFT value vs backbone scale unknown for seg | Relative PEFT gain over frozen-probe shrinks with model size | Scale trend for PEFT-seg absent | Same recipe on ViT-B/L/H | Only 3 scale points | PEFT |
-| C1-057 | Data-size crossover point | When PEFT beats full FT is unmapped | Crossover at low-hundreds of images; above it full FT wins | Crossover never mapped for seg | Data-size sweep, both methods | Dataset-specific | PEFT |
-| C1-058 | LoRA merging across organs | Model merging assumed to compose | Merged organ-LoRAs lose large fractions of each specialist's Dice | Merging for dense decoders untested | Merge 2 LoRAs; eval both tasks | Negative-only outcome | PEFT |
-| C1-059 | PEFT HP transfer brittleness | Hyperparameters assumed portable | HPs transfer within domain, fail across label-density regimes | HP-transfer matrix new for seg | 3×3 dataset HP-transfer grid | Grid cost | PEFT |
-| C1-060 | Seed variance vs method deltas | PEFT-seg papers rarely report seeds | Inter-seed std exceeds half of claimed method gaps | Variance audit missing | 5 seeds × 3 methods, one benchmark | Rerun compute | PEFT |
-| C1-061 | FT kills multimask ambiguity | Decoder FT may collapse proposal diversity | Post-FT proposal diversity drops to single-mode | Ambiguity-forgetting unmeasured | Diversity metric pre/post FT | Diversity metric contested | Forget |
-| C1-062 | Forgetting localizes to cross-attn | Which decoder layers forget is unknown | Re-splicing prompt cross-attn restores most zero-shot | Layer-wise forgetting map new | Layer-swap restoration study | Forgetting is distributed | Forget |
-| C1-063 | Refinement skill forgets first | Later-click behavior may degrade before click-1 | Post-FT NoC worsens at clicks 3+ with click-1 intact | Click-depth-resolved forgetting new | NoC curves pre/post FT | Direction reversed | Forget |
-| C1-064 | 1% replay saves the decoder | Replay dose for promptable seg unknown | Tiny generic-mask replay retains most zero-shot ability | Minimal-replay dose unquantified | FT ± 1% replay buffer | Replay data licensing | Forget |
-| C1-065 | Prompt-type-specific forgetting | Forgetting may differ by prompt kind | Point-prompt zero-shot forgets faster than box | Prompt-conditional forgetting unstudied | Per-prompt-type eval post-FT | Both degrade alike | Forget |
-| C1-066 | LoRA forgets too | PEFT assumed forgetting-proof | Decoder-LoRA zero-shot loss ≈ full decoder FT | Direct matched test missing | Matched retention eval LoRA vs FT | LoRA wins → still informative | Forget |
-| C1-067 | Feature drift precedes failure | Output metrics lag internal drift | Decoder CKA drift predicts later zero-shot drops | Predictive drift signal new | Track CKA + zero-shot during FT | Correlation ≠ prediction | Forget |
-| C1-068 | WiSE-FT for mask decoders | Weight interpolation untested for decoders | α-interp recovers most zero-shot at small in-domain cost | Weight-space fix for decoder forgetting new | Interpolation curve eval | Nonlinear loss surface | Forget |
-| C1-069 | IoU head forgets before mask head | Component-wise forgetting order unknown | IoU-head calibration degrades steps before mask quality | Component ordering unobserved | Track both heads during FT | Heads tightly coupled | Forget |
-| C1-070 | Order effects in sequential FT | Domain order treated as irrelevant | Permuting adaptation order shifts final zero-shot notably | Order sensitivity unquantified for seg | All orderings of 3 domains, small model | 6-run cost | Forget |
-| C1-071 | Negative-click forgetting | Background-click skill may be fragile | FT without negative clicks destroys negative-click handling | Skill-specific forgetting untested | Negative-click eval post-FT | Skill rarely exercised | Forget |
-| C1-072 | Freeze decoder or encoder? | Which freeze preserves zero-shot better | Encoder-FT + frozen decoder retains more than the inverse | Direct freeze comparison missing | Two-arm freeze study | Task-dependent | Forget |
-| C1-073 | Domain gap predicts zero-shot loss | Retention currently unpredictable | Zero-shot loss scales with feature-space gap of FT domain | Predictive retention relationship new | FT on 4 domains; regress loss on gap | Gap proxy is poor | ZS-Hurt |
-| C1-074 | Modality-crossing damage | FT on one prompt modality hurts others | Point-FT degrades box/text prompting disproportionately | Cross-modal harm unmeasured | Multi-modal prompt eval post point-FT | Model lacks some modalities | ZS-Hurt |
-| C1-075 | Compositional loss from FT | In-domain FT may break novel combinations | Held-out object-context combos drop post-FT | Compositional retention untested for seg | Combo-held-out eval | Combos hard to define | ZS-Hurt |
-| C1-076 | Retention is LR, not method | PEFT retention claims may be LR artifacts | Small-LR full FT matches PEFT zero-shot retention | LR-controlled retention comparison missing | LR sweep retention curves, both | Sweep cost | ZS-Hurt |
-| C1-077 | Interference is local in class space | Which classes get hurt is unknown | Zero-shot loss concentrates on classes similar to FT classes | Interference locality unmapped | Similarity-vs-delta regression | Similarity metric choice | ZS-Hurt |
-| C1-078 | Nonmonotonic forgetting curves | Retention assumed monotone in FT steps | Zero-shot dips early then partially recovers | Trajectory shape undocumented | Dense-checkpoint zero-shot evals | Noisy trajectories | ZS-Hurt |
-| C1-079 | Diversity beats size for retention | Retention drivers unclear | At fixed N, higher FT-data diversity retains more zero-shot | Diversity-controlled retention study new | Fix N; vary cluster diversity | Diversity hard to control | ZS-Hurt |
-| C1-080 | Task-vector negation restores zero-shot | Can adaptation be cleanly removed? | Subtracting the task vector restores zero-shot nearly fully | Arithmetic unlearning for seg untested | Negate vector; eval both domains | In-domain gain erased too (expected) | ZS-Hurt |
-| C1-081 | Clean-mask FT hurts coarse prompts | FT data quality shapes prompt robustness | FT on pixel-perfect masks degrades coarse-box performance | Quality-robustness link untested | Coarse-prompt eval post-FT | Effect small | ZS-Hurt |
-| C1-082 | "Hurt" is a threshold artifact | Post-FT zero-shot drops may be miscalibrated thresholds | Re-tuned binarization threshold recovers much "lost" zero-shot | Artifact check absent in forgetting papers | Threshold sweep before/after FT | Real forgetting dominates | ZS-Hurt |
-| C1-083 | Frontiers, not points | Single-point retention claims mislead | Method ranking changes along gain-retention frontier | Frontier-based comparison new for seg | Multi-seed frontier of 3 methods | Many runs for a plot | ZS-Hurt |
-| C1-084 | TTA hurts promptable models | Entropy-min TTA assumed safe | TENT-style TTA degrades prompt-following under shift | TTA × promptability interaction untested | Run entropy-min TTA on promptable eval | Setup nontrivial for seg | ZS-Hurt |
-| C1-085 | Frozen features suffice? | Linear-probe faith for dense tasks | Probe-vs-FT gap concentrates on boundaries/thin structures | Stratified probe-gap analysis new | Probe vs FT with stratified metrics | Gap turns out uniform | Assume |
-| C1-086 | More clicks always help? | Monotonic-improvement assumption untested | Some models degrade after ~10 clicks | Long-horizon click behavior unstudied | Extend NoC eval to 20 clicks | Regime rarely used | Assume |
-| C1-087 | Bigger backbone better transfer? | Scale monotonicity assumed | Under ≤100-image FT, mid-size beats largest backbone | Small-data × scale interaction unmapped | Scale × data mini-grid | Checkpoint recipe confounds | Assume |
-| C1-088 | SAM masks annotation-grade? | SAM widely used as label engine | Expert masks beat SAM on fine structures by wide BF1 margin | Label-engine quality audit missing | 100-image expert vs SAM comparison | Expert cost | Assume |
-| C1-089 | Synthetic data closes the gap? | Sim data assumed additive | Matched-augmentation real-only baseline erases synthetic gains | Aug-matched control usually absent | Add matched-aug arm to one sim2real setup | Single setup only | Assume |
-| C1-090 | Confidence filtering is safe? | Self-training folklore | Confidence-filtered pseudo-labels measurably drift class priors | Prior-drift audit new for seg self-training | Track class marginals over rounds | Drift small | Assume |
-| C1-091 | Higher res always better? | Inference-resolution folklore | Accuracy peaks near training res (inverted-U) | Res-response curves unreported for seg FMs | Resolution sweep on 3 ckpts | Partially known from cls | Assume |
-| C1-092 | Learned prompts portable? | Prompt tuning assumed checkpoint-agnostic | Learned prompts fail to transfer across ckpt versions | Prompt-transfer test missing | Transfer prompts across 2 ckpts | Negative-only outcome | Assume |
-| C1-093 | Dice loss needed for imbalance? | Loss folklore in medical seg | Weighted CE matches Dice loss under equal tuning | Controlled loss comparison rare | Matched-tuning loss duel | Prior partial evidence | Assume |
-| C1-094 | Frozen text encoder is fine? | Open-vocab seg tunes vision side only | Text-side LoRA gains ≥ vision-side at matched params | Text-side adaptation ignored | Text vs vision LoRA at matched budget | Text encoder fragile | Assume |
-| C1-095 | Val mIoU predicts deployment? | Single-site validation trusted | Cross-site method-rank correlation is weak | Cross-site rank study missing | Rank methods across 3 sites/cities | Multi-site data access | Assume |
-| C1-096 | Encoders general, decoders specific? | Architectural folklore | Under FT, encoder features drift more than decoder features | Drift asymmetry unmeasured | CKA drift of both parts during FT | CKA interpretation limits | Assume |
-| C1-097 | PEFT-for-SAM replication audit | Many methods, no unified protocol | Half of methods fail to beat a tuned decoder-only baseline | Unified replication absent | Reimplement 4 methods, 3 datasets, same budget | Reimplementation fidelity disputes | Negative |
-| C1-098 | Fancy UQ vs softmax baseline | UQ methods assumed better OOD | MC-dropout/ensembles ≤ max-prob for seg error detection OOD | Head-to-head dense-UQ audit sparse | AUROC benchmark of 4 UQ methods | Ensembles win → not negative | Negative |
-| C1-099 | CL methods vs naive replay | Regularization-CL assumed competitive | At matched memory, replay beats EWC/LwF for seg | Matched-memory control often absent | 3 CL methods at matched memory | Dataset-dependent | Negative |
-| C1-100 | Attention maps ≠ localization | Attention sold as interpretable | Attention rollout loses to gradient baseline at pointing game | Seg-specific interpretability audit missing | Pointing-game eval, both methods | Both weak | Negative |
-| C1-101 | Frequency-aug fails to replicate | Fourier-augmentation claims may not generalize | Gains vanish on a second backbone/dataset | Cross-backbone replication absent | Re-run recipe on 2 backbones | Setup disputes | Negative |
-| C1-102 | Empty-mask metric bug | Zero-shot medseg numbers depend on empty-GT handling | Fixing empty-slice protocol removes several claimed gains | Protocol-bug audit new | Recompute with explicit empty-case rules | Affects few datasets | Negative |
-| C1-103 | Boundary losses at matched budget | Boundary-loss papers rarely budget-match | Matched-budget CE closes boundary-loss gains | Budget-matched audit missing | Equal-step training duel | Some losses survive | Negative |
-| C1-104 | Domain randomization ≈ seed noise | Sim2real gains may be fragile | DR gains fall within 5-seed variance for seg | Seed-variance control missing | 5-seed replication, one benchmark | 10-run compute | Negative |
-| C1-105 | Distillation drops promptability | SAM-distill claims retained interactivity | Distilled models degrade sharply on multi-click refinement | Promptability-specific distill eval missing | NoC curves distilled vs teacher | Distill ckpts heterogeneous | Negative |
-| C1-106 | DA alignment ≤ aug + self-training | Feature-alignment DA assumed necessary | Strong aug + self-training matches alignment methods | Modern-baseline audit sparse for seg DA | Head-to-head on one benchmark pair | Benchmark choice contested | Negative |
-| C1-107 | Emergent correspondence overrated | Self-sup/diffusion features hyped for matching | Supervised features match them under one protocol | Protocol-matched comparison missing | Same-protocol correspondence eval | Task-dependent | Negative |
-| C1-108 | Co-training hurts calibration | Multi-task co-training assumed harmless | Det+seg co-training raises seg ECE vs seg-only | Calibration cost of MTL unmeasured | Co-train vs single-task ECE compare | Effect small | Negative |
-| C1-109 | Certified prompt stability | No guarantees under click perturbation | Randomized smoothing yields nontrivial certified click radii | Certification for promptable seg unformulated | Smoothing over clicks on 100 images | Radii vacuously small | Formulate |
-| C1-110 | Retention benchmark suite | No standard for adaptation-vs-retention | One frontier scalar reliably ranks adaptation methods | Joint gain+retention benchmark absent | Assemble from public sets; score 3 methods | Scalarization contested | Formulate |
-| C1-111 | Annotator-seconds metric | Click counts ≠ human cost | Learned time model reranks interactive methods vs NoC | Effort-based eval unformulated | Fit time model on public click logs | Log availability | Formulate |
-| C1-112 | Multi-GT set-to-set eval | Single GT ignores ambiguity | Set-matching metric separates models tied under single GT | Ambiguity-aware seg eval missing | Multi-annotator subset + matching metric | Annotation cost | Formulate |
-| C1-113 | Label-schema shift task | Ontology changes unmodeled | Schema-remap performance uncorrelated with standard FT scores | Schema shift as formal task new | Remap ontologies across existing sets | Remap subjectivity | Formulate |
-| C1-114 | Selective segmentation | Region-level abstention undefined | Region abstention beats pixel- and mask-level risk-coverage | Region granularity unformulated | Superpixel abstention baseline + curves | Simple baselines strong | Formulate |
-| C1-115 | Prompt-free intrinsic eval | Promptable eval needs oracle prompts | Auto-prompted eval preserves model ranking at zero oracle cost | Oracle-free protocol missing | Saliency auto-prompts; rank-correlation check | Auto-prompt bias | Formulate |
-| C1-116 | Prompts as portable task specs | Are learned prompts model-agnostic? | Cross-model prompt transfer works iff shared pretraining | Prompt portability unformulated | Transfer prompts across 2 model families | Mostly fails → negative | Formulate |
-| C1-117 | Forgetting-aware model cards | Post-adaptation reporting unstandardized | A standard retention panel changes practitioner choices | Reporting protocol absent | Apply panel to 3 released FT ckpts | Adoption uncertain | Formulate |
-| C1-118 | Class unlearning in decoders | Deleting a class from seg models undefined | Naive unlearning leaves probe-recoverable class signal | Unlearning metric for dense prediction new | Unlearn 1 class; linear-probe leakage test | Method choice debated | Formulate |
-| C1-119 | Test-time prompt optimization | Adapting prompts, not weights, unframed | Learned click-placement policy beats center-click heuristic | Prompt-side adaptation as task new | Train tiny placement policy on val; eval NoC | Gains marginal | Formulate |
-| C1-120 | Cost-normalized frontier | Accuracy-per-annotation-dollar unreported | Method ranking flips when normalized by labeling cost | Economic eval unformulated for seg adaptation | Cost-annotate one benchmark; frontier plot | Cost model assumptions | Formulate |
+| C1-001 | SA-1B↔基准近重复泄漏 | Zero-Shot SAM 分数可能被预训练/测试集重叠虚增 | 去重后的纯净评估子集得分低于重叠子集 | 从未针对 SA-1B vs 分割基准审计过重叠 | pHash/SSCD 去重 3 个验证集；对比子集分数 | 重叠极小；得到无效结果 | Leak |
+| C1-002 | “未见过”类别的标题泄漏 | 开放词汇分割 zero-shot 忽视了预训练标题中的类别提及 | 逐类别 zero-shot IoU 与预训练标题词频相关 | 密集任务的词频 vs zero-shot 关系未被量化 | 将逐类 IoU 对语料库词频（现有索引）进行回归 | 词频与类别难度混杂 | Leak |
+| C1-003 | Oracle 点击模拟泄漏 GT | 从 GT 掩码推导的模拟点击编码了边界信息 | 人类点击 NoC 系统性差于模拟点击 NoC | 点击模拟被假定等同于真实用户 | 50 张图像的人类 vs 模拟点击研究 | 小样本噪声 | Leak |
+| C1-004 | 医学微调中的切片级划分 | 逐切片交叉验证跨划分泄漏患者解剖结构 | 患者级重新划分相比切片级降低 Dice | 该缺陷在传闻中已知，但极少跨数据集量化 | 重新划分 3 个公开集；重跑一个基线 | 对业内人士创新性低 | Leak |
+| C1-005 | PEFT 论文中的测试集超参数调优 | PEFT 研究经常在测试集上调整 LR/rank | 诚实的验证集调优缩小了报告的 PEFT vs 基线差距 | 分割 PEFT 的虚增幅度从未被测量 | 用真实验证集划分重跑 2 个 PEFT 方法 | 协议解读存在争议 | Leak |
+| C1-006 | 第 1 帧 GT 主导了 VOS 分数 | J&F 大多测量来自 Oracle 初始化的传播 | J&F 方差在很大程度上由第 1 帧掩码质量解释 | 分解并非标准实践 | 跨方法将 J&F 对第 1 帧 IoU 进行回归 | 长视频数据集表现不同 | Leak |
+| C1-007 | 基准血统伪独立性 | 源自 COCO 的基准共享图像/掩码 | 增益在血统内部迁移，而非跨血统迁移 | 分割基准的血统图未被构建 | 使用公开检查点构建跨血统迁移矩阵 | 出处难以完整追溯 | Leak |
+| C1-008 | 基准内部近重复 | 下游集合包含训练/验证近重复 | 去重降低了报告的微调分数 | ADE/Cityscapes 的内部重复未被审计 | pHash 集合内去重 + 重新评估 | 重复极少 → 无效结果 | Leak |
+| C1-009 | 逐基准 TTA 调优 | 为每个测试集挑选的 TTA 配置构成泄漏 | 统一的 TTA 改变方法排名 | TTA 作为泄漏向量未被检验 | 用一个固定 TTA 重新评估公开检查点 | 排名稳健 → 无效结果 | Leak |
+| C1-010 | 通过增强引入的裁剪先验泄漏 | 以物体为中心的裁剪编码了匹配评估的位置先验 | 消除中心偏差降低了中心偏差集合上的分数 | 增强/评估先验耦合未被测量 | 随机 vs 居中裁剪；按偏差分层的评估 | 效应微小 | Leak |
+| C1-011 | 在测试集上拟合提示模板 | 开放词汇分割的文本模板根据测试分数选择 | 模板交叉验证显示出高方差和更低的均值 | 模板选择方差未被报告 | 在 2 个模型上进行 K 折模板选择 | 评估运行次数多 | Leak |
+| C1-012 | 检查点漂移破坏对比 | 论文默默与较旧的基础检查点进行对比 | 在单一固定检查点上重新评估使方法重新排序 | 缺乏版本受控的对比协议 | 在固定检查点上重新评估 3 个方法 | 检查点差异可忽略 | Leak |
+| C1-013 | mIoU 对边界盲目 | mIoU 饱和而边界质量存在差异 | Boundary-F1 相比 mIoU 重新排列 PEFT 方法排名 | PEFT 分割的指标等级相关性未量化 | 在公开检查点上计算 BF1+mIoU 等级相关 | 指标高度相关 | Metric |
+| C1-014 | 尺寸分层的 Dice | 器官平均 Dice 掩盖了小病灶失败 | 排名在尺寸分层的 Dice 下发生反转 | 分层报告在基础模型医学分割中非标准 | 按物体大小重新对现有预测分层 | 预测不可用 → 重跑成本 | Metric |
+| C1-015 | NoC vs 真实用户努力 | NoC 忽视了点击难度和时间 | 人工时间与 NoC 相关性较弱 | 交互式分割缺乏努力程度模型 | 50 张图像的计时用户代理研究 | 用户研究噪声 | Metric |
+| C1-016 | 标注噪声底线 | SOTA 增量可能处于标注者分歧内部 | 顶尖方法差距 < 标注者间 IoU 分散度 | 主要分割集的噪声底线未发表 | 双标注 100 张图像；对比方法差距 | 标注者招募成本 | Metric |
+| C1-017 | 类别均值掩盖了性能退化 | mIoU 均值掩盖了自适应带来的逐类损害 | 自适应导致逐类退化，在均值中不可见 | 性能退化计数报告未被使用 | 逐类别增量直方图 + 符号检验 | 均匀增益 → 无效结果 | Metric |
+| C1-018 | PQ 增益分解 | PQ 增益在识别/分割之间存在歧义 | 近期 PQ 增益大部分是 RQ，而非 SQ | 分解极少被报告 | 分解已发布的全景分割结果 | 混合结果使结论模糊 | Metric |
+| C1-019 | Mask-AP 误差类型审计 | AP 对误差类型的敏感性未知 | AP 对过度分割误差近乎盲目 | 对 mask AP 注入受控扰动的新颖审计 | 将受控误差注入 GT 副本；打分 | 扰动真实性存疑 | Metric |
+| C1-020 | VOS 中的时间稳定性差距 | J&F 忽视了用户关心的闪烁现象 | 稳定性指标相比 J&F 重新排列 VOS 模型 | 闪烁现象在标准测试套件中缺失 | 在已发布预测上计算时间一致性指标 | 指标定义存在争议 | Metric |
+| C1-021 | 排行榜忽视 ECE | 仅看准确率的排行榜掩盖了校准 | 跨检查点的 Pixel-ECE 与 mIoU 不相关 | 联合准确率+校准报告缺失 | 10 个公开检查点的 ECE；散点图 | 存在相关性 → 削弱结论 | Metric |
+| C1-022 | 细长结构盲区 | mIoU 低估了血管/线缆的权重 | clDice 在细长结构数据上重新排列模型 | 拓扑指标未在基础模型分割评估中使用 | 用 clDice 重新为公开检查点打分 | 细长结构数据有限 | Metric |
+| C1-023 | 边界容差带 | 硬边界惩罚了合理的掩码 | 带容差指标缩小了方法差距 | 容差带评估未标准化 | 100 张图像上的多标注者容差带 | 容差带宽度设定主观 | Metric |
+| C1-024 | 聚合方式选择导致重新排序 | 算术数据集均值偏向离群值胜利 | 几何均值重新排列 Zero-Shot 排行榜 | 聚合敏感性未被报告 | 用两种方式重新计算已发布的逐数据集数值 | 排名稳定 → 无效结果 | Metric |
+| C1-025 | PEFT 保留校准 | 全量微调可能破坏 PEFT 保留的校准 | 在匹配 mIoU 下，LoRA ECE < 全量微调 ECE | 校准在 PEFT 分割论文中缺失 | 训练两者；对比可靠性图表 | 两者同样未良好校准 | Calib |
+| C1-026 | SAM IoU 头 OOD 失校准 | 预测 IoU 用于过滤但未经 OOD 审计 | IoU 头在医学/航空图像上过度自信 | IoU 头校准在 OOD 上未经审计 | 跨 4 个领域的可靠性图表 | 传闻中部分已知 | Calib |
+| C1-027 | 逐类别温度缩放 | 全局 T 对长尾分割次优 | 逐类别 T 在 ECE 上优于全局 T | 逐类 TS 未在密集预测中测试 | 在验证集上拟合两者；测试 | 增益微弱 | Calib |
+| C1-028 | 边界局部失校准 | 像素 ECE 的来源未被定位 | 失校准集中在边界 5px 范围内 | 距离分层的 ECE 具有新颖性 | 按到边界的距离对 ECE 进行分层 | 发现被认为符合预期 | Calib |
+| C1-029 | 校准衰减快于准确率 | 偏移下的联合衰减在分割中未知 | 在损坏下，ECE 相比 mIoU 呈现超线性退化 | 密集任务的联合衰减曲线缺失 | 损坏扫描；绘制 ECE 和 mIoU | 镜像复制已知分类结果 | Calib |
+| C1-030 | 提示抖动集成用于不确定性量化（UQ） | SAM 不确定性无需额外网络 | 点击抖动方差以极小成本预测误差，媲美深度集成 | 提示空间集成未被研究 | 误差检测 AUROC：抖动 vs 集成 | 抖动方差缺乏信息量 | Calib |
+| C1-031 | 微调静默破坏 IoU 头 | 解码器微调可能使置信度头失步 | 微调后预测 IoU 校准崩溃，而 Dice 上升 | 预测头失步未被测量 | 跟踪微调期间的 IoU 头校准 | 易于修复削弱了影响力 | Calib |
+| C1-032 | Focal Loss 损害密集校准 | Focal 对像素校准的影响未知 | 在相同 mIoU 下，Focal 相比 CE 恶化 ECE | 与分类学常识相悖 | 相同骨干的 CE vs Focal | 跨数据集表现不一 | Calib |
+| C1-033 | 平滑 vs 细长结构 | 掩码的标签平滑权衡未被探索 | 平滑有助于边界 ECE，但损害细长结构召回 | 权衡未被表征 | 消融平滑；分层指标 | 两个效应均较小 | Calib |
+| C1-034 | 像素级 vs 掩码级弃权（abstention） | 选择性预测的粒度不明确 | 像素级弃权在风险-覆盖率上优于掩码级 | 选择性密集预测探索不足 | 两种粒度下的风险-覆盖率曲线 | 依赖于具体用例 | Calib |
+| C1-035 | 校准不可跨提示移植 | 校准是否随提示类型拟合？ | 点提示拟合的校准在框提示上失效 | 条件化于提示的校准未被研究 | 在点上拟合；在框上测试 | 效应较小 | Calib |
+| C1-036 | 多掩码输出 = 免费偶然不确定性量化 | SAM 3 提议输出未用于不确定性 | 跨提议方差比置信度能更好地预测误差 | 免费 UQ 信号未被利用 | 方差 vs 误差 AUROC | 提议在微调后发生坍塌 | Calib |
+| C1-037 | PEFT 丢失骨干鲁棒性 | 微调可能抹去预训练鲁棒性 | LoRA 微调在损坏下的下降幅度超过冻结探测 | PEFT 的鲁棒性成本在分割中未被测量 | 在损坏验证集上评估冻结 vs LoRA | 两者退化程度相同 | Robust |
+| C1-038 | 点击方差 > 模型方差 | 提示放置可能主导结果 | 点击抖动带来的输出方差超过模型间方差 | 方差分解具有新颖性 | 200 张图像上的方差分析：点击 × 检查点 | 具有领域依赖性 | Robust |
+| C1-039 | 分辨率是隐藏维度 | 测试分辨率偏移未与损坏进行基准对比 | 分辨率偏移对 ViT 分割的损害超过多数损坏 | 分辨率鲁棒性极少被单独隔离 | 分辨率扫描 vs 损坏测试套件 | 位置嵌入插值可缓解 | Robust |
+| C1-040 | JPEG 率先冲击边界 | 压缩效应未被分层 | 在 JPEG 下，BF1 退化速度远快于 mIoU | 压缩-边界关联未量化 | 质量扫描；两个指标 | 编解码器特定伪影 | Robust |
+| C1-041 | 对抗 patch 攻击 vs 可提示分割 | 分类 patch 攻击可能无法迁移 | 已发布的 patch 几乎无法改变 SAM 掩码 | 对可提示分割的迁移未测试 | 应用现有 patch；测量 ΔIoU | 仅得到负面结果 | Robust |
+| C1-042 | 标注风格偏移 | 多边形训练的模型在像素精确评估上失败 | 跨风格评估使 BF1 急剧下降，mIoU 轻微下降 | 风格偏移是未被认识的鲁棒性维度 | 跨评估多边形 vs 像素标注集合 | 存在域混杂 | Robust |
+| C1-043 | 微调引入的高频捷径 | 自适应可能导致纹理依赖 | 低通测试对微调模型的伤害大于冻结特征 | PEFT 的频率依赖性未知 | 低通滤波评估，两个模型 | 效应微小 | Robust |
+| C1-044 | 背景依赖 | 掩码质量依赖上下文支撑 | 背景交换使物体 IoU 大幅下降 | 类 SAM 模型未进行上下文消融 | 将物体粘贴到重排背景上 | 粘贴伪影造成混杂 | Robust |
+| C1-045 | 小角度旋转破坏分割基础模型 | 旋转鲁棒性未与损坏进行评估 | ±15° 的伤害超过中等严重度的损坏 | 旋转在分割鲁棒性套件中缺失 | 旋转扫描评估 | 与增强细节挂钩 | Robust |
+| C1-046 | 归一化统计量不匹配审计 | 跨域时错误均值/标准差静默普遍 | 交换统计量损失可测量的 mIoU，未被报告 | 卫生性审计具有新颖性 | 交换归一化统计量；在 3 个集合上量化 | 效应较小 | Robust |
+| C1-047 | 自然覆盖物 vs 合成遮挡 | 遮挡基准不切实际 | 文本/贴纸覆盖下的排名 ≠ 随机擦除排名 | 缺乏自然遮挡分割测试床 | 基于现有数据构建 200 图覆盖物评估 | 整理成本 | Robust |
+| C1-048 | 鲁棒性中的正则化混杂 | PEFT 鲁棒性主张与更短训练时间相混杂 | 预算匹配的全量微调缩小了鲁棒性差距 | 混杂因素极少受到控制 | 匹配轮次/权重衰减；重新对比 | PEFT 仍胜出 → 主张成立 | Robust |
+| C1-049 | LoRA 秩随分辨率扩展 | 秩指导忽视了输出密度 | 最优秩随输出分辨率而非数据大小增长 | 秩-分辨率缩放未被测量 | 在单一数据集上的秩 × 分辨率网格 | 交互较弱 | PEFT |
+| C1-050 | 密集任务的适配器放置 | 分类推导的放置启发式可能不适合分割 | 一个编码器后层适配器捕获大部分增益 | 密集任务的逐层归因未知 | 逐层单适配器扫描 | 骨干特异性 | PEFT |
+| C1-051 | BitFit：域偏移 vs 任务偏移 | 仅偏置微调何时足够并不明确 | BitFit 在域偏移上匹配 LoRA，在任务偏移上失败 | PEFT 的偏移类型分类学具有新颖性 | 2 个域偏移 + 2 个任务偏移对 | 分类学较为模糊 | PEFT |
+| C1-052 | 分割中的注意力 vs MLP LoRA | 块内放置在密集任务中未被探索 | 在匹配参数下，注意力 LoRA 击败 MLP LoRA | 缺少匹配参数的放置研究 | 在相同预算下交换放置位置 | 增量较小 | PEFT |
+| C1-053 | PEFT 增益 vs 充分调优的全量微调 | 全量微调基线通常调优不足 | 学习率扫描的全量微调匹配大部分已发表的 PEFT 分割增益 | 缺少基线强度审计 | 学习率/权重衰减扫描全量微调 vs 2 个 PEFT 方法 | 扫描成本高 | PEFT |
+| C1-054 | 微调位置 × 偏移类型 | 编码器 vs 解码器微调条件化于偏移 | 解码器微调在域内已足够；跨域需要编码器 | 位置 × 偏移交互未被绘制 | 2×2 网格实验 | 数据集混杂 | PEFT |
+| C1-055 | LayerNorm 微调解释了适配器增益 | LN 仿射可能驱动了报告的适配器胜利 | 仅微调 LN 恢复了适配器的大部分增益 | 仅 LN 基线在分割 PEFT 文献中缺失 | 为 2 个基准添加仅 LN 分支 | 差距依然很大 | PEFT |
+| C1-056 | PEFT 增益随规模缩小 | PEFT 价值 vs 骨干规模在分割中未知 | 相比冻结探测，PEFT 相对增益随模型大小缩小 | 分割 PEFT 的规模趋势缺失 | 在 ViT-B/L/H 上采用相同配方 | 仅 3 个规模点 | PEFT |
+| C1-057 | 数据规模交叉点 | PEFT 何时击败全量微调未被绘制 | 交叉点在数百张图像处；高于此全量微调胜出 | 分割交叉点从未被绘制 | 数据规模扫描，两种方法 | 具有数据集特异性 | PEFT |
+| C1-058 | 跨器官 LoRA 合并 | 模型合并被假定可组合 | 合并的器官 LoRA 损失每个专家 Dice 的大部分 | 针对密集解码器的合并未测试 | 合并 2 个 LoRA；评估两个任务 | 仅得到负面结果 | PEFT |
+| C1-059 | PEFT 超参数迁移脆弱性 | 超参数被假定可移植 | 超参数在域内迁移，跨标签密度机制失效 | 分割超参数迁移矩阵具有新颖性 | 3×3 数据集超参数迁移网格 | 网格成本 | PEFT |
+| C1-060 | 种子方差 vs 方法增量 | 分割 PEFT 论文极少报告种子 | 种子间标准差超过声称方法差距的一半 | 缺少方差审计 | 5 个种子 × 3 种方法，单一基准 | 重跑计算量 | PEFT |
+| C1-061 | 微调扼杀多掩码歧义性 | 解码器微调可能导致提议多样性崩溃 | 微调后提议多样性下降至单模态 | 歧义性遗忘未被测量 | 微调前后的多样性指标 | 多样性指标存在争议 | Forget |
+| C1-062 | 遗忘定位于交叉注意力 | 哪个解码器层发生遗忘未知 | 重新拼接提示交叉注意力恢复大部分 zero-shot | 逐层遗忘图具有新颖性 | 层交换恢复研究 | 遗忘是分布式存在的 | Forget |
+| C1-063 | 细化技能最先遗忘 | 后续点击行为可能在第 1 次点击前退化 | 微调后第 3+ 次点击 NoC 恶化，而第 1 次点击完好 | 按点击深度解析的遗忘具有新颖性 | 微调前后的 NoC 曲线 | 方向反转 | Forget |
+| C1-064 | 1% 重放拯救解码器 | 可提示分割的重放剂量未知 | 微小通用掩码重放保留大部分 zero-shot 能力 | 最小重放剂量未被量化 | 微调 ± 1% 重放缓冲区 | 重放数据许可 | Forget |
+| C1-065 | 提示类型特异性遗忘 | 遗忘可能随提示种类而异 | 点提示 zero-shot 遗忘速度快于框提示 | 条件化于提示的遗忘未被研究 | 微调后逐提示类型评估 | 两者退化类似 | Forget |
+| C1-066 | LoRA 也会遗忘 | PEFT 被假定免疫遗忘 | 解码器 LoRA zero-shot 损失 ≈ 完整解码器微调 | 缺少直接匹配测试 | 匹配保留评估 LoRA vs 全量微调 | LoRA 胜出 → 仍具信息量 | Forget |
+| C1-067 | 特征漂移先于失败发生 | 输出指标滞后于内部漂移 | 解码器 CKA 漂移预测后续 zero-shot 下降 | 预测性漂移信号具有新颖性 | 在微调期间跟踪 CKA + zero-shot | 相关性不等于预测 | Forget |
+| C1-068 | 掩码解码器的 WiSE-FT | 权重插值在解码器上未测试 | α 插值以较小的域内成本恢复大部分 zero-shot | 用于解码器遗忘的权重空间修复具有新颖性 | 插值曲线评估 | 非线性损失曲面 | Forget |
+| C1-069 | IoU 头先于掩码头遗忘 | 组件级遗忘顺序未知 | IoU 头校准在掩码质量下降前数步即退化 | 组件顺序未被观察 | 在微调期间跟踪两个头 | 两个头紧密耦合 | Forget |
+| C1-070 | 顺序微调中的顺序效应 | 领域顺序被视为无关紧要 | 置换自适应顺序显著改变最终 zero-shot | 顺序敏感性在分割中未被量化 | 小型模型上 3 个领域的全部排列顺序 | 6 次运行成本 | Forget |
+| C1-071 | 负点击遗忘 | 背景点击技能可能脆弱 | 不带负点击的微调破坏了负点击处理能力 | 技能特异性遗忘未测试 | 微调后负点击评估 | 技能极少被运用 | Forget |
+| C1-072 | 冻结解码器还是编码器？ | 哪种冻结能更好地保留 zero-shot | 编码器微调 + 冻结解码器比反向操作保留更多 | 缺少直接冻结对比 | 双分支冻结研究 | 依赖于具体任务 | Forget |
+| C1-073 | 域差距预测 Zero-Shot 损失 | 保留能力目前不可预测 | Zero-Shot 损失与微调领域的特征空间差距成比例 | 预测性保留关系具有新颖性 | 在 4 个领域微调；将损失对差距回归 | 差距代理指标较差 | ZS-Hurt |
+| C1-074 | 跨模态破坏 | 在一种提示模态上微调损害其他模态 | 点微调不成比例地退化框/文本提示 | 跨模态伤害未被测量 | 点微调后多模态提示评估 | 模型缺乏部分模态 | ZS-Hurt |
+| C1-075 | 微调带来的组合性损失 | 域内微调可能破坏新颖组合 | 保留的物体-上下文组合在微调后表现下降 | 分割的组合保留能力未测试 | 组合保留评估 | 组合难以定义 | ZS-Hurt |
+| C1-076 | 保留能力取决于 LR 而非方法 | PEFT 保留主张可能是 LR 伪影 | 小学习率全量微调匹敌 PEFT zero-shot 保留 | 缺少受控于 LR 的保留对比 | 两者的 LR 扫描保留曲线 | 扫描成本高 | ZS-Hurt |
+| C1-077 | 干扰在类别空间中是局部的 | 哪些类别受到损害未知 | Zero-Shot 损失集中在与微调类别相似的类别上 | 干扰局部性未被绘制 | 相似度 vs 增量回归 | 相似度指标选择 | ZS-Hurt |
+| C1-078 | 非单调遗忘曲线 | 保留被假定在微调步数上是单调的 | Zero-Shot 早期凹陷随后部分恢复 | 轨迹形状未被记录 | 密集检查点 zero-shot 评估 | 轨迹噪声大 | ZS-Hurt |
+| C1-079 | 多样性在保留上胜过规模 | 保留驱动因素不明确 | 在固定 N 下，更高微调数据多样性保留更多 zero-shot | 控制多样性的保留研究具有新颖性 | 固定 N；改变聚类多样性 | 多样性难以控制 | ZS-Hurt |
+| C1-080 | 任务向量取反恢复 Zero-Shot | 自适应能否被干净移除？ | 减去任务向量近乎完全恢复 zero-shot | 分割的任务算术未测试 | 取反向量；评估两个领域 | 域内增益也被抹去（预期中） | ZS-Hurt |
+| C1-081 | 干净掩码微调伤害粗糙提示 | 微调数据质量塑造提示鲁棒性 | 在像素级完美掩码上微调退化了粗糙框的表现 | 质量-鲁棒性关联未测试 | 微调后粗糙提示评估 | 效应微小 | ZS-Hurt |
+| C1-082 | “伤害”是阈值伪影 | 微调后的 zero-shot 下降可能是阈值失校准 | 重新调优二值化阈值挽回了许多“丢失”的 zero-shot | 伪影检查在遗忘论文中缺失 | 微调前后阈值扫描 | 真实遗忘占主导 | ZS-Hurt |
+| C1-083 | 关注前沿而非单点 | 单点保留主张具有误导性 | 方法排名沿增益-保留前沿发生改变 | 基于前沿的对比在分割中具有新颖性 | 3 个方法的多种子前沿 | 绘制曲线需多次运行 | ZS-Hurt |
+| C1-084 | TTA 伤害可提示模型 | 熵最小化 TTA 被假定安全 | TENT 风格 TTA 在偏移下降低了提示遵循能力 | TTA × 可提示性交互未测试 | 在可提示评估上运行熵最小化 TTA | 对分割的设置非平凡 | ZS-Hurt |
+| C1-085 | 冻结特征已足够？ | 密集任务中的线性探测信仰 | 探测 vs 微调差距集中在边界/细长结构上 | 分层探测差距分析具有新颖性 | 分层指标下的探测 vs 微调 | 差距证实是均匀的 | Assume |
+| C1-086 | 更多点击总是有帮助？ | 单调改进假设未经检验 | 部分模型在约 10 次点击后性能下降 | 长程点击行为未被研究 | 将 NoC 评估扩展到 20 次点击 | 该机制极少被使用 | Assume |
+| C1-087 | 骨干越大迁移越好？ | 规模单调性被假定存在 | 在 ≤100 图像微调下，中等规模击败最大骨干 | 小数据 × 规模交互未被绘制 | 规模 × 数据微网格 | 检查点配方混杂 | Assume |
+| C1-088 | SAM 掩码达到标注级别？ | SAM 被广泛用作标注引擎 | 专家掩码在精细结构上以大比分 BF1 优势击败 SAM | 缺少标注引擎质量审计 | 100 张图像专家 vs SAM 对比 | 专家成本高 | Assume |
+| C1-089 | 合成数据弥合差距？ | 仿真数据被假定具有可加性 | 匹配增强的纯真实基线抹去了合成增益 | 增强匹配对照通常缺失 | 为一个 sim2real 设置添加增强匹配分支 | 仅单一设置 | Assume |
+| C1-090 | 置信度过滤是安全的？ | 自训练经验法则 | 置信度过滤的伪标签可测量地使类别先验发生漂移 | 分割自训练的先验漂移审计具有新颖性 | 跟踪跨轮次的类别边缘分布 | 漂移微小 | Assume |
+| C1-091 | 分辨率越高总是越好？ | 推理分辨率经验法则 | 准确率在训练分辨率附近达到峰值（倒 U 型） | 分割基础模型的分辨率响应曲线未报告 | 3 个检查点上的分辨率扫描 | 分类任务中部分已知 | Assume |
+| C1-092 | 学习提示是否可移植？ | 提示调优被假定与检查点无关 | 学习的提示无法跨检查点版本迁移 | 缺少提示迁移测试 | 跨 2 个检查点迁移提示 | 仅得到负面结果 | Assume |
+| C1-093 | 不平衡需要 Dice Loss？ | 医学分割中的损失经验法则 | 加权 CE 在同等调优下匹配 Dice Loss | 受控损失对比罕见 | 匹配调优的损失对决 | 存在先前的部分证据 | Assume |
+| C1-094 | 冻结文本编码器没有问题？ | 开放词汇分割仅调优视觉侧 | 文本侧 LoRA 增益在匹配参数下 ≥ 视觉侧 | 文本侧自适应被忽视 | 匹配预算下的文本 vs 视觉 LoRA | 文本编码器脆弱 | Assume |
+| C1-095 | 验证集 mIoU 可预测部署表现？ | 单中心验证受到信任 | 跨中心方法排名相关性较弱 | 缺少跨中心排名研究 | 跨 3 个中心/城市对方法排名 | 多中心数据获取限制 | Assume |
+| C1-096 | 编码器通用，解码器专用？ | 架构经验法则 | 在微调下，编码器特征漂移超过解码器特征 | 漂移不对称性未被测量 | 微调期间两个部分的 CKA 漂移 | CKA 解释受限 | Assume |
+| C1-097 | SAM 的 PEFT 复现审计 | 方法众多，缺乏统一协议 | 半数方法未能击败调优后的仅解码器基线 | 缺乏统一步骤的复现 | 重新实现 4 个方法，3 个数据集，相同预算 | 重新实现的保真度争议 | Negative |
+| C1-098 | 复杂 UQ vs Softmax 基线 | UQ 方法被假定在 OOD 下更佳 | MC-Dropout/集成在 OOD 分割误差检测中 ≤ max-prob | 密集 UQ 的头对头审计稀缺 | 4 种 UQ 方法的 AUROC 基准 | 集成胜出 → 非负面结果 | Negative |
+| C1-099 | 持续学习（CL）方法 vs 简单重放 | 正则化 CL 被假定具有竞争力 | 在匹配内存下，重放在分割上击败 EWC/LwF | 匹配内存对照往往缺失 | 匹配内存下的 3 种 CL 方法 | 具有数据集依赖性 | Negative |
+| C1-100 | 注意力图 ≠ 定位 | 注意力被包装为可解释性 | Attention Rollout 在指向游戏中输给梯度基线 | 分割专用的可解释性审计缺失 | 两种方法的指向游戏评估 | 两者均较弱 | Negative |
+| C1-101 | 频率增强未能成功复现 | 傅里叶增强主张可能无法泛化 | 增益在第二个骨干/数据集上消失 | 缺少跨骨干复现 | 在 2 个骨干上重跑配方 | 设置争议 | Negative |
+| C1-102 | 空掩码指标漏洞 | Zero-Shot 医学分割数值取决于空 GT 处理 | 修复空切片协议消除了若干声称的增益 | 协议漏洞审计具有新颖性 | 用明确的空案例规则重新计算 | 影响少数数据集 | Negative |
+| C1-103 | 匹配预算下的边界损失 | 边界损失论文极少进行预算匹配 | 匹配预算的 CE 缩小了边界损失增益 | 缺少预算匹配审计 | 等步长训练对决 | 部分损失存活 | Negative |
+| C1-104 | 域随机化 ≈ 种子噪声 | Sim2real 增益可能脆弱 | DR 增益落在分割的 5 种子方差范围内 | 缺少种子方差控制 | 5 种子复现，单一基准 | 10 次运行的计算量 | Negative |
+| C1-105 | 蒸馏降低可提示性 | SAM 蒸馏声称保留了交互性 | 蒸馏模型在多点击细化上急剧退化 | 缺少针对可提示性的蒸馏评估 | 蒸馏 vs 教师的 NoC 曲线 | 蒸馏检查点具有异质性 | Negative |
+| C1-106 | DA 对齐 ≤ 增强 + 自训练 | 特征对齐 DA 被假定是必要的 | 强增强 + 自训练匹配对齐方法 | 分割 DA 的现代基线审计稀缺 | 在一个基准对上的头对头对比 | 基准选择存在争议 | Negative |
+| C1-107 | 涌现对应关系被高估 | 自监督/扩散特征在匹配上被过度吹捧 | 监督特征在统一协议下匹敌它们 | 缺少协议匹配的对比 | 相同协议对应关系评估 | 依赖于具体任务 | Negative |
+| C1-108 | 协同训练损害校准 | 多任务协同训练被假定无害 | 检测+分割协同训练相比仅分割提高分割 ECE | MTL 的校准成本未被测量 | 协同训练 vs 单任务 ECE 对比 | 效应微小 | Negative |
+| C1-109 | 可证明的提示稳定性 | 在点击扰动下缺乏保证 | 随机平滑产生非平凡的可证明点击半径 | 可提示分割的证明未被形式化 | 在 100 张图像上对点击进行平滑 | 半径过于狭小无实用价值 | Formulate |
+| C1-110 | 增益-保留基准测试套件 | 缺乏自适应 vs 保留的标准 | 单一前沿标量可靠地对自适应方法排名 | 缺少联合增益+保留基准 | 从公开集合组装；为 3 个方法打分 | 标量化存在争议 | Formulate |
+| C1-111 | 标注者秒数指标 | 点击次数 ≠ 人工成本 | 学习的时间模型相比 NoC 重新排列交互方法 | 基于努力程度的评估未形式化 | 在公开点击日志上拟合时间模型 | 日志可用性 | Formulate |
+| C1-112 | 多 GT 集合到集合评估 | 单一 GT 忽视了歧义性 | 集合匹配指标分离在单 GT 下打平的模型 | 缺少考虑歧义性的分割评估 | 多标注者子集 + 匹配指标 | 标注成本 | Formulate |
+| C1-113 | 标签架构偏移任务 | 本体变化未被建模 | 架构重映射表现与标准微调分数不相关 | 架构偏移作为形式化任务具有新颖性 | 跨现有集合重映射本体 | 重映射具有主观性 | Formulate |
+| C1-114 | 选择性分割 | 区域级弃权未定义 | 区域弃权在风险-覆盖率上击败像素级和掩码级 | 区域粒度未被形式化 | 超像素弃权基线 + 曲线 | 简单基线很强 | Formulate |
+| C1-115 | 免提示的内在评估 | 可提示评估需要 Oracle 提示 | 自动提示评估在零 Oracle 成本下保留模型排名 | 缺少免 Oracle 协议 | 显著性自动提示；等级相关性检查 | 自动提示存在偏差 | Formulate |
+| C1-116 | 提示作为可移植的任务规格说明 | 学习的提示是否与模型无关？ | 跨模型提示迁移有效当且仅当共享预训练 | 提示可移植性未形式化 | 跨 2 个模型家族迁移提示 | 大多失败 → 负面结果 | Formulate |
+| C1-117 | 具备遗忘意识的模型卡片 | 适应后报告未标准化 | 标准保留面板改变从业者选择 | 缺少报告协议 | 将面板应用于 3 个已发布的微调检查点 | 采纳度不确定 | Formulate |
+| C1-118 | 解码器中的类别遗忘（Unlearning） | 从分割模型中删除类别未被定义 | 朴素的遗忘留下了探测可恢复的类别信号 | 密集预测的遗忘指标具有新颖性 | 遗忘 1 个类别；线性探测泄漏测试 | 方法选择存在争议 | Formulate |
+| C1-119 | 测试时提示优化 | 调整提示而非权重未被框架化 | 学习的点击放置策略击败中心点击启发式 | 提示侧自适应作为新任务 | 在验证集上训练微小放置策略；评估 NoC | 增益微弱 | Formulate |
+| C1-120 | 成本归一化前沿 | 每标注美元准确率未被报告 | 当按标注成本归一化时方法排名发生反转 | 经济评估在分割自适应中未形式化 | 为一个基准标注成本；前沿图 | 成本模型假设 | Formulate |
 
-## Protect (15) — highest expected value, keep alive
+## 重点保护 (15) — 最高预期价值，保持存活
 
 C1-001, C1-003, C1-013, C1-016, C1-026, C1-036, C1-037, C1-053, C1-057, C1-061, C1-066, C1-068, C1-073, C1-097, C1-110
 
-## Cheap-falsify (15) — eval-only or near-zero training cost, test first
+## 优先低成本证伪 (15) — 仅评估或近乎零训练成本，优先测试
 
 C1-008, C1-009, C1-018, C1-021, C1-022, C1-024, C1-028, C1-039, C1-040, C1-041, C1-045, C1-046, C1-082, C1-091, C1-102

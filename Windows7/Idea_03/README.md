@@ -1,63 +1,54 @@
 # Idea_03 — RehearsalGrid
 
-**Does text-batch rehearsal work because of what the text says, or because it puts a
-matched-scale gradient on the language pathway?**
+**文本批次重放（text-batch rehearsal）之所以有效，是因为文本的语义内容，还是因为它在语言路径上施加了尺度匹配的梯度？**
 
-Internal ID `C-0090` · Windows7 · ~2,450 A100-h (dies at the gate for <1,000)
+内部 ID `C-0090` · Windows7 · 约 ~2,450 A100-h（在门禁阶段以 <1,000 A100-h 成本终止）
 
 ---
 
-## The question
+## 核心科学问题
 
-Multimodal fine-tuning degrades a base LLM's language ability. Everyone mitigates it by interleaving
-text-only batches, and everyone *curates* what goes in them. That practice assumes the rehearsal
-text's content is doing the work — an assumption nobody has tested against a content-free control.
+多模态微调会削弱基础 LLM 的语言能力。社区通常通过穿插纯文本批次来缓解该现象，且每个人都会对进入这些批次的内容进行*精心挑选（curate）*。这种做法预设了重放文本的内容在发挥承重作用 —— 这一假设从未对照无内容对照组进行过严格检验。
 
-So we destroy the content and keep the gradient. At a fixed token budget with matched per-layer
-gradient norms, curated rehearsal text is replaced by random web text, then by the *same* text with
-tokens shuffled, then by a single document repeated for the entire budget. Then we ask which
-language capabilities notice.
+因此，我们在保持梯度的同时摧毁其语义内容。在固定 token 预算并匹配各层梯度范数的前提下，精心挑选的重放文本依次被替换为随机网络文本、文本内部 token 被打乱的*相同*文本，以及在整个预算中重复出现的单个文档。随后我们检验哪些语言能力会受到影响。
 
-| Arm | Rehearsal stream | Destroys |
+| 实验臂 | 重放数据流 | 摧毁的要素 |
 |---|---|---|
-| `A0` | none | — (forgetting floor) |
-| `A1` | curated instruction/text mix | — |
-| `A2` | random C4 documents | curation |
-| `A3` | the same C4 sample, tokens permuted within documents | syntax and content; **keeps unigram statistics and length** |
-| `A4` | one ~2K-token document, repeated | diversity |
+| `A0` | 无 | —（遗忘下界） |
+| `A1` | 精心挑选的指令 / 文本混合 | — |
+| `A2` | 随机 C4 文档 | 精选性（curation） |
+| `A3` | 相同的 C4 样本，但在文档内置乱 token | 句法与语义内容；**保留一元词频统计特性（unigram statistics）与长度** |
+| `A4` | 单个约 ~2K-token 的文档，重复使用 | 多样性（diversity） |
 
-`A3` vs `A2` separates lexical statistics from syntax. `A4` vs `A2` separates diversity from content.
-Those two contrasts are what stop every outcome from being a shrug, and no adjacent paper runs them.
+`A3` vs `A2` 将词汇统计特性与句法结构隔离开来。`A4` vs `A2` 将多样性与具体内容隔离开来。这两个对比使得任何可能得出的结果都不会沦为平庸无意义的 shrug，且相邻论文均未开展过此类对照。
 
 ---
 
-## Why every branch is publishable
+## 为什么每个可能的结果分支都具备发表价值
 
-| Result | Meaning |
+| 实验结果 | 科学含义 |
 |---|---|
-| `balance-effect ≥ 0.8 × total` on ≥3 of 4 capabilities | Rehearsal is gradient rebalancing. The field's curation budgets are misdirected; a balance term suffices. |
-| `Ret(A2) ≤ Ret(A0)` everywhere | Content really is load-bearing — the first controlled refutation of the pseudo-rehearsal account in the multimodal regime. |
-| Anything between | The first **per-capability rehearsal dosing recipe**: how much real text each ability actually needs. |
-| The gap is too small to measure | A power analysis bounding how large multimodal linguistic forgetting is under a well-tuned recipe — something the field currently asserts loosely. |
+| 在 4 种能力中的 ≥3 种上满足 `balance-effect ≥ 0.8 × total` | 重放的实质是梯度再平衡。该领域在数据精选上的算力与人力预算被误导了；单纯的平衡项已足够。 |
+| 在所有维度上均满足 `Ret(A2) ≤ Ret(A0)` | 语义内容确实起到了承重作用 —— 这是在多模态体系下对伪重放（pseudo-rehearsal）解释的首次受控证伪。 |
+| 介于二者之间的任何结果 | 产出首个**按能力细分的重放配比配方（per-capability rehearsal dosing recipe）**：明确各项具体能力实际需要多少真实文本。 |
+| 差距过小以至于无法测量 | 产出一套检验效能分析（power analysis），为在精细调优的训练配方下多模态语言遗忘究竟有多大设定边界 —— 该领域目前对此仅做笼统断言。 |
 
-We expect the third. It is the weakest headline and we price it as such.
+我们预期出现第三种结果。它是相对较弱的头条结论，我们已按其实际价值予以定价。
 
 ---
 
-## Run the decision rule now
+## 立即运行决策规则演示
 
 ```bash
 pip install -r requirements.txt
 python src/run_decision_demo.py
 ```
 
-No GPU, no model, no training. **Every number it prints is simulated.** It validates the decision
-rule, not any claim about rehearsal — the point is that the parts of this project that can be
-*wrong* are testable before 2,450 A100-hours are committed.
+无需 GPU，无需模型，无需训练。**其输出的所有数字均为模拟数据。** 它用于验证决策规则，而非针对重放本身提出经验主张 —— 核心在于在投入 2,450 A100-hours 之前，该项目中可能*出错*的所有环节均可被预先检验。
 
-### What the demo shows
+### 演示展示的内容
 
-**The rule fires correctly where an effect exists, and refuses where it does not.**
+**在存在真实效应时规则正确触发，在不存在真实效应时规则果断拒绝。**
 
 ```
 --- World 3: stratified -- fluency runs on gradient, knowledge needs content ---
@@ -73,11 +64,9 @@ NO POWER -- every total effect is below the declared MDE (0.020). The rule decli
 to answer. Stop for <1K A100-h and publish the power analysis.
 ```
 
-World 4 is the one worth staring at. It is the **most likely real outcome**, and a rule that reported
-"MIXED, inconclusive" there would invite one more seed and one more arm until something crossed a
-threshold. Declining to answer is a decision, and it is cheap.
+World 4 尤其值得深思。它是**最可能出现的真实结果**，而一个在此处报告"结果不一、无法得出结论（MIXED, inconclusive）"的规则会诱使研究人员不断追加随机种子和实验臂，直到某个指标跨过阈值。果断拒绝作答本身就是一项决策，且成本极低。
 
-**Three things the demo also establishes, each of which was a live reviewer attack:**
+**演示还确立了三点事实，每一项都曾是评审员提出的活跃攻击点：**
 
 ```
 arm                      total    multimodal    rehearsal
@@ -85,96 +74,74 @@ A0_none            688,888,889   688,888,889            0
 A1_curated         688,888,889   620,000,000   68,888,889
 all arms on an identical total budget: True
 ```
-`A0` has no rehearsal stream, so it must draw *more* multimodal tokens to reach the same total.
-Skipping that step makes `A0` the shortest run and hands the grid a training-length confound dressed
-up as a rehearsal effect.
+`A0` 没有重放数据流，因此必须抽取*更多*的多模态 token 才能达到相同的总量。跳过该步骤会导致 `A0` 成为训练步数最短的实验臂，从而给整个网格引入伪装成重放效应的训练长度混淆因素。
 
 ```
 global scale (one scalar for the whole tower) : 3.245
 residual per-layer mismatch under the global rule: 0.237 .. 3.233
 effective-LR multiplier on the language tower : 4.28x
 ```
-The global convention reports a clean match while individual blocks are off by up to 4.2×. That is
-why per-layer is the pre-registered **primary**. The LR multiplier is logged because matching changes
-the step size on the language tower — a training-stability risk, not a free operation.
+全局匹配规则报告整体匹配良好，但具体单个 block 的失配可高达 4.2 倍。这就是为什么逐层匹配被设定为预注册**主要协议**的原因。记录 LR 乘数是因为梯度匹配改变了语言塔的实际步长 —— 这是一个训练稳定性风险，而非免费操作。
 
 ```
 stratum                  base  chance  headroom     snr  verdict
 reasoning_gsm8k          0.03    0.00     0.030     4.3  FLOOR
 instruction_ifeval       0.28    0.22     0.060     2.9  FLOOR
 ```
-Vicuna-7B is near-floor on GSM8K and weak on IFEval. Retention is `score/score(base)`, so those two
-strata would let noise flip the ≥3-of-4 rule. They are replaced **before** the arms run.
+Vicuna-7B 在 GSM8K 上接近基底性能下界，在 IFEval 上表现较弱。保持率定义为 `score/score(base)`，因此这两个分层会导致噪声翻转 ≥3-of-4 判定规则。它们会在实验臂运行**之前**被替换。
 
 ```
 large effect (gap +0.130)  balance share = 0.86  [0.85, 0.87]
 small effect (gap +0.030)  balance share = 1.18  [0.66, 1.81]
 ```
-Same underlying 0.85 share, two very different intervals. The 0.8 threshold means something only on
-the top row — which is why P0 gates P1.
+相同的底层 0.85 份额，产生了两个截然不同的置信区间。0.8 的阈值仅在首行具备实际统计意义 —— 这也是 P0 门禁制约 P1 的原因。
 
 ---
 
-## Three design corrections found while building this
+## 构建过程中发现的三处设计修正
 
-1. **The base cannot be the published recipe.** `EVIDENCE` LLaVA-1.5's `llava_v1_5_mix665k` already
-   contains a text-only ShareGPT slice, so "reproduce the published recipe" and "`A0` = no rehearsal"
-   cannot both hold. The base is a pre-registered **text-stripped** mix with token-budget
-   re-matching; the published-recipe run is a reported reference point, not an arm. This narrows the
-   claim's direct applicability, and §3 says so rather than eliding it.
-2. **Ratios need usable denominators.** Absolute deltas are now **co-primary** with retention ratios,
-   with a denominator-adequacy gate applied before the arms. The Stage-5 abort gate watched only seed
-   variance; it never asked whether a stratum could support a ratio at all.
-3. **"Divergence between conventions is the finding" is unfalsifiable-adjacent.** With no declared
-   primary, every outcome becomes a result. Per-layer matching is now the pre-registered primary
-   (justified by documented per-layer gradient disparity); global-norm is a stated sensitivity.
+1. **基底混合不能采用已发表的原始配方。** `EVIDENCE` LLaVA-1.5 的 `llava_v1_5_mix665k` 已经包含纯文本 ShareGPT 分片，因此"复现已发表配方"与"`A0` = 无重放"无法同时成立。基底改为预注册的**剥离文本后**混合并重新匹配 token 预算；已发表配方的运行仅作为一个报告的参考对照点，而非实验臂。这收缩了结论的直接适用范围，§3 对此进行了明确说明而非隐瞒。
+2. **比率指标需要可用的分母。** 绝对增量现在与保持率比值**并列为主要指标**，并在各实验臂运行前设置了分母有效性门禁。Stage 5 的终止门禁仅监测随机种子方差，从未检查某个分层是否根本无法支撑比率计算。
+3. **"匹配约定之间的差异本身就是一项发现"近乎不可证伪。** 若不预先声明主要协议，每一种可能的结果都会被解释为一项成果。逐层匹配现已明确为预注册的主要协议（依据记录在案的逐层梯度差异）；全局范数匹配降级为声明的敏感度分析。
 
 ---
 
-## Cost, and the asymmetry that justifies it
+## 成本分析与合理性论证
 
-| Phase | A100-h | Cumulative |
+| 阶段 | A100-h | 累计成本 |
 |---|---|---|
-| E0 reproduction + stripped base | 100 | 100 |
-| E0b `A3` tokenizer pilot | 100 | 200 |
-| **E1 power gate** (A0/A1/A2 × 2 seeds) | 600 | **800 ← kill point** |
-| E2 remaining grid arms | 900 | 1,700 |
-| E3 second convention | 300 | 2,000 |
-| E5 cross-family replication | 300 | 2,300 |
-| E6 evaluation | 150 | 2,450 |
+| E0 复现 + 构建剥离基底 | 100 | 100 |
+| E0b `A3` 分词有效性 pilot | 100 | 200 |
+| **E1 检验效能门禁** (A0/A1/A2 × 2 个种子) | 600 | **800 ← 终止淘汰点** |
+| E2 网格其余实验臂 | 900 | 1,700 |
+| E3 第二种匹配约定 | 300 | 2,000 |
+| E5 跨模型家族复现 | 300 | 2,300 |
+| E6 最终综合评测 | 150 | 2,450 |
 
-`KNOWN FACT` One full LLaVA-1.5-7B fine-tune is roughly 100 A100-h on 8×A100-80GB. **The program
-dies for under 1,000 A100-h if the phenomenon is not there.** That asymmetry is the only thing that
-makes a 2,450 A100-h project responsible, and it is why E1 is a hard gate rather than a checkpoint.
+`KNOWN FACT` 在 8×A100-80GB 上完成一次完整的 LLaVA-1.5-7B 微调约需 100 A100-h。**若该现象不存在，项目将在耗费低于 1,000 A100-h 时终止。** 这种成本不对称性是支撑 2,450 A100-h 高昂项目的唯一负责任机制，也是 E1 被设立为硬性门禁而非普通检查点的原因。
 
 ---
 
-## Files
+## 文件结构
 
-| Path | Contents |
+| 路径 | 内容说明 |
 |---|---|
-| `proposal.md` | the full 28-section package |
-| `literature.md` | verified sources and their exact relation to this project |
-| `experiments.md` | E0–E6 with costs and decision points |
-| `reviewer_attacks.md` | A1–A8 and the experiment that answers each |
-| `roadmap.md` | day 1 → week 7 |
-| `diagrams/architecture.md` | arms, matching, and the decision rule |
-| `configs/preregistration.yaml` | frozen before E1 — MDE, strata, primary convention |
-| `src/` | runnable prototype of the entire decision rule |
-| `references/access_checklist.md` | day-1 dependencies, none confirmed yet |
+| `proposal.md` | 完整的 28 节研究方案包 |
+| `literature.md` | 已验证文献来源及其与本项目的确切关系 |
+| `experiments.md` | E0–E6 实验方案、成本与决策点 |
+| `reviewer_attacks.md` | A1–A8 攻击点及对应解答实验 |
+| `roadmap.md` | 第 1 天 → 第 7 周实施路线图 |
+| `diagrams/architecture.md` | 各实验臂、梯度匹配与决策规则流程图 |
+| `configs/preregistration.yaml` | 在 E1 前冻结 —— MDE、各分层、主要匹配约定 |
+| `src/` | 整个决策规则的可运行原型 |
+| `references/access_checklist.md` | 首日依赖项核对清单，目前尚未最终确认 |
 
 ---
 
-## Honest risks
+## 如实记录的已知风险
 
-- **Underpowered at 7B** is the single most likely ending. That is priced in, and it ends cheaply.
-- **`A3` may be degenerate** — permuted tokens might give degenerate attention rather than the
-  intended unigram-preserving control. E0b pilots this with one run before three seeds are committed.
-- **The base model is old.** `KNOWN FACT` LLaVA-1.5-7B is not a 2026 frontier MLLM. Whether the
-  result transfers to a current model is unknown and unaffordable here; it is stated as a limitation,
-  not hedged.
-- **The mechanism space is being colonised in real time** by gradient-side methods papers. The
-  mitigation is execution speed, not argument.
-- **Portfolio fit.** This is a language-retention study in a mostly-segmentation round. `EVIDENCE`
-  That was a deliberate diversification decision by the Stage-6 panel over the segmentation
-  reviewer's dissent, recorded in `selection_history/`. No experiment settles it.
+- **在 7B 规模下检验效能不足**是最可能出现的结局。该情况已被计入成本预期，且能够以极低代价及时终止。
+- **`A3` 可能产生退化** —— 打乱的 token 可能导致退化的注意力分布而非预期的保留一元词频对照。E0b 通过单次运行对此先行验证，避免直接投入 3 个种子。
+- **基座模型较老。** `KNOWN FACT` LLaVA-1.5-7B 不是 2026 年的前沿 MLLM。该结论能否迁移至当前最新模型尚属未知且在现有算力下无法负担；这被明确声明为局限性，不做模棱两可的推托。
+- **机制解释生态位正在被实时占领**（诸多梯度侧方法类论文不断涌现）。应对举措是加快执行节奏，而非进行文字辩解。
+- **研究组合契合度。** 在以分割为主的本轮中这是一个语言保留度研究。`EVIDENCE` 这是 Stage-6 评审组在分割评审员提出异议的情况下特意做出的多样化决策，记录在 `selection_history/` 中。没有任何实验能够彻底平息该争议。

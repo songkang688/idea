@@ -1,42 +1,23 @@
-# Literature — AlphaSmoke (narrative notes)
+# AlphaSmoke — 文献综述（叙述性要点）
 
-Full register with verification tags (`[V]`/`[S3]`/`[M]`): **`CITATIONS.md`**.
-Why each line matters to the design: `proposal.md` §3. This file is the short
-narrative map.
+带有验证标签（`[V]`/`[S3]`/`[M]`）的完整文献总账详见：**`CITATIONS.md`**。
+关于每条文献对本研究设计的具体意义，详见 `proposal.md` §3。本文件为简要的叙述性导图。
 
-## The three literatures this paper sits between
+## 本文所处的三大文献交汇领域
 
-1. **Smoke segmentation with binary protocols.** Yan et al. AAAI 2022 (SMOKE5K)
-   `[S3]` set the protocol; FoSp AAAI 2024 `[V]` holds it and already reports
-   **mMse + Fβ** — which is why those two metrics are first-class columns in our τ
-   matrix (B4), not strawmanned. AusSmoke/MultiNatSmoke `[V]` shows current SOTA
-   deltas are 1–3 IoU points — the number the rater ceiling confronts (B5).
-2. **Smoke as density/alpha.** Yuan et al. 2019/2020 `[S3]` built synthetic alpha GT
-   (DS01–03) and density regression; SFMattingNet 2025 `[V]` is the field's matting
-   turn, taken **without** the validity evidence this paper supplies. Matting
-   Anything `[S3]` makes alpha heads trivial — which is why Stage 3 killed the
-   architecture idea (A1-046) and only the *pretraining-provenance* question (S-103)
-   survived.
-3. **Label noise / rater disagreement.** Hyperspectral 3-rater smoke statistics
-   (arXiv:2602.10858 `[S3]`) and CoSW NeurIPS 2024 `[S3]` establish the phenomenon;
-   the NOT-FOUND gap is the ceiling *on the standard RGB benchmarks confronted with
-   their own leaderboard deltas* (Stage-3 NOT-FOUND #6).
+1. **采用二值协议的烟雾分割。** Yan et al. AAAI 2022 (SMOKE5K) `[S3]` 奠定了评测协议基础；FoSp AAAI 2024 `[V]` 继承了该协议并已开始报告 **mMse + Fβ** —— 这正是为何这两个指标在我们的 τ 矩阵中作为一等公民列（B4）而非被当作稻草人对待的原因。AusSmoke/MultiNatSmoke `[V]` 显示当前 SOTA 的性能差距仅为 1–3 个 IoU 点 —— 这正是标注员上限研究所要直面对抗的基准数据（B5）。
+2. **作为密度/Alpha 的烟雾。** Yuan et al. 2019/2020 `[S3]` 构建了合成 alpha GT（DS01–03）并开展了密度回归研究；SFMattingNet 2025 `[V]` 代表了该领域的抠图转向，但这一转向是在**缺乏**本研究所提供的指标有效性实证证据的情况下发生的。Matting Anything `[S3]` 使得构建轻量 alpha 预测头变得轻而易举 —— 这正是 Stage 3 淘汰单纯架构创新构想（A1-046）而仅保留*预训练数据来源分布*问题（S-103）的原因。
+3. **标签噪声 / 标注员分歧。** 高光谱 3 名标注员烟雾统计数据（arXiv:2602.10858 `[S3]`）以及 CoSW NeurIPS 2024 `[S3]` 确立了该现象的存在；我们所填补的空白在于*在标准 RGB 基准上直接测算上限并与其自身排行榜上的微小性能增量进行正面对抗*（Stage-3 NOT-FOUND #6）。
 
-## Explicit differencing (what we do NOT claim)
+## 明确的差异界定（我们**不**宣称的内容）
 
-- **ProFSAM** (arXiv:2510.21782 `[S3]`): detector-prompted fire SAM2 — out of scope
-  by binding obligation B10; no detector prompts anywhere in this project.
-- **Matting Anything / Matte Anything** `[S3]`: no new alpha head is claimed; MAM is
-  a pool member and an engineering substrate.
-- **Density-aware SAM-background smoke segmentation** (Pattern Recognition, per
-  `selection_history/literature_anchors.md`): SAM-as-prior is taken; we do not build
-  a smoke segmenter around SAM.
-- **Dark channel** (He et al. CVPR 2009 `[S3]`): imported as the training-free floor
-  (B6), not as a contribution.
+- **ProFSAM**（arXiv:2510.21782 `[S3]`）：基于检测器提示的火灾 SAM2 —— 根据具有约束力的义务 B10 明确属于超出范围；本项目任何位置均不涉及检测器生成的 prompt。
+- **Matting Anything / Matte Anything** `[S3]`：不宣称任何新的 alpha 预测头架构；MAM 仅作为被评分的模型池成员和工程底层支持。
+- **基于 SAM 背景先验的密度感知渐进式烟雾分割**（Pattern Recognition，依据 `selection_history/literature_anchors.md`）：SAM 作为先验已被现有工作探索；我们不围绕 SAM 构建烟雾分割器。
+- **暗通道先验**（He et al. CVPR 2009 `[S3]`）：作为免训练的物理底线模型引入（B6），而非作为本研究的创新贡献。
 
-## Where the novelty lives (Stage-3 NOT-FOUND register)
+## 创新性所在（Stage-3 NOT-FOUND 登记册）
 
-- #5: Dice-vs-alpha model-ranking reversal study on smoke → Part B pillar 1.
-- #6: RGB-benchmark rater ceiling vs published deltas → Part B pillar 3.
-- #7: matting-pretrain vs segmentation-pretrain controlled transfer on smoke →
-  Part A.
+- #5：烟雾领域首个基于 Dice 与 Alpha 误差的模型排名逆序反转研究 → Part B 支柱 1。
+- #6：标准 RGB 基准上的标注员上限与已发表 SOTA 差距的正面对照 → Part B 支柱 3。
+- #7：抠图预训练 vs 通用分割预训练在烟雾上的受控迁移比较研究 → Part A。

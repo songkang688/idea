@@ -1,114 +1,104 @@
-# Idea_02 — Surgery, Arms, and the Decision Rule
+# Idea_02 — 手术方案、实验臂与决策规则（Surgery, Arms, and the Decision Rule）
 
-No weights are modified anywhere in this project. The "architecture" is a wrapper over SAM2's
-inference-state memory bank plus the experimental design around it.
+本项目全程不修改任何网络权重。所谓的"架构"是对 SAM2 推理状态 memory bank 的包装封装，加上围绕其构建的实验设计。
 
 ---
 
-## 1. Where the surgeon sits
+## 1. 手术模块切入位置
 
 ```mermaid
 flowchart LR
-    subgraph SAM2["SAM2.1 video predictor (frozen)"]
-        ENC["image encoder"] --> MA["memory attention"]
-        MA --> DEC["mask decoder"]
-        BANK[("memory bank<br/>conditioning frame m0 (permanent)<br/>recent FIFO entries (recency-encoded)<br/>object pointers")]
+    subgraph SAM2["SAM2.1 video predictor (冻结)"]
+        ENC["图像编码器"] --> MA["memory attention"]
+        MA --> DEC["掩码解码器"]
+        BANK[("memory bank<br/>初始条件帧 m0 (永久保留)<br/>近期 FIFO 条目 (带时序位置编码)<br/>目标指针")]
         BANK <--> MA
-        DEC --> W["memory encoder writes new entry"]
+        DEC --> W["memory 编码器写入新条目"]
         W --> BANK
     end
-    SURG["MemorySurgeon<br/>delete / keep / reinsert<br/>NO weights touched"] -.operates on.-> BANK
+    SURG["MemorySurgeon<br/>删除 / 保留 / 重新插入<br/>不触碰任何网络权重"] -.操作于.-> BANK
 ```
 
 ---
 
-## 2. The six arms
+## 2. 六个实验臂
 
 ```mermaid
 flowchart TD
-    F["failure state at t_r<br/>bank = m0 + pre-error entries + post-error (corrupted) entries"]
+    F["t_r 处的失败状态<br/>bank = m0 + 错误发生前条目 + 错误发生后 (被污染) 条目"]
 
-    F --> N["no_op<br/>nothing"]
-    F --> T["targeted<br/>drop entries written in [t_f, t_r)<br/>keep m0 + pre-error"]
-    F --> R["reset<br/>keep m0 only"]
-    F --> S["sham<br/>drop count-matched PRE-ERROR entries<br/>leave corruption in place"]
-    F --> SC["slot_control<br/>targeted, then refill vacated<br/>recency slots with pre-error duplicates"]
-    F --> RK["random_k<br/>count-matched random deletion"]
+    F --> N["no_op<br/>不做任何处理"]
+    F --> T["targeted<br/>丢弃在 [t_f, t_r) 期间写入的条目<br/>保留 m0 + 错误发生前条目"]
+    F --> R["reset<br/>仅保留 m0"]
+    F --> S["sham<br/>丢弃数量匹配的【错误发生前】条目<br/>将受污染内容原样保留"]
+    F --> SC["slot_control<br/>执行 targeted，随后用错误发生前重复项<br/>填补腾出的近期时序槽位"]
+    F --> RK["random_k<br/>数量匹配的随机删除"]
 
-    T -.->|"beats?"| N
-    T -.->|"H2: pre-error memory is load-bearing"| R
-    T -.->|"H3: it is the content, not the motions"| S
-    SC -.->|"does slot occupancy still matter?"| T
-    RK -.->|"does it matter WHICH entries?"| T
+    T -.->|"是否优于？"| N
+    T -.->|"H2: 错误发生前的 memory 是承重支柱"| R
+    T -.->|"H3: 关键在于内容本身，而非删除动作机制"| S
+    SC -.->|"时序槽位占用是否依然重要？"| T
+    RK -.->|"删除【哪些】条目是否重要？"| T
 ```
 
-`sham` is the vacuous control — same incision, nothing therapeutic removed. Implementing the
-Stage-6 wording literally would have produced an arm that also removes the corruption, making
-"targeted beats sham" unpassable by construction; that version is kept separately as `slot_control`.
+`sham` 是无效对照 —— 进行完全相同的切口，但不移除任何具有治疗效果的内容。字面实现 Stage-6 的文字描述会产生一个同样移除了被污染内容的实验臂，导致"targeted 击败 sham"在构造上就是无法通过的；该版本单独保留为 `slot_control`。
 
 ---
 
-## 3. The structural bound on H2
+## 3. H2 的结构性边界约束
 
 ```mermaid
 flowchart LR
-    A["failure lasts t_r - t_f frames"] --> B{"t_r - t_f < bank capacity?"}
-    B -- yes --> C["pre-error entries survive in the bank<br/>targeted ≠ reset<br/>H2 IS testable"]
-    B -- no --> D["FIFO already flushed everything pre-error<br/>targeted == reset (same operation)<br/>H2 is NOT testable on this failure"]
+    A["失败持续时间为 t_r - t_f 帧"] --> B{"t_r - t_f < bank 容量上限？"}
+    B -- 是 --> C["错误发生前条目在 bank 中依然存活<br/>targeted ≠ reset<br/>H2 【可以】被检验"]
+    B -- 否 --> D["FIFO 已经冲刷掉所有错误发生前条目<br/>targeted == reset (完全相同的操作)<br/>在此类失败上 H2 【无法】被检验"]
 ```
 
-The share of the corpus on the left branch bounds how much of the harvest can speak to H2 at all. It
-is reported at E1, before any P2 claim. In the prototype run it was 23 of 50 simulated failures.
+语料库在左侧分支上的占比从结构上决定了数据采集能在多大程度上检验 H2。该指标在 E1 阶段、提出任何 P2 主张之前先行报告。在原型运行中，模拟的 50 次失败中有 23 次位于该分支。
 
-**P2 is read on the left branch only.** Right-branch failures contribute an exact zero to the
-`targeted − reset` gap, so pooling them dilutes a real effect rather than measuring a smaller one: in
-the prototype a genuine +0.130 subset gap pooled to +0.040, below the pre-registered 0.10 bar, in the
-world where the decomposition is real. The pooled figure is reported alongside and labelled diluted.
+**P2 仅在左侧分支上进行判定。** 右侧分支的失败对 `targeted − reset` 差距的贡献严格为零，因此合并它们会稀释真实效应而非测量到一个较小的效应：在原型中，原本子集上真实的 +0.130 差距在合并后被稀释至 +0.040（低于预注册的 0.10 门槛）。合并计算的数值会并列报告并明确标记为已被稀释。
 
 ---
 
-## 4. Decision rule
+## 4. 决策规则
 
 ```mermaid
 flowchart TD
-    E0["E0 replay-determinism gate<br/>no_op must reproduce the original failure bit-for-bit"]
-    E0 -- fail --> KILL0["KILL. Arm differences would be harness noise."]
-    E0 -- pass --> E1["E1 harvest (fixed protocol, zero curation)<br/>report total yield AND H2-testable yield"]
-    E1 --> E2["E2 pilot: 50 failures x 6 arms<br/>+ partialled regression  (~10 GPU-h)"]
+    E0["E0 回放确定性门禁<br/>no_op 必须逐 bit 精确复现原始失败"]
+    E0 -- 失败 --> KILL0["终止项目。实验臂差异将混入测试工具噪声。"]
+    E0 -- 通过 --> E1["E1 失败数据采集 (固定协议，零人工筛选)<br/>报告总产出量以及 H2 可检验产出量"]
+    E1 --> E2["E2 pilot 测试：50 次失败 x 6 个臂<br/>+ 偏相关回归分析 (~10 GPU-h)"]
 
-    E2 --> G1{"targeted ≈ sham?"}
-    G1 -- yes --> KILL1["KILL. Effect is deletion mechanics,<br/>not memory content."]
-    G1 -- no --> G2{"targeted - reset < 3 pts<br/>AND pilot partial r < 0.2?"}
-    G2 -- yes --> KILL2["STOP before comparator passes.<br/>Release corpus + toolkit as tech note."]
-    G2 -- no --> E3["E3/E4 killer experiment (~60 GPU-h)"]
+    E2 --> G1{"targeted ≈ sham？"}
+    G1 -- 是 --> KILL1["终止。效应源于删除动作机制，<br/>而非 memory 内容。"]
+    G1 -- 否 --> G2{"targeted - reset < 3 分<br/>且 pilot 偏相关 r < 0.2？"}
+    G2 -- 是 --> KILL2["在运行对照方法前终止。<br/>将语料库 + 工具包作为技术简报发布。"]
+    G2 -- 否 --> E3["E3/E4 killer 实验 (~60 GPU-h)"]
 
     E3 --> K1{"P1 ≥30 vs no_op<br/>P2 ≥10 vs reset<br/>P3 ≥10 vs sham"}
-    E3 --> K2{"min over frozen comparator set<br/>partial r > 0.4"}
-    K1 -- fail --> NEG["Pre-registered negative.<br/>Corpus + toolkit still published."]
-    K2 -- fail --> NEG
-    K1 -- pass --> WIN
-    K2 -- pass --> WIN["Headroom table:<br/>how much failure is memory-borne, and<br/>what share each policy actually captures"]
+    E3 --> K2{"在预先冻结的对照集上<br/>min partial r > 0.4"}
+    K1 -- 失败 --> NEG["预注册的负面结果。<br/>语料库 + 工具包依然发布。"]
+    K2 -- 失败 --> NEG
+    K1 -- 通过 --> WIN
+    K2 -- 通过 --> WIN["提升空间表（Headroom table）：<br/>多少失败源于 memory，以及<br/>各已发表策略实际捕获了多大份额"]
 ```
 
 ---
 
-## 5. The validity design (attack A1)
+## 5. 有效性设计（针对攻击点 A1）
 
 ```mermaid
 flowchart LR
-    D["sequence difficulty<br/>distractor density, occlusion,<br/>failure count, no-op recovery"]
-    D --> RHO["reversible fraction ρ"]
-    D --> G["prevention-method gain g_c"]
-    RHO -.->|"the claim we want to test"| G
+    D["序列难度<br/>干扰物密度、遮挡次数、<br/>失败次数、no-op 恢复率"]
+    D --> RHO["可逆比例 ρ"]
+    D --> G["预防性方法的收益 g_c"]
+    RHO -.->|"我们希望检验的核心主张"| G
 
-    RHO --> P1["residual of ρ after regressing on X"]
-    G --> P2["residual of g_c after regressing on X"]
-    P1 --> PC["partial r = corr(residuals)"]
+    RHO --> P1["ρ 对 X 进行回归后的残差"]
+    G --> P2["g_c 对 X 进行回归后的残差"]
+    P1 --> PC["偏相关 r = corr(残差)"]
     P2 --> PC
-    PC --> MIN["min over FROZEN comparator set C<br/>threshold 0.4"]
+    PC --> MIN["在预先冻结的对照集 C 上取最小值<br/>阈值 0.4"]
 ```
 
-Difficulty drives **both** `ρ` and `g_c`, so the naive correlation is inflated by a path that has
-nothing to do with instrument validity. In the prototype, naive correlations of 0.952 / 0.918 /
-0.859 became partial correlations of 0.682 / 0.397 / 0.028. Freezing `C` and reporting the minimum is
-what prevents the 0.028 comparator from being dropped after the fact.
+难度同时驱动了 `ρ` 和 `g_c` **两者**，因此朴素的原始相关性被一条与工具测量有效性毫无关系的路径人为推高。在原型中，原始相关性分别为 0.952 / 0.918 / 0.859，在偏相关分析后变为 0.682 / 0.397 / 0.028。冻结对照集 `C` 并报告其最小值正是防止在事后悄悄剔除 0.028 对照方法的关键机制。

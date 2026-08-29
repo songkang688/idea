@@ -1,17 +1,10 @@
-# References — AlphaSmoke
+# 参考文献要点说明 — AlphaSmoke
 
-The authoritative register (with `[V]`/`[S3]`/`[M]` verification tags and the
-no-fabrication policy) is **`../CITATIONS.md`**; narrative notes in
-`../literature.md`.
+权威的文献总账（附带 `[V]`/`[S3]`/`[M]` 验证标签及严禁编造引用的政策）详见 **`../CITATIONS.md`**；叙述性说明详见 `../literature.md`。
 
-Reviewer-facing differencing one-liners:
+面向审稿人的差异化一句话说明：
 
-- **FoSp AAAI 2024** — the field already reports mMse/Fβ; our τ matrix includes both
-  as first-class columns and pre-registers the kill if mMse already proxies alpha
-  error (K-B1).
-- **Matting Anything CVPRW 2024** — architecture difference is not our claim; we test
-  *pretraining-data provenance*, MAM is a scored pool member.
-- **SFMattingNet 2025** — the matting turn happened without validity evidence; this
-  paper is the audit it skipped (in-pool per B9).
-- **ProFSAM arXiv:2510.21782** — detector-prompted fire SAM2 is explicitly out of
-  scope (B10).
+- **FoSp AAAI 2024** — 该领域此前已开始报告 mMse/Fβ；我们的 τ 矩阵将两者作为一等公民列纳入，并预注册了若 mMse 已能代表 alpha 误差则终止研究的判定条件（K-B1）。
+- **Matting Anything CVPRW 2024** — 架构差异并非我们的核心创新主张；我们测试的是*预训练数据来源分布（pretraining-data provenance）*，MAM 本身作为参与评分的模型池成员。
+- **SFMattingNet 2025** — 该领域在缺乏有效性证据的情况下发生了抠图转向；本论文正是对该转向所跳过的指标有效性进行系统审计（依据 B9 纳入模型池）。
+- **ProFSAM arXiv:2510.21782** — 基于检测器提示的火灾 SAM2 明确属于超出范围（B10）。

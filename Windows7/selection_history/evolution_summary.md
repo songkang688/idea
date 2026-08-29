@@ -1,9 +1,9 @@
-# Windows7 — Evolution Summary
+# Windows7 — 演化总结（Evolution Summary）
 
 ```
 Stage 1  exploration          1,110 raw ideas    (3 clusters, parallel agents)
 Stage 2  independent review     255 survive
-Stage 3  adversarial prior work  52 survive      ← the largest kill, by far
+Stage 3  adversarial prior work  52 survive      ← 迄今为止最大规模的淘汰
 Stage 4  Reviewer #2 attack      21 survive
 Stage 5  experimental engineering  5 survive
 Stage 6  research-group battle     3 final
@@ -11,141 +11,103 @@ Stage 6  research-group battle     3 final
 
 ---
 
-## Stage 1 — 1,110 raw ideas
+## Stage 1 — 1,110 条原始想法
 
-Three clusters explored in parallel, each seeded from a different failure mode rather than from a
-topic. The framing matters: "where does X break" generates falsifiable ideas, while "what could we
-add to X" generates module stacking.
+三个聚类（cluster）并行探索，每个聚类均从特定的失效模式（failure mode）出发作为种子，而非从宽泛的主题出发。立意切入点至关重要："X 在哪里会崩溃"能催生出可证伪的研究想法，而"我们能给 X 增加什么"只会催生出模块堆叠。
 
-| Cluster | Territory | Yield |
+| 聚类 | 探索领域 | 产出量 |
 |---|---|---|
-| A | video segmentation, tracking, SAM2 memory, temporal failure | ~370 |
-| B | few-shot / zero-shot segmentation, prompt sensitivity, benchmark integrity | ~370 |
-| C | multimodal fine-tuning, forgetting, PEFT, representation drift | ~370 |
+| A | 视频分割、目标跟踪、SAM2 memory、时序失效 | ~370 |
+| B | 少样本 / 零样本分割、prompt 敏感性、基准完整性 | ~370 |
+| C | 多模态微调、遗忘现象、PEFT、表征漂移 | ~370 |
 
-Generation angles: existing-method failure, dataset failure, foundation-model failure, domain shift,
-prompt sensitivity, fine-tuning instability, catastrophic forgetting, small objects, boundary
-quality, uncertainty, long tail, annotation efficiency, calibration, robustness, synthetic data,
-evaluation weakness, surprising empirical phenomena, unproven community assumptions, negative
-results.
+生成角度：现有方法失效、数据集失效、基础模型失效、域偏移、prompt 敏感性、微调不稳定性、灾难性遗忘、小目标、边界质量、不确定性、长尾分布、标注效率、校准性、鲁棒性、合成数据、评测缺陷、令人惊讶的经验现象、未经证实的社区共识假定、负面结果。
 
-**Rejected on sight:** "Module A + Module B", "Transformer + CNN", "apply method X to medical
-images", "swap the loss", "swap the backbone", "add attention." These were filtered during generation
-rather than at Stage 2, which is why the Stage-2 pass rate looks high.
+**直接拒绝的类型：** "Module A + Module B"、"Transformer + CNN"、"将方法 X 应用于医学图像"、"替换损失函数"、"替换主干网络"、"添加注意力机制"。这些在生成阶段就已被过滤，而非留到 Stage 2，这也是 Stage-2 通过率看起来较高的原因。
 
 ---
 
 ## Stage 2 — 1,110 → 255
 
-Independent reviewers scoring novelty, significance, scientific question, soundness, feasibility,
-compute, data availability, baseline availability, likelihood-already-published, experimental
-clarity, venue potential, risk, upside, and research ROI.
+独立评审员针对新颖性、重要性、科学问题、合理性、可行性、算力需求、数据可用性、基线可用性、已发表概率、实验清晰度、目标发表会议潜力、风险、收益以及研究 ROI 进行打分。
 
-**Not ranked by mean score.** Four categories were protected from averaging:
+**不按平均分排名。** 四类想法受到保护免受平均分抹平：
 
-1. high-risk / high-reward ideas
-2. simple but counter-intuitive ideas
-3. ideas where reviewers disagreed sharply
-4. ideas falsifiable by a cheap experiment
+1. 高风险 / 高回报的想法
+2. 简单但反直觉的想法
+3. 评审员之间存在剧烈分歧的想法
+4. 能被廉价实验证伪的想法
 
-All three finalists came from category 4. That is not a coincidence — a cheap falsification test is
-what lets an idea survive Stage 5's cost scrutiny.
+最终入围的所有三个想法均来自第 4 类。这绝非巧合 —— 廉价的证伪检验正是让一个想法能够经受住 Stage 5 成本严审的关键。
 
 ---
 
-## Stage 3 — 255 → 52 · the real filter
+## Stage 3 — 255 → 52 · 真正的过滤器
 
-The stage ran under the assumption that **every idea has already been done**, and the agents' job was
-to kill novelty, not defend it.
+该阶段在**每个想法都已经被做过**的预设假定下运行，智能体的职责是摧毁新颖性，而非捍卫新颖性。
 
-This removed 80% of the survivors and eliminated essentially every "new architecture" idea in the
-pool. The recurring pattern: the mechanism was already published, usually under a different name in
-an adjacent subfield.
+这一阶段淘汰了 80% 的幸存者，基本上清除了候选池中所有的"新架构"类想法。反复出现的规律是：该机制实际上已经发表过了，通常是在相邻子领域中以不同的名称存在。
 
-Ideas were **mutated rather than killed** when only part of the novelty was gone. Both B-0121 and
-A-0017 passed through this: each began as a method proposal and came out as a measurement project,
-because the method was taken but the measurement was not.
+当新颖性只有部分丧失时，想法会被**变异而非直接击杀**。B-0121 和 A-0017 都经历了这一过程：两者最初都是方法类提案，最终均转变为测量类项目，因为方法已经被占坑，但测量尚未有人做过。
 
 ---
 
 ## Stage 4 — 52 → 21
 
-Each idea treated as a submitted paper, attacked for rejection, then defended.
+每个想法均被视作已提交的论文，以拒稿为目的进行攻击，随后进行答辩。
 
-The bar was **not** "can we rebut the reviewer?" but "**can we design an experiment that makes the
-objection moot?**" Ideas whose central attack had no affordable experimental answer were eliminated
-regardless of how good the rebuttal sounded.
+评判门槛**不是**"我们能否口头反驳评审员？"，而是"**我们能否设计出一个让该反对意见变得无关紧要的实验？**"对于核心攻击点缺乏负担得起的实验方案的想法，无论其口头反驳听起来多么合理，均被淘汰。
 
-Most common fatal attacks: unremovable confounds, missing baselines that do not exist publicly,
-metrics that cannot distinguish the hypothesis from the trivial alternative.
+最常见的致命攻击：无法消除的混淆因素、不存在公开实现的缺失基线、无法将假设与平凡替代解释区分开来的指标。
 
 ---
 
 ## Stage 5 — 21 → 5
 
-Each idea treated as a project starting next week: architecture, data, baselines, metrics, ablations,
-GPU estimate, minimal viable experiment, stop conditions.
+每个想法均被视为下周即可启动的项目：架构、数据、基线、指标、消融实验、GPU 预算估计、最小可行实验（MVE）、终止条件。
 
-The killing criterion was **cost-per-decision** — the price of the cheapest experiment that decides
-whether to continue. Several scientifically interesting ideas died here purely on cost, which is the
-correct outcome for a group that must actually run them.
+淘汰准则是**每次决策的成本（cost-per-decision）** —— 决定是否继续推进所需的最便宜实验的代价。若干在科学上很有意思的想法在此阶段纯粹因成本而被淘汰，这对于一个必须实际运行实验的研究团队来说是正确的决策。
 
-**Supervisor-locked Top 5:** A-0017, B-0121, A-0061 (Boundary Nyquist), B-0212 (blending-artifact
-transfer-gap law), C-0090.
+**导师锁定的 Top 5：** A-0017、B-0121、A-0061（Boundary Nyquist）、B-0212（blending-artifact transfer-gap law）、C-0090。
 
-**Alternates carried alongside:** A-0002, M5, C-0028, A-0178, C-0302, B-0230, A-0107.
+**随行携带的备选项：** A-0002、M5、C-0028、A-0178、C-0302、B-0230、A-0107。
 
 ---
 
 ## Stage 6 — 5 → 3
 
-Multi-round group battle: PI, skeptical PI, domain experts, Reviewer #2, methodology and
-reproducibility reviewers, the engineer who has to build it, one researcher hunting fatal flaws and
-one hunting hidden upside, plus a meta-auditor who ran a full-funnel bias audit.
+多轮团队决战：PI、持怀疑态度的 PI、领域专家、Reviewer #2、方法论与可复现性评审员、负责具体构建的工程师、一名专门寻找致命缺陷的研究员与一名专门寻找隐藏上行潜力的研究员，外加一名执行全漏斗偏差审计的元评审员。
 
-**Selected:** B-0121 (#1), A-0017 (#2), C-0090 (#3) — one per cluster, which also decorrelates the
-three independent Stage-2→5 reviewer lineages so no single chain's blind spot touches more than one
-pick.
+**最终选中：** B-0121 (#1)、A-0017 (#2)、C-0090 (#3) —— 每个聚类各占一席，这也解除了三个独立的 Stage-2→5 评审血统之间的相关性，确保没有任何单一链条的盲点会影响到一个以上的选题。
 
-**Dropped from the locked Top 5, with compensation:**
+**从锁定的 Top 5 中剔除，但给予算力补偿：**
 
-- **A-0061** (Boundary Nyquist) — a second pure-measurement paper with the lowest ceiling in the Top
-  5; its strongest possible outcome is negative design advice. **Cut on genre and ceiling, not
-  validity**, and kept as an idle-cycle rider (~15–20 GPU-h).
-- **B-0212** (blending-artifact transfer-gap law) — lost the slot on **portfolio arithmetic, not
-  merit**: only one Cluster-B slot existed, and B-0121 dominates it roughly 9× on cost-to-decision
-  while covering the same evaluation-validity axis. Compensation: **B-0212's 3-arm MVE (~6 A100-days,
-  including the probe sanity gate) is funded now**, making it the immediately promotable second
-  alternate.
+- **A-0061** (Boundary Nyquist) — 第二篇纯测量型论文，在 Top 5 中上限最低；其最强的可能成果只是负面的设计建议。**因体裁与上限被砍，而非因有效性问题**，保留为闲置算力周期运行任务（~15–20 GPU-h）。
+- **B-0212** (blending-artifact transfer-gap law) — **输在研究组合算术上，而非输在质量上**：Cluster B 仅有一个名额，而 B-0121 在决策成本上以约 9 倍的优势压倒它，同时覆盖了相同的评测有效性维度。补偿方案：**B-0212 的 3 臂 MVE（~6 A100-days，包括探针健全性门禁）立即获得资助运行**，使其成为可立即晋级的第一候补。
 
-The panel attached **mandatory conditions** to the survivors rather than approving them as written,
-and made one **revival**. Those are folded into the proposals' method and experiment sections rather
-than appended as caveats. See `reviewer_summary.md`.
+评审组对幸存者附加了**强制性约束条件**而非原样照批，并完成了一项**复活**。这些要求已融入提案的方法与实验章节中，而非作为附录保留。参见 `reviewer_summary.md`。
 
 ---
 
-## Stage 7 — the packages
+## Stage 7 — 方案包构建
 
-Each final idea written as a 28-section research package with a **runnable prototype**.
+每个最终想法均撰写为一份包含 28 个章节的研究方案包，并配有**可运行的原型（runnable prototype）**。
 
-Building the prototypes was not a formality. Each of the three surfaced at least one error that would
-have compromised the real experiment:
+构建原型绝非走过场。这三个项目中的每一个都通过原型暴露出至少一个原本会危及真实实验的设计错误：
 
-| Idea | Error found by building it |
+| 想法 | 通过构建原型发现的错误 |
 |---|---|
-| B-0121 | primary statistic (median of ratios) was blind to the effect it exists to detect |
-| A-0017 | the sham arm was specified backwards; and pooling failures longer than the memory horizon dilutes the H2 test toward zero |
-| C-0090 | the control arm contradicted the premise, because the published mix already contains text rehearsal |
+| B-0121 | 主要统计量（比值的中位数）对其旨在检测的效应完全失明 |
+| A-0017 | sham 臂的定义完全搞反；且合并超过 memory 上限的长周期失败会使 H2 检验被稀释趋近于零 |
+| C-0090 | 对照臂与前提假设相抵触，因为已发表的训练混合中已经包含了文本 rehearsal |
 
-That is the argument for writing prototypes at Stage 7 rather than at the start of the project: three
-design errors caught for a few CPU-seconds each.
+这就是在 Stage 7 而不是在项目启动之初就编写原型的理由：每个设计错误仅耗费几 CPU 秒就被捕获并修正。
 
 ---
 
-## Where the artifacts live
+## 产出物存储位置
 
-Stage 1–6 outputs are on `songkang688/idea` branches, cited per idea in each `proposal.md`
-Provenance section. Representative:
+Stage 1–6 的产出物位于 `songkang688/idea` 分支上，在每个 `proposal.md` 的 Provenance 章节中均有具体引用。代表性分支包括：
 
 ```
 cursor/stage1-cluster-{a,b,c}-ideas-*

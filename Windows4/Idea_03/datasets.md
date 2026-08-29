@@ -1,62 +1,52 @@
-# AlphaSmoke — Dataset & Checkpoint Inventory
+# AlphaSmoke — 数据集与 Checkpoint 资源清单
 
-Status: INVENTORY. Access/license columns are marked **UNVERIFIED** until runbook step
-R0 executes; nothing below asserts that a download succeeded. No dataset is
-redistributed by this package.
+状态说明：INVENTORY。在运行手册步骤 R0 执行之前，获取/许可状态列均标记为 **UNVERIFIED**；以下内容均不代表下载已成功。本项目包不重新分发任何第三方数据集。
 
-## 1. Smoke — target domain
+## 1. 烟雾 — 目标领域
 
-| Dataset | Role | GT type | Source citation (tag) | Access status |
+| 数据集 | 角色与用途 | GT 类型 | 来源文献（标签） | 获取状态 |
 |---|---|---|---|---|
-| DS01–DS03 (Yuan et al. synthetic smoke) | Part A secondary endpoint; Part B synthetic-alpha τ arm | **alpha** (synthetic composites) | arXiv:1809.00774 / Neurocomputing 2019 `[S3]` | UNVERIFIED (author site / on request) |
-| SMOKE5K | Part A primary (real split); Part B pool scoring; rater study | binary (+ transmission-guided provenance) | Yan et al., AAAI 2022 `[S3]` | UNVERIFIED (public per Stage-3 notes) |
-| SSD (smoke segmentation dataset used in Stage-3 ceiling plan) | rater study; ceiling confrontation | binary | per `stage3_kill_medical_smoke.md` §8 `[S3]` | UNVERIFIED |
-| AusSmoke / MultiNatSmoke | primary endpoint (if licensed); ceiling confrontation deltas (1–3 IoU pts) | binary | arXiv:2604.23542 `[V]` | UNVERIFIED |
-| FIgLib (fixed-tower wildfire sequences) | measured-alpha capture source (pre-smoke background frames) | sequences, event-labelled | Dewangan et al., Remote Sensing 14(4):1007, 2022 `[S3]` | UNVERIFIED (public per Stage-3 notes) |
-| **AlphaSmoke-Measured (new, ours)** | Part B pillar 2; Part A tertiary endpoint | **measured alpha** via background inversion + validity/sensitivity masks | this package, `configs/alpha_capture.yaml` | to be captured (lab + FIgLib-derived) |
+| DS01–DS03（Yuan et al. 合成烟雾） | Part A 次要终点；Part B 合成 alpha τ 分支 | **alpha**（合成图像） | arXiv:1809.00774 / Neurocomputing 2019 `[S3]` | UNVERIFIED（作者主页 / 依申请获取） |
+| SMOKE5K | Part A 主要终点（真实划分）；Part B 模型池评分；标注员研究 | 二值（+ 带有透射率引导的生成来源） | Yan et al., AAAI 2022 `[S3]` | UNVERIFIED（依据 Stage-3 记录为公开可用） |
+| SSD（Stage-3 标注上限计划中所用烟雾分割数据集） | 标注员研究；上限对抗对照 | 二值 | 依据 `stage3_kill_medical_smoke.md` §8 `[S3]` | UNVERIFIED |
+| AusSmoke / MultiNatSmoke | 主要终点（若许可通过）；上限对抗对照性能差距（1–3 个 IoU 点） | 二值 | arXiv:2604.23542 `[V]` | UNVERIFIED |
+| FIgLib（固定铁塔野火监控序列） | 实测 alpha 采集数据源（烟雾发生前的背景帧） | 序列，事件级标注 | Dewangan et al., Remote Sensing 14(4):1007, 2022 `[S3]` | UNVERIFIED（依据 Stage-3 记录为公开可用） |
+| **AlphaSmoke-Measured（自建新数据集）** | Part B 支柱 2；Part A 第三终点 | 通过背景反演获取的**实测 alpha** + 有效性/敏感性掩码 | 本项目包，`configs/alpha_capture.yaml` | 待实测采集（实验室 + 基于 FIgLib 衍生） |
 
-## 2. Matting — pretraining side (arms M / MB)
+## 2. 抠图 — 预训练端（分支 M / MB）
 
-| Dataset | Role | Notes | Access status |
+| 数据集 | 角色与用途 | 备注说明 | 获取状态 |
 |---|---|---|---|
-| P3M-10k | matting pretrain corpus | portrait matting; privacy-preserving faces; license terms must be checked for pretraining use | UNVERIFIED `[M — verify dataset card]` |
-| AIM-500 | matting pretrain corpus | natural-object mattes | UNVERIFIED `[M]` |
-| Composition-1k / Adobe DIM | matting pretrain corpus (optional) | **license-restricted (request-based)**; if unavailable, drop and report corpus composition honestly | UNVERIFIED `[M]` |
-| Distinctions-646 | matting pretrain corpus (optional) | same caveat | UNVERIFIED `[M]` |
+| P3M-10k | 抠图预训练语料 | 人像抠图；隐私保护人脸；必须核查预训练用途的许可条款 | UNVERIFIED `[M — 待核验数据集卡片]` |
+| AIM-500 | 抠图预训练语料 | 自然物体抠图 | UNVERIFIED `[M]` |
+| Composition-1k / Adobe DIM | 抠图预训练语料（可选） | **受许可限制（依申请获取）**；若无法获取则舍弃并如实报告语料构成 | UNVERIFIED `[M]` |
+| Distinctions-646 | 抠图预训练语料（可选） | 注意事项同上 | UNVERIFIED `[M]` |
 
-Arm MB uses the **identical** image set with alpha thresholded at 0.5 (B1). The corpus
-actually used is frozen and listed in the paper; if any corpus fails licensing, both M
-and MB shrink together, keeping the M/MB contrast exact.
+分支 MB 使用**完全相同**的图像集，仅将 alpha 在 0.5 处进行二值化阈值处理（B1）。实际使用的语料库将在论文中冻结并完整列出；若有任何语料库未通过许可审核，M 与 MB 将同步缩减，以保持 M/MB 对比实验的严格一致性。
 
-## 3. Segmentation — pretraining side (arms S / S+cal)
+## 3. 分割 — 预训练端（分支 S / S+cal）
 
-| Source | Role | Notes | Access status |
+| 数据源 | 角色与用途 | 备注说明 | 获取状态 |
 |---|---|---|---|
-| COCO (instance/semantic) | arm S controlled pretrain + matched-count subsample (B8) | standard terms | UNVERIFIED |
-| Public seg checkpoint at matched backbone (e.g., SAM ViT-B image encoder `[M]`, ViTDet-COCO `[M]`) | arm S public-checkpoint cell; probe encoder (b) | scale confound acknowledged; controlled cells carry the claim | UNVERIFIED |
-| Generic (non-smoke) synthetic composites for S+cal head calibration | B7 control | built from seg-corpus images + random soft masks; recipe in `configs/pretrain_arms.yaml` | generated, not downloaded |
+| COCO（实例/语义） | 分支 S 受控预训练 + 样本量匹配子集（B8） | 标准开源条款 | UNVERIFIED |
+| 匹配骨干网络的公开分割 checkpoint（例如 SAM ViT-B 图像编码器 `[M]`, ViTDet-COCO `[M]`） | 分支 S 公开 checkpoint 单元格；探针编码器 (b) | 承认存在规模混淆因素；以受控单元格承载核心主张 | UNVERIFIED |
+| 用于 S+cal 预测头校准的通用（非烟雾）合成图像 | B7 对照实验 | 由分割语料图像 + 随机软掩码合成构建；配方见 `configs/pretrain_arms.yaml` | 本地生成，无需下载 |
 
-## 4. Part-B checkpoint pool (target 8–12; final list frozen at R3)
+## 4. Part-B 模型池 Checkpoint 候选（目标 8–12 个；最终列表在 R3 冻结）
 
-| Candidate | Why | Tag |
+| 候选模型 | 入选原因 | 标签 |
 |---|---|---|
-| Yan et al. AAAI 2022 model (SMOKE5K line) | field baseline, protocol origin | `[S3]` |
-| FoSp (AAAI 2024) | current SMOKE5K protocol holder (mMse+Fβ) | `[V]` — weights availability UNVERIFIED |
-| SFMattingNet (Remote Sensing 2025) | **B9 mandatory** — the matting turn's representative | `[V]` — weights availability UNVERIFIED |
-| Yuan et al. line (DS0x) | synthetic-alpha era representative | `[S3]` — reproducibility UNVERIFIED |
-| MAM (Matting Anything) | matting foundation head on frozen SAM | `[S3]` |
-| SAM (automatic / grid-point mode, thresholded) | generic-segmentation representative — **B10: no detector prompting** | `[M]` code public |
-| CoSW (NeurIPS 2024) | label-noise-aware smoke model | `[S3]` — weights UNVERIFIED |
-| Part-A arms (M, MB, S, S+cal, 0) + floors (DC, HSV) | internal pool members | ours |
+| Yan et al. AAAI 2022 模型 (SMOKE5K 系列) | 领域经典基线，评测协议发源 | `[S3]` |
+| FoSp (AAAI 2024) | 当前 SMOKE5K 评测协议保持者 (mMse+Fβ) | `[V]` — 权重可用性 UNVERIFIED |
+| SFMattingNet (Remote Sensing 2025) | **B9 强制项** — 抠图转向代表模型 | `[V]` — 权重可用性 UNVERIFIED |
+| Yuan et al. 系列 (DS0x) | 合成 alpha 时代代表模型 | `[S3]` — 可复现性 UNVERIFIED |
+| MAM (Matting Anything) | 冻结 SAM 上的抠图基础大模型预测头 | `[S3]` |
+| SAM (自动模式 / 网格点模式，经阈值输出) | 通用分割代表模型 — **B10: 严禁检测器提示** | `[M]` 代码公开 |
+| CoSW (NeurIPS 2024) | 标签噪声感知烟雾模型 | `[S3]` — 权重 UNVERIFIED |
+| Part-A 各分支 (M, MB, S, S+cal, 0) + 物理底线模型 (DC, HSV) | 内部模型池成员 | 本文构建 |
 
-Pool inclusion rule (pre-registered): any candidate whose released weights cannot be
-obtained or reproduced by R3 is listed in the paper as "attempted, unavailable" — no
-silent drops.
+模型池入选规则（预注册）：任何无法在 R3 之前获取官方开源权重或复现的候选模型，均在论文中列为“尝试获取但不可用” —— 严禁隐瞒舍弃。
 
-## 5. Published-delta ledger (for the ceiling confrontation, B5)
+## 5. 已发表性能差距总账（用于标注员上限正面对照，B5）
 
-To be filled at R0 by tabulating, per benchmark, the reported metric deltas between
-consecutive SOTA claims (starting set: AusSmoke/MultiNatSmoke table `[V]`, SMOKE5K
-leaderboard entries from FoSp `[V]`). Stored as
-`configs/eval_protocol.yaml → published_deltas` with one citation per row. **No delta
-is invented; every row must carry a verifiable source or it stays out.**
+将在 R0 阶段通过按基准整理各连续 SOTA 主张之间所报告的指标差值进行填报（起始集合：AusSmoke/MultiNatSmoke 表格 `[V]`，来自 FoSp `[V]` 的 SMOKE5K 排行榜条目）。保存为 `configs/eval_protocol.yaml → published_deltas`，每行对应一条可验证的文献引用。**绝不凭空编造任何性能增量；每行必须附带可核查的来源，否则不予收录。**

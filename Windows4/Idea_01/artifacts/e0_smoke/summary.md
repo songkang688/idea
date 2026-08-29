@@ -1,8 +1,6 @@
-# e0_smoke — harness output
+# e0_smoke — 测试脚手架输出
 
-Epistemic tag: **ACTUAL EXPERIMENTAL RESULT (smoke test)** when run with stub
-backends on synthetic data — validates the decision logic ONLY; says nothing
-about SAM. Real-SAM runs (backend=sam) produce E1 evidence.
+认识论标签：在合成数据上使用存根后端运行时为 **ACTUAL EXPERIMENTAL RESULT（冒烟测试）** —— 仅用于验证决策逻辑；不代表任何关于 SAM 的结论。使用真实 SAM 运行（backend=sam）将产生 E1 的实证证据。
 
 | model :: stratum | n | Dice intact | CSG | persist. | trackΔ | NRF | sec.CSG | verdict |
 |---|---|---|---|---|---|---|---|---|
@@ -15,7 +13,7 @@ about SAM. Real-SAM runs (backend=sam) produce E1 evidence.
 | oracle_threshold_stub :: low-contrast/high-solidity | 15 | 0.746 | 0.177 | 0.664 | -0.199 | 1.324 | 0.136 | **seeing** |
 | oracle_threshold_stub :: low-contrast/low-solidity | 15 | 0.769 | 0.153 | 0.784 | -0.127 | 1.169 | 0.199 | **seeing** |
 
-## E0 checks
+## E0 检查项
 
 - boxfill_stub_all_interpolator: PASS
 - oracle_stub_seeing_somewhere: PASS

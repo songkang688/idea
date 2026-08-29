@@ -1,64 +1,57 @@
-# Idea_02 — Day-1 Access Checklist
+# Idea_02 — 首日访问权限核对清单（Day-1 Access Checklist）
 
-**Status: TEMPLATE. Nothing below has been confirmed.**
+**状态：模板（TEMPLATE）。以下内容均未获最终确认。**
 
-This project has one hard external dependency with no fallback, so access is checked before any
-engineering.
+本项目存在一项无备选方案的硬性外部依赖，因此在开展任何工程工作之前必须优先核实访问权限。
 
-## Hard dependency
+## 硬性依赖项
 
-| Resource | Host | Status | Confirmed on |
+| 资源 | 托管地址 | 状态 | 确认日期 |
 |---|---|---|---|
-| **DiDi** (distractor-distilled VOS set) | `go.vicos.si/didi`, linked from DAM4SAM | ☐ | |
+| **DiDi** (干扰物提纯 VOS 数据集) | `go.vicos.si/didi`, 链接自 DAM4SAM | ☐ | |
 
-`KNOWN FACT` There is no mirror. If DiDi is unavailable, the harvest descopes to LVOS v2 + SA-V val
-and the paper reports the distractor-density gap explicitly rather than pretending the corpus is
-equivalent.
+`KNOWN FACT` 该数据集不存在任何镜像。若 DiDi 无法获取，数据采集范围降级为 LVOS v2 + SA-V val，且论文需明确声明干扰物密度的差距，而非假装语料库等价。
 
-## Repositories (pin by commit, not branch)
+## 代码仓库（按 commit SHA 锁定，绝不按分支锁定）
 
-| Repo | Role | Cloned | Commit SHA | Smoke test |
+| 代码仓库 | 承担角色 | 已克隆 | Commit SHA | Smoke 测试 |
 |---|---|---|---|---|
-| `facebookresearch/sam2` | subject; surgery hooks fork from here | ☐ | | ☐ |
-| `yangchris11/samurai` | comparator | ☐ | | ☐ |
-| `jovanavidenovic/DAM4SAM` | comparator + DiDi | ☐ | | ☐ |
-| `Mark12Ding/SAM2Long` | comparator | ☐ | | ☐ |
-| `LingyiHongfd/LVOS` | data | ☐ | | ☐ |
-| `LingyiHongfd/lvos-evaluation` | J&F scoring | ☐ | | ☐ |
+| `facebookresearch/sam2` | 研究主体；手术挂钩（hooks）从此处 fork | ☐ | | ☐ |
+| `yangchris11/samurai` | 对照方法 | ☐ | | ☐ |
+| `jovanavidenovic/DAM4SAM` | 对照方法 + DiDi 来源 | ☐ | | ☐ |
+| `Mark12Ding/SAM2Long` | 对照方法 | ☐ | | ☐ |
+| `LingyiHongfd/LVOS` | 数据集 | ☐ | | ☐ |
+| `LingyiHongfd/lvos-evaluation` | J&F 评分工具 | ☐ | | ☐ |
 
-## Gated
+## 需要审批的资源（Gated）
 
-| Resource | Requested | Granted | Note |
+| 资源 | 申请日期 | 获批日期 | 备注 |
 |---|---|---|---|
-| SAM3 tracking zoo (via `arXiv:2512.22624`) | ☐ | ☐ | lead time is the risk, not download size |
-| SAM3 / SAM 3.1 checkpoints | ☐ | ☐ | HF-gated |
+| SAM3 tracking zoo (经由 `arXiv:2512.22624`) | ☐ | ☐ | 风险在于审批周期，而非下载体积 |
+| SAM3 / SAM 3.1 checkpoints | ☐ | ☐ | HF 门禁审批 |
 
-Request on day 1 even though E7 does not run until week 4.
+即使 E7 实验直到第 4 周才运行，也必须在第 1 天立即提交申请。
 
-## Comparator verification debt
+## 对照方法验证债务
 
-`SAMITE`, `HiM2SAM`, `SENTRY` and `AS-SAM2` are currently known to us **only through**
-`arXiv:2512.22624` and `arXiv:2606.24449`. Before any of them enters the frozen comparator set in
-`configs/preregistration.yaml`, verify directly:
+`SAMITE`、`HiM2SAM`、`SENTRY` 和 `AS-SAM2` 目前**仅通过** `arXiv:2512.22624` 和 `arXiv:2606.24449` 为我们所知。在将其中任何一项列入 `configs/preregistration.yaml` 中的冻结对照集之前，必须直接进行核实：
 
-| Candidate | Primary source read | Code released | Runs on our sequences | Added to frozen set |
+| 候选方法 | 已阅读原始文献 | 代码已开源 | 可在我们的序列上运行 | 已加入冻结对照集 |
 |---|---|---|---|---|
 | SAMITE | ☐ | ☐ | ☐ | ☐ |
 | HiM2SAM | ☐ | ☐ | ☐ | ☐ |
 | SENTRY | ☐ | ☐ | ☐ | ☐ |
-| AS-SAM2 | ☐ | ☐ (code promised) | ☐ | ☐ |
+| AS-SAM2 | ☐ | ☐ (承诺开源) | ☐ | ☐ |
 
-A comparator that cannot actually be run is worse than one that was never named: the frozen set is
-scored by its **minimum** partial correlation, so an unrunnable entry would either force an
-amendment or silently weaken the claim.
+一个无法实际运行的对照方法比一个从未被提及的对照方法危害更大：冻结对照集以其**最小**偏相关系数进行评分，因此一个无法运行的条目要么迫使修改预注册，要么悄然削弱主张力度。
 
-## E0 gate
+## E0 门禁
 
-| Check | Status |
+| 检查项 | 状态 |
 |---|---|
-| SAM2.1 VOS pass reproduces published LVOS behaviour qualitatively | ☐ |
-| `no_op` replay from `t_r` reproduces the original failure bit-for-bit across 5 repeats | ☐ |
-| Bank copy is faithful (signature stable) | ☐ |
-| Sham surgery at random non-failure times does **not** change tracking | ☐ |
+| SAM2.1 VOS 运行在定性上复现已发表的 LVOS 行为 | ☐ |
+| 从 `t_r` 进行的 `no_op` 回放在 5 次重复运行中逐 bit 精确复现原始失败 | ☐ |
+| Bank 复制完全保真（签名保持稳定） | ☐ |
+| 在随机非失败时段执行 Sham 手术**不会**改变跟踪结果 | ☐ |
 
-Decision: ______  Date: ______
+决策结论：______  日期：______

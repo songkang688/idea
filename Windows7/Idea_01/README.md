@@ -1,40 +1,37 @@
 # Idea_01 — SupportAudit
 
-**Wrong-support counterfactual audit of few-shot segmentation.**
-Internal ID `B-0121` · Windows7 · **Recommended #1 of this round.**
+**少样本分割的错误 support 反事实审计（Wrong-support counterfactual audit of few-shot segmentation）。**
+内部 ID `B-0121` · Windows7 · **本轮首选推荐（#1）。**
 
-> Feed a few-shot segmenter a support image of a class that is provably absent from the query, and
-> measure how much of its reported accuracy survives.
+> 给少样本分割器喂入一张确切在 query 图像中不存在的类别的 support 图像，测量其报告的准确率还能保留多少。
 
-## Why this one is ranked first
+## 为什么此项目排名第一
 
-| Property | Value |
+| 属性 | 取值 |
 |---|---|
-| Compute to a decision | **~2 A100-days** (killer); ~5 A100-days full |
-| Training | **none** — inference only |
-| Data/checkpoints | all public |
-| Outcome branches that publish | **all three** (reorder / certify / indict the benchmark) |
-| Primary statistic | a *within-method ratio*, so it does not depend on reproducing anyone's absolute number |
+| 产生决策的算力成本 | **~2 A100-days** (killer 实验)；完整方案约 ~5 A100-days |
+| 训练需求 | **无** —— 仅推理（inference only） |
+| 数据 / checkpoint | 全部公开可用 |
+| 可发表的结果分支 | **全部三种**（排行榜重排 / 为基准正名 / 控诉基准） |
+| 主要统计量 | **方法内部比率（within-method ratio）**，因此不依赖于复现任何人的绝对数字 |
 
-It was the only unanimous #1 in any Stage-2 cluster, and it survived a genuine Reviewer #2 round
-rather than a lenient one — there is no architecture to attack, because the intervention is on the
-input.
+它是 Stage 2 所有聚类中唯一获得全票通过的第一名，并且经受住了一轮严苛的 Reviewer #2 评审而非放水过关 —— 由于干预直接施加于输入端，没有任何架构层面的攻击点。
 
-## Files
+## 文件结构
 
-| File | What is in it |
+| 文件 | 内容说明 |
 |---|---|
-| `proposal.md` | The full 28-section research package. Start here. |
-| `literature.md` | Prior work, what each paper actually did, and our exact difference |
-| `experiments.md` | Experiment matrix E0–E7, ablations, controls, decision rules |
-| `reviewer_attacks.md` | Attacks A1–A7 and the experiment that answers each |
-| `roadmap.md` | Day 1 → Week 4 |
-| `diagrams/architecture.md` | Mermaid protocol and data-flow diagrams |
-| `src/` | Runnable harness + the statistics, validated against mock controls |
-| `configs/` | Pre-registration artifacts (frozen before any inference) |
-| `references/` | Checkpoint manifest template, literature verification log |
+| `proposal.md` | 完整的 28 节研究方案包。从这里开始阅读。 |
+| `literature.md` | 先验工作、各篇论文的实际做法，以及我们与之的精确区别 |
+| `experiments.md` | 实验矩阵 E0–E7、消融实验、对照组、决策规则 |
+| `reviewer_attacks.md` | 攻击点 A1–A7 以及分别回应每条攻击的对应实验 |
+| `roadmap.md` | 第 1 天 → 第 4 周实施路线图 |
+| `diagrams/architecture.md` | Mermaid 协议与数据流图 |
+| `src/` | 可运行的测试工具（harness）+ 统计量实现，已对照 mock 对照组完成验证 |
+| `configs/` | 预注册文件（在执行任何推理之前冻结） |
+| `references/` | checkpoint 清单模板、文献验证日志 |
 
-## Run the harness now
+## 立即运行测试工具
 
 ```bash
 cd src
@@ -42,13 +39,11 @@ pip install -r ../requirements.txt
 python run_mve.py --episodes 200 --seed 0
 ```
 
-No checkpoints and no GPU required. The script builds a synthetic benchmark, runs the whole audit
-pipeline, and applies the pre-registered decision rule.
+无需下载 checkpoint，无需 GPU。脚本会构建一个合成基准，运行整个审计流水线，并应用预注册的决策规则。
 
-### What the harness run demonstrates
+### 测试运行展示的内容
 
-`MockSegmenter` is a test fixture with a tunable `support_reliance`, giving the harness a positive
-and a negative control:
+`MockSegmenter` 是一个带有可调 `support_reliance` 的测试夹具（test fixture），为测试平台提供了一个阳性对照和一个阴性对照：
 
 ```
 method                stratum                      n  retention (ratio of means)    med    SSS
@@ -59,40 +54,22 @@ mock_support_driven   S3_distractor_present       60         0.762 [0.651,0.871]
   * primary and median estimators disagree by >0.2 (bimodal episodes)
 ```
 
-Three things to read off it, and all three are properties of the *instrument*, not results about any
-published method:
+从中可以读出三点结论，且三者全都是**测量工具本身**的特性，而非针对任何已发表方法的结论：
 
-1. **The controls separate on `S3`.** A support-blind method retains everything (1.000); a
-   support-driven one loses a measurable share (0.762, CI excluding 1.0). The audit can detect what
-   it is built to detect.
-2. **Nothing separates on `S1`.** With a single object in the query there is only one thing to
-   segment, so destroying the support cannot change the answer. This is benchmark degeneracy
-   (hypothesis H3) reproduced in miniature, and it is the whole reason `S3` is the pre-registered
-   primary stratum.
-3. **The `*` flag matters.** The median-of-ratios estimator reports 1.000 for the support-driven
-   control — it would have missed the effect entirely. Per-episode retention is bimodal, so the
-   primary statistic is the ratio of means. This correction was found by running the prototype and
-   is written up in `proposal.md` §10.
+1. **对照组在 `S3` 上成功分离。** 盲目无视 support 的方法保持了全部精度（1.000）；由 support 驱动的方法损失了可测量的份额（0.762，置信区间排除 1.0）。该审计能够精确检测出其旨在检测的效应。
+2. **在 `S1` 上没有任何分离。** 当 query 中仅存在单个目标时，只有唯一的东西可供分割，因此摧毁 support 不会改变输出结果。这是基准退化（假设 H3）在微缩尺度下的重现，也是 `S3` 被设定为预注册主要分层的根本原因。
+3. **`*` 标记至关重要。** 比值的中位数估计器对 support 驱动的对照组给出的报告值为 1.000 —— 它会完全遗漏该效应。逐 episode 的保持率呈双峰分布，因此主要统计量必须是均值之比（ratio of means）。该修正是在运行原型时发现的，并在 `proposal.md` §10 中进行了完整论证。
 
-**No number in this repository is an experimental result about a published method.** Everything
-above comes from mock fixtures and exists to validate the measurement apparatus.
+**本仓库中的任何数字均不是关于已发表方法的实验结果。** 上述所有内容均来自 mock 夹具，其唯一目的是验证测量装置。
 
-## First experiment to run (Day 1)
+## 首日要运行的第一个实验（Day 1）
 
-Not the MVE — the **checkpoint archival gate** (E0). Download and SHA-256 every checkpoint in the
-panel, BAM (OneDrive) and HSNet (Google Drive) first, because link rot is the project's single
-biggest practical risk. Record hashes in `references/checkpoint_manifest.md`. Then freeze the
-pre-registration (`configs/preregistration.yaml`) before a single inference runs.
+不是 MVE —— 而是 **checkpoint 归档门禁**（E0）。下载并对评测矩阵中的每个 checkpoint 计算 SHA-256，优先处理 BAM（OneDrive）和 HSNet（Google Drive），因为链接失效是该项目最大的实际风险。将哈希值记录在 `references/checkpoint_manifest.md` 中。随后在运行任何推理之前冻结预注册文件（`configs/preregistration.yaml`）。
 
-## Killer experiment
+## Killer 实验
 
-On the pre-registered `S3` distractor-present stratum: (a) do ≥ half of specialist methods retain
-`R > 0.5` under wrong-class supports, and (b) is their correct-support accuracy statistically
-indistinguishable from a support-free objectness floor — reported separately under a strong floor
-(SAM AMG) and a weak floor (classical saliency)? Both legs failing kills the headline and we
-publish the certification result instead.
+在预注册的 `S3` 存在干扰物（distractor-present）分层上：(a) 是否有 ≥ 半数的专有（specialist）方法在错误类别 support 下保持率 `R > 0.5`，并且 (b) 其正确 support 下的准确率在统计上与无 support 的 objectness 下界无法区分 —— 分别在强下界（SAM AMG）和弱下界（传统显著性）下单独报告？若两项检验均未通过，则核心头条结论被证伪，我们转而发表正名认证（certification）结果。
 
-## Status
+## 状态
 
-Design complete, harness runs, statistics validated against controls. Not yet run against any real
-checkpoint.
+设计已完成，测试工具可正常运行，统计量已对照 mock 对照组完成验证。尚未针对任何真实 checkpoint 运行。

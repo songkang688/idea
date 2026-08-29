@@ -1,205 +1,160 @@
-# PromptAmnesia — Experimental Design Specification (Windows4 / Idea_02)
+# PromptAmnesia — 实验设计规范（Windows4 / Idea_02）
 
-**Epistemic status:** EXPERIMENT DESIGN. No experiment has been run. Every numeric value is a design
-parameter or ESTIMATE. Machine-readable versions of these protocols live in `configs/`; executable
-prototypes in `src/promptamnesia/`.
+**认识论状态说明：** EXPERIMENT DESIGN。尚未运行任何实验。每个数值均为设计参数或 ESTIMATE。这些协议的机器可读版本位于 `configs/`；可执行原型位于 `src/promptamnesia/`。
 
-Execution order is **binding** (Stage 4 cross-paper ruling): E0 → E1 (gate) → freeze → E2 → E3 → E4 → E5.
+执行顺序具有**约束力**（Stage 4 跨论文裁定）：E0 → E1（准入关卡）→ 冻结 → E2 → E3 → E4 → E5。
 
 ---
 
-## E0 — Pre-registration freeze
+## E0 — 预注册冻结（Pre-registration freeze）
 
-**Purpose.** Answer Stage-4 structural attack #1 (shared-grid poisoning) before it can occur.
+**目的。** 在 Stage-4 结构性攻击 #1（共享网格污染）发生之前予以彻底化解。
 
-**Procedure.**
-1. Re-run the scoop-watch searches (`literature.md` §6); update related-work deltas if needed.
-2. Re-verify all `[M]`-tagged citations that the pre-registration text quotes.
-3. Freeze, in one tagged commit: `configs/shared_grid.yaml` (recipe), the matched-gain rule, the ordering
-   contrast family (O1–O5), `configs/p082_gate.yaml` (target list + envelope definition), the
-   ambiguity-probe mining protocol, and both click simulators.
-4. After the tag, changes to any of these require a logged amendment section in the paper.
+**步骤。**
+1. 重新运行撞车监测检索（`literature.md` §6）；如有命中则更新相关工作差异对比。
+2. 重新核验预注册文本所引用的所有带 `[M]` 标签的文献引用。
+3. 在单个打标签的 commit 中冻结：`configs/shared_grid.yaml`（训练配方）、匹配增益规则（matched-gain rule）、排序对比族（O1–O5）、`configs/p082_gate.yaml`（目标列表 + 噪声包络线定义）、歧义探针挖掘协议以及两种点击模拟器。
+4. 打标签后，对上述任何内容的修改均需在论文中设立专门的修订记录章节。
 
-**Deliverable.** Tag `idea02-prereg-v1` on branch `cursor/windows4-research-idea-evolution-2962`.
+**交付物。** 分支 `cursor/windows4-research-idea-evolution-2962` 上的标签 `idea02-prereg-v1`。
 
 ---
 
-## E1 — P082 gate: noise-floor envelope (RUNS FIRST; eval-only)
+## E1 — P082 关卡：噪声底线包络线（最优先运行；仅评测）
 
-**Question (RQ1).** Do forgetting deltas of released fine-tuned checkpoints exceed the noise floor implied
-by threshold, seed, prompt-sampling, and split variance?
+**核心问题（RQ1）。** 已发布的微调 checkpoint 的遗忘差值，是否确实超出了由阈值、随机种子、prompt 采样和数据集划分方差所构成的噪声底线？
 
-**Subjects.** Frozen SAM ViT-B (and ViT-H reference); released MedSAM; released SAM-Med2D. Named
-indictments use released checkpoints only (F8 rule).
+**测试对象。** 冻结的 SAM ViT-B（以及 ViT-H 参考模型）；已发布的 MedSAM；已发布的 SAM-Med2D。具名指控仅使用官方公开发布的 checkpoint（遵守 F8 规则）。
 
-**Retention domains.** COCO val2017 instance subset; LVIS-rare subset; TN3K; BUSI (checkpoint-dependent:
-a checkpoint's own training domain is excluded from its retention set).
+**保留测试领域（Retention domains）。** COCO val2017 实例子集；LVIS-rare 子集；TN3K；BUSI（视 checkpoint 而定：排除模型自身的训练领域）。
 
-**Variance decomposition (the envelope).** For the **frozen** model, per (domain, prompt type):
-- ≥5 prompt-sampling seeds (box jitter draws, point placement draws);
-- ≥3 calibration/eval split draws;
-- full binarization-threshold sweep on each calibration draw (tuned threshold then applied to eval draw);
-- envelope = empirical 95% band of the |Δmetric| distribution across these replicates under the null
-  "same weights, no forgetting". Implementation: `src/promptamnesia/threshold_gate.py::build_envelope`.
+**方差分解（包络线）。** 对于**冻结**模型，在每个（领域，prompt 类型）下：
+- ≥5 个 prompt 采样种子（边界框抖动采样，点放置采样）；
+- ≥3 次校准/评测划分采样；
+- 在每次校准划分上进行完整的二值化阈值扫描（微调后的阈值随后应用于评测划分）；
+- 包络线 = 在“相同权重，无遗忘”的零假设下，上述重复实验中 |Δmetric| 分布的经验 95% 置信带。实现代码：`src/promptamnesia/threshold_gate.py::build_envelope`。
 
-**Symmetric threshold protocol.** Frozen and fine-tuned checkpoints get thresholds tuned on the **same**
-calibration split, then frozen for eval. No asymmetric oracle access (the C1-082 leakage trap).
+**对称阈值协议。** 冻结与微调后的 checkpoint 均在**完全相同**的校准划分上调整阈值，随后冻结用于最终评测。严禁不对称的 oracle 阈值获取（防止 C1-082 泄漏陷阱）。
 
-**Pre-registered targets.** Listed in `configs/p082_gate.yaml` (checkpoint × domain × prompt-type cells).
-The published-protocol re-evaluations reproduce each checkpoint's own documented prompting protocol first,
-then re-measure under the symmetric protocol; both numbers are reported.
+**预注册目标。** 列于 `configs/p082_gate.yaml` 中（checkpoint × 领域 × prompt 类型单元格）。已发表协议重评测首先复现各 checkpoint 自身记录的 prompt 协议，随后在对称协议下重新测量；两种数值均予以报告。
 
-**Decision rule.** PROCEED iff ≥1 checkpoint shows a reproduced retention delta outside the envelope on
-≥2 retention domains for ≥1 prompt type; else PIVOT (deflation branch). Implementation:
-`threshold_gate.py::gate_decision`.
+**决策规则。** 当且仅当 ≥1 个 checkpoint 在 ≥2 个保留领域上针对 ≥1 种 prompt 类型表现出超出包络线的可复现保留差值时，判定为 PROCEED；否则 PIVOT（转向通缩型论文分支）。实现代码：`threshold_gate.py::gate_decision`。
 
-**Budget.** ESTIMATE 1–2 GPU-days. Partial one-domain readout available in <1 day (rubric kill-cheapness).
+**预算。** ESTIMATE 1–2 GPU-days。单领域的局部读数可在 <1 天内获取（符合评审标准的低成本否决原则）。
 
 ---
 
-## E2 — Shared fine-tuning checkpoint grid
+## E2 — 共享微调 Checkpoint 网格
 
-**Purpose.** Produce every checkpoint used by E3–E5 and by sibling paper P031, under one frozen recipe.
+**目的。** 在同一套冻结配方下，生成供 E3–E5 以及姊妹论文 P031 使用的全部 checkpoint。
 
-**Design matrix** (full spec `configs/shared_grid.yaml`):
+**设计矩阵**（完整规范见 `configs/shared_grid.yaml`）：
 
-| Axis | Levels |
+| 维度 | 级别 / 设置 |
 |---|---|
-| Domain | BUSI (ultrasound); MSD Task09 Spleen 2D (CT) |
-| FT prompt mix | box-only; point-only; mixed (1/3 box-jitter, 1/3 single positive point, 1/3 iterative ≤5 clicks incl. negative) |
-| Recipe | full-FT @ 3 LRs; decoder-only FT; LoRA enc+dec (attention q,v); VeRA-style random-direction control (rank-matched) |
-| Loss aggregation (mixed column only) | min-loss-mask; all-mask (multimask enabled in both) |
-| IoU-head loss | ON (default; the honest recipe). One OFF cell shared with P031 |
-| Seeds | 3 (5 for headline cells if E1's envelope is wide) |
+| 领域 | BUSI（超声）；MSD Task09 Spleen 2D（CT） |
+| 微调 prompt 混合 | 仅边界框（box-only）；仅点（point-only）；混合（1/3 边界框抖动，1/3 单个正点，1/3 迭代 ≤5 次点击含负点） |
+| 训练配方 | 全量微调（full-FT）@ 3 种学习率；仅解码器微调（decoder-only FT）；LoRA 编码器+解码器（注意力 q,v）；VeRA 风格随机方向对照（rank 匹配） |
+| 损失聚合（仅混合列） | min-loss-mask；all-mask（两种均启用多掩码 multimask） |
+| IoU 预测头损失 | ON（默认；诚实配方）。一个与 P031 共享的 OFF 单元格 |
+| 随机种子 | 3 个（若 E1 包络线较宽，核心宣传单元格增加至 5 个） |
 
-**Logging per checkpoint (free covariates, P108 residue).** step, train/val loss, target-domain val Dice
-at tuned threshold, per-module-group update norm, encoder–decoder interface CKA drift. Never analyzed as a
-headline claim; available for exploratory appendix only.
+**每个 Checkpoint 的日志记录（免费协变量，P108 残留）。** 训练 step、训练/验证 loss、调整阈值后的目标领域验证 Dice、逐模块组更新范数、编码器–解码器接口 CKA 漂移。绝不作为核心主张分析；仅供探索性附录使用。
 
-**Checkpoint cadence.** Dense enough that the matched-gain rule (below) can select within ±0.5 Dice:
-every epoch on small sets, every N steps otherwise (set in config).
+**Checkpoint 保存节奏。** 足够密集以确保匹配增益规则（如下）可在 ±0.5 Dice 范围内筛选：小数据集上每 epoch 一次，其余按每 N 步一次（在 config 中设定）。
 
-**Matched-gain rule (verbatim, used by E3/E4/E5 and P031).**
-> For each (domain, mix, seed), let G\* be the best target-domain validation Dice achieved by the weakest
-> recipe arm in that stratum. Every arm contributes the first checkpoint (in training order) whose
-> target-domain validation Dice is within ±0.5 Dice points of G\*. Arms that never reach G\*−0.5 are
-> excluded from matched comparisons in that stratum and reported. Validation Dice is computed at the arm's
-> own calibration-split-tuned threshold.
-Sensitivity: headline contrasts re-run at ±0.25 and ±1.0 tolerance.
-Implementation: `src/promptamnesia/matched_gain.py`.
+**匹配增益规则（Matched-gain rule，字面规范，供 E3/E4/E5 及 P031 共同使用）。**
+> 对于每个（领域，混合方式，随机种子），令 G\* 为该分层中表现最弱的配方分支所达到的最佳目标领域验证 Dice。每个分支均提供其按训练顺序首个目标领域验证 Dice 处于 G\* ±0.5 Dice 点范围内的 checkpoint。在特定分层中从未达到 G\*−0.5 的分支将被排除在该分层的匹配对比之外并如实报告。验证 Dice 均在各分支自身校准划分调整后的阈值下计算。
+敏感性分析：核心对比项在 ±0.25 和 ±1.0 容差下重新运行。
+实现代码：`src/promptamnesia/matched_gain.py`。
 
-**Budget.** ESTIMATE 25–45 GPU-days (≈204 short ViT-B fine-tunes when the grid is fully expanded — see
-`train_lora_stub --print-plan`). Trim order if over budget: (1) point-only column LR sweeps shrunk;
-(2) ViT-H replication dropped; (3) seeds 3→2 on non-headline cells (headline cells keep ≥3 — Stage-4
-obligation).
+**预算。** ESTIMATE 25–45 GPU-days（网格完全展开时约为 204 次简短的 ViT-B 微调 — 见 `train_lora_stub --print-plan`）。若预算超限的削减顺序：(1) 缩减仅点列的学习率扫描；(2) 放弃 ViT-H 复现；(3) 非核心单元格种子数 3→2（核心单元格保持 ≥3 — Stage-4 既定义务）。
 
 ---
 
-## E3 — P065 behavioral battery (prompt-type eval matrix)
+## E3 — P065 行为测试集（Prompt 类型评测矩阵）
 
-**Question (RQ2/RQ5, H2/H3).** Is degradation prompt-type-structured *inside the mixed column*, and how
-much of the naive ordering is coverage?
+**核心问题（RQ2/RQ5, H2/H3）。** 在*混合微调列内部*，性能退化是否呈现 prompt 类型结构化？朴素排序中有多少属于覆盖率问题？
 
-**Eval battery** (implementation `src/promptamnesia/eval_prompt_matrix.py`, protocols
-`configs/p065_eval_battery.yaml`):
+**评测测试集**（实现代码 `src/promptamnesia/eval_prompt_matrix.py`，协议规范 `configs/p065_eval_battery.yaml`）：
 
-| Column | Protocol | Primary readout |
+| 列 | 协议规范 | 主要读出指标 |
 |---|---|---|
-| box | GT-box + pre-registered jitter | Dice/mIoU at tuned threshold |
-| 1-click | single positive point, interior-sampling rule | Dice/mIoU |
-| iterative-5 | click k+1 at center of largest error component; negative clicks on FP regions | Dice@k curve; NoC@90 where defined |
-| multimask-ambiguity | E4 (below) | oracle-vs-argmax gap |
+| 边界框 (box) | GT 边界框 + 预注册抖动 | 调整阈值后的 Dice/mIoU |
+| 1 次点击 (1-click) | 单个正点，内部采样规则 | Dice/mIoU |
+| 迭代 5 次点击 (iterative-5) | 第 k+1 次点击置于最大误差连通域中心；负点击置于 FP 区域 | Dice@k 曲线；NoC@90（若有定义） |
+| 多掩码歧义 (multimask-ambiguity) | E4（见下文） | oracle 与 argmax 差距 |
 
-**Retention suites.** COCO val2017 instances; LVIS-rare; the non-fine-tuned medical domain (cross-domain
-probe). Frozen SAM evaluated under the identical protocol is the floor for every Δ.
+**保留测试套件。** COCO val2017 实例；LVIS-rare；未经微调的另一医学领域（跨领域探针）。在完全相同协议下评测的冻结 SAM 作为所有 Δ 计算的底线基准。
 
-**Threshold policy.** Per-arm, per-domain threshold tuned on the shared calibration split (same split for
-frozen and fine-tuned), then frozen — the E1 code path, reused.
+**阈值策略。** 每个分支、每个领域在共享校准划分上调整阈值（冻结模型与微调模型使用完全相同的划分），随后冻结 —— 复用 E1 的代码路径。
 
-**Click-simulator sensitivity.** Every headline contrast duplicated under the alternative click-placement
-rule (uniform-interior instead of error-centroid). Contrasts that flip are demoted to
-simulator-dependent observations (Stage-3 RClicks/BREPS hygiene).
+**点击模拟器敏感性。** 每一个核心对比项均在替代点击放置规则（均匀内部采样代替误差质心采样）下进行重复实验。发生结论反转的对比项将被降级为依赖模拟器的观察结果（符合 Stage-3 RClicks/BREPS 规范）。
 
-**Statistical plan.** Pre-registered contrast family (Holm-corrected):
+**统计分析计划。** 预注册的对比族（经 Holm 校正）：
 - O1: Δ(1-click) vs Δ(box)
-- O2: Δ(negative-click subprotocol) vs Δ(positive-only subprotocol)
+- O2: Δ(含负点击子协议) vs Δ(仅正点击子协议)
 - O3: Δ(Dice@click-5) vs Δ(Dice@click-1)
 - O4: Δ(oracle best-of-3) vs Δ(argmax) [E4]
-- O5: point-FT→box-eval vs box-FT→point-eval (coverage asymmetry, off-diagonal)
+- O5: 点微调→框评测 vs 框微调→点评测（覆盖率不对称性，非对角项）
 
-A contrast **counts** only if: Holm-significant under hierarchical bootstrap (images × seeds), point
-estimate outside the E1 envelope, and it holds in the **mixed** column. Box-only-column orderings are
-reported as the coverage map (RQ5), never as forgetting.
+一个对比项被视为**有效（counts）**的前提为：在分层 Bootstrap（图像 × 种子）下达到 Holm 显著性，点估计位于 E1 包络线之外，且在**混合（mixed）**微调列中成立。仅边界框列的排序作为覆盖率图谱报告（RQ5），绝不作为遗忘报告。
 
-**Budget.** ESTIMATE 3–6 GPU-days (forward passes only; ~120 checkpoints × 4 columns × 3–4 suites).
+**预算。** ESTIMATE 3–6 GPU-days（仅前向传播；约 120 个 checkpoint × 4 列 × 3–4 个套件）。
 
 ---
 
-## E4 — Diversity arm: oracle best-of-3 decomposition (C1-061)
+## E4 — 多样性分支：Oracle Best-of-3 分解（C1-061）
 
-**Question (RQ3/H4).** Capability loss or ranking loss?
+**核心问题（RQ3/H4）。** 究竟是能力丧失（capability loss）还是排序损失（ranking loss）？
 
-**Probe set construction (pre-registered).** Mine COCO/LVIS annotations for nested/overlapping instance
-pairs (part-vs-whole, object-vs-group). A probe = (image, point prompt at the ambiguous locus, set of ≥2
-valid GT masks). Mining script and final probe index committed before E2 analysis begins. Target size:
-enough probes for stable bootstrap CIs (design target ≥500; final N reported, never asserted in advance).
+**探针集构建（预注册）。** 从 COCO/LVIS 标注中挖掘嵌套/重叠的实例对（部分-整体，目标-群体）。一个探针 =（图像，歧义位置处的点 prompt，包含 ≥2 个有效 GT 掩码的集合）。挖掘脚本与最终探针索引在 E2 分析开始前提交。目标规模：足以支持稳定的 Bootstrap 置信区间（设计目标 ≥500；报告最终样本量 N，绝不提前虚夸）。
 
-**Measurement per probe per checkpoint.** Multimask mode → 3 candidates + IoU-head scores.
-- oracle = max over candidates of max-over-valid-GTs IoU;
-- argmax = IoU (vs best-matching GT) of the head-selected candidate;
-- gap = oracle − argmax.
-Implementation: `src/promptamnesia/diversity.py`.
+**每个 Checkpoint 对每个探针的测量。** 多掩码模式 → 3 个候选掩码 + IoU 预测头得分。
+- oracle = 候选掩码在所有有效 GT 上的最大 IoU 的最大值；
+- argmax = IoU 预测头选中的候选掩码（相对于最佳匹配 GT）的 IoU；
+- gap = oracle − argmax。
+实现代码：`src/promptamnesia/diversity.py`。
 
-**Decomposition verdicts (pre-registered).**
-| Observation | Verdict |
+**分解判定结论（预注册）。**
+
+| 观察现象 | 判定结论 |
 |---|---|
-| oracle drops (all-mask-loss cells included) | capability loss — diversity-forgetting claim stands |
-| oracle intact, argmax drops | ranking loss → transferred to P031, withdrawn here |
-| oracle drops only in min-loss-mask cells | loss-aggregation recipe artifact — reported as such |
+| oracle 下降（包含 all-mask-loss 单元格） | 能力丧失 — 多样性遗忘主张成立 |
+| oracle 保持完好，仅 argmax 下降 | 排序损失 → 转交至 P031，从本文撤回 |
+| oracle 仅在 min-loss-mask 单元格中下降 | 损失聚合配方引入的人工伪影 — 据此如实报告 |
 
-**Budget.** Included in E3's evaluation pass.
-
----
-
-## E5 — P177 mechanism arm: splice × stitch × interpolation
-
-**Question (RQ4/H5).** Where does the lost behavior live? Stitching controls **mandatory** (binding).
-
-**Inputs.** Matched-gain checkpoint pairs (pre-FT SAM, fine-tuned arm) from E2 — no new fine-tuning.
-
-**Module partition** (parameter-name map in `configs/p177_splice.yaml` / `src/promptamnesia/splice.py`):
-image encoder · prompt encoder · decoder cross-attention blocks (token↔image) · decoder-rest (+ output
-and IoU heads).
-
-**Grid.** For each module group: swap in **both directions** × {no stitch, trained affine stitch} —
-stitch = per-channel scale+shift (optionally 1×1 linear) at the swapped interface, trained on the
-calibration split, everything else frozen, capped capacity. Plus **stitch-only cells** (no swap) to
-calibrate stitch power. Plus per-module-group **α-interpolation** α ∈ {0, .25, .5, .75, 1} (WiSE-FT-style)
-as the continuous baseline the binary splice must beat for informativeness.
-
-**Confounder control.** Per-module update-norm accounting from E2 logs + one update-norm-matched
-fine-tuning arm (added to E2 if E1 PROCEEDs) — otherwise "locus" re-describes the recipe.
-
-**Readout (pre-registered).** Restoration fraction per cell and per prompt type:
-R = (metric(chimera) − metric(FT)) / (metric(frozen) − metric(FT)), with hierarchical-bootstrap CIs.
-Computed per battery column — the mechanism may be prompt-type-specific (bridge to E3).
-
-**Verdict rule.** H5 stands only if cross-attn+stitch restores a large fraction while encoder+stitch
-restores ≈none, in both directions, beyond the α-curve, CIs non-overlapping. Otherwise: locus claim
-withdrawn; swap grid and α-curves reported descriptively.
-
-**Budget.** ESTIMATE 2–4 GPU-days (stitch training is minutes per cell; the cost is battery re-evaluation
-of chimeras — restrict chimera evaluation to the headline retention suite if needed).
+**预算。** 包含在 E3 的评测过程中。
 
 ---
 
-## Cross-cutting rules
+## E5 — P177 机制分支：移植 × 拼接 × 插值（Splice × Stitch × Interpolation）
 
-1. **No fake metrics.** Result tables in the package are structural skeletons (NaN) until a run artifact
-   (config hash + seed + commit) exists. `eval_prompt_matrix.py --dry-run` emits the skeleton.
-2. **Symmetric thresholds everywhere** — single code path (`threshold_gate.py`) for gate and battery.
-3. **One matched-gain rule** — single code path (`matched_gain.py`) for E3/E4/E5 and P031.
-4. **Every ordering claim carries:** seeds, CIs, envelope comparison, mixed-column status, simulator
-   sensitivity status.
-5. **Failure reporting:** arms excluded by the matched-gain rule, probes discarded by mining filters, and
-   contrasts flipped by the alternative simulator are enumerated in the appendix, not dropped.
+**核心问题（RQ4/H5）。** 丢失的行为具体定位在何处？拼接对照为**强制性要求**（具约束力）。
+
+**输入数据。** 来自 E2 的匹配增益 checkpoint 对（微调前 SAM，微调分支）— 无需新的微调。
+
+**模块划分**（参数名称映射见 `configs/p177_splice.yaml` / `src/promptamnesia/splice.py`）：
+图像编码器 · prompt 编码器 · 解码器交叉注意力块（token↔image） · 解码器其余部分（+ 输出头及 IoU 预测头）。
+
+**实验网格。** 对每个模块组：**双向**移植 × {无拼接, 训练仿射拼接} —— 拼接层 = 在移植接口处逐通道 scale+shift（可选 1×1 线性变换），在校准划分上训练，其余部分全部冻结，严格限制参数容量。外加**仅拼接单元格**（无模块移植）用于校准拼接层的拟合能力。外加逐模块组 **α 插值** α ∈ {0, .25, .5, .75, 1}（WiSE-FT 风格），作为二元移植为证明其信息量所必须超越的连续基线。
+
+**混淆因素控制。** 记录来自 E2 日志的逐模块更新范数 + 一个更新范数匹配的微调分支（若 E1 PROCEED 则添加至 E2）—— 否则“机制定位”只是重新描述了训练配方。
+
+**读出指标（预注册）。** 每个单元格和每种 prompt 类型的恢复比例（Restoration fraction）：
+R = (metric(chimera) − metric(FT)) / (metric(frozen) − metric(FT))，附带分层 Bootstrap 置信区间。
+按测试集各列分别计算 —— 机制可能具有 prompt 类型特异性（与 E3 形成桥接）。
+
+**判定规则。** H5 仅在以下条件满足时成立：cross-attn+stitch 恢复了很大比例，而 encoder+stitch 几乎没有恢复，双向均成立，超出 α 曲线，且置信区间不重叠。否则：撤回定位主张；描述性地报告移植网格与 α 曲线。
+
+**预算。** ESTIMATE 2–4 GPU-days（拼接层训练每单元格仅需数分钟；主要开销在于嵌合体模型的测试集重评估 — 必要时可将嵌合体评测限制在核心保留测试套件）。
+
+---
+
+## 跨实验通用准则
+
+1. **绝不伪造指标。** 项目包中的结果表均为结构性骨架（NaN），直到产生带有 `{config_hash, seed, commit}` 溯源标识的真实运行产物。`eval_prompt_matrix.py --dry-run` 仅输出此骨架。
+2. **全程保持对称阈值** — 准入关卡与测试集均使用单一代码路径（`threshold_gate.py`）。
+3. **单一匹配增益规则** — E3/E4/E5 与 P031 均使用单一代码路径（`matched_gain.py`）。
+4. **每项排序主张均需注明：** 随机种子、置信区间、包络线对比、混合列验证状态、模拟器敏感性验证状态。
+5. **失败案例完整报告：** 被匹配增益规则排除的分支、被挖掘过滤器舍弃的探针、以及被替代模拟器反转的对比项，均在附录中逐一列出，严禁隐瞒。

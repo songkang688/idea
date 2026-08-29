@@ -1,147 +1,113 @@
-# Windows7 — Eliminated Ideas
+# Windows7 — 被淘汰想法总结（Eliminated Ideas）
 
-What died, at which stage, and which ones deserve to come back.
+哪些想法被淘汰了、发生在哪个阶段，以及哪些想法值得被重新引入。
 
 ---
 
-## Where the losses happened
+## 淘汰发生的阶段分布
 
-| Stage | In | Out | Killed | Dominant cause |
+| 阶段 | 输入 | 产出 | 淘汰量 | 主要原因 |
 |---|---|---|---|---|
-| 2 | 1,110 | 255 | 855 | no scientific question — "add a module", "apply X to Y" |
-| **3** | 255 | 52 | **203** | **prior work already covers the mechanism** |
-| 4 | 52 | 21 | 31 | central attack has no affordable experimental answer |
-| 5 | 21 | 5 | 16 | cost-per-decision too high |
-| 6 | 5 | 3 | 2 | portfolio overlap and confound |
+| 2 | 1,110 | 255 | 855 | 无科学问题 —— "增加一个模块"、"将 X 应用于 Y" |
+| **3** | 255 | 52 | **203** | **先验工作（prior work）已覆盖该机制** |
+| 4 | 52 | 21 | 31 | 核心攻击点缺乏可负担的实验解决方案 |
+| 5 | 21 | 5 | 16 | 每次决策成本（cost-per-decision）过高 |
+| 6 | 5 | 3 | 2 | 研究组合重叠与混淆因素 |
 
-**Stage 3 is where research ideas actually die.** Four out of five survivors of independent review
-turned out to have their core mechanism already published — usually under a different name, often in
-an adjacent subfield that the originating agent had not searched.
+**Stage 3 是研究想法真正阵亡的地方。** 独立评审的幸存者中，五分之四的核心机制被发现已经被发表过 —— 通常是在不同的名称下，往往出现在原始智能体未曾搜索的相邻子领域中。
 
 ---
 
-## Stage 2 — the 855
+## Stage 2 — 淘汰的 855 个想法
 
-Almost entirely ideas with no falsifiable claim. The recurring shapes:
+几乎全部是没有可证伪主张的想法。反复出现的形态：
 
-- **Module stacking.** "SAM + Mamba", "cross-attention between the two branches", "add a boundary
-  refinement head." No hypothesis, so no possible negative result.
-- **Transplants.** "Apply method X to medical images." A paper only if the transplant fails
-  informatively, and none of these said what failure would look like.
-- **Loss and backbone swaps.** An ablation, not a project.
-- **Underspecified ambition.** "Make segmentation robust to domain shift." Not a question.
+- **模块堆叠（Module stacking）。** "SAM + Mamba"、"两个分支之间的 cross-attention"、"添加一个边界精炼头"。没有假设，因此不存在产生负面结果的可能。
+- **生搬硬套（Transplants）。** "将方法 X 应用于医学图像"。只有当该迁移以能够提供信息的方式失败时它才算是一篇论文，而这些提案没有一个说明失败会是什么样子。
+- **损失函数与主干网络替换。** 属于消融实验，不是独立的研究项目。
+- **未明确具体内涵的雄心。** "让分割对域偏移具有鲁棒性"。这不是一个科学问题。
 
-The filter: *what result would prove this wrong?* An idea that cannot answer that in one sentence did
-not advance.
+过滤准则：*什么样的实验结果能证明这个想法是错的？* 无法用一句话回答这个问题的想法均未能晋级。
 
 ---
 
-## Stage 3 — the 203 · representative kills
+## Stage 3 — 淘汰的 203 个想法 · 代表性淘汰案例
 
-| Idea | Killed by |
+| 想法 | 淘汰原因 |
 |---|---|
-| Uncertainty-aware SAM prompting for ambiguous boundaries | Multiple published prompt-uncertainty methods; the proposed mechanism was one of them |
-| PEFT rank allocation by layer sensitivity | AdaLoRA and successors; the "insight" was the published method |
-| Synthetic smoke data with physically-based rendering | Existing synthetic smoke corpora, same rationale |
-| Cross-modal distillation for transparent objects | Adjacent-field work under a different name |
-| Test-time adaptation for medical segmentation shift | Crowded; no remaining differentiator |
+| 针对模糊边界的不确定性感知 SAM 提示工程 | 已有多篇发表的 prompt-uncertainty 方法；所提机制即为其一 |
+| 按层敏感度的 PEFT 秩分配 | AdaLoRA 及其后续工作；所谓的"新见解"早已是已发表方法 |
+| 基于物理渲染的合成烟雾数据 | 已有合成烟雾语料库，原理相同 |
+| 面向透明物体的跨模态蒸馏 | 相邻领域以不同名称发表的工作 |
+| 针对医学分割偏移的测试时适应（TTA） | 过于拥挤；已无差异化空间 |
 
-**Mutated rather than killed** — the productive path, and the one both top finalists took:
+**变异而非击杀** —— 富有成效的演进路径，也是排名前两位的入围方案所走过的路径：
 
-- A method idea about *fixing* SAM2 memory → **A-0017**, which measures whether memory is the problem
-  at all. The fix was taken; the measurement was not.
-- A method idea about *improving* few-shot support encoding → **B-0121**, which asks whether the
-  support is being used. Same move.
+- 一个关于*修复* SAM2 memory 的方法类想法 → **A-0017**，转而测量 memory 是否根本就是问题所在。修复方法已被占坑；但该测量尚未有人做过。
+- 一个关于*改进* few-shot support 编码的方法类想法 → **B-0121**，转而询问 support 是否真的被使用了。同样的操作逻辑。
 
-The pattern is worth naming: **when the method is taken, check whether the measurement is.** It
-usually is not, because measuring is less rewarding to publish than proposing.
+这一模式值得总结命名：**当方法已被做过时，检查该测量是否有人做过。** 通常是没有的，因为相比于提出新方法，做测量类工作在发表上获得的回报较少。
 
 ---
 
-## Stage 4 — the 31
+## Stage 4 — 淘汰的 31 个想法
 
-Killed by attacks with no affordable experimental answer:
+因缺乏可负担的实验解决方案而遭评审攻击淘汰：
 
-- **Unremovable confounds.** Most often extra parameters, extra data, or extra compute doing the work
-  the proposed mechanism claimed.
-- **Nonexistent baselines.** The honest comparison required a model nobody released.
-- **Metrics that cannot separate the hypothesis from the trivial alternative.** If the proposed
-  mechanism and "the model got slightly better at everything" produce the same numbers, there is no
-  experiment.
+- **无法消除的混淆因素。** 最常见的是额外的参数量、额外的数据或额外的计算量在起作用，而非所提机制的主张效果。
+- **不存在的基线。** 诚实的对比需要一个从未有人公开开源的模型。
+- **无法将假设与平凡替代解释区分开来的指标。** 如果所提机制与"模型在各方面都略微变好了一点"产出的数字无法区分，实验就失去了意义。
 
 ---
 
-## Stage 5 — the 16
+## Stage 5 — 淘汰的 16 个想法
 
-All scientifically defensible; all too expensive per decision. Typical: a full pre-training run
-required before *any* signal, or a labelling effort with no public substitute.
+在科学上均站得住脚；但每次决策的成本都过高。典型情况：在获得*任何*信号之前都需要一次完整的预训练，或者需要耗费巨大标注精力且没有公开替代品。
 
-`KNOWN FACT` Several of these become viable at a different budget. They are cost casualties, not
-scientific ones, and the distinction should be preserved if this pool is revisited.
+`KNOWN FACT` 其中若干想法在不同的预算规模下是完全可行的。它们是成本维度的牺牲品，而非科学上的失败，若后续重新审视该候选池应保留此区分。
 
 ---
 
-## Stage 6 — the two dropped from the locked Top 5
+## Stage 6 — 从锁定的 Top 5 中剔除的两个想法
 
-Neither was killed on validity, and both keep funded footholds.
+两者均非因有效性问题被砍，且两者均保留了获得资助的立足点。
 
 ### A-0061 — Boundary Nyquist
 
-A second pure-measurement paper, with the **lowest ceiling in the Top 5**: its strongest possible
-outcome is negative design advice. It also had the weakest cross-cluster legitimacy under the
-auditor's asymmetric-standards finding.
+第二篇纯测量型论文，在 **Top 5 中上限最低**：其最强的可能成果只是负面的设计建议。在审计员的不对称标准发现下，它的跨聚类合理性也最弱。
 
-**Cut on genre and ceiling, not validity.** Kept as an **idle-cycle rider** (~15–20 GPU-h), so it
-runs whenever the node is otherwise free.
+**因体裁与上限被砍，而非因有效性问题。** 保留为**闲置算力周期运行任务**（~15–20 GPU-h），在计算节点空闲时自动运行。
 
 ### B-0212 — blending-artifact transfer-gap law
 
-Lost the slot on **portfolio arithmetic, not merit**. Only one Cluster-B slot existed, and B-0121
-dominates it roughly **9× on cost-to-decision** while covering the same evaluation-validity axis.
+**输在研究组合算术上，而非输在质量上**。Cluster B 仅有一个名额，而 B-0121 在**决策成本上以约 9 倍的优势压倒它**，同时覆盖了相同的评测有效性维度。
 
-**Compensation, already funded:** B-0212's **3-arm MVE (~6 A100-days, including the probe sanity
-gate) runs now**, making it the immediately promotable second alternate and preserving the
-intervention-law lane. It is the designated successor on **two** separate rungs of the fallback
-ladder.
+**补偿方案，已获资助：** B-0212 的 **3 臂 MVE（~6 A100-days，包括探针健全性门禁）立即运行**，使其成为可立即晋级的第二候补，并保留了干预定律（intervention-law）赛道。它在备选递进阶梯的**两个**独立层级上均被指定为继承方案。
 
 ---
 
-## What was actually revived
+## 真正被复活的想法
 
-Two revivals, both driven by the meta-auditor's finding that the locked Top 5 was
-**measurement-tilted**.
+两项复活，均由元评审员关于锁定的 Top 5 **过度偏向测量**的审计发现所驱动。
 
-### A-0017's method arm — from optional to mandatory
+### A-0017 的方法臂 — 从可选升级为必须交付
 
-Not a new idea but a **restored scope**: the training-free memory-surgery wrapper, benchmarked
-head-to-head against SAMURAI and DAM4SAM, was elevated from optional secondary analysis to a required
-deliverable. The audit was explicit that this is a real scope change and the package must budget the
-comparison runs — it is now E9 in `Idea_02/experiments.md`.
+并非新想法，而是**恢复原有范围**：免训练的 memory 手术 wrapper，与 SAMURAI 和 DAM4SAM 进行正面对决基准测试，从可选的次要分析提升为必须交付项。审计明确指出这是真实的研究范围变更，方案包必须为对比实验预算算力 —— 目前已列为 `Idea_02/experiments.md` 中的 E9。
 
-This is why the Final 3 is not three measurement papers.
+这就是为什么 Final 3 不是三篇纯测量型论文的原因。
 
-### C-0028 — decision triple, revived to funded first alternate
+### C-0028 — 决策三联组，复活为获得资助的第一候补
 
-Its **zero-GPU offline dry-run gate** (H-arm constructibility: KS < 0.05 similarity matching plus
-noun-rate checks on 10K generated batches) runs immediately, so a fully de-risked training-recipe
-flagship is on the shelf before it is needed.
+其 **0-GPU 离线演练门禁**（H-arm constructibility：在 10K 生成批次上通过 KS < 0.05 相似度匹配加名词比率检验）立即启动运行，以便在需要之前货架上已有一套完全消除风险的训练配方旗舰方案。
 
-**Deliberately not co-picked with C-0090:** two VLM-training studies sharing eval infrastructure
-would recreate monoculture in the opposite direction. C-0090 won the single training slot on being
-2.2× cheaper with zero feasibility gates remaining.
+**特意未与 C-0090 同时入选：** 两项共享评测基础设施的 VLM 训练研究会在相反方向上重新造成单一文化。C-0090 凭借便宜 2.2 倍且无遗留可行性门禁夺得唯一的训练席位。
 
-**Promotion condition:** C-0090 dying at its power gate — the outcome we consider most likely. By
-then C-0028's offline gate has already passed, and the E1 failure is itself *evidence about* C-0028's
-premise, so the promotion starts better informed than the original nomination.
+**晋级条件：** C-0090 未能通过其功效门禁 —— 这是我们认为最可能发生的结果。届时 C-0028 的离线门禁已然通过，且 E1 的失败本身就是关于 C-0028 前提假设的*证据*，因此晋级时的认知状态比最初提名时更为充分。
 
 ---
 
-## The bias that was flagged and not fully fixed
+## 被指出但未完全纠正的系统偏差
 
-`KNOWN FACT` The audit documented that **no METHOD-genre paper reached nominee grade anywhere in the
-funnel** — an extinction, not a close call. Interim exposure is A-0017's mandatory method arm plus
-the B-0112+M4 Leg-1 rider.
+`KNOWN FACT` 审计记录显示**整个漏斗中没有任何一篇 METHOD 体裁的论文达到提名级** —— 属于灭绝现象，而非微弱差距。过渡期的风险敞口由 A-0017 的强制方法臂加上 B-0112+M4 Leg-1 附属任务覆盖。
 
-The recommendation attached to it: **re-instruct the Stage-1 generators for the next window** so this
-does not become a three-peat. Seeding method-side ideas deliberately is a better fix than hoping
-selection pressure produces one.
+对此附带的建议是：**在下一个 window 重新对 Stage-1 生成器下发指令**，以防出现连续三次灭绝。有意识地播种方法类想法，比寄希望于选择压力自然筛选出方法类想法是更好的解决方案。

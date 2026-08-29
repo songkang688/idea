@@ -1,141 +1,141 @@
-# Stage 2 Review — S-series (1000→200), Reviewer bias: novelty assassin
+# Stage 2 评审 — S 系列 (1000→200)，评审员倾向：新颖性刺客
 
-Scope: S-001..S-720 from `Windows4/selection_history/stage1_supervisor_seed.md` and `stage1_supervisor_seed_2.md`.
-Kill priority: module-stacking, "apply X to medical", backbone/loss swaps, SAM-adapter/MedSAM/ProFSAM/InfLoRA clone lanes.
-Protect priority: cheap-to-falsify probes and high-risk/high-reward scientific questions.
-Meta entries (S-638–S-665 kill/protect/cheap pointers, S-712–S-720 process) were resolved to their underlying IDs and not kept as separate ideas.
+范围：来自 `Windows4/selection_history/stage1_supervisor_seed.md` 和 `stage1_supervisor_seed_2.md` 的 S-001..S-720。
+剔除优先级：模块堆叠、“将 X 应用于医学”、骨干/损失函数替换、SAM-adapter/MedSAM/ProFSAM/InfLoRA 克隆赛道。
+保护优先级：低成本证伪探测以及高风险/高回报的科学问题。
+元条目（S-638–S-665 剔除/保护/低成本指针，S-712–S-720 流程）已解析至其底层 ID，未作为独立创意保留。
 
-## Keep (max 90)
+## 保留 (最多 90)
 
-| ID | 1-line reason | Novelty 1-5 | ROI 1-5 | Protect? (Y/N) |
+| ID | 一句话理由 | 新颖性 1-5 | ROI 1-5 | 保护? (Y/N) |
 |---|---|---|---|---|
-| S-001 | Isolates prompt-geometry confound hiding inside "domain gap" claims | 4 | 5 | N |
-| S-002 | Reframes point-prompt failure as interior texture; one-correlation falsifier | 3 | 4 | N |
-| S-003 | GT-box eval exposed as detector benchmark; cheap re-eval kills inflated FM claims | 3 | 5 | Y |
-| S-004 | Uses SAM's native 3-mask ambiguity as free supervision instead of argmax | 4 | 3 | N |
-| S-005 | Asymmetric value of negative vs positive clicks; new interaction science | 4 | 4 | N |
-| S-007 | Kills "training-free prompt evolution" if unsupervised scorer chases contrast blobs | 4 | 4 | Y |
-| S-012 | One negative click vs adapter checkpoint: brutal cheap falsification of PEFT claims | 4 | 5 | Y |
-| S-014 | Causal test of whether SAM even looks at the image inside tight boxes | 5 | 4 | Y |
-| S-016 | Human click noise is boundary-seeking, not Gaussian; fixes all robustness protocols | 4 | 3 | N |
-| S-018 | Three masks encode nested scale, not semantics; changes multi-mask usage everywhere | 4 | 4 | Y |
-| S-019 | Loose boxes beat tight boxes on low contrast; counter-intuitive and cheap | 3 | 4 | N |
-| S-041 | Decoder-local domain gap undercuts the full-FT MedSAM narrative in one split-FT | 4 | 5 | N |
-| S-042 | Anisotropy, not "medical", explains 3D failure; one resampling experiment | 4 | 5 | N |
-| S-043 | Prompt-occupancy scale law unifies small-target failures across modalities | 4 | 4 | N |
-| S-044 | NLM denoising beats LoRA on ultrasound: preprocess > PEFT falsifier | 3 | 5 | Y |
-| S-045 | Window/level is a hidden prompt hyperparameter as big as prompt type | 3 | 4 | N |
-| S-046 | Negative transfer in one-MedSAM-for-all; leave-one-modality design | 3 | 4 | N |
-| S-052 | Foundation features can hurt at tiny n; contrarian, high-reward learning curve | 5 | 4 | Y |
-| S-054 | Objectness prior vs nested anatomy (tumor-in-liver): crisp failure law | 3 | 4 | N |
-| S-056 | Slice-thickness shift beats vendor shift; reorders domain-adaptation priorities | 4 | 4 | N |
-| S-064 | Meta-analysis: reported gains track #FT images, not method; deflates a whole genre | 4 | 4 | N |
-| S-068 | Patient-level split leakage audit; cheap and deflates FT gains fieldwide | 3 | 5 | N |
-| S-072 | Memory recency bias loses reappearing disease; concrete 3D-as-video flaw | 4 | 4 | N |
-| S-073 | Slice-shuffle test of SAM2's temporal prior; one-afternoon falsifier | 3 | 4 | N |
-| S-074 | One-prompt-all-slices drift curve; cheap falsifier of one-prompt claims | 3 | 5 | Y |
-| S-079 | Memory embeddings collapse to position, not appearance; representation science | 5 | 3 | Y |
-| S-081 | Memory-off sanity check separates training artifact from architecture claim | 3 | 4 | N |
-| S-083 | Cross-patient memory bank as leakage; nobody checks this | 4 | 4 | N |
-| S-090 | Temporal amplification law of an early prompt error; one plot | 3 | 4 | N |
-| S-096 | Dice vs alpha-MAE ranking reversal; foundation for all smoke evaluation | 4 | 5 | N |
-| S-097 | Smoke as density field, not instance: genuine problem reformulation | 4 | 4 | N |
-| S-099 | Physics color model beats FM on white smoke; cheap anti-hype baseline | 3 | 5 | Y |
-| S-102 | Inter-rater ceiling below published deltas kills incremental smoke papers | 4 | 4 | N |
-| S-103 | Portrait matting → smoke transfer; adjacent-field bet worth protecting | 4 | 4 | Y |
-| S-104 | Brightness constancy is physically invalid for smoke flow; publishable negative | 4 | 3 | N |
-| S-108 | Off-the-shelf dehaze must fail on smoke; fast decisive negative | 3 | 4 | N |
-| S-109 | Time-to-detect thin smoke vs mIoU: task redefinition for early warning | 4 | 4 | N |
-| S-112 | Annotators over-paint smoke; models inherit fat masks — dataset bias with matting-GT check | 4 | 4 | N |
-| S-126 | Matching detector AP dissolves ProFSAM-style "novelty"; assassination experiment | 4 | 5 | N |
-| S-128 | HSV threshold still competitive; honesty baseline every fire paper must face | 2 | 4 | Y |
-| S-134 | Time-to-alarm decorrelates from mIoU; the metric that actually matters | 4 | 4 | N |
-| S-141 | LoRA destroys zero-shot promptability: the unmeasured PEFT tax | 4 | 5 | N |
-| S-146 | PEFT-vs-scratch-UNet crossover n; the decision curve practitioners need | 3 | 5 | N |
-| S-148 | Random LoRA directions ≈ trained LoRA would gut the PEFT literature | 5 | 4 | Y |
-| S-162 | Singular-vector overlap of LoRA updates predicts forgetting; cheap theory probe | 4 | 3 | N |
-| S-168 | LoRA can inject hospital-marker shortcuts; safety audit with teeth | 4 | 4 | N |
-| S-175 | Regime where linear probe on frozen masks beats PEFT; deflating baseline | 3 | 4 | N |
-| S-176 | Prompt-protocol forgetting (boxes→points): a CL axis nobody measures | 4 | 4 | N |
-| S-177 | Forgetting localizes to decoder; one freeze ablation settles it | 4 | 4 | N |
-| S-178 | Replay 100 prompt-mask pairs instead of images; cheap and new for dense CL | 4 | 4 | N |
-| S-182 | Calibration collapses before Dice during forgetting; new ordering result | 4 | 4 | N |
-| S-183 | If plasticity is tiny, "forgetting" is noise; contrarian re-eval of a subfield | 5 | 4 | Y |
-| S-194 | Does higher rank increase forgetting: clean, decisive sweep | 3 | 4 | N |
-| S-196 | SA-1B near-duplicate contamination of test sets; leakage with fieldwide impact | 3 | 4 | N |
-| S-199 | NSD vs Dice rank reversal on SAM vs UNet; cheap falsifier of leaderboards | 3 | 5 | Y |
-| S-203 | Seed variance exceeds method gap; stats hygiene that kills paper deltas | 3 | 4 | N |
-| S-205 | TTA-confounded leaderboard climbing; disable-TTA ablation | 3 | 4 | Y |
-| S-222 | Density language ("thin smoke") breaks referring segmentation; new slice | 4 | 4 | N |
-| S-225 | Report-pixel misalignment harms mask learning; important measured claim | 4 | 4 | N |
-| S-228 | Text priors suppress atypical disease presentations; high-stakes safety science | 5 | 4 | Y |
-| S-236 | Hallucinated findings in empty scans; safety slice with clinical consequence | 4 | 4 | N |
-| S-240 | Negation ("no pneumothorax") breaks VLM-driven segmentation | 4 | 4 | N |
-| S-250 | Fire domain shift is lighting, not shape; testable decomposition | 3 | 4 | N |
-| S-263 | Open-set fire vs glare OOD; the deployment failure that matters | 3 | 4 | N |
-| S-267 | Diffusion-generated tumors leave texture shortcuts models exploit | 4 | 4 | N |
-| S-285 | Generator memorization leaks train tumors into "synthetic" data | 4 | 4 | N |
-| S-286 | ViT-H vs ViT-B reversal at small n; cheap assumption breaker | 3 | 4 | N |
-| S-288 | Fine-tuning hurts OOD; the cheapest assumption test in the pool | 3 | 5 | Y |
-| S-292 | Is SA-1B pretraining necessary at all? scratch SAM-like moonshot | 5 | 3 | Y |
-| S-311 | Mask logits are not probabilities; per-prompt-type temperature | 3 | 4 | N |
-| S-312 | Pixel-ECE vs region-ECE rank reversal; calibration metric science | 4 | 4 | N |
-| S-318 | FT calibration tax exceeds Dice gain; protected tradeoff result | 4 | 5 | Y |
-| S-323 | Smoke vs cloud OOD calibration; the false-alarm axis | 3 | 4 | N |
-| S-330 | Few-shot smoke measured in density bins, not images; protocol invention | 4 | 3 | N |
-| S-340 | Patient-shot vs image-shot; fixes few-shot medical evaluation | 4 | 4 | N |
-| S-345 | Extra synthetic data drops real Dice; important publishable negative | 3 | 4 | N |
-| S-347 | Prompt evolution lowers clinical Dice; protected anti-SAMPOT negative | 4 | 4 | Y |
-| S-361 | Predicted-IoU vs true-IoU ranking mismatch; cheap selection audit | 3 | 4 | N |
-| S-362 | Oracle multi-mask gap bounds the real headroom of decode tricks | 3 | 4 | N |
-| S-395 | CT partial volume IS alpha matting; genuine cross-domain unification | 5 | 3 | Y |
-| S-488 | Grayscale fire: one causal test of the color shortcut | 3 | 4 | N |
-| S-501 | Time-matched GrabCut vs SAM; deflates usability claims with human time | 4 | 4 | N |
-| S-510 | Model within intra-observer band as success criterion; recalibrates the field | 4 | 4 | N |
-| S-513 | Segmentation errors that don't change dose; clinical relevance over Dice | 5 | 4 | Y |
-| S-527 | SAM fails topology more than UNet; sharp testable claim | 3 | 4 | N |
-| S-539 | Spectral residual analysis of SAM errors; error science, not error patching | 4 | 4 | Y |
-| S-540 | Error-mode taxonomy atlas; infrastructure the SAM literature lacks | 3 | 4 | N |
-| S-591 | Prompt-sensitivity scaling law; measurement paper with lasting value | 4 | 5 | N |
-| S-604 | Patch-shuffle inside the box; cheapest causal probe of SAM "seeing" | 4 | 4 | Y |
-| S-693 | Fog corruption vs real smoke: validity test of every robustness proxy | 3 | 4 | N |
+| S-001 | 隔离隐藏在“域差距”主张内部的提示几何混杂因素 | 4 | 5 | N |
+| S-002 | 将点提示失败重构为内部纹理问题；单一相关性证伪器 | 3 | 4 | N |
+| S-003 | GT 框评估暴露为检测器基准；低成本重评估扼杀虚增的基础模型主张 | 3 | 5 | Y |
+| S-004 | 利用 SAM 原生的 3 掩码歧义性作为免费监督，而非简单取 argmax | 4 | 3 | N |
+| S-005 | 负点击对比正点击的不对称价值；新的交互科学 | 4 | 4 | N |
+| S-007 | 若无监督评分器追逐对比度斑块，则终结“免训练提示进化” | 4 | 4 | Y |
+| S-012 | 一个负点击 vs 适配器检查点：对 PEFT 主张的残酷廉价证伪 | 4 | 5 | Y |
+| S-014 | 因果测试 SAM 在紧框内部是否真的在看图像 | 5 | 4 | Y |
+| S-016 | 人类点击噪声是寻找边界的而非高斯分布；修复所有鲁棒性协议 | 4 | 3 | N |
+| S-018 | 三个掩码编码的是嵌套尺度而非语义；改变所有地方的多掩码用法 | 4 | 4 | Y |
+| S-019 | 在低对比度下松框胜过紧框；反直觉且成本低 | 3 | 4 | N |
+| S-041 | 解码器局部域差距在单次拆分微调中削弱全量微调 MedSAM 的叙事 | 4 | 5 | N |
+| S-042 | 各向异性（而非“医学”特性）解释了 3D 失败；一次重采样实验即可证明 | 4 | 5 | N |
+| S-043 | 提示占用率缩放法则统一了跨模态的小目标失败 | 4 | 4 | N |
+| S-044 | 超声上的 NLM 去噪击败 LoRA：预处理 > PEFT 证伪器 | 3 | 5 | Y |
+| S-045 | 窗口/窗位是一个与提示类型一样巨大的隐藏提示超参数 | 3 | 4 | N |
+| S-046 | 通用 MedSAM 中的负迁移；留一模态设计 | 3 | 4 | N |
+| S-052 | 基础模型特征在极小样本 n 下有害；反传统的高回报学习曲线 | 5 | 4 | Y |
+| S-054 | 物体性先验 vs 嵌套解剖结构（肝内肿瘤）：清晰的失败法则 | 3 | 4 | N |
+| S-056 | 切片厚度偏移胜过厂商偏移；重新排列域自适应的优先级 | 4 | 4 | N |
+| S-064 | 元分析：报告的增益追踪微调图像数而非方法；击穿一整个体裁 | 4 | 4 | N |
+| S-068 | 患者级划分泄漏审计；廉价且削弱整个领域的微调增益 | 3 | 5 | N |
+| S-072 | 记忆近因偏差丢失再次出现的病灶；具体的 3D-as-video 缺陷 | 4 | 4 | N |
+| S-073 | SAM2 时间先验的切片打乱测试；一个下午即可完成的证伪实验 | 3 | 4 | N |
+| S-074 | 单提示全切片漂移曲线；对单提示主张的廉价证伪器 | 3 | 5 | Y |
+| S-079 | 记忆嵌入坍塌为位置而非外观；表示科学 | 5 | 3 | Y |
+| S-081 | 关闭记忆的健全性检查将训练伪影与架构主张分离开来 | 3 | 4 | N |
+| S-083 | 跨患者记忆库作为数据泄漏；尚无人核查此问题 | 4 | 4 | N |
+| S-090 | 早期提示误差的时间放大法则；单张曲线图 | 3 | 4 | N |
+| S-096 | Dice vs Alpha-MAE 排名反转；所有烟雾评估的基石 | 4 | 5 | N |
+| S-097 | 烟雾作为密度场而非实例：真正的问题重构 | 4 | 4 | N |
+| S-099 | 物理颜色模型在白烟上击败基础模型；低成本的反炒作基线 | 3 | 5 | Y |
+| S-102 | 标注者间上限低于已发表增量，扼杀增量型烟雾论文 | 4 | 4 | N |
+| S-103 | 人像抠图 → 烟雾迁移；值得保护的邻近领域尝试 | 4 | 4 | Y |
+| S-104 | 亮度恒常性在物理上不适用于烟雾光流；可发表的负面结果 | 4 | 3 | N |
+| S-108 | 现成去雾必然在烟雾上失败；快速决定性的负面结果 | 3 | 4 | N |
+| S-109 | 探测稀薄烟雾的时间 vs mIoU：面向早期预警的任务重定义 | 4 | 4 | N |
+| S-112 | 标注者过度涂抹烟雾；模型继承肥大掩码——带有抠图 GT 检查的数据集偏差 | 4 | 4 | N |
+| S-126 | 匹配检测器 AP 消解了类 ProFSAM 的“新颖性”；刺客级实验 | 4 | 5 | N |
+| S-128 | HSV 阈值仍具竞争力；每篇火灾论文都必须面对的诚实基线 | 2 | 4 | Y |
+| S-134 | 报警时间与 mIoU 去相关；真正重要的指标 | 4 | 4 | N |
+| S-141 | LoRA 破坏 Zero-Shot 可提示性：未被测量的 PEFT 代价 | 4 | 5 | N |
+| S-146 | PEFT vs 从头训练 UNet 的交叉点 n；从业者亟需的决策曲线 | 3 | 5 | N |
+| S-148 | 随机 LoRA 方向 ≈ 训练 LoRA 将彻底摧毁 PEFT 文献的根基 | 5 | 4 | Y |
+| S-162 | LoRA 更新的奇异向量重叠可预测遗忘；低成本理论探测 | 4 | 3 | N |
+| S-168 | LoRA 会注入医院标记捷径；具有威慑力的安全性审计 | 4 | 4 | N |
+| S-175 | 冻结掩码上的线性探测胜过 PEFT 的机制区间；破除神话的基线 | 3 | 4 | N |
+| S-176 | 提示协议遗忘（框→点）：无人测量的持续学习维度 | 4 | 4 | N |
+| S-177 | 遗忘定位于解码器；单次冻结消融即可定论 | 4 | 4 | N |
+| S-178 | 重放 100 个提示-掩码对而非图像；针对密集持续学习廉价且新颖 | 4 | 4 | N |
+| S-182 | 遗忘过程中校准先于 Dice 崩溃；新的顺序性发现 | 4 | 4 | N |
+| S-183 | 若可塑性极小，则“遗忘”纯属噪声；对一个子领域的反传统重新评估 | 5 | 4 | Y |
+| S-194 | 更高秩是否会增加遗忘：干净且具决定性的扫描 | 3 | 4 | N |
+| S-196 | SA-1B 近重复污染测试集；具有领域级影响的泄漏 | 3 | 4 | N |
+| S-199 | SAM vs UNet 在 NSD vs Dice 下的排名反转；排行榜的廉价证伪器 | 3 | 5 | Y |
+| S-203 | 种子方差超过方法差距；消灭论文增量的统计学卫生规范 | 3 | 4 | N |
+| S-205 | 受 TTA 混杂的排行榜攀爬；禁用 TTA 的消融 | 3 | 4 | Y |
+| S-222 | 密度语言（“薄烟”）破坏指代分割；新的切片分析 | 4 | 4 | N |
+| S-225 | 报告-像素错位损害掩码学习；重要的实测主张 | 4 | 4 | N |
+| S-228 | 文本先验抑制了非典型疾病表现；高风险的安全性科学 | 5 | 4 | Y |
+| S-236 | 空白扫描中的幻觉发现；具有临床后果的安全性切片 | 4 | 4 | N |
+| S-240 | 否定表达（“无气胸”）破坏 VLM 驱动的分割 | 4 | 4 | N |
+| S-250 | 火灾域偏移在于光照而非形状；可测试的分解 | 3 | 4 | N |
+| S-263 | 开放集火灾 vs 眩光 OOD；至关重要的部署失败模式 | 3 | 4 | N |
+| S-267 | 扩散生成的肿瘤留下了模型利用的纹理捷径 | 4 | 4 | N |
+| S-285 | 生成器记忆效应将训练集肿瘤泄漏到“合成”数据中 | 4 | 4 | N |
+| S-286 | 小样本 n 下 ViT-H vs ViT-B 发生反转；廉价的假设终结者 | 3 | 4 | N |
+| S-288 | 微调损害 OOD；候选池中最廉价的假设测试 | 3 | 5 | Y |
+| S-292 | SA-1B 预训练到底是否必要？从头训练类 SAM 的登月假说 | 5 | 3 | Y |
+| S-311 | 掩码 Logit 不是概率值；按提示类型分配温度 | 3 | 4 | N |
+| S-312 | Pixel-ECE vs Region-ECE 排名反转；校准指标科学 | 4 | 4 | N |
+| S-318 | 微调校准代价超过 Dice 收益；受保护的权衡结果 | 4 | 5 | Y |
+| S-323 | 烟雾 vs 云彩 OOD 校准；虚警维度 | 3 | 4 | N |
+| S-330 | 使用密度分桶而非图像计数的少样本烟雾；协议发明 | 4 | 3 | N |
+| S-340 | 患者 Shot vs 图像 Shot；修复少样本医学评估 | 4 | 4 | N |
+| S-345 | 额外合成数据导致真实 Dice 下降；重要的可发表负面结果 | 3 | 4 | N |
+| S-347 | 提示进化降低临床 Dice；受保护的反 SAMPOT 负面结果 | 4 | 4 | Y |
+| S-361 | 预测 IoU vs 真实 IoU 排名不匹配；低成本选择审计 | 3 | 4 | N |
+| S-362 | Oracle 多掩码差距限制了所有解码技巧的真实上行空间 | 3 | 4 | N |
+| S-395 | CT 部分容积效应本质就是 Alpha 抠图；真正的跨领域统一 | 5 | 3 | Y |
+| S-488 | 灰度火灾：颜色捷径的单一因果测试 | 3 | 4 | N |
+| S-501 | 时间匹配的 GrabCut vs SAM；用人工时间击穿可用性主张 | 4 | 4 | N |
+| S-510 | 观察者内区间内的模型作为成功标准；重新校准该领域 | 4 | 4 | N |
+| S-513 | 不改变剂量的分割误差；临床相关性高于 Dice | 5 | 4 | Y |
+| S-527 | SAM 比 UNet 更易在拓扑上失败；明确可测的主张 | 3 | 4 | N |
+| S-539 | SAM 误差的频谱残差分析；误差科学而非误差打补丁 | 4 | 4 | Y |
+| S-540 | 误差模式分类学图谱；SAM 文献所缺乏的基础设施 | 3 | 4 | N |
+| S-591 | 提示敏感性缩放法则；具有持久价值的测量论文 | 4 | 5 | N |
+| S-604 | 框内 Patch 打乱；检验 SAM 是否真在“看”的最廉价因果探测 | 4 | 4 | Y |
+| S-693 | 雾天损坏 vs 真实烟雾：对所有鲁棒性代理指标的有效性测试 | 3 | 4 | N |
 
-## Kill examples (20)
+## 剔除示例 (20)
 
-| ID | kill reason |
+| ID | 剔除原因 |
 |---|---|
-| S-050 | Adapter-vs-nnU-Net compute war inside crowded MedSAM-adapter turf; no new question |
-| S-084 | "Add class token to memory" = module patch squarely in the MedSAM-2 lane |
-| S-091 | LoRA-placement ablation; incremental PEFT cartography |
-| S-092 | Learned slice-skip gate duplicates MedSAM-2 self-sorting memory |
-| S-110 | Re-merge masklets by color histogram; band-aid module, not a hypothesis |
-| S-143 | DoRA vs LoRA bake-off; crowded PEFT benchmarking with no scientific claim |
-| S-144 | Adapter insertion-point grid; pure hyperparameter survey |
-| S-149 | QLoRA for SAM; engineering, self-admitted low science |
-| S-152 | Visual-prompt vs token-prompt comparison; VPT space saturated |
-| S-154 | Multi-tenant LoRA; InfLoRA clone with a hospital veneer |
-| S-160 | Reproduce InfLoRA on ADE20K; reproduction, not discovery |
-| S-170 | Shared LoRA across SAM and CLIP; heavy module stacking |
-| S-173 | Orthogonal LoRA vs replay; InfLoRA-adjacent crowded lane |
-| S-193 | LwF distillation during FT; classic method re-applied |
-| S-253 | SAM pseudo-labels for semi-supervised detection; self-flagged crowded loop |
-| S-281 | Self-train with SAM everything; crowded pseudo-labeling |
-| S-327 | Prototype in mask-embedding space; few-shot boilerplate |
-| S-366 | Super-resolution as preprocess; "apply SR to X" |
-| S-416 | UNI features into SAM decoder; foundation-model gluing = module stack |
-| S-445 | DINOv2 vs SAM encoder bake-off; backbone swap without an identified failure |
+| S-050 | 拥挤的 MedSAM-adapter 领地内的 Adapter vs nnU-Net 计算算力争端；无新科学问题 |
+| S-084 | “向记忆中添加类别 token” = 完全落在 MedSAM-2 赛道内的模块补丁 |
+| S-091 | LoRA 放置位置消融；增量式的 PEFT 细节绘制 |
+| S-092 | 学习切片跳过门与 MedSAM-2 自排序记忆功能重复 |
+| S-110 | 按颜色直方图重新合并掩码片；权宜补丁模块，而非假说 |
+| S-143 | DoRA vs LoRA 擂台赛；无科学主张的拥挤 PEFT 基准测试 |
+| S-144 | 适配器插入点网格；纯粹的超参数调研 |
+| S-149 | 针对 SAM 的 QLoRA；纯工程，自认科学价值低 |
+| S-152 | 视觉提示 vs token 提示对比；VPT 空间已饱和 |
+| S-154 | 多租户 LoRA；披着医院外衣的 InfLoRA 克隆版 |
+| S-160 | 在 ADE20K 上复现 InfLoRA；纯复现，非新发现 |
+| S-170 | 跨 SAM 与 CLIP 共享 LoRA；繁重的模块堆叠 |
+| S-173 | 正交 LoRA vs 重放；靠近 InfLoRA 的拥挤赛道 |
+| S-193 | 微调期间的 LwF 蒸馏；经典方法的重新套用 |
+| S-253 | 用于半监督检测的 SAM 伪标签；已自我标记的拥挤闭环 |
+| S-281 | 使用 SAM Everything 进行自训练；拥挤的伪标签范式 |
+| S-327 | 掩码嵌入空间中的原型；少样本模板化套路 |
+| S-366 | 超分辨率作为预处理；“将 SR 应用于 X”的套路 |
+| S-416 | UNI 特征输入 SAM 解码器；基础模型简单拼接 = 模块堆叠 |
+| S-445 | DINOv2 vs SAM 编码器擂台赛；没有指出具体失败模式的骨干替换 |
 
-## Protected despite low mean score (10)
+## 虽平均分低但重点保护的创意 (10)
 
-| ID | why |
+| ID | 原因 |
 |---|---|
-| S-014 | Implementation is fiddly and result may be null, but a positive rewrites what "SAM segments" means |
-| S-052 | Controversial and likely to draw fire, yet a confirmed pretrain-harm regime changes small-data practice |
-| S-079 | Speculative probe with weak priors, but positional collapse of memory would explain many SAM2-3D failures at once |
-| S-103 | Transfer may simply fail across domains, but matting→smoke is the only adjacent-field bet in the pool with a mechanism |
-| S-148 | High probability of a messy outcome; if random LoRA matches trained, the PEFT literature loses its floor |
-| S-183 | Contrarian claim that scores poorly on feasibility optics, but deflating "forgetting" is worth more than ten CL methods |
-| S-292 | Heavy compute, likely underpowered — still the only idea that tests the field's central pretraining dogma |
-| S-395 | Sounds like a metaphor, scores low on minimal-experiment clarity, but unifying partial volume with alpha matting imports a mature toolbox |
-| S-513 | Requires dose pipelines most labs lack, yet decouples Dice from clinical harm — the highest-leverage eval idea here |
-| S-604 | Cheap oddball causal test that mean scoring undervalues; directly arbitrates the S-014 question at near-zero cost |
+| S-014 | 实现较为繁琐且结果可能为零效应，但若为正效应将重写“SAM 分割”的根本定义 |
+| S-052 | 具争议性且容易招致抨击，然而一旦证实的预训练损害机制将彻底改变小数据实践 |
+| S-079 | 先验较弱的推测性探测，但记忆的位置坍塌能一次性解释 SAM2-3D 的许多失败 |
+| S-103 | 迁移可能直接跨域失败，但抠图→烟雾是候选池中唯一具有机理的邻近领域尝试 |
+| S-148 | 得到混乱结果的概率很高；若随机 LoRA 匹敌训练 LoRA，PEFT 文献将失去立足根基 |
+| S-183 | 可行性表象上得分较差的反传统主张，但打破“遗忘”神话比提出十个持续学习方法更有价值 |
+| S-292 | 计算量繁重且可能算力不足——但这依然是测试该领域核心预训练教条的唯一创意 |
+| S-395 | 听起来像比喻，在最小实验清晰度上得分低，但将部分容积效应与 Alpha 抠图统一引入了一套成熟工具箱 |
+| S-513 | 需要多数实验室缺乏的剂量流水线，然而将 Dice 与临床损害解耦——此处最具杠杆效应的评估创意 |
+| S-604 | 平均分低估的低成本奇特因果测试；以近乎零成本直接裁决 S-014 的科学问题 |

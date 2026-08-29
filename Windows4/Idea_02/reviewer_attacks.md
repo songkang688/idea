@@ -1,177 +1,121 @@
-# PromptAmnesia — Reviewer Attack Ledger (Windows4 / Idea_02)
+# PromptAmnesia — 审稿人攻击总账（Windows4 / Idea_02）
 
-**Epistemic status:** REVIEW JUDGMENT. Part I reproduces the binding Stage-4 Reviewer #2 attacks
-(`selection_history/stage4_r2_setB.md`) with the design elements that answer them. Part II contains
-**new anticipated attacks** raised at Stage 7 against our own design, each with its silencing experiment
-or an honest concession. No experimental result is claimed.
+**认识论状态说明：** REVIEW JUDGMENT。第一部分重现了具有约束力的 Stage-4 Reviewer #2 评审攻击（`selection_history/stage4_r2_setB.md`）以及应对这些攻击的设计要素。第二部分包含了在 Stage 7 针对我们自身设计**预判的新攻击**，每项均配有消解实验或诚恳让步。此处不宣称任何实验结论。
 
-Rule in force: a WEAK ACCEPT is conditional — dropping any listed obligation reverts the verdict to REJECT.
+现行规则：WEAK ACCEPT 是有条件的 —— 放弃任何列出的既定义务将导致最终结论直接回退为 REJECT。
 
 ---
 
-## Part I — Inherited Stage-4 attacks and contracted answers
+## 第一部分 — 继承的 Stage-4 攻击与契约化回应
 
-### A1. "Coverage, not forgetting" (P065 core attack)
+### A1. “是覆盖率不足，而非遗忘”（P065 核心攻击）
 
-> *"Models degrade on the prompt modes they were not fine-tuned with. That is train/test
-> prompt-distribution mismatch — a data-coverage statement, not forgetting — and MedSAM already
-> demonstrates it."*
+> *"Models degrade on the prompt modes they were not fine-tuned with. That is train/test prompt-distribution mismatch — a data-coverage statement, not forgetting — and MedSAM already demonstrates it."*
+> （模型在未用于微调的 prompt 模式上发生退化。这是训练/测试 prompt 分布不匹配 —— 属于数据覆盖率问题，而非遗忘 —— MedSAM 已经证明了这一点。）
 
-**Contracted answer.** The FT-prompt-mix factorial (box-only / point-only / mixed). All forgetting claims
-are licensed **only by the mixed column**, where every evaluated prompt type appeared during fine-tuning.
-Box-only and point-only columns quantify the coverage effect as a separate deliverable (RQ5).
-**Status if the ordering vanishes in the mixed column:** the forgetting claim dies; the coverage map is
-the salvage report (proposal §23 Branch C). No re-framing permitted.
+**契约化回应。** 设立微调 prompt 混合析因设计（仅边界框 / 仅点 / 混合）。所有的遗忘主张**仅由混合列（mixed column）**授权支持，在该列中所有被评估的 prompt 类型均在微调过程中出现过。仅边界框与仅点列用于量化覆盖率效应，作为独立的交付成果（RQ5）。
+**若排序在混合列中消失的处理状态：** 遗忘主张就此终止；将覆盖率图谱作为挽救性报告（提案 §23 Branch C）。严禁事后强行改换说辞。
 
-### A2. "Diversity collapse is a loss-aggregation artifact" (C1-061 attack)
+### A2. “多样性崩溃是损失聚合的人工伪影”（C1-061 攻击）
 
-> *"Standard recipes disable multimask or backprop only the min-loss mask; post-FT diversity collapse is a
-> mechanical consequence of the loss-aggregation choice."*
+> *"Standard recipes disable multimask or backprop only the min-loss mask; post-FT diversity collapse is a mechanical consequence of the loss-aggregation choice."*
+> （标准配方禁用了多掩码或仅对最小损失掩码进行反向传播；微调后的多样性崩溃只是损失聚合方式选择下的机械必然结果。）
 
-**Contracted answer.** All-mask-loss + multimask-enabled FT arms in the mixed column; the oracle-best-of-3
-vs argmax decomposition (binding). If oracle survives and only argmax moves → the finding transfers to
-P031 and is withdrawn here. If collapse appears only under min-loss-mask → reported as a recipe artifact.
+**契约化回应。** 在混合列中包含 all-mask-loss + 启用 multimask 的微调分支；强制执行 oracle-best-of-3 与 argmax 分解（具约束力）。若 oracle 保持完好而仅 argmax 发生变化 → 该发现转交至 P031，并在本文中撤回。若多样性崩溃仅在 min-loss-mask 下出现 → 作为训练配方的人工伪影如实报告。
 
-### A3. "Threshold artifact masquerading as forgetting" (C1-082)
+### A3. “假冒为遗忘的阈值伪影”（C1-082）
 
-**Contracted answer.** P082 runs first; symmetric per-domain threshold tuning on a shared calibration
-split for frozen and fine-tuned models alike; every headline delta compared against the pre-registered
-noise-floor envelope. Asymmetric threshold access is treated as leakage on either side.
+**契约化回应。** P082 最优先运行；冻结模型与微调模型均在共享校准划分上进行对称的逐领域阈值微调；每个核心差值均对照预注册的噪声底线包络线进行检验。任何一方不对称获取阈值的行为均被视为数据泄漏。
 
-### A4. "Matched gain is under-specified and a single point of failure"
+### A4. “匹配增益规范不明确，是单一故障点”
 
-**Contracted answer.** One pre-registered rule (proposal §14), used verbatim by P065/P031/P082-plasticity/
-P177; tolerance sensitivity (±0.25 / ±0.5 / ±1.0) pre-registered; excluded arms enumerated.
+**契约化回应。** 单一预注册规则（提案 §14），字面规范由 P065/P031/P082-plasticity/P177 共同使用；预注册容差敏感性分析（±0.25 / ±0.5 / ±1.0）；被排除的分支逐一列出。
 
-### A5. "Seed and prompt-sampling variance swamp the claimed ordering gaps" (C1-060)
+### A5. “随机种子与 prompt 采样方差淹没了所宣称的排序差距”（C1-060）
 
-**Contracted answer.** ≥3 seeds per cell (≥5 headline if the envelope is wide); hierarchical bootstrap
-over images and seeds; Holm correction over the pre-registered contrast family O1–O5; the envelope
-condition is conjunctive with significance.
+**契约化回应。** 每单元格 ≥3 个随机种子（若包络线较宽，核心宣传单元格 ≥5 个）；在图像与种子层面上进行分层 Bootstrap；对预注册对比族 O1–O5 进行 Holm 校正；包络线判定条件与统计显著性呈合取关系。
 
-### A6. "The splice conflates forgetting locus with interface incompatibility" (P177 core attack)
+### A6. “模块移植混淆了遗忘定位与接口不兼容性”（P177 核心攻击）
 
-> *"If interfaces drift, a failed splice does not mean forgetting is distributed and a successful splice
-> does not mean it is localized; chimera behavior is dominated by representational mismatch (Bansal et
-> al.)."*
+> *"If interfaces drift, a failed splice does not mean forgetting is distributed and a successful splice does not mean it is localized; chimera behavior is dominated by representational mismatch (Bansal et al.)."*
+> （如果接口发生漂移，移植失败并不意味着遗忘是分布式的，移植成功也不意味着遗忘是局部化的；嵌合体模型的行为主要由表征不匹配所主导。）
 
-**Contracted answer (binding since P177 is included).** Every swap cell run with and without a trained
-affine stitch; stitch-only calibration cells; both swap directions; per-module α-interpolation as the
-continuous baseline. The locus claim requires module-separable restoration **beyond** what stitches and
-α-curves explain.
+**契约化回应（由于包含 P177，此项具约束力）。** 每个移植单元格均在有/无训练仿射拼接层（trained affine stitch）两种情况下运行；设置仅拼接校准单元格；执行双向移植；将逐模块 α 插值作为连续基线。机制定位主张必须证明模块可分离恢复**显著超越**拼接层与 α 曲线所能解释的范围。
 
-### A7. "Locus is a recipe tautology — the decoder got the update, so the decoder 'forgot'"
+### A7. “机制定位是训练配方的同义反复 — 解码器获得了更新，所以解码器‘发生了遗忘’”
 
-**Contracted answer.** Per-module update-norm logging across the grid + one update-norm-matched
-fine-tuning arm. Locus statements are conditioned on the norm accounting.
+**契约化回应。** 在全网格记录逐模块更新范数 + 设立一个更新范数匹配的微调分支。机制定位结论严格以范数核算为前提条件。
 
-### A8. "Reimplementation strawman (banned pattern F8)" (P082 attack)
+### A8. “自行复现设立稻草人（严禁模式 F8）”（P082 攻击）
 
-**Contracted answer.** Named indictments use released checkpoints only (MedSAM, SAM-Med2D at minimum),
-re-run under their published protocols first, symmetric protocol second, both reported.
-Re-implementations appear only as unnamed sensitivity checks.
+**契约化回应。** 具名指控仅使用官方公开发布的 checkpoint（至少包括 MedSAM、SAM-Med2D），首先在各自发表的协议下重新运行，其次在对称协议下运行，两组数据均予以报告。自行复现版本仅作为不具名的敏感性检查出现。
 
-### A9. "SAM-Med2D already published the prompt-mode table"
+### A9. “SAM-Med2D 已经发表了 prompt 模式对比表”
 
-**Contracted answer.** Their table lacks: matched gain, mixed-vs-box-only factorial, negative clicks,
-click-depth curves, diversity decomposition, seeds/CIs, threshold symmetry, and a noise floor. The delta
-is the *structure* of the comparison, not the existence of a table. This must be stated with the table
-reproduced in related work — not hidden.
+**契约化回应。** 其表格缺少：匹配增益、混合 vs 仅边界框析因设计、负点击、点击深度曲线、多样性分解、随机种子/置信区间、阈值对称性以及噪声底线。创新增量在于对比的*系统结构*，而非仅仅存在一张表格。这一事实必须在相关工作部分重现其表格并明确阐述 —— 严禁隐瞒。
 
-### A10. "If the audit finds forgetting exceeds the floor, P082 is a confirmation note"
+### A10. “若审计发现遗忘超出了噪声底线，P082 充其量只是一篇确认性简报”
 
-**Contracted answer (accepted, by design).** P082 is a gate, not a standalone paper, in that branch: its
-envelope becomes the reference band of every P065 figure, and the deflation framing is dropped. Only in
-the PIVOT branch does P082 become the paper.
+**契约化回应（设计上完全接受）。** 在该分支下，P082 作为准入关卡而非独立论文：其包络线成为 P065 每个图表的参考基准带，放弃通缩型立意框架。唯有在 PIVOT 转向分支下，P082 才会作为主论文成文。
 
 ---
 
-## Part II — New Stage-7 attacks against our own design (anticipated), with answers
+## 第二部分 — Stage 7 针对自身设计的预判新攻击及应对方案
 
-### B1. "Your mixed-FT distribution is arbitrary; a different mix yields a different ordering"
+### B1. “你们的混合微调分布是随意的；不同的混合比例会导致不同的排序”
 
-**Threat.** The 1/3-1/3-1/3 mixed distribution is a free parameter; reviewers can claim the observed
-mixed-column ordering is an artifact of the chosen mix.
+**潜在威胁。** 1/3-1/3-1/3 的混合分布是一个自由参数；审稿人可能会指责观察到的混合列排序只是所选混合比例的人工产物。
 
-**Silencing experiment.** One perturbed-mix replication cell (e.g., 50/25/25) on the headline domain ×
-recipe × 3 seeds. If the ordering's sign is stable across the two mixes, the attack is silenced; if not,
-the claim is scoped to "mix-dependent" honestly. ESTIMATE +2–3 GPU-days. Pre-registered as a robustness
-cell in `configs/shared_grid.yaml`.
+**消解实验。** 在核心领域 × 核心配方 × 3 个种子下设立一个扰动混合比例的复现单元格（例如 50/25/25）。若排序符号在两种混合比例下保持稳定，则攻击被化解；若不稳定，则诚实地将主张界定为“依赖于混合比例”。ESTIMATE +2–3 GPU-days。在 `configs/shared_grid.yaml` 中预注册为稳健性单元格。
 
-### B2. "COCO is not zero-shot for SAM-family models"
+### B2. “COCO 对 SAM 系列模型而言并非 zero-shot”
 
-**Threat.** SA-1B-era models may have seen COCO-like imagery; "zero-shot retention" is contaminated.
+**潜在威胁。** SA-1B 时代的模型可能已经见过类似 COCO 的图像；“zero-shot 保留能力”存在污染。
 
-**Answer (concession + design).** All retention deltas are **relative to frozen SAM under the identical
-protocol** — the floor absorbs any absolute contamination. We never claim absolute zero-shot performance;
-we claim *change* relative to the frozen floor. Stated as an explicit scope limitation.
+**回应（让步 + 实验设计）。** 所有保留能力差值均**相对于在完全相同协议下的冻结 SAM 计算** —— 基准底线吸收了任何绝对污染。我们绝不宣称绝对的 zero-shot 性能；我们宣称的是相对于冻结基线的*相对变化*。作为明确的适用范围限制写入论文。
 
-### B3. "Ambiguity probes mined from COCO/LVIS encode annotation conventions, not real ambiguity"
+### B3. “从 COCO/LVIS 挖掘的歧义探针编码的是标注规范，而非真正的歧义”
 
-**Threat.** Nested-pair mining may select annotation quirks; oracle-vs-GT IoU then measures convention
-matching.
+**潜在威胁。** 嵌套对挖掘可能会筛选出标注特性；oracle 与 GT 的 IoU 衡量的只是对规范的契合度。
 
-**Silencing experiment.** (a) Human spot-audit of a random probe subsample (accept/reject each probe as
-genuinely ambiguous; report acceptance rate); (b) replication of the O4 contrast on the probe subset that
-passed audit. If O4 holds on the audited subset, silenced. Cheap (annotation-hours, not GPU).
+**消解实验。** (a) 对随机抽取的探针子集进行人工抽样审查（判定每个探针是否具有真正的歧义；报告通过率）；(b) 在通过审查的探针子集上复现 O4 对比项。若 O4 在审查子集上依然成立，则攻击被化解。成本低廉（人工标注小时，无需额外 GPU）。
 
-### B4. "Your click simulator choice determines the iterative-column results" (RClicks-class attack)
+### B4. “你们对点击模拟器的选择决定了迭代列的结果”（RClicks 类攻击）
 
-**Answer (contracted in E3).** Dual-simulator duplicate of every headline contrast; simulator-dependent
-contrasts demoted to limitations. Additionally the simulator code is pre-registered and frozen at E0.
+**回应（已在 E3 中确立为契约）。** 针对每个核心对比项使用双模拟器进行重复验证；依赖特定模拟器的对比项将被降级为局限性。此外，模拟器代码在 E0 阶段已完成预注册并冻结。
 
-### B5. "Two medical FT domains cannot support 'promptable segmenters forget non-uniformly' in general"
+### B5. “仅两个医学微调领域无法支撑‘可提示分割器普遍存在非均匀遗忘’的结论”
 
-**Answer (scope control).** Claims are scoped to "SAM-class models fine-tuned on medical 2D domains" —
-the setting where the fix literature lives. The natural→natural fine-tuning generalization is listed as
-explicit non-claimed territory. If budget allows, one natural-domain FT cell (e.g., a COCO-subset
-fine-tune) is a pre-registered optional extension, not a promise.
+**回应（范围控制）。** 主张严格限定在“在医学 2D 领域微调的 SAM 类模型” —— 这正是当前修复类文献所处的领域。将自然图像→自然图像的微调泛化性明确列为未涉足领域。若算力允许，设立一个自然领域微调单元格（如 COCO 子集微调）作为预注册的可选扩展，而非硬性承诺。
 
-### B6. "Envelope built on frozen-model variance understates fine-tuned-model variance"
+### B6. “基于冻结模型方差构建的包络线低估了微调模型的方差”
 
-**Threat.** Fine-tuned checkpoints may have higher eval variance than the frozen model; an envelope from
-frozen-model replicates is too narrow, biasing toward PROCEED.
+**潜在威胁。** 微调后的 checkpoint 可能具有比冻结模型更高的评测方差；基于冻结模型重复实验的包络线过窄，会导致决策偏向 PROCEED。
 
-**Silencing experiment.** Compute the same variance decomposition on ≥2 fine-tuned released checkpoints
-(prompt-seed and split replicates are eval-only); take the per-cell max of the two envelopes as the
-operative band. Pre-registered in `configs/p082_gate.yaml` (`envelope: max_of_frozen_and_ft`).
+**消解实验。** 在 ≥2 个已发布的微调 checkpoint 上计算相同的方差分解（prompt 种子与划分重复仅涉及评测）；取两组包络线在每个单元格上的最大值作为实际生效的判定带。在 `configs/p082_gate.yaml` 中预注册（`envelope: max_of_frozen_and_ft`）。
 
-### B7. "Matched-gain excludes the most aggressive arms — survivorship bias"
+### B7. “匹配增益排除了最激进的分支 — 存在幸存者偏差”
 
-**Threat.** Arms that overshoot G\* quickly might be exactly the arms with the worst forgetting; excluding
-never-reaching arms could bias the other direction.
+**潜在威胁。** 迅速超越 G\* 的分支可能恰恰是遗忘最严重的分支；排除从未达标的分支可能会导致相反方向的偏差。
 
-**Answer.** The rule never excludes overshooting arms (first checkpoint within band exists for them); only
-arms that never reach G\*−0.5 are excluded, and these are enumerated with their full retention curves in
-the appendix, plus the tolerance sensitivity re-runs. Concession: if a whole recipe class is excluded in a
-stratum, matched comparisons for that stratum are labeled partial.
+**回应。** 规则绝不排除性能超调的分支（它们必然存在首个进入容差带的 checkpoint）；仅排除从未达到 G\*−0.5 的分支，且这些分支的完整保留曲线会在附录中逐一列出，同时附带容差敏感性重跑结果。诚恳让步：若某一整个配方类别在特定分层中均被排除，该分层的匹配对比将被标记为部分对比。
 
-### B8. "Stitch capacity is a tunable knob; you can make either locus verdict happen"
+### B8. “拼接层参数容量是一个可调旋钮；你们可以让任何一种机制定位结论发生”
 
-**Threat.** Affine-vs-1×1-linear stitch choice changes restoration fractions; garden of forking paths.
+**潜在威胁。** 仿射变换 vs 1×1 线性拼接的选择会改变恢复比例；存在多重分叉路径。
 
-**Answer.** Stitch family and capacity are fixed at E0 (per-channel affine primary; 1×1 linear as the
-single pre-registered secondary); stitch-only calibration cells quantify stitch power; verdicts require
-the module separation to hold under **both** stitch families.
+**回应。** 拼接层类型和容量在 E0 阶段冻结（逐通道仿射变换为主要形式；1×1 线性变换为唯一的预注册次要形式）；仅拼接校准单元格量化了拼接拟合力；判定结论要求模块分离性在**两种**拼接层形式下均成立。
 
-### B9. "This is four papers stapled together"
+### B9. “这是把四篇论文硬缝在一起”
 
-**Answer.** The gate and mechanism arms are not stapled — they are epistemically load-bearing: without the
-envelope, orderings are uninterpretable (A3/A5); without the splice, the ordering has no causal anchor
-(A6). P031 is explicitly a *separate* sibling paper consuming the same grid. The paper's single thesis is
-the four-way disambiguation of "zero-shot Dice dropped" (proposal §4).
+**回应。** 准入关卡与机制分支绝非强行拼凑 —— 它们在认识论上具有结构支撑作用：若无包络线，排序便无法解释（A3/A5）；若无模块移植，排序便缺乏因果锚点（A6）。P031 明确作为共享同一训练网格的*独立*姊妹论文。本论文的核心论题是对“zero-shot Dice 下降”的四向因果消歧（提案 §4）。
 
-### B10. "You will be scooped between freeze and submission"
+### B10. “在冻结到投稿期间你们会被抢发”
 
-**Answer.** Scoop-watch queries (`literature.md` §6) run at E0 and pre-submission; fallback branches
-(deflation; mechanism-led) are pre-registered so a partial scoop re-scopes rather than kills. Residual
-risk accepted and stated.
+**回应。** 撞车监测检索（`literature.md` §6）在 E0 和投稿前各运行一次；已预注册了备选回退分支（通缩型论文；机制主导型论文），因此局部撞车只会导致调整立意范围而非项目夭折。接受并公开声明残留风险。
 
 ---
 
-## Verdict discipline
+## 判定纪律
 
-This package inherits: **P065 WEAK ACCEPT · P177 WEAK ACCEPT · P082 WEAK ACCEPT (run first) — all
-conditional.** Part I obligations are contract; Part II items B1, B3, B6, B8 are additionally adopted as
-pre-registered design elements at Stage 7. Any future drop of an obligation must be logged in
-`roadmap.md` with the corresponding claim withdrawn, per the reversion rule.
+本项目包继承以下结论：**P065 WEAK ACCEPT · P177 WEAK ACCEPT · P082 WEAK ACCEPT（优先运行）— 均为有条件通过。** 第一部分的义务属于严格契约；第二部分的 B1、B3、B6、B8 条目在 Stage 7 被额外采纳为预注册设计要素。未来若放弃任何一项既定义务，必须在 `roadmap.md` 中记录修订并撤回相应主张，严格执行结论回退规则。

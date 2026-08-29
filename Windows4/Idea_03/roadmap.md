@@ -1,25 +1,17 @@
-# Roadmap — AlphaSmoke (gate-ordered; no step starts before its gate)
+# AlphaSmoke — 执行路线图（准入关卡排序；前置关卡未通过前严禁启动后续步骤）
 
-Full runbook with dependencies and compute plans: `experiments.md` §4. Order is
-binding; calendar estimates are deliberately omitted — gates, not dates.
+包含依赖关系与计算计划的完整运行手册详见：`experiments.md` §4。执行顺序具有约束力；本路线图刻意省略具体日历日期 —— 依关卡推进，不按日期推进。
 
-1. **R0 — license/access audit** (`datasets.md`); freeze the operating threshold
-   τ_op against released FoSp/SMOKE5K eval code.
-2. **R1 — metric cross-check**: `src/alphasmoke` vs released eval code (mMse/Fβ
-   definitional match); self-tests green (`tests/`).
-3. **R2 — week-1 killer: frozen-encoder linear probe** (`configs/linear_probe.yaml`).
-   **GATE K-A1:** no separation at any budget ⇒ pretrain grid is NOT funded; Part A
-   demotes to probe + floors.
-4. **R3 — Part B pillar 1 (eval-only)**: checkpoint pool inference + τ matrix on
-   synthetic alpha, mMse/Fβ columns included.
-5. **R4 — rater study launch** (calendar-parallel; `configs/rater_study.yaml`).
-   **GATE K-B4:** ceiling > 0.85 IoU ⇒ pillar demoted to appendix.
-6. **R5 — measured-alpha capture + recovery** (`configs/alpha_capture.yaml`).
-   **GATE K-B5:** QC fail ⇒ reversal headline withdrawn (fallback per proposal §5.2).
-7. **R6 — controlled pretrains M/MB (+ matched-count S subsample)** — only if R2
-   passed.
-8. **R7 — fine-tune sweep** arms × budgets × seeds, floors scored in every cell
-   (**K-A2..K-A5** evaluated here).
-9. **R8 — final τ matrix** incl. measured-alpha rankings (**K-B1..K-B3**).
-10. **R9 — write-up** along whichever decision-tree branch was taken
-    (`experiments.md` §3); failure ledger (§7) reported as-is if hit.
+1. **R0 — 许可 / 获取状态核查**（`datasets.md`）；依据公开发布的 FoSp/SMOKE5K 评测代码冻结运行阈值 τ_op。
+2. **R1 — 指标交叉核对**：`src/alphasmoke` 对照已发布的评测代码（mMse/Fβ 定义匹配）；自测试全部通过（`tests/`）。
+3. **R2 — 第 1 周杀手级实验：冻结编码器线性探针**（`configs/linear_probe.yaml`）。
+   **准入关卡 K-A1：** 若在任何预算下均无显著分离 ⇒ 预训练网格**不予资助**；Part A 降级为仅报告探针 + 物理底线模型。
+4. **R3 — Part B 支柱 1（仅评测）**：在合成 alpha 上运行模型池推理 + 生成包含 mMse/Fβ 列的 τ 矩阵。
+5. **R4 — 启动标注员研究**（时间线上并行推进；`configs/rater_study.yaml`）。
+   **准入关卡 K-B4：** 若标注上限 > 0.85 IoU ⇒ 标注上限支柱降级移入附录。
+6. **R5 — 实测 alpha 采集 + 恢复计算**（`configs/alpha_capture.yaml`）。
+   **准入关卡 K-B5：** 若质检失败 ⇒ 撤回逆序反转核心宣传（依据提案 §5.2 执行回退方案）。
+7. **R6 — 受控预训练 M/MB（+ 样本量匹配的 S 子集）** — 仅在 R2 通过时启动。
+8. **R7 — 微调扫描实验**：分支 × 预算 × 随机种子，在每个单元格评估物理底线模型（在此评估 **K-A2..K-A5**）。
+9. **R8 — 最终 τ 矩阵计算**：包含实测 alpha 排名（评估 **K-B1..K-B3**）。
+10. **R9 — 论文撰写**：依据实际所走的决策树分支进行撰写（`experiments.md` §3）；若命中失败总账（§7）则如实报告。

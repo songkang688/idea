@@ -1,137 +1,104 @@
-# Idea_03 — Reviewer #2 Attacks and Responses
+# Idea_03 — Reviewer #2 攻击点与回应（Reviewer #2 Attacks and Responses）
 
-Ordered by severity. A1 was **fatal as originally specified** — the Stage-5 design could not have
-survived it — and A2–A4 each had the power to make a 2,450 A100-h result uninterpretable.
-
----
-
-## A1 — "Your control arm contradicts your premise." **[fatal as specified]**
-
-> LLaVA-1.5's `llava_v1_5_mix665k` already contains a text-only ShareGPT slice (~40K conversations).
-> So "reproduce the published recipe" and "`A0` = no rehearsal" cannot both be true. Your `A0` is not
-> a no-rehearsal condition, and your `A1` partially duplicates what the recipe already does.
-
-**Response — redefine the base, and say what that costs.**
-
-The base is a **pre-registered text-stripped mix** with explicit **token-budget re-matching** across
-all arms. The published-recipe run is reported once as a *reference point*, not as an arm.
-
-Re-matching is not cosmetic. `A0` has no rehearsal stream, so to reach the same total token count it
-must draw more multimodal tokens; without that, `A0` is simply the shortest run and the grid contains
-a training-length confound dressed as a rehearsal effect. `src/rehearsal_grid/sampler.py` implements
-this and `run_decision_demo.py` prints the check.
-
-**What it costs:** the claim narrows from "the published recipe" to "a controlled variant of it." We
-state that narrowing in §3 rather than eliding it.
+按严重程度排序。A1 在**原始方案设定下属于致命缺陷（FATAL）** —— Stage 5 的设计无法在其攻击下存活 —— 且 A2–A4 中的每一项都足以让耗费 2,450 A100-h 的实验结果失去合理解释性。
 
 ---
 
-## A2 — "Two of your four strata have unusable denominators." **[high]**
+## A1 — "Your control arm contradicts your premise." **[原设定下致命]**
 
-> Vicuna-7B is near-floor on GSM8K and weak on IFEval. Retention is `score/score(base)`. A ratio with
-> a near-zero denominator is noise, and one unstable stratum can flip your ≥3-of-4 rule.
+> LLaVA-1.5 的 `llava_v1_5_mix665k` 已经包含纯文本 ShareGPT 分片（约 40K 条对话）。因此"复现已发表配方"与"`A0` = 无重放"无法同时成立。你们的 `A0` 并不是真正的无重放条件，而你们的 `A1` 部分重复了该训练配方原生已经具备的操作。
 
-**Response — absolute deltas co-primary, plus a gate that runs before the arms.**
+**回应方案 —— 重新定义基底数据，并明确该调整的代价。**
 
-`Abs(c,a) = score − score(base)` is **co-primary** with the retention ratio everywhere. A
-denominator-adequacy gate (headroom over chance ≥ 0.10, headroom/seed-σ ≥ 3) is applied at E0, and
-failing strata are **replaced before the 15 arms run**.
+基底数据改为**预注册的剥离文本后的混合数据**，并在所有实验臂之间执行明确的 **token 预算重新对齐匹配**。已发表配方的运行仅作为*参考对照点*报告一次，不作为实验臂。
 
-`KNOWN FACT` The Stage-5 abort gate watched only seed variance on `A0`/`A1`. It never asked whether a
-stratum could support a ratio at all. The demo shows GSM8K and IFEval failing the gate on
-illustrative Vicuna-like numbers.
+预算重新对齐绝非表面文章。`A0` 没有重放流，为了达到相同的总 token 数量，它必须抽取更多的多模态 token；若不做处理，`A0` 将成为训练步数最短的实验臂，从而使整个网格混入伪装成重放效应的训练长度混淆因素。`src/rehearsal_grid/sampler.py` 实现了该逻辑，`run_decision_demo.py` 输出了验证结果。
+
+**付出的代价：** 核心主张从"针对已发表原始配方"收缩为"针对该配方的一个受控变体"。我们在 §3 中如实声明该收缩，而非刻意隐瞒。
 
 ---
 
-## A3 — "'If the conventions diverge, the divergence is the finding' is unfalsifiable-adjacent." **[high]**
+## A2 — "Two of your four strata have unusable denominators." **[严重程度 HIGH]**
 
-> With no declared primary, every possible outcome becomes a result.
+> Vicuna-7B 在 GSM8K 上接近基底性能下界，在 IFEval 上表现较弱。保持率定义为 `score/score(base)`。以接近零的值作为分母的比率纯属噪声，任何一个不稳定的分层都能轻易颠覆你们的 ≥3-of-4 判定规则。
 
-**Response — name the primary in advance: per-layer matching.**
+**回应方案 —— 绝对增量与比率并列为主指标，并在实验臂运行前设立门禁。**
 
-`EVIDENCE` Justified rather than arbitrary: Pareto LoRA (`arXiv:2606.17296`) reports modality-specific
-gradients differing by orders of magnitude across layers, so a single global scalar can report a
-clean match while individual blocks stay badly mismatched. The demo reproduces exactly that — a
-global scale of 3.245 leaving per-layer residuals spanning 0.24 to 3.23.
+`Abs(c,a) = score − score(base)` 在所有分析中均与保持率比值**并列作为主要指标**。在 E0 阶段执行分母有效性门禁（相对于随机猜测的裕度 ≥ 0.10，裕度 / 种子标准差 σ ≥ 3），未达标的分层**在 15 次实验臂运行前完成替换**。
 
-Global-norm becomes a stated **sensitivity analysis** (E3). Divergence is then a qualified finding
-about convention-dependence, not a catch-all.
+`KNOWN FACT` Stage-5 的终止门禁仅监测 `A0`/`A1` 上的种子方差，从未检验某个分层是否根本无法支撑比率计算。演示代码在类 Vicuna 的典型数值上展示了 GSM8K 和 IFEval 未能通过该门禁的过程。
 
 ---
 
-## A4 — "Your 80% rule is a ratio of differences with a small denominator." **[high]**
+## A3 — "'If the conventions diverge, the divergence is the finding' is unfalsifiable-adjacent." **[严重程度 HIGH]**
 
-> `balance / total` where `total = A1 − A0` is exactly the quantity your own power analysis says
-> might be small. At three seeds that ratio can swing wildly.
+> 若不预先声明主要协议，每一种可能的结果都会被当作一项成果来宣称。
 
-**Response — declare the MDE before the arms, and refuse to interpret below it.**
+**回应方案 —— 事先指定主要协议：逐层匹配（per-layer matching）。**
 
-The minimum detectable effect is committed at E0. Below it, `decision.py` reports absolute deltas and
-**declines to compute the share**. The demo quantifies the stakes: the same underlying 0.85 share
-gives `0.86 [0.85, 0.87]` on a +0.130 gap and `1.18 [0.66, 1.81]` on a +0.030 gap.
+`EVIDENCE` 基于理论事实而非任意指定：Pareto LoRA（`arXiv:2606.17296`）指出，跨不同层和任务的模态特定梯度可相差数个数量级，因此单个全局标量可能在报告良好匹配的同时，各个独立 block 依然严重失配。演示代码精确复现了这一点 —— 全局标量为 3.245 时，逐层残差在 0.24 到 3.23 之间大幅跨越。
 
-Bootstrap CIs over seeds accompany every reported share.
+全局范数匹配降级为明确声明的**敏感度分析**（E3）。若两者出现分歧，将作为关于约定依赖性的限定性结论呈现，而非包罗万象的万能借口。
 
 ---
 
-## A5 — "One model family, one scale." **[medium]**
+## A4 — "Your 80% rule is a ratio of differences with a small denominator." **[严重程度 HIGH]**
 
-> You cannot tell the field to stop paying for curation based on LLaVA-1.5-7B alone.
+> 在 `total = A1 − A0` 本身可能很小的情况下计算 `balance / total`，这正是你们自己的效能分析所指出的风险。在 3 个种子下该比率可能发生剧烈晃动。
 
-**Response — fund the replication.** `A0`/`A1`/`A2` × 1 seed on `TRI-ML/prismatic-vlms` (E5, ~300
-A100-h), promoted from optional into the core design.
+**回应方案 —— 在实验臂运行前声明 MDE，低于该阈值拒绝解释。**
 
-`KNOWN FACT` This does not fully answer the attack — one more family at one more scale is not
-generality — and §19 states the base-model-currency limitation directly rather than hedging it.
+最小可检测效应（MDE）在 E0 阶段冻结锁定。低于该阈值时，`decision.py` 报告绝对增量并**拒绝计算份额比例**。演示代码量化了这一风险：相同的底层 0.85 真实份额，在 +0.130 差距下给出 `0.86 [0.85, 0.87]`，而在 +0.030 差距下给出 `1.18 [0.66, 1.81]`。
 
----
-
-## A6 — "Robins 1995 already predicted this." **[medium, framing]**
-
-> Pseudo-rehearsal showed content-free rehearsal works. Your positive result is 30 years old.
-
-**Response.** Robins is small-network pseudo-rehearsal. The contribution is the multimodal,
-capability-stratified, gradient-matched version — and the framing runs both ways: **if `A2` fails, we
-are the first controlled refutation of the pseudo-rehearsal account in this regime.**
-
-`KNOWN FACT` Stage 6 recorded this as a framing battle unresolvable before the data exist. We do not
-pretend an experiment settles it.
+所有报告的份额均附带跨种子的 bootstrap 置信区间。
 
 ---
 
-## A7 — "This is a language-retention study in a segmentation portfolio." **[portfolio-level]**
+## A5 — "One model family, one scale." **[严重程度 MEDIUM]**
 
-**Response.** No experiment answers this, and we do not invent one. `EVIDENCE` It was a **deliberate
-diversification decision** by the Stage-6 panel, taken over the segmentation reviewer's dissent, to
-avoid a Final 3 composed entirely of inference-only diagnostics. The dissent and the reasoning are
-recorded in `selection_history/`.
+> 你们不能仅仅基于 LLaVA-1.5-7B 就要求整个领域停止为数据精选付费。
 
----
+**回应方案 —— 为跨家族复现提供算力资助。** 在 `TRI-ML/prismatic-vlms` 上运行 `A0`/`A1`/`A2` × 1 个种子（E5，~300 A100-h），从可选项提升为核心设计。
 
-## A8 — "The mechanism space is being colonised in real time." **[scoop clock]**
-
-> Dynamic Gradient Guidance (`arXiv:2511.15164`) already recasts forgetting as missing-gradient
-> approximation. Someone will run your control soon.
-
-**Response.** `KNOWN FACT` As of the Stage-6 sweep, no content-free-control study exists in this
-setting — `A2`/`A3`/`A4` are unclaimed. But the residual window is plausibly months, and the
-mitigation is execution speed, not argument. Post the pre-registration early. If scooped mid-flight,
-the power analysis, the cross-family replication and the dosing recipe all survive independently.
+`KNOWN FACT` 这并不能完全消除该攻击 —— 在单一规模下增加一个家族并不等同于通用泛化性 —— §19 直接指出了基座模型时效性的局限，不做含糊其辞的辩解。
 
 ---
 
-## What each attack changed
+## A6 — "Robins 1995 already predicted this." **[严重程度 MEDIUM, 立意定调]**
 
-| Attack | Design change |
+> 伪重放（pseudo-rehearsal）早已表明无内容的重放是有效的。你们的正向结论在 30 年前就已被提出。
+
+**回应方案。** Robins 的研究是针对小型网络的伪重放。本工作的贡献在于多模态、按能力分层、梯度匹配的现代体系 —— 且立意在两个方向上均成立：**若 `A2` 失败，我们将成为在该体系下对伪重放解释的首次受控证伪。**
+
+`KNOWN FACT` Stage 6 将其记录为在拿到数据前无法消除的立意之争。我们不假装存在能够解决该争论的实验。
+
+---
+
+## A7 — "This is a language-retention study in a segmentation portfolio." **[研究组合层面]**
+
+**回应方案。** 没有任何实验能回答该问题，我们也不虚构任何实验。`EVIDENCE` 这是 Stage-6 评审组在分割评审员提出反对意见的情况下所作出的**深思熟虑的多样化决策**，旨在避免 Final 3 全部沦为纯推理诊断类项目。反对意见与遴选逻辑均已记录在 `selection_history/` 中。
+
+---
+
+## A8 — "The mechanism space is being colonised in real time." **[抢发时钟]**
+
+> 动态梯度引导（Dynamic Gradient Guidance，`arXiv:2511.15164`）已经将遗忘重新诠释为缺失梯度近似问题。很快就会有人运行你们所提的对照实验。
+
+**回应方案。** `KNOWN FACT` 截至 Stage-6 审查，在该设定下尚不存在无内容对照研究 —— `A2`/`A3`/`A4` 仍属首创未占坑状态。但剩余的窗口期预计仅有数月，应对举措是加快执行节奏，而非进行文字辩论。尽早公开发布预注册文件。若在执行过程中被抢发，效能分析、跨家族复现以及配比扫描配方均具备独立发表价值。
+
+---
+
+## 各项攻击带来的具体设计变更
+
+| 攻击点 | 设计变更 |
 |---|---|
-| A1 | text-stripped base + token re-matching; published recipe demoted to a reference point |
-| A2 | absolute deltas co-primary; denominator gate before the arms |
-| A3 | per-layer named as pre-registered primary; global demoted to sensitivity |
-| A4 | MDE declared before the grid; shares uninterpreted below it |
-| A5 | cross-family replication promoted into the core design |
-| A6 | reframed around the refutation branch |
-| A7 | recorded as a portfolio decision, not defended as science |
-| A8 | early pre-registration; sequencing pressure |
+| A1 | 采用剥离文本后的基底 + token 预算重新匹配；已发表配方降级为参考对照点 |
+| A2 | 绝对增量并列为主指标；在实验臂运行前执行分母有效性门禁 |
+| A3 | 明确将逐层匹配作为预注册主要协议；全局范数匹配降级为敏感度分析 |
+| A4 | 在实验网格运行前声明 MDE；低于 MDE 时拒绝解释份额比例 |
+| A5 | 将跨模型家族复现提升进入核心设计 |
+| A6 | 围绕可能得出的证伪分支重新定调立论 |
+| A7 | 记录为研究组合维度的取舍决策，不强行做科学辩护 |
+| A8 | 尽早执行预注册；强化执行推进速度 |
 
-Five of eight are answered by pre-registration rather than by extra compute, which is the cheapest
-form of defence available to a project this expensive.
+8 项攻击中有 5 项是通过预注册而非追加算力得到化解的，这是对此类高昂成本项目最经济的防御形式。

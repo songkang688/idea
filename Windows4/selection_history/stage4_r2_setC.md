@@ -1,592 +1,268 @@
-# Stage 4 — Reviewer #2, Set C (8 targets)
+# Stage 4 — Reviewer #2 评审攻击，集合 C (8 个目标)
 
-Date: 2026-08-28. Role: **Reviewer #2**. Stance per rubric: **default REJECT**; a target survives
-iff a *realistic* experiment (one lab, no new foundation-model pretrain, pre-registered kill
-conditions) would silence the strongest attack I can mount.
+日期：2026-08-28。角色：**Reviewer #2**。依据评审标准的立场：**默认拒稿（default REJECT）**；一个目标存活的充分必要条件是一项*现实可行的*实验（单个实验室、无需重新预训练新的基础模型、具备预注册的淘汰条件）能够使我所能发起的强力攻击彻底哑口无言。
 
-Inputs: `stage3_top50.md`, `stage3_kill_medical_smoke.md`, `stage3_kill_peft_vlm.md`
-(and `stage3_kill_sam_eval.md` for schema/cross-references).
+输入：`stage3_top50.md`、`stage3_kill_medical_smoke.md`、`stage3_kill_peft_vlm.md`（以及用于模式/交叉引用的 `stage3_kill_sam_eval.md`）。
 
-Epistemic status: **REVIEW JUDGMENT.** Citation discipline follows the Stage-3 convention:
-`[V]` = fetched and read (abstract or full text) during this pass, 2026-08-28;
-`[S3]` = carried from a Stage-3 file that claimed web verification;
-`[M]` = memory-cited classic — re-verify the ID before quoting in any draft.
-No fabricated papers. Where my attack rests on a paper found *this pass* that Stage 3 missed,
-it is flagged **NEW EVIDENCE** and logged in the register at the end.
+认识状态（Epistemic status）：**评审判断（REVIEW JUDGMENT）**。引文纪律遵循 Stage-3 惯例：
+`[V]` = 在本轮（2026-08-28）中完成获取并阅读（摘要或全文）；
+`[S3]` = 继承自声称经过网络核实的 Stage-3 文件；
+`[M]` = 凭借记忆引用的经典论文 — 在任何草稿引用前需重新核验 ID。
+绝无虚构论文。凡我的攻击建立在 Stage 3 遗漏而*在本轮中发现*的论文之上，均标记为 **NEW EVIDENCE（新证据）** 并记录在文末的登记簿中。
 
-Schema per target: Paper under review (as it would be submitted after the Stage-3 mutation) →
-R2 attack (strongest rejection, numbered vectors) → The silencing experiment (design, controls,
-pre-registered kill conditions, cost) → What no experiment can fix → Verdict → Confidence.
+每个目标的模式：评审中的论文（按 Stage-3 修改后提交的形式）→ R2 攻击（最强拒稿意见，编号攻击向量）→ 使其闭嘴的实验（设计、对照、预注册淘汰条件、成本）→ 任何实验都无法修复的缺陷 → 裁决 → 置信度。
 
-Verdict scale: **SILENCED** (attack answered by the specified experiment; survive),
-**SILENCED-IF-MUTATED** (survives only in the modified form specified; modification binding),
-**REJECT** (attack cannot be answered by any realistic experiment).
+裁决标尺：**SILENCED（已被闭嘴）**（攻击被指定实验解答；存活），**SILENCED-IF-MUTATED（若按要求修改则可被闭嘴）**（仅在所指定的修改形式下存活；修改具有约束力），**REJECT（拒稿）**（攻击无法被任何现实可行的实验解答）。
 
-## Scoreboard
+## 记分板（Scoreboard）
 
-| Target | Verdict |
+| 目标 | 裁决 |
 |---|---|
-| P096 (S-096+S-102) | SILENCED (with measured-alpha arm mandatory) |
-| P040 (A1-040) | SILENCED-IF-MUTATED (prediction paper, not curve paper) |
-| P042 (S-042) | SILENCED (decimation design mandatory) |
-| P107v (B1-107) | **REJECT as constituted** → narrow mutation permitted, flagship status revoked |
-| P079f (B1-079) | SILENCED (four controls mandatory) |
-| P051 (B1-051) | SILENCED-IF-MUTATED (amortization-parameterized frontier, efficient generators) |
-| P228 (S-228) | SILENCED-IF-MUTATED (within-model causal design on BiomedParse-class target) |
-| P061u (B1-061→B1-069) | SILENCED-IF-MUTATED (interaction-focused factorial; fold confirmed) |
+| P096 (S-096+S-102) | SILENCED (必须包含实测 alpha 分支) |
+| P040 (A1-040) | SILENCED-IF-MUTATED (预测型论文，而非曲线型论文) |
+| P042 (S-042) | SILENCED (必须采用切片抽取稀疏化设计) |
+| P107v (B1-107) | **按现有构成 REJECT** → 允许窄幅修改，撤销旗舰地位 |
+| P079f (B1-079) | SILENCED (四项对照为强制项) |
+| P051 (B1-051) | SILENCED-IF-MUTATED (摊销参数化前沿，高效生成器) |
+| P228 (S-228) | SILENCED-IF-MUTATED (在 BiomedParse 类目标上的模型内因果设计) |
+| P061u (B1-061→B1-069) | SILENCED-IF-MUTATED (聚焦交互作用的析因设计；确认合并) |
 
-Net: 3 silenced with binding controls, 4 silenced only under specified mutations, 1 rejected
-as constituted (Stage-3 SURVIVE overturned on new evidence).
-
----
-
-## 1. P096 — S-096 + S-102: "Smoke evaluation is broken" (metric reversal + rater ceiling)
-
-**Paper under review.** Two-pillar evaluation paper per the Stage-3 merge: (1) re-score 8–10
-published smoke segmenters under {IoU, Dice, Fβ} vs {alpha-MAE, SAD, gradient error} on
-alpha-GT data and report rank reversal (Kendall τ); (2) measure multi-rater IoU/alpha ceilings
-on standard RGB benchmarks (SSD/SMOKE5K/DS0x-real) and confront published SOTA deltas.
-
-**R2 attack.**
-
-1. **Strawman on the field's metrics (F8).** The SMOKE5K protocol *already* reports mMse
-   alongside Fβ — FoSp (AAAI 2024, doi:10.1609/aaai.v38i7.28484 `[V]` **NEW EVIDENCE**) follows
-   Yan et al. AAAI 2022 in using mMse + Fβ on SMOKE5K and mIoU only on SYN70K; the new
-   AusSmoke/MultiNatSmoke benchmark (arXiv:2604.23542 `[V]` **NEW EVIDENCE**) reports IoU, F1,
-   *and* MSE. "The field ranks by binary overlap alone" is false as stated; a reviewer pastes
-   FoSp's metrics table and asks what reversal remains once mMse is in the leaderboard.
-2. **The matting turn already happened.** SFMattingNet (Remote Sensing 17(13):2259, 2025,
-   doi:10.3390/rs17132259 `[V]` **NEW EVIDENCE**) is trimap-free *smoke-and-fire matting* with
-   SAD/MSE/Grad/Conn — the field is already migrating to alpha metrics without waiting for a
-   validity study. "You are confirming a direction already taken."
-3. **Alpha-GT circularity (the strongest vector).** Alpha ground truth exists only where smoke
-   was synthetically composited (DS01–03) or subjectively annotated. A reversal demonstrated on
-   synthetic composites shows that models trained/ranked on real binary masks disagree with
-   synthetic alpha — which may indict the *synthetic data*, not the metric. On real smoke,
-   "true alpha" is unobservable; the paper's gold standard is unfalsifiable exactly where the
-   claim matters.
-4. **Ceiling half is second.** Inter-annotator smoke disagreement is measured (hyperspectral,
-   3 raters, arXiv:2602.10858 `[S3]`); CoSW (NeurIPS 2024 `[S3]`) treats smoke label noise as
-   established. The ceiling pillar is a confrontation table, not a discovery.
-
-**The silencing experiment.**
-
-- *Against 1:* include mMse-on-binary-GT as its own column in the τ matrix. The claim becomes
-  sharper, not weaker: show whether mMse against *binary* GT rank-correlates with alpha-MAE
-  against *alpha* GT. If it does (τ > 0.8), the field's existing metric already proxies alpha
-  error and pillar 1 dies — pre-registered kill condition. If it does not, FoSp's table is the
-  paper's motivation, not its refutation.
-- *Against 3 (mandatory arm):* build a **measured-alpha real test set** — no annotation, no
-  synthesis. Fixed-camera smoke sequences with clean pre-smoke background frames (FIgLib-style
-  towers `[S3: Dewangan et al. 2022]`, plus lab captures with locked exposure) permit
-  physics-based alpha recovery by compositing inversion against the known background. Controls:
-  exposure-locked sequences only; exclude saturated/backlit frames; report sensitivity of
-  recovered alpha to the single-scattering assumption via lab smoke against calibrated
-  backgrounds. Rank the same checkpoints on (a) synthetic alpha, (b) measured real alpha,
-  (c) binary GT. The reversal claim survives only if (a) and (b) agree against (c).
-- *Against 2:* score SFMattingNet inside the same pool; frame the paper as the validity audit
-  the matting turn skipped — no published evidence yet shows binary leaderboards *mis-rank*;
-  this experiment supplies or refutes it.
-- *Against 4:* run the ceiling as pillar-2 exactly as Stage 3 specified (3–5 raters × 150
-  images from SSD/SMOKE5K test sets, pairwise IoU and alpha-MAE ceilings, overlay published
-  deltas), with the pre-registered demotion: if ceilings exceed 0.85 IoU, drop the pillar to
-  an appendix.
-
-Cost: eval-only on ~10 checkpoints + ~300 rater-annotated images + one fixed-camera capture
-campaign. No training. Feasible within the rubric's ROI rules.
-
-**What no experiment can fix.** Nothing structural. The paper's ceiling is venue-level: it is
-an evaluation-science paper for a small field, and its headline is hostage to the τ matrix.
-
-**Verdict: SILENCED** — with the measured-alpha real arm and the mMse column **binding**.
-Without the measured-alpha arm, attack 3 stands and the verdict flips to REJECT.
-**Confidence:** medium-high.
+净结果：3 个在带有约束性对照下被闭嘴，4 个仅在指定修改下被闭嘴，1 个按现有构成被拒稿（依据新证据推翻了 Stage-3 的 SURVIVE）。
 
 ---
 
-## 2. P040 — A1-040: Boundary-diffuseness under-segmentation law
+## 1. P096 — S-096 + S-102：“烟雾评估体系已崩坏”（指标反转 + 标注者上限）
 
-**Paper under review.** Synthetic lesions with parameterized edge-gradient width inserted into
-real CT/MR backgrounds; plot *signed* boundary error vs width for SAM/SAM2/MedSAM; validate the
-fitted law's out-of-sample prediction on LiTS infiltrative-vs-circumscribed subgroups.
+**评审中的论文。** 依据 Stage-3 合并的双支柱评估论文：(1) 在 alpha-GT 数据上，用 {IoU, Dice, Fβ} 对比 {alpha-MAE, SAD, gradient error} 对 8–10 个已发表的烟雾分割器重新评分，并报告排名反转（Kendall τ）；(2) 在标准 RGB benchmark（SSD/SMOKE5K/DS0x-real）上测量多标注者 IoU/alpha 上限，并与已发表的 SOTA delta 正面交锋。
 
-**R2 attack.**
+**R2 攻击。**
 
-1. **"Quantified lore" (the core objection).** He et al. (arXiv:2304.09324 `[S3]`) already fit
-   a GLM showing contrast and size are the dominant predictors of SAM Dice; Mazurowski et al.
-   (MedIA 2023 `[S3]`) documents poor performance on fuzzy boundaries. A monotone
-   error-vs-blur curve is a re-parameterization of the known contrast dependence. Where is the
-   *law* — i.e., what does it predict that the GLM does not?
-2. **Diffuseness–contrast collinearity.** Widening a gradient profile at fixed peak intensity
-   lowers local contrast. Unless the sweep manipulates edge width at *matched* Michelson
-   contrast (and matched size), the "diffuseness law" is the contrast curve wearing a new axis.
-3. **Insertion-artifact validity.** Parametric Gaussian-profile lesions are off-manifold;
-   biophysically-conditioned tumor synthesis with continuous infiltration fields now exists
-   (arXiv:2510.09365 `[V]` **NEW EVIDENCE**) and sets the realism bar. A reviewer asks why the
-   model's response to toy composites should transfer to real infiltration.
-4. **Circular validation.** Measuring "diffuseness" of real LiTS lesions uses image gradients
-   around the GT boundary — the same boundary the error is scored against; and
-   infiltrative-vs-circumscribed subgrouping is itself an annotation judgment.
+1. **针对该领域指标的稻草人攻击（F8）。** SMOKE5K 协议*已经*在 Fβ 旁报告了 mMse — FoSp (AAAI 2024, doi:10.1609/aaai.v38i7.28484 `[V]` **NEW EVIDENCE**) 沿袭了 Yan et al. AAAI 2022 的做法，在 SMOKE5K 上使用 mMse + Fβ，且仅在 SYN70K 上使用 mIoU；新的 AusSmoke/MultiNatSmoke benchmark (arXiv:2604.23542 `[V]` **NEW EVIDENCE**) 同时报告了 IoU, F1 *以及* MSE。“该领域仅靠二值重合度排名”的说法字面上并不成立；审稿人只需贴出 FoSp 的指标表并质问在排行榜已包含 mMse 后还存在什么反转。
+2. **抠图转向已经发生。** SFMattingNet (Remote Sensing 17(13):2259, 2025, doi:10.3390/rs17132259 `[V]` **NEW EVIDENCE**) 是免三值图的*烟火抠图（smoke-and-fire matting）*，报告了 SAD/MSE/Grad/Conn — 该领域已在向 alpha 指标迁移，无需等待有效性研究。“你们只是在确认一个已经采取的方向。”
+3. **Alpha-GT 循环论证（最强攻击向量）。** Alpha ground truth 仅存在于烟雾被合成混合（DS01–03）或主观标注的地方。在合成混合物上展现的反转说明在真实二值 mask 上训练/排名的模型与合成 alpha 不一致 — 这可能质疑的是*合成数据*，而非指标本身。在真实烟雾上，“真实的 alpha”是不可观测的；在主张真正关键的地方，论文的黄金标准是不可证伪的。
+4. **标注者上限这一半只是次要支撑。** 标注者间的烟雾分歧已被测量（高光谱，3 名标注者，arXiv:2602.10858 `[S3]`）；CoSW (NeurIPS 2024 `[S3]`) 将烟雾标签噪声视为既定事实。上限支柱只是一张对比表，而非科学发现。
 
-**The silencing experiment.**
+**使其闭嘴的实验。**
 
-- *Against 1+2 (the discriminating design):* a **two-factor sweep** — edge-gradient width ×
-  Michelson contrast, manipulated orthogonally at matched lesion size. Two mechanisms make
-  different predictions: a *snap-to-edge* prior predicts signed under-segmentation growing with
-  gradient width even at high contrast (mask contracts to the steepest gradient ring); a
-  *contrast-threshold* account predicts error tracking contrast at any width. The experiment
-  discriminates them. That is a law with content, not a curve: it predicts *where* the boundary
-  lands (the isophote of steepest gradient), checkable per-case. Pre-registered kill: if signed
-  error is flat in width at matched contrast, the diffuseness law is dead and the result folds
-  into the known contrast story.
-- *Against 3:* two synthesis arms — (a) parametric profiles, (b) biophysical-concentration
-  lesions from the arXiv:2510.09365 class of generator with the concentration field's decay
-  length as the diffuseness parameter; plus a sham-insertion control (circumscribed profile
-  through the identical compositing pipeline) to price the insertion artifact itself. The law
-  must agree across (a) and (b).
-- *Against 4:* on real data, compute the diffuseness proxy in a fixed annulus *straddling* the
-  GT boundary (GT used only to locate the annulus, not to score sharpness), and pre-register the
-  synthetic-fitted law's prediction of signed error on real subgroups *before* scoring. Report
-  prediction R², not just correlation.
+- *针对点 1：* 在 τ 矩阵中将二值 GT 上的 mMse 作为一个独立列纳入。主张由此变得更锐利而非更弱：展示针对*二值* GT 的 mMse 是否与针对 *alpha* GT 的 alpha-MAE 存在等级相关。若相关（τ > 0.8），说明该领域现有指标已能很好代理 alpha 误差，支柱 1 宣告死亡 — 预注册淘汰条件。若不相关，FoSp 的表格恰恰构成了论文的动机，而非对其的反驳。
+- *针对点 3（强制分支）：* 构建一个**实测 alpha 的真实测试集（measured-alpha real test set）** — 无人工标注，无合成生成。带有烟雾前干净背景帧的固定机位烟雾序列（FIgLib 风格监控塔 `[S3: Dewangan et al. 2022]`，外加锁定曝光的实验室拍摄）允许通过针对已知背景的混合逆解实现基于物理的 alpha 恢复。控制措施：仅限曝光锁定的序列；排除过曝/背光帧；通过校准背景上的实验室烟雾，报告恢复得到的 alpha 对单次散射假设的敏感性。在 (a) 合成 alpha、(b) 实测真实 alpha、(c) 二值 GT 上对相同的 checkpoint 进行排名。反转主张仅在 (a) 和 (b) 达成一致且与 (c) 相悖时方可成立。
+- *针对点 2：* 在同一测试池中对 SFMattingNet 评分；将论文表述为抠图转型所跳过的有效性审计 — 尚未有发表证据表明二值排行榜存在*错误排序*；本实验提供或证伪这一证据。
+- *针对点 4：* 完全按照 Stage 3 指定的方式运行支柱 2 的上限测量（从 SSD/SMOKE5K 测试集中抽取 150 张图像，由 3–5 名标注者标注，成对计算 IoU 和 alpha-MAE 上限，叠加已发表的方法 delta），带有预注册的降级条件：若上限超过 0.85 IoU，将该支柱降级至附录。
 
-Cost: inference-only on frozen models + one generator fine-tune already published; ≈ GPU-days,
-not weeks.
+成本：~10 个 checkpoint 上的纯评估 + ~300 张标注者标注图像 + 一次固定机位采集活动。无需训练。在评审标准的 ROI 规则内完全可行。
 
-**What no experiment can fix.** If the two-factor sweep shows width effects are fully absorbed
-by contrast, no framing rescues a standalone paper — that outcome is one figure inside the
-medical-eval thread. The submission must be built so that this demotion path is explicit.
+**任何实验都无法修复的缺陷。** 无结构性缺陷。该论文的上限在于发表渠道级别：它是面向一个小领域的评估科学论文，其头条结论受制于 τ 矩阵。
 
-**Verdict: SILENCED-IF-MUTATED** — from "fit a curve" to "discriminate snap-to-edge vs
-contrast-threshold mechanisms and predict real-lesion signed error out-of-sample." The
-mechanism-discrimination framing and the two-factor design are binding; without them attack 1
-stands. **Confidence:** medium.
+**裁决：SILENCED** — 实测真实 alpha 分支与 mMse 列具有**约束力**。缺乏实测 alpha 分支，攻击 3 成立，裁决将翻转为 REJECT。
+**置信度：** Medium-High。
 
 ---
 
-## 3. P042 — S-042: Anisotropy confound vs "medical 3D"
+## 2. P040 — A1-040：边界弥散度欠分割规律（Boundary-diffuseness under-segmentation law）
 
-**Paper under review.** Hold data fixed; measure zero-shot SAM2 propagation Dice as a controlled
-function of slice spacing; report the fraction of the "medical gap" (vs MedSAM-2/fine-tuned
-SAM2) closed by resampling alone; Dice-vs-anisotropy-ratio curve across datasets.
+**评审中的论文。** 将带有参数化边缘梯度宽度的合成病灶插入真实 CT/MR 背景中；绘制 SAM/SAM2/MedSAM 的*有符号*边界误差与宽度的曲线；在 LiTS 浸润性 vs 局限性亚组上验证拟合规律的样本外预测能力。
 
-**R2 attack.**
+**R2 攻击。**
 
-1. **Hygiene-as-paper.** nnU-Net (Isensee et al., Nature Methods 2021 `[S3]`) made
-   spacing-aware resampling doctrine; every serious pipeline resamples. "Resampling helps" is
-   not news at any venue.
-2. **The intervention is confounded three ways.** Resampling z changes (a) the number of
-   slices, hence the number of propagation steps, hence accumulated drift (Dong et al.
-   arXiv:2408.00756 `[S3]` showed error grows with slice distance); (b) interpolation blur on
-   the invented slices; (c) apparent inter-slice motion magnitude. "Anisotropy" as a causal
-   variable is a bundle; the headline "X% of the gap is anisotropy" inherits all three.
-3. **"Fraction of the gap" is ill-posed.** The number depends on the fine-tuned comparator,
-   its checkpoint, the prompt protocol, and the dataset mix; a hostile reviewer constructs a
-   comparator that moves the fraction from 20% to 70%.
-4. **Scoop probe.** Checked this pass: the zero-shot SAM2-CT ablation study
-   (arXiv:2603.23116 `[V]`) sweeps prompts, memory selection, propagation schemes, and
-   multi-axis fusion on TotalSegmentator — **no spacing/resampling arm** (verified by full-text
-   inspection). SAM2-ProMem (MICCAI 2025 `[V]` **NEW EVIDENCE**) manipulates memory, not
-   spacing. The gap Stage 3 claimed is still open as of today.
+1. **“被量化的经验常识”（核心异议）。** He et al. (arXiv:2304.09324 `[S3]`) 已经拟合了一个广义线性模型（GLM），表明对比度和尺寸是 SAM Dice 的主导预测因子；Mazurowski et al. (MedIA 2023 `[S3]`) 记录了在模糊边界上的较差表现。一条单调的误差 vs 模糊曲线只是已知对比度依赖性的重新参数化。所谓的*规律*在哪里 — 即它预测了哪些 GLM 所没有预测的内容？
+2. **弥散度与对比度的共线性。** 在固定峰值强度下拓宽梯度剖面会降低局部对比度。除非在*匹配的* Michelson 对比度（以及匹配尺寸）下操纵边缘宽度，否则“弥散度规律”只是披着新坐标轴外衣的对比度曲线。
+3. **插入伪影的有效性。** 参数化高斯剖面的病灶处于流形之外；目前已存在带有连续浸润场的生物物理条件化肿瘤合成技术 (arXiv:2510.09365 `[V]` **NEW EVIDENCE**) 并确立了真实度标杆。审稿人会质问为何模型对玩具合成物的响应能够迁移到真实浸润中。
+4. **循环验证。** 测量真实 LiTS 病灶的“弥散度”使用的是 GT 边界周围的图像梯度 — 正是计算误差所依据的同一边界；且浸润性 vs 局限性的亚组划分本身就是主观标注判断。
 
-**The silencing experiment.**
+**使其闭嘴的实验。**
 
-- *Against 2 (the design that decides the paper):* **decimate, don't interpolate.** Start from
-  near-isotropic CT (sub-mm to 1.5 mm z-spacing subsets of TotalSegmentator/AMOS); create
-  {1.5, 3, 6} mm variants by *dropping slices* — no invented data, acquisition and in-plane
-  appearance held fixed, anisotropy manipulated causally. Report drift both per-step and per-mm:
-  if Dice falls per-mm at *fewer* propagation steps, error accumulation is exonerated and
-  anisotropy (inter-slice appearance jump) is isolated. Then, and only then, add the
-  interpolated-upsampling arm on natively-thick volumes to measure how much of the loss
-  interpolation recovers — now interpretable because the causal direction was established on
-  decimated data.
-- *Against 1:* the claim is not "resampling helps" but an *attribution with a named adversary*:
-  MedSAM-2's motivation (arXiv:2408.00874 `[S3]`) attributes the 3D failure to medicalness
-  (slice order meaninglessness); if a large fraction of the zero-shot gap closes by spacing
-  manipulation alone, the fine-tune literature's premise is partially an acquisition artifact.
-  State this as the falsifiable stake in the introduction.
-- *Against 3:* pre-register comparators (public MedSAM-2 checkpoint + one reproduced fine-tuned
-  SAM2), one fixed prompt protocol (middle-slice box, bidirectional, per arXiv:2408.03322
-  `[S3]`), and report the closed-fraction as a *range across datasets with CIs*, never a single
-  number. Publish the per-dataset anisotropy-ratio curve as the primary object; the fraction is
-  secondary.
+- *针对点 1+2（区分性设计）：* **双因子扫描（two-factor sweep）** — 边缘梯度宽度 × Michelson 对比度，在匹配病灶尺寸下正交操纵。两种机制给出不同预测：*贴边（snap-to-edge）*先验预测即使在高对比度下，有符号欠分割也会随着梯度宽度增加而增大（mask 收缩至最陡峭的梯度环）；*对比度阈值（contrast-threshold）*解释则预测误差在任何宽度下都只追踪对比度。实验将两者区分开来。这是一条有内涵的规律而非曲线：它预测了边界*落在何处*（最陡梯度的等值线），可逐案例检验。预注册淘汰条件：若在匹配对比度下有符号误差对宽度保持平坦，则弥散度规律破产，结果归入已知的对比度结论。
+- *针对点 3：* 两个合成分支 — (a) 参数化剖面，(b) 来自 arXiv:2510.09365 类生成器的生物物理浓度病灶，以浓度场的衰减长度作为弥散度参数；外加假手术插入对照（通过完全相同的合成 pipeline 处理局限性剖面）以量化插入伪影自身。该规律必须在 (a) 和 (b) 之间达成一致。
+- *针对点 4：* 在真实数据上，在*跨越* GT 边界的固定环形带内计算弥散度代理指标（GT 仅用于定位环形带，不用来评估清晰度），并在评分*之前*预注册由合成拟合规律给出的真实亚组有符号误差预测。报告预测 R²，而非仅仅报告相关系数。
 
-Kill condition (carried from Stage 3, still correct): dies if spacing manipulation moves Dice
-<30% as much as fine-tuning everywhere. Cost: inference-only; days.
+成本：冻结模型上的纯推理 + 一个已发表生成器的微调；≈ 几个 GPU 天，而非数周。
 
-**What no experiment can fix.** Nothing structural; the result is informative in both
-directions. Residual risk is a benchmark-appendix scoop, mitigated but not eliminated by the
-two probes run this pass.
+**任何实验都无法修复的缺陷。** 若双因子扫描显示宽度效应完全被对比度吸收，任何表述都无法挽救独立论文 — 该结局将只是医学评估线程内的一张插图。论文提交必须明确包含该降级路径。
 
-**Verdict: SILENCED** — decimation design and pre-registered comparators binding.
-**Confidence:** medium-high.
+**裁决：SILENCED-IF-MUTATED** — 从“拟合一条曲线”转变为“区分贴边机制 vs 对比度阈值机制并在样本外预测真实病灶的有符号误差”。机制区分框架与双因子设计具有约束力；缺乏它们，攻击 1 依然成立。**置信度：** Medium。
 
 ---
 
-## 4. P107v — B1-107: Phantom dense masks after inpainting-out (VLM hallucination)
+## 3. P042 — S-042：各向异性混淆 vs “医疗 3D”
 
-**Paper under review.** Stage-3 SURVIVE, slotted as flagship P5 (with S-228): inpaint the object
-out; text-prompted segmenters still fire; co-occurrence-driven phantom masks at the pixel level;
-trace-controls (sham surgery) for inpainting artifacts.
+**评审中的论文。** 保持数据固定；测量 zero-shot SAM2 传播 Dice 作为切片间距受控函数的变化；报告仅靠重采样所弥合的“医疗差距”（对比 MedSAM-2/微调 SAM2）比例；跨数据集的 Dice vs 各向异性比率曲线。
 
-**R2 attack.**
+**R2 攻击。**
 
-1. **Scooped. NEW EVIDENCE overturning Stage 3's NOT FOUND.** *HalluSegBench* /
-   Counterfactual Segmentation Reasoning (Li et al., arXiv:2506.21546 `[V]`; dataset public on
-   HuggingFace, PLAN-Lab) is "the first large-scale benchmark to diagnose referring and
-   reasoning expression segmentation hallucinations using controlled visual counterfactuals":
-   3,673 factual–counterfactual pairs across 816 categories, ΔIoU_textual vs ΔIoU_visual to
-   disentangle language- vs vision-driven failures, a Confusion Mask Score for structured
-   phantom masks, evaluation of LISA/PixelLM/Seg-Zero/SESAME-class models, *and* a
-   counterfactual-fine-tuned fix (RobustSeg, −30% hallucination). Their headline finding is
-   B1-107's thesis: vision-driven hallucinations dominate, models "often persisting in false
-   segmentation." The same paper cites *Visual Jenga* (Bhattad, Preechakul & Efros, NeurIPS
-   2025 `[V via 2506.21546 refs]`) — counterfactual *inpainting* is an established instrument.
-   Stage 3's "no dense-prediction counterfactual-inpainting audit found" is stale. No
-   experiment silences a scoop; the "first dense counterfactual audit" framing is dead, and
-   with it the flagship slot.
-2. **The residue is at artifact risk.** HalluSegBench's edits are *replacements* (target
-   swapped for a similar object), not removals — but any removal-based follow-up faces the
-   inpainting-trace confound with a published, artifact-lighter alternative sitting next to it.
-3. **Fix already shipped.** RobustSeg means the phenomenon has a mitigation baseline; an
-   audit-only paper now competes with a method+benchmark package.
+1. **将常规规范当作论文。** nnU-Net (Isensee et al., Nature Methods 2021 `[S3]`) 将感知间距的重采样确立为行业准则；每个严谨的 pipeline 都会做重采样。“重采样有帮助”在任何会议都不是新闻。
+2. **干预手段受到三重混淆。** 对 z 轴重采样改变了 (a) 切片数量，从而改变了传播步数与累积漂移（Dong et al. arXiv:2408.00756 `[S3]` 证明误差随切片距离增长）；(b) 发明出的切片上的插值模糊；(c) 表观切片间运动幅度。“各向异性”作为因果变量是一个复合体；“差距的 X% 是各向异性”这一头条结论继承了所有这三项混淆。
+3. **“差距的比例”定义不清。** 该数字取决于微调对照基准、其 checkpoint、提示协议以及数据集配比；敌意审稿人可以构造出一个对照基准，将该比例从 20% 随意变动到 70%。
+4. **抢跑排查。** 本轮核实：zero-shot SAM2-CT 消融研究 (arXiv:2603.23116 `[V]`) 遍历了提示、记忆选择、传播方案以及 TotalSegmentator 上的多轴融合 — **没有间距/重采样分支**（经全文检查核实）。SAM2-ProMem (MICCAI 2025 `[V]` **NEW EVIDENCE**) 操作的是记忆而非间距。Stage 3 所指出的空白截至今日依然开放。
 
-**The residual (what HalluSegBench verifiably does not do).**
+**使其闭嘴的实验。**
 
-- *Removal, not replacement:* their counterfactual scene still contains a plausible distractor
-  object; ΔIoU_visual conflates "confuses a similar object" with "hallucinates from context
-  alone." Object-out counterfactuals isolate the pure co-occurrence prior — scene context with
-  *nothing* at the location.
-- *No sham-surgery artifact control* is claimed in their pipeline; the trace-control arm
-  (re-inpaint regions *not* containing the target; identical artifact statistics, no removal)
-  remains unclaimed.
-- *Model classes:* they cover reasoning-seg VLMs; open-vocabulary detector+SAM pipelines
-  (Grounding-DINO+SAM class) and text-prompted *medical* segmentation (BiomedParse,
-  arXiv:2405.12971 `[V]` — which ships a K-S-test abstention mechanism, i.e., a model that
-  *claims* to know when the object is absent) are untested.
-- *Dose–response attribution:* phantom-mask rate as a function of pretraining co-occurrence
-  strength (POPE-style stratification `[S3: arXiv:2305.10355]`) at the pixel level — mechanism,
-  not existence.
+- *针对点 2（决定论文成败的设计）：* **采用切片抽取稀疏化（decimate），而非插值。** 从近各向同性 CT（TotalSegmentator/AMOS 的亚毫米至 1.5 mm z 间距子集）出发；通过*丢弃切片*创建 {1.5, 3, 6} mm 变体 — 无虚构数据，采集和面内表观保持恒定，各向异性受到因果操控。同时按每步和每毫米报告漂移：若在*更少*传播步数下每毫米 Dice 仍下降，则累积误差被排除，各向异性（切片间表观跳变）被成功剥离。然后，且仅在此之后，在原生厚层体数据上增加插值上采样分支以测量插值能挽回多少损失 — 此时因果方向已在抽取数据上确立，因而具备了解释性。
+- *针对点 1：* 主张并非“重采样有帮助”，而是*带有具名对手的归因*：MedSAM-2 的动机 (arXiv:2408.00874 `[S3]`) 将 3D 失效归因于医疗属性（切片顺序无意义）；若 zero-shot 差距的大部分能仅通过间距操纵弥合，则微调文献的前提部分属于采集伪影。在引言中将其作为可证伪的焦点进行陈述。
+- *针对点 3：* 预注册对照组（公开的 MedSAM-2 checkpoint + 一个复现的微调 SAM2）、单一固定的提示协议（中间切片框、双向，依据 arXiv:2408.03322 `[S3]`），并以*跨数据集带置信区间的范围*报告弥合比例，绝不报告单一孤立数字。将逐数据集的各向异性比率曲线作为主要交付对象；比例退居次要。
 
-**Verdict: REJECT as constituted.** The Stage-3 SURVIVE and the P5 flagship slot are revoked on
-verified new evidence. A narrow mutation may re-enter the pool as a junior-scope companion to
-P228: "context-only phantom masks: what replacement counterfactuals miss" — removal-based,
-sham-surgery-controlled, co-occurrence dose–response, evaluated on detector+SAM pipelines and
-BiomedParse's abstention (does the K-S test actually fire on inpainted-out anatomy?). It must
-adopt HalluSegBench's metrics (ΔIoU_visual, CMS) and report on their benchmark for
-comparability. It is a delta paper now; budget accordingly. **Confidence:** high (scoop
-verified full-text this pass).
+淘汰条件（继承自 Stage 3，依然准确）：若在所有地方间距操纵带来的 Dice 变化均低于微调变化的 30%，则淘汰。成本：纯推理；数天。
+
+**任何实验都无法修复的缺陷。** 无结构性缺陷；无论结果偏向哪方都具备信息量。残留风险在于 benchmark 附录中的撞车，本轮运行的两次排查降低了但未消除该风险。
+
+**裁决：SILENCED** — 切片抽取稀疏化设计与预注册对照组具有约束力。
+**置信度：** Medium-High。
 
 ---
 
-## 5. P079f — B1-079: FSS background-swap cheat
+## 4. P107v — B1-107：Inpaint 擦除目标后的稠密幽灵 Mask（VLM 幻觉）
 
-**Paper under review.** Audit claiming FSS episodes reward support/query *background similarity*
-— an episode-construction shortcut orthogonal to BAM's base-class bias; background-swap
-intervention quantifies the shortcut's contribution to benchmark scores.
+**评审中的论文。** Stage-3 SURVIVE，被列为旗舰 P5（与 S-228 组合）：将目标 inpaint 擦除；文本提示分割器依然触发；像素级别的共现驱动幽灵 mask；针对 inpainting 伪影的痕迹控制（假手术 sham surgery）。
 
-**R2 attack.**
+**R2 攻击。**
 
-1. **The phenomenon is named and methodized. NEW EVIDENCE.** Zhu et al., *Addressing Background
-   Context Bias in Few-Shot Segmentation through Iterative Modulation*, CVPR 2024
-   (doi:10.1109/cvpr52733.2024.00324 `[V]`): "different background contexts of support and
-   query images can cause their foreground features to be misaligned. This phenomenon, known as
-   background context bias…" — plus a fix. TBS, AAAI 2024 (doi:10.1609/aaai.v38i5.28242 `[V]`)
-   builds a module around exactly the two failure cases (dissimilar backgrounds; target-similar
-   support background). A reviewer pastes these and writes: "the 'shortcut' you reveal is the
-   motivation section of two 2024 method papers."
-2. **Compositing-artifact confound.** Swapped episodes are off-manifold (matting halos,
-   lighting mismatch); measured degradation over-estimates the shortcut. The sham-swap control
-   (recomposite same background) does not equate foreground-background lighting coherence in
-   the *swapped* arm.
-3. **BAM overlap.** Base-class bias (Lang et al., CVPR 2022 `[S3]`) fires on seen-class regions;
-   without class control, background-similarity effects are partially BAM's bias re-measured.
-4. **Stale-checkpoint attack.** The FM re-benchmark (arXiv:2401.11311 `[S3]`) reordered FSS; if
-   DINOv2-matching methods don't use the shortcut, the audit indicts a deprecated model class.
+1. **已被抢跑。推翻 Stage 3 的 NOT FOUND 的新证据。** *HalluSegBench* / Counterfactual Segmentation Reasoning (Li et al., arXiv:2506.21546 `[V]`; 数据集在 HuggingFace PLAN-Lab 开源) 是“首个使用受控视觉反事实来诊断指代和推理表达分割幻觉的大规模 benchmark”：816 个类别中的 3,673 个事实-反事实对、解耦语言驱动与视觉驱动失效的 ΔIoU_textual vs ΔIoU_visual、针对结构化幽灵 mask 的 Confusion Mask Score、对 LISA/PixelLM/Seg-Zero/SESAME 类模型的评估、*以及*反事实微调修复方案（RobustSeg，减少 30% 幻觉）。其核心发现正是 B1-107 的论题：视觉驱动的幻觉占主导，模型 "often persisting in false segmentation"。该论文还引用了 *Visual Jenga* (Bhattad, Preechakul & Efros, NeurIPS 2025 `[V via 2506.21546 refs]`) — 反事实 *inpainting* 是成熟工具。Stage 3 所称的“未发现稠密预测反事实 inpainting 审计”已过时。实验无法消除被抢跑的事实；“首个稠密反事实审计”的框架破产，旗舰地位随之瓦解。
+2. **残留部分面临伪影风险。** HalluSegBench 的编辑是*替换*（将目标换为相似物体）而非擦除 — 但任何基于擦除的后续研究在面对旁边已发表且伪影更轻的替代方案时，都会面临 inpainting 痕迹的混淆。
+3. **修复方案已发布。** RobustSeg 意味着该现象已有缓解基线；纯审计论文现在要与一个“方法 + benchmark”的完整成果包竞争。
 
-**The silencing experiment.**
+**残留空间（HalluSegBench 确凿未做的工作）。**
 
-- *Against 1 (framing, then evidence):* Zhu/TBS treat background mismatch as a *robustness
-  nuisance* their method fixes; neither quantifies the shortcut's contribution to *benchmark
-  scores* or shows leaderboard gaps move under background-controlled episodes. The audit's
-  deliverable is the evaluation-validity number those papers implicitly presuppose: variance
-  decomposition of PASCAL-5i/COCO-20i episode scores into background-similarity strata, plus
-  the re-ranking of released checkpoints under similarity-controlled episode resampling. The
-  method papers become *supporting evidence* (the field already builds fixes for this bias)
-  rather than scoops — but only if both are cited and differenced explicitly.
-- *Against 2 (two-sided triangulation, binding):* (a) interventional arm with sham-swap
-  (identical decompose-recomposite pipeline, same background) *and* a harmonization pass, with
-  the artifact tax measured as sham-vs-original delta and subtracted; (b) **non-interventional
-  arm with no compositing at all**: stratify natural episodes by measured background similarity
-  (frozen-encoder features on GT-background pixels) and show the score gradient across strata.
-  The shortcut claim stands only if both arms agree in sign and approximate magnitude.
-- *Against 3:* class-controlled design — swap backgrounds within episodes whose backgrounds
-  contain no base-class objects (filter via GT); report the BAM-attributable share separately.
-- *Against 4:* checkpoint pool spans legacy (PFENet/HSNet-era), 2024 methods (including TBS and
-  Zhu et al. — do the *fixes* close the swap gap?), and FM-based baselines from
-  arXiv:2401.11311. Pre-registered fork: shortcut persists under FM matching → strong paper;
-  disappears → "background shortcut is a ResNet-era artifact," smaller but honest.
+- *擦除而非替换：* 其反事实场景中仍包含一个合理的干扰物体；ΔIoU_visual 将“混淆相似物体”与“仅凭上下文产生幻觉”混淆在一起。目标移除的反事实隔离了纯粹的共现先验 — 即在目标位置*空无一物*的场景上下文。
+- 其流程中*未声称具有假手术伪影控制*；痕迹控制分支（重新 inpaint *不*包含目标的区域；相同的伪影统计，无目标移除）仍未被占领。
+- *模型类别：* 他们涵盖了推理分割 VLM；开放词表检测器+SAM pipeline（Grounding-DINO+SAM 类）以及文本提示的*医学*分割（BiomedParse, arXiv:2405.12971 `[V]` — 其配备了 K-S 检验弃权机制，即声称能够知道目标何时缺失的模型）仍未经测试。
+- *剂量-响应归因（Dose–response attribution）：* 幽灵 mask 率作为预训练共现强度函数（POPE 风格分层 `[S3: arXiv:2305.10355]`）在像素级的呈现 — 属于机制而非单纯证明存在。
 
-Cost: eval-only + compositing pipeline; no training. Kill condition: if the non-interventional
-gradient is flat (score independent of background similarity), the shortcut claim dies
-regardless of what swaps show — pre-register it.
-
-**What no experiment can fix.** If the effect exists but is fully absorbed by the 2024 fixes,
-the paper demotes to a benchmark-hygiene note. Acceptable risk.
-
-**Verdict: SILENCED** — four controls binding (sham-swap + natural-gradient arm + class control
-+ FM checkpoints), and explicit differencing against Zhu et al./TBS. **Confidence:** medium-high.
+**裁决：按现有构成 REJECT。** 依据核实的新证据，撤销 Stage-3 的 SURVIVE 和 P5 旗舰地位。一个狭窄的变体可以作为 P228 的初阶伴生篇重新进入候选池：“仅凭上下文的幽灵 mask：替换型反事实遗漏了什么” — 基于擦除、假手术受控、共现剂量-响应，在检测器+SAM pipeline 及 BiomedParse 弃权机制上进行评估（K-S 检验在被 inpaint 擦除的解剖结构上是否真的会触发？）。它必须采用 HalluSegBench 的指标（ΔIoU_visual, CMS）并在其 benchmark 上报告以确保可比性。它现在属于增量论文；请据此规划预算。**置信度：** High（本轮已全文核实抢跑事实）。
 
 ---
 
-## 6. P051 — B1-051: Copy-paste vs diffusion at matched GPU-hours
+## 5. P079f — B1-079：FSS 背景置换作弊
 
-**Paper under review.** Honest equal-compute frontier for synthetic data in instance
-segmentation: charge generation+filtering to the synthesis arm; X-Paste's headline
-(arXiv:2212.03863 `[S3]`) as the named adversary; scale-matched real-data arm as third condition.
+**评审中的论文。** 审计指控 FSS 的 episode 奖励了 support/query 的*背景相似度* — 这是一种与 BAM 基类偏置正交的 episode 构建捷径；背景置换干预量化了该捷径对 benchmark 得分的贡献。
 
-**R2 attack.**
+**R2 攻击。**
 
-1. **Amortization ill-posedness (the strongest vector).** Generated instance pools are produced
-   once and reused across runs, models, and papers; charging full generation cost to a single
-   training run is an accounting *choice*, and under any realistic reuse factor the generation
-   term amortizes toward zero. A single "at matched compute, copy-paste wins" verdict is an
-   artifact of where the ledger line is drawn.
-2. **Strawman generator (F8). NEW EVIDENCE sharpens this.** X-Paste is SD1.5-era. MosaicFusion
-   (training-free, ~4.3× fewer generation GPU-hours than X-Paste; IJCV-published, ID re-verify
-   `[M]`), the multi-round generative augmentation paper at NeurIPS 2025 (generation reduced to
-   ~6% of prior SOTA volume via feedback, proceedings paper `[V]` **NEW EVIDENCE**), and
-   FLORA (arXiv:2508.21712 `[V]` **NEW EVIDENCE**, consumer-GPU LoRA generation, 10% of the
-   data volume) mean generation cost is collapsing. Compute-matching against X-Paste alone is
-   beating a 2023 pipeline with a 2026 ruler; the conclusion has a shelf life of one generator
-   generation.
-3. **Rare-class confound.** Diffusion's documented advantage is rare/novel classes (X-Paste:
-   +6.8 box AP on long-tail) where real instances for copy-paste *do not exist at any compute
-   budget*. Pooled-AP compute-matching hides that the two arms buy different things.
-4. **Wrong constraint.** In most labs annotation and data access bind, not GPU-hours; who
-   deploys on a matched-FLOPs frontier?
+1. **该现象已被命名并被方法化。新证据。** Zhu et al., *Addressing Background Context Bias in Few-Shot Segmentation through Iterative Modulation*, CVPR 2024 (doi:10.1109/cvpr52733.2024.00324 `[V]`): "different background contexts of support and query images can cause their foreground features to be misaligned. This phenomenon, known as background context bias…" — 外加修复方案。TBS, AAAI 2024 (doi:10.1609/aaai.v38i5.28242 `[V]`) 专门针对两种失效情况（不相似背景；与目标相似的 support 背景）构建了模块。审稿人贴出这些论文并写道：“你们揭示的‘捷径’正是两篇 2024 年方法论文的动机章节。”
+2. **合成伪影混淆。** 置换后的 episode 处于流形之外（抠图光晕、光照不匹配）；测得的性能退化高估了捷径。假手术对照（重新合成相同背景）无法平衡*置换*分支中前景-背景的光照连贯性。
+3. **与 BAM 重合。** 基类偏置 (Lang et al., CVPR 2022 `[S3]`) 在已见类别区域触发；若不控制类别，背景相似度效应有一部分是重新测量了 BAM 的偏置。
+4. **过时 checkpoint 攻击。** 基础模型重测 (arXiv:2401.11311 `[S3]`) 重排了 FSS；若 DINOv2 匹配方法不利用该捷径，该审计指控的只是已被淘汰的模型类别。
 
-**The silencing experiment (this is the mutation).**
+**使其闭嘴的实验。**
 
-- *Against 1:* abandon the verdict framing. The deliverable is the **frontier as a function of
-  the amortization factor k** (number of training runs the generated pool is reused across):
-  AP(budget, arm, k) with k ∈ {1, 3, 10, ∞}. The paper's finding is the crossover surface —
-  "copy-paste dominates below K reuses at budget B; diffusion above" — robust to the accounting
-  attack because the accounting *is* the x-axis. Pre-registered kill: if K ≤ 2 at all budgets,
-  the honest headline is "diffusion wins under minimal reuse" and the anti-X-Paste framing is
-  dropped (publish the frontier anyway).
-- *Against 2:* three synthesis pipelines, not one — X-Paste-style (retrieval+filter),
-  MosaicFusion-style (training-free), FLORA-style (LoRA-tuned efficient generator) — each with
-  its own measured generation ledger. The claim is then about the *frontier's shape*, not one
-  pipeline's loss.
-- *Against 3:* report frequent/common/rare LVIS strata separately; pre-register the expected
-  concession (diffusion wins rare at most k) and let the frontier show where.
-- *Against 4:* add a fourth arm — real-data scaling (Ghiasi copy-paste on more real images
-  `[S3: arXiv:2012.07177]`) — so the paper answers the deployment question ("given B GPU-hours
-  and no new annotation, what do I do?") rather than a metaphysical one.
+- *针对点 1（先立论，再给证据）：* Zhu/TBS 将背景不匹配视为其方法所要修复的*鲁棒性干扰*；两者均未量化该捷径对 *benchmark 得分*的贡献，也未展示排行榜差距在背景受控的 episode 下会发生变动。该审计的交付成果正是那些论文隐含预设的评估有效性数据：PASCAL-5i/COCO-20i episode 得分在背景相似度分层上的方差分解，外加在相似度受控 episode 重采样下已发布 checkpoint 的重新排名。这些方法论文转化为*支持证据*（该领域已经在为该偏置构建修复方案）而非抢跑者 — 但前提是必须明确引用并与 Zhu et al./TBS 进行求差对比。
+- *针对点 2（双向三角互证，强制项）：* (a) 带有假手术置换（完全相同的分解-重新合成流程，相同背景）*以及*调和处理（harmonization pass）的干预分支，将伪影代价测量为假手术 vs 原始的 delta 并予以扣除；(b) **完全不包含任何合成操作的非干预分支**：按测得的背景相似度（GT 背景像素上的冻结 encoder 特征）对自然 episode 进行分层，展示跨层级的分数梯度。捷径主张唯有在这两个分支在符号和大致量级上一致时方可成立。
+- *针对点 3：* 类别受控设计 — 在背景中不包含基类目标的 episode 内部置换背景（通过 GT 过滤）；单独报告归因于 BAM 的份额。
+- *针对点 4：* Checkpoint 池涵盖传统方法（PFENet/HSNet 时代）、2024 年新方法（包括 TBS 和 Zhu et al. — 这些*修复方案*是否消除了置换差距？），以及来自 arXiv:2401.11311 的基于基础模型的基线。预注册分叉：若捷径在基础模型匹配下依然存在 → 强力论文；若消失 → “背景捷径是 ResNet 时代的伪影”，体量变小但依然诚实。
 
-Cost: this is the expensive survivor — ~40–80 training runs at Mask R-CNN-R50/LVIS-subset
-scale plus three generation pipelines. Feasible for one lab with a cluster; borderline against
-the rubric's "weeks not years." The k-parameterization does not add runs (it re-weights the
-ledger post hoc); the three-pipeline requirement does. Trim by running the third pipeline at
-two budgets only.
+成本：纯评估 + 合成流程；无需训练。淘汰条件：若非干预梯度是平坦的（分数独立于背景相似度），无论置换结果如何，捷径主张均告死亡 — 予以预注册。
 
-**What no experiment can fix.** Shelf life. The frontier moves with every generator release;
-the paper must sell the *methodology* (the ledger + k-frontier as a reporting standard) as the
-durable contribution, with the 2026 numbers as an instance.
+**任何实验都无法修复的缺陷。** 若效应存在但完全被 2024 年的修复方案吸收，论文将降级为 benchmark 规范简报。属于可接受的风险。
 
-**Verdict: SILENCED-IF-MUTATED** — from verdict paper to amortization-parameterized frontier
-with ≥3 generation pipelines and frequency strata. Without the k-axis, attack 1 is fatal.
-**Confidence:** medium.
+**裁决：SILENCED** — 四项对照具有约束力（假手术 + 自然梯度分支 + 类别控制 + 基础模型 checkpoint），并需明确与 Zhu et al./TBS 进行求差对比。**置信度：** Medium-High。
 
 ---
 
-## 7. P228 — S-228: VLM text prior suppresses atypical presentations (dense, causal)
+## 6. P051 — B1-051：在匹配 GPU-hours 下 Copy-paste vs Diffusion
 
-**Paper under review.** Stage-3 mutation: frequency-controlled, *causally ablated* audit —
-does the language prior of text-prompted dense segmenters suppress recall on atypical disease
-presentations, with the text prior's contribution isolated?
+**评审中的论文。** 实例分割中合成数据的诚实等算力前沿：将生成+过滤算力计入合成组；以 X-Paste 的头条结论 (arXiv:2212.03863 `[S3]`) 为具名对手；规模匹配的真实数据组作为第三种条件。
 
-**R2 attack.**
+**R2 攻击。**
 
-1. **Frequency→zero-shot is published.** Udandarao et al. (arXiv:2404.04125 `[S3]`) — concept
-   frequency governs zero-shot performance; NegBench covers medical VLM text failures
-   (arXiv:2501.09425 `[S3]`). "Dense version is an evaluation slice of a known law."
-2. **Cross-model confounding.** "Vision-only vs VLM-prompted" across *different* models
-   (e.g., nnU-Net vs BiomedParse) confounds architecture, training data, and supervision;
-   nothing about the *text prior* is isolated.
-3. **Atypicality is unoperationalized.** Pretraining-corpus frequency of a *presentation*
-   (not a class) is hard to count; radiologist "atypicality" ratings are subjective; the two
-   may disagree.
-4. **Power.** Atypical presentations are rare by definition; per-stratum n will be small and
-   the headline effect fragile.
-5. **The target's own claim points the other way.** BiomedParse (arXiv:2405.12971 `[V]`
-   **NEW EVIDENCE**, Nature-Methods-class) advertises *superior* performance on irregular,
-   atypical-shaped objects vs box-prompted methods, and its published fairness audit covers
-   only sex/age. A reviewer says: the flagship text-prompted medical segmenter claims
-   atypicality is its *strength*.
+1. **摊销核算不当（最强攻击向量）。** 生成的实例池是一次生成、跨多次运行、多个模型和多篇论文复用的；将全部生成成本计入单次训练运行是一种记账*选择*，在任何现实的复用因子下，生成项都会摊销趋近于零。单凭“在算力匹配下 copy-paste 胜出”的结论只是账本分界线画在哪里的产物。
+2. **稻草人生成器（F8）。新证据强化了这一点。** X-Paste 属于 SD1.5 时代。MosaicFusion（免训练，生成 GPU-hours 比 X-Paste 少约 4.3 倍；已在 IJCV 发表，ID 待重新核验 `[M]`）、NeurIPS 2025 的多轮生成式增强论文（通过反馈将生成量压缩至此前 SOTA 量的 ~6%，会议论文集 `[V]` **NEW EVIDENCE**），以及 FLORA (arXiv:2508.21712 `[V]` **NEW EVIDENCE**，消费级 GPU LoRA 生成，数据量的 10%)，意味着生成成本正在雪崩式下降。仅与 X-Paste 进行算力匹配是用 2026 年的尺子打 2023 年的 pipeline；结论的保质期只有一代生成器。
+3. **罕见类别混淆项。** 扩散模型公认的优势在于罕见/新类别（X-Paste：长尾上 +6.8 box AP），而在这些类别上用于 copy-paste 的真实实例*在任何算力预算下都不存在*。汇总 AP 的算力匹配掩盖了两个分支购买的根本不是同一种东西的事实。
+4. **错误的约束条件。** 在大多数实验室中，约束瓶颈在于标注和数据获取，而非 GPU-hours；谁会在等 FLOPs 前沿上部署模型？
 
-**The silencing experiment.**
+**使其闭嘴的实验（这就是修改方案）。**
 
-- *Against 2 (the design core — within-model causal levers, no cross-model comparison):*
-  BiomedParse accepts free text. Hold the image fixed and manipulate *only the prompt*:
-  {canonical finding name, typical-presentation descriptor, atypical-presentation descriptor
-  matched for length/terminology, shuffled-word prompt, empty/generic prompt}. The text
-  prior's causal contribution to the mask is the within-image delta across prompts. Add the
-  point/box-prompted SAM-class floor on identical cases as the no-language reference. Every
-  comparison is within-model or within-image; attack 2 dies by construction.
-- *Against 5 (named-adversary confrontation):* BiomedParse's irregular-shape superiority is
-  about *shape*; the hypothesis is about *presentation frequency*. Stratify its own held-out
-  data by (a) shape irregularity (their convex-ratio metric) and (b) presentation-frequency
-  proxy, and show the two axes dissociate — the model can be good at irregular shapes of
-  *common* presentations and still suppress rare ones. If the axes don't dissociate, the
-  hypothesis dies; pre-register it.
-- *Against 3 (two independent operationalizations, agreement required):* (i) corpus frequency
-  of finding-descriptor n-grams in the model's own training corpus (BiomedParseData/PMC-derived,
-  accessible); (ii) blinded radiologist typicality ratings on the evaluation cases. Effects
-  must replicate under both, else report as inconclusive.
-- *Against 4:* aggregate across ≥10 finding types with mixed-effects models (finding as random
-  effect); pre-register the minimum detectable suppression (e.g., ≥5 Dice points on atypical
-  stratum) and the per-stratum n floor.
-- *Against 1:* the differencing sentence writes itself only after the causal arm exists —
-  Udandarao predicts the *correlation*; this measures the *prompt-causal share* of the harm on
-  dense output, which no frequency-law paper contains. Cite NegBench/CXR-Align/Udandarao in the
-  introduction as the recognition-level base camp.
+- *针对点 1：* 放弃裁决式（verdict）的论调。交付成果是**作为摊销因子 k（生成池被复用的训练运行次数）函数的前沿曲面**：AP(budget, arm, k)，其中 k ∈ {1, 3, 10, ∞}。论文的发现是交叉曲面 — “在预算 B 下，低于 K 次复用 copy-paste 占优；高于此则扩散模型占优” — 由于记账方式*本身就是* X 轴，因而对记账攻击具有免疫力。预注册淘汰条件：若在所有预算下 K ≤ 2，诚实的头条应为“扩散模型在极低复用下即胜出”，放弃反 X-Paste 构架（无论如何发表该前沿）。
+- *针对点 2：* 采用三套合成 pipeline，而非一套 — X-Paste 风格（检索+过滤）、MosaicFusion 风格（免训练）、FLORA 风格（LoRA 调优的高效生成器）— 每一套都带有自身测得的生成账本。该主张因而关乎*前沿的形态*，而非某单一 pipeline 的失败。
+- *针对点 3：* 单独报告 LVIS 常见/普通/罕见分层；预注册预期退让（扩散模型在大多数 k 下赢得罕见类别）并让前沿展示具体界限。
+- *针对点 4：* 增加第四个分支 — 真实数据扩展（在更多真实图像上进行 Ghiasi copy-paste `[S3: arXiv:2012.07177]`）— 使论文回答实际部署问题（“在给定 B GPU-hours 且无新标注时我该怎么做？”），而非形而上学问题。
 
-Cost: inference-only on public checkpoints + rating study; the corpus-counting arm is
-engineering. Feasible.
+成本：这是存活项中代价最高的一个 — 在 Mask R-CNN-R50/LVIS 子集规模下约 40–80 次训练运行，外加三套生成 pipeline。对拥有计算集群的单个实验室可行；处于评审标准“数周而非数年”的边界。k 参数化不增加运行次数（它是在事后对账本重新加权）；三套 pipeline 的要求会增加运行。可通过仅在两个预算下运行第三套 pipeline 来削减成本。
 
-**What no experiment can fix.** If the prompt-causal share is ~0 (harm lives in the visual
-encoder's frequency bias, not the language prior), the paper becomes "frequency bias in dense
-medical segmentation" — still publishable, but it re-enters Udandarao's shadow. Accept the
-risk; both outcomes are reportable.
+**任何实验都无法修复的缺陷。** 保质期。前沿会随着每次新生成器的发布而移动；论文必须将*方法学*（账本 + k 前沿作为报告标准）作为持久贡献推介，并将 2026 年的数据作为一个实例。
 
-**Verdict: SILENCED-IF-MUTATED** — within-model prompt-manipulation design binding;
-cross-model "vision-only vs VLM" comparisons excluded from the headline; dual atypicality
-operationalization binding. Pairs naturally with the demoted P107v residue (same target
-models, same abstention machinery). **Confidence:** medium.
+**裁决：SILENCED-IF-MUTATED** — 从结论裁判型论文转变为带有 ≥3 套生成 pipeline 和频率分层的摊销参数化前沿论文。缺乏 k 轴，攻击 1 是致命的。**置信度：** Medium。
 
 ---
 
-## 8. P061u — B1-061 (folded into B1-069): style × self-training factorial
+## 7. P228 — S-228：VLM 文本先验抑制了非典型表现（稠密、因果）
 
-**Paper under review.** Per Stage-3 mutation: not "histogram matching explains UDA" but a
-±style-alignment × ±self-training factorial on modern pipelines, measuring additivity and
-interaction, with the B1-061 attribution question as one read-out.
+**评审中的论文。** Stage-3 修改方案：受控频率的、*因果消融的*审计 — 文本提示稠密分割器的语言先验是否抑制了对非典型疾病表现的召回，且文本先验的贡献被单独剥离？
 
-**R2 attack.**
+**R2 攻击。**
 
-1. **FDA redux.** FDA (arXiv:2004.05498 `[S3]`) made "cheap spectral alignment captures much of
-   the gap" the community prior in 2020; it ships in Albumentations. A percentage attached to a
-   known direction is not a contribution.
-2. **The cells already exist, scattered.** Method papers publish ablations containing factorial
-   cells: Kim & Byun (arXiv:2003.00867 `[V]` **NEW EVIDENCE**) *is* a style-transfer +
-   self-training pipeline whose ablation reports style-only vs style+ST margins in 2020;
-   DAFormer's ablation tables (arXiv:2111.14887 `[S3]`) contain further cells. "Your 2×2 is an
-   anthology of other papers' Table 5."
-3. **The arms are not separable in modern pipelines.** DAFormer-class self-training embeds
-   cross-domain pixel mixing (DACS); "±style" inside a pipeline that already mixes domains at
-   the input is ill-defined — remove the mixing and it is no longer the published method.
-4. **Compute.** 2×2 × pairs × seeds × a DAFormer-scale pipeline is dozens of GPU-days for a
-   result whose direction FDA already gave.
+1. **频率→zero-shot 已发表。** Udandarao et al. (arXiv:2404.04125 `[S3]`) — 概念频率主导 zero-shot 性能；NegBench 涵盖了医学 VLM 文本失效 (arXiv:2501.09425 `[S3]`)。“稠密版本只是已知规律的一个评估切片。”
+2. **跨模型混淆。** 在*不同*模型之间进行“纯视觉 vs VLM 提示”对比（例如 nnU-Net vs BiomedParse）混淆了架构、训练数据和监督方式；没有剥离出关于*文本先验*的任何信息。
+3. **非典型性缺乏操作化定义。** 某种*临床表现*（而非类别）在预训练语料中的频率难以统计；放射科医生对“非典型性”的打分具有主观性；两者可能并不一致。
+4. **统计效能（Power）。** 根据定义，非典型表现是罕见的；每个分层的样本量 n 会很小，头条效应会很脆弱。
+5. **被攻击目标自身的主张指向相反方向。** BiomedParse (arXiv:2405.12971 `[V]` **NEW EVIDENCE**，Nature-Methods 级别) 宣传其在不规则、非典型形状目标上相对于框提示方法具有*更优越的*性能，且其发表的公平性审计仅涵盖了性别/年龄。审稿人会指出：旗舰文本提示医学分割器声称非典型性恰恰是其*强项*。
 
-**The silencing experiment.**
+**使其闭嘴的实验。**
 
-- *Against 2 (why scattered cells don't answer it):* published ablations are per-method,
-  single-seed, backbone-confounded (DAFormer itself showed the SegFormer backbone absorbs much
-  of "UDA progress"), and *never estimate the interaction term* — which is the scientific
-  object here. The claim under test is not "style helps" (FDA) but whether style and
-  self-training consume the **same** portion of the domain gap (sub-additive → practitioners
-  can skip the expensive component) or orthogonal portions (additive → both required). No
-  published table decides this with seeds and a fixed backbone.
-- *Against 3 (arm definition, binding):* factorialize at the *augmentation interface*, not over
-  published methods: base = source-only SegFormer-B3/B5, fixed; +style = input-level
-  translation (FDA and histogram-matching as two style instantiations); +ST = confidence-
-  thresholded pseudo-label self-training *without* cross-domain mixing; the full published
-  methods (DAFormer/MIC) enter as reference points above the factorial, not as cells. State
-  explicitly that the factorial tests *component classes*, not trademarked pipelines — this
-  concedes attack 3's premise and neutralizes it.
-- *Against 1:* the pre-registered deliverable is the interaction sign and its stability across
-  {GTA→Cityscapes, Synthia→Cityscapes, one cross-scanner medical pair (e.g., fundus or
-  cardiac)}. FDA predicts nothing about the interaction; if the interaction is strongly
-  sub-additive on all three pairs, B1-061's "style explains most of it" is *derived* rather
-  than asserted, and the practice implication (when to skip ST) is the headline. Kill
-  condition: if the interaction is additive everywhere, the attribution story dies and the
-  honest paper is "style and self-training are complementary" — a useful negative, one tier
-  down.
-- *Against 4:* 4 cells × 3 pairs × 3 seeds = 36 runs at ~1–2 GPU-days each, plus 2 style
-  instantiations on the +style cells only (+12 runs). ~50–80 GPU-days total. Heavy but within
-  one-lab feasibility; trim seeds to 2 on the medical pair if needed.
+- *针对点 2（设计核心 — 模型内因果操纵，无跨模型对比）：* BiomedParse 接受自由文本。保持图像固定，*仅操纵提示*：{规范病灶名称, 典型表现描述符, 长度/术语匹配的非典型表现描述符, 词序打乱提示, 空/通用提示}。文本先验对 mask 的因果贡献就是同一图像内跨提示的 delta。加入相同病例上点/框提示 SAM 类底线作为无语言参考。所有对比均在模型内或图像内进行；攻击 2 在构造上被彻底瓦解。
+- *针对点 5（正面交锋具名对手）：* BiomedParse 的不规则形状优势关注的是*形状*；本假设关注的是*临床表现频率*。将其自身的留出数据按 (a) 形状不规则度（其凸度比指标）与 (b) 表现频率代理指标进行分层，展示这两个维度是解耦的 — 模型完全可以在*常见*表现的不规则形状上表现优异，但依然抑制罕见表现。若这两个维度无法解耦，假设破产；予以预注册。
+- *针对点 3（两种独立操作化定义，必须一致）：* (i) 该模型自身训练语料中病灶描述符 n-gram 的语料库词频（BiomedParseData/PMC 来源，可获取）；(ii) 评估病例上放射科医生的双盲典型性打分。效应必须在两者下均能复现，否则报告为结论不明确。
+- *针对点 4：* 使用混合效应模型跨 ≥10 种病灶类型进行聚合（将病灶作为随机效应）；预注册最小可检测抑制量（例如非典型层级上 ≥5 个 Dice 点）以及每个层级的样本量底线。
+- *针对点 1：* 求差对比的论据在因果分支确立后便水到渠成 — Udandarao 预测了*相关性*；本实验测量的是稠密输出上由*提示因果导致的伤害份额*，这是任何词频规律论文所不具备的。在引言中引用 NegBench/CXR-Align/Udandarao 作为识别层面的大本营。
 
-**What no experiment can fix.** This can never be a flagship — the ceiling is a solid,
-well-controlled attribution study at a second-tier venue or a strong workshop-to-main pipeline.
-The Stage-3 fold into B1-069 is confirmed; B1-061 must not resurface as a standalone
-"histogram matching explains UDA" claim under any outcome.
+成本：在公开 checkpoint 上的纯推理 + 评分研究；语料统计属于工程实现。现实可行。
 
-**Verdict: SILENCED-IF-MUTATED** — interaction-focused factorial with fixed backbone,
-augmentation-interface arm definitions, medical third pair, seeds. **Confidence:** medium-high.
+**任何实验都无法修复的缺陷。** 若提示因果份额 ≈ 0（损害存在于视觉 encoder 的频率偏置中，而非语言先验中），论文将变为“稠密医学分割中的频率偏置” — 依然可发表，但重新落入了 Udandarao 的阴影之下。接受该风险；两种结果均具备可报告性。
+
+**裁决：SILENCED-IF-MUTATED** — 模型内提示操纵设计具有约束力；排除跨模型的“纯视觉 vs VLM”对比作为头条；双重非典型性操作化定义具有约束力。与降级后的 P107v 残留部分自然配对（相同的目标模型，相同的弃权机制）。**置信度：** Medium。
 
 ---
 
-## NEW EVIDENCE register (found and read this pass; not in Stage-3 files)
+## 8. P061u — B1-061 (合并入 B1-069)：风格 × 自训练析因设计
 
-1. **HalluSegBench / CSR** — Li et al., arXiv:2506.21546 `[V]` (+ public dataset, PLAN-Lab).
-   Counterfactual-edit dense hallucination benchmark + RobustSeg fix. **Overturns Stage 3's
-   NOT FOUND #B1-107; P107v flagship revoked.** Also cites Visual Jenga (Bhattad et al.,
-   NeurIPS 2025) — counterfactual inpainting as an established instrument.
-2. FoSp — AAAI 2024, doi:10.1609/aaai.v38i7.28484 `[V]`. SMOKE5K protocol = mMse + Fβ
-   (weakens P096's "binary-only leaderboards" premise; answered by the mMse column).
-3. AusSmoke/MultiNatSmoke — arXiv:2604.23542 `[V]`. New binary smoke benchmark, IoU/F1/MSE;
-   SOTA deltas of 1–3 IoU points (grist for the S-102 ceiling confrontation).
-4. SFMattingNet — Remote Sensing 17(13):2259, 2025, doi:10.3390/rs17132259 `[V]`. Smoke/fire
-   trimap-free matting with SAD/MSE/Grad/Conn (the matting turn has begun; must be in the
-   P096 checkpoint pool).
-5. Zhu et al., background context bias in FSS — CVPR 2024, doi:10.1109/cvpr52733.2024.00324
-   `[V]`; TBS — AAAI 2024, doi:10.1609/aaai.v38i5.28242 `[V]`. Named phenomenon + fixes;
-   P079f must difference against both.
-6. Biophysically-conditioned 3D tumor synthesis — arXiv:2510.09365 `[V]`. Continuous
-   infiltration fields; both the realism attack on P040 and its second synthesis arm.
-7. Generation-efficiency wave for P051: multi-round generative augmentation (NeurIPS 2025
-   proceedings `[V]`), FLORA (arXiv:2508.21712 `[V]`), MosaicFusion (claims verified via
-   secondary source; arXiv ID `[M]` — re-verify before citing in a draft).
-8. BiomedParse — arXiv:2405.12971 `[V]` (Nature-Methods-class). Text-prompted dense medical
-   segmentation with K-S abstention; fairness audit = sex/age only. Concrete target for P228
-   and the P107v residue.
-9. Zero-shot SAM2-CT ablation study — arXiv:2603.23116 `[V]` full-text checked: prompt /
-   memory / multi-axis ablations, **no spacing arm** (P042's gap holds as of 2026-08-28).
-   SAM2-ProMem, MICCAI 2025 `[V]`: memory manipulation, not spacing.
-10. Kim & Byun, texture-invariant UDA — arXiv:2003.00867 `[V]`. Style+ST composition with
-    ablations in 2020 (attack surface for P061u; answered by the interaction framing).
+**评审中的论文。** 依据 Stage-3 修改方案：并非“直方图匹配解释了 UDA”，而是在现代 pipeline 上进行 ±风格对齐 × ±自训练的析因设计，测量可加性与交互作用，将 B1-061 的归因问题作为一项读数。
 
-## Summary table
+**R2 攻击。**
 
-| Target | Strongest attack | Silencing experiment (core) | Verdict | Conf. |
+1. **FDA 重复版。** FDA (arXiv:2004.05498 `[S3]`) 在 2020 年就让“廉价谱对齐捕获了大部分差距”成为社区先验；它已被打包进 Albumentations。给已知方向附带一个百分比并不构成实质贡献。
+2. **各个单元格早已零散存在。** 方法论文发表的消融实验中包含了析因单元格：Kim & Byun (arXiv:2003.00867 `[V]` **NEW EVIDENCE**) *本身就是*风格迁移 + 自训练 pipeline，其消融实验在 2020 年就报告了纯风格 vs 风格+ST 的收益；DAFormer 的消融表格 (arXiv:2111.14887 `[S3]`) 包含了更多单元格。“你们的 2×2 只是其他论文 Table 5 的文集。”
+3. **在现代 pipeline 中各分支不可分离。** DAFormer 类的自训练内嵌了跨域像素混合（DACS）；在输入端已经混合领域的 pipeline 内部做“±风格”是定义不良的 — 移除混合，它就不再是已发表的方法。
+4. **算力。** 2×2 × 数据集对 × 随机种子 × DAFormer 规模的 pipeline 需要数十个 GPU 天，换取的却是一个 FDA 早已给出方向的结论。
+
+**使其闭嘴的实验。**
+
+- *针对点 2（为何零散单元格无法解答）：* 已发表的消融是针对特定方法的、单随机种子的、受到 backbone 混淆的（DAFormer 自身表明 SegFormer backbone 吸收了“UDA 进展”的大部分），且*从未估计交互作用项* — 而交互项正是此处的科学研究对象。受试主张并非“风格有帮助”（FDA），而是风格与自训练消耗的是否为领域鸿沟的**相同**部分（次可加 sub-additive → 从业者可以跳过昂贵组件）还是正交部分（可加 additive → 两者皆必需）。没有已发表表格在控制随机种子和固定 backbone 下判定过这一点。
+- *针对点 3（分支定义，约束项）：* 在*数据增强接口*处进行析因分解，而非在已发表的方法上分解：base = 仅源域 SegFormer-B3/B5，固定；+style = 输入级变换（FDA 和直方图匹配作为两种风格实例化）；+ST = 带有置信度阈值的伪标签自训练，*无*跨域混合；完整的已发表方法（DAFormer/MIC）作为析因之上的参考点进入，而非作为单元格。明确声明该析因测试的是*组件类别*而非商标化的 pipeline — 这承认了攻击 3 的前提并将其化解。
+- *针对点 1：* 预注册交付成果是交互项的符号及其在 {GTA→Cityscapes, Synthia→Cityscapes, 一个跨扫描仪医学对（如眼底或心脏）} 上的稳定性。FDA 无法对交互作用做出任何预测；若在所有三个数据集对上交互项均为强次可加，则 B1-061 的“风格解释了大部分”是*推导得出*而非主观断言的，对实践的指导意义（何时跳过 ST）成为核心头条。淘汰条件：若交互作用处处可加，归因故事破产，诚实的论文是“风格与自训练是互补的” — 属于低一梯队的有用负结果。
+- *针对点 4：* 4 单元格 × 3 数据集对 × 3 随机种子 = 36 次运行，每次约 1–2 GPU 天，外加仅在 +style 单元格上的 2 种风格实例化（+12 次运行）。总计约 50–80 GPU 天。较重但在单个实验室可行范围内；必要时可将医学对的随机种子削减至 2 个。
+
+**任何实验都无法修复的缺陷。** 这绝不可能成为旗舰论文 — 其上限是一篇扎实、受控良好的归因研究，发表在二线会议或走强力 workshop 转正路线。Stage-3 将其并入 B1-069 得到确认；在任何结局下，B1-061 都绝不能作为独立的“直方图匹配解释了 UDA”主张重新冒头。
+
+**裁决：SILENCED-IF-MUTATED** — 聚焦交互作用的析因设计，带有固定 backbone、增强接口分支定义、医学第三对数据集、以及随机种子。**置信度：** Medium-High。
+
+---
+
+## NEW EVIDENCE 登记簿（在本轮中检索并阅读；未包含在 Stage-3 文件中）
+
+1. **HalluSegBench / CSR** — Li et al., arXiv:2506.21546 `[V]`（+ 公开数据集，PLAN-Lab）。反事实编辑稠密幻觉 benchmark + RobustSeg 修复。**推翻了 Stage 3 的 NOT FOUND #B1-107；撤销 P107v 旗舰地位。** 同时引用了 Visual Jenga (Bhattad et al., NeurIPS 2025) — 反事实 inpainting 是成熟工具。
+2. **FoSp** — AAAI 2024, doi:10.1609/aaai.v38i7.28484 `[V]`。SMOKE5K 协议 = mMse + Fβ（削弱了 P096 “仅限二值排行榜”的前提；通过增加 mMse 列予以回应）。
+3. **AusSmoke/MultiNatSmoke** — arXiv:2604.23542 `[V]`。新的二值烟雾 benchmark，IoU/F1/MSE；SOTA delta 为 1–3 个 IoU 点（为 S-102 标注者上限交锋提供素材）。
+4. **SFMattingNet** — Remote Sensing 17(13):2259, 2025, doi:10.3390/rs17132259 `[V]`。烟火免三值图抠图，带有 SAD/MSE/Grad/Conn（抠图转向已经开启；必须纳入 P096 checkpoint 池）。
+5. **Zhu et al.，FSS 中的背景上下文偏置** — CVPR 2024, doi:10.1109/cvpr52733.2024.00324 `[V]`；**TBS** — AAAI 2024, doi:10.1609/aaai.v38i5.28242 `[V]`。已命名的现象 + 修复方案；P079f 必须与两者明确求差对比。
+6. **生物物理条件化的 3D 肿瘤合成** — arXiv:2510.09365 `[V]`。连续浸润场；构成对 P040 真实度攻击的来源及其第二个合成分支。
+7. **P051 的生成效率浪潮：** 多轮生成式数据增强（NeurIPS 2025 论文集 `[V]`）、FLORA (arXiv:2508.21712 `[V]`)、MosaicFusion（主张通过次级来源核实；arXiv ID `[M]` — 在草稿引用前需重新核验）。
+8. **BiomedParse** — arXiv:2405.12971 `[V]`（Nature-Methods 级别）。带有 K-S 检验弃权机制的文本提示稠密医学分割；公平性审计 = 仅限性别/年龄。作为 P228 和 P107v 残留的具体攻击目标。
+9. **Zero-shot SAM2-CT 消融研究** — arXiv:2603.23116 `[V]` 已全文检查：提示 / 记忆 / 多轴消融，**无间距分支**（截至 2026-08-28，P042 的空白依然成立）。SAM2-ProMem, MICCAI 2025 `[V]`：操作记忆，而非间距。
+10. **Kim & Byun，纹理不变 UDA** — arXiv:2003.00867 `[V]`。2020 年带有消融的风格+ST 组合（P061u 的攻击面；通过交互作用框架予以化解）。
+
+## 总结总表（Summary table）
+
+| 目标 | 最强攻击 | 使其闭嘴的实验（核心） | 裁决 | 置信度 |
 |---|---|---|---|---|
-| P096 S-096+S-102 | alpha-GT circularity; mMse already in protocol | measured-alpha real arm (background-frame inversion) + mMse column in τ matrix + rater ceiling | SILENCED | Med-High |
-| P040 A1-040 | quantified lore; contrast collinearity | two-factor width×contrast sweep discriminating snap-to-edge vs contrast-threshold; out-of-sample real prediction | SILENCED-IF-MUTATED | Med |
-| P042 S-042 | confounded intervention; hygiene-as-paper | slice-decimation (not interpolation) causal design; per-step vs per-mm drift; pre-registered comparators | SILENCED | Med-High |
-| P107v B1-107 | **HalluSegBench arXiv:2506.21546 — scooped** | none silences a scoop; narrow removal+sham-surgery+dose-response residue only | **REJECT as constituted** | High |
-| P079f B1-079 | CVPR/AAAI 2024 named the bias; compositing artifacts | sham-swap + natural-similarity-gradient triangulation; BAM class control; FM checkpoints | SILENCED | Med-High |
-| P051 B1-051 | amortization ill-posedness; strawman generator | k-parameterized amortization frontier; ≥3 generation pipelines; frequency strata | SILENCED-IF-MUTATED | Med |
-| P228 S-228 | cross-model confounding; BiomedParse claims the opposite | within-model prompt-content manipulation on BiomedParse; shape-vs-frequency dissociation; dual atypicality measures | SILENCED-IF-MUTATED | Med |
-| P061u B1-061 | FDA redux; cells exist scattered; arms inseparable | interaction-estimating 2×2 at augmentation interface, fixed backbone, 3 pairs, seeds | SILENCED-IF-MUTATED | Med-High |
+| P096 S-096+S-102 | alpha-GT 循环论证；协议中已包含 mMse | 实测 alpha 真实分支（背景帧逆解）+ τ 矩阵中的 mMse 列 + 标注者上限 | SILENCED | Med-High |
+| P040 A1-040 | 被量化的经验常识；对比度共线性 | 宽度 × 对比度双因子扫描，区分贴边 vs 对比度阈值；样本外真实预测 | SILENCED-IF-MUTATED | Med |
+| P042 S-042 | 受到混淆的干预；将常规规范当作论文 | 切片抽取稀疏化（非插值）因果设计；每步 vs 每毫米漂移；预注册对照组 | SILENCED | Med-High |
+| P107v B1-107 | **HalluSegBench arXiv:2506.21546 — 已被抢跑** | 实验无法消除抢跑；仅保留狭窄的移除+假手术+剂量-响应残留 | **按现有构成 REJECT** | High |
+| P079f B1-079 | CVPR/AAAI 2024 命名了该偏置；合成伪影 | 假手术 + 自然相似度梯度三角互证；BAM 类别控制；基础模型 checkpoint | SILENCED | Med-High |
+| P051 B1-051 | 摊销核算不当；稻草人生成器 | k 参数化摊销前沿；≥3 套生成 pipeline；频率分层 | SILENCED-IF-MUTATED | Med |
+| P228 S-228 | 跨模型混淆；BiomedParse 宣传相反优势 | BiomedParse 上的模型内提示内容操纵；形状 vs 频率解耦；双重非典型性度量 | SILENCED-IF-MUTATED | Med |
+| P061u B1-061 | FDA 重复版；单元格零散存在；分支不可分 | 数据增强接口处的交互项估计 2×2，固定 backbone，3 对数据集，随机种子 | SILENCED-IF-MUTATED | Med-High |
 
-## Notes for the supervisor
+## 致导师备忘
 
-1. **P107v's rejection is the pass's load-bearing result.** Stage 3's P5 package (B1-107 +
-   S-228) must be rebuilt around S-228's causal design as the lead, with the B1-107 residue
-   (removal counterfactuals, sham surgery, abstention audit on BiomedParse) as a supporting
-   section, benchmarked on HalluSegBench for comparability. The stage3_top50 flagship list
-   needs the corresponding edit at Stage 5.
-2. **Recurring pattern across set C:** every survivor was saved by the same three moves —
-   (a) replace a verdict/percentage headline with a *parameterized frontier or interaction
-   term*; (b) add a *non-interventional triangulation arm* wherever the intervention has an
-   artifact confound (swap→natural gradient; insertion→biophysical arm; synthetic alpha→
-   measured alpha); (c) name the adversary whose published claim moves if the result lands
-   (MedSAM-2's premise, X-Paste's ledger, BiomedParse's atypicality boast). Stage 5 should
-   apply the same three tests to sets A and B survivors.
-3. **Compute ranking of survivors (cheapest first):** P042, P096, P079f, P228, P040 (all
-   inference/eval + light annotation) ≪ P061u (~50–80 GPU-days) ≈ P051 (~40–80 runs).
-   The two training-heavy survivors should not both be funded; P051's shelf-life risk makes
-   P061u the safer of the two if forced to choose.
-4. Per the Stage-3 `[M]` discipline: the MosaicFusion arXiv ID must be re-verified before any
-   draft cites it; all other load-bearing citations in this file were fetched this pass.
+1. **P107v 的被拒是本轮的核心结论。** Stage 3 的 P5 成果包（B1-107 + S-228）必须以 S-228 的因果设计为主导进行重构，将 B1-107 残留部分（移除型反事实、假手术、BiomedParse 弃权审计）作为支撑章节，并在 HalluSegBench 上进行 benchmark 以保证可比性。stage3_top50 旗舰清单在 Stage 5 需要进行相应修改。
+2. **集合 C 跨目标的重复模式：** 每个存活项都是靠相同的三个举措得以挽救 — (a) 将定论/百分比头条替换为*参数化前沿或交互作用项*；(b) 凡干预存在伪影混淆之处，增加*非干预三角互证分支*（置换→自然梯度；插入→生物物理分支；合成 alpha→实测 alpha）；(c) 明确指出若结论成立其发表主张将受到动摇的具名对手（MedSAM-2 的前提、X-Paste 的账本、BiomedParse 的非典型性夸口）。Stage 5 应将相同的三个检验应用于集合 A 和集合 B 的存活项。
+3. **存活项的算力排序（由廉至贵）：** P042, P096, P079f, P228, P040（均为推理/评估 + 轻量标注） ≪ P061u（~50–80 GPU 天） ≈ P051（~40–80 次运行）。两篇重算力存活项不应同时资助；若被迫二选一，P051 的保质期风险使得 P061u 成为两者中更稳妥的选择。
+4. 依据 Stage-3 `[M]` 纪律：MosaicFusion 的 arXiv ID 在任何草稿引用前必须重新核实；本文档中所有其他承重引文均已在本轮中完成获取。

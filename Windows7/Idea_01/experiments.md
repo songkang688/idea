@@ -1,138 +1,119 @@
-# Idea_01 — Experiment Plan
+# Idea_01 — 实验方案（Experiment Plan）
 
-All costs are inference-only on a single A100-40GB. **Total ≈5 A100-days, hard cap 8.**
-
----
-
-## Pre-registration (must be committed before E1 runs)
-
-Frozen in `configs/preregistration.yaml`:
-
-- strata definitions `S1`–`S4` (computed from instance annotations, never from model output)
-- episode filter `τ = 0.2`, with the sensitivity curve over `{0.1, 0.2, 0.3}` reported regardless
-- `K = 5` wrong supports per episode: 2 near-supercategory + 3 far
-- area matching tolerance ±50%, relaxed to ±100% with per-episode logging
-- both floors (Floor-A SAM AMG strong, Floor-B saliency weak)
-- primary statistic = **ratio of means**, secondary = median of per-episode ratios
-- the killer decision rule verbatim
-- the episode lists and the wrong-support lists themselves, as static files
-
-Freezing the *lists* rather than the seeds is deliberate: a seed plus a code version is not
-reproducible across library upgrades.
+所有成本均为单卡 A100-40GB 上的纯推理成本。**总计约 ~5 A100-days，硬上限 8。**
 
 ---
 
-## Experiment matrix
+## 预注册（必须在运行 E1 之前提交锁定）
 
-| # | Experiment | Panel | Data | Cost | Decides |
+在 `configs/preregistration.yaml` 中预先冻结：
+
+- 分层定义 `S1`–`S4`（从实例标注中计算得出，绝不依赖模型输出）
+- episode 过滤阈值 `τ = 0.2`，无论结果如何均同时报告在 `{0.1, 0.2, 0.3}` 上的敏感度曲线
+- 每个 episode 选取 `K = 5` 个错误 support：2 个近大类（near-supercategory）+ 3 个远大类
+- 面积匹配容差为 ±50%，放宽至 ±100% 时需逐 episode 记录日志
+- 双重下界（Floor-A SAM AMG 强下界，Floor-B 显著性弱下界）
+- 主要统计量 = **均值之比（ratio of means）**，次要统计量 = 逐 episode 比值的中位数
+- killer 决策规则字面文本
+- episode 列表和错误 support 列表本身作为静态文件固化
+
+冻结**静态列表**而非随机种子是经过深思熟虑的：在跨库升级时，单纯的随机种子加代码版本无法保证可复现性。
+
+---
+
+## 实验矩阵
+
+| # | 实验名称 | 评测面板 | 数据集 | 算力成本 | 决定事项 |
 |---|---|---|---|---|---|
-| **E0** | Checkpoint archival + SHA-256 manifest | all | — | 0 GPU | feasibility gate |
-| **E1** | **MVE** | PFENet, BAM, Matcher + (FSSAM or SAM3-exemplar) | PASCAL-5i f0, COCO-20i f0, 1k episodes each | ~1 A100-day | go / no-go |
-| **E2** | Full panel × strata × 3 seeds | 8–10 methods | PASCAL, COCO, LVIS, all folds | ~3 A100-days | P1, P2 |
-| **E3** | Floor battery | Floor-A, Floor-B | all queries | ~0.3 A100-day | P3 |
-| **E4** | Near vs far wrong-support split | all | COCO | in E2 | attack A3 |
-| **E5** | Native vs shared evaluator | all | PASCAL, COCO | ~0.5 A100-day | **second headline** |
-| **E6** | `S4` degenerate control | all | FSS-1000 | ~0.2 A100-day | H3 |
-| **E7** | Medical transfer probe | training-free only | MSD / AMOS one-shot organ episodes | ~0.5 A100-day | generalisation |
+| **E0** | Checkpoint 归档 + SHA-256 清单 | 全部 | — | 0 GPU | 可行性门禁 |
+| **E1** | **MVE（最小可行实验）** | PFENet, BAM, Matcher + (FSSAM 或 SAM3-exemplar) | PASCAL-5i f0, COCO-20i f0, 各 1k episodes | ~1 A100-day | 继续 / 终止决策 |
+| **E2** | 完整面板 × 各分层 × 3 个种子 | 8–10 种方法 | PASCAL, COCO, LVIS, 全部 fold | ~3 A100-days | P1, P2 |
+| **E3** | 下界基准测试套件 | Floor-A, Floor-B | 全部 query | ~0.3 A100-day | P3 |
+| **E4** | 近大类 vs 远大类错误 support 拆分 | 全部 | COCO | 包含在 E2 中 | 攻击点 A3 |
+| **E5** | 原生评测器 vs 统一共享评测器 | 全部 | PASCAL, COCO | ~0.5 A100-day | **第二头条结论** |
+| **E6** | `S4` 退化对照组 | 全部 | FSS-1000 | ~0.2 A100-day | H3 |
+| **E7** | 医学迁移探针 | 仅限免训练方法 | MSD / AMOS 单样本器官 episode | ~0.5 A100-day | 泛化性检验 |
 
-Floors are computed **once per query image** and cached across all methods (see
-`src/support_audit/protocol.py`), which is where most of the saved compute comes from.
-
----
-
-## E1 — the MVE gate
-
-**Setup.** PFENet + BAM + Matcher + one foundation-era method (FSSAM, or SAM3-exemplar if access
-lands in time). PASCAL-5i fold 0 and COCO-20i fold 0, 1,000 episodes each, one seed, correct vs
-5 wrong supports, single stratification pass.
-
-**Go** if either: any method retains `R > 0.35` on any stratum, **or** specialist-vs-foundation
-retention differs by more than 15 points.
-
-**No-go** if all retentions are `< 0.2` everywhere, including the PASCAL single-object stratum.
-The idea dies here for about one A100-day, which is the point.
+下界**针对每张 query 图像仅计算一次**，并在所有方法之间缓存共享（参见 `src/support_audit/protocol.py`），这也是节省的大部分算力的来源。
 
 ---
 
-## E2/E3 — the killer experiment
+## E1 — MVE 门禁
 
-> On the pre-registered `S3` distractor-present stratum:
-> **(a)** ≥ half of specialist methods retain `R > 0.5` under wrong-class supports, **and**
-> **(b)** their correct-support accuracy on `S3` is statistically indistinguishable (95% bootstrap
-> CI overlap) from the support-free objectness floor, **reported separately for Floor-A and
-> Floor-B**.
+**实验设置。** PFENet + BAM + Matcher + 1 个基础模型时代方法（FSSAM，或者若权限及时获批则为 SAM3-exemplar）。PASCAL-5i fold 0 与 COCO-20i fold 0，各 1,000 个 episode，单随机种子，正确 vs 5 个错误 support，单次分层处理。
+
+**继续推进（Go）：** 若满足以下任一条件：任一方法在任一分层上的保持率 `R > 0.35`，**或者**专有方法与基础模型方法之间的保持率差距超过 15 个百分点。
+
+**终止项目（No-go）：** 若所有分层上的所有保持率均 `< 0.2`，包括 PASCAL 单目标分层在内。想法在此以大约一个 A100-day 的代价终止，这正是设置该门禁的意义所在。
+
+---
+
+## E2/E3 — Killer 实验
+
+> 在预注册的 `S3` 存在干扰物（distractor-present）分层上：
+> **(a)** 是否有 ≥ 半数的专有方法在错误类别 support 下保持率 `R > 0.5`，**并且**
+> **(b)** 其在 `S3` 上的正确 support 准确率在统计上与无 support 的 objectness 下界无法区分（95% bootstrap CI 重叠），**分别针对 Floor-A 和 Floor-B 单独报告**。
 >
-> Both legs failing ⇒ headline dead, certification result published instead.
-> **Cost of the killer alone ≈2 A100-days.**
+> 两个检验分支均未通过 ⇒ 头条结论被证伪，转而发表认证结果。
+> **单独执行 killer 实验的成本约 ~2 A100-days。**
 
-Leg (b) is never pooled across floors. Pooling would hide exactly the dependence that reviewer
-attack A2 is about.
+检验分支 (b) 绝不在不同下界之间进行合并。合并会恰恰掩盖评审员攻击 A2 所指出的依赖性。
 
 ---
 
-## Ablations
+## 消融实验
 
-| Ablation | Why |
+| 消融项 | 目的 |
 |---|---|
-| near vs far wrong-class supports | A3: is retention an artifact of *which* wrong class? |
-| area matching on / off | A3: does support size drive the effect? |
-| `K = 1` vs `K = 5` | stability of the per-episode median |
-| 1-shot vs 5-shot | does more support help, or more of the same prior? |
-| **mixed supports** (4 correct + 1 wrong) | dose–response *inside* the support set — the sharpest version of the question |
-| `τ ∈ {0.1, 0.2, 0.3}` | A4: the design's main analyst degree of freedom, published as a curve |
-| Floor-A vs Floor-B | A2: every floor-dependent conclusion reported under both |
+| 近大类 vs 远大类错误类别 support | A3：保持率是否仅仅是选用了*哪种*错误类别的假象？ |
+| 面积匹配 开启 / 关闭 | A3：support 尺寸是否主导了该效应？ |
+| `K = 1` vs `K = 5` | 逐 episode 中位数的稳定性 |
+| 1-shot vs 5-shot | 更多的 support 是提供了帮助，还是仅仅强化了相同的先验？ |
+| **混合 support**（4 正确 + 1 错误） | support 集合*内部*的剂量-反应关系 —— 该问题最敏锐的切入点 |
+| `τ ∈ {0.1, 0.2, 0.3}` | A4：本设计中分析师的主要自由度，以曲线形式完整公开发布 |
+| Floor-A vs Floor-B | A2：依赖下界的所有结论均在两种下界下同时报告 |
 
 ---
 
-## Controls
+## 对照组设置
 
-1. **Support-free objectness floor** — the null model. The single most important number in the paper.
-2. **Random correct-class support** (different instance, same class) — the benign-variation anchor.
-   Separates "the support changed" from "the support is wrong."
-3. **Blank / degenerate support**, where the method's input format permits it.
-4. **Reproduced published numbers** — reproduced, never copied. Divergence is reported (E5).
-5. **Harness controls** — `MockSegmenter` at `support_reliance ∈ {0, 1}` must separate before any
-   real checkpoint is trusted. `KNOWN FACT` This control is what caught the median-vs-ratio-of-means
-   estimator bug during prototyping (`proposal.md` §10).
+1. **无 support 的 objectness 下界** —— 零假设模型（null model）。论文中最重要的单一数字。
+2. **随机正确类别 support**（不同实例，相同类别） —— 良性变异锚点。区分"support 发生了改变"与"support 类别出现错误"。
+3. **空白 / 退化 support**，在方法输入格式允许的情况下执行。
+4. **复现已发表数字** —— 实际复现，绝不直接抄录。分歧如实报告（E5）。
+5. **测试工具对照** —— `MockSegmenter` 在 `support_reliance ∈ {0, 1}` 下必须成功分离，之后才能信任任何真实 checkpoint。`KNOWN FACT` 该对照正是在原型构建阶段捕获中位数估计器 vs 均值之比估计器缺陷的关键（`proposal.md` §10）。
 
 ---
 
-## Robustness
+## 鲁棒性验证
 
-- Repeat retention on FSS-1000: high retention *there* measures the benchmark, not the model.
-- Verify conclusions are unchanged under each repo's official evaluator vs one shared evaluator
-  (this is E5, and it is load-bearing rather than optional).
-- Publish the shared episode lists so a third party can re-run the identical counterfactual.
-- Report per-stratum episode counts **before** any inferential claim.
-
----
-
-## Generalisation
-
-Medical transfer probe (E7): one-shot organ episodes assembled from public abdominal CT
-(MSD / AMOS slices), run through the training-free methods only (Matcher, PerSAM, SegGPT). CT
-queries are far less saliency-degenerate than COCO photographs, so this is a *sharper* test of the
-same hypothesis rather than a domain-transfer afterthought.
+- 在 FSS-1000 上复现保持率：在*该数据集*上的高保持率测量的是基准本身的退化，而非模型。
+- 验证在各代码仓库官方评测器与单一统一评测器下结论是否保持一致（此为 E5，属于承重实验而非可选项）。
+- 公开发布统一的 episode 列表，以便第三方能够精确复现完全相同的反事实实验。
+- 在提出任何推断性主张**之前**，先行动态报告各分层的 episode 样本量。
 
 ---
 
-## Analysis and reporting
+## 泛化性检验
 
-- Bootstrap over episodes (B = 10,000), numerator and denominator resampled on identical indices.
-- Primary estimator = ratio of means. Secondary = median of per-episode ratios. A gap > 0.2 between
-  them is flagged and reported, because bimodal per-episode retention means the method has a hard
-  failure mode rather than graceful degradation.
-- Leaderboard shift: Kendall τ plus count of position changes. Pre-registered "reordering" claim
-  requires τ < 0.8 **and** ≥3 position changes among the top 8.
+医学迁移探针（E7）：基于公开腹部 CT（MSD / AMOS 切片）构建单样本器官 episode，仅在免训练方法（Matcher, PerSAM, SegGPT）上运行。CT query 的显著性退化程度远低于 COCO 摄影照片，因此这是对相同假设的*更严苛*检验，而非事后补充的域迁移实验。
 
 ---
 
-## Stop / continue
+## 分析与报告规范
 
-| Condition | Action |
+- 在 episode 上执行 bootstrap（B = 10,000），分子与分母在完全相同的索引上重采样。
+- 主要估计器 = 均值之比（ratio of means）。次要估计器 = 逐 episode 比值的中位数。若两者差距 > 0.2 则打上标记并予以报告，因为逐 episode 保持率的双峰分布意味着方法存在硬性失效模式，而非平缓退化。
+- 排行榜变动：报告 Kendall τ 以及排名变动次数。预注册的"排行榜重排"主张要求在排名前 8 的方法中满足 τ < 0.8 **并且** ≥3 个位置变动。
+
+---
+
+## 终止 / 继续决策准则
+
+| 条件 | 采取行动 |
 |---|---|
-| MVE go-condition fires | continue to E2 |
-| `S4` high, `S3` low | **pivot to benchmark paper**; distractor-enriched split is the deliverable |
-| all retentions `< 0.2` everywhere | **pivot to certification note** |
-| E0 cannot assemble ≥4 verified checkpoints | **kill**; release the harness, publish nothing |
-| 8 A100-days spent | ship with whatever methods ran |
+| MVE 满足继续条件 | 继续推进至 E2 |
+| `S4` 表现高，`S3` 表现低 | **转向基准批判论文**；富含干扰物的评测划分是主要交付物 |
+| 所有分层上所有保持率均 `< 0.2` | **转向正名认证简报（certification note）** |
+| E0 阶段无法收集到 ≥4 个已验证 checkpoint | **终止项目**；开源测试工具，不发表任何内容 |
+| 耗尽 8 个 A100-days 预算 | 按实际已运行的方法整理交付 |

@@ -1,197 +1,153 @@
-# Idea_02 — Experiment Plan
+# Idea_02 — 实验方案（Experiment Plan）
 
-Zero training. 1× A100-40GB, peak VRAM ≈16–24 GB.
-**Core ≈80–120 GPU-h; with the Stage-6 mandatory arms ≈140–180 GPU-h; with the E9 method arm
-≈180–220 GPU-h** (E9 is conditional on P2 and never runs on the failing branch).
-
----
-
-## Pre-registration (committed before E2)
-
-Frozen in `configs/preregistration.yaml`:
-
-- failure definition `(IoU < 0.1 for k consecutive frames after ≥ 0.5)`, with `k` fixed and swept
-- recovery definition `(IoU ≥ 0.5 within w frames, sustained)`
-- the ambiguous-reappearance stratum, reported separately
-- all six arms, including both controls
-- **the comparator set `C`, named before any comparator runs**
-- the validity statistic: `min_{c ∈ C} partial r > 0.4`, covariates fixed
-- P1/P2/P3 thresholds verbatim
-
-Freezing `C` is the single most important line in the file. "SAMURAI *and* DAM4SAM at r > 0.6"
-silently permits choosing which comparator carries the headline after seeing results.
+零训练需求。单卡 A100-40GB，显存峰值约 16–24 GB。
+**核心实验约 ~80–120 GPU-h；包含 Stage-6 强制实验臂约 ~140–180 GPU-h；包含 E9 方法臂约 ~180–220 GPU-h**（E9 以 P2 为触发条件，在失败分支上绝不运行）。
 
 ---
 
-## Experiment matrix
+## 预注册（必须在 E2 之前提交锁定）
 
-| # | Experiment | Cost | Decides |
+在 `configs/preregistration.yaml` 中冻结：
+
+- 失败定义 `(在 ≥ 0.5 之后连续 k 帧 IoU < 0.1)`，固定 `k` 并进行参数扫描
+- 恢复定义 `(在 w 帧内 IoU ≥ 0.5，且持续保持)`
+- 模棱两可的重现分层（ambiguous-reappearance stratum），单独报告
+- 全部六个实验臂，包含两个对照臂
+- **对照方法集合 `C`，在运行任何对照方法前明确命名**
+- 有效性统计量：`min_{c ∈ C} partial r > 0.4`，固定协变量
+- P1/P2/P3 判定阈值字面文本
+
+冻结 `C` 是本文件中最重要的单一行。"在 r > 0.6 下的 SAMURAI *和* DAM4SAM"在暗中允许在看到实验结果后选择由哪一个对照方法来支撑头条结论。
+
+---
+
+## 实验矩阵
+
+| # | 实验名称 | 算力成本 | 决定事项 |
 |---|---|---|---|
-| **E0** | DiDi access + **replay-determinism gate** | ~2 GPU-h | whether anything downstream is interpretable |
-| E1 | Failure harvest, LVOS v2 + DiDi, Hiera-B+ and Hiera-L | ~12 GPU-h | corpus yield, ambiguous share, **H2-testable share** |
-| **E2** | **Pilot: 50 failures × 6 arms + partialled regression** | ~10 GPU-h | **go / no-go** |
-| E3 | Full surgery: ≥200 failures × 6 arms | ~25 GPU-h | P1, P2, P3 |
-| E4 | Comparator passes over frozen `C` | ~35 GPU-h | P4 (validity) |
-| E5 | Memory-attention logging | +20% | interference vs competition taxonomy |
-| E6 | Deletion scope + timing dose–response `t_r ± δ` | ~15 GPU-h | oracle-strength sensitivity (A6) |
-| E7 | SAM3 generational arm | ~30 GPU-h | significance (A3) |
-| E8 | Medical-video arm | ~10 GPU-h | portfolio fit (D2) |
+| **E0** | DiDi 访问确认 + **回放确定性门禁** | ~2 GPU-h | 后续一切分析是否具有合理解释性 |
+| E1 | 失败样本采集，LVOS v2 + DiDi，Hiera-B+ 与 Hiera-L | ~12 GPU-h | 语料产出量、模糊重现占比、**H2 可检验样本占比** |
+| **E2** | **Pilot：50 次失败 × 6 个臂 + 偏相关回归** | ~10 GPU-h | **继续 / 终止决策** |
+| E3 | 完整手术实验：≥200 次失败 × 6 个臂 | ~25 GPU-h | P1, P2, P3 判定 |
+| E4 | 冻结对照集 `C` 上的对照方法运行 | ~35 GPU-h | P4（有效性）判定 |
+| E5 | Memory-attention 交互日志记录 | +20% | 干扰（interference）vs 竞争（competition）分类 |
+| E6 | 删除范围 + 计时剂量-反应关系 `t_r ± δ` | ~15 GPU-h | oracle 强度敏感度分析（A6） |
+| E7 | SAM3 代际实验臂 | ~30 GPU-h | 学术意义时效性（A3） |
+| E8 | 医学视频实验臂 | ~10 GPU-h | 研究组合契合度（D2） |
 
 ---
 
-## E0 — the gate that comes before science
+## E0 — 先于科学探索的基础门禁
 
-Replaying an untouched memory bank from `t_r` must reproduce the original failure **bit-for-bit**.
-SAM2's video-predictor caches make this a genuine risk. If the `no-op` arm is not deterministic,
-every arm difference is partly harness noise.
+从 `t_r` 对未经修改的 memory bank 进行回放必须**逐 bit 精确复现**原始失败。SAM2 的 video-predictor 缓存机制使这成为真实存在的风险。若 `no-op` 臂不具备确定性，所有实验臂的差异都部分混入了测试工具噪声。
 
-`src/memory_surgery/replay.py::check_replay_determinism` raises rather than warning, because a
-warning here is something a tired person ignores at 2am.
+`src/memory_surgery/replay.py::check_replay_determinism` 采用抛出异常而非发出警告，因为在凌晨两点疲惫状态下警告很容易被忽略。
 
-Also day 1: confirm DiDi access at `go.vicos.si/didi`. There is no mirror.
+同在第 1 天完成：在 `go.vicos.si/didi` 确认 DiDi 访问权限。该数据无任何镜像。
 
 ---
 
-## E1 — harvest, and the two yields that constrain everything
+## E1 — 采集与制约一切的两项产出量
 
-Fixed protocol, **zero curation**: every failure meeting the definition enters. Two numbers are
-reported before any arm is scored:
+采用固定协议，**零人工筛选**：符合定义的所有失败均纳入。在对任何实验臂评分前先报告两项数据：
 
-1. **Total usable yield.** Target ≥200 organic failures with GT reappearance frames from LVOS v2
-   (140 videos) + DiDi. If short, scale out to SA-V val.
-2. **H2-testable yield.** `targeted` and `reset` are *the same operation* whenever the failure
-   outlasted the memory horizon, because FIFO has already flushed every pre-error entry. Only
-   failures with `t_r − t_f` shorter than the bank capacity can test H2. In the prototype run this
-   was 23 of 50 simulated failures. If the organic distribution is worse, the corpus supports P1
-   and P3 but not P2, and the paper says so instead of pooling.
+1. **总可用产出量。** 目标为从 LVOS v2（140 个视频）+ DiDi 中采集 ≥200 次带有 GT 重现帧的自然发生失败。若不足，则扩展至 SA-V val。
+2. **H2 可检验产出量。** 只要失败持续时间超过了 memory 容量上限，`targeted` 和 `reset` 就是*完全相同的操作*，因为 FIFO 已经冲刷掉了所有错误发生前的条目。唯有 `t_r − t_f` 小于 bank 容量的失败才能检验 H2。在原型运行中，模拟的 50 次失败中仅有 23 次属于此类。若真实分布更差，语料库仅能支撑 P1 和 P3 而无法支撑 P2，论文需如实声明而非强行合并。
 
-   **P2 is read on this subset, not on the pooled corpus.** Failures where the two arms coincide
-   contribute an exact zero to the gap, so pooling dilutes a real effect rather than measuring a
-   smaller one. In the prototype a genuine +0.130 subset gap pooled to +0.040 — below the
-   pre-registered 0.10 bar, in the world where the decomposition is real. The pooled number is
-   reported alongside and labelled as diluted.
+   **P2 仅在该子集上判定，而非在合并语料库上判定。** 两实验臂重合的失败对差距的贡献严格为零，因此合并计算会稀释真实效应而非测量到一个较小的效应。在原型中，原本子集上真实的 +0.130 差距在合并后变为 +0.040（低于预注册的 0.10 门槛）。合并计算的数字会并列展示并注明已被稀释。
 
-The ambiguous-reappearance stratum is tagged and reported separately, never dropped.
+模棱两可的重现分层需打上标签并单独报告，绝不丢弃。
 
 ---
 
-## The six arms
+## 六个实验臂
 
-| Arm | Operation | Question |
+| 实验臂 | 具体操作 | 检验的科学问题 |
 |---|---|---|
-| `no_op` | nothing | natural recovery |
-| `targeted` | delete entries written in `[t_f, t_r)`; keep conditioning + pre-error | the claim |
-| `reset` | keep conditioning frame only | is it just a restart? |
-| `sham` | delete a **count-matched number of pre-error (clean) entries**, leave corruption in place | do the motions alone help? |
-| `slot_control` | `targeted`, then refill vacated recency slots with pre-error duplicates | does slot occupancy matter once content is gone? |
-| `random_k` | count-matched random deletion | does it matter *which* entries? |
+| `no_op` | 不做任何处理 | 自然恢复率 |
+| `targeted` | 删除在 `[t_f, t_r)` 写入的条目；保留条件帧 + 错误前条目 | 核心主张 |
+| `reset` | 仅保留初始条件帧 | 是否仅仅等同于重新启动？ |
+| `sham` | 删除**数量匹配的错误发生前（干净）条目**，保留受污染条目 | 单纯的删除操作动作是否就能带来收益？ |
+| `slot_control` | 执行 `targeted`，随后用错误前重复项填补空出的近期时序槽位 | 移除内容后，时序槽位占用是否依然重要？ |
+| `random_k` | 数量匹配的随机删除 | 删除*哪些*条目是否重要？ |
 
-`sham` is the vacuous control — same incision, nothing therapeutic removed. `slot_control` is the
-Stage-6 arm as literally worded; it is kept because it answers a real question, but it is not the
-arm P3 tests against (rationale in `proposal.md` §3).
+`sham` 是无效对照 —— 进行相同的切口，但不移除任何具有治疗作用的内容。`slot_control` 是 Stage 6 字面描述的方案；予以保留是因为它回答了一个真实的科学问题，但它并不是用于检验 P3 的对照臂（原理详见 `proposal.md` §3）。
 
-**Caveat, reported rather than hidden:** `sham` can only be exactly count-matched when enough
-pre-error entries survive to delete. The realised match count is logged per failure.
+**如实报告的注意事项：** 唯有在有足够多的错误前条目可供删除时，`sham` 才能做到精确的数量匹配。实际匹配数量会逐失败记录日志。
 
 ---
 
-## E2 — the pilot gate (~10 GPU-h)
+## E2 — Pilot 门禁（~10 GPU-h）
 
-50 failures, all six arms, plus the difficulty-partialled regression at pilot scale.
+50 次失败样本，全部 6 个实验臂，外加 pilot 规模下的控制难度偏相关回归分析。
 
-| Outcome | Action |
+| 观察结果 | 采取行动 |
 |---|---|
-| `targeted ≈ sham` | **stop.** The instrument story is dead; the honest report is deletion mechanics. |
-| `targeted − reset < 3 pts` **and** pilot partial `r < 0.2` | **stop before comparator passes.** Release corpus + toolkit as a tech note. |
-| otherwise | proceed to E3 |
+| `targeted ≈ sham` | **终止项目。** 工具主张被证伪；诚实的结论应归因于删除动作机制。 |
+| `targeted − reset < 3 分` **且** pilot 偏相关 `r < 0.2` | **在运行对照方法前终止。** 将语料库 + 工具包作为技术简报发布。 |
+| 其他情况 | 继续推进至 E3 |
 
-`KNOWN FACT` The prototype in `src/` demonstrates this gate catching a fabricated artifact: in a
-simulated world with *zero* memory-borne failure where the tracker merely prefers emptier banks,
-`targeted` beats `no_op` by +0.397 — and the control arms fire, so the gate correctly refuses.
+`KNOWN FACT` `src/` 中的原型演示了该门禁捕获人为构造假象的过程：在模拟的*零* memory 归因失败（跟踪器仅仅偏好更空的 bank）世界中，`targeted` 击败 `no_op` 达到 +0.397 —— 但对照实验臂触发警报，门禁正确予以拒绝。
 
 ---
 
-## E3/E4 — the killer experiment (~60 GPU-h)
+## E3/E4 — Killer 实验（~60 GPU-h）
 
-> **(1)** `targeted` beats `no_op` by ≥30 points, `reset` by ≥10, **and `sham` by ≥10**.
-> **(2)** `min_{c ∈ C_frozen} partial r > 0.4`, partialling out no-op recovery, failure count and
-> distractor density; nested-model ΔR² reported alongside.
+> **(1)** `targeted` 击败 `no_op` 达到 ≥30 分优势，击败 `reset` 达到 ≥10 分优势，**且击败 `sham` 达到 ≥10 分优势**。
+> **(2)** `min_{c ∈ C_frozen} partial r > 0.4`，剔除 no-op 恢复率、失败次数和干扰物密度；同时报告嵌套模型 ΔR²。
 >
-> Either miss kills the instrument claim.
+> 任何一项未达标均会证伪工具主张。
 
-Why partial rather than raw: reversible fraction and prevention-method gains are both downstream of
-sequence difficulty, so a raw `r > 0.6` is exactly what a shared-difficulty confound produces with
-no validity at all. In the prototype, naive correlations of 0.95 / 0.92 / 0.86 fell to 0.68 / 0.40 /
-**0.03** after partialling — and the minimum-over-set rule is what stops the 0.03 comparator from
-being quietly dropped.
+为什么采用偏相关而非原始相关：可逆比例和预防方法收益都是序列难度的下游体现，因此原始的 `r > 0.6` 恰恰是共享难度混淆因素在完全没有测量有效性时所产生的现象。在原型中，原始相关系数 0.95 / 0.92 / 0.86 在偏相关后降至 0.68 / 0.40 / **0.03** —— 而在集合上取最小值的规则正是防止悄然丢弃 0.03 对照方法的防线。
 
 ---
 
-## E9 — the mandatory method arm (~40 GPU-h, conditional on P2)
+## E9 — 强制性方法臂（~40 GPU-h，以 P2 为触发条件）
 
-`KNOWN FACT` The Stage-6 meta-review elevated this from optional secondary analysis to a **required
-deliverable**: if `targeted` beats `reset` by the pre-registered ≥10-point margin, the paper must
-ship the surgery as a training-free SAM2 wrapper, benchmarked **head-to-head against SAMURAI and
-DAM4SAM** on standard benchmarks. The stated reasoning was that A-0017 is the only Top-5 idea that
-can graduate from measurement to method inside one budget.
+`KNOWN FACT` Stage-6 元评审将其从可选次要分析提升为**必须交付项**：若 `targeted` 以预注册的 ≥10 分优势击败 `reset`，论文必须将该手术封装为免训练的 SAM2 wrapper，在标准基准上与 **SAMURAI 和 DAM4SAM 进行正面对决测试**。理由是 A-0017 是 Top 5 中唯一能在单一预算内从测量毕业为方法的想法。
 
-Two things this requires that E3 does not:
+相比于 E3，该实验额外需要两项要素：
 
-1. **A trigger.** Everything upstream applies surgery at the ground-truth recovery frame `t_r`. A
-   deployable wrapper has no oracle and must detect its own failure, so E9 needs a detector —
-   candidates: sustained low mask confidence, mask-area collapse, conditioning-frame attention
-   collapse (the E5 signal, which is the most interesting because it is the mechanism itself).
-2. **A different comparison surface.** Head-to-head means standard LVOS v2 + DiDi J&F, not recovery
-   rate on our harvested corpus. The comparators stop being validity instruments and become the bar.
+1. **触发器。** 上游所有实验均在真实恢复帧 `t_r` 执行手术。可部署的 wrapper 没有 oracle 辅助，必须自行检测失败，因此 E9 需要一个检测器 —— 候选方案：持续的低掩码置信度、掩码面积骤缩、条件帧注意力坍缩（E5 信号，因其本身即为底层机制因而是最有意思的候选）。
+2. **不同的对比基准。** 正面对决意味着采用标准 LVOS v2 + DiDi J&F 指标，而非在我们采集的失败语料上的恢复率。对照方法不再是有效性工具，而成为了竞争标准。
 
-**Expected, and stated in advance so it cannot be spun later:** the wrapper's gain is **strictly
-below** the measured ceiling, by an amount the trigger's precision and recall set. E6's `t_r ± δ`
-dose–response bounds that loss before E9 runs, which is the second reason E6 was promoted out of the
-ablation list.
+**预期的必然结果，在此预先声明以防事后粉饰：** wrapper 的实际增益**严格低于**测得的理论上限，差距由触发器的精确率和召回率决定。E6 的 `t_r ± δ` 剂量-反应实验在 E9 运行前即可划定该损失的边界，这也是 E6 被提升出消融列表的第二个原因。
 
-**Conditional by construction.** If P2 fails, targeted deletion is no better than a bank reset and
-there is nothing worth shipping — a practitioner would simply reset. E9's cost never lands on the
-branch where the project fails.
+**按设计条件触发。** 若 P2 失败，定向删除并不优于直接重置 bank，便没有值得交付的方法 —— 开发者直接重置即可。E9 的算力开销绝不会发生在项目失败的分支上。
 
 ---
 
-## Ablations
+## 消融实验
 
-- **Deletion scope:** all post-error vs recent-`k` vs object-pointers-only vs spatial-features-only.
-- **Timing `t_r ± δ`** — **promoted from ablation to a main result** (A6): it shows how the ceiling
-  degrades as the oracle weakens, which is the honest answer to "no deployment has an oracle."
-- Recovery window `w`; failure definition sweep (IoU < 0.1 vs < 0.3; `k`).
-- Backbone size (Hiera-B+ vs Hiera-L); SAM2 vs SAM2.1.
-- With / without the ambiguous stratum.
-
----
-
-## Controls
-
-1. `reset`, `sham`, `slot_control`, `random_k` — four different artifact channels.
-2. **Sham surgery at random non-failure times**: must *not* change tracking. Harness validity.
-3. Replay determinism (E0).
-4. Difficulty covariates in every validity model.
-5. **Cross-ceiling check against SAM2RL's optimisation-derived bound** — two ceilings from different
-   principles agreeing is worth more than any framing argument.
+- **删除范围：** 全部错误后条目 vs 近期 `k` 个 vs 仅目标指针 vs 仅空间特征。
+- **计时 `t_r ± δ`** —— **从消融实验升级为主结果**（A6）：展示随着 oracle 弱化理论上限如何衰减，这是对"实际部署不存在 oracle"的诚实回应。
+- 恢复窗口 `w`；失败定义扫描（IoU < 0.1 vs < 0.3; `k`）。
+- 主干网络规模（Hiera-B+ vs Hiera-L）；SAM2 vs SAM2.1。
+- 包含 / 排除模棱两可分层。
 
 ---
 
-## Failure taxonomy (E5)
+## 对照组设置
 
-Cross-attention mass from current-frame queries to each memory entry, before and after surgery,
-separates two irreversibility mechanisms:
-
-- **interference** — conditioning-frame attention collapses
-- **competition** — it persists but is outvoted by a locked distractor
-
-Irreversible failures are additionally classified as re-detection failure (no multimask proposal
-overlaps GT at `t_r`) vs mis-association.
+1. `reset`, `sham`, `slot_control`, `random_k` —— 四个不同的假象干扰通道。
+2. **在随机非失败时段执行 Sham 手术**：必须*不*改变跟踪结果。验证工具本身有效性。
+3. 回放确定性检验（E0）。
+4. 在每个有效性模型中加入难度协变量。
+5. **对照 SAM2RL 基于优化得出的上限进行跨上限交叉验证** —— 两种基于不同原理得出的理论上限相互吻合，比任何立意论证都更有说服力。
 
 ---
 
-## Deliverables regardless of outcome
+## 失败分类学（E5）
 
-The harvested organic-failure corpus, the surgery toolkit, and the validity methodology are all
-reusable and publishable even if every hypothesis fails. This is the project's insurance against the
-scoop clock: if someone else lands the headline first, these survive.
+通过在手术前后记录当前帧 query 到各 memory 条目的 cross-attention 权重，区分两种不可逆机制：
+
+- **干扰（interference）** —— 条件帧注意力彻底坍缩
+- **竞争（competition）** —— 条件帧注意力依然存在，但在投票中被锁定的干扰物压制
+
+不可逆失败进一步细分为再检测失败（在 `t_r` 处没有任何 multimask 候选与 GT 重叠）vs 错误关联。
+
+---
+
+## 无论结果如何均可交付的成果
+
+采集到的自然发生失败语料库、手术工具包以及有效性检验方法论，即使在所有假设全部被证伪的情况下依然具有复用与发表价值。这是本项目抵御被抢发风险的安全垫：若他人率先发表了核心头条结论，这些实体产物依然成立。

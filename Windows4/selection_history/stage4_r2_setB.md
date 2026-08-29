@@ -1,429 +1,206 @@
-# Stage 4 — Reviewer #2 Attack, Set B (PEFT / Forgetting / Calibration / Medical-preprocess)
+# Stage 4 — Reviewer #2 评审攻击，集合 B (PEFT / Forgetting / Calibration / Medical-preprocess)
 
-Role: Reviewer #2. Stance per rubric: **default REJECT. Survival iff a realistic experiment would silence the attack.**
-Date: 2026-08-28. Inputs: `stage3_top50.md`, `stage3_kill_peft_vlm.md`, `stage3_kill_medical_smoke.md`, original
-hypothesis text in `stage1_*.md` / `stage1_supervisor_seed.md`.
+角色：Reviewer #2。依据评审标准的立场：**默认拒稿（default REJECT）。存活的充分必要条件是一项现实可行的实验能够使攻击彻底哑口无言。**
+日期：2026-08-28。输入：`stage3_top50.md`、`stage3_kill_peft_vlm.md`、`stage3_kill_medical_smoke.md`、`stage1_*.md` / `stage1_supervisor_seed.md` 中的原始假设文本。
 
-Epistemic status: REVIEW JUDGMENT. Citations below are **inherited from the Stage-3 kill files** (verified there,
-tagged `[V]`/`[M]` in those documents); none were re-verified this pass and none are new. No experimental result
-is claimed anywhere in this file.
+认识状态（Epistemic status）：**评审判断（REVIEW JUDGMENT）**。下文引文均**继承自 Stage-3 狙杀文件**（在那里已核实，在那些文档中标记为 `[V]`/`[M]`）；本轮未重新核实，且无新引文。本文档中任何地方均未声称包含我们自身的实验结果。
 
-Schema per target (as dispatched):
-**Reject paragraph → Load-bearing assumption → Confounder → Missing baseline → Experiment-can-silence? → Verdict (REJECT / WEAK ACCEPT).**
+每个目标的模式（按分发要求）：
+**拒稿段落 → 承重假设 → 混淆项 → 缺失基线 → 实验能否使其闭嘴？ → 裁决（REJECT / WEAK ACCEPT）。**
 
-A WEAK ACCEPT here is conditional: the listed silencing experiment and baselines are **mandatory obligations**; if
-Stage 5 drops any of them, the verdict reverts to REJECT.
+此处的 WEAK ACCEPT 是条件性的：所列的闭嘴实验与基线是**强制性约束（mandatory obligations）**；若 Stage 5 遗漏其中任何一项，裁决将自动转回 REJECT。
 
 ---
 
-## Scoreboard
+## 记分板（Scoreboard）
 
-| # | Paper | IDs | Core claim under attack | Experiment can silence? | Verdict |
-|---|-------|-----|-------------------------|-------------------------|---------|
-| 1 | P065 | C1-065 + C1-061 | Prompt-type-resolved forgetting; multimask diversity collapse | YES (coverage-vs-forgetting factorial) | WEAK ACCEPT |
-| 2 | P177 | S-177 + C1-062 | Forgetting localizes to decoder cross-attn; splice restores | YES (stitch-controlled swap grid) | WEAK ACCEPT |
-| 3 | P107 | A1-107 | Attention-LoRA fixes boundaries, MLP-LoRA fixes regions | YES (matched-budget factorial, decoupled metrics) | WEAK ACCEPT |
-| 4 | P031 | C1-031 (+C1-025/037/S-318) | FT desyncs IoU head; calibration tax | YES (recipe × domain × recalibration) | WEAK ACCEPT |
-| 5 | P052 | S-052 (mutated) | Objectness prior harms stuff-like lesions at small n | YES for the harm; PARTIAL for the mechanism label | WEAK ACCEPT (re-scoped) |
-| 6 | P110 | C1-110 | One gain–retention frontier scalar reliably ranks methods | **NO** (scalar validity is not empirical) | **REJECT** (standalone) |
-| 7 | P108 | A1-108 + C1-067 | Interface drift *predicts* later zero-shot drop | In principle yes; null is worthless (ROI kill rule) | **REJECT** |
-| 8 | P082 | C1-082 + S-183 | Published "forgetting" sits inside a threshold/plasticity noise floor | YES (noise-floor envelope on released checkpoints) | WEAK ACCEPT (run FIRST) |
-| 9 | P044 | S-044 + A1-034 | Despeckle/window recovers ≥50% of PEFT gain on frozen SAM | YES (pre-registered falsifier w/ honest LoRA arm) | WEAK ACCEPT |
+| # | 论文编号 | ID 列表 | 被攻击的核心主张 | 实验能否使其闭嘴？ | 裁决 |
+|---|---|---|---|---|---|
+| 1 | P065 | C1-065 + C1-061 | 按提示类型细分的遗忘；multimask 多样性崩塌 | 能（YES，覆盖度 vs 遗忘析因设计） | WEAK ACCEPT |
+| 2 | P177 | S-177 + C1-062 | 遗忘定位于 decoder 交叉注意力；拼接可恢复 | 能（YES，拼接受控的置换网格） | WEAK ACCEPT |
+| 3 | P107 | A1-107 | Attention-LoRA 修复边界，MLP-LoRA 修复区域 | 能（YES，匹配预算的析因设计，解耦指标） | WEAK ACCEPT |
+| 4 | P031 | C1-031 (+C1-025/037/S-318) | 微调使 IoU 头失步；校准代价 | 能（YES，配方 × 领域 × 重新校准） | WEAK ACCEPT |
+| 5 | P052 | S-052 (变体) | 小样本下物体性先验对 stuff 类病灶造成损害 | 对损害而言能（YES）；对机制标签而言部分能（PARTIAL） | WEAK ACCEPT (重新划定范围) |
+| 6 | P110 | C1-110 | 单一增益-保留前沿标量可可靠地对方法排序 | **不能（NO）**（标量有效性非实证问题） | **REJECT** (作为独立论文) |
+| 7 | P108 | A1-108 + C1-067 | 接口漂移可*预测*后续 zero-shot 下降 | 原理上能；零结果毫无价值（ROI 淘汰规则） | **REJECT** |
+| 8 | P082 | C1-082 + S-183 | 已发表的“遗忘”处于阈值/可塑性噪声底线之内 | 能（YES，在已发布 checkpoint 上的噪声底线包络） | WEAK ACCEPT (最先运行) |
+| 9 | P044 | S-044 + A1-034 | 去斑/窗宽恢复冻结 SAM 上 ≥50% 的 PEFT 增益 | 能（YES，带诚实 LoRA 分支的预注册证伪实验） | WEAK ACCEPT |
 
-Net: 7 WEAK ACCEPT (all conditional) / 2 REJECT. Cross-paper structural attacks at the end of this file apply to
-every WEAK ACCEPT and are non-optional.
-
----
-
-## 1. P065 — C1-065 + C1-061: prompt-type behavioral forgetting + multimask diversity collapse
-
-**Reject paragraph.**
-The phenomenon — fine-tuning erodes SAM's zero-shot promptability — is motivation boilerplate, not a finding: Gu et
-al. (arXiv:2404.09957) document collapse across 18 fine-tuning combinations, and CA-SAM (arXiv:2511.17201) cites the
-erosion as the known problem its method fixes. Prompt-mode-resolved tables after fine-tuning already exist: SAM-Med2D
-(arXiv:2308.16184) publishes Bbox/1pt/3pt/5pt for frozen SAM vs FT variants. What the authors add is an *ordering*
-claim (points forget before boxes; negative clicks first per A1-109; diversity collapses), and they cannot currently
-distinguish it from the trivial explanation: **models degrade on the prompt modes they were not fine-tuned with.**
-That is train/test prompt-distribution mismatch — a data-coverage statement, not forgetting, and MedSAM (box-only
-training, poor point behavior) already demonstrates it. The diversity-collapse half (C1-061) is an artifact-in-waiting:
-standard SAM fine-tuning recipes either disable multimask output or backpropagate only the minimum-loss mask of the
-three, so post-FT diversity collapse is a mechanical consequence of the loss-aggregation choice. As submitted this is
-a table other papers half-contain, plus an artifact with a diversity metric the authors themselves flag as contested.
-
-**Load-bearing assumption.** That prompt-type-specific degradation is a property of the *model* rather than of the
-fine-tuning *prompt-sampling distribution*; and that "matched in-domain gain" across arms (full FT, decoder FT, LoRA)
-is well-defined and achievable without introducing a new confounder (different early-stop points = different
-effective training lengths).
-
-**Confounder.** (a) FT prompt protocol: box-only vs point-only vs mixed training determines the observed ordering.
-(b) Loss aggregation (min-loss-mask backprop vs all-mask) determines the diversity result. (c) Binarization
-threshold shifts masquerading as forgetting (C1-082 — P082 gates this paper). (d) Seed and prompt-sampling variance
-(C1-060) vs the size of the claimed ordering gaps.
-
-**Missing baseline.** Frozen SAM with per-domain re-tuned threshold (fair floor); a *mixed-prompt* FT arm; LR-swept
-full-FT and decoder-only arms (Gu et al.'s grid); VeRA/random-direction PEFT control (per Stage-3 cluster-2 ruling);
-all-mask-loss FT arm for the diversity claim; ≥3-seed confidence intervals on every ordering statement.
-
-**Experiment-can-silence?** **YES.** Crossed factorial: FT-prompt-mix {box-only, point-only, mixed} × eval battery
-{box, 1-click, 5-click iterative incl. negative clicks, multimask-ambiguity} at matched target-domain gain
-(pre-registered matching rule, e.g. first checkpoint within ±0.5 Dice of the weakest arm's best), threshold re-tuned
-per arm on a held-out calibration split, ≥3 seeds. The forgetting claim survives **only if the prompt-type ordering
-persists inside the mixed-prompt column** — that column isolates forgetting from coverage; the box-only column alone
-proves nothing. For diversity: report the oracle-best-of-3 vs IoU-head-argmax gap on held-out ambiguous cases
-(multi-annotated SA-1B-style instances); if FT kills *oracle-best-of-3*, capability was lost (real); if only the
-argmax moves, it is a ranking/IoU-head problem and belongs to P031, not here. Cost: modest FT grid + eval — realistic.
-
-**Verdict: WEAK ACCEPT.** Flagship of the thread, but the paper is the mixed-prompt column and the oracle-gap
-decomposition; without them it is SAM-Med2D's table re-plotted.
+净结果：7 个 WEAK ACCEPT（均为条件性）/ 2 个 REJECT。本文档末尾的跨论文结构性攻击适用于每个 WEAK ACCEPT，且均为非可选的强制项。
 
 ---
 
-## 2. P177 — S-177 + C1-062: forgetting locus (decoder vs encoder), layer-splice restoration
+## 1. P065 — C1-065 + C1-061：提示类型行为遗忘 + Multimask 多样性崩塌
 
-**Reject paragraph.**
-"Forgetting concentrates in later/deeper layers" is known for deep networks (Ramasesh et al., arXiv:2007.07400), the
-constructive twin ("which block should you tune") is published (surgical fine-tuning, arXiv:2210.11466), and Gu et
-al. already ran encoder-vs-decoder tuning arms on SAM. The claimed novelty is the causal splice: put pre-FT prompt
-cross-attention back into a fine-tuned SAM and watch zero-shot return. But the splice conflates **locus of
-forgetting** with **interface compatibility** — and the authors' own portfolio contains the contradiction: sibling
-proposal P108/A1-108 claims encoder adaptation shifts embedding statistics beyond the decoder's tolerance. If
-interfaces drift, a failed splice does not mean forgetting is distributed and a successful splice does not mean it is
-localized; chimera behavior is dominated by representational mismatch, which is exactly what the model-stitching
-literature (Bansal et al., arXiv:2106.07682) warns about. Separately, "forgetting localizes where plasticity was
-allowed" is close to tautological under standard recipes: the decoder receives most of the effective update, so the
-freeze ablation (S-177) may simply re-describe the recipe.
+**拒稿段落（Reject paragraph）。**
+这一现象 — 微调会侵蚀 SAM 的 zero-shot 可提示性 — 是动机章节的陈词滥调，而非新发现：Gu et al. (arXiv:2404.09957) 在 18 种微调组合中记录了性能崩塌，且 CA-SAM (arXiv:2511.17201) 将该侵蚀作为其方法所要解决的已知问题进行引用。微调后按提示模式细分的表格已经存在：SAM-Med2D (arXiv:2308.16184) 发表了冻结 SAM vs 微调变体的 Bbox/1pt/3pt/5pt 完整数据。作者增加的是一个*排序*主张（点比框先遗忘；负点击根据 A1-109 最先遗忘；多样性崩塌），而他们目前无法将其与平凡解释区分开来：**模型在其未经过微调的提示模式上发生退化。** 这是训练/测试提示分布不匹配 — 属于数据覆盖度陈述，而非遗忘，且 MedSAM（仅框训练，点提示表现差）已经证明了这一点。多样性崩塌这一半（C1-061）是一个等待被戳破的伪影：标准的 SAM 微调配方要么禁用 multimask 输出，要么仅反向传播三个 mask 中损失最小的那一个（min-loss mask），因此微调后的多样性崩塌是损失聚合方式选择的机械性后果。按当前提交的内容，这只是其他论文已经部分包含的表格，外加一个带有连作者自己都标记为存在争议的多样性指标的伪影。
 
-**Load-bearing assumption.** Module interchangeability across checkpoints — that the encoder-decoder interface is
-stationary enough for swapped modules to compose meaningfully — and that the forgetting locus is a property of the
-architecture rather than of the per-module effective learning rate.
+**承重假设（Load-bearing assumption）。** 提示类型特异性的退化是*模型*的属性，而非微调*提示采样分布*的属性；且跨分支（全微调、decoder 微调、LoRA）的“匹配域内增益”是定义良好且可实现的，不会引入新的混淆项（不同的早停点 = 不同的有效训练长度）。
 
-**Confounder.** (a) Per-module effective plasticity (LR × gradient norm × parameter count): locus tracks recipe unless
-update-norm-matched arms are run. (b) Stitching incompatibility masquerading as "distributed forgetting."
-(c) Swap-direction asymmetry (old-into-new vs new-into-old) never checked.
+**混淆项（Confounder）。** (a) 微调提示协议：仅框 vs 仅点 vs 混合训练决定了观察到的顺序。(b) 损失聚合（最小损失 mask 反传 vs 所有 mask 反传）决定了多样性结果。(c) 伪装成遗忘的二值化阈值偏移（C1-082 — P082 为本论文守门）。(d) 随机种子与提示采样方差（C1-060）对比所主张排序差距的幅度。
 
-**Missing baseline.** Per-module WiSE-FT-style α-interpolation curves (the continuous superset of the binary splice —
-if interpolation already shows decoder dominance, the splice is one point on a curve someone else can publish first);
-splice **with a trained affine stitching layer** (cheap, per Bansal et al.) to separate mismatch from lost function;
-both swap directions; Gu et al.'s enc-only/dec-only FT arms; update-norm-matched per-module fine-tuning.
+**缺失基线（Missing baseline）。** 带有逐域重新调优阈值的冻结 SAM（公平底线）；*混合提示*微调分支；经过学习率遍历的全微调和 decoder-only 分支（Gu et al. 的网格）；VeRA/随机方向 PEFT 对照（根据 Stage-3 聚类 2 裁定）；针对多样性主张的所有 mask 损失微调分支；每个排序结论上 ≥3 个随机种子的置信区间。
 
-**Experiment-can-silence?** **YES.** Full swap grid over {encoder, prompt encoder, decoder cross-attn, decoder rest},
-both directions, each cell with and without a small trained stitch, plus per-module α-interpolation, on the matched-
-gain checkpoints from P065's grid (reuse — no new training). Pre-registered readout: fraction of the zero-shot drop
-recovered, with seed CIs. If cross-attn-splice+stitch restores most zero-shot while encoder-splice+stitch restores
-approximately none, the locus claim stands at mechanism grade and I am silenced. Eval-only given checkpoints; cheap.
+**实验能否使其闭嘴？能（YES）。** 交叉析因设计：微调提示混合 {仅框, 仅点, 混合} × 评估套件 {框, 1 点击, 包含负点击的 5 点击迭代, multimask 歧义性}，在匹配目标域增益下进行（预注册匹配规则，例如最弱分支最佳表现 ±0.5 Dice 内的第一个 checkpoint），阈值在留出的校准集上针对每个分支重新调优，≥3 个随机种子。遗忘主张**仅在提示类型排序在混合提示列中依然存在时**方可存活 — 该列将遗忘与数据覆盖度剥离了开来；单凭仅框列什么也证明不了。对于多样性：在留出的歧义案例（SA-1B 风格多标注实例）上报告 oracle-best-of-3 vs IoU-head-argmax 的差距；若微调杀死了 *oracle-best-of-3*，则能力确实丧失（真实）；若仅 argmax 发生变动，则属于排序/IoU 头问题，归属于 P031 而非此处。成本：适度的微调网格 + 评估 — 现实可行。
 
-**Verdict: WEAK ACCEPT**, conditional on stitching controls and the interpolation baseline. The freeze ablation alone
-(S-177) is one figure and remains REJECT as a standalone; it lives only as an arm inside this design.
+**裁决：WEAK ACCEPT。** 作为该线程的旗舰，但整篇论文的价值就在于混合提示列和 oracle 差距分解；缺乏这两者，它就只是重新绘制了 SAM-Med2D 的表格。
 
 ---
 
-## 3. P107 — A1-107: attention-LoRA fixes boundaries; MLP-LoRA fixes regions
+## 2. P177 — S-177 + C1-062：遗忘位置（Decoder vs Encoder），分层拼接恢复
 
-**Reject paragraph.**
-Placement studies are legion (He et al., arXiv:2110.04366; Conv-LoRA, arXiv:2401.17868; CoDyRA, arXiv:2412.01004);
-the sole claimed delta is the placement→error-type map. But the two "error types" are not independent measurements:
-**every region error contributes boundary error along its entire perimeter**, so boundary-F and interior-IoU are
-mechanically coupled, and "attention fixes boundaries" may be nothing but the metric shadow of "this placement
-happened to help more overall." Add the budget confound — rank-matched is neither parameter-matched nor
-ΔW-norm-matched across attention projections vs MLP blocks — and the headline dichotomy is plausibly an artifact of
-unmatched effective capacity read through correlated metrics. Conv-LoRA's local-inductive-bias narrative partially
-contradicts the prediction; the authors present this as an honest kill-or-confirm, but the modal outcome is a mush of
-non-decomposing effects on noisy medical boundary annotations — a null with no story.
+**拒稿段落（Reject paragraph）。**
+“遗忘集中在更后/更深层”对于深度网络已是常识（Ramasesh et al., arXiv:2007.07400），其建设性孪生篇（“应当微调哪个 block”）已经发表（surgical fine-tuning, arXiv:2210.11466），且 Gu et al. 已经在 SAM 上运行了 encoder vs decoder 的微调分支。所主张的新颖性在于因果拼接：将微调前的 prompt 交叉注意力放回微调后的 SAM 中，观察 zero-shot 能力的恢复。但拼接将**遗忘位置**与**接口兼容性**混为一谈 — 且作者自身的项目组合中就包含这一矛盾：兄弟提案 P108/A1-108 声称 encoder 自适应会导致嵌入统计量超出 decoder 的容忍范围。如果接口发生漂移，拼接失败并不意味着遗忘是分布式的，拼接成功也不意味着遗忘是局部化的；嵌合体（chimera）的行为由表征失配所主导，而这正是模型拼接文献（Bansal et al., arXiv:2106.07682）所预警的问题。此外，在标准配方下，“遗忘集中在允许可塑性的位置”近乎同义反复：decoder 接收了大部分有效更新，因此冻结消融（S-177）可能仅仅是对配方的重新描述。
 
-**Load-bearing assumption.** That boundary vs interior error is a separable, attributable decomposition, and that
-"matched rank" makes attention and MLP placements comparable.
+**承重假设（Load-bearing assumption）。** 跨 checkpoint 的模块可互换性 — 即 encoder-decoder 接口足够稳定，使置换后的模块能够有意义地组合 — 以及遗忘位置是架构的属性，而非每个模块有效学习率的属性。
 
-**Confounder.** (a) Parameter count / ΔW spectral norm per placement. (b) Depth entanglement: attention and MLP
-blocks exist at every depth, so placement effects may actually be depth effects. (c) Per-placement LR optimum.
-(d) Boundary-annotation noise floor on medical data (inter-rater boundary jitter can exceed the claimed effect).
+**混淆项（Confounder）。** (a) 每个模块的有效可塑性（学习率 × 梯度范数 × 参数量）：除非运行更新范数匹配的分支，否则位置取决于训练配方。(b) 伪装成“分布式遗忘”的拼接不兼容性。(c) 从未检验置换方向的非对称性（旧置入新 vs 新置入旧）。
 
-**Missing baseline.** Parameter-matched *and* ΔW-norm-matched grids; depth-stratified placement (early-vs-late
-attention, early-vs-late MLP); Conv-LoRA as both baseline and rival theory; a **boundary-weighted-loss arm** — if loss
-reweighting reproduces the "attention effect" under MLP placement, the mechanism is gradient signal, not placement;
-combined attn+MLP at half budget each; ≥5 seeds with a pre-registered placement × error-type interaction test.
+**缺失基线（Missing baseline）。** 每个模块 WiSE-FT 式的 α 插值曲线（二值拼接的连续超集 — 若插值已经显示 decoder 主导，拼接只是别人可以率先发表的曲线上的一个点）；**带有训练好的仿射拼接层（affine stitching layer）**的拼接（成本低廉，引自 Bansal et al.），以将失配与功能丧失区分开来；两个置换方向；Gu et al. 的纯 encoder/纯 decoder 微调分支；更新范数匹配的逐模块微调。
 
-**Experiment-can-silence?** **YES.** The matched-budget, depth-stratified factorial with decoupled metrics — trimap-
-band boundary quality *conditioned on matched interior detection*, not raw boundary-F — plus the loss-reweighting
-counter-arm, on ≥2 datasets with disjoint annotation pipelines. If the interaction survives parameter matching, norm
-matching, depth stratification, and the loss-reweighting control, the placement rule is real and I am silenced.
-Small grids on public medical sets; realistic.
+**实验能否使其闭嘴？能（YES）。** 在 {encoder, prompt encoder, decoder 交叉注意力, decoder 其余部分} 上进行完整的置换网格，双向进行，每个单元格均包含带有和不带有小型训练拼接层的情况，外加逐模块 α 插值，在复用自 P065 网格的匹配增益 checkpoint 上运行（复用 — 无需新训练）。预注册读数：恢复的 zero-shot 下降比例，附带随机种子置信区间。若交叉注意力拼接+拼接层能恢复大部分 zero-shot，而 encoder 拼接+拼接层几乎无法恢复，则位置主张在机制层面成立，我将闭嘴。在给定 checkpoint 下仅限评估；成本极低。
 
-**Verdict: WEAK ACCEPT.** Only constructive/mechanism paper in this set; keep, but the decoupled-metric requirement
-is non-negotiable — with raw boundary-F this is unpublishable regardless of outcome. A clean null is only reportable
-inside the full placement × depth × budget study, so budget for that scope from the start.
+**裁决：WEAK ACCEPT**，条件是必须包含拼接控制和插值基线。单独的冻结消融（S-177）只是一张插图，作为独立论文维持 REJECT；它仅能作为该设计内部的一个分支存在。
 
 ---
 
-## 4. P031 — C1-031 core (+C1-025, C1-037, S-318 merged): IoU-head desync / calibration tax
+## 3. P107 — A1-107：Attention-LoRA 修复边界，MLP-LoRA 修复区域
 
-**Reject paragraph.**
-"Fine-tuned models become miscalibrated" is a genre with fixes attached (Laplace-LoRA, arXiv:2308.13111; BLoB;
-SWAG-LoRA), and robustness-for-gain trades are canon (Kumar et al., arXiv:2202.10054; WiSE-FT, arXiv:2109.01903);
-porting either to segmentation is banned-pattern F2 without a divergence mechanism, as the authors' own Stage-3 file
-concedes. The genuinely fresh object is SAM's separate IoU head — but the desync result is **over-determined by the
-field's recipes**: MedSAM-style fine-tuning trains the mask path with Dice+CE and leaves the IoU-head loss off or
-vestigial, so of course the confidence head drifts out of sync — the authors will have discovered that an untrained
-head is untrained. Their own Stage-1 risk note ("easy fix reduces impact") is fatal as a headline: a one-line recipe
-change (re-enable the IoU MSE term) or five minutes of post-hoc recalibration on a hundred validation masks plausibly
-erases the phenomenon. What would remain — desync that survives a correct recipe, out of distribution — is currently
-an assumption, not a result.
+**拒稿段落（Reject paragraph）。**
+放置位置研究不胜枚举（He et al., arXiv:2110.04366; Conv-LoRA, arXiv:2401.17868; CoDyRA, arXiv:2412.01004）；唯一声称的 delta 是放置位置→误差类型的映射。但这两种“误差类型”并不是独立的测量：**每个区域误差都会沿其整个周长贡献边界误差**，因此 boundary-F 与内部 IoU 在机制上是耦合的，所谓“注意力修复边界”可能只是“该放置位置恰好在整体上帮助更大”的指标投影。加上预算混淆 — 在注意力投影与 MLP block 之间，秩匹配既不是参数匹配，也不是 ΔW 范数匹配 — 头条的二分法极有可能是通过相关指标读取的不匹配有效容量的伪影。Conv-LoRA 的局部归纳偏置叙事与该预测部分矛盾；作者将其呈现为诚实的检验或证伪设计，但最大概率的结果是在充满噪声的医学边界标注上呈现一团无法分解的模糊效应 — 成为毫无故事性的零结果。
 
-**Load-bearing assumption.** That desync persists when the IoU head is properly trained during FT *and* after cheap
-post-hoc recalibration; and that dense-prediction calibration genuinely diverges from the classification/LLM genre
-(claimed mechanism: Dice/focal loss geometry) rather than reproducing it.
+**承重假设（Load-bearing assumption）。** 边界 vs 内部误差是一个可分离、可归因的分解，且“匹配秩”使得注意力和 MLP 放置具有可比性。
 
-**Confounder.** (a) Recipe: IoU-loss on/off and multimask on/off fully determine the naive result. (b) Measurement
-domain: in-domain desync (recipe bug, fixable) vs held-out zero-shot desync (interesting) are different claims —
-conflating them inflates the finding. (c) The matched-mIoU comparison across full-FT/PEFT inherits the same
-gain-matching under-specification as P065. (d) Frozen SAM's IoU head may already be miscalibrated OOD (C1-026),
-shrinking the "tax" attributable to FT.
+**混淆项（Confounder）。** (a) 每个放置位置的参数量 / ΔW 谱范数。(b) 深度缠结：注意力与 MLP block 在每个深度都存在，因此放置效应可能实际上是深度效应。(c) 每个放置位置的最佳学习率差异。(d) 医学数据上的边界标注噪声底线（标注者间的边界抖动可能超过所声称的效应）。
 
-**Missing baseline.** FT **with** the IoU-head loss enabled (the honest recipe — without this arm the paper is a bug
-report); post-hoc recalibration arms (temperature scaling, isotonic, small head refit) at their true, trivial cost;
-frozen-SAM OOD IoU-head calibration as the floor; and a decision-level consequence metric — multimask ranking
-corruption (ties to P065's oracle-gap) and precision of predicted-IoU-filtered mask sets — because ECE deltas without
-decision damage will not move reviewers.
+**缺失基线（Missing baseline）。** 参数匹配*且* ΔW 范数匹配的网格；按深度分层的放置（早期 vs 晚期注意力，早期 vs 晚期 MLP）；Conv-LoRA 既作为基线又作为竞争理论；**边界加权损失分支** — 若损失重加权在 MLP 放置下复现了“注意力效应”，则机制在于梯度信号而非放置本身；各占一半预算的组合 attn+MLP；≥5 个随机种子并进行预注册的放置 × 误差类型交互作用检验。
 
-**Experiment-can-silence?** **YES.** The 2×2×2 factorial {IoU-loss on, off} × {in-domain, held-out zero-shot} ×
-{raw, recalibrated}, plus decision-consequence readouts, on the P065 checkpoint grid. The paper survives only in the
-cell {IoU-loss on, zero-shot, recalibrated}: a residual desync that a correct recipe and cheap recalibration cannot
-remove, with demonstrated ranking/filtering damage. Heads are tiny; the cost is evaluation. Realistic.
+**实验能否使其闭嘴？能（YES）。** 匹配预算、按深度分层的析因设计，配合解耦指标 — **在匹配内部检测的条件下**的三值图带（trimap-band）边界质量，而非原始 boundary-F — 外加损失重加权对照分支，在 ≥2 个具有不相交标注流程的数据集上运行。若该交互作用在参数匹配、范数匹配、深度分层以及损失重加权控制下依然存活，则放置规则真实存在，我将闭嘴。在公开医学数据集上的小型网格；现实可行。
 
-**Verdict: WEAK ACCEPT**, with the explicit warning that the modal outcome is a recipe footnote — acceptable only
-because the factorial is cheap and the S-318 ordering claim ("calibration breaks before Dice") plus the C1-032
-dense-loss divergence mechanism give the merged paper two additional ways to be interesting. If the easy fix kills
-the desync, report the kill inside P082's deflation frame; do not stretch it into a paper.
+**裁决：WEAK ACCEPT。** 本集合中唯一的建设性/机制论文；保留，但解耦指标要求是不可协商的 — 使用原始 boundary-F，无论结果如何都不可发表。干净的零结果只有在完整的放置 × 深度 × 预算研究中才具有报告价值，因此从一开始就应按该规模规划预算。
 
 ---
 
-## 5. P052 — S-052 (mutated): objectness prior as a small-n liability for stuff-like lesions
+## 4. P031 — C1-031 核心 (+C1-025, C1-037, S-318 合并)：IoU 头失步 / 校准代价
 
-**Reject paragraph.**
-"ImageNet transfer barely helps medical" is Transfusion (arXiv:1902.07208); "random init matches pretraining given
-schedule" is He et al. (arXiv:1811.08883); "pretraining can hurt" is Zoph et al. (arXiv:2006.06882, opposite data
-regime). The mutation promises a mechanism — SAM's *objectness prior* fights amoeboid, low-contrast, stuff-like
-lesions at n≈50 — but "objectness prior" is not an ablatable quantity: any encoder-family comparison (SAM vs DINOv2
-vs supervised vs random) varies pretraining data, objective, and effective architecture simultaneously, so attributing
-the gap to "objectness" is narrative, not measurement. Worse, at n=50 both subset-draw variance and per-arm
-hyperparameter fragility (random init demands its own schedule; a lazy recipe manufactures whichever crossover you
-want) are individually large enough to create or erase the claimed effect. A single learning curve from a single
-draw with shared hyperparameters — which is what the Stage-1 card describes — is not evidence of anything.
+**拒稿段落（Reject paragraph）。**
+“微调后的模型发生校准失真”是一个已有现成修复方案的类别（Laplace-LoRA, arXiv:2308.13111; BLoB; SWAG-LoRA），且以鲁棒性换取增益是公认规律（Kumar et al., arXiv:2202.10054; WiSE-FT, arXiv:2109.01903）；正如作者自己的 Stage-3 文件所承认的那样，在没有分歧机制的情况下将这两者移植到分割属于违禁模式 F2。真正新鲜的对象是 SAM 独立的 IoU 头 — 但失步结果**完全由该领域的训练配方所决定**：MedSAM 式的微调使用 Dice+CE 训练 mask 路径，而将 IoU 头的损失关闭或置之不理，因此置信度头当然会脱离同步漂移 — 作者将发现一个未经训练的头是没有经过训练的。他们自己在 Stage 1 中的风险备忘（“容易修复会降低影响力”）作为头条是致命的：改动一行的配方（重新启用 IoU MSE 损失项）或在一百张验证 mask 上进行五分钟的事后重新校准，极有可能彻底抹去这一现象。所能剩下的内容 — 在正确配方下且在分布之外仍然存在的失步 — 目前只是一个假设，而非结果。
 
-**Load-bearing assumption.** That the SAM-init deficit, if it exists, is attributable to a *prior over mask shapes*
-rather than to pretraining-distribution mismatch generally; and that one n=50 draw is representative.
+**承重假设（Load-bearing assumption）。** 当 IoU 头在微调期间得到正确训练*且*在低成本事后重新校准后，失步依然存在；且稠密预测校准真正分歧于分类/LLM 类别（声称的机制：Dice/focal 损失几何结构），而非简单复现它。
 
-**Confounder.** (a) Hyperparameter-recipe × init interaction — dominant at small n. (b) Subset-draw variance.
-(c) Lesion "stuff-ness" correlates with contrast, size, and annotation noise, so shape-stratified comparisons are
-confounded by difficulty unless matched. (d) Tiny test sets on the relevant datasets → wide CIs on every gap.
+**混淆项（Confounder）。** (a) 配方：IoU 损失的开/关以及 multimask 的开/关完全决定了朴素结果。(b) 测量领域：域内失步（配方缺陷，可修复）vs 留出的 zero-shot 失步（有趣）是不同的主张 — 将它们混淆会夸大发现。(c) 跨全微调/PEFT 的匹配 mIoU 对比继承了与 P065 相同的增益匹配欠规范问题。(d) 冻结 SAM 的 IoU 头可能在 OOD 下已经失准（C1-026），从而缩小了归因于微调的“代价”。
 
-**Missing baseline.** Frozen-encoder probes (if frozen SAM features + a light decoder beat fine-tuning at n=50, the
-story is optimization, not the prior); DINOv2 and MAE arms at matched architecture (ViT-B everywhere); an n-grid
-(50/100/200/500) with ≥10 resampled draws per point and per-arm HP sweeps; difficulty matching across shape strata
-(match on frozen-SAM oracle-prompt Dice per stratum).
+**缺失基线（Missing baseline）。** **启用** IoU 头损失的微调（诚实配方 — 缺乏该分支该论文就是一篇 bug 报告）；事后重新校准分支（温度缩放、保序回归、微型头重拟合）及其真实的微小成本；作为底线的冻结 SAM OOD IoU 头校准；以及决策层面的后果指标 — multimask 排序破坏（与 P065 的 oracle 差距关联）和预测 IoU 过滤后的 mask 集合精度 — 因为没有决策损害的 ECE 变动无法打动审稿人。
 
-**Experiment-can-silence?** **YES for the harm; PARTIAL for the mechanism word.** Two pre-registered prongs:
-(1) *Existence*: resampled learning curves, per-arm sweeps, matched-arch init families — settles whether SAM/FM init
-underperforms random/self-sup init at small n at all. (2) *Mechanism*: the interaction test — the SAM-init deficit
-grows with lesion stuff-ness while the DINOv2-init deficit does not, on difficulty-matched strata — plus a stimulus-
-side causal arm: synthetic lesions with parametric "thing-ness" (compactness, boundary sharpness, contrast) composited
-into real backgrounds, manipulating the prior's engagement without touching the model. If both prongs come out
-positive I am substantially silenced; the residual attack ("that's pretraining-data distribution, not 'objectness'")
-is about the label, not the measured interaction. Runs at n≈50 are minutes each; ~2k short runs ≈ a few GPU-days.
+**实验能否使其闭嘴？能（YES）。** 2×2×2 析因设计 {IoU 损失开, 关} × {域内, 留出 zero-shot} × {原始, 重新校准}，外加决策后果读数，在 P065 checkpoint 网格上运行。该论文仅在 {IoU 损失开启, zero-shot, 重新校准} 这一单元格中存活：即正确配方和廉价重新校准无法消除的残留失步，且展现出可证明的排序/过滤损害。各 head 参数微小；成本在于评估。现实可行。
 
-**Verdict: WEAK ACCEPT — re-scoped.** Mandatory: retitle the claim to the measurable interaction
-("segmentation-pretrained init deficit grows with lesion stuff-ness at small n"); "objectness prior" may appear as
-interpretation, never as the result. Both null outcomes (no harm; no interaction) are protected contrarian
-lore-corrections, which is what keeps this above the REJECT line despite the fragile chain.
+**裁决：WEAK ACCEPT**，但需明确预警：最大概率的结果是一个配方脚注 — 之所以可接受仅因为该析因实验成本极低，且 S-318 的排序主张（"calibration breaks before Dice"）外加 C1-032 的稠密损失分歧机制为合并后的论文提供了另外两种出彩的可能。若轻易的修复消除了失步，将该结果报告在 P082 的挤水分框架内；切勿将其硬撑成一篇论文。
 
 ---
 
-## 6. P110 — C1-110: gain–retention reporting protocol / frontier scalar
+## 5. P052 — S-052 (变体)：物体性先验在小样本下成为 stuff 类病灶的负债
 
-**Reject paragraph.**
-Every component is published: the ID-gain-vs-zero-shot-retention frontier is the central figure of WiSE-FT
-(arXiv:2109.01903); BWT/FWT have been the standardized gain-vs-retention scalars in continual learning since GEM
-(arXiv:1706.08840, 2017); target-vs-control-task trade-off panels are task-arithmetic-era routine (arXiv:2212.04089);
-and CA-SAM already publishes adaptation-plus-retention tables for SAM across nine datasets without needing this suite.
-The Stage-1 hypothesis — "one frontier scalar reliably ranks adaptation methods" — is not an empirical claim at all:
-whether a scalarization "reliably ranks" depends on the downstream user's trade-off preferences, which no experiment
-can measure. The proposed rescue (a pre-registered rank flip between the scalar and single-metric rankings) cuts the
-wrong way: a rank flip is evidence that the *panel* matters and that any single scalar — including the proposed one —
-hides information. The suite is reporting hygiene, and reporting hygiene is a section, not a paper.
+**拒稿段落（Reject paragraph）。**
+“ImageNet 迁移对医疗帮助甚微”属于 Transfusion (arXiv:1902.07208)；“在周期充分下随机初始化可匹敌预训练”属于 He et al. (arXiv:1811.08883)；“预训练可能有害”属于 Zoph et al. (arXiv:2006.06882，处于相反的数据体系下)。修改后的方案承诺提供一个机制 — SAM 的*物体性先验（objectness prior）*在 n≈50 时与变形虫状、低对比度的 stuff 类病灶发生冲突 — 但“物体性先验”并不是一个可消融的量：任何 encoder 家族对比（SAM vs DINOv2 vs 监督 vs 随机）都在同时改变预训练数据、目标函数和有效架构，因此将差距归因于“物体性”是讲故事而非测量。更糟糕的是，在 n=50 时，子集抽取方差和每个分支超参数脆弱性（随机初始化需要自身专门的调度方案；粗糙的配方可以人为制造出任何你想要的交叉点）都大到足以凭空制造或抹去所声称的效应。来自单次抽取且共享超参数的单条学习曲线 — 即 Stage-1 卡片所描述的内容 — 不能作为任何结论的证据。
 
-**Load-bearing assumption.** That there exists a preference-free, use-case-independent way to validate one scalar as
-the "right" summary of a gain–retention surface. There is not.
+**承重假设（Load-bearing assumption）。** SAM 初始化缺陷（若存在）可归因于对 *mask 形状的先验*，而非通用的预训练分布不匹配；且单次 n=50 的抽取具有代表性。
 
-**Confounder.** The scalar's ranking behavior depends entirely on the weighting/normalization chosen; any demonstrated
-"reliable ranking" is circular (methods are ranked reliably *by the metric that defines the ranking*).
+**混淆项（Confounder）。** (a) 超参数配方 × 初始化方式的交互作用 — 在小样本下占主导地位。(b) 子集抽取方差。(c) 病灶的 "stuff 属性" 与对比度、尺寸和标注噪声相关，因此按形状分层的对比受到难度的混淆，除非进行难度匹配。(d) 相关数据集上的微型测试集 → 每个差距上都存在巨大的置信区间。
 
-**Missing baseline.** Not applicable in the usual sense — the decisive comparisons (report BWT/FWT + WiSE-FT frontier
-+ per-prompt-type retention as a panel) are exactly what reduces this to prior art.
+**缺失基线（Missing baseline）。** 冻结 encoder 探针（若冻结 SAM 特征 + 轻量 decoder 在 n=50 下击败微调，问题出在优化而非先验）；架构匹配下的 DINOv2 和 MAE 分支（各处统一使用 ViT-B）；每个点带有 ≥10 次重采样抽取和逐分支超参数扫描的 n 网格（50/100/200/500）；跨形状层级的难度匹配（在每个层级上按冻结 SAM oracle 提示 Dice 进行匹配）。
 
-**Experiment-can-silence?** **NO.** A rank-flip demo shows panels beat scalars (argument against the paper's own
-scalar); no realistic experiment establishes scalarization validity, because it is a values question. This fails the
-rubric's Stage-4 kill rule directly: the attack cannot be answered by an experiment.
+**实验能否使其闭嘴？对损害而言能（YES）；对机制字眼而言部分能（PARTIAL）。** 两个预注册阶段：(1) *存在性*：重采样的学习曲线、逐分支参数遍历、匹配架构的初始化家族 — 彻底判定 SAM/基础模型初始化在小样本下是否确实劣于随机/自监督初始化。(2) *机制*：交互作用检验 — 在难度匹配的层级上，SAM 初始化缺陷随病灶 stuff 属性增大而增加，而 DINOv2 初始化缺陷则不会 — 外加刺激端因果分支：将具有参数化 "thing 属性"（紧实度、边界清晰度、对比度）的合成病灶合成到真实背景中，在不触及模型的情况下操纵先验的触发。若两个阶段均为正结果，我将基本闭嘴；残留的攻击（“那是预训练数据分布，而非‘物体性’”）属于用词标签之争，而非所测量的交互作用之争。在 n≈50 下每次运行仅需数分钟；约 2000 次短运行 ≈ 几个 GPU 天。
 
-**Verdict: REJECT** as a standalone paper — concurring with and hardening the Stage-3 demotion. Disposition: the
-reporting panel (per-prompt-type retention, frontier plot, model-card row) becomes a mandatory *appendix protocol* of
-P065 and P031. C1-110's Protect status should not shield a leaderboard with no finding.
+**裁决：WEAK ACCEPT — 重新划定范围。** 强制项：将主张重新命名为可测量的交互作用（"segmentation-pretrained init deficit grows with lesion stuff-ness at small n"）；“物体性先验”可作为解释出现，绝不能作为实验结论出现。两种零假设结果（无损害；无交互作用）都是受到保护的对经验常识的反向修正，这也是尽管推理链脆弱它仍能保持在 REJECT 线之上的原因。
 
 ---
 
-## 7. P108 — A1-108 + C1-067: interface drift predicts later zero-shot regression
+## 6. P110 — C1-110：增益-保留报告协议 / 前沿标量
 
-**Reject paragraph.**
-Measuring representational drift across module boundaries is mature (CKA, arXiv:1905.00414; stitching,
-arXiv:2106.07682; drift-as-forgetting-probe, Davari et al., arXiv:2203.13381), and CA-SAM has already methodized the
-encoder–decoder interface with a shipped alignment layer — the conceptual room is shrinking, as Stage 3 conceded. The
-mutated deliverable ("drift *predicts* regression with lead time and decision value") faces a baseline it has not
-argued it can beat: **directly evaluating zero-shot behavior on a ~50-image probe set every k steps**, which measures
-the actual quantity of interest at a cost comparable to computing the drift statistic itself. For the proxy to matter
-it must show genuine lead time over direct measurement of its own validation target, beat trivial covariates (step
-count and train loss "predict" any monotone degradation), and transfer across held-out *recipes*, not just seeds —
-which requires a population-of-runs study. And the asymmetry that kills it: **the null outcome is worthless.** If
-drift fails to beat step count or the direct probe, nothing in the literature is corrected — nobody claimed it would.
-The paper only pays on the improbable branch; the rubric's ROI rule (upside × falsifiability / compute) prices this
-below the line even though the study is technically runnable.
+**拒稿段落（Reject paragraph）。**
+每个组件均已发表：ID 增益 vs zero-shot 保留前沿是 WiSE-FT (arXiv:2109.01903) 的核心图表；自 GEM (arXiv:1706.08840, 2017) 以来，BWT/FWT 一直是持续学习中标准化的增益 vs 保留标量；目标任务 vs 控制任务权衡面板是任务算术时代的常规操作 (arXiv:2212.04089)；且 CA-SAM 已经在无需该套件的情况下发表了 SAM 跨 9 个数据集的自适应加保留表格。Stage-1 的假设 — “单一前沿标量可可靠地对自适应方法排序” — 根本不是一个实证主张：标量化是否能“可靠排序”取决于下游用户对权衡的偏好，这是任何实验都无法测量的。所提议的补救方案（在标量与单指标排名之间预注册排名反转）走向了反面：排名反转恰恰证明了*面板（panel）*的重要性，证明了任何单一标量（包括所提议的标量）都会掩盖信息。该套件属于报告规范，而报告规范是一个章节，不成其为论文。
 
-**Load-bearing assumption.** That internal drift moves *before* cheaply-measurable behavior does (representational
-precursors with usable lead time), and that one drift statistic chosen a priori generalizes across recipes without
-garden-of-forking-paths selection among the dozens of CKA/layer/token variants.
+**承重假设（Load-bearing assumption）。** 存在一种脱离偏好、独立于具体用例的方法，能够验证某一标量作为增益-保留曲面的“正确”概括。事实并不存在。
 
-**Confounder.** Monotone-decay trivialities: in typical FT runs zero-shot decays monotonically, so *any* monotone
-statistic — including wall-clock — "predicts" later drops. Incremental predictive value beyond step count and train
-loss is the only admissible readout, and it is absent from the proposal.
+**混淆项（Confounder）。** 标量的排序行为完全取决于所选的加权/归一化方式；任何展示出的“可靠排序”都是循环论证（方法被*定义排序的指标*可靠地进行了排序）。
 
-**Missing baseline.** Direct sparse behavioral probing (the near-unbeatable one); step-count and train-loss
-predictors; cross-recipe holdout validation; cost accounting per prediction.
+**缺失基线（Missing baseline）。** 在通常意义上不适用 — 决定性的对比（将 BWT/FWT + WiSE-FT 前沿 + 逐提示类型保留作为面板报告）恰恰是将本工作还原为前序工作的内容。
 
-**Experiment-can-silence?** In principle yes — a ~40-run population study (datasets × recipes × seeds) where the
-pre-registered drift statistic beats step count, train loss, and the direct probe on lead time and early-stopping
-decision value, validated on held-out recipes. I judge the silencing branch improbable and the null branch valueless;
-per the ROI kill rule that combination is disqualifying even when an experiment technically exists.
+**实验能否使其闭嘴？不能（NO）。** 排名反转演示证明了面板优于标量（反对论文自身标量的论据）；没有现实实验能够确立标量化的有效性，因为这是一个价值取向问题。这直接触发了评审标准的 Stage-4 淘汰规则：该攻击无法通过实验解答。
 
-**Verdict: REJECT.** Disposition: the drift statistic survives as one *covariate* logged inside P065/P177's training
-grid (free to record, occasionally diagnostic). If, incidentally, it shows striking lead time there, Stage 5 may
-resurrect the prediction paper with the population study pre-registered. It does not hold a Top-50 slot on its own.
-Note the freed budget also resolves the portfolio's internal contradiction: P177's stitching controls double as the
-test of A1-108's "interface tolerance" story, so nothing scientific is lost by this rejection.
+**裁决：作为独立论文予以 REJECT** — 赞同并强化 Stage-3 的降级。处置：报告面板（逐提示类型保留、前沿图、模型卡行）成为 P065 和 P031 强制性的*附录协议*。C1-110 的 Protect 状态不应庇护一个没有实证发现的排行榜。
 
 ---
 
-## 8. P082 — C1-082 + S-183: threshold artifact + low-plasticity gatekeeper
+## 7. P108 — A1-108 + C1-067：接口漂移预测后续 Zero-Shot 退化
 
-**Reject paragraph.**
-The learning–forgetting coupling is quantified (Biderman et al., arXiv:2405.09673: less learned, less forgotten;
-Soutif et al. for ViTs), so the conceptual engine is borrowed, and threshold/operating-point pitfalls are Metrics
-Reloaded canon — insiders already know both halves. The audit's bite therefore depends entirely on execution against
-*other people's* claims, which raises the strawman trap (banned pattern F8): where checkpoints are unreleased, the
-authors must re-implement, and every deflationary result will be answered with "your reimplementation is broken";
-where checkpoints are released, the sample is biased toward reproducible papers and the indictment does not
-generalize. There is also a fairness landmine inside the headline mechanism: "re-tuned threshold recovers lost
-zero-shot" is leakage unless the threshold is granted symmetrically — frozen and fine-tuned models must both get
-per-domain thresholds tuned on the same held-out calibration split, or the recovery is an artifact of asymmetric
-oracle access. Finally, the self-defeating branch: if the audit finds forgetting *does* exceed the noise floor, this
-"paper" is a confirmation note.
+**拒稿段落（Reject paragraph）。**
+测量跨模块边界的表征漂移已非常成熟（CKA, arXiv:1905.00414; stitching, arXiv:2106.07682; 漂移作为遗忘探针, Davari et al., arXiv:2203.13381），且 CA-SAM 已经通过交付的对齐层将 encoder-decoder 接口方法化 — 如 Stage 3 所承认，概念空间正在缩窄。变体后的交付成果（“漂移以提前期和决策价值*预测*退化”）面临着一个它尚未证明能够击败的基线：**每隔 k 步直接在约 50 张图像的探针集上评估 zero-shot 行为**，这以与计算漂移统计量自身相当的成本直接测量了真正关心的目标量。该代理要有价值，必须展现出相对于直接测量自身验证目标的真正提前期，击败平凡协变量（步数和训练损失可以“预测”任何单调退化），并在留出的*配方*（而非仅仅是随机种子）间实现迁移 — 这需要进行多运行群体（population-of-runs）研究。而杀死它的非对称性在于：**零结果毫无价值。** 若漂移未能击败步数或直接探针，文献中没有任何内容得到修正 — 因为此前无人声称它能做到。这篇论文只有在极小概率的分支上才有收益；评审标准的 ROI 规则（收益 × 可证伪性 / 算力）将此排在及格线之下，尽管该研究在技术上是可运行的。
 
-**Load-bearing assumption.** That the noise-floor envelope (seed × prompt-sampling × threshold × split variance) can
-be computed under the *published* protocols faithfully enough that authors of audited papers cannot dismiss it, and
-that enough flagship checkpoints (MedSAM, SAM-Med2D at minimum) are public to anchor the audit in re-evaluations
-rather than re-implementations.
+**承重假设（Load-bearing assumption）。** 内部漂移的发生*早于*低成本可测量的行为改变（具有可用提前期的表征先兆），且先验选定的单一漂移统计量能够在不同配方间泛化，无需在数十种 CKA/层/token 变体中进行分叉路径选择。
 
-**Confounder.** (a) Asymmetric threshold tuning (the leakage above). (b) Protocol drift between the audited papers'
-evaluation code and the audit's re-implementation. (c) Plasticity measurement itself: "task-2 gain is tiny" depends
-on the same gain-matching conventions that P065/P031 struggle with.
+**混淆项（Confounder）。** 单调衰减的平凡性：在典型的微调运行中，zero-shot 单调衰减，因此*任何*单调统计量（包括物理墙上时钟）都能“预测”后续下降。超出步数和训练损失的增量预测价值是唯一被认可的读数，而该提案中缺乏此项。
 
-**Missing baseline.** The frozen model run under *identical* variance sources (same seeds, same prompt draws, same
-splits) as the fine-tuned ones — the envelope must be measured, not assumed; a Biderman-style gain-vs-retention
-regression across the P065 checkpoint grid to show the coupling holds in this regime (confirmatory framing, as
-Stage 3 already mandated); and an explicit list, fixed in advance, of which published deltas are being tested against
-which envelope.
+**缺失基线（Missing baseline）。** 直接稀疏行为探测（几乎无法击败的基线）；步数和训练损失预测器；跨配方留出验证；每次预测的成本核算。
 
-**Experiment-can-silence?** **YES — and cheaply, which is why it lives.** Eval-only: released checkpoints re-run under
-the published protocols with symmetric threshold tuning; noise-floor envelope from frozen-SAM variance decomposition;
-published forgetting deltas plotted against the envelope. Every outcome is informative: deltas inside the envelope
-deflate a subfield; deltas outside it license the entire Forget thread (P065, P177, P031) with the noise floor
-pre-computed. That two-sided payoff is exactly what the rubric protects.
+**实验能否使其闭嘴？** 原理上能 — 一项约 40 次运行的群体研究（数据集 × 配方 × 随机种子），其中预注册的漂移统计量在提前期和早停决策价值上击败步数、训练损失和直接探针，并在留出配方上得到验证。但我判定能够使其闭嘴的分支概率极低，且零结果分支毫无价值；根据 ROI 淘汰规则，即便实验在技术上存在，这种组合也是不合格的。
 
-**Verdict: WEAK ACCEPT — and it must run FIRST**, as Stage 3 ordered: it is the gatekeeper that decides whether
-P065/P177 are measuring signal. Obligations: symmetric threshold protocol, released-checkpoints-only for any named
-indictment, pre-registered target list, confirmatory (not discovery) framing of the Biderman coupling.
+**裁决：REJECT。** 处置：漂移统计量作为记录在 P065/P177 训练网格内的一个*协变量*存活（免费记录，偶尔具有诊断意义）。若顺便在那里展现出惊人的提前期，Stage 5 可在预注册群体研究的前提下复活该预测论文。它自身不能占据 Top-50 名额。请注意，释放出的预算还解决了项目组合的内部矛盾：P177 的拼接控制兼具测试 A1-108 “接口容忍度”故事的功能，因此该拒稿不会带来任何科学损失。
 
 ---
 
-## 9. P044 — S-044 + A1-034 (mutated): physics-aware preprocessing vs PEFT falsifier
+## 8. P082 — C1-082 + S-183：阈值伪影 + 低可塑性守门人
 
-**Reject paragraph.**
-The CT half of the original idea is dead — windowing is standard practice already quantified inside SAM2-CT pipelines
-(SAMCT; the 2026 bone-CT study reporting ~30% from windowing alone), which Stage 3 acknowledged by killing A1-032 —
-and RobustSAM (arXiv:2406.09627) explicitly argues learned degradation-invariant modules beat restoration
-preprocessing, so the field has a published answer pointing the other way. What survives is one number: does
-despeckling recover ≥50% of the LoRA gain on ultrasound? Three attacks. First, the strawman risk: Gu et al. showed
-decoder-only fine-tuning is insufficient, so beating *decoder*-LoRA is beating a known-weak arm; the comparison must
-be against encoder+decoder LoRA or reviewers will call it rigged (F8). Second, the ground-truth problem: ultrasound
-GT boundaries were drawn by sonographers *on speckled images*; despeckling shifts apparent boundaries, so part of any
-"gain" (or loss) is annotation-convention artifact, and the authors' own risk note ("despeckling may erase true
-boundaries") concedes it. Third, significance: even a clean positive changes little practice — despeckling and LoRA
-are both cheap, practitioners will do both, and "preprocess before you fine-tune" is a workshop tip, not a finding.
+**拒稿段落（Reject paragraph）。**
+学习-遗忘耦合已被量化（Biderman et al., arXiv:2405.09673：学得越少，忘得越少；Soutif et al. 针对 ViT），因此概念引擎是借用来的，且阈值/工作点陷阱是 Metrics Reloaded 的既定常识 — 业内人士对这两半都心知肚明。因此该审计的说服力完全取决于对*他人*主张的执行，这引发了稻草人陷阱（违禁模式 F8）：在 checkpoint 未公开的地方，作者必须自行复现，每个挤水分的结果都将招致“你们的复现存在缺陷”的反驳；在 checkpoint 公开的地方，样本偏向于可复现的论文，指控无法泛化。在头条机制内部还存在一个公平性地雷：“重新调优阈值可恢复失去的 zero-shot”属于数据泄漏，除非该阈值是对称赋予的 — 冻结模型和微调模型都必须在相同的留出校准集上获得逐域阈值调优，否则该恢复只是不对称预言机权限带来的伪影。最后是自取灭亡的分支：若审计发现遗忘*确实*超出了噪声底线，这篇“论文”就变成了一篇确认性简报。
 
-**Load-bearing assumption.** That the despeckle-vs-adaptation comparison is well-posed at all — i.e., that GT masks
-define the same task on raw and despeckled inputs, and that NLM strength can be set without touching test data.
+**承重假设（Load-bearing assumption）。** 噪声底线包络（随机种子 × 提示采样 × 阈值 × 数据划分方差）可以在*已发表*协议下被足够忠实地计算出来，以至于被审计论文的作者无法反驳，且有足够的旗舰 checkpoint（至少 MedSAM, SAM-Med2D）是公开的，使审计锚定在重新评估而非重新实现上。
 
-**Confounder.** (a) Annotation-convention shift under despeckling (the boundary-band problem). (b) NLM/window
-hyperparameters tuned where? Test-set leakage manufactures the headline number. (c) Prompt-type interaction: box
-prompts partially shield SAM from speckle; point prompts do not — a single-protocol result may not transfer.
-(d) Dataset idiosyncrasy across the three ultrasound sets.
+**混淆项（Confounder）。** (a) 非对称阈值调优（上述泄漏）。(b) 被审计论文评估代码与审计复现之间的协议漂移。(c) 可塑性测量本身：“task-2 增益微小”依赖于 P065/P031 所面临的相同增益匹配惯例。
 
-**Missing baseline.** Encoder+decoder LoRA (the honest PEFT arm); the **combination arm** (despeckle + LoRA) — if
-effects are additive the "preprocess *vs* PEFT" framing collapses into "preprocessing is complementary," which changes
-the story; boundary-band-excluded metrics (inner-core Dice + trimap analysis) to control the annotation artifact;
-per-arm preprocessing-parameter tuning on training splits only; a test-time-augmentation control at matched inference
-cost.
+**缺失基线（Missing baseline）。** 在与微调模型*相同*的方差来源（相同随机种子、相同提示抽取、相同划分）下运行的冻结模型 — 包络必须通过测量得到而非假设；在 P065 checkpoint 网格上进行 Biderman 式增益 vs 保留回归以展示耦合在该体系下成立（如 Stage 3 已经要求的确认性框架）；以及预先固定的被测已发表 delta 对应具体包络的明确清单。
 
-**Experiment-can-silence?** **YES — this is, by construction, the cheapest falsifier in the set.** The Stage-3 killer
-experiment, hardened: 3 ultrasound sets (BUSI, TN3K, CAMUS) + 2 CT organ sets; {raw, despeckled, windowed} ×
-{frozen, decoder-LoRA, enc+dec-LoRA, despeckle+enc+dec-LoRA}; identical box *and* point protocols; preprocessing
-parameters tuned on train splits; boundary-band-excluded metrics alongside standard Dice; pre-registered claim:
-preprocessing recovers ≥50% of the enc+dec-LoRA gain on ≥2 of 3 ultrasound sets. Both outcomes reportable (the
-failure mode — despeckling erases diagnostic boundaries — is itself a finding against the preprocessing reflex).
-Days of compute, not weeks.
+**实验能否使其闭嘴？能（YES） — 且成本极低，这也是它存活的原因。** 仅限评估：在已发表协议下重新运行已公开的 checkpoint 并进行对称阈值调优；从冻结 SAM 方差分解中计算噪声底线包络；将已发表的遗忘 delta 绘制在包络图上。每种结果都包含信息：落在包络内的 delta 挤压了一个子领域的泡沫；落在包络外的 delta 在预先计算好噪声底线的前提下为整个 Forget 线程（P065, P177, P031）提供了正当性。这种双向收益正是评审标准所保护的。
 
-**Verdict: WEAK ACCEPT** — scoped honestly as a compact falsifier paper. The significance attack stands as a ceiling:
-this is a strong short paper or workshop headliner, not a main-track flagship; Stage 5 should budget it accordingly
-and must not let it absorb resources from P065/P082.
+**裁决：WEAK ACCEPT — 且必须最先运行**，正如 Stage 3 所指示：它是决定 P065/P177 是否在测量真实信号的守门人。义务：对称阈值协议、针对具名指控仅使用已发布的 checkpoint、预注册目标清单、对 Biderman 耦合采用确认性（而非发现性）表述。
 
 ---
 
-## Cross-paper structural attacks (apply to all WEAK ACCEPTs; supervisor must answer)
+## 9. P044 — S-044 + A1-034 (变体)：感知物理的预处理 vs PEFT 证伪实验
 
-1. **Shared-grid poisoning.** P065, P177, P031, P082 all reuse one fine-tuning checkpoint grid. Efficient — but a
-   single recipe flaw (e.g., IoU-loss off, min-loss-mask backprop, unswept LR) contaminates four papers at once, and
-   hostile reviewers of any one paper inherit every recipe attack. The grid recipe must be pre-registered once,
-   reviewed against Gu et al.'s protocol, and frozen before any paper's analysis begins.
-2. **"Matched gain" is a single point of failure.** P065's ordering, P031's matched-mIoU calibration comparison, and
-   P082's plasticity measurement all lean on one under-specified matching convention. Define it once (metric,
-   tolerance, early-stop rule), pre-register it, and use it verbatim in all three — otherwise each paper's reviewers
-   will re-litigate it independently.
-3. **Internal contradiction resolved by P108's rejection.** P177 assumes module interchangeability; A1-108 asserts
-   interface drift breaks it. With P108 rejected, P177's stitching controls become the portfolio's only test of the
-   interface story — they are therefore mandatory, not optional (already reflected in P177's obligations).
-4. **Execution order.** P082 first (gatekeeper; may deflate the thread). Then the shared grid, then P065 → P031 →
-   P177 (eval-reuse chain). P107 is independent (constructive slot). P052 and P044 are independent medical-side
-   falsifiers. P110's panel ships inside P065/P031 appendices.
-5. **Citation debt.** All attack citations above inherit Stage 3's verification status; `[M]`-tagged classics in
-   those files (Ramasesh, Kumar, WiSE-FT, GEM, He, Zoph, Transfusion, CKA, stitching) must be re-verified before any
-   draft quotes them.
+**拒稿段落（Reject paragraph）。**
+原始设想中的 CT 部分已经死亡 — 窗宽窗位是标准实践，且在 SAM2-CT pipeline 中已得到量化（SAMCT；2026 年骨骼 CT 研究报告仅窗宽窗位就带来 ~30% 的提升），Stage 3 通过杀死 A1-032 承认了这一点 — 且 RobustSAM (arXiv:2406.09627) 明确指出学习得到的退化不变模块优于图像恢复预处理，因此该领域已有一个指向相反方向的已发表答案。存活下来的只是一个数字：在超声上去斑能否恢复 LoRA 增益的 ≥50%？面临三重攻击。首先，稻草人风险：Gu et al. 表明仅 decoder 微调是不足的，因此击败 *decoder*-LoRA 是在击败已知较弱的分支；对比必须针对 encoder+decoder LoRA，否则审稿人会认为实验被操纵了（F8）。其次，真实真值问题：超声 GT 边界是由超声技师*在带有斑斑点点的图像上*绘制的；去斑会改变表观边界，因此任何“增益”（或损失）的一部分都属于标注惯例伪影，作者自身的风险备忘（“去斑可能抹除真实边界”）已承认这一点。第三，重要性：即使是干净的正结果也改变不了多少实践 — 去斑和 LoRA 都很廉价，从业者会两者兼顾，“在微调前先做预处理”只是 workshop 技巧，而非科学发现。
 
-## Verdict table (final, Set B)
+**承重假设（Load-bearing assumption）。** 去斑 vs 自适应的对比在根本上是定义良好的 — 即 GT mask 在原始输入和去斑输入上定义的是相同的任务，且 NLM 强度可以在不触及测试数据的情况下完成设定。
 
-| Paper | Verdict | One-line disposition |
-|-------|---------|----------------------|
-| P065 | WEAK ACCEPT | Lives in the mixed-prompt column + oracle-gap decomposition; else it is SAM-Med2D's table |
-| P177 | WEAK ACCEPT | Lives only with stitching controls + α-interpolation; freeze ablation alone stays dead |
-| P107 | WEAK ACCEPT | Lives only with matched budgets, depth stratification, decoupled metrics, loss-reweight arm |
-| P031 | WEAK ACCEPT | Lives only in the {IoU-loss on, zero-shot, recalibrated} cell with decision damage |
-| P052 | WEAK ACCEPT | Re-scoped to the stuff-ness × init interaction; "objectness prior" demoted to interpretation |
-| P110 | **REJECT** | Scalar validity is not empirical; panel folds into P065/P031 appendices |
-| P108 | **REJECT** | Direct probing dominates; worthless null; drift logged as a free covariate in the grid |
-| P082 | WEAK ACCEPT | Gatekeeper — runs first, symmetric thresholds, released checkpoints only |
-| P044 | WEAK ACCEPT | Compact falsifier vs enc+dec-LoRA with boundary-band controls; workshop-scale ceiling |
+**混淆项（Confounder）。** (a) 去斑下的标注惯例偏移（边界带问题）。(b) NLM/窗宽超参数在哪里调优？测试集泄漏会人为制造出头条数字。(c) 提示类型交互：框提示部分屏蔽了 SAM 免受斑点干扰；点提示则不然 — 单一协议的结果可能无法迁移。(d) 跨三个超声数据集的数据特异性。
+
+**缺失基线（Missing baseline）。** Encoder+decoder LoRA（诚实的 PEFT 分支）；**组合分支**（去斑 + LoRA）— 若效应是可加的，“预处理 *vs* PEFT”框架就坍缩为“预处理是互补的”，从而改变了论调；排除边界带的指标（内核心 Dice + 三值图分析）以控制标注伪影；仅在训练集划分上进行逐分支预处理参数调优；匹配推理成本下的测试期数据增强对照。
+
+**实验能否使其闭嘴？能（YES） — 按照设计，这是本集合中最廉价的证伪实验。** 经强化的 Stage-3 杀手级实验：3 个超声数据集（BUSI, TN3K, CAMUS）+ 2 个 CT 器官数据集；{原始, 去斑, 窗宽} × {冻结, decoder-LoRA, enc+dec-LoRA, 去斑+enc+dec-LoRA}；完全相同的框*和*点协议；预处理参数在训练划分上调优；在标准 Dice 旁附带排除边界带的指标；预注册主张：预处理在 3 个超声数据集中的 ≥2 个上恢复 enc+dec-LoRA 增益的 ≥50%。两种结局均具备可报告性（失败模式 — 去斑抹除了诊断边界 — 本身就是反对盲目预处理直觉的发现）。只需数天的算力，而非数周。
+
+**裁决：WEAK ACCEPT** — 诚实地界定为一篇紧凑的证伪论文。重要性攻击构成其上限：这是一篇扎实的短文（short paper）或 workshop 头条文章，而非主会旗舰论文；Stage 5 应据此规划预算，绝不能让其吸走 P065/P082 的资源。
+
+---
+
+## 跨论文结构性攻击（适用于所有 WEAK ACCEPT；导师必须回应）
+
+1. **共享网格中毒。** P065, P177, P031, P082 全部复用同一个微调 checkpoint 网格。这很高效 — 但单一的配方缺陷（例如 IoU 损失关闭、最小损失 mask 反向传播、未经遍历的学习率）会同时污染四篇论文，且针对任何一篇论文的敌意审稿人都会继承全部配方攻击。网格配方必须预先统一注册一次，对照 Gu et al. 的协议进行审查，并在任何论文开始分析前予以冻结。
+2. **“匹配增益”是单点故障。** P065 的排序、P031 的匹配 mIoU 校准对比、以及 P082 的可塑性测量全部依赖于一个欠规范的匹配惯例。请统一定义一次（指标、容差、早停规则），进行预注册，并在三篇论文中逐字一致使用 — 否则每篇论文的审稿人都将独立对其发难。
+3. **P108 被拒后解决了内部矛盾。** P177 假设模块可互换；A1-108 断言接口漂移打破了互换性。随着 P108 被拒，P177 的拼接控制成为该项目组合对接口故事的唯一检验 — 因此它们是强制性的，而非可选的（已体现在 P177 的义务中）。
+4. **执行顺序。** P082 最先执行（守门人；可能会挤出整个线程的水分）。然后是共享网格，随后是 P065 → P031 → P177（评估复用链）。P107 是独立的（建设性名额）。P052 和 P044 是独立的医学端证伪实验。P110 的面板作为 P065/P031 的附录交付。
+5. **引文债务。** 上述所有攻击引文均继承 Stage 3 的核实状态；这些文件中带有 `[M]` 标记的经典论文（Ramasesh, Kumar, WiSE-FT, GEM, He, Zoph, Transfusion, CKA, stitching）在任何草稿引用之前必须重新核验。
+
+## 裁决总表（最终，集合 B）
+
+| 论文编号 | 裁决 | 一句话处置说明 |
+|---|---|---|
+| P065 | WEAK ACCEPT | 核心在于混合提示列 + oracle 差距分解；否则它只是 SAM-Med2D 的表格 |
+| P177 | WEAK ACCEPT | 仅在带有拼接控制 + α 插值下存活；单独的冻结消融维持死亡 |
+| P107 | WEAK ACCEPT | 仅在匹配预算、深度分层、解耦指标和损失重加权分支下存活 |
+| P031 | WEAK ACCEPT | 仅在带有决策损害的 {IoU 损失开启, zero-shot, 重新校准} 单元格中存活 |
+| P052 | WEAK ACCEPT | 重新划定范围为 stuff 属性 × 初始化的交互作用；“物体性先验”降级为解释 |
+| P110 | **REJECT** | 标量有效性非实证问题；面板并入 P065/P031 附录 |
+| P108 | **REJECT** | 直接探测占优；零结果无价值；漂移作为网格中免费记录的协变量 |
+| P082 | WEAK ACCEPT | 守门人 — 最先运行，对称阈值，仅使用已发布的 checkpoint |
+| P044 | WEAK ACCEPT | 对比 enc+dec-LoRA 带有边界带控制的紧凑证伪实验；workshop 级别上限 |

@@ -1,111 +1,101 @@
-# Idea_03 — The Grid, the Matching, and the Gate
+# Idea_03 — 实验网格、梯度匹配与门禁判定（The Grid, the Matching, and the Gate）
 
-No new model. The "architecture" is the experimental design: five training streams, one matching
-convention, and a decision rule that has to be committed before any of it runs.
+本项目不涉及新模型的构建。所谓的"架构"指的是实验设计体系：五个训练数据流、一种匹配约定，以及一套必须在任何训练运行前提交锁定的决策规则。
 
 ---
 
-## 1. The training pipeline
+## 1. 训练流水线
 
 ```mermaid
 flowchart LR
-    MIX["llava_v1_5_mix665k"] --> STRIP["strip the text-only<br/>ShareGPT slice"]
-    STRIP --> BASE["text-stripped multimodal mix"]
-    BASE --> MATCH["token-budget re-matching<br/>all arms on one total"]
+    MIX["llava_v1_5_mix665k"] --> STRIP["剥离纯文本<br/>ShareGPT 分片"]
+    STRIP --> BASE["剥离文本后的多模态混合数据"]
+    BASE --> MATCH["Token 预算重新匹配<br/>所有臂对齐到同一总量"]
 
-    C4[("C4 / curated text")] --> ARM{"arm"}
-    ARM -->|A0| R0["(no rehearsal stream)"]
-    ARM -->|A1| R1["curated text"]
-    ARM -->|A2| R2["random web docs"]
-    ARM -->|A3| R3["same docs, tokens permuted<br/>within each document"]
-    ARM -->|A4| R4["one document, repeated"]
+    C4[("C4 / 精选文本")] --> ARM{"实验臂"}
+    ARM -->|A0| R0["(无重放数据流)"]
+    ARM -->|A1| R1["精心挑选的文本"]
+    ARM -->|A2| R2["随机网络文档"]
+    ARM -->|A3| R3["相同文档，但在每个<br/>文档内部打乱 token 顺序"]
+    ARM -->|A4| R4["单个文档，重复使用"]
 
-    MATCH --> TRAIN["LLaVA-1.5-7B fine-tune<br/>1 text batch per 9 multimodal"]
+    MATCH --> TRAIN["LLaVA-1.5-7B 微调<br/>每 9 个多模态批次穿插 1 个文本批次"]
     R0 --> TRAIN
     R1 --> TRAIN
     R2 --> TRAIN
     R3 --> TRAIN
     R4 --> TRAIN
 
-    TRAIN --> THETA["theta_a"] --> EVAL["stratified eval<br/>fluency / knowledge / reasoning /<br/>instruction + VL sanity"]
+    TRAIN --> THETA["theta_a"] --> EVAL["分层评测<br/>流畅度 / 知识储备 / 推理能力 /<br/>指令遵循 + 视觉语言健全性"]
 ```
 
-`A0` carries no rehearsal stream, so it draws **more** multimodal tokens to reach the same total.
-Without that re-match, `A0` is simply the shortest run and every arm difference is contaminated by
-training length.
+`A0` 不包含重放数据流，因此需要抽取**更多**的多模态 token 来达到相同的总 token 预算。若缺少该重新匹配步骤，`A0` 仅仅是训练步数最短的实验臂，每个臂之间的差异都将被训练长度的混淆因素所污染。
 
 ---
 
-## 2. What each arm destroys
+## 2. 各实验臂摧毁的要素
 
 ```mermaid
 flowchart TD
-    A1["A1 curated<br/>content + syntax + diversity"] -->|"remove curation"| A2["A2 random web<br/>content + syntax + diversity"]
-    A2 -->|"permute tokens"| A3["A3 shuffled<br/>keeps unigram stats + length<br/>destroys syntax and content"]
-    A2 -->|"collapse to one doc"| A4["A4 single doc<br/>keeps content + syntax<br/>destroys diversity"]
-    A1 --- A0["A0 none<br/>forgetting floor"]
+    A1["A1 精选数据<br/>语义内容 + 句法结构 + 多样性"] -->|"移除精选机制"| A2["A2 随机网络数据<br/>语义内容 + 句法结构 + 多样性"]
+    A2 -->|"置乱 token 顺序"| A3["A3 打乱数据<br/>保留一元词频统计 + 长度<br/>摧毁句法结构与语义内容"]
+    A2 -->|"收缩为单文档"| A4["A4 单文档重复<br/>保留语义内容 + 句法结构<br/>摧毁多样性"]
+    A1 --- A0["A0 无重放<br/>遗忘基线底线"]
 ```
 
-`A3` vs `A2` isolates syntax from lexical statistics. `A4` vs `A2` isolates diversity from content.
-These two contrasts are the contribution; `A2` alone would produce an ambiguous result.
+`A3` vs `A2` 将句法结构与词汇统计特性隔离开来。`A4` vs `A2` 将多样性与语义内容隔离开来。这两个对比构成了核心贡献；仅凭 `A2` 只会产出模棱两可的结果。
 
 ---
 
-## 3. Gradient matching
+## 3. 梯度匹配方案
 
 ```mermaid
 flowchart LR
-    T["text batch"] --> G["per-block gradient norms<br/>on the language tower"]
-    REF["reference arm norms"] --> G
-    G --> P["PRIMARY: per-layer<br/>lambda_l = ||g_ref_l|| / ||g_txt_l||"]
-    G --> S["SECONDARY: global norm<br/>one lambda for the whole tower"]
-    P --> LR["log effective-LR multiplier<br/>stability risk, not a free operation"]
-    S --> SENS["E3 sensitivity analysis"]
+    T["文本批次"] --> G["语言塔上的<br/>逐 block 梯度范数"]
+    REF["参考实验臂范数"] --> G
+    G --> P["主要协议：逐层匹配<br/>lambda_l = ||g_ref_l|| / ||g_txt_l||"]
+    G --> S["次要协议：全局范数匹配<br/>整个语言塔共用一个 lambda 标量"]
+    P --> LR["记录有效学习率（LR）乘数<br/>属于稳定性风险，而非免费操作"]
+    S --> SENS["E3 敏感度分析"]
 ```
 
-Per-layer is primary because modality-specific gradients differ by orders of magnitude across layers
-(`arXiv:2606.17296`), so a global scalar can report a clean match while individual blocks remain badly
-mismatched. Naming the primary in advance is what stops "the conventions diverged" from being a
-result in every possible world.
+逐层匹配被设定为主要协议，是因为模态特定的梯度在不同层之间可相差数个数量级（`arXiv:2606.17296`），导致全局标量即便报告完美匹配，各个独立 block 依然严重失配。预先指定主要协议可以避免在所有可能的世界中将"匹配约定出现分歧"都当作一项成果。
 
 ---
 
-## 4. Gates and the decision rule
+## 4. 门禁与决策规则
 
 ```mermaid
 flowchart TD
-    E0["E0 reproduce published recipe<br/>measure base scores"] -- fail --> K0["stop: harness untrustworthy"]
-    E0 --> DEN{"per-stratum denominator adequate?<br/>headroom >= 0.10, snr >= 3"}
-    DEN -- no --> REP["replace the stratum NOW,<br/>before any arm runs"]
-    DEN -- yes --> FREEZE["FREEZE preregistration:<br/>MDE, strata, primary convention, eval YAMLs"]
+    E0["E0 复现已发表配方<br/>测量基底模型得分"] -- 失败 --> K0["终止：测试工具不可信"]
+    E0 --> DEN{"各分层分母是否充分有效？<br/>headroom >= 0.10, snr >= 3"}
+    DEN -- 否 --> REP["立即替换该分层，<br/>必须在任何实验臂运行前完成"]
+    DEN -- 是 --> FREEZE["冻结预注册文件：<br/>MDE、各分层、主要协议、评测 YAML"]
     REP --> FREEZE
 
-    FREEZE --> E0B["E0b: is A3 degenerate?"]
-    E0B -- degenerate --> DROP["drop A3; A4 still separates diversity"]
-    E0B -- ok --> E1
-    DROP --> E1["E1 power gate<br/>A0/A1/A2 x 2 seeds"]
+    FREEZE --> E0B["E0b: A3 是否出现退化？"]
+    E0B -- 退化 --> DROP["放弃 A3；A4 依然能隔离多样性"]
+    E0B -- 正常 --> E1
+    DROP --> E1["E1 检验效能门禁<br/>A0/A1/A2 x 2 个种子"]
 
-    E1 --> P0{"Abs(A1) - Abs(A0) > max(2 sd, MDE)<br/>on knowledge AND fluency?"}
-    P0 -- no --> STOP["STOP at ~800 A100-h.<br/>Publish the power analysis:<br/>it bounds how large forgetting really is."]
-    P0 -- yes --> E2["E2 full grid, A0-A4 x 3 seeds"]
+    E1 --> P0{"知识与流畅度上的<br/>Abs(A1) - Abs(A0) 是否 > max(2 sd, MDE)？"}
+    P0 -- 否 --> STOP["在 ~800 A100-h 处终止。<br/>发表检验效能分析：<br/>它界定了遗忘现象的真实边界。"]
+    P0 -- 是 --> E2["E2 完整实验网格，A0-A4 x 3 个种子"]
 
-    E2 --> R{"decompose per capability"}
-    R -->|"balance >= 0.8 x total on >=3 of 4"| P1["P1 MECHANISM<br/>curation budgets are misdirected"]
-    R -->|"Ret(A2) <= Ret(A0) everywhere"| P2["P2 CONTENT<br/>first controlled refutation of<br/>pseudo-rehearsal in this regime"]
-    R -->|"knowledge content>0.5, fluency<0.2"| P3["P3 STRATIFIED<br/>fund E4 dosing sweep"]
+    E2 --> R{"按各项能力进行因果分解"}
+    R -->|"在 4 项能力的 >=3 项上 balance >= 0.8 x total"| P1["P1 机制主张<br/>精选预算被误导了"]
+    R -->|"在所有维度上 Ret(A2) <= Ret(A0)"| P2["P2 内容承重主张<br/>在该体系下对伪重放的首次受控证伪"]
+    R -->|"知识 content>0.5 且 流畅度<0.2"| P3["P3 能力分层主张<br/>资助 E4 配比扫描实验"]
 ```
 
 ---
 
-## 5. The effect decomposition
+## 5. 效应分解体系
 
 ```
-total-effect(c)   = Ret(c, A1) - Ret(c, A0)      what rehearsal buys
-balance-effect(c) = Ret(c, A2) - Ret(c, A0)      what ANY text-shaped gradient buys
-content-effect(c) = Ret(c, A1) - Ret(c, A2)      what the curation buys
+total-effect(c)   = Ret(c, A1) - Ret(c, A0)      重放所带来的总收益
+balance-effect(c) = Ret(c, A2) - Ret(c, A0)      任何具备文本形态的梯度所带来的收益
+content-effect(c) = Ret(c, A1) - Ret(c, A2)      精选机制所带来的收益
 ```
 
-Reported in absolute score points (co-primary) as well as ratios, with bootstrap CIs over seeds. The
-shares `balance/total` and `content/total` are **not computed** for any capability whose total effect
-falls below the declared MDE: dividing by a gap the power analysis just called indistinguishable from
-zero produces a share that swings on seed noise alone.
+以绝对得分点（并列主要指标）和比率形式共同报告，附带跨随机种子的 bootstrap 置信区间。对于总效应低于声明 MDE 的任何能力，**不计算** `balance/total` 和 `content/total` 的份额比例：对效能分析判定为与零无显著差异的差距进行除法运算，产出的份额只会随着随机种子噪声大幅摆动。

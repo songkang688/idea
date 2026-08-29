@@ -1,140 +1,90 @@
-# Idea_01 — Reviewer #2 Attacks and Responses
+# Idea_01 — Reviewer #2 攻击点与回应（Reviewer #2 Attacks and Responses）
 
-Compiled from `stage4_cluster_B_attacks.md` (Reviewer #2 pass) and `stage6_attack_brief.md`
-(skeptical PI pass), with the Stage-6 mandatory conditions folded into the design rather than
-appended as promises.
+汇总自 `stage4_cluster_B_attacks.md`（Reviewer #2 评审轮次）与 `stage6_attack_brief.md`（持怀疑态度的 PI 评审轮次），并将 Stage 6 的强制性要求直接融入方案设计中，而非作为事后承诺予以追加。
 
-**The standard applied.** The question is never "can we argue back?" It is **"what experiment makes
-the objection unanswerable?"** Attacks with no such experiment are recorded as accepted risk, not
-defended away.
+**执行标准。** 核心问题绝不是"我们能否口头反驳？"，而是"**什么样的实验能让该反对意见变得无法反驳？**"对于不存在此类实验的攻击点，均作为已知风险予以记录，而非强行辩解。
 
 ---
 
-## A1 — "Post-SAM3, auditing PFENet/HSNet/BAM indicts a museum" · severity HIGH
+## A1 — "Post-SAM3, auditing PFENet/HSNet/BAM indicts a museum" · 严重程度 HIGH
 
-`EVIDENCE` SAM3 (Nov 2025, `arXiv:2511.16719`) does exemplar-prompted concept segmentation, and an
-image exemplar *is* a support. A panel built around 2020–2022 specialists answers a question nobody
-is asking in 2026.
+`EVIDENCE` SAM3（2025 年 11 月，`arXiv:2511.16719`）实现了基于样例提示（exemplar-prompted）的概念分割，而图像样例**本质上就是** support。围绕 2020–2022 年专有模型构建的评测面板回答的是一个在 2026 年无人关心的问题。
 
-**Response — reframe, and pay for it with one checkpoint.** Add a SAM3-exemplar arm and make
-foundation-era retention the **co-headline**; specialists become the historical control that shows
-how the property changed across generations. Cost: one HF-gated checkpoint, inside the existing
-budget. Day-1 task is requesting access.
+**回应方案 —— 重新定调，并用一个 checkpoint 的成本解决。** 增加一个 SAM3-exemplar 臂，并将基础模型时代的保持率作为**并列头条结论**；专有方法转为历史对照组，用于展示该特性跨代际的变化情况。成本：一个需要 HF 审批的 checkpoint，在现有预算范围之内。第 1 天的任务即为申请访问权限。
 
-This does not kill the audit — the validity methodology and the foundation-matcher numbers stand
-either way — but the emphasis was wrong and it was cheap to fix.
+这并没有摧毁审计本身的价值 —— 有效性方法论以及基于基础模型的匹配器数字在两种情况下都成立 —— 但此前的重点确实存在偏差，而这一修复成本极低。
 
 ---
 
-## A2 — "Leg (b) is hostage to the floor you grant" · severity HIGH
+## A2 — "Leg (b) is hostage to the floor you grant" · 严重程度 HIGH
 
-SAM's automatic mask generator is a very strong class-agnostic segmenter. A weak classical saliency
-floor could flip leg (b)'s verdict on identical data, so "few-shot learning is fully accounted for
-by the prior" would be an artifact of which prior we granted.
+SAM 的自动掩码生成器（AMG）是一个非常强大的类别无关分割器。而较弱的传统显著性下界可能会在完全相同的数据上彻底翻转检验分支 (b) 的判定结果，因此"少样本学习完全由先验所解释"可能会沦为我们人为选择哪种先验的假象产物。
 
-**Response — refuse to pick.** Both floors are pre-registered and **every floor-dependent claim is
-reported under both, never pooled** (`src/support_audit/stats.py::StratumResult.fails_floor`). A
-conclusion that survives the strong Floor-A is unattackable. One that holds only under the weak
-Floor-B is reported as exactly that, in those words. The attack is answered by making the
-dependence a published axis instead of a hidden choice.
+**回应方案 —— 拒绝二选一。** 两种下界均纳入预注册，并且**每一个依赖下界的主张均在两种下界下同时报告，绝不合并**（`src/support_audit/stats.py::StratumResult.fails_floor`）。能够在强大的 Floor-A 检验下存活的结论是无可辩驳的。仅在较弱的 Floor-B 下成立的结论则在论文中用精确的字眼如实表述。通过将这种依赖性转化为公开发布的分析维度而非隐藏的选择，化解了该攻击。
 
 ---
 
-## A3 — "Wrong-class supports are not exchangeable across queries" · severity MEDIUM
+## A3 — "Wrong-class supports are not exchangeable across queries" · 严重程度 MEDIUM
 
-Which classes are available as "wrong" correlates with query content through co-occurrence
-structure, and ±50% area matching is loose. Stratum differences could partly be sampling artifacts.
+哪些类别可以作为"错误"类别，会通过共现结构与 query 内容产生关联，并且 ±50% 的面积匹配较为宽松。分层之间的差异可能部分是由采样假象引起的。
 
-**Response — three concrete changes, all promoted from ablation into the main design.**
-1. **Fixed per-fold wrong-class pools**, shipped as static lists rather than regenerated from a seed
-   (`counterfactual.py::write_lists`). A seed plus a code version is not reproducible.
-2. **Near/far supercategory split** (2 near + 3 far per episode), with retention reported separately
-   for each. If near and far agree, the sampling worry is empirically dead.
-3. **Per-episode logging of area-matching relaxations**, so the reader can see how often the
-   tolerance had to be widened.
+**回应方案 —— 三项具体改进，全部从消融实验升级为主实验设计。**
+1. **固定的各 fold 错误类别池**，以静态文件列表形式分发，而非从随机种子重新生成（`counterfactual.py::write_lists`）。随机种子加代码版本不具备跨环境可复现性。
+2. **近大类 / 远大类超类拆分**（每个 episode 包含 2 个近类 + 3 个远类），针对每类分别报告保持率。若近类与远类结论一致，则该采样担忧在经验上被彻底消除。
+3. **逐 episode 记录面积匹配放宽日志**，以便读者查阅容差被迫放宽的频率。
 
 ---
 
-## A4 — "Retention is unstable and `τ` is an analyst degree of freedom" · severity MEDIUM
+## A4 — "Retention is unstable and `τ` is an analyst degree of freedom" · 严重程度 MEDIUM
 
-`R = a_wrong / a_corr` blows up when `a_corr` is small, and the episode filter threshold `τ` is
-chosen by us.
+当 `a_corr` 很小时，`R = a_wrong / a_corr` 会发散，且 episode 过滤阈值 `τ` 是由我们人为设定的。
 
-**Response.** `τ` is frozen at 0.2 in the pre-registration, and the **τ-sensitivity curve over
-{0.1, 0.2, 0.3} is published regardless of what it shows.** If the conclusion moves with `τ`, we
-say so in the abstract.
+**回应方案。** `τ` 在预注册中冻结为 0.2，并且**无论结果如何，均公开发布在 {0.1, 0.2, 0.3} 上的 τ-敏感度曲线。** 若结论随 `τ` 发生变动，我们在摘要中如实说明。
 
-`KNOWN FACT` A related instability was found and fixed while building the prototype: the Stage-5
-design aggregated per-episode ratios with a **median**, and the per-episode distribution turns out
-to be bimodal (a method either lands on the right object under a wrong support or it does not). In
-the harness run the fully support-driven control scored median retention 1.000 — identical to a
-support-blind method — while its ratio of means was 0.762 [0.651, 0.871]. The median would have
-made the killer experiment blind to the effect it exists to measure. Primary statistic is now the
-**ratio of means**; the median is retained as a secondary robust statistic and a large gap between
-them is flagged as a finding. See `proposal.md` §10.
+`KNOWN FACT` 在构建原型时发现并修复了一处相关的稳定性问题：Stage 5 的设计采用**中位数**汇总逐 episode 比值，而逐 episode 分布实际上是双峰的（在错误 support 下，方法要么落在正确物体上，要么完全落空）。在测试工具运行中，完全由 support 驱动的对照组的中位数保持率为 1.000 —— 与无视 support 的方法完全一样 —— 而其均值之比为 0.762 [0.651, 0.871]。中位数估计器会导致 killer 实验对其旨在测量的效应彻底失明。主要统计量现已变更为**均值之比（ratio of means）**；中位数保留为次要鲁棒统计量，两者之间的显著差距将作为一项发现予以标记报告。参见 `proposal.md` §10。
 
 ---
 
-## A5 — "Per-repo protocol differences make the panel incomparable" · severity MEDIUM
+## A5 — "Per-repo protocol differences make the panel incomparable" · 严重程度 MEDIUM
 
-Each repository has its own preprocessing, resizing and evaluation code.
+每个代码仓库都有其自有的预处理、尺寸调整和评测代码。
 
-**Response — turn it into the second headline.** We must re-run every checkpoint anyway, so we run
-**both** each repo's native evaluator and one shared evaluator, and publish the per-method
-discrepancy table (E5, ~0.5 A100-day). `EVIDENCE` An unrelated group has reported FSS shifts of up
-to 37 points from preprocessing-space mismatch (Open-V / X2). Two independent validity failures in
-one paper is a materially stronger submission than either alone.
+**回应方案 —— 将其转化为第二头条结论。** 反正我们必须重新运行每个 checkpoint，因此我们**同时**运行每个仓库的原生评测器和统一的共享评测器，并发布各方法的差异对比表（E5，~0.5 A100-day）。`EVIDENCE` 一个独立研究团队报告称，仓库间预处理空间的差异可导致 FSS 结果波动高达 37 个百分点（Open-V / X2）。在一篇论文中揭示两项独立的有效性失效，其成果分量显著高于孤立的单一结论。
 
-This is also why the adapters deliberately preserve per-repo preprocessing instead of unifying it
-(`src/support_audit/adapters.py`): unifying would destroy the measurement.
+这也解释了为什么适配器故意保留了各仓库的预处理逻辑而非将其统一（`src/support_audit/adapters.py`）：强行统一反而会破坏测量本身的真实性。
 
 ---
 
-## A6 — "Foreground bias is known — BAM, TBS, AENet" · severity MEDIUM (framing)
+## A6 — "Foreground bias is known — BAM, TBS, AENet" · 严重程度 MEDIUM (立意定调)
 
-**Response — the measurement/treatment distinction, stated once and hard.** Every cited work is a
-*treatment*: it proposes a fix and measures the fix on its own model. None reports the size of the
-support-independent share across a panel, against a null model, stratified by whether the benchmark
-even permits the prior to help. The mitigation literature is our **motivation section**, and its
-density is evidence the community believes the premise. The deliverable is an assay, a
-sensitivity-adjusted leaderboard, and a released split.
+**回应方案 —— 明确并坚持"测量 vs 疗法"的根本区别。** 所引用的每一篇文献都是一种*疗法（treatment）*：提出一种修复方案并在自研模型上测量该修复。没有一篇文献在评测面板上、对照零假设模型、按照基准本身是否允许先验生效进行分层来报告脱离 support 的独立精度份额。缓解偏差的文献构成了我们的**动机章节**，其研究密度恰恰证明社区坚信该前提。本项目交付的是一套诊断检验方法、排行榜重排结果以及公开数据集划分。
 
 ---
 
-## A7 — "The certification branch is a workshop note, not a paper" · severity OPEN
+## A7 — "The certification branch is a workshop note, not a paper" · 严重程度 OPEN
 
-If everything collapses appropriately (`R < 0.2` everywhere), we publish a certification: the
-field's validity confirmed by the first counterfactual audit run on it.
+若一切如理论预期般崩塌（各分层保持率均 `R < 0.2`），我们将发表正名认证：该领域的评测有效性通过了首次针对其开展的反事实审计的检验。
 
-**Response — none. This one is honestly unresolved.** Stage 5 asserted this branch is top-venue;
-the Stage-6 attack pass was unconvinced, and we side with the attacker. There is no experiment that
-settles a venue judgement.
+**回应方案 —— 无。此问题目前处于如实未解决状态。** Stage 5 主张该分支仍具备顶会价值；而 Stage 6 的攻击轮次对此并不信服，我们选择认同攻击方的观点。没有任何实验可以裁定评审发表偏好。
 
-What we do instead of arguing: **price it.** The certification is the weakest of the three outcome
-branches, it costs ~5 A100-days to find out which branch we are in, and the distractor-enriched
-split plus the pinned harness are artifacts that survive regardless. Recorded as an accepted risk
-in `proposal.md` §20, not defended away.
+我们采取的做法不是空洞争辩，而是**明确对其定价。** 正名认证是三个可能结果分支中最弱的一个，查明我们处于哪个分支需要耗费 ~5 A100-days，且富含干扰物的评测划分和锁定的测试平台依然是具有持久价值的成果。在 `proposal.md` §20 中将其记录为已知接受的风险，不做强行辩解。
 
 ---
 
-## Attacks we expect but consider already dead
+## 预期但已被完全化解的攻击
 
-| Attack | Why it does not land |
+| 攻击点 | 无法成立的原因 |
 |---|---|
-| "Your method is a hack / the architecture is unmotivated" | There is no architecture. The intervention is on the input. |
-| "Unfair comparison — extra parameters/data/compute" | Zero training, zero extra data, released checkpoints, published protocols. |
-| "Cherry-picked episodes" | Episode lists and wrong-support lists ship as static files, frozen before inference. |
-| "Not reproducible" | Public checkpoints + fixed lists + released split + SHA-256 manifest. Lowest reproducibility risk of the five Stage-6 candidates. |
-| "You cannot reproduce the published numbers" | The primary statistic is a within-method ratio and does not require it. Divergences are reported as E5 results. |
+| "Your method is a hack / the architecture is unmotivated" | 本项目没有任何模型架构。干预直接施加于输入端。 |
+| "Unfair comparison — extra parameters/data/compute" | 零训练、零额外数据、采用已开源 checkpoint、遵循已发表协议。 |
+| "Cherry-picked episodes" | episode 列表与错误 support 列表均作为静态文件分发，在推理前已完全冻结。 |
+| "Not reproducible" | 公开 checkpoint + 固定列表 + 开源数据集划分 + SHA-256 清单。在 Stage-6 的 5 个候选方案中可复现性风险最低。 |
+| "You cannot reproduce the published numbers" | 主要统计量是方法内部的比率，不依赖于绝对数值的精确复现。数值差异作为 E5 实验结果予以报告。 |
 
 ---
 
-## Residual risks, owned
+## 承担的残留风险
 
-1. **Checkpoint link rot** (BAM/OneDrive, HSNet/Google Drive) — the #1 practical risk. Mitigated by
-   the day-1 E0 archival gate. If a checkpoint is unobtainable the panel shrinks and we say so; we
-   do not silently substitute.
-2. **Thin `S3` on PASCAL-5i** — COCO and LVIS carry the primary stratum; per-stratum counts are
-   published before any inferential claim.
-3. **Novelty perception (A6)** remains the most likely reason a reviewer scores this down even after
-   every experiment lands. Positioning is the only lever, and positioning is not a guarantee.
+1. **Checkpoint 链接失效**（BAM/OneDrive, HSNet/Google Drive） —— 头号实际风险。通过第 1 天的 E0 归档门禁予以缓解。若某个 checkpoint 无法获取，评测面板直接缩减并如实声明；绝不暗中替换。
+2. **PASCAL-5i 上的 `S3` 样本量较薄** —— COCO 和 LVIS 承担主要分层的测量；在提出任何推断性主张前先行公布各分层的样本量。
+3. **新颖性感知（A6）** 仍是评审员在所有实验成功后最可能打低分的原因。定位与定调是唯一的应对杠杆，而定调并不构成绝对保证。

@@ -1,94 +1,81 @@
-# Idea_01 — Implementation Roadmap
+# Idea_01 — 实施路线图（Implementation Roadmap）
 
-Zero training, zero annotation, single A100. The schedule is gated, not calendar-driven: each gate
-can kill the project cheaply.
-
----
-
-## Day 1 — E0, the gate that protects everything
-
-The first experiment is **not** the MVE. It is checkpoint archival, because the project's single
-biggest practical risk is that a 2022 paper's OneDrive link died.
-
-- [ ] Download **BAM** (OneDrive) and **HSNet** (Google Drive) first — highest rot risk.
-- [ ] Then PFENet, Matcher, PerSAM, FSSAM, SegGPT, SAM/SAM2.
-- [ ] SHA-256 everything, mirror to internal storage, record in
-      `references/checkpoint_manifest.md`.
-- [ ] Request **SAM3** HuggingFace access (gated; lead time is the risk, not the download).
-- [ ] Verify each repo runs one forward pass on one episode.
-
-**Gate.** Fewer than 4 methods with verified checkpoints ⇒ the panel is too thin to support a
-leaderboard claim. Release the harness and stop. If a checkpoint is unobtainable the panel shrinks
-and the paper says so; we do not silently substitute a re-implementation.
+零训练需求、零标注需求、单卡 A100。进度安排采用门禁驱动（gated）而非日历驱动：每个门禁都能以极低成本终止项目。
 
 ---
 
-## Day 2–3 — Harness and pre-registration
+## 第 1 天 — E0，守护一切的基础门禁
 
-- [ ] Support-injection wrappers for PFENet, BAM, Matcher (~tens of lines each against the
-      `FSSAdapter` protocol; per-repo preprocessing is deliberately preserved).
-- [ ] Assign strata `S1`–`S4` from instance annotations. Publish per-stratum counts.
-- [ ] Generate and **freeze** the wrong-support lists (`make_wrong_support_lists.py`) as static
-      files, not seeds.
-- [ ] Commit `configs/preregistration.yaml` — strata, `τ`, `K`, floors, primary estimator, and the
-      killer decision rule verbatim.
+首个实验**不是** MVE。而是 checkpoint 归档，因为该项目最大的实际风险在于 2022 年论文的 OneDrive 链接失效。
 
-**This commit happens before a single inference runs.** It is the artifact that makes every later
-number interpretable.
+- [ ] 优先下载 **BAM**（OneDrive）和 **HSNet**（Google Drive） —— 链接失效风险最高。
+- [ ] 随后下载 PFENet, Matcher, PerSAM, FSSAM, SegGPT, SAM/SAM2。
+- [ ] 对所有文件计算 SHA-256，镜像备份至内部存储，并记录在 `references/checkpoint_manifest.md` 中。
+- [ ] 申请 **SAM3** HuggingFace 访问权限（需要审批；风险在于审批等待周期，而非下载时间）。
+- [ ] 验证每个代码仓库能在单个 episode 上成功运行一次前向传播。
 
----
-
-## Day 3–5 — E1, the MVE (~1 A100-day)
-
-PFENet + BAM + Matcher + one foundation-era method, PASCAL-5i fold 0 and COCO-20i fold 0.
-
-**Go** if any method retains `R > 0.35` on any stratum, or specialist-vs-foundation retention
-differs by >15 points.
-**No-go** if all retentions `< 0.2` everywhere including PASCAL `S1`.
+**门禁条件。** 若拥有已验证 checkpoint 的方法少于 4 种 ⇒ 评测面板过薄，无法支撑排行榜主张。开源测试工具并终止项目。若某个 checkpoint 无法获取，评测面板直接缩减并在论文中如实声明；绝不暗中替换为重新实现版本。
 
 ---
 
-## Week 2 — E2/E3/E4, the killer experiment (~3.3 A100-days)
+## 第 2–3 天 — 测试工具与预注册锁定
 
-- [ ] Full panel × both benchmarks × all folds × all strata × 3 episode-sampling seeds.
-- [ ] Floor battery: Floor-A (SAM AMG, strong) and Floor-B (saliency, weak), reported separately.
-- [ ] Near vs far wrong-support split.
-- [ ] Apply the pre-registered killer rule on `S3`.
+- [ ] 为 PFENet, BAM, Matcher 编写 support 注入封装（针对 `FSSAdapter` 协议各需约数十行代码；特意保留各仓库的原生预处理逻辑）。
+- [ ] 根据实例标注分配分层 `S1`–`S4`。公开发布各分层的样本统计量。
+- [ ] 生成并**冻结**错误 support 列表（`make_wrong_support_lists.py`），保存为静态文件而非随机种子。
+- [ ] 提交锁定 `configs/preregistration.yaml` —— 包括分层定义、`τ`、`K`、下界设定、主要估计器以及 killer 决策规则字面文本。
 
----
-
-## Week 3 — E5/E6/E7 and the artifact (~1.2 A100-days)
-
-- [ ] **E5** native vs shared evaluator → the per-method discrepancy table (second headline).
-- [ ] **E6** FSS-1000 `S4` degenerate control.
-- [ ] **E7** medical transfer probe on MSD/AMOS, training-free methods only.
-- [ ] Release the **distractor-enriched split**: episode lists, wrong-support lists, both floors'
-      predictions, SHA-256 manifest.
+**本次提交必须在运行任何一次模型推理之前完成。** 它是确保后续所有数值均具备合理解释性的关键产物。
 
 ---
 
-## Week 4 — Write
+## 第 3–5 天 — E1，MVE（最小可行实验，~1 A100-day）
 
-- [ ] Sensitivity-adjusted leaderboard, Kendall τ, position changes.
-- [ ] τ-sensitivity curve published regardless of what it shows.
-- [ ] Paper draft; artifact packaging.
+PFENet + BAM + Matcher + 1 个基础模型时代方法，在 PASCAL-5i fold 0 和 COCO-20i fold 0 上运行。
+
+**继续推进（Go）：** 若任一方法在任一分层上的保持率 `R > 0.35`，或专有方法与基础模型方法间的保持率差异 >15 个百分点。
+**终止项目（No-go）：** 若所有分层上的所有保持率均 `< 0.2`，包括 PASCAL `S1` 在内。
 
 ---
 
-## Branch points
+## 第 2 周 — E2/E3/E4，Killer 实验（~3.3 A100-days）
 
-| Observation | Action |
+- [ ] 完整评测面板 × 两个基准数据集 × 全部 fold × 全部各分层 × 3 个 episode 采样种子。
+- [ ] 下界测试套件：Floor-A（SAM AMG，强下界）与 Floor-B（显著性，弱下界），分别单独报告。
+- [ ] 近大类 vs 远大类错误 support 拆分分析。
+- [ ] 在 `S3` 分层上执行预注册的 killer 判定规则。
+
+---
+
+## 第 3 周 — E5/E6/E7 与成果封装（~1.2 A100-days）
+
+- [ ] **E5** 原生评测器 vs 统一共享评测器 → 输出各方法差异对比表（第二头条结论）。
+- [ ] **E6** FSS-1000 `S4` 退化对照组测试。
+- [ ] **E7** 在 MSD/AMOS 上的医学迁移探针测试，仅限免训练方法。
+- [ ] 公开发布**富含干扰物的评测划分（distractor-enriched split）**：包含 episode 列表、错误 support 列表、双重下界预测结果以及 SHA-256 清单。
+
+---
+
+## 第 4 周 — 论文撰写
+
+- [ ] 敏感度调整后的排行榜、Kendall τ 计算、排名变动统计。
+- [ ] 无论结果如何，均完整展示并发布 τ-敏感度曲线。
+- [ ] 论文初稿撰写；产物打包整理。
+
+---
+
+## 分支决策点
+
+| 观察到的结果 | 采取的行动 |
 |---|---|
-| MVE go-condition fires | continue to Week 2 |
-| `S4` high, `S3` low | **pivot to benchmark paper** — the split becomes the deliverable |
-| all retentions `< 0.2` everywhere | **pivot to certification note** (weakest branch, priced as such) |
-| <4 verified checkpoints at E0 | **kill** |
-| 8 A100-days spent | ship with whatever methods ran |
+| 触发 MVE 继续条件 | 继续推进至第 2 周实验 |
+| `S4` 表现高，`S3` 表现低 | **转向基准批判论文** —— 数据集划分成为核心交付物 |
+| 所有分层的所有保持率均 `< 0.2` | **转向正名认证简报**（最弱分支，已按其实际价值定价） |
+| E0 阶段已验证 checkpoint < 4 | **终止项目** |
+| 耗尽 8 个 A100-days 算力预算 | 按实际已完成运行的方法整理交付 |
 
 ---
 
-## Explicitly out of scope
+## 明确排除在研究范围之外的事项
 
-Building a fix. The moment this becomes a method paper it re-opens every attack the audit design
-closes — extra parameters, unfair comparison, unmotivated architecture. Support sensitivity as a
-training signal is listed as a future extension (`proposal.md` §26) and stays there.
+构建新的修复模型。一旦本项目转变为方法类论文，就会重新招致审计设计所彻底化解的所有评审攻击 —— 额外的参数量、不公平的比较、缺乏动机的架构改动。将 support 敏感度作为训练信号仅作为未来的扩展方向列出（`proposal.md` §26），并严格限定在该位置。

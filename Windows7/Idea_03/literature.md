@@ -1,113 +1,87 @@
-# Idea_03 — Literature
+# Idea_03 — 相关文献（Literature）
 
-**Verification tags.** `[S5-verified]` confirmed in Stage-5 searches (2026-08-28) · `[S6-verified]`
-surfaced or re-checked in Stage 6 (2026-08-28) · `[S6-abstract]` abstract read, full text not ·
-`[inherited]` carried from Stage 3/4 without re-verification.
+**溯源标签。** `[S5-verified]` 经 Stage-5 检索确认（2026-08-28） · `[S6-verified]` 在 Stage 6 中发现或重新核实（2026-08-28） · `[S6-abstract]` 仅阅读摘要，未读全文 · `[inherited]` 继承自 Stage 3/4，未重新核实。
 
-`KNOWN FACT` No number in this package was measured by us. Where a paper's reported figure appears,
-it is tagged `EVIDENCE` and attributed, and it motivates rather than baselines.
+`KNOWN FACT` 本方案包中的任何数字均非由我们亲自测得。凡出现论文报告的数据，均打上 `EVIDENCE` 标签并注明出处，仅用于支撑研究动机而非作为基准对比。
 
 ---
 
-## 1. The direct dispute we arbitrate
+## 1. 我们直接裁决的具体学术分歧
 
 **`arXiv:2603.14493`** `[S6-verified]`
-Argues multimodal linguistic forgetting is **overstated**, and that the operative variable is *task
-diversity*, explicitly not data volume.
+主张多模态语言遗忘现象被**夸大了**，且起决定作用的变量是*任务多样性（task diversity）*，明确指出而非数据量。
 
-This is the most important entry in the file, for two opposite reasons.
+这是本文件中最重要的文献，基于两个相反的理由：
 
-- It is a **content-side claim made observationally**, with no content-free control and no gradient
-  matching. Our `A2`/`A3`/`A4` arms are precisely the controls it lacks, which upgrades this project
-  from "testing folklore" to "the decisive experiment for a live, named disagreement."
-- It also raises our most likely failure mode. If forgetting really is small under a well-tuned
-  recipe, the `A1 − A0` gap may not clear the power gate at 7B. That is why P0 exists and why it is
-  evaluated before the other nine runs.
+- 这是一项**基于观察做出的内容侧主张**，缺乏无内容对照组且未进行梯度匹配。我们的 `A2`/`A3`/`A4` 实验臂恰恰补充了其所欠缺的对照组，从而将本项目从"检验民间共识"升级为"针对已公开命名的学术分歧的决定性裁判实验"。
+- 它同时也预示了我们最可能出现的失效模式。若在精细调优的训练配方下遗忘现象确实极其微弱，`A1 − A0` 的差距可能在 7B 规模下无法通过效能门禁。这正是 P0 存在并在其余 9 次运行前先行评估的原因。
 
-It further predicts the shape of the middle outcome — `A4 < A2 < A1` — which is the mushy P3 branch
-we most expect.
+它进一步预测了中间态结果的形态 —— `A4 < A2 < A1` —— 即我们最预期的平淡 P3 分支。
 
 ---
 
-## 2. The closest prior work (scaffold, not scoop)
+## 2. 最接近的先验工作（脚手架，非抢发威胁）
 
 **Srivastava et al., PMLR v330 / `arXiv:2410.19925` (CoLLAs)** `[S6-verified]`
-Benchmarks five continual-learning methods, rehearsal among them, on LLaVA linguistic forgetting.
-**Real data only** — no content-free control, no gradient matching.
+在 LLaVA 语言遗忘问题上基准测试了包括重放在内的五种持续学习方法。**仅使用真实数据** —— 无内容对照组，无梯度匹配。
 
-We reuse its task splits and cite it as the study our grid subsumes. Its existence is net positive:
-it establishes that the phenomenon is worth measuring, and that no one has yet asked *why* rehearsal
-works.
+我们复用了其任务划分，并将其作为本网格方案所包含覆盖的基准研究予以引用。它的存在是纯利好：确立了该现象具有测量价值，且此前尚未有人探究过重放*为什么*有效。
 
 ---
 
-## 3. Mechanism-side work (the scoop clock)
+## 3. 机制侧研究（抢发时间钟）
 
-**Dynamic Gradient Guidance, `arXiv:2511.15164`** (Nov 2025) `[S6-verified]`
-Recasts multimodal forgetting as **missing-gradient approximation** on LLaVA, and proposes a method.
-Approaches "it's optimization, not data" from the *method* side; we test the same proposition
-*causally*, with data ablation. Nearest thing to a competitor and the main reason the residual window
-is measured in months.
+**动态梯度引导（Dynamic Gradient Guidance）, `arXiv:2511.15164`** (Nov 2025) `[S6-verified]`
+将 LLaVA 上的多模态遗忘重新诠释为**缺失梯度近似问题**，并提出了一种新方法。从*方法构建*侧切入"这是优化问题而非数据问题"；我们则通过数据消融从*因果*侧检验同一命题。这是最接近的潜在竞争者，也是剩余窗口期以月为单位计算的主要原因。
 
 **MoDE, NeurIPS 2025 / `arXiv:2512.03125`** `[S6-verified]`
-Formalises **modality gradient conflict** (Def. 1). Supplies the theoretical vocabulary a positive
-result would be written in. Runs no rehearsal-content experiment.
+形式化定义了**模态梯度冲突（modality gradient conflict）**（Def. 1）。为正向结果提供了撰写所需的理论词汇体系。未开展任何重放内容消融实验。
 
 **Pareto LoRA, `arXiv:2606.17296`** `[S6-verified]`
-`EVIDENCE` Reports modality-specific gradients differing "by orders of magnitude across various
-layers and tasks."
+`EVIDENCE` 报告称模态特定梯度在"跨不同层和任务时相差数个数量级"。
 
-This is load-bearing for a design decision, not just background: it is why **per-layer matching is
-the pre-registered primary convention**. A single global-norm scalar can report a clean match while
-individual transformer blocks remain badly mismatched, and the demo in `src/` reproduces that gap.
+这对我们的核心设计决策起到了承重支撑作用，而非单纯的背景交代：它解释了为什么**逐层匹配是预注册的主要协议**。单个全局范数标量可能在报告良好匹配的同时，各个独立 Transformer block 依然严重失配，`src/` 中的演示代码精确重现了该差距。
 
 ---
 
-## 4. The framing ancestor
+## 4. 立意渊源文献
 
-**Robins (1995), pseudo-rehearsal** `[inherited]`
-Rehearsal on *generated*, content-free patterns mitigates catastrophic forgetting in small networks.
+**Robins (1995), 伪重放（pseudo-rehearsal）** `[inherited]`
+基于*生成的*、无语义内容的模式进行重放可以缓解小型网络中的灾难性遗忘。
 
-A reviewer will say this predicted our result. The honest response is that our `A2`–`A4` arms are the
-multimodal, capability-stratified, gradient-matched version — and that if `A2` fails, we are the
-first controlled refutation of the pseudo-rehearsal account in this regime. `KNOWN FACT` Stage 6
-recorded this as a framing battle that cannot be resolved before the data exist.
+评审员会指出该文献早已预言了我们的结论。诚实的回应是：我们的 `A2`–`A4` 实验臂是面向现代多模态、按能力分层、梯度匹配的全新体系 —— 且立论在两个方向上均成立：**若 `A2` 失败，我们将成为在该体系下对伪重放解释的首次受控证伪。** `KNOWN FACT` Stage 6 将其记录为在拿到真实数据前无法消除的立意之争。
 
 ---
 
-## 5. Infrastructure
+## 5. 基础设施
 
-| Artifact | Role | Tag |
+| 资源项 | 承担角色 | 标签 |
 |---|---|---|
-| `haotian-liu/LLaVA` | training harness; deepspeed configs shipped | `[S5-verified]` |
-| `TRI-ML/prismatic-vlms` | fallback harness + cross-family replication (E5); the trainer used by the closest prior | `[S5-verified]` |
-| `EleutherAI/lm-evaluation-harness` | language strata | `[S5-verified]` |
-| `EvolvingLMMs-Lab/lmms-eval` | vision-language sanity strata | `[S5-verified]` |
-| `allenai/c4` (ODC-BY) | `A2`/`A3`/`A4` source corpus | `[S5-verified]` |
-| `llava_v1_5_mix665k` | base mix — **contains a text-only ShareGPT slice** | `[S6-verified]` |
-| Vicuna-7B | base model; LLaMA-2 community licence | `[S5-verified]` |
+| `haotian-liu/LLaVA` | 训练工具平台；提供 DeepSpeed 配置 | `[S5-verified]` |
+| `TRI-ML/prismatic-vlms` | 备用平台 + 跨家族复现（E5）；最接近先验工作所用的训练器 | `[S5-verified]` |
+| `EleutherAI/lm-evaluation-harness` | 语言能力分层评测 | `[S5-verified]` |
+| `EvolvingLMMs-Lab/lmms-eval` | 视觉语言健全性评测分层 | `[S5-verified]` |
+| `allenai/c4` (ODC-BY) | `A2`/`A3`/`A4` 数据源语料库 | `[S5-verified]` |
+| `llava_v1_5_mix665k` | 基础混合数据 —— **包含纯文本 ShareGPT 分片** | `[S6-verified]` |
+| Vicuna-7B | 基座模型；LLaMA-2 社区许可证 | `[S5-verified]` |
 
-`KNOWN FACT` The LLaVA repo is in maintenance mode; deepspeed configs need version pinning. Known
-ecosystem friction — days, not weeks.
+`KNOWN FACT` LLaVA 仓库处于维护状态；DeepSpeed 配置需锁定依赖版本。属于已知生态摩擦 —— 解决时间应以天计而非数周。
 
-`KNOWN FACT` The ShareGPT slice inside `mix665k` is what forces the text-stripped base. It is also
-the reason A1 would otherwise partially duplicate what the published recipe already does natively.
+`KNOWN FACT` `mix665k` 内部包含的 ShareGPT 分片正是迫使我们构建剥离文本后基底的原因。这也是为什么若不做处理 A1 会部分重复已发表配方原生行为的原因。
 
 ---
 
-## 6. Verification debt — clear before submission
+## 6. 待结清的验证债务 — 必须在投稿前完成
 
-| Item | Status | Missing |
+| 检查项 | 状态 | 缺失内容 |
 |---|---|---|
-| `arXiv:2603.14493` | `[S6-verified]` | full-text read of the diversity analysis; its exact task-diversity operationalisation determines how directly our arms arbitrate it |
-| `arXiv:2511.15164` | `[S6-verified]` | full text; check whether its evaluation already contains a de-facto content-free arm |
-| Robins 1995 | `[inherited]` | primary source not re-read in Windows7 |
-| ShareGPT slice size (~40K conversations) | `[S6-verified]` | exact token count must be measured at E0, since it sets every arm's budget |
+| `arXiv:2603.14493` | `[S6-verified]` | 全文通读其多样性分析；其对任务多样性的具体操作化定义决定了我们的实验臂在多大程度上直接对其进行裁判 |
+| `arXiv:2511.15164` | `[S6-verified]` | 全文通读；检查其评测中是否事实上已经包含了某种无内容对照臂 |
+| Robins 1995 | `[inherited]` | 未在 Windows7 会话中重读原始文献 |
+| ShareGPT 分片规模 (~40K 对话) | `[S6-verified]` | 必须在 E0 实测精确 token 计数，因其决定所有实验臂的预算 |
 
-## Standing rules
+## 既定规则
 
-1. No citation enters this project that was not found in a Windows7 session and logged here.
-2. `EVIDENCE`-tagged figures from other groups (e.g. Pareto LoRA's "orders of magnitude") motivate
-   design choices. They are never reused as baselines or compared against our results.
-3. Every number in `README.md` and the `src/` demo output is **simulated** and exists to validate the
-   decision rule.
+1. 本项目绝不录入任何未在 Windows7 会话中检索并在此记录的文献引用。
+2. 引用其他团队带有 `EVIDENCE` 标签的数据（如 Pareto LoRA 的"相差数个数量级"）仅用于支撑方案设计选择。绝不直接复用为对比基线或与我们的实验结果进行混同比较。
+3. `README.md` 和 `src/` 演示输出中的所有数字均为**模拟数据**，其唯一目的在于验证决策规则。

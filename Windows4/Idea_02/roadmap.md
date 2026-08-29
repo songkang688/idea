@@ -1,107 +1,89 @@
-# PromptAmnesia — Execution Roadmap (Windows4 / Idea_02)
+# PromptAmnesia — 执行路线图（Windows4 / Idea_02）
 
-**Epistemic status:** PLAN. Phases are dependency-ordered with GPU-day ESTIMATES; no calendar dates.
-Binding order (Stage 4/6): **P082 gate first → grid freeze → P065 → (P031 sibling) → P177.**
-
----
-
-## Phase 0 — Environment + pre-registration freeze (E0)
-
-Blocks everything downstream.
-
-- [ ] Reproduce environment from `requirements.txt`; smoke-test `src/promptamnesia/` CLIs (`--dry-run`).
-- [ ] Download + hash-pin assets: SAM ViT-B/H, MedSAM, SAM-Med2D checkpoints; COCO val2017, LVIS-rare
-      index, BUSI, MSD Task09, TN3K. Record hashes in `configs/` (amendment commit).
-- [ ] Scoop-watch searches (`literature.md` §6); update related-work deltas if hits.
-- [ ] **Release blocker:** re-verify every `[M]`-tagged citation quoted in the pre-registration text.
-- [ ] Build + freeze ambiguity-probe mining protocol and both click simulators.
-- [ ] Tag **`idea02-prereg-v1`** (freezes: grid recipe, matched-gain rule, contrast family O1–O5, gate
-      target list, envelope definition, stitch families).
-
-**Exit gate G0:** tag exists; all assets hashed; dry-run matrices generate.
-Compute: CPU + download bandwidth only.
-
-## Phase 1 — P082 gate (E1) — ESTIMATE 1–2 GPU-days
-
-- [ ] Frozen-model variance decomposition → envelope per (domain × prompt type)
-      (`threshold_gate.py::build_envelope`).
-- [ ] B6 control: eval-only variance replicates on released fine-tuned checkpoints; operative envelope =
-      per-cell max.
-- [ ] Re-evaluate MedSAM / SAM-Med2D under (a) their published protocols, (b) the symmetric protocol.
-- [ ] Compare pre-registered target deltas vs envelope → `gate_decision`.
-
-**Exit gate G1 (decision point):**
-- **PROCEED** (≥1 checkpoint outside envelope on ≥2 domains, ≥1 prompt type) → Phase 2.
-- **PIVOT** → Phase 2', deflation branch: paper = envelope + symmetric re-evaluations + Biderman-coupling
-  confirmatory regression on a minimal grid (ESTIMATE 5–8 GPU-days total). Idea_02 re-scopes; supervisor
-  notified per `stage6_battle.md` decisive-experiment list item 1.
-
-## Phase 2 — Shared checkpoint grid (E2) — ESTIMATE 25–45 GPU-days (≈204 short runs)
-
-- [ ] Launch grid per `configs/shared_grid.yaml` (domains × mixes × recipes × seeds; covariate logging on).
-- [ ] Mid-grid audit after first domain completes: verify matched-gain bands are reachable per arm; if an
-      arm never reaches band, log per A7/B7 (no recipe changes — grid is frozen).
-- [ ] B1 robustness cell (perturbed mixed distribution) on headline domain (+2–3 GPU-days).
-- [ ] Update-norm-matched arm for P177 (added only on PROCEED).
-- [ ] Hand checkpoint manifest to sibling P031.
-
-**Exit gate G2:** all cells trained or explicitly logged as failed; manifest committed (hashes, seeds,
-configs); matched-gain selections computed and committed.
-
-## Phase 3 — Battery + diversity evaluation (E3 + E4) — ESTIMATE 3–6 GPU-days
-
-- [ ] Full prompt-type eval matrix over matched-gain checkpoints (4 columns × retention suites ×
-      symmetric thresholds), `eval_prompt_matrix.py`.
-- [ ] Dual-simulator duplicates of headline contrasts.
-- [ ] Ambiguity probes: oracle-vs-argmax per checkpoint (`diversity.py`); B3 human spot-audit of probe
-      subsample.
-- [ ] Statistics: hierarchical bootstrap, Holm over O1–O5, envelope conjunction; RQ5 coverage map from
-      off-diagonal + box-only column.
-
-**Exit gate G3 (claim triage):**
-- H2/H3 survive in mixed column → flagship branch continues.
-- Mixed column null → Branch C (coverage paper) locked; Phase 4 becomes optional descriptive appendix.
-- O4 resolves to ranking-loss → diversity claim transferred to P031 (log the transfer).
-
-## Phase 4 — P177 mechanism arm (E5) — ESTIMATE 2–4 GPU-days
-
-- [ ] Train stitches (both families, capacity-capped) per swap cell; stitch-only calibration cells.
-- [ ] Both-direction swap grid × {stitch, no-stitch}; α-interpolation curves per module group.
-- [ ] Restoration fractions per prompt type with CIs; verdict per pre-registered rule (H5).
-
-**Exit gate G4:** locus verdict (stands / withdrawn-descriptive) logged with artifacts.
-
-## Phase 5 — Analysis, writing, release
-
-- [ ] Assemble reporting panel (P110 residue) as appendix: per-prompt-type retention, gain-vs-retention
-      frontier per arm, model-card rows.
-- [ ] Exploratory-only appendix: drift-covariate lead-time glance (P108 residue; resurrection criteria per
-      proposal §28).
-- [ ] Failure enumeration appendix (excluded arms, rejected probes, simulator-flipped contrasts).
-- [ ] **Release blockers:** every quoted `[M]` citation re-verified; every reported number traceable to a
-      run artifact (config hash + seed + commit); obligations checklist (reviewer_attacks Part I) signed
-      off item-by-item.
-- [ ] Venue: main-track CV venue (MICCAI variant if medical story dominates); deflation branch may target
-      an earlier deadline given its 5–8 GPU-day footprint.
+**认识论状态说明：** PLAN。各阶段依依赖关系排序，附带 GPU-day ESTIMATES；不设具体日历日期。
+具有约束力的执行顺序（Stage 4/6）：**P082 关卡优先 → 网格冻结 → P065 → (P031 姊妹项目) → P177。**
 
 ---
 
-## Standing rules across phases
+## Phase 0 — 环境配置 + 预注册冻结 (E0)
 
-1. Commit + push after every phase exit gate (this branch: `cursor/windows4-research-idea-evolution-2962`).
-2. Any dropped obligation → logged amendment here + corresponding claim withdrawn (reversion rule).
-3. No number leaves the repo without an epistemic label; EXPECTED RESULT never silently becomes
-   ACTUAL EXPERIMENTAL RESULT.
-4. Backup ideas if a killer experiment dies at G1–G3 with no salvageable branch: P063 RefractionFeatures,
-   P079 MemoryProbe (per `stage4_top20.md`).
+阻塞所有后续下游任务。
 
-## Budget summary (ESTIMATES, single A100-class GPU)
+- [ ] 根据 `requirements.txt` 复现环境；冒烟测试 `src/promptamnesia/` 命令行接口（`--dry-run`）。
+- [ ] 下载并固定资产哈希：SAM ViT-B/H、MedSAM、SAM-Med2D 检查点；COCO val2017、LVIS-rare 索引、BUSI、MSD Task09、TN3K。在 `configs/` 中记录哈希值（修订提交）。
+- [ ] 运行撞车监测检索（`literature.md` §6）；若有命中则更新相关工作差异。
+- [ ] **发布阻塞项：** 重新核验预注册文本所引用的所有带 `[M]` 标签的文献引用。
+- [ ] 构建并冻结歧义探针挖掘协议与两种点击模拟器。
+- [ ] 打标签 **`idea02-prereg-v1`**（冻结：网格训练配方、匹配增益规则、对比族 O1–O5、关卡目标列表、包络线定义、拼接层类型）。
 
-| Phase | GPU-days |
+**退出关卡 G0：** 标签已存在；所有资产已完成哈希校验；dry-run 矩阵可正常生成。
+计算量：仅需 CPU + 下载带宽。
+
+## Phase 1 — P082 关卡 (E1) — ESTIMATE 1–2 GPU-days
+
+- [ ] 冻结模型方差分解 → 计算每个（领域 × prompt 类型）的包络线（`threshold_gate.py::build_envelope`）。
+- [ ] B6 对照：在公开发布的微调 checkpoint 上进行仅评测的方差重复实验；生效包络线 = 逐单元格最大值。
+- [ ] 在以下协议下重新评估 MedSAM / SAM-Med2D：(a) 其已发表的协议，(b) 对称协议。
+- [ ] 将预注册目标差值与包络线对比 → 执行 `gate_decision`。
+
+**退出关卡 G1（决策节点）：**
+- **PROCEED**（≥1 个 checkpoint 在 ≥2 个领域上针对 ≥1 种 prompt 类型超出包络线）→ 进入 Phase 2。
+- **PIVOT** → 进入 Phase 2'，通缩型分支：论文内容 = 包络线 + 对称重评测 + 在极小网格上的 Biderman 耦合验证回归（共计 ESTIMATE 5–8 GPU-days）。Idea_02 重新调整范围；依据 `stage6_battle.md` 决定性实验清单第 1 项通知主管。
+
+## Phase 2 — 共享 Checkpoint 网格 (E2) — ESTIMATE 25–45 GPU-days（约 204 次短运行）
+
+- [ ] 依据 `configs/shared_grid.yaml` 启动网格训练（领域 × 混合方式 × 配方 × 种子；开启协变量记录）。
+- [ ] 完成首个领域后进行中期网格审计：验证每个分支是否可达到匹配增益容差带；若某分支从未达标，依据 A7/B7 记录日志（严禁更改配方 — 网格已冻结）。
+- [ ] 在核心领域上运行 B1 稳健性单元格（扰动混合分布）（+2–3 GPU-days）。
+- [ ] 为 P177 添加更新范数匹配分支（仅在 PROCEED 时添加）。
+- [ ] 将 checkpoint 清单移交给姊妹项目 P031。
+
+**退出关卡 G2：** 所有单元格训练完成或明确记录为失败；提交资产清单（哈希、种子、配置）；计算并提交匹配增益选择结果。
+
+## Phase 3 — 测试集 + 多样性评测 (E3 + E4) — ESTIMATE 3–6 GPU-days
+
+- [ ] 在匹配增益 checkpoint 上运行完整的 prompt 类型评测矩阵（4 列 × 保留测试套件 × 对称阈值），`eval_prompt_matrix.py`。
+- [ ] 针对核心对比项运行双模拟器重复验证。
+- [ ] 歧义探针：计算每个 checkpoint 的 oracle 与 argmax（`diversity.py`）；对探针子集执行 B3 人工抽样审查。
+- [ ] 统计分析：分层 Bootstrap、针对 O1–O5 的 Holm 校正、包络线合取判定；从非对角项 + 仅边界框列生成 RQ5 覆盖率图谱。
+
+**退出关卡 G3（主张分流）：**
+- H2/H3 在混合列中成立 → 旗舰分支继续推进。
+- 混合列结果为零假设 → 锁定 Branch C（覆盖率论文）；Phase 4 变为可选的描述性附录。
+- O4 判定为排序损失 → 多样性主张转交至 P031（记录转交事实）。
+
+## Phase 4 — P177 机制分支 (E5) — ESTIMATE 2–4 GPU-days
+
+- [ ] 为每个移植单元格训练拼接层（两种类型，严格限制容量）；设置仅拼接校准单元格。
+- [ ] 运行双向移植网格 × {拼接, 无拼接}；绘制逐模块组的 α 插值曲线。
+- [ ] 计算每种 prompt 类型的恢复比例及置信区间；依据预注册规则进行判定（H5）。
+
+**退出关卡 G4：** 记录机制定位结论（成立 / 撤回转为描述性报告）及对应产物。
+
+## Phase 5 — 综合分析、论文撰写与开源发布
+
+- [ ] 整合报告面板（P110 残留）作为附录：逐 prompt 类型的保留能力、各分支的增益-保留前沿曲线、模型卡片表格行。
+- [ ] 仅供探索的附录：表征漂移协变量前导时间概览（P108 残留；复活标准见提案 §28）。
+- [ ] 失败案例枚举附录（排除的分支、舍弃的探针、模拟器反转的对比项）。
+- [ ] **发布阻塞项：** 重新核验所有引用的 `[M]` 文献；报告的每个数字均可追溯至运行产物（配置哈希 + 种子 + 提交）；逐项签署既定义务清单（reviewer_attacks 第一部分）。
+- [ ] 投稿目标：计算机视觉主会主轨（若医学叙事占主导则选择 MICCAI 系列）；通缩型分支鉴于其 5–8 GPU-day 的轻量开销可投往更早的截稿期。
+
+---
+
+## 跨阶段常驻规则
+
+1. 每个阶段退出关卡通过后必须 commit 并 push（当前分支：`cursor/windows4-research-idea-evolution-2962`）。
+2. 放弃任何一项既定义务 → 在此记录修订并在论文中撤回对应主张（结论回退规则）。
+3. 离开代码库的任何数字均需附带认识论标签；EXPECTED RESULT 严禁隐蔽转为 ACTUAL EXPERIMENTAL RESULT。
+4. 若杀手级实验在 G1–G3 失败且无挽救分支的备选项目：P063 RefractionFeatures，P079 MemoryProbe（依据 `stage4_top20.md`）。
+
+## 预算汇总（ESTIMATES，单卡 A100 级别 GPU）
+
+| 阶段 | GPU-days |
 |---|---|
-| 1 (gate) | 1–2 |
-| 2 (grid) | 25–45 (robustness cells included) |
-| 3 (battery) | 3–6 |
-| 4 (mechanism) | 2–4 |
-| **Total flagship branch** | **≈ 35–55** |
-| Pivot branch total | 5–8 |
+| 1 (关卡) | 1–2 |
+| 2 (网格) | 25–45 (含稳健性单元格) |
+| 3 (测试集) | 3–6 |
+| 4 (机制) | 2–4 |
+| **旗舰分支总计** | **≈ 35–55** |
+| 转向分支总计 | 5–8 |

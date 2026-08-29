@@ -1,10 +1,10 @@
-# Stage 1 Supervisor Seed Catalog (S-series)
+# Stage 1 导师种子创意目录 (S 系列)
 
-Generated 2026-08-28 by Windows4 PI. Status: **HYPOTHESIS catalog**, not experimental results.
-Format is compact by design. IDs: `S-001`…  
-Forbidden filler (module-stack, backbone-swap, “apply X to medical”) was excluded.
+由 Windows4 PI 于 2026-08-28 生成。状态：**假说目录**，非实验结果。
+格式设计为紧凑型。ID：`S-001`…  
+已排除禁止的填充内容（模块堆叠、骨干替换、“将 X 应用于医学”）。
 
-## Cluster map (seed)
+## 聚类图 (种子)
 
 - `SAM_PROMPT` S-001–S-040
 - `SAM_MEDICAL_GAP` S-041–S-070
@@ -22,367 +22,368 @@ Forbidden filler (module-stack, backbone-swap, “apply X to medical”) was exc
 - `FEWSHOT` S-326–S-340
 - `NEG_RESULT` S-341–S-360
 
-Protect (high-risk/high-reward): S-007, S-018, S-052, S-079, S-103, S-148, S-183, S-205, S-228, S-292, S-318, S-347
-Cheap falsify: S-003, S-012, S-044, S-074, S-099, S-128, S-145, S-199, S-247, S-288
+重点保护（高风险/高回报）：S-007, S-018, S-052, S-079, S-103, S-148, S-183, S-205, S-228, S-292, S-318, S-347
+优先低成本证伪：S-003, S-012, S-044, S-074, S-099, S-128, S-145, S-199, S-247, S-288
 
 | ID | OneLiner | Problem | Hypothesis | WhyNovel | MinExp | Risk | Cluster |
-| S-001 | SAM IoU variance is a prompt geometry effect, not domain gap | Medical SAM papers mix prompt noise with domain shift | Tight-box vs loose-box IoU delta explains more variance than CT vs natural-image encoder distance | Isolates a confound most SAM-medical tables hide | Same 200 images: GT box ±0/4/8/16px vs frozen SAM; ANOVA domain vs prompt-scale | Already implicit in MedIA 2024; may be a note not a paper | SAM_PROMPT |
-| S-002 | Point prompts fail because of interior texture, not centroid error | Point-prompt SAM is unstable | Interior entropy around the point predicts failure better than point-to-centroid distance | Reframes “need better points” as “need texture-aware prompts” | Correlate local entropy vs Dice on SAM point prompts | Entropy proxy too crude | SAM_PROMPT |
-| S-003 | Box-prompt SAM is secretly a detector-quality benchmark | SAM boxes from GT inflate foundation-model claims | Replacing GT boxes with a weak detector collapses SAM Dice more than swapping ViT-B/H | Attacks unfair GT-box evaluation | COCO/medical: GT-box vs YOLO-box prompts, freeze SAM | Known to careful readers | SAM_PROMPT |
-| S-004 | Multi-mask ambiguity is unused supervision | SAM outputs 3 masks; papers take argmax | Selecting by mask-IoU disagreement, not predicted IoU, better matches human intent on nested objects | Uses SAM’s native ambiguity as a signal | Nested-object subset of SA-1B/COCO; compare selection rules | Nested labels scarce | SAM_PROMPT |
-| S-005 | Negative points are not symmetric to positive points | Interactive papers treat +/− clicks equally | A negative click reduces FP more than a positive click raises TP, at equal budget | Asymmetric interaction cost | Click simulation on Cityscapes/medical | May be dataset-specific | SAM_PROMPT |
-| S-006 | Prompt encoder overfits click protocol | Fine-tuned SAM on points fails on boxes | After point-only FT, box-prompt Dice drops below frozen SAM | Documents protocol overfitting of PEFT | Med dataset: FT points-only, eval boxes | MedSAM already mixes prompts | SAM_PROMPT |
-| S-007 | Test-time prompt search overfits the image scorer | SAMPOT-style prompt moves need a proxy score | Unsupervised scorers (CRF, NCut) move prompts toward high-contrast blobs, not the clinical target | Attacks “training-free prompt evolution” | Lung X-ray: SAMPOT vs random walk vs GT-target | Scorer choice cherry-pick | SAM_PROMPT |
-| S-008 | Grid ‘everything’ mode measures objectness prior, not segmentation skill | Everything-mode leaderboards | Everything recall of small lesions tracks object-size histogram, not model quality | Evaluation critique | Plot recall vs area deciles | May be obvious | SAM_PROMPT |
-| S-009 | SAM predicted IoU is miscalibrated on transparent edges | IoU token used as confidence | ECE of IoU-token vs true IoU is worse on alpha-blended boundaries than opaque | New calibration slice | Synthetic alpha overlays on COCO | Synthetic not real smoke | SAM_PROMPT |
-| S-010 | Click location from detector centers is a systematic bias | Auto-prompt pipelines | Detector-center points land on occluders; using box-interior farthest-from-edge is better | Prompt placement science | Fire/smoke + YOLO centers vs erosion-center | Detector dependent | SAM_PROMPT |
-| S-011 | Prompt jitter as cheap aleatoric estimate | Uncertainty in SAM is rare | Pixel-wise vote over N box jitters predicts errors better than SAM logits | Training-free uncertainty | Compare jitter-vote vs logit entropy vs error maps | Overlaps FNPC 2023 | SAM_PROMPT |
-| S-012 | One extra negative click beats adapter training on FP | PEFT vs interaction | On FP-heavy ultrasound, 1 negative click > Medical-SAM-Adapter with no extra data | Challenges adapter papers’ practical claim | Same 50 images: 1 click vs adapter ckpt | Unfair if adapter not reproduced | SAM_PROMPT |
-| S-013 | Prompt type should be instance-adaptive | Papers pick one prompt type | A cheap classifier of (area, contrast, compactness) can choose point vs box vs mask | Meta-prompt policy | Train 1k-image policy, freeze SAM | Policy overfits dataset | SAM_PROMPT |
-| S-014 | Mask decoder ignores image on strong boxes | SAM may be a box-to-mask interpolator | Ablating image embeddings inside the box barely changes Dice when boxes are tight | Tests if SAM is “seeing” | Zero image tokens in box; measure Dice | Implementation tricky | SAM_PROMPT |
-| S-015 | SAM fails when object is not an ‘object’ | Smoke/fire/stain | Objectness-trained mask decoder cannot represent stuff-like density fields | Problem formulation | Stuff vs thing split; SAM vs dense CRF | “Stuff” known | SAM_PROMPT |
-| S-016 | Human prompt noise ≠ random noise | Prompt robustness tests use Gaussian jitter | Radiologist click noise is boundary-seeking; Gaussian jitter overstates robustness | Better noise model | Collect 10 annotators × 20 images | Small user study | SAM_PROMPT |
-| S-017 | Multi-object prompts interfere inside decoder | Two boxes in one forward | Joint decoding of two instances changes each mask vs separate forwards | Documents interference | COCO pairs | May be minor | SAM_PROMPT |
-| S-018 | SAM’s three masks encode scale, not semantics | Ambiguity interpretation | The 3 masks are nested scale levels more often than distinct objects | Changes how we use multi-mask | Nesting IoU among 3 outputs | Dataset dependent | SAM_PROMPT |
-| S-019 | Coarse boxes help more than fine boxes on low contrast | “Tighter is better” assumption | On low-contrast tumors, +20px boxes beat GT-tight boxes | Counter-intuitive prompt | Reproduce He et al. split by contrast | May replicate known | SAM_PROMPT |
-| S-020 | Prompt-conditioned features are not causal | Attribution | Interchanging prompt tokens between two objects swaps masks more than swapping image crops | Causal test of prompt dominance | Token swap experiment | Engineering | SAM_PROMPT |
-| S-021 | Automatic mask NMS hides duplicate-mode collapse | Everything mode metrics | High everything-AP with low unique-mask entropy means collapse not coverage | Metric | Entropy of mask embeddings | Obscure | SAM_PROMPT |
-| S-022 | Iterative clicks saturate because decoder is Markov-1 | Multi-round SAM | Round t mask depends only on last mask+click, ignoring click history beyond 1 | Memoryless interaction | Ablate history encoding | Architecture specific | SAM_PROMPT |
-| S-023 | Box prompts leak GT area into SAM | Fairness | Dice vs box-area correlation is as high as Dice vs image features | Confounder | Partial correlation | Reviewers may shrug | SAM_PROMPT |
-| S-024 | Extreme aspect-ratio boxes break positional encodings | Failure mode | Thin elongated instruments fail more than area-matched compact organs | Geometry | Tools vs organs, area-matched | Niche | SAM_PROMPT |
-| S-025 | SAM ‘stability’ filter discards clinically rare shapes | SA-1B training | Stability-filtered pretraining under-represents amoeboid tumors | Data filter critique | Compare stability scores vs tumor irregularity | Hard to prove | SAM_PROMPT |
-| S-026 | Point prompts on 3D projected to 2D are inconsistent | Volumetric interaction | Same 3D click projects to conflicting 2D SAM masks across adjacent slices | 3D prompt physics | CT slice neighborhood | MedSAM-2 related | SAM_PROMPT |
-| S-027 | Prompt encoder capacity is unused | PEFT placement | Tuning only prompt encoder matches full decoder FT on box-prompt Dice | Localization of adaptation | LoRA on prompt vs decoder vs encoder | Negative possible | SAM_PROMPT |
-| S-028 | Language prompts to SAM via CLIP are a bottleneck of CLIP, not SAM | Grounded SAM | Errors on rare medical terms track CLIP zero-shot, not SAM mask quality | Blame assignment | Swap CLIP vs BioMedCLIP, freeze SAM | Grounded-SAM papers exist | SAM_PROMPT |
-| S-029 | Dense positional prompt (scribble) ≠ sparse | Interaction | Equal-length scribbles beat N points with same pixel budget | Budgeted interaction | Scribble vs points | Classic interactive seg | SAM_PROMPT |
-| S-030 | SAM fails when GT is a region without an edge | Edge prior | Gradient magnitude at GT boundary predicts SAM Dice better than intensity mean | Edge dependence | Scatter plots | Known qualitatively | SAM_PROMPT |
-| S-031 | Confidence-based auto-prompt from detector is miscalibrated | AutoSAM pipelines | Detector conf ≠ SAM success; using detector *size* is better | Recalibrate auto-prompt | Rank correlation | Incremental | SAM_PROMPT |
-| S-032 | Mask-prompt refinement overfits previous error type | Iterative masks | Feeding SAM its own mask increases recall but destroys precision on smoke | Error recycling | Smoke video | Specific | SAM_PROMPT |
-| S-033 | Dual-prompt conflict is informative | + and − close together | High conflict predicts annotator disagreement better than model entropy | Human uncertainty | Multi-annotator set | Data | SAM_PROMPT |
-| S-034 | SAM box prompt is translation-covariant but not scale-covariant | Equivariance | Shift box: mask shifts; scale box 1.2×: mask quality drops nonlinearly | Geometric prior | Synthetic affine | Narrow | SAM_PROMPT |
-| S-035 | Empty-prompt semantic SAM is a different model | Semantic-SAM vs SAM | Papers mixing both overclaim ‘SAM’ | Taxonomy | Re-eval with true empty vs prompted | Review issue | SAM_PROMPT |
-| S-036 | Prompt dropout during FT is required for protocol robustness | FT recipe | Randomly dropping prompt type in training preserves cross-prompt Dice | Simple recipe paper | Ablate dropout | Maybe unpublished but small | SAM_PROMPT |
-| S-037 | SAM decoder temperature changes object count | Decoding | Raising mask-token temperature splits one object into many | Controllable granularity | Sweep temp | Hacky | SAM_PROMPT |
-| S-038 | Users click on semantically salient not geometric centers | HCI | Gaze/click maps mismatch erosion centers on medical images | Human prompt model | Small eye-track or click log | Cost | SAM_PROMPT |
-| S-039 | Negative region prompts beat negative points for stuff | Stuff segmentation | Box-shaped negative region suppresses background better for smoke | Prompt geometry for stuff | Smoke | Incremental | SAM_PROMPT |
-| S-040 | SAM’s image encoder is over-credited vs prompt | Credit assignment | Linear probe on encoder vs full SAM with random prompts | Where skill lives | Probe vs prompted | Known for some FMs | SAM_PROMPT |
-| S-041 | Medical domain gap is decoder-local | “Need medical pretrain” | Freezing encoder, FT decoder 1 epoch closes most of MedSAM gap on 2D organs | Challenges full FT | Split FT | May fail on tiny lesions | SAM_MEDICAL_GAP |
-| S-042 | 3D gap is anisotropy not ‘medical’ | 3D SAM fails | Resampling CT to isotropic 1mm lifts SAM more than medical FT | Confounder | nnU-Net-style resample | Partial | SAM_MEDICAL_GAP |
-| S-043 | Small-target SAM failure is prompt occupancy | Small organs | Dice vs (object pixels / box pixels) collapses across modalities | Scale law | Multi-dataset scatter | Simple | SAM_MEDICAL_GAP |
-| S-044 | Ultrasound speckle fools SAM more than domain | US vs CT | Denoising US (NLM) lifts frozen SAM more than LoRA | Preprocess > PEFT | 1 dataset | May not generalize | SAM_MEDICAL_GAP |
-| S-045 | Intensity windowing is a hidden prompt | CT/MR | Window/level choice moves SAM Dice as much as point vs box | Hidden hyperparam | Sweep windows | Known to clinicians | SAM_MEDICAL_GAP |
-| S-046 | Multi-modal medical FT causes negative transfer | One MedSAM for all | FT on CT drops X-ray Dice below frozen SAM | Negative transfer | Leave-one-modality | MedSAM may already mix carefully | SAM_MEDICAL_GAP |
-| S-047 | Laterality and anatomical labels are not in SAM | Semantic-less | SAM cannot distinguish left/right kidney without extra classifier | Limits of promptable | Paired kidneys | Obvious? still under-discussed | SAM_MEDICAL_GAP |
-| S-048 | Weak boundaries in MR are a loss-mismatch | Dice on fuzzy | Boundary-F1 and Dice disagree on which model is best for SAM vs UNet | Metric | Rank reversal | Classic | SAM_MEDICAL_GAP |
-| S-049 | SAM helps annotation time only for large organs | Human-in-loop claim | Time-study: SAM saves time iff object area > threshold | Practical | 5 raters | HCI cost | SAM_MEDICAL_GAP |
-| S-050 | Adapter papers compare to weak 2D UNets | Unfair baselines | vs nnU-Net 3D, adapters lose | Baseline honesty | One public MSD task | Compute | SAM_MEDICAL_GAP |
-| S-051 | Pseudo-3D slice-wise SAM disagrees across axes | Axial vs sagittal | Majority-vote across 3 orientations is a stronger baseline than new adapters | Cheap ensemble | MSD | Engineering | SAM_MEDICAL_GAP |
-| S-052 | Foundation features hurt when labels are sparse small lesions | Pretrain harm | ImageNet/SAM init < random init on tiny polyp with n=50 | Counter to FM gospel | Small-n curve | Controversial | SAM_MEDICAL_GAP |
-| S-053 | Colorization-like appearance gap vs geometry gap | Domain | Histogram matching closes RGB-medical gap more than style GAN | Simple DA | Endoscopy | Old DA | SAM_MEDICAL_GAP |
-| S-054 | SAM objectness fights organ-internal partitions | Multi-instance organs | Liver tumor inside liver: SAM prefers whole liver given a tumor point | Hierarchical objects | LiTS | Known failure | SAM_MEDICAL_GAP |
-| S-055 | Clinical ‘target’ ≠ connected component | Pathology | SAM cannot represent disconnected tumor burden as one prompt | Problem | BraTS disconnected | Formulation | SAM_MEDICAL_GAP |
-| S-056 | Slice thickness shift > scanner shift | Domain | Changing slice thickness drops Dice more than vendor change | Which shift matters | Public CT with metadata | Metadata missing | SAM_MEDICAL_GAP |
-| S-057 | SAM GT-box eval is not a clinical protocol | Protocol | Radiologists do not draw tight boxes; simulated noisy boxes needed | Eval | Noise model | Soft | SAM_MEDICAL_GAP |
-| S-058 | Fine-tuning SAM destroys zero-shot on natural images | Forgetting | Med FT drops COCO everything-AP a lot | Document cost of MedSAM | Before/after | Expected | SAM_MEDICAL_GAP |
-| S-059 | Class-agnostic SAM + tiny classifier beats semantic FT | Decomposition | Frozen SAM masks + linear class head vs full semantic FT | Simplicity | 2D organs | May lose SOTA | SAM_MEDICAL_GAP |
-| S-060 | Promptable models are evaluated with oracle prompts | Oracle | Using last-year’s detector as prompt is the true baseline | Protocol | Replace GT box | Social | SAM_MEDICAL_GAP |
-| S-061 | MRI contrast phase is a domain, not a modality | Domain taxonomy | Arterial vs delayed phase shift > CT vs MR for liver | Finer domains | Public liver | Data | SAM_MEDICAL_GAP |
-| S-062 | SAM fails on metal artifacts in a spatially local way | Robustness | Artifact-masked metrics change method ranking | Eval | CT with implants | Niche | SAM_MEDICAL_GAP |
-| S-063 | 2.5D prompts (same point on ±k slices) beat 3D models at low n | Data efficiency | Multi-slice same-prompt SAM > 3D UNet at n<20 | Efficiency | Learning curve | Not SOTA at scale | SAM_MEDICAL_GAP |
-| S-064 | Medical ‘fine-tune SAM’ papers share one trick: more masks | Meta | Gains correlate with #FT images not method | Meta-analysis | 20 papers’ tables | Incomplete reporting | SAM_MEDICAL_GAP |
-| S-065 | Pathology stains are a color-equivariance test | Stain | Macenko stain-norm lifts frozen SAM more than LoRA | Preprocess | Camelyon | Known DA | SAM_MEDICAL_GAP |
-| S-066 | SAM cannot count | Instance | Instance F1 of SAM everything on cells is poor vs Cellpose | Cell domain | Public cells | Cellpose exists | SAM_MEDICAL_GAP |
-| S-067 | Overlap organs need mutex constraints SAM lacks | Anatomy | Adding mutex CRF postprocess beats extra adapters | Simple | Multi-organ | Old | SAM_MEDICAL_GAP |
-| S-068 | Patient-level split leakage in SAM-medical papers | Leak | Image-level splits inflate FT gains | Re-split | One public set | Social | SAM_MEDICAL_GAP |
-| S-069 | Interactive SAM vs nnU-Net is category error | Comparison | Interactive vs automatic should be compared at equal human time | Protocol | Time-matched | Hard | SAM_MEDICAL_GAP |
-| S-070 | Foundation medical models still need task heads that SAM lacks | VFM vs SAM | UNI/Virchow features + decoder beat MedSAM on pathology | Which FM | One task | Moving target | SAM_MEDICAL_GAP |
-| S-071 | SAM2 memory is appearance-tracking not identity | Video | Identity switches under similar-looking organs | Memory content | Surgical video | Known VOS | SAM2_MEMORY |
-| S-072 | Memory bank recency bias | SAM2 | Older slice of a 3D CT is dropped; disease that appears then disappears is lost | 3D as video | Long CT | MedSAM-2 self-sort exists | SAM2_MEMORY |
-| S-073 | Unordered medical slices break SAM2 time prior | Assumption | Shuffling slice order changes Dice a lot for vanilla SAM2, not for a bag memory | Time prior | Shuffle test | MedSAM-2 related | SAM2_MEMORY |
-| S-074 | One-prompt-all-slices overclaims if anatomy drifts | One-prompt | Prompt on slice 0 fails after 30 slices more than a new point | Drift | Plot Dice vs Δslice | Simple | SAM2_MEMORY |
-| S-075 | Memory attention is a confounder of compute | Efficiency | Reducing memory tokens 4× may not drop medical Dice | Distill compute | Ablate memory size | Engineering | SAM2_MEMORY |
-| S-076 | SAM2 occlusion head is unused in 3D | Architecture | Occlusion score does not predict disappearing tumors | Head misuse | Correlate | Negative likely | SAM2_MEMORY |
-| S-077 | Surgical smoke is an occlusion process SAM2 can model | Dual use | Treat smoke as occluder of instruments, not as the object | Reframe | Endoscopy | Data | SAM2_MEMORY |
-| S-078 | Bidirectional memory beats causal for CT | 3D | Forward+backward SAM2 pass > causal | Simple | MSD | Compute 2× | SAM2_MEMORY |
-| S-079 | Memory embeddings collapse to position not appearance | Representation | Linear probe of memory: slice index >> appearance | Collapse | Probe | Speculative | SAM2_MEMORY |
-| S-080 | Prompt on first frame is a privileged protocol | Video eval | Random-frame prompt drops more than model gaps | Protocol | SA-V subset | Social | SAM2_MEMORY |
-| S-081 | SAM2 vs SAM on static medical: memory off | Ablation | Disabling memory on 2D should match SAM; if not, training artifact | Sanity | 2D stills | May match | SAM2_MEMORY |
-| S-082 | Long-video fire: memory of flame texture overfits last second | Fire video | Memory reset every k frames beats full memory | Temporal | Fire clips | ProFSAM adjacent | SAM2_MEMORY |
-| S-083 | Cross-patient memory is leakage | Personalized | Using previous patient’s memory bank as init is wrong but may lift Dice | Leak test | Swap banks | Ethical | SAM2_MEMORY |
-| S-084 | Semantic memory vs visual memory | Open problem | Class token in memory would stop kidney/liver switch | Method | Tiny add-on | Novelty vs MedSAM-2 | SAM2_MEMORY |
-| S-085 | Frame-rate mismatch | Video | Subsampling frames changes SAM2 more than resolution | Protocol | Sweep fps | Narrow | SAM2_MEMORY |
-| S-086 | SAM2 masklet tracking as annotation tool | Practical | Track-then-correct time vs slice-wise SAM | HCI | 3D annot | Study cost | SAM2_MEMORY |
-| S-087 | Memory quality correlates with camera motion not object | Ego | IMU/motion magnitude predicts SAM2 failure | Sensor | Endoscopy | Data | SAM2_MEMORY |
-| S-088 | Multi-object memory interference | Decoder | Two objects’ memories mix; sequential single-object tracking is stronger baseline | Interference | DAVIS | Known VOS | SAM2_MEMORY |
-| S-089 | 3D spacing as fake time | Physics | Using z-mm as dt vs index as dt changes tracking | Physics | CT | Subtle | SAM2_MEMORY |
-| S-090 | SAM2 inherits SAM prompt sensitivity temporally | Amplify | Early prompt error grows exponentially vs slice | Error growth | Plot | Simple | SAM2_MEMORY |
-| S-091 | Fine-tune memory attention only | PEFT locus | LoRA on memory attn > image encoder for 3D organs | Where to adapt | Ablation | Incremental | SAM2_MEMORY |
-| S-092 | Forget-gate for pathology skip-lesion | Method | Learned skip of non-informative slices | Method | CT | Overlaps self-sort | SAM2_MEMORY |
-| S-093 | Evaluation must freeze prompt schedule | Fairness | Papers differ on when they re-prompt | Protocol | Re-eval | Social | SAM2_MEMORY |
-| S-094 | Audio/physio sync as extra memory | Multimodal | ECG-gated cardiac SAM2 | New | Public cardiac | Heavy | SAM2_MEMORY |
-| S-095 | SAM2 objectness still thing-like | Stuff video | Smoke plumes fragment into many masklets | Stuff | Smoke video | Expected | SAM2_MEMORY |
-| S-096 | Binary Dice is the wrong smoke metric | Evaluation | Ranking of models reverses under alpha-MAE vs Dice | Metric paper | Synthetic alpha + real | Need alpha GT | SMOKE_ALPHA |
-| S-097 | Smoke is a density field not an instance | Problem | Instance-SAM cannot represent overlapping plumes | Formulation | Overlapping synthetic | Conceptual | SMOKE_ALPHA |
-| S-098 | Background prototype methods bake in static camera | DenSiSeg-like | Camera motion kills background prototype | Failure | Handheld smoke | May already fail | SMOKE_ALPHA |
-| S-099 | Color deconvolution beats SAM on white smoke | Simple baseline | Physics color model > FM on many smoke sets | Counter FM | Public smoke | May lose on wildfire | SMOKE_ALPHA |
-| S-100 | Temporal median background is a missing baseline | Eval | Median-bg + threshold vs deep models | Baseline honesty | Fixed-cam | Old | SMOKE_ALPHA |
-| S-101 | SAM edges snap to high-contrast non-smoke | Failure | Trees/clouds steal the mask | Failure atlas | Qualitative+metric | Known | SMOKE_ALPHA |
-| S-102 | Semi-transparent GT disagreement is the ceiling | Human | Inter-rater Dice on smoke < many paper gains | Ceiling | 3 raters | Cost | SMOKE_ALPHA |
-| S-103 | Train on alpha matting data, test on smoke | Transfer | Transfer from portrait matting helps smoke more than COCO | Adjacent field | 1 FT | Domain | SMOKE_ALPHA |
-| S-104 | Optical flow of smoke is not brightness constancy | Physics | Flow losses hurt smoke; photometric warp is invalid | Physics | Ablate flow | Negative | SMOKE_ALPHA |
-| S-105 | Fire-as-prompt for smoke | Causal | Segmenting fire first to constrain smoke origin helps | Physics | Pipeline | Confound detector | SMOKE_ALPHA |
-| S-106 | Wavelength / NIR is the real solution | Sensor | RGB methods overclaim; NIR channel is a better idea | Problem | If dataset exists | Data | SMOKE_ALPHA |
-| S-107 | Synthetic CFD smoke for sim2real | Synthetic | Domain-random CFD > GAN smoke | Sim2real | Small real test | Heavy | SMOKE_ALPHA |
-| S-108 | Fog/haze models ≠ smoke | Assumption | Defog networks fail on smoke; they should | Negative | Off-the-shelf dehaze | Easy | SMOKE_ALPHA |
-| S-109 | Early-warning needs detection of thin smoke not IoU | Task | AP at 10% density > mIoU correlates with alarm time | Task | Time-to-detect | Labels | SMOKE_ALPHA |
-| S-110 | Video memory of SAM2 fragments plumes | SAM2 | Re-merge masklets by color histogram | Method | Video | Incremental | SMOKE_ALPHA |
-| S-111 | Uncertainty should be high in alpha 0.2–0.8 band | Calibration | Error concentrated in mid-alpha | Eval | Density GT | Labels | SMOKE_ALPHA |
-| S-112 | Crowdsourced binary masks are biased thick | Data | Annotators over-paint smoke; models learn fat masks | Data | Compare to matting GT | Data | SMOKE_ALPHA |
-| S-113 | Night fire glare is specular not smoke | Failure | Glare-specific eval slice | Eval | Night set | Niche | SMOKE_ALPHA |
-| S-114 | Transparent industrial objects share math with smoke | Unify | Alpha + refraction vs alpha-only | Unify | Trans10k + smoke | Ambitious | SMOKE_ALPHA |
-| S-115 | Polarization cameras | Sensor | Polarization lifts transparent glass more than extra LoRA | Sensor vs model | If data | Data | SMOKE_ALPHA |
-| S-116 | Boundary band metrics | Eval | Score only the 10px blend band | Metric | Recompute papers | Social | SMOKE_ALPHA |
-| S-117 | Smoke as residual to inpainted background | Method | Inpaint-then-subtract vs segment | Alternative | Fixed cam | Classic | SMOKE_ALPHA |
-| S-118 | Weather confound | Shift | Rain/fog in wildfire videos dominate errors | Slice | Metadata | Data | SMOKE_ALPHA |
-| S-119 | Class imbalance of thin vs thick | Long-tail | Models ignore thin; resample density bins | Train | Histogram | Incremental | SMOKE_ALPHA |
-| S-120 | Human false negatives on thin smoke | Ceiling | Models ‘beat’ humans on thin if GT is conservative | Caution | Audit GT | Social | SMOKE_ALPHA |
-| S-121 | Multi-view smoke 3D density | 3D | 2D IoU is ill-posed; need tomography-like | Problem | Multi-cam | Hardware | SMOKE_ALPHA |
-| S-122 | Text prompt ‘smoke’ in Grounded-SAM is CLIP prior | VLM | CLIP ‘smoke’ matches clouds | Failure | Cloud vs smoke set | Expected | SMOKE_ALPHA |
-| S-123 | Legal/forensic needs calibrated density not mask | App | Calibration plots missing in papers | Gap | ECE | Soft | SMOKE_ALPHA |
-| S-124 | Distillation from SAM background prior without SAM at test | Deploy | Student without SAM | Distill | FPS | Incremental | SMOKE_ALPHA |
-| S-125 | Adversarial white overlays fool smoke detectors | Robust | Tiny white patches | Security | Attack? **eval-only** white-box not requested; use public corruptions | Stay with corruptions not exploits | SMOKE_ALPHA |
-| S-126 | Fire segmentation papers are detector-prompted SAM2 | Attribution | Gains vanish if detector AP is matched across methods | Kill novelty of ProFSAM-like | Swap detectors | Crowded | FIRE_CONFOUND |
-| S-127 | Flame flicker temporal energy is a free feature | Physics | Bandpass temporal filter is a strong baseline | Baseline | Video | Old | FIRE_CONFOUND |
-| S-128 | Color space HSV threshold still competitive | Baseline | Report it or ranking is dishonest | Honesty | Public fire | Social | FIRE_CONFOUND |
-| S-129 | Smoke occlusion of fire is a detection not segmentation issue | Task mix | Recall of occluded fire vs mask quality | Split metrics | Video | Simple | FIRE_CONFOUND |
-| S-130 | Night vs day domain | Shift | Separate leaderboards | Eval | Split | Simple | FIRE_CONFOUND |
-| S-131 | Synthetic fire from games | Sim2real | Game engines overfit orange sprites | Negative | Train game test real | Easy | FIRE_CONFOUND |
-| S-132 | Thermal IR is a privileged modality | Sensor | RGB SOTA claims vs IR available | Fairness | Dual cam | Data | FIRE_CONFOUND |
-| S-133 | Instance vs stuff fire | Problem | Many cores vs one blob | Formulation | Dataset | Labels | FIRE_CONFOUND |
-| S-134 | Safety metric: time-to-alarm | Task | mIoU uncorrelated | Task | Event labels | Data | FIRE_CONFOUND |
-| S-135 | MobileSAM2 fire drop is prompt not capacity | Distill | Same prompts, measure | Ablate | Public | Incremental | FIRE_CONFOUND |
-| S-136 | Wildfire vs indoor fire is different science | Taxonomy | Do not pool | Split | Two sets | Social | FIRE_CONFOUND |
-| S-137 | Reflection on water/windows | Failure | Fire reflections | Slice | Qual | Niche | FIRE_CONFOUND |
-| S-138 | Annotator delay vs model latency | Deploy | Human GT is late | Protocol | Video | Soft | FIRE_CONFOUND |
-| S-139 | Flame boundary is physically indefinite | Ceiling | Inter-rater on flame edge | Ceiling | Raters | Cost | FIRE_CONFOUND |
-| S-140 | Using SAM2 memory on fire tracks the brightest blob | Failure | Brightest-blob tracker baseline | Baseline | Video | Simple | FIRE_CONFOUND |
-| S-141 | LoRA on SAM encoder destroys promptability | PEFT harm | After LoRA-seg, zero-shot box Dice on unseen category drops | Document harm | COCO holdout classes | Important | PEFT_DENSE |
-| S-142 | Rank-1 LoRA is enough for decoder, not encoder | Rank | Sweep rank per block type | Map | 1 dataset | Incremental | PEFT_DENSE |
-| S-143 | DoRA vs LoRA on mask IoU not GLUE | Metric | Dense IoU ranking ≠ NLP ranking | Transfer of PEFT papers | Head-to-head | Compute | PEFT_DENSE |
-| S-144 | Adapter location: after LN vs inside attn | Micro | Dense tasks prefer different insertion than cls | Replication | Grid | Crowded PEFT | PEFT_DENSE |
-| S-145 | Full FT of ViT-B decoder-only matches ViT-H LoRA | Scale | Size vs PEFT | Pareto | 2 sizes | Compute | PEFT_DENSE |
-| S-146 | PEFT on frozen SAM vs train UNet from scratch at n=100 | Data regime | Crossover n | Curve | Public | Important | PEFT_DENSE |
-| S-147 | Gradient conflict between prompt-encoder LoRA and decoder LoRA | Conflict | PCGrad vs naive | Opt | 1 task | Incremental | PEFT_DENSE |
-| S-148 | PEFT updates the shortcut around the scientific signal | Lottery | Random LoRA directions with same rank almost match trained LoRA on seg | Shock | Random vs trained | High risk of negative | PEFT_DENSE |
-| S-149 | QLoRA for SAM is an engineering paper unless VRAM is the question | Scope | Only if 24GB vs 8GB is the story | Deploy | Quantize | Low science | PEFT_DENSE |
-| S-150 | Layer-wise learning rates beat extra adapters | Opt | Simple | Sweep | 1 task | Maybe known | PEFT_DENSE |
-| S-151 | BitFit (bias-only) on SAM decoder | Extreme PEFT | How far | Measure | 1 task | May fail | PEFT_DENSE |
-| S-152 | Prompt-tuning pixels vs prompt-tuning tokens | Prompt | Visual prompt vs SAM prompt tokens | Compare | 1 task | Crowded VPT | PEFT_DENSE |
-| S-153 | LoRA merge then eval vs keep adapter | Deploy | Merge error on mask | Measure | 1 | Engineering | PEFT_DENSE |
-| S-154 | Multi-tenant LoRA for hospitals | Interference | Two LoRAs sequential vs parallel | CL | 2 datasets | InfLoRA exists for cls | PEFT_DENSE |
-| S-155 | Segmentation LoRA should be spatial | Hypothesis | Token-wise LoRA (per-patch rank) beats global | Method | Tiny | Novelty risk | PEFT_DENSE |
-| S-156 | Encoder LoRA reduces robustness to intensity window | Side effect | Measure | Window sweep | 1 | Interesting | PEFT_DENSE |
-| S-157 | PEFT selection via NAS is overkill | ROI | Random search of insertion matches NAS | Negative | Small NAS | Compute | PEFT_DENSE |
-| S-158 | Knowledge distillation + PEFT double counts | Confound | Distill-only vs PEFT-only vs both | Ablate | 1 | Social | PEFT_DENSE |
-| S-159 | SAM PEFT papers hide training resolution | Protocol | 1024 vs 512 explains gaps | Re-run | 1 | Social | PEFT_DENSE |
-| S-160 | Classifier PEFT results do not transfer to dense | Claim | Reproduce InfLoRA on ADE20K not ImageNet-CL | Transfer | ADE | Compute | PEFT_DENSE |
-| S-161 | LoRA on Q but not V changes localization | Mech | Ablate matrices | Mechanistic | 1 | Incremental | PEFT_DENSE |
-| S-162 | Spectral alignment of LoRA updates with forgetting | Theory | Overlap of singular vectors vs Dice drop on old task | Measure | 2 tasks | Speculative | PEFT_DENSE |
-| S-163 | Adapter fusion arithmetic on masks | Arithmetic | Task analogical: tumor LoRA + style LoRA | Wild | 2 | May fail | PEFT_DENSE |
-| S-164 | PEFT for calibration not Dice | Objective | Train LoRA to minimize ECE of masks | Different goal | 1 | Novel-ish | PEFT_DENSE |
-| S-165 | Frozen encoder + learned prompt is enough iff objects are COCO-like | Regime | Plot vs objectness | Curve | Multi | Soft | PEFT_DENSE |
-| S-166 | Hypernet LoRA from dataset stats | Meta | Predict LoRA from mean/std image | Extreme | Many tasks | High risk | PEFT_DENSE |
-| S-167 | PEFT vs test-time adaptation | TTA | TENT on SAM vs LoRA | Compare | 1 shift | Crowded TTA | PEFT_DENSE |
-| S-168 | Safety: LoRA can inject spurious correlations | Spurious | Hospital-marker shortcut | Audit | 1 | Important | PEFT_DENSE |
-| S-169 | Parameter count vs trainable FLOPs | Honesty | Report both | Protocol | — | Social | PEFT_DENSE |
-| S-170 | Shared LoRA across SAM and CLIP | Multimodal | Joint PEFT | Method | 1 | Heavy | PEFT_DENSE |
-| S-171 | Early-exit PEFT | Efficient | Exit decoder layers | Method | 1 | Eng | PEFT_DENSE |
-| S-172 | LoRA dropout as regularizer for small medical n | Small-n | Helps | Sweep | 1 | Incremental | PEFT_DENSE |
-| S-173 | Orthogonal LoRA vs replay for *dense* CL | Vs InfLoRA | Replay of 50 masks beats InfLoRA on ADE | Challenge | CL | InfLoRA crowded | PEFT_DENSE |
-| S-174 | PEFT initialization with SVD of full-FT delta | Init | Better than Gaussian | Recipe | 1 | Known variants | PEFT_DENSE |
-| S-175 | When PEFT is worse than linear probe on frozen masks | Regime | Frozen SAM everything + probe | Baseline | 1 | Important | PEFT_DENSE |
-| S-176 | Mask decoder forgets old prompt types | CL | Train boxes then points: point Dice crash | Protocol CL | 1 | Concrete | FORGETTING |
-| S-177 | Encoder does not forget; decoder does | Locus | Freeze encoder during task 2 | Ablate | 2 tasks | Clear | FORGETTING |
-| S-178 | Replay of prompts not images | Replay | Store 100 prompt-mask pairs | Cheap | 2 tasks | Novel-ish | FORGETTING |
-| S-179 | SAM everything-mode AP as canary of forgetting | Canary | Monitor during medical FT | Tool | 1 | Simple | FORGETTING |
-| S-180 | EWC on LoRA A/B | Regularize | Vs InfLoRA on seg | Head-to-head | 2 | Paper exists for cls | FORGETTING |
-| S-181 | Task-agnostic inference without oracle task id | Realistic CL | Drop if needs task id | Protocol | — | Social | FORGETTING |
-| S-182 | Forgetting is calibration first, Dice second | Order | ECE breaks before Dice | Measure | 2 | Interesting | FORGETTING |
-| S-183 | Plasticity of SAM is already low; forgetting overstated | Claim | Task2 gain tiny so ‘forgetting’ is noise | Re-eval | 2 | Contrarian | FORGETTING |
-| S-184 | Sequential organs in same modality | CL | Liver then spleen | Practical | MSD | Data | FORGETTING |
-| S-185 | Attention drift in SAM decoder | Mech | Rollout change vs Dice drop | Measure | 2 | ARCL-ViT adjacent | FORGETTING |
-| S-186 | Co-training old synthetic prompts | Replay | Generate old-style boxes | Method | 2 | Incremental | FORGETTING |
-| S-187 | Forgetting of negatives: FP rise | Error type | Old task FPs | Slice | 2 | Simple | FORGETTING |
-| S-188 | Consolidation sleep: extra epochs on mix | Recipe |  | 1 | Incremental | FORGETTING |
-| S-189 | Multi-hospital sequential | Real | Sites A then B | Data | Privacy | FORGETTING |
-| S-190 | VLM captioner FT forgetting of grounding | Multimodal | After caption FT, grounding drops | Measure | 1 | Adjacent | FORGETTING |
-| S-191 | SAM2 memory FT forgetting of first-frame prompt skill | Video |  | 1 | Incremental | FORGETTING |
-| S-192 | Measure forgetting in parameter space vs function space | Theory | Same | 2 | Speculative | FORGETTING |
-| S-193 | Distillation from frozen teacher SAM during FT | LwF | Classic | 1 | Old | FORGETTING |
-| S-194 | Whether LoRA rank **increases** forgetting | Rank | Higher rank more forget | Sweep | 2 | Testable | FORGETTING |
-| S-195 | Output-space orthogonal gradients for masks | Method | Project mask grads | 2 | Vs InfLoRA | FORGETTING |
-| S-196 | Test-set overlap with SA-1B | Leak | Near-duplicate search | Search | COCO/SA | Compute | EVAL_LEAK |
-| S-197 | Medical datasets recycled across 50 SAM papers | Leak | Same 10 datasets | Meta | List | Social | EVAL_LEAK |
-| S-198 | Dice on small objects is a size metric | Metric | Report Dice vs size bins always | Protocol | — | Known | EVAL_LEAK |
-| S-199 | Rank reversal under NSD vs Dice | Boundary | SAM vs UNet swap | Recompute | 1 | Strong | EVAL_LEAK |
-| S-200 | Oracle box mIoU as illegal metric for automatic methods | Protocol | Ban it | Re-eval | — | Social | EVAL_LEAK |
-| S-201 | Video eval with GT first-frame is semi-oracle | Protocol | Also random frame | Re-eval | — | Social | EVAL_LEAK |
-| S-202 | Preprocessing pipelines unpublished | Repro | Intensity window hidden | Audit | 5 papers | Social | EVAL_LEAK |
-| S-203 | Seed variance > method gap | Stats | 3 seeds | Rerun | 1 | Social | EVAL_LEAK |
-| S-204 | Patient vs slice averaging | Stats | Changes significance | Recompute | 1 | Known | EVAL_LEAK |
-| S-205 | Leaderboard climbing via TTA not method | Confound | Disable TTA | Ablate | 1 | Social | EVAL_LEAK |
-| S-206 | ImageNet-pretrained encoders on medical still win due to residual learning not features | Claim | Random encoder + long train | Compute | Heavy | EVAL_LEAK |
-| S-207 | SAM papers use different prompt jitter | Protocol | Standardize | Re-eval | — | Social | EVAL_LEAK |
-| S-208 | mAP for detection of fire with tiny objects | Metric | AP_S missing | Report | 1 | Simple | EVAL_LEAK |
-| S-209 | Calibration never reported | Gap | Add ECE | 1 | Simple | EVAL_LEAK |
-| S-210 | Human ceiling missing | Gap |  | 1 | Cost | EVAL_LEAK |
-| S-211 | Cross-dataset instead of cross-val on same | General |  | 1 | Social | EVAL_LEAK |
-| S-212 | Compute-matched baselines | Fair |  | 1 | Social | EVAL_LEAK |
-| S-213 | Code not matching paper prompts | Repro |  | 1 | Social | EVAL_LEAK |
-| S-214 | Statistical tests uncorrected | Stats |  | Meta | Social | EVAL_LEAK |
-| S-215 | Synthetic test sets overfit generators | Leak | New generator | 1 | Incremental | EVAL_LEAK |
-| S-216 | Video FPS vs accuracy Pareto missing | Deploy |  | 1 | Eng | EVAL_LEAK |
-| S-217 | Privacy leakage of FT SAM via inversion | Safety | Membership | 1 | Heavy | EVAL_LEAK |
-| S-218 | Dataset license prevents comparison | Social |  | — | Soft | EVAL_LEAK |
-| S-219 | Annotation guidelines unpublished | Data |  | Audit | Cost | EVAL_LEAK |
-| S-220 | ‘SOTA’ on 20-image test | Size |  | Meta | Social | EVAL_LEAK |
-| S-221 | CLIP heatmaps are not masks | VLM | Thresholded CAM vs SAM | Compare | 1 | Known | VLM_DENSE |
-| S-222 | Referring expression seg fails on density language | Language | ‘thin smoke’ vs ‘smoke’ | Slice | 1 | Interesting | VLM_DENSE |
-| S-223 | LLaVA describes but cannot point | Grounding |  | 1 | Known | VLM_DENSE |
-| S-224 | Dense captions as extra GT | Supervision |  | 1 | Data | VLM_DENSE |
-| S-225 | Medical reports misalign with pixel GT | Misalign | Report-trained VLM worse for masks | Measure | 1 | Important | VLM_DENSE |
-| S-226 | Open-vocab seg is detector+SAM in disguise | Attribution |  | Swap | 1 | Kill novelty | VLM_DENSE |
-| S-227 | Text prompt sensitivity analogous to click sensitivity | Unify |  | Jitter text | 1 | Nice | VLM_DENSE |
-| S-228 | VLM priors fight rare disease appearance | Harm | Text prior reduces recall of atypical | Slice | 1 | Important | VLM_DENSE |
-| S-229 | Multilingual prompts for medical | Lang |  | 1 | Incremental | VLM_DENSE |
-| S-230 | Chain-of-thought does not help pixels | Negative |  | 1 | Easy | VLM_DENSE |
-| S-231 | Region-level contrastive vs pixel | Rep |  | 1 | Crowded | VLM_DENSE |
-| S-232 | Grounding DINO boxes as SAM prompts: error propagation | Cascade |  | 1 | Known | VLM_DENSE |
-| S-233 | Concept bottleneck masks | XAI |  | 1 | Heavy | VLM_DENSE |
-| S-234 | VLM as evaluator of masks | Eval |  | 1 | Risky circular | VLM_DENSE |
-| S-235 | Synthetic referring expressions | Data |  | 1 | Incremental | VLM_DENSE |
-| S-236 | Hallucinated objects in empty scans | Safety |  | 1 | Important | VLM_DENSE |
-| S-237 | Temperature of text encoder changes mask size | Decoding |  | 1 | Curious | VLM_DENSE |
-| S-238 | Shared vs separate vision towers | Arch |  | 1 | Crowded | VLM_DENSE |
-| S-239 | OCR tokens on medical films | Extra |  | 1 | Data | VLM_DENSE |
-| S-240 | Negation in reports (‘no pneumothorax’) | Language |  | 1 | Important | VLM_DENSE |
-| S-241 | Region-reward RL for masks | RL |  | Heavy | High risk | VLM_DENSE |
-| S-242 | CLIP surgical instrument names | Domain lex |  | 1 | Incremental | VLM_DENSE |
-| S-243 | Dense prediction needs pixel-aligned VLMs | Claim | SigLIP vs CLIP | 1 | Crowded | VLM_DENSE |
-| S-244 | Teacher VLM labels for SAM FT | Distill |  | 1 | Incremental | VLM_DENSE |
-| S-245 | Evaluate on instructions not classes | Protocol |  | 1 | Soft | VLM_DENSE |
-| S-246 | Detection of transparent objects is localization of refraction | Problem | Box IoU poor; propose refraction maps |  | Trans10k | Hard | DET_SHIFT |
-| S-247 | Small-object AP dominated by resize | Protocol | Tiled inference baseline |  | 1 | Known | DET_SHIFT |
-| S-248 | Open-vocab detectors fail on smoke as ‘object’ | Vocab |  | 1 | Expected | DET_SHIFT |
-| S-249 | Anchor-free vs SAM prompt boxes | Relation |  | 1 | Incremental | DET_SHIFT |
-| S-250 | Domain shift in fire is lighting not shape | Shift |  | 1 | Testable | DET_SHIFT |
-| S-251 | Co-occurrence priors: fire implies smoke | Bias |  | 1 | Interesting | DET_SHIFT |
-| S-252 | Detector calibration vs downstream SAM | Cascade |  | 1 | Simple | DET_SHIFT |
-| S-253 | Semi-supervised detector with SAM pseudo | Loop | Confirm not novel vs papers | Search later | Crowded | DET_SHIFT |
-| S-254 | Video detection ID switches | Track |  | 1 | Known | DET_SHIFT |
-| S-255 | Copy-paste aug hurts transparent | Aug |  | 1 | Testable | DET_SHIFT |
-| S-256 | Weakly supervised bags of frames | Weak |  | 1 | Crowded | DET_SHIFT |
-| S-257 | Long-tail instruments in surgery | Tail |  | 1 | Data | DET_SHIFT |
-| S-258 | Camera-motion compensation first | Pre |  | 1 | Old | DET_SHIFT |
-| S-259 | Label smoothing on fire boxes | Train |  | 1 | Tiny | DET_SHIFT |
-| S-260 | Cross-camera retrieval vs detect | Task |  | 1 | Adjacent | DET_SHIFT |
-| S-261 | Synthetic rare events | Data |  | 1 | Incremental | DET_SHIFT |
-| S-262 | NMS as a scientific choice for overlapping fire | NMS | Soft-NMS | 1 | Old | DET_SHIFT |
-| S-263 | Open-set fire vs glare | OOD |  | 1 | Important | DET_SHIFT |
-| S-264 | Temporal consistency regularizer | Train |  | 1 | Crowded | DET_SHIFT |
-| S-265 | Human false-alarm cost metric | Task |  | 1 | Soft | DET_SHIFT |
-| S-266 | Synthetic medical without physics fails | Sim2real |  | 1 | Known | SYNTH_DA |
-| S-267 | Diffusion-generated tumors shortcut textures | Shortcut |  | 1 | Important | SYNTH_DA |
-| S-268 | GAN smoke lacks multi-scale turbulence | Physics |  | 1 | Testable | SYNTH_DA |
-| S-269 | Copy-paste lesions ignore lighting | Aug |  | 1 | Known | SYNTH_DA |
-| S-270 | Domain randomization of window/level | CT |  | 1 | Simple | SYNTH_DA |
-| S-271 | Text-to-image medical is unsafe eval | Ethics |  | — | Social | SYNTH_DA |
-| S-272 | Synthetic labels are too consistent vs human | Gap | Add label noise | 1 | Interesting | SYNTH_DA |
-| S-273 | Sim2real for transparent via rendering | Graphics |  | Heavy | Data | SYNTH_DA |
-| S-274 | Style transfer as DA is dead? | Negative | Recheck 2024 | 1 | Maybe | SYNTH_DA |
-| S-275 | MixUp in mask space vs image | Aug |  | 1 | Incremental | SYNTH_DA |
-| S-276 | Synthetic prompts (boxes) for SAM FT | Data |  | 1 | Simple | SYNTH_DA |
-| S-277 | Unreal engine fire vs real | Gap |  | 1 | Easy | SYNTH_DA |
-| S-278 | Diffusion inversion for tumor counterfactuals | Causal |  | Heavy | Risky | SYNTH_DA |
-| S-279 | Domain labels as nuisance | IRM |  | 1 | Crowded | SYNTH_DA |
-| S-280 | Test-time histogram matching | TTA |  | 1 | Old | SYNTH_DA |
-| S-281 | Self-train with SAM everything | Pseudo | Confirm crowded | Search | Crowded | SYNTH_DA |
-| S-282 | Cross-modality paired MRI-CT | DA |  | Data | Known | SYNTH_DA |
-| S-283 | Physics-informed intensity | CT |  | 1 | Speculative | SYNTH_DA |
-| S-284 | Synthetic rare laterality errors | Safety |  | 1 | Interesting | SYNTH_DA |
-| S-285 | Generator memorization of train tumors | Leak |  | 1 | Important | SYNTH_DA |
-| S-286 | Bigger SAM always better on medical? | Assumption | ViT-H vs B on small n reverse | Curve | Compute | ASSUMPTION |
-| S-287 | More prompts always better? | Assumption | Too many points confuse | Sweep | Easy | ASSUMPTION |
-| S-288 | Fine-tuning always helps? | Assumption | FT hurts OOD | Split | Easy | ASSUMPTION |
-| S-289 | Foundation model > specialist at low n | Assumption | Opposite on tiny lesions | Curve | Important | ASSUMPTION |
-| S-290 | Dice improvements of 1% are clinical | Assumption | Survey clinicians | Qual | Soft | ASSUMPTION |
-| S-291 | Promptable is more usable | Assumption | Time-motion study | HCI | Cost | ASSUMPTION |
-| S-292 | Pretraining on SA-1B is necessary for SAM-like | Assumption | Train small from scratch on medical | Heavy | High risk | ASSUMPTION |
-| S-293 | Memory in SAM2 always helps 3D | Assumption | Ablate | Easy | ASSUMPTION |
-| S-294 | Box > point always | Assumption | Contrast slice reverse | Easy | ASSUMPTION |
-| S-295 | Uncertainty = error | Assumption | Correlate | Easy | ASSUMPTION |
-| S-296 | Ensemble always calibrates | Assumption |  | Easy | ASSUMPTION |
-| S-297 | Attention maps explain | Assumption |  | Easy | ASSUMPTION |
-| S-298 | IoU token is confidence | Assumption | ECE | Easy | ASSUMPTION |
-| S-299 | Medical adapters transfer across organs | Assumption |  | Easy | ASSUMPTION |
-| S-300 | Zero-shot SAM is fair without prompts | Assumption |  | Social | ASSUMPTION |
-| S-301 | FPS on A100 matters for clinic | Assumption | Edge device | Eng | ASSUMPTION |
-| S-302 | More augmentation always helps SAM FT | Assumption |  | Easy | ASSUMPTION |
-| S-303 | Class-agnostic is enough for clinic | Assumption |  | Soft | ASSUMPTION |
-| S-304 | Video models for 3D CT | Assumption | vs true 3D | Compute | ASSUMPTION |
-| S-305 | Synthetic data scales unbounded | Assumption | Curve saturates |  | ASSUMPTION |
-| S-306 | VLM can replace annotators | Assumption |  | Cost | ASSUMPTION |
-| S-307 | PEFT matches full FT | Assumption | Dense tasks | Compute | ASSUMPTION |
-| S-308 | Bigger prompts (text) help dense | Assumption |  | Easy | ASSUMPTION |
-| S-309 | Night-time fire is just a domain | Assumption | Different physics | Soft | ASSUMPTION |
-| S-310 | Human GT is gold | Assumption | Inter-rater | Cost | ASSUMPTION |
-| S-311 | Mask logits are not probabilities | Calib | Temperature per prompt type | 1 | Simple | CALIB |
-| S-312 | Pixel-ECE vs region-ECE | Metric | Rank reverse | 1 | Interesting | CALIB |
-| S-313 | Selective prediction on SAM | Reject | Abstain low IoU-token | 1 | Incremental | CALIB |
-| S-314 | Prompt disagreement as calibration | Method |  | 1 | Vs FNPC | CALIB |
-| S-315 | Domain-wise temperature | TTA |  | 1 | Old | CALIB |
-| S-316 | Overconfident small objects | Slice |  | 1 | Simple | CALIB |
-| S-317 | Underconfident transparent edges | Slice |  | 1 | Simple | CALIB |
-| S-318 | Fine-tuning worsens calibration more than Dice | Tradeoff |  | 1 | Important | CALIB |
-| S-319 | MC-dropout on decoder only | UQ |  | 1 | Old | CALIB |
-| S-320 | Ensembles of prompt types | UQ |  | 1 | Simple | CALIB |
-| S-321 | Spatial calibration maps | Eval |  | 1 | Incremental | CALIB |
-| S-322 | Clinical decision curve vs Dice | Metric |  | 1 | Soft | CALIB |
-| S-323 | OOD smoke vs cloud | OOD |  | 1 | Important | CALIB |
-| S-324 | SAM2 occlusion score as uncertainty | Reuse |  | 1 | Simple | CALIB |
-| S-325 | Label noise vs model uncertainty | Decompose |  | 1 | Hard | CALIB |
-| S-326 | 1-shot SAM is 1-box not 1-image | Clarify |  | Protocol | Social | FEWSHOT |
-| S-327 | Prototype in mask-embedding space | Method |  | 1 | Crowded | FEWSHOT |
-| S-328 | Fine-tune decoder on 5 images overfits windows | Overfit |  | 1 | Simple | FEWSHOT |
-| S-329 | In-context visual prompts (SegGPT-style) vs SAM | Compare |  | 1 | Crowded | FEWSHOT |
-| S-330 | Few-shot smoke with density bins not images | Protocol |  | 1 | Interesting | FEWSHOT |
-| S-331 | Unlabeled pool matters more than shots | Active |  | 1 | Crowded | FEWSHOT |
-| S-332 | Cross-organ few-shot negative transfer |  |  | 1 | Testable | FEWSHOT |
-| S-333 | Text as the extra shot | VLM |  | 1 | Crowded | FEWSHOT |
-| S-334 | Geometric augmentations as extra shots |  |  | 1 | Simple | FEWSHOT |
-| S-335 | Few-shot evaluation variance huge | Stats |  | 1 | Social | FEWSHOT |
-| S-336 | Frozen SAM + kNN of crops | Baseline |  | 1 | Simple | FEWSHOT |
-| S-337 | Part-based few-shot for instruments |  |  | 1 | Incremental | FEWSHOT |
-| S-338 | 0-shot medical is prompt-shot | Taxonomy |  | Social | FEWSHOT |
-| S-339 | Meta-learn prompt encoder only |  |  | Heavy | Crowded | FEWSHOT |
-| S-340 | Patient-shot vs image-shot | Split |  | 1 | Important | FEWSHOT |
-| S-341 | Publish: FT SAM hurts another hospital | Negative |  | 1 | Social | NEG_RESULT |
-| S-342 | Publish: SAM2 memory off is better on CT | Negative |  | 1 | Easy | NEG_RESULT |
-| S-343 | Publish: LoRA rank 64 < rank 4 on n=30 | Negative |  | 1 | Easy | NEG_RESULT |
-| S-344 | Publish: Grounded-SAM worse than detector | Negative |  | 1 | Easy | NEG_RESULT |
-| S-345 | Publish: extra synthetic data drops real Dice | Negative |  | 1 | Important | NEG_RESULT |
-| S-346 | Publish: ViT-H < UNet on tiny polyps | Negative |  | 1 | Important | NEG_RESULT |
-| S-347 | Publish: prompt evolution lowers clinical Dice | Negative |  | 1 | Vs SAMPOT | NEG_RESULT |
-| S-348 | Publish: uncertainty does not catch errors | Negative |  | 1 | Easy | NEG_RESULT |
-| S-349 | Publish: TTA makes smoke worse | Negative |  | 1 | Easy | NEG_RESULT |
-| S-350 | Publish: CLIP text hurts rare findings | Negative |  | 1 | Important | NEG_RESULT |
-| S-351 | Publish: 3D-as-video < 2.5D UNet | Negative |  | Compute | NEG_RESULT |
-| S-352 | Publish: adapters ≈ decoder FT | Negative |  | 1 | Social | NEG_RESULT |
-| S-353 | Publish: more clicks saturate at 3 | Negative |  | 1 | Easy | NEG_RESULT |
-| S-354 | Publish: IR fire models don’t transfer to RGB | Negative |  | 1 | Easy | NEG_RESULT |
-| S-355 | Publish: matting metrics reverse SOTA | Negative |  | 1 | Metric | NEG_RESULT |
-| S-356 | Publish: random boxes as prompts surprisingly strong | Negative |  | 1 | Curious | NEG_RESULT |
-| S-357 | Publish: SAM everything useless for stuff | Negative |  | 1 | Expected | NEG_RESULT |
-| S-358 | Publish: calibration temperature from val fails OOD | Negative |  | 1 | Easy | NEG_RESULT |
-| S-359 | Publish: ensemble of 2 SAMs not worth 2× | Negative |  | 1 | Easy | NEG_RESULT |
-| S-360 | Publish: BioMedCLIP vs CLIP: no mask gain | Negative |  | 1 | Testable | NEG_RESULT |
+|---|---|---|---|---|---|---|---|
+| S-001 | SAM IoU 方差是提示几何效应，而非域差距 | 医学 SAM 论文将提示噪声与域偏移混杂在一起 | 紧框 vs 松框的 IoU 增量比 CT vs 自然图像编码器距离解释了更多方差 | 隔离了大多数医学 SAM 表格掩盖的混杂因素 | 相同 200 张图像：GT 框 ±0/4/8/16px vs 冻结 SAM；方差分析：域 vs 提示尺度 | 在 MedIA 2024 中已有隐式体现；可能仅是一篇短评而非论文 | SAM_PROMPT |
+| S-002 | 点提示失败源于内部纹理，而非质心误差 | 点提示 SAM 不稳定 | 点击周围的内部熵比点到质心的距离能更好地预测失败 | 将“需要更好的点”重构为“需要具备纹理感知的提示” | 在 SAM 点提示上关联局部熵 vs Dice | 熵代理过于粗糙 | SAM_PROMPT |
+| S-003 | 框提示 SAM 暗中是一个检测器质量基准 | 来自 GT 的 SAM 框虚增了基础模型的主张 | 用弱检测器替换 GT 框比替换 ViT-B/H 导致 SAM Dice 下降更严重 | 抨击不公平的 GT 框评估 | COCO/医学：GT 框 vs YOLO 框提示，冻结 SAM | 细心读者已知 | SAM_PROMPT |
+| S-004 | 多掩码歧义性是未利用的监督信号 | SAM 输出 3 个掩码；论文直接取 argmax | 根据掩码间 IoU 分歧而非预测 IoU 进行选择，在嵌套物体上能更好地匹配人类意图 | 将 SAM 原生歧义性作为信号利用 | SA-1B/COCO 的嵌套物体子集；对比选择规则 | 嵌套标签稀缺 | SAM_PROMPT |
+| S-005 | 负点与正点并不对称 | 交互式论文将 +/- 点击一视同仁 | 在相同预算下，负点击减少的 FP 多于正点击增加的 TP | 不对称的交互成本 | 在 Cityscapes/医学数据集上模拟点击 | 可能具数据集特异性 | SAM_PROMPT |
+| S-006 | 提示编码器过拟合点击协议 | 在点上微调的 SAM 在框上失败 | 仅点微调后，框提示 Dice 下降至低于冻结 SAM | 记录 PEFT 的协议过拟合 | 医学数据集：仅在点上微调，在框上评估 | MedSAM 已混合提示 | SAM_PROMPT |
+| S-007 | 测试时提示搜索过拟合图像评分器 | SAMPOT 风格的提示移动需要代理分数 | 无监督评分器（CRF, NCut）将提示引向高对比度斑块，而非临床目标 | 抨击“免训练提示进化” | 肺部 X-ray：SAMPOT vs 随机游走 vs GT 目标 | 评分器选择存在挑拣嫌疑 | SAM_PROMPT |
+| S-008 | 网格 Everything 模式测量的是物体性先验，而非分割技能 | Everything 模式排行榜 | 小病灶的 Everything 召回率跟踪的是物体大小直方图，而非模型质量 | 评估批判 | 绘制召回率 vs 面积十分位数 | 可能显而易见 | SAM_PROMPT |
+| S-009 | SAM 预测 IoU 在透明边缘上失校准 | IoU token 被用作置信度 | IoU token vs 真实 IoU 的 ECE 在 Alpha 混合边界上比不透明边界更差 | 新的校准切片 | COCO 上的合成 Alpha 覆盖层 | 合成而非真实烟雾 | SAM_PROMPT |
+| S-010 | 来自检测器中心的点击位置是系统性偏差 | 自动提示流水线 | 检测器中心点落在遮挡物上；使用框内部离边缘最远的点更好 | 提示放置科学 | 火/烟 + YOLO 中心 vs 腐蚀中心 | 依赖检测器 | SAM_PROMPT |
+| S-011 | 提示抖动作为低成本偶然不确定性估计 | SAM 中的不确定性很少见 | N 次框抖动的逐像素投票比 SAM Logit 能更好地预测误差 | 免训练不确定性 | 对比抖动投票 vs Logit 熵 vs 误差图 | 与 FNPC 2023 重叠 | SAM_PROMPT |
+| S-012 | 一个额外负点击在 FP 上胜过适配器训练 | PEFT vs 交互 | 在 FP 严重的超声上，1 个负点击在无需额外数据下 > Medical-SAM-Adapter | 挑战适配器论文的实用主张 | 相同 50 张图像：1 次点击 vs 适配器检查点 | 若适配器未被复现则不公平 | SAM_PROMPT |
+| S-013 | 提示类型应具备实例自适应性 | 论文只选一种提示类型 | 基于（面积、对比度、紧凑度）的廉价分类器可自适应选择点 vs 框 vs 掩码 | 元提示策略 | 训练 1k 图像策略，冻结 SAM | 策略过拟合数据集 | SAM_PROMPT |
+| S-014 | 掩码解码器在强框下忽视图像 | SAM 可能是框到掩码的插值器 | 当框很紧时，消融框内的图像嵌入几乎不会改变 Dice | 测试 SAM 是否真的在“看” | 框内图像 token 置零；测量 Dice | 实现较为棘手 | SAM_PROMPT |
+| S-015 | 当目标不是一个“物体”时 SAM 失败 | 烟雾/火焰/染色 | 以物体性训练的掩码解码器无法表示类 Stuff 的密度场 | 问题形式化 | Stuff vs Thing 划分；SAM vs Dense CRF | “Stuff”已知 | SAM_PROMPT |
+| S-016 | 人类提示噪声 ≠ 随机噪声 | 提示鲁棒性测试使用高斯抖动 | 放射科医生的点击噪声偏向寻找边界；高斯抖动夸大了鲁棒性 | 更好的噪声模型 | 收集 10 名标注者 × 20 张图像 | 小型用户研究 | SAM_PROMPT |
+| S-017 | 多物体提示在解码器内部相互干扰 | 一次前向传播输入两个框 | 联合解码两个实例相比单独前向传播改变了每个掩码 | 记录干扰现象 | COCO 图像对 | 影响可能微弱 | SAM_PROMPT |
+| S-018 | SAM 的三个掩码编码的是尺度，而非语义 | 歧义性解释 | 3 个掩码更多代表嵌套的尺度层级，而非不同物体 | 改变多掩码的使用方式 | 3 个输出之间的嵌套 IoU | 依赖数据集 | SAM_PROMPT |
+| S-019 | 在低对比度下，粗框比精细框帮助更大 | “越紧越好”的假设 | 在低对比度肿瘤上，+20px 框击败 GT 紧框 | 反直觉提示 | 按对比度划分复现 He et al. | 可能重复已知发现 | SAM_PROMPT |
+| S-020 | 提示条件化特征不具因果性 | 归因 | 在两个物体间交换提示 token 比交换图像裁剪块更能交换掩码 | 提示主导地位的因果测试 | Token 交换实验 | 工程实现 | SAM_PROMPT |
+| S-021 | 自动掩码 NMS 掩盖了重复模态坍塌 | Everything 模式指标 | 高 Everything-AP 伴随低独立掩码熵意味着坍塌而非良好覆盖 | 指标 | 掩码嵌入的熵 | 较为冷门晦涩 | SAM_PROMPT |
+| S-022 | 迭代点击饱和是因为解码器是马尔可夫-1 阶 | 多轮 SAM | 第 t 轮掩码仅取决于上一个掩码+点击，忽视 1 步之前的点击历史 | 无记忆交互 | 消融历史编码 | 特定于架构 | SAM_PROMPT |
+| S-023 | 框提示向 SAM 泄漏了 GT 面积 | 公平性 | Dice vs 框面积的相关性与 Dice vs 图像特征的相关性一样高 | 混杂因素 | 偏相关性 | 审稿人可能不在意 | SAM_PROMPT |
+| S-024 | 极端长宽比的框破坏位置编码 | 失败模式 | 细长器械比面积匹配的紧凑器官失败更严重 | 几何 | 器械 vs 器官，面积匹配 | 场景细分 | SAM_PROMPT |
+| S-025 | SAM “稳定性”过滤器丢弃临床罕见形状 | SA-1B 训练 | 稳定性过滤的预训练低估了变形虫状肿瘤的代表性 | 数据过滤器批判 | 对比稳定性分数 vs 肿瘤不规则度 | 难以证实 | SAM_PROMPT |
+| S-026 | 3D 投影到 2D 上的点提示不一致 | 体素交互 | 相同的 3D 点击投影到相邻切片上产生冲突的 2D SAM 掩码 | 3D 提示物理学 | CT 切片邻域 | 与 MedSAM-2 相关 | SAM_PROMPT |
+| S-027 | 提示编码器容量未被充分利用 | PEFT 放置 | 仅微调提示编码器在框提示 Dice 上匹敌全解码器微调 | 自适应定位 | 提示 vs 解码器 vs 编码器上的 LoRA | 可能得到负面结果 | SAM_PROMPT |
+| S-028 | 通过 CLIP 输入 SAM 的语言提示是 CLIP 的瓶颈，而非 SAM | Grounded SAM | 罕见医学术语上的错误追踪到 CLIP zero-shot，而非 SAM 掩码质量 | 归因责任 | 替换 CLIP vs BioMedCLIP，冻结 SAM | 存在 Grounded-SAM 论文 | SAM_PROMPT |
+| S-029 | 密集位置提示（涂鸦）≠ 稀疏 | 交互 | 等长涂鸦在相同像素预算下击败 N 个点 | 受控预算交互 | 涂鸦 vs 点 | 经典交互式分割 | SAM_PROMPT |
+| S-030 | 当 GT 是无边缘区域时 SAM 失败 | 边缘先验 | GT 边界处的梯度幅度比强度均值更能预测 SAM Dice | 边缘依赖性 | 散点图 | 定性已知 | SAM_PROMPT |
+| S-031 | 来自检测器的基于置信度的自动提示存在失校准 | AutoSAM 流水线 | 检测器置信度 ≠ SAM 成功；使用检测器*尺寸*更好 | 重新校准自动提示 | 等级相关 | 增量改进 | SAM_PROMPT |
+| S-032 | 掩码提示细化过拟合前一个误差类型 | 迭代掩码 | 给 SAM 喂入其自身掩码增加了召回率但严重破坏了烟雾上的精确率 | 误差循环利用 | 烟雾视频 | 针对特定场景 | SAM_PROMPT |
+| S-033 | 双提示冲突具备信息量 | + 与 - 距离很近 | 剧烈冲突比模型熵更能预测标注者分歧 | 人类不确定性 | 多标注者集合 | 数据 | SAM_PROMPT |
+| S-034 | SAM 框提示具有平移协变性但不具尺度协变性 | 等变性 | 平移框：掩码平移；缩放框 1.2×：掩码质量非线性下降 | 几何先验 | 合成仿射 | 狭窄 | SAM_PROMPT |
+| S-035 | 空提示语义 SAM 是一个不同的模型 | Semantic-SAM vs SAM | 混淆两者的论文夸大了“SAM”的能力 | 分类学 | 用真空提示 vs 显式提示重新评估 | 审稿问题 | SAM_PROMPT |
+| S-036 | 微调期间需要提示 Dropout 以保证协议鲁棒性 | 微调配方 | 在训练中随机丢弃提示类型保留了跨提示 Dice | 简单的配方论文 | 消融 Dropout | 可能未发表但贡献较小 | SAM_PROMPT |
+| S-037 | SAM 解码器温度改变物体数量 | 解码 | 提高掩码 token 温度将一个物体分裂为多个 | 可控粒度 | 扫描温度 | 取巧操作 | SAM_PROMPT |
+| S-038 | 用户点击语义显著点而非几何中心 | HCI | 在医学图像上，注视/点击图与腐蚀中心不匹配 | 人类提示模型 | 小型眼动追踪或点击日志 | 成本 | SAM_PROMPT |
+| S-039 | 负区域提示在 Stuff 上优于负点 | Stuff 分割 | 框状负区域在烟雾上比负点能更好地抑制背景 | Stuff 的提示几何 | 烟雾 | 增量改进 | SAM_PROMPT |
+| S-040 | SAM 的图像编码器相比提示被过度归功 | 归因功劳 | 编码器上的线性探测 vs 带随机提示的完整 SAM | 技能存在于何处 | 探测 vs 被提示 | 对某些基础模型已知 | SAM_PROMPT |
+| S-041 | 医学领域差距是解码器局部的 | “需要医学预训练” | 冻结编码器，微调解码器 1 轮即可在 2D 器官上弥合大部分 MedSAM 差距 | 挑战全量微调 | 拆分微调 | 在微小病灶上可能失败 | SAM_MEDICAL_GAP |
+| S-042 | 3D 差距是各向异性而非“医学”特性 | 3D SAM 失败 | 将 CT 重采样为各向同性 1mm 比医学微调更能提升 SAM | 混杂因素 | nnU-Net 风格重采样 | 部分 | SAM_MEDICAL_GAP |
+| S-043 | 小目标 SAM 失败是提示占用率问题 | 小器官 | 跨模态下 Dice vs (物体像素 / 框像素) 呈现崩溃 | 缩放法则 | 多数据集散点图 | 简单 | SAM_MEDICAL_GAP |
+| S-044 | 超声散斑比领域差距更能误导 SAM | 超声 vs CT | 去噪超声（NLM）相比 LoRA 更能提升冻结 SAM | 预处理 > PEFT | 1 个数据集 | 可能无法泛化 | SAM_MEDICAL_GAP |
+| S-045 | 强度窗位是一个隐藏的提示 | CT/MR | 窗口/窗位选择对 SAM Dice 的改变幅度堪比点 vs 框 | 隐藏超参数 | 扫描窗口 | 临床医生已知 | SAM_MEDICAL_GAP |
+| S-046 | 多模态医学微调导致负迁移 | 通用 MedSAM | 在 CT 上微调使 X-ray Dice 降至冻结 SAM 以下 | 负迁移 | 留一模态设计 | MedSAM 可能已谨慎混合 | SAM_MEDICAL_GAP |
+| S-047 | 左右侧性与解剖标签不在 SAM 中 | 缺乏语义 | 无额外分类器 SAM 无法区分左/右肾 | 可提示模型的局限 | 成对肾脏 | 显而易见？仍讨论不足 | SAM_MEDICAL_GAP |
+| S-048 | MR 中的弱边界是损失不匹配 | 模糊上的 Dice | Boundary-F1 和 Dice 在 SAM vs UNet 谁最优上存在分歧 | 指标 | 排名反转 | 经典 | SAM_MEDICAL_GAP |
+| S-049 | SAM 仅对大器官节省标注时间 | 人在回路主张 | 时间研究：SAM 仅在物体面积 > 阈值时节省时间 | 实用性 | 5 名评估员 | HCI 成本 | SAM_MEDICAL_GAP |
+| S-050 | 适配器论文与弱 2D UNet 对比 | 不公平基线 | 对比 3D nnU-Net 时，适配器落败 | 基线诚实性 | 一个公开 MSD 任务 | 计算量 | SAM_MEDICAL_GAP |
+| S-051 | 伪 3D 逐切片 SAM 跨轴向不一致 | 轴向 vs 矢状向 | 3 个方向的多数投票是比新适配器更强的基线 | 低成本集成 | MSD | 工程 | SAM_MEDICAL_GAP |
+| S-052 | 当标签是稀疏小病灶时基础模型特征有害 | 预训练损害 | 在 n=50 微小息肉上，ImageNet/SAM 初始化 < 随机初始化 | 违背基础模型信条 | 小样本曲线 | 具争议性 | SAM_MEDICAL_GAP |
+| S-053 | 类似上色的外观差距 vs 几何差距 | 领域 | 直方图匹配比 StyleGAN 更能缩小 RGB-医学差距 | 简单域自适应 | 内窥镜 | 传统域自适应 | SAM_MEDICAL_GAP |
+| S-054 | SAM 物体性与器官内部划分冲突 | 多实例器官 | 肝脏内部的肝肿瘤：给定肿瘤点，SAM 偏好分割整个肝脏 | 层次化物体 | LiTS | 已知失败 | SAM_MEDICAL_GAP |
+| S-055 | 临床“目标” ≠ 连通分量 | 病理 | SAM 无法将不连通的肿瘤负荷表示为单个提示 | 问题 | BraTS 不连通病灶 | 形式化 | SAM_MEDICAL_GAP |
+| S-056 | 切片厚度偏移 > 扫描仪厂商偏移 | 领域 | 改变切片厚度比改变厂商导致更大的 Dice 下降 | 何种偏移更重要 | 带元数据的公开 CT | 元数据缺失 | SAM_MEDICAL_GAP |
+| S-057 | SAM GT 框评估不是临床协议 | 协议 | 放射科医生不画紧框；需要模拟带噪声框 | 评估 | 噪声模型 | 偏软性指标 | SAM_MEDICAL_GAP |
+| S-058 | 微调 SAM 破坏自然图像上的 Zero-Shot 能力 | 遗忘 | 医学微调大幅降低 COCO Everything-AP | 记录 MedSAM 的代价 | 微调前后对比 | 预期之中 | SAM_MEDICAL_GAP |
+| S-059 | 类别无关 SAM + 微型分类器胜过语义微调 | 分解 | 冻结 SAM 掩码 + 线性分类头 vs 完整语义微调 | 极简性 | 2D 器官 | 可能失去 SOTA | SAM_MEDICAL_GAP |
+| S-060 | 可提示模型使用 Oracle 提示进行评估 | Oracle | 使用去年的检测器作为提示才是真实基线 | 协议 | 替换 GT 框 | 社交阻力 | SAM_MEDICAL_GAP |
+| S-061 | MRI 对比相是一个领域，而非模态 | 领域分类学 | 动脉期 vs 延迟期偏移 > 肝脏 CT vs MR | 更精细领域 | 公开肝脏集 | 数据 | SAM_MEDICAL_GAP |
+| S-062 | SAM 在金属伪影上以空间局部方式失败 | 鲁棒性 | 伪影掩蔽指标改变方法排名 | 评估 | 带植入物的 CT | 场景细分 | SAM_MEDICAL_GAP |
+| S-063 | 2.5D 提示（在 ±k 切片上使用同一点）在小样本下击败 3D 模型 | 数据效率 | 在 n<20 时，多切片同提示 SAM > 3D UNet | 效率 | 学习曲线 | 规模化下非 SOTA | SAM_MEDICAL_GAP |
+| S-064 | 医学“微调 SAM”论文共享一个秘诀：更多掩码 | 元分析 | 增益与微调图像数相关，而非方法 | 元分析 | 20 篇论文表格 | 报告不完整 | SAM_MEDICAL_GAP |
+| S-065 | 病理染色是颜色等变性测试 | 染色 | Macenko 染色归一化相比 LoRA 更能提升冻结 SAM | 预处理 | Camelyon | 已知域自适应 | SAM_MEDICAL_GAP |
+| S-066 | SAM 无法计数 | 实例 | SAM Everything 在细胞上的实例 F1 相比 Cellpose 较差 | 细胞领域 | 公开细胞集 | Cellpose 已存在 | SAM_MEDICAL_GAP |
+| S-067 | 重叠器官需要互斥约束（SAM 所缺乏的） | 解剖学 | 添加互斥 CRF 后处理胜过额外适配器 | 极简 | 多器官 | 传统方法 | SAM_MEDICAL_GAP |
+| S-068 | SAM 医学论文中的患者级划分泄漏 | 泄漏 | 图像级划分虚增微调增益 | 重新划分 | 一个公开集 | 社交阻力 | SAM_MEDICAL_GAP |
+| S-069 | 交互式 SAM vs nnU-Net 属于范畴错误 | 对比 | 交互式 vs 自动化应在相同人工时间下对比 | 协议 | 匹配时间 | 困难 | SAM_MEDICAL_GAP |
+| S-070 | 基础医学模型仍需要 SAM 所缺乏的任务头 | VFM vs SAM | UNI/Virchow 特征 + 解码器在病理上击败 MedSAM | 何种基础模型 | 单一任务 | 动态靶标 | SAM_MEDICAL_GAP |
+| S-071 | SAM2 记忆是外观跟踪而非身份跟踪 | 视频 | 在外观相似的器官下发生身份切换 | 记忆内容 | 手术视频 | 已知 VOS | SAM2_MEMORY |
+| S-072 | 记忆库近因偏差 | SAM2 | 3D CT 较早的切片被丢弃；先出现后消失的病灶丢失 | 3D 作为视频 | 长 CT | 存在 MedSAM-2 自排序 | SAM2_MEMORY |
+| S-073 | 无序医学切片打破 SAM2 时间先验 | 假设 | 打乱切片顺序对原生 SAM2 改变极大，对 Bag 记忆则不然 | 时间先验 | 打乱测试 | 与 MedSAM-2 相关 | SAM2_MEMORY |
+| S-074 | 若解剖结构漂移，单提示推广所有切片被夸大 | 单提示 | 在切片 0 上提示在 30 个切片后比新点提示失败更严重 | 漂移 | 绘制 Dice vs Δslice | 简单 | SAM2_MEMORY |
+| S-075 | 记忆注意力是计算量的混杂因素 | 效率 | 将记忆 token 减少 4× 可能不会降低医学 Dice | 蒸馏计算 | 消融记忆大小 | 工程 | SAM2_MEMORY |
+| S-076 | SAM2 遮挡头在 3D 中未被使用 | 架构 | 遮挡分数不能预测消失的肿瘤 | 预测头误用 | 相关性分析 | 可能为负面结果 | SAM2_MEMORY |
+| S-077 | 手术烟雾是 SAM2 可建模的遮挡过程 | 双重用途 | 将烟雾视为器械的遮挡物，而非分割目标 | 重构 | 内窥镜 | 数据 | SAM2_MEMORY |
+| S-078 | 双向记忆在 CT 上胜过因果记忆 | 3D | 正向+反向 SAM2 传播 > 因果传播 | 极简 | MSD | 2× 计算量 | SAM2_MEMORY |
+| S-079 | 记忆嵌入坍塌为位置而非外观 | 表示 | 记忆的线性探测：切片索引权重 >> 外观 | 坍塌 | 探测 | 推测性 | SAM2_MEMORY |
+| S-080 | 在第一帧提示是特权协议 | 视频评估 | 随机帧提示导致的下降超过模型差距 | 协议 | SA-V 子集 | 社交阻力 | SAM2_MEMORY |
+| S-081 | SAM2 vs SAM 在静态医学图像上：关闭记忆 | 消融 | 在 2D 上禁用记忆应与 SAM 表现匹配；若不匹配，则是训练伪影 | 健全性检查 | 2D 静态图 | 可能匹配 | SAM2_MEMORY |
+| S-082 | 长视频火焰：火焰纹理记忆过拟合最后 1 秒 | 火焰视频 | 每 k 帧重置记忆胜过全量记忆 | 时间 | 火焰片段 | 靠近 ProFSAM | SAM2_MEMORY |
+| S-083 | 跨患者记忆属于数据泄漏 | 个性化 | 使用前一位患者的记忆库作为初始化是错误的，但可能提升 Dice | 泄漏测试 | 交换记忆库 | 伦理 | SAM2_MEMORY |
+| S-084 | 语义记忆 vs 视觉记忆 | 开放问题 | 记忆中的类别 token 可阻止肾脏/肝脏混淆 | 方法 | 微小附加组件 | 相比 MedSAM-2 的新颖性 | SAM2_MEMORY |
+| S-085 | 帧率不匹配 | 视频 | 降低帧采样对 SAM2 的改变超过降低分辨率 | 协议 | 扫描 fps | 狭窄 | SAM2_MEMORY |
+| S-086 | SAM2 掩码片跟踪作为标注工具 | 实用性 | 跟踪后纠正的时间 vs 逐切片 SAM | HCI | 3D 标注 | 研究成本 | SAM2_MEMORY |
+| S-087 | 记忆质量与相机运动相关而非物体运动 | 自运动 | IMU/运动幅度预测 SAM2 失败 | 传感器 | 内窥镜 | 数据 | SAM2_MEMORY |
+| S-088 | 多物体记忆干扰 | 解码器 | 两个物体的记忆混合；顺序单物体跟踪是更强的基线 | 干扰 | DAVIS | 已知 VOS | SAM2_MEMORY |
+| S-089 | 3D 物理间距作为伪时间 | 物理 | 使用 z-mm 作为 dt vs 使用索引作为 dt 会改变跟踪结果 | 物理 | CT | 微妙 | SAM2_MEMORY |
+| S-090 | SAM2 在时间维度继承 SAM 提示敏感性 | 放大 | 早期提示误差随切片数呈指数增长 | 误差增长 | 绘图 | 简单 | SAM2_MEMORY |
+| S-091 | 仅微调记忆注意力 | PEFT 区域 | 在记忆注意力上的 LoRA 相比 3D 器官的图像编码器更优 | 在何处适配 | 消融 | 增量改进 | SAM2_MEMORY |
+| S-092 | 用于病理跳过病灶的遗忘门 | 方法 | 学习跳过无信息切片 | 方法 | CT | 与自排序重叠 | SAM2_MEMORY |
+| S-093 | 评估必须冻结提示调度安排 | 公平性 | 论文在何时重新提示上各不相同 | 协议 | 重新评估 | 社交阻力 | SAM2_MEMORY |
+| S-094 | 音频/生理同步作为额外记忆 | 多模态 | ECG 门控心脏 SAM2 | 新颖 | 公开心脏集 | 繁重 | SAM2_MEMORY |
+| S-095 | SAM2 物体性仍然偏向实心物体 | Stuff 视频 | 烟羽碎片化为许多掩码片 | Stuff | 烟雾视频 | 预期之中 | SAM2_MEMORY |
+| S-096 | 二值 Dice 是错误的烟雾指标 | 评估 | 模型排名在 Alpha-MAE vs Dice 下发生反转 | 指标论文 | 合成 Alpha + 真实数据 | 需要 Alpha GT | SMOKE_ALPHA |
+| S-097 | 烟雾是密度场而非实例 | 问题 | 实例 SAM 无法表示重叠的烟羽 | 形式化 | 重叠合成数据 | 概念性 | SMOKE_ALPHA |
+| S-098 | 背景原型方法固化了静态相机假设 | 类似 DenSiSeg | 相机运动破坏背景原型 | 失败 | 手持拍摄烟雾 | 可能已经失败 | SMOKE_ALPHA |
+| S-099 | 颜色解卷积在白烟上击败 SAM | 简单基线 | 物理颜色模型在许多烟雾集上 > 基础模型 | 反向对抗基础模型 | 公开烟雾集 | 在野火上可能落败 | SMOKE_ALPHA |
+| S-100 | 时间中值背景是缺失的基线 | 评估 | 中值背景 + 阈值 vs 深度模型 | 基线诚实性 | 固定相机 | 传统方法 | SMOKE_ALPHA |
+| S-101 | SAM 边缘贴靠高对比度非烟雾物体 | 失败 | 树木/云彩夺走掩码 | 失败图谱 | 定性+指标 | 已知 | SMOKE_ALPHA |
+| S-102 | 半透明 GT 分歧是性能上限 | 人类 | 烟雾上的标注者间 Dice < 许多论文的增益 | 上限 | 3 名评估员 | 成本 | SMOKE_ALPHA |
+| S-103 | 在 Alpha 抠图数据上训练，在烟雾上测试 | 迁移 | 来自人像抠图的迁移相比 COCO 对烟雾帮助更大 | 邻近领域 | 1 次微调 | 领域 | SMOKE_ALPHA |
+| S-104 | 烟雾的光流不符合亮度恒常性 | 物理 | 光流损失损害烟雾；光度弯曲（photometric warp）无效 | 物理 | 消融光流 | 负面结果 | SMOKE_ALPHA |
+| S-105 | 火焰作为烟雾的提示 | 因果 | 先分割火焰以约束烟雾来源很有帮助 | 物理 | 流水线 | 混杂检测器 | SMOKE_ALPHA |
+| S-106 | 波长 / 近红外（NIR）才是真实解决方案 | 传感器 | RGB 方法夸大其词；NIR 通道是更好的想法 | 问题 | 若数据集存在 | 数据 | SMOKE_ALPHA |
+| S-107 | 用于 Sim-to-Real 的合成 CFD 烟雾 | 合成 | 域随机化 CFD > GAN 烟雾 | Sim-to-Real | 小型真实测试 | 繁重 | SMOKE_ALPHA |
+| S-108 | 雾/霾模型 ≠ 烟雾 | 假设 | 去雾网络在烟雾上失败；理应如此 | 负面结果 | 现成去雾模型 | 简单 | SMOKE_ALPHA |
+| S-109 | 早期预警需要检测稀薄烟雾而非关注 IoU | 任务 | 10% 密度下的 AP > mIoU，与报警时间强相关 | 任务 | 报警时间 | 标签 | SMOKE_ALPHA |
+| S-110 | SAM2 的视频记忆使烟羽碎片化 | SAM2 | 按颜色直方图重新合并掩码片 | 方法 | 视频 | 增量改进 | SMOKE_ALPHA |
+| S-111 | 不确定性在 Alpha 0.2–0.8 区间应保持高位 | 校准 | 误差集中在中间 Alpha | 评估 | 密度 GT | 标签 | SMOKE_ALPHA |
+| S-112 | 众包二值掩码存在偏厚偏差 | 数据 | 标注者过度涂抹烟雾；模型学会了肥大掩码 | 数据 | 对比抠图 GT | 数据 | SMOKE_ALPHA |
+| S-113 | 夜间火光眩光是镜面反射而非烟雾 | 失败 | 针对眩光的评估切片 | 评估 | 夜间集 | 场景细分 | SMOKE_ALPHA |
+| S-114 | 透明工业物体与烟雾共享数学机理 | 统一 | Alpha + 折射 vs 仅 Alpha | 统一 | Trans10k + 烟雾 | 宏大雄心 | SMOKE_ALPHA |
+| S-115 | 偏振相机 | 传感器 | 偏振提升透明玻璃的效果大于额外 LoRA | 传感器 vs 模型 | 若有数据 | 数据 | SMOKE_ALPHA |
+| S-116 | 边界带指标 | 评估 | 仅对 10px 混合带打分 | 指标 | 重新计算论文 | 社交阻力 | SMOKE_ALPHA |
+| S-117 | 烟雾作为修复背景的残差 | 方法 | 修复后相减 vs 分割 | 替代方案 | 固定相机 | 经典 | SMOKE_ALPHA |
+| S-118 | 天气混杂因素 | 偏移 | 野火视频中的雨/雾主导了误差 | 切片 | 元数据 | 数据 | SMOKE_ALPHA |
+| S-119 | 薄与厚之间的类别不平衡 | 长尾 | 模型忽视薄烟；重采样密度区间 | 训练 | 直方图 | 增量改进 | SMOKE_ALPHA |
+| S-120 | 人类在薄烟上的假阴性 | 上限 | 若 GT 保守，模型在薄烟上“击败”人类 | 警示 | 审计 GT | 社交阻力 | SMOKE_ALPHA |
+| S-121 | 多视角烟雾 3D 密度 | 3D | 2D IoU 是病态定义的；需要类似断层扫描的方案 | 问题 | 多相机 | 硬件 | SMOKE_ALPHA |
+| S-122 | Grounded-SAM 中的文本提示“烟雾”是 CLIP 先验 | VLM | CLIP “烟雾”匹配云彩 | 失败 | 云 vs 烟雾集 | 预期之中 | SMOKE_ALPHA |
+| S-123 | 法律/取证需要校准密度而非二值掩码 | 应用 | 论文中缺失校准图 | 差距 | ECE | 软性需求 | SMOKE_ALPHA |
+| S-124 | 从 SAM 背景先验蒸馏，测试时无需 SAM | 部署 | 无 SAM 的学生模型 | 蒸馏 | FPS | 增量改进 | SMOKE_ALPHA |
+| S-125 | 对抗性白色覆盖层欺骗烟雾检测器 | 鲁棒性 | 微小白色 patch | 安全 | 攻击？**仅评估**，不要求白盒攻击；使用公开损坏 | 坚持损坏而非漏洞利用 | SMOKE_ALPHA |
+| S-126 | 火焰分割论文本质是检测器提示的 SAM2 | 归因 | 若各方法间检测器 AP 匹配，增益消失 | 击溃类 ProFSAM 的新颖性 | 替换检测器 | 拥挤 | FIRE_CONFOUND |
+| S-127 | 火焰闪烁时间能量是免费特征 | 物理 | 带通时间滤波是强大的基线 | 基线 | 视频 | 传统方法 | FIRE_CONFOUND |
+| S-128 | 颜色空间 HSV 阈值仍具竞争力 | 基线 | 必须报告它，否则排名不诚实 | 诚实性 | 公开火灾集 | 社交阻力 | FIRE_CONFOUND |
+| S-129 | 烟雾遮挡火焰是检测而非分割问题 | 任务混合 | 被遮挡火焰的召回率 vs 掩码质量 | 拆分指标 | 视频 | 简单 | FIRE_CONFOUND |
+| S-130 | 夜间 vs 日间领域 | 偏移 | 设立独立排行榜 | 评估 | 拆分 | 简单 | FIRE_CONFOUND |
+| S-131 | 来自游戏的合成火焰 | Sim-to-Real | 游戏引擎过拟合橙色精灵图 | 负面结果 | 游戏训练真实测试 | 简单 | FIRE_CONFOUND |
+| S-132 | 热红外（IR）是特权模态 | 传感器 | RGB SOTA 主张 vs 红外可用性 | 公平性 | 双相机 | 数据 | FIRE_CONFOUND |
+| S-133 | 实例 vs Stuff 火焰 | 问题 | 多个火焰核心 vs 单个大斑块 | 形式化 | 数据集 | 标签 | FIRE_CONFOUND |
+| S-134 | 安全指标：报警时间 | 任务 | 与 mIoU 不相关 | 任务 | 事件标签 | 数据 | FIRE_CONFOUND |
+| S-135 | MobileSAM2 火焰性能下降源于提示而非容量 | 蒸馏 | 相同提示，测量性能 | 消融 | 公开集 | 增量改进 | FIRE_CONFOUND |
+| S-136 | 野火 vs 室内火灾是不同的科学范畴 | 分类学 | 切勿混合合并 | 拆分 | 两个集合 | 社交阻力 | FIRE_CONFOUND |
+| S-137 | 水面/窗户上的反射 | 失败 | 火焰反射 | 切片 | 定性 | 场景细分 | FIRE_CONFOUND |
+| S-138 | 标注者延迟 vs 模型延迟 | 部署 | 人工 GT 是滞后的 | 协议 | 视频 | 偏软性 | FIRE_CONFOUND |
+| S-139 | 火焰边界在物理上是不确定的 | 上限 | 火焰边缘上的标注者间分歧 | 上限 | 标注者 | 成本 | FIRE_CONFOUND |
+| S-140 | 在火焰上使用 SAM2 记忆仅跟踪最亮斑块 | 失败 | 最亮斑块跟踪器基线 | 基线 | 视频 | 简单 | FIRE_CONFOUND |
+| S-141 | SAM 编码器上的 LoRA 破坏了可提示性 | PEFT 损害 | LoRA 分割后，在未见类别上的 zero-shot 框 Dice 下降 | 记录损害 | COCO 保留类别 | 重要 | PEFT_DENSE |
+| S-142 | Rank-1 LoRA 对解码器足够，但对编码器不足 | 秩 | 按块类型扫描秩 | 映射 | 1 个数据集 | 增量改进 | PEFT_DENSE |
+| S-143 | DoRA vs LoRA 在掩码 IoU 上而非 GLUE 上 | 指标 | 密集 IoU 排名 ≠ NLP 排名 | PEFT 论文迁移 | 头对头对比 | 计算量 | PEFT_DENSE |
+| S-144 | 适配器位置：LN 之后 vs 注意力内部 | 微观结构 | 密集任务相比分类偏好不同的插入位置 | 复现 | 网格 | 拥挤的 PEFT | PEFT_DENSE |
+| S-145 | 仅 ViT-B 解码器全量微调匹敌 ViT-H LoRA | 规模 | 模型大小 vs PEFT | 帕累托 | 2 种尺寸 | 计算量 | PEFT_DENSE |
+| S-146 | 在 n=100 时，冻结 SAM 上的 PEFT vs 从头训练 UNet | 数据机制 | 交叉点 n | 曲线 | 公开集 | 重要 | PEFT_DENSE |
+| S-147 | 提示编码器 LoRA 与解码器 LoRA 之间的梯度冲突 | 冲突 | PCGrad vs 朴素优化 | 优化 | 1 个任务 | 增量改进 | PEFT_DENSE |
+| S-148 | PEFT 绕过了科学信号更新了捷径 | 彩票假说 | 相同秩的随机 LoRA 方向在分割上几乎匹敌训练过的 LoRA | 震撼发现 | 随机 vs 训练 | 负面结果高风险 | PEFT_DENSE |
+| S-149 | 针对 SAM 的 QLoRA 属于工程论文（除非显存是核心问题） | 范围 | 仅当 24GB vs 8GB 是核心故事时才成立 | 部署 | 量化 | 科学价值低 | PEFT_DENSE |
+| S-150 | 逐层学习率胜过额外适配器 | 优化 | 极简 | 扫描 | 1 个任务 | 可能已知 | PEFT_DENSE |
+| S-151 | SAM 解码器上的 BitFit（仅偏置微调） | 极端 PEFT | 能走多远 | 测量 | 1 个任务 | 可能失败 | PEFT_DENSE |
+| S-152 | 提示调优像素 vs 提示调优 token | 提示 | 视觉提示 vs SAM 提示 token | 对比 | 1 个任务 | 拥挤的 VPT | PEFT_DENSE |
+| S-153 | LoRA 先合并再评估 vs 保留独立适配器 | 部署 | 掩码上的合并误差 | 测量 | 1 | 工程 | PEFT_DENSE |
+| S-154 | 面向医院的多租户 LoRA | 干扰 | 两个 LoRA 顺序 vs 并行 | 持续学习 | 2 个数据集 | 分类任务已有 InfLoRA | PEFT_DENSE |
+| S-155 | 分割 LoRA 应当具备空间性 | 假设 | Token 级 LoRA（逐 patch 秩）胜过全局 LoRA | 方法 | 微小 | 新颖性风险 | PEFT_DENSE |
+| S-156 | 编码器 LoRA 降低对强度窗口的鲁棒性 | 副作用 | 测量 | 窗口扫描 | 1 | 有趣 | PEFT_DENSE |
+| S-157 | 通过 NAS 选择 PEFT 属于过度设计 | ROI | 随机搜索插入位置匹敌 NAS | 负面结果 | 小型 NAS | 计算量 | PEFT_DENSE |
+| S-158 | 知识蒸馏 + PEFT 存在重复计算 | 混杂因素 | 仅蒸馏 vs 仅 PEFT vs 两者 | 消融 | 1 | 社交阻力 | PEFT_DENSE |
+| S-159 | SAM PEFT 论文隐瞒训练分辨率 | 协议 | 1024 vs 512 解释了差距 | 重跑 | 1 | 社交阻力 | PEFT_DENSE |
+| S-160 | 分类器 PEFT 结果无法迁移到密集任务 | 主张 | 在 ADE20K 而非 ImageNet-CL 上复现 InfLoRA | 迁移 | ADE | 计算量 | PEFT_DENSE |
+| S-161 | 在 Q 上使用 LoRA 而在 V 上不用会改变定位 | 机理 | 消融矩阵 | 机理性 | 1 | 增量改进 | PEFT_DENSE |
+| S-162 | LoRA 更新的谱对齐与遗忘的关系 | 理论 | 奇异向量重叠 vs 旧任务 Dice 下降 | 测量 | 2 个任务 | 推测性 | PEFT_DENSE |
+| S-163 | 掩码上的适配器融合算术 | 算术 | 任务类比：肿瘤 LoRA + 风格 LoRA | 大胆假想 | 2 | 可能失败 | PEFT_DENSE |
+| S-164 | 针对校准而非 Dice 的 PEFT | 目标 | 训练 LoRA 以最小化掩码 ECE | 不同目标 | 1 | 具新颖性 | PEFT_DENSE |
+| S-165 | 冻结编码器 + 学习提示已足够（当且仅当物体类似 COCO） | 机制 | 绘制 vs 物体性曲线 | 曲线 | 多个 | 软性结论 | PEFT_DENSE |
+| S-166 | 来自数据集统计的超网络 LoRA | 元学习 | 从均值/标准差图像预测 LoRA | 极端 | 多个任务 | 高风险 | PEFT_DENSE |
+| S-167 | PEFT vs 测试时自适应 | TTA | SAM 上的 TENT vs LoRA | 对比 | 1 种偏移 | 拥挤的 TTA | PEFT_DENSE |
+| S-168 | 安全性：LoRA 会注入虚假相关性 | 虚假 | 医院标记捷径 | 审计 | 1 | 重要 | PEFT_DENSE |
+| S-169 | 参数量 vs 可训练 FLOPs | 诚实性 | 必须同时报告两者 | 协议 | — | 社交阻力 | PEFT_DENSE |
+| S-170 | 跨 SAM 与 CLIP 的共享 LoRA | 多模态 | 联合 PEFT | 方法 | 1 | 繁重 | PEFT_DENSE |
+| S-171 | 早期退出 PEFT | 效率 | 提前退出解码器层 | 方法 | 1 | 工程 | PEFT_DENSE |
+| S-172 | LoRA Dropout 作为小医学样本的正则化器 | 小样本 | 有帮助 | 扫描 | 1 | 增量改进 | PEFT_DENSE |
+| S-173 | 正交 LoRA vs 重放用于*密集*持续学习 | vs InfLoRA | 重放 50 个掩码在 ADE 上击败 InfLoRA | 挑战 | 持续学习 | InfLoRA 拥挤 | PEFT_DENSE |
+| S-174 | 使用全量微调增量的 SVD 进行 PEFT 初始化 | 初始化 | 优于高斯初始化 | 配方 | 1 | 已知变体 | PEFT_DENSE |
+| S-175 | 何时 PEFT 劣于冻结掩码上的线性探测 | 机制 | 冻结 SAM Everything + 探测 | 基线 | 1 | 重要 | PEFT_DENSE |
+| S-176 | 掩码解码器遗忘旧提示类型 | 持续学习 | 先训练框后训练点：点 Dice 崩溃 | 协议持续学习 | 1 | 具体 | FORGETTING |
+| S-177 | 编码器不遗忘；解码器发生遗忘 | 区域 | 在任务 2 期间冻结编码器 | 消融 | 2 个任务 | 清晰 | FORGETTING |
+| S-178 | 重放提示而非重放图像 | 重放 | 存储 100 个提示-掩码对 | 低成本 | 2 个任务 | 具新颖性 | FORGETTING |
+| S-179 | SAM Everything 模式 AP 作为遗忘的金丝雀指标 | 金丝雀 | 在医学微调期间进行监控 | 工具 | 1 | 简单 | FORGETTING |
+| S-180 | 在 LoRA A/B 上使用 EWC | 正则化 | 在分割上 vs InfLoRA | 头对头对比 | 2 | 分类任务已有论文 | FORGETTING |
+| S-181 | 无 Oracle 任务 ID 的任务无关推理 | 现实持续学习 | 若需要任务 ID 则放弃 | 协议 | — | 社交阻力 | FORGETTING |
+| S-182 | 遗忘首先体现在校准，其次才是 Dice | 顺序 | ECE 在 Dice 之前崩溃 | 测量 | 2 | 有趣 | FORGETTING |
+| S-183 | SAM 的可塑性本身较低；遗忘被夸大 | 主张 | 任务 2 增益微小，因此“遗忘”只是噪声 | 重新评估 | 2 | 反传统 | FORGETTING |
+| S-184 | 相同模态下的连续器官学习 | 持续学习 | 先肝脏后脾脏 | 实用 | MSD | 数据 | FORGETTING |
+| S-185 | SAM 解码器中的注意力漂移 | 机理 | Rollout 变化 vs Dice 下降 | 测量 | 2 | 靠近 ARCL-ViT | FORGETTING |
+| S-186 | 协同训练旧合成提示 | 重放 | 生成旧风格边界框 | 方法 | 2 | 增量改进 | FORGETTING |
+| S-187 | 负例遗忘：FP 上升 | 误差类型 | 旧任务假阳性 | 切片 | 2 | 简单 | FORGETTING |
+| S-188 | 巩固睡眠：在混合数据上增加额外轮次 | 配方 |  | 1 | 增量改进 | FORGETTING |
+| S-189 | 多中心顺序学习 | 真实场景 | 站点 A 然后站点 B | 数据 | 隐私 | FORGETTING |
+| S-190 | VLM 标题生成器微调导致定位能力遗忘 | 多模态 | 标题微调后，定位能力下降 | 测量 | 1 | 邻近领域 | FORGETTING |
+| S-191 | SAM2 记忆微调导致首帧提示技能遗忘 | 视频 |  | 1 | 增量改进 | FORGETTING |
+| S-192 | 在参数空间 vs 函数空间测量遗忘 | 理论 | 相同 | 2 | 推测性 | FORGETTING |
+| S-193 | 在微调期间从冻结教师 SAM 进行蒸馏 | LwF | 经典 | 1 | 传统方法 | FORGETTING |
+| S-194 | LoRA 秩是否会**增加**遗忘 | 秩 | 秩越高遗忘越多 | 扫描 | 2 | 可测试 | FORGETTING |
+| S-195 | 针对掩码的输出空间正交梯度 | 方法 | 投影掩码梯度 | 2 | vs InfLoRA | FORGETTING |
+| S-196 | 测试集与 SA-1B 的重叠 | 泄漏 | 近重复搜索 | 搜索 | COCO/SA | 计算量 | EVAL_LEAK |
+| S-197 | 跨 50 篇 SAM 论文循环复用的医学数据集 | 泄漏 | 相同的 10 个数据集 | 元分析 | 列表整理 | 社交阻力 | EVAL_LEAK |
+| S-198 | 小物体上的 Dice 本质是尺寸指标 | 指标 | 始终报告 Dice vs 尺寸分桶 | 协议 | — | 已知 | EVAL_LEAK |
+| S-199 | NSD vs Dice 下的排名反转 | 边界 | SAM vs UNet 交换 | 重新计算 | 1 | 强结论 | EVAL_LEAK |
+| S-200 | Oracle 框 mIoU 作为自动方法的非法指标 | 协议 | 禁止使用该指标 | 重新评估 | — | 社交阻力 | EVAL_LEAK |
+| S-201 | 使用 GT 第一帧的视频评估属于半 Oracle | 协议 | 也应使用随机帧 | 重新评估 | — | 社交阻力 | EVAL_LEAK |
+| S-202 | 预处理流水线未公开 | 复现性 | 强度窗口隐藏未说明 | 审计 | 5 篇论文 | 社交阻力 | EVAL_LEAK |
+| S-203 | 种子方差 > 方法差距 | 统计 | 3 个种子 | 重跑 | 1 | 社交阻力 | EVAL_LEAK |
+| S-204 | 患者平均 vs 切片平均 | 统计 | 改变显著性 | 重新计算 | 1 | 已知 | EVAL_LEAK |
+| S-205 | 通过 TTA 而非方法实现排行榜攀爬 | 混杂因素 | 禁用 TTA | 消融 | 1 | 社交阻力 | EVAL_LEAK |
+| S-206 | 医学上 ImageNet 预训练编码器仍胜出源于残差学习而非特征 | 主张 | 随机编码器 + 长期训练 | 计算量 | 繁重 | EVAL_LEAK |
+| S-207 | SAM 论文使用不同的提示抖动设置 | 协议 | 标准化设置 | 重新评估 | — | 社交阻力 | EVAL_LEAK |
+| S-208 | 微小物体火灾检测的 mAP 指标 | 指标 | 缺失 AP_S | 报告 | 1 | 简单 | EVAL_LEAK |
+| S-209 | 校准从未被报告 | 缺陷 | 添加 ECE | 1 | 简单 | EVAL_LEAK |
+| S-210 | 人类表现上限缺失 | 缺陷 |  | 1 | 成本 | EVAL_LEAK |
+| S-211 | 跨数据集验证取代同数据集交叉验证 | 泛化性 |  | 1 | 社交阻力 | EVAL_LEAK |
+| S-212 | 匹配计算量的基线对比 | 公平性 |  | 1 | 社交阻力 | EVAL_LEAK |
+| S-213 | 代码与论文提示词不匹配 | 复现性 |  | 1 | 社交阻力 | EVAL_LEAK |
+| S-214 | 统计检验未进行校正 | 统计 |  | 元分析 | 社交阻力 | EVAL_LEAK |
+| S-215 | 合成测试集过拟合生成器 | 泄漏 | 新生成器 | 1 | 增量改进 | EVAL_LEAK |
+| S-216 | 视频 FPS vs 准确率帕累托前沿缺失 | 部署 |  | 1 | 工程 | EVAL_LEAK |
+| S-217 | 通过模型求逆反推微调 SAM 的隐私泄漏 | 安全性 | 成员推断 | 1 | 繁重 | EVAL_LEAK |
+| S-218 | 数据集许可证阻碍公平对比 | 社交 |  | — | 软性阻碍 | EVAL_LEAK |
+| S-219 | 标注指南未公开发表 | 数据 |  | 审计 | 成本 | EVAL_LEAK |
+| S-220 | 在 20 张图像测试集上声称 SOTA | 规模 |  | 元分析 | 社交阻力 | EVAL_LEAK |
+| S-221 | CLIP 热图不是分割掩码 | VLM | 阈值化 CAM vs SAM | 对比 | 1 | 已知 | VLM_DENSE |
+| S-222 | 指代分割在密度语言上失败 | 语言 | “薄烟” vs “烟雾” | 切片 | 1 | 有趣 | VLM_DENSE |
+| S-223 | LLaVA 能描述但无法准确指向 | 定位 |  | 1 | 已知 | VLM_DENSE |
+| S-224 | 密集标题作为额外 GT | 监督 |  | 1 | 数据 | VLM_DENSE |
+| S-225 | 放射学报告与像素 GT 存在错位 | 错位 | 报告训练的 VLM 在掩码上表现更差 | 测量 | 1 | 重要 | VLM_DENSE |
+| S-226 | 开放词汇分割本质是伪装的检测器+SAM | 归因 |  | 替换 | 1 | 击溃新颖性 | VLM_DENSE |
+| S-227 | 文本提示敏感性类似于点击敏感性 | 统一 |  | 抖动文本 | 1 | 精妙 | VLM_DENSE |
+| S-228 | VLM 先验抑制了罕见疾病的外观表达 | 损害 | 文本先验降低非典型病灶的召回率 | 切片 | 1 | 重要 | VLM_DENSE |
+| S-229 | 面向医学的多语言提示 | 语言 |  | 1 | 增量改进 | VLM_DENSE |
+| S-230 | 思维链（CoT）对像素分割无帮助 | 负面结果 |  | 1 | 简单 | VLM_DENSE |
+| S-231 | 区域级对比 vs 像素级对比 | 表示 |  | 1 | 拥挤 | VLM_DENSE |
+| S-232 | Grounding DINO 框作为 SAM 提示：误差传播 | 级联 |  | 1 | 已知 | VLM_DENSE |
+| S-233 | 概念瓶颈掩码 | 可解释性 |  | 1 | 繁重 | VLM_DENSE |
+| S-234 | VLM 作为掩码质量评估器 | 评估 |  | 1 | 循环风险 | VLM_DENSE |
+| S-235 | 合成指代语句 | 数据 |  | 1 | 增量改进 | VLM_DENSE |
+| S-236 | 空白扫描中的幻觉物体 | 安全性 |  | 1 | 重要 | VLM_DENSE |
+| S-237 | 文本编码器温度改变掩码尺寸 | 解码 |  | 1 | 值得好奇 | VLM_DENSE |
+| S-238 | 共享 vs 独立视觉塔 | 架构 |  | 1 | 拥挤 | VLM_DENSE |
+| S-239 | 医学胶片上的 OCR token | 额外信息 |  | 1 | 数据 | VLM_DENSE |
+| S-240 | 报告中的否定表达（“无气胸”） | 语言 |  | 1 | 重要 | VLM_DENSE |
+| S-241 | 掩码的区域奖励强化学习 | RL |  | 繁重 | 高风险 | VLM_DENSE |
+| S-242 | CLIP 手术器械名称 | 领域词汇 |  | 1 | 增量改进 | VLM_DENSE |
+| S-243 | 密集预测需要像素对齐的 VLM | 主张 | SigLIP vs CLIP | 1 | 拥挤 | VLM_DENSE |
+| S-244 | 教师 VLM 标签用于 SAM 微调 | 蒸馏 |  | 1 | 增量改进 | VLM_DENSE |
+| S-245 | 根据指令而非类别进行评估 | 协议 |  | 1 | 软性标准 | VLM_DENSE |
+| S-246 | 透明物体检测本质是折射的定位 | 问题 | 框 IoU 差；提出折射图 |  | Trans10k | 困难 | DET_SHIFT |
+| S-247 | 小物体 AP 主导因素是图像缩放 | 协议 | 分块推理基线 |  | 1 | 已知 | DET_SHIFT |
+| S-248 | 开放词汇检测器在烟雾作为“物体”时失效 | 词汇表 |  | 1 | 预期之中 | DET_SHIFT |
+| S-249 | 无锚框 vs SAM 提示框 | 关系 |  | 1 | 增量改进 | DET_SHIFT |
+| S-250 | 火焰中的域偏移是光照而非形状 | 偏移 |  | 1 | 可测试 | DET_SHIFT |
+| S-251 | 共现先验：火必然伴随烟 | 偏差 |  | 1 | 有趣 | DET_SHIFT |
+| S-252 | 检测器校准 vs 下游 SAM 表现 | 级联 |  | 1 | 简单 | DET_SHIFT |
+| S-253 | 使用 SAM 伪标签的半监督检测器 | 循环 | 确认相比已有论文无新颖性 | 后续搜索 | 拥挤 | DET_SHIFT |
+| S-254 | 视频检测身份切换 | 跟踪 |  | 1 | 已知 | DET_SHIFT |
+| S-255 | Copy-Paste 增强损害透明物体分割 | 增强 |  | 1 | 可测试 | DET_SHIFT |
+| S-256 | 弱监督帧包（Bags of frames） | 弱监督 |  | 1 | 拥挤 | DET_SHIFT |
+| S-257 | 手术中的长尾器械 | 长尾 |  | 1 | 数据 | DET_SHIFT |
+| S-258 | 相机运动补偿优先 | 预处理 |  | 1 | 传统方法 | DET_SHIFT |
+| S-259 | 火灾边界框上的标签平滑 | 训练 |  | 1 | 微小 | DET_SHIFT |
+| S-260 | 跨相机检索 vs 检测 | 任务 |  | 1 | 邻近领域 | DET_SHIFT |
+| S-261 | 合成罕见事件 | 数据 |  | 1 | 增量改进 | DET_SHIFT |
+| S-262 | NMS 作为重叠火焰的科学选择 | NMS | Soft-NMS | 1 | 传统方法 | DET_SHIFT |
+| S-263 | 开放集火焰 vs 眩光 | OOD |  | 1 | 重要 | DET_SHIFT |
+| S-264 | 时间一致性正则化器 | 训练 |  | 1 | 拥挤 | DET_SHIFT |
+| S-265 | 人工虚警成本指标 | 任务 |  | 1 | 偏软性 | DET_SHIFT |
+| S-266 | 缺乏物理特性的合成医学数据失败 | Sim-to-Real |  | 1 | 已知 | SYNTH_DA |
+| S-267 | 扩散生成的肿瘤提供了纹理捷径 | 捷径 |  | 1 | 重要 | SYNTH_DA |
+| S-268 | GAN 烟雾缺乏多尺度湍流 | 物理 |  | 1 | 可测试 | SYNTH_DA |
+| S-269 | Copy-Paste 病灶忽视了光照一致性 | 增强 |  | 1 | 已知 | SYNTH_DA |
+| S-270 | 窗口/窗位的域随机化 | CT |  | 1 | 简单 | SYNTH_DA |
+| S-271 | 文本生成医学图像是不安全的评估方式 | 伦理 |  | — | 社交阻力 | SYNTH_DA |
+| S-272 | 合成标签相比人类标注过于一致 | 差距 | 添加标签噪声 | 1 | 有趣 | SYNTH_DA |
+| S-273 | 通过渲染实现透明物体的 Sim-to-Real | 图形学 |  | 繁重 | 数据 | SYNTH_DA |
+| S-274 | 风格迁移作为域自适应已死？ | 负面结果 | 重新核对 2024 | 1 | 或许 | SYNTH_DA |
+| S-275 | 掩码空间中的 MixUp vs 图像空间 | 增强 |  | 1 | 增量改进 | SYNTH_DA |
+| S-276 | 用于 SAM 微调的合成提示（框） | 数据 |  | 1 | 简单 | SYNTH_DA |
+| S-277 | 虚幻引擎火焰 vs 真实火焰 | 差距 |  | 1 | 简单 | SYNTH_DA |
+| S-278 | 用于肿瘤反事实分析的扩散反演 | 因果 |  | 繁重 | 高风险 | SYNTH_DA |
+| S-279 | 域标签作为干扰变量 | IRM |  | 1 | 拥挤 | SYNTH_DA |
+| S-280 | 测试时直方图匹配 | TTA |  | 1 | 传统方法 | SYNTH_DA |
+| S-281 | 使用 SAM Everything 进行自训练 | 伪标签 | 确认是否拥挤 | 搜索 | 拥挤 | SYNTH_DA |
+| S-282 | 跨模态配对 MRI-CT | 域自适应 |  | 数据 | 已知 | SYNTH_DA |
+| S-283 | 物理启发的强度变换 | CT |  | 1 | 推测性 | SYNTH_DA |
+| S-284 | 合成罕见的左右侧性错误 | 安全性 |  | 1 | 有趣 | SYNTH_DA |
+| S-285 | 生成器对训练集肿瘤的记忆效应 | 泄漏 |  | 1 | 重要 | SYNTH_DA |
+| S-286 | 更大 SAM 在医学上总是更好？ | 假设 | ViT-H vs B 在小样本 n 下发生反转 | 曲线 | 计算量 | ASSUMPTION |
+| S-287 | 更多提示总是更好？ | 假设 | 点数过多引起混淆 | 扫描 | 简单 | ASSUMPTION |
+| S-288 | 微调总是有帮助的？ | 假设 | 微调损害 OOD | 拆分 | 简单 | ASSUMPTION |
+| S-289 | 在低 n 下基础模型 > 专家模型？ | 假设 | 在微小病灶上结论相反 | 曲线 | 重要 | ASSUMPTION |
+| S-290 | 1% 的 Dice 提升具备临床意义？ | 假设 | 调研临床医生 | 定性 | 偏软性 | ASSUMPTION |
+| S-291 | 可提示模型更易用？ | 假设 | 时间动作研究 | HCI | 成本 | ASSUMPTION |
+| S-292 | 类 SAM 模型必须在 SA-1B 上预训练？ | 假设 | 在医学数据上从小模型从头训练 | 繁重 | 高风险 | ASSUMPTION |
+| S-293 | SAM2 中的记忆在 3D 上总是有帮助？ | 假设 | 消融 | 简单 | ASSUMPTION |
+| S-294 | 框提示总是优于点提示？ | 假设 | 对比切片反转 | 简单 | ASSUMPTION |
+| S-295 | 不确定性 = 误差？ | 假设 | 相关性分析 | 简单 | ASSUMPTION |
+| S-296 | 模型集成总是改善校准？ | 假设 |  | 简单 | ASSUMPTION |
+| S-297 | 注意力图能提供解释？ | 假设 |  | 简单 | ASSUMPTION |
+| S-298 | IoU token 就代表置信度？ | 假设 | ECE | 简单 | ASSUMPTION |
+| S-299 | 医学适配器可跨器官迁移？ | 假设 |  | 简单 | ASSUMPTION |
+| S-300 | 无提示的 Zero-Shot SAM 是公平的？ | 假设 |  | 社交阻力 | ASSUMPTION |
+| S-301 | A100 上的 FPS 对临床有意义？ | 假设 | 边缘设备 | 工程 | ASSUMPTION |
+| S-302 | 更多数据增强总有助于 SAM 微调？ | 假设 |  | 简单 | ASSUMPTION |
+| S-303 | 类别无关模型对临床已足够？ | 假设 |  | 偏软性 | ASSUMPTION |
+| S-304 | 视频模型适用于 3D CT？ | 假设 | vs 真正 3D | 计算量 | ASSUMPTION |
+| S-305 | 合成数据无上限扩展？ | 假设 | 曲线饱和 |  | ASSUMPTION |
+| S-306 | VLM 可以取代标注员？ | 假设 |  | 成本 | ASSUMPTION |
+| S-307 | PEFT 匹敌全量微调？ | 假设 | 密集任务 | 计算量 | ASSUMPTION |
+| S-308 | 更大提示（文本）对密集任务有帮助？ | 假设 |  | 简单 | ASSUMPTION |
+| S-309 | 夜间火灾只是一个域？ | 假设 | 不同的物理机制 | 偏软性 | ASSUMPTION |
+| S-310 | 人类 GT 是金标准？ | 假设 | 标注者间差异 | 成本 | ASSUMPTION |
+| S-311 | 掩码 Logit 不是概率值 | 校准 | 按提示类型分配温度 | 1 | 简单 | CALIB |
+| S-312 | Pixel-ECE vs Region-ECE | 指标 | 排名反转 | 1 | 有趣 | CALIB |
+| S-313 | SAM 上的选择性预测 | 拒绝机制 | 放弃低 IoU token 样本 | 1 | 增量改进 | CALIB |
+| S-314 | 提示分歧作为校准信号 | 方法 |  | 1 | vs FNPC | CALIB |
+| S-315 | 逐领域温度缩放 | TTA |  | 1 | 传统方法 | CALIB |
+| S-316 | 小物体上的过度自信 | 切片 |  | 1 | 简单 | CALIB |
+| S-317 | 透明边缘上的欠自信 | 切片 |  | 1 | 简单 | CALIB |
+| S-318 | 微调恶化校准超过改善 Dice | 权衡 |  | 1 | 重要 | CALIB |
+| S-319 | 仅在解码器上使用 MC-Dropout | UQ |  | 1 | 传统方法 | CALIB |
+| S-320 | 提示类型集成 | UQ |  | 1 | 简单 | CALIB |
+| S-321 | 空间校准图 | 评估 |  | 1 | 增量改进 | CALIB |
+| S-322 | 临床决策曲线 vs Dice | 指标 |  | 1 | 偏软性 | CALIB |
+| S-323 | OOD 烟雾 vs 云彩 | OOD |  | 1 | 重要 | CALIB |
+| S-324 | SAM2 遮挡分数作为不确定性 | 复用 |  | 1 | 简单 | CALIB |
+| S-325 | 标签噪声 vs 模型不确定性 | 分解 |  | 1 | 困难 | CALIB |
+| S-326 | 1-Shot SAM 是 1-框而非 1-图 | 概念澄清 |  | 协议 | 社交阻力 | FEWSHOT |
+| S-327 | 掩码嵌入空间中的原型 | 方法 |  | 1 | 拥挤 | FEWSHOT |
+| S-328 | 在 5 张图像上微调解码器会过拟合窗口设置 | 过拟合 |  | 1 | 简单 | FEWSHOT |
+| S-329 | 上下文视觉提示（SegGPT 风格）vs SAM | 对比 |  | 1 | 拥挤 | FEWSHOT |
+| S-330 | 使用密度区间而非图像的少样本烟雾分割 | 协议 |  | 1 | 有趣 | FEWSHOT |
+| S-331 | 无标签数据池比样本数更重要 | 主动学习 |  | 1 | 拥挤 | FEWSHOT |
+| S-332 | 跨器官少样本负迁移 | 迁移 |  | 1 | 可测试 | FEWSHOT |
+| S-333 | 文本作为额外样本 | VLM |  | 1 | 拥挤 | FEWSHOT |
+| S-334 | 几何增强作为额外样本 | 增强 |  | 1 | 简单 | FEWSHOT |
+| S-335 | 少样本评估方差巨大 | 统计 |  | 1 | 社交阻力 | FEWSHOT |
+| S-336 | 冻结 SAM + 裁剪图 kNN | 基线 |  | 1 | 简单 | FEWSHOT |
+| S-337 | 面向器械的基于部件少样本学习 | 细分 |  | 1 | 增量改进 | FEWSHOT |
+| S-338 | 医学 Zero-Shot 实质是提示 Shot | 分类学 |  | 社交阻力 | FEWSHOT |
+| S-339 | 仅元学习提示编码器 | 架构 |  | 繁重 | 拥挤 | FEWSHOT |
+| S-340 | 患者 Shot vs 图像 Shot | 划分 |  | 1 | 重要 | FEWSHOT |
+| S-341 | 发表：微调 SAM 损害另一家医院的表现 | 负面结果 |  | 1 | 社交阻力 | NEG_RESULT |
+| S-342 | 发表：在 CT 上关闭 SAM2 记忆效果更好 | 负面结果 |  | 1 | 简单 | NEG_RESULT |
+| S-343 | 发表：在 n=30 时 LoRA Rank 64 < Rank 4 | 负面结果 |  | 1 | 简单 | NEG_RESULT |
+| S-344 | 发表：Grounded-SAM 比独立检测器表现更差 | 负面结果 |  | 1 | 简单 | NEG_RESULT |
+| S-345 | 发表：额外合成数据导致真实 Dice 下降 | 负面结果 |  | 1 | 重要 | NEG_RESULT |
+| S-346 | 发表：在微小息肉上 ViT-H < UNet | 负面结果 |  | 1 | 重要 | NEG_RESULT |
+| S-347 | 发表：提示进化降低临床 Dice | 负面结果 |  | 1 | vs SAMPOT | NEG_RESULT |
+| S-348 | 发表：不确定性无法捕捉真实误差 | 负面结果 |  | 1 | 简单 | NEG_RESULT |
+| S-349 | 发表：TTA 使烟雾分割结果更差 | 负面结果 |  | 1 | 简单 | NEG_RESULT |
+| S-350 | 发表：CLIP 文本先验损害罕见发现的识别 | 负面结果 |  | 1 | 重要 | NEG_RESULT |
+| S-351 | 发表：3D-as-video < 2.5D UNet | 负面结果 |  | 计算量 | NEG_RESULT |
+| S-352 | 发表：适配器效果 ≈ 简单解码器微调 | 负面结果 |  | 1 | 社交阻力 | NEG_RESULT |
+| S-353 | 发表：更多点击在 3 次后达到饱和 | 负面结果 |  | 1 | 简单 | NEG_RESULT |
+| S-354 | 发表：红外火灾模型无法迁移到 RGB | 负面结果 |  | 1 | 简单 | NEG_RESULT |
+| S-355 | 发表：抠图指标反转 SOTA 排行榜 | 负面结果 |  | 1 | 指标 | NEG_RESULT |
+| S-356 | 发表：随机框作为提示效果惊人地强大 | 负面结果 |  | 1 | 值得好奇 | NEG_RESULT |
+| S-357 | 发表：SAM Everything 对 Stuff 毫无用处 | 负面结果 |  | 1 | 预期之中 | NEG_RESULT |
+| S-358 | 发表：来自验证集的校准温度在 OOD 下失效 | 负面结果 |  | 1 | 简单 | NEG_RESULT |
+| S-359 | 发表：2 个 SAM 的集成不值得 2 倍计算成本 | 负面结果 |  | 1 | 简单 | NEG_RESULT |
+| S-360 | 发表：BioMedCLIP vs CLIP：无掩码质量增益 | 负面结果 |  | 1 | 可测试 | NEG_RESULT |

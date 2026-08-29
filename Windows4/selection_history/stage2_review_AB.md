@@ -1,125 +1,125 @@
-# Stage 2 Review — Batches A1+B1 (Reviewer: science-question + feasibility bias)
+# Stage 2 评审 — 批次 A1+B1 (评审员：科学问题 + 可行性倾向)
 
-Bias declared: prefer falsifiable hypotheses with a 1-GPU-day killer experiment. Kill engineering-only pipelines and crowded UDA/AL/semi-sup recipes unless they challenge an assumption. Single pass, no web.
+声明的倾向：偏好具有 1 个 GPU-天杀手级实验的可证伪假说。剔除纯工程流水线以及拥挤的 UDA/AL/半监督配方，除非它们挑战了既有假设。单次遍历，无网络搜索。
 
-Kept: 80/240 (50 from A1, 30 from B1). No new IDs.
+保留：80/240（A1 中 50 个，B1 中 30 个）。无新 ID。
 
-## Keep (max 80)
+## 保留 (最多 80)
 
-| ID | 1-line reason | Novelty | Feasibility | Protect? |
+| ID | 一句话理由 | 新颖性 | 可行性 | 保护? |
 |---|---|---|---|---|
-| A1-002 | Sharp falsifiable patch-grid aliasing claim; FFT test runs in hours | 4 | 5 | - |
-| A1-004 | Topology-level failure (genus>0); trivially cheap, decisive test | 4 | 5 | - |
-| A1-006 | Free OOD signal from ignored IoU head; calibration sweep is 1 GPU-day | 3 | 5 | - |
-| A1-007 | Non-monotonic negative-click behavior is a falsifiable interaction bug | 3 | 5 | - |
-| A1-008 | Scale sweet-spot tied to SA-1B statistics; cheap sweep, mechanistic link | 3 | 5 | - |
-| A1-016 | Memory averaging tied to controllable rotation phase; clean synthetic design | 4 | 4 | - |
-| A1-017 | Failure pinned to explicit architecture constant; sharp cutoff prediction | 4 | 5 | - |
-| A1-018 | Frame-0 prompting convention never tested; one sweep falsifies | 3 | 5 | - |
-| A1-020 | Collapse tied to displacement not FPS; strong quantitative claim | 3 | 5 | - |
-| A1-021 | Validates free per-frame uncertainty output; AUROC test cheap | 3 | 5 | - |
-| A1-022 | Memory contamination dynamics; single-frame injection is decisive | 3 | 5 | - |
-| A1-024 | One-ratio failure predictor; re-binning existing benchmarks, near-zero cost | 3 | 5 | - |
-| A1-025 | Matched-noise design causally separates modality noise from anatomy | 4 | 4 | - |
-| A1-027 | Names a representational gap (split/merge) with concrete behavioral prediction | 4 | 4 | P |
-| A1-030 | Internal representations as robustness reserve; probe cheap, readout fix implied | 4 | 4 | P |
-| A1-032 | 1-D physics search vs fine-tuning reflex; killer cheap baseline | 3 | 5 | - |
-| A1-034 | Preprocessing-vs-LoRA falsification; challenges fine-tune-first culture | 3 | 5 | - |
-| A1-038 | Anatomical smoothness as label-free quality proxy; simple correlation test | 3 | 5 | - |
-| A1-039 | Prompt-slice policy for volumetric SAM2; cheap sweep, obvious payoff | 3 | 5 | - |
-| A1-040 | Clinically dangerous bias tied to one controllable variable (edge width) | 4 | 4 | - |
-| A1-043 | Reframes medical domain shift as label-convention shift; testable with dual-annotated data | 4 | 3 | P |
-| A1-044 | Cost-ordered remedies (stain norm vs LoRA); assumption-challenging, 1 day | 3 | 5 | - |
-| A1-046 | Attacks the mask ontology itself for volumetric media | 4 | 3 | P |
-| A1-047 | Do foundation features encode density at all? Linear probe settles it | 4 | 4 | - |
-| A1-048 | First prompt-variance quantification on amorphous media; grid eval only | 3 | 5 | - |
-| A1-051 | Mechanistic alpha-edge vs luminance-edge response; controlled feature probe | 4 | 4 | - |
-| A1-054 | Annotation ceiling bounds meaningful smoke progress; cheap meta-result | 4 | 4 | - |
-| A1-059 | Boundary/interior error decoupling on glass; redirects fix design | 3 | 5 | - |
-| A1-061 | Nuisance-to-signal inversion (highlights as prompts); trivial to test | 3 | 5 | - |
-| A1-063 | Physics-violation (parallax feature mismatch) as transparency signal, training-free | 4 | 3 | P |
-| A1-066 | Counterintuitive supervision claim with mechanism; small fine-tune decides | 4 | 4 | - |
-| A1-068 | Single-variable causal study (fill level); an afternoon of photos | 3 | 5 | - |
-| A1-071 | Sharp jitter-budget threshold defines weakest usable detector | 3 | 5 | - |
-| A1-073 | Hard resolution floor vs box-fill null; stops wasted fine-tunes | 3 | 5 | - |
-| A1-082 | Single-forward-pass domain-gap meter; falsifiable across 8 domains | 4 | 4 | P |
-| A1-083 | Boundary-first degradation law across all corruptions; one sweep | 3 | 5 | - |
-| A1-084 | Causal polarity hypothesis; two forward passes falsify it | 3 | 5 | - |
-| A1-085 | Aerial gap = scale mismatch claim; resize sweep kills or confirms | 3 | 5 | - |
-| A1-088 | Cue-conflict methodology ported to promptable segmentation; cheap | 3 | 5 | - |
-| A1-094 | Model-intrinsic difficulty score from prompt geometry; cross-model validation feasible | 4 | 4 | P |
-| A1-096 | Acquisition-policy head-to-head nobody ran; pure simulation | 3 | 5 | - |
-| A1-099 | Worst-case prompt robustness = new threat model; black-box search cheap | 4 | 5 | P |
-| A1-101 | Latent granularity control knob; monotonicity claim dies in one sweep | 4 | 5 | - |
-| A1-104 | Non-commutativity permutation test; statefulness exposed cheaply | 3 | 5 | - |
-| A1-105 | Grounds all interactive evaluation in real user behavior | 4 | 3 | P |
-| A1-106 | Task-dependent instability law; falsifiable with a small seed grid | 4 | 4 | - |
-| A1-108 | Interface-contract drift statistic; explains PEFT failure mode mechanistically | 4 | 4 | P |
-| A1-110 | Debunk: instability as optimization artifact; cheap grid, saves field effort | 3 | 5 | - |
-| A1-113 | Early-warning diagnostic with measurable lead time; falsifiable | 4 | 4 | - |
-| A1-118 | Prompt-marginalized evaluation attacks a field-wide blind spot | 4 | 5 | P |
-| B1-011 | Negative result reframing AL under modern inits; cheap loop | 4 | 5 | - |
-| B1-017 | Causal attack on CAM context bias via co-occurrence masking | 4 | 4 | P |
-| B1-024 | Noise is boundary-structured, not symmetric: estimate then exploit | 4 | 4 | P |
-| B1-025 | Re-benchmarks semi-sup canon under VFM init; assumption test, not recipe | 3 | 5 | - |
-| B1-027 | Ingredient ranking identifies the load-bearing component | 3 | 5 | - |
-| B1-028 | Controlled contamination curve kills the in-domain-unlabeled assumption | 4 | 4 | - |
-| B1-032 | Redundancy claim, one ablation; trims method complexity honestly | 3 | 5 | - |
-| B1-033 | Predictive diagnostic: labeled-only ECE forecasts semi-sup gain | 4 | 4 | P |
-| B1-036 | Non-iterative alternative to self-training; 10x cheaper if true | 3 | 4 | - |
-| B1-038 | Objective-to-boundary probe; cheap comparative science | 3 | 5 | - |
-| B1-041 | Pre-hoc dense-readiness scalar; timely given register findings | 4 | 4 | - |
-| B1-046 | Granularity-transfer law; falsifiable peak-location claim | 3 | 4 | - |
-| B1-047 | Position-shortcut audit could invalidate probe-based literature | 4 | 4 | P |
-| B1-051 | Compute-matched honest baseline vs generative-synthesis hype | 3 | 5 | - |
-| B1-056 | Counterfactual backgrounds; causal test of context dependence | 4 | 4 | - |
-| B1-059 | Hidden calibration cost of synthetic data; piggybacks existing sweep | 4 | 4 | - |
-| B1-061 | Decomposes UDA gains into a cheap style component; assumption killer | 4 | 5 | - |
-| B1-065 | Adapt-or-don't decision diagnostic; falsifiable correlation | 4 | 4 | P |
-| B1-069 | Additivity factorial: are cheap tricks subsumed? 2x2 in a day | 3 | 5 | - |
-| B1-074 | Support variance > method variance would reorient the FSS field | 4 | 5 | - |
-| B1-079 | Background-shortcut audit of FSS benchmarks | 4 | 4 | P |
-| B1-083 | Visual ICL brittleness audit; unmeasured sensitivity axis | 3 | 4 | - |
-| B1-094 | Intrinsic-dimension audit of learned prompts; PCA is free | 3 | 5 | - |
-| B1-097 | Linear-correctability hypothesis for CLIP dense misalignment; crisp | 4 | 5 | P |
-| B1-107 | Counterfactual proof of language-prior hallucination in dense output | 4 | 4 | P |
-| B1-109 | Spectral diagnostic predicting fine-tune necessity per backbone | 4 | 4 | - |
-| B1-110 | Layer-resolved mismatch map with an actionable freeze rule | 3 | 5 | - |
-| B1-111 | Label-free scalar (feature TV) predicting boundary quality rank | 4 | 4 | P |
-| B1-112 | Attributes thin-structure deficit to tokenization; decisive decoder swap | 3 | 4 | - |
-| B1-116 | Physics-vs-convention conflict; two-normalization test settles it | 3 | 5 | - |
+| A1-002 | 明确可证伪的 patch 网格混叠（aliasing）主张；FFT 测试仅需数小时 | 4 | 5 | - |
+| A1-004 | 拓扑级失败（genus>0）；极其廉价且具决定性的测试 | 4 | 5 | - |
+| A1-006 | 来自被忽视 IoU 头的免费 OOD 信号；校准扫描仅需 1 个 GPU-天 | 3 | 5 | - |
+| A1-007 | 非单调负点击行为是可证伪的交互缺陷 | 3 | 5 | - |
+| A1-008 | 与 SA-1B 统计挂钩的尺度最佳区间；廉价扫描，机理关联 | 3 | 5 | - |
+| A1-016 | 记忆平均与可控旋转相位挂钩；干净的合成设计 | 4 | 4 | - |
+| A1-017 | 失败锚定于显式架构常数；明确的截断预测 | 4 | 5 | - |
+| A1-018 | 第 0 帧提示习惯从未被测试；一次扫描即可证伪 | 3 | 5 | - |
+| A1-020 | 性能崩溃与位移而非 FPS 挂钩；强有力的量化主张 | 3 | 5 | - |
+| A1-021 | 验证免费的逐帧不确定性输出；AUROC 测试低成本 | 3 | 5 | - |
+| A1-022 | 记忆污染动态；单帧注入具有决定性 | 3 | 5 | - |
+| A1-024 | 单一比例失败预测器；重新分桶现有基准，近乎零成本 | 3 | 5 | - |
+| A1-025 | 匹配噪声设计在因果上将模态噪声与解剖结构分离 | 4 | 4 | - |
+| A1-027 | 指出表示能力断层（分裂/合并）并给出具象行为预测 | 4 | 4 | P |
+| A1-030 | 内部表示作为鲁棒性储备；探测廉价，暗示读出修复方案 | 4 | 4 | P |
+| A1-032 | 1-D 物理搜索对抗微调反射；杀手级廉价基线 | 3 | 5 | - |
+| A1-034 | 预处理 vs LoRA 证伪；挑战微调优先的文化 | 3 | 5 | - |
+| A1-038 | 解剖平滑性作为无标注质量代理；简单相关性测试 | 3 | 5 | - |
+| A1-039 | 体素 SAM2 的提示切片策略；廉价扫描，明显回报 | 3 | 5 | - |
+| A1-040 | 与单一可控变量（边缘宽度）挂钩的临床危险偏差 | 4 | 4 | - |
+| A1-043 | 将医学域偏移重构为标注习惯偏移；可用双标注数据测试 | 4 | 3 | P |
+| A1-044 | 按成本排序的补救措施（染色归一化 vs LoRA）；挑战假设，1 天 | 3 | 5 | - |
+| A1-046 | 攻击体素介质的掩码本体论本身 | 4 | 3 | P |
+| A1-047 | 基础模型特征是否编码密度？线性探测即可定论 | 4 | 4 | - |
+| A1-048 | 首次在无定形介质上量化提示方差；仅需网格评估 | 3 | 5 | - |
+| A1-051 | Alpha 边缘 vs 亮度边缘的机理响应；受控特征探测 | 4 | 4 | - |
+| A1-054 | 标注上限限制了有意义的烟雾进展；低成本元结果 | 4 | 4 | - |
+| A1-059 | 玻璃上的边界/内部误差解耦；重新指导修复设计 | 3 | 5 | - |
+| A1-061 | 干扰转信号反转（高光作为提示）；测试极简单 | 3 | 5 | - |
+| A1-063 | 物理违背（视差特征不匹配）作为透明度信号，无需训练 | 4 | 3 | P |
+| A1-066 | 带有机制的反直觉监督主张；小型微调即可定论 | 4 | 4 | - |
+| A1-068 | 单变量因果研究（填充水平）；一个下午拍摄照片即可 | 3 | 5 | - |
+| A1-071 | 明确的抖动预算阈值定义最弱可用检测器 | 3 | 5 | - |
+| A1-073 | 硬性分辨率下限 vs 框填充无效对照；停止无谓微调 | 3 | 5 | - |
+| A1-082 | 单次前向传播域差距计；可跨 8 个领域证伪 | 4 | 4 | P |
+| A1-083 | 跨所有损坏的边界优先退化法则；单次扫描 | 3 | 5 | - |
+| A1-084 | 因果极性假说；两次前向传播即可证伪 | 3 | 5 | - |
+| A1-085 | 航空差距 = 尺度不匹配主张；尺寸缩放扫描决定存亡 | 3 | 5 | - |
+| A1-088 | 线索冲突方法论移植到可提示分割；成本低 | 3 | 5 | - |
+| A1-094 | 来自提示几何的模型内在难度分数；跨模型验证可行 | 4 | 4 | P |
+| A1-096 | 尚无人运行的获取策略头对头对比；纯模拟 | 3 | 5 | - |
+| A1-099 | 最坏情况提示鲁棒性 = 新威胁模型；黑盒搜索廉价 | 4 | 5 | P |
+| A1-101 | 潜在粒度控制旋钮；单调性主张单次扫描即可决断 | 4 | 5 | - |
+| A1-104 | 非交换性置换测试；低成本揭露状态依赖性 | 3 | 5 | - |
+| A1-105 | 将所有交互式评估扎根于真实用户行为 | 4 | 3 | P |
+| A1-106 | 任务相关的不稳定性法则；小型种子网格即可证伪 | 4 | 4 | - |
+| A1-108 | 接口契约漂移统计量；从机理上解释 PEFT 失败模式 | 4 | 4 | P |
+| A1-110 | 破除迷思：不稳定性作为优化伪影；廉价网格，节省领域精力 | 3 | 5 | - |
+| A1-113 | 具备可测提前时间的早期预警诊断；可证伪 | 4 | 4 | - |
+| A1-118 | 提示边缘化评估攻击了领域级盲点 | 4 | 5 | P |
+| B1-011 | 重新审视现代初始化下 AL 的负面结果；低成本循环 | 4 | 5 | - |
+| B1-017 | 通过共现遮蔽对 CAM 上下文偏差发起因果攻击 | 4 | 4 | P |
+| B1-024 | 噪声具有边界结构而非对称性：先估计后利用 | 4 | 4 | P |
+| B1-025 | 在 VFM 初始化下重新基准测试半监督经典方法；假设检验而非新配方 | 3 | 5 | - |
+| B1-027 | 成分排序识别出关键支撑组件 | 3 | 5 | - |
+| B1-028 | 受控污染曲线终结了同域无标签数据的假设 | 4 | 4 | - |
+| B1-032 | 冗余性主张，单次消融；诚实削减方法复杂度 | 3 | 5 | - |
+| B1-033 | 预测性诊断：仅有标签数据的 ECE 预测半监督增益 | 4 | 4 | P |
+| B1-036 | 自训练的非迭代替代方案；若为真成本便宜 10 倍 | 3 | 4 | - |
+| B1-038 | 目标到边界的探测；低成本对比科学 | 3 | 5 | - |
+| B1-041 | 事前密集就绪度标量；鉴于 Register 发现非常及时 | 4 | 4 | - |
+| B1-046 | 粒度迁移法则；可证伪的峰值位置主张 | 3 | 4 | - |
+| B1-047 | 位置快捷方式审计可能推翻基于探测的文献 | 4 | 4 | P |
+| B1-051 | 计算受控的诚实基线对抗生成式合成的过度炒作 | 3 | 5 | - |
+| B1-056 | 反事实背景；上下文依赖性的因果测试 | 4 | 4 | - |
+| B1-059 | 合成数据的隐藏校准成本；顺带利用现有扫描 | 4 | 4 | - |
+| B1-061 | 将 UDA 增益分解为廉价风格成分；假设终结者 | 4 | 5 | - |
+| B1-065 | 自适应或不自适应决策诊断；可证伪的相关性 | 4 | 4 | P |
+| B1-069 | 可加性析因：廉价技巧是否已被包含？1 天内完成 2x2 | 3 | 5 | - |
+| B1-074 | 支持集方差 > 方法方差将重塑少样本分割领域 | 4 | 5 | - |
+| B1-079 | 少样本分割基准的背景捷径审计 | 4 | 4 | P |
+| B1-083 | 视觉上下文学习（ICL）脆弱性审计；未测量的敏感性维度 | 3 | 4 | - |
+| B1-094 | 学习提示的内在维度审计；PCA 零成本 | 3 | 5 | - |
+| B1-097 | CLIP 密集错位的线性可校正假说；清晰明了 | 4 | 5 | P |
+| B1-107 | 密集输出中语言先验幻觉的反事实证明 | 4 | 4 | P |
+| B1-109 | 预测每个骨干微调必要性的频谱诊断 | 4 | 4 | - |
+| B1-110 | 具有实用冻结规则的逐层解析不匹配图 | 3 | 5 | - |
+| B1-111 | 预测边界质量排名的无标签标量（特征 TV） | 4 | 4 | P |
+| B1-112 | 将细长结构缺陷归因于 Token 化；决定性解码器替换 | 3 | 4 | - |
+| B1-116 | 物理 vs 习惯冲突；两种归一化测试即可定论 | 3 | 5 | - |
 
-## Kill 15 with reasons
+## 剔除 15 项及原因
 
-| ID | Reason |
+| ID | 原因 |
 |---|---|
-| A1-012 | Engineering deployment artifact; overlap-blending is already standard practice, no scientific claim survives it |
-| A1-026 | Compute-quality stride ablation; incremental engineering, no assumption challenged |
-| A1-035 | Pipeline recipe (atlas+SAM); registration fails exactly where it matters (pathology); no hypothesis about the model |
-| A1-057 | Application pipeline; no falsifiable claim beyond "composition works"; site-specific confounds |
-| A1-064 | Sensor-bound engineering fusion; polarization data scarcity blocks the killer experiment |
-| A1-078 | Crowded SAM-as-teacher weak-supervision recipe space; gain attribution muddy |
-| A1-089 | Template-redundant with A1-032/034/044 (physics-preprocessing-vs-LoRA); weakest feasibility of the family (needs depth) |
-| A1-092 | Rides the crowded model-merging bandwagon; interference results are seed-noisy, recipe not question |
-| A1-100 | Engineering-only learned prompter; auto-prompting well trodden, likely overfits source conventions |
-| B1-002 | Crowded cost-aware AL; proxy-vs-real-time gap undermines the only novel part |
-| B1-008 | Region-level AL is a well-mined literature; no assumption challenged |
-| B1-013 | CAM+SAM seed refinement is an already-crowded WSSS recipe space |
-| B1-026 | Adaptive class thresholds are established (FlexMatch lineage); recipe transplant, not a question |
-| B1-067 | Stochastic weight restoration already exists in continual-TTA (CoTTA); incremental |
-| B1-120 | Report-mined CXR supervision is a very crowded area; report noise dominates and idea offers no new lever |
+| A1-012 | 工程部署伪影；重叠混合已是标准实践，无科学主张能在此之上存活 |
+| A1-026 | 计算-质量步长消融；增量工程，未挑战任何既有假设 |
+| A1-035 | 流水线配方（图谱+SAM）；配准恰恰在关键处（病理）失败；无关于模型的假说 |
+| A1-057 | 应用流水线；除了“组合有效”之外无任何可证伪主张；存在特定站点混杂 |
+| A1-064 | 受限于传感器的工程融合；偏振数据稀缺阻碍了杀手级实验的开展 |
+| A1-078 | 拥挤的 SAM 作为教师弱监督配方空间；增益归因模糊不清 |
+| A1-089 | 模板上与 A1-032/034/044 冗余（物理预处理 vs LoRA）；该系列中可行性最弱（需要深度） |
+| A1-092 | 跟风拥挤的模型合并潮流；干扰结果受种子噪声影响大，是配方而非科学问题 |
+| A1-100 | 纯工程的学习型提示器；自动提示研究已多，极可能过拟合源数据集习惯 |
+| B1-002 | 拥挤的成本感知 AL；代理指标 vs 真实时间的差距破坏了唯一的创新部分 |
+| B1-008 | 区域级 AL 是被充分挖掘的文献领域；未挑战任何既有假设 |
+| B1-013 | CAM+SAM 种子细化已是过度拥挤的 WSSS 配方空间 |
+| B1-026 | 自适应类别阈值已确立（FlexMatch 血统）；配方移植，而非科学问题 |
+| B1-067 | 随机权重恢复在持续 TTA (CoTTA) 中已存在；纯增量改进 |
+| B1-120 | 报告挖掘的 CXR 监督是非常拥挤的领域；报告噪声占主导且该创意未提供新杠杆 |
 
-## 10 high-disagreement / protect
+## 10 个高争议 / 重点保护项
 
-| ID | Why I protect it despite expected kill votes |
+| ID | 为何在预期会被投反对票的情况下依然保护它 |
 |---|---|
-| A1-046 | GT-scarcity will draw kills, but it challenges the binary-mask ontology itself — a real assumption, not a recipe |
-| A1-063 | Two-view requirement narrows scope, but physics-violation-as-detection-signal is genuinely new science |
-| A1-043 | Dual-annotated data is scarce, but reframing medical domain shift as label-convention shift could redirect the subfield |
-| A1-105 | Needs a (small) user study, but it grounds the entire interactive-segmentation evaluation literature in reality |
-| A1-118 | Will be dismissed as "just evaluation"; it attacks a blind spot every SAM-variant paper shares |
-| A1-099 | May look gimmicky; it defines worst-case prompt robustness, a missing threat model with a cheap search |
-| B1-047 | Audit may seem niche; if positional leakage is real, many dense-probe results are inflated |
-| B1-079 | Compositing-artifact risk is real, but a confirmed background shortcut breaks FSS benchmarks as evidence |
-| B1-107 | Inpainting traces are a confound, but it is the only causal test of language-prior hallucination in dense prediction here |
-| B1-033 | Correlational and possibly spurious — but a validated predictive diagnostic for semi-sup gain is rarer and more useful than another method |
+| A1-046 | GT 稀缺会招致淘汰票，但它挑战了二值掩码本体论本身——这是一个真正的假设，而非配方 |
+| A1-063 | 双视角要求收窄了适用范围，但物理违背作为检测信号是真正的新科学 |
+| A1-043 | 双标注数据稀缺，但将医学域偏移重构为标注习惯偏移可能重新引导该子领域 |
+| A1-105 | 需要（小型）用户研究，但它将整个交互式分割评估文献扎根于现实中 |
+| A1-118 | 会被贬低为“仅仅是评估”；但它攻击了每篇 SAM 变体论文共有的盲点 |
+| A1-099 | 可能看起来像噱头；但它定义了最坏情况提示鲁棒性，这是一个缺失且搜索廉价的威胁模型 |
+| B1-047 | 审计可能看起来小众；但如果位置泄漏属实，许多密集探测结果都是虚增的 |
+| B1-079 | 合成伪影风险真实存在，但确认的背景捷径会彻底打破少样本分割基准作为证据的效力 |
+| B1-107 | 修复痕迹是混杂因素，但这是此处对密集预测中语言先验幻觉唯一的因果测试 |
+| B1-033 | 具相关性且可能为伪相关——但针对半监督增益的经过验证的预测性诊断比又一个新方法更罕见且更有用 |

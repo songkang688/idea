@@ -1,77 +1,71 @@
-# Idea_03 — Implementation Roadmap
+# Idea_03 — 实施路线图（Implementation Roadmap）
 
-15 fine-tunes, no novel modelling. The engineering is small; the discipline is the whole project.
+共计 15 次微调运行，不涉及新模型架构设计。工程量较小；严格的实验纪律构成了整个项目的核心。
 
-**Sequence third**, but start the pre-registration early — five of the eight reviewer attacks are
-answered by things committed before any arm runs.
-
----
-
-## Day 1 — environment
-
-- [ ] Clone `haotian-liu/LLaVA`; **pin deepspeed and transformers versions** (`KNOWN FACT` the repo
-      is in maintenance mode; this is known ecosystem friction, days not weeks).
-- [ ] Download `llava_v1_5_mix665k`, the LLaVA-1.5 projector, Vicuna-7B.
-- [ ] Clone `TRI-ML/prismatic-vlms` (fallback harness + E5).
-- [ ] Clone `lm-evaluation-harness` and `lmms-eval`; pin task versions.
-- [ ] Confirm 8×A100-80GB allocation and queue policy.
-
-## Day 2–3 — the harness changes
-
-- [ ] **Text-stripped mix**: remove the ShareGPT slice, measure its exact token count.
-- [ ] **Token-budget re-matching** across all five arms (`sampler.py` port).
-- [ ] Interleaved text-batch sampler — ~100 lines in the LLaVA data module, following its existing
-      multi-source sampler pattern.
-- [ ] Per-module gradient-norm hooks, logged every 50 steps.
-- [ ] Both matching conventions; log the effective-LR multiplier on the language tower every step.
-
-## Day 4–5 — E0 and the freeze
-
-- [ ] Reproduce the published recipe; verify evals within noise.
-- [ ] Full stratified eval of the **base model** — this fixes every denominator.
-- [ ] **Freeze `configs/preregistration.yaml`**: MDE, strata list, primary convention, eval YAMLs.
-      Commit it. Everything after this reads the file; nothing rewrites it.
-
-## Week 2 — pilots and gates
-
-- [ ] E0b `A3` tokenizer-validity pilot (1 run). Degenerate ⇒ drop `A3` and record why.
-- [ ] Denominator-adequacy gate on all strata. Replace failures **now**.
-
-## Week 3 — the kill point
-
-- [ ] **E1**: `A0`/`A1`/`A2` × 2 seeds (~600 A100-h).
-- [ ] Evaluate P0 against the declared MDE.
-- [ ] **Go / no-go.** Fail ⇒ stop at ~800 cumulative A100-h and write the power analysis.
-
-## Week 4–6 — the grid
-
-- [ ] E2 remaining 9 runs under the primary convention.
-- [ ] E3 second convention on the decision arms.
-- [ ] E5 cross-family replication.
-- [ ] E6 evaluation sweep; confirm VL sanity scores have not regressed.
-
-## Week 7+ — only if the result lands on P3
-
-- [ ] E4 mixture sweep at {1, 5, 10}% real text. Without it, P3 is a shrug with a table.
+**在三个项目中排序第三启动**，但应尽早启动预注册工作 —— 8 项评审攻击中有 5 项是通过在任何实验臂运行前完成承诺锁定而化解的。
 
 ---
 
-## Gate summary
+## 第 1 天 — 环境搭建
 
-| Gate | When | Fail action |
+- [ ] 克隆 `haotian-liu/LLaVA`；**锁定 deepspeed 和 transformers 版本**（`KNOWN FACT` 仓库处于维护状态；属于已知生态摩擦，解决时间应以天计而非数周）。
+- [ ] 下载 `llava_v1_5_mix665k`、LLaVA-1.5 projector 权重、Vicuna-7B。
+- [ ] 克隆 `TRI-ML/prismatic-vlms`（备用平台 + E5 跨家族复现）。
+- [ ] 克隆 `lm-evaluation-harness` 与 `lmms-eval`；锁定评测任务版本。
+- [ ] 确认 8×A100-80GB 算力配额与队列调度策略。
+
+## 第 2–3 天 — 测试工具改造
+
+- [ ] **构建剥离文本后的混合数据**：移除 ShareGPT 分片，精确测量其实际 token 计数。
+- [ ] 在全部五个实验臂之间执行 **Token 预算重新对齐匹配**（移植 `sampler.py`）。
+- [ ] 编写穿插文本批次采样器 —— 在 LLaVA 数据模块中新增约 100 行代码，遵循其现有的多数据源采样模式。
+- [ ] 编写逐模块梯度范数挂钩（hooks），每 50 步记录一次日志。
+- [ ] 实现两种匹配约定；每一步记录语言塔上的有效学习率（LR）乘数。
+
+## 第 4–5 天 — E0 实验与预注册冻结
+
+- [ ] 复现已发表配方；验证评测得分在噪声容差范围内。
+- [ ] 对**基底模型**执行完整的分层评测 —— 锁定所有后续计算的分母。
+- [ ] **冻结 `configs/preregistration.yaml`**：包含 MDE、分层列表、主要匹配约定、评测 YAML 文件。提交锁定。此后的所有代码均只读该文件，绝不重写。
+
+## 第 2 周 — Pilot 测试与门禁检验
+
+- [ ] E0b `A3` 分词有效性 pilot 测试（1 次运行）。若表现退化 ⇒ 放弃 `A3` 并记录原因。
+- [ ] 在所有分层上执行分母有效性门禁。**立即**替换不达标的分层。
+
+## 第 3 周 — 核心淘汰终止点
+
+- [ ] **E1 实验**：`A0`/`A1`/`A2` × 2 个种子（~600 A100-h）。
+- [ ] 针对声明的 MDE 评估 P0 门禁。
+- [ ] **继续 / 终止决策。** 若失败 ⇒ 在累计消耗 ~800 A100-h 处终止项目，转而撰写检验效能分析。
+
+## 第 4–6 周 — 完整实验网格
+
+- [ ] E2 在主要匹配约定下运行剩余的 9 次实验。
+- [ ] E3 在决策实验臂上运行第二种匹配约定。
+- [ ] E5 跨模型家族复现实验。
+- [ ] E6 综合评测扫描；确认视觉语言（VL）健全性指标未发生退化。
+
+## 第 7 周及以后 — 仅在结果落在 P3 时执行
+
+- [ ] E4 数据混合比例扫描，在 {1, 5, 10}% 真实文本比例下展开。若缺少该实验，P3 仅能沦为附带表格的遗憾结论。
+
+---
+
+## 门禁判定汇总
+
+| 门禁 | 触发时机 | 失败后采取的行动 |
 |---|---|---|
-| Reproduction within noise | E0 | stop — harness untrustworthy |
-| `A3` non-degenerate | E0b | drop `A3`; `A4` still separates diversity |
-| Denominator adequacy | E0 | replace the stratum before the arms |
-| **P0 power** | **E1** | **stop at ~800 A100-h; publish the power analysis** |
-| VL sanity | E6 | a language gain bought with vision damage is a trade, not a result |
+| 噪声容差内复现 | E0 | 终止项目 —— 测试工具不可靠 |
+| `A3` 保持非退化 | E0b | 放弃 `A3`；`A4` 仍能隔离多样性 |
+| 分母充分有效 | E0 | 在运行实验臂前直接替换该分层 |
+| **P0 检验效能** | **E1** | **在 ~800 A100-h 处终止；转而发表检验效能分析** |
+| 视觉语言健全性 | E6 | 以损害视觉能力换取的语言保持是未经测量的能力交换，不能算作有效成果 |
 
 ---
 
-## Standing discipline
+## 通篇执行的既定纪律
 
-1. **Nothing is decided after the fact.** MDE, strata, primary convention and eval configs are
-   committed before the arms. This is what makes the ≥3-of-4 rule mean something.
-2. **Absolute deltas are always reported**, whether or not the ratio is interpretable.
-3. **Every branch has a paper**, including the one where the phenomenon is too small to study — but
-   only if the power analysis was pre-specified, which is why it is written at E0 and not at E1.
+1. **没有任何决策允许在事后做出。** MDE、分层列表、主要协议与评测配置均在实验臂运行前提交锁定。这是赋予 ≥3-of-4 判定规则实际意义的前提。
+2. **无论比率是否具备合理解释性，始终并列报告绝对增量。**
+3. **每个可能的结果分支都对应一篇完整论文**，包括现象过小以至于无法深入研究的分支 —— 前提是检验效能分析必须事先明确指定，这也是其在 E0 而非 E1 撰写的原因。

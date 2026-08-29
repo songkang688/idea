@@ -1,161 +1,100 @@
-# Idea_02 — Reviewer #2 Attacks and Responses
+# Idea_02 — Reviewer #2 攻击点与回应（Reviewer #2 Attacks and Responses）
 
-From `stage4_cluster_A_attacks.md`, `stage6_attack_brief.md` (verdict: **PIVOT**) and
-`stage6_defense_brief.md` (panel vote: FM ADVANCE · SEG ADVANCE · MED BORDERLINE · METH ADVANCE).
+源自 `stage4_cluster_A_attacks.md`、`stage6_attack_brief.md`（裁定：**PIVOT**）与 `stage6_defense_brief.md`（评审组投票：FM ADVANCE · SEG ADVANCE · MED BORDERLINE · METH ADVANCE）。
 
-Stage 6 changed this design more than any other in Windows7. Every mandatory condition below is
-**funded as an experiment**, not promised in prose.
+Stage 6 对本选题设计的修改幅度超过了 Windows7 中的任何其他项目。下方的每项强制性要求均**作为实验获得了算力资助**，而非仅仅停留在文字承诺层面。
 
 ---
 
-## A1 — "The predictive-validity leg passes for a trivial reason" · **FATAL as originally specified**
+## A1 — "The predictive-validity leg passes for a trivial reason" · 原定义下属于**致命缺陷（FATAL）**
 
-The strongest attack in the round. P3 originally required per-sequence reversible fraction to
-predict SAMURAI/DAM4SAM gains at `r > 0.6`. But reversible fraction and prevention gains are **both**
-downstream of generic sequence difficulty — distractor density, occlusion count, failure count,
-natural recovery rate. A raw `r > 0.6` is exactly what a shared-difficulty confound produces with
-**no instrument validity at all**. The pre-registered statistic could not distinguish "this measures
-the memory-borne share" from "hard sequences are hard for everyone."
+本轮中最强有力的攻击。P3 最初要求序列级的可逆比例能够以 `r > 0.6` 预测 SAMURAI/DAM4SAM 的收益。但可逆比例和预防收益**两者**全都是通用序列难度（干扰物密度、遮挡次数、失败次数、自然恢复率）的下游体现。原始的 `r > 0.6` 恰恰是共享难度混淆因素在**完全没有任何测量工具有效性**时所产出的结果。预注册的统计量无法区分"这测量了源于 memory 的份额"与"困难序列对所有方法都困难"。
 
-**Response — change the statistic, not the story.**
+**回应方案 —— 改变统计量，而非粉饰立意。**
 
-1. **Partial correlation.** Regress the difficulty covariates out of both sides first. Pre-registered
-   bar: `partial r > 0.4` (lower than 0.6 precisely *because* partialling removes the inflation).
-2. **Minimum over a frozen comparator set.** The set is named before any comparator runs, and the
-   reported statistic is the minimum across it — not "SAMURAI *and* DAM4SAM", which permits choosing
-   the comparator that carries the headline.
-3. **Nested-model ΔR²** reported alongside: does adding `ρ` improve on a difficulty-only model?
+1. **偏相关分析（Partial correlation）。** 预先从两端同时回归剥离难度协变量。预注册门槛：`partial r > 0.4`（低于 0.6 正是*因为*偏相关剥离了人为虚高成分）。
+2. **在冻结对照集上取最小值。** 对照集合在运行任何对照方法前即明确命名，报告的统计量为其上的最小值 —— 而非"SAMURAI *与* DAM4SAM"，后者允许在看到数据后挑选哪一个来支撑头条结论。
+3. **并列报告嵌套模型 ΔR²**：在纯难度模型基础上加入 `ρ` 是否能带来增量改善？
 
-`KNOWN FACT` The prototype makes this concrete on data where the confound is injected by
-construction: naive correlations of 0.952 / 0.918 / 0.859 become partial correlations of 0.682 /
-0.397 / **0.028**. The minimum-over-set rule is what stops that third comparator from being quietly
-dropped. Run `src/run_pilot.py` to reproduce.
+`KNOWN FACT` 原型在按构造注入混淆因素的数据上直观证实了这一点：朴素相关系数 0.952 / 0.918 / 0.859 在偏相关后变为 0.682 / 0.397 / **0.028**。集合取最小值的规则正是阻止在事后悄悄剔除第三个对照方法的防线。运行 `src/run_pilot.py` 即可复现。
 
 ---
 
-## A2 — "Targeted deletion is not the clean intervention you assume" · HIGH
+## A2 — "Targeted deletion is not the clean intervention you assume" · 严重程度 HIGH
 
-SAM2's memory attention consumes recent non-conditioning frames with **recency-indexed temporal
-position encodings**. Deleting post-error entries forces pre-error entries into recency slots they
-never occupied during training, so the surgered configuration is off-distribution *independently of
-the content* of what was deleted. Part of any targeted-vs-reset gap could be an encoding artifact,
-in either direction. The random-deletion control does not isolate this.
+SAM2 的 memory attention 使用**以近期为索引的时序位置编码**处理近期的非条件帧。删除错误发生后的条目会迫使错误发生前的条目进入其在训练期间从未占据过的时序槽位，因此手术后的配置*脱离了被删除内容的实际语义*而产生了分布外偏移。targeted 与 reset 之间的任何差距都可能部分源于位置编码假象（无论是正向还是负向）。随机删除对照组无法隔离这一因素。
 
-**Response — add the sham arm, and get its definition right.**
+**回应方案 —— 增加 sham 实验臂，并修正其定义。**
 
-`sham` deletes a **count-matched number of pre-error (uncorrupted) entries** while leaving every
-post-error entry in place: same incision, nothing therapeutic removed. If `targeted` does not beat
-it, the benefit comes from the mechanical consequences of deleting entries and the instrument is
-dead — for about 10 GPU-h at pilot scale.
+`sham` 删除**数量匹配的错误发生前（未受污染）条目**，同时保留所有错误发生后的条目：进行完全相同的切口，但不移除任何具有治疗作用的内容。若 `targeted` 无法击败它，说明收益纯粹来自于删除条目的机械性机制后果，测量工具即告死亡 —— 在 pilot 规模下耗时约 10 GPU-h 即可判定。
 
-> **Definition correction, recorded.** Stage 6 worded the sham as "delete post-error entries but
-> re-insert count-matched pre-error duplicates at the same recency slots." Implemented literally that
-> arm *still removes the corruption* — it performs the therapeutic action — so it would match
-> `targeted` even when the instrument is perfectly valid, making P3 unpassable by construction. The
-> literal version is retained as a separate arm, `slot_control`, which answers the different question
-> of whether slot occupancy matters once content is gone.
+> **记录在案的定义修正。** Stage 6 将 sham 表述为"删除错误发生后的条目，但在相同时序槽位重新插入数量匹配的错误发生前重复项"。字面实现该方案*依然移除了被污染的内容* —— 执行了治疗动作 —— 因此即便测量工具完全有效它也会与 `targeted` 表现一致，导致 P3 在构造上无法通过。该字面版本被作为独立的 `slot_control` 实验臂保留，用于回答移除内容后时序槽位占用是否重要的不同问题。
 
-`KNOWN FACT` The prototype demonstrates the control firing: in a simulated world with **zero**
-memory-borne failure where the tracker merely prefers emptier banks, `targeted` beats `no_op` by
-+0.397 and the gate correctly refuses.
+`KNOWN FACT` 原型演示了该对照实验臂触发的过程：在模拟的**零** memory 归因失败（跟踪器仅仅偏好更空的 bank）世界中，`targeted` 击败 `no_op` 达到 +0.397，而门禁正确予以拒绝。
 
 ---
 
-## A3 — "SAM3 shipped; this is archaeology" · HIGH
+## A3 — "SAM3 shipped; this is archaeology" · 严重程度 HIGH
 
-`EVIDENCE` SAM3 (Nov 2025, `arXiv:2511.16719`), SAM 3.1 (Mar 2026); the SAM3 tracker inherits the
-SAM2 memory architecture. `arXiv:2512.22624` (Dec 2025) already restudies memory mechanisms inside
-SAM3 and ships a public tracking zoo.
+`EVIDENCE` SAM3 于 2025 年 11 月发布（`arXiv:2511.16719`），SAM 3.1 于 2026 年 3 月发布；SAM3 跟踪器继承了 SAM2 的 memory 架构。`arXiv:2512.22624`（2025 年 12 月）已在 SAM3 内部重新研究了 memory 机制并开源了公共跟踪 zoo。
 
-**Response — fund E7 and change what the paper is about.** Running the identical protocol on SAM2.1
-*and* SAM3 converts the deliverable from "SAM2 has this much memory-borne failure" into **"here is
-how much memory-borne failure a model-generation change actually removed, and how much it did
-not."** That is a materially larger paper. The released SAM3 zoo makes the ports cheap. ~30 GPU-h.
+**回应方案 —— 资助 E7 实验并提升论文主旨。** 在 SAM2.1 *和* SAM3 上运行完全相同的协议，将交付物从"SAM2 有这么多源于 memory 的失败"转变为"**模型代际演进实际消除了多少源于 memory 的失败，又有多少未能消除。**" 这在成果量级上显著提升。已公开的 SAM3 zoo 降低了适配迁移成本。耗时约 ~30 GPU-h。
 
 ---
 
-## A4 — "Surgery is a decades-old reset heuristic" · MEDIUM
+## A4 — "Surgery is a decades-old reset heuristic" · 严重程度 MEDIUM
 
-Now backed by a citable fix paper: CL-MC (`arXiv:2602.19380`), detector-triggered memory overwrite
-for SAM2 drift.
+现已有可引用的修复型论文：CL-MC（`arXiv:2602.19380`），针对 SAM2 漂移的检测器触发式 memory 覆写。
 
-**Response.** P2 *is* this test, pre-registered at ≥10 points with a bootstrap CI excluding 0.
-`KNOWN FACT` A structural caveat found while prototyping and reported rather than buried: `targeted`
-and `reset` are the **same operation** whenever the failure outlasted the memory horizon, because
-FIFO has already flushed every pre-error entry. Only 23 of 50 simulated failures retained pre-error
-memory. The real harvest reports this share at E1, before any P2 claim, and **P2 is evaluated on
-that subset** — pooling the coincident failures dilutes a real gap toward zero rather than measuring
-a smaller one (+0.130 became +0.040 in the prototype).
+**回应方案。** P2 *正是*这一检验，预注册要求达到 ≥10 分优势且 bootstrap 置信区间排除 0。
+`KNOWN FACT` 在原型构建中发现并如实报告而非隐瞒的结构性约束：当失败持续时间超过 memory 容量时，`targeted` 与 `reset` 是**完全相同的操作**，因为 FIFO 已经冲刷掉了所有错误前条目。在 50 次模拟失败中仅有 23 次保留了错误前 memory。真实采集在 E1 阶段、提出任何 P2 主张前先行报告该占比，并且 **P2 仅在该子集上评估** —— 合并无差异的失败会稀释真实差距趋近于零，而非测量到一个较小的效应（在原型中 +0.130 被稀释为 +0.040）。
 
 ---
 
-## A5 — "Cherry-picked failures" · MEDIUM
+## A5 — "Cherry-picked failures" · 严重程度 MEDIUM
 
-**Response.** Fixed harvest protocol with **zero curation** — every failure meeting the definition
-enters. Ambiguous-reappearance events are pre-registered as a stratum and reported separately rather
-than dropped. The `(IoU threshold, k)` pair that defines the corpus is swept, and the corpus itself
-is released.
+**回应方案。** 采用固定采集协议且**零人工筛选** —— 符合定义的所有失败均纳入。模棱两可的重现事件预注册为独立分层并单独报告，绝不丢弃。对定义语料库的 `(IoU 阈值, k)` 组合进行参数扫描，并公开发布语料库本身。
 
 ---
 
-## A6 — "An oracle-timed ceiling is decision-irrelevant" · MEDIUM, partly unresolvable
+## A6 — "An oracle-timed ceiling is decision-irrelevant" · 严重程度 MEDIUM，部分无法彻底消除
 
-No deployment has an oracle telling it when the object reappears.
+实际部署中没有任何 oracle 能够告知目标何时重新出现。
 
-**Response — two moves, and honesty about the residue.**
+**回应方案 —— 两项举措，并对残留问题保持诚实。**
 
-1. **Promote the `t_r ± δ` timing dose–response from ablation to a main result** (METH's condition,
-   effectively resolved in METH's favour). The reader sees how the ceiling degrades as the oracle
-   weakens, and the term "oracle-timed ceiling" is used throughout instead of "upper bound".
-2. **Cross-validate against SAM2RL's ceiling**, which is derived by optimisation rather than oracle
-   timing. Two independently derived ceilings agreeing is worth far more than a framing argument.
+1. **将 `t_r ± δ` 计时剂量-反应实验从消融升级为主结果**（满足方法学专家的要求）。读者可以直观看到随着 oracle 精度弱化理论上限如何衰减，通篇使用"oracle 计时上限（oracle-timed ceiling）"而非模糊的"上界"。
+2. **对照 SAM2RL 的理论上限进行交叉验证**，后者是通过优化算法而非 oracle 计时得出的。两种独立得出的理论上限相互印证，比单纯的立意辩解更有说服力。
 
-Residue: a deployment-minded reviewer may still object that the ceiling is not reachable. That is
-the point of a ceiling, but the objection is not experimentally answerable, and the follow-up paper
-(replace the oracle with a learned detector) is named in `proposal.md` §26 rather than promised here.
+残留问题：注重落地的评审员仍可能反对称该上限无法达到。这正是理论上限的本质属性，但该反对意见在实验上无法完全消除，后续论文（使用训练出的检测器替代 oracle）已在 `proposal.md` §26 中明确规划而非在此空头承诺。
 
 ---
 
-## Expert disagreements from Stage 6
+## Stage 6 的专家分歧
 
-### D1 — Is a SAM2.1-only paper viable? · UNRESOLVED at Stage 6
+### D1 — 仅基于 SAM2.1 的论文是否可行？ · Stage 6 阶段悬而未决（UNRESOLVED）
 
-FM: the SAM3 arm must be **core**, or the paper reads retrospective at submission.
-SEG: adding SAM3 doubles harvest cost and risks a two-model survey instead of one decisive
-decomposition; the protocol's value is method-independent.
+基础模型专家（FM）：SAM3 实验必须作为**核心**内容，否则论文在投稿时显得像是在做过时的回顾。
+分割专家（SEG）：引入 SAM3 会使采集成本翻倍，有沦为双模型调研而非决定性因果分解的风险；该协议的价值是独立于具体方法的。
 
-**Resolution here:** funded as E7 with a pilot, not promised as future work. If the SAM3 pilot shows
-the port is expensive, the paper ships SAM2.1-first with the SAM3 arm as a reported secondary — and
-says so explicitly rather than omitting it.
+**此处的裁定：** 作为带有 pilot 的 E7 实验获得算力资助，而非留作未来工作。若 SAM3 pilot 显示适配成本过高，论文将以 SAM2.1 为主展开，将 SAM3 作为次要实验报告 —— 并在正文中如实声明，而非刻意隐瞒。
 
-### D2 — Natural video only, in a portfolio with a declared medical axis · RECORDED AS A CONDITION
+### D2 — 在明确具有医学维度的研究组合中仅测试自然视频 · 记录为一项约束条件
 
-MED: echocardiography, endoscopy and surgical-tool tracking are where SAM2 memory failure is
-clinically load-bearing, and none of it appears.
+医学专家（MED）：超声心动图、内窥镜和手术器械跟踪是 SAM2 memory 失败具有关键临床影响的领域，而方案中完全缺失。
 
-**Resolution here:** **E8, one medical-video arm, ~10 GPU-h.** Cheap. If the memory-borne share is
-larger there than in natural video, that becomes the more interesting venue and a natural
-follow-up (`proposal.md` §26).
+**此处的裁定：** **增设 E8 医学视频实验臂，耗时约 ~10 GPU-h。** 成本低廉。若该领域的 memory 归因份额高于自然视频，将成为更有吸引力的发表方向和后续工作（`proposal.md` §26）。
 
-### D3 — Framing encroachment vs scooping · UNRESOLVED
+### D3 — 立意侵占 vs 搶先发表（Scooping） · 悬而未决（UNRESOLVED）
 
-All four experts agree `arXiv:2512.22624` has not run oracle surgery or a reversibility
-decomposition. FM: the "systematic memory-centric study" real estate is occupied, so the pitch must
-be decomposition-first. METH: the distinction is clean enough to survive review on the pre-registered
-legs alone. **We adopt FM's framing and METH's confidence** — decomposition-first pitch, legs
-unchanged.
+四位专家一致认同 `arXiv:2512.22624` 尚未开展 oracle 手术或可逆性分解。FM 认为："系统性 memory 核心研究"的定位已被占领，因此立论必须坚持**分解优先（decomposition-first）**。METH 认为：该区分足够清晰，仅凭预注册的实验臂就足以经受住评审考验。**我们采纳 FM 的立意定调与 METH 的信心** —— 坚持分解优先的立论文风，实验臂保持不变。
 
 ---
 
-## Residual risks, owned
+## 承担的残留风险
 
-1. **Scoop risk is the portfolio's single highest.** `KNOWN FACT` This subfield published at least
-   six memory policies in two years plus a systematic study with a SAM3 zoo in Dec 2025. Mitigation:
-   pre-register and release the protocol early; sequence this project first. The harvested corpus,
-   surgery toolkit and validity methodology remain publishable if the headline is scooped.
-2. **DiDi access** — academic distribution, no mirror. Day-1 hard dependency.
-3. **Harvest yield**, and the tighter H2-testable yield (A4).
-4. **Replay determinism** — E0 gates on it; unfixable non-determinism kills the project.
-5. **Protocol sensitivity** — the failure definition has free parameters that determine the whole
-   corpus. Swept and released; the headline number will still be parameter-sensitive and is reported
-   with the sweep beside it.
+1. **抢发风险（Scoop risk）为整个研究组合中最高。** `KNOWN FACT` 该子领域在两年内发表了至少 6 种 memory 策略，并在 2025 年 12 月发表了一项带有 SAM3 zoo 的系统性研究。缓解举措：尽早预注册并公开发布研究协议；在三个项目中优先启动本项目。若核心头条被抢发，采集的语料库、手术工具包与有效性方法论依然具备独立发表价值。
+2. **DiDi 数据集访问权限** —— 学术分发，无镜像。第 1 天的硬性依赖。
+3. **数据采集产出量**，以及更为严苛的 H2 可检验产出量（A4）。
+4. **回放确定性** —— E0 对此设置门禁；无法修复的不确定性将直接终止项目。
+5. **协议敏感度** —— 失败定义包含决定整个语料库的自由参数。进行参数扫描并开源数据；核心数字仍会具备参数敏感性，并与扫描结果并列展示。

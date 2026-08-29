@@ -1,59 +1,44 @@
-# AlphaSmoke — Reviewer-#2 Attack Ledger → Design Answers
+# AlphaSmoke — 审稿人攻击总账 → 设计解答
 
-Every attack mounted against P103 (`stage4_r2_setA.md`) and P096 (`stage4_r2_setC.md`)
-with the design element that answers it. Attacks are quoted by substance, not
-paraphrased into weaker forms. Residual risks that no design removes are listed last —
-they stay in the paper as limitations, not footnotes.
+针对 P103（`stage4_r2_setA.md`）与 P096（`stage4_r2_setC.md`）发起的每一项攻击以及化解该攻击的设计要素。攻击按其实质内容如实列出，绝不通过转述弱化其锐度。任何设计均无法完全消除的残留风险列于最后 —— 它们将作为局限性写入论文正文，而非作为注脚一笔带过。
 
-## P103 attacks (R2 Set A)
+## P103 攻击（R2 Set A）
 
-| # | Attack | Design answer | Where |
+| # | 攻击内容 | 设计解答 | 对应章节 |
 |---|---|---|---|
-| A1 | **Synthetic-alpha circularity**: DS0x alpha GT is produced by the compositing op matting models invert; winning alpha-MAE there shows benchmark-process alignment, not transfer | Synthetic alpha demoted to SECONDARY with the caveat printed verbatim; PRIMARY endpoint is real-smoke binary (B2); soft-boundary mechanism tested on **measured** real alpha (B3) instead | proposal §4.3, §5.2 |
-| A2 | **Real labels binary+noisy** ⇒ mechanism untestable where the claim matters | Measured-alpha real arm gives a soft real endpoint without annotators; rater study bounds what binary labels can certify | proposal §5.2–5.3 |
-| A3 | **Pretrain scale/diversity confound** (matting corpora 10³–10⁴ vs seg 10⁵–10⁷) | Controlled pretrains from common ImageNet init; matched-image-count seg subsample cell (B8); public-ckpt cells demoted to supporting evidence | proposal §4.1 |
-| A4 | **Head-alignment confound** (matting arm arrives with alpha-head warm start) | Arm S+cal: seg pretrain + generic-composite alpha-head calibration (B7); kill K-A3 if S+cal ≈ M | proposal §4.1; plan §2 |
-| A5 | **Mechanism unisolated**: "matting wins" could be data provenance, not soft labels | Arm MB: same images, same budget, binarized labels (B1); kill K-A2 if M ≈ MB | proposal §4.1; plan §2 |
-| A6 | **Significance**: "pretrain A beats B on niche C" is a data point, not a law | The claim is the *ordering* M > MB > S (mechanism), the budget-dependence (gap grows as N shrinks), and the Part-B protocol that generalizes beyond smoke; practitioner line ("start from matting ckpt") is a corollary, not the headline | proposal §1 |
-| A7 | Hidden assumption: portrait/hair boundary statistics ≠ volumetric-media ramps | Acknowledged as the *content* of the bet: if boundary-statistics mismatch dominates, K-A1/K-A4 fire and the negative is reported; the probe tests it in week 1 for ~1 GPU-day | proposal §4.4 |
+| A1 | **合成 alpha 的循环论证**：DS0x 的 alpha GT 是由抠图模型训练所要反演的完全相同的合成操作生成的；在该数据上赢得 alpha-MAE 仅证明与基准测试生成过程对齐，而非有效迁移 | 将合成 alpha 降级为次要终点（SECONDARY），并在论文中字面打印该局限性警告；主要终点（PRIMARY）设为真实烟雾二值分割（B2）；软边界机制改在**实测（measured）**真实 alpha（B3）上进行检验 | 提案 §4.3, §5.2 |
+| A2 | **真实标签二值且多噪声** ⇒ 在最关乎主张的地方机制无法检验 | 实测 alpha 真实分支提供无需人工标注的软标签真实终点；标注员研究界定了二值标签所能证明的最高置信度上限 | 提案 §5.2–5.3 |
+| A3 | **预训练规模/多样性混淆**（抠图语料 10³–10⁴ vs 通用分割 10⁵–10⁷） | 从同一 ImageNet 初始化开始进行受控预训练；设立图像数量匹配的分割子集单元格（B8）；公开 checkpoint 单元格降级为辅助支撑证据 | 提案 §4.1 |
+| A4 | **预测头对齐混淆**（抠图分支自带 alpha 预测头热启动优势） | 分支 S+cal：通用分割预训练 + 基于通用合成图像的 alpha 预测头校准（B7）；若 S+cal ≈ M 则触发终止条件 K-A3 | 提案 §4.1; 实验计划 §2 |
+| A5 | **机制未隔离**：“抠图胜出”可能源于数据来源分布差异，而非软标签本身 | 分支 MB：完全相同的图像、完全相同的预算，仅将标签二值化（B1）；若 M ≈ MB 则触发终止条件 K-A2 | 提案 §4.1; 实验计划 §2 |
+| A6 | **重要性不足**：“在特定领域 C 上预训练 A 胜过 B”只是孤立数据点，非普遍规律 | 核心主张在于其性能*排序* M > MB > S（揭示机制）、数据预算依赖性（差距随 N 减小而扩大），以及可推广至烟雾之外的 Part-B 评测协议；面向业界的工程建议（“从抠图 checkpoint 开始初始化”）仅为推论，非核心宣传重点 | 提案 §1 |
+| A7 | 隐性假设：人像/头发的边缘统计特性 ≠ 烟雾等体介质（volumetric-media）的渐变特征 | 承认这正是核心科学假设的*实质赌注*：若边缘统计不匹配占主导，K-A1/K-A4 将被触发并如实报告负面结果；第 1 周探针仅需约 1 GPU-day 即可完成初步检验 | 提案 §4.4 |
 
-## P096 attacks (R2 Set C)
+## P096 攻击（R2 Set C）
 
-| # | Attack | Design answer | Where |
+| # | 攻击内容 | 设计解答 | 对应章节 |
 |---|---|---|---|
-| C1 | **Strawman on the field's metrics**: SMOKE5K already reports mMse+Fβ (FoSp `[V]`); AusSmoke reports IoU/F1/MSE | mMse and Fβ are first-class τ-matrix columns (B4); pre-registered kill K-B1: if mMse-on-binary rankings already agree with alpha-MAE rankings (τ>0.8), pillar 1 dies and we print that the field's metric suffices; if not, FoSp's table is motivation, not refutation | plan §2; metrics_protocol §2.2–2.3, §3 |
-| C2 | **The matting turn already happened** (SFMattingNet `[V]`) | SFMattingNet scored inside the pool (B9); the paper is framed as the validity audit the turn skipped — no published evidence yet shows binary leaderboards mis-rank; we supply or refute it | proposal §5.1; datasets §4 |
-| C3 | **Alpha-GT circularity / real alpha unobservable** (the strongest vector; verdict-flipping) | Measured-alpha arm (B3): compositing inversion against known pre-smoke backgrounds; exposure lock, saturation & conditioning exclusions, F-sensitivity maps; reversal claim survives only if synthetic and measured rankings agree against binary (K-B3 otherwise converts the finding into "synthetic alpha mis-ranks") | proposal §5.2; metrics_protocol §4; `src/alphasmoke/alpha_recovery/` |
-| C4 | **Ceiling half is second** (disagreement already measured elsewhere) | Ceiling pillar is a *confrontation*, not a discovery claim: pairwise ceilings on the RGB benchmarks the field actually ranks on, overlaid with that field's own published deltas; pre-registered demotion K-B4 (>0.85 → appendix) | proposal §5.3; plan §2 |
+| C1 | **树立针对现有指标的稻草人**：SMOKE5K 已经报告了 mMse+Fβ（FoSp `[V]`）；AusSmoke 报告了 IoU/F1/MSE | 将 mMse 与 Fβ 作为 τ 矩阵的一等公民列（B4）；预注册终止条件 K-B1：若二值上的 mMse 排名已与 alpha 上的 alpha-MAE 排名一致（τ>0.8），支柱 1 终止并如实发表该领域现有指标已足够有效；若不一致，FoSp 的表格恰恰构成了研究动机而非反驳 | 实验计划 §2; metrics_protocol §2.2–2.3, §3 |
+| C2 | **该领域已转向抠图研究**（SFMattingNet `[V]`） | 将 SFMattingNet 纳入模型池参与评分（B9）；论文立意定位于填补该转向所跳过的指标有效性审计 —— 目前尚无公开证据证明二值排行榜存在排名失真；我们负责证实或证伪之 | 提案 §5.1; datasets §4 |
+| C3 | **Alpha-GT 循环论证 / 真实 alpha 不可观测**（最具杀伤力、足以逆转评审结论的攻击） | 设立实测 alpha 分支（B3）：对照已知烟雾前背景进行合成反演；锁定曝光、排除饱和与病态区域、构建 F 敏感性图谱；逆序反转主张仅在合成与实测排名均与二值排名冲突时方能成立（否则 K-B3 将发现转化为“合成 alpha 导致排名失真”） | 提案 §5.2; metrics_protocol §4; `src/alphasmoke/alpha_recovery/` |
+| C4 | **标注上限部分缺乏首创性**（标注分歧在其他领域已被测算过） | 标注员上限支柱属于*正面对抗*而非首创发现：在业界实际用于排名的 RGB 基准上测算成对上限，与该领域自身发表的 SOTA 差距直接对照；预注册降级规则 K-B4（上限 >0.85 → 移入附录） | 提案 §5.3; 实验计划 §2 |
 
-## Cross-cutting scope attack (Stage-3 §10, stage6)
+## 跨方向范围约束攻击（Stage-3 §10, stage6）
 
-| # | Attack | Design answer |
+| # | 攻击内容 | 设计解答 |
 |---|---|---|
-| X1 | Drift into detector-prompted fire SAM (S-126 territory, folded elsewhere; ProFSAM exists `[S3]`) | Hard scope guard B10: no detector produces prompts anywhere; SAM only as auto-mode scored checkpoint; any prompt-quality result is cut. Enforced in `configs/eval_protocol.yaml` (pool spec has no detector field) and experiments.md §6 |
+| X1 | 向检测器提示的火灾 SAM 漂移（S-126 领域，已合并至他处；ProFSAM 已经存在 `[S3]`） | 严格执行范围约束 B10：任何位置均严禁由检测器生成 prompt；SAM 仅作为自动模式下的被评测 checkpoint；任何关于 prompt 质量的结果直接删去。在 `configs/eval_protocol.yaml`（模型池规范无检测器字段）和 experiments.md §6 中强制执行 |
 
-## Skeleton-package attacks (carried from the supervisor's initial Idea_03 sketch)
+## 骨架项目包遗留攻击（源自主管最初的 Idea_03 构想草案）
 
-| # | Attack | Design answer |
+| # | 攻击内容 | 设计解答 |
 |---|---|---|
-| S1 | "Matting Anything already put an alpha head on SAM" | We claim no architecture. A1-046 was KILLED at Stage 3 for exactly this reason; the claim here is *pretraining-data provenance* (M vs MB vs S arms), and MAM itself sits in the Part-B pool as a scored checkpoint |
-| S2 | "The HSV/physics floor is already enough on white smoke" | Then that **is** the paper: pre-registered outcome K-A5 reports floor-dominated budgets, and a floors-beat-foundation-models result is a publishable negative about learned transfer, printed as such |
+| S1 | “Matting Anything 已经在 SAM 上添加了 alpha 预测头” | 我们不宣称任何新架构。A1-046 正是由于此原因在 Stage 3 被淘汰；本文的核心主张在于*预训练数据来源分布*（M vs MB vs S 分支），且 MAM 本身作为被评分的 checkpoint 纳入 Part-B 模型池 |
+| S2 | “在白烟上 HSV/物理底线模型已经足够有效” | 若真如此，那这**本身就是**论文的核心成果：预注册结果 K-A5 明确报告物理底线模型占主导的预算区间，而“经典底线打败大模型”是极具发表价值的关于表征迁移的负面结论，据此如实撰写 |
 
-## Residual risks (no design removes them — printed as limitations)
+## 残留风险（任何设计均无法消除 — 在论文中作为局限性公开披露）
 
-1. **Scoop velocity** around MAM applications and the matting turn (Stage-3 Medium
-   confidence on S-103). Mitigation is ordering, not design: week-1 probe and eval-only
-   Part B front-load the publishable core; backup slots (P063/P079) exist per
-   `stage4_top20.md`.
-2. **Measured-alpha model validity**: locally-uniform smoke color and single
-   scattering are approximations; violations are masked/priced (sensitivity maps), not
-   eliminated. A reviewer can still argue recovered α is model-laden; the answer in
-   the paper is that it is *differently* model-laden than synthetic GT and annotator
-   masks, and agreement across the three is exactly what the protocol measures.
-3. **Venue ceiling**: evaluation science for a small field (Set C's own note). The
-   package accepts this; the τ protocol and measured-alpha tooling are the durable
-   artifacts either way.
-4. **Checkpoint availability**: pillar 1 needs 8–12 scored checkpoints; if several are
-   unobtainable, the τ matrix loses power. Pre-registered floor: publish pool size and
-   the "attempted, unavailable" list; if pool < 6, the τ matrix is reported as
-   underpowered and the reversal claim is not made.
+1. 围绕 MAM 应用及抠图转向的**抢发速度风险**（Stage-3 对 S-103 评估为中等置信度）。缓解策略在于执行顺序而非设计本身：第 1 周探针和纯评测的 Part B 将可发表的核心成果前置；依据 `stage4_top20.md` 保留有备选项目（P063/P079）。
+2. **实测 alpha 模型的物理有效性**：局部均匀烟雾颜色与单次散射属于物理近似；实际违背情况被掩码过滤/量化评估（敏感性图谱），而非完全消除。审稿人仍可质疑恢复的 α 带有模型先验假设；论文中的回应是：其所带有的先验假设与合成 GT 及人工标注掩码*截然不同*，而三者之间的一致性正是本协议所要测量的核心量。
+3. **目标会议层级上限**：针对特定垂直领域的评测科学（Set C 评审自身的评语）。项目包接受此定位；无论如何，τ 协议与实测 alpha 工具链都将作为具有长期价值的开源资产留存。
+4. **Checkpoint 获取可用性**：支柱 1 需要 8–12 个被评测的 checkpoint；若若干关键模型无法获取，τ 矩阵的统计功效将受损。预注册底线：公布实际模型池规模及“尝试获取但不可用”的模型清单；若模型池 < 6，τ 矩阵将被如实报告为统计功效不足，且不提出逆序反转主张。

@@ -1,155 +1,135 @@
-# Idea_03 — Experimental Plan
+# Idea_03 — 实验方案（Experimental Plan）
 
-`KNOWN FACT` 8×A100-80GB. One full LLaVA-1.5-7B fine-tune ≈100 A100-h (~12 h wall-clock).
-No annotation cost, no API spend.
+`KNOWN FACT` 基于 8×A100-80GB 环境。完成一次完整的 LLaVA-1.5-7B 微调约需 100 A100-h（约 12 小时实际用时）。
+零人工标注成本，零 API 调用开销。
 
-**The program is designed to die cheaply.** Everything before E2 exists to find out whether the
-phenomenon is large enough to study at this scale, for under 1,000 A100-h.
-
----
-
-## E0 — Reproduction and base construction (1 run, ~100 A100-h)
-
-- Reproduce LLaVA-1.5-7B with published hyperparameters; verify evals land within noise of the
-  reported model.
-- **Measure the ShareGPT slice's exact token count.** It sets every arm's budget, so it is measured,
-  not estimated.
-- Build the **text-stripped** mix and compute token-budget re-matching for all five arms.
-- Run the base model through the full stratified eval to fix every denominator.
-
-**Gate:** cannot reproduce within noise ⇒ stop; the harness is not trustworthy and no arm difference
-would mean anything.
-
-**Then freeze `configs/preregistration.yaml`:** MDE, strata list, primary matching convention, eval
-YAMLs. Committed before any arm runs.
+**本项目在设计上追求以极低成本及时止损。** 在 E2 之前的所有实验都是为了在耗费低于 1,000 A100-h 的前提下，查明该现象在当前模型规模下是否足够显著以支持后续研究。
 
 ---
 
-## E0b — `A3` tokenizer-validity pilot (1 run, ~100 A100-h)
+## E0 — 复现实验与基底构建（1 次运行，~100 A100-h）
 
-Does a token-permuted stream produce the intended unigram-preserving control, or degenerate
-attention and a useless gradient?
+- 使用已发表超参数复现 LLaVA-1.5-7B；验证评测得分在报告模型的噪声容差范围内。
+- **精确测量 ShareGPT 分片的 token 数量。** 它决定了所有实验臂的预算，因此必须实测而不能估算。
+- 构建**剥离文本后的**混合数据，并为全部五个实验臂计算 token 预算的重新匹配参数。
+- 运行基底模型通过完整的分层评测，锁定后续计算所需的全部基准分母。
 
-Diagnostics: language-tower gradient norms vs `A2`, attention-entropy traces, loss-curve shape.
+**门禁判定：** 若无法在噪声范围内完成复现 ⇒ 终止项目；测试工具不可靠，后续任何实验臂的差异均失去解释意义。
 
-**Gate:** degenerate ⇒ drop `A3`, report why. `A4` still separates diversity from content, so the
-design survives the loss of one arm.
-
-Running this before committing three seeds to `A3` is the cheapest 100 A100-h in the plan.
+**随后冻结 `configs/preregistration.yaml`：** 包含 MDE、分层列表、主要匹配约定、评测 YAML 文件。必须在运行任何实验臂前完成提交。
 
 ---
 
-## E1 — Power gate (6 runs, ~600 A100-h) — **THE KILL POINT**
+## E0b — `A3` 分词有效性 pilot 测试（1 次运行，~100 A100-h）
 
-`A0`, `A1`, `A2` × 2 seeds. Full stratified eval.
+检验 token 打乱后的数据流是否能产生预期的保留一元词频对照组，还是会导致注意力退化并产出无用的梯度？
 
-**Denominator-adequacy gate** on every stratum: headroom over chance ≥ 0.10 and headroom/seed-σ ≥ 3.
-`EVIDENCE` Vicuna-7B is near-floor on GSM8K and weak on IFEval; strata that fail are **replaced
-now**, not explained away later.
+诊断指标：语言塔梯度范数 vs `A2`、注意力熵变化曲线、损失函数曲线形态。
 
-**P0**, on absolute deltas, against the MDE declared at E0:
+**门禁判定：** 若表现退化 ⇒ 放弃 `A3`，并在论文中如实记录原因。`A4` 仍能隔离多样性与语义内容，因此方案能够承受单个实验臂的缺失。
+
+在为 `A3` 投入 3 个随机种子之前执行本测试，是整个计划中最具性价比的 100 A100-h 投入。
+
+---
+
+## E1 — 检验效能门禁（6 次运行，~600 A100-h）— **核心淘汰终止点**
+
+`A0`、`A1`、`A2` × 2 个随机种子。执行完整的分层评测。
+
+在每个分层上执行**分母有效性门禁**：相对于随机猜测的性能裕度（headroom）≥ 0.10，且性能裕度 / 种子标准差 σ ≥ 3。
+`EVIDENCE` Vicuna-7B 在 GSM8K 上接近基底性能下界，在 IFEval 上表现较弱；不合格的分层**立即替换**，绝不在事后用文字辩解。
+
+针对在 E0 声明的 MDE 评估 **P0 门禁**（基于绝对增量）：
 ```
-Abs(c, A1) − Abs(c, A0) > max(2 σ_seed, MDE)     for knowledge and fluency
+Abs(c, A1) − Abs(c, A0) > max(2 σ_seed, MDE)     针对知识储备（knowledge）与流畅度（fluency）能力
 ```
 
-**Fail ⇒ stop at ~800 cumulative A100-h.** Publish the power analysis: it bounds how large
-multimodal linguistic forgetting actually is under a well-tuned recipe, which the field currently
-asserts loosely. Do **not** escalate to 13B unless the effect looks real-but-underpowered rather than
-absent.
+**未通过 ⇒ 在累计耗费 ~800 A100-h 处终止项目。** 转而发表检验效能分析：为在精细调优的训练配方下多模态语言遗忘究竟有多大界定严格边界（该领域目前对此仅做笼统断言）。**不得**升级至 13B 模型，除非效应看起来真实存在且仅属于效能不足而非彻底缺失。
 
 ---
 
-## E2 — The full grid (9 further runs, ~900 A100-h)
+## E2 — 完整实验网格（额外 9 次运行，~900 A100-h）
 
-`A0`–`A4` × 3 seeds under the **primary per-layer** convention. This is the killer experiment.
+在**主要的逐层匹配**约定下运行 `A0`–`A4` × 3 个随机种子。这是决定性的 killer 实验。
 
-| Contrast | Separates |
+| 对比组 | 隔离的效应 |
 |---|---|
-| `A1 − A0` | total effect |
-| `A2 − A0` | balance effect |
-| `A1 − A2` | content effect |
-| `A3` vs `A2` | lexical statistics from syntax |
-| `A4` vs `A2` | diversity from content |
+| `A1 − A0` | 总效应（total effect） |
+| `A2 − A0` | 平衡效应（balance effect） |
+| `A1 − A2` | 内容效应（content effect） |
+| `A3` vs `A2` | 词汇统计特性 vs 句法结构 |
+| `A4` vs `A2` | 多样性 vs 语义内容 |
 
-Decision: **P1** `balance ≥ 0.8 × total` on ≥3 of 4 capabilities · **P2** `Ret(A2) ≤ Ret(A0)`
-everywhere · **P3** knowledge `content-share > 0.5` while fluency `< 0.2`.
+决策判定：**P1** 在 4 项能力的 ≥3 项上满足 `balance ≥ 0.8 × total` · **P2** 在所有维度上满足 `Ret(A2) ≤ Ret(A0)` · **P3** 知识能力的 `content-share > 0.5` 且流畅度的 `content-share < 0.2`。
 
-Shares are reported with bootstrap CIs over seeds and are left **uninterpreted** for any capability
-whose total effect is below the MDE.
+份额指标需报告跨随机种子的 bootstrap 置信区间；对于总效应低于 MDE 的任何能力，其份额**不作解释**。
 
 ---
 
-## E3 — Second convention (3 runs, ~300 A100-h)
+## E3 — 第二种匹配约定（3 次运行，~300 A100-h）
 
-Decision arms re-run under global-norm matching. H3: does the conclusion survive the convention?
+在全局范数匹配下重新运行决策实验臂。假设 H3：核心结论是否能独立于匹配约定而成立？
 
-Reported as a **sensitivity analysis** under the pre-registered primary. `KNOWN FACT` Stage 6 flagged
-"if they diverge, the divergence is the finding" as unfalsifiable-adjacent; naming the primary in
-advance is what prevents every outcome from becoming a result.
+作为预注册主协议下的**敏感度分析**予以报告。`KNOWN FACT` Stage 6 指出"若二者分歧则分歧本身即为发现"近乎不可证伪；预先指定主要协议正是避免所有可能结果都沦为成果的说辞。
 
 ---
 
-## E4 — Mixture sweep (6 runs, ~600 A100-h) — **P3 branch only**
+## E4 — 数据混合比例扫描（6 次运行，~600 A100-h）— **仅在 P3 分支下执行**
 
-`A2`/`A1` mixtures at {1%, 5%, 10%} real text × 2 seeds. Produces the minimal real-text fraction per
-capability.
+在 {1%, 5%, 10%} 真实文本比例下测试 `A2`/`A1` 混合 × 2 个随机种子。产出各项能力所需的最小真实文本比例。
 
-Without this, P3 is a shrug with a table attached. It is funded only if the result lands there, which
-is also the outcome we most expect.
+若缺少该实验，P3 仅能沦为附带表格的遗憾结论。仅在实验结果确实落在该分支时才予资助，这也是我们最预期的结果。
 
 ---
 
-## E5 — Cross-family replication (3 runs, ~300 A100-h)
+## E5 — 跨模型家族复现（3 次运行，~300 A100-h）
 
-`A0`/`A1`/`A2` × 1 seed on `TRI-ML/prismatic-vlms`.
+在 `TRI-ML/prismatic-vlms` 上运行 `A0`/`A1`/`A2` × 1 个随机种子。
 
-Promoted from optional into the core design at Stage 6: a single-family result cannot support "stop
-paying for curation." Three runs is the cheapest available answer to that attack.
-
----
-
-## E6 — Evaluation (~150 A100-h)
-
-All checkpoints × all strata × VL sanity. Frozen YAMLs. VL scores must not regress — a rehearsal
-recipe that protects language by damaging vision is not a result, it is a trade we did not measure.
+在 Stage 6 从可选项升级为主设计：基于单一模型家族的结论无法支撑"停止为数据精选付费"的强主张。3 次运行是对该攻击最便宜的解决方案。
 
 ---
 
-## Ablations
+## E6 — 综合评测（~150 A100-h）
 
-- Rehearsal fraction: 5% / 10% / 20% of token budget.
-- Interleave granularity: 1:9 batch-level vs within-batch mixing.
-- Matching convention: per-layer / global / **none** — the third isolates how much of everything is
-  just gradient scale.
-- Model scale: 13B **only** on the real-but-underpowered branch.
+全部 checkpoint × 所有分层 × 视觉语言（VL）健全性测试。使用冻结的 YAML 文件。视觉语言得分绝对不能出现退化 —— 通过损害视觉能力换取语言保持的重放配方不是一项成果，而是未经测量的能力交换。
 
 ---
 
-## Budget
+## 消融实验
 
-| Phase | Runs | A100-h | Cumulative |
+- 重放比例：占 token 预算的 5% / 10% / 20%。
+- 穿插粒度：1:9 批次级穿插 vs 批次内混合。
+- 匹配约定：逐层匹配 / 全局范数 / **无匹配** —— 第三种用于隔离单纯梯度尺度所占的作用。
+- 模型规模：13B **仅在**真实但效能不足的分支上运行。
+
+---
+
+## 算力预算汇总
+
+| 阶段 | 运行次数 | A100-h | 累计成本 |
 |---|---|---|---|
 | E0 | 1 | 100 | 100 |
 | E0b | 1 | 100 | 200 |
-| **E1 gate** | 6 | 600 | **800** |
+| **E1 门禁** | 6 | 600 | **800** |
 | E2 | 9 | 900 | 1,700 |
 | E3 | 3 | 300 | 2,000 |
 | E5 | 3 | 300 | 2,300 |
 | E6 | — | 150 | 2,450 |
-| E4 (P3 only) | 6 | 600 | 3,050 |
+| E4 (仅 P3 分支) | 6 | 600 | 3,050 |
 
 ---
 
-## Decision summary
+## 决策流总结
 
 ```
-E0 reproduce ──fail──> stop (harness)
-   │pass
-E0b A3 pilot ──degenerate──> drop A3, continue with A2/A4
-   │ok
-E1 power gate ──P0 fail──> STOP at ~800 A100-h, publish power analysis
-   │pass
-E2 full grid ──> P1 mechanism | P2 content | P3 stratified
+E0 复现 ──失败──> 终止 (测试工具不可信)
+   │通过
+E0b A3 pilot ──退化──> 放弃 A3, 仅使用 A2/A4 继续
+   │正常
+E1 检验效能门禁 ──P0 失败──> 在 ~800 A100-h 处终止, 发表效能分析
+   │通过
+E2 完整网格 ──> P1 机制主张 | P2 内容主张 | P3 能力分层主张
    │
-E3 convention sensitivity · E5 cross-family · E4 dosing (P3 only)
+E3 约定敏感度 · E5 跨家族复现 · E4 配比扫描 (仅限 P3)
 ```

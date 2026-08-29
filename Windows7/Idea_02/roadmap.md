@@ -1,104 +1,86 @@
-# Idea_02 — Implementation Roadmap
+# Idea_02 — 实施路线图（Implementation Roadmap）
 
-Zero training, single A100. **Sequence this project first among the three** — its novelty decays
-with the calendar in a way the other two do not.
-
----
-
-## Day 1 — hard dependencies and the gate
-
-- [ ] **Confirm DiDi access** at `go.vicos.si/didi` (academic distribution, linked from DAM4SAM).
-      There is no mirror. This is a hard dependency, not a nice-to-have.
-- [ ] Clone and pin by commit: `facebookresearch/sam2`, `yangchris11/samurai`,
-      `jovanavidenovic/DAM4SAM`, `Mark12Ding/SAM2Long`, `LingyiHongfd/lvos-evaluation`.
-- [ ] Request SAM3 tracking-zoo access (gated; lead time is the risk).
-- [ ] Verify one SAM2.1 VOS pass end to end on LVOS v2.
+零训练需求，单卡 A100。**在三个项目中优先启动本项目** —— 其新颖性随时间衰减的速度明显快于其他两个项目。
 
 ---
 
-## Day 2–3 — the surgeon and E0
+## 第 1 天 — 硬性依赖与门禁核验
 
-- [ ] `MemorySurgeon` hooks over the video predictor's inference-state memory dict: delete, keep,
-      reinsert, with recency slots made explicit.
-- [ ] All six arms.
-- [ ] **E0 replay-determinism gate.** The `no-op` arm must reproduce the original failure
-      bit-for-bit across repeats. `check_replay_determinism` raises rather than warns.
-
-**Nothing else runs until E0 passes.** If replay is non-deterministic and unfixable, the project is
-dead and this is where it should die.
+- [ ] **在 `go.vicos.si/didi` 确认 DiDi 访问权限**（学术分发，链接自 DAM4SAM）。无镜像备份。这是硬性依赖，非可选项。
+- [ ] 克隆并按 commit SHA 锁定代码仓库：`facebookresearch/sam2`、`yangchris11/samurai`、`jovanavidenovic/DAM4SAM`、`Mark12Ding/SAM2Long`、`LingyiHongfd/lvos-evaluation`。
+- [ ] 申请 SAM3 tracking-zoo 访问权限（需要审批；风险在于审批等待周期）。
+- [ ] 在 LVOS v2 上验证一次完整的端到端 SAM2.1 VOS 运行。
 
 ---
 
-## Week 1 — harvest, freeze, pilot
+## 第 2–3 天 — 手术模块与 E0 门禁
 
-- [ ] **E1 harvest** (~12 GPU-h): LVOS v2 val + DiDi, Hiera-B+ and Hiera-L, fixed protocol, zero
-      curation.
-- [ ] Report **both** yields: total usable failures, and the H2-testable share (failures shorter
-      than the memory horizon). If the second is small, P2 is descoped and the paper says so.
-- [ ] **Freeze `configs/preregistration.yaml`**, including the comparator set `C`. This happens
-      *before* any comparator runs.
-- [ ] **E2 pilot** (~10 GPU-h): 50 failures × 6 arms + partialled regression.
+- [ ] 在 video predictor 的推理状态 memory 字典上构建 `MemorySurgeon` 挂钩：实现删除、保留、重新插入，并显式处理时序槽位。
+- [ ] 构建全部六个实验臂。
+- [ ] **E0 回放确定性门禁。** `no-op` 臂在多次重复运行中必须逐 bit 精确复现原始失败。`check_replay_determinism` 采用抛出异常而非发出警告。
 
-**Gate.** `targeted ≈ sham` ⇒ stop, the instrument is dead. `targeted − reset < 3 pts` **and** pilot
-partial `r < 0.2` ⇒ stop before the comparator passes; release corpus and toolkit as a tech note.
+**在 E0 通过之前不得运行任何后续实验。** 若回放存在无法修复的不确定性，项目直接终止。
 
 ---
 
-## Week 2 — full surgery
+## 第 1 周 — 采集、冻结、Pilot 测试
 
-- [ ] **E3** (~25 GPU-h): ≥200 failures × 6 arms, both backbones, ambiguity strata.
-- [ ] **E5** memory-attention logging → interference vs competition taxonomy.
-- [ ] **E6** (~15 GPU-h) deletion scope + `t_r ± δ` timing dose–response. This is a **main result**,
-      not an ablation.
+- [ ] **E1 失败数据采集**（~12 GPU-h）：LVOS v2 val + DiDi，Hiera-B+ 与 Hiera-L，固定协议，零人工筛选。
+- [ ] 报告**两项**产出量：总可用失败数，以及 H2 可检验样本占比（失败持续时间短于 memory 容量）。若第二项过小，明确对 P2 进行范围降级并在论文中如实说明。
+- [ ] **冻结 `configs/preregistration.yaml`**，包含对照方法集合 `C`。此操作必须在运行任何对照方法*之前*完成。
+- [ ] **E2 Pilot 测试**（~10 GPU-h）：50 次失败 × 6 个实验臂 + 偏相关回归分析。
 
----
-
-## Week 3 — validity and the headroom table
-
-- [ ] **E4** (~35 GPU-h): comparator passes over the frozen set.
-- [ ] Partialled validity: `min_{c ∈ C} partial r`, nested-model ΔR², bootstrap CIs.
-- [ ] Cross-ceiling check against SAM2RL's optimisation-derived bound on shared sequences.
-- [ ] **The headroom table** — the paper's central artifact: share of the oracle-timed ceiling each
-      published memory policy captures.
-- [ ] **E8** medical-video arm (~10 GPU-h).
+**门禁判定：** `targeted ≈ sham` ⇒ 终止项目，测量工具被证伪。`targeted − reset < 3 分` **且** pilot 偏相关 `r < 0.2` ⇒ 在运行对照方法前终止；将语料库和工具包作为技术简报发布。
 
 ---
 
-## Week 4 — generational arm, the method arm, and release
+## 第 2 周 — 完整手术实验
 
-- [ ] **E7** SAM3 arm (~30 GPU-h): identical protocol on SAM2.1 and SAM3.
-- [ ] **E9 — the mandatory method arm (~40 GPU-h), if and only if P2 passed.** Build a failure
-      trigger (the E5 attention-collapse signal is the first candidate), then benchmark the
-      training-free wrapper **head-to-head against SAMURAI and DAM4SAM** on LVOS v2 + DiDi J&F.
-      `KNOWN FACT` Stage 6 made this a required deliverable, not an optional extension. Budget it
-      from day 1 even though it runs last, because the trigger work cannot start the week it is due.
-- [ ] Release the organic-failure corpus and the surgery toolkit.
-- [ ] Paper draft, decomposition-first framing.
+- [ ] **E3**（~25 GPU-h）：≥200 次失败 × 6 个臂，两种主干网络，模棱两qz重现分层。
+- [ ] **E5** memory-attention 日志记录 → 产出干扰（interference）vs 竞争（competition）失败分类。
+- [ ] **E6**（~15 GPU-h）删除范围 + `t_r ± δ` 计时剂量-反应分析。此为**核心主结果**，非普通消融。
 
 ---
 
-## Scoop-clock discipline
+## 第 3 周 — 有效性验证与提升空间表
 
-`KNOWN FACT` This is the fastest-decaying novelty in Windows7.
-
-- **Pre-register and post the protocol early** — before the full results exist. It is the only real
-  defence.
-- If scooped mid-flight, pivot to the corpus + toolkit + validity methodology, all of which survive
-  independently.
-- Do not wait for the SAM3 arm to start writing.
+- [ ] **E4**（~35 GPU-h）：在冻结对照集上运行对照方法。
+- [ ] 偏相关有效性分析：计算 `min_{c ∈ C} partial r`、嵌套模型 ΔR²、bootstrap 置信区间。
+- [ ] 在共享序列上对照 SAM2RL 基于优化得出的上限进行跨上限交叉验证。
+- [ ] **提升空间表（Headroom table）** —— 论文的核心产物：各已发表 memory 策略实际捕获了 oracle 计时上限的多少份额。
+- [ ] **E8** 医学视频实验臂（~10 GPU-h）。
 
 ---
 
-## Branch points
+## 第 4 周 — 代际实验臂、方法臂与成果发布
 
-| Observation | Action |
+- [ ] **E7** SAM3 实验臂（~30 GPU-h）：在 SAM2.1 和 SAM3 上执行完全相同的协议。
+- [ ] **E9 — 强制性方法臂（~40 GPU-h），当且仅当 P2 检验通过时执行。** 构建失败触发器（E5 的注意力坍缩信号为首要候选），随后在 LVOS v2 + DiDi J&F 指标上将免训练 wrapper 与 **SAMURAI 和 DAM4SAM 进行正面对决评测**。`KNOWN FACT` Stage 6 将其定为必须交付项而非可选扩展。从第 1 天起即预算算力，因为触发器研发无法在临近交付的当周仓促启动。
+- [ ] 开源自然失败语料库与手术工具包。
+- [ ] 论文初稿撰写，坚持分解优先的立论文风。
+
+---
+
+## 抢发时钟纪律（Scoop-Clock Discipline）
+
+`KNOWN FACT` 这是 Windows7 中新颖性衰减最快的课题。
+
+- **尽早预注册并公开发布研究协议** —— 在拿到完整实验结果之前发布。这是唯一的实质防御手段。
+- 若在执行过程中被同行抢发，迅速转向语料库 + 工具包 + 有效性方法论，这三者均具备独立发表价值。
+- 不要等待 SAM3 实验臂完成后才开始撰写论文。
+
+---
+
+## 分支决策点
+
+| 观察到的结果 | 采取的行动 |
 |---|---|
-| E0 non-deterministic and unfixable | **kill** |
-| DiDi inaccessible | descope to LVOS v2 + SA-V; report the distractor-density gap |
-| <80 usable failures even with SA-V | descope to a bounded pilot report |
-| H2-testable share very small | keep P1/P3, descope P2 explicitly |
-| `targeted ≈ sham` | **kill the instrument claim**; publish deletion-mechanics note |
-| `targeted ≈ reset` (P2 fails) | publish as a bounded diagnostic post-mortem. **E9 does not run** — with no margin over a bank reset there is nothing worth shipping |
-| partial `r < 0.2` | pre-registered negative + corpus + toolkit |
-| **P2 passes** | **E9 is now obligatory**, not optional: build the trigger and run the head-to-head |
-| all pass | headroom table becomes the subfield's reference artifact, and the wrapper is a candidate tracker improvement |
+| E0 回放存在无法修复的不确定性 | **终止项目** |
+| DiDi 无法获取 | 范围降级至 LVOS v2 + SA-V；明确报告干扰物密度差距 |
+| 即使加上 SA-V 可用失败仍 < 80 | 范围降级为受限的 pilot 报告 |
+| H2 可检验样本占比极小 | 保留 P1/P3，明确对 P2 降级说明 |
+| `targeted ≈ sham` | **证伪工具主张**；转为发表删除机制技术简报 |
+| `targeted ≈ reset` (P2 未通过) | 作为受限的诊断验尸报告发表。**E9 不再运行** —— 相比直接重置 bank 没有显著优势便无封装价值 |
+| 偏相关 `r < 0.2` | 预注册的负面结果 + 发布语料库与工具包 |
+| **P2 通过** | **E9 升级为必须执行**：构建触发器并运行正面对决基准测试 |
+| 全部通过 | 提升空间表成为该子领域的基准参考成果，wrapper 成为具备竞争力的跟踪改进方案 |

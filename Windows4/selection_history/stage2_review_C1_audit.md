@@ -1,162 +1,122 @@
-# Stage 2 Review — Batch C1 + Meta-Audit
+# Stage 2 评审 — 批次 C1 + 元审计 (Meta-Audit)
 
-Role: Meta-Reviewer / Auditor + Reviewer. One pass, no web. 2026-08-28.
-Inputs: `stage1_C1.md` (branch `cursor/stage1-c1-idea-catalog-209b`), S/A1/B1 catalogs, rubric, literature anchors.
-Method: rubric decision rules (not mean score). Novelty / Significance on 1–5. All prior-work claims below are
-**memory-based HYPOTHESES for Stage 3 to verify** — no web was used; no fabricated citations, only papers I
-believe are real, and each must be confirmed or discarded in Stage 3.
+角色：元评审员 / 审计员 + 评审员。单次遍历，无网络搜索。2026-08-28。
+输入：`stage1_C1.md`（分支 `cursor/stage1-c1-idea-catalog-209b`）、S/A1/B1 目录、评估标准（rubric）、文献锚点。
+方法：评估标准决策规则（非平均分）。新颖性 (Novelty) / 显著性 (Significance) 打分 1–5。以下所有前人工作主张均为
+**供 Stage 3 进行验证的基于记忆的假说**——未进行网络搜索；无虚构引用，仅包含我认为真实存在的论文，且每一项都必须在 Stage 3 中予以证实或放弃。
 
-Epistemic status of this file: REVIEW JUDGMENT (opinions + memory-based prior-work flags). No experimental results.
+本文件的认识论状态：评审判断 (REVIEW JUDGMENT)（观点 + 基于记忆的前人工作标记）。无实验结果。
 
 ---
 
-## C1 Keep (exactly 50 of 120)
+## C1 保留 (120 项中恰好 50 项)
 
-Kept = survives kill rules and earns a slot under the 50-cap. "(absorbs X)" = X is killed as a standalone row but
-lives on as an arm/section of the kept idea. Protect = shielded from mean-score death in later stages (15 total).
+保留 = 满足剔除规则存活并在 50 项上限中赢得席位。“(吸收 X)” = X 作为独立行被剔除，但作为保留创意的分支/章节继续存活。重点保护 (Protect) = 在后续阶段免于平均分淘汰（共 15 项）。
 
-| ID | reason | Novelty | Significance | Protect? |
+| ID | 理由 | 新颖性 | 显著性 | 保护? |
 |---|---|---|---|---|
-| C1-001 | SA-1B↔benchmark dedup audit: if overlap exists every zero-shot SAM number is tainted; eval-only, kills-or-dies in days | 4 | 5 | YES |
-| C1-003 | Sim-click optimism bounds all NoC results; merge with A1-105/S-016 into one human-click study (×3 convergence = dedup, not triple credit) | 3 | 4 | no |
-| C1-006 | J&F may mostly measure oracle frame-1 init; regression on released predictions, zero training | 3 | 4 | no |
-| C1-007 | Benchmark lineage graph + cross-lineage transfer matrix; reusable artifact even if gains transfer | 4 | 3 | no |
-| C1-012 | Pinned-checkpoint re-eval; version drift plausibly reorders methods given SAM/HQ/Efficient/SAM2 proliferation | 3 | 3 | no |
-| C1-013 | Metric itself is known (Boundary IoU, Cheng et al.); kept ONLY as pre-registered PEFT rank-flip test and as tooling for other keeps — demoted from C1's Protect | 2 | 4 | no |
-| C1-016 | If method gaps sit inside the annotator noise floor, leaderboard progress is illusory; run on COCO/ADE where (unlike medical) the floor is unpublished | 3 | 5 | YES |
-| C1-017 | Per-class regression counts make "adaptation hurts" auditable; cheap; feeds C1-110 | 3 | 3 | no |
-| C1-021 | ECE-vs-mIoU scatter on 10 public ckpts; the 1-day gate for the whole calibration thread | 2 | 3 | no |
-| C1-025 | PEFT-vs-full-FT calibration at matched mIoU; canonical for the FT-calibration-tax thread (merge S-318/S-650) | 3 | 4 | no |
-| C1-026 | IoU-head OOD reliability audit; canonical of a ×4-convergent thread (A1-006/S-298/S-361); pair with constructive twin A1-006 | 3 | 4 | YES |
-| C1-031 | FT desyncs confidence head from mask head (absorbs C1-069); fresh, cheap to track, safety-relevant | 4 | 4 | YES |
-| C1-032 | Focal-vs-CE calibration *reversal* on dense output — a divergence-from-classification hypothesis, not a port | 3 | 3 | no |
-| C1-036 | Multimask variance as free aleatoric UQ; must difference vs FNPC 2023 (prompt-perturbation UQ is taken); pairs with C1-061 | 3 | 4 | YES |
-| C1-037 | Robustness cost of PEFT; C1-048 matched-budget control folded in as mandatory arm (absorbs C1-043, C1-048) | 4 | 4 | YES |
-| C1-038 | ANOVA clicks×checkpoints: if prompt variance > model variance, leaderboards are noise (merge A1-048/A1-094/S-001) | 3 | 4 | no |
-| C1-039 | Resolution as the dominant unbenchmarked robustness axis (absorbs C1-091 inverted-U; merge A1-008/A1-013/B1-104) | 3 | 4 | no |
-| C1-042 | Annotation-style shift (polygon vs pixel) as an eval axis; pairs A1-043/A1-119; must show it is not ordinary domain shift | 3 | 3 | no |
-| C1-049 | LoRA rank scales with output resolution, not data size — a PEFT-science scaling claim, cheap grid | 3 | 3 | no |
-| C1-053 | LR-swept full FT vs published seg-PEFT gains; the portfolio's baseline-honesty anchor (absorbs C1-005 honest-val arm) | 3 | 5 | YES |
-| C1-054 | Encoder/decoder × domain/task-shift 2×2 (absorbs C1-051, C1-072; BitFit detail deferred to A1-112) | 3 | 3 | no |
-| C1-055 | LN-only baseline missing from seg-PEFT literature; cheap, high kill-power; cls-side LN-tuning prior must be differenced | 3 | 4 | no |
-| C1-057 | PEFT-vs-full-FT data-size crossover; the regime chart practitioners need (merge S-146, B1-086) | 3 | 4 | YES |
-| C1-060 | Seed variance vs claimed method gaps; cheap audit that arms A1-106's instability law | 2 | 4 | no |
-| C1-061 | FT collapses multimask proposal diversity = "ambiguity forgetting"; fresh, SAM-specific, cheap | 4 | 4 | YES |
-| C1-062 | Layer-resolved forgetting via cross-attn re-splicing; one of the only mechanism ideas in C1 | 4 | 3 | no |
-| C1-064 | Minimal replay dose curve for decoder retention; practical and cheap; CL-cls replay prior differenced by promptable-decoder setting | 3 | 4 | no |
-| C1-065 | Umbrella behavioral-forgetting battery per prompt type (absorbs C1-063 click-depth, C1-071 negative-click, C1-074 cross-modal; merge A1-109) | 3 | 4 | YES |
-| C1-066 | LoRA-forgets-too matched retention test; MUST difference vs the LLM-side "LoRA learns less, forgets less" result | 3 | 4 | no |
-| C1-067 | CKA drift as predictive early-warning for zero-shot loss (merge A1-108, B1-114; absorbs C1-096); template-echo flagged below | 3 | 4 | no |
-| C1-073 | Feature-space domain gap predicts retention loss — a predictive law, not an anecdote; template-echo flagged below | 3 | 4 | YES |
-| C1-076 | Retention differences may be an LR artifact — strongest single confound attack in the batch; adversarial to C1-066/PEFT-retention claims | 4 | 4 | YES |
-| C1-082 | Threshold-artifact check gates EVERY forgetting claim including ours; near-zero cost; run first in the Forget thread | 3 | 4 | YES |
-| C1-084 | Entropy-min TTA vs prompt-following; adversarial pair with A1-087 (which predicts the opposite) — one of them dies | 3 | 3 | no |
-| C1-085 | Probe-vs-FT gap stratified to boundaries/thin structures; decides when tuning is needed at all (pairs B1-037) | 3 | 4 | no |
-| C1-087 | Backbone-scale non-monotonicity under small-n FT (merge S-286, S-052 curve, S-608) | 3 | 4 | no |
-| C1-088 | SAM-as-label-engine quality audit vs experts; huge blast radius across pseudo-label pipelines | 3 | 4 | no |
-| C1-094 | Text-side vs vision-side LoRA at matched params; the only open-vocab keep — deliberate anti-SAM-echo diversity slot | 3 | 3 | no |
-| C1-095 | Cross-site method-rank correlation; attacks deployment validity of single-site validation | 3 | 4 | no |
-| C1-097 | Unified PEFT-for-SAM replication vs tuned decoder-only baseline; flagship audit (absorbs C1-005, C1-009 protocol arms) | 3 | 5 | YES |
-| C1-105 | Distilled SAMs lose multi-click refinement; eval-only NoC curves on deployed checkpoints (merge S-135) | 3 | 4 | no |
-| C1-108 | Multi-task co-training calibration tax; adversarial pair with S-550 (predicts the opposite) | 3 | 3 | no |
-| C1-109 | Certified click-stability via smoothing over prompt space — new formulation; certified-seg prior smooths pixels, not prompts; vacuous-radius risk accepted | 4 | 3 | no |
-| C1-110 | Gain-retention benchmark suite; portfolio capstone (absorbs C1-083 frontier, C1-117 model cards; C1-068 interpolation demoted to a baseline arm here) | 3 | 5 | YES |
-| C1-111 | Annotator-seconds effort model to replace NoC (absorbs C1-015); log availability is the real risk | 3 | 4 | no |
-| C1-113 | Label-schema shift as a formal task; constructive twin B1-012 | 4 | 3 | no |
-| C1-114 | Region-level selective segmentation (absorbs C1-034); simple-baselines-strong risk noted | 3 | 3 | no |
-| C1-115 | Oracle-free auto-prompt eval protocol; enables honest promptable leaderboards (merge S-060, S-200) | 3 | 4 | no |
-| C1-116 | Prompt portability as formal task spec (absorbs C1-092; merge B1-095 transfer matrix) | 3 | 3 | no |
-| C1-118 | Class unlearning in dense decoders with probe-leakage metric; unlearning literature is hot, dense gap looks real | 4 | 3 | no |
+| C1-001 | SA-1B↔基准去重审计：若存在重叠，所有 zero-shot SAM 数值均受污染；仅需评估，数天内即可决断存亡 | 4 | 5 | 是 (YES) |
+| C1-003 | 模拟点击的乐观性限制了所有 NoC 结果；与 A1-105/S-016 合并为一项人类点击研究（×3 收敛 = 去重，而非三重积分） | 3 | 4 | 否 (no) |
+| C1-006 | J&F 大多可能仅测量 Oracle 第 1 帧初始化；在已发布预测上进行回归，零训练 | 3 | 4 | 否 (no) |
+| C1-007 | 基准血统图 + 跨血统迁移矩阵；即使增益可迁移也是可复用的成果 | 4 | 3 | 否 (no) |
+| C1-012 | 固定检查点重新评估；鉴于 SAM/HQ/Efficient/SAM2 的泛滥，版本漂移可能使方法重新排序 | 3 | 3 | 否 (no) |
+| C1-013 | 指标本身已知（Boundary IoU, Cheng et al.）；仅作为预注册的 PEFT 排名反转测试以及其他保留项的工具——从 C1 的重点保护中降级 | 2 | 4 | 否 (no) |
+| C1-016 | 若方法差距处于标注者噪声底线内部，排行榜进展便是虚幻的；在 COCO/ADE 上运行（与医学不同，其底线未发表） | 3 | 5 | 是 (YES) |
+| C1-017 | 逐类别退化计数使“自适应带来损害”可被审计；成本低；为 C1-110 提供输入 | 3 | 3 | 否 (no) |
+| C1-021 | 10 个公开检查点上的 ECE vs mIoU 散点图；整个校准主线的 1 天快速准入门槛 | 2 | 3 | 否 (no) |
+| C1-025 | 在匹配 mIoU 下的 PEFT vs 全量微调校准；微调校准代价主线的标准范式（合并 S-318/S-650） | 3 | 4 | 否 (no) |
+| C1-026 | IoU 头 OOD 可靠性审计；×4 收敛主线的标准范式（A1-006/S-298/S-361）；与建设性孪生项 A1-006 配对 | 3 | 4 | 是 (YES) |
+| C1-031 | 微调使置信度头与掩码头失步（吸收 C1-069）；新颖、跟踪成本低、与安全性相关 | 4 | 4 | 是 (YES) |
+| C1-032 | 密集输出上的 Focal vs CE 校准*反转*——与分类任务分歧的假说，而非简单移植 | 3 | 3 | 否 (no) |
+| C1-036 | 多掩码方差作为免费偶然不确定性量化；必须与 FNPC 2023 形成差异（提示扰动 UQ 已被占用）；与 C1-061 配对 | 3 | 4 | 是 (YES) |
+| C1-037 | PEFT 的鲁棒性代价；C1-048 预算匹配对照组作为强制分支并入（吸收 C1-043, C1-048） | 4 | 4 | 是 (YES) |
+| C1-038 | 点击 × 检查点的方差分析：若提示方差 > 模型方差，排行榜即为噪声（合并 A1-048/A1-094/S-001） | 3 | 4 | 否 (no) |
+| C1-039 | 分辨率作为占主导地位且未经基准测试的鲁棒性维度（吸收 C1-091 倒 U 型；合并 A1-008/A1-013/B1-104） | 3 | 4 | 否 (no) |
+| C1-042 | 标注风格偏移（多边形 vs 像素）作为评估维度；与 A1-043/A1-119 配对；必须证明其非普通域偏移 | 3 | 3 | 否 (no) |
+| C1-049 | LoRA 秩随输出分辨率而非数据量扩展——一项 PEFT 科学扩展主张，廉价网格 | 3 | 3 | 否 (no) |
+| C1-053 | 学习率扫描的全量微调 vs 已发表的分割 PEFT 增益；整个组合的基线诚实性锚点（吸收 C1-005 真实验证集分支） | 3 | 5 | 是 (YES) |
+| C1-054 | 编码器/解码器 × 域/任务偏移 2×2（吸收 C1-051, C1-072；BitFit 细节推迟至 A1-112） | 3 | 3 | 否 (no) |
+| C1-055 | 分割 PEFT 文献中缺失的仅 LayerNorm 基线；成本低，反驳效力高；必须与分类侧 LN 微调前人工作形成差异 | 3 | 4 | 否 (no) |
+| C1-057 | PEFT vs 全量微调数据规模交叉点；从业者亟需的机制图表（合并 S-146, B1-086） | 3 | 4 | 是 (YES) |
+| C1-060 | 种子方差 vs 声称的方法差距；为 A1-106 的不稳定性法则提供武器的廉价审计 | 2 | 4 | 否 (no) |
+| C1-061 | 微调使多掩码提议多样性崩溃 = “歧义性遗忘”；新颖、特定于 SAM、低成本 | 4 | 4 | 是 (YES) |
+| C1-062 | 通过重新拼接交叉注意力实现逐层解析的遗忘；C1 中仅有的机理机制创意之一 | 4 | 3 | 否 (no) |
+| C1-064 | 解码器保留能力的最小重放剂量曲线；实用且廉价；通过可提示解码器设定与持续学习分类重放前人工作区分开来 | 3 | 4 | 否 (no) |
+| C1-065 | 针对每种提示类型的统摄性行为遗忘测试套件（吸收 C1-063 点击深度、C1-071 负点击、C1-074 跨模态；合并 A1-109） | 3 | 4 | 是 (YES) |
+| C1-066 | LoRA 也会遗忘的匹配保留测试；必须与 LLM 侧“LoRA 学得更少、遗忘更少”的结果形成差异 | 3 | 4 | 否 (no) |
+| C1-067 | CKA 漂移作为 zero-shot 损失的预测性早期预警（合并 A1-108, B1-114；吸收 C1-096）；下方已标记模板雷同风险 | 3 | 4 | 否 (no) |
+| C1-073 | 特征空间域差距预测保留损失——一条预测性法则而非传闻轶事；下方已标记模板雷同风险 | 3 | 4 | 是 (YES) |
+| C1-076 | 保留差异可能是学习率伪影——本批次中最强的单项混杂攻击；对 C1-066/PEFT 保留主张具有对抗性 | 4 | 4 | 是 (YES) |
+| C1-082 | 阈值伪影检查把关每一个遗忘主张（包括我们自己的）；近乎零成本；在遗忘主线中优先运行 | 3 | 4 | 是 (YES) |
+| C1-084 | 熵最小化 TTA vs 提示遵循能力；与 A1-087（预测相反结果）构成对抗对——二者必死其一 | 3 | 3 | 否 (no) |
+| C1-085 | 探测 vs 微调差距分层至边界/细长结构；决定何时根本不需要微调（与 B1-037 配对） | 3 | 4 | 否 (no) |
+| C1-087 | 小样本微调下的骨干规模非单调性（合并 S-286, S-052 曲线, S-608） | 3 | 4 | 否 (no) |
+| C1-088 | SAM 作为标注引擎对比专家的质量审计；在伪标签流水线中具有巨大的波及面 | 3 | 4 | 否 (no) |
+| C1-094 | 匹配参数下的文本侧 vs 视觉侧 LoRA；唯一保留的开放词汇项——刻意对抗 SAM 信息茧房的多样性席位 | 3 | 3 | 否 (no) |
+| C1-095 | 跨中心方法排名相关性；抨击单中心验证的部署有效性 | 3 | 4 | 否 (no) |
+| C1-097 | 针对 SAM 的统一 PEFT 复现 vs 调优后的仅解码器基线；旗舰审计（吸收 C1-005, C1-009 协议分支） | 3 | 5 | 是 (YES) |
+| C1-105 | 蒸馏 SAM 丢失多点击细化能力；在已部署检查点上的仅评估 NoC 曲线（合并 S-135） | 3 | 4 | 否 (no) |
+| C1-108 | 多任务协同训练校准代价；与 S-550（预测相反结果）构成对抗对 | 3 | 3 | 否 (no) |
+| C1-109 | 通过在提示空间平滑实现可证明的点击稳定性——新形式化；可证明分割前人工作平滑像素而非提示；接受半径可能过小的风险 | 4 | 3 | 否 (no) |
+| C1-110 | 增益-保留基准测试套件；组合收官之作（吸收 C1-083 前沿, C1-117 模型卡片；C1-068 插值降级为基线分支） | 3 | 5 | 是 (YES) |
+| C1-111 | 替代 NoC 的标注者秒数努力模型（吸收 C1-015）；日志可用性是真正风险 | 3 | 4 | 否 (no) |
+| C1-113 | 标签架构偏移作为形式化任务；建设性孪生项 B1-012 | 4 | 3 | 否 (no) |
+| C1-114 | 区域级选择性分割（吸收 C1-034）；已注意到简单基线很强的风险 | 3 | 3 | 否 (no) |
+| C1-115 | 免 Oracle 自动提示评估协议；赋能诚实的可提示排行榜（合并 S-060, S-200） | 3 | 4 | 否 (no) |
+| C1-116 | 提示可移植性作为形式化任务规格说明（吸收 C1-092；合并 B1-095 迁移矩阵） | 3 | 3 | 否 (no) |
+| C1-118 | 密集解码器中的类别遗忘及探测泄漏指标；遗忘领域文献火热，密集任务空白真实存在 | 4 | 3 | 否 (no) |
 
-Protect count: 15 (001, 016, 026, 031, 036, 037, 053, 057, 061, 065, 073, 076, 082, 097, 110).
-Changes vs C1's own protect list: demoted C1-003 (merged), C1-013 (metric is known — only the flip is the finding),
-C1-068 (WiSE-FT port → baseline arm of C1-110); promoted C1-031, C1-065, C1-076, C1-082.
+重点保护数量：15 (001, 016, 026, 031, 036, 037, 053, 057, 061, 065, 073, 076, 082, 097, 110)。
+相比 C1 自身保护列表的变动：降级 C1-003（已合并）、C1-013（指标已知——仅排名反转是发现）、C1-068（WiSE-FT 移植 → C1-110 的基线分支）；晋升 C1-031, C1-065, C1-076, C1-082。
 
-### Killed — notable causes (70 killed; grouped, not exhaustive)
+### 被剔除项 — 显著原因 (共 70 项剔除；分组说明，非穷举)
 
-- **Folded into a keep (alive as arms):** 005→097/053, 009→097, 015→111, 034→114, 043→037, 048→037, 051→054,
-  063/071/074→065, 069→031, 072→054, 083→110, 091→039, 092→116, 096→067, 117→110.
-- **Dup of a better twin in another batch (defer):** 040 (A1-015/A1-083 generalize), 050/052 (A1-107 maps
-  placement→error type), 058 (A1-092 is the informative direction), 090 (B1-026/031 constructive), 014 (S-198
-  already marked Known), 086 (S-287/S-353).
-- **Memory-based prior-work kill (Stage 3 must confirm):** 002 (concept-frequency vs zero-shot exists for
-  cls/retrieval — Udandarao et al.-type), 011/093 (template/loss duels well-trodden), 018 (PQ=RQ×SQ by definition),
-  019 (TIDE-style error decomposition), 023 (NSD is standard), 028 (boundary-concentrated uncertainty is
-  Bayesian-seg folklore), 029 (Ovadia et al. 2019 for cls, admitted mirror), 030 (FNPC 2023 — in our own anchors),
-  080 (task arithmetic known, outcome admitted expected), 098 (max-prob baseline hard to beat — known),
-  099 (replay dominance known in CL-cls), 100 (attention-is-not-explanation genre), 102 (MetricsReloaded covers
-  empty-mask handling), 106 (DAFormer-era baselines), 107 (correspondence comparisons exist), 112 (GED /
-  Probabilistic U-Net multi-rater eval), 119 (SAMPOT — in our own anchors).
-- **Low ceiling / hygiene-not-paper / vague:** 004, 008, 010, 020, 022, 024, 027, 033, 035, 041, 044, 045, 046,
-  047, 056, 059, 070, 075, 077, 078, 079, 081, 089, 101, 103, 104, 120.
+- **合并入保留项 (作为实验分支存活)：** 005→097/053, 009→097, 015→111, 034→114, 043→037, 048→037, 051→054, 063/071/074→065, 069→031, 072→054, 083→110, 091→039, 092→116, 096→067, 117→110。
+- **其他批次中更优孪生项的重复 (延后处理)：** 040 (A1-015/A1-083 更具泛化性), 050/052 (A1-107 将放置映射到误差类型), 058 (A1-092 是更具信息量的方向), 090 (B1-026/031 具建设性), 014 (S-198 已标记为已知), 086 (S-287/S-353)。
+- **基于记忆的前人工作剔除 (Stage 3 必须核实)：** 002 (概念频率 vs zero-shot 在分类/检索中已存在——如 Udandarao et al. 类), 011/093 (模板/损失对决已被充分研究), 018 (定义上 PQ=RQ×SQ), 019 (TIDE 风格误差分解), 023 (NSD 是标准做法), 028 (边界集中不确定性是贝叶斯分割常识), 029 (分类任务已有 Ovadia et al. 2019，承认是镜像复制), 030 (FNPC 2023——在我们自己的锚点中), 080 (任务算术已知，承认结果符合预期), 098 (Max-Prob 基线难以击败——已知), 099 (持续学习分类中重放占主导已知), 100 (注意力非解释性体裁), 102 (MetricsReloaded 涵盖空掩码处理), 106 (DAFormer 时代基线), 107 (对应关系对比已存在), 112 (GED / 概率 U-Net 多评估员评估), 119 (SAMPOT——在我们自己的锚点中)。
+- **上限低 / 仅属卫生规范非独立论文 / 模糊：** 004, 008, 010, 020, 022, 024, 027, 033, 035, 041, 044, 045, 046, 047, 056, 059, 070, 075, 077, 078, 079, 081, 089, 101, 103, 104, 120。
 
 ---
 
-## Audit
+## 审计
 
-### Echo chamber risks
+### 信息茧房（Echo Chamber）风险
 
-- **Eval-vs-methods imbalance is real and structural (S-720 confirmed).** ~96/120 of C1 are audit / negative /
-  assumption-check ideas; the S-catalog's biggest clusters are EVAL_LEAK, ASSUMPTION, NEG_RESULT; the rubric's
-  "who is wrong if we are right?" dimension rewards accusation-shaped ideas. Even after my cull, ~38/50 keeps are
-  audits. An all-audit portfolio has *correlated* failure: if effect sizes are small, everything nulls at once,
-  and CVPR-class venues rarely take pure audits without either a flipped leaderboard or a constructive protocol.
-  Mitigation: every kept audit should name its constructive twin (e.g., C1-026↔A1-006, C1-003↔A1-105 protocol,
-  C1-115's auto-prompt protocol), and Stage 3 should carry ≥30% method/mechanism ideas — which currently live
-  almost entirely in A1 (see revive list).
-- **Cross-batch convergence is being mistaken for independent validation.** The same hypotheses recur:
-  prompt-jitter UQ ×4 (C1-030/C1-036/A1-098/S-011 — with FNPC 2023 as known prior), human-vs-sim clicks ×3
-  (C1-003/A1-105/S-016), resolution/scale ×5 (C1-039/C1-091/A1-008/A1-013/B1-104), IoU-head calibration ×4
-  (C1-026/A1-006/S-298/S-361), PEFT crossover-n ×3 (C1-057/S-146/B1-086), seed variance ×3 (C1-060/A1-106/S-203),
-  "feature-distance predicts outcome" template ×5 (C1-073/C1-067/A1-082/B1-039/B1-065). All generators shared the
-  same seed catalog and anchors, so convergence is correlated, not independent evidence of importance. Rule:
-  dedup before Stage 3, and treat convergence as *elevated* prior-work risk — if four of our agents derived it
-  from the same memes, the field likely already did too.
-- **SAM-centrism / single-model risk.** >80% of the pool presupposes SAM/SAM2 as the object of study. Findings may
-  not survive the next checkpoint family, and audits go stale fastest. Mitigation: kept audits must run on ≥2
-  model families where feasible (e.g., SAM + an open-vocab or DINOv2-probe pipeline); C1-094 kept partly as a
-  deliberate non-SAM slot; B1's annotation-efficiency cluster is the least SAM-echoed asset in the pool — weight
-  it up in cross-batch selection.
-- **Claim-template echo ("X was never measured").** Our house style is the unmeasured-claim; several were in fact
-  measured (FNPC, SAMPOT, MetricsReloaded, Boundary IoU, GED, task arithmetic, Ovadia et al., LLM LoRA-forgetting).
-  The echo chamber is not just topical (SAM) but rhetorical: Stage 3 must attack "never audited" claims hardest,
-  starting from our own anchors file, which already refutes two C1 ideas (C1-030, C1-119).
-- **Rubric Goodharting / kill-culture overshoot.** "Default: already done" + "default: reject" plus protect-tags
-  concentrated on contrarian negatives risks a portfolio that can only subtract. Calibration alone has ~20 ideas
-  across batches for a niche readership — I kept 6 and capped the thread with a single 1-day gate (C1-021).
-  Forgetting/retention now spans ~14 keeps+revives; C1-082 (threshold artifact) and C1-076 (LR confound) are
-  protected precisely because they can kill *our own* thread before reviewers do.
+- **评估 vs 方法的不平衡是真实且结构性的（S-720 已证实）。** C1 中约 96/120 属于审计 / 负面 / 假设检验类创意；S 目录中最大的聚类是 EVAL_LEAK, ASSUMPTION, NEG_RESULT；评估标准中的“如果我们是对的，谁错了？”这一维度奖赏了指控性质的创意。即使在我的筛选之后，~38/50 的保留项仍然是审计类。纯审计组合具有*相关联*的失败风险：若效应量较小，所有项目会同时沦为无效结果，且 CVPR 级别的会议极少接受没有反转排行榜或建设性协议的纯审计论文。缓解措施：每个保留的审计项都应指明其建设性孪生项（例如 C1-026↔A1-006, C1-003↔A1-105 协议, C1-115 的自动提示协议），且 Stage 3 应承载 ≥30% 的方法/机理类创意——这些目前几乎完全存在于 A1 中（参见复活列表）。
+- **跨批次收敛正被误认为是独立验证。** 相同的假设反复出现：提示抖动 UQ ×4（C1-030/C1-036/A1-098/S-011——以 FNPC 2023 为已知先验）、人类 vs 模拟点击 ×3（C1-003/A1-105/S-016）、分辨率/尺度 ×5（C1-039/C1-091/A1-008/A1-013/B1-104）、IoU 头校准 ×4（C1-026/A1-006/S-298/S-361）、PEFT 交叉点 n ×3（C1-057/S-146/B1-086）、种子方差 ×3（C1-060/A1-106/S-203）、“特征距离预测结果”模板 ×5（C1-073/C1-067/A1-082/B1-039/B1-065）。所有生成器共享了相同的种子目录和锚点，因此收敛是相关联的产物，而非重要性的独立证据。规则：在 Stage 3 之前去重，并将收敛视为*上升的*前人工作风险——如果我们的四个智能体从相同的概念模因中推导出它，该领域很可能也早已做过了。
+- **SAM 中心主义 / 单一模型风险。** 候选池中 >80% 以 SAM/SAM2 作为研究对象。这些发现可能无法在下一个检查点家族中存活，且审计成果过时最快。缓解措施：保留的审计项在可行情况下必须在 ≥2 个模型家族上运行（例如 SAM + 开放词汇或 DINOv2 探测流水线）；C1-094 被保留部分原因是作为刻意的非 SAM 席位；B1 的标注效率聚类是池中最少受 SAM 茧房影响的资产——在跨批次选择中提升其权重。
+- **主张模板雷同（“X 从未被测量过”）。** 我们的内部风格是未测量主张；其中若干实际上已被测量过（FNPC, SAMPOT, MetricsReloaded, Boundary IoU, GED, 任务算术, Ovadia et al., LLM LoRA 遗忘）。信息茧房不仅是主题上的（SAM），更是修辞上的：Stage 3 必须最严厉地抨击“从未被审计”的主张，首先从我们自己的锚点文件查起（该文件已反驳了两个 C1 创意：C1-030, C1-119）。
+- **评估标准古德哈特定律（Goodharting） / 淘汰文化过度。** “默认：已经被做过” + “默认：拒稿” 加上集中在反传统负面结论上的保护标签，可能会导致一个只能做减法的组合。仅校准一项在各批次中就有约 20 个创意针对小众读者群体——我保留了 6 个并用单一的 1 天门槛（C1-021）限制了该主线。遗忘/保留主线目前跨越了约 14 个保留+复活项；C1-082（阈值伪影）和 C1-076（学习率混杂）之所以受到保护，正是因为它们能在审稿人出手前先毙掉*我们自己的*主线。
 
-### Revive from S / A1 (10) — killed-looking or unprotected, revived to counter the eval bias
+### 从 S / A1 复活 (10) — 看起来被毙或未受保护，复活以对抗评估偏差
 
-None of these appear on the S/A1 protect lists; each risks mean-score or "known/crowded"-tag death. Mostly
-constructive/mechanism ideas, which is what the portfolio lacks.
+这些均未出现在 S/A1 的保护列表中；每一项都面临平均分淘汰或被贴上“已知/拥挤”标签致死的风险。主要为建设性/机理类创意，这正是本组合所欠缺的。
 
-1. **A1-033** — learned 1×1-conv channel lifting for grayscale modalities: tiny constructive method attacking the ignored pseudo-RGB interface; clean LoRA comparison at 0.1% params.
-2. **A1-035** — atlas-registered anatomical boxes as human-free SAM prompts: classical registration + promptable FM, no detector training; pairs with the auto-prompt eval C1-115.
-3. **A1-043** — fine-tuned SAM overfits annotator boundary conventions, not anatomy: reframes cross-hospital "domain shift" as label-convention shift; high clinical significance.
-4. **A1-060** — depth-edge auto-prompts for transparent objects: constructive chaining of two frozen models where each alone fails.
-5. **A1-072** — SAM everything-mode as long-tail proposal engine vs RPN recall on LVIS-rare: constructive detection use; Stage 3 must check SAM-proposal-for-OVD prior.
-6. **A1-091** — prompt-distribution shift as a distinct measurable axis: the formulation that makes C1-003/C1-038 a research program rather than one audit.
-7. **A1-101** — prompt-embedding norm scaling steers part/whole granularity: latent control-knob discovery in a frozen model; mechanism-flavored, cheap.
-8. **S-042** — the 3D medical gap is anisotropy, not "medical": confound-first causal claim; one resampling experiment could deflate a whole subfield's framing.
-9. **S-045** — intensity windowing is a hidden hyperparameter as large as prompt type: tagged "known to clinicians" (would die by insider-rule), but *quantifying* it is load-bearing for every MedSAM comparison — keep as a mandatory reporting arm, not a standalone paper.
-10. **S-064** — meta-analysis: MedSAM-FT gains track #FT-images, not method: cheapest highest-blast-radius audit in the S-catalog; only needs published tables.
+1. **A1-033** — 针对灰度模态的学习型 1×1 卷积通道提升：攻击被忽视伪 RGB 接口的微小建设性方法；在 0.1% 参数下干净对比 LoRA。
+2. **A1-035** — 图谱配准解剖框作为免人工 SAM 提示：经典配准 + 可提示基础模型，无检测器训练；与自动提示评估 C1-115 配对。
+3. **A1-043** — 微调 SAM 过拟合标注者边界习惯而非解剖结构：将跨医院“域偏移”重构为标注习惯偏移；高临床显著性。
+4. **A1-060** — 透明物体的深度边缘自动提示：连接两个冻结模型的建设性尝试（两者单独使用均失败）。
+5. **A1-072** — SAM Everything 模式作为长尾提议引擎 vs LVIS-rare 上的 RPN 召回率：建设性检测应用；Stage 3 必须核对用于开放词汇检测的 SAM 提议前人工作。
+6. **A1-091** — 提示分布偏移作为独立的可测量维度：使 C1-003/C1-038 成为一个研究议程而非单个审计的形式化表述。
+7. **A1-101** — 提示嵌入范数缩放控制部分/整体粒度：在冻结模型中发现潜在控制旋钮；带有机制色彩，成本低。
+8. **S-042** — 3D 医学差距是各向异性而非“医学”特性：混杂优先的因果主张；一次重采样实验即可击碎整个子领域的论调。
+9. **S-045** — 强度窗位是与提示类型一样巨大的隐藏超参数：标记为“临床医生已知”（会按业内规则被淘汰），但*量化*它对每个 MedSAM 对比都是关键支撑——作为强制报告分支保留，而非独立论文。
+10. **S-064** — 元分析：MedSAM 微调增益追踪的是微调图像数而非方法：S 目录中成本最低、波及面最大的审计；仅需已发表表格。
 
-### False-novelty patterns to ban in Stage 3
+### Stage 3 中应禁止的虚假新颖性模式
 
-1. **Folklore-as-novelty.** "Nobody measured X" where X is insider knowledge (slice-level leakage, windowing, Dice-is-a-size-metric). Test: would an nnU-Net/MetricsReloaded author consider this news? If no — kill or demote to a reporting arm.
-2. **Cls→seg ports without a divergence mechanism.** "Known for classification, untested for segmentation" is not novelty (C1-029-style). Admissible only when the hypothesis *predicts a different outcome* on dense output and says why (C1-032 is the model).
-3. **Prompt-perturbation amnesia.** Any prompt-jitter/uncertainty/prompt-search idea must explicitly difference itself from FNPC 2023 and SAMPOT — both are in our own anchors and still slipped into C1 twice (C1-030, C1-119).
-4. **Hygiene-audit-as-paper.** Norm-stats swaps, fixed-TTA re-runs, checkpoint pinning are paragraphs, not papers, unless a pre-registered rank flip is demonstrated; otherwise fold into a protocol suite (C1-097/C1-110).
-5. **Weight-arithmetic ports.** WiSE-FT interpolation, task-vector negation, LoRA merging are established; a dense/promptable application needs a decoder-specific hypothesis (e.g., C1-061's diversity collapse), not "first time on SAM".
-6. **Metric-substitution novelty.** Boundary-F/clDice/NSD/PQ/GED already exist; the metric is never the contribution — only a discovered, pre-registered ranking inversion is.
-7. **Convergent-duplicate double counting.** The same hypothesis surfacing in S, A1, B1, C1 must enter Stage 3 exactly once, with its duplicates listed — and with prior-work suspicion *raised*, not lowered, by the convergence.
-8. **Strawman assumptions.** "The field assumes X" requires citing at least one real paper whose claims depend on X; unattributed assumptions are unfalsifiable rhetoric.
-9. **Renamed-axis novelty.** Declaring a new shift type (annotation-style, prompt-distribution, schema shift) requires showing it is not subsumed by ordinary domain-shift measures — orthogonality is part of the burden of proof.
+1. **常识包装为新颖性。** “没人测量过 X”，而 X 是业内常识（切片级泄漏、窗位调节、Dice 本质是尺寸指标）。测试标准：nnU-Net/MetricsReloaded 的作者会认为这是新闻吗？如果不会——淘汰或降级为报告分支。
+2. **缺乏分歧机理的分类→分割移植。** “在分类中已知，在分割中未测试”不是新颖性（类似 C1-029 风格）。仅当假说*预测了密集输出上的不同结果*并阐明原因时方可接纳（C1-032 是典范）。
+3. **提示扰动失忆症。** 任何提示抖动/不确定性/提示搜索创意必须明确与 FNPC 2023 和 SAMPOT 区分开来——两者均在我们自己的锚点中，但仍两次溜进了 C1（C1-030, C1-119）。
+4. **卫生审计包装为独立论文。** 归一化统计量交换、固定 TTA 重跑、检查点固定均属于段落级内容而非独立论文，除非展示了预注册的排名反转；否则合并入协议套件（C1-097/C1-110）。
+5. **权重算术移植。** WiSE-FT 插值、任务向量取反、LoRA 合并均已确立；密集/可提示应用需要特定于解码器的假说（例如 C1-061 的多样性崩溃），而非“首次在 SAM 上使用”。
+6. **指标替换新颖性。** Boundary-F/clDice/NSD/PQ/GED 已经存在；指标本身绝不是贡献——唯有发现并预注册的排名反转才是贡献。
+7. **收敛重复项的双重计数。** 在 S, A1, B1, C1 中出现的相同假说在进入 Stage 3 时必须恰好出现一次，列出其重复项——并且因其收敛性使得前人工作嫌疑*上升*而非下降。
+8. **稻草人假设。** “该领域假设 X”必须引用至少一篇主张依赖于 X 的真实论文；未归属的假设属于无法证伪的修辞。
+9. **重命名维度的伪新颖性。** 宣布新的偏移类型（标注风格、提示分布、架构偏移）需要证明其未被普通域偏移度量所涵盖——正交性是举证责任的一部分。
 
-### Handoff to Stage 3
+### 移交给 Stage 3
 
-- Attack order: protected keeps first (they anchor the portfolio), then the ×N-convergent threads (highest hidden-prior risk).
-- Verify every memory-based prior flagged above; where partial overlap is found, **mutate, do not auto-kill** (rubric rule).
-- Enforce the ≥30% constructive/mechanism quota using the revive list plus A1's protect set.
+- 攻击顺序：重点保护的保留项优先（它们锚定组合），随后是 ×N 收敛的主线（隐藏前人工作风险最高）。
+- 验证上方标记的所有基于记忆的先验；若发现部分重叠，**变异，不要自动淘汰**（评估标准规则）。
+- 利用复活列表加上 A1 的保护集合，严格执行 ≥30% 建设性/机理类创意的配额要求。

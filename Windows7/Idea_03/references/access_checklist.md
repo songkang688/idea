@@ -1,70 +1,66 @@
-# Idea_03 — Day-1 Access Checklist
+# Idea_03 — 首日访问权限核对清单（Day-1 Access Checklist）
 
-**Status: TEMPLATE. Nothing below has been confirmed.**
+**状态：模板（TEMPLATE）。以下内容均未获最终确认。**
 
-## Compute
+## 算力资源
 
-| Item | Status |
+| 项目 | 状态 |
 |---|---|
-| 8×A100-80GB allocation, ~2,450 A100-h core budget | ☐ |
-| Queue policy allows 12-hour runs | ☐ |
-| Storage for 15 checkpoints + base | ☐ |
+| 8×A100-80GB 配额分配，约 ~2,450 A100-h 核心预算 | ☐ |
+| 任务队列调度策略允许 12 小时连续运行 | ☐ |
+| 满足 15 个 checkpoint + 基底模型的存储空间 | ☐ |
 
-`KNOWN FACT` One full LLaVA-1.5-7B fine-tune ≈100 A100-h. If the allocation cannot absorb 800 A100-h
-before a go/no-go, this project should not start.
+`KNOWN FACT` 完成一次完整的 LLaVA-1.5-7B 微调约需 100 A100-h。若算力分配无法支撑在得出继续/终止结论前消耗 800 A100-h，则本项目不应启动。
 
-## Repositories (pin by commit, not branch)
+## 代码仓库（按 commit SHA 锁定，绝不按分支锁定）
 
-| Repo | Role | Cloned | Commit | Smoke test |
+| 代码仓库 | 承担角色 | 已克隆 | Commit SHA | Smoke 测试 |
 |---|---|---|---|---|
-| `haotian-liu/LLaVA` | training harness | ☐ | | ☐ |
-| `TRI-ML/prismatic-vlms` | fallback + E5 cross-family | ☐ | | ☐ |
-| `EleutherAI/lm-evaluation-harness` | language strata | ☐ | | ☐ |
-| `EvolvingLMMs-Lab/lmms-eval` | VL sanity strata | ☐ | | ☐ |
+| `haotian-liu/LLaVA` | 训练工具平台 | ☐ | | ☐ |
+| `TRI-ML/prismatic-vlms` | 备用平台 + E5 跨家族复现 | ☐ | | ☐ |
+| `EleutherAI/lm-evaluation-harness` | 语言能力分层评测 | ☐ | | ☐ |
+| `EvolvingLMMs-Lab/lmms-eval` | 视觉语言健全性评测 | ☐ | | ☐ |
 
-`KNOWN FACT` The LLaVA repo is in maintenance mode. Pin `transformers` and `deepspeed` explicitly;
-the shipped configs assume versions that no longer install cleanly. Budget days, not weeks.
+`KNOWN FACT` LLaVA 仓库目前处于维护状态。需明确锁定 `transformers` 和 `deepspeed` 版本；其自带的配置文件依赖当前无法顺利安装的旧版本。预算耗时应以天为单位，不可拖延至数周。
 
-## Data and weights
+## 数据集与模型权重
 
-| Item | Licence | Status |
+| 资源项 | 许可证 | 状态 |
 |---|---|---|
-| `llava_v1_5_mix665k` | mixed; ShareGPT provenance is scraped and legally murky | ☐ |
-| LLaVA-1.5 projector weights | — | ☐ |
-| Vicuna-7B | LLaMA-2 community licence, research use | ☐ |
+| `llava_v1_5_mix665k` | 混合；ShareGPT 数据源自网页抓取且存在法律模糊性 | ☐ |
+| LLaVA-1.5 projector 权重 | — | ☐ |
+| Vicuna-7B | LLaMA-2 社区许可证，仅限科研使用 | ☐ |
 | `allenai/c4` | ODC-BY | ☐ |
-| Curated instruction text for `A1` | as above | ☐ |
+| 用于 `A1` 的精选指令文本 | 同上 | ☐ |
 
-The ShareGPT provenance issue is mitigated incidentally: we **strip** that slice from the base, which
-reduces exposure. The published-recipe reference run still uses it, and a careful reviewer will note
-that; the mitigation is disclosure, not avoidance.
+ShareGPT 数据源的合规性问题通过我们的设计得到了附带缓解：我们从基底数据中**剥离**了该分片，从而降低了风险敞口。复现已发表配方的参考实验依然使用该分片，严谨的评审员会注意到这一点；缓解举措是如实披露，而非刻意回避。
 
-## Measurements that must happen at E0
+## 必须在 E0 阶段完成的测量
 
-| Measurement | Why it cannot wait | Done |
+| 测量项 | 为什么不能推迟 | 完成状态 |
 |---|---|---|
-| Exact token count of the ShareGPT slice | sets every arm's token budget | ☐ |
-| Base-model score on every stratum | fixes every retention denominator | ☐ |
-| Seed σ on the base evals | half of the P0 threshold | ☐ |
-| Declared MDE | must precede the six E1 runs | ☐ |
+| ShareGPT 分片的精确 token 计数 | 决定所有实验臂的 token 预算 | ☐ |
+| 基底模型在各分层上的得分 | 确定每个保持率比值计算的分母 | ☐ |
+| 基底评测的随机种子标准差 σ | 构成 P0 门禁阈值的一半 | ☐ |
+| 声明的最小可检测效应（MDE） | 必须在 6 次 E1 实验运行前确立 | ☐ |
 
-## Freeze checklist — all before any arm runs
+## 冻结核对清单 — 必须在运行任何实验臂前全部完成
 
-| Item | Committed |
+| 检查项 | 提交状态 |
 |---|---|
-| `configs/preregistration.yaml` fully populated | ☐ |
-| Eval YAMLs pinned and committed | ☐ |
-| Primary matching convention recorded (per-layer) | ☐ |
-| MDE recorded | ☐ |
-| Strata list final after the denominator gate | ☐ |
+| `configs/preregistration.yaml` 内容完整填充 | ☐ |
+| 评测 YAML 文件版本锁定并提交 | ☐ |
+| 主要匹配约定记录在案（逐层匹配） | ☐ |
+| 声明的 MDE 记录在案 | ☐ |
+| 分母门禁判定后的最终分层列表确认 | ☐ |
 
-Freeze date: ______  Committed by: ______
+冻结日期：______  提交人：______
 
-## Gates
+## 门禁判定
 
-| Gate | Passed | Date |
+| 门禁 | 是否通过 | 日期 |
 |---|---|---|
-| E0 reproduces LLaVA-1.5 within noise | ☐ | |
-| Denominator gate applied; failing strata replaced | ☐ | |
-| E0b `A3` produces a usable gradient | ☐ | |
-| **E1 / P0 power gate** | ☐ | |
+| E0 在噪声容差范围内复现 LLaVA-1.5 | ☐ | |
+| 分母门禁执行完毕；不合格分层完成替换 | ☐ | |
+| E0b 确认 `A3` 产出可用梯度 | ☐ | |
+| **E1 / P0 检验效能门禁** | ☐ | |
