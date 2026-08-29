@@ -1,0 +1,63 @@
+{
+ "schema_version": "1.0",
+ "task_id": "p2_wave_b_w13_p2_b003_judge",
+ "windows_id": "Windows13",
+ "windows_number": 13,
+ "windows_path": "Windows13",
+ "batch_id": "W13-P2-B003",
+ "role": "wave_b_judge",
+ "candidate_count": 61,
+ "keep_count": 42,
+ "borderline_count": 18,
+ "kill_count": 1,
+ "review_queue_count": 36,
+ "gate8_lane_count": 14,
+ "kill_rationale": "One provisional Kill (B-056): two kill_lean seats (novelty, skeptic) and zero keep seats, anchored to judge_B's recorded in-record kill dissent (near-tautological - a global threshold provably cannot express spatially varying costs, so the measured gap's size is dictated by invented cost maps) with the salvageable residue already covered by B-049/B-053; not a prior-art kill, and it is routed to the Wave C review queue for confirmation rather than silently dropped. All four kill-vs-keep splits (B-041, B-046, B-085, B-094) are parked as Borderline in the review queue, not killed: two are redundancy-bound merge disputes (B-041 into B-048, B-046 into A-035) and two are difficulty/protocol-priced records whose upside the policy protects.",
+ "inputs": {
+  "master": {
+   "file": "Windows13/_state/ideas_master.jsonl",
+   "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+   "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+   "lines": "123-183"
+  },
+  "batches": {
+   "file": "Windows13/_state/tasks/p2/state_reader/batches.json",
+   "branch": "origin/cursor/p2-state-reader-05a0-101c"
+  },
+  "policy": {
+   "file": "Windows13/_state/tasks/p2/state_reader/queue.json",
+   "section": "ranking_policy_notes M1-M7"
+  },
+  "wave_a_reviews": [
+   {
+    "role": "reviewer_novelty_significance",
+    "branch": "origin/cursor/p2-wave-a-b003-novelty-05a0",
+    "commit": "ec74e3f805d557e5c2aaba5d41e1c9e781184121"
+   },
+   {
+    "role": "reviewer_practical_experimentalist",
+    "branch": "origin/cursor/p2-wave-a-b003-experimentalist-05a0",
+    "commit": "247e6ce6f93977d1bbd45f4ac3022b8f5819b23d"
+   },
+   {
+    "role": "reviewer_skeptical_high_risk",
+    "branch": "origin/cursor/p2-wave-a-b003-skeptic-05a0",
+    "commit": "f63898c4ad3518a4a0dd3a4fdbaa9c6a229b012f"
+   }
+  ]
+ },
+ "policy_applied": {
+  "M1_gate8": "14 records carry suspected-prior-art flags routed to the p1_gate8_novelty_triage lane, none silently killed: 9 skeptic-flagged (B-035, B-052, B-053, B-060, B-066, B-084, C-002, C-004, C-006 - C-006 is the heaviest, triple-judge-flagged, severity high) plus 5 novelty-seat adjacency flags (B-050, B-056, B-069, B-071, C-003). The single provisional Kill (B-056) is tautology-based, not prior-art-based.",
+  "M4_family": "In-batch families adjudicated provisionally: metric-pathology (B-033 primary over B-034/B-037/B-040); tf06 cue-ablation (B-048 primary absorbing B-041; B-046 contested merge into A-035 cross-batch; B-045 co-adjudicates with A-038); dense-uncertainty calibration (B-049/B-053 one-anchor risk, B-055 differentiated, B-056 killed); tf07 physics six-pack (B-057/B-059/B-061/B-063 keep, B-060 parked); queue.json minimum families B-060/B-065 (both parked Borderline pending the information-location adjudication) and C-003/C-004/C-057 (C-004 suggested in-batch anchor); temporal cluster with the B-066/B-071 forced instrument choice (B-066 cheaper, kept); decoder cluster six-pack (B-073 dg09 primary); error-accounting four (B-091 recommended primary, B-095 co-primary kept, B-089/B-094 parked); cross-shard provenance-forensics family (B-035/B-085 parked pending adjudication with A-063/B-021); stratification program B-058/B-082 co-adjudication; B-058/B-082/B-032 share the continuum-ramp apparatus.",
+  "M5_soft_thresholds": "All 61 records lack numeric kill thresholds per the experimentalist seat (has_numeric_kill_threshold=false); m5_numeric_kill_threshold_present=false carried on every verdict; numeric retrofit required before any of them enters the 200; B-089 and B-094 carry the batch's weakest falsifiability and are down-ranked accordingly.",
+  "M6_asset_debt": "m6_asset_pinning_debt=true carried on all 61 records (no pinned dataset+model anywhere in this batch); binding for the hardware-gated crowd (B-060/B-071/B-083) where no public asset chain exists at all.",
+  "M7_thin_territories": "Not triggered: no fairness/bias-social, inference-time compute, embodied, or continual/lifecycle records in this batch (hard-domain segmentation, uncertainty/calibration, and evaluation forensics throughout).",
+  "high_risk_high_upside": "Protected from kill and parked Borderline instead: B-060 (sensing information-gap proof), B-065 (information-location flagship), B-083 (supervision economics, triple-anomaly), B-090 (ambiguity-type transfer, triple-anomaly), B-094 (error-partition program). Hardware or compute difficulty was never used as a kill reason (B-060/B-065/B-071/B-072/B-083/B-085 all parked, not killed).",
+  "novelty": "unverified for all 61 records; no citations asserted or fabricated."
+ },
+ "recommended_next_task_type": "p2_wave_a_review",
+ "recommended_next_note": "B003 Wave B done; per queue.json dispatch rules the next dispatchable tasks are Wave A reviewer triplets for the remaining batches (p2_wave_a_review). A p2_wave_b_judge for another batch becomes dispatchable only once that batch has all 3 Wave A reviews. The 36-entry review queue feeds Wave C (p2_wave_a_review lane owns the disagreement resolution before any 200-cut).",
+ "complete": true,
+ "provisional": true,
+ "final_200_cut": false
+}
