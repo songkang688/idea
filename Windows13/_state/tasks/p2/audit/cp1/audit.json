@@ -1,0 +1,307 @@
+{
+ "schema_version": "1.0",
+ "task_id": "p2_audit_cp1",
+ "checkpoint": 1,
+ "role": "periodic_auditor",
+ "windows_id": "Windows13",
+ "windows_number": 13,
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "defined_by": "P0",
+ "generated_at_utc": "2026-08-29T05:36:10Z",
+ "generated_on_branch": "cursor/p2-audit-cp1-05a0",
+ "covers_batches": [
+  "W13-P2-B001",
+  "W13-P2-B002",
+  "W13-P2-B003",
+  "W13-P2-B004",
+  "W13-P2-B005"
+ ],
+ "no_re_judging": true,
+ "inputs": {
+  "wave_b_branches": {
+   "W13-P2-B001": "origin/cursor/p2-wave-b-b001-judge-05a0",
+   "W13-P2-B002": "origin/cursor/p2-wave-b-b002-judge-05a0",
+   "W13-P2-B003": "origin/cursor/p2-wave-b-b003-judge-05a0",
+   "W13-P2-B004": "origin/cursor/p2-wave-b-b004-judge-05a0",
+   "W13-P2-B005": "origin/cursor/p2-wave-b-b005-judge-05a0"
+  },
+  "batches_definition": "Windows13/_state/tasks/p2/state_reader/batches.json @ origin/cursor/p2-state-reader-05a0-101c",
+  "policy": "Windows13/_state/tasks/p2/state_reader/queue.json ranking_policy_notes M1-M7 @ origin/cursor/p2-state-reader-05a0-101c",
+  "master_read_only": "Windows13/_state/ideas_master.jsonl @ origin/cursor/windows13-stage1-exploration-ee41-face 4a94eafb0aed28292b117481d2cb986aec849b13 (1220 records, md5 175193e5fef842e8813f936d445ea92f)"
+ },
+ "coverage": {
+  "expected_total": 305,
+  "observed_total": 305,
+  "frozen_membership_source": "Windows13/_state/tasks/p2/state_reader/batches.json @ origin/cursor/p2-state-reader-05a0-101c",
+  "per_batch": {
+   "W13-P2-B001": {
+    "verdict_lines": 61,
+    "missing_vs_frozen": [],
+    "extra_vs_frozen": [],
+    "duplicates": [],
+    "master_line_mismatches": 0,
+    "done_judge_counts_match_computed": true,
+    "status": "PASS"
+   },
+   "W13-P2-B002": {
+    "verdict_lines": 61,
+    "missing_vs_frozen": [],
+    "extra_vs_frozen": [],
+    "duplicates": [],
+    "master_line_mismatches": 0,
+    "done_judge_counts_match_computed": true,
+    "status": "PASS"
+   },
+   "W13-P2-B003": {
+    "verdict_lines": 61,
+    "missing_vs_frozen": [],
+    "extra_vs_frozen": [],
+    "duplicates": [],
+    "master_line_mismatches": 0,
+    "done_judge_counts_match_computed": true,
+    "status": "PASS"
+   },
+   "W13-P2-B004": {
+    "verdict_lines": 61,
+    "missing_vs_frozen": [],
+    "extra_vs_frozen": [],
+    "duplicates": [],
+    "master_line_mismatches": 0,
+    "done_judge_counts_match_computed": true,
+    "status": "PASS"
+   },
+   "W13-P2-B005": {
+    "verdict_lines": 61,
+    "missing_vs_frozen": [],
+    "extra_vs_frozen": [],
+    "duplicates": [],
+    "master_line_mismatches": 0,
+    "done_judge_counts_match_computed": true,
+    "status": "PASS"
+   }
+  },
+  "all_final_200_decision_not_made_here": true,
+  "all_marked_provisional": true,
+  "status": "PASS"
+ },
+ "integrity": {
+  "ideas_master_untouched": true,
+  "window_lock_untouched": true,
+  "evidence": "each judge branch adds only its own 3 output files under Windows13/_state/tasks/p2/wave_b/w13-p2-b00N/; ideas_master.jsonl and window.lock.json exist only on the read-only master branch; canonical master @ 4a94eafb0aed28292b117481d2cb986aec849b13 verified: 1220 lines, md5 175193e5fef842e8813f936d445ea92f",
+  "fabricated_citation_or_number_pattern_hits": 0,
+  "novelty_status_not_unverified": [],
+  "novelty_unverified_all_305": true,
+  "status": "PASS"
+ },
+ "policy_checks": {
+  "M1_gate8_no_silent_prior_art_kill": {
+   "gate8_flagged_total": 138,
+   "gate8_lane_uniform": true,
+   "kills_total": 2,
+   "kills_detail": [
+    {
+     "id_seed": "W13-P1-A-077",
+     "batch": "W13-P2-B002",
+     "consensus": "split_kill_vs_borderline",
+     "prior_art_basis": false,
+     "routed_to_review_queue": true,
+     "gate8_lane": "p1_gate8_novelty_triage"
+    },
+    {
+     "id_seed": "W13-P1-B-056",
+     "batch": "W13-P2-B003",
+     "consensus": "majority_kill_one_borderline",
+     "prior_art_basis": false,
+     "routed_to_review_queue": true,
+     "gate8_lane": "p1_gate8_novelty_triage"
+    }
+   ],
+   "silent_prior_art_kills": [],
+   "m1_named_records_in_scope": {
+    "W13-P1-C-016": "Borderline, high-severity GATE-8, routed to p1_gate8_novelty_triage per M1 binding rule (B004)",
+    "W13-P1-D-059": "Borderline, high-severity GATE-8, disposition explicitly cites M1 BINDING outvoted prior-art-kill list (B005)"
+   },
+   "status": "PASS"
+  },
+  "M4_family_adjudication": {
+   "records_with_family_note": 261,
+   "majority_keep_downgraded_to_borderline": 19,
+   "downgrade_basis": "all 19 downgrades carry documented M4 family-consolidation (merge votes, absorb lists, best-of-family) or medium GATE-8 grounds; none are unexplained",
+   "status": "PASS"
+  },
+  "M5_soft_threshold_downrank": {
+   "field_present_on_all_305": true,
+   "records_lacking_numeric_kill_threshold": 303,
+   "kills_caused_by_missing_threshold": 0,
+   "note": "both kills are substantive (architectural tautology A-077; near-tautology + redundancy B-056), not threshold-absence kills; down-rank-not-kill respected. NOTE: 303/305 (99.3%) flagged as lacking thresholds vs global census 431/1220 (35.3%) - judges applied a stricter per-record definition; consolidator must reconcile before using this field for ranking",
+   "status": "PASS"
+  },
+  "M6_asset_debt": {
+   "field_present_on_all_305": true,
+   "records_carrying_debt": 305,
+   "note": "305/305 carry debt vs global census 287/1220 (23.5%) - same stricter-definition drift as M5; B001 done_judge marks debt binding for A-012/A-053; debt carried forward explicitly, none hidden",
+   "status": "PASS"
+  },
+  "M7_thin_territory_protection": {
+   "thin_territory_kills": [],
+   "observations": "adapter_ecosystem_continual (continual/lifecycle-adjacent, n=5): 2 Keep, 3 Borderline, 0 Kill; no fairness/bias-social, inference-time-compute, or embodied records fall in lines 1-305; B001 done_judge explicitly records M7 as not triggered",
+   "status": "PASS"
+  }
+ },
+ "bias_findings": {
+  "mean_score_over_sorting": {
+   "finding": "not_observed",
+   "evidence": "verdicts derive from 3-seat categorical votes plus documented policy overrides, not numeric averaging; 19/79 majority-keep records downgraded on explicit M4/GATE-8 grounds; the 6 split_kill_vs_borderline records resolved case-by-case (5 Borderline, 1 Kill), not mechanically"
+  },
+  "high_risk_high_upside_mistreatment": {
+   "finding": "not_observed",
+   "evidence": "13 records carry >=1 kill_lean seat vote: 11 parked Borderline + routed to review queue, 2 killed WITH routing; zero kill_lean records eliminated without Wave C routing; A-032 explicitly protected from a compute-based kill per B001 done_judge"
+  },
+  "minority_cluster_suppression": {
+   "finding": "not_observed_watch",
+   "evidence": "zero kills in clusters of size <=5; both kills sit in mid-size clusters (n=6, n=7); Pearson r(cluster size, keep rate) = 0.29 over 42 clusters - weak positive tilt, small clusters land in Borderline (routed) rather than being eliminated",
+   "watch": "ignored-assumptions (n=2) has 0% Keep (both Borderline, routed); monitor at Wave C"
+  },
+  "paper_shaped_idea_preference": {
+   "finding": "mild_tilt_at_keep_borderline_margin",
+   "evidence": "critique/negative-flavored clusters keep below the 66.2% overall Keep rate: negative-results 29%, protocol-assumptions 33%, human-baselines-annotation 43%, vlm-eval-weaknesses 40%; however zero such records were killed - all held Borderline and routed to Wave C, so no elimination occurred",
+   "recommendation": "consolidator/Wave C should give negative-results and protocol-critique Borderlines a genuine second look so the tilt does not compound at the 200-cut"
+  },
+  "popular_topic_bias": {
+   "finding": "mild_tilt_at_keep_borderline_margin",
+   "evidence": "mainline SAM-mechanics clusters keep above average (prompt_geometry_failure_modes 90%, representation_and_output_space 100%, decoder_token_mechanics 88%) while eval/critique clusters keep below average; consistent with the paper-shaped tilt; affects Keep-vs-Borderline labels only, not survival, since Borderlines remain in play via the review queue"
+  }
+ },
+ "drift": {
+  "per_batch": {
+   "W13-P2-B001": {
+    "keep": 42,
+    "borderline": 19,
+    "kill": 0,
+    "keep_pct": 68.9,
+    "borderline_pct": 31.1,
+    "kill_pct": 0.0,
+    "review_queue": 33,
+    "review_queue_pct": 54.1,
+    "gate8_flagged": 22,
+    "gate8_density_pct": 36.1,
+    "gate8_severity": {
+     "low": 17,
+     "medium": 5
+    }
+   },
+   "W13-P2-B002": {
+    "keep": 43,
+    "borderline": 17,
+    "kill": 1,
+    "keep_pct": 70.5,
+    "borderline_pct": 27.9,
+    "kill_pct": 1.6,
+    "review_queue": 29,
+    "review_queue_pct": 47.5,
+    "gate8_flagged": 21,
+    "gate8_density_pct": 34.4,
+    "gate8_severity": {
+     "low": 9,
+     "moderate": 10,
+     "high": 2
+    }
+   },
+   "W13-P2-B003": {
+    "keep": 42,
+    "borderline": 18,
+    "kill": 1,
+    "keep_pct": 68.9,
+    "borderline_pct": 29.5,
+    "kill_pct": 1.6,
+    "review_queue": 36,
+    "review_queue_pct": 59.0,
+    "gate8_flagged": 14,
+    "gate8_density_pct": 23.0,
+    "gate8_severity": {
+     "medium": 9,
+     "low": 4,
+     "high": 1
+    }
+   },
+   "W13-P2-B004": {
+    "keep": 39,
+    "borderline": 22,
+    "kill": 0,
+    "keep_pct": 63.9,
+    "borderline_pct": 36.1,
+    "kill_pct": 0.0,
+    "review_queue": 34,
+    "review_queue_pct": 55.7,
+    "gate8_flagged": 35,
+    "gate8_density_pct": 57.4,
+    "gate8_severity": {
+     "low": 9,
+     "medium": 20,
+     "high": 6
+    }
+   },
+   "W13-P2-B005": {
+    "keep": 36,
+    "borderline": 25,
+    "kill": 0,
+    "keep_pct": 59.0,
+    "borderline_pct": 41.0,
+    "kill_pct": 0.0,
+    "review_queue": 31,
+    "review_queue_pct": 50.8,
+    "gate8_flagged": 46,
+    "gate8_density_pct": 75.4,
+    "gate8_severity": {
+     "high": 10,
+     "medium": 21,
+     "low": 15
+    }
+   }
+  },
+  "observations": [
+   "Keep% declines across the checkpoint: 68.9 / 70.5 / 68.9 / 63.9 / 59.0; Borderline% rises 31.1 -> 41.0",
+   "GATE-8 density surges in B004 (57.4%) and B005 (75.4%) vs 23.0-36.1% in B001-B003, with high-severity flags concentrating there (0/2/1/6/10); the Keep decline tracks prior-art shadow in C/D-prefix territory and appears content-driven rather than judge drift, but requires normalization before any cross-batch pooling",
+   "review_queue size stable at 29-36 per batch (47.5%-59.0% of records)",
+   "kill rate nearly zero (2/305 = 0.66%): Wave B is deliberately conservative and routes contested cases; the 200-cut pressure (pooled Keeps already 202 of an eventual ~200 target across only 5 of 20 batches) is fully deferred downstream",
+   "gate8 severity vocabulary inconsistent: B002 uses 'moderate' where the other four batches use 'medium'",
+   "M5/M6 flag prevalence (99.3% / 100%) far exceeds the state-reader global census proportions (431/1220, 287/1220); definition drift between census and per-record judging"
+  ]
+ },
+ "escalations_for_consolidator": [
+  {
+   "id": "E1",
+   "severity": "low",
+   "item": "Normalize GATE-8 severity vocabulary before aggregation: B002 'moderate' == 'medium' elsewhere."
+  },
+  {
+   "id": "E2",
+   "severity": "medium",
+   "item": "Reconcile M5 (numeric-kill-threshold) and M6 (asset-pinning) per-record flags with the state-reader global census (431 and 287 of 1220) before using either field in cross-batch ranking; judges applied a stricter definition than the census."
+  },
+  {
+   "id": "E3",
+   "severity": "medium",
+   "item": "Do not naively pool Keep lists across batches: Keep% falls and GATE-8 density rises sharply in B004/B005 (C/D prefixes); apply GATE-8-aware, per-batch-normalized comparison at consolidation."
+  },
+  {
+   "id": "E4",
+   "severity": "medium",
+   "item": "Counter the paper-shaped/popular-topic tilt at the Keep/Borderline margin: negative-results, protocol-assumptions, human-baselines-annotation, and vlm-eval-weaknesses clusters sit in Borderline at above-average rates; Wave C must give these a genuine second look (M7 spirit), not rubber-stamp Keep lists."
+  },
+  {
+   "id": "E5",
+   "severity": "high",
+   "item": "M1 BINDING carry-through: W13-P1-C-016 and W13-P1-D-059 (outvoted prior-art-kill list) are parked Borderline and MUST clear p1_gate8_novelty_triage before any 200-cut entry; consolidator must not promote them past the lane."
+  },
+  {
+   "id": "E6",
+   "severity": "medium",
+   "item": "Kill pressure fully deferred: only 2/305 provisional kills while pooled Keeps from just 5 of 20 batches already exceed the 200 target; the consolidator must plan the real cut mechanism rather than inherit Wave B Keep labels as survivals."
+  }
+ ],
+ "verdict": "PASS_WITH_REMEDIATION",
+ "verdict_rationale": "All hard compliance gates pass: 305/305 coverage exact against frozen membership, zero fabrication signals, master/lock untouched, zero silent prior-art kills, M4-M7 applied and documented. PASS_WITH_REMEDIATION (not plain PASS) because consolidation-blocking normalizations exist: severity-vocabulary mismatch (E1), M5/M6 census reconciliation (E2), and batch-normalization requirements (E3) must be handled by the consolidator before cross-batch aggregation. No individual record was re-judged; no Keep/Kill was changed by this audit.",
+ "recommended_next_task_type": "p2_consolidator_cp1"
+}

@@ -1,0 +1,30 @@
+{
+ "schema_version": "1.0",
+ "task_id": "p2_audit_cp1",
+ "windows_id": "Windows13",
+ "windows_number": 13,
+ "windows_path": "Windows13",
+ "role": "periodic_auditor",
+ "checkpoint": 1,
+ "covers_batches": [
+  "W13-P2-B001",
+  "W13-P2-B002",
+  "W13-P2-B003",
+  "W13-P2-B004",
+  "W13-P2-B005"
+ ],
+ "verdict": "PASS_WITH_REMEDIATION",
+ "coverage_verified": "305/305 verdict lines exactly match frozen batch membership; zero missing, zero duplicate",
+ "no_re_judging": true,
+ "keep_kill_unchanged_by_audit": true,
+ "ideas_master_untouched": true,
+ "window_lock_untouched": true,
+ "escalation_count": 6,
+ "outputs": [
+  "Windows13/_state/tasks/p2/audit/cp1/audit.json",
+  "Windows13/_state/tasks/p2/audit/cp1/audit.md",
+  "Windows13/_state/tasks/p2/audit/cp1/done.json"
+ ],
+ "recommended_next_task_type": "p2_consolidator_cp1",
+ "complete": true
+}
