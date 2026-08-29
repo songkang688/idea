@@ -1,20 +1,20 @@
-# Stage 3 — Prior-work assassin (cheap-killer cluster)
+# Stage 3 —— Prior-work 刺客（廉价 killer 簇）
 
-Source: [Stage3 prior-work kill cheap](bc-adbcd019-2528-5e6f-b9dc-8942aabc525b). Citations were web-searched; do not treat as exhaustive.
+来源：[Stage3 prior-work kill cheap](bc-adbcd019-2528-5e6f-b9dc-8942aabc525b)。引用是通过网页检索得到的，不要当作穷尽的。
 
-## Continue = keep
+## Continue = 保留
 
-- SAM AMG ≈ HU clustering on CT (novelty_conf 0.6)
-- Camera-ID leakage inflation on smoke/fire (0.55)
+- 在 CT 上 SAM AMG ≈ HU 聚类（novelty_conf 0.6）
+- 烟雾／火焰上的相机 ID 泄漏导致指标虚高（0.55）
 
-## Continue = mutate
+## Continue = 变异
 
-- Empty-slice FPR vs Dice leaderboard decorrelation (drop the gate method)
-- VLM alignment tax as stage-isolated localization curve
-- Atlas centroid vs CLIP organ text (mechanism: text is spatial prior)
+- 空切片 FPR 与 Dice 排行榜的去相关（放弃那个门控方法）
+- 把 VLM 对齐税做成阶段隔离的定位曲线
+- Atlas 质心 vs CLIP 器官文本（机制：文本充当空间先验）
 
-## Continue = kill
+## Continue = 杀掉
 
-- LN-affine ≈ LoRA; histogram-matching DA; LoRA effective rank; prompt-jitter UQ; non-monotonic clicks; Dice vs CE calibration
+- LN-affine ≈ LoRA；直方图匹配做域适应；LoRA 有效秩；提示抖动做不确定性量化；非单调点击；Dice vs CE 校准
 
-Full JSONL: `stage3_prior_work_kill_cheap.jsonl`
+完整 JSONL：`stage3_prior_work_kill_cheap.jsonl`

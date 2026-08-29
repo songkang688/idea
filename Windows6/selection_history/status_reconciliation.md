@@ -1,85 +1,85 @@
-# Status reconciliation ledger (W6-T3)
+# 状态调和总账（W6-T3）
 
-- **Windows ID:** Windows6
-- **Branch:** `cursor/windows6-research-idea-evolution-b55d`
-- **Performed on:** 2026-08-29 (UTC)
-- **Base commit:** `cf3ac70` (immediately after W6-T2 landed `stage6_battle.md`)
-- **Task:** W6-T3 (last of three Windows6 close-out tasks: T1 → T2 → T3)
+- **Windows ID：** Windows6
+- **分支：** `cursor/windows6-research-idea-evolution-b55d`
+- **执行日期：** 2026-08-29（UTC）
+- **基线提交：** `cf3ac70`（W6-T2 落地 `stage6_battle.md` 之后紧接的那次提交）
+- **任务：** W6-T3（Windows6 三个收尾任务中的最后一个：T1 → T2 → T3）
 
-## Why this file exists
+## 本文件为什么存在
 
-Before this task, four files in one round asserted four different stages. W6-T1 registered the clash as INCONSISTENCY-01…04 in [`stage5_top5.md`](stage5_top5.md) §5 but deliberately did not fix it; W6-T2 named the incoherent status record as **Ground 3** for refusing to lock the Final 3. This ledger is the before/after record of the fix, so a human reviewer can check each edit against its authority without diffing.
+在本任务之前，同一轮里有四个文件各自声称四个不同的阶段。W6-T1 已把这处冲突登记为 [`stage5_top5.md`](stage5_top5.md) §5 中的 INCONSISTENCY-01…04，但有意没有去修；W6-T2 则把这份不自洽的状态记录点名为拒绝锁定 Final 3 的 **Ground 3**。本总账就是这次修复的前后对照记录，好让人工评审无需 diff 就能逐条核对每处编辑与其依据。
 
-**The authority for every status statement below is [`stage6_battle.md`](stage6_battle.md) §5.** W6-T3 did not re-adjudicate anything. The verdict it propagates is the one W6-T2 issued: **the Final 3 are PROVISIONAL, not locked.**
+**下文每一条状态陈述的依据都是 [`stage6_battle.md`](stage6_battle.md) §5。** W6-T3 没有重新裁决任何事情。它传播的结论就是 W6-T2 当初给出的那一个：**Final 3 是 PROVISIONAL，尚未锁定。**
 
-## The single status line now used everywhere
+## 现在各处统一使用的那一条状态语句
 
-> Stages 1–6 recorded. Final 3 **PROVISIONAL — not locked**. GATE-A / GATE-B / GATE-C open; GATE-D closed by W6-T3.
+> Stage 1–6 已记录。Final 3 **PROVISIONAL —— 尚未锁定**。GATE-A / GATE-B / GATE-C 未关闭；GATE-D 已由 W6-T3 关闭。
 
-## Edit-by-edit
+## 逐条编辑
 
-### 1. `selection_history/supervisor_log.md` — the "Current stage" field (INCONSISTENCY-02)
-
-| | |
-|---|---|
-| **Before** | `Current stage: **Stage 1 — Massive Idea Exploration** (retry wave)` |
-| **After** | `Current stage: **Stage 6 — adjudicated and recorded.** Final 3 remain **PROVISIONAL**, not locked, pending GATE-A/B/C in stage6_battle.md §5.` |
-| **Authority** | `stage6_battle.md` §5 (verdict) and the existence of `stage5_top5.md` + `stage6_battle.md`. |
-| **Note** | This field was not merely out of date relative to other files — it contradicted **its own dispatch log four rows below**, which already recorded *"Stage3 assassin done"* and the Reviewer #2 pass. `Last updated` moved 2026-08-28 → 2026-08-29. |
-| **Preserved** | All four original dispatch rows are untouched; they are history. Three rows were **appended** (W6-T1, W6-T2, W6-T3). The `## Numbering` and `## Policy` sections are unchanged — in particular the `1000→200→50→20→5→3` policy line is left standing, because it records what was *intended*, and `stage5_top5.md` §1 already documents that it was not executed. |
-
-### 2. `README.md` — the Status line (INCONSISTENCY-01)
+### 1. `selection_history/supervisor_log.md` —— "Current stage" 字段（INCONSISTENCY-02）
 
 | | |
 |---|---|
-| **Before** | `- **Status:** Provisional Final 3 packaged; Stage 5/6 still confirming against DE-top10 assassin + auditor.` |
-| **After** | `- **Status:** Stages 1–6 recorded. Final 3 are **PROVISIONAL — not locked.**` plus a new subsection **"What is still missing before the Final 3 can be locked"** carrying the GATE-A/B/C table and the note that GATE-D is closed. |
-| **Authority** | `stage6_battle.md` §5, including the gate table and the closing instruction *"no downstream document should cite Windows6 as having a locked Final 3 until the gates are closed and recorded."* |
-| **Why the wording changed at all** | The old line was an *exitless* status: "still confirming against DE-top10 assassin + auditor" named no completion criterion, and both named artifacts (`stage3_DE_top10.json.md`, `auditor_overlay.md`) had in fact already existed when it was written. A reader could not tell what would end the confirming. The replacement keeps `provisional` but states the exit condition. |
+| **改前** | `Current stage: **Stage 1 — Massive Idea Exploration** (retry wave)` |
+| **改后** | `Current stage: **Stage 6 — adjudicated and recorded.** Final 3 remain **PROVISIONAL**, not locked, pending GATE-A/B/C in stage6_battle.md §5.` |
+| **依据** | `stage6_battle.md` §5（结论），以及 `stage5_top5.md` + `stage6_battle.md` 的存在本身。 |
+| **备注** | 这个字段不仅仅是相对其他文件过时——它与**自己下方第四行的派发日志**相矛盾，那里早已记录了 *"Stage3 assassin done"* 以及 Reviewer #2 环节。`Last updated` 由 2026-08-28 改为 2026-08-29。 |
+| **保留** | 四条原始派发行一字未动；它们是历史。另**追加**了三行（W6-T1、W6-T2、W6-T3）。`## Numbering` 与 `## Policy` 两节未改——特别是 `1000→200→50→20→5→3` 那条政策行被原样留下，因为它记录的是当初*意图*要做什么，而 `stage5_top5.md` §1 已经记录了它并未被执行。 |
 
-### 3. `research_summary.md` — the pipeline line (funnel deviation)
-
-| | |
-|---|---|
-| **Before** | `Pipeline executed: 1000+ ideas → scoring → prior-work kill → Reviewer #2.` |
-| **After** | A `## Pipeline actually executed` table giving `1080 raw / 1062 live → ≈142 scored → (10 DE ‖ 12 cheap) → cheap-5 → 3 survive`, with the missing 200 / 50 / 20 bands marked *never produced*, the 600 unscored S-series called out, and a pointer to `stage5_top5.md` §1. Followed by a `## Final 3 — PROVISIONAL, not locked` section naming the open gates. |
-| **Authority** | `stage5_top5.md` §1 and §1.1 (line-item verified against the JSONL record counts); `stage6_battle.md` §5 for the lock status. |
-| **Why** | The old line was true only at the level of shape. It implied a completed narrowing pipeline and concealed both the absent bands and the 55% of the pool that was never scored. |
-| **Also changed** | The closing epistemic line now additionally states `ACTUAL RESULT count for the whole round: zero` and records that W6-T3 produced no measurements. |
-
-### 4. `selection_history/evolution_summary.md` — the Stage 5 line (INCONSISTENCY-03, -04)
+### 2. `README.md` —— Status 行（INCONSISTENCY-01）
 
 | | |
 |---|---|
-| **Before** | `- Stage 5 cloud engineering + DE assassin + auditor: **done**. Day-1 budgets ~2 / ~10 / ~8 GPU-h. …` |
-| **After** | Same bullet, amended to `**done as work, but never landed as a file at the time** — retrospectively reconstructed by W6-T1 as stage5_top5.md`, with the GPU-hour figures explicitly relabelled **HYPOTHESIS (budget estimates), not measured runtimes**. |
-| **Added** | A **Stage 6** bullet (adjudicated by W6-T2, verdict PROVISIONAL, and the disclosure that no Stage-6 debate event ever occurred — the adjudication is reconstructed from four recorded rejector passes). |
-| **Added** | A **verdict-count correction** bullet for INCONSISTENCY-04: the file's own *"Keep 2, mutate 3, kill 6"* totals 11, while `stage3_prior_work_kill_cheap.jsonl` holds 12 records (keep 2, **mutate 4**, kill 6). The original line is left in place and corrected underneath rather than silently rewritten, so the arithmetic error stays visible in the record. |
-| **Authority** | `stage5_top5.md` §0 and §5; `stage6_battle.md` §0 and §5. |
+| **改前** | `- **Status:** Provisional Final 3 packaged; Stage 5/6 still confirming against DE-top10 assassin + auditor.` |
+| **改后** | `- **Status:** Stages 1–6 recorded. Final 3 are **PROVISIONAL — not locked.**`，并新增一节 **"Final 3 能被锁定之前还缺什么"**，其中带 GATE-A/B/C 表格以及"GATE-D 已关闭"的说明。 |
+| **依据** | `stage6_battle.md` §5，包括门禁表格及其结尾指令 *"no downstream document should cite Windows6 as having a locked Final 3 until the gates are closed and recorded."* |
+| **为什么措辞要改** | 旧那行是一个*没有出口*的状态："still confirming against DE-top10 assassin + auditor" 没有给出任何完成判据，而且它被写下时，被点名的两个产物（`stage3_DE_top10.json.md`、`auditor_overlay.md`）其实早就已经存在了。读者根本看不出"确认"什么时候才算结束。替换后的版本保留了 `provisional`，但写明了退出条件。 |
 
-## Disposition of the four registered inconsistencies
+### 3. `research_summary.md` —— 流水线那一行（漏斗偏差）
 
-| ID | Registered in `stage5_top5.md` §5 | Disposition |
+| | |
+|---|---|
+| **改前** | `Pipeline executed: 1000+ ideas → scoring → prior-work kill → Reviewer #2.` |
+| **改后** | 一张 `## Pipeline actually executed` 表格，给出 `1080 raw / 1062 live → ≈142 scored → (10 DE ‖ 12 cheap) → cheap-5 → 3 survive`，把缺失的 200 / 50 / 20 档标为 *never produced*，点出 600 条未打分的 S 系列，并给出指向 `stage5_top5.md` §1 的链接。随后是一节 `## Final 3 — PROVISIONAL, not locked`，点名各未关闭的门禁。 |
+| **依据** | `stage5_top5.md` §1 与 §1.1（已逐条与 JSONL 记录数核验）；锁定状态依据 `stage6_battle.md` §5。 |
+| **为什么** | 旧那行只在"形状"层面为真。它暗示了一条已完成的收缩流水线，同时掩盖了缺失的档位以及从未被打分的那 55% 池子。 |
+| **同时还改了** | 结尾那条认知性声明现在还额外写明 `ACTUAL RESULT count for the whole round: zero`，并记录 W6-T3 没有产出任何测量结果。 |
+
+### 4. `selection_history/evolution_summary.md` —— Stage 5 那一行（INCONSISTENCY-03、-04）
+
+| | |
+|---|---|
+| **改前** | `- Stage 5 cloud engineering + DE assassin + auditor: **done**. Day-1 budgets ~2 / ~10 / ~8 GPU-h. …` |
+| **改后** | 同一条，修正为 `**done as work, but never landed as a file at the time** — retrospectively reconstructed by W6-T1 as stage5_top5.md`，并把那几个 GPU-hour 数字明确重标为 **HYPOTHESIS（预算估计），不是实测运行时间**。 |
+| **新增** | 一条 **Stage 6** 条目（由 W6-T2 裁决，结论为 PROVISIONAL，并披露当时从未发生过 Stage-6 辩论事件——该裁决是从四次有记录的 rejector 环节重建的）。 |
+| **新增** | 一条针对 INCONSISTENCY-04 的**裁决计数更正**：该文件自己写的 *"Keep 2, mutate 3, kill 6"* 合计 11，而 `stage3_prior_work_kill_cheap.jsonl` 里有 12 条记录（保留 2、**变异 4**、杀掉 6）。原句被留在原处、在其下方更正，而不是被悄悄改写，这样那处算术错误就仍然留在记录中可见。 |
+| **依据** | `stage5_top5.md` §0 与 §5；`stage6_battle.md` §0 与 §5。 |
+
+## 四处已登记不一致的处置
+
+| ID | 登记在 `stage5_top5.md` §5 中的内容 | 处置 |
 |---|---|---|
-| **INCONSISTENCY-01** | README says Stage 5/6 still confirming | **RESOLVED** — edit 2. Also resolved the fourth phrasing it flagged: `Idea_01/README.md`'s *"Stage 5 in flight"* was updated during the Part-B thickening. |
-| **INCONSISTENCY-02** | `supervisor_log.md` stuck at Stage 1 | **RESOLVED** — edit 1. |
-| **INCONSISTENCY-03** | `evolution_summary.md` claims Stage 5 done with no artifact | **RESOLVED** — edit 4, plus the artifact itself now exists (`stage5_top5.md`). The GPU-hour mislabelling flagged in the same entry is also fixed. |
-| **INCONSISTENCY-04** | Cheap-cluster verdict counts 11 vs 12 | **RESOLVED as a correction, not a rewrite** — edit 4. The wrong count is preserved and annotated rather than deleted. |
+| **INCONSISTENCY-01** | README 说 Stage 5/6 仍在确认中 | **已解决** —— 见编辑 2。同时也解决了它标记的第四处措辞：`Idea_01/README.md` 里的 *"Stage 5 in flight"* 已在 Part-B 加厚过程中更新。 |
+| **INCONSISTENCY-02** | `supervisor_log.md` 卡在 Stage 1 | **已解决** —— 见编辑 1。 |
+| **INCONSISTENCY-03** | `evolution_summary.md` 声称 Stage 5 完成却没有产物 | **已解决** —— 见编辑 4，而且产物本身现在已经存在（`stage5_top5.md`）。同一条目中标记的 GPU-hour 误标问题也已修正。 |
+| **INCONSISTENCY-04** | 廉价簇的裁决计数 11 vs 12 | **以更正而非改写的方式解决** —— 见编辑 4。错误的计数被保留并加注，而不是被删除。 |
 
-## Gate status after W6-T3
+## W6-T3 之后的门禁状态
 
-| Gate | Owner | Status after this task |
+| 门禁 | 责任方 | 本任务之后的状态 |
 |---|---|---|
-| **GATE-A** — camera metadata confirmed on ≥1 public smoke/fire set | Idea_02 executor | **OPEN.** Requires a real dataset lookup; out of scope for a documentation task. `Idea_02/experiments.md` E-A now specifies exactly what closing it looks like. |
-| **GATE-B** — verified base/chat pair sharing vision encoder + coordinate tokenization | Idea_03 executor | **OPEN.** Requires reading real model cards/configs; out of scope. `Idea_03/experiments.md` E-B now specifies the check. |
-| **GATE-C** — survivors ranked against `D-008`/`D-060`/`E-025` on one common rubric | Supervisor | **OPEN.** This is a selection judgement; W6-T3 is explicitly forbidden from changing the Final 3 or re-adjudicating, so it cannot close this gate. |
-| **GATE-D** — status coherence + package depth | W6-T3 | **CLOSED.** Status reconciled (this file); `Idea_01`–`Idea_03` thickened to executable depth with runnable `src/` and passing smoke tests; `Idea_01/proposal.md`'s previously absent §7–28 written out. |
+| **GATE-A** —— 在至少 1 个公开烟雾／火焰数据集上确认相机元数据 | Idea_02 执行者 | **未关闭。** 需要真去查一个真实数据集；超出文档类任务的范围。`Idea_02/experiments.md` 的 E-A 现在已精确规定"关闭它"长什么样。 |
+| **GATE-B** —— 核实一对共享视觉编码器 + 坐标 tokenization 的 base/chat checkpoint | Idea_03 执行者 | **未关闭。** 需要真去读模型卡／配置文件；超出范围。`Idea_03/experiments.md` 的 E-B 现在已规定该项检查。 |
+| **GATE-C** —— 存活者与 `D-008`/`D-060`/`E-025` 在同一套评分标准上排名 | Supervisor | **未关闭。** 这是一项选题判断；W6-T3 被明确禁止改动 Final 3 或重新裁决，因此它无法关闭这道门禁。 |
+| **GATE-D** —— 状态一致性 + package 深度 | W6-T3 | **已关闭。** 状态已调和（即本文件）；`Idea_01`–`Idea_03` 已加厚到可执行深度，`src/` 可运行且 smoke tests 通过；`Idea_01/proposal.md` 此前缺失的 §7–28 已补齐。 |
 
-**Consequence.** Because GATE-A, GATE-B and GATE-C remain open, **the Final 3 stay PROVISIONAL.** W6-T3 had no authority to lock them and did not.
+**后果。** 由于 GATE-A、GATE-B、GATE-C 仍未关闭，**Final 3 保持 PROVISIONAL。** W6-T3 无权锁定它们，也确实没有锁定。
 
-## What W6-T3 did *not* touch
+## W6-T3 *没有*触碰的东西
 
-- **The Final 3 composition** — unchanged.
-- **Any Stage 1–4 artifact** — `stage1_pool/*.jsonl`, `stage2_*`, `stage3_*`, `stage4_reviewer2_cheap5.jsonl` are byte-identical.
-- **The W6-T1 and W6-T2 products** — `stage5_top5.md` and `stage6_battle.md` are byte-identical. Where this ledger says an inconsistency is "resolved", the resolution is in the *target* file; the register entry in `stage5_top5.md` §5 is left as written, since it is the historical record of the defect.
-- **Any measurement** — none was taken. The round still has zero ACTUAL RESULTS.
+- **Final 3 的构成** —— 未变。
+- **任何 Stage 1–4 产物** —— `stage1_pool/*.jsonl`、`stage2_*`、`stage3_*`、`stage4_reviewer2_cheap5.jsonl` 逐字节一致。
+- **W6-T1 与 W6-T2 的产物** —— `stage5_top5.md` 与 `stage6_battle.md` 逐字节一致。本总账说某处不一致"已解决"时，解决动作发生在*目标*文件里；`stage5_top5.md` §5 中的登记条目保持原样，因为它是该缺陷的历史记录。
+- **任何测量** —— 一次都没有做。本轮的 ACTUAL RESULTS 仍然为零。
