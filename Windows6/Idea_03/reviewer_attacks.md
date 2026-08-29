@@ -1,210 +1,184 @@
-# Idea_03 — Reviewer attacks & answers
+# Idea_03 —— 评审攻击与应答
 
-A-series from the Stage-4 pass recorded in `stage4_reviewer2_cheap5.jsonl`.
-B-series covers the two attacks that could end the project. C-series is our own
-red team. **No attack is listed without the evidence that answers it**, and
-where an attack is only partly mitigated it says so.
-
----
-
-## A. The Stage-4 attacks (binding)
-
-### A1. "Generic visual forgetting is already published"
-
-**The attack.** MDGD (EMNLP Findings 2025, **VERIFIED PRIOR WORK**) reports
-visual forgetting under instruction tuning. TWIST & SCOUT (ICCV 2025,
-**VERIFIED PRIOR WORK**) addresses grounding under forget-free tuning. The
-headline is taken.
-
-**Status.** Correct, and Reviewer #2 **killed the generic headline outright**.
-The idea survives only in a narrower form.
-
-**Evidence that shuts it.** Framing discipline, enforced in `proposal.md` §8 and
-§23: the claim is **stage isolation + format control**, never *"alignment hurts
-vision"*. **Cite MDGD as an attack, not as background** — a related-work mention
-reads as ignorance; an explicit "MDGD establishes the phenomenon, we ask which
-stage pays and whether the backbone still contains the box" reads as
-positioning. TWIST & SCOUT proposes a *fix*; a fix that works does not tell you
-which stage paid.
-
-### A2. "Unmatched data mixes — you cannot claim RLHF causality"
-
-**The attack.** Base and chat checkpoints differ in far more than the alignment
-objective. Any gap could come from the instruction-tuning data mix.
-
-**Why it is dangerous.** Purely observational comparison genuinely cannot
-separate these.
-
-**Evidence that shuts it.** Card **E4**: text-only DPO LoRA applied to the base
-checkpoint, with **no images**. If the localization gap reproduces from
-text-only preferences, the objective is implicated rather than the image data
-mix.
-
-**Binding constraint (FACT, verbatim from the original file):** *"do not claim
-causal RLHF without H3."* Until E4 runs, `proposal.md` §23 forbids the causal
-framing entirely — H1 and H2 stand on their own as a diagnosis without it.
-
-### A3. "Box parsing is not localization"
-
-**The attack.** A chat model that answers *"Sure! The cat is at [12, 30, 44,
-80]"* has localised correctly and been scored zero by a strict parser. You are
-measuring prose.
-
-**Why it is dangerous.** It is the most likely true explanation of the reported
-phenomenon, and if unaddressed the paper measures the wrong thing.
-
-**Evidence that shuts it.** Three layers, in increasing strength:
-
-1. **Permissive parsing.** `parse_box` strips prose, brackets and separators, so
-   a parse failure means "no four numbers", not "unexpected wrapper".
-2. **Parse-failure rate reported as its own number**, never folded into the IoU
-   mean as zeros. The difference between IoU-with-failures and
-   IoU-on-parseable-only **is the format tax, quantified**.
-3. **Likelihood ranking** — generation-free, so prose cannot touch it. A gap
-   that survives mode 3 is not a parsing artifact.
-
-And the pre-registered kill rule: **if H1 fails under constrained decoding, the
-project dies.** `classify_outcome` raises rather than returning a verdict when
-the likelihood mode was not run, so the shortcut is unavailable in code.
-
-### A4. "Small N of model families"
-
-**Evidence that shuts it.** Honest scope. E2 replicates on a second pair; if
-only one pair passes GATE-B, the title names that pair rather than implying
-generality, and E4 stays locked because a causal claim from a single pair is not
-defensible.
+A 系列来自记录在 `stage4_reviewer2_cheap5.jsonl` 中的 Stage-4 环节。
+B 系列涵盖可能终结项目的两条攻击。C 系列是我们自己的红队。
+**没有任何攻击会在没有配上能回应它的证据的情况下被列出**；
+凡某条攻击只被部分缓解的地方，都会如实说明。
 
 ---
 
-## B. The two attacks that could end the project
+## A. Stage-4 的攻击（有约束力）
 
-### B1. Concurrent work — **the highest-risk attack in Windows6**
+### A1. "通用的视觉遗忘已经被发表了"
 
-**The attack.** *"This appeared three months ago."*
+**攻击内容。** MDGD（EMNLP Findings 2025，**VERIFIED PRIOR WORK**）报告了
+指令微调下的视觉遗忘。TWIST & SCOUT（ICCV 2025，**VERIFIED PRIOR WORK**）
+解决了无遗忘微调下的接地（grounding）问题。大标题已经被占了。
 
-**Why it is dangerous, from three independent records (all FACT):**
+**状态。** 完全属实，Reviewer #2 **直接杀掉了那个通用大标题**。
+该想法仅以更狭窄的形态存活。
 
-| Source | Evidence |
+**能封嘴的证据。** 严格约束表述，在 `proposal.md` §8 与 §23 中强制执行：
+主张是**阶段隔离 + 格式控制**，绝不是 *"alignment hurts vision"*。
+**把 MDGD 作为攻击点来引，而不是作为背景** —— 在相关工作中提一句显得无知；
+明确写出"MDGD 确立了该现象，我们追问是哪个阶段付出的代价以及 backbone
+是否依然包含框"则体现出定位清晰。TWIST & SCOUT 提出的是一种*修复方案*；
+一个有效的修复方案并不能告诉你到底是哪个阶段付出的代价。
+
+### A2. "数据配比不一致 —— 你们无法主张 RLHF 的因果性"
+
+**攻击内容。** Base 与 chat 两个 checkpoint 之间的差异远不止对齐优化目标。
+任何差距都可能来自指令微调的数据配比。
+
+**为什么危险。** 纯观测性的对比确实无法区分这些。
+
+**能封嘴的证据。** 卡片 **E4**：施加在 base checkpoint 上的纯文本 DPO LoRA，
+**不含任何图像**。如果定位差距从纯文本偏好中复现出来，那么优化目标
+就比图像数据配比更有因果嫌疑。
+
+**约束性规则（FACT，原样照引自原始文件）：** *"do not claim causal RLHF
+without H3."*。在跑完 E4 之前，`proposal.md` §23 完全禁止因果表述 ——
+H1 与 H2 离开因果表述依然能作为一份诊断独立成立。
+
+### A3. "框的解析不等于定位能力"
+
+**攻击内容。** 一个回答 *"Sure! The cat is at [12, 30, 44, 80]"* 的 chat 模型
+其实定位是对的，却被严格的解析器打了零分。你们是在测量文风。
+
+**为什么危险。** 这是对所报告现象最可能真实的解释，如果不加处理，
+论文测量的就是错误的对象。
+
+**能封嘴的证据。** 三层防线，强度递增：
+
+1. **宽松解析。** `parse_box` 剥除文本包装、括号与分隔符，因此解析失败意味着
+   "没有四个数字"，而不是"包装格式不符合预期"。
+2. **解析失败率作为单独数字报告**，绝不作为零分折进 IoU 均值中。
+   带失败的 IoU 与仅统计可解析项的 IoU 之差**就是被量化出来的格式税**。
+3. **似然排序** —— 无需生成，因此文风无法干扰。经受住模式 3 检验的差距
+   绝不是解析假象。
+
+以及预先注册的 kill 规则：**若 H1 在受限解码下失效，项目死亡。**
+当似然模式未跑时 `classify_outcome` 拒绝给出裁决，因此走捷径在代码中不可行。
+
+### A4. "模型家族样本量小"
+
+**能封嘴的证据。** 诚实界定范围。E2 在第二个对上复现；如果只有一对通过了 GATE-B，
+标题就指名该对，而不是暗示通用性，并且 E4 保持锁定，因为来自单单一对的因果主张
+是站不住脚的。
+
+---
+
+## B. 可能终结项目的两条攻击
+
+### B1. 并行工作抢先 —— **Windows6 中风险最高的一条攻击**
+
+**攻击内容。** *"这个三个月前就出来了。"*
+
+**为什么危险，来自三处独立记录（皆为 FACT）：**
+
+| 来源 | 证据 |
 |---|---|
-| `stage3_DE_top10.json.md` | E-009 keep confidence **0.55** — lowest of the Final 3 — note: *"matched checkpoint localization tax **still open**"* |
-| `literature.md` | The gap is an **EVIDENCE GAP at confidence ~0.5** — a search that did not find the paper, not proof it does not exist |
+| `stage3_DE_top10.json.md` | E-009 保留信心 **0.55** —— Final 3 中最低 —— 备注：*"matched checkpoint localization tax **still open**"* |
+| `literature.md` | 空缺是一处**信心约 0.5 的 EVIDENCE GAP** —— 一次没有找到论文的检索，不是论文不存在的证明 |
 | `Windows6/README.md` | *"Highest impact, **highest concurrent-work risk**"* |
 
-**Why the exposure is structurally high, not just unlucky.** The experiment is
-eval-only (≤8 GPU-h), needs no new data, needs no training, and uses public
-checkpoints. Everything that makes it attractive to us makes it attractive to
-everyone else. And the novelty is **defined by an absence** — absences close on
-their own, without anyone doing anything wrong.
+**为什么暴露面在结构上就很高，而不仅仅是运气不好。** 实验只做评测
+（≤8 GPU-h），不需要新数据、不需要训练，用的是公开 checkpoint。
+所有让我们觉得有吸引力的地方，同样让其他所有人觉得有吸引力。
+而且其新颖性**由一处空缺定义** —— 空缺会在没有任何人做错任何事的情况下
+被填上。
 
-**Evidence that shuts it — partially:**
+**能部分封嘴的证据：**
 
-- **Speed.** Run E-B and E1 first. `roadmap.md` schedules Idea_03's gate check
-  ahead of its tractability ranking for this reason alone.
-- **Re-check before writing.** MDGD, TWIST & SCOUT and especially
-  arXiv 2602.12506 (recent enough that a v2 could contain this) must be
-  re-checked immediately before writing, not at submission.
-- **A fallback contribution that cannot be scooped the same way.** The
-  pre-registered O1/O2/O3 decision procedure and the format-controlled protocol
-  are a **methods** contribution — *how to measure this correctly*. Someone
-  reporting a number does not scoop a released decision rule.
+- **速度。** 先跑 E-B 和 E1。`roadmap.md` 单单为此把 Idea_03 的门禁检查排在
+  其可行性顺位之前。
+- **动笔前重新核对。** MDGD、TWIST & SCOUT，尤其是 arXiv 2602.12506
+  （足够新，以至于 v2 版本就可能包含该结果）必须在动笔前立即重新核对，
+  而不是在投稿时。
+- **不会以同样方式被抢先的保底贡献。** 预先注册的 O1/O2/O3 决策流程与
+  格式受控协议是一项**方法学**贡献 —— *如何正确测量这一点*。别人报告一个数字
+  抢先不了一个公开发布的决策规则。
 
-**Honest limit.** None of this reduces the probability of being scooped. It
-reduces the cost. For an absence-defined claim there is no mitigation other than
-speed, and this file should not pretend otherwise.
+**诚实的局限。** 这些都不能降低被抢先的概率。它们降低的是代价。
+对于由空缺定义的主张，除了速度之外没有别的缓解手段，本文件不应假装还有别的办法。
 
-### B2. "Your two checkpoints are not comparable" — GATE-B
+### B2. "你们的两个 checkpoint 不可比" —— GATE-B
 
-**The attack.** If the base and chat checkpoints differ in vision encoder or
-coordinate tokenization, the measured gap is an encoder or tokenizer difference
-wearing an alignment costume.
+**攻击内容。** 如果 base 与 chat 两个 checkpoint 在视觉编码器或坐标 tokenization
+上存在差异，测出来的差距就是穿了对齐外衣的编码器或分词器差异。
 
-**Why it is dangerous.** There is **no downstream mitigation**. No amount of
-careful evaluation repairs an unmatched pair.
+**为什么危险。** **下游没有任何补救措施。** 不匹配的对无论多么精细的评测
+都无法修复。
 
-**Evidence that shuts it.** Card **E-B**, which this package's own
-`experiments.md` has always called a *"Hard gate"*: shared vision encoder
-confirmed from the config (not the name), shared coordinate tokenization,
-compatible licences. `data.verify_checkpoint_pair` raises with those three
-checks spelled out, so the code cannot proceed on an unverified pair by
-accident.
+**能封嘴的证据。** 卡片 **E-B**，本 package 自己的 `experiments.md` 一直把它
+称为 *"Hard gate"*：从配置（而不是名称）确认共享视觉编码器、共享坐标 tokenization、
+兼容的许可。`data.verify_checkpoint_pair` 会逐条列出这三项检查并抛异常，
+因此代码不可能在未核实的对上意外继续往下跑。
 
-**If it fails:** stage isolation is unavailable and Idea_03 descopes to a
-format-artifact study — a much smaller paper that must be re-argued for its
-Final-3 slot. This is why GATE-B keeps Idea_03 PROVISIONAL in
-`stage6_battle.md` §5.
+**若失败：** 阶段隔离无法实现，Idea_03 降级为格式假象研究 —— 一篇小得多的论文，
+必须重新论证其 Final-3 席位。这正是 GATE-B 在 `stage6_battle.md` §5 中让
+Idea_03 保持 PROVISIONAL 的原因。
 
 ---
 
-## C. Our own red team
+## C. 我们自己的红队
 
-### C1. "You probed the wrong layer"
+### C1. "你们探针探测的层不对"
 
-A linear probe at one depth is one measurement. **Answer:** card E3 sweeps
-layers, and the pre-declared branch is a downgrade — if the gap exists at one
-layer only, report the sweep rather than a headline.
+单一深度的线性探针只是一次测量。**应答：** 卡片 E3 扫描各层，预先声明的
+分支是降级 —— 如果差距只在单层存在，报告扫描结果，而不是大标题。
 
-### C2. "A linear probe is too weak to show the box is gone"
+### C2. "线性探针太弱，证明不了框已经没了"
 
-Absence of linear decodability is not absence of information. **Answer:** E3
-adds an MLP probe. If the linear probe drops and the MLP does not, the finding
-becomes *"present but not linearly accessible"* — a distinct and more precise
-result than "representation tax", and it should be reported that way rather
-than folded into O3.
+缺乏线性可解码性不等于缺乏信息。**应答：** E3 增加了 MLP 探针。如果线性探针
+下降而 MLP 探针没有下降，结论变成 *"信息仍在但不再线性可及"* —— 这是一个
+不同且比"表征税"更精确的结果，应当这样报告，而不是折进 O3。
 
-### C3. "Your ridge penalty is doing the work"
+### C3. "你们的 ridge 惩罚在起决定作用"
 
-**Answer:** ridge is there for a stated reason — with a small train split and
-correlated token dimensions, an *unregularised* fit can recover a box from noise
-and would report "representation intact" for a destroyed representation, i.e.
-it biases towards O2. Report probe error across a penalty sweep so the
-conclusion is visibly not a function of one hyperparameter.
+**应答：** ridge 存在有明确理由 —— 在训练划分小且 token 维度相关时，
+*不加正则*的拟合可以从噪声中还原出框，从而对被破坏的表征报告"表征完好"，
+即它会偏向 O2。在惩罚系数扫描上报告探针误差，使结论可见地不依赖于单一超参数。
 
-### C4. "The distractor sets differ between checkpoints"
+### C4. "两个 checkpoint 之间的干扰项集合不同"
 
-**Answer:** they are shared by construction (`make_pair` builds one set per
-example, used by both arms). A likelihood gap therefore cannot come from an
-easier candidate set. The distractor **count** is also swept (4/8/16), because a
-gap that appears at one set size is a property of the set.
+**应答：** 它们在构造上就是共享的（`make_pair` 为每个样本构建一个集合，
+供两条臂共同使用）。因此似然差距不可能来自更容易的候选集。干扰项**数量**
+也做了扫描（4/8/16），因为只在某一种集合大小下出现的差距是该集合的性质。
 
-### C5. "One prompt template is one draw"
+### C5. "单一提示模板只是一次抽样"
 
-Alignment changes prompt sensitivity, so a single template could produce the gap
-by itself. **Answer:** template ablation in `proposal.md` §18. **Only partly
-mitigated** — a full prompt-robustness study is a paper of its own, and the
-ablation shows sensitivity rather than eliminating it.
+对齐会改变提示敏感性，因此单套模板本身就可能产生差距。**应答：** `proposal.md`
+§18 中的模板消融。**仅被部分缓解** —— 一项完备的提示鲁棒性研究本身就是一篇论文，
+而消融只是展示了敏感性而非消除它。
 
-### C6. "O1 means you have nothing"
+### C6. "O1 意味着你们什么都没有"
 
-**Answer:** no. `experiments.md` says *"write negative"*. Establishing that a
-widely cited degradation is largely a parsing artifact is a service, given the
-field is drawing training-time conclusions from a decoding-time problem. What is
-**not** acceptable is running only free-form evaluation, seeing a gap, and
-reporting a tax — which is why `classify_outcome` refuses to return a verdict
-without mode 3.
+**应答：** 并不是。`experiments.md` 明确写着 *"write negative"*。确立一个被广泛引用的
+退化现象在很大程度上只是解析假象是一项贡献，鉴于该领域正在从解码时的问题得出
+训练时的结论。**不可接受**的做法是只跑自由生成、看到差距就报告一项税 ——
+这正是 `classify_outcome` 在缺少模式 3 时拒绝给出裁决的原因。
 
-### C7. "Your synthetic harness proves nothing"
+### C7. "你们的合成测试台什么都证明不了"
 
-Correct, and the package says so at runtime. E0 checks that the O1/O2/O3
-decision logic recovers a planted answer. The base and chat "models" are
-simulators whose failure mode we chose. It validates the ruler, not the object.
+完全正确，而且 package 在运行时就是这么说的。E0 检查的是 O1/O2/O3 决策逻辑能否
+还原植入的答案。base 与 chat "模型"只是我们选定了失效模式的模拟器。它验证的是尺子，
+不是被测量的对象。
 
-### C8. "You are measuring RefCOCO, not localization"
+### C8. "你们测量的是 RefCOCO，不是定位能力"
 
-**Answer:** honest scope. The claim is about coordinate emission on referring
-expressions, and `proposal.md` §27 forbids generalising it to "alignment is
-harmful". Extending to other grounding formats is future work, not an implied
-claim.
+**应答：** 诚实界定范围。主张是关于指代表达上的坐标输出，`proposal.md` §27 禁止
+将其推广为"对齐有害"。扩展到其他接地格式属于未来工作，不是隐含的主张。
 
 ---
 
-## Standing discipline
+## 长期纪律
 
-1. Never claim "alignment hurts vision" — published, killed at Stage 3.
-2. Never claim RLHF causality without H3 (card E4).
-3. Always run all three eval modes; the verdict function refuses without mode 3.
-4. Always report parse-failure rate as its own number.
-5. Distractors are shared between checkpoints.
-6. GATE-B before any GPU.
-7. Re-check the adjacent literature immediately before writing — the novelty is
-   absence-defined at confidence ~0.5 and decays with time.
-8. Never relabel EXPECTED as ACTUAL. Windows6 has run no VLM eval.
+1. 绝不主张"对齐损害视觉" —— 已发表，在 Stage 3 已被杀。
+2. 没有 H3（卡片 E4）不做 RLHF 因果主张。
+3. 始终跑全部三种评测模式；缺少模式 3 时裁决函数拒绝工作。
+4. 始终将解析失败率作为单独数字报告。
+5. 干扰项在 checkpoint 之间共享。
+6. 先做 GATE-B，再开任何 GPU。
+7. 动笔前立即重新核对邻近文献 —— 新颖性是在信心约 0.5 下由空缺定义的，随时间衰减。
+8. 绝不把 EXPECTED 改标为 ACTUAL。Windows6 没有跑过任何 VLM 评测。

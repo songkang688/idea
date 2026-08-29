@@ -1,243 +1,226 @@
-# Idea_02 — Experiment cards
+# Idea_02 —— 实验卡片
 
-> **STATUS OF EVERY CARD: NOT RUN**, except E0, which runs on a synthetic
-> corpus and can only validate the harness. **No detector has been trained.**
-> Windows6 has **zero ACTUAL RESULTS** and no smoke mAP. Budgets are
-> **HYPOTHESIS**; predicted trends are **EXPECTED RESULT**.
+> **下面每张卡片的状态都是 NOT RUN**，只有 E0 例外 —— 它跑在一个合成
+> 语料上，且只能验证测试台。**没有训练过任何检测器。**
+> Windows6 的 **ACTUAL RESULTS 为零**，也没有烟雾 mAP。预算都是
+> **HYPOTHESIS**；预测的趋势都是 **EXPECTED RESULT**。
 >
-> **E-A blocks everything.** GATE-A (`stage6_battle.md` §5) is open: it has
-> never been verified that camera metadata exists on any public smoke set, and
-> Idea_02's own first stop rule is *"Kill if no camera metadata."*
+> **E-A 阻塞一切。** GATE-A（`stage6_battle.md` §5）仍未关闭：从来没有核实过
+> 任何公开烟雾数据集上是否存在相机元数据，而 Idea_02 自己的第一条停止规则就是
+> *"Kill if no camera metadata."*。
 
-## Card index and execution order
+## 卡片索引与执行顺序
 
-| Card | Name | Gate it decides | Budget (HYPOTHESIS) | Status |
+| 卡片 | 名称 | 它裁决哪道门 | 预算（HYPOTHESIS） | 状态 |
 |---|---|---|---|---|
-| **E-A** | **GATE-A: camera-ID inventory** | Does this project exist? | **0 — no GPU** | **NOT RUN — BLOCKING** |
-| **E0** | Harness validation (synthetic, CPU) | Is H2 even expressible in code? | ~0, CPU seconds | **RUN — PASS** |
-| **E1** | **KILLER**: 1 seed × 3 protocols + probe + empty-frame FPR | H1, H2, H3, H4 | ≈10 GPU-h | NOT RUN |
-| **E2** | 3 seeds, event-clustered CIs | H1/H2 with confidence | ≈30 GPU-h | NOT RUN |
-| **E3** | Probe control on an ImageNet backbone | H3 specificity | ≈1 GPU-h | NOT RUN |
-| **E4** | pHash dedup rerun | duplicates vs camera signature | ≈10 GPU-h | NOT RUN |
-| **E5** | Second dataset | generality | ≈30 GPU-h | NOT RUN |
+| **E-A** | **GATE-A：相机 ID 清点** | 这个项目存在吗？ | **0 —— 无需 GPU** | **未跑 —— 阻塞项** |
+| **E0** | 测试台验证（合成，CPU） | H2 在代码中可被表达吗？ | 约 0，CPU 数秒 | **已跑 —— PASS** |
+| **E1** | **KILLER**：1 个种子 × 3 种协议 + 探针 + 空帧 FPR | H1, H2, H3, H4 | 约 10 GPU-h | NOT RUN |
+| **E2** | 3 个种子，在事件上聚类的置信区间 | 带置信度的 H1/H2 | 约 30 GPU-h | NOT RUN |
+| **E3** | ImageNet backbone 上的探针对照 | H3 特异性 | 约 1 GPU-h | NOT RUN |
+| **E4** | pHash 去重重跑 | 重复帧 vs 相机签名 | 约 10 GPU-h | NOT RUN |
+| **E5** | 第二个数据集 | 通用性 | 约 30 GPU-h | NOT RUN |
 
-Order: **E-A → E0 → E1 → E2 → E4**, with **E3 runnable in parallel** with E1
-(it needs no detector training, only a frozen ImageNet backbone) and E5 last.
+顺序：**E-A → E0 → E1 → E2 → E4**，其中 **E3 可与 E1 并行跑**
+（它不需要训练检测器，只需要一个冻结的 ImageNet backbone），E5 放最后。
 
 ---
 
-## E-A — GATE-A: camera-ID inventory — STATUS: NOT RUN, BLOCKING
+## E-A —— GATE-A：相机 ID 清点 —— 状态：未跑，阻塞项
 
-**Purpose.** Establish that the project's subject matter exists. Everything
-below is void without it.
+**目的。** 确立该项目的研究对象确实存在。没有它，下面的一切都作废。
 
-**Input.** Public metadata for PYRONEAR-2025 (arXiv 2402.05349, **VERIFIED
-PRIOR WORK**) and FIgLib (`CITATION NEEDED — 待人工核验`). Dataset cards,
-directory structure, filename conventions, any accompanying CSV.
+**输入。** PYRONEAR-2025（arXiv 2402.05349，**VERIFIED PRIOR WORK**）与
+FIgLib（`CITATION NEEDED — 待人工核验`）的公开元数据。数据集卡片、目录结构、
+文件名命名约定、任何配套的 CSV。
 
-**Procedure.**
+**流程。**
 
-1. Determine whether a per-frame camera identifier exists — explicit field,
-   derivable from the path, or absent.
-2. If derivable rather than explicit, **document the derivation rule** and spot
-   check it against at least 20 frames by eye. A guessed camera ID silently
-   corrupts every split downstream.
-3. Count distinct cameras. Count events per camera. Count empty/no-smoke frames
-   per camera — H4 needs negatives from **both** seen and unseen cameras.
-4. Write the counts into this card. That written inventory *is* the artifact
-   that closes GATE-A.
+1. 判定是否存在逐帧的相机标识符 —— 是显式字段、可从路径推导、还是不存在。
+2. 若是可推导而非显式的，**记录推导规则**并用肉眼抽查至少 20 帧。
+   猜出来的相机 ID 会静默污染下游的每一次划分。
+3. 统计不同相机数量。统计每台相机的事件数。统计每台相机的空帧／无烟帧数 ——
+   H4 需要来自见过和未见过相机的**两侧**负样本。
+4. 将计数写进本卡片。这份成文清单*就是*关闭 GATE-A 的产物。
 
-**Decision thresholds.**
+**判定阈值。**
 
-| Observation | Action |
+| 观察结果 | 动作 |
 |---|---|
-| ≥10 cameras, IDs explicit or reliably derivable, empty frames present on both sides | **GATE-A CLOSES** → E0/E1 |
-| ≥10 cameras but no empty-frame pool | **H4 is unrunnable** on this set → find another or accept that the paper collapses to domain shift (§20.1 of `proposal.md` calls that fatal) |
-| 1–9 cameras | **PIVOT** to event-disjoint only. This **forfeits H2**, the distinguishing claim; Idea_02 must be re-argued for its Final-3 slot before any GPU is spent |
-| No camera metadata on any usable set | **KILL Idea_02** by its own stop rule |
+| ≥10 台相机，ID 显式或可可靠推导，两侧均有空帧 | **GATE-A 关闭** → E0/E1 |
+| ≥10 台相机但无空帧池 | 本数据集上 **H4 无法运行** → 另找数据集或接受论文坍缩为域偏移（`proposal.md` §20.1 称之为致命） |
+| 1–9 台相机 | **PIVOT** 为仅按事件划分。这会**放弃 H2**（即区分性主张）；在花任何 GPU 之前必须重新论证 Idea_02 的 Final-3 席位 |
+| 任何可用数据集上均无相机元数据 | 按 Idea_02 自己的停止规则 **KILL Idea_02** |
 
-**Cost.** Hours of desk work. **No GPU.**
+**成本。** 数小时的案头工作。**无需 GPU。**
 
-**Why it is first.** Idea_02 is the most expensive member of the Final 3 per
-unit of evidence — it is the only one that requires training. Spending ≈10
-GPU-h before confirming the data supports the question is the single most
-avoidable failure mode in this package.
+**为什么它排第一。** 按每单位证据的成本算，Idea_02 是 Final 3 中最昂贵的成员 ——
+它是唯一需要训练的一个。在确认数据能支撑科学问题之前花掉约 10 GPU-h，
+是本 package 中最容易避免的失败模式。
 
 ---
 
-## E0 — Harness validation (synthetic, CPU) — STATUS: RUN, PASS
+## E0 —— 测试台验证（合成，CPU）—— 状态：已跑，PASS
 
-**Purpose.** Confirm the three protocols have the overlap structure the
-hypothesis requires. If event-disjoint and camera-disjoint were the same thing
-in code, H2 would not be expressible and no real run would be worth starting.
+**目的。** 确认三种协议具备假设所要求的重叠结构。如果按事件划分与
+按相机划分在代码中是一回事，H2 就无法被表达，任何真实实验都不值得开跑。
 
-**Input.** `data.make_corpus` — a synthetic corpus with camera ⊃ event ⊃ frame
-structure, a planted camera signature and an empty-frame pool. Not images, not
-embeddings.
+**输入。** `data.make_corpus` —— 一个具有相机 ⊃ 事件 ⊃ 帧结构、植入了相机签名
+和空帧池的合成语料。不是图像，不是 embedding。
 
-**Run.**
+**运行。**
 
 ```bash
 python Idea_02/src/run_smoke.py --seed 0
 python -m unittest discover -s Idea_02/tests
 ```
 
-**Decision threshold.** `run_smoke.py` exits non-zero unless:
+**判定阈值。** `run_smoke.py` 会以非零状态退出，除非满足：
 
-| Protocol | Cameras shared | Events shared |
+| 协议 | 相机是否共享 | 事件是否共享 |
 |---|---|---|
 | random | > 0 | > 0 |
 | event_disjoint | **> 0** | **0** |
 | camera_disjoint | **0** | 0 |
 
-The middle row is the whole hypothesis in one line: holding out episodes leaves
-the towers behind.
+中间那一行就是一行版的整个假设：留出事件，塔（相机）却留下了。
 
-**Two protocol defects this card caught during W6-T3.** Both would have produced
-a publishable-looking but wrong result:
+**这张卡片在 W6-T3 期间抓到的两个协议缺陷。** 两者都会产生看起来可发表但
+实际上错误的结果：
 
-1. **The camera-ID probe was evaluated on a random split.** With the camera
-   signature switched off entirely, it still beat chance by ≈0.17 — it was
-   naming the camera by recognising the fire *episode* shared across the split,
-   not the tower. H3 must be evaluated **event-disjoint**. Both directions are
-   now pinned by self-checks, so the rule cannot be dropped.
-2. **The empty-frame comparison had no seen-camera side.** Restricting empties
-   to the test split puts all of them on the unseen side under a camera-disjoint
-   protocol, and the seen-camera FPR came out `nan`. Fixed: the detector trains
-   on non-empty frames only, so *all* empty frames are held out and can be
-   partitioned purely by whether their camera was seen.
+1. **相机 ID 探针原先是在随机划分上评测的。** 在相机签名完全关掉的情况下，
+   它依然比随机水平高出约 0.17 —— 它是靠识别跨划分共享的火灾*事件*来说出
+   相机的，而不是识别塔。H3 必须在**按事件划分**下评测。现在两个方向都被
+   自检钉住，规则无法被丢弃。
+2. **空帧对比原先没有"见过的相机"一侧。** 把空帧限制在测试划分里，在按相机划分
+   协议下会把它们全部推到未见过的一侧，导致见过的相机 FPR 算出 `nan`。
+   修法：检测器只在非空帧上训练，因此*所有*空帧都被留出，并纯粹按其相机
+   是否被见过来划分。
 
-**What E0 does NOT show.** Nothing about real smoke data. The camera signature
-was planted by `make_corpus`; any leakage it finds is leakage we inserted. The
-synthetic H4 gap comes out ≈0, which is a property of a linear stand-in on
-planted features and **not** a prediction.
+**E0 不能说明什么。** 关于真实烟雾数据什么都说明不了。相机签名是
+`make_corpus` 植入的；它找到的任何泄漏都是我们塞进去的泄漏。合成的 H4 差距
+算出 ≈0，这是植入特征上线形替身的性质，**不是**预测。
 
 ---
 
-## E1 — KILLER: three protocols, one seed — STATUS: NOT RUN
+## E1 —— KILLER：三种协议，单随机种子 —— 状态：NOT RUN
 
-**Requires GATE-A closed.**
+**需要 GATE-A 已关闭。**
 
-**Input.** PYRONEAR-2025 subsample with camera IDs. Equal-N, class-ratio-matched
-test sides across all three protocols.
+**输入。** 带相机 ID 的 PYRONEAR-2025 子采样。跨三种协议等 N、类别比例对齐的
+测试侧。
 
-**Arms.** YOLOv8n (`CITATION NEEDED — 待人工核验`), one seed, trained separately
-under random / event-disjoint / camera-disjoint.
+**各臂。** YOLOv8n（`CITATION NEEDED — 待人工核验`），单随机种子，分别在
+random / event-disjoint / camera-disjoint 下独立训练。
 
-**Measurements.**
+**测量量。**
 
-1. Image-level **AP** and **FAR@recall 0.8** per protocol.
-2. **Camera-ID linear probe** on frozen backbone features, **evaluated
-   event-disjoint**, reported against the majority-class chance level.
-3. **Empty-frame FPR**, seen versus unseen cameras. Detector trained on
-   non-empty frames only.
-4. Camera and event overlap counts per protocol, reported alongside — so a
-   reader can verify the protocols are what they claim.
+1. 每种协议下的图像级 **AP** 与 **FAR@recall 0.8**。
+2. 冻结 backbone 特征上的**相机 ID 线性探针**，**在按事件划分下评测**，
+   对比多数类随机水平。
+3. **空帧 FPR**，见过的相机 vs 未见过的相机。检测器只在非空帧上训练。
+4. 每种协议的相机重叠数与事件重叠数，并列报告 —— 方便读者核查协议名副其实。
 
-**Decision thresholds.**
+**判定阈值。**
 
-| Observation | Action |
+| 观察结果 | 动作 |
 |---|---|
-| camera-disjoint AP < random AP, gap > seed std | **H1 supported** → E2 |
-| event-disjoint AP strictly between random and camera-disjoint | **H2 supported** → E2 |
-| event-disjoint ≈ camera-disjoint | **KILL** — PYRONEAR already solved it |
-| probe margin over chance ≈ 0 | **KILL H3**; the representation carries no camera identity |
-| seen-camera empty FPR > unseen, consistent in direction | **H4 supported** — the key result |
-| no empty-frame gap | **Fatal to the framing** (`proposal.md` §20.1) — the paper is domain shift, which is not news |
+| camera-disjoint AP < random AP，且差距 > 种子标准差 | **支持 H1** → E2 |
+| event-disjoint AP 严格介于 random 与 camera-disjoint 之间 | **支持 H2** → E2 |
+| event-disjoint ≈ camera-disjoint | **KILL** —— PYRONEAR 已经把它解决了 |
+| 探针相对随机水平的优势 ≈ 0 | **KILL H3**；表征中没有携带相机身份 |
+| 见过的相机空帧 FPR > 未见过的，方向一致 | **支持 H4** —— 核心结果 |
+| 没有空帧差距 | **对论文立论是致命的**（`proposal.md` §20.1）—— 论文成了普通的域偏移，而那不是新闻 |
 
-**Budget.** ≈10 GPU-h (**HYPOTHESIS**, from `evolution_summary.md`).
+**预算。** 约 10 GPU-h（**HYPOTHESIS**，来自 `evolution_summary.md`）。
 
 ---
 
-## E2 — Three seeds and honest confidence intervals — STATUS: NOT RUN
+## E2 —— 三个随机种子与诚实的置信区间 —— 状态：NOT RUN
 
-**Purpose.** H1 and H2 are gaps between numbers, so they are only as good as
-the intervals around them.
+**目的。** H1 与 H2 是数字之间的差距，因此它们的效力取决于围绕它们构建的
+置信区间。
 
-**Procedure.** Repeat E1 with 3 seeds per protocol. Report bootstrap CIs
-resampled over **events**, never over frames.
+**流程。** 每种协议用 3 个随机种子重复 E1。报告在**事件**上重采样的 bootstrap
+置信区间，绝不在帧上重采样。
 
-**Why the clustering matters.** Consecutive frames of one plume from one tower
-are heavily correlated. A frame-level bootstrap treats them as independent and
-reports an interval several times too narrow — the specific way an audit like
-this overstates its own confidence. `metrics.cluster_bootstrap_ci` only offers
-the clustered version; there is no frame-level option to reach for.
+**为什么聚类重采样至关重要。** 来自同一座塔、同一团羽流的连续帧高度相关。
+帧级 bootstrap 会把它们当成相互独立的观测，报出的区间窄了好几倍 —— 这正是
+此类审计夸大自身置信度的具体方式。`metrics.cluster_bootstrap_ci` 只提供聚类版本；
+手边根本没有帧级选项可选。
 
-**Decision thresholds.**
+**判定阈值。**
 
-| Observation | Action |
+| 观察结果 | 动作 |
 |---|---|
-| H1 and H2 gaps survive with CIs excluding 0 | **CONTINUE** to E4 |
-| Gaps inside seed noise **and** probe ≈ chance **and** no empty-FPR gap | **STOP** — confirm with 2 further seeds before declaring |
-| Gaps survive but CIs are very wide | Add seeds before adding claims |
+| H1 与 H2 的差距在置信区间不含 0 的情况下存活 | **继续**进入 E4 |
+| 差距落在种子噪声内 **且** 探针 ≈ 随机水平 **且** 无空帧 FPR 差距 | **停止** —— 正式宣布前用另外 2 个种子确认 |
+| 差距存活但置信区间极宽 | 先增加随机种子，再增加主张 |
 
-**Budget.** ≈30 GPU-h (**HYPOTHESIS**).
+**预算。** 约 30 GPU-h（**HYPOTHESIS**）。
 
 ---
 
-## E3 — Probe control on an ImageNet backbone — STATUS: NOT RUN
+## E3 —— ImageNet backbone 上的探针对照 —— 状态：NOT RUN
 
-**Purpose.** Decide whether camera identity is something the *smoke detector*
-learned, or just generic scene identity that any vision backbone would carry.
+**目的。** 判定相机身份究竟是*烟雾检测器*学到的东西，还是任何视觉 backbone
+都会携带的通用场景身份。
 
-**Procedure.** Repeat the H3 probe on a frozen ImageNet-pretrained backbone that
-has never seen smoke data. Same event-disjoint evaluation.
+**流程。** 在从未见过烟雾数据的、冻结的 ImageNet 预训练 backbone 上重复 H3 探针。
+同样在按事件划分下评测。
 
-**Decision thresholds.**
+**判定阈值。**
 
-| Observation | Interpretation |
+| 观察结果 | 解释 |
 |---|---|
-| Detector backbone probe ≫ ImageNet probe | The detector *learned* camera identity — the strong reading |
-| Both probes high and similar | Any backbone encodes scene identity. H3 survives but weakens: it shows the information is *available*, not that the detector exploits it. Report honestly |
-| Both at chance | **KILL H3** |
+| 检测器 backbone 探针 ≫ ImageNet 探针 | 检测器*学到了*相机身份 —— 强论证读法 |
+| 两个探针都很高且相近 | 任何 backbone 都会编码场景身份。H3 存活但弱化：它表明该信息是*可及的*，而非检测器利用了它。如实报告 |
+| 两者都在随机水平 | **KILL H3** |
 
-**Budget.** ≈1 GPU-h (**HYPOTHESIS**). Cheap, parallelisable with E1, and it
-pre-empts an obvious reviewer question.
+**预算。** 约 1 GPU-h（**HYPOTHESIS**）。便宜，可与 E1 并行，并能先手化解
+评审的显见质疑。
 
 ---
 
-## E4 — pHash dedup rerun — STATUS: NOT RUN
+## E4 —— pHash 去重重跑 —— 状态：NOT RUN
 
-**Purpose.** Separate near-duplicate frames from camera signature. This is the
-confound the Voxel51 blog identified, and if the whole gap is duplicates then
-the paper restates the blog with numbers.
+**目的。** 将近重复帧与相机签名区分开来。这是 Voxel51 博客指出的混淆因素，
+如果全部差距都来自重复帧，这篇论文就成了用数字复述博客。
 
-**Procedure.** Deduplicate with pHash (`CITATION NEEDED — 待人工核验`), rebuild
-all three splits on the deduplicated corpus, rerun E1.
+**流程。** 用 pHash 去重（`CITATION NEEDED — 待人工核验`），在去重后的语料上
+重建所有三种划分，重跑 E1。
 
-**Decision thresholds.**
+**判定阈值。**
 
-| Observation | Action |
+| 观察结果 | 动作 |
 |---|---|
-| Gap survives dedup | **CONTINUE** — camera signature, not duplicates. The strongest form of the result |
-| Gap disappears after dedup | **DOWNGRADE** to a near-duplicate audit |
-| Gap shrinks but survives | Report both numbers side by side; attribute the share |
+| 去重后差距依然存活 | **继续** —— 是相机签名，不是重复帧。结果的最强形态 |
+| 去重后差距消失 | **降级**为近重复帧审计 |
+| 差距收窄但依然存活 | 并排报告两个数字；归因各自份额 |
 
-**Budget.** ≈10 GPU-h (**HYPOTHESIS**).
-
----
-
-## E5 — Second dataset — STATUS: NOT RUN
-
-**CONTINUE** requires H1 and H4 on ≥2 datasets (`proposal.md` §20). Candidates:
-FIgLib, SmokeFrames, Nemo — all subject to their own GATE-A inventory first.
-If only one dataset has camera IDs, scope the title to that dataset explicitly
-rather than implying generality. Budget ≈30 GPU-h (**HYPOTHESIS**).
+**预算。** 约 10 GPU-h（**HYPOTHESIS**）。
 
 ---
 
-## Cross-cutting rules
+## E5 —— 第二个数据集 —— 状态：NOT RUN
 
-1. **GATE-A first.** No GPU spend before the camera inventory is written down.
-2. **The probe is always event-disjoint.** A random-split probe measures event
-   memorisation; the harness demonstrated this at zero camera signature.
-3. **Empty frames are never trained on.** Both sides of H4 must be held out
-   under identical conditions.
-4. **CIs cluster over events.** Never over frames.
-5. **Report the overlap counts.** Every table states cameras-shared and
-   events-shared per protocol, so a reader can check the protocols are real.
-6. **Never cite an inflation number we did not compute.** Standing instruction
-   from `literature.md`: the Voxel51 audit is a blog diagnosis with no retrained
-   mAP, and must be described that way.
-7. **Budgets stay HYPOTHESIS.** The ≈10 GPU-h figure is an estimate from
-   `evolution_summary.md`, never a measurement.
+**继续**要求在 ≥2 个数据集上证明 H1 与 H4（`proposal.md` §20）。候选：
+FIgLib、SmokeFrames、Nemo —— 全部须先经各自的 GATE-A 清单核验。
+如果只有一个数据集有相机 ID，标题就明确指名该数据集，而不是暗示通用性。
+预算约 30 GPU-h（**HYPOTHESIS**）。
+
+---
+
+## 横切规则
+
+1. **先做 GATE-A。** 在相机清单落成文字之前不开任何 GPU。
+2. **探针一律在按事件划分下评测。** 随机划分的探针测量的是事件记忆；测试台在
+   零相机签名下证明了这一点。
+3. **空帧绝不用于训练。** H4 的两侧必须在完全相同的条件下被留出。
+4. **置信区间在事件上聚类。** 绝不在帧上聚类。
+5. **报告重叠计数。** 每张表格都注明每种协议的相机共享数与事件共享数，让读者
+   能核验协议是真实的。
+6. **绝不引用我们自己没有计算过的虚高数字。** `literature.md` 的长期指令：
+   Voxel51 审计是一篇没有重新训练出 mAP 的博客诊断，必须这样描述它。
+7. **预算保持标注为 HYPOTHESIS。** 约 10 GPU-h 是来自 `evolution_summary.md`
+   的估计值，绝不是测量值。

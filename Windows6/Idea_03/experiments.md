@@ -1,240 +1,220 @@
-# Idea_03 — Experiment cards
+# Idea_03 —— 实验卡片
 
-> **STATUS OF EVERY CARD: NOT RUN**, except E0, which runs on a synthetic pair
-> and can only validate the decision logic. **No VLM has been run and no
-> checkpoint loaded** (`Windows6/README.md`: *"no VLM eval"*). Windows6 has
-> **zero ACTUAL RESULTS**. Budgets are **HYPOTHESIS**; predicted trends are
-> **EXPECTED RESULT**.
+> **下面每张卡片的状态都是 NOT RUN**，只有 E0 例外 —— 它跑在一个合成对上，
+> 且只能验证决策逻辑。**没有跑过任何 VLM，也没有加载过任何 checkpoint**
+> （`Windows6/README.md`：*"no VLM eval"*）。Windows6 的 **ACTUAL RESULTS 为零**。
+> 预算都是 **HYPOTHESIS**；预测的趋势都是 **EXPECTED RESULT**。
 >
-> **E-B blocks everything.** GATE-B is open: no base/chat pair has been
-> verified to share a vision encoder and coordinate tokenization — this file's
-> own long-standing wording is *"Hard gate"*.
+> **E-B 阻塞一切。** GATE-B 仍未关闭：还没有任何 base/chat 对被核实为共享视觉
+> 编码器与坐标 tokenization —— 本文件长期以来的原话是 *"Hard gate"*。
 
-## Card index and execution order
+## 卡片索引与执行顺序
 
-| Card | Name | Gate it decides | Budget (HYPOTHESIS) | Status |
+| 卡片 | 名称 | 它裁决哪道门 | 预算（HYPOTHESIS） | 状态 |
 |---|---|---|---|---|
-| **E-B** | **GATE-B: checkpoint pair verification** | Is stage isolation available? | **0 — no GPU** | **NOT RUN — BLOCKING** |
-| **E0** | Harness validation + O1/O2/O3 round trip | Is the decision logic sound? | ~0, CPU seconds | **RUN — PASS** |
-| **E1** | **KILLER**: pair 1, three eval modes + probe | H1, H2 | ≤8 GPU-h | NOT RUN |
-| **E2** | Pair 2 replication | generality; releases the STOP rule | ≤8 GPU-h | NOT RUN |
-| **E3** | Probe layer sweep + capacity ablation | robustness of H2 | ≈2 GPU-h | NOT RUN |
-| **E4** | **H3**: text-only DPO LoRA | RQ4 causality | 1–2 × 24 GB, days | NOT RUN |
+| **E-B** | **GATE-B：checkpoint 对核实** | 阶段隔离是否可行？ | **0 —— 无需 GPU** | **未跑 —— 阻塞项** |
+| **E0** | 测试台验证 + O1/O2/O3 往返测试 | 决策逻辑是否严密？ | 约 0，CPU 数秒 | **已跑 —— PASS** |
+| **E1** | **KILLER**：对 1，三种评测模式 + 探针 | H1, H2 | ≤8 GPU-h | NOT RUN |
+| **E2** | 对 2 复现 | 通用性；解锁 STOP 规则 | ≤8 GPU-h | NOT RUN |
+| **E3** | 探针层扫描 + 容量消融 | H2 的鲁棒性 | 约 2 GPU-h | NOT RUN |
+| **E4** | **H3**：纯文本 DPO LoRA | RQ4 因果性 | 1–2 × 24 GB，数天 | NOT RUN |
 
-Order: **E-B → E0 → E1 → E2 → E4**, with **E3 parallel to E2**. E4 is gated
-behind E1 *and* E2 by the STOP rule below.
+顺序：**E-B → E0 → E1 → E2 → E4**，其中 **E3 与 E2 并行**。E4 由下方的
+STOP 规则拦截在 E1 *和* E2 之后。
 
 ---
 
-## E-B — GATE-B: checkpoint pair verification — STATUS: NOT RUN, BLOCKING
+## E-B —— GATE-B：checkpoint 对核实 —— 状态：未跑，阻塞项
 
-**Purpose.** Establish that stage isolation is possible at all. Without a
-matched pair, any gap could be an encoder or tokenizer difference, and the
-paper's central claim is unavailable.
+**目的。** 确立阶段隔离到底是否可能。没有匹配的对，任何差距都可能是编码器或
+分词器的差异，论文的核心主张就无从谈起。
 
-**Input.** Published model cards, configs and licences for candidate pairs:
-LLaVA / LLaVA-RLHF (**VERIFIED PRIOR WORK**, listed in `literature.md`),
-Qwen-VL / Qwen-VL-Chat (`CITATION NEEDED — 待人工核验`).
+**输入。** 候选对的已发布模型卡、配置与许可：LLaVA / LLaVA-RLHF
+（**VERIFIED PRIOR WORK**，列于 `literature.md`）、Qwen-VL / Qwen-VL-Chat
+（`CITATION NEEDED — 待人工核验`）。
 
-**Three checks, all required.**
+**三项检查，全部必需。**
 
-1. **Shared vision encoder.** Same architecture *and* same weights at the
-   vision tower, confirmed from the config, not inferred from the name.
-2. **Shared coordinate tokenization.** The two checkpoints must represent
-   coordinates identically — same normalisation, same special tokens, same
-   digit handling. A differing scheme silently makes the comparison a tokenizer
-   study.
-3. **Licences permit the comparison and publication of derived metrics.**
+1. **共享视觉编码器。** 视觉塔具有相同的架构*且*相同的权重，从配置中确认，
+   而不是从名字推断。
+2. **共享坐标 tokenization。** 两个 checkpoint 必须完全一致地表示坐标 ——
+   相同的归一化、相同的特殊 token、相同的数字处理方式。不同的方案会静默地把
+   对比变成一次分词器研究。
+3. **许可允许进行该对比并公开发布派生指标。**
 
-**Decision thresholds.**
+**判定阈值。**
 
-| Observation | Action |
+| 观察结果 | 动作 |
 |---|---|
-| All three hold for ≥1 pair | **GATE-B CLOSES** → E0/E1 |
-| Encoder or tokenization differs | **Stage isolation unavailable.** Descope to a format-artifact study — a much smaller paper. Re-argue the Final-3 slot before spending GPU |
-| Licences block it | Find another pair, or descope |
+| ≥1 个对三项全部满足 | **GATE-B 关闭** → E0/E1 |
+| 编码器或 tokenization 存在差异 | **阶段隔离不可行。** 降级为格式假象研究 —— 一篇小得多的论文。花 GPU 之前重新论证 Final-3 席位 |
+| 许可受阻 | 另找一对，或降级 |
 
-**Cost.** Hours of reading. **No GPU.**
+**成本。** 数小时的阅读。**无需 GPU。**
 
-**Write the finding into this card.** The written verification *is* the artifact
-that closes GATE-B. `data.verify_checkpoint_pair` raises `NotImplementedError`
-with these three checks spelled out, so the code cannot proceed on an unverified
-pair by accident.
+**将发现写进本卡片。** 这份成文核查*就是*关闭 GATE-B 的产物。
+`data.verify_checkpoint_pair` 会逐条列出这三项检查并抛 `NotImplementedError`，
+因此代码不可能在未核实的对上意外继续往下跑。
 
 ---
 
-## E0 — Harness validation and O1/O2/O3 round trip — STATUS: RUN, PASS
+## E0 —— 测试台验证与 O1/O2/O3 往返测试 —— 状态：已跑，PASS
 
-**Purpose.** Confirm the decision logic recovers the right answer on data whose
-answer is known. `classify_outcome` is the function that converts measurements
-into the paper's claim, so it is the one piece that must be right before any
-real number exists.
+**目的。** 确认决策逻辑在答案已知的数据上能还原出正确答案。
+`classify_outcome` 是将测量值转化为论文主张的函数，因此它是在任何真实数字产生
+之前唯一必须确保完全正确的部件。
 
-**Input.** `data.make_pair` — a synthetic base/chat pair whose degradation mode
-is **chosen by config**: `none`, `format`, `policy`, or `representation`.
+**输入。** `data.make_pair` —— 一个退化模式**由配置选定**的合成 base/chat 对：
+`none`、`format`、`policy` 或 `representation`。
 
-**Run.**
+**运行。**
 
 ```bash
 python Idea_03/src/run_smoke.py --seed 0
 python -m unittest discover -s Idea_03/tests
 ```
 
-**Procedure.** Plant each of the four modes in turn; measure free-form,
-constrained, likelihood and probe gaps; ask `classify_outcome` for a verdict;
-check it matches what was planted.
+**流程。** 依次植入四种模式；测量自由生成、受限生成、似然排序以及探针差距；
+请求 `classify_outcome` 给出裁决；检查其与植入模式是否一致。
 
-**Decision threshold.** `run_smoke.py` exits non-zero unless all four modes
-round-trip. A decision function that cannot recover a planted answer must not be
-pointed at a real one.
+**判定阈值。** `run_smoke.py` 会以非零状态退出，除非所有四种模式都能往返还原。
+一个连植入答案都还原不出来的决策函数，绝不能拿去对准真实答案。
 
-**Two properties this card pins.**
+**本卡片钉住的两项性质。**
 
-1. **The classifier refuses without the likelihood mode.** `classify_outcome`
-   raises when `likelihood_gap is None`. That is the kill rule in code — a
-   free-form gap alone cannot be separated from the format confound, and
-   skipping mode 3 is the easiest way to publish a wrong result here.
-2. **Parse failures are reported separately from IoU.** `mean_iou` offers both
-   `count_failures=True` and `False`, and a self-check pins the difference. A
-   chat model that answers *"The cat is at [12, 30, 44, 80]"* has localised
-   correctly; scoring it zero measures prose, not vision.
+1. **缺少似然模式时分类器拒绝工作。** 当 `likelihood_gap is None` 时
+   `classify_outcome` 抛异常。这就是代码层面的 kill 规则 —— 仅凭自由生成的差距
+   无法与格式混淆因素分离开来，跳过模式 3 是在这里发表错误结果最容易的方式。
+2. **解析失败与 IoU 分开报告。** `mean_iou` 同时提供 `count_failures=True`
+   与 `False`，自检钉住了其差值。一个回答 *"The cat is at [12, 30, 44, 80]"* 的
+   chat 模型定位是正确的；给它打零分测的是文风，不是视觉。
 
-**What E0 does NOT show.** Nothing about any real VLM. The base and chat models
-are simulators whose failure mode we chose. `run_smoke.py` says so before every
-number.
+**E0 不能说明什么。** 关于任何真实 VLM 什么都说明不了。base 与 chat 模型只是我们
+选定了失效模式的模拟器。`run_smoke.py` 在打印任何数字之前都会说明这一点。
 
 ---
 
-## E1 — KILLER: pair 1, three eval modes + probe — STATUS: NOT RUN
+## E1 —— KILLER：对 1，三种评测模式 + 探针 —— 状态：NOT RUN
 
-**Requires GATE-B closed.**
+**需要 GATE-B 已关闭。**
 
-**Input.** One verified pair; ~2k RefCOCO-style referring expressions
-(`CITATION NEEDED — 待人工核验`). Same prompts, same images, same shared
-distractor sets for both checkpoints.
+**输入。** 一对已核实的 checkpoint；约 2k 条类 RefCOCO 的指代表达
+（`CITATION NEEDED — 待人工核验`）。对两个 checkpoint 采用相同的提示、相同的图像、
+相同的共享干扰项集合。
 
-**The three eval modes**, in order of increasing format immunity:
+**三种评测模式**，按对格式的免疫力递增排列：
 
-| Mode | What it measures | What it still leaves in |
+| 模式 | 测量什么 | 仍然留下了什么 |
 |---|---|---|
-| **1. Free-form** | Generation as deployed | The whole format confound |
-| **2. Grammar-constrained** | `x1,y1,x2,y2` only, no prose | The decoding policy — the model can still emit worse coordinates |
-| **3. Likelihood rank** | Score the gold box string against ≤16 **shared** distractor boxes | Nothing generative. **This is the decisive number** |
+| **1. 自由生成** | 实际部署下的生成 | 整个格式混淆因素 |
+| **2. 语法受限** | 仅 `x1,y1,x2,y2`，无文本 | 解码策略 —— 模型依然可能输出更差的坐标 |
+| **3. 似然排序** | 针对 ≤16 个**共享**干扰框为金标框字符串打分 | 没有任何生成成分。**这是决定性的数字** |
 
-The distractors are shared between checkpoints on purpose. If each model ranked
-against its own candidate set, a likelihood gap could come from an easier set
-rather than a better model.
+干扰项在 checkpoint 之间有意共享。如果每个模型针对自己的候选集排序，
+似然差距可能来自更容易的候选集，而不是更好的模型。
 
-**The probe (H2).** Linear probe on **frozen** visual tokens → box (or region
-centre), fit on a small train split, evaluated held out, for both checkpoints.
-Ridge-regularised: with a small train split and correlated token dimensions, an
-unregularised fit can recover a box from noise and would report "representation
-intact" for a checkpoint whose representation was destroyed.
+**探针（H2）。** 冻结视觉 token → 框（或区域中心）的线性探针，在小训练划分上
+拟合、在留出集上评测，对两个 checkpoint 都做。加入 Ridge 正则：在训练划分小且
+token 维度相关时，不加正则的拟合可以从噪声中还原出框，从而对表征已被破坏的
+checkpoint 报告"表征完好"。
 
-**Reported per checkpoint:** IoU (failures counted and not counted),
-**parse-failure rate as its own number**, acc@IoU 0.5, rank acc@1, probe MAE.
+**每个 checkpoint 报告的内容：** IoU（计入与不计入失败）、
+**作为单独数字的解析失败率**、acc@IoU 0.5、rank acc@1、探针 MAE。
 
-**Decision thresholds** (`gap_tolerance` pre-registered at 0.02):
+**判定阈值**（`gap_tolerance` 预先注册为 0.02）：
 
-| Observation | Outcome | Action |
+| 观察结果 | 结论 | 动作 |
 |---|---|---|
-| No gap under constrained decoding | — | **KILL** — formatting confound, as pre-registered |
-| Likelihood gap ≈ 0 | **O1** | Provisional format artifact → confirm on pair 2, then write the negative |
-| Likelihood gap > 0, probe intact | **O2** | Decoding-policy tax → E2 |
-| Likelihood gap > 0, probe drops | **O3** | Representation tax → E2. The most consequential outcome |
-| Likelihood mode not run | — | **No verdict.** The code raises rather than guessing |
+| 受限解码下无差距 | — | **KILL** —— 属于格式混淆因素，已预先注册 |
+| 似然差距 ≈ 0 | **O1** | 暂定为格式假象 → 在对 2 上确认，然后写负结果 |
+| 似然差距 > 0，探针完好 | **O2** | 解码策略税 → E2 |
+| 似然差距 > 0，探针下降 | **O3** | 表征税 → E2。后果最重的一个结局 |
+| 似然模式未跑 | — | **无裁决。** 代码会抛异常而不是猜测 |
 
-**Budget.** ≤8 GPU-h (**HYPOTHESIS**). Eval-only; no training.
+**预算。** ≤8 GPU-h（**HYPOTHESIS**）。只做评测；无需训练。
 
 ---
 
-## E2 — Pair 2 replication — STATUS: NOT RUN
+## E2 —— 对 2 复现 —— 状态：NOT RUN
 
-**Purpose.** One pair is one draw. E2 is also what releases (or fires) the STOP
-rule guarding the expensive card.
+**目的。** 单独一对只是一次抽样。E2 也是解锁（或触发）把守昂贵卡片的 STOP 规则的环节。
 
-**Procedure.** Repeat E1 on a second GATE-B-verified pair.
+**流程。** 在第二个经 GATE-B 核实的对上重复 E1。
 
-**Decision thresholds.**
+**判定阈值。**
 
-| Observation | Action |
+| 观察结果 | 动作 |
 |---|---|
-| Same outcome class on both pairs | **CONTINUE** — E4 unlocked if the gap survived format control |
-| **Likelihood gap ≈ 0 on pair 1 AND pair 2** | **STOP.** Write O1 as a negative result. **Do not run DPO** |
-| Outcome reverses across pairs | **KILL the general claim**; report as pair-specific and name the pairs in the title |
-| Only one pair passes GATE-B | Honest scope — the title names that pair. E4 stays locked; a causal claim from a single pair is not defensible |
+| 两个对结论类别一致 | **继续** —— 若差距经受住了格式控制则解锁 E4 |
+| **对 1 和对 2 的似然差距皆 ≈ 0** | **STOP。** 将 O1 写为负结果。**不跑 DPO** |
+| 两个对结论反转 | **杀掉通用主张**；按具体对报告，并在标题中指名这些对 |
+| 只有一对通过了 GATE-B | 诚实界定范围 —— 标题指名该对。E4 保持锁定；来自单一对的因果主张站不住脚 |
 
-**FACT, verbatim, this file's long-standing rule:** *"**STOP** if likelihood gap
-~0 on pair 1 and pair 2. Do not run DPO unless observational gap survives format
-control."*
+**FACT，原话，本文件的长期规则：** *"**STOP** if likelihood gap ~0 on pair 1
+and pair 2. Do not run DPO unless observational gap survives format control."*
 
-**Budget.** ≤8 GPU-h (**HYPOTHESIS**).
+**预算。** ≤8 GPU-h（**HYPOTHESIS**）。
 
 ---
 
-## E3 — Probe layer sweep and capacity ablation — STATUS: NOT RUN
+## E3 —— 探针层扫描与容量消融 —— 状态：NOT RUN
 
-**Purpose.** Pre-empt the two obvious attacks on H2: *"you probed the wrong
-layer"* and *"a linear probe is too weak"*.
+**目的。** 先手防范针对 H2 的两条显见攻击：*"你们探测的层不对"* 与 *"线性探针太弱"*。
 
-**Procedure.** Repeat the H2 probe at several depths of the vision tower.
-Additionally fit a small MLP probe alongside the linear one.
+**流程。** 在视觉塔的多个深度重复 H2 探针。在线性探针之外额外拟合一个小型 MLP 探针。
 
-**Decision thresholds.**
+**判定阈值。**
 
-| Observation | Interpretation |
+| 观察结果 | 解释 |
 |---|---|
-| The base/chat probe gap is consistent across layers | H2 is robust; report the sweep as a figure |
-| The gap exists at one layer only | **DOWNGRADE** — report the sweep, not a headline |
-| Linear probe drops but MLP probe does not | The information is **present but not linearly accessible** — a distinct, reportable finding, and a real refinement of "representation tax" |
+| base/chat 的探针差距跨层一致 | H2 是鲁棒的；将扫描结果作为图表报告 |
+| 差距仅在单层存在 | **降级** —— 报告扫描结果，而不是大标题 |
+| 线性探针下降但 MLP 未降 | 信息**存在但不再线性可及** —— 这是一项独立的、可报告的发现，是对"表征税"的实质性深化 |
 
-**Budget.** ≈2 GPU-h (**HYPOTHESIS**). Parallelisable with E2.
+**预算。** 约 2 GPU-h（**HYPOTHESIS**）。可与 E2 并行。
 
 ---
 
-## E4 — H3: text-only DPO LoRA — STATUS: NOT RUN, GATED
+## E4 —— H3：纯文本 DPO LoRA —— 状态：未跑，受门禁拦截
 
-**LOCKED behind the E2 STOP rule.** Do not run unless the observational gap
-survived format control on **both** pairs.
+**锁定在 E2 STOP 规则之后。** 除非观测差距在**两个**对上都经受住了格式控制，
+否则绝不开跑。
 
-**Purpose.** RQ4: is the tax caused by the alignment **objective**, or by the
-image data mix used during alignment? Observational comparison cannot separate
-them, which is why Reviewer #2's residual names this arm explicitly.
+**目的。** RQ4：这项税是由对齐的**优化目标**造成的，还是由对齐期间使用的
+图像数据配比造成的？纯观测性对比无法区分它们，这正是 Reviewer #2 的残余要求
+明确点名这条臂的原因。
 
-**Procedure.** Apply a small LoRA DPO (`CITATION NEEDED — 待人工核验`) to the
-**base** checkpoint using **text-only** preference data — no images. Re-run E1's
-three modes and the probe.
+**流程。** 在 **base** checkpoint 上使用**纯文本**偏好数据应用小规模 LoRA DPO
+（`CITATION NEEDED — 待人工核验`）—— 不含任何图像。重跑 E1 的三种模式与探针。
 
-**Decision thresholds.**
+**判定阈值。**
 
-| Observation | Interpretation |
+| 观察结果 | 解释 |
 |---|---|
-| The localization gap reproduces after text-only DPO | Strong support for **objective**, not image data mix. The causal claim is available |
-| No effect | Text-only preference optimisation does not reproduce it. **Report as such** and drop the causal framing; H1+H2 stand alone |
-| Effect present but tiny | Report the effect size; do not upgrade it to a causal headline |
+| 纯文本 DPO 后定位差距复现 | 强有力支持**优化目标**而非图像数据配比。因果主张成立 |
+| 无效果 | 纯文本偏好优化无法复现它。**如实报告**并放弃因果表述；H1+H2 独立立论 |
+| 效果存在但微弱 | 报告效应量；不将其升级为因果大标题 |
 
-**FACT.** `reviewer_attacks.md`: *"Unmatched data mixes: **do not claim causal
-RLHF without H3**."* Without E4, §23 of `proposal.md` forbids the causal claim
-entirely.
+**FACT。** `reviewer_attacks.md`：*"Unmatched data mixes: **do not claim causal
+RLHF without H3**."*。没有 E4，`proposal.md` §23 完全禁止因果主张。
 
-**Budget.** 1–2 × 24 GB GPUs, days (**HYPOTHESIS**, from `proposal.md`). By far
-the most expensive card in the package, which is why it is gated twice.
+**预算。** 1–2 张 24 GB GPU，数天（**HYPOTHESIS**，来自 `proposal.md`）。
+本 package 中迄今最昂贵的卡片，这正是它被双重门禁拦截的原因。
 
 ---
 
-## Cross-cutting rules
+## 横切规则
 
-1. **GATE-B before any GPU.** An unmatched pair makes this a tokenizer study.
-2. **Always run all three eval modes.** The progression *is* the argument, and
-   the decision function refuses to return a verdict without mode 3.
-3. **Distractors are shared** between checkpoints.
-4. **Parse-failure rate is always its own number**, never folded into IoU.
-5. **Thresholds are pre-registered** (`gap_tolerance = 0.02`) and applied by
-   released code, so a reader can apply our rule to their own measurements.
-6. **Cite MDGD as an attack, not as background.** The generic-forgetting
-   headline is published and was killed at Stage 3.
-7. **Re-check the adjacent literature immediately before writing.** The novelty
-   is absence-defined at confidence ~0.5 and `README.md` marks this the highest
-   concurrent-work risk in Windows6 (`proposal.md` §26.1).
-8. **Budgets stay HYPOTHESIS.** The ≈8 GPU-h figure is an estimate from
-   `evolution_summary.md`, never a measurement.
+1. **先做 GATE-B，再开任何 GPU。** 不匹配的对会把这里变成分词器研究。
+2. **始终跑全部三种评测模式。** 递进过程*就是*论证本身，缺少模式 3 时决策函数
+   拒绝给出裁决。
+3. **干扰项在 checkpoint 之间共享。**
+4. **解析失败率永远作为单独数字报告**，绝不折进 IoU。
+5. **阈值已预先注册**（`gap_tolerance = 0.02`）并由公开发布的代码施加，
+   使读者可以把我们的规则套用到他们自己的测量上。
+6. **将 MDGD 作为攻击点来引，而不是作为背景。** 通用遗忘的大标题已被发表，
+   并在 Stage 3 被杀。
+7. **动笔前立即重新核对邻近文献。** 新颖性是在信心约 0.5 下由空缺定义的，
+   且 `README.md` 将其标为 Windows6 中被并行工作抢先风险最高的一个（`proposal.md` §26.1）。
+8. **预算保持标注为 HYPOTHESIS。** 约 8 GPU-h 是来自 `evolution_summary.md`
+   的估计值，绝不是测量值。
