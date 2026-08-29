@@ -1,0 +1,115 @@
+# Idea_03 / C-0090 -- RehearsalGrid pre-registration
+#
+# FROZEN AT E0, BEFORE ANY ARM RUNS.
+#
+# Five of the eight reviewer attacks against this project are answered by things
+# committed in this file rather than by extra compute. Everything downstream reads
+# it; nothing rewrites it.
+
+meta:
+  idea_id: C-0090
+  window: Windows7
+  frozen_at: null
+  frozen_by: null
+  llava_commit: null
+  transformers_version: null
+  deepspeed_version: null
+
+base:
+  model: llava-1.5-7b            # Vicuna-7B + CLIP ViT-L/336
+  mix: llava_v1_5_mix665k
+  text_stripped: true
+  stripped_slice: sharegpt
+  stripped_slice_tokens: null    # MEASURED at E0, not estimated -- it sets every arm's budget
+  note: >
+    The published mix contains a text-only ShareGPT slice, so "reproduce the published
+    recipe" and "A0 = no rehearsal" cannot both hold. The base is therefore a
+    text-stripped variant with token-budget re-matching, and the published-recipe run
+    is reported as a reference point, NOT as an arm. This narrows the claim from "the
+    published recipe" to "a controlled variant of it", which the paper states.
+
+arms:
+  - {name: A0_none,       source: null,        transform: none,     destroys: "everything (floor)"}
+  - {name: A1_curated,    source: curated_mix, transform: identity, destroys: "nothing"}
+  - {name: A2_random_web, source: c4,          transform: identity, destroys: "curation"}
+  - {name: A3_shuffled,   source: c4,          transform: shuffle_within_doc, destroys: "syntax and content"}
+  - {name: A4_single_doc, source: c4,          transform: repeat_one,         destroys: "diversity"}
+
+schedule:
+  rehearsal_fraction_of_tokens: 0.10
+  interleave: 9                  # 1 text batch per 9 multimodal batches
+  token_budget_rematched: true   # A0 draws more multimodal tokens to hit the same total
+  seeds: 3
+  seeds_at_power_gate: 2
+
+matching:
+  primary: per_layer             # PRE-REGISTERED. Do not change after seeing results.
+  secondary: global_norm
+  max_scale: 10.0
+  log_every_steps: 50
+  log_effective_lr_multiplier: true
+  primary_justification: >
+    Modality-specific gradients differ by orders of magnitude across layers
+    (arXiv:2606.17296), so a single global scalar can report a clean match while
+    individual blocks stay badly mismatched. Stage 5 left the two conventions
+    symmetric and called divergence "the finding", which makes every outcome a
+    result; Stage 6 required naming one primary in advance.
+
+evaluation:
+  strata:
+    fluency:     [wikitext_ppl, lambada]
+    knowledge:   [mmlu, nq_open]
+    reasoning:   [arc_challenge]           # gsm8k ONLY if it clears the denominator gate
+    instruction: [ifeval]                  # denominator-gated; expected to fail on Vicuna-7B
+  vl_sanity: [vqav2, gqa, textvqa]         # must not regress
+  harnesses:
+    text: EleutherAI/lm-evaluation-harness
+    vl: EvolvingLMMs-Lab/lmms-eval
+  yamls_frozen: false                      # set true when committed
+
+denominator_gate:
+  min_headroom_over_chance: 0.10
+  min_snr: 3.0                             # headroom / seed sd
+  applied: before_arms                     # replacements happen at E0, not post hoc
+  note: >
+    Retention is score/score(base). Vicuna-7B is near-floor on GSM8K and weak on
+    IFEval, and a near-zero denominator lets one stratum flip the >=3-of-4 rule on
+    noise alone. The Stage-5 abort gate watched only seed variance and never asked
+    whether a stratum could support a ratio at all.
+
+statistics:
+  primary: absolute_delta                  # score - score(base), in points
+  co_primary: retention_ratio
+  minimum_detectable_effect: null          # DECLARE AT E0, before the six E1 runs
+  shares_uninterpretable_below_mde: true
+  bootstrap: {n: 10000, resample: seeds}
+
+predictions:
+  P0_power_gate:
+    capabilities: [knowledge, fluency]
+    rule: "Abs(A1) - Abs(A0) > max(2 * seed_sd, MDE)"
+    on_fail: "STOP at ~800 cumulative A100-h; publish the power analysis"
+  P1_mechanism:
+    rule: "balance_effect >= 0.8 * total_effect"
+    min_capabilities: 3
+    of: 4
+  P2_content:
+    rule: "Ret(A2) <= Ret(A0) on ALL capabilities"
+  P3_stratified:
+    rule: "knowledge content_share > 0.5 AND fluency content_share < 0.2"
+    on_pass: "fund E4 mixture sweep -- without it P3 is a shrug with a table"
+
+escalation:
+  scale_13b_allowed_only_if: "effect is real-but-underpowered, NOT absent"
+  cross_family_replication: prismatic-vlms   # E5, in the core design, not optional
+
+budget_a100_hours:
+  e0_reproduction: 100
+  e0b_a3_pilot: 100
+  e1_power_gate: 600          # cumulative 800 -- the kill point
+  e2_full_grid: 900
+  e3_second_convention: 300
+  e5_cross_family: 300
+  e6_evaluation: 150
+  core_total: 2450
+  e4_mixture_sweep_p3_only: 600

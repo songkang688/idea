@@ -1,0 +1,24 @@
+# Idea_01 / SupportAudit
+#
+# The harness in src/ deliberately depends on numpy alone, so that the protocol,
+# the strata logic and the statistics can be validated before any checkpoint or
+# GPU is involved. Everything below the divider is needed only when the real
+# method panel is wired in.
+
+numpy>=1.24
+pyyaml>=6.0
+
+# --- real-run dependencies (install when the panel is wired in) --------------
+# torch>=2.1
+# torchvision>=0.16
+# transformers>=4.40        # SegGPT (SegGptForImageSegmentation)
+# opencv-python>=4.8        # Floor-B classical saliency
+# pycocotools>=2.0.7        # COCO-20i / LVIS-92i instance annotations
+# scipy>=1.11               # replaces the bundled connected-components fallback
+# tqdm>=4.66
+#
+# Method repos are used as released and are NOT pip-installable; they are cloned
+# and pinned by commit in references/checkpoint_manifest.md:
+#   dvlab-research/PFENet, juhongm999/hsnet, chunbolang/BAM,
+#   aim-uofa/Matcher, ZrrSkywalker/Personalize-SAM, Sam1224/FSSAM,
+#   facebookresearch/segment-anything, facebookresearch/sam2

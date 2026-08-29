@@ -1,0 +1,23 @@
+# Idea_03 / RehearsalGrid
+#
+# The prototype in src/ needs numpy alone: the content-destruction transforms, the
+# token accounting, the matching conventions and the whole decision rule are all
+# validated on CPU before any A100-hour is spent.
+
+numpy>=1.24
+pyyaml>=6.0
+
+# --- real-run dependencies (install with the training harness) ---------------
+# torch>=2.1
+# transformers>=4.37,<4.40   # pin: LLaVA repo is in maintenance mode
+# deepspeed>=0.12,<0.15      # pin: configs shipped with the LLaVA repo
+# accelerate>=0.26
+# datasets>=2.16
+# sentencepiece
+# wandb
+#
+# Cloned and pinned by commit, not pip-installed (see references/access_checklist.md):
+#   haotian-liu/LLaVA                    -- training harness
+#   TRI-ML/prismatic-vlms                -- fallback harness + cross-family replication
+#   EleutherAI/lm-evaluation-harness     -- language strata
+#   EvolvingLMMs-Lab/lmms-eval           -- vision-language sanity strata

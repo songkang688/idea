@@ -1,0 +1,92 @@
+# Idea_01 / B-0121 -- SupportAudit pre-registration
+#
+# This file is committed BEFORE any inference runs. Everything that could later be
+# tuned toward a desired outcome is frozen here. If any field changes after the
+# first real inference, the change and its reason must be recorded in
+# references/preregistration_amendments.md and reported in the paper.
+
+meta:
+  idea_id: B-0121
+  window: Windows7
+  frozen_at: null            # fill with UTC timestamp at commit time
+  frozen_by: null
+  harness_commit: null       # git SHA of the code that produced the numbers
+
+strata:
+  # Computed from instance annotations ONLY. Never from model output.
+  primary: S3_distractor_present
+  definitions:
+    S1_single_object: "exactly one annotated instance of any class in the query"
+    S2_multi_object_same_class: ">=2 instances, all of the episode class c"
+    S3_distractor_present: ">=1 annotated instance of a class != c"
+    S4_degenerate_control: "FSS-1000 episodes (single centred object by construction)"
+
+counterfactual:
+  k_total: 5
+  k_near: 2                  # same supercategory as the episode class
+  k_far: 3                   # different supercategory
+  area_tolerance: 0.50
+  area_tolerance_relaxed: 1.00   # fallback; every relaxation logged per episode
+  wrong_class_rule: "class must be verified ABSENT from the query's annotations"
+  # Lists are shipped as static files, not regenerated from a seed. A seed plus a
+  # code version is not reproducible across library upgrades.
+  list_files:
+    pascal_5i: lists/wrong_supports_pascal5i.jsonl
+    coco_20i: lists/wrong_supports_coco20i.jsonl
+    lvis_92i: lists/wrong_supports_lvis92i.jsonl
+
+episode_filter:
+  tau: 0.20                  # keep episodes with a_corr >= tau
+  tau_sensitivity_curve: [0.10, 0.20, 0.30]   # published regardless of outcome
+
+statistics:
+  # PRIMARY is the ratio of means, NOT the median of per-episode ratios.
+  # Per-episode retention is bimodal, so a median is a coin flip on which pile is
+  # larger. See proposal.md section 10 for the prototype evidence.
+  primary_estimator: ratio_of_means
+  secondary_estimator: median_of_per_episode_ratios
+  disagreement_flag_threshold: 0.20
+  bootstrap_resamples: 10000
+  bootstrap_unit: episode
+  alpha: 0.05
+  paired_resampling: true    # numerator and denominator share episode indices
+
+floors:
+  # Never pooled. Every floor-dependent claim is reported under both.
+  strong:
+    name: floor_a_sam_amg
+    rule: "largest SAM automatic-mask-generation mask whose centroid lies in the central 50%"
+  weak:
+    name: floor_b_saliency
+    rule: "thresholded classical salient-object detector"
+
+killer_experiment:
+  stratum: S3_distractor_present
+  leg_a:
+    statement: ">= half of specialist methods retain R > 0.5 under wrong-class supports"
+    threshold: 0.50
+  leg_b:
+    statement: "correct-support accuracy indistinguishable from the support-free floor"
+    test: "95% bootstrap CI overlap"
+    reported_per_floor: true
+  both_legs_fail: "headline dead; publish the certification result instead"
+
+mve_gate:
+  panel: [PFENet, BAM, Matcher, FSSAM_or_SAM3_exemplar]
+  data: [pascal_5i_fold0, coco_20i_fold0]
+  episodes_per_fold: 1000
+  go_if_any:
+    - "R > 0.35 on any stratum"
+    - "specialist-vs-foundation retention gap > 15 points"
+  no_go_if: "all retentions < 0.2 everywhere including PASCAL S1"
+
+leaderboard_claim:
+  kendall_tau_below: 0.80
+  min_position_changes_in_top8: 3
+
+budget:
+  full_program_a100_days: 5
+  killer_only_a100_days: 2
+  hard_cap_a100_days: 8
+  training: none
+  annotation: none

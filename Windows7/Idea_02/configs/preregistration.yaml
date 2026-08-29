@@ -1,0 +1,100 @@
+# Idea_02 / A-0017 -- MemorySurgeon pre-registration
+#
+# Committed BEFORE E2 (the pilot). The comparator set in particular must be frozen
+# before any comparator is run: naming it afterwards is the exact degree of freedom
+# that made the original validity test unfalsifiable.
+
+meta:
+  idea_id: A-0017
+  window: Windows7
+  frozen_at: null
+  frozen_by: null
+  harness_commit: null
+  sam2_commit: null
+
+failure_definition:
+  iou_fail: 0.10
+  iou_held_previously: 0.50
+  k_consecutive: 5
+  sweep:                      # reported alongside the headline, not instead of it
+    iou_fail: [0.10, 0.30]
+    k_consecutive: [3, 5, 8]
+  curation: none              # every event meeting the definition enters the corpus
+
+recovery_definition:
+  iou_threshold: 0.50
+  window_frames: 20
+  sustain_frames: 3
+
+strata:
+  ambiguous_reappearance:
+    action: report_separately   # never dropped -- this answers the cherry-picking attack
+  h2_testable:
+    rule: "t_r - t_f < memory bank capacity"
+    note: >
+      targeted and reset are the SAME operation once FIFO has flushed all pre-error
+      entries. The share of the corpus meeting this rule bounds what can be claimed
+      for P2 and is reported at E1, before any P2 claim.
+
+arms:
+  - no_op
+  - targeted
+  - reset
+  - sham            # VACUOUS control: count-matched deletion of PRE-ERROR entries,
+                    # corruption left in place. Same incision, nothing removed.
+  - slot_control    # the Stage-6 wording taken literally; answers a different question
+  - random_k
+sham_note: >
+  Implemented literally, the Stage-6 sham ("delete post-error entries, re-insert
+  count-matched pre-error duplicates at the same recency slots") still removes the
+  corruption, so it performs the therapeutic action and would match `targeted` even
+  when the instrument is perfectly valid. P3 therefore tests against the vacuous
+  arm; the literal arm is retained as slot_control.
+
+predictions:
+  P1_targeted_vs_no_op_min_points: 0.30
+  P2_targeted_vs_reset_min_points: 0.10
+  P3_targeted_vs_sham_min_points: 0.10
+  P4_validity:
+    statistic: min_partial_r_over_frozen_set
+    threshold: 0.40
+    covariates: [no_op_recovery_rate, failure_count, distractor_density]
+    also_reported: [nested_model_delta_r2, spearman_variant]
+
+comparator_set_frozen:
+  # MUST be filled and committed before E4. Any comparator not listed here is
+  # exploratory and reported separately; the harness raises on unlisted comparators.
+  - SAMURAI
+  - DAM4SAM
+  - SAM2Long
+  candidates_pending_verification:
+    # Known to us only through arXiv:2512.22624 / arXiv:2606.24449. Each must have
+    # its primary source and code release verified before being added above.
+    - SAMITE
+    - HiM2SAM
+    - SENTRY
+    - AS-SAM2
+
+pilot_gate:
+  n_failures: 50
+  stop_if:
+    - "targeted - sham < 0.10 (instrument dead: deletion mechanics, not content)"
+    - "targeted - reset < 0.03 AND pilot partial r < 0.20"
+
+data:
+  primary: [LVOS_v2_val, DiDi]
+  scale_out_if_short: [SA_V_val]
+  medical_arm: one_public_medical_video_set   # E8
+  didi_access_confirmed: false                # HARD day-1 dependency, no mirror
+
+budget_gpu_hours:
+  harvest: 12
+  surgery_replays: 25
+  comparator_passes: 35
+  attention_logging_overhead_pct: 20
+  core_total: [80, 120]
+  sam3_arm: 30
+  medical_arm: 10
+  timing_dose_response: 15
+  with_mandatory_arms: [140, 180]
+  training: none
