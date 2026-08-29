@@ -1,0 +1,4909 @@
+{
+ "task_id": "p1_wave_b_w4",
+ "role": "judge_B_feasibility",
+ "wave": "w4_KLM",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "branch": "cursor/p1-wave-b-w4-judge-b-feasibility-331c",
+ "generated_at_utc": "2026-08-29T00:19:06Z",
+ "inputs": {
+  "gen_k": {
+   "branch": "origin/cursor/p1-gen-k-3d-geometry-video-dc89",
+   "shard": "Windows13/_state/tasks/p1/generators/gen_k_3d_geometry_video/ideas_shard.jsonl",
+   "ideas": 105,
+   "schema": "separate kill_threshold field; plural evidence_labels; no needs_special_resources field"
+  },
+  "gen_l": {
+   "branch": "origin/cursor/p1-gen-l-llm-agent-vision-c11e",
+   "shard": "Windows13/_state/tasks/p1/generators/gen_l_llm_agent_vision/ideas_shard.jsonl",
+   "ideas": 100,
+   "schema": "inline KILL clause in falsifiable_prediction; singular evidence_label; needs_special_resources present (all false)"
+  },
+  "gen_m": {
+   "branch": "origin/cursor/p1-gen-m-training-dynamics-d8f7",
+   "shard": "Windows13/_state/tasks/p1/generators/gen_m_training_dynamics_objectives/ideas_shard.jsonl",
+   "ideas": 100,
+   "schema": "inline KILL clause; singular evidence_label; extra fields source_shard/wave/novelty_status/seg_metric_dependent; wave field mislabeled 'p1_wave_a_w3' (actual wave w4_KLM)"
+  },
+  "canonical_master_read_only": {
+   "branch": "origin/cursor/p1-wave-b-consolidator-w3-bf20",
+   "file": "Windows13/_state/ideas_master.jsonl",
+   "records": 592,
+   "verification": "wc -l == 592 on branch base; file untouched by this judge",
+   "use": "cross-wave collision checks only"
+  },
+  "judge_A_w4": {
+   "status": "not_on_origin_at_judging_time",
+   "note": "No w4 branches existed on origin when this judge ran (git ls-remote checked); raw shards judged independently per commission."
+  },
+  "do_not_merge_in": "gen_n/gen_p/gen_o outputs excluded from accepted_shard_B per commission"
+ },
+ "method": "Independent feasibility pass over raw shards. Mechanical validation (id contiguity, field census, kill-threshold location, digit presence, citation-string scan), GATE-4 named-asset detection over experiment-bearing fields against a public dataset/model name list, per-idea tier/score assignment from stated fastest-falsification time/device bounds, deep read of per-idea digests for merge/kill and rig grouping, keyword collision pass against the 592-record read-only master.",
+ "epistemic_status": "Feasibility and cost judgments only; no novelty ranking (Judge A lane) and no numbers invented anywhere. Scores reflect the generators' own stated time bounds, sanity-checked against the described protocol.",
+ "counts": {
+  "input_total": 305,
+  "input_by_shard": {
+   "K": 105,
+   "L": 100,
+   "M": 100
+  },
+  "keep": 301,
+  "keep_by_shard": {
+   "K": 103,
+   "L": 98,
+   "M": 100
+  },
+  "merge": 4,
+  "kill": 0,
+  "merge_in_wave": 3,
+  "merge_in_wave_cross_shard": 0,
+  "merge_cross_wave_into_master": 1,
+  "anomalies": 6,
+  "tier_T1_keep": 152,
+  "tier_T2_keep": 149,
+  "tier_T3_keep": 0,
+  "score5_keeps": 159,
+  "duplicate_groups": 4,
+  "co_run_clusters": 19,
+  "gate1_qualitative_kill_threshold": {
+   "gen_k": 5,
+   "gen_l": 0,
+   "gen_m": 0
+  },
+  "gate4_named_public_assets_full": {
+   "gen_k": 0,
+   "gen_l": 0,
+   "gen_m": 100
+  },
+  "gate4_partial_asset_naming": {
+   "gen_k": 2,
+   "gen_l": 0,
+   "gen_m": 0
+  },
+  "needs_special_resources_true": {
+   "gen_k": 0,
+   "gen_l": 0,
+   "gen_m": 1
+  }
+ },
+ "schema_drift": {
+  "summary": "Three mutually inconsistent schemas; consolidator must normalize before append. This judge did not rewrite any generator record.",
+  "gen_k": [
+   "kill threshold lives in a SEPARATE kill_threshold field (105/105), not inline in falsifiable_prediction",
+   "evidence label field is PLURAL evidence_labels (list)",
+   "no needs_special_resources field at all",
+   "genre vocabulary: characterization/debunk_audit/constructive_capability"
+  ],
+  "gen_l": [
+   "kill threshold inline in falsifiable_prediction as KILL: sentence (100/100)",
+   "singular evidence_label",
+   "needs_special_resources present, false for all 100",
+   "genre vocabulary drifts: 'debunk', 'eval-critique', hyphenated 'constructive-capability'"
+  ],
+  "gen_m": [
+   "kill threshold inline in falsifiable_prediction as KILL: sentence (100/100)",
+   "singular evidence_label; needs_special_resources present (true only for M-030)",
+   "extra fields: source_shard, wave, novelty_status, seg_metric_dependent (61/100 true)",
+   "wave field MISLABELED 'p1_wave_a_w3' on all 100 records; actual wave is w4_KLM - consolidator must correct on append"
+  ]
+ },
+ "gate_compliance": {
+  "GATE-1_numeric_kill_threshold": {
+   "gen_k": "100/105 numeric; 5 qualitative (K-035, K-039, K-065, K-083, K-094) - flagged, no numbers invented",
+   "gen_l": "100/100 numeric inline KILL clauses",
+   "gen_m": "100/100 numeric inline KILL clauses"
+  },
+  "GATE-2_evidence_label": {
+   "gen_k": "105/105 present but under plural field name evidence_labels (schema drift, not a content gap)",
+   "gen_l": "100/100 present",
+   "gen_m": "100/100 present"
+  },
+  "GATE-3_time_cost_bound_and_resources": {
+   "gen_k": "105/105 fastest experiments carry explicit time/device bounds",
+   "gen_l": "100/100",
+   "gen_m": "100/100 (typical 1-5 days on one A100/RTX 4090; M-030 needs an 8-GPU node for full range)"
+  },
+  "GATE-4_named_public_dataset_and_model": {
+   "gen_k": "0/105 name BOTH a public dataset and model in experiment fields (K-001 dataset-only, K-068 model-only); style is generic (\"public backbones\", \"one RGB-D dataset\")",
+   "gen_l": "0/100; style is generic (\"open agent framework\", \"public vision tools\", \"public datasets\")",
+   "gen_m": "100/100 name both (e.g. torchvision ResNet-50, DeepLabv3+, NYU Depth v2, Cityscapes, ImageNet-100)",
+   "note": "Detection over experiment-bearing fields (minimal/fastest experiments, prediction, kill threshold) against a broad public asset name list; gen_k/gen_l non-compliance verified by manual spot-reads as a generator style choice, not a detector artifact."
+  },
+  "GATE-5_retrofit_duty": {
+   "action_taken": "None - judges do not rewrite records and this judge invented no numbers.",
+   "recommendation": "Consolidator: (a) numeric kill-threshold retrofit for the 5 gen_k qualitative ids via remand to generator; (b) named-asset retrofit for all 205 gen_k+gen_l records before Stage-2 (schema-only remand, not content rejection); (c) normalize kill_threshold/evidence_label field placement and correct the gen_m wave tag on append.",
+   "missing_kill_threshold_ids": [
+    "W13-P1-K-035",
+    "W13-P1-K-039",
+    "W13-P1-K-065",
+    "W13-P1-K-083",
+    "W13-P1-K-094"
+   ],
+   "missing_evidence_label_ids": []
+  },
+  "GATE-6_genre_audit": "K: 44 characterization / 27 debunk_audit / 34 constructive_capability. L: 48 characterization / 47 constructive-capability / 3 debunk / 2 eval-critique (debunk lane thin). M: 58 characterization_law / 26 constructive_capability / 16 audit_debunk. Genre label vocabulary itself drifts across shards.",
+  "GATE-7_no_fake_citations": "PASS - zero citation-like strings (arXiv ids, et al., year parentheses, DOIs) in any of the 305 records by mechanical scan; this judge cites nothing and added no citations.",
+  "GATE-8_prior_art_triage": "3 ids flagged prior_art_risk (L-074, M-023, M-031) on judge recollection that nearby results exist; UNVERIFIED - no citations asserted; needs the GATE-8 triage lane before Stage-2."
+ },
+ "keep_ids": [
+  "W13-P1-K-001",
+  "W13-P1-K-002",
+  "W13-P1-K-003",
+  "W13-P1-K-004",
+  "W13-P1-K-005",
+  "W13-P1-K-006",
+  "W13-P1-K-007",
+  "W13-P1-K-008",
+  "W13-P1-K-009",
+  "W13-P1-K-010",
+  "W13-P1-K-011",
+  "W13-P1-K-012",
+  "W13-P1-K-013",
+  "W13-P1-K-014",
+  "W13-P1-K-015",
+  "W13-P1-K-016",
+  "W13-P1-K-017",
+  "W13-P1-K-018",
+  "W13-P1-K-019",
+  "W13-P1-K-020",
+  "W13-P1-K-021",
+  "W13-P1-K-022",
+  "W13-P1-K-023",
+  "W13-P1-K-024",
+  "W13-P1-K-025",
+  "W13-P1-K-026",
+  "W13-P1-K-027",
+  "W13-P1-K-028",
+  "W13-P1-K-029",
+  "W13-P1-K-030",
+  "W13-P1-K-031",
+  "W13-P1-K-032",
+  "W13-P1-K-033",
+  "W13-P1-K-034",
+  "W13-P1-K-035",
+  "W13-P1-K-036",
+  "W13-P1-K-037",
+  "W13-P1-K-038",
+  "W13-P1-K-039",
+  "W13-P1-K-040",
+  "W13-P1-K-041",
+  "W13-P1-K-042",
+  "W13-P1-K-044",
+  "W13-P1-K-045",
+  "W13-P1-K-046",
+  "W13-P1-K-047",
+  "W13-P1-K-048",
+  "W13-P1-K-049",
+  "W13-P1-K-050",
+  "W13-P1-K-051",
+  "W13-P1-K-052",
+  "W13-P1-K-053",
+  "W13-P1-K-054",
+  "W13-P1-K-055",
+  "W13-P1-K-056",
+  "W13-P1-K-057",
+  "W13-P1-K-058",
+  "W13-P1-K-059",
+  "W13-P1-K-060",
+  "W13-P1-K-061",
+  "W13-P1-K-062",
+  "W13-P1-K-063",
+  "W13-P1-K-064",
+  "W13-P1-K-065",
+  "W13-P1-K-066",
+  "W13-P1-K-067",
+  "W13-P1-K-068",
+  "W13-P1-K-069",
+  "W13-P1-K-070",
+  "W13-P1-K-071",
+  "W13-P1-K-072",
+  "W13-P1-K-073",
+  "W13-P1-K-074",
+  "W13-P1-K-075",
+  "W13-P1-K-076",
+  "W13-P1-K-077",
+  "W13-P1-K-078",
+  "W13-P1-K-079",
+  "W13-P1-K-080",
+  "W13-P1-K-081",
+  "W13-P1-K-082",
+  "W13-P1-K-083",
+  "W13-P1-K-084",
+  "W13-P1-K-085",
+  "W13-P1-K-086",
+  "W13-P1-K-087",
+  "W13-P1-K-088",
+  "W13-P1-K-089",
+  "W13-P1-K-090",
+  "W13-P1-K-091",
+  "W13-P1-K-092",
+  "W13-P1-K-093",
+  "W13-P1-K-094",
+  "W13-P1-K-095",
+  "W13-P1-K-096",
+  "W13-P1-K-097",
+  "W13-P1-K-098",
+  "W13-P1-K-099",
+  "W13-P1-K-101",
+  "W13-P1-K-102",
+  "W13-P1-K-103",
+  "W13-P1-K-104",
+  "W13-P1-K-105",
+  "W13-P1-L-001",
+  "W13-P1-L-002",
+  "W13-P1-L-003",
+  "W13-P1-L-004",
+  "W13-P1-L-005",
+  "W13-P1-L-006",
+  "W13-P1-L-007",
+  "W13-P1-L-008",
+  "W13-P1-L-009",
+  "W13-P1-L-010",
+  "W13-P1-L-012",
+  "W13-P1-L-013",
+  "W13-P1-L-014",
+  "W13-P1-L-015",
+  "W13-P1-L-016",
+  "W13-P1-L-017",
+  "W13-P1-L-018",
+  "W13-P1-L-019",
+  "W13-P1-L-020",
+  "W13-P1-L-021",
+  "W13-P1-L-022",
+  "W13-P1-L-023",
+  "W13-P1-L-024",
+  "W13-P1-L-025",
+  "W13-P1-L-026",
+  "W13-P1-L-027",
+  "W13-P1-L-028",
+  "W13-P1-L-029",
+  "W13-P1-L-030",
+  "W13-P1-L-031",
+  "W13-P1-L-032",
+  "W13-P1-L-033",
+  "W13-P1-L-034",
+  "W13-P1-L-035",
+  "W13-P1-L-036",
+  "W13-P1-L-037",
+  "W13-P1-L-038",
+  "W13-P1-L-039",
+  "W13-P1-L-040",
+  "W13-P1-L-041",
+  "W13-P1-L-042",
+  "W13-P1-L-043",
+  "W13-P1-L-044",
+  "W13-P1-L-045",
+  "W13-P1-L-046",
+  "W13-P1-L-047",
+  "W13-P1-L-048",
+  "W13-P1-L-049",
+  "W13-P1-L-050",
+  "W13-P1-L-051",
+  "W13-P1-L-052",
+  "W13-P1-L-053",
+  "W13-P1-L-054",
+  "W13-P1-L-055",
+  "W13-P1-L-056",
+  "W13-P1-L-057",
+  "W13-P1-L-058",
+  "W13-P1-L-059",
+  "W13-P1-L-060",
+  "W13-P1-L-061",
+  "W13-P1-L-062",
+  "W13-P1-L-063",
+  "W13-P1-L-064",
+  "W13-P1-L-065",
+  "W13-P1-L-066",
+  "W13-P1-L-067",
+  "W13-P1-L-068",
+  "W13-P1-L-070",
+  "W13-P1-L-071",
+  "W13-P1-L-072",
+  "W13-P1-L-073",
+  "W13-P1-L-074",
+  "W13-P1-L-075",
+  "W13-P1-L-076",
+  "W13-P1-L-077",
+  "W13-P1-L-078",
+  "W13-P1-L-079",
+  "W13-P1-L-080",
+  "W13-P1-L-081",
+  "W13-P1-L-082",
+  "W13-P1-L-083",
+  "W13-P1-L-084",
+  "W13-P1-L-085",
+  "W13-P1-L-086",
+  "W13-P1-L-087",
+  "W13-P1-L-088",
+  "W13-P1-L-089",
+  "W13-P1-L-090",
+  "W13-P1-L-091",
+  "W13-P1-L-092",
+  "W13-P1-L-093",
+  "W13-P1-L-094",
+  "W13-P1-L-095",
+  "W13-P1-L-096",
+  "W13-P1-L-097",
+  "W13-P1-L-098",
+  "W13-P1-L-099",
+  "W13-P1-L-100",
+  "W13-P1-M-001",
+  "W13-P1-M-002",
+  "W13-P1-M-003",
+  "W13-P1-M-004",
+  "W13-P1-M-005",
+  "W13-P1-M-006",
+  "W13-P1-M-007",
+  "W13-P1-M-008",
+  "W13-P1-M-009",
+  "W13-P1-M-010",
+  "W13-P1-M-011",
+  "W13-P1-M-012",
+  "W13-P1-M-013",
+  "W13-P1-M-014",
+  "W13-P1-M-015",
+  "W13-P1-M-016",
+  "W13-P1-M-017",
+  "W13-P1-M-018",
+  "W13-P1-M-019",
+  "W13-P1-M-020",
+  "W13-P1-M-021",
+  "W13-P1-M-022",
+  "W13-P1-M-023",
+  "W13-P1-M-024",
+  "W13-P1-M-025",
+  "W13-P1-M-026",
+  "W13-P1-M-027",
+  "W13-P1-M-028",
+  "W13-P1-M-029",
+  "W13-P1-M-030",
+  "W13-P1-M-031",
+  "W13-P1-M-032",
+  "W13-P1-M-033",
+  "W13-P1-M-034",
+  "W13-P1-M-035",
+  "W13-P1-M-036",
+  "W13-P1-M-037",
+  "W13-P1-M-038",
+  "W13-P1-M-039",
+  "W13-P1-M-040",
+  "W13-P1-M-041",
+  "W13-P1-M-042",
+  "W13-P1-M-043",
+  "W13-P1-M-044",
+  "W13-P1-M-045",
+  "W13-P1-M-046",
+  "W13-P1-M-047",
+  "W13-P1-M-048",
+  "W13-P1-M-049",
+  "W13-P1-M-050",
+  "W13-P1-M-051",
+  "W13-P1-M-052",
+  "W13-P1-M-053",
+  "W13-P1-M-054",
+  "W13-P1-M-055",
+  "W13-P1-M-056",
+  "W13-P1-M-057",
+  "W13-P1-M-058",
+  "W13-P1-M-059",
+  "W13-P1-M-060",
+  "W13-P1-M-061",
+  "W13-P1-M-062",
+  "W13-P1-M-063",
+  "W13-P1-M-064",
+  "W13-P1-M-065",
+  "W13-P1-M-066",
+  "W13-P1-M-067",
+  "W13-P1-M-068",
+  "W13-P1-M-069",
+  "W13-P1-M-070",
+  "W13-P1-M-071",
+  "W13-P1-M-072",
+  "W13-P1-M-073",
+  "W13-P1-M-074",
+  "W13-P1-M-075",
+  "W13-P1-M-076",
+  "W13-P1-M-077",
+  "W13-P1-M-078",
+  "W13-P1-M-079",
+  "W13-P1-M-080",
+  "W13-P1-M-081",
+  "W13-P1-M-082",
+  "W13-P1-M-083",
+  "W13-P1-M-084",
+  "W13-P1-M-085",
+  "W13-P1-M-086",
+  "W13-P1-M-087",
+  "W13-P1-M-088",
+  "W13-P1-M-089",
+  "W13-P1-M-090",
+  "W13-P1-M-091",
+  "W13-P1-M-092",
+  "W13-P1-M-093",
+  "W13-P1-M-094",
+  "W13-P1-M-095",
+  "W13-P1-M-096",
+  "W13-P1-M-097",
+  "W13-P1-M-098",
+  "W13-P1-M-099",
+  "W13-P1-M-100"
+ ],
+ "merge_ids": [
+  {
+   "id": "W13-P1-K-043",
+   "target": "W13-P1-K-037",
+   "scope": "in_wave",
+   "reason": "Same matched-budget Gaussian-splatting densification ablation on the same rig: K-037 tests blind schedules vs adaptive densify-split at matched final primitive counts; K-043's overcomplete-then-prune is one more arm of that grid ('capacity-then-selection'). Retain K-043's cross-seed variance readout as a reported metric."
+  },
+  {
+   "id": "W13-P1-K-100",
+   "target": "W13-P1-C-023",
+   "scope": "cross_wave_into_master",
+   "reason": "Retrieval-based contamination audit of depth benchmarks is the depth-specific instance of master C-023's semantic-duplicate contamination program (w3 judging already routed contamination ideas to the C-023/C-024/C-028 family). Master file untouched; routing recommendation for the w4 consolidator."
+  },
+  {
+   "id": "W13-P1-L-011",
+   "target": "W13-P1-L-015",
+   "scope": "in_wave",
+   "reason": "L-015's latent-handoff adapter experiment must first measure the text-vs-raw probe gap, which is L-011's entire deliverable; run L-011 as stage one of L-015's protocol on the same interface_bottleneck_rig."
+  },
+  {
+   "id": "W13-P1-L-069",
+   "target": "W13-P1-L-097",
+   "scope": "in_wave",
+   "reason": "Identical variance-decomposition-and-freeze design with the same >=50%-share and >=40%-cut thresholds; L-097 generalizes L-069's active-viewing-specific decomposition across three task families. Keep active viewing as one of L-097's task families."
+  }
+ ],
+ "kill_ids": [],
+ "anomaly_ids": [
+  "W13-P1-K-035",
+  "W13-P1-K-039",
+  "W13-P1-K-065",
+  "W13-P1-K-083",
+  "W13-P1-K-094",
+  "W13-P1-M-030"
+ ],
+ "duplicate_groups": [
+  {
+   "primary": "W13-P1-K-037",
+   "absorbed": [
+    "W13-P1-K-043"
+   ],
+   "basis": "same matched-budget GS densification ablation grid"
+  },
+  {
+   "primary": "W13-P1-L-015",
+   "absorbed": [
+    "W13-P1-L-011"
+   ],
+   "basis": "L-011 is stage one of L-015 protocol"
+  },
+  {
+   "primary": "W13-P1-L-097",
+   "absorbed": [
+    "W13-P1-L-069"
+   ],
+   "basis": "same variance-decomposition-and-freeze design and thresholds"
+  },
+  {
+   "primary": "W13-P1-C-023 (master)",
+   "absorbed": [
+    "W13-P1-K-100"
+   ],
+   "basis": "depth-specific instance of master contamination program"
+  }
+ ],
+ "cross_wave_merges_into_master": [
+  {
+   "id": "W13-P1-K-100",
+   "target": "W13-P1-C-023",
+   "reason": "Retrieval-based contamination audit of depth benchmarks is the depth-specific instance of master C-023's semantic-duplicate contamination program (w3 judging already routed contamination ideas to the C-023/C-024/C-028 family). Master file untouched; routing recommendation for the w4 consolidator."
+  }
+ ],
+ "cross_wave_family_adjacencies_no_merge": [
+  {
+   "ids": [
+    "W13-P1-M-071..M-078"
+   ],
+   "master": "W13-P1-F-023 (sim-to-real normalization statistics)",
+   "note": "adjacent measurement family, different mechanism (training dynamics vs deployment recalibration); keep separate"
+  },
+  {
+   "ids": [
+    "W13-P1-L-024",
+    "W13-P1-L-036"
+   ],
+   "master": "W13-P1-D-065 (MLLM verifier-role deployment)",
+   "note": "adjacent verifier theme; L ideas isolate decorrelation mechanism, not role deployment; keep separate"
+  }
+ ],
+ "co_run_clusters": [
+  {
+   "name": "frozen_backbone_geometry_probe_rig",
+   "members": [
+    "W13-P1-K-002",
+    "W13-P1-K-004",
+    "W13-P1-K-005",
+    "W13-P1-K-006",
+    "W13-P1-K-007"
+   ],
+   "shared": "One frozen-backbone probing harness: shared backbone zoo, shared RGB-D probe datasets, linear geometry probes at multiple depths."
+  },
+  {
+   "name": "correspondence_eval_rig",
+   "members": [
+    "W13-P1-K-001",
+    "W13-P1-K-003",
+    "W13-P1-K-008",
+    "W13-P1-K-009"
+   ],
+   "shared": "Shared multi-view correspondence/reprojection evaluation over the same frozen features and calibrated image pairs."
+  },
+  {
+   "name": "flow_tracking_eval_rig",
+   "members": [
+    "W13-P1-K-025",
+    "W13-P1-K-026",
+    "W13-P1-K-027",
+    "W13-P1-K-028",
+    "W13-P1-K-029",
+    "W13-P1-K-030",
+    "W13-P1-K-031",
+    "W13-P1-K-032",
+    "W13-P1-K-033",
+    "W13-P1-K-034",
+    "W13-P1-K-035",
+    "W13-P1-K-036"
+   ],
+   "shared": "One optical-flow/point-tracking evaluation harness with shared clips, GT, and public flow/tracker checkpoints."
+  },
+  {
+   "name": "gs_matched_budget_rig",
+   "members": [
+    "W13-P1-K-037",
+    "W13-P1-K-038",
+    "W13-P1-K-039",
+    "W13-P1-K-040",
+    "W13-P1-K-041",
+    "W13-P1-K-042",
+    "W13-P1-K-044",
+    "W13-P1-K-045",
+    "W13-P1-K-046",
+    "W13-P1-K-047",
+    "W13-P1-K-048"
+   ],
+   "shared": "One Gaussian-splatting training rig with matched primitive-count/iteration budgets; each idea is an ablation arm."
+  },
+  {
+   "name": "feedforward_recon_eval_rig",
+   "members": [
+    "W13-P1-K-049",
+    "W13-P1-K-050",
+    "W13-P1-K-051",
+    "W13-P1-K-052",
+    "W13-P1-K-053",
+    "W13-P1-K-054",
+    "W13-P1-K-055",
+    "W13-P1-K-056",
+    "W13-P1-K-057",
+    "W13-P1-K-058"
+   ],
+   "shared": "Shared battery of public feed-forward 3D reconstructors run over controlled capture/render suites."
+  },
+  {
+   "name": "video_memory_probe_rig",
+   "members": [
+    "W13-P1-K-067",
+    "W13-P1-K-068",
+    "W13-P1-K-069",
+    "W13-P1-K-070",
+    "W13-P1-K-071",
+    "W13-P1-K-072",
+    "W13-P1-K-073",
+    "W13-P1-K-074",
+    "W13-P1-K-075",
+    "W13-P1-K-076",
+    "W13-P1-K-077",
+    "W13-P1-K-078",
+    "W13-P1-K-079",
+    "W13-P1-K-080"
+   ],
+   "shared": "Shared long-video probing harness: same clip sets, same frozen video backbones, per-idea probe heads."
+  },
+  {
+   "name": "open_agent_harness",
+   "members": [
+    "W13-P1-L-001",
+    "W13-P1-L-002",
+    "W13-P1-L-003",
+    "W13-P1-L-004",
+    "W13-P1-L-005",
+    "W13-P1-L-006",
+    "W13-P1-L-007",
+    "W13-P1-L-008",
+    "W13-P1-L-009",
+    "W13-P1-L-010"
+   ],
+   "shared": "One open agent framework + frozen public vision tools + fixed query suites; each idea toggles routing/orchestration conditions."
+  },
+  {
+   "name": "interface_bottleneck_rig",
+   "members": [
+    "W13-P1-L-012",
+    "W13-P1-L-013",
+    "W13-P1-L-014",
+    "W13-P1-L-015",
+    "W13-P1-L-016",
+    "W13-P1-L-017",
+    "W13-P1-L-018",
+    "W13-P1-L-019",
+    "W13-P1-L-020"
+   ],
+   "shared": "Shared text-vs-raw handoff instrumentation over one tool-controller pair; probe suites reused across ideas."
+  },
+  {
+   "name": "ttc_perception_rig",
+   "members": [
+    "W13-P1-L-021",
+    "W13-P1-L-022",
+    "W13-P1-L-023",
+    "W13-P1-L-024",
+    "W13-P1-L-025",
+    "W13-P1-L-026",
+    "W13-P1-L-027",
+    "W13-P1-L-028",
+    "W13-P1-L-029",
+    "W13-P1-L-030"
+   ],
+   "shared": "Iso-compute test-time-compute grid (best-of-N, voting, re-asking) over the same perception task suite."
+  },
+  {
+   "name": "self_verification_rig",
+   "members": [
+    "W13-P1-L-031",
+    "W13-P1-L-032",
+    "W13-P1-L-033",
+    "W13-P1-L-034",
+    "W13-P1-L-035",
+    "W13-P1-L-036",
+    "W13-P1-L-037",
+    "W13-P1-L-038",
+    "W13-P1-L-039",
+    "W13-P1-L-040"
+   ],
+   "shared": "One propose-verify-revise loop harness with swappable verifier conditions and shared error-injection sets."
+  },
+  {
+   "name": "agentic_annotation_rig",
+   "members": [
+    "W13-P1-L-051",
+    "W13-P1-L-052",
+    "W13-P1-L-053",
+    "W13-P1-L-054",
+    "W13-P1-L-055",
+    "W13-P1-L-056",
+    "W13-P1-L-057",
+    "W13-P1-L-058",
+    "W13-P1-L-059",
+    "W13-P1-L-060"
+   ],
+   "shared": "Shared agent-labeling pipeline over public multi-annotator datasets; human labels reused as gold, never re-collected."
+  },
+  {
+   "name": "multi_agent_arena",
+   "members": [
+    "W13-P1-L-071",
+    "W13-P1-L-072",
+    "W13-P1-L-073",
+    "W13-P1-L-074",
+    "W13-P1-L-075",
+    "W13-P1-L-076",
+    "W13-P1-L-077",
+    "W13-P1-L-078",
+    "W13-P1-L-079",
+    "W13-P1-L-080"
+   ],
+   "shared": "One multi-agent debate/ensemble arena with logged transcripts; encoder/tool/role diversity toggled per idea."
+  },
+  {
+   "name": "judge_eval_rig",
+   "members": [
+    "W13-P1-L-081",
+    "W13-P1-L-082",
+    "W13-P1-L-083",
+    "W13-P1-L-084",
+    "W13-P1-L-085",
+    "W13-P1-L-086",
+    "W13-P1-L-087",
+    "W13-P1-L-088",
+    "W13-P1-L-089",
+    "W13-P1-L-090"
+   ],
+   "shared": "Shared VLM-judge evaluation bench on public human-labeled comparison sets."
+  },
+  {
+   "name": "loop_reliability_rig",
+   "members": [
+    "W13-P1-L-091",
+    "W13-P1-L-092",
+    "W13-P1-L-093",
+    "W13-P1-L-094",
+    "W13-P1-L-095",
+    "W13-P1-L-096",
+    "W13-P1-L-097",
+    "W13-P1-L-098",
+    "W13-P1-L-099",
+    "W13-P1-L-100"
+   ],
+   "shared": "One variance-decomposition and cost-accounting harness over full agent pipelines, seeds and components toggled."
+  },
+  {
+   "name": "dense_finetune_trajectory_rig",
+   "members": [
+    "W13-P1-M-041",
+    "W13-P1-M-042",
+    "W13-P1-M-043",
+    "W13-P1-M-044",
+    "W13-P1-M-045",
+    "W13-P1-M-046",
+    "W13-P1-M-047",
+    "W13-P1-M-048",
+    "W13-P1-M-049",
+    "W13-P1-M-050"
+   ],
+   "shared": "One dense fine-tuning rig (public backbone + segmentation/depth heads) with trajectory telemetry; ideas are arms of one grid."
+  },
+  {
+   "name": "warmup_schedule_rig",
+   "members": [
+    "W13-P1-M-031",
+    "W13-P1-M-032",
+    "W13-P1-M-033",
+    "W13-P1-M-034",
+    "W13-P1-M-035",
+    "W13-P1-M-036",
+    "W13-P1-M-037",
+    "W13-P1-M-038",
+    "W13-P1-M-039",
+    "W13-P1-M-040"
+   ],
+   "shared": "Shared schedule/warmup ablation grid on the same dense fine-tuning setups."
+  },
+  {
+   "name": "gradient_conflict_rig",
+   "members": [
+    "W13-P1-M-061",
+    "W13-P1-M-062",
+    "W13-P1-M-063",
+    "W13-P1-M-064",
+    "W13-P1-M-065",
+    "W13-P1-M-066",
+    "W13-P1-M-067",
+    "W13-P1-M-068",
+    "W13-P1-M-069",
+    "W13-P1-M-070"
+   ],
+   "shared": "Shared multi-objective training rig with per-branch gradient logging."
+  },
+  {
+   "name": "norm_precision_rig",
+   "members": [
+    "W13-P1-M-071",
+    "W13-P1-M-072",
+    "W13-P1-M-073",
+    "W13-P1-M-074",
+    "W13-P1-M-075",
+    "W13-P1-M-076",
+    "W13-P1-M-077",
+    "W13-P1-M-078"
+   ],
+   "shared": "One normalization/precision instrumentation rig; BN/GN/LN and dtype arms share telemetry."
+  },
+  {
+   "name": "spike_telemetry_rig",
+   "members": [
+    "W13-P1-M-095",
+    "W13-P1-M-096",
+    "W13-P1-M-097",
+    "W13-P1-M-098",
+    "W13-P1-M-099",
+    "W13-P1-M-100"
+   ],
+   "shared": "Shared instability telemetry (curvature, attention entropy, update ratios) logged once, analyzed per idea."
+  }
+ ],
+ "deliberate_tensions_kept": [
+  {
+   "pair": [
+    "W13-P1-L-024",
+    "W13-P1-L-036"
+   ],
+   "question": "Is same-model self-verification unrescuable for perception, or does consequence-question phrasing decorrelate percepts enough to recover it?"
+  },
+  {
+   "pair": [
+    "W13-P1-L-072",
+    "W13-P1-L-078"
+   ],
+   "question": "Which diversity axis - vision-encoder diversity or tool-set diversity - buys error decorrelation cheapest at matched cost?"
+  },
+  {
+   "pair": [
+    "W13-P1-L-074",
+    "W13-P1-L-075"
+   ],
+   "question": "Is structured interaction just compute repackaging (debate==voting), or does adversarial falsification-seeking add value beyond iso-compute voting?"
+  },
+  {
+   "pair": [
+    "W13-P1-M-044",
+    "W13-P1-M-049"
+   ],
+   "question": "Is the operative head-backbone interface knob the head initialization scale or the head-LR timescale ratio?"
+  }
+ ],
+ "family_cap_pressure_notes": [
+  "shared_percept_decorrelation (gen_l, cross-cluster): L-024, L-036, L-071, L-072, L-078, L-086 - 6 members at the cap spanning 4 clusters, all instances of \"verification/ensemble value = proposer-verifier error decorrelation\". Escalated to consolidator for slot-cap adjudication; not force-merged on feasibility grounds since each targets a distinct system.",
+  "head_backbone_interface (gen_m, cross-cluster): M-031, M-041, M-044, M-049, M-050, M-098 - 6 members at the cap (M-023, M-047 adjacent), all about the randomly-initialized-head-to-pretrained-backbone interface. Escalated; the dense_finetune_trajectory_rig amortizes most of their cost anyway.",
+  "bn_norm_statistics_mechanics (gen_m): M-071..M-078 - 8 members, over the implicit 6-cap, whole normalization-precision-dynamics cluster is one family by fingerprint. Escalated for Stage-2 slot caps rather than judge-time forced merges."
+ ],
+ "disagreements_vs_judge_A": {
+  "status": "judge_A w4 output not on origin at judging time; consolidator must diff when it lands. Expected friction points: the 4 merges (K-043, L-011, L-069, K-100) and the 5 gen_k qualitative kill thresholds."
+ },
+ "verdicts": [
+  {
+   "id": "W13-P1-K-001",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_partial_dataset_only",
+    "corun:correspondence_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-002",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:frozen_backbone_geometry_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-003",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:correspondence_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-004",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:frozen_backbone_geometry_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-005",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:frozen_backbone_geometry_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-006",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:frozen_backbone_geometry_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-007",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:frozen_backbone_geometry_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-008",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:correspondence_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-009",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:correspondence_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-010",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-011",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-012",
+   "cluster": "feature-3d-consistency",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-013",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-014",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-015",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-016",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-017",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-018",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-019",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-020",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-021",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "fresh_capture_required"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-022",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-023",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-024",
+   "cluster": "monocular-depth-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-025",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-026",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-027",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-028",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-029",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-030",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-031",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-032",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-033",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-034",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-035",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "gate1_qualitative_kill_threshold",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": true
+  },
+  {
+   "id": "W13-P1-K-036",
+   "cluster": "optical-flow-and-tracking",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:flow_tracking_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-037",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-038",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-039",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "gate1_qualitative_kill_threshold",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": true
+  },
+  {
+   "id": "W13-P1-K-040",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-041",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-042",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-043",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "merge",
+   "merge_target": "W13-P1-K-037",
+   "merge_scope": "in_wave",
+   "merge_reason": "Same matched-budget Gaussian-splatting densification ablation on the same rig: K-037 tests blind schedules vs adaptive densify-split at matched final primitive counts; K-043's overcomplete-then-prune is one more arm of that grid ('capacity-then-selection'). Retain K-043's cross-seed variance readout as a reported metric.",
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-044",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-045",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "fresh_capture_required",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-046",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-047",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-048",
+   "cluster": "gaussian-splatting-science",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:gs_matched_budget_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-049",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-050",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "fresh_capture_required",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-051",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-052",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-053",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-054",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-055",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-056",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-057",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-058",
+   "cluster": "implicit-fields-feedforward-3d",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "fresh_capture_required",
+    "corun:feedforward_recon_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-059",
+   "cluster": "point-cloud-learning",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-060",
+   "cluster": "point-cloud-learning",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-061",
+   "cluster": "point-cloud-learning",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-062",
+   "cluster": "point-cloud-learning",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-063",
+   "cluster": "point-cloud-learning",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-064",
+   "cluster": "point-cloud-learning",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-065",
+   "cluster": "point-cloud-learning",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "gate1_qualitative_kill_threshold"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": true
+  },
+  {
+   "id": "W13-P1-K-066",
+   "cluster": "point-cloud-learning",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-067",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-068",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_partial_model_only",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-069",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-070",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-071",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-072",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-073",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-074",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-075",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-076",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-077",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-078",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-079",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-080",
+   "cluster": "video-understanding-memory",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:video_memory_probe_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-081",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-082",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-083",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "gate1_qualitative_kill_threshold"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": true
+  },
+  {
+   "id": "W13-P1-K-084",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-085",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-086",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-087",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-088",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "fresh_capture_required"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-089",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "fresh_capture_required"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-090",
+   "cluster": "dynamic-4d-reconstruction",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-091",
+   "cluster": "camera-geometry-scale",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-092",
+   "cluster": "camera-geometry-scale",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-093",
+   "cluster": "camera-geometry-scale",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-094",
+   "cluster": "camera-geometry-scale",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "gate1_qualitative_kill_threshold",
+    "fresh_capture_required"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": true
+  },
+  {
+   "id": "W13-P1-K-095",
+   "cluster": "camera-geometry-scale",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-096",
+   "cluster": "camera-geometry-scale",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-097",
+   "cluster": "camera-geometry-scale",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-098",
+   "cluster": "camera-geometry-scale",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-099",
+   "cluster": "geometry-eval-methodology",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-100",
+   "cluster": "geometry-eval-methodology",
+   "verdict": "merge",
+   "merge_target": "W13-P1-C-023",
+   "merge_scope": "cross_wave_into_master",
+   "merge_reason": "Retrieval-based contamination audit of depth benchmarks is the depth-specific instance of master C-023's semantic-duplicate contamination program (w3 judging already routed contamination ideas to the C-023/C-024/C-028 family). Master file untouched; routing recommendation for the w4 consolidator.",
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-101",
+   "cluster": "geometry-eval-methodology",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-102",
+   "cluster": "geometry-eval-methodology",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-103",
+   "cluster": "geometry-eval-methodology",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "fresh_capture_required"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-104",
+   "cluster": "geometry-eval-methodology",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-K-105",
+   "cluster": "geometry-eval-methodology",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-001",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-002",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-003",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-004",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-005",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-006",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-007",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-008",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-009",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-010",
+   "cluster": "tool-orchestration-policy",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:open_agent_harness"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-011",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "merge",
+   "merge_target": "W13-P1-L-015",
+   "merge_scope": "in_wave",
+   "merge_reason": "L-015's latent-handoff adapter experiment must first measure the text-vs-raw probe gap, which is L-011's entire deliverable; run L-011 as stage one of L-015's protocol on the same interface_bottleneck_rig.",
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-012",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:interface_bottleneck_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-013",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:interface_bottleneck_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-014",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:interface_bottleneck_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-015",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:interface_bottleneck_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-016",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:interface_bottleneck_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-017",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:interface_bottleneck_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-018",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:interface_bottleneck_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-019",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:interface_bottleneck_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-020",
+   "cluster": "text-interface-bottleneck",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:interface_bottleneck_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-021",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-022",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-023",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-024",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "family_cap_pressure:shared_percept_decorrelation",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-025",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-026",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-027",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-028",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-029",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-030",
+   "cluster": "test-time-compute-perception",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:ttc_perception_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-031",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-032",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-033",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-034",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-035",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-036",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "family_cap_pressure:shared_percept_decorrelation",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-037",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-038",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-039",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-040",
+   "cluster": "self-verification-revision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:self_verification_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-041",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-042",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-043",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-044",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-045",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-046",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-047",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-048",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-049",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-050",
+   "cluster": "visual-program-synthesis",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-051",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-052",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-053",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-054",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-055",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-056",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-057",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-058",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-059",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-060",
+   "cluster": "agentic-annotation",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:agentic_annotation_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-061",
+   "cluster": "active-viewing-loops",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-062",
+   "cluster": "active-viewing-loops",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-063",
+   "cluster": "active-viewing-loops",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-064",
+   "cluster": "active-viewing-loops",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-065",
+   "cluster": "active-viewing-loops",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-066",
+   "cluster": "active-viewing-loops",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-067",
+   "cluster": "active-viewing-loops",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-068",
+   "cluster": "active-viewing-loops",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-069",
+   "cluster": "active-viewing-loops",
+   "verdict": "merge",
+   "merge_target": "W13-P1-L-097",
+   "merge_scope": "in_wave",
+   "merge_reason": "Identical variance-decomposition-and-freeze design with the same >=50%-share and >=40%-cut thresholds; L-097 generalizes L-069's active-viewing-specific decomposition across three task families. Keep active viewing as one of L-097's task families.",
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-070",
+   "cluster": "active-viewing-loops",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-071",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "family_cap_pressure:shared_percept_decorrelation",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-072",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "family_cap_pressure:shared_percept_decorrelation",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-073",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-074",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "prior_art_risk",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-075",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-076",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-077",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-078",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "family_cap_pressure:shared_percept_decorrelation",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-079",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-080",
+   "cluster": "multi-agent-vision",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:multi_agent_arena"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-081",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-082",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-083",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-084",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-085",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-086",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "family_cap_pressure:shared_percept_decorrelation",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-087",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-088",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-089",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-090",
+   "cluster": "vlm-judge-capability",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:judge_eval_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-091",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-092",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-093",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-094",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-095",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-096",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-097",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-098",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-099",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-L-100",
+   "cluster": "loop-reliability-economics",
+   "verdict": "keep",
+   "feasibility_tier": "T1_inference_or_analysis_only",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [
+    "gate4_missing_named_assets",
+    "corun:loop_reliability_rig"
+   ],
+   "gate4_retrofit_needed": true,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-001",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-002",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-003",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-004",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-005",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-006",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 5,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-007",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-008",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-009",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-010",
+   "cluster": "target-parameterization-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-011",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-012",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-013",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-014",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-015",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-016",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-017",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-018",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-019",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-020",
+   "cluster": "objective-gradient-geometry",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-021",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-022",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-023",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "prior_art_risk"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-024",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-025",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-026",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-027",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-028",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-029",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-030",
+   "cluster": "optimizer-mechanism-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "nsr_multi_gpu_node_for_full_range",
+    "single_gpu_fallback_reduced_range"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-031",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:head_backbone_interface",
+    "prior_art_risk",
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-032",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-033",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-034",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-035",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-036",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-037",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-038",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-039",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-040",
+   "cluster": "schedule-warmup-folklore",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:warmup_schedule_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-041",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:head_backbone_interface",
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-042",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-043",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-044",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:head_backbone_interface",
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-045",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-046",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-047",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-048",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-049",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:head_backbone_interface",
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-050",
+   "cluster": "finetuning-trajectory-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:head_backbone_interface",
+    "corun:dense_finetune_trajectory_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-051",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-052",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-053",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-054",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-055",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-056",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-057",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-058",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-059",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-060",
+   "cluster": "acquisition-order-phase-transitions",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-061",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-062",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-063",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-064",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-065",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-066",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-067",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-068",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-069",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-070",
+   "cluster": "gradient-interference-multiobjective",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:gradient_conflict_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-071",
+   "cluster": "normalization-precision-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:bn_norm_statistics_mechanics",
+    "corun:norm_precision_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-072",
+   "cluster": "normalization-precision-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:bn_norm_statistics_mechanics",
+    "corun:norm_precision_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-073",
+   "cluster": "normalization-precision-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:bn_norm_statistics_mechanics",
+    "corun:norm_precision_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-074",
+   "cluster": "normalization-precision-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:bn_norm_statistics_mechanics",
+    "corun:norm_precision_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-075",
+   "cluster": "normalization-precision-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:bn_norm_statistics_mechanics",
+    "corun:norm_precision_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-076",
+   "cluster": "normalization-precision-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:bn_norm_statistics_mechanics",
+    "corun:norm_precision_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-077",
+   "cluster": "normalization-precision-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:bn_norm_statistics_mechanics",
+    "corun:norm_precision_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-078",
+   "cluster": "normalization-precision-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:bn_norm_statistics_mechanics",
+    "corun:norm_precision_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-079",
+   "cluster": "batch-sampling-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-080",
+   "cluster": "batch-sampling-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-081",
+   "cluster": "batch-sampling-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-082",
+   "cluster": "batch-sampling-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-083",
+   "cluster": "batch-sampling-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-084",
+   "cluster": "batch-sampling-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-085",
+   "cluster": "batch-sampling-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-086",
+   "cluster": "batch-sampling-dynamics",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-087",
+   "cluster": "augmentation-as-optimization",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-088",
+   "cluster": "augmentation-as-optimization",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-089",
+   "cluster": "augmentation-as-optimization",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-090",
+   "cluster": "augmentation-as-optimization",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-091",
+   "cluster": "augmentation-as-optimization",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-092",
+   "cluster": "augmentation-as-optimization",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-093",
+   "cluster": "augmentation-as-optimization",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-094",
+   "cluster": "augmentation-as-optimization",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-095",
+   "cluster": "instability-spike-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:spike_telemetry_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-096",
+   "cluster": "instability-spike-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:spike_telemetry_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-097",
+   "cluster": "instability-spike-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:spike_telemetry_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-098",
+   "cluster": "instability-spike-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "family_cap_pressure:head_backbone_interface",
+    "corun:spike_telemetry_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-099",
+   "cluster": "instability-spike-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 3,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:spike_telemetry_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  },
+  {
+   "id": "W13-P1-M-100",
+   "cluster": "instability-spike-science",
+   "verdict": "keep",
+   "feasibility_tier": "T2_small_training_gpu_days",
+   "feasibility_score": 4,
+   "runnable_as_stated": true,
+   "flags": [
+    "corun:spike_telemetry_rig"
+   ],
+   "gate4_retrofit_needed": false,
+   "gate5_retrofit_needed": false
+  }
+ ],
+ "caveats": [
+  "Tier/score assignments derive from the generators' own stated time/device bounds sanity-checked against protocol descriptions; no independent runtime measurements were made.",
+  "GATE-4 detection is name-list based over experiment fields and was manually spot-verified on gen_k/gen_l; a niche public asset name absent from the list could in principle be a false negative, which would only make gen_k/gen_l look better, not worse.",
+  "prior_art_risk flags are unverified recollections; no citations are asserted anywhere (GATE-7).",
+  "fresh_capture_required ids (K-021, K-045, K-050, K-058, K-088, K-089, K-094, K-103) are runnable but carry physical data-collection labor not visible in GPU-time bounds; scores already discounted by one point.",
+  "M-030 is the only needs_special_resources=true record in the wave (8-GPU node for the full batch ladder); its stated single-GPU fallback tests a reduced range, so it stays T2 with score 3.",
+  "seg_metric_dependent=true on 61/100 gen_m records is consistent with their dense-prediction readouts and was not treated as a defect.",
+  "This judge read only gen_k/gen_l/gen_m plus the read-only master; gen_n/gen_o/gen_p were not read and nothing from them is merged into accepted_shard_B."
+ ]
+}
