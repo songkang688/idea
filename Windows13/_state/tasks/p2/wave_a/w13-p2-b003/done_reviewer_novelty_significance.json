@@ -1,0 +1,40 @@
+{
+  "task_id": "p2_wave_a_w13_p2_b003_reviewer_novelty_significance",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "batch_id": "W13-P2-B003",
+  "role": "reviewer_novelty_significance",
+  "candidate_count": 61,
+  "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b003/reviewer_novelty_significance.jsonl",
+  "input_master": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+    "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+    "lines": "123-183 inclusive",
+    "read_only": true
+  },
+  "batch_membership_source": "origin/cursor/p2-state-reader-05a0-101c Windows13/_state/tasks/p2/state_reader/batches.json batch_id=W13-P2-B003",
+  "score_scale": "1-10; higher=better for all dimensions except likelihood_already_published and risk (higher=worse); compute means compute-friendliness (higher=cheaper)",
+  "verdict_suggestion_tally": {
+    "keep_lean": 51,
+    "borderline": 9,
+    "kill_lean": 1
+  },
+  "gate8_flagged_count": 28,
+  "novelty_policy": "All novelty judgments unverified; no prior-art search executed; no citations fabricated. Suspected prior-art overlap flagged to lane p1_gate8_novelty_triage per M1 (GATE-8 before 200-cut), never silently killed. The single kill_lean (B-056) rests on tautology per Judge B's recorded dissent, not on prior art.",
+  "family_notes_for_wave_b": [
+    "M4 minimum family B-060/B-065 spans this batch: both are 'information location' adjudications against RGB frame scaling (sensing modality vs temporal access); forced best-of-family at the cut. B-065 is the cheaper arm; B-060 carries a high GATE-8 flag (published polarimetric glass segmentation, unverified).",
+    "M4 minimum family C-003/C-004 (plus C-057 in a later batch): calibration-transfer-under-shift family; C-004 (probe-vs-fine-tune calibration transferability) is my suggested anchor from this batch; C-003 is borderline on prior-art thinness.",
+    "Evaluation-forensics block B-033/B-034/B-037/B-040/B-095 (plus headroom pair B-091): shared mechanism 'benchmark signal on ambiguous classes is protocol artifact'; B-033 and B-040 are the strongest anchors; B-037 is the most derivative (borderline).",
+    "Cue-shortcut audit family B-041/B-042/B-044/B-045/B-047/B-048: B-048 is the umbrella confusability audit; Judge C recorded merge dissent B-041->B-048; B-046 carries a cross-batch merge dissent to A-035 (texture-shape cue conflict).",
+    "Correlated-error aggregation pair B-049/B-053: same mechanism (spatially correlated errors break pixel-level guarantees) at two formalisms (calibration vs conformal); consider one anchor unless both granularities survive.",
+    "B-035 (loss-fingerprint forensics) adjoins the cross-batch dg07 loss-determines-output-geometry block (A-101/B-003/B-018 flagged in B001/B002 reviews); M4 adjudication should include it.",
+    "B-089 carries an unresolved bidirectional merge conflict with B-015: Judge A merged B-015 into B-089, Judge B merged B-089 into B-015; Wave-B must resolve direction. B-089 is borderline on falsifiability (M5).",
+    "Decomposed-annotation protocol pair B-075/B-084: shared re-annotation infrastructure (two-question vs tri-map elicitation); joint execution recommended if both survive.",
+    "Physics-evidence pairs: B-059/B-063 (illumination-field fingerprints / shadow evidence channel) and B-057/B-062 (physical-parameterization of targets and of media identity) are complementary within the physics cluster, not duplicative.",
+    "B-082 (opacity-stratified sim-to-real gap) should be checked against the M4 gen_f sim-to-real cheap-statistics family (cross-shard adjacency).",
+    "M5 debt is near-universal in this batch: gen_b records use qualitative margins ('far exceeding', 'substantially') without numeric kill thresholds; numeric retrofit owed before any of these enter the 200. Exceptions with near-binary falsifiers: B-055 (sign test), B-067 (slope vs known benchmark), B-077 (spectral peak at known patch frequency)."
+  ],
+  "recommended_next_task_type": "p2_wave_a_review",
+  "complete": true
+}
