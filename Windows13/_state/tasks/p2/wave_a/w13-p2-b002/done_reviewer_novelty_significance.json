@@ -1,0 +1,35 @@
+{
+  "task_id": "p2_wave_a_w13_p2_b002_reviewer_novelty_significance",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "batch_id": "W13-P2-B002",
+  "role": "reviewer_novelty_significance",
+  "candidate_count": 61,
+  "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b002/reviewer_novelty_significance.jsonl",
+  "input_master": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+    "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+    "lines": "62-122 inclusive",
+    "read_only": true
+  },
+  "batch_membership_source": "origin/cursor/p2-state-reader-05a0-101c Windows13/_state/tasks/p2/state_reader/batches.json batch_id=W13-P2-B002",
+  "score_scale": "1-10; higher=better for all dimensions except likelihood_already_published and risk (higher=worse); compute means compute-friendliness (higher=cheaper)",
+  "verdict_suggestion_tally": {
+    "keep_lean": 51,
+    "borderline": 10
+  },
+  "gate8_flagged_count": 20,
+  "novelty_policy": "All novelty judgments unverified; no prior-art search executed; no citations fabricated. Suspected prior-art overlap flagged to lane p1_gate8_novelty_triage per M1 (GATE-8 before 200-cut), never silently killed.",
+  "family_notes_for_wave_b": [
+    "dg07 loss-determines-output-geometry spans both shards here (A-101, B-003, B-018): M4 forces best-of-family; B-018 carries the boldest falsifier (phantom-to-real no-refit transfer), A-101 the widest audit reach.",
+    "Protocol-artifact family (A-066/A-069/A-072/A-092/A-099 + A-094): shared mechanism of prompt-protocol confounding; A-099 and A-072 are the strongest anchors; per M4 this maps into the ~13-15-member variance/protocol-artifact family.",
+    "Cross-shard provenance-forensics family per M4: A-063 (guideline archaeology) + B-021 (institution decodable from masks), both tf09_convention_decodability; adjudicate jointly.",
+    "dg32 (B-011 refraction ablation, B-012 highlight suppression): same cue-ablation instrument; one slot unless both cues survive triage.",
+    "dg15 (B-025) joins A-006/A-009 from batch B001; dg31 (A-091) joins A-023/A-029 from B001; dg01 (A-071), dg11 (A-080), dg13 (A-100), dg06 (B-019), dg08 (B-021), dg27 (B-031) are cross-batch group memberships requiring Wave-B family adjudication.",
+    "Distillation trio A-080 (audit) / A-082 (causal mechanism) / A-081 (containment) is complementary, not duplicative; A-080 is the cheapest anchor.",
+    "B-025/B-026 share infrastructure (prompt sweeps) and a confound (snapping vs ambiguity); recommend joint execution if both survive."
+  ],
+  "recommended_next_task_type": "p2_wave_a_review",
+  "complete": true
+}
