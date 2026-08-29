@@ -14,7 +14,7 @@
   "supervisor": "Windows13",
   "current_stage": "Stage 1",
   "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
-  "total_ideas": 638,
+  "total_ideas": 934,
   "survivors": 0,
   "final_target": 3,
   "status": "stage1_exploration_in_progress",
@@ -124,9 +124,9 @@
     ]
   },
   "idea_counts": {
-    "stage1_generated_total": 908,
-    "stage1_accepted_total": 638,
-    "stage1_merged_total": 132,
+    "stage1_generated_total": 1213,
+    "stage1_accepted_total": 934,
+    "stage1_merged_total": 141,
     "stage1_killed_total": 11,
     "stage1_target": "1000+",
     "by_wave": {
@@ -194,6 +194,37 @@
         "gate5_note": "GATE-5 repair lane p1_wave_b_w3_gate5_repair appended 46 of the 173 remanded gen_g/gen_h acceptances (gen_g 30, gen_h 16) after extracting kill thresholds strictly from each record's own prediction/experiment text (exact-fraction quantifiers, universal/existential zero-bounds, null-scale references); 127 records had no extractable numeric bound and stay remanded in Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl - zero thresholds invented",
         "accepted_remanded_gate5_originally": 173,
         "gate5_repaired_appended": 46
+      },
+      "p1_wave_b_w4": {
+        "generators": [
+          "gen_k_3d_geometry_video",
+          "gen_l_llm_agent_vision",
+          "gen_m_training_dynamics_objectives"
+        ],
+        "sub_wave": "w4_KLM",
+        "input": 305,
+        "accepted_by_majority": 296,
+        "accepted_appended_to_master": 296,
+        "remanded": 0,
+        "merged": 9,
+        "killed": 0,
+        "accepted_by_shard": {
+          "gen_k": 102,
+          "gen_l": 96,
+          "gen_m": 98
+        },
+        "appended_by_shard": {
+          "gen_k": 102,
+          "gen_l": 96,
+          "gen_m": 98
+        },
+        "accepted_unanimous": 265,
+        "accepted_2_1_majority": 31,
+        "merged_into_wave4_accepted": 7,
+        "merged_into_w1w2_master": 2,
+        "gate5_note": "gen_k separate kill_threshold field NORMALIZED at consolidation (folded verbatim into falsifiable_prediction; evidence_labels renamed to evidence_label; zero invented numbers) per the w2 commissioning ruling - not a remand case, unlike w3 gen_g/gen_h. 7 gen_k records carry gate1_qualitative_threshold (decisive but non-numeric thresholds; numeric retrofit owed).",
+        "gate4_note": "keep-and-flag policy: all 198 appended gen_k/gen_l records flagged gate4_deferred (no named public dataset+model pinned; judge_B 0/205 full compliance, judge_C strict 2/105 + 2/100); gen_m 100/100 compliant; asset pinning owed to the Stage-2 retrofit lane; no assets invented; nothing remanded, shards not dropped",
+        "gen_m_metadata_note": "generator-prefilled wave='p1_wave_a_w3' spoof overwritten to p1_wave_b_w4 on all 98 appended gen_m records (original preserved in wave_label_corrected_from)"
       }
     },
     "stage1_accepted_pending_gate5_retrofit": 127
@@ -390,13 +421,31 @@
       "no_fake_citations": true,
       "diversity_audit_due": true,
       "recommended_next_task_type": "p1_wave_b (remaining K/L/M/N/P/O judging)"
+    },
+    "wave_b_w4_consolidation": {
+      "task_id": "p1_wave_b_w4",
+      "role": "consolidator",
+      "completed_at_utc": "2026-08-29T03:05:00Z",
+      "consolidator_branch": "cursor/p1-wave-b-consolidator-w4-e8e2",
+      "decision_file": "Windows13/_state/tasks/p1/wave_b_w4/decision.json",
+      "judge_branches": {
+        "A_dedup": "origin/cursor/p1-wave-b-w4-judge-a-dedup-4008",
+        "B_feasibility": "origin/cursor/p1-wave-b-w4-judge-b-feasibility-331c",
+        "C_adversary": "origin/cursor/p1-wave-b-w4-judge-c-adversary-7a1e"
+      },
+      "scope": "K+L+M only; gen_n/gen_p/gen_o await sub-wave w5_NPO; the 127 remanded gen_g/gen_h GATE-5 leftovers untouched",
+      "headline_conflicts": "K-100 master-merge target conflict (A C-024 vs B+C C-023) resolved 2-1 to C-023; M-061/M-062 opposite-direction merge proposals canceled into mutual 2-1 keeps (written rule recorded); all 3 judge_C kills (K-020, K-069, L-012) outvoted 2-1 and preserved as judge_dissent -> GATE-8; zero 3-way splits; meta-judge not needed",
+      "gate5_policy": "gen_k schema NORMALIZED at consolidation (verbatim threshold fold + label-key rename; no remand; zero invented numbers); gen_m wave-label spoof corrected on append",
+      "gate4_policy": "keep-and-flag: 198 gen_k/gen_l records appended with gate4_deferred=true instead of remand; asset pinning owed to Stage-2 retrofit lane",
+      "master_after_append": 934,
+      "diversity_audit_due": true
     }
   },
   "last_consolidator": {
-    "task_id": "p1_wave_b_w3",
+    "task_id": "p1_wave_b_w4",
     "role": "consolidator",
-    "branch": "cursor/p1-wave-b-consolidator-w3-bf20",
-    "consolidated_at_utc": "2026-08-29T00:30:00Z",
-    "note": "Wave3 sub-wave w3_GHJ (generators G+H+J) reconciled from judges A (dedup), B (feasibility), C (adversary) by majority vote: 304 in, 271 accepted (232 unanimous, 39 by 2-1), 31 merged (9 into wave-1/2 master ids), 2 killed. GATE-5 split: 98 gate-compliant gen_j records appended (master 494 -> 592); 173 accepted gen_g/gen_h records REMANDED to wave_b_w3/remand_gate5.jsonl pending kill-threshold/evidence_label retrofit - no thresholds invented, no content rejected. Headline G-025 conflict (C kill vs B merge-primary) resolved by majority rule without meta-judge; one 3-way split (J-091) resolved to merge per w1 fallback. Novelty of all accepted ideas UNVERIFIED. Stage 1 continues: 592 << 1000 target; gen_k + L/M/N/P (+O/U when pushed) await judge waves; GATE-5 repair lane is the highest-priority follow-up. Decision detail: Windows13/_state/tasks/p1/wave_b_w3/decision.json"
+    "branch": "cursor/p1-wave-b-consolidator-w4-e8e2",
+    "consolidated_at_utc": "2026-08-29T03:05:00Z",
+    "note": "Wave4 sub-wave w4_KLM (generators K+L+M) reconciled from judges A (dedup), B (feasibility), C (adversary) by majority vote: 305 in, 296 accepted (265 unanimous, 31 by 2-1), 9 merged (7 in-wave, 2 into w1/w2 master ids C-023/C-077), 0 killed. All 296 accepted records appended (master 638 -> 934): gen_k normalized (kill_threshold folded verbatim into falsifiable_prediction, evidence_labels -> evidence_label, zero invented numbers), gen_m wave-label spoof corrected (p1_wave_a_w3 -> p1_wave_b_w4), 198 gen_k/gen_l records flagged gate4_deferred (keep-and-flag, no remand). Headline conflicts (K-100 target split, M-061/M-062 opposite-direction merges, 3 outvoted C kills) resolved by majority policy without meta-judge. Novelty of all accepted ideas UNVERIFIED. Stage 1 continues: 934 << 1000 target - Stage-1 NOT complete; w5_NPO consolidation next when NPO judges finish; diversity audit due (296 acceptances on a master last audited at 494). Decision detail: Windows13/_state/tasks/p1/wave_b_w4/decision.json"
   }
 }

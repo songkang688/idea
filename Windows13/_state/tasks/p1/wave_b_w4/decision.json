@@ -1,0 +1,743 @@
+{
+ "task_id": "p1_wave_b_w4",
+ "role": "consolidator",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "wave": "P1 Wave B wave4 sub-wave w4_KLM (generators K+L+M)",
+ "branch": "cursor/p1-wave-b-consolidator-w4-e8e2",
+ "base_branch_for_state": "origin/cursor/p1-wave-b-w3-gate5-repair-f611 (canonical master tip, 638-line ideas_master.jsonl preserved verbatim as the append base; per both w4 judges' finalization re-fetches this is the newest canonical state: 592 w1/w2/w3 records + 46 GATE-5-repaired gen_g/gen_h records; 127 gen_g/gen_h records remain remanded in wave_b_w3_gate5/remaining_remand.jsonl and are NOT touched here)",
+ "decided_at_utc": "2026-08-29T03:05:00Z",
+ "scope": "K+L+M only. gen_n/gen_p/gen_o await their own judge sub-wave (w5_NPO); the 127 remanded gen_g/gen_h GATE-5 leftovers stay in their repair lane. Neither group is judged, merged, or appended here.",
+ "inputs": {
+  "judge_A_dedup": {
+   "branch": "origin/cursor/p1-wave-b-w4-judge-a-dedup-4008",
+   "keep": 288,
+   "kill_or_merge": 17
+  },
+  "judge_B_feasibility": {
+   "branch": "origin/cursor/p1-wave-b-w4-judge-b-feasibility-331c",
+   "keep": 301,
+   "merge": 4,
+   "kill": 0
+  },
+  "judge_C_adversary": {
+   "branch": "origin/cursor/p1-wave-b-w4-judge-c-adversary-7a1e",
+   "keep": 275,
+   "merge": 27,
+   "kill": 3
+  },
+  "generators": {
+   "gen_k_3d_geometry_video": {
+    "branch": "origin/cursor/p1-gen-k-3d-geometry-video-dc89",
+    "ideas": 105,
+    "schema": "gate-compliant content with SCHEMA DRIFT: separate kill_threshold field (105/105 usable: 98 digit-bearing + 7 quantitative-verbal per judge_C), plural evidence_labels key with lowercase enums, no needs_special_resources/seg_metric_dependent"
+   },
+   "gen_l_llm_agent_vision": {
+    "branch": "origin/cursor/p1-gen-l-llm-agent-vision-c11e",
+    "ideas": 100,
+    "schema": "canonical embedded kill thresholds (100/100 numeric inside falsifiable_prediction) + singular evidence_label; seg_metric_dependent missing"
+   },
+   "gen_m_training_dynamics_objectives": {
+    "branch": "origin/cursor/p1-gen-m-training-dynamics-d8f7",
+    "ideas": 100,
+    "schema": "fully gate-compliant (100/100 numeric thresholds, evidence_label, GATE-4 assets) BUT generator pre-filled pipeline metadata with a WRONG wave value (wave=p1_wave_a_w3 on 100/100 records) - provenance-spoofing surface found independently by judges B and C"
+   }
+  },
+  "commissioning_gates": "w2 diversity-audit ruling (GATE-5 normalization at consolidation for gen_k-style drift; GATE-6 judge labels not self-labels; family cap <=6 as merge trigger) + w3 consolidator precedent (majority policy, remand-vs-flag lanes)",
+  "input_total": 305,
+  "coverage": "all 305 ids ruled on by all three judges; verified mechanically from judge JSON files (zero uncovered ids, zero unknown ids); 288+17=305, 301+4=305, 275+27+3=305"
+ },
+ "reconciliation_policy": [
+  "ACCEPT if >=2 of 3 judges vote keep (majority keep).",
+  "KILL if not accepted and >=2 of 3 judges vote kill (majority kill) - fired zero times this wave.",
+  "MERGE otherwise; merge target = majority target among proposing judges; ties broken in favor of Judge A (dedup specialist), per w1/w2/w3 policy; all targets validated to land in an accepted record (wave-4 accepted set or w1/w2/w3 master), following chains. The A-tie-break was never needed this wave; the single target conflict (K-100) had a clean 2-1 target majority.",
+  "Judge A's kill_or_merge entries all carry merge targets this wave (3 into master) and are treated as merge votes; judge A cast zero standalone kills.",
+  "3-way keep/merge/kill splits resolve to MERGE (w1 fallback) - fired zero times this wave (no id received three distinct verdicts).",
+  "Outvoted kill/merge rationales travel verbatim as judge_dissent on the surviving master record and route to the GATE-8 novelty lane; nothing is silently dropped.",
+  "GATE-5: gen_k separate-field drift handled by NORMALIZATION at consolidation (per the w2 commissioning ruling and all three judges), NOT remand - unlike w3 gen_g/gen_h, every gen_k record carries a usable pre-registered kill threshold, only in the wrong field.",
+  "GATE-4: keep-and-flag policy (commissioning option: flag is OK; prefer not to drop whole shards) - accepted gen_k/gen_l records lacking named public dataset+model are appended WITH gate4_deferred=true + gate4_missing[] instead of being remanded; rationale below."
+ ],
+ "counts": {
+  "input_total": 305,
+  "accepted_by_majority": 296,
+  "accepted_by_shard": {
+   "gen_k": 102,
+   "gen_l": 96,
+   "gen_m": 98
+  },
+  "accepted_unanimous": 265,
+  "accepted_2_1_majority": 31,
+  "appended_to_master": 296,
+  "appended_by_shard": {
+   "gen_k": 102,
+   "gen_l": 96,
+   "gen_m": 98
+  },
+  "remanded": 0,
+  "merged": 9,
+  "merged_into_wave4_accepted": 7,
+  "merged_into_master_w1w2_ids": 2,
+  "killed": 0,
+  "check_sum": "296 accepted + 9 merged + 0 killed = 305; 296 appended + 0 remanded = 296 accepted",
+  "idea_master_total_after_append": 934
+ },
+ "merges": [
+  {
+   "id": "W13-P1-K-043",
+   "target": "W13-P1-K-037",
+   "scope": "in_wave",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-K-037",
+    "judge_B_feasibility": "merge -> W13-P1-K-037",
+    "judge_C_adversary": "keep"
+   },
+   "note": "surviving primary W13-P1-K-037 appended with merged_from=['W13-P1-K-043']"
+  },
+  {
+   "id": "W13-P1-K-100",
+   "target": "W13-P1-C-023",
+   "scope": "cross_wave_into_master",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-C-024",
+    "judge_B_feasibility": "merge -> W13-P1-C-023",
+    "judge_C_adversary": "merge -> W13-P1-C-023"
+   },
+   "note": "master record NOT modified; merge recorded here and via merged_from on the surviving wave-4 primary"
+  },
+  {
+   "id": "W13-P1-K-104",
+   "target": "W13-P1-C-077",
+   "scope": "cross_wave_into_master",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-C-077",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-C-077"
+   },
+   "note": "master record NOT modified; merge recorded here and via merged_from on the surviving wave-4 primary"
+  },
+  {
+   "id": "W13-P1-L-011",
+   "target": "W13-P1-L-015",
+   "scope": "in_wave",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-015",
+    "judge_B_feasibility": "merge -> W13-P1-L-015",
+    "judge_C_adversary": "keep"
+   },
+   "note": "surviving primary W13-P1-L-015 appended with merged_from=['W13-P1-L-011']"
+  },
+  {
+   "id": "W13-P1-L-054",
+   "target": "W13-P1-L-059",
+   "scope": "in_wave",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-059",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-059"
+   },
+   "note": "surviving primary W13-P1-L-059 appended with merged_from=['W13-P1-L-054']"
+  },
+  {
+   "id": "W13-P1-L-069",
+   "target": "W13-P1-L-097",
+   "scope": "in_wave",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-097",
+    "judge_B_feasibility": "merge -> W13-P1-L-097",
+    "judge_C_adversary": "merge -> W13-P1-L-097"
+   },
+   "note": "surviving primary W13-P1-L-097 appended with merged_from=['W13-P1-L-069']"
+  },
+  {
+   "id": "W13-P1-L-074",
+   "target": "W13-P1-L-092",
+   "scope": "in_wave",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-092",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-092"
+   },
+   "note": "surviving primary W13-P1-L-092 appended with merged_from=['W13-P1-L-074']"
+  },
+  {
+   "id": "W13-P1-M-002",
+   "target": "W13-P1-M-001",
+   "scope": "in_wave",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-M-001",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-M-001"
+   },
+   "note": "surviving primary W13-P1-M-001 appended with merged_from=['W13-P1-M-002']"
+  },
+  {
+   "id": "W13-P1-M-100",
+   "target": "W13-P1-M-039",
+   "scope": "in_wave",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-M-039",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-M-039"
+   },
+   "note": "surviving primary W13-P1-M-039 appended with merged_from=['W13-P1-M-100']"
+  }
+ ],
+ "kills": [],
+ "headline_reconciliations": {
+  "K100_target_conflict": {
+   "conflict": "All three judges merge K-100 into the master contamination family but disagree on the record: judge_A -> C-024, judges B+C -> C-023.",
+   "resolution": "MERGED into W13-P1-C-023 by 2-1 target majority (no A-tie-break needed; the tie-break rule only fires on actual ties). judge_A's C-024 adjacency is recorded here so the GATE-8/Stage-2 lane sees the whole C-023/C-024/C-028 contamination family as the landing zone.",
+   "meta_judge_needed": false
+  },
+  "M061_M062_opposite_direction_merges": {
+   "conflict": "judge_A merges M-062 -> M-061 while judge_C merges M-061 -> M-062 (opposite directions); judge_B keeps both as separately runnable.",
+   "resolution": "BOTH KEPT, each by a 2-1 keep majority (M-061: B+C-side keep... precisely A keep + B keep vs C merge; M-062: B keep + C keep vs A merge). The two merge proposals cancel into mutual keeps under the majority rule; each record carries the other judge's merge proposal as judge_dissent, and the pair is flagged for Stage-2 slot-cap arbitration (same gradient-conflict-localization family, per-depth vs per-stratum instruments).",
+   "written_rule": "When two judges propose merges in OPPOSITE directions over the same pair and the third judge keeps both, each member retains two effective keep votes, so both survive; the family is flagged for Stage-2 rather than force-merged against the majority.",
+   "meta_judge_needed": false
+  },
+  "C_kills_outvoted": {
+   "ids": [
+    "W13-P1-K-020",
+    "W13-P1-K-069",
+    "W13-P1-L-012"
+   ],
+   "conflict": "judge_C killed all three as UNVERIFIED prior-art restatements over conceded-known cores; judges A and B kept all three.",
+   "resolution": "All three KEPT 2-1 per the w3 written rule (a minority kill against a keep majority stands down); C's kill rationales are preserved verbatim as judge_dissent and routed to the GATE-8 novelty lane together with C's 20-id high_prior_art_risk watchlist and B's prior_art_risk flags (L-074 nuance: L-074 itself merged into L-092 on separate grounds; M-023, M-031 flags live on their kept records).",
+   "meta_judge_needed": false
+  },
+  "L054_hard_ban_merge": {
+   "note": "L-054 -> L-059 merged 2-1 (A dedup grounds + C HARD-BAN enforcement: annotation/convention pathology as primary subject; B keep outvoted). The guideline-interpretation-noise axis survives inside L-059 with L-054 recorded via merged_from."
+  },
+  "L011_L020_chain_note": "judge_C kept L-011 as primary of its own L-020 merge proposal, but the A+B majority merges L-011 -> L-015 and the majority keeps L-020. Net: L-011 merged into L-015 (merged_from records it); L-020 kept with C's outvoted merge proposal as dissent; no chain violation (all surviving targets accepted)."
+ },
+ "reconciliations_all_non_unanimous": [
+  {
+   "id": "W13-P1-K-014",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-K-054",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_A: Same law: geometry-model performance is governed by effective scene/layout diversity, not raw image/frame count (correlated frames and layout-redundant images inflate nominal counts). K-054 states the compute-matched scaling form (unique-scene count vs frames-per-scene vs parameters); K-014's layout-stratified-subset replication of full-data depth performance is the subset-selection arm o"
+   ]
+  },
+  {
+   "id": "W13-P1-K-020",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "kill"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C (kill): UNVERIFIED prior-art restatement: strong frozen-feature linear/shallow depth probing is a published headline result of the current SSL-backbone literature, and the record itself concedes probe-calibrated headroom analysis is common in semantics and that 'dense probes have historically caught up'. Residual (depth-benchmark-culture audit framing) travels to kept K-063's margin-over-b"
+   ]
+  },
+  {
+   "id": "W13-P1-K-043",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-K-037",
+    "judge_B_feasibility": "merge -> W13-P1-K-037",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "MERGED into W13-P1-K-037 (majority-not-keep; target = majority target among proposing judges)",
+   "merge_reasons": [
+    "judge_A: Same null hypothesis with two replacement arms: the celebrated adaptive densify-split-prune machinery of Gaussian splatting is not the active ingredient — K-037 claims a blind capacity schedule (annealing) matches it, K-043 claims overcomplete-init-then-prune (capacity-then-selection) matches it. One matched-budget falsification decides both; same subject_system and measurement_family (ma",
+    "judge_B: Same matched-budget Gaussian-splatting densification ablation on the same rig: K-037 tests blind schedules vs adaptive densify-split at matched final primitive counts; K-043's overcomplete-then-prune is one more arm of that grid ('capacity-then-selection'). Retain K-043's cross-seed variance readout as a reported metric."
+   ]
+  },
+  {
+   "id": "W13-P1-K-046",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-K-039"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same measurement family: interpolated-vs-extrapolated-view split exposing splat overfitting; K-039 manipulates primitive budget, K-046 manipulates compression - one protocol-repair primary."
+   ]
+  },
+  {
+   "id": "W13-P1-K-051",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-K-013"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same hypothesis: the model contains an implicit camera-intrinsics estimator whose training-distribution bias explains downstream 3D errors; depth-FM (K-013) and pose-free reconstructor (K-051) are substrate variants."
+   ]
+  },
+  {
+   "id": "W13-P1-K-069",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "kill"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C (kill): UNVERIFIED prior-art restatement: static-appearance solvability of action benchmarks and frame-shuffle/single-frame probes are the documented motivation of the temporal-modeling sub-literature; the record concedes 'single-frame solvability of benchmarks is known'. Residual (three-way decomposition applied to the newest video SSL checkpoints) is a meta-audit, kept visible via K-070'"
+   ]
+  },
+  {
+   "id": "W13-P1-K-070",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-K-067",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_A: One information-locality measurement, two arms: K-070's oracle frame-subset audit (benchmarks answerable from <1% of frames => they measure retrieval) is the oracle arm of K-067's learned query-conditioned selector claim (10% budget retains nearly all accuracy). Same benchmarks, same sufficiency-vs-budget instrument; the oracle audit is the selector study's mandatory baseline. K-070's ben"
+   ]
+  },
+  {
+   "id": "W13-P1-K-077",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-K-074"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same probe design: hidden acquisition covariate (frame rate / codec structure) biases motion judgments, revealed by covariate-shifted re-evaluation - one primary with two covariates."
+   ]
+  },
+  {
+   "id": "W13-P1-K-079",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-A-052",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_A: Near-verbatim port: accepted A-052 already states the claim and protocol — reacquisition/permanence collapses at a critical occlusion duration set by memory capacity (a cliff, not a slope), measured by an occlusion-duration sweep. K-079 generalizes the subject slot from SAM2 to memory-based video systems and adds a constant-velocity dynamics-state baseline arm (preserved in this note; res"
+   ]
+  },
+  {
+   "id": "W13-P1-K-080",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-K-068"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same memory-representation hypothesis: geometric 3D place buffer beats appearance-token memory exactly under occlusion/long absence; long-video re-localization (K-068) and MOT occlusion stratum (K-080) are two tasks of one claim."
+   ]
+  },
+  {
+   "id": "W13-P1-K-083",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-K-090"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same measurement family: geometry-vs-photometric decomposed re-scoring of dynamic 3D methods; K-090 is the general audit, K-083 the video-diffusion-prior attribution instance."
+   ]
+  },
+  {
+   "id": "W13-P1-K-089",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-K-058"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same side channel: rolling-shutter timing as signal rather than nuisance; metric-scale recovery (K-058) and intra-frame temporal super-resolution (K-089) are one family."
+   ]
+  },
+  {
+   "id": "W13-P1-K-094",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-K-018"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same axis: radial lens distortion x depth models; test-time lens-mismatch wrapper (K-018) plus training-corpus distortion fingerprint (K-094) form one lens-distribution study."
+   ]
+  },
+  {
+   "id": "W13-P1-K-095",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-K-017"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same design: probabilistic world-prior metric-scale module for monocular pipelines; object-size-class priors (K-017) and camera-height priors (K-095) are interchangeable prior menus."
+   ]
+  },
+  {
+   "id": "W13-P1-K-100",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-C-024",
+    "judge_B_feasibility": "merge -> W13-P1-C-023",
+    "judge_C_adversary": "merge -> W13-P1-C-023"
+   },
+   "resolution": "MERGED into W13-P1-C-023 (majority-not-keep; target = majority target among proposing judges)",
+   "merge_reasons": [
+    "unanimous/majority merge; reasons per judge files"
+   ]
+  },
+  {
+   "id": "W13-P1-K-104",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-C-077",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-C-077"
+   },
+   "resolution": "MERGED into W13-P1-C-077 (majority-not-keep; target = majority target among proposing judges)",
+   "merge_reasons": [
+    "judge_A: Near-verbatim port (mg05/w3 precedent that killed G-078 and H-058): pipeline-convention variance (here mesh fusion/post-processing backends on indoor-reconstruction leaderboards) moves scores by amounts comparable to claimed method deltas, exposed by standardized re-evaluation — accepted C-077's harness-variance claim and design with the reconstruction backend in the convention slot. Mesh",
+    "judge_C: MASTER MERGE: mesh post-processing / evaluation-backend attribution of leaderboard movement = harness variance; direct w3 precedent (G-078 preprocessing, H-058 conventions -> C-077)."
+   ]
+  },
+  {
+   "id": "W13-P1-L-002",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-098"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same hypothesis ('controller intelligence is not the bottleneck'): tiny feature-based router matching frontier tool-choice (L-002) is the routing special case of small-controller sufficiency (L-098)."
+   ]
+  },
+  {
+   "id": "W13-P1-L-011",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-015",
+    "judge_B_feasibility": "merge -> W13-P1-L-015",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "MERGED into W13-P1-L-015 (majority-not-keep; target = majority target among proposing judges)",
+   "merge_reasons": [
+    "judge_A: One falsification unit: L-011 measures the text-interface information ceiling (probe on textual intermediates plateaus below probe on raw tool outputs); L-015 recovers it with a soft-token adapter, isolating discretization as the binding constraint. Measuring the recovery fraction (L-015) requires measuring the gap (L-011) as its control arm. Same mechanism (verbalization discards spatial",
+    "judge_B: L-015's latent-handoff adapter experiment must first measure the text-vs-raw probe gap, which is L-011's entire deliverable; run L-011 as stage one of L-015's protocol on the same interface_bottleneck_rig."
+   ]
+  },
+  {
+   "id": "W13-P1-L-012",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "kill"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C (kill): UNVERIFIED prior-art restatement: mark-based visual prompting beating coordinate text is established practice, conceded in the record ('mark-based visual prompting is established as a technique'). Residual (information-equivalent encoding comparison scaling with loop depth/object count) is exactly kept L-011's interface-bandwidth instrument and travels there. Recoverable via GATE-8"
+   ]
+  },
+  {
+   "id": "W13-P1-L-020",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-011"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same instrument: interface information ceiling measured by freezing tools/controller and swapping encodings; L-020 is the productized bandwidth score of L-011's ceiling probe."
+   ]
+  },
+  {
+   "id": "W13-P1-L-021",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-030",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_A: L-021's saturation curve (self-consistency voting flattens by k=4 on perception-bound questions because samples share the same wrong percept) is the direct corollary measurement of L-030's regime law (cross-sample variance under cheap sampling detects compute-limited vs representation-limited instances and predicts loop-gain sign). Family-cap trigger (shared_percept_decorrelation): mergin"
+   ]
+  },
+  {
+   "id": "W13-P1-L-024",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-082"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same mechanism: same-percept proposer-verifier coupling nullifies self-verification; best-of-N instantiation and the cross-encoder-verifier recovery design travel into the generator-verifier-gap record."
+   ]
+  },
+  {
+   "id": "W13-P1-L-041",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-027"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same law: decomposition machinery beats the monolith only above a stable decomposability/compositional-depth threshold at matched compute; agent loops (L-027) and visual programs (L-041) are substrate variants."
+   ]
+  },
+  {
+   "id": "W13-P1-L-047",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-009",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_A: Same intervention and claim, X-slot swap: inject empirically measured per-tool reliability profiles into the controller/planner prompt and decision quality beats description/signature conditioning. L-009 = router instance (competence cards vs descriptions), L-047 = program-synthesis instance (error profiles vs signatures). One probe-suite-then-condition design; L-047's plan-structure-shif"
+   ]
+  },
+  {
+   "id": "W13-P1-L-048",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-058"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: family-fingerprint MERGE TRIGGER (dispersion/disagreement-as-uncertainty already over cap vs master J-056/J-057/J-058 + remand H-030/H-037/H-039): agent-side disagreement predicting human disagreement/ambiguity; program-set (L-048) and cross-seed annotation (L-058) instantiations, one primary."
+   ]
+  },
+  {
+   "id": "W13-P1-L-054",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-059",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-059"
+   },
+   "resolution": "MERGED into W13-P1-L-059 (majority-not-keep; target = majority target among proposing judges)",
+   "merge_reasons": [
+    "judge_A: One mechanism (guideline interpretation is the dominant label-noise source in agent annotation), audit arm + fix arm: L-054 shows paraphrasing guidelines shifts label distributions as much as swapping the model; L-059 removes the interpretation step by compiling guidelines into executable checklists and claims the variance reduction beats a model upgrade. Same boundary-case locus, same no",
+    "judge_C: HARD-BAN ENFORCEMENT (annotation/convention pathology as primary subject): guideline-paraphrase sensitivity is convention-mismatch phrasing on the agent substrate; folded into its constructive repair L-059, which already owns the guideline-interpretation-noise claim. No content lost."
+   ]
+  },
+  {
+   "id": "W13-P1-L-056",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-053"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same loop-degradation law: per-generation amplification of agent-label bias; tail-mass erosion (L-056) is the flagship axis of L-053's systematic-bias amplification rate."
+   ]
+  },
+  {
+   "id": "W13-P1-L-069",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-097",
+    "judge_B_feasibility": "merge -> W13-P1-L-097",
+    "judge_C_adversary": "merge -> W13-P1-L-097"
+   },
+   "resolution": "MERGED into W13-P1-L-097 (majority-not-keep; target = majority target among proposing judges)",
+   "merge_reasons": [
+    "unanimous/majority merge; reasons per judge files"
+   ]
+  },
+  {
+   "id": "W13-P1-L-074",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-L-092",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-092"
+   },
+   "resolution": "MERGED into W13-P1-L-092 (majority-not-keep; target = majority target among proposing judges)",
+   "merge_reasons": [
+    "judge_A: w2 equalization-null guard (<=3 per shard) fired: gen_l carries four matched-budget-null ideas (L-002, L-061, L-074, L-092). L-074 (majority voting matches debate/arbitration at iso-compute; deliberation is compute repackaged) is the protocol-comparison arm of L-092's iso-cost accounting protocol (loop vs bigger single model; a large share of loop gains is purchased compute). Same normali",
+    "judge_C: same accounting attack: iso-compute/iso-cost comparisons erase claimed loop/protocol gains; debate-vs-voting (L-074) is the multi-agent instance of the general audit (L-092)."
+   ]
+  },
+  {
+   "id": "W13-P1-L-079",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-073"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same active ingredient: protocol structure (roles/hierarchy) is inert without engineered input/tool heterogeneity; role prompts (L-073) and manager-worker (L-079) are one information-asymmetry hypothesis."
+   ]
+  },
+  {
+   "id": "W13-P1-L-084",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-090"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same family: internal-consistency probes as label-free judge-reliability certificates; swap-consistency (L-084, prior-art-risky half: position bias and its mitigation are documented) and transitivity cycles (L-090) become one primary."
+   ]
+  },
+  {
+   "id": "W13-P1-L-086",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-L-072"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same decorrelation law: ensembles win iff vision encoders differ, predictable from pairwise error correlations; judge ensembles (L-086) are the judging instance of L-072."
+   ]
+  },
+  {
+   "id": "W13-P1-M-002",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-M-001",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-M-001"
+   },
+   "resolution": "MERGED into W13-P1-M-001 (majority-not-keep; target = majority target among proposing judges)",
+   "merge_reasons": [
+    "judge_A: Same cell (monocular depth regression targets x AbsRel/delta1 + gradient statistics): the target parameterization (metric/log/inverse) acts as a per-pixel gradient preconditioner, not a representational change. M-001 states the law (log wins exactly on wide depth-range scenes, with a predictable threshold); M-002 is the equivalence control (explicit 1/z^2 Jacobian rescaling reproduces the",
+    "judge_C: same mechanism: target-space reparameterization = per-pixel gradient preconditioning; the explicit-rescaling recovery (M-002) is the constructive corollary of the threshold law (M-001), same cluster."
+   ]
+  },
+  {
+   "id": "W13-P1-M-008",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-M-007"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same hypothesis: discretized/bounded target parameterizations win for optimizer-range reasons, not representation; conditioning-matched rescue (clipping / LR sweep) is one design across dense bins (M-007) and detection offsets (M-008)."
+   ]
+  },
+  {
+   "id": "W13-P1-M-010",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-M-015",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_A: Same law, spatial vs spectral statement: default gradient allocation starves boundary/high-frequency structure until interiors saturate, so emphasis reweighting (boundary emphasis in M-015, wavelet/Fourier band boosting in M-010) only helps under truncated budgets, with a measurable crossover budget where the benefit vanishes. Boundary bands ARE the high-frequency content; both designs sw"
+   ]
+  },
+  {
+   "id": "W13-P1-M-061",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-M-062"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same design: localize gradient conflict (per depth / per stratum), then decouple only where it peaks; intra-task interior-boundary (M-061) and inter-task seg+depth (M-062) are one conflict-localization study."
+   ]
+  },
+  {
+   "id": "W13-P1-M-062",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-M-061",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_A: Same instrument and claim, population-slot swap: measure layer-resolved gradient-conflict profiles between two demand populations sharing decoder features, then place the architectural split at the measured conflict onset and capture the full-split benefit at a fraction of parameters. M-061 = intra-task populations (boundary vs interior pixels), M-062 = inter-task (segmentation vs depth)."
+   ]
+  },
+  {
+   "id": "W13-P1-M-066",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-M-009",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "keep"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_A: M-066's observed law (confusable class pairs show anti-correlated late-phase accuracy fluctuations because shared evidence makes boundary updates zero-sum) is exactly the signature M-009 predicts and causally manipulates via output coupling (softmax couples logits zero-sum; sigmoid decouples). Same measurement family (pairwise fluctuation anti-correlation + boundary confusion); M-009 hold"
+   ]
+  },
+  {
+   "id": "W13-P1-M-098",
+   "votes": {
+    "judge_A_dedup": "keep",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-M-097"
+   },
+   "resolution": "KEPT by 2-1 keep majority; outvoted verdict(s) preserved verbatim as judge_dissent on the master record and routed to the GATE-8 novelty/prior-art lane",
+   "dissent_summary": [
+    "judge_C: same target: dense fine-tuning divergence early-warning plus targeted guard; attention-entropy collapse (M-097) and head/backbone update-ratio boundary (M-098) become one two-signal study (also resolves the cheap-predictor <=3/shard guard for gen_m)."
+   ]
+  },
+  {
+   "id": "W13-P1-M-100",
+   "votes": {
+    "judge_A_dedup": "kill_or_merge -> W13-P1-M-039",
+    "judge_B_feasibility": "keep",
+    "judge_C_adversary": "merge -> W13-P1-M-039"
+   },
+   "resolution": "MERGED into W13-P1-M-039 (majority-not-keep; target = majority target among proposing judges)",
+   "merge_reasons": [
+    "judge_A: Same mechanism and verdict on two instances of iterate averaging: weight-space averaging equals LR decay only where the local loss is quadratic/affine-compatible, and dense boundary directions violate that, so averaging matches decayed schedules on interiors but fails on boundary placement. M-039 = constant-LR+EMA (schedule-free) instance; M-100 = SWA tail-averaging instance with the boun",
+    "judge_C: same claim: checkpoint averaging (EMA/SWA) fails boundary-sensitive metrics while matching interiors; schedule-comparison framing (M-039) and adoption-criterion framing (M-100) are one boundary-stratified averaging study."
+   ]
+  }
+ ],
+ "gate5_normalization": {
+  "policy": "NORMALIZATION at consolidation (w2 commissioning ruling; all three judges concur it is NOT a remand case, in contrast to w3 gen_g/gen_h which lacked thresholds entirely).",
+  "gen_k_actions": [
+   "kill_threshold field folded VERBATIM into falsifiable_prediction as a trailing 'KILL THRESHOLD (pre-registered): ...' clause on all 102 appended gen_k records; the separate field was then removed; zero thresholds invented or altered",
+   "evidence_labels (plural) renamed to evidence_label (singular); label VALUES preserved verbatim (lowercase enum drift recorded, not rewritten - rewriting enum casing would fabricate labeling the generator did not do)",
+   "needs_special_resources backfilled to false, sourced from judge_B's wave-wide tier audit (every keep T1/T2, 'no gated resources anywhere'; the sole nsr=true in the wave is gen_m M-030 which keeps its generator value)",
+   "seg_metric_dependent NOT backfilled on gen_k/gen_l: no judge supplied per-record values and a blanket false would be an unsourced content claim; the field stays absent (master is already heterogeneous: only the 98 w3 gen_j records carry it) and is recorded as schema debt for the same Stage-2 retrofit lane as GATE-4 pinning"
+  ],
+  "gen_k_gate1_residue": "seven gen_k keeps carry decisive but non-numeric (quantitative-verbal) kill thresholds - union of judge_B's five (K-035, K-039, K-065, K-083, K-094) and judge_C's seven (adds K-064, K-088); all seven flagged gate1_qualitative_threshold=true on the master records; numeric retrofit owed to a later lane; NO numbers invented by judges or consolidator",
+  "gen_m_metadata_correction": "generator pre-filled wave='p1_wave_a_w3' on 100/100 records (wave-label spoof; found independently by judges B and C). All 98 appended gen_m records have wave OVERWRITTEN to p1_wave_b_w4 with the original value preserved in wave_label_corrected_from; source_shard verified/set to gen_m_training_dynamics_objectives; novelty_status forced to 'unverified'. Rule recorded: never trust generator-supplied pipeline provenance."
+ },
+ "gate4_policy": {
+  "decision": "KEEP-AND-FLAG (no remand, no content rejection, shards not dropped)",
+  "facts": "judge_B instrument: gen_k 0/105 and gen_l 0/100 name BOTH a public dataset and model in experiment fields; gen_m 100/100 compliant. judge_C strict instrument: gen_k 2/105, gen_l 2/100, gen_m 92-100/100. Both judges verified the k/l gap is a generator STYLE choice (spot-reads: \"standard benchmarks\", \"a frozen ViT\"), not a content defect, and both recommended schema-only retrofit over rejection.",
+  "action": "all 198 appended gen_k/gen_l records carry gate4_deferred=true + gate4_missing[] (per-record judge_B flags preserved, e.g. gate4_partial_dataset_only); gen_m records carry no flag (B: 100/100; C's 8 dataset-only ids are instrument variance recorded here, not per-record)",
+  "rationale": "w3 precedent remanded gen_g/gen_h for MISSING KILL THRESHOLDS (an epistemic gate - unfalsifiable records must not enter the master); GATE-4 asset naming is a pinning/logistics gate on records that are already falsifiable as stated. The commissioning explicitly allows flag-over-remand here and prefers not dropping whole shards. Asset pinning belongs to the same mechanical retrofit lane as the remaining GATE-5 debt; no dataset or model names were invented by judges or consolidator.",
+  "flagged_counts": {
+   "gen_k": 102,
+   "gen_l": 96,
+   "gen_m": 0
+  }
+ },
+ "gate6_genre_note": "recorded, not enforced (Stage-2 instrument, per w3 precedent): genre quotas must use judge labels, not self-labels - gen_k self 32.4% constructive vs 19-27.6% by judge_C phrasing audit; gen_l self 47% vs 27-35%; gen_m self 26% vs 19-20% (gen_m is a characterization-law shard by mandate: record-not-reject). judge_C per-record judge_genre labels are preserved in judge_C_meta on every appended record. Genre vocabulary drift (three vocabularies across shards) recorded as normalization debt; self-labels NOT rewritten.",
+ "family_caps_and_fingerprint_cells": "judge-time merges already fired inside over-cap families (25 by C, 14 duplicate groups by A). The 7 cells judge_C reports still over cap <=6 (dispersion/disagreement, text_interface_lossiness, iso_budget_null, cheap_predictor_of_outcome, ritual_is_mechanism_in_disguise, boundary_interior_decomposition, bn_statistics_mechanics) contain members that >=2 judges kept as mechanistically distinct, so forced consolidator merges would override keep majorities - deferred to Stage-2 slot caps exactly as judges B and C recommend, with C's protected ids (39 anomalies, 7 tension pairs incl. M-071 vs M-076) recorded on the judge branch and via judge_C_meta flags.",
+ "deliberate_tensions": "tension pairs kept by design (adjudicate by experiment, not dedup; do NOT merge): union of judge_A's 10 (19 flagged ids) and judge_C's 7 and judge_B's 4 - e.g. K-030 vs K-103, M-071 vs M-076, L-024/L-036/L-082 family. All members accepted; flags live in the respective judge metas.",
+ "cross_wave_flags_for_w5_NPO": "judge_A's offmaster collision flags map occupied ground for the gen_n/gen_p/gen_o judges (strongest: K-054 vs N-027/N-014; K-077 vs O-032; K-018/K-094 vs O-005; M-057 vs N-049; M-055 vs P-059). The w5 judges must re-collide N/P/O against the 934-line master INCLUDING this wave's 296 appends. Whoever repairs the remaining 127 gen_g/gen_h remands must also re-collide them against this wave's keeps (judge_A: every offmaster 'w3-accepted' flag target sits in that remand set, e.g. G-005, G-028, G-086, H-076/H-077, H-091; plus K-019 -> G-011 master_adjacent upgrade from judge_C's re-fetch).",
+ "irreconcilable": false,
+ "meta_judge_needed": false,
+ "meta_judge_rationale": "every conflict resolved mechanically by the w1/w2/w3 majority policy: one clean 2-1 target majority (K-100), one opposite-direction merge pair canceling into mutual keeps (M-061/M-062, new written rule recorded), three outvoted C kills preserved as dissent (K-020, K-069, L-012), zero 3-way splits, zero irreconcilable target chains.",
+ "epistemic_status": "novelty of every accepted idea remains UNVERIFIED. No citations, thresholds, labels, dataset/model names, or numbers were invented anywhere in this consolidation. All prior-art assessments are judge MODEL SPECULATION routed to GATE-8.",
+ "no_fake_citations": true,
+ "force_push": false,
+ "output_files": [
+  "Windows13/_state/ideas_master.jsonl (296 records appended, 638 -> 934 lines)",
+  "Windows13/_state/research_state.json (counts/exploration only)",
+  "Windows13/_state/research_ledger.md (rows 20-22 appended)",
+  "Windows13/_state/tasks/p1/wave_b_w4/decision.json",
+  "Windows13/_state/tasks/p1/wave_b_w4/consolidator.md",
+  "Windows13/_state/tasks/p1/wave_b_w4/done_consolidator.json"
+ ]
+}
