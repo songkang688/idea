@@ -1,0 +1,206 @@
+{
+  "task_id": "p1_diversity_audit_w3",
+  "role": "auditor_B_quality_blindspots",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "branch": "cursor/p1-diversity-audit-w3-auditor-b-f4db",
+  "audited_at_utc": "2026-08-29T01:45:00Z",
+  "audited_master": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w4-e8e2",
+    "commit": "2411f9307030b8de4e445d0972a0b624cc451130",
+    "records": 934,
+    "unique_id_seed": 934,
+    "verification": "wc -l = 934; json parse of all lines = 934 records, 934 unique id_seed; status accepted_stage1 934/934; novelty_status unverified 934/934; 0 exact-duplicate one-liners; merged_from targets never coexist with their absorbed ids",
+    "by_shard": {"A": 94, "B": 85, "C": 69, "D": 79, "E": 79, "F": 88, "G": 30, "H": 16, "J": 98, "K": 102, "L": 96, "M": 98},
+    "by_wave": {"p1_wave_b_w1": 248, "p1_wave_b_w2": 246, "p1_wave_b_w3": 144, "p1_wave_b_w4": 296},
+    "ideas_master_modified_by_this_task": false
+  },
+  "independence": "All metrics below were computed by this auditor's own instruments on the canonical master BEFORE reading auditor A w3 (origin/cursor/p1-diversity-audit-w3-auditor-a-9a11). Section cross_check_vs_auditor_A records post-hoc reconciliation; nothing was copied.",
+
+  "gate1_falsifiability_kill_thresholds": {
+    "instrument": "digit inside falsifiable_prediction, OR explicit 'falsified if'/'KILL THRESHOLD' clause inside falsifiable_prediction (union)",
+    "portfolio_compliant": "464/934 (49.7%)",
+    "by_shard_union": {"A": "16/94", "B": "0/85", "C": "0/69", "D": "2/79", "E": "1/79", "F": "5/88", "G": "30/30", "H": "16/16", "J": "98/98", "K": "102/102", "L": "96/96", "M": "98/98"},
+    "w3_w4_additions": "440/440 union-compliant (100%); 420/440 digit-bearing; the 20 non-digit records are fully accounted: 10 gen_g + 5 gen_h gate5-repaired verbal-exact bounds (universal/existential zero-bounds, exact-fraction quantifiers) and 5 gen_k no-digit predictions, all 5 inside the 7 flagged gate1_qualitative_threshold ids (K-035, K-039, K-065, K-083, K-094; K-064 and K-088 carry digits plus a qualitative flag)",
+    "legacy_debt": "w1+w2 = 24/494 union-compliant (4.9%): 470 accepted records still have no in-prediction kill threshold. EVIDENCE this is unchanged since the w2 audit (w2 measured 23/494 digit-bearing; my digit-only count reproduces 23, +1 from the kill-clause arm). No retrofit lane has executed; the w2 decision parked it in stage2_selection_notes without an owner.",
+    "gate1_qualitative_threshold_flags": ["W13-P1-K-035", "W13-P1-K-039", "W13-P1-K-064", "W13-P1-K-065", "W13-P1-K-083", "W13-P1-K-088", "W13-P1-K-094"],
+    "verdict": "BIMODAL AND FROZEN: every record generated after the w1/w2 gate rulings is compliant; every record generated before them is not. The gate works at generation+judge time and nothing is retrofitting the stock. 470-record legacy debt + 7 gen_k numeric retrofits + 127 remand records = the full GATE-1 debt ledger."
+  },
+
+  "gate3_cheap_kill_quality": {
+    "instrument": "time/cost bound regex (afternoon|N hours/days|GPU-hours|single GPU|weekend|$ figures) over fastest_falsification_experiment",
+    "time_cost_bound_present": {"w1": "67/248 (27.0%)", "w2": "58/246 (23.6%)", "w3_w4": "373/440 (84.8%)", "portfolio": "498/934 (53.3%)"},
+    "by_shard_notable": {"gen_k": "102/102", "gen_l": "96/96", "gen_m": "98/98", "gen_j": "59/98", "gen_h": "0/16 (gate3 time-cost gap recorded per-record in gate5_missing at repair time - confirmed accurate)", "gen_f": "7/88 (worst legacy shard, matches my w2 finding 18/88 on a looser regex)"},
+    "needs_special_resources": {"field_present": "394/934 (gen_j/k/l/m only; gen_k backfilled false at w4 consolidation from judge_B tier audit)", "true_ids": ["W13-P1-J-063", "W13-P1-M-030"], "note": "the w4 decision's claim 'sole nsr=true in the wave is M-030' is correct for wave 4; J-063 is the w3 instance. 540 legacy records have no nsr field at all - cheapness claims on w1/w2 records remain self-asserted prose. My w1 list of 32 special-resource ids (w1 audit) is still the only resource-discount instrument for legacy records."},
+    "verdict": "Cheap-kill declarations are now near-universal in new shards (K/L/M 100%) but the portfolio median record still lacks a machine-readable cost bound. gen_h's 16 master records are the only w3/w4 records with zero time bounds - they entered via the threshold-extraction repair lane which correctly did not invent time costs."
+  },
+
+  "gate4_asset_pinning": {
+    "instrument": "named-public-dataset AND named-public-model regex over minimal+fastest experiment fields (large curated benchmark/model name lists)",
+    "names_both": {"portfolio": "101/934 (10.8%)", "gen_m": "96/98", "gen_a": "4/94", "gen_j": "1/98", "all_other_shards": "0"},
+    "gate4_deferred_flags": {"gen_k": 102, "gen_l": 96, "total": 198, "cross_check": "flag placement exactly matches my independent measurement (gen_k 0-1 names datasets, gen_l 0); gen_m carries no flags and is 96/98 compliant on my stricter instrument - the w4 keep-and-flag bookkeeping is accurate"},
+    "verdict": "GATE-4 is satisfied by exactly one shard (gen_m). 833/934 records do not pin both a dataset and a model. The Stage-2 retrofit lane owed asset pinning now covers: 198 flagged K/L records + 636 unflagged legacy/G/H/J records that fail the same test but predate the gate. Recommend the retrofit lane treat the gate4_missing[] flags as the priority queue head, not the whole job."
+  },
+
+  "gate2_evidence_label_coverage": {
+    "structured_dict_present": "534/934 (57.2%)",
+    "dict_by_shard": {"present": {"A": 94, "G": 30, "H": 16, "J": 98, "K": 102, "L": 96, "M": 98}, "missing": {"B": 85, "C": 69, "D": 79, "E": 79, "F": 88}},
+    "missing_but_backfillable": "EVIDENCE: 100% of the 400 dict-less records (B/C/D/E/F) carry the uppercase label vocabulary INLINE in their text fields (B 85/85, C 69/69, D 79/79, E 79/79, F 88/88). The w2 claim 'mechanically normalizable' is verified and quantified: this is parse-and-lift work, no content authoring.",
+    "label_vocabulary_drift": {
+      "canonical_enum_usage": {"HYPOTHESIS": 563, "EXPECTED RESULT": 338, "KNOWN FACT": 273, "MODEL SPECULATION": "176 plus 246 suffixed variants", "VERIFIED PRIOR WORK": "77 (gen_a 35 + gen_l 45 sources)", "EVIDENCE": 52, "ACTUAL EXPERIMENTAL RESULT": 0},
+      "drift_dialects": [
+        "'KNOWN PRIOR WORK' (non-enum variant of VERIFIED PRIOR WORK): 196 records, all gen_j + gen_m (98 + 98)",
+        "gen_k lowercase snake_case dialect on all 102 records: hypothesis / expected_result_unverified / speculation_unverified / community_belief_unverified / known_fact / literature_pattern_unverified (26) - preserved verbatim at w4 consolidation by design",
+        "free-text suffixes on MODEL SPECULATION ('about community consensus' x242 etc.)"
+      ],
+      "good_news": "ACTUAL EXPERIMENTAL RESULT is used 0 times - no record fabricates having run an experiment; consistent with the evidence policy's forbid_fiction list"
+    },
+    "verdict": "Coverage is now 57% and 100% on everything generated post-gate. The 400-record backfill plus 3-dialect normalization (KNOWN PRIOR WORK -> VERIFIED PRIOR WORK mapping decision needed: gen_j/gen_m labels assert knowledge, not verification, so a blind rename would OVERCLAIM verification - recommend mapping to 'KNOWN PRIOR WORK (unverified)' or keeping as-is with an alias table) must complete before any Stage-2 ranking that reads labels programmatically."
+  },
+
+  "constructive_vs_debunk": {
+    "instruments": {
+      "self_labels_where_present": {"scope": "J/K/L/M only (394 records)", "constructive": "141/394 = 35.8%", "by_shard": {"J": "35/98 = 35.7%", "K": "34/102 = 33.3%", "L": "47/96 = 49.0%", "M": "25/98 = 25.5%"}},
+      "judge_C_labels": {"scope": "K/L/M labeled subset (273 records)", "constructive": "83/273 = 30.4%", "by_shard": {"K": "29/92 = 31.5%", "L": "35/86 = 40.7%", "M": "19/95 = 20.0%"}},
+      "strict_phrasing_regex_this_auditor": {"scope": "all 934", "constructive": "71/934 = 7.6%", "debunk": "202/934 = 21.6%", "mixed": "24/934 = 2.6%", "characterization": "126/934 = 13.5%", "unclassified_other": "511/934 = 54.7%", "note": "conservative instrument, wide 'other' bucket; sample inspection shows both false positives and false negatives - use for trend only"},
+      "hand_label_calibration": {"scope": "seeded stratified random sample n=40 (10/wave, seed 4242, ids listed in appendix_hand_labels)", "constructive": "14/40 = 35% (+/-15 at n=40)", "debunk": "15/40 = 37.5%", "characterization": "9/40 = 22.5%", "mixed": "2/40 = 5%", "by_wave_constructive": {"w1": "3/10", "w2": "1/10", "w3": "5/10", "w4": "5/10"}}
+    },
+    "gate6_self_label_inflation_reconfirmed": "self minus judge_C: K +1.8pt, L +8.3pt, M +5.5pt - self-labels inflate constructive share in every w4 shard, same direction as the w2 finding; genre quotas MUST use judge labels (GATE-6 stands)",
+    "triangulated_verdict": "Constructive share is genuinely rising: every instrument that can see the wave split agrees w3/w4 >> w1/w2 (hand-label 50% vs 20%; strict regex w4 10.8% vs w1 4.4%; self+judge labels only exist post-gate). Portfolio-level constructive is somewhere between 8% (strict phrasing) and ~35% (loose hand-label criterion incl. instrument/protocol-repair proposals); the honest headline is INSTRUMENT-DEPENDENT, IMPROVING, NOT YET REBALANCED. Debunk remains the plurality genre on every instrument. Genre resolution still rides on in-flight gen_p (104 raw ideas, >=80% constructive mandate) - do not commission a second constructive letter before gen_p's judged yield is measured.",
+    "stage2_protection": "prior protected-id sets (B w1 46 ids, B w2 62 ids, C w2 38 ids) remain binding; this audit adds the 71 strict-regex constructive ids as a fourth protected list (union semantics, genre-blind culling forbidden)",
+    "appendix_hand_labels": {"constructive": ["W13-P1-B-072", "W13-P1-A-090", "W13-P1-A-076", "W13-P1-D-065", "W13-P1-J-037", "W13-P1-J-049", "W13-P1-J-093", "W13-P1-J-032", "W13-P1-J-046", "W13-P1-L-019", "W13-P1-K-032", "W13-P1-L-040", "W13-P1-L-075", "W13-P1-L-064"], "debunk": ["W13-P1-C-064", "W13-P1-C-090", "W13-P1-A-034", "W13-P1-B-006", "W13-P1-B-004", "W13-P1-E-060", "W13-P1-D-015", "W13-P1-D-057", "W13-P1-G-056", "W13-P1-J-007", "W13-P1-J-033", "W13-P1-H-004", "W13-P1-L-021", "W13-P1-K-003", "W13-P1-K-088"], "characterization": ["W13-P1-B-016", "W13-P1-A-008", "W13-P1-F-064", "W13-P1-D-055", "W13-P1-E-088", "W13-P1-F-050", "W13-P1-J-031", "W13-P1-M-095", "W13-P1-M-032"], "mixed": ["W13-P1-E-072", "W13-P1-E-054"]}
+  },
+
+  "remaining_blind_spots_at_934": {
+    "instrument": "territory regex over all 10 idea-text fields (mention) and over one_line_idea+cluster (primary); strict variants applied where the loose regex has known false positives (crop, navigation, resampling)",
+    "zero_or_near_zero_unowned": {
+      "cross_field_transfer": {"mention": "7/934 (0.7%) - all 7 inspected by hand, none is genuine vision<->audio/time-series/graph transfer science (A-038 resampling FP, B-062 physics analogy, F-026/F-065 sim weather, G-012 protocol, K-098 triad weighting)", "primary": "0/934", "owner": "NOBODY - gen_r dispatch condition now discharged (see queue_validation)"},
+      "security_adversarial_attack_science": {"mention": "~30 loose, primary ~0.4% (closest: A-075, A-077, C-083, C-088, D-059)", "owner": "ORPHANED - gen_u policy-blocked; see gen_u_disposition"},
+      "fairness_demographic": {"mention": "4/934, primary 1 (C-034)", "owner": "ORPHANED with gen_u; NOTE the strongest fairness seed H-090 (face-enhancement demographic disparity) sits in the 127-record REMAND queue, not the master"},
+      "psychophysics_human_vision": {"mention": "5/934 (0.5%)", "owner": "gen_q fold-in per w2 map"},
+      "active_learning_folklore": {"mention": "6/934 (0.6%)", "owner": "gen_q fold-in per w2 map"},
+      "model_lifecycle_continual": {"mention": "15/934 (1.6%)", "primary": "4/934 (0.4%): F-102, G-011, G-080, G-085", "owner": "reserve gen_v - promotion trigger now MET (see queue_validation)"}
+    },
+    "thin_but_owned_in_flight": {
+      "scaling_laws": "9 mentions / 2 primary - gen_n (100 raw, w5_NPO)",
+      "memorization_privacy": "16 mentions / 4 primary - gen_n",
+      "underwater_sonar": "0/934 - gen_o (100 raw, w5_NPO)",
+      "industrial_inspection": "7 mentions / 0 primary - gen_o",
+      "microscopy_histology": "14 mentions / 1 primary - gen_o",
+      "document_ocr": "5 mentions / 2 primary - gen_o",
+      "remote_sensing": "15 mentions / 1 primary - gen_o",
+      "agriculture_strict": "4 records - gen_o",
+      "constructive_rebalance": "gen_p (104 raw, w5_NPO)"
+    },
+    "thin_reserve_owned": {
+      "efficiency_deployment": "26 mentions / 6 primary; distillation sub-territory NO LONGER EMPTY: 22 distillation-primary-ish records incl. a 10-record gen_j block (J-019/049/059/072..078) + K-010/K-015 + M-069 - gen_t mandate must exclude distillation if commissioned",
+      "embodied_robotic_strict": "70 mentions strict / ~16 primary-ish (mostly adjacency, no dedicated cluster) - reserve gen_s"
+    },
+    "filled_since_w2_confirmed": {
+      "sr_restoration": "PARTIALLY - only 16 gen_h records in master (1.7%); 73 accepted-on-content gen_h records sit in the remand queue. Restoration is the one w1 blind spot whose fill was undone by the GATE-5 remand - Stage-1 exit with 16 restoration records would re-open the blind spot",
+      "diffusion_model_science": "FILLED - gen_j 98 (85 loose diffusion mentions portfolio-wide, 63 in gen_j)",
+      "three_d_geometry_video": "FILLED - gen_k 102 (3D 6.4% mention / 4.5% primary; video 13.3% / 8.0%)",
+      "llm_agent_vision": "FILLED - gen_l 96 (5.5% mention / 3.3% primary)",
+      "training_dynamics_objectives": "FILLED - gen_m 98 (7.1% mention / 3.2% primary)"
+    }
+  },
+
+  "queue_validation": {
+    "w2_queue_execution_check": {
+      "gen_p_constructive_capability": "DISPATCHED (priority 1 honored): 104 ideas on origin/cursor/p1-gen-p-constructive-6c3b - in w5_NPO judging, DO NOT TOUCH",
+      "gen_o_hard_domain_diversifier": "DISPATCHED: 100 ideas on origin/cursor/p1-gen-o-hard-domain-acc5 - in w5_NPO judging",
+      "gen_n_scaling_memorization_data_laws": "DISPATCHED: 100 ideas on origin/cursor/p1-gen-n-scaling-memorization-4814 - in w5_NPO judging",
+      "gen_u_adversarial_security_fairness": "NOT DISPATCHED - POLICY-BLOCKED per commissioning; must not be re-commissioned (see gen_u_disposition)",
+      "gen_q_inference_time_compute": "NOT YET DISPATCHED - dispatch condition 'only after gen_g is judged' is NOW MET (gen_g judged at w3; accepted TTA boundary in master = G-003, G-006, G-007, G-011, G-012 of the G-001..G-014 block). CAVEAT this audit adds: the anti-overlap list must ALSO name the 7 REMANDED TTA-block ids G-001, G-004, G-005, G-008, G-009, G-010, G-014, which can re-enter the master via a future repair pass; G-002 and G-013 were merged/killed at w3",
+      "gen_r_cross_field_transfer": "NOT YET DISPATCHED - dispatch condition was THIS AUDITOR's own w2 caveat (KEEP_DEFERRED_RECHECK_AT_AUDIT_W3, encoded as 'dispatch only after wave-3 judging confirms cross-field coverage ~0 in the enlarged master'). CONDITION FORMALLY DISCHARGED BY THIS AUDIT: coverage measured at 0 primary / 7 false-positive mentions on the 934-record master which now includes judged G/H/J/K/L/M. gen_r is dispatchable immediately",
+      "w5_judge_progress_observed": "judges A (3de9) and B (7e74) pushed on origin; judge C not yet pushed at audit time - w5_NPO consolidation must wait for C"
+    },
+    "reserve_triggers": {
+      "gen_v_model_lifecycle_continual": "PROMOTION TRIGGER MET: the w2 trigger was 'next diversity audit (w3) if coverage still ~0 after gen_m is judged'. gen_m is judged (98 in master) and is within-run training dynamics as predicted; deployed-model-time-axis coverage is 4 primary records (0.4%). Recommend PROMOTE to the active queue this round. Anti-overlap: gen_n owns data-scale laws; seeds F-102, F-069 (w2), G-011/G-080/G-085 (accepted continual-TTA records) as occupied ground",
+      "gen_t_efficiency_deployment_science": "TRIGGER NOT MET: (a) blended acceptance held (w3 271/304 = 89.1% accepted-by-majority, w4 296/305 = 97.0%, both >> 70%); (b) 'all six queued letters dispatched' is unmet and structurally unmeetable while gen_u stays blocked - the consolidator should REWRITE the trigger to 'n/o/p/q/r dispatched' (5 dispatchable letters). If commissioned later, mandate must EXCLUDE distillation (now owned by gen_j block + K-010/K-015/M-069) - shrink confirmed by my independent 22-record count",
+      "gen_s_embodied_interactive_perception": "unchanged reserve; 70 strict mentions but no dedicated cluster; after q/r if acceptance holds"
+    },
+    "gen_u_disposition": {
+      "status": "policy-blocked, never dispatched, letter burned-by-blocking; territory (attack science + fairness mechanisms) remains a real blind spot at ~0.4%/0.1% primary",
+      "this_auditors_position": "The block attaches to the MANDATE CONTENT, not the letter glyph. Re-issuing the same mandate under a fresh letter (auditor A w3 proposes gen_w inheriting it verbatim) does NOT clear a policy block and risks a second blocked dispatch. RECOMMEND: the consolidator either (a) commissions a RE-SCOPED policy-safe mandate under a fresh letter - robustness/fairness MEASUREMENT science (disparity measurement, certification-gap audits like C-088, benchmark-confound audits like C-034, restoration-fairness like remanded H-090) with an explicit no-attack-recipes / no-jailbreak-content guard, or (b) records adversarial-attack science as a PERMANENT ACCEPTED BLIND SPOT for this window with a Stage-2 note. Option (a) preferred: the measurement-science half of the territory was never the blocked half",
+      "occupied_ground_if_rescoped": ["W13-P1-C-034", "W13-P1-C-083", "W13-P1-C-086", "W13-P1-C-088", "W13-P1-C-097", "W13-P1-A-075", "W13-P1-A-077", "W13-P1-D-059", "REMAND:W13-P1-H-090"]
+    },
+    "remand_lane_validation": {
+      "queue": "Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl",
+      "count_verified": "127 = 54 gen_g + 73 gen_h (matches research_state stage1_accepted_pending_gate5_retrofit=127)",
+      "problem": "NO OWNER: the extract-only repair lane finished (46/173 appended); the 127 leftovers need thresholds that do not exist in their text. Inventing numbers is forbidden. The blocked state starves the restoration territory (73 of the 127 are gen_h) and holds the strongest fairness seed (H-090)",
+      "recommendation": "commission a THRESHOLD-AUTHORING lane with explicit provenance labeling: new thresholds are written as clearly-marked EXPECTED RESULT commitments by the authoring agent (never presented as generator content), each record marked gate5_threshold_authored_by + authored_at; alternatively re-judge the 127 for Stage-1 exit as a labeled sub-pool. Either way a decision is owed BEFORE Stage-1 close, because 934+127 changes the 200-cut composition"
+    },
+    "capacity_math": {
+      "evidence_label": "HYPOTHESIS (arithmetic on verified counts)",
+      "master": 934,
+      "in_flight_raw": "gen_n 100 + gen_o 100 + gen_p 104 = 304 (verified by read-only line counts on origin shards)",
+      "projection": "304 x 0.77 (observed blended acceptance 934/1213) ~= 234 -> ~1168 after w5_NPO consolidation; 1000+ clears WITHOUT q/r/v or the remand pool. q/r/v and the 127 remands are diversity/quality plays, not capacity plays - consistent with auditor A's independent ~1168"
+    }
+  },
+
+  "citation_integrity": {
+    "instrument": "citation-pattern regex (et al. / (year) / arXiv ids) over full record JSON of all 934",
+    "records_with_citation_strings": 14,
+    "ids": ["W13-P1-A-001", "W13-P1-A-005", "W13-P1-A-017", "W13-P1-A-018", "W13-P1-A-021", "W13-P1-A-022", "W13-P1-A-032", "W13-P1-A-035", "W13-P1-A-039", "W13-P1-A-041", "W13-P1-A-042", "W13-P1-A-049", "W13-P1-A-077", "W13-P1-A-084"],
+    "finding": "identical set to the w2 audit - all wave-1 gen_a prior_work_basis entries naming famous real works (SAM, SAM2, LoRA, BitFit, VPT, MAE, model soups / task arithmetic, DETR, texture-bias, registers, ToMe, multimodal neurons, CKA, SAM-HQ). The 440 w3/w4 appends contributed ZERO citation strings. Zero fake citations found. This audit adds none. Novelty of all 934 ideas remains UNVERIFIED - GATE-8 triage (now 105 dissent-carrying records + the w2 73-id list + w4's 20-id watchlist) is the oldest unpaid debt",
+    "fake_citations_found": 0
+  },
+
+  "cross_check_vs_auditor_A": {
+    "read_after_independent_pass": true,
+    "branch_read": "origin/cursor/p1-diversity-audit-w3-auditor-a-9a11",
+    "independent_agreements": [
+      "934/440-added composition identical; audited commit identical (2411f93)",
+      "GATE-1 on w3/w4: A says 420/440 digit-bearing - my independent count is exactly 420; our decompositions of the 20 non-digit differ benignly (A: 13 verbal + 7 flags; mine: 15 G/H verbal + 5 K no-digit, with the 5 a strict subset of the 7 flags) - same records, different slicing, no conflict",
+      "evidence_label dicts 440/440 on w3/w4 - confirmed",
+      "citation set: same 14 gen_a records; A counts records, w2 counted strings - reconciled, zero new, zero fake",
+      "cross-field transfer 0 primary, third consecutive audit - independently confirmed by hand-inspection of all 7 loose mentions",
+      "gen_r first-priority dispatch, gen_q dispatchable with sharpened gen_l anti-overlap - agreed (my caveat adds the 7 remanded TTA ids to gen_q's ban list)",
+      "capacity ~1168 post-w5 - independently reproduced",
+      "gen_t mandate shrink (distillation owned) - independently verified, 22-record census"
+    ],
+    "corrections_to_A": [
+      "A's gen_w note says 'occupied-ground check vs accepted H-090 mandatory at commissioning' - H-090 is NOT an accepted master record; it is in the 127-record remand queue (verified by direct lookup in both files). The occupied-ground check for any gen_u successor must scan remaining_remand.jsonl, not just the master"
+    ],
+    "divergences_for_consolidator": [
+      "gen_u successor: A proposes gen_w inheriting the blocked mandate verbatim under a fresh letter. B position: the policy block attaches to mandate content; a verbatim re-issue risks a second block. B recommends re-scoping to measurement-science (no attack recipes) or accepting the blind spot. NOT irreconcilable - both agree the territory needs a decision and a fresh letter if dispatched; the disagreement is mandate text",
+      "gen_v priority: A ranks it 4th; B's trigger analysis says the w2-written promotion condition is formally MET at this audit, arguing for commissioning in the next dispatch wave alongside r/q. Ordering is consolidator discretion",
+      "constructive headline: A reports loose-constructive 10.8% portfolio; B triangulates 8-35% instrument-dependent with hand-label 35% +/- 15. No factual conflict (different instruments, same direction); adopt a range, not a point, in the decision file"
+    ]
+  },
+
+  "recommendations_ranked": [
+    "R1: Commission the GATE-1/GATE-2 legacy retrofit lane NOW (470 no-threshold w1/w2 records + 400 evidence_label backfills + 7 gen_k numeric retrofits + label-dialect alias table). It is mechanical, parallel to w5 judging, and blocks all programmatic Stage-2 ranking. Do not let it slip into Stage 2 unowned.",
+    "R2: Decide the 127-remand disposition (threshold-authoring lane with provenance labels, or labeled Stage-1 exit as sub-pool). 73 gen_h records = the restoration blind spot re-opening; H-090 = the fairness seed.",
+    "R3: Dispatch gen_r immediately (condition discharged by this audit) and gen_q (condition met; add remanded TTA ids G-001/004/005/008/009/010/014 to its hard anti-overlap list).",
+    "R4: Promote gen_v (trigger met: lifecycle primary 0.4% post-gen_m).",
+    "R5: Rule on the gen_u successor: re-scoped measurement-science mandate under a fresh letter (preferred) or accepted permanent blind spot. Do not re-issue the blocked mandate verbatim.",
+    "R6: Rewrite gen_t's promotion trigger to reference the 5 dispatchable letters (u is structurally undispatchable) and shrink its mandate to exclude distillation.",
+    "R7: Hold the constructive-rebalance verdict until gen_p's judged yield lands; measure with judge labels per GATE-6; protect the 4 constructive id-lists (w1 46, w2 62, C w2 38, this audit's 71) from genre-blind culling.",
+    "R8: GATE-8 novelty triage remains unstarted and is now 105 dissent-carrying records deep - schedule before the 200-cut or the cut will rank unverified-novelty records blind."
+  ],
+
+  "unresolved_items": [
+    "127 remanded gen_g/gen_h records have no owner and no mechanical repair path (extract-only exhausted)",
+    "gen_u territory disposition requires a consolidator ruling (B and A propose different successor mandates)",
+    "GATE-1/GATE-2 legacy retrofit lane (470 + 400 records) has no owner",
+    "GATE-8 novelty triage (105 dissents + 73-id w2 list + 20-id w4 watchlist) unstarted",
+    "'KNOWN PRIOR WORK' -> canonical enum mapping needs a ruling (blind rename would overclaim verification)",
+    "seg_metric_dependent field exists only on 98 gen_j records - schema debt acknowledged at w4, still open",
+    "w5_NPO judge C not yet pushed at audit time - w5 consolidation blocked on it"
+  ],
+
+  "scope_compliance": {
+    "window_lock_json_untouched": true,
+    "ideas_master_jsonl_untouched": true,
+    "research_state_json_untouched": true,
+    "research_ledger_md_untouched": true,
+    "windows_id_unchanged": "Windows13",
+    "files_written": ["Windows13/_state/tasks/p1/diversity_audit_w3/auditor_B.json", "Windows13/_state/tasks/p1/diversity_audit_w3/auditor_B.md", "Windows13/_state/tasks/p1/diversity_audit_w3/done_auditor_B.json"],
+    "off_master_reads": "read-only: gen_n/o/p shard line counts, remaining_remand.jsonl, auditor A w3 branch (post-independent-pass)",
+    "no_fake_citations": true,
+    "force_push": false
+  }
+}

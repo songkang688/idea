@@ -1,0 +1,37 @@
+{
+  "task_id": "p1_diversity_audit_w3",
+  "role": "auditor_B_quality_blindspots",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "ok",
+  "branch": "cursor/p1-diversity-audit-w3-auditor-b-f4db",
+  "completed_at_utc": "2026-08-29T01:50:00Z",
+  "audited_master": "origin/cursor/p1-wave-b-consolidator-w4-e8e2 @ 2411f9307030b8de4e445d0972a0b624cc451130 (934 records, count re-verified)",
+  "output_files": [
+    "Windows13/_state/tasks/p1/diversity_audit_w3/auditor_B.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w3/auditor_B.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w3/done_auditor_B.json"
+  ],
+  "headline_findings": [
+    "quality is BIMODAL at the gate-ruling boundary: GATE-1 union compliance 440/440 on w3/w4 additions vs 24/494 legacy; portfolio 464/934 (49.7%); no retrofit lane owns the 470-record legacy debt",
+    "evidence_label dict 534/934; the 400 missing (B/C/D/E/F) all carry inline uppercase labels - mechanically backfillable; 3 label dialects need an alias table ('KNOWN PRIOR WORK' 196 records must not be blind-renamed to VERIFIED)",
+    "constructive share instrument-dependent 8-35%, rising (w3/w4 run 2-3x w1/w2 on every instrument); GATE-6 self-label inflation reconfirmed; verdict held for gen_p",
+    "blind spots remaining: cross-field 0 primary (gen_r condition DISCHARGED by this audit), lifecycle 0.4% (gen_v trigger MET), security/fairness orphaned by gen_u policy block (H-090 fairness seed is in the REMAND queue, not master - corrects auditor A), restoration fill undone by GATE-5 remand (16 in master, 73 remanded)",
+    "queue validated: n/o/p correctly in-flight w5_NPO (judge C pending), gen_q condition met with new caveat (7 remanded TTA ids to ban list), gen_t trigger structurally unmeetable while gen_u blocked - rewrite owed; capacity ~1168 post-w5, 1000+ clears without new letters",
+    "zero fake citations (same 14 real gen_a strings as w1/w2; w3/w4 added zero); GATE-8 novelty triage unstarted at 105 dissent records"
+  ],
+  "unresolved_items": [
+    "127 remanded gen_g/gen_h records (54 G + 73 H) have no owner and no mechanical repair path; ruling owed before Stage-1 close",
+    "gen_u territory disposition needs consolidator ruling (B: re-scoped measurement-science mandate or accepted blind spot; A: verbatim inherit under gen_w - divergence flagged, not irreconcilable)",
+    "GATE-1/GATE-2 legacy retrofit lane (470 thresholds + 400 label lifts + 7 gen_k numeric + alias table) unowned",
+    "GATE-8 novelty triage (105 dissents + w2 73-id list + w4 20-id watchlist) unstarted",
+    "gen_t promotion trigger references 6 letters incl. structurally-blocked gen_u - rewrite owed; mandate must exclude distillation (22-record census)",
+    "seg_metric_dependent schema debt (98/934) still open",
+    "w5_NPO judge C not pushed at audit time - w5 consolidation blocked on it"
+  ],
+  "recommended_next_task_type": "p1_diversity_audit_w3_C_or_consolidator",
+  "canonical_state_untouched": true,
+  "no_fake_citations": true,
+  "force_push": false
+}
