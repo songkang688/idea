@@ -1,7 +1,7 @@
 # Idea_02 Reviewer #2
 
-Attack: not a vision paper; LoRA math already low-rank; HP is just a conv.
+攻击：这不算一篇视觉论文；LoRA 的数学本来就是低秩的；HP 只是一个卷积。
 
-Shut up: (1) rank vs frequency scatter plot; (2) param-matched low-pass residual **hurts** NSD; (3) COCO promptability after PEFT (link X-0007) as a second axis.
+让他闭嘴的做法：(1) rank vs 频率的散点图；(2) 参数量对齐的低通残差**会损害** NSD；(3) 把 PEFT 之后的 COCO 可提示性（关联 X-0007）作为第二个坐标轴。
 
-If we cannot run (2), kill the method half and keep audit-only (weaker).
+如果 (2) 跑不了，就杀掉方法那一半，只保留审计部分（论文会更弱）。

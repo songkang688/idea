@@ -1,28 +1,28 @@
-# Idea_01 roadmap
+# Idea_01 路线图
 
 ## Day 1
 
-Cache SAM embeddings on 200 amorphous + 100 COCO. Train `DensityHead`. Run E0. **Stop criteria applied the same evening.**
+在 200 张无定形图像 + 100 张 COCO 图像上缓存 SAM embedding。训练 `DensityHead`。跑 E0。**当晚就套用停止判据。**
 
 ## Day 2–3
 
-E1 tightness; random-encoder control; SAM2 embeddings.
+E1 紧致度实验；随机编码器对照；SAM2 embedding。
 
-## Week 1
+## 第 1 周
 
-Trans10K; TV ablation; write failure gallery (EXPECTED qualitative only until measured).
+Trans10K；TV 消融；写失败案例图集（在真正测量之前只能算 EXPECTED 的定性结果）。
 
-## Week 2
+## 第 2 周
 
-Equal-annotation vs U-Net; optional BraTS infiltrative; draft related work table.
+同等标注工时下与 U-Net 对比；可选的 BraTS 浸润性病灶；起草 related work 表格。
 
-## Full paper
+## 完整论文
 
-If H1&H2 hold: CVPR/ICCV workshop or MICCAI short as “where to adapt SAM”.  
-If only H1: still a useful negative on encoder-adaptation narrative.
+若 H1 和 H2 同时成立：投 CVPR/ICCV workshop，或 MICCAI 短文，主题为"该在哪里适配 SAM"。  
+若只有 H1 成立：对于"编码器适配"这套主流叙事，它仍然是一个有价值的负结果。
 
-## Stop / pivot / kill
+## 停止 / 转向 / 杀掉
 
-- **Continue:** H1 and H2 both hold.
-- **Pivot to Idea_03:** IoU tokens already separate success/failure better than our head.
-- **Kill:** H1 false after SAM2 + tightness controls.
+- **继续（Continue）：** H1 与 H2 都成立。
+- **转向 Idea_03（Pivot）：** 如果 IoU token 本身区分成功／失败的能力就已经优于我们的头。
+- **杀掉（Kill）：** 在补上 SAM2 与紧致度对照之后 H1 仍为假。

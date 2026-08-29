@@ -1,5 +1,5 @@
 # Idea_03 Reviewer #2
 
-Attacks: already in the API; not ML; dataset-specific.
+攻击点：这功能 API 里已经有了；不算机器学习；结论只对特定数据集成立。
 
-Shut up: anti-calibration (not just ECE>0); coverage curves; reject **images** vs **pixels** (two protocols, pre-registered).
+让他闭嘴的做法：拿出反校准证据（不只是 ECE>0）；覆盖率曲线；区分拒**图像**与拒**像素**两种协议（两套协议都要预先注册）。

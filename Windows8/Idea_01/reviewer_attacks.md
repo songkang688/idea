@@ -1,29 +1,29 @@
 # Idea_01 Reviewer #2
 
-## Most dangerous rejection
+## 最危险的拒稿理由
 
-“This is a linear probe / prompt trick on known SAM failure cases (smoke, glass). CD-concept and fire-prompt papers already showed SAM is weak; Med-SA already fixes medical. Incremental.”
+"这只是在已知的 SAM 失败案例（烟雾、玻璃）上做一个 linear probe / prompt 小技巧。CD-concept 和 fire-prompt 的论文早就展示过 SAM 在这些场景上很弱；Med-SA 也已经把医学场景修好了。属于增量工作。"
 
-## Hidden assumptions they will name
+## 他们会点名的隐含假设
 
-- Density GT is well-defined for smoke.
-- Frozen official preprocessing matches training.
-- GT boxes for SAM are an upper bound (they are not: tightness confound).
+- 对烟雾来说密度 GT 是定义良好的。
+- 冻结的官方预处理与训练时一致。
+- SAM 的 GT 框是一个上界（并不是：存在提示紧致度这个混淆因素）。
 
-## Confounders
+## 混淆因素
 
-- Extra parameters in \(h_\theta\) vs decoder (keep \(h_\theta\) tiny).
-- Train data for B/C vs zero-shot A (the point is adaptation locus, not zero-shot fairness — say this in the intro or die).
-- Threshold tuning on test.
+- \(h_\theta\) 相对 decoder 多出来的参数（要把 \(h_\theta\) 保持极小）。
+- B/C 有训练数据 vs A 是 zero-shot（我们要论证的是"适配发生在哪个部位"，不是 zero-shot 意义上的公平性——这一点必须在 intro 里讲清楚，否则必死）。
+- 在测试集上调阈值。
 
-## Experiments that shut this up
+## 能让这种质疑闭嘴的实验
 
-1. **Interaction plot:** amorphous gain × COCO loss (H2).
-2. **Parameter-matched** tiny U-Net vs \(h_\theta\) on frozen \(z\).
-3. **Random encoder** control.
-4. Tightness-matched boxes (E1).
-5. Show Med-SA on the same 200 smoke images: if Med-SA wins Dice but loses the COCO-preservation story, different paper (forgetting) — do not hide it.
+1. **交互效应图：** 无定形上的增益 × COCO 上的损失（H2）。
+2. **参数量对齐的**微型 U-Net 与冻结 \(z\) 上的 \(h_\theta\) 对比。
+3. **随机编码器**对照。
+4. 紧致度对齐的框（E1）。
+5. 在同一批 200 张烟雾图像上展示 Med-SA 的结果：如果 Med-SA 赢了 Dice 但输掉了"保持 COCO 能力"这条叙事，那就是另一篇论文（遗忘问题）——不要藏着不报。
 
-## Reproducibility attacks
+## 可复现性攻击
 
-Release embedding-cache script, seeds, exact SAM checkpoint hash, prompt rasterization code (this repo `src/`).
+发布 embedding 缓存脚本、随机种子、确切的 SAM checkpoint 哈希、提示栅格化代码（即本仓库的 `src/`）。

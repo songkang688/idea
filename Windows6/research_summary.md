@@ -1,30 +1,30 @@
-# Windows6 research summary
+# Windows6 研究总结
 
-## Pipeline actually executed
+## 实际执行的流水线
 
-**FACT.** The intended ladder was `1000→200→50→20→5→3`. Windows6 did not run it. What ran:
+**FACT.** 原定阶梯是 `1000→200→50→20→5→3`。Windows6 没有按它执行。实际跑的是：
 
-| Rung | Standard | Windows6 actual |
+| 层级 | 标准 | Windows6 实际 |
 |---|---|---|
-| Raw pool | 1000+ | **1080 raw / 1062 live** (S-series 600 + A–F 480) |
-| → 200 | 200 | **≈142** scored survivors (78 ABCF + 64 DE, out of 480 reviewed) |
-| → 50 | 50 | *never produced* |
-| → 20 | 20 | *never produced* |
-| → 5 | 20 → 5 | 10 DE verdicts ‖ 12 cheap-cluster verdicts → **cheap-5** |
-| → 3 | 5 → 3 | Reviewer #2 → **3 survive** |
+| 原始池 | 1000+ | **1080 原始 / 1062 有效**（S 系列 600 + A–F 480） |
+| → 200 | 200 | **约 142** 个打分存活者（78 个 ABCF + 64 个 DE，出自被评审的 480 条） |
+| → 50 | 50 | *从未产生* |
+| → 20 | 20 | *从未产生* |
+| → 5 | 20 → 5 | 10 条 DE 裁决 ‖ 12 条 cheap-cluster 裁决 → **cheap-5** |
+| → 3 | 5 → 3 | Reviewer #2 → **3 个存活** |
 
-Two deviations must not be glossed: **there was no 200-band, no 50-band and no true 20-band**, and the **600 S-series ideas were never Stage-2 scored** — 55% of the raw pool never entered scoring. Wave-1 timeouts interrupted the funnel and it was closed out through a narrow "cheap" channel. Full deviation table with line-item verification: [`selection_history/stage5_top5.md`](selection_history/stage5_top5.md) §1.
+有两处偏差不能被含糊掩过：**不存在 200 档、不存在 50 档、也不存在真正的 20 档**，而且 **600 条 S 系列想法从未被 Stage-2 打分**——原始池的 55% 从未进入打分环节。第一波超时打断了漏斗，最后是通过一条狭窄的"cheap"通道草草收尾的。带逐条核验的完整偏差表：[`selection_history/stage5_top5.md`](selection_history/stage5_top5.md) §1。
 
-## Final 3 — **PROVISIONAL, not locked**
+## Final 3 —— **PROVISIONAL，尚未锁定**
 
-Adjudication and lock verdict: [`selection_history/stage6_battle.md`](selection_history/stage6_battle.md). Three gates are open — **GATE-A** (camera metadata on a public smoke set unverified), **GATE-B** (no base/chat checkpoint pair verified to share vision encoder and coordinate tokenization), **GATE-C** (the survivors were never ranked against the parked extensions `D-008`/`D-060`/`E-025` on a common scale). **GATE-D** (status coherence + package depth) was closed by W6-T3.
+裁决与锁定结论：[`selection_history/stage6_battle.md`](selection_history/stage6_battle.md)。有三道门禁尚未关闭——**GATE-A**（公开烟雾数据集上的相机元数据未核实）、**GATE-B**（尚无一对 base/chat checkpoint 被核实为共享视觉编码器与坐标 tokenization）、**GATE-C**（存活者从未与被搁置的扩展项 `D-008`/`D-060`/`E-025` 在同一尺度上排名）。**GATE-D**（状态一致性 + package 深度）已由 W6-T3 关闭。
 
-The three (see `Idea_01`–`Idea_03`):
+这三个是（见 `Idea_01`–`Idea_03`）：
 
-1. SAM AMG as intensity clustering (mechanistic)
-2. Smoke/fire camera-ID leakage quantification
-3. VLM alignment tax on localization (mutated, format+probe)
+1. SAM AMG 作为强度聚类（机制性）
+2. 烟雾／火焰数据的相机 ID 泄漏量化
+3. VLM 定位能力上的对齐税（已变异，格式控制 + 探针）
 
-Killed after Reviewer #2: empty-slice FPR–Dice “uncorrelation” audit; atlas-centroid vs CLIP text substitution.
+Reviewer #2 之后被杀掉的：空切片 FPR–Dice"无相关性"审计；atlas 质心 vs CLIP 文本替换。
 
-All quantitative claims in packages are **EXPECTED/HYPOTHESIS** unless labeled otherwise. Prototypes are synthetic. **ACTUAL RESULT count for the whole round: zero.** W6-T3 thickened the three packages to executable depth and made each `src/` runnable with smoke tests; it produced no measurements, and every script prints a synthetic-output banner before its numbers.
+各 package 中的所有定量主张，除另有标注外均为 **EXPECTED/HYPOTHESIS**。原型都是合成的。**整轮的 ACTUAL RESULT 计数：零。** W6-T3 把三个 package 加厚到可执行深度，并让每个 `src/` 都能配合 smoke tests 跑起来；它没有产出任何测量结果，而且每个脚本在打印数字之前都会先输出一条"合成输出"的横幅提示。

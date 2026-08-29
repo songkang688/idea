@@ -1,17 +1,17 @@
-# Idea_02 experiments
+# Idea_02 实验设计
 
 ## Killer
 
-Train three PEFT variants on a toy or Synapse-like subset. Save encoder feature maps frozen vs adapted. Radial FFT energy.
+在一个 toy 或类 Synapse 的子集上训练三种 PEFT 变体。分别保存冻结与适配后的编码器特征图。计算径向 FFT 能量。
 
-## Ablation
+## 消融
 
-HP kernel: Laplacian vs Sobel vs random 3×3. Predicted: random 3×3 ≈ LoRA extra rank (no NSD gain).
+HP 卷积核：Laplacian vs Sobel vs 随机 3×3。预测：随机 3×3 ≈ 增加 LoRA rank（都没有 NSD 增益）。
 
-## Negative
+## 负结果
 
-If r64 already high-pass: kill HP method; maybe still publish the audit as a short note.
+若 r64 本来就是高通的：杀掉 HP 方法；不过这份审计本身也许仍可作为一篇 short note 发表。
 
-## Metrics
+## 指标
 
-Dice, NSD, HD95, energy fraction < kc, parameter count, train time.
+Dice、NSD、HD95、\(<k_c\) 的能量占比、参数量、训练耗时。

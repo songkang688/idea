@@ -1,57 +1,57 @@
-# Windows6 — Autonomous Research Idea Evolution
+# Windows6 — 自主研究想法演化（Autonomous Research Idea Evolution）
 
-- **Windows ID:** Windows6
-- **Created:** 2026-08-28 (UTC)
-- **Supervisor:** Windows6
-- **Branch:** `cursor/windows6-research-idea-evolution-b55d`
-- **Status:** Stages 1–6 recorded. Final 3 are **PROVISIONAL — not locked.** Adjudication and the lock verdict are in [`selection_history/stage6_battle.md`](selection_history/stage6_battle.md).
+- **Windows ID：** Windows6
+- **创建日期：** 2026-08-28（UTC）
+- **Supervisor：** Windows6
+- **分支：** `cursor/windows6-research-idea-evolution-b55d`
+- **状态：** Stage 1–6 已记录。Final 3 为 **PROVISIONAL —— 尚未锁定。** 裁决与锁定结论见 [`selection_history/stage6_battle.md`](selection_history/stage6_battle.md)。
 
-### What is still missing before the Final 3 can be locked
+### Final 3 能被锁定之前还缺什么
 
-Three gates from `stage6_battle.md` §5 are open. None needs a GPU; all are hours of desk work.
+`stage6_battle.md` §5 里有三道门禁尚未关闭。三者都不需要 GPU，全部是数小时的案头工作。
 
-| Gate | What must be true | Fails if |
+| 门禁 | 必须成立的条件 | 失败后果 |
 |------|-------------------|----------|
-| **GATE-A** | Camera metadata confirmed to exist on ≥1 public smoke/fire set, with a camera **count** | <10 cameras forces the event-disjoint-only pivot and forfeits H2; no metadata at all **kills Idea_02** by its own stop rule |
-| **GATE-B** | One base/chat checkpoint pair verified to share vision encoder **and** coordinate tokenization, license usable | Idea_03's stage-isolation claim is unavailable; it descopes to a format-artifact study |
-| **GATE-C** | The three survivors ranked against `D-008` / `D-060` / `E-025` on one common rubric | Without it the round can only claim "these three survived the one channel that ran", not "these three beat the field" |
+| **GATE-A** | 确认至少 1 个公开烟雾／火焰数据集存在相机元数据，并给出相机**数量** | 少于 10 台相机就只能被迫转向"仅按事件划分"的方案并放弃 H2；完全没有元数据则按 Idea_02 自己的停止规则**杀掉 Idea_02** |
+| **GATE-B** | 核实至少一对 base/chat checkpoint 共享视觉编码器**且**共享坐标 tokenization，许可可用 | Idea_03 的阶段隔离（stage-isolation）主张将无法成立，降级为一项格式假象研究 |
+| **GATE-C** | 三个存活者与 `D-008` / `D-060` / `E-025` 在同一套评分标准上排过名 | 没有这一步，这一轮只能声称"这三个在唯一跑起来的通道里存活了"，而不能声称"这三个胜过了全场" |
 
-**GATE-D (status coherence + package depth) was closed by W6-T3** — see [`selection_history/status_reconciliation.md`](selection_history/status_reconciliation.md).
+**GATE-D（状态一致性 + package 深度）已由 W6-T3 关闭** —— 见 [`selection_history/status_reconciliation.md`](selection_history/status_reconciliation.md)。
 
-When A, B and C close, the Final 3 may be declared **LOCKED** and this line updated. Until then, no downstream document should cite Windows6 as having a locked Final 3.
+当 A、B、C 三道门禁关闭时，Final 3 方可宣布为 **LOCKED**，并更新本行。在那之前，任何下游文档都不应引用 Windows6 为"已锁定 Final 3"。
 
-## This round’s three Ideas (provisional — see gates above)
+## 本轮的三个 Idea（暂定 —— 见上方门禁）
 
-| # | Folder | Idea | Recommendation |
+| # | 目录 | Idea | 推荐度 |
 |---|--------|------|----------------|
-| 1 | `Idea_01/` | SAM AMG ≈ HU clustering on CT (mechanistic + counterfactuals) | **#1 start here** — cheapest, falsifiable, no huge pretrain |
-| 2 | `Idea_02/` | Camera-ID vs event-disjoint leakage on smoke/fire | Strong audit paper if two datasets |
-| 3 | `Idea_03/` | Alignment tax on localization (format-controlled + probe) | Highest impact, highest concurrent-work risk |
+| 1 | `Idea_01/` | 在 CT 上，SAM AMG ≈ HU 强度聚类（机制性 + 反事实） | **#1 从这里开始** —— 最便宜、可证伪、不需要庞大的预训练 |
+| 2 | `Idea_02/` | 烟雾／火焰数据上"相机 ID 划分 vs 事件划分"的泄漏问题 | 如果能拿到两个数据集，就是一篇有力的审计论文 |
+| 3 | `Idea_03/` | 定位能力上的对齐税（alignment tax，做了格式控制 + 探针） | 影响最大，同时被并行工作抢先的风险也最大 |
 
-## Most recommended
+## 最推荐
 
-**Idea_01.** Reviewer #2 attacks all have cheap shut-up experiments; CPU prototype exists; does not depend on rare checkpoint triples.
+**Idea_01。** Reviewer #2 的各条攻击都有便宜的封嘴实验；CPU 原型已存在；不依赖罕见的 checkpoint 三元组。
 
-## Next experiment
+## 下一个实验
 
-Run `Idea_01/src/amg_intensity_equiv.py` (CPU, synthetic, seconds), then **100 real CT slices** with SAM AMG vs k-means / multi-Otsu / GMM / SLIC (see `Idea_01/experiments.md`, cards E0 → E1 → E2).
+先跑 `Idea_01/src/amg_intensity_equiv.py`（CPU、合成数据、数秒），然后用 **100 张真实 CT 切片**做 SAM AMG vs k-means / multi-Otsu / GMM / SLIC 的对比（见 `Idea_01/experiments.md`，卡片 E0 → E1 → E2）。
 
-This line previously said *50* slices. `Idea_01/experiments.md` gave both 50 (killer list) and 100 (Stage-5 engineering block); `stage6_battle.md` §4.7 logged the discrepancy and §6 resolved it by taking the larger figure. **100** is now used consistently.
+本行此前写的是 *50* 张切片。`Idea_01/experiments.md` 里同时出现过 50（killer 清单）和 100（Stage-5 工程化区块）两个数字；`stage6_battle.md` §4.7 记录了这处矛盾，§6 通过取较大值予以裁定。现已统一使用 **100**。
 
-## Project status
+## 项目状态
 
-| Idea | Status |
+| Idea | 状态 |
 |------|--------|
-| Idea_01 | Executable-depth package + synthetic prototype + smoke tests; **no real SAM numbers** |
-| Idea_02 | Executable-depth package + synthetic split probe + smoke tests; **no smoke mAP** |
-| Idea_03 | Executable-depth package + format-vs-probe demo + smoke tests; **no VLM eval** |
+| Idea_01 | 可执行深度的 package + 合成原型 + smoke tests；**没有任何真实 SAM 数字** |
+| Idea_02 | 可执行深度的 package + 合成划分探针 + smoke tests；**没有烟雾 mAP** |
+| Idea_03 | 可执行深度的 package + 格式-vs-探针 demo + smoke tests；**没有 VLM 评测** |
 
-W6-T3 thickened the documentation and made each `src/` runnable. **It produced no measurements.** Every number printed by any script in this round is synthetic and is labelled as such at runtime. There are **zero ACTUAL RESULTS** in Windows6.
+W6-T3 加厚了文档，并让每个 `src/` 都能跑起来。**它没有产出任何测量结果。** 本轮任何脚本打印出的每一个数字都是合成的，并在运行时如实标注。Windows6 中的 **ACTUAL RESULTS 数量为零**。
 
-## Funnel actually executed (not the standard ladder)
+## 实际执行的漏斗（不是标准阶梯）
 
-The policy in `selection_history/supervisor_log.md` is `1000→200→50→20→5→3`. That is **not** what ran:
+`selection_history/supervisor_log.md` 里的政策是 `1000→200→50→20→5→3`。实际跑的**不是**这个：
 
-`1080 raw / 1062 live` → **≈142 scored survivors** (78 ABCF + 64 DE) → Stage-3 ran as two unmerged branches (10 DE verdicts ‖ 12 cheap-cluster verdicts) → **cheap-5** → Reviewer #2 → **3 survive**.
+`1080 原始 / 1062 有效` → **约 142 个打分存活者**（78 个 ABCF + 64 个 DE）→ Stage-3 以两条未合并的分支运行（10 条 DE 裁决 ‖ 12 条 cheap-cluster 裁决）→ **cheap-5** → Reviewer #2 → **3 个存活**。
 
-There was **no 200-band, no 50-band and no true 20-band**, and the 600 S-series ideas were never Stage-2 scored. Full deviation table: [`selection_history/stage5_top5.md`](selection_history/stage5_top5.md) §1.
+**不存在 200 档、不存在 50 档、也不存在真正的 20 档**，而且 600 条 S 系列想法从未被 Stage-2 打分。完整偏差表：[`selection_history/stage5_top5.md`](selection_history/stage5_top5.md) §1。

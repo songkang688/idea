@@ -1,6 +1,6 @@
-# Idea_03 roadmap
+# Idea_03 路线图
 
-Day 1: E0 reliability on cached predictions (or toy script).  
-Day 2–3: isotonic + coverage.  
-Week 1: compare to Idea_01 head as a scorer.  
-Kill if no domain gap in E0.
+Day 1：在缓存好的预测上（或用 toy 脚本）做 E0 可靠性分析。  
+Day 2–3：isotonic + 覆盖率曲线。  
+第 1 周：把 Idea_01 的头当作打分器来对比。  
+若 E0 中没有领域差异，则 kill。

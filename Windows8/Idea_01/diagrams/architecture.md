@@ -1,27 +1,27 @@
-# Idea_01 architecture
+# Idea_01 架构
 
 ```mermaid
 flowchart LR
-  img[Image] --> E[Frozen SAM / SAM2 encoder]
+  img[输入图像] --> E[冻结的 SAM / SAM2 编码器]
   E --> z[Embeddings z]
-  z --> h[Trainable 1x1 density head]
-  h --> up[Upsample]
-  up --> yhat[Density y-hat]
-  img --> P[Optional exclusion ring from loose box]
+  z --> h[可训练 1x1 密度头]
+  h --> up[上采样]
+  up --> yhat[密度图 y-hat]
+  img --> P[可选：由宽松框生成的排除环带]
   P --> h
-  img --> D[SAM mask decoder - baseline only]
+  img --> D[SAM mask decoder - 仅用于基线]
   P --> D
-  D --> ysam[Prompted mask]
+  D --> ysam[带提示得到的掩码]
 ```
 
-Competing mechanism from prior work (not our method):
+来自 prior work 的竞争性机制解释（不是我们的方法）：
 
 ```mermaid
 flowchart TB
-  subgraph prior["2412.04243 account"]
-    tex[Texture overlap] --> encFail[Encoder cannot separate]
+  subgraph prior["2412.04243 的解释"]
+    tex[纹理重叠] --> encFail[编码器无法区分]
   end
-  subgraph ours["This project"]
-    obj[Objectness prior in decoder/prompts] --> decFail[Decoder discards usable z]
+  subgraph ours["本项目的解释"]
+    obj[decoder/prompt 中的 objectness 先验] --> decFail[decoder 丢弃了本可用的 z]
   end
 ```

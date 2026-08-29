@@ -1,3 +1,3 @@
-# Idea_01 references
+# Idea_01 参考资料
 
-See literature.md. Do not store PDF weights or API keys.
+见 literature.md。不要在此存放 PDF、模型权重或 API key。

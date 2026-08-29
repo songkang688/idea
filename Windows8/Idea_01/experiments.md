@@ -1,64 +1,64 @@
-# Idea_01 experiments
+# Idea_01 实验设计
 
-## Datasets (plan, not downloaded here)
+## 数据集（这是计划，并未在此下载）
 
-- Smoke/fire: public wildfire / smoke segmentation sets used in 2510.21782 (Khan et al. fire datasets as cited there). If licenses block, use a 200-frame hand-split from a CC-licensed smoke video — document provenance.
-- Transparent: Trans10K.
-- Medical amorphous: infiltrative glioma subset (BraTS) as *optional* Week 2, not Day 1.
-- Object control: COCO 2017 val, 100 random “thing” instances with GT boxes.
+- 烟雾／火焰：2510.21782 中使用的公开野火／烟雾分割数据集（即该文引用的 Khan et al. 火焰数据集）。若许可受限，则从一段 CC 许可的烟雾视频中手工切出 200 帧——并记录来源出处。
+- 透明物体：Trans10K。
+- 医学无定形目标：浸润性胶质瘤子集（BraTS），作为*可选*的第 2 周内容，不放在 Day 1。
+- 物体对照组：COCO 2017 val，随机取 100 个带 GT 框的 "thing" 实例。
 
-Splits: image-level, no video leakage. Report scanner/video-id held-out when applicable.
+划分：按图像级划分，不允许视频泄漏。在适用场合报告按扫描仪／video-id 留出的结果。
 
-## Preprocess
+## 预处理
 
-- SAM official resize/normalize.
-- No extra color jitter in killer exp (confounder).
-- Density GT: binary masks unless multi-rater exists.
+- 采用 SAM 官方的 resize/normalize。
+- killer 实验中不加额外的颜色抖动（会成为混淆因素）。
+- 密度 GT：除存在多标注者标注外，一律使用二值掩码。
 
-## Baselines
+## 基线
 
-1. Prompted SAM ViT-B, GT box (official).
-2. Prompted SAM2.
-3. Automatic mask generator (negative control).
-4. nnU-Net or a 5-level U-Net trained on the **same 200 images** (equal data, not equal history).
-5. Med-SA **only after** killer exp (do not let adapter training contaminate H1).
+1. 带提示的 SAM ViT-B，GT 框（官方实现）。
+2. 带提示的 SAM2。
+3. Automatic mask generator（负对照）。
+4. 在**同样这 200 张图像**上训练的 nnU-Net 或一个 5 层 U-Net（数据量相同，但训练历史并不相同）。
+5. Med-SA **只在 killer 实验之后**才做（不要让 adapter 训练污染 H1）。
 
-## Metrics
+## 指标
 
-NSD (τ=2px or 2mm), Dice, HD95, soft-AP on density, ECE if using IoU (Idea_03). Size-quartile breakdown.
+NSD（τ=2px 或 2mm）、Dice、HD95、密度上的 soft-AP，若用到 IoU 则加 ECE（见 Idea_03）。按目标尺寸四分位数分组细分。
 
-## Experimental matrix
+## 实验矩阵
 
-| ID | Question | Conditions |
+| ID | 要回答的问题 | 条件 |
 |----|----------|------------|
-| E0 | Killer | A/B/C above |
-| E1 | Prompt tightness matched | jitter boxes to IoU∈{0.5,0.7,0.9} |
-| E2 | Head depth | linear vs 1×1 vs 3×3 vs 2-layer |
-| E3 | SAM vs SAM2 frozen E |
-| E4 | Equal annotation minutes vs nnU-Net |
-| E5 | Trans10K transfer of smoke-trained head (expect fail if density is domain-specific) |
+| E0 | Killer | 上面的 A/B/C |
+| E1 | 提示紧致度对齐 | 抖动框使 IoU∈{0.5,0.7,0.9} |
+| E2 | 头部深度 | linear vs 1×1 vs 3×3 vs 两层 |
+| E3 | SAM vs SAM2 冻结编码器 \(E\) | |
+| E4 | 同等标注工时下与 nnU-Net 对比 | |
+| E5 | 把烟雾上训练的头迁移到 Trans10K（若密度是领域特异的，预期失败） | |
 
-## Ablation
+## 消融
 
-Exclusion channel on/off; TV loss on/off; freeze vs unfreeze last encoder block (should be **worse science** if it helps — contaminates H1).
+排除通道开／关；TV 损失开／关；冻结 vs 解冻最后一个编码器 block（如果解冻反而更好，那是**科学上更糟**——它污染了 H1）。
 
-## Controls
+## 对照
 
-COCO object split. Random-features encoder (break \(E\)): **EXPECTED** collapse if H1 uses real SAM features.
+COCO 物体划分。随机特征编码器（打坏 \(E\)）：若 H1 真的用到了 SAM 的真实特征，则 **EXPECTED** 会崩溃。
 
-## Robustness / generalization
+## 鲁棒性／泛化
 
-JPEG q=50; prompt jitter; video-id holdout.
+JPEG q=50；提示抖动；video-id 留出。
 
-## Failure analysis
+## 失败分析
 
-If B wins on smoke by predicting “whole sky”: check precision. If C only helps because the ring leaks GT: ablate ring width independently of GT.
+如果 B 在烟雾上靠预测"整片天空"取胜：检查 precision。如果 C 之所以有帮助只是因为环带泄漏了 GT：独立于 GT 地消融环带宽度。
 
-## Negative result interpretation
+## 负结果的解释
 
-H1 false + random-features also fails → encoder limit (align 2412.04243).  
-H1 false + random-features works → data leakage in our head (implementation bug).
+H1 为假 + 随机特征也失败 → 编码器能力上限（与 2412.04243 一致）。  
+H1 为假 + 随机特征却也奏效 → 说明我们的头存在数据泄漏（实现 bug）。
 
-## Compute
+## 算力
 
-Killer: 1×12–24GB GPU, <8h including embedding cache. Full: 2–3 days.
+Killer 实验：1 张 12–24GB GPU，含 embedding 缓存在内 <8 小时。完整实验：2–3 天。
