@@ -1,0 +1,64 @@
+{
+ "task_id": "p1_wave_b_w4",
+ "role": "judge_A_dedup",
+ "wave": "w4_KLM",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "status": "complete",
+ "branch": "cursor/p1-wave-b-w4-judge-a-dedup-4008",
+ "generated_at_utc": "2026-08-29T00:49:33Z",
+ "canonical_master_reference": "origin/cursor/p1-wave-b-consolidator-w3-bf20 Windows13/_state/ideas_master.jsonl (592 lines; w3 consolidator complete at judge time; READ-ONLY — not modified). Finalize-time re-fetch found the w3 GATE-5 repair tip origin/cursor/p1-wave-b-w3-gate5-repair-f611 with a 638-line master (592 byte-preserved + 46 repaired G/H); the judge re-collided against the 638 superset (one added flag: H-050 on keep L-059); neither master was modified.",
+ "output_files": [
+  "Windows13/_state/tasks/p1/wave_b_w4/judge_A.json",
+  "Windows13/_state/tasks/p1/wave_b_w4/judge_A.md",
+  "Windows13/_state/tasks/p1/wave_b_w4/accepted_shard_A.jsonl",
+  "Windows13/_state/tasks/p1/wave_b_w4/done_judge_A.json"
+ ],
+ "counts": {
+  "input_total": 305,
+  "input_per_shard": {
+   "gen_k": 105,
+   "gen_l": 100,
+   "gen_m": 100
+  },
+  "keep": 288,
+  "keep_per_shard": {
+   "gen_k": 99,
+   "gen_l": 94,
+   "gen_m": 95
+  },
+  "kill_or_merge": 17,
+  "kill_per_shard": {
+   "gen_k": 6,
+   "gen_l": 6,
+   "gen_m": 5
+  },
+  "duplicate_groups_within_wave": 14,
+  "master_collision_groups": 3,
+  "master_collision_kills": 3,
+  "master_collision_flags_on_keeps": 51,
+  "offmaster_collision_flags_on_keeps": 29,
+  "family_merge_triggers_fired": 8,
+  "flagged_permutation_families": 29,
+  "anomalies": 26,
+  "deliberate_tensions": 10,
+  "deliberate_tension_flagged_ids": 19,
+  "accepted_shard_lines": 288,
+  "check_sum": "288 keep + 17 kill_or_merge = 305; accepted_shard lines = 288 = keep"
+ },
+ "unresolved_items": [
+  "gen_k SCHEMA DRIFT (all 105 records): separate kill_threshold field and plural evidence_labels — consolidator must normalize into the standard embedded/singular form before any master merge; judge flagged per record, repaired nothing.",
+  "5 gen_k keeps (K-035, K-039, K-065, K-083, K-094) carry kill thresholds with NO numeral — numeric retrofit-or-remand needed (judge B feasibility is best placed to attach while reading the falsification experiments); judge A invented no numbers.",
+  "Genre vocabulary drift across all three shards (three vocabularies) — normalize labels and re-audit genre against claim phrasing (GATE-6) before applying genre quotas.",
+  "10 HIGH-collision keeps routed to the novelty gate first-in-line: K-004, K-054, K-074, K-076, L-015, L-018, L-065, L-067, L-072, L-085 (+L-092 protocol-precedent check).",
+  "GATE-5 remand lane after the w3 repair pass: 46 repaired G/H records are now in the 638-line master tip (origin/cursor/p1-wave-b-w3-gate5-repair-f611, collided against — one flag added: H-050 on L-059); 127 remain remanded, INCLUDING every offmaster 'w3-accepted:*' flag target of this judge (G-005, G-028, G-086, H-076/H-077, H-091) — whoever repairs/merges the remaining 127 must re-collide them against this wave's keeps.",
+  "10 deliberate tensions (19 flagged ids; judge_A.json deliberate_tensions) — adjudicate by experiment, not by dedup; do NOT merge tension pairs.",
+  "gen_n/gen_p/gen_o judged in a later wave: offmaster_collision_flags map the occupied ground for their judges (strongest: K-054 vs N-027/N-014; K-077 vs O-032; K-018/K-094 vs O-005; M-057 vs N-049; M-055 vs P-059).",
+  "Consolidator may resurrect any of the 17 merged/killed ids; merge targets and preserved arms are recorded per kill in judge_A.json."
+ ],
+ "recommended_next_task_type": "p1_wave_b_w4_more_judges",
+ "canonical_state_untouched": true,
+ "no_fake_citations": true,
+ "force_push": false
+}
