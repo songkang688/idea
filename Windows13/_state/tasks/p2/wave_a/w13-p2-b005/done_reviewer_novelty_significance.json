@@ -1,0 +1,47 @@
+{
+  "task_id": "p2_wave_a_w13_p2_b005_reviewer_novelty_significance",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "batch_id": "W13-P2-B005",
+  "role": "reviewer_novelty_significance",
+  "candidate_count": 61,
+  "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b005/reviewer_novelty_significance.jsonl",
+  "input_master": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+    "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+    "lines": "245-305 inclusive",
+    "read_only": true
+  },
+  "batch_membership_source": "origin/cursor/p2-state-reader-05a0-101c Windows13/_state/tasks/p2/state_reader/batches.json batch_id=W13-P2-B005",
+  "score_scale": "1-10; higher=better for all dimensions except likelihood_already_published and risk (higher=worse); compute means compute-friendliness (higher=cheaper)",
+  "verdict_suggestion_tally": {
+    "keep_lean": 48,
+    "borderline": 13,
+    "kill_lean": 0
+  },
+  "gate8_flagged_count": 46,
+  "novelty_policy": "All novelty judgments unverified; no prior-art search executed; no citations fabricated. Suspected prior-art overlap flagged to lane p1_gate8_novelty_triage per M1, never silently killed. D-059 is on M1's explicit outvoted-prior-art-kill list (C-016/D-059/K-020/K-069/L-012) and is held at borderline with a high-severity GATE-8 flag pending triage rather than killed by this reviewer, mirroring B004's C-016 handling. Zero kill_lean in this batch: no record is tautological or unfalsifiable outright; the weakest entries fail on prior-art shadow (C-095/C-103/D-018/D-031/D-045/D-059/D-072/D-074) or training cost (C-102/D-020/D-026/D-036/D-055), which are triage/Wave-B calls.",
+  "family_notes_for_wave_b": [
+    "M1 priority: D-059 (typographic attacks transfer to open-vocabulary detection) is explicitly listed in queue.json M1 as an outvoted prior-art kill; it must clear p1_gate8_novelty_triage before any 200-cut entry. Reviewed borderline with high-severity flag, not killed. Wave-1 A-077 is recorded on master as its defense-side sibling.",
+    "Batch composition: 4 gen_c w1 records (C-095/C-097/C-102/C-103, contrarian-eval tail) + 57 gen_d w2 records (object-detection shard). All 61 are soft-threshold w1/w2 records under M5: qualitative margins ('most', 'substantially', 'far exceeding') with no numeric kill thresholds; numeric retrofit owed before any enters the 200, and none may displace GATE-5-compliant w3-w5 records on topic novelty alone. Partial exceptions with naturally sharp statistics: D-019 (oscillation amplitude), D-021 (crossover bin), D-028 (conditional recall split), D-057 (chance-level anchor), D-066 (digit/aspect histograms - sharpest in batch).",
+    "M3 pool assignment needs an explicit Wave-B ruling for this batch: the 4 gen_c records are eval-subject by construction, and a large gen_d subset is detection-evaluation forensics rather than capability work (D-002/D-011/D-013 vocabulary-protocol, D-018/D-024/D-043/D-047/D-053/D-073 metric-validity, D-015 trivial-baseline skyline, D-022 equalization null). If these count toward the genre-blind eval-subject cap (<=25% of the 200), they compete with B001-B004's evaluation-forensics blocks, not the full 1220.",
+    "Anomaly-flagged novelty leaders of the batch: D-029 (pattern-completion hallucination at vacated grid positions, double anomaly flag), D-051 (nested-instance structural blind spot, architecture-level impossibility claim), D-069 (state-space not category-space as the generalization frontier). All three are cheap-to-first-evidence and carry no GATE-8 flag; recommended as the batch's strongest 200-cut candidates alongside D-048 (correlated detector-segmenter pipeline failure) and D-060 (shared-web-data error correlation across foundation families).",
+    "Context-reliance template family inside this batch (M4 pressure): D-010 (dg09 primary, OVD-vs-supervised amplification), D-023 (size-resolved threshold), D-037 (frequency-scaling law), D-041 (training-side causal masking), D-058 (companion hallucination with data-lineage attribution). Five records, one mechanism, different substrates; they share the compositing harness (corun flags). If M4 forces consolidation, D-037 (most quantitative) and D-058 (only lineage-attribution arm) are the most distinct; D-058 must also be read against the wave-1 C-089 family that B004 borderlined.",
+    "Frequency-determinism family: D-001 (dg01 primary, absorbs E-005; caption frequency governs novel-class AP) and D-034 (web-frequency re-stratification of long-tail gains; corun:frequency_strat) share estimation infrastructure and the family:frequency_proximity flag. Both keep_lean with GATE-8 (classification-side concept-frequency results are established); adjudicate as one family - joint execution on a shared frequency harness is the natural resolution.",
+    "Vocabulary-sweep co-run block: D-002 (dg02, absorbs E-025), D-003 (dg03, absorbs D-016+E-026), D-011 share one inference harness (corun:vocabulary_sweep). D-003 is the strongest (structural no-abstention mechanism, three-record family carrier). Co-schedule to amortize inference.",
+    "Density/dense-scene block: D-021 (dg15 crossover, corun:density_stimuli), D-024 (identity-error metric), D-025 (query-budget recall cliff), D-029 (pattern completion). Shared dense-scene stimuli and cached-prediction infrastructure; co-schedule. D-021/D-024/D-025 are complementary measurements, not duplicates.",
+    "Web-prior triple D-061 (canonical scale) / D-064 (web-aesthetic imaging statistics) / D-067 (caption-worthiness salience): one inherited-prior template, three axes. D-064 is the strongest anchor (reusable shift suite, sharpest deployment significance). If M4 forces one, keep D-064; otherwise consider a joint suite.",
+    "naming_vs_finding family: D-071 (dg04 primary, absorbs D-004, cheap_kill_first_batch; recognition dominates residual error), D-073 (IoU-sweep fingerprinting), D-055 (objectness-channel attribution, borderline on pretraining cost), D-063 (frozen-feature high-IoU ceiling). D-071 is the anchor. Recorded tensions to reconcile: D-044 vs D-071 (proposal-limited atypical-geometry tail vs localization-near-ceiling aggregate - likely resolvable as stratum-vs-aggregate), D-063 vs E-074, D-055 vs D-077, D-039 vs F-005.",
+    "Score-calibration/operating-point template pair: D-013 (per-class threshold incomparability, dg11 primary, cheapest record in batch) vs D-074 (box-uncertainty outputs, borderline, published-machinery shadow). If one slot, keep D-013.",
+    "Convention-scoring pair: D-049 (amodal-modal pipeline mismatch) and D-053 (thing-stuff ontology sensitivity) share the family:convention_scoring flag - adjudicate as a pair; both cheap.",
+    "Irregular-shape pair: D-046 (shape-stratified mask-first vs box-first crossover) and D-050 (mask-mediated box learning) share the boxes-are-bad-primitives motivation from evaluation and training sides respectively; read together.",
+    "Rankings-dont-transfer template pair, both borderline on retraining cost: D-026 (scale-regime transfer) and D-036 (frequency-profile overfitting; wave-1 C-042 reweighting-instability family per judge A). Cheap kills first; full multi-regime/multi-profile training grids need experimentalist pricing.",
+    "Compute-heavy borderline block sharing the paired-training cost profile that B004 flagged on C-056/C-058: C-102 (filtered-vs-unfiltered pretraining), D-020 (pretraining-objective vs small-object stratum, matched-compute confound), D-055 (dense-pretraining attribution), plus training-grid records D-026/D-036 and split-encoder D-072. None should enter the 200 without experimentalist pricing.",
+    "Wave-1 collision checks owed before Stage 2 (recorded by judge A on master, unresolved): D-054 vs B-026/A-005 (prompt-jitter consistency - detection-rescoring application is the claimed delta); D-019 vs A-009 (aliasing, substrate distinct); D-022 resolution-confound critiques; D-031 vs calibration cluster C-002..C-012; D-043 vs C-044; D-036/D-026 vs C-042; D-058 vs C-089; D-061 vs A-062; D-039 vs B-087.",
+    "C-097 (style-normalized safety re-evaluation) requires human outcome-grading of unsafe content under restricted-handling protocols (judge B human_study+safety_protocols flags); ethics/ops burden must be priced before the cut despite its high significance.",
+    "Absorb bookkeeping intact in this batch: D-001<-E-005, D-002<-E-025, D-003<-D-016+E-026, D-010<-D-062, D-013<-D-040, D-047<-E-067, D-057<-D-007, D-060(dg32)<-F-033, D-068<-E-071, D-071<-D-004, C-095<-C-094. Absorbed members must not resurface as independent 200-cut entries."
+  ],
+  "recommended_next_task_type": "p2_wave_a_review",
+  "complete": true
+}
