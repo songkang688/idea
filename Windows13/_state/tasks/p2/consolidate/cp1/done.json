@@ -1,0 +1,69 @@
+{
+ "schema_version": "1.0",
+ "task_id": "p2_consolidator_cp1",
+ "windows_id": "Windows13",
+ "windows_number": 13,
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "defined_by": "P0",
+ "checkpoint": 1,
+ "role": "checkpoint_consolidator",
+ "generated_at_utc": "2026-08-29T05:42:22Z",
+ "covers_batches": [
+  "W13-P2-B001",
+  "W13-P2-B002",
+  "W13-P2-B003",
+  "W13-P2-B004",
+  "W13-P2-B005"
+ ],
+ "inputs": {
+  "wave_b_branches": {
+   "W13-P2-B001": "origin/cursor/p2-wave-b-b001-judge-05a0",
+   "W13-P2-B002": "origin/cursor/p2-wave-b-b002-judge-05a0",
+   "W13-P2-B003": "origin/cursor/p2-wave-b-b003-judge-05a0",
+   "W13-P2-B004": "origin/cursor/p2-wave-b-b004-judge-05a0",
+   "W13-P2-B005": "origin/cursor/p2-wave-b-b005-judge-05a0"
+  },
+  "audit": "Windows13/_state/tasks/p2/audit/cp1/audit.json @ origin/cursor/p2-audit-cp1-05a0",
+  "batches_definition": "Windows13/_state/tasks/p2/state_reader/batches.json @ origin/cursor/p2-state-reader-05a0-101c",
+  "policy_baseline": "Windows13/_state/tasks/p2/state_reader/queue.json ranking_policy_notes M1-M7 @ origin/cursor/p2-state-reader-05a0-101c",
+  "master_read_only": "Windows13/_state/ideas_master.jsonl @ origin/cursor/windows13-stage1-exploration-ee41-face 4a94eafb0aed28292b117481d2cb986aec849b13 (not modified)"
+ },
+ "outputs": {
+  "ledger": {
+   "file": "Windows13/_state/tasks/p2/consolidate/cp1/ledger.jsonl",
+   "lines": 305,
+   "md5": "9773a351b7a6721ec3fb7c6b4a27411a"
+  },
+  "policy": {
+   "file": "Windows13/_state/tasks/p2/consolidate/cp1/policy.json",
+   "escalations_implemented": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6"
+   ]
+  },
+  "tally": {
+   "file": "Windows13/_state/tasks/p2/consolidate/cp1/tally.json"
+  }
+ },
+ "counts": {
+  "total": 305,
+  "keep": 202,
+  "borderline": 101,
+  "kill": 2,
+  "review_queue": 163,
+  "gate8_flagged": 138
+ },
+ "verdicts_changed": 0,
+ "audit_verdict_inherited": "PASS_WITH_REMEDIATION (all remediations E1-E6 implemented or recorded as binding rules in policy.json)",
+ "final_200_cut": false,
+ "stage2_top200_written": false,
+ "provisional": true,
+ "recommended_next_task_type": "p2_wave_a_review",
+ "recommended_next_note": "Checkpoint-1 consolidation complete for B001-B005. Per queue.json dispatch rules the next dispatchable tasks are Wave A reviewer triplets for batches B006-B020 (p2_wave_a_review); Wave B judges follow per batch as its 3 reviews land. The Top-200 cut remains deferred to full-coverage finalization per policy.json E6.",
+ "complete": true
+}

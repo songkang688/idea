@@ -1,0 +1,92 @@
+{
+ "schema_version": "1.0",
+ "task_id": "p2_consolidator_cp1",
+ "checkpoint": 1,
+ "windows_id": "Windows13",
+ "windows_number": 13,
+ "windows_path": "Windows13",
+ "window_locked": true,
+ "defined_by": "P0",
+ "generated_at_utc": "2026-08-29T05:42:22Z",
+ "source_audit": "Windows13/_state/tasks/p2/audit/cp1/audit.json @ origin/cursor/p2-audit-cp1-05a0 (verdict PASS_WITH_REMEDIATION)",
+ "ranking_policy_baseline": "Windows13/_state/tasks/p2/state_reader/queue.json ranking_policy_notes M1-M7 @ origin/cursor/p2-state-reader-05a0-101c",
+ "no_re_judge": {
+  "rule": "Audit forbids re-judging; this consolidation changed ZERO per-record Keep/Borderline/Kill verdicts. All escalations are implemented as ledger overlay fields (cp1_*) or as the selection-policy rules below.",
+  "verdicts_changed": 0
+ },
+ "escalations_implemented": [
+  {
+   "id": "E1",
+   "severity": "low",
+   "audit_item": "Normalize GATE-8 severity vocabulary before aggregation: B002 'moderate' == 'medium' elsewhere.",
+   "implementation": "Normalization map {'moderate': 'medium'} applied as cp1_gate8_severity_normalized on every flagged ledger record; original judge value preserved verbatim in the gate8.severity field. 10 B002 records affected (listed in tally.json gate8.e1_normalized_record_ids). All tally aggregation uses the normalized vocabulary: low/medium/high only.",
+   "status": "applied_in_ledger"
+  },
+  {
+   "id": "E2",
+   "severity": "medium",
+   "audit_item": "Reconcile M5/M6 per-record flags with the state-reader global census (431 and 287 of 1220) before using either field in cross-batch ranking.",
+   "implementation": "Discrepancy confirmed and quantified: judges flagged 303/305 as lacking numeric kill thresholds (M5) and 305/305 as carrying asset-pinning debt (M6), vs census proportions 431/1220 (35.3%) and 287/1220 (23.5%). Root cause per audit: judges applied a stricter per-record definition than the census. Every ledger record carries cp1_m5_m6_flag_scope = 'batch_local_strict_definition_pending_census_reconciliation_per_E2'.",
+   "binding_rule_for_downstream": "The per-record m5_numeric_kill_threshold_present and m6_asset_pinning_debt booleans are RANK-INERT across batches until a single definition is fixed. They remain valid as retrofit to-do markers (numeric-threshold retrofit and asset pinning required before 200 entry per queue.json M5/M6), but MUST NOT be used to order records from different batches against each other, because near-uniform flags (99.3%/100%) carry no discriminating signal and would only encode definition drift. Alignment method: at the 200-cut checkpoint, re-derive both flags for cut candidates from the census definition applied uniformly (state_reader prefix census fields), not from the batch-local judge flags.",
+   "status": "recorded_as_binding_rule"
+  },
+  {
+   "id": "E3",
+   "severity": "medium",
+   "audit_item": "Do not naively pool Keep lists across batches; Keep% falls and GATE-8 density rises sharply in B004/B005; apply GATE-8-aware, per-batch-normalized comparison at consolidation.",
+   "implementation": "This ledger does NOT pool Keeps into any ranked list (no ranking performed at cp1). Per-batch base rates are published in tally.json for normalization: keep% 68.9/70.5/68.9/63.9/59.0 and gate8 density 36.1/34.4/23.0/57.4/75.4 across B001-B005.",
+   "binding_rule_for_downstream": "GATE-8-aware normalization: any cross-batch comparison of cp1 records must (a) stratify by normalized gate8 severity (none/low/medium/high) and compare within strata, and (b) treat a B004/B005 Keep as equivalent evidence to a B001-B003 Keep after conditioning on gate8 stratum - the Keep% decline tracks prior-art shadow in C/D-prefix territory (content-driven), not judge-standard drift. Never rank a flagged record above/below an unflagged one purely on batch-level Keep scarcity.",
+   "status": "recorded_as_binding_rule"
+  },
+  {
+   "id": "E4",
+   "severity": "medium",
+   "audit_item": "Counter the paper-shaped/popular-topic tilt at the Keep/Borderline margin: negative-results, protocol-assumptions, human-baselines-annotation, vlm-eval-weaknesses sit in Borderline at above-average rates.",
+   "implementation": "All 25 records in the four named clusters carry cp1_second_look_at_wave_c=true with policy ref E4; the 2 ignored-assumptions records (audit minority-cluster watch) carry the same flag with ref AUDIT_WATCH_MINORITY_CLUSTER. No verdict was changed.",
+   "binding_rule_for_downstream": "Wave C must give these flagged Borderlines a genuine second look (M7 spirit) rather than rubber-stamping Keep lists; a negative-result/protocol-critique record may not be dropped at the 200-cut solely for lacking a positive-result paper shape.",
+   "status": "applied_in_ledger"
+  },
+  {
+   "id": "E5",
+   "severity": "high",
+   "audit_item": "M1 BINDING carry-through: W13-P1-C-016 and W13-P1-D-059 (outvoted prior-art-kill list) are parked Borderline and MUST clear p1_gate8_novelty_triage before any 200-cut entry.",
+   "implementation": "Both records carry cp1_m1_binding_pre_cut_triage_hold=true in the ledger. Both remain Borderline (unchanged), both remain in the Wave C review queue, both remain in lane p1_gate8_novelty_triage with high (normalized) severity.",
+   "binding_rule_for_downstream": "HARD GATE: no downstream task may promote C-016 or D-059 into the Top 200 until p1_gate8_novelty_triage has cleared them with a real, checkable novelty triage result. Novelty is unverified for all 305 records; the hold on these two is additionally BINDING per the meta-judge M1 outvoted prior-art-kill list. This consolidator did not perform the triage and did not promote them.",
+   "status": "applied_in_ledger"
+  },
+  {
+   "id": "E6",
+   "severity": "medium",
+   "audit_item": "Kill pressure fully deferred: only 2/305 provisional kills while pooled Keeps from just 5 of 20 batches (202) already exceed the 200 target; plan the real cut mechanism rather than inherit Wave B Keep labels as survivals.",
+   "implementation": "Acknowledged and recorded: cp1 Keep labels are POOL-ADMISSION labels, not survival guarantees. With 202 provisional Keeps from 25% of the pool, linear extrapolation implies ~800 Keeps against a 200 target; the true cut ratio at finalization will be roughly 1-in-4 among Keeps.",
+   "cut_mechanism_plan": [
+    "1. Membership first: all 20 batches judged, all checkpoints consolidated - no cut before full coverage.",
+    "2. Binding lanes precede scoring: p1_gate8_novelty_triage (M1, incl. C-016/D-059 hold), remand disposition (M2), fingerprint backmap before slot caps (M3).",
+    "3. Family collapse (M4): forced best-of-family so no family contributes undifferentiated siblings; use judge m4_family_note fields plus queue.json minimum-family list.",
+    "4. Stratified comparison per E3 (gate8-severity strata, batch-conditioned), with census-definition M5/M6 retrofit flags per E2 as tie-breakers within strata only.",
+    "5. Portfolio protections: M7 thin territories, E4 second-look clusters, and high-risk/high-upside records may not be eliminated purely on volume or paper-shape.",
+    "6. Only then rank-and-cut to 200, at the finalization task - NOT at cp1 and NOT by this consolidator."
+   ],
+   "status": "recorded_as_binding_rule"
+  }
+ ],
+ "severity_vocabulary": {
+  "canonical": [
+   "low",
+   "medium",
+   "high"
+  ],
+  "aliases": {
+   "moderate": "medium"
+  }
+ },
+ "constraints_respected": {
+  "final_200_not_made_here": true,
+  "stage2_top200_md_not_written": true,
+  "ideas_master_untouched": true,
+  "window_lock_untouched": true,
+  "no_force_push": true,
+  "novelty_all_unverified": true,
+  "no_fabricated_citations": true
+ }
+}

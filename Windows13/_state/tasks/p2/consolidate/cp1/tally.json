@@ -1,0 +1,195 @@
+{
+ "schema_version": "1.0",
+ "task_id": "p2_consolidator_cp1",
+ "checkpoint": 1,
+ "windows_id": "Windows13",
+ "windows_number": 13,
+ "windows_path": "Windows13",
+ "generated_at_utc": "2026-08-29T05:42:22Z",
+ "covers_batches": [
+  "W13-P2-B001",
+  "W13-P2-B002",
+  "W13-P2-B003",
+  "W13-P2-B004",
+  "W13-P2-B005"
+ ],
+ "total_records": 305,
+ "verdict_totals": {
+  "keep": 202,
+  "borderline": 101,
+  "kill": 2
+ },
+ "review_queue_total": 163,
+ "gate8": {
+  "flagged_total": 138,
+  "severity_original_vocab": {
+   "low": 54,
+   "medium": 55,
+   "moderate": 10,
+   "high": 19
+  },
+  "severity_normalized": {
+   "low": 54,
+   "medium": 65,
+   "high": 19
+  },
+  "normalization_applied": {
+   "moderate": "medium"
+  },
+  "e1_normalized_record_count": 10,
+  "e1_normalized_record_ids": [
+   "W13-P1-A-073",
+   "W13-P1-A-077",
+   "W13-P1-A-078",
+   "W13-P1-A-086",
+   "W13-P1-A-088",
+   "W13-P1-A-094",
+   "W13-P1-A-097",
+   "W13-P1-B-014",
+   "W13-P1-B-018",
+   "W13-P1-B-024"
+  ]
+ },
+ "per_batch": {
+  "W13-P2-B001": {
+   "keep": 42,
+   "borderline": 19,
+   "kill": 0,
+   "total": 61,
+   "review_queue": 33,
+   "gate8_flagged": 22,
+   "gate8_severity_original_vocab": {
+    "low": 17,
+    "medium": 5
+   },
+   "gate8_severity_normalized": {
+    "low": 17,
+    "medium": 5
+   }
+  },
+  "W13-P2-B002": {
+   "keep": 43,
+   "borderline": 17,
+   "kill": 1,
+   "total": 61,
+   "review_queue": 29,
+   "gate8_flagged": 21,
+   "gate8_severity_original_vocab": {
+    "low": 9,
+    "moderate": 10,
+    "high": 2
+   },
+   "gate8_severity_normalized": {
+    "low": 9,
+    "medium": 10,
+    "high": 2
+   }
+  },
+  "W13-P2-B003": {
+   "keep": 42,
+   "borderline": 18,
+   "kill": 1,
+   "total": 61,
+   "review_queue": 36,
+   "gate8_flagged": 14,
+   "gate8_severity_original_vocab": {
+    "medium": 9,
+    "low": 4,
+    "high": 1
+   },
+   "gate8_severity_normalized": {
+    "medium": 9,
+    "low": 4,
+    "high": 1
+   }
+  },
+  "W13-P2-B004": {
+   "keep": 39,
+   "borderline": 22,
+   "kill": 0,
+   "total": 61,
+   "review_queue": 34,
+   "gate8_flagged": 35,
+   "gate8_severity_original_vocab": {
+    "low": 9,
+    "medium": 20,
+    "high": 6
+   },
+   "gate8_severity_normalized": {
+    "low": 9,
+    "medium": 20,
+    "high": 6
+   }
+  },
+  "W13-P2-B005": {
+   "keep": 36,
+   "borderline": 25,
+   "kill": 0,
+   "total": 61,
+   "review_queue": 31,
+   "gate8_flagged": 46,
+   "gate8_severity_original_vocab": {
+    "high": 10,
+    "medium": 21,
+    "low": 15
+   },
+   "gate8_severity_normalized": {
+    "high": 10,
+    "medium": 21,
+    "low": 15
+   }
+  }
+ },
+ "kills_detail": [
+  {
+   "id_seed": "W13-P1-A-077",
+   "batch": "W13-P2-B002",
+   "consensus": "split_kill_vs_borderline",
+   "routed_to_review_queue": true,
+   "prior_art_basis": false
+  },
+  {
+   "id_seed": "W13-P1-B-056",
+   "batch": "W13-P2-B003",
+   "consensus": "majority_kill_one_borderline",
+   "routed_to_review_queue": true,
+   "prior_art_basis": false
+  }
+ ],
+ "m1_binding_pre_cut_triage_holds": [
+  "W13-P1-C-016",
+  "W13-P1-D-059"
+ ],
+ "m5_numeric_kill_threshold": {
+  "present": 2,
+  "absent": 303,
+  "present_ids": [
+   "W13-P1-A-007",
+   "W13-P1-A-045"
+  ],
+  "global_census_absent": "431/1220",
+  "reconciliation": "pending per policy.json E2"
+ },
+ "m6_asset_pinning_debt": {
+  "carrying_debt": 305,
+  "no_debt_ids": [],
+  "global_census_debt": "287/1220",
+  "reconciliation": "pending per policy.json E2"
+ },
+ "second_look_flags": {
+  "e4_cluster_records": 25,
+  "e4_clusters": [
+   "human-baselines-annotation",
+   "negative-results",
+   "protocol-assumptions",
+   "vlm-eval-weaknesses"
+  ],
+  "audit_watch_records": 2,
+  "audit_watch_clusters": [
+   "ignored-assumptions"
+  ]
+ },
+ "novelty_status_unverified_all_305": true,
+ "provisional": true,
+ "final_200_cut": false
+}
