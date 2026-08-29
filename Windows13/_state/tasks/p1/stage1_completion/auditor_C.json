@@ -1,0 +1,132 @@
+{
+  "task_id": "p1_stage1_completion",
+  "role": "auditor_C_mode_collapse",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "audited_master": {
+    "branch": "origin/cursor/p1-wave-b-consolidator-w5-d795",
+    "commit": "7338e5490f910a5079ce64bf2367a3c9a0619876",
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "records": 1220,
+    "records_verified_by": "wc -l + python json parse; 1220/1220 valid JSON objects, 1220 unique id_seed, 0 duplicate one_line_idea, 0 duplicate core_hypothesis"
+  },
+  "audited_at_utc": "2026-08-29T02:35:00Z",
+  "read_only_compliance": {
+    "ideas_master_jsonl_untouched": true,
+    "research_state_json_untouched": true,
+    "window_lock_json_untouched": true,
+    "other_windows_not_scanned": true,
+    "independent_pass_first": "all quantitative instruments below were run and interpreted before reading auditor_A outputs or the diversity_audit_w3 consolidator decision; those were then read as cross-reference context only"
+  },
+  "verdict": "PASS_WITH_REMEDIATION",
+  "verdict_one_line": "Remaining collapse is template-family-level and prior-art-exposure-level, not subject- or lexical-level; it is acceptable to freeze Stage-1 GENERATION (more generators are NOT required and would not fix it) provided the already-queued selection-integrity lanes execute before the Stage-2 200-cut.",
+  "more_generators_required": false,
+  "more_generators_reasoning": "EVIDENCE: subject crowding is diluted (SAM 34-35% at w1 audit -> 9.6% at 934 -> 7.1% at 1220 by this audit's independent instrument), 156 distinct clusters with max cell 1.1%, 15 generator territories with near-uniform shard sizes (69-102). The residual collapse lives in (a) cross-shard epistemic-move template families and (b) unverified novelty on 1220/1220 records. Neither is curable by generation volume: new shards would add members to the same move families (the cheap-predictor family DOUBLED 7->14 across w2->w3 audits despite a per-shard cap, proving generation pressure feeds template growth), while the cure - judge-time merges, Stage-2 slot caps, GATE-8 triage - is selection-side and already queued with owners by the diversity_audit_w3 decision. The w3 capacity consensus (3/3 auditors, realized by w5: 1220 >= 1000) independently concluded generation is no longer the bottleneck. A FAIL verdict demanding more generators would move the portfolio AWAY from the freeze condition.",
+  "instruments_and_findings": [
+    {
+      "id": "F1_lexical_near_duplication",
+      "verdict": "LOW - no collapse",
+      "evidence_label": "EVIDENCE (script-computed this audit)",
+      "detail": "Exact all-pairs token-Jaccard over one_line_idea + core_hypothesis, all 743,590 pairs (no sampling): max = 0.237 (W13-P1-J-051 vs J-076), 0 pairs >= 0.5, 42 pairs > 0.15. Exact-duplicate scan: 0 duplicate id_seed, 0 duplicate one_line_idea, 0 duplicate core_hypothesis, 18-token domain/model/number-normalized skeleton collisions on falsifiable_prediction: 0. Within-shard structural 6-gram template reuse (falsifiable_prediction + minimal experiment, domain- and model-normalized): 0 pairs above 0.30 overlap in any of the 15 shards (max observed 0.18).",
+      "cross_reference": "consistent with completion auditor_A (max 0.242, different tokenizer) and with diversity audits w1-w3 (0.20 -> 0.258 trend)"
+    },
+    {
+      "id": "F2_sam_plus_x_permutation_volume",
+      "verdict": "CONTAINED - guard held, frozen legacy stock only",
+      "evidence_label": "EVIDENCE (script-computed this audit)",
+      "detail": "SAM/SAM2/Segment-Anything mention share in one_line_idea+problem+core_hypothesis: 87/1220 = 7.1%; as one-liner primary subject: 77/1220 = 6.3%, of which 76 are wave-1 gen_a records (frozen stock) and 1 is gen_k SAM2-memory (inside its granted allowance). PEFT/LoRA/adapter mention share: 48/1220 = 3.9% (37 in gen_a). The 'SAM+PEFT-variant' permutation subgroup inside gen_a: 38 records = 3.1% of portfolio, spread over 13 gen_a-internal clusters (max 12). Zero new SAM-primary records entered via waves w2-w5 outside the gen_k allowance. Trajectory: 34-35% (w1 audit, 248) -> 9.6% (w3 audit, 934) -> 7.1% (this audit, 1220): dilution by diversified growth with the <=5%-per-shard guard holding on every post-w1 shard. Smoke/fire fixation similarly confined: all 32 one-liner instances are frozen gen_b w1 stock; the ban held on every later wave.",
+      "residual_risk": "the w1 gen_a/gen_b stock is frozen, not deleted; its internal permutation density (38 PEFT-on-SAM one-liners) must be handled by Stage-2 slot caps, not by more generation"
+    },
+    {
+      "id": "F3_template_families",
+      "verdict": "PRESENT AND MODERATE - the real remaining collapse axis",
+      "evidence_label": "EVIDENCE (script-computed this audit); family memberships partly HYPOTHESIS (loose-threshold clustering chains)",
+      "detail": "Union-find over all-pairs token-Jaccard at loose threshold 0.12 (with stopwording): 287/1220 records (23.5%) fall in some multi-member component; 35 components of size >= 3; size histogram {2:55, 3:15, 4:7, 5:4, 6:3, 7:1, 8:1, 10:1, 12:1, 14:1, 15:1}. Qualitative reads confirm genuine epistemic-move families rather than chaining artifacts for the large components: (1) variance/protocol-artifact audit of reported gains, ~13-15 members spanning C/D/E/F/G/P (C-047, C-054, C-073, C-077, C-080, C-103, D-002, D-011, D-026, F-020, G-003, G-019, G-023, P-004); (2) text-encoder-geometry-predicts-dense-failure, ~7 members concentrated in gen_e (E-034, E-047, E-050, E-051, E-052, E-053 + J-070); (3) gen_m pixels-per-batch/gradient-noise mechanics, ~8-10 members (M-025, M-028, M-030, M-037, M-073, M-082, M-084, M-086); (4) sim-to-real cheap-statistics-fix, ~8 members in gen_f (F-003, F-008, F-010, F-019, F-022, F-023, F-075, H-001); (5) provenance-forensics 'X is decodable from outputs', ~4 members cross-shard (B-021, B-035, F-060, N-070 adjacency). Independent re-census of the two headline judge-fingerprint cells: gen_m ritual/folklore-is-mechanism = 11/98 by this audit's stricter regex instrument (judge census said 19; both far over the <=4-6 cap), cheap/free-predictor-of-outcome = 33 portfolio-wide by loose one-liner regex (judge census 14 with PORTFOLIO FREEZE; both over the freeze line). Named near-pair siblings for forced Stage-2 adjudication confirmed by direct reading: J-051/J-076, E-029/E-054, B-060/B-065, F-019/F-023, N-061/N-070, C-003/C-004/C-057.",
+      "why_acceptable_at_freeze": "each family member read in full is an individually distinct, falsifiable hypothesis (not restatements); family sizes 2-15 in a 1220-pool feeding a 200-cut mean intra-family competition at selection can prune them without losing coverage; judge-time merge triggers already fired inside these families at w4/w5 (33 C-merges, 27 A-groups at w5); mechanical enforcement is queued behind the fingerprint back-mapping (see F4)"
+    },
+    {
+      "id": "F4_fingerprint_crowding_instrument",
+      "verdict": "INSTRUMENT DEFEATED - crowding not mechanically measurable on self-reported fingerprints",
+      "evidence_label": "EVIDENCE (script-computed this audit)",
+      "detail": "family_fingerprint exists on 680/1220 records (w3-w5 waves only; w1/w2 stock has none) and is free-text: 680/680 distinct cells, i.e. zero cap enforcement is possible on the raw field. This independently reproduces the w3 diversity audit's finding (393 distinct on 394 carriers at 934) at the 1220 master. The controlled ~30-enum vocabulary the w3 decision mandated 'from w5 consolidation onward' was NOT adopted at w5 (w5 reported over-cap cells in yet another private vocabulary: annotation_protocol_capability 14, memorization_dose_response 12, dense_transfer_exponents 11, illumination_geometry_confounds 7). Consequence: the over-cap census (10-24 cells depending on vocabulary) cannot be joined across waves, and slot caps remain judge-discretionary until the Stage-2 retrofit lane back-maps all free-text strings.",
+      "why_acceptable_at_freeze": "the defeat is an instrumentation debt, not evidence of worse collapse than measured; three independent instruments (this audit's union-find + skeleton tests, judge fingerprint flags, diversity-audit censuses) agree on WHERE the crowding is; the back-mapping is queued as p1_stage2_retrofit_lane deliverable and is remediation item R2 below"
+    },
+    {
+      "id": "F5_genre_balance_debunk_monoculture",
+      "verdict": "BROKEN MONOCULTURE - improved, legacy skew localized",
+      "evidence_label": "EVIDENCE for labeled subset; HYPOTHESIS for heuristic split of the unlabeled 540",
+      "detail": "Labeled subset (680 w3-w5 records, generator/judge labels): constructive 303 (44.6%), characterization 299 (44.0%), debunk 78+2+2 (12.1%). Unlabeled w1/w2 stock (540 records) by this audit's regex heuristic: debunk-leaning 298 (55.2%), characterization 158, mixed 50, constructive 34. Blended portfolio estimate: ~31% debunk / ~28% constructive / ~38% characterization / ~4% mixed - versus 51.4% debunk + 7.7% strict-constructive at the w1-era 494-master audit. The pseudo-innovation-adjacent 'pure eval-critique' surface: 32.3% mention-level (one_line+problem), 10.9% by primary cluster name of which 43/133 are gen_p's constructive eval-REPAIR records; trend 43.5% (w1) -> 31.4% (w2) -> ~32% mention-level now, held down by mandated constructive conversion (gen_p 92/96 constructive).",
+      "why_acceptable_at_freeze": "the skew is concentrated in the frozen w1/w2 stock and is already fenced by (a) the protected constructive id-lists (genre-cull-proof unions from B-w1/B-w2/C-w2/B-w3), (b) the genre-blind eval-subject pool cap (<=25% of the 200-cut) written at w3; measured on judge labels per GATE-6 the >=25% constructive floor is met on the post-w2 stock"
+    },
+    {
+      "id": "F6_pseudo_innovation_prior_art_exposure",
+      "verdict": "MATERIAL EXPOSURE - largest single risk to freeze; bounded and owned",
+      "evidence_label": "EVIDENCE (web-verified this audit for O-002; judge-C web-verification on record for O-031)",
+      "detail": "novelty_status = 'unverified' on 1220/1220 records; the 85 records carrying novelty_verified all say false. At least TWO accepted master records are demonstrably REAL prior art retained by 2-1 majority with dissent: W13-P1-O-002 (per-pixel range-conditioned underwater color correction = Sea-thru, Akkaynak & Treibitz CVPR 2019, doi:10.1109/CVPR.2019.00178 - DOI and method equivalence INDEPENDENTLY RE-VERIFIED against the CVF open-access record during this audit, including the hainh/sea-thru monocular-depth substitution the record claims as its delta) and W13-P1-O-031 (optical-density-space stain augmentation = Tellez et al. 2018 / Medical Image Analysis 2019, doi:10.1016/j.media.2019.101544, judge-C web-verified at w5). Five more outvoted judge_C prior-art kills sit accepted with dissents: C-016 (OOD-benchmark triviality), D-059 (typographic attacks on open-vocab detection), K-020 (frozen-feature depth probing), K-069 (static-appearance solvability of action benchmarks), L-012 (visual marks beat coordinate text). Plus unprocessed watchlists: w2's 73-id permutation-flag list, w4's 20-id and w5's 27-id high_prior_art_risk lists, 141 judge_dissent carriers, and gen_n's 23 on-master citation-bearing records (correctly hedged 'KNOWN PRIOR WORK (model recall, unverified here)').",
+      "why_acceptable_at_freeze": "these are known, enumerated, per-record-flagged items with a queued owner (p1_gate8_novelty_triage, priority order already written at w3) rather than silent contamination; the count gate does not depend on them (1220 - 7 flagged >= 1000 with margin); freezing generation does not impede triage. UNACCEPTABLE only if the 200-cut runs before GATE-8 priority items 1-4 - hence binding remediation R1"
+    },
+    {
+      "id": "F7_fake_citations",
+      "verdict": "ZERO FAKE CITATIONS",
+      "evidence_label": "EVIDENCE (exhaustive extraction + attribution reads this audit; 1 DOI re-verified by live web check)",
+      "detail": "Exhaustive regex extraction over every string field of all 1220 records (including nested judge metadata): ~20 distinct citation-like strings. All verified correctly attributed against known real works: Kirillov et al. 2023=SAM, Hu et al. 2021=LoRA, Kornblith et al. 2019=CKA, Ben Zaken et al. 2022=BitFit, Wortsman et al. 2022=model soups, Ilharco et al. 2022=task arithmetic, Jia et al. 2022=VPT, He et al. 2022=MAE, Geirhos et al.=cue-conflict/texture bias, Darcet et al.=ViT registers, Ke et al. 2023=HQ-SAM, Carion et al. 2020=DETR, Ravi et al. 2024=SAM 2, Akkaynak & Treibitz CVPR 2019=Sea-thru (DOI live-verified this audit), Tellez et al. 2018/2019 (real DOI), SMLM challenge, GWHD 2021, Pascal VOC 2012 (real datasets). Every citation is wrapped in an evidence label (VERIFIED PRIOR WORK / KNOWN FACT / KNOWN PRIOR WORK (model recall, unverified here)) with speculative claims marked MODEL SPECULATION. 0 fabricated benchmark numbers found in novelty/belief/importance fields.",
+      "cross_reference": "consistent with 3/3 diversity-audit consensus 'zero fake citations' at w1/w2/w3; this auditor adds no citations"
+    },
+    {
+      "id": "F8_subject_cluster_spread",
+      "verdict": "WIDE - no subject monoculture at 1220",
+      "evidence_label": "EVIDENCE (script-computed this audit)",
+      "detail": "156 distinct cluster names; largest cell 14/1220 (1.1%); 44 clusters at >=10; only 5 singleton clusters. Shard sizes near-uniform (69-102 across 15 shard families incl. the 46 gate5-repaired G/H records). Subject mention shares: detection 17.3%, annotation 9.3%, calibration/uncertainty 7.9% (down from 20.6% at w2 audit), SAM 7.1%, depth 6.6%, synthetic 6.3%, memorization/privacy 4.1%, VLM 3.7%, diffusion 2.8%. Known blind spots remaining: cross-field transfer 0 primary (gen_r queued), security/fairness ~0.5% primary (gen_w queued), deployed-model lifecycle 0.4% primary (gen_v queued) - queued as diversity plays for 200-cut coverage, NOT as freeze blockers (see more_generators_reasoning).",
+      "residual": "restoration territory thin on master (16 gen_h records) with 73 more gen_h trapped in the 127-record remand pool - composition risk owned by p1_wave_b_w3_gate5_repair_2, bound as remediation R3"
+    }
+  ],
+  "remediation_required_for_freeze": [
+    {
+      "id": "R1_gate8_before_cut",
+      "binding": true,
+      "requirement": "p1_gate8_novelty_triage priority items 1-4 (as enumerated in the w3 decision) MUST complete before the Stage-2 200-cut; O-002 and O-031 (verified real prior art) plus the five outvoted prior-art kills (C-016, D-059, K-020, K-069, L-012) must receive explicit novelty dispositions - they must not be ranked blind",
+      "owner_exists": "yes - p1_gate8_novelty_triage lane, queued at w3 consolidation, unstarted"
+    },
+    {
+      "id": "R2_fingerprint_backmap_before_caps",
+      "binding": true,
+      "requirement": "controlled-vocabulary back-mapping of all free-text family_fingerprint strings (680 at 1220) before any mechanical slot-cap enforcement at the 200-cut; until then the cut must apply the w3 genre-blind pooled caps (eval-subject pool <=25%) and the cheap-predictor portfolio-freeze displacement rule using the judge flag lists",
+      "owner_exists": "yes - p1_stage2_retrofit_lane, queued at w3 consolidation, unstarted"
+    },
+    {
+      "id": "R3_remand_disposition_before_cut",
+      "binding": true,
+      "requirement": "the 127-record gen_g/gen_h remand pool must receive a disposition (repair-append or kill-with-decision) before the 200-cut composition is fixed; 73 gen_h records there are the difference between a covered and a re-opened restoration blind spot",
+      "owner_exists": "yes - p1_wave_b_w3_gate5_repair_2 lane, queued at w3 consolidation, unstarted"
+    },
+    {
+      "id": "R4_family_adjudication_at_cut",
+      "binding": true,
+      "requirement": "Stage-2 forced adjudication of the named sibling pairs/families from F3 (at minimum: J-051/J-076, E-029/E-054, B-060/B-065, F-019/F-023, N-061/N-070, C-003/C-004/C-057, the gen_e text-geometry block, the gen_m mechanics block) - select best-of-family, never multiple undifferentiated siblings into the 200",
+      "owner_exists": "partially - w3 stage2_selection_notes already name 5 of these pairs; this audit extends the list"
+    }
+  ],
+  "explicit_non_requirements": [
+    "NO additional generator waves are required to clear mode-collapse for Stage-1 freeze (see more_generators_reasoning); the queued gen_r/gen_w/gen_v diversity plays may still run for 200-cut coverage but are not collapse remediation and this verdict does not gate on them",
+    "NO retroactive rewriting of the frozen w1/w2 stock is required; its skews are fenced by protected lists and pooled caps"
+  ],
+  "unresolved_items": [
+    "novelty_status unverified on 1220/1220 - bounded by R1 but unresolved until GATE-8 runs",
+    "O-002/O-031 retained-prior-art disposition pending GATE-8 (this auditor's independent web check confirms judge_C's O-002 evidence)",
+    "fingerprint vocabulary-join problem compounds each wave until R2 lands (w5 added a fourth private vocabulary)",
+    "127-record G/H remand pool ownerless-in-execution until repair_2 dispatches (R3)",
+    "true debunk share of the unlabeled 540 w1/w2 records is instrument-dependent (this audit's heuristic says ~55% of that stock); exact rebalance verdict needs the retrofit lane's judge-label backfill",
+    "cheap-predictor family census divergence (33 loose regex vs 14 judge-fingerprint) illustrates the F4 instrument problem; the freeze-displacement rule should use whichever instrument Stage-2 adopts consistently"
+  ],
+  "cross_reference_other_auditors": {
+    "auditor_A_count_dedup": "read AFTER independent pass; verdict PASS on count/uniqueness - fully consistent with this audit's F1 (max Jaccard 0.237 here vs 0.242 there on different tokenizers; identical zero-duplicate findings; identical 1220/shard counts)",
+    "auditor_B": "not on origin at audit time; not consulted",
+    "diversity_audit_w3_consolidator": "read AFTER independent pass as context; its guard-trend findings (SAM guard held, crowding moved to template families, fingerprint instrument defeated, capacity no longer bottleneck) are independently reproduced at 1220 by this audit's own instruments in F2/F3/F4"
+  },
+  "no_fake_citations": true,
+  "canonical_state_untouched": true,
+  "recommended_next_task_type": "p1_stage1_meta_judge",
+  "auditor_branch": "cursor/p1-stage1-completion-auditor-c-3c0d",
+  "force_push": false
+}
