@@ -1,173 +1,118 @@
-# Windows7 — Research Idea Evolution
+# Windows7 — 研究想法演化（Research Idea Evolution）
 
-**Created:** 2026-08-29 · **Branch of record:** `main` · **Predecessor on `main`:** `Windows1`
+**创建日期：** 2026-08-29 · **登记分支：** `main` · **`main` 上的前一轮：** `Windows1`
 
-> `KNOWN FACT` `main` currently contains only `Windows1`. Branches exist for other Windows numbers
-> but were never merged into `main`. `Windows7` is created per explicit instruction, is a fresh
-> directory, and overwrites nothing.
+> `KNOWN FACT` 目前 `main` 上只有 `Windows1`。其他 Windows 编号的分支是存在的，
+> 但从未合并进 `main`。`Windows7` 是按明确指令创建的全新目录，没有覆盖任何东西。
 
 ---
 
-## The three final ideas
+## 最终的三个想法
 
-| # | Codename | ID | One sentence | Cost |
+| # | 代号 | ID | 一句话 | 成本 |
 |---|---|---|---|---|
-| **01** | **SupportAudit** | B-0121 | Feed few-shot segmentation methods the *wrong* support image and measure how much accuracy survives. | **~5 GPU-h** |
-| 02 | MemorySurgeon | A-0017 | Delete SAM2's corrupted memory entries mid-failure and measure how much tracking failure is memory-borne rather than perception-borne — **and ship the surgery as a wrapper if it works**. | ~180–220 GPU-h |
-| 03 | RehearsalGrid | C-0090 | Destroy the *content* of rehearsal text while matching its gradient scale, and find out whether rehearsal curation buys anything. | ~2,450 A100-h |
+| **01** | **SupportAudit** | B-0121 | 给少样本分割方法喂*错误的* support 图像，测量还能剩下多少精度。 | **~5 GPU-h** |
+| 02 | MemorySurgeon | A-0017 | 在 SAM2 失败的过程中删掉它被污染的 memory 条目，测量有多少跟踪失败是源于 memory 而非源于感知——**而且如果奏效，就把这套"手术"做成 wrapper 发布出去**。 | ~180–220 GPU-h |
+| 03 | RehearsalGrid | C-0090 | 在保持梯度尺度匹配的前提下摧毁 rehearsal 文本的*内容*，看看精心挑选 rehearsal 数据到底买到了什么。 | ~2,450 A100-h |
 
-**One evaluation-validity audit, one causal-mechanism tool with a mandatory method arm, one
-training-mechanism test.** Not three measurement papers — the Stage-6 meta-review found the locked
-Top 5 was measurement-tilted and made Idea_02's method arm a required deliverable rather than an
-optional extension. What the three share is that each attacks a load-bearing assumption the field
-currently acts on without evidence.
+**一个评测有效性审计、一个带强制方法臂的因果机制工具、一个训练机制检验。** 不是三篇测量型论文——Stage-6 元评审发现锁定的 Top 5 过度偏向测量，于是把 Idea_02 的方法臂从可选扩展改成了必须交付项。这三者的共同点是：每一个都在攻击一条本领域当前正在依据其行事、却没有证据支撑的承重假设。
 
 ---
 
-## #1 recommendation: **Idea_01, SupportAudit**
+## 首推：**Idea_01, SupportAudit**
 
-**Run it first, and run it this week.**
+**先跑它，而且本周就跑。**
 
-The recommendation is not about which idea is most interesting — Idea_02 probably is. It is about
-cost-per-decision, and the gap is not close:
+这个推荐与"哪个想法最有意思"无关——最有意思的大概是 Idea_02。它关乎的是每次决策的成本，而且差距并不接近：
 
-| | Killer experiment | What a negative result costs |
+| | killer 实验 | 一个负面结果的代价 |
 |---|---|---|
-| **Idea_01** | **~5 GPU-h** | five hours |
-| Idea_02 | ~60 GPU-h behind a ~22 GPU-h gate | a week |
-| Idea_03 | ~900 A100-h behind an ~800 A100-h gate | most of a month |
+| **Idea_01** | **~5 GPU-h** | 五个小时 |
+| Idea_02 | ~60 GPU-h，前面还压着一道 ~22 GPU-h 的门禁 | 一周 |
+| Idea_03 | ~900 A100-h，前面还压着一道 ~800 A100-h 的门禁 | 将近一个月 |
 
-Three further reasons:
+另外三条理由：
 
-1. **Every outcome is publishable, and they are different papers.** High retention indicts the
-   benchmarks. Low retention certifies them and validates a new statistic. A split between strata is
-   benchmark degeneracy, measured. The audit's object of study is the *evaluation*, so there is no
-   branch where the result is "nothing happened."
-2. **It has no external dependencies that can block day 1.** Public checkpoints, public benchmarks,
-   no gated data, no access request. Idea_02 has a hard dependency on DiDi with no mirror; Idea_03
-   needs an 8×A100 allocation that can absorb 800 hours before a go/no-go.
-3. **The prototype already caught a design error.** Building the harness showed that the
-   pre-registered statistic — median of per-episode retention ratios — was the wrong estimator,
-   because per-episode retention is bimodal. The support-driven control scored a median of 1.000
-   (indistinguishable from a support-blind method) while its ratio of means was 0.714. Had that gone
-   unnoticed, the killer experiment would have been unable to detect the effect it exists to detect.
-(The current harness run gives a ratio of means of 0.762 against a median of 1.000.)
+1. **每一种结果都可发表，而且它们是不同的论文。** 高保持率是对基准的控诉。低保持率则为基准正名，并验证了一个新统计量。若两个分层之间出现分裂，那就是被测量到的基准退化（benchmark degeneracy）。这个审计的研究对象是*评测本身*，所以不存在"什么都没发生"的分支。
+2. **它没有任何能在第 1 天就卡住的外部依赖。** 公开 checkpoint、公开基准，没有受限数据，不需要申请权限。Idea_02 硬依赖 DiDi 且没有镜像；Idea_03 需要一个能吃掉 800 小时才做 go/no-go 判断的 8×A100 配额。
+3. **原型已经抓出了一个设计错误。** 搭 harness 的过程显示，预注册的统计量——每个 episode 保持率之比的中位数——是错误的估计量，因为逐 episode 的保持率是双峰分布的。support 驱动型对照组的中位数是 1.000（与一个完全无视 support 的方法无从区分），而它的均值之比是 0.714。如果这一点没被发现，killer 实验将根本无法检测出它本该检测的那个效应。
+（当前 harness 运行给出的均值之比是 0.762，中位数是 1.000。）
 
-**The first experiment to run:** E1 in `Idea_01/experiments.md` — the two-method, one-benchmark,
-distractor-present-stratum wrong-support pass. About 5 GPU-h, and it decides whether the full audit
-is worth building.
+**第一个要跑的实验：** `Idea_01/experiments.md` 里的 E1——两个方法、一个基准、distractor-present 分层的错误 support 通路。约 5 GPU-h，它决定整个审计值不值得往下建。
 
 ---
 
-## Status
+## 状态
 
 | | Idea_01 | Idea_02 | Idea_03 |
 |---|---|---|---|
-| 28-section proposal | ✅ | ✅ | ✅ |
-| Runnable prototype | ✅ `run_mve.py` | ✅ `run_pilot.py` | ✅ `run_decision_demo.py` |
-| Prototype exercised end to end | ✅ | ✅ | ✅ |
-| Architecture diagrams | ✅ | ✅ | ✅ |
-| Pre-registration frozen | ✅ committed | ✅ committed | ✅ committed |
-| Literature verified & debt logged | ✅ | ✅ | ✅ |
-| Reviewer #2 attacks + responses | ✅ 8 | ✅ 6 | ✅ 8 |
-| External access confirmed | ❌ not yet | ❌ **DiDi is a hard blocker** | ❌ not yet |
-| Any real experiment run | **❌ no** | **❌ no** | **❌ no** |
+| 28 节 proposal | ✅ | ✅ | ✅ |
+| 可运行原型 | ✅ `run_mve.py` | ✅ `run_pilot.py` | ✅ `run_decision_demo.py` |
+| 原型已端到端跑通 | ✅ | ✅ | ✅ |
+| 架构图 | ✅ | ✅ | ✅ |
+| 预注册已冻结 | ✅ 已提交 | ✅ 已提交 | ✅ 已提交 |
+| 文献已核验、欠账已记录 | ✅ | ✅ | ✅ |
+| Reviewer #2 攻击 + 应答 | ✅ 8 条 | ✅ 6 条 | ✅ 8 条 |
+| 外部访问权限已确认 | ❌ 尚未 | ❌ **DiDi 是硬阻塞** | ❌ 尚未 |
+| 是否跑过任何真实实验 | **❌ 没有** | **❌ 没有** | **❌ 没有** |
 
-**Every number in this directory is either cited from a published paper (`EVIDENCE`) or produced by a
-synthetic prototype (`SIMULATED`). Nothing here was measured on a real model or a real benchmark.**
-The prototypes exist to validate decision rules before compute is spent, and they are labelled as
-such in every file that reports their output.
+**本目录中的每一个数字，要么是从已发表论文引用而来（`EVIDENCE`），要么是由合成原型产生的（`SIMULATED`）。这里没有任何东西是在真实模型或真实基准上实测的。** 这些原型的存在目的是在花费算力之前先验证决策规则，而且每一个报告其输出的文件都作了如实标注。
 
 ---
 
-## What building the prototypes changed
+## 搭原型改变了什么
 
-This is the part that would not exist if the packages had been written without running anything.
+这一节的内容，如果这些 package 是不跑任何东西直接写出来的，就根本不会存在。
 
-**Idea_01 — the primary statistic was wrong.** Per-episode retention is bimodal: under a wrong
-support, a method either lands on the right object or it does not, so the ratio piles up near 0 and
-near 1. A median over that distribution is a coin flip on which pile is larger. Switched to ratio of
-means, with the median retained as a secondary robust statistic and a flag when the two disagree —
-because a bimodal split is itself a finding about the method's failure mode.
+**Idea_01 —— 主统计量选错了。** 逐 episode 的保持率是双峰的：在错误 support 下，一个方法要么落在正确物体上、要么没落上，所以比值会堆积在 0 附近和 1 附近。在这样的分布上取中位数，等于在赌哪一堆更大。已改为均值之比，并保留中位数作为次级的稳健统计量，且当二者不一致时打标记——因为双峰分裂本身就是关于该方法失效模式的一项发现。
 
-**Idea_02 — the sham arm was specified backwards.** Stage 6 asked for "delete post-error entries but
-re-insert count-matched pre-error duplicates." Implemented literally, that arm *still removes the
-corruption*, so it performs the therapeutic action and would match `targeted` even when the
-instrument is perfectly valid. A sham operation makes the incision and removes nothing. The vacuous
-version is now `sham`; the literal version survives as `slot_control`, answering a different
-question.
+**Idea_02 —— sham 臂的规格写反了。** Stage 6 要求的是"删除 error 之后的条目，但按数量匹配地重新插入 error 之前条目的副本"。若照字面实现，这条臂*仍然移除了污染*，也就是说它执行了治疗性操作，从而即使工具完全有效，它也会与 `targeted` 打平。真正的 sham 手术应该是切开但什么都不切除。现在这个空操作版本叫 `sham`；照字面实现的那一版保留为 `slot_control`，回答的是另一个问题。
 
-**Idea_02 — H2 is structurally untestable on long failures, and pooling them is worse than useless.**
-`targeted` and `reset` are the *same operation* once FIFO has flushed every pre-error entry, which
-happens whenever the failure outlasts the memory horizon. Those failures contribute an exact zero to
-the arm gap, so including them does not measure a smaller effect — it dilutes a real one. Only 23 of
-50 simulated failures were testable, and pooling turned a genuine +0.130 gap into +0.040, which would
-have failed the pre-registered bar in the world where the decomposition is real. P2 is now read on
-the testable subset, with the pooled figure reported and labelled diluted.
+**Idea_02 —— H2 在长时段失败上结构性地不可检验，而且把它们混在一起比没用更糟。** 一旦 FIFO 把所有 error 之前的条目都冲掉，`targeted` 和 `reset` 就是*同一个操作*——只要失败持续时间超过 memory 视野，这种情况就会发生。这类失败对臂间差距的贡献恰好为零，所以把它们纳入统计并不是在测一个更小的效应，而是在稀释一个真实的效应。50 次模拟失败里只有 23 次是可检验的，混合统计把真实的 +0.130 差距变成了 +0.040，而在"分解确实成立"的世界里，这个值会通不过预注册门槛。P2 现在只在可检验子集上读取，同时报告混合后的数字并标注为已被稀释。
 
-**Idea_03 — the control arm contradicted the premise.** LLaVA-1.5's published mix already contains a
-text-only ShareGPT slice, so "reproduce the published recipe" and "`A0` = no rehearsal" cannot both
-hold. The base is now a pre-registered text-stripped mix with token-budget re-matching, and the
-published-recipe run is a reference point rather than an arm. This narrows the claim, and the
-proposal says so.
+**Idea_03 —— 对照臂与前提自相矛盾。** LLaVA-1.5 已发表的数据混合中本来就含有一份纯文本的 ShareGPT 切片，所以"复现已发表配方"和"`A0` = 无 rehearsal"这两件事不可能同时成立。现在的 base 改成了一个预注册的、剥除文本并按 token 预算重新匹配过的混合；已发表配方那次运行成为参考点而不是一条实验臂。这收窄了论断范围，而 proposal 里如实写明了这一点。
 
 ---
 
-## Directory
+## 目录结构
 
 ```
 Windows7/
-├── README.md                  ← you are here
-├── research_summary.md        the round in one document
+├── README.md                  ← 你现在看的就是这个
+├── research_summary.md        用一份文档讲完这一轮
 ├── selection_history/
 │   ├── evolution_summary.md   1110 → 255 → 52 → 21 → 5 → 3
-│   ├── reviewer_summary.md    what the reviewers actually changed
-│   └── eliminated_ideas_summary.md   what died, and why it might come back
+│   ├── reviewer_summary.md    评审实际改动了什么
+│   └── eliminated_ideas_summary.md   什么死了，以及它为什么可能回来
 ├── Idea_01/  SupportAudit    (B-0121)
 ├── Idea_02/  MemorySurgeon   (A-0017)
 └── Idea_03/  RehearsalGrid   (C-0090)
 ```
 
-Each idea directory carries `README.md`, `proposal.md` (28 sections), `literature.md`,
-`experiments.md`, `reviewer_attacks.md`, `roadmap.md`, `diagrams/`, `src/`, `configs/`, `references/`.
+每个 idea 目录都带有 `README.md`、`proposal.md`（28 节）、`literature.md`、`experiments.md`、`reviewer_attacks.md`、`roadmap.md`、`diagrams/`、`src/`、`configs/`、`references/`。
 
 ---
 
-## Next actions, in order
+## 下一步动作，按顺序
 
-1. **Run Idea_01 E1** (~5 GPU-h). It is the cheapest decision available and it gates everything else
-   in that project.
-2. **Request DiDi access for Idea_02 today.** It is a hard dependency with no mirror, and the request
-   has lead time regardless of when the project starts.
-3. **Request SAM3 tracking-zoo access** (gated, slow) even though Idea_02's E7 does not run for weeks.
-4. **Do not start Idea_03** until an allocation is confirmed that can absorb 800 A100-h before a
-   go/no-go.
+1. **跑 Idea_01 E1**（~5 GPU-h）。这是当前可得的最便宜的决策，而且它是该项目其余一切的门禁。
+2. **今天就为 Idea_02 申请 DiDi 访问权。** 这是没有镜像的硬依赖，而且无论项目何时启动，申请本身都有前置周期。
+3. **申请 SAM3 tracking-zoo 访问权**（受限、慢），尽管 Idea_02 的 E7 还要几周才跑。
+4. **不要启动 Idea_03**，除非已确认拿到一个能在 go/no-go 之前吃掉 800 A100-h 的配额。
 
-Two Stage-6 items sit outside these three packages and are easy to lose track of, so they are
-recorded here as well:
+有两个 Stage-6 事项落在这三个 package 之外，容易被漏掉，所以也一并记在这里：
 
-- **C-0028's zero-GPU offline gate** should run now. It costs nothing and it is what makes the first
-  fallback rung real rather than aspirational.
-- **B-0212's 3-arm MVE** (~6 A100-days) was funded at Stage 6 as the immediately promotable second
-  alternate. It is the designated successor on two separate rungs of the fallback ladder.
+- **C-0028 的零 GPU 离线门禁**现在就该跑。它不花任何成本，而且正是它让 fallback 阶梯的第一级从纸面变成真实可用。
+- **B-0212 的 3 臂 MVE**（~6 A100-天）在 Stage 6 获得了资源，是可以立即提拔的第二备选。它在 fallback 阶梯的两个不同层级上都被指定为继任者。
 
-The pre-committed fallback ladder is in `selection_history/reviewer_summary.md`. It exists so that a
-failure does not reopen the selection debate.
+预先承诺的 fallback 阶梯写在 `selection_history/reviewer_summary.md`。它存在的意义是：一次失败不会重新掀起选题辩论。
 
 ---
 
-## Unresolved risks
+## 未解风险
 
-- **Idea_02 has the fastest-decaying novelty in this round.** Memory-policy work on SAM2 is an active
-  area, and the mitigation is execution speed plus early public pre-registration, not argument.
-- **Idea_02's DiDi dependency has no fallback.** Losing it means descoping to LVOS v2 + SA-V and
-  reporting the distractor-density gap honestly.
-- **Idea_03 will most likely end at its power gate.** `arXiv:2603.14493` argues multimodal linguistic
-  forgetting is overstated; if it is right, the effect may not clear 2× seed σ at 7B. That ending is
-  priced in and costs under 1,000 A100-h.
-- **Idea_03's portfolio fit is contested.** It is a language-retention study in a mostly-segmentation
-  round. `EVIDENCE` The Stage-6 panel included it as a deliberate diversification decision over the
-  segmentation reviewer's dissent; no experiment settles that disagreement, and it is recorded in
-  `selection_history/reviewer_summary.md` rather than smoothed over.
-- **All three packages carry literature-verification debt**, logged per idea in `references/`. Some
-  sources are known only through secondary citation and must be read directly before submission.
+- **Idea_02 的新颖性衰减最快。** SAM2 的 memory 策略是活跃研究方向，缓解手段是执行速度加上尽早公开预注册，而不是靠辩论。
+- **Idea_02 的 DiDi 依赖没有退路。** 失去它就意味着降级到 LVOS v2 + SA-V，并如实报告 distractor 密度上的差距。
+- **Idea_03 最有可能止步于它的 power gate。** `arXiv:2603.14493` 主张多模态语言遗忘被夸大了；如果它说得对，那么在 7B 规模上效应可能过不了 2× seed σ。这个结局已被计入预算，代价低于 1,000 A100-h。
+- **Idea_03 与本轮组合的契合度存在争议。** 在一个以分割为主的轮次里，它是一项语言保持研究。`EVIDENCE` Stage-6 评审组是在分割方向评审明确异议的情况下，作为一项有意的多样化决策把它纳入的；没有任何实验能裁决这个分歧，而它被记录在 `selection_history/reviewer_summary.md` 里，而不是被抹平。
+- **三个 package 都背着文献核验欠账**，按 idea 分别记录在 `references/` 下。部分来源目前只通过二手引用得知，投稿前必须直接读原文。

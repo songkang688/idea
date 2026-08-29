@@ -1,156 +1,89 @@
-# Windows7 — Research Summary
+# Windows7 — 研究总结
 
-**2026-08-29** · 1,110 raw ideas → 3 executable research packages.
+**2026-08-29** · 1,110 条原始想法 → 3 个可执行的研究 package。
 
 ---
 
-## The shape of the round
+## 这一轮的形态
 
-The Final 3 are **one evaluation-validity audit, one causal-mechanism tool with a mandatory method
-arm, and one training-mechanism test**. That composition was not the plan; it is what survived, plus
-one deliberate correction.
+Final 3 是**一个评测有效性审计、一个带强制方法臂的因果机制工具、一个训练机制检验**。这个组合并非事先规划出来的；它是存活下来的东西，加上一次有意的修正。
 
-Every "new architecture" idea that entered Stage 3 died there or at Stage 4, for the same reason each
-time: the closest prior work had already done the thing, or Reviewer #2 could name a confound that no
-affordable experiment could remove. `KNOWN FACT` The Stage-6 audit recorded this as an **extinction,
-not a close call** — no METHOD-genre paper reached nominee grade anywhere in the funnel — and
-responded by making Idea_02's method arm a required deliverable rather than an optional extension.
-It also recommended re-instructing the Stage-1 generators next window so this does not repeat.
+每一个进入 Stage 3 的"新架构"类想法，都在 Stage 3 或 Stage 4 死掉了，而且每次的死因都相同：最接近的 prior work 已经做过这件事，或者 Reviewer #2 能点出一个任何负担得起的实验都无法排除的混淆因素。`KNOWN FACT` Stage-6 审计把这件事记录为一次**灭绝，而非侥幸**——整个漏斗中没有任何一篇 METHOD 体裁的论文达到提名级——并以此作出回应：把 Idea_02 的方法臂从可选扩展改为必须交付项。审计还建议在下一个 window 重新给 Stage-1 的生成器下指令，以免此事重演。
 
-What the three share is that each attacks a *load-bearing assumption the field currently acts on
-without evidence*:
+这三者的共同点是：每一个都在攻击*一条本领域当前正在依据其行事、却没有证据支撑的承重假设*：
 
-| Idea | The assumption it attacks |
+| Idea | 它攻击的假设 |
 |---|---|
-| **SupportAudit** | that few-shot segmentation benchmarks measure few-shot segmentation |
-| **MemorySurgeon** | that memory corruption is what makes SAM2 lose objects |
-| **RehearsalGrid** | that rehearsal-data *content* is what prevents multimodal forgetting |
+| **SupportAudit** | 少样本分割基准真的在测量少样本分割 |
+| **MemorySurgeon** | 让 SAM2 丢失物体的原因是 memory 污染 |
+| **RehearsalGrid** | 防止多模态遗忘靠的是 rehearsal 数据的*内容* |
 
-Each has a control arm that no adjacent paper runs: a wrong support, a vacuous sham, a token-shuffled
-corpus. That is the round's signature — in each case the contribution is the control.
+每一个都带有一条相邻论文都不会跑的对照臂：一个错误的 support、一个空操作的 sham、一份 token 被打乱的语料。这就是本轮的标志性特征——在每一个案例里，贡献恰恰就是那条对照。
 
 ---
 
-## Idea_01 — SupportAudit (B-0121) · **recommended first**
+## Idea_01 — SupportAudit (B-0121) · **推荐先跑**
 
-**Question.** When a few-shot segmentation method is given the *wrong* support image, how much of its
-accuracy survives?
+**问题。** 当一个少样本分割方法被喂了*错误的* support 图像时，它的精度还能存活多少？
 
-**Statistic.** Retention `= a_wrong / a_correct` per stratum; support-sensitivity `SSS = 1 − R`.
-Primary estimator is the **ratio of means**, with episode-level bootstrap.
+**统计量。** 按分层计算保持率 `= a_wrong / a_correct`；support 敏感度 `SSS = 1 − R`。主估计量是**均值之比**，配 episode 级 bootstrap。
 
-**Why it matters.** If retention is high on the distractor-present stratum, the field has been
-scoring a saliency prior and calling it few-shot segmentation. If it is low, the benchmarks are
-certified and a new statistic enters the toolbox. If the two strata split, that is benchmark
-degeneracy, measured for the first time.
+**为什么重要。** 如果在 distractor-present 分层上保持率很高，那么这个领域一直在给一个显著性先验打分，却把它叫做少样本分割。如果保持率很低，那么这些基准得到了正名，同时工具箱里多了一个新统计量。如果两个分层出现分裂，那就是基准退化，而且是首次被测量出来。
 
-**Killer experiment.** ~5 GPU-h. Two methods, one benchmark, the distractor-present stratum.
+**killer 实验。** ~5 GPU-h。两个方法、一个基准、distractor-present 分层。
 
-**What the prototype changed.** The pre-registered statistic was the median of per-episode ratios.
-Running the harness against controls showed per-episode retention is strongly **bimodal** — under a
-wrong support a method either lands on the right object or it does not — so the median is a coin flip
-on which pile is larger. The fully support-driven control scored a median of 1.000, identical to a
-support-blind method, while its ratio of means was 0.762 [0.651, 0.871]. The killer experiment would
-have been blind to the very effect it exists to detect. Now: ratio of means primary, median secondary
-and flagged when they disagree, because a bimodal split is a finding about the failure mode.
+**原型改变了什么。** 预注册的统计量原本是逐 episode 比值的中位数。把 harness 拿去跑对照组之后发现，逐 episode 的保持率呈强**双峰**——在错误 support 下，一个方法要么落在正确物体上、要么没落上——所以中位数等于在赌哪一堆更大。完全由 support 驱动的对照组中位数是 1.000，和一个完全无视 support 的方法一模一样，而它的均值之比是 0.762 [0.651, 0.871]。killer 实验本来会对它存在的意义所在的那个效应完全失明。现在改为：均值之比为主，中位数为次并在二者不一致时打标记，因为双峰分裂本身就是关于失效模式的一项发现。
 
 ---
 
 ## Idea_02 — MemorySurgeon (A-0017)
 
-**Question.** When SAM2 loses an object, how much of the failure is *memory-borne* — recoverable by
-deleting corrupted memory entries — versus perception-borne?
+**问题。** 当 SAM2 丢失一个物体时，这次失败有多少是*源于 memory* 的——即可以通过删除被污染的 memory 条目而恢复——相对于源于感知的部分？
 
-**Design.** Harvest organic failures with a fixed protocol and zero curation. At the recovery point,
-run six arms: `no_op`, `targeted`, `reset`, `sham`, `slot_control`, `random_k`. No weights are ever
-modified.
+**设计。** 用固定协议、零人工筛选地采集自然发生的失败。在恢复点上跑六条臂：`no_op`、`targeted`、`reset`、`sham`、`slot_control`、`random_k`。全程不修改任何权重。
 
-**Why it matters.** Every memory-policy paper (SAMURAI, DAM4SAM, SAM2Long) implicitly claims a
-headroom it never measures. This produces the headroom table: what share of the oracle-timed ceiling
-each published policy actually captures.
+**为什么重要。** 每一篇 memory 策略论文（SAMURAI、DAM4SAM、SAM2Long）都隐含主张了一个它从未测量过的提升空间。这项工作产出的就是那张提升空间表：每个已发表策略实际捕获了 oracle 计时上限的多少份额。
 
-**And it has to graduate.** `KNOWN FACT` The Stage-6 audit found the Top 5 measurement-tilted and made
-the method arm a **required deliverable**: if targeted deletion clears the ≥10-point margin over a
-full reset, the paper must ship the surgery as a training-free wrapper benchmarked head-to-head
-against SAMURAI and DAM4SAM (E9, ~40 GPU-h, conditional). The honest wrinkle, stated in the package
-rather than discovered later: the measurement is **oracle-timed** and a wrapper is not, so E9 needs a
-failure trigger and its gain will land strictly below the measured ceiling.
+**而且它必须"毕业"。** `KNOWN FACT` Stage-6 审计发现 Top 5 过度偏向测量，于是把方法臂定为**必须交付项**：如果定向删除相对完整重置的优势超过 ≥10 分的门槛，那么这篇论文必须把这套手术做成免训练 wrapper 发布，并与 SAMURAI 和 DAM4SAM 正面对比评测（E9，~40 GPU-h，条件触发）。有一个诚实的别扭之处，是写在 package 里而不是事后才发现的：这项测量是**oracle 计时**的，而 wrapper 不是，所以 E9 需要一个失败触发器，且它的增益必然严格低于测得的上限。
 
-**What the prototype changed, twice.**
+**原型改变了什么，两次。**
 
-The **sham arm was specified backwards**. Stage 6 asked for "delete post-error entries but re-insert
-count-matched pre-error duplicates at the same recency slots." Implemented literally, that arm still
-removes the corruption — it performs the therapeutic action — so "targeted must beat sham" was
-unpassable by construction. A sham operation makes the incision and removes nothing.
+**sham 臂的规格写反了。** Stage 6 要求的是"删除 error 之后的条目，但在相同的 recency 槽位上按数量匹配地重新插入 error 之前条目的副本"。若照字面实现，这条臂仍然移除了污染——它执行了治疗性操作——所以"targeted 必须打败 sham"这个判据在构造上就不可能通过。真正的 sham 手术应该是切开但什么都不切除。
 
-**H2 is structurally untestable on long failures, and pooling them dilutes the test.** `targeted` and
-`reset` are the same operation once FIFO has flushed every pre-error entry, so those failures
-contribute an exact zero to the arm gap. Only 23 of 50 simulated failures were testable, and pooling
-turned a genuine +0.130 gap into +0.040 — below the pre-registered bar, in the world where the
-decomposition is real. P2 is now read on the testable subset, and the failure-duration distribution
-became a reported property of the corpus rather than a nuisance parameter.
+**H2 在长时段失败上结构性地不可检验，而且把它们混在一起会稀释检验。** 一旦 FIFO 把所有 error 之前的条目都冲掉，`targeted` 和 `reset` 就是同一个操作，所以这类失败对臂间差距的贡献恰好为零。50 次模拟失败里只有 23 次可检验，混合统计把真实的 +0.130 差距变成了 +0.040——在"分解确实成立"的世界里，这低于预注册门槛。P2 现在只在可检验子集上读取，而失败持续时间的分布也从一个讨厌的干扰参数变成了语料库的一项需要报告的性质。
 
-The simulator also demonstrated why the controls are not optional. In a world with **no memory-borne
-failure at all** — a tracker that simply does better with an emptier bank — the naive test
-(`targeted` vs `no_op`) reported +0.360 and passed, **and so did P3**. Only P2 caught it. Neither
-control alone is sufficient.
+模拟器还证明了为什么那些对照不是可选项。在一个**完全不存在源于 memory 的失败**的世界里——即一个 bank 越空表现就越好的跟踪器——朴素检验（`targeted` vs `no_op`）报出了 +0.360 并且通过了，**而 P3 也通过了**。只有 P2 抓住了它。任何单独一条对照都不够。
 
-**Validity.** Naive correlations of 0.952 / 0.918 / 0.859 between reversible fraction and
-prevention-method gain became partial correlations of 0.682 / 0.397 / **0.028** after partialling out
-difficulty. The pre-registered statistic is the **minimum over a comparator set frozen before any
-comparator runs**, so one strong comparator cannot carry the headline.
+**有效性。** "可逆份额"与"预防式方法增益"之间 0.952 / 0.918 / 0.859 的朴素相关，在把难度偏出（partial out）之后变成了 0.682 / 0.397 / **0.028** 的偏相关。预注册的统计量是**在任何对照方法运行之前就冻结的对照集上取最小值**，因此单独一个强对照无法撑起标题结论。
 
 ---
 
 ## Idea_03 — RehearsalGrid (C-0090)
 
-**Question.** Does interleaved text rehearsal prevent language forgetting because of what the text
-*says*, or because it puts a matched-scale gradient on the language pathway?
+**问题。** 交错式文本 rehearsal 之所以能防止语言遗忘，是因为文本*说了什么*，还是因为它在语言通路上施加了一个尺度匹配的梯度？
 
-**Design.** Five arms at fixed token budget and matched per-layer gradient norms: none, curated,
-random web, **token-shuffled**, **one document repeated**. Capability-stratified retention.
+**设计。** 在固定 token 预算、且逐层梯度范数匹配的条件下设五条臂：none、curated、random web、**token-shuffled**、**单篇文档重复**。按能力分层看保持率。
 
-**Why it matters.** It is the only project in this round that changes what large labs *do* rather
-than how they measure. It is also the decisive experiment for a live dispute: `arXiv:2603.14493`
-argues the operative variable is task diversity — a content-side claim made observationally, with no
-content-free control and no gradient matching.
+**为什么重要。** 它是本轮唯一一个改变大实验室*做什么*而不是改变它们*怎么测*的项目。它同时也是一场活跃争议的决定性实验：`arXiv:2603.14493` 主张起作用的变量是任务多样性——这是一个内容侧的论断，却是观察性得出的，既没有内容无关的对照，也没有做梯度匹配。
 
-**What the prototype changed.** Three things, all pre-registration rather than compute. The base
-cannot be the published recipe, because LLaVA-1.5's mix already contains text-only ShareGPT — so
-`A0` requires a text-stripped base with token-budget re-matching. Retention ratios need usable
-denominators, and Vicuna-7B is near-floor on GSM8K and weak on IFEval, so absolute deltas are
-co-primary and a denominator gate runs before the arms. And "if the matching conventions diverge, the
-divergence is the finding" makes every outcome a result, so per-layer is now the declared primary.
+**原型改变了什么。** 三件事，全都属于预注册层面而非算力层面。base 不能是已发表配方，因为 LLaVA-1.5 的混合数据里本来就含有纯文本 ShareGPT——所以 `A0` 需要一个剥除文本、并按 token 预算重新匹配过的 base。保持率之比需要有可用的分母，而 Vicuna-7B 在 GSM8K 上接近地板、在 IFEval 上偏弱，所以绝对差值被列为共同主指标，并且在跑各条臂之前先跑一道分母门禁。而"如果匹配约定出现分歧，那么这个分歧本身就是发现"这一条使得每一种结果都成为结果，所以现在把逐层匹配声明为主方案。
 
-**Cost discipline.** ~2,450 A100-h total, but **the program dies at its power gate for under 1,000**.
-That asymmetry is the only thing that makes it responsible, and the demo shows the rule correctly
-*refusing to answer* in the low-effect world rather than reporting an inconclusive result that would
-invite one more seed and one more arm.
+**成本纪律。** 总计 ~2,450 A100-h，但**这个项目死在 power gate 上的花费低于 1,000**。正是这种不对称性使它成为一个负责任的项目，而 demo 显示该规则在低效应世界里会正确地*拒绝给出答案*，而不是报告一个会招来"再加一个种子、再加一条臂"的不确定结论。
 
 ---
 
-## What is genuinely uncertain
+## 真正不确定的地方
 
-- **Idea_02's novelty window is months, not years.** Memory-policy work on SAM2 is crowded, and
-  someone else may run the surgery.
-- **Idea_03 will probably end at its gate.** If forgetting really is small under a well-tuned recipe,
-  there is nothing to decompose at 7B.
-- **Idea_01 is the safest and the least ambitious.** Its worst case is a clean, useful, unexciting
-  paper — which is exactly why it is the one to run first.
-- **All three have literature-verification debt.** Several sources are known only through secondary
-  citation and must be read directly before any submission. Logged per idea.
-- **Idea_02's method arm is the least-specified part of the round.** E9 requires a failure trigger
-  that does not yet exist, and its design is sketched (attention collapse, confidence, mask-area) but
-  not chosen. It is conditional on P2 and runs last, which is the right sequencing, but it is the
-  place where a reader should expect the package to be thinnest.
+- **Idea_02 的新颖性窗口以月计，不是以年计。** SAM2 上的 memory 策略工作很拥挤，可能会有别人先跑这套手术。
+- **Idea_03 大概会止步于它的门禁。** 如果在一个调校良好的配方下遗忘确实很小，那么在 7B 规模上就没有什么可分解的。
+- **Idea_01 最稳妥，也最不宏大。** 它最坏的结果是一篇干净、有用、但不激动人心的论文——而这恰恰就是它应该被第一个跑的原因。
+- **三者都背着文献核验欠账。** 有若干来源目前只通过二手引用得知，任何投稿之前必须直接读原文。已按 idea 分别记录。
+- **Idea_02 的方法臂是本轮规格最不完整的部分。** E9 需要一个目前尚不存在的失败触发器，其设计只有草图（注意力崩塌、置信度、掩码面积）而未定选。它以 P2 为条件且排在最后执行，这个排序是对的，但它是读者应当预期本 package 最薄的地方。
 
 ---
 
-## The honest bottom line
+## 诚实的结论
 
-Nothing in Windows7 has been measured. What exists is three research packages whose decision rules
-have been executed against synthetic controls and, in every case, found to contain at least one error
-that would have compromised the real experiment. That is the deliverable: not results, but three
-experiments that are now more likely to produce interpretable ones.
+Windows7 里没有任何东西是被实测过的。存在的是三个研究 package，它们的决策规则已经被拿去对合成对照执行过，并且在每一个案例中都发现了至少一个本会损害真实实验的错误。这就是交付物：不是结果，而是三个如今更有可能产出可解释结果的实验。
 
-**Run Idea_01 E1 first. It costs five GPU-hours.**
+**先跑 Idea_01 E1。它花五个 GPU 小时。**
