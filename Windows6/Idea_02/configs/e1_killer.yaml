@@ -1,0 +1,31 @@
+# Idea_02 -- card E1, the killer experiment (experiments.md).
+#
+# STATUS: NOT RUN, AND CURRENTLY UNRUNNABLE.
+#
+# GATE-A is open: it has never been verified that camera metadata exists on any
+# public smoke/fire set. n_cameras below is a PLACEHOLDER, not a count -- card
+# E-A must establish the real number first, and Idea_02's own stop rule kills
+# the project if the answer is "no metadata". Fewer than 10 cameras triggers the
+# event-disjoint-only pivot, which forfeits H2.
+#
+# data.load_real_corpus and detector.train_real_detector both raise
+# NotImplementedError until wired up.
+#
+# Budget: ~10 GPU-h -- HYPOTHESIS, an estimate from evolution_summary.md, never
+# a measured runtime.
+
+split_types: [random, event_disjoint, camera_disjoint]
+seeds: 1
+detector: yolov8n
+metrics: [ap, far_at_recall]
+n_cameras: 0
+events_per_camera: 0
+frames_per_event: 0
+empty_frames_per_camera: 0
+feature_dim: 256
+camera_signature: 0.0
+test_cameras: 3
+target_recall: 0.8
+bootstrap_resamples: 1000
+seed: 0
+data_root: /path/to/pyronear2025

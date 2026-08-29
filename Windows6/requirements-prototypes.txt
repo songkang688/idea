@@ -1,0 +1,3 @@
+numpy>=1.24
+scipy>=1.10
+# real AMG: segment-anything, torch, pydicom or nibabel — install in lab, not required for prototype

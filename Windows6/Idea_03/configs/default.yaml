@@ -1,0 +1,34 @@
+# Idea_03 -- synthetic smoke configuration (card E0).
+#
+# Drives the CPU harness check, NOT the real protocol. For the pre-registered
+# experiment see e1_killer.yaml (which cannot run: GATE-B is open and no
+# checkpoint ships here).
+#
+# tax_mode chooses WHICH failure the synthetic chat model exhibits:
+#   none            neither generation nor representation degrades
+#   format          only free-form generation degrades (chatty wrapper)
+#   policy          generation AND likelihood degrade; visual tokens intact
+#   representation  visual tokens degrade too, so the probe drops
+# The E0 gate plants each of the four in turn and checks that
+# pipeline.classify_outcome recovers it from the measurements alone.
+#
+# Parsed by src/aligntax/config.py. Unknown keys and invalid tax_mode values
+# raise rather than being ignored.
+
+checkpoints: [base, chat]
+decode: constrained_xyxy
+probe: linear_visual_tokens
+optional: text_only_dpo_lora
+eval_modes: [freeform, constrained, likelihood_rank]
+tax_mode: policy
+n_examples: 256
+token_dim: 16
+n_distractors: 16
+image_size: 100.0
+chatty_rate: 0.35
+policy_noise: 0.18
+representation_noise: 0.35
+iou_threshold: 0.5
+gap_tolerance: 0.02
+seed: 0
+data_root: ""

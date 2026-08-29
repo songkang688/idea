@@ -1,0 +1,16 @@
+# Idea_03 prototype dependencies.
+#
+# numpy is the only hard requirement. run_smoke.py and all 27 self-checks pass
+# with nothing else installed.
+numpy>=1.24
+
+# Optional. A pure-numpy fallback parser handles the flat configs in this
+# package, so absence changes convenience, not results:
+# pyyaml>=6.0
+
+# The real experiment additionally needs a VLM stack (torch + transformers), a
+# grammar-constrained decoding library, and RefCOCO-style data. Card E4 also
+# needs a DPO/LoRA trainer. None is listed here on purpose: this package must
+# stay runnable without them so that a missing checkpoint fails loudly instead
+# of quietly turning EXPECTED numbers into apparent ACTUAL ones. GATE-B must
+# close before any of it is installed.

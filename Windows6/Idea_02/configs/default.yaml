@@ -1,0 +1,28 @@
+# Idea_02 — synthetic smoke configuration (card E0).
+#
+# Drives the CPU harness check, NOT the real protocol. For the pre-registered
+# experiment see e1_killer.yaml (which cannot run: GATE-A is open and no
+# dataset ships here).
+#
+# camera_signature scales how much of each feature vector is determined by the
+# camera prototype. Set it to 0.0 and every leakage measurement downstream must
+# come out null -- that is the negative control, pinned by a self-check.
+#
+# Parsed by src/camsplit/config.py. Unknown keys raise rather than being
+# ignored, so a silently dropped field is impossible.
+
+split_types: [random, event_disjoint, camera_disjoint]
+seeds: 3
+detector: tiny_logreg
+metrics: [ap, far_at_recall]
+n_cameras: 12
+events_per_camera: 6
+frames_per_event: 10
+empty_frames_per_camera: 20
+feature_dim: 24
+camera_signature: 1.0
+test_cameras: 3
+target_recall: 0.8
+bootstrap_resamples: 200
+seed: 0
+data_root: ""
