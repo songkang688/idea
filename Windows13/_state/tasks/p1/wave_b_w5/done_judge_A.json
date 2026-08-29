@@ -1,0 +1,107 @@
+{
+    "task_id": "p1_wave_b_w5",
+    "role": "judge_A_dedup",
+    "status": "complete",
+    "windows_id": "Windows13",
+    "windows_path": "Windows13",
+    "window_locked": true,
+    "wave": "w5_NPO",
+    "branch": "cursor/p1-wave-b-w5-judge-a-dedup-3de9",
+    "inputs": [
+        {
+            "generator": "gen_n_scaling_memorization_data_laws",
+            "branch": "origin/cursor/p1-gen-n-scaling-memorization-4814",
+            "idea_count": 100
+        },
+        {
+            "generator": "gen_p_constructive_capability",
+            "branch": "origin/cursor/p1-gen-p-constructive-6c3b",
+            "idea_count": 104
+        },
+        {
+            "generator": "gen_o_hard_domain_diversifier",
+            "branch": "origin/cursor/p1-gen-o-hard-domain-acc5",
+            "idea_count": 100
+        }
+    ],
+    "canonical_master_reference": {
+        "branch": "origin/cursor/p1-wave-b-w3-gate5-repair-f611",
+        "path": "Windows13/_state/ideas_master.jsonl",
+        "accepted_count": 638,
+        "usage": "read-only collision flagging; master NOT rewritten or appended"
+    },
+    "collision_only_shards": {
+        "enumerated_flag_only_not_merged": [
+            "gen_k (105, wave_b_w4)",
+            "gen_l (100, wave_b_w4)",
+            "gen_m (100, wave_b_w4)"
+        ]
+    },
+    "counts": {
+        "input_total": 304,
+        "keep": 271,
+        "kill_or_merge": 33,
+        "keep_per_shard": {
+            "gen_n": 86,
+            "gen_p": 87,
+            "gen_o": 98
+        },
+        "kill_per_shard": {
+            "gen_n": 14,
+            "gen_p": 17,
+            "gen_o": 2
+        },
+        "duplicate_groups": 27,
+        "cross_shard_duplicate_groups": 0,
+        "master_collisions": {
+            "kill_groups_with_master_target": 5,
+            "kills_into_master": 5,
+            "standalone_known_result_kills": 0,
+            "flagged_keeps": 47
+        },
+        "offmaster_collision_flags_on_keeps": 17,
+        "permutation_flags": {
+            "families": 50,
+            "unique_flagged_ids": 170
+        },
+        "family_merge_triggers": 6,
+        "gate5": {
+            "missing_kill_threshold": {
+                "gen_n": 0,
+                "gen_p": 0,
+                "gen_o": 1
+            },
+            "missing_evidence_label": {
+                "gen_n": 0,
+                "gen_p": 0,
+                "gen_o": 0
+            },
+            "note": "w5 is effectively GATE-5 clean: gen_n 100/100 and gen_p 104/104 fully compliant; gen_o 100/100 evidence labels and 99/100 numeric thresholds - the single exception O-007 states its kill condition in words and is flagged, not repaired. No thresholds or labels invented; no retrofit block needed pending judge B/C confirmation of O-007."
+        },
+        "anomalies_protected": 23,
+        "deliberate_tensions": 7,
+        "judge_clusters": 32
+    },
+    "output_files": [
+        "Windows13/_state/tasks/p1/wave_b_w5/judge_A.json",
+        "Windows13/_state/tasks/p1/wave_b_w5/judge_A.md",
+        "Windows13/_state/tasks/p1/wave_b_w5/accepted_shard_A.jsonl",
+        "Windows13/_state/tasks/p1/wave_b_w5/done_judge_A.json"
+    ],
+    "unresolved_items": [
+        "Novelty unverified for all 271 keeps; 47 carry master collision flags. Highest-risk keeps for the novelty gate: P-065 (vs J-009 linear-adapter head transfer - kept only for its orthogonality clause and encoder-zoo generalization; dies into J-009 if judges B/C read J-009 as owning the mechanism), P-060 (vs A-039/J-008 + published registers literature), P-094 (translational relation embeddings echo TransE-style knowledge-graph methods - judge hypothesis, unchecked), P-014 (vs B-017/B-020/B-021 rater-modeling family), N-062/N-067 (standing on the J-038 dose law), P-005 (vs D-024/D-078).",
+        "kill_or_merge is a redundancy disposition, not a quality verdict; likeliest resurrection candidates: N-070 (discriminative membership-through-distillation variant of J-074), P-034 (leaderboard-wide headroom normalization generalizes D-096 beyond detection), N-081 (black-box extraction arm of N-057), P-011 (federated rare-class completion arm of P-007).",
+        "17 keeps carry flag-only collisions against wave_b_w4 shards gen_k/l/m; strongest reconciliation duties: O-005 vs K-018/K-013 (non-pinhole depth-error correction - same mechanism, underwater flat-port vs general lens substrate), O-079 vs K-017 (metric scale from auxiliary physical cues), P-055 vs K-003 (K-003 claims learned upsamplers corrupt the geometric signal P-055 ships as a plug-in), P-007 vs L-051 (correlated model errors defeat the consensus P-007 relies on), N-050 vs M-058 (direct cross-wave contradiction on whether acquisition order is data-forced or optimization-forced).",
+        "Seven deliberate tensions need adjudication by experiment, not dedup (N-029 vs N-010/N-098; N-040 vs N-062/J-038 dedup policy; N-035 vs N-042; P-079 vs P-098; P-092 vs B-026; N-047 vs P-093/P-095; N-050 vs gen_m M-058).",
+        "GATE-5: single flagged record O-007 states its kill threshold in words; judge B should confirm or numerically pin it during feasibility review - this judge did not invent the number. All other 303 records are mechanically compliant.",
+        "Family-cell granularity is a recorded judgment call: cells were assigned at mechanism level, so gen_o's cross-domain physics templates (illumination_direction_artifacts 7 kept, decode_time_structural_constraints 9 kept across P+O) are permutation-flagged rather than cap-merged; a consolidator applying topic-level cells would fire additional caps against gen_o and should start from the flagged_permutation table.",
+        "The decode_time_structural_constraints template (9 kept across P and O after three in-cell merges) and the cheap_predictor_of_outcome_w5 family (6 kept, continuing w3's dominant 17-member pattern) are first in line for Stage-2 slot caps.",
+        "GATE-6 recorded, not enforced: genre labels (gen_p constructive wholesale; gen_o characterization-heavy) must be re-audited against claim phrasing before genre quotas are applied.",
+        "Dispositions may shift when judges B and C report and the Wave-B consolidator merges; gen_k/l/m (wave_b_w4) judge outputs were not on origin under a discoverable name at judge time and their verdicts on K/L/M ideas flagged here are unknown to this judge."
+    ],
+    "recommended_next_task_type": "p1_wave_b_w5_more_judges",
+    "canonical_state_untouched": true,
+    "no_fake_citations": true,
+    "force_push": false,
+    "completed_at_utc": "2026-08-29T01:23:34Z"
+}
