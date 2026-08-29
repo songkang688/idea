@@ -7,7 +7,7 @@
  "window_locked": true,
  "wave": "w4_KLM",
  "branch": "cursor/p1-wave-b-w4-judge-c-adversary-7a1e",
- "generated_at_utc": "2026-08-29T01:45:00Z",
+ "generated_at_utc": "2026-08-29T02:00:00Z",
  "outputs": [
   "Windows13/_state/tasks/p1/wave_b_w4/judge_C.json",
   "Windows13/_state/tasks/p1/wave_b_w4/judge_C.md",
@@ -16,16 +16,32 @@
  ],
  "counts": {
   "input_total": 305,
-  "input_by_shard": {"gen_k": 105, "gen_l": 100, "gen_m": 100},
+  "input_by_shard": {
+   "gen_k": 105,
+   "gen_l": 100,
+   "gen_m": 100
+  },
   "keep": 275,
-  "keep_by_shard": {"gen_k": 93, "gen_l": 87, "gen_m": 95},
+  "keep_by_shard": {
+   "gen_k": 93,
+   "gen_l": 87,
+   "gen_m": 95
+  },
   "merge": 27,
-  "merge_by_shard": {"gen_k": 10, "gen_l": 12, "gen_m": 5},
+  "merge_by_shard": {
+   "gen_k": 10,
+   "gen_l": 12,
+   "gen_m": 5
+  },
   "merge_within_wave4": 25,
   "merge_within_wave4_cross_shard": 0,
   "merge_into_master": 2,
   "kill": 3,
-  "kill_by_shard": {"gen_k": 2, "gen_l": 1, "gen_m": 0},
+  "kill_by_shard": {
+   "gen_k": 2,
+   "gen_l": 1,
+   "gen_m": 0
+  },
   "template_families": 34,
   "fingerprint_cells_audited": 16,
   "fingerprint_cells_over_cap_after_merges": 7,
@@ -38,7 +54,7 @@
   "check_sum": "275 + 27 + 3 = 305"
  },
  "unresolved_items": [
-  "judge_A w4 was not on origin at judging time; consolidator must majority-reconcile this shard against judge_A and judge_B when all land - known direction conflicts with judge_B already recorded (B merges K-043->K-037 and L-011->L-015 vs C keeps/groups differently; C's 3 kills and 24 additional family/permutation merges are B keeps).",
+  "judge_A w4 (origin/cursor/p1-wave-b-w4-judge-a-dedup-4008) landed on origin AFTER this judge's dispositions were drafted and pushed - NOT read, independence preserved; consolidator must majority-reconcile all three judges - known direction conflicts with judge_B already recorded (B merges K-043->K-037 and L-011->L-015 vs C keeps/groups differently; C's 3 kills and 24 additional family/permutation merges are B keeps).",
   "2 master merges (K-100->C-023, K-104->C-077) require consolidator action; canonical master is read-only for judges and was NOT modified (592 records verified untouched on this branch).",
   "7 fingerprint cells remain over cap <=6 after 25 judge-time merges: dispersion/disagreement (chronic master-side, +L-058), text_interface_lossiness (8), iso_budget_null (cross-wave ~11 coarse), cheap_predictor_of_outcome (chronic cross-wave, at 3/shard caps here), ritual_is_mechanism_in_disguise (19, gen_m mandated territory - distinct cells at fingerprint granularity), boundary_interior_decomposition (10), bn_statistics_mechanics (7, contains protected tension M-071 vs M-076) - consolidator arbitration + Stage-2 slot caps with the protected ids listed in judge_C.json; blind culling forbidden on protected members.",
   "GATE-5 normalization duty for all 93 gen_k keeps (mechanical, no invented numbers): fold the separate kill_threshold field into falsifiable_prediction (105/105 usable thresholds: 98 digit-bearing + 7 quantitative-verbal), rename evidence_labels->evidence_label with enum-case normalization, backfill needs_special_resources + seg_metric_dependent. NOT a remand case per the w2 commissioning ruling.",
@@ -47,7 +63,8 @@
   "GATE-4 wave failure for gen_k/gen_l (dataset AND model named: 2/105 and 2/100 by this judge's strict instrument; gen_m 92-100/100) - asset pinning belongs in the same mechanical retrofit lane; no assets invented by judges.",
   "GATE-6: genre quotas must be applied on judge labels, not self-labels - gen_k self 32.4% constructive vs 19-27.6% by phrasing (instrument-dependent), gen_l self 47% vs 27-35%, gen_m self 26% vs 19-20% (constructive quota fails on judge labels but gen_m is a characterization-law shard by mandate: record-not-reject). Judge genre labels stored per record in accepted_shard_C.jsonl.",
   "All 3 kills (K-020, K-069, L-012) are UNVERIFIED prior-art assessments over conceded-known cores, recoverable via the GATE-8 novelty lane; 20-id high_prior_art_risk watchlist attached in judge_C.json; Judge B's prior-art flags on M-023/M-031 recorded as dissent for the same lane.",
-  "All 7 w3-preflagged master collisions (J-005, J-011, J-078, J-092, J-097, J-102, J-103) and all 9 R2 gen_m anti-overlap ids reconciled with keeps + adjacency flags: zero forced merges beyond K-100/K-104; K-019 carries a remand-lane flag for the gen_g TTA family reconciliation inside the GATE-5 repair lane."
+  "All 7 w3-preflagged master collisions (J-005, J-011, J-078, J-092, J-097, J-102, J-103) and all 9 R2 gen_m anti-overlap ids reconciled with keeps + adjacency flags: zero forced merges beyond K-100/K-104; K-019 carries a remand-lane flag for the gen_g TTA family reconciliation inside the GATE-5 repair lane.",
+  "FINALIZATION RE-FETCH: newest canonical master tip is now origin/cursor/p1-wave-b-w3-gate5-repair-f611 with 638 records (592 + 46 retrofitted gen_g/gen_h; 127 still remanded); re-collision executed against the 46 (all inside the already-screened remand superset): zero new collisions, zero disposition changes, one flag upgrade (K-019 -> master_adjacent G-011). The w4 consolidator should base its state on the 638-record tip."
  ],
  "recommended_next_task_type": "p1_wave_b_w4_consolidator",
  "canonical_state_untouched": true,

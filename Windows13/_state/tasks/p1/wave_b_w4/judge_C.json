@@ -27,7 +27,7 @@
    "branch": "origin/cursor/p1-wave-b-consolidator-w3-bf20",
    "records": 592,
    "modified": false,
-   "note": "no GATE-5 repair branch with a higher count existed on origin at fetch time or at finalization re-fetch; remand_gate5.jsonl (173 accepted-on-content gen_g/gen_h records) additionally read for adjacency flags only"
+   "note": "branch base = w3 consolidator tip @ 592; FINALIZATION RE-FETCH found GATE-5 repair branch origin/cursor/p1-wave-b-w3-gate5-repair-f611 with a HIGHER canonical count (638 = 592 + 46 retrofitted gen_g/gen_h remand records, 127 still remanded) - re-collision executed, see finalization_refetch"
   },
   "commissioning": {
    "branch": "origin/cursor/p1-diversity-audit-consolidator-w2-942c",
@@ -1106,7 +1106,8 @@
     "F-035 (teacher-bias entrenchment)"
    ],
    "W13-P1-K-019": [
-    "remand gen_g TTA family G-011/G-079/G-082 (GATE-5 repair lane must reconcile; K-019 is depth-native and constructive, not TTA-method critique)"
+    "G-011 (TTA reset-vs-adapt family - IN canonical master since GATE-5 repair)",
+    "remand gen_g TTA members G-079/G-082 (GATE-5 repair lane must reconcile; K-019 is depth-native and constructive, not TTA-method critique)"
    ],
    "W13-P1-K-055": [
     "J-102 (effective temporal context / memory horizon)"
@@ -1328,5 +1329,15 @@
  "no_new_ideas": true,
  "no_fake_citations": true,
  "novelty_status_of_all_keeps": "unverified",
- "force_push": false
+ "force_push": false,
+ "finalization_refetch": {
+  "refetched_at_utc": "2026-08-29T01:55:00Z",
+  "newest_canonical_master_tip": "origin/cursor/p1-wave-b-w3-gate5-repair-f611 (b7d2d12), ideas_master.jsonl = 638 records",
+  "verification": "all 46 newly appended ids are a subset of the 173-record remand_gate5.jsonl this judge had ALREADY screened (lexical Jaccard + semantic family audit); zero removals; re-run lexical screen of the 46 vs all 305 wave records: zero hits above 0.12",
+  "dispositions_changed": "none",
+  "flag_upgrades": [
+   "K-019: adjacent TTA-family member G-011 moved from remand into the canonical master (G-079/G-082 remain remanded) - K-019's flag upgraded from remand-lane-only to master_adjacent:G-011"
+  ],
+  "judge_A_w4_landed_after_drafting": "origin/cursor/p1-wave-b-w4-judge-a-dedup-4008 appeared on origin after this judge's dispositions were drafted and pushed; NOT read (independence preserved); consolidator performs the three-judge reconciliation"
+ }
 }

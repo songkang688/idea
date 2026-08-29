@@ -1,7 +1,8 @@
 # P1 Wave B — Judge C (Adversary / Template-Family / Genre), Wave 4 (Generators K+L+M)
 
 - **task_id:** `p1_wave_b_w4` · **role:** `judge_C_adversary` · **wave:** `w4_KLM` · **windows:** Windows13 (locked, `windows_path: Windows13`)
-- **branch:** `cursor/p1-wave-b-w4-judge-c-adversary-7a1e` (cut from the canonical 592-record master tip `origin/cursor/p1-wave-b-consolidator-w3-bf20`; `ideas_master.jsonl`, `research_state.json`, `window.lock.json` present and UNTOUCHED; no GATE-5 repair branch with a higher count existed on origin at fetch or at finalization re-fetch)
+- **branch:** `cursor/p1-wave-b-w4-judge-c-adversary-7a1e` (cut from the then-canonical 592-record master tip `origin/cursor/p1-wave-b-consolidator-w3-bf20`; `ideas_master.jsonl`, `research_state.json`, `window.lock.json` present and UNTOUCHED)
+- **finalization re-fetch:** the GATE-5 repair branch `origin/cursor/p1-wave-b-w3-gate5-repair-f611` appeared during judging with a **higher canonical count (638** = 592 + 46 retrofitted gen_g/gen_h remand records; 127 still remanded). Re-collision executed: all 46 appended ids are inside the 173-record remand superset this judge had already screened; **zero new collisions, zero disposition changes**, one flag upgrade (K-019 → `master_adjacent: G-011`). Judge A w4 (`origin/cursor/p1-wave-b-w4-judge-a-dedup-4008`) landed after drafting and was **not read** (independence preserved). The w4 consolidator should base state on the 638-record tip.
 - **mandate:** adversarial pass — template families, permutation, banned clusters (calibration/uncertainty primary; smoke/scattering; annotation/convention primary HARD BAN; F1–F5; w2 caps), family membership as MERGE TRIGGER with fingerprint cap ≤6 vs master+wave, GATE-6 genre audit vs self-labels, gen_k schema-drift flagging, no invented numbers, keep/merge/kill, protect anomalies, no new ideas, no fake citations.
 
 ## Inputs
