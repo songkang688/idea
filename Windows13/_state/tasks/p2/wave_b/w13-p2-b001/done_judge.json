@@ -1,0 +1,63 @@
+{
+ "schema_version": "1.0",
+ "task_id": "p2_wave_b_w13_p2_b001_judge",
+ "windows_id": "Windows13",
+ "windows_number": 13,
+ "windows_path": "Windows13",
+ "batch_id": "W13-P2-B001",
+ "role": "wave_b_judge",
+ "candidate_count": 61,
+ "keep_count": 42,
+ "borderline_count": 19,
+ "kill_count": 0,
+ "review_queue_count": 33,
+ "gate8_lane_count": 22,
+ "kill_rationale": "Zero provisional kills: the only two kill_lean votes (A-007 skeptic information-value kill; A-032 experimentalist compute kill) are each contested by the other two seats, and policy routes contested kills and high-risk/high-upside records to the Wave C review queue instead of silent elimination.",
+ "inputs": {
+  "master": {
+   "file": "Windows13/_state/ideas_master.jsonl",
+   "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+   "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+   "lines": "1-61"
+  },
+  "batches": {
+   "file": "Windows13/_state/tasks/p2/state_reader/batches.json",
+   "branch": "origin/cursor/p2-state-reader-05a0-101c"
+  },
+  "policy": {
+   "file": "Windows13/_state/tasks/p2/state_reader/queue.json",
+   "section": "ranking_policy_notes M1-M7"
+  },
+  "wave_a_reviews": [
+   {
+    "role": "reviewer_novelty_significance",
+    "branch": "origin/cursor/p2-wave-a-b001-novelty-05a0-5d03",
+    "commit": "2af6fc8fa2dfded1133bac9a816c41255dfca08e"
+   },
+   {
+    "role": "reviewer_practical_experimentalist",
+    "branch": "origin/cursor/p2-wave-a-b001-experimentalist-05a0",
+    "commit": "359fec47b86216d4f719ac37841815bf6f4746d3"
+   },
+   {
+    "role": "reviewer_skeptical_high_risk",
+    "branch": "origin/cursor/p2-wave-a-b001-skeptic-05a0",
+    "commit": "619dac6261c766d918181e3abdc1946f9a07a0d5"
+   }
+  ]
+ },
+ "policy_applied": {
+  "M1_gate8": "22 records carry suspected-prior-art flags (5 medium: A-018, A-031, A-038, A-049, A-050); all routed to p1_gate8_novelty_triage lane, none silently killed.",
+  "M4_family": "In-batch families adjudicated provisionally: tf02 (A-005/A-024/A-036/A-047, leads A-005+A-047), tf03 (A-015/A-016/A-020/A-022/A-057, tail A-057), dg13/tf01 (A-011 over A-018), dg31 (A-023 root, A-029 secondary), A-006/A-009 pair, A-033/A-036 pair, A-059/A-061 (primary A-061); A-017 has a cross-batch tie to A-040 left to Wave C.",
+  "M5_soft_thresholds": "has_numeric_kill_threshold and retrofit flags copied per record from the experimentalist/skeptic seats; soft-threshold records must retrofit numeric criteria before entering the 200.",
+  "M6_asset_debt": "m6_asset_pinning_debt carried per record; binding (verdict-changing) for A-012 and A-053.",
+  "M7_thin_territories": "Not triggered: no fairness/bias-social, inference-time compute, embodied, or continual/lifecycle records in this batch (all SAM/SAM2/PEFT mechanics).",
+  "high_risk_high_upside": "A-032 protected from a compute-based kill; parked as Borderline for portfolio decision.",
+  "novelty": "unverified for all 61 records; no citations fabricated."
+ },
+ "recommended_next_task_type": "p2_wave_a_review",
+ "recommended_next_note": "B001 Wave B done; per queue.json dispatch rules the next dispatchable tasks are Wave A reviewer triplets for batches B002-B020 (p2_wave_a_review). A p2_wave_b_judge for another batch becomes dispatchable only once that batch has all 3 Wave A reviews.",
+ "complete": true,
+ "provisional": true,
+ "final_200_cut": false
+}
