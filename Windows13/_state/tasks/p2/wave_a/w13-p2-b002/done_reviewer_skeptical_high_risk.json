@@ -1,0 +1,47 @@
+{
+ "task_id": "p2_wave_a_w13_p2_b002_reviewer_skeptical_high_risk",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "batch_id": "W13-P2-B002",
+ "candidate_count": 61,
+ "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b002/reviewer_skeptical_high_risk.jsonl",
+ "recommended_next_task_type": "p2_wave_a_review",
+ "complete": true,
+ "reviewer_role": "reviewer_skeptical_high_risk",
+ "input_master": {
+  "file": "Windows13/_state/ideas_master.jsonl",
+  "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+  "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+  "master_lines": [
+   62,
+   122
+  ]
+ },
+ "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B002]",
+ "verdict_counts": {
+  "keep_lean": 40,
+  "borderline": 20,
+  "kill_lean": 1
+ },
+ "gate8_flagged_ids": [
+  "W13-P1-A-086",
+  "W13-P1-A-088",
+  "W13-P1-A-097",
+  "W13-P1-A-101",
+  "W13-P1-A-102",
+  "W13-P1-B-023"
+ ],
+ "m4_family_conflicts_flagged": [
+  "dg07_loss_determines_output_geometry: THREE members in batch (B-018 primary absorbing B-096, plus A-101 and B-003) - forced best-of-family; B-018 recommended primary",
+  "click-policy family A-069/A-092/A-094: judge_C of A-092 lists A-094 absorbed yet A-094 retained as its own line; judge_B mandates one shared click corpus; A-092 recommended primary",
+  "dg32_refraction_blindness: B-011 (primary, absorbs B-064) and B-012 both in batch - differentiated cues (refraction vs highlights) but require explicit co-adjudication",
+  "B-025/B-027: judge_C of B-025 absorbs B-027 yet B-027 retained as its own line (judge_A: 'same premise family, different measurable objects'); B-025 recommended primary",
+  "distillation-ambiguity pair A-080 (audit) / A-082 (controlled cause) within dg11's orbit - co-adjudicate as one family, A-082 carries the causal design",
+  "cheap-statistic transfer predictors A-078 (spectral band) / B-028 (scale-prior mismatch) duplicate one instrument class; adjacent to M4 gen_f sim-to-real cheap-statistics family",
+  "interactive/protocol-validity crowd A-066/A-069/A-072/A-099 (+A-082) - pooled eval-subject cap (M3) applies to this eval-methodology concentration",
+  "tf09 convention-decodability cross-shard pair A-063/B-021 - members of the M4 cross-shard provenance-forensics family",
+  "soft-boundary ontology crowd B-001/B-002/B-003/B-005/B-006/B-008 (six members, one shard); B-002/B-008 are near-siblings (rater-threshold model vs protocol intervention; B-008 recommended primary of the pair)",
+  "hard-domain bottleneck pair B-029 (scaling narrative) / B-031 (dg27 triage instrument) - co-adjudicate, B-031 measurement-first"
+ ],
+ "notes": "Wave-A skeptical/high-risk adversarial review only; final keep/kill authority rests with the Wave-B judge. No edits to ideas_master.jsonl or window.lock.json. Single kill_lean (A-077) is bound to record text: judge_C_adversary kill vote, why_it_might_be_wrong concedes architectural tautology, main_risk concedes matched-effort comparison undefinable. High-risk/high-upside anomalies (A-087, B-016, B-029) held at borderline with explicit retrofit demands rather than killed on difficulty, per queue.json policy. Novelty unverified for all 61 records; no external citations introduced beyond those already present in record text."
+}
