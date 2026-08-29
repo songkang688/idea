@@ -1,0 +1,59 @@
+{
+ "task_id": "p2_wave_a_w13_p2_b004_reviewer_skeptical_high_risk",
+ "windows_id": "Windows13",
+ "windows_path": "Windows13",
+ "batch_id": "W13-P2-B004",
+ "candidate_count": 61,
+ "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b004/reviewer_skeptical_high_risk.jsonl",
+ "recommended_next_task_type": "p2_wave_a_review",
+ "complete": true,
+ "reviewer_role": "reviewer_skeptical_high_risk",
+ "input_master": {
+  "file": "Windows13/_state/ideas_master.jsonl",
+  "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+  "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+  "master_lines": [
+   184,
+   244
+  ]
+ },
+ "batch_ref": "Windows13/_state/tasks/p2/state_reader/batches.json#batches[batch_id=W13-P2-B004]",
+ "verdict_counts": {
+  "keep_lean": 31,
+  "borderline": 29,
+  "kill_lean": 1
+ },
+ "gate8_flagged_ids": [
+  "W13-P1-C-010",
+  "W13-P1-C-015",
+  "W13-P1-C-016",
+  "W13-P1-C-020",
+  "W13-P1-C-021",
+  "W13-P1-C-023",
+  "W13-P1-C-025",
+  "W13-P1-C-028",
+  "W13-P1-C-037",
+  "W13-P1-C-046",
+  "W13-P1-C-056",
+  "W13-P1-C-060",
+  "W13-P1-C-061",
+  "W13-P1-C-071",
+  "W13-P1-C-088",
+  "W13-P1-C-089"
+ ],
+ "m4_family_conflicts_flagged": [
+  "dg19/tf12 reweighting-instability: C-042 primary; judge_C of C-042 lists C-044 as absorbed yet C-044 is retained as its own line (with its own judge_C merge vote) and is also judge_A-noted template-similar to C-008; C-034 is judge_A-conceded 'template-identical' to C-042 but carries the M7 fairness thin-territory consideration - Wave-B must resolve the C-042/C-044/C-034/C-008 block explicitly",
+  "C-045/C-052 double-role: judge_C of C-045 lists C-052 as absorbed while C-052 is simultaneously dg17 primary (absorbing C-001) with a judge_C merge vote - two parents claim one record; scope partition (search-budget confound vs wording instability) required",
+  "dg18/tf10 statistical-sufficiency block: C-073 primary whose judge_C absorb list includes C-047 (retained as own line, judge_C merge vote) and C-078; C-054's judge_C absorbs C-080 (retained as own line, judge_C merge vote); recommended fold: C-047/C-080/C-054 ride as arms of C-073's audit",
+  "dg21: judge_C of C-032 absorbs C-079, but C-079's judge_A merge vote is contradicted by judge_B's explicit keep-both note ('they triangulate') - co-adjudicate C-032 (observational primary) + C-079 (causal arm)",
+  "C-030 double-absorption bookkeeping conflict: judge_C of C-089 and judge_A of C-090 both claim to absorb W13-P1-C-030 - tf11 trio C-089/C-090/C-092 must be co-adjudicated with C-090 recommended anchor",
+  "corruption/suite-external-validity family: C-028 (real-vs-synthetic pairing), C-084 (menu holdout, longitudinal), C-085 (temporal retention) probe one suite-validity claim - forced co-adjudication, C-084 recommended longitudinal arm; C-085 additionally overlaps the temporal-validity pair C-029/C-032",
+  "dg29 label-noise pair C-010/C-025 share the re-adjudication instrument with different measured objects (calibration vs ranking resolving power); part of a four-strong adjudication-instrument crowd with C-066 (dg04) and C-070 - one pooled instrument at the cut",
+  "tf15_scale_nulls six-member single-shard crowd C-056/C-057/C-058/C-060/C-061/C-063 - pooled cap; C-057 recommended cheap-analysis slot per judge_B note; C-056/C-058 carry judge_B kill votes on compute and conceded identification gaps",
+  "tf09 convention-decodability members C-067 (instruction variants) and C-072 (vendor conventions) belong to the M4 cross-shard provenance-forensics family with A-063/B-021 from earlier batches; C-069/C-072 form the ecosystem-contamination anomaly pair",
+  "tf17 contamination crowd (C-023/C-024/C-027/C-029/C-032/C-064/C-069/C-072/C-079) - nine adjacent lines; C-023/C-024 share retrieval-index infrastructure and should be consolidated into one contamination-measurement program",
+  "M3 eval-subject/human-study concentration: C-065/C-067/C-069/C-071/C-072 plus adjudication arms of C-010/C-025/C-066/C-070 - pooled eval-subject cap applies to this batch's human-annotation methodology crowd",
+  "dg16 (C-077, absorbs six) and dg05 (C-018, absorbs three) are clean consolidations - absorbed members must not leak back as separate lines at the cut"
+ ],
+ "notes": "Wave-A skeptical/high-risk adversarial review only; final keep/kill authority rests with the Wave-B judge. No edits to ideas_master.jsonl or window.lock.json. Single kill_lean (C-016) is bound to record text: judge_C_adversary kill vote, judge_A retention note conceding existing OOD-triviality critiques (GATE-8 flag also set), and main_risk conceding the pipeline-matched control that the audit depends on is fragile - killed for conceded-known content plus a conceded-fragile differentiator, not for difficulty. judge_B kill votes on C-056/C-058 (compute) held at borderline per the do-not-kill-on-difficulty policy, with their conceded identification gaps documented instead. All 61 records lack numeric kill thresholds (m5_numeric_threshold_retrofit_needed=true throughout, consistent with the M5 431-record debt). This gen_c evaluation-critique shard is the most template-dense reviewed so far: 16 GATE-8 flags reflect judge_C prior_art_risk_high flags plus in-record concessions, not invented citations. Novelty unverified for all 61 records; no external citations introduced beyond those already present in record text."
+}
