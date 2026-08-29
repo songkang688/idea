@@ -1,0 +1,31 @@
+{
+  "task_id": "p2_wave_a_w13_p2_b005_reviewer_practical_experimentalist",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "batch_id": "W13-P2-B005",
+  "candidate_count": 61,
+  "output_file": "Windows13/_state/tasks/p2/wave_a/w13-p2-b005/reviewer_practical_experimentalist.jsonl",
+  "recommended_next_task_type": "p2_wave_a_review",
+  "complete": true,
+  "reviewer_role": "reviewer_practical_experimentalist",
+  "source": {
+    "file": "Windows13/_state/ideas_master.jsonl",
+    "branch": "origin/cursor/windows13-stage1-exploration-ee41-face",
+    "commit": "4a94eafb0aed28292b117481d2cb986aec849b13",
+    "master_lines": "245-305",
+    "read_only": true
+  },
+  "verdict_tally": {
+    "keep_lean": 42,
+    "borderline": 18,
+    "kill_lean": 1
+  },
+  "policy_notes_applied": [
+    "M5: no record in this batch states a numeric kill threshold; falsifiability down-weighted on every line (has_numeric_kill_threshold=false, m5_falsifiability_downweighted=true)",
+    "M6: gate4 asset-pinning debt recorded on every line (m6_asset_pinning_debt=true); pinnable public asset candidates suggested, no datasets or results fabricated",
+    "novelty_status=unverified for all 61; prior-art concerns flagged as unverified pressure, no citations fabricated",
+    "verdict_suggestion only (keep_lean/borderline/kill_lean); final verdicts deferred to the Wave-B judge",
+    "P1 judge_C kill vote on D-059 (typographic-attack port, accepted 2/3) independently corroborated from the cheap-kill side: near-free probe but near-zero expected information given published CLIP typographic vulnerability, kill_lean",
+    "T2 training-gated records with no analysis-only decisive probe (D-020, D-026, D-036, D-041, D-052, D-055, D-072) marked borderline for Wave-B cost-benefit rather than advanced on cheapness"
+  ]
+}
