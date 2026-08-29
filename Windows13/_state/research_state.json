@@ -14,7 +14,7 @@
   "supervisor": "Windows13",
   "current_stage": "Stage 1",
   "target_pipeline": "1000+ -> 200 -> 50 -> 20 -> 5 -> 3",
-  "total_ideas": 592,
+  "total_ideas": 638,
   "survivors": 0,
   "final_target": 3,
   "status": "stage1_exploration_in_progress",
@@ -125,7 +125,7 @@
   },
   "idea_counts": {
     "stage1_generated_total": 908,
-    "stage1_accepted_total": 592,
+    "stage1_accepted_total": 638,
     "stage1_merged_total": 132,
     "stage1_killed_total": 11,
     "stage1_target": "1000+",
@@ -174,8 +174,8 @@
         "sub_wave": "w3_GHJ",
         "input": 304,
         "accepted_by_majority": 271,
-        "accepted_appended_to_master": 98,
-        "accepted_remanded_gate5": 173,
+        "accepted_appended_to_master": 144,
+        "accepted_remanded_gate5": 127,
         "merged": 31,
         "killed": 2,
         "accepted_by_shard": {
@@ -184,17 +184,19 @@
           "gen_j": 98
         },
         "appended_by_shard": {
-          "gen_g": 0,
-          "gen_h": 0,
+          "gen_g": 30,
+          "gen_h": 16,
           "gen_j": 98
         },
         "accepted_unanimous": 232,
         "accepted_2_1_majority": 39,
         "merged_into_wave12_master": 9,
-        "gate5_note": "gen_g/gen_h acceptances remanded to Windows13/_state/tasks/p1/wave_b_w3/remand_gate5.jsonl pending kill-threshold + evidence_label retrofit (no thresholds invented); gen_j appended fully gate-compliant"
+        "gate5_note": "GATE-5 repair lane p1_wave_b_w3_gate5_repair appended 46 of the 173 remanded gen_g/gen_h acceptances (gen_g 30, gen_h 16) after extracting kill thresholds strictly from each record's own prediction/experiment text (exact-fraction quantifiers, universal/existential zero-bounds, null-scale references); 127 records had no extractable numeric bound and stay remanded in Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl - zero thresholds invented",
+        "accepted_remanded_gate5_originally": 173,
+        "gate5_repaired_appended": 46
       }
     },
-    "stage1_accepted_pending_gate5_retrofit": 173
+    "stage1_accepted_pending_gate5_retrofit": 127
   },
   "exploration": {
     "diversity_audit_w1": {
@@ -357,6 +359,37 @@
       "remand_queue": "Windows13/_state/tasks/p1/wave_b_w3/remand_gate5.jsonl (173 records)",
       "master_after_append": 592,
       "diversity_audit_due": true
+    },
+    "wave_b_w3_gate5_repair": {
+      "task_id": "p1_wave_b_w3_gate5_repair",
+      "role": "gate5_repair",
+      "completed_at_utc": "2026-08-29T01:05:00Z",
+      "branch": "cursor/p1-wave-b-w3-gate5-repair-f611",
+      "input": "Windows13/_state/tasks/p1/wave_b_w3/remand_gate5.jsonl (173 accepted gen_g/gen_h records) on origin/cursor/p1-wave-b-consolidator-w3-bf20 (592-line master)",
+      "policy": "extract-only repair: a record was repaired ONLY if its own falsifiable_prediction / experiment text already contained an exact numeric commitment; the extracted 'Falsified if' clause restates that in-text quantifier verbatim-faithfully. No 0.5-nats / 2-dB style values were guessed for the rest.",
+      "extraction_classes": {
+        "exact_fraction_quantifier": 22,
+        "null_scale_reference": 12,
+        "universal_zero_bound": 6,
+        "existential_zero_crossing": 6
+      },
+      "counts": {
+        "remanded_in": 173,
+        "repaired_appended": 46,
+        "repaired_by_shard": {
+          "gen_g": 30,
+          "gen_h": 16
+        },
+        "still_remanded": 127,
+        "check_sum": "46 + 127 = 173; master 592 + 46 = 638"
+      },
+      "master_after_append": 638,
+      "still_remanded_queue": "Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl",
+      "gate4_note": "gate4 named-public-dataset/model (and gen_h gate3 time-cost) gaps remain open on the repaired records and are recorded per-record in gate5_missing; naming assets was out of scope because it would require inventing dataset/model choices",
+      "no_invented_thresholds": true,
+      "no_fake_citations": true,
+      "diversity_audit_due": true,
+      "recommended_next_task_type": "p1_wave_b (remaining K/L/M/N/P/O judging)"
     }
   },
   "last_consolidator": {
