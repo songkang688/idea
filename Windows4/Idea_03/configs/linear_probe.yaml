@@ -1,0 +1,42 @@
+# AlphaSmoke — week-1 killer experiment: frozen-encoder linear probe
+# (proposal.md §4.4; metrics_protocol.md §7; gate for all Part-A training spend, K-A1)
+# STATUS: PLAN. checkpoint fields TODO until runbook R2.
+
+encoders:
+  matting_vitb:
+    provenance: matting
+    checkpoint: null        # TODO(R2): public matting-pretrained ViT-B (MAM [S3] / ViTMatte-class [M]);
+                            # record source URL + sha256 here before running
+  cocoseg_vitb:
+    provenance: segmentation
+    checkpoint: null        # TODO(R2): SAM ViT-B image encoder or ViTDet-COCO [M]; matched backbone size
+  imagenet_vitb:
+    provenance: imagenet
+    checkpoint: null        # TODO(R2): timm/torchvision ImageNet ViT-B [M]; control
+
+probe:
+  head: conv1x1             # LinearProbeHead — no decoder, no adapters, by design
+  upsample: bilinear
+
+data:
+  train_source: smoke5k_real_train     # real smoke only (B2 spirit: probe endpoint is real smoke)
+  test_source: smoke5k_real_test
+  budgets: [25, 50, 100, 250]
+  seeds: [0, 1, 2]
+  probe_val_fraction: 0.2              # carved from the training budget, per seed
+
+schedule:                              # identical for every encoder (protocol requirement)
+  optimizer: adamw
+  lr: 1.0e-3
+  weight_decay: 1.0e-4
+  max_epochs: 50
+  early_stop_patience: 5
+
+endpoint:
+  metrics: [iou, f_beta, mmse]
+  threshold: from_eval_protocol        # tau_op frozen at R1
+  uncertainty: seeds_x_image_bootstrap
+
+decision_rule:                         # K-A1 (experiments.md §2)
+  fund_pretrain_grid_if: "95% CIs of matting vs cocoseg mIoU separate at >=1 budget"
+  else: "Part A demotes to probe + floors; package weight shifts to Part B"

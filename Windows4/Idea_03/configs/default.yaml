@@ -1,0 +1,16 @@
+# AlphaSmoke — config index (replaces the initial skeleton default.yaml).
+# The original skeleton carried hue-band HSV params here; the frozen a-priori HSV
+# floor parameters now live in eval_protocol.yaml -> hsv_floor_params (saturation/
+# value/chroma rule, not a hue band) and are never tuned on any test set.
+
+configs:
+  pretrain_arms: configs/pretrain_arms.yaml   # Part A arms M/MB/S/S_cal/ZERO (B1, B7, B8)
+  datasets: configs/datasets.yaml             # registry + access status (honest UNVERIFIED)
+  eval_protocol: configs/eval_protocol.yaml   # metric columns (B4), tau spec, kill thresholds, pool (B9, B10)
+  linear_probe: configs/linear_probe.yaml     # week-1 killer experiment (gate K-A1)
+  rater_study: configs/rater_study.yaml       # ceiling study (B5)
+  alpha_capture: configs/alpha_capture.yaml   # measured-alpha arm (B3)
+
+entrypoints:
+  self_tests: "python -m pytest tests/ -q"
+  probe_cli: "python src/alphasmoke/probes/encoder_linear_probe.py --config configs/linear_probe.yaml --encoder matting_vitb"

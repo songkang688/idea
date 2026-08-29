@@ -1,0 +1,35 @@
+# AlphaSmoke Part B pillar 3 — rater ceiling study (B5; metrics_protocol.md §5)
+# STATUS: PLAN. Runs calendar-parallel to everything (runbook R4).
+
+design:
+  raters: {min: 3, target: 5}
+  images_per_benchmark: 150
+  benchmarks: [smoke5k_real_test, ssd_test]
+  stratification:
+    variable: smoke_density_tercile
+    proxy: mean_hsv_smoke_score_of_gt_region   # model-free: no checkpoint under test
+                                               # is used for stratification
+  annotation:
+    binary: all_images
+    soft_subset_fraction: 0.33                 # scribble-derived soft alpha on a subset
+  instructions_policy: |
+    Raters receive the ORIGINAL annotation guideline of each dataset — the ceiling
+    must reflect the benchmark as used, not a new definition of smoke boundary.
+  rater_independence: no rater sees another rater's masks; order randomized per rater
+
+statistics:                                     # src/alphasmoke/rater/ceiling.py
+  pairwise: [iou, mae_on_soft_subset]
+  report: [median, iqr, per_stratum, pooled, per_image_distribution]
+
+confrontation:
+  deltas_source: configs/eval_protocol.yaml:published_deltas   # verifiable rows only
+  flag: sub_ceiling                                            # delta < (1 - ceiling)
+
+preregistered_demotion:                         # K-B4
+  condition: pooled_median_pairwise_iou > 0.85
+  consequence: "H4 dead; ceiling pillar moves to appendix; metric pillars stand alone"
+
+discussion_commitments:                         # proposal.md §5.3 — printed in the paper
+  - ceiling bounds what single-annotator GT can certify, not model equality
+  - multi-rater consensus / measured alpha can still separate models below the ceiling
+  - ceiling is metric-dependent; computed per metric

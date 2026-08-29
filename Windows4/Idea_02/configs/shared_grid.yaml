@@ -1,0 +1,100 @@
+# PromptAmnesia — shared fine-tuning checkpoint grid (E2)
+# STATUS: PRE-REGISTRATION DRAFT. Becomes FROZEN at tag `idea02-prereg-v1`.
+# No analysis may begin before the freeze (Stage-4 structural attack #1).
+# Every value here is a DESIGN PARAMETER, not a measured result.
+
+meta:
+  package: Windows4/Idea_02 PromptAmnesia
+  experiment: E2_shared_grid
+  status: DRAFT
+  freeze_tag: idea02-prereg-v1
+  consumers: [P065, P031, P177, P082_plasticity]
+
+model:
+  backbone: sam_vit_b            # official SAM ViT-B weights; hash pinned at Phase 0
+  init_checkpoint: assets/sam_vit_b.pth   # placeholder path; hash recorded at download
+  vit_h_replication: headline_cells_only_if_budget   # optional, not promised
+
+domains:
+  - name: busi
+    modality: ultrasound
+    task: breast lesion segmentation (2D)
+    splits: {train: 0.6, val: 0.15, calibration: 0.1, test: 0.15}  # image-level, seed-stratified
+  - name: msd_task09_spleen_2d
+    modality: ct
+    task: spleen segmentation, 2D slices
+    splits: {train: 0.6, val: 0.15, calibration: 0.1, test: 0.15}  # PATIENT-level split, no slice leakage
+
+prompt_mixes:
+  box_only:
+    box_jitter: {type: relative_uniform, max_shift: 0.05, max_scale: 0.10}
+  point_only:
+    point_rule: uniform_interior_min_dist_to_boundary_5px
+  mixed:                          # THE LICENSING COLUMN — all forgetting claims live here
+    composition:
+      box_jittered: 0.3334
+      single_positive_point: 0.3333
+      iterative_protocol: 0.3333  # up to 5 clicks; negative clicks on false-positive regions
+    multimask: enabled
+  mixed_robustness_cell:          # attack B1 answer; headline domain only, 3 seeds
+    composition: {box_jittered: 0.5, single_positive_point: 0.25, iterative_protocol: 0.25}
+    multimask: enabled
+
+recipes:
+  full_ft:
+    trainable: all
+    lr_sweep: [1.0e-6, 1.0e-5, 1.0e-4]   # Gu-protocol honesty control (C1-076 LR confound)
+  decoder_ft:
+    trainable: mask_decoder
+    lr_sweep: [1.0e-5, 1.0e-4]
+  lora_encdec:
+    trainable: lora_only
+    lora: {rank: 4, alpha: 4, targets: [attn.q_proj, attn.v_proj], scope: [image_encoder, mask_decoder]}
+    lr_sweep: [1.0e-4, 3.0e-4]
+  vera_random_control:            # MANDATORY (Stage-3 cluster-2 ruling): frozen random directions,
+    trainable: scaling_vectors    # rank-matched; trained-PEFT effects must beat this arm
+    vera: {rank: 4, frozen_random_AB: true, shared_across_layers: true}
+    lr_sweep: [1.0e-3]
+
+loss:
+  mask_loss: dice_plus_ce        # 1:1 weighting
+  aggregation:                    # mixed column only; both cells mandatory for diversity claim (C1-061)
+    cells: [min_loss_mask, all_mask]
+  iou_head_loss:
+    default: on                   # the honest recipe (Stage-4 P031 attack)
+    off_cell: one_cell_shared_with_P031
+
+training:
+  seeds: [0, 1, 2]                # >=3 binding; escalate to [0..4] on headline cells if E1 envelope wide
+  optimizer: adamw
+  weight_decay: 0.01
+  warmup_steps: 500               # A1-110 hygiene note
+  max_steps: 6000                 # short 2D medical fine-tunes; checkpoint cadence governs matched-gain
+  batch_size: 8
+  checkpoint_every_steps: 250     # dense enough for +/-0.5 Dice matched-gain selection
+  amp: bf16
+
+covariates_logged_per_checkpoint:   # P108 residue — logged free, never a headline claim
+  - step
+  - train_loss
+  - val_dice_at_tuned_threshold
+  - per_module_group_update_norm    # {image_encoder, prompt_encoder, decoder_cross_attn, decoder_rest}
+  - interface_cka_drift             # encoder-output CKA vs init on a fixed probe batch
+
+matched_gain_rule:                  # SINGLE DEFINITION — used verbatim by P065/P031/P082/P177 (proposal §14)
+  reference: weakest_arm_best_val_dice_per_stratum   # stratum = (domain, mix, seed)
+  tolerance_dice_points: 0.5
+  selection: first_checkpoint_within_band
+  never_reached_policy: exclude_and_report
+  sensitivity_tolerances: [0.25, 1.0]
+
+update_norm_matched_arm:            # P177 confounder control; added only on E1 PROCEED
+  enabled_on: gate_proceed
+  spec: per-module-group LR rescaling to equalize cumulative update norm across groups
+
+estimated_budget:
+  expanded_runs: "~204 = 144 recipe-x-LR base cells (8 recipe-LR cells x 3 mixes x 3 seeds x 2 domains)
+                  + 48 all-mask cells (mixed column) + 12 mix-robustness cells;
+                  enumerate with: python -m promptamnesia.train_lora_stub --config ... --print-plan"
+  gpu_days_estimate: "25-45 (single A100-class), ESTIMATE not measurement"
+  trim_order: [point_only_column_lr_sweeps, drop_vit_h, non_headline_seeds_3_to_2]

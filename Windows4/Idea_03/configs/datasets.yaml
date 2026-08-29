@@ -1,0 +1,56 @@
+# AlphaSmoke — dataset registry (see datasets.md for citations + license status)
+# STATUS: PLAN. All paths are TODO until the R0 license/access audit passes.
+# access_status values: unverified | verified | denied  — updated only at R0, honestly.
+
+smoke:
+  ds01_03:
+    role: [partA_secondary_endpoint, partB_synthetic_alpha_arm]
+    gt: alpha_synthetic
+    citation: "arXiv:1809.00774 [S3]"
+    path: null            # TODO(R0)
+    access_status: unverified
+  smoke5k:
+    role: [partA_primary_endpoint_real_split, partB_pool_scoring, rater_study]
+    gt: binary
+    citation: "Yan et al., AAAI 2022 [S3]"
+    path: null            # TODO(R0)
+    access_status: unverified
+  ssd:
+    role: [rater_study, ceiling_confrontation]
+    gt: binary
+    citation: "per stage3_kill_medical_smoke.md §8 [S3]"
+    path: null            # TODO(R0)
+    access_status: unverified
+  aus_smoke_multinat:
+    role: [partA_primary_endpoint_if_licensed, ceiling_confrontation_deltas]
+    gt: binary
+    citation: "arXiv:2604.23542 [V]"
+    path: null            # TODO(R0)
+    access_status: unverified
+  figlib:
+    role: [measured_alpha_capture_source]
+    gt: sequences_event_labelled
+    citation: "Dewangan et al., Remote Sensing 14(4):1007, 2022 [S3]"
+    path: null            # TODO(R0)
+    access_status: unverified
+  alphasmoke_measured:
+    role: [partB_measured_alpha_arm, partA_tertiary_endpoint]
+    gt: measured_alpha_with_validity_masks
+    citation: "this package (configs/alpha_capture.yaml)"
+    path: null            # produced by R5
+    access_status: to_be_captured
+
+matting_pretrain:            # arms M / MB — corpus frozen jointly (datasets.md §2)
+  p3m10k: {path: null, access_status: unverified, license_note: "check pretrain-use terms"}
+  aim500: {path: null, access_status: unverified}
+  composition1k: {path: null, access_status: unverified, license_note: "request-based; drop if denied"}
+
+segmentation_pretrain:       # arms S / S_cal
+  coco: {path: null, access_status: unverified}
+
+splits:
+  policy: |
+    Published splits used where they exist. For rater study and probe experiments,
+    image-level sampling within test splits is allowed (single images, no sequences);
+    for FIgLib-derived sequences, splits are BY SEQUENCE/CAMERA to prevent
+    near-duplicate leakage between train/probe-val/test. Frozen at R0.

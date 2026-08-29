@@ -1,0 +1,59 @@
+# AlphaSmoke Part A — pretrain arm grid (proposal.md §4.1; obligations B1, B7, B8)
+# STATUS: PLAN. checkpoint/path fields are TODO until runbook steps R0/R6.
+# The M/MB contrast is the load-bearing control (B1): identical images, identical
+# recipe, identical budget; ONLY the label softness differs.
+
+common:
+  backbone: vit_b            # identical for every arm
+  head: light_alpha_head     # MAM-style light regression head, ~2-3M params [S3: arXiv:2306.05399]
+  head_params_budget_m: 3.0
+  init: imagenet             # common starting point for controlled pretrains
+  pretrain_budget:
+    epochs: 60               # PLAN value; frozen before R6, identical for M and MB
+    batch_size: 32
+    lr: 1.0e-4
+    optimizer: adamw
+  finetune:                  # identical fine-tune recipe for every arm (B8)
+    budgets_n: [25, 50, 100, 250, 500, full]
+    seeds: [0, 1, 2]
+    epochs: 40
+    lr: 5.0e-5
+
+arms:
+  M:                         # the bet: matting provenance, soft labels
+    pretrain_task: alpha_regression
+    label_type: soft_alpha
+    corpora: [p3m10k, aim500]        # optional extras per datasets.md §2, license-gated
+    checkpoint: null                  # TODO(R6)
+  MB:                        # B1 — binarized-matting control
+    pretrain_task: binary_segmentation
+    label_type: alpha_binarized_at_0.5
+    corpora: same_as_M                # enforced: literal same image list as arm M
+    checkpoint: null                  # TODO(R6)
+  S:                         # field default: segmentation provenance
+    pretrain_task: binary_segmentation
+    label_type: coco_masks
+    corpora: [coco]
+    matched_count_subsample: true     # B8 — extra cell subsampled to |M| images
+    public_checkpoint_cell: true      # supporting-evidence cell (SAM/ViTDet [M])
+    checkpoint: null                  # TODO(R6)
+  S_cal:                     # B7 — head-alignment control
+    base: S
+    calibration:
+      task: alpha_regression
+      data: generic_nonsmoke_composites   # seg-corpus images + random soft masks
+      steps: 2000                          # brief by design; frozen before R6
+    checkpoint: null                  # TODO(R6)
+  ZERO:                      # floor anchor
+    pretrain_task: none
+    label_type: none
+    init_options: [scratch, imagenet_only]
+    checkpoint: null
+
+floors:                      # B6 — scored in every fine-tune cell (K-A5)
+  - dark_channel             # src/alphasmoke/baselines/dark_channel.py
+  - hsv_low_chroma           # src/alphasmoke/baselines/color_hsv.py
+
+gate:                        # K-A1 — training spend is gated by the week-1 probe
+  probe_config: configs/linear_probe.yaml
+  rule: "fund arms only if probe CIs separate at >=1 budget"

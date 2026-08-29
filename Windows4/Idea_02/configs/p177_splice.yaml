@@ -1,0 +1,67 @@
+# PromptAmnesia — P177 mechanism arm: splice x stitch x interpolation (E5)
+# STATUS: PRE-REGISTRATION DRAFT. Stitch families and module partition FREEZE at `idea02-prereg-v1`.
+# BINDING (P177 included in Idea_02): stitching controls, both swap directions, alpha-interpolation,
+# update-norm accounting are MANDATORY (stage4_r2_setB.md §2 + cross-paper attack #3).
+
+meta:
+  package: Windows4/Idea_02 PromptAmnesia
+  experiment: E5_p177_splice
+  status: DRAFT
+  freeze_tag: idea02-prereg-v1
+
+inputs:
+  checkpoint_pairs: matched_gain_manifest_from_E2   # (pre-FT SAM, fine-tuned arm); NO new fine-tuning
+  eval: battery_columns_from_p065_eval_battery.yaml # restoration measured per prompt type
+
+module_partition:                  # parameter-name prefixes; exact map in src/promptamnesia/splice.py
+  image_encoder: ["image_encoder."]
+  prompt_encoder: ["prompt_encoder."]
+  decoder_cross_attn:              # token<->image cross-attention blocks inside the mask decoder
+    - "mask_decoder.transformer.layers.*.cross_attn_token_to_image."
+    - "mask_decoder.transformer.layers.*.cross_attn_image_to_token."
+    - "mask_decoder.transformer.final_attn_token_to_image."
+  decoder_rest:                    # remaining decoder + output/IoU heads
+    - "mask_decoder."              # minus decoder_cross_attn prefixes (set difference in code)
+
+swap_grid:
+  directions: [preft_module_into_ft_model, ft_module_into_preft_model]   # BOTH mandatory
+  cells_per_module: [no_stitch, trained_stitch]
+  stitch_only_calibration_cells: true          # quantify stitch power (attack B8)
+
+stitch:
+  families:                        # BOTH pre-registered; verdicts must hold under both (attack B8)
+    primary: per_channel_affine    # scale + shift at swapped interface
+    secondary: linear_1x1
+  training:
+    data: shared_calibration_split
+    frozen: everything_except_stitch
+    max_steps: 500
+    lr: 1.0e-3
+    capacity_cap: no_hidden_layers_no_nonlinearity
+
+alpha_interpolation:               # WiSE-FT-style continuous baseline the binary splice must beat
+  per_module_group: true
+  alphas: [0.0, 0.25, 0.5, 0.75, 1.0]
+
+confounder_controls:
+  update_norm_accounting: from_E2_covariate_logs
+  norm_matched_ft_arm: from_shared_grid.update_norm_matched_arm
+
+readout:
+  restoration_fraction: "R = (metric(chimera) - metric(FT)) / (metric(frozen) - metric(FT))"
+  per: [module_group, direction, stitch_cell, prompt_type, seed]
+  uncertainty: hierarchical_bootstrap_cis
+  degenerate_denominator_policy: cells_with_near_zero_drop_reported_unnormalized
+
+verdict_rule_H5:                   # pre-registered
+  stands_iff:
+    - cross_attn_plus_stitch_restores_large_fraction
+    - encoder_plus_stitch_restores_approximately_none
+    - holds_in_both_directions
+    - exceeds_alpha_curve_prediction
+    - cis_non_overlapping
+    - stable_across_both_stitch_families
+  otherwise: locus_claim_withdrawn_grid_reported_descriptively
+
+estimated_budget: {gpu_days: "2-4 (ESTIMATE; stitch training minutes/cell, cost is chimera re-eval)",
+                   trim: restrict_chimera_eval_to_headline_retention_suite}
