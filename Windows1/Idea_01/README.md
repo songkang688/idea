@@ -1,162 +1,162 @@
-# Idea_01 —— RetainSAM
+# Idea_01 — RetainSAM
 
-**候选标题**
+**Candidate titles**
 
 1. RetainSAM: Fine-Tuning SAM under a Promptability-Retention Constraint
 2. Dominating the WiSE-FT Front: Constrained Adaptation of Promptable Segmenters
 3. Keep the Clicks: Domain Adaptation of SAM without Destroying Interactivity
 
-## 1. 摘要
+## 1. Executive summary
 
-在**目标稠密预测领域**上微调 SAM（或 SAM2 图像编码器 + 提示解码器），同时**显式约束通用可提示性**（在留出的自然图像上的点击／框）。科学主张不是"又一个 adapter"。它是：**在微调期间对提示行为指标施加约束，可以严格支配基础 checkpoint 与简单微调 checkpoint 之间由 WiSE-FT 权重插值所描绘出的 Pareto 前沿**。
+Fine-tune SAM (or SAM2 image encoder + prompt decoder) on a **target dense-prediction domain** while **explicitly constraining generic promptability** (clicks/boxes on held-out natural images). The scientific claim is not “another adapter.” It is: **a constraint on prompt-behavior metrics during FT can strictly dominate the Pareto front traced by WiSE-FT weight interpolation** between the foundation checkpoint and a naively fine-tuned checkpoint.
 
-若权重插值本就已经描绘了该前沿，则该*方法*死亡；该*评测协议*仍可作为负结果／基准注记发布。
+If interpolation already traces the front, the *method* is dead; the *evaluation protocol* may still be released as a negative-result / benchmark note.
 
-## 2. 动机
+## 2. Motivation
 
-KNOWN：SAM 被用作基础权重文件，随后在医学或伪装目标数据集上做全量微调。社区默认做法：目标域 Dice 是唯一目标；SA-1B/COCO 上的交互性被假定为要么已保持、要么无关紧要。
+KNOWN: SAM is used as a foundation weights file and then fully fine-tuned on medical or camouflaged-object sets. Community default: target Dice is the objective; interactivity on SA-1B/COCO is assumed either preserved or irrelevant.
 
-HYPOTHESIS：无约束微调静默地将 SAM 转化为了一个小模型专才，而论文依然称其结果为"SAM"。HQ-SAM 风格的表格已经暗示了在某些 PEFT 放置方式下 COCO AP 的下降（来自 prior-work agent 的 EVIDENCE：HQ-SAM 的权衡表）。WiSE-FT（Wortsman et al., 2022）是遍历该权衡的简单方式。还没有人（截至文献核验 NOT FOUND）将可提示性视为一项**约束**，并附带针对插值的 **kill 测试**。
+HYPOTHESIS: unconstrained FT silently converts SAM into a smaller specialist, and papers still call the result “SAM.” HQ-SAM-style tables already hint at COCO AP drops under some PEFT placements (EVIDENCE from prior-work agent: HQ-SAM tradeoff table). WiSE-FT (Wortsman et al., 2022) is the trivial way to walk that tradeoff. Nobody (NOT FOUND pending lit-verify) treats promptability as a **constraint** with a **kill test against interpolation**.
 
-## 3. 问题定义
+## 3. Problem definition
 
-设 θ₀ 为官方 SAM 权重。设 D_tgt 为有标签的目标分割数据集。设 D_gen 为冻结的通用可提示性测试套件（图像 + 点击／框协议，**无梯度**）。
+Let θ₀ be official SAM weights. Let D_tgt be a labeled target segmentation set. Let D_gen be a frozen generic promptability suite (images + click/box protocols, **no gradient**).
 
-寻找在以下目标上达到 Pareto 最优的 θ：
+Find θ that is Pareto-optimal on
 
-- J_tgt(θ) = D_tgt 验证集上的 Dice/mIoU
-- J_gen(θ) = 协议向量：{1-click mIoU, 3-click mIoU, box mIoU, NoC@90}
+- J_tgt(θ) = Dice/mIoU on D_tgt val
+- J_gen(θ) = protocol vector: {1-click mIoU, 3-click mIoU, box mIoU, NoC@90}
 
-**约束形式（训练）：** 最小化 L_tgt(θ; D_tgt) + λ L_ret(θ; D_gen^replay)
+**Constraint form (training):** minimize L_tgt(θ; D_tgt) + λ L_ret(θ; D_gen^replay)
 
-其中 L_ret 是可微代理损失（在采样提示下相对于 SAM-θ₀ 伪标签的掩码 CE/Dice），而非评测协议本身。
+where L_ret is a differentiable proxy (mask CE/Dice vs SAM-θ₀ pseudo-labels under sampled prompts), not the eval protocol itself.
 
-**成功不是 D_tgt 上的一个数字。** 成功是对插值曲线 θ(α)=(1−α)θ₀+α θ_naive 的严格支配。
+**Success is not a number on D_tgt.** Success is domination of the interpolation curve θ(α)=(1−α)θ₀+α θ_naive.
 
-## 4. 核心假设（可证伪）
+## 4. Core hypothesis (falsifiable)
 
-**H1：** 存在若干工作点，在 ≥2 个点上，约束微调在匹配的 J_gen 下取得比 WiSE-FT 更高的 J_tgt，**且**在匹配的 J_tgt 下取得更高的 J_gen。
+**H1:** There exist operating points where constrained FT achieves higher J_tgt than WiSE-FT at matched J_gen, **and** higher J_gen at matched J_tgt, on ≥2 points.
 
-**H2：** 在匹配的 D_tgt 训练预算下，简单全量微调违反了预先注册的 ε（例如在 COCO val 上 3-click mIoU 下降 > 2 点），而约束微调没有。
+**H2:** Naive full FT violates a pre-registered ε (e.g., 3-click mIoU drop > 2 points on COCO val) while constrained FT does not, at matched D_tgt train budget.
 
-若插值折线未被严格支配，则 **Kill H1**。
+**Kill H1** if the interpolation polyline is not strictly dominated.
 
-若简单微调本就保持在 ε 之内，则 **Kill H2** —— 该问题对于该领域并不存在（在 kill 项目前尝试更远的领域）。
+**Kill H2** if naive FT already stays within ε — the problem does not exist for that domain (then try a farther domain before killing the project).
 
-## 5. 关键洞察
+## 5. Key insight
 
-可提示性是一种**行为**，而非单一精度。插值混合权重得到标量融合；它无法优先保护**点击到掩码的几何关系**，同时允许**解码器类别先验**发生改变。对提示采样掩码施加 replay 约束能正中该子空间。
+Promptability is a **behavior**, not a single accuracy. Interpolation mixes weights for a scalar blend; it cannot preferentially protect **click-to-mask geometry** while allowing **decoder class-prior** to move. A replay constraint on prompt-sampled masks targets that subspace.
 
-这是关于参数空间几何特性的 HYPOTHESIS，而非既成事实。
+This is a HYPOTHESIS about parameter-space geometry, not a fact.
 
-## 6. 新颖性（确切差别）
+## 6. Novelty (exact difference)
 
-| 邻近工作 | 他们做了什么 | 我们做什么 |
+| Neighbor | They did | We do |
 |---|---|---|
-| HQ-SAM | 额外解码器 token 用于边界；报告部分 COCO 权衡 | 约束 + **必须胜过插值** |
-| MedSAM | 在医学数据上微调 SAM；关注目标 Dice | 双重评测；保留通用点击能力 |
-| WiSE-FT | 插值零样本与微调 CLIP | 同样的基线**作为 kill 开关**，而非作为我们的方法 |
-| LoRA / adapters | 更少参数，隐式正则化 | 显式 J_gen 约束；在匹配参数量下对比 |
-| 持续学习 / EWC | 保护旧任务 Fisher 信息 | 旧任务是**可提示分割**，通过点击协议而非 ImageNet 测量 |
+| HQ-SAM | Extra decoder tokens for boundaries; report some COCO tradeoff | Constraint + **must beat interpolation** |
+| MedSAM | FT SAM on medical; target Dice | Dual eval; retain generic clicks |
+| WiSE-FT | Interpolate zero-shot and FT CLIP | Same baseline **as kill switch**, not as our method |
+| LoRA / adapters | Fewer params, implicit regularization | Explicit J_gen constraint; compare at matched param count |
+| Continual learning / EWC | Protect old-task Fisher | Old task is **promptable segmentation**, measured by click protocols not ImageNet |
 
-剩余新颖性**以胜过 WiSE-FT 为前提**。信心：中等（Medium）。
+Remaining novelty is **conditional** on beating WiSE-FT. Confidence: Medium.
 
-## 7. 文献
+## 7. Literature
 
-见 `literature.md`。仅引用我们视为 KNOWN 的论文。
+See `literature.md`. Only cite papers we treat as KNOWN.
 
-## 8–10. 方法、架构图、数学形式
+## 8–10. Method, diagram, math
 
-见 `diagrams/architecture.md` 以及下方数学形式。
+See `diagrams/architecture.md` and math below.
 
-### 训练
+### Training
 
-1. 采样目标批次（图像，GT 掩码）。可选：从 GT 采样点／框以保持在 SAM 提示接口内。
-2. 从 COCO train（或有许可的 SA-1B 子集）采样 replay 图像。从冻结的 θ₀（无梯度）生成提示（随机内部点击、带噪框）与**教师**掩码。
-3. 学生模型 θ 同时预测目标掩码与 replay 掩码。
-4. 损失函数：
+1. Sample target batch (image, GT mask). Optional: sample a point/box from GT to stay in SAM’s prompt interface.
+2. Sample replay images from COCO train (or a SA-1B subset if licensed). Generate prompts (random interior click, noisy box) and **teacher** masks from frozen θ₀ (no grad).
+3. Student θ predicts both target and replay masks.
+4. Loss:
 
 \[
 \mathcal{L} = \mathcal{L}_{\mathrm{DiceCE}}(p_{\mathrm{tgt}}, y_{\mathrm{tgt}}) + \lambda \, \mathcal{L}_{\mathrm{DiceCE}}(p_{\mathrm{replay}}, y_{\theta_0}) + \gamma \|\theta_{\mathrm{enc}} - \theta_{0,\mathrm{enc}}\|_2^2
 \]
 
-可选拉格朗日方式：当 J_gen 的低成本滑动估计值跌破 ε 时增大 λ。
+Optional Lagrangian: increase λ when a cheap running estimate of J_gen drops below ε.
 
-### WiSE-FT 基线
+### WiSE-FT baseline
 
 \[
 \theta(\alpha)=(1-\alpha)\theta_0 + \alpha \theta_{\mathrm{naive}}, \quad \alpha\in[0,1]
 \]
 
-在 11 个 α 点上评测双轴。约束运行必须实现支配。
+Eval both axes at 11 α. Constrained run must dominate.
 
-## 11. 实现
+## 11. Implementation
 
-`src/` 中的可运行原型（插值、损失、提示采样、评测钩子）。完整 SAM 训练需要官方 `segment-anything` checkpoint（未打包在仓库中）。
+Runnable prototype in `src/` (interpolation, losses, prompt sampling, eval hooks). Full SAM training requires the official `segment-anything` checkpoint (not bundled).
 
-## 12. 数据
+## 12. Data
 
-- 目标域（killer 选一个）：Kvasir-SEG 或 ISIC 2018 或 COD10K。
-- 通用套件：COCO 2017 val（things）、LVIS 稀有类别子集、可选 ADE20K stuff（预期更难）。
-- **不要**在 COCO val 上训练。
+- Target (pick one for killer): Kvasir-SEG or ISIC 2018 or COD10K.
+- Generic suite: COCO 2017 val (things), LVIS rare-class subset, optional ADE20K stuff (expected harder).
+- Do **not** train on COCO val.
 
-## 13. 基线
+## 13. Baselines
 
-Zero-shot SAM；仅微调解码器；编码器 LoRA；全量微调；WiSE-FT；可选编码器 EWC。
+Zero-shot SAM; decoder-only FT; LoRA on encoder; full FT; WiSE-FT; optional EWC on encoder.
 
-## 14. 指标
+## 14. Metrics
 
-目标域：Dice、NSD/Boundary IoU。通用套件：1/3/5 次点击下的 mIoU（误差中心模拟**与**随机内部点击 —— RClicks 证明了模拟存在偏差；我们两者都报）。框 mIoU。NoC@90。相对于 θ₀ 的保留 Δ。
+Target: Dice, NSD/Boundary IoU. Generic: mIoU @ 1/3/5 clicks (center-of-error simulation **and** random-interior clicks — RClicks showed simulation bias; we report both). Box mIoU. NoC@90. Retention Δ vs θ₀.
 
-## 15–17. 实验矩阵 / 消融 / Killer
+## 15–17. Experimental matrix / ablation / killer
 
-见 `experiments.md`。
+See `experiments.md`.
 
-## 18. 预期结果（未经测量）
+## 18. Expected results (NOT measured)
 
-EXPECTED：简单微调在医学数据上比零样本提升 8–20 Dice，但损失数点 COCO 3-click mIoU。WiSE-FT 描绘出平滑前沿。约束微调 EXPECTED 位于前沿之上（若 replay 与插值互补）；若不互补则 EXPECTED 坍缩到前沿上。
+EXPECTED: naive FT gains 8–20 Dice on medical vs zero-shot, loses several points of COCO 3-click mIoU. WiSE-FT traces a smooth front. Constrained FT EXPECTED to sit above the front if replay is non-redundant with interpolation; EXPECTED to collapse onto the front if not.
 
-## 19. 失效案例
+## 19. Failure cases
 
-编码器必须剧烈变动的远端医学领域；stuff 类别；微小物体；SAM2 视频记忆提示（超出 v1 范围）。
+Far-domain medical where encoder must move a lot; stuff classes; tiny objects; SAM2 memory prompts (out of v1 scope).
 
-## 20. 负结果
+## 20. Negative results
 
-若 WiSE-FT 表现持平：发布**可提示性保留套件**与负结果（"插值就足够了"）。那依然是一篇论文，但不是*这篇*方法论文。转向 Idea_03 作为 #1。
+If WiSE-FT matches: publish the **promptability-retention suite** and the negative result (“interpolation is enough”). That is still a paper, but not *this* method paper. Pivot to Idea_03 as #1.
 
-## 21–22. Reviewer #2 / 应答
+## 21–22. Reviewer #2 / response
 
-攻击："HQ-SAM Table X 已经展示了权衡；WiSE-FT 已经能遍历它。"
-应答实验：**支配图（domination plot）**。若无支配，他们是对的 —— 停止。
+Attack: “HQ-SAM Table X already showed the tradeoff; WiSE-FT already walks it.”
+Response experiment: **domination plot**. If no domination, they are correct — stop.
 
-攻击："Replay 只是蒸馏，不是约束。"
-应答：对比 λ=0 关蒸馏 vs λ>0 vs 插值；展示 replay ≠ 插值。
+Attack: “Replay is just distillation, not a constraint.”
+Response: compare λ=0 distillation-off vs λ>0 vs interpolate; show replay≠interpolation.
 
-攻击："COCO 不是 SA-1B。"
-应答：记录代理数据集性质；可用时可选 SA-1B 子集。
+Attack: “COCO is not SA-1B.”
+Response: document proxy; optional SA-1B subset if available.
 
-## 23. 算力
+## 23. Compute
 
-Killer：约 4–6 GPU-days（A100）。完整方案：约 20 GPU-days，3 个领域，先 ViT-B 后 ViT-H，3 个随机种子。
+Killer: ~4–6 GPU-days (A100). Full: ~20 GPU-days, 3 domains, ViT-B then ViT-H, 3 seeds.
 
-## 24. 路线图
+## 24. Roadmap
 
-见 `roadmap.md`。
+See `roadmap.md`.
 
-## 25. 停止 / 继续
+## 25. Stop / continue
 
-- **Kill 方法：** 在 2/2 个目标领域上均无 Pareto 支配。
-- **转向（Pivot）：** 纯 replay 与约束等价 → 持续学习短文。
-- **继续（Continue）：** 在医学 + 一个非医学（COD10K）上实现支配。
+- **Kill method:** no Pareto domination on 2/2 target domains.
+- **Pivot:** replay-only equals constrained → continual-learning short paper.
+- **Continue:** domination on medical + one non-medical (COD10K).
 
-## 26. 扩展
+## 26. Extensions
 
-SAM2 视频可提示性；MedSAM 权重作为 θ₀；逐层插值 vs 我们的约束。
+SAM2 video promptability; MedSAM weights as θ₀; per-layer interpolation vs our constraint.
 
-## 27. 论文立意
+## 27. Paper story
 
-"大家都在做插值。我们证明保护*点击行为*不等同于混合权重 —— 或者我们证明它们是一回事，并不再把无约束医学微调称为'SAM'。"
+“Everyone interpolates. We show that protecting *click behavior* is not the same as mixing weights — or we show that it is, and stop calling unconstrained medical FT ‘SAM’.”
 
-## 28. 标题
+## 28. Titles
 
-列于文首。
+Listed at top.

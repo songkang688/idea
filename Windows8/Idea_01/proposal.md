@@ -1,98 +1,98 @@
-# Idea_01 —— Objectness, Not Features
+# Idea_01 — Objectness, Not Features
 
-**本轮 Windows 的 #1 推荐。**
+**Recommended #1 for this Windows round.**
 
-状态：HYPOTHESIS 级别的研究 package。没有任何真实实验结果。
+Status: HYPOTHESIS-level research package. No actual experimental results.
 
-## 摘要
+## Executive summary
 
-**一句话：** SAM 系列在烟雾、火焰、玻璃以及浸润性病灶上的失败，是由 **objectness 解码器／提示先验（decoder/prompt prior）** 造成的，而不是因为编码器缺少特征——因此在冻结编码器上加一个线性／密度头，再配合排除区（exclusion-region）提示，应当能在无定形目标上胜过带提示的 SAM，同时在 COCO 物体上落败。
+**One sentence:** SAM-family failures on smoke, fire, glass, and infiltrative lesions are caused by an **objectness decoder/prompt prior**, not by missing encoder features — and a frozen-encoder linear/density head plus exclusion-region prompts should beat prompted SAM on amorphous targets while losing on COCO objects.
 
-如果这是错的，那就说明编码器确实缺少这些特征（与"纹理可分性"那一派解释一致），我们就在一个 GPU-day 内 **kill** 掉这个项目。
+If this is false, the encoder really lacks the features (aligns with texture-separability accounts) and we **kill** the project in one GPU-day.
 
-## 研究动机
+## Research motivation
 
-KNOWN FACT：SAM（Kirillov et al., ICCV 2023）和 SAM 2（Ravi et al., 2024）是被训练成"从点／框输出实例掩码"的。EVIDENCE：它们在依赖上下文的、低对比度的概念上表现不佳（arXiv:2412.01240；arXiv:2412.04243），而火焰通常要靠紧致框（tight boxes）才能救回来（arXiv:2510.21782）。
+KNOWN FACT: SAM (Kirillov et al., ICCV 2023) and SAM 2 (Ravi et al., 2024) are trained to output instance masks from points/boxes. EVIDENCE: they underperform on context-dependent and low-contrast concepts (arXiv:2412.01240; arXiv:2412.04243) and fire is typically rescued with tight boxes (arXiv:2510.21782).
 
-社区的默认判断（论文里属于 MODEL SPECULATION，却被当成事实）是："需要对编码器做医学／火焰领域适配。" Med-SA、SAMed、LoRA-MedSAM 都把参数花在编码器／adapter 上。
+The community default (MODEL SPECULATION in papers, treated as fact) is: “need medical/fire adaptation of the encoder.” Med-SA, SAMed, LoRA-MedSAM all spend parameters on the encoder/adapters.
 
-**为什么这可能不成立：** 类物体（object-like）目标共享一个拓扑先验（闭合边界、内部 vs 外部），而烟雾／浸润性肿瘤／玻璃并不具备这个先验。这个先验完全可以只存在于 **prompt + mask decoder** 里。编码器 embedding 也许本身就已经是线性可用的信息。
+**Why this might not be true:** object-like targets share a topological prior (closed boundary, interior vs exterior) that smoke/infiltrative tumor/glass do not. That prior can live entirely in the **prompt + mask decoder**. Encoder embeddings might already be linearly informative.
 
-## 问题定义
+## Problem definition
 
-设 \(x\) 为图像，\(z = E(x)\) 为冻结的 SAM 图像 embedding，\(p\) 为提示，\(D\) 为 SAM mask decoder。
+Let \(x\) be an image, \(z = E(x)\) frozen SAM image embeddings, \(p\) a prompt, \(D\) the SAM mask decoder.
 
-- **Object-like** 目标：COCO 的 things。
-- **Amorphous**（无定形）目标：烟雾、火焰羽流、透明物体、浸润性肿瘤。
+- **Object-like** targets: COCO things.
+- **Amorphous** targets: smoke, fire plumes, transparent objects, infiltrative tumors.
 
-**问题：** \(D(\cdot, p)\) 是否销毁了在 \(z\) 中仍然存在的信息？
+**Question:** Does \(D(\cdot, p)\) destroy information that is still present in \(z\)?
 
-## 核心假设（可证伪）
+## Core hypothesis (falsifiable)
 
-**H1：** 在冻结的 \(z\) 上用密度／BCE 损失训练一个线性或 1×1 卷积头，训练数据为 200–2000 张无定形图像，其 **NSD 更高**（而不只是 Dice 更高）——高于在同一批图像上用 GT 框提示的官方 SAM/SAM2。
+**H1:** A linear or 1×1-conv head on frozen \(z\) trained with a density/BCE loss for 200–2000 amorphous images achieves **higher NSD** (and not merely Dice) than official prompted SAM/SAM2 with GT boxes on the same images.
 
-**H2：** 同一个冻结头在 COCO val 的物体子集上**比**带提示的 SAM **更差**（说明我们并没有训出一个通用意义上更好的分割器）。
+**H2:** The same frozen head is **worse** than prompted SAM on COCO val object subsets (so we did not train a generic better segmenter).
 
-**H3：** 排除区提示（一个负向环带／"not-object" 掩码）能在**不做**编码器微调的情况下提升带提示 SAM 在无定形目标上的表现，而对 COCO 没有帮助。
+**H3:** Exclusion-region prompts (a negative ring / “not-object” mask) improve prompted SAM on amorphous targets **without** encoder FT, and do not help COCO.
 
-若 H1 为假：编码器特征不足 → 停止把 Idea_01 当作一种方法；把这个负结果发表出来，作为对 2412.04243 那类"编码器能力上限"论述的支持。
+If H1 is false: encoder features are insufficient → stop Idea_01 as a method; publish the negative as support for 2412.04243-style encoder limits.
 
-## 关键洞察
+## Key insight
 
-科学对象是**失败发生在哪里**（编码器 vs objectness 接口），而不是一个新 backbone。
+The scientific object is **where the failure lives** (encoder vs objectness interface), not a new backbone.
 
-## 新颖性（精确界定）
+## Novelty (precise)
 
-| 最接近的工作 | 他们做了什么 | 确切差别 |
+| Closest work | What they did | Exact difference |
 |---------------|---------------|------------------|
-| 2412.01240 | 在 CD（context-dependent）概念上评测 SAM/SAM2 | 只是评测；没有冻结线性探针，也没有排除区干预 |
-| 2412.04243 | 纹理 / tree-likeness 指标 | 是**竞争性机制解释**（纹理在 \(E\) 里）vs 我们的（objectness 在 \(D,p\) 里） |
-| 2510.21782 | 用框提示做火焰分割 | 框仍然预设了物体范围；我们检验的是排除区／密度 |
-| Med-SA / LoRA-MedSAM | 训练 adapter/LoRA 提升医学 Dice | 我们在 killer 实验中**禁止**更新编码器 |
+| 2412.01240 | Evaluate SAM/SAM2 on CD concepts | Evaluation; no frozen linear probe, no exclusion-region intervention |
+| 2412.04243 | Texture / tree-likeness metrics | Competing mechanism (texture in \(E\)) vs ours (objectness in \(D,p\)) |
+| 2510.21782 | Box prompts for fire | Boxes still assume an object extent; we test exclusion/density |
+| Med-SA / LoRA-MedSAM | Train adapters/LoRA for medical Dice | We forbid encoder updates in the killer experiment |
 
-剩余的新颖性信心：**中等**。一篇纯 probe 论文很容易被 desk-reject；真正构成论文的是那个**交互效应**（在无定形上赢、在 COCO 上输）。
+Remaining novelty confidence: **medium**. A probe paper is easy to desk-reject; the **interaction** (win on amorphous, lose on COCO) is the paper.
 
-## 提议方法
+## Proposed method
 
-1. 从冻结的 SAM ViT-B/L 提取 \(z = E(x)\)（并把 SAM2 Hiera-B+ 作为必需的泛化性验证）。
-2. **密度头** \(h_\theta(z) \in [0,1]^{H' \times W'}\)，双线性上采样。
-3. 可选的**排除提示**：在一个宽松框（loose box）之外栅格化出一条负向带；对带提示的 baseline 作为 mask prompt 喂给 \(D\)，对 \(h_\theta\) 则作为额外通道输入。
-4. 只训练 \(\theta\)。
+1. Extract \(z = E(x)\) from frozen SAM ViT-B/L (and SAM2 Hiera-B+ as a required generalization).
+2. **Density head** \(h_\theta(z) \in [0,1]^{H' \times W'}\), bilinear upsample.
+3. Optional **exclusion prompt**: rasterize a negative band outside a loose box; feed as mask prompt to \(D\) for the prompted baseline and as extra channels to \(h_\theta\).
+4. Train \(\theta\) only.
 
-### 数据流
+### Data flow
 
-图像 → 冻结编码器 → \(z\) → \(h_\theta\) → 上采样 → 密度图 → 为二值指标做阈值化（同时也报告连续排序指标）。
+Image → frozen encoder → \(z\) → \(h_\theta\) → upsample → density → threshold for binary metrics (report also continuous ranking).
 
-## 数学形式
+## Mathematical formulation
 
 \[
 \mathcal{L} = \lambda_{\mathrm{bce}} \mathrm{BCE}(\hat{y}, y) + \lambda_{\mathrm{dice}} \mathrm{Dice}(\hat{y}, y) + \lambda_{\mathrm{tv}} \mathrm{TV}(\hat{y})
 \]
 
-对烟雾而言，\(y\) 可以是软标签（多标注者的标注频率）。**HYPOTHESIS：** 在密度上加 TV 优于 CRF 式后处理。
+For smoke, \(y\) may be soft (rater frequency). **HYPOTHESIS:** TV on density beats CRF-style postprocess.
 
-不要在计算损失之前做阈值化。
+Do not threshold before the loss.
 
-## Killer 实验（Day 1）
+## Killer experiment (Day 1)
 
-在一个公开烟雾或火焰数据集上**并且**在一个 100 张图的 COCO 子集上：
+On a public smoke or fire set **and** a 100-image COCO subset:
 
-| 条件 | 可训练部分 | 提示 |
+| Condition | Trainable | Prompt |
 |-----------|-----------|--------|
-| A 带 GT 框提示的 SAM | 无 | GT box |
-| B 冻结编码器 + 线性／密度头 | 仅 \(h_\theta\) | 无 |
-| C B + 排除通道 | \(h_\theta\) | loose box + 负向环带 |
+| A Prompted SAM GT-box | none | GT box |
+| B Frozen linear/density head | \(h_\theta\) only | none |
+| C B + exclusion channel | \(h_\theta\) | loose box + negative ring |
 
-**继续（Continue）：** 若在无定形数据上 NSD(B 或 C) > NSD(A) **且** 在 COCO 上 NSD(B) < NSD(A)。  
-**转向（Pivot）：** 若在所有场景下 B≈A（方法不再有趣；也许可以改成一篇校准论文）。  
-**杀掉（Kill）：** 若在无定形数据上 B << A（编码器才是瓶颈；不要在没有新科学的前提下加 adapter 去"修"它）。
+**Continue** if NSD(B or C) > NSD(A) on amorphous **and** NSD(B) < NSD(A) on COCO.  
+**Pivot** if B≈A everywhere (method not interesting; maybe calibration paper).  
+**Kill** if B << A on amorphous (encoder is the bottleneck; do not add adapters to “fix” without new science).
 
-## 预期结果（HYPOTHESIS，未经测量）
+## Expected results (HYPOTHESIS, not measured)
 
-- 无定形 NSD：C ≥ B > A
-- COCO：A > B
-- Dice 的差距小于 NSD 的差距
+- Amorphous NSD: C ≥ B > A
+- COCO: A > B
+- Dice gaps smaller than NSD gaps
 
-## 停止／继续
+## Stop / continue
 
-见 `roadmap.md`。
+See `roadmap.md`.

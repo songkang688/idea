@@ -1,81 +1,81 @@
-# Idea_03 —— DisagreeShift
+# Idea_03 — DisagreeShift
 
-**候选标题**
+**Candidate titles**
 
 1. Disagreement Fields that Travel: Pixelwise Rater Variability under Scanner and Stain Shift
 2. Temperature Scaling Cannot Reorder Pixels: Why Soft Multi-Rater Training Matters OOD
 3. Calibration that Means Something: Sparsification of Segmentation Uncertainty under Shift
 
-## 1. 摘要
+## 1. Executive summary
 
-在**标注者间分布上训练分割概率场**（而非多数投票的硬标签）。在**扫描仪或染色偏移**下用**对次序敏感的指标**（稀疏化 / 逐像素 AURC）进行评测。用于击杀的基线是硬标签训练 + 温度缩放（Temperature Scaling, Guo et al., 2017）。TS 是**单一标量**，无法重新对像素排序；若它依然能匹敌 AURC，说明我们的训练没有产生更好的误差**排序**，项目死亡。
+Train segmentation **probability fields on inter-rater distributions** (not majority-vote hard labels). Evaluate with **ordering-sensitive** metrics (sparsification / pixelwise AURC) under **scanner or stain shift**. The kill baseline is hard-label training + temperature scaling (Guo et al., 2017). TS is a **single scalar** and cannot reorder pixels; if it still matches AURC, our training did not produce a better **ranking** of errors, and the project dies.
 
-最初的 SEG-0074（经病理学验证的浸润图）被现有的 MRI–病理学管线 **kill** 掉了。这项变异是一个不同的问题：**当准确率无法迁移时，以分歧形态呈现的不确定性能否迁移？**
+Original SEG-0074 (histo-validated infiltration maps) was **killed** by existing MRI–histo pipelines. This mutation is a different question: **does disagreement-shaped uncertainty transfer when accuracy does not?**
 
-## 2. 动机
+## 2. Motivation
 
-KNOWN：Probabilistic U-Net、随机分割网络、LIDC 4 位标注者、QUBIQ。社区默认做法：报告共识上的 Dice，可能加上 ECE。HYPOTHESIS：即便在 OOD 场景下 ECE 也可通过 TS 修复，而模型**在何处**不确定（标注者冲突区域 vs 随机边界）除非在分歧上训练，否则无法迁移。
+KNOWN: Probabilistic U-Net, stochastic segmentation networks, LIDC 4 raters, QUBIQ. Community default: report Dice on consensus and maybe ECE. HYPOTHESIS: ECE can be fixed by TS even OOD, while **where** the model is unsure (rater-conflict regions vs random boundaries) does not transfer unless trained on disagreement.
 
-## 3. 问题定义
+## 3. Problem definition
 
-对于图像 x，标注者 {y^{(r)}} 给出逐像素频率 f(x)_i ∈ [0,1]。学习 p_θ(x)_i。在领域偏移 T(x) 下，对比：
+For image x, raters {y^{(r)}} give a per-pixel frequency f(x)_i ∈ [0,1]. Learn p_θ(x)_i. Under domain shift T(x), compare:
 
-- 对比多数投票的 Dice
-- 对比 f 的 ECE / NLL
-- **稀疏化（Sparsification）：** 移除前 k% 最不确定的像素，测量剩余的 Dice/误差；AURC
+- Dice vs majority vote
+- ECE / NLL vs f
+- **Sparsification:** remove the k% most-uncertain pixels, measure remaining Dice/error; AURC
 
-## 4. 核心假设
+## 4. Core hypothesis
 
-**H1：** 在留出扫描仪（LIDC）或染色／中心（病理学）下，在匹配的 Dice 水平下，在分歧上训练的 p_θ 相比硬标签 + TS 具有**更低的稀疏化误差／更好的 AURC**。
+**H1:** Under held-out scanner (LIDC) or stain/site (pathology), disagreement-trained p_θ has **lower sparsification error / better AURC** than hard-label + TS, at matched Dice.
 
-**H2：** 在高标注者熵的分组中该差距更大。
+**H2:** The gap is larger in bins of high rater entropy.
 
-若 TS 在主偏移上匹敌 AURC 则 kill。若校准可迁移但 Dice 叙事模糊，则转向选择性预测／弃答。
+Kill if TS matches AURC on the primary shift. Pivot to selective prediction / deferral if calibration transfers but Dice story is muddy.
 
-## 5. 关键洞察
+## 5. Key insight
 
-TS 无法实现空间层面的分歧。若我们依然落败，要么说明标注者的空间冲突无法从当前数据集规模学到，要么说明分布偏移破坏了编码它的特征。
+TS cannot implement spatial disagreement. If we still lose, either raters’ spatial conflict is not learnable from the dataset size, or shift destroys the features that encode it.
 
-## 6. 新颖性
+## 6. Novelty
 
-Prob U-Net 预测的是**域内**分布。多标注者论文已有。**空缺：** 在**对次序敏感的指标**上，针对**结构上不具备该能力**的基线（标量 TS）进行偏移评测。信心：逻辑空缺上中偏高；实证取胜上中等。
+Prob U-Net predicts distributions **in-domain**. Multi-rater papers exist. **Gap:** shift evaluation with a **structurally incapable** baseline (scalar TS) on **ordering-sensitive** metrics. Confidence: Medium-High on the logical gap; Medium on empirical win.
 
 ## 7–10.
 
-见文献、架构图、数学形式：
+See literature, diagrams, math:
 
 \[
 \mathcal{L}_{\mathrm{soft}} = \mathrm{KL}\big(f \,\|\, \sigma(z_\theta)\big)
-\quad\text{或}\quad
+\quad\text{or}\quad
 \mathrm{BCE}(\sigma(z_\theta), f)
 \]
 
-对比多数类上的硬 CE + logit 上的 TS。
+vs hard CE on majority + TS on logits.
 
-标注者专属头（Tanno 式）作为可选消融。
+Annotator-specific heads (Tanno-style) optional ablation.
 
 ## 11–17.
 
-`src/disagree_shift/` 指标 + 虚拟训练器。Killer 实验：若元数据允许则采用 LIDC 留一扫描仪；否则采用 LIDC 上的合成染色／噪声偏移作为**代理**（声明代理性质）。
+`src/disagree_shift/` metrics + dummy trainer. Killer: LIDC leave-one-scanner-out if metadata allows; else synthetic stain/noise shift on LIDC as **proxy** (declare proxy).
 
-## 18. 预期
+## 18. Expected
 
-EXPECTED：硬标签 vs 软标签在偏移下具有相似的 Dice 下降；AURC 差距偏向软标签，尤其在高熵像素上。未经测量。
+EXPECTED: similar Dice drop under shift for hard vs soft; AURC gap favors soft, especially high-entropy pixels. NOT MEASURED.
 
 ## 19–22.
 
-致命风险：扫描仪太少；在偏移后验证集上调 TS 作为偷偷使用的 oracle。预先注册：TS **仅**在源域验证集上拟合。
+Fatal: too few scanners; TS-on-shifted-val as sneaky oracle. Pre-register: TS fitted **only** on source val.
 
-R2："QUBIQ 已经做过了。" 应答：QUBIQ 是域内的多标注者研究；我们增加了**偏移 + TS kill 检验**。
+R2: “QUBIQ already.” Response: QUBIQ is in-domain multi-rater; we add **shift + TS kill**.
 
-## 23. 算力
+## 23. Compute
 
-Killer 约 4 GPU-days（2D U-Net）。完整方案约 16。
+Killer ~4 GPU-days (2D U-Net). Full ~16.
 
-## 25. 停止条件
+## 25. Stop
 
-H1 失败则 kill。若在 2 个偏移上 AURC 取胜则继续。
+Kill H1 fail. Continue if AURC wins on 2 shifts.
 
-## 27. 立意
+## 27. Story
 
-一旦更换扫描仪，硬标签加温度计无法将不确定性放置在医生存在分歧的位置；在分歧上训练可以做到 —— 或者它也做不到，而我们应当停止假装 ECE 是部署时关心的量。
+Hard labels plus a thermometer cannot put uncertainty where doctors disagree once the scanner changes; training on disagreement can — or it cannot, and we should stop pretending ECE is the deployment quantity.

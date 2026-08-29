@@ -1,338 +1,399 @@
-# Idea_02 —— 按事件划分不等同于按相机划分（Windows6 / F-043）
+# Idea_02 — Event-disjoint is not camera-disjoint (Windows6 / F-043)
 
-> **整份文档的认知状态。** 这里没有执行过任何实验。每个量都是
-> **HYPOTHESIS** 或 **EXPECTED RESULT**。`Windows6/README.md` 记录了
-> *"no smoke mAP"*；`proposal.md` 原文中写道 *"We have not trained a detector here."*。
-> 目前依然如此。引用仅在它们已出现于 `selection_history/literature_anchors.md` 或
-> `literature.md` 时才属于 **VERIFIED PRIOR WORK**；其他每个位置均写为
-> `CITATION NEEDED — 待人工核验`。
+> **Epistemic status of this entire document.** Nothing here has been run.
+> Every quantity is **HYPOTHESIS** or **EXPECTED RESULT**. `Windows6/README.md`
+> records *"no smoke mAP"*; `proposal.md`'s original text stated *"We have not
+> trained a detector here."* That is still true. Citations are **VERIFIED PRIOR
+> WORK** only where they already appear in
+> `selection_history/literature_anchors.md` or `literature.md`; every other
+> slot reads `CITATION NEEDED — 待人工核验`.
 >
-> **GATE-A 处于未关闭状态（OPEN）。** 从来没有核实过任何公开烟雾／火焰数据集上是否存在
-> 相机元数据。Idea_02 自己的第一条停止规则就是 *"Kill if no camera metadata."*。
-> 见 §14 与 `stage6_battle.md` §5。
+> **GATE-A is OPEN.** It has never been verified that camera metadata exists on
+> any public smoke/fire set. Idea_02's own first stop rule is *"Kill if no
+> camera metadata."* See §14 and `stage6_battle.md` §5.
 
-## 1. 标题与标识符
+## 1. Title & identifiers
 
-| 字段 | 取值 |
+| Field | Value |
 |---|---|
-| 工作标题 | *Event-Disjoint Is Not Camera-Disjoint: Measuring Smoke Benchmark Inflation* |
+| Working title | *Event-Disjoint Is Not Camera-Disjoint: Measuring Smoke Benchmark Inflation* |
 | Windows6 ID | `Idea_02` |
-| Stage-1 来源 | `F-043`（`stage1_pool/F_001_080.jsonl`，种子 `smoke`，变异 `cheaper`） |
-| Stage-3 记录 | `camera-id-leakage-smoke`，`continue: keep`，`novelty_confidence: 0.55` |
-| Stage-4 记录 | `camera-ID-smoke`，`continue: survive`，`advance: true` |
-| 审计员 | 受保护的保留项（`auditor_overlay.md`） |
-| 选题状态 | Final 3，**PROVISIONAL** —— `stage6_battle.md` §5，受阻于 GATE-A |
-| 论文类型 | 数据集审计／基准研究 |
+| Stage-1 origin | `F-043` (`stage1_pool/F_001_080.jsonl`, seed `smoke`, mutation `cheaper`) |
+| Stage-3 record | `camera-id-leakage-smoke`, `continue: keep`, `novelty_confidence: 0.55` |
+| Stage-4 record | `camera-ID-smoke`, `continue: survive`, `advance: true` |
+| Auditor | protected keep (`auditor_overlay.md`) |
+| Selection status | Final 3, **PROVISIONAL** — `stage6_battle.md` §5, blocked on GATE-A |
+| Paper type | dataset audit / benchmark |
 
-## 2. 一句话主张
+## 2. One-sentence claim
 
-**HYPOTHESIS。** 已发表的烟雾／火焰检测分数因训练与测试之间共享相机而虚高；
-**按事件划分（当前最佳实践）并未消除这一问题**，并且通过对来自见过 vs 未见过的
-相机的空帧进行评分，可以证明这种残余是背景*记忆*而非地理分布偏移。
+**HYPOTHESIS.** Published smoke/fire detection scores are inflated by cameras
+shared between train and test; **event-disjoint splitting — the current best
+practice — does not remove this**, and the residual can be shown to be
+background *memorisation* rather than geographic domain shift by scoring empty
+frames from seen versus unseen cameras.
 
-## 3. 摘要
+## 3. Abstract
 
-**HYPOTHESIS，未经测量。** 野火检测 CCTV 数据集经常跨训练和验证划分共享相机。
-Voxel51 对 Pyro-SDIS 的审计报告了大量由于共享相机熟悉度导致的近重复帧 ——
-**形式是一篇博客诊断，没有重新训练出 mAP 差值**（**VERIFIED PRIOR WORK**，
-在 `literature.md` 中如此记录）。PYRONEAR-2025 采用**按事件划分**来应对该问题
-（**VERIFIED PRIOR WORK**，arXiv 2402.05349）。我们主张按事件划分只是一种部分修复：
-留出整个事件依然让同一批塔（从而同一批背景）留在两侧。Reviewer #2 有条件地放行了
-该想法：只有当我们测量了 random vs event-disjoint vs camera-disjoint 的置信区间，
-**并**跑了背景记忆探针时，它才能存活。**没有训练过任何检测器；不主张任何 mAP。**
+**HYPOTHESIS, not measured.** Wildfire-detection CCTV datasets frequently share
+cameras across train and validation splits. A Voxel51 audit of Pyro-SDIS
+reported large numbers of near-duplicates attributable to shared-camera
+familiarity — **as a blog diagnosis, with no retrained mAP delta** (**VERIFIED
+PRIOR WORK**, recorded as such in `literature.md`). PYRONEAR-2025 addresses the
+problem with **event-disjoint** splits (**VERIFIED PRIOR WORK**, arXiv
+2402.05349). We claim event-disjoint is a partial fix: holding out whole
+episodes still leaves the same towers, and thus the same backgrounds, on both
+sides. Reviewer #2 let this through conditionally: it survives only if we
+measure random versus event-disjoint versus camera-disjoint with confidence
+intervals **and** run a background-memorisation probe. **No detector has been
+trained; no mAP is claimed.**
 
-## 4. 背景与动机
+## 4. Background & motivation
 
-一座野火瞭望塔每天看到的都是同一道山脊线。在该塔上训练的检测器可以通过学习
-*这道山脊线加上烟雾长这样*，而不是*烟雾长这样*，来取得很高的基准分数。
-两点让该领域变得脆弱：
+A wildfire tower sees the same ridgeline every day. A detector trained on that
+tower can reach high benchmark scores by learning *this ridgeline plus smoke
+looks like this* rather than *smoke looks like this*. Two things make the field
+vulnerable:
 
-1. **帧很便宜而事件很罕见。** 数据集通过从少数塔的少数火灾事件中采样大量帧构建，
-   因此有效样本量远低于帧计数。
-2. **显而易见的修复已部署且看起来很充分。** 按事件划分消除了最显眼的泄漏 ——
-   两侧出现同一团羽流 —— 因此很容易被误认为已彻底解决问题。
+1. **Frames are cheap and episodes are rare.** Datasets are built by sampling
+   many frames from few fire events at few towers, so the effective sample size
+   is far below the frame count.
+2. **The obvious fix is already deployed and looks sufficient.** Event-disjoint
+   splitting removes the most visible leak — the same plume on both sides — and
+   is therefore easy to mistake for a complete fix.
 
-**SPECULATION（利害关系，非发现）。** 若 H1–H4 成立，在采用了不同划分策略的论文之间，
-已发表的烟雾检测数字不可比，而消防部门所依赖的实际运行估计在未量化的幅度上偏乐观。
+**SPECULATION (the stakes, not a finding).** If H1–H4 hold, published
+smoke-detection numbers are not comparable across papers that used different
+split policies, and the operational estimate a fire agency would rely on is
+optimistic by an unquantified margin.
 
-**为什么表述如此收敛。** "数据集存在泄漏"成不了一篇论文。贡献在于
-**量化虚高幅度 + 混淆因素分离** —— 地理 vs 记忆。
+**Why the framing is narrow.** "Datasets leak" is not a paper. The contribution
+is **quantified inflation plus a confounder split** — geography versus
+memorisation.
 
-## 5. 问题陈述与研究问题
+## 5. Problem statement & research questions
 
-语料具有三层嵌套分组：**相机** ⊃ **事件** ⊃ **帧**。三种划分协议打破了不同程度的分组：
+A corpus has three nested groupings: **camera** ⊃ **event** ⊃ **frame**. Three
+split protocols break different amounts of it:
 
-| 协议 | 打破事件分组 | 打破相机分组 |
+| Protocol | Breaks event grouping | Breaks camera grouping |
 |---|---|---|
-| random | 否 | 否 |
-| event-disjoint | 是 | **否** |
-| camera-disjoint | 是 | 是 |
+| random | no | no |
+| event-disjoint | yes | **no** |
+| camera-disjoint | yes | yes |
 
-- **RQ1。** 从 random 到 camera-disjoint，测得的性能下降了多少？
-- **RQ2。** event-disjoint 的表现是落在 camera-disjoint 的水平，还是介于两者之间？
-- **RQ3。** 冻结特征到底是否携带相机身份？
-- **RQ4。** 任何残余差距是对背景的*记忆*，还是*地理*分布偏移？
+- **RQ1.** How much does measured performance drop from random to
+  camera-disjoint?
+- **RQ2.** Does event-disjoint land at the camera-disjoint level, or between?
+- **RQ3.** Do frozen features carry camera identity at all?
+- **RQ4.** Is any residual gap *memorisation* of backgrounds, or a *geographic*
+  distribution shift?
 
-RQ4 决定了这究竟算不算一篇论文（§10）。
+RQ4 is the one that decides whether this is a paper (§10).
 
-## 6. 假设（预先注册）
+## 6. Hypotheses (pre-registered)
 
-- **H1。** Camera-disjoint AP < random-split AP，差距大于随机种子标准差。
-- **H2。** Event-disjoint AP ≠ camera-disjoint AP —— 在当前最佳实践下，同相机不同事件的残余泄漏依然存在。
-- **H3。** 冻结 backbone 特征上的线性探针预测相机 ID 的准确率高于随机水平，**在按事件划分下评测**（§15）。
-- **H4。** 来自**训练集**相机的空（无烟）帧比较来自未见过相机的空帧获得更高的误报率或更高的置信度。
+- **H1.** Camera-disjoint AP < random-split AP by more than the seed standard
+  deviation.
+- **H2.** Event-disjoint AP ≠ camera-disjoint AP — a residual same-camera
+  different-event leak survives current best practice.
+- **H3.** A linear probe on frozen backbone features predicts camera ID above
+  chance, **evaluated event-disjoint** (§15).
+- **H4.** Empty (no-smoke) frames from **train** cameras draw a higher false
+  positive rate or higher confidence than empty frames from unseen cameras.
 
-## 7. 核心洞察
+## 7. Key insight
 
-**空帧就是测量工具。** 空帧中不含羽流，因此负样本上见过 vs 未见过相机的差距无法用
-羽流外观的分布偏移来解释。它只能是背景。这单一的设计选择把"按相机划分分数更低"
-（评审会将其读为普通的分布偏移，因而不觉得新奇）转化为关于记忆的主张。
+**Empty frames are the instrument.** They contain no plume, so a seen-versus-
+unseen camera gap on negatives cannot be explained by plume-appearance domain
+shift. It has to be the background. That single design choice is what converts
+"camera-disjoint scores lower" — which a reviewer will read as domain shift, and
+therefore as unsurprising — into a claim about memorisation.
 
-第二点洞察在于结构：三种协议必须被**证明**存在差异，而不仅是命名。`splits.camera_overlap`
-与 `splits.event_overlap` 报告每种协议的重叠计数，自检断言了按事件划分依然共享相机。
-若在真实数据集上该断言为假，H2 在那里就不可证伪，§20 的转向机制触发。
+The second insight is structural: the three protocols must be **shown** to
+differ, not merely named. `splits.camera_overlap` and `splits.event_overlap`
+report the overlap counts for every protocol, and the self-checks assert that
+event-disjoint still shares cameras. If that were ever false on a real dataset,
+H2 would be unfalsifiable there and the pivot in §20 fires.
 
-## 8. 新颖性陈述
+## 8. Novelty statement
 
-**VERIFIED PRIOR WORK。** PYRONEAR-2025（arXiv 2402.05349）引入了按事件划分与 pHash 去重。
-Voxel51 Pyro-SDIS 审计诊断出了共享相机的近重复帧 —— **在一篇博客中，没有重新训练出 mAP**。
+**VERIFIED PRIOR WORK.** PYRONEAR-2025 (arXiv 2402.05349) introduces
+event-disjoint splits and pHash deduplication. The Voxel51 Pyro-SDIS audit
+diagnosed shared-camera near-duplication — **in a blog post, with no retrained
+mAP**.
 
-**空缺。** 还没有人 (a) 在全部三种协议下重新训练并用事件聚类置信区间报告差值，或 (b) 用空帧探针
-将地理与记忆区分开。Stage-3 剩余新颖性原文：*"Peer-reviewed inflation quantification across smoke/fire benches."*
+**The gap.** Nobody has (a) retrained under all three protocols and reported the
+deltas with event-clustered CIs, or (b) separated geography from memorisation
+with an empty-frame probe. Stage-3 remaining novelty, verbatim: *"Peer-reviewed
+inflation quantification across smoke/fire benches."*
 
-**FACT —— 来自 `literature.md` 的长期约束：** *"不要引用一个我们自己没有计算过的、同行评议的 mAP 虚高数字。"*
-本 package 任何地方都不出现此类数字。
+**FACT — a standing constraint from `literature.md`:** *"Do not cite a
+peer-reviewed mAP inflation number we did not compute."* No number of that kind
+appears anywhere in this package.
 
-## 9. 与既有工作的关系（差异化）
+## 9. Relation to prior work (differentiation)
 
-| 既有工作 | 状态 | 它确立了什么 | 为什么它不构成抢先 |
+| Prior work | Status | What it establishes | Why it does not pre-empt us |
 |---|---|---|---|
-| PYRONEAR-2025, arXiv 2402.05349 | **VERIFIED PRIOR WORK** | 按事件划分，pHash 去重 | 既是最接近的工作也是靶子。它修复了事件泄漏；H2 指出相机泄漏在它之后依然存活 |
-| Voxel51 Pyro-SDIS 审计, 2026 博客 | **VERIFIED PRIOR WORK** | 共享相机近重复帧 | 一份没有重训差值的诊断。我们重新训练并量化，且增加了它未尝试的混淆因素分离 |
-| SmokeFrames / Nemo | **VERIFIED PRIOR WORK**（列出，ID 未核实） | 早期烟雾语料 | 候选第二数据集。`literature.md` 标明 *"check camera IDs before use"* |
-| FIgLib | `CITATION NEEDED — 待人工核验` | 候选语料 | 在实验计划中被点名；引用未核实 |
-| pHash / 感知哈希 | `CITATION NEEDED — 待人工核验` | 去重工具 | 用在 E4 |
-| YOLOv8-nano | `CITATION NEEDED — 待人工核验` | 检测器 | 工具，非主张 |
+| PYRONEAR-2025, arXiv 2402.05349 | **VERIFIED PRIOR WORK** | Event-disjoint splits, pHash dedup | Simultaneously the closest work and the target. It fixes the episode leak; H2 says the camera leak survives it |
+| Voxel51 Pyro-SDIS audit, 2026 blog | **VERIFIED PRIOR WORK** | Shared-camera near-duplicates | A diagnosis without a retrained delta. We retrain and quantify, and we add the confounder split it does not attempt |
+| SmokeFrames / Nemo | **VERIFIED PRIOR WORK** (listed, unverified IDs) | Earlier smoke corpora | Candidate second dataset. `literature.md` flags *"check camera IDs before use"* |
+| FIgLib | `CITATION NEEDED — 待人工核验` | Candidate corpus | Named in the experiment plan; citation unverified |
+| pHash / perceptual hashing | `CITATION NEEDED — 待人工核验` | Dedup instrument | Used in E4 |
+| YOLOv8-nano | `CITATION NEEDED — 待人工核验` | The detector | Tooling, not a claim |
 
-## 10. 重要性 —— 如果我们对了，谁错了
+## 10. Significance — who is wrong if we are right
 
-- **若 H1 + H2 + H4 成立：** 烟雾检测中跨论文的对比在没有明确划分策略的情况下无效，
-  且按事件划分作为标准不够充分。实践产出：公开基准的相机感知重划分。
-- **若 H1 + H2 成立但 H4 失败：** 我们测出的只是分布偏移，这在预期之内且不是新闻。
-  `proposal.md` 原文对此直言不讳：*"Fatal if we only report camera-disjoint drop without H4."*
-- **若 H2 失败**（event-disjoint ≈ camera-disjoint）：PYRONEAR 已经解决了该问题，
-  诚实的产出是一篇简短确认当前实践已足够完备的文章 —— 值得写，但不是本论文。
+- **If H1 + H2 + H4 hold:** cross-paper comparison in smoke detection is
+  invalid without a stated split policy, and event-disjoint is insufficient as
+  a standard. Actionable: a camera-aware re-split of public benchmarks.
+- **If H1 + H2 hold but H4 fails:** we have measured domain shift, which is
+  expected and not news. `proposal.md`'s original text is blunt about this:
+  *"Fatal if we only report camera-disjoint drop without H4."*
+- **If H2 fails** (event-disjoint ≈ camera-disjoint): PYRONEAR already solved
+  it, and the honest output is a short confirmation that current practice is
+  adequate — worth writing, but not this paper.
 
-## 11. 方法概览
+## 11. Method overview
 
-1. 清点相机 ID（**GATE-A**，§14）。没有 ID 就没有项目。
-2. 构建三种划分；报告每种划分的相机与事件重叠数。
-3. 等 N、类别比例对齐的测试侧，确保对比公平。
-4. 训练检测器，每种协议 3 个随机种子。
-5. 报告 AP 与 FAR@recall，附带**按事件聚类的** bootstrap 置信区间。
-6. 冻结特征上的相机 ID 探针，在按事件划分下评测。
-7. 空帧 FPR，见过 vs 未见过的相机。
-8. pHash 去重重跑，将重复帧与相机签名分离开来。
+1. Inventory camera IDs (**GATE-A**, §14). No IDs, no project.
+2. Build the three splits; report camera and event overlap for each.
+3. Equal-N, class-ratio-matched test sides so the comparison is fair.
+4. Train the detector, 3 seeds per protocol.
+5. Report AP and FAR@recall with **event-clustered** bootstrap CIs.
+6. Camera-ID probe on frozen features, evaluated event-disjoint.
+7. Empty-frame FPR, seen versus unseen cameras.
+8. pHash dedup rerun to separate duplicate frames from camera signature.
 
-实现位于 `src/camsplit/`。划分协议、重叠核算、指标、探针与 H4 对比今天全部可在合成语料上运行。
+Implementation: `src/camsplit/`. The split protocols, overlap accounting,
+metrics, probe and H4 comparison all run today on a synthetic corpus.
 
-## 12. 测量工具
+## 12. Instruments
 
-| 工具 | 它隔离了什么 | 防护措施 |
+| Instrument | What it isolates | Guard |
 |---|---|---|
-| **空帧 FPR**（H4） | 背景记忆，在构造上排除了羽流外观 | 检测器只在非空帧上训练，所有空帧均被留出 |
-| **相机 ID 探针**（H3） | 表征是否携带相机身份 | **在按事件划分下**评测；见 §15 |
-| **等 N 对齐** | 消除协议间的规模与类别平衡差异 | 无法对齐时抛异常，而不是交付不可比的对比 |
-| **按事件聚类的 bootstrap** | 在事件内部相关性下的诚实置信区间 | 在事件上重采样，绝不在帧上 |
-| **pHash 去重重跑** | 将重复帧与相机签名区分开 | E4 |
+| **Empty-frame FPR** (H4) | Background memorisation, with plume appearance removed by construction | Detector trained on non-empty frames only, so all empties are held out |
+| **Camera-ID probe** (H3) | Whether the representation carries camera identity | Evaluated **event-disjoint**; see §15 |
+| **Equal-N matching** | Removes size and class-balance differences between protocols | Raises rather than shipping an unmatched comparison |
+| **Event-clustered bootstrap** | Honest CIs under within-event correlation | Resamples events, never frames |
+| **pHash dedup rerun** | Separates duplicate frames from camera signature | E4 |
 
-## 13. 空模型与基线
+## 13. Null models & baselines
 
-| 角色 | 方法 | 目的 |
+| Role | Method | Purpose |
 |---|---|---|
-| 上限参考 | 随机划分 | 该领域报告的虚高数字 |
-| 当前实践 | 按事件划分 | H2 攻击的对象 |
-| 诚实参考 | 按相机划分 | 我们所论证的数字 |
-| 探针对照 | 未在烟雾上训练过的 ImageNet 预训练 backbone | 若它也预测相机 ID，该信号是通用场景身份，而非烟雾检测器学到的内容 |
-| 负对照 | `camera_signature = 0` 的语料 | 下游一切必须呈现零结果。由自检钉住 |
+| Upper reference | Random split | The inflated number the field reports |
+| Current practice | Event-disjoint split | The thing H2 attacks |
+| Honest reference | Camera-disjoint split | The number we argue for |
+| Probe control | ImageNet-pretrained backbone never trained on smoke | If it also predicts camera ID, the signal is generic scene identity rather than something the smoke detector learned |
+| Negative control | Corpus with `camera_signature = 0` | Everything downstream must come out null. Pinned by a self-check |
 
-## 14. 数据集 —— 阻塞一切的门禁
+## 14. Datasets — and the gate that blocks everything
 
-| 数据 | 角色 | 状态 |
+| Data | Role | Status |
 |---|---|---|
-| PYRONEAR-2025 | 主要候选 | arXiv 2402.05349（**VERIFIED PRIOR WORK**）。**相机 ID 可得性未核实** |
-| FIgLib | 第二数据集候选 | `CITATION NEEDED — 待人工核验`。相机 ID 可得性未核实 |
-| SmokeFrames / Nemo | 退路候选 | `literature.md`：*"check camera IDs before use"* |
-| 合成语料（`data.make_corpus`） | 仅用于测试台验证 | 随本包提供 |
+| PYRONEAR-2025 | Primary candidate | arXiv 2402.05349 (**VERIFIED PRIOR WORK**). **Camera-ID availability UNVERIFIED** |
+| FIgLib | Second dataset candidate | `CITATION NEEDED — 待人工核验`. Camera-ID availability unverified |
+| SmokeFrames / Nemo | Fallbacks | `literature.md`: *"check camera IDs before use"* |
+| Synthetic corpus (`data.make_corpus`) | Harness validation only | Ships here |
 
-> ### GATE-A —— 使 Idea_02 保持暂定状态的前提条件
+> ### GATE-A — the precondition that keeps Idea_02 provisional
 >
-> **FACT。** `experiments.md` 步骤 1 历来写着 *"Inventory camera IDs on one public set
-> (PYRONEAR or FIgLib **if IDs exist**)"*，第一条停止规则为 *"**Kill** if no camera metadata."*。
-> Windows6 中没有任何产物记录过该检查已被执行。
+> **FACT.** `experiments.md` step 1 has always read *"Inventory camera IDs on
+> one public set (PYRONEAR or FIgLib **if IDs exist**)"*, and the first stop
+> rule is *"**Kill** if no camera metadata."* No Windows6 artifact records that
+> this check was ever performed.
 >
-> | 结局 | 后果 |
+> | Outcome | Consequence |
 > |---|---|
-> | ≥10 台相机且带可用 ID | 门禁通过；进入 E1 |
-> | 1–9 台相机 | 记录在案的转向为仅按事件划分 —— **这放弃了 H2**（即区分性主张）。Idea_02 必须重新论证 Final-3 席位 |
-> | 任何地方都没有相机元数据 | **按其自身停止规则 kill Idea_02** |
+> | ≥10 cameras with usable IDs | Gate passes; proceed to E1 |
+> | 1–9 cameras | Documented pivot to event-disjoint only — **which forfeits H2**, the distinguishing claim. Idea_02 must be re-argued for its Final-3 slot |
+> | No camera metadata anywhere | **Idea_02 is killed** by its own stop rule |
 >
-> 这需要数小时且无需 GPU。它是卡片 **E-A**，排在最前运行。
+> This costs hours and no GPU. It is card **E-A** and it runs first.
 
-## 15. 指标与统计分析
+## 15. Metrics & statistical analysis
 
-**主指标：** 图像级 **AP** 与 **FAR@recall**。IoU 是次要的 —— 瞭望塔的实际问题是
-"达到要求召回率时有多少次误报"，而不是"框有多紧"。
+**Primary:** image-level **AP** and **FAR@recall**. IoU is secondary — the
+operational question for a tower is "how many false alarms at the recall we must
+hit", not "how tight is the box".
 
-**置信区间：在事件上聚类的 bootstrap，绝不在帧上。** 同一座塔来自同一团羽流的连续帧高度相关；
-帧级 bootstrap 将它们视为相互独立，报出的区间窄了好几倍。这正是此类审计夸大自身置信度的
-具体方式，因此代码仅提供聚类版本。
+**CIs: cluster bootstrap over events, never over frames.** Consecutive frames of
+one plume from one tower are heavily correlated; a frame-level bootstrap treats
+them as independent and reports an interval several times too narrow. That is
+the specific way an audit like this overstates its own confidence, so the code
+only offers the clustered version.
 
-**探针必须在按事件划分下评测。** 在随机划分上，探针可以通过识别火灾*事件*而非塔来猜出相机，
-这测量的是事件记忆并在错误的原因下虚高了 H3。**W6-T3 期间在合成语料上实测：** 在完全关闭相机签名的情况下，
-随机划分上的探针仅凭共享事件依然比随机水平高出约 0.17。两项自检钉住了这一点 —— 一项断言按事件划分的
-对照接近随机水平，另一项断言随机划分版本*确实*被混淆了，因此规则无法被静默丢弃。
+**The probe must be evaluated event-disjoint.** On a random split the probe can
+name the camera by recognising the fire *episode* rather than the tower, which
+measures event memorisation and inflates H3 for the wrong reason. **Measured
+during W6-T3 on the synthetic corpus:** with the camera signature switched off
+entirely, a random-split probe still beat chance by ≈0.17 through shared events
+alone. Two self-checks pin this — one asserts the event-disjoint control is near
+chance, the other asserts the random-split version *is* confounded, so the rule
+cannot be quietly dropped.
 
-**随机水平**为多数类比例，在每个探针准确率旁报告。在不平衡相机分布下，原始准确率具有误导性。
+**Chance level** is the majority-class rate, reported next to every probe
+accuracy. With unbalanced cameras, raw accuracy flatters.
 
-## 16. Killer 实验（首跑）
+## 16. Killer experiment (run first)
 
-卡片 **E-A**（GATE-A，无需 GPU）随后是卡片 **E1**：PYRONEAR 子采样、YOLOv8n、
-1 个随机种子 × 3 种协议，加探针与空帧 FPR。**约 10 GPU-h（HYPOTHESIS**，
-来自 `evolution_summary.md`；非测量值）。
+Card **E-A** (GATE-A, no GPU) then card **E1**: PYRONEAR subsample, YOLOv8n,
+1 seed × 3 protocols, plus the probe and empty-frame FPR. **≈10 GPU-h
+(HYPOTHESIS**, from `evolution_summary.md`; not a measurement).
 
-## 17. 完整实验方案
+## 17. Full experimental program
 
-| 卡片 | 内容 | 预算（HYPOTHESIS） |
+| Card | Content | Budget (HYPOTHESIS) |
 |---|---|---|
-| E0 | 合成测试台验证，CPU | 约 0 |
-| **E-A** | **GATE-A 相机清点** | 0 —— 无需 GPU |
-| E1 | Killer：1 种子 × 3 协议 + 探针 + 空帧 FPR | 约 10 GPU-h |
-| E2 | 3 个种子，完整置信区间 | 约 30 GPU-h |
-| E3 | ImageNet backbone 上的探针对照 | 约 1 GPU-h |
-| E4 | pHash 去重重跑 | 约 10 GPU-h |
-| E5 | 第二数据集 | 约 30 GPU-h |
+| E0 | Synthetic harness validation, CPU | ~0 |
+| **E-A** | **GATE-A camera inventory** | 0 — no GPU |
+| E1 | Killer: 1 seed × 3 protocols + probe + empty-frame FPR | ≈10 GPU-h |
+| E2 | 3 seeds, full CIs | ≈30 GPU-h |
+| E3 | Probe control on an ImageNet backbone | ≈1 GPU-h |
+| E4 | pHash dedup rerun | ≈10 GPU-h |
+| E5 | Second dataset | ≈30 GPU-h |
 
-## 18. 消融与对照
+## 18. Ablations & controls
 
-- **种子消融：** 至少 3 个种子；H1 要求差距大于种子标准差。
-- **等 N / 类别比例对齐：** 开与关，证明差距并非对比假象。
-- **探针 backbone 消融：** 检测器 backbone vs ImageNet backbone（E3）。
-- **去重消融：** 有与无 pHash（E4）。
-- **相机数量敏感性：** 对相机进行子采样以核查差距并非由单座异常塔驱动。
-- **负对照：** 零相机签名必须使所有指标归零。
+- **Seed ablation:** 3 seeds minimum; H1 requires a gap larger than seed std.
+- **Equal-N / class-ratio matching:** on and off, to show the gap is not a
+  comparison artifact.
+- **Probe backbone ablation:** detector backbone versus ImageNet backbone (E3).
+- **Dedup ablation:** with and without pHash (E4).
+- **Camera-count sensitivity:** subsample cameras to check the gap is not
+  driven by one unusual tower.
+- **Negative control:** zero camera signature must null everything.
 
-## 19. 预期结果（全部为 EXPECTED RESULT —— 未经测量）
+## 19. Expected results (all EXPECTED RESULT — nothing measured)
 
-- **EXPECTED。** AP 顺序为 random > event-disjoint > camera-disjoint。
-- **EXPECTED。** event-disjoint → camera-disjoint 的降幅小于 random → event-disjoint 的降幅，但非零。H2 仅需非零。
-- **EXPECTED。** 相机 ID 探针轻松胜过随机水平；这是四项中最容易满足的一项，因此证据力度最弱。
-- **EXPECTED。** H4 最难。空帧 FPR 差距较小，合成测试台产出了约 0 的差距 —— 这是植入特征上线形替身的性质，**不是**对真实数据的预测。
+- **EXPECTED.** AP ordering random > event-disjoint > camera-disjoint.
+- **EXPECTED.** The event-disjoint → camera-disjoint drop is smaller than the
+  random → event-disjoint drop, but non-zero. H2 needs only non-zero.
+- **EXPECTED.** The camera-ID probe beats chance comfortably; this is the
+  easiest of the four to satisfy and therefore the weakest evidence.
+- **EXPECTED.** H4 is the hardest. Empty-frame FPR gaps are small, and the
+  synthetic harness produced ≈0 gap — a property of a linear stand-in on planted
+  features, and **not** a prediction about real data.
 
-## 20. 可证伪性与 Kill 条件
+## 20. Falsifiability & kill conditions
 
-| 触发条件 | 动作 |
+| Trigger | Action |
 |---|---|
-| 任何可用公开数据集上均无相机元数据 | **KILL**（GATE-A） |
-| 在按事件划分下按相机划分的降幅消失 | **KILL** —— PYRONEAR 解决了它 |
-| 相机 ID 探针在按事件划分下处于随机水平 | **KILL** H3 |
-| 仅有单一一组极小的相机可用 | **KILL** |
-| 相机数 < 10 | **PIVOT** 为仅按事件划分；放弃 H2 |
-| 在种子噪声内 random ≈ camera-disjoint **且** 探针 ≈ 随机水平 **且** 无空帧 FPR 差距 | **STOP** —— 正式宣布前先用另外 2 个种子确认 |
-| 差距完全由 pHash 重复帧解释 | **降级**为近重复帧审计 —— 用数字复述博客 |
-| 无法实现等 N 对齐 | 该单元格**无结果**；代码抛异常 |
+| No camera metadata on any usable public set | **KILL** (GATE-A) |
+| Camera-disjoint drop vanishes under event-disjoint | **KILL** — PYRONEAR solved it |
+| Camera-ID probe at chance, event-disjoint | **KILL** H3 |
+| Only one tiny camera set available | **KILL** |
+| Cameras < 10 | **PIVOT** to event-disjoint only; forfeits H2 |
+| random ≈ camera-disjoint within seed noise **and** probe ≈ chance **and** no empty-FPR gap | **STOP** — confirm with 2 more seeds first |
+| Gap fully explained by pHash duplicates | **DOWNGRADE** to a near-duplicate audit — restates the blog with numbers |
+| Equal-N matching cannot be achieved | **No result** for that cell; the code raises |
 
-### 20.1 记录中没有软着陆路径
+### 20.1 There is no recorded soft landing
 
-**FACT。** 与 Idea_01 不同，Stage-4 记录给该想法**没有降级条款** —— 残余要求是一项硬性规定，
-而不是 *"else …"*。唯一有记录的退路是相机少于 10 台时的转向，而那会放弃 H2。`proposal.md` 自身对
-缺少 H4 的措辞是 *"Fatal"*，而不是"缩小范围"。`stage6_battle.md` §2.2 记下了诚实的读法：
-**Idea_02 要么完整成文，要么 kill。** 相应规划 —— 不要指望能抢救出部分结果。
+**FACT.** Unlike Idea_01, the Stage-4 record gives this idea **no downgrade
+clause** — the residual is a requirement, not an *"else …"*. The only documented
+fallback is the <10-camera pivot, which forfeits H2. `proposal.md`'s own
+language for a missing H4 is *"Fatal"*, not "reduced scope".
+`stage6_battle.md` §2.2 recorded the honest reading: **Idea_02 is a full paper
+or a kill.** Plan accordingly — do not expect to salvage a partial result.
 
-## 21. 混淆因素与缓解措施
+## 21. Confounders & mitigations
 
-| 混淆因素 | 缓解措施 |
+| Confounder | Mitigation |
 |---|---|
-| 相机 = 地理（重大混淆） | 空帧探针（H4） |
-| 事件记忆伪装成相机签名 | 探针在按事件划分下评测；两个方向均由自检钉住 |
-| 是重复帧而非相机签名 | pHash 去重重跑（E4） |
-| 每种协议的测试集大小／类别平衡不同 | 等 N、比例对齐，无法实现时代码抛异常 |
-| 事件内部相关性虚高置信度 | 按事件聚类的 bootstrap |
-| 单座异常塔驱动全部结论 | 相机数量敏感性消融 |
-| 探针测量的是通用场景身份 | ImageNet 对照 backbone（E3） |
+| Camera = geography (the big one) | Empty-frame probe (H4) |
+| Event memorisation masquerading as camera signature | Probe evaluated event-disjoint; both directions pinned by self-checks |
+| Duplicate frames rather than camera signature | pHash dedup rerun (E4) |
+| Test-set size / class balance differs per protocol | Equal-N, ratio-matched, and the code raises if unachievable |
+| Within-event correlation inflating confidence | Event-clustered bootstrap |
+| One unusual tower drives everything | Camera-count sensitivity ablation |
+| Probe measures generic scene identity | ImageNet control backbone (E3) |
 
-## 22. Reviewer #2 合规矩阵（有约束力）
+## 22. Reviewer #2 compliance matrix (binding)
 
-| 攻击 | 约束性义务 | 在何处满足 |
+| Attack | Binding obligation | Where satisfied |
 |---|---|---|
-| 新颖性：博客已诊断出该问题 | 重新训练并量化 | E1/E2 |
-| 混淆因素：相机 = 地理 | 空帧记忆探针 | H4, §7 |
-| 相机数量 N 极小 | 多个折叠 + 置信区间 | E2, §15 |
-| PYRONEAR 已经"修复"了划分 | 展示 event-disjoint ≠ camera-disjoint | H2, §5 |
-| 充满噪声的 mAP | 3 个种子，报告 FAR | §15, E2 |
+| Novelty: the blog already diagnosed this | Retrain and quantify | E1/E2 |
+| Confounder: camera = geography | Empty-frame memorisation probe | H4, §7 |
+| Tiny camera N | Multiple folds + CIs | E2, §15 |
+| PYRONEAR already "fixed" splits | Show event-disjoint ≠ camera-disjoint | H2, §5 |
+| Noisy mAP | 3 seeds, report FAR | §15, E2 |
 
-**残余义务（FACT，原文）：** *"Need event-disjoint vs camera-disjoint gap plus
-empty-frame memorization probe."* 两个条件皆为卡片 E1 和 E2；两项都不可或缺。
+**Residual obligation (FACT, verbatim):** *"Need event-disjoint vs
+camera-disjoint gap plus empty-frame memorization probe."* Both conjuncts are
+cards E1 and E2; neither is optional.
 
-## 23. 范围边界
+## 23. Scope boundaries
 
-- **不是**新的检测器、架构或数据增强。
-- **不是**关于任何具体已发表数字在具体幅度上出错的主张 —— 我们没有那些作者的模型。
-- **不是**对 Voxel51 博客的重新推导。重复帧是*混淆因素*（E4），不是发现。
-- **不是**火灾风险或部署方面的主张。
+- **Not** a new detector, architecture or augmentation.
+- **Not** a claim that any specific published number is wrong by a specific
+  amount — we do not have those authors' models.
+- **Not** a re-derivation of the Voxel51 blog. Duplicates are the *confound*
+  (E4), not the finding.
+- **Not** a fire-risk or deployment claim.
 
-## 24. 算力与资源预算
+## 24. Compute & resource budget
 
-**全部为 HYPOTHESIS。** Day-1 约 10 GPU-h（`evolution_summary.md`）。包含 3 个种子与第二数据集的
-完整方案约 80 GPU-h。GATE-A 与 E0 完全不需 GPU。
+**All HYPOTHESIS.** Day-1 ≈10 GPU-h (`evolution_summary.md`). Full program with
+3 seeds and a second dataset ≈80 GPU-h. GATE-A and E0 need no GPU at all.
 
-这是 Windows6 Final 3 中按每单位证据计算**最昂贵**的一个，因为它是唯一需要训练而非纯评测的项目。
-这是 GATE-A 必须在花掉任何开销前关闭的另一原因。
+This is the **most expensive** of the Windows6 Final 3 per unit of evidence,
+because it is the only one requiring training rather than evaluation. That is
+another reason GATE-A must close before anything is spent.
 
-## 25. 可复现性与发布计划
+## 25. Reproducibility & release plan
 
-- 随机种子通过 `config.set_seed` 固定，返回显式 `Generator`。
-- **划分代码即交付物。** 发布相机感知的重划分下标，方便他人在相同的公开数据上复现该协议。
-- `Split.__post_init__` 在训练／测试下标重叠时抛异常 —— 静默重叠的划分会废掉下游的一切。
-- `tests/test_smoke.py`：24 项自检，纯 numpy。
-- 发布：划分下标、探针代码、逐种子指标表格。不重新分发影像。
+- Seeds fixed via `config.set_seed`, returning an explicit `Generator`.
+- **The split code is the deliverable.** Release the camera-aware re-split
+  indices so others can reproduce the protocol on the same public data.
+- `Split.__post_init__` raises on overlapping train/test indices — a silently
+  overlapping split would invalidate everything downstream.
+- `tests/test_smoke.py`: 24 self-checks, numpy only.
+- Release: split indices, probe code, per-seed metric tables. No imagery
+  redistributed.
 
-## 26. 风险与缓解
+## 26. Risks & mitigations
 
-| 风险 | 严重度 | 缓解措施 |
+| Risk | Severity | Mitigation |
 |---|---|---|
-| GATE-A 失败 —— 无相机元数据 | **致命** | 先查；需数小时 |
-| <10 台相机 | 高 | 转向记录在案，但 H2 丢失 |
-| H4 为零 → 论文坍缩为分布偏移 | 高 | 无缓解手段。§20.1：要么成文要么 kill |
-| 仅单一数据集有 ID | 中 | 诚实界定范围；单数据集审计偏弱但在 H4 成立下可发表 |
-| 评审将其读为"数据集存在泄漏，我们早知道" | 中 | 表述纪律：贡献在于混淆因素分离 |
+| GATE-A fails — no camera metadata | **Fatal** | Check first; costs hours |
+| <10 cameras | High | Pivot documented, but H2 is lost |
+| H4 null → paper collapses to domain shift | High | No mitigation exists. §20.1: full paper or kill |
+| Only one dataset has IDs | Medium | Honest scope; single-dataset audit is weaker but publishable if H4 holds |
+| Reviewers read it as "datasets leak, we know" | Medium | Framing discipline: the contribution is the confounder split |
 
-## 27. 伦理与数据考量
+## 27. Ethical & data considerations
 
-基于各自许可下的公开野火检测语料。相机 ID 属于基础设施标识符而非个人数据，但瞭望塔位置可能敏感：
-将相机 ID 以**不透明下标**发布，绝不作为坐标发布。不重新分发任何图像 —— 仅分发划分下标与派生指标。
-该发现（若成立）是对基准作者的告诫；绝不能呈现为任何已部署系统不安全的证据。
+Public wildfire-detection corpora under their own licences. Camera IDs are
+infrastructure identifiers, not personal data, but tower locations can be
+sensitive: publish camera IDs as **opaque indices**, never as coordinates. No
+imagery is redistributed — only split indices and derived metrics. The finding,
+if it holds, is a caution to benchmark authors; it must not be presented as
+evidence that any deployed system is unsafe.
 
-## 28. 交付物与决策树
+## 28. Deliverables & decision tree
 
-**交付物。** 数据集审计论文；相机感知重划分；探针与空帧协议的可复用代码。
+**Deliverables.** Dataset-audit paper; the camera-aware re-split; the probe and
+empty-frame protocol as reusable code.
 
 ```
-E-A GATE-A  ──无相机元数据──> KILL
-   │<10 台相机──> PIVOT（仅按事件划分；放弃 H2；重新论证席位）
-   │≥10 台相机
-E0 测试台   ──结构错误──> 修复（绝非科学结论）
-   │通过
-E1 killer   ──event-disjoint ≈ camera-disjoint──> KILL（PYRONEAR 解决了它）
-   │        ──探针处于随机水平──> KILL H3
-   │H1+H2 成立
-E2 3 个种子 ──差距在种子噪声内──> STOP
+E-A GATE-A  ──no camera metadata──> KILL
+   │<10 cameras──> PIVOT (event-disjoint only; H2 forfeited; re-argue slot)
+   │≥10 cameras
+E0 harness  ──structure wrong──> fix (never a scientific conclusion)
+   │pass
+E1 killer   ──event-disjoint ≈ camera-disjoint──> KILL (PYRONEAR solved it)
+   │         ──probe at chance──> KILL H3
+   │H1+H2 hold
+E2 3 seeds  ──gap inside seed noise──> STOP
    │
-E4 去重     ──差距全来自重复帧──> 降级为近重复帧审计
-   │差距存活
-   └─> 审计论文。E5 第二数据集增强论证；E3 探针对照为便宜的保险。
+E4 dedup    ──gap is all duplicates──> DOWNGRADE to a near-duplicate audit
+   │gap survives
+   └─> audit paper. E5 second dataset strengthens; E3 probe control is cheap insurance.
 ```
 
-**候选标题。** *Event-Disjoint Is Not Camera-Disjoint: Measuring Smoke
+**Candidate titles.** *Event-Disjoint Is Not Camera-Disjoint: Measuring Smoke
 Benchmark Inflation* · *What Do Wildfire Detectors Memorize — Plumes or
 Towers?* · *A Camera-Aware Re-split of Public Smoke Benchmarks*
