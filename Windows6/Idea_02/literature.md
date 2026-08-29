@@ -1,79 +1,73 @@
-# Idea_02 — Literature (verified entries only)
+# Idea_02 —— 文献（只收已核实的条目）
 
-**Sourcing rule.** An entry appears here only if it already exists in
-`selection_history/literature_anchors.md` or in the original version of this
-file — i.e. only if a Stage-3/4 agent actually web-searched it. Nothing was
-added from memory. Where the argument needs a reference that could not be
-verified against those sources, the slot reads
-`CITATION NEEDED — 待人工核验` rather than a guessed citation.
+**取材规则。** 这里的条目只有在它已经存在于
+`selection_history/literature_anchors.md` 或本文件的原始版本中时才可以出现在
+这里 —— 即只有当某个 Stage-3/4 agent 真的做过网页检索时才收。没有任何一条是
+凭记忆添加的。凡论证需要某个引用、而它无法与那些来源核对上的地方，
+该位置写的是 `CITATION NEEDED — 待人工核验`，而不是一个猜出来的引用。
 
-> **The single most important rule in this package, carried forward verbatim
-> from the original file:**
+> **本 package 中最重要的一条规则，原样照引自原始文件：**
 >
-> > **Do not cite a peer-reviewed mAP inflation number we did not compute.**
+> > **不要引用一个我们自己没有计算过的、同行评议的 mAP 虚高数字。**
 >
-> No inflation number appears anywhere in Idea_02. Windows6 has no smoke mAP.
+> Idea_02 中任何地方都不出现虚高数字。Windows6 没有烟雾 mAP。
 
 ---
 
-## A. Core — the work this project is positioned against
+## A. 核心 —— 本项目所对标的工作
 
-| Work | Year | ID | Relation |
+| 工作 | 年份 | ID | 关系 |
 |---|---|---|---|
-| PYRONEAR-2025 | 2024/25 | arXiv 2402.05349 | **Both the closest work and the target.** Introduces event-disjoint splits and pHash dedup. H2 claims event-disjoint leaves a residual camera leak, so this paper defines the bar we must clear |
-| Voxel51 Pyro-SDIS audit | 2026 | blog | Diagnosed shared-camera near-duplicates. **A diagnosis, with no retrained mAP** — recorded that way in the original file and repeated in `proposal.md` §9. The gap we fill is the retraining and the confounder split |
+| PYRONEAR-2025 | 2024/25 | arXiv 2402.05349 | **既是最接近的工作，也是靶子。** 引入了按事件划分与 pHash 去重。H2 主张按事件划分仍留有相机泄漏的残余，因此这篇论文定义了我们必须跨过的门槛 |
+| Voxel51 Pyro-SDIS audit | 2026 | blog | 诊断出共享相机的近重复帧。**这是一份诊断，没有重新训练出 mAP** —— 原始文件如此记录，并在 `proposal.md` §9 中重申。我们要填补的空缺就是重新训练与混淆因素划分 |
 
-**Stage-3 remaining novelty (FACT, verbatim):** *"Peer-reviewed inflation
-quantification across smoke/fire benches."* Novelty confidence **0.55**.
+**Stage-3 剩余新颖性（FACT，原文）：** *"Peer-reviewed inflation
+quantification across smoke/fire benches."* 新颖性信心 **0.55**。
 
-## B. Candidate corpora
+## B. 候选语料
 
-| Work | Status | Note |
+| 工作 | 状态 | 备注 |
 |---|---|---|
-| SmokeFrames / Nemo | listed in the original file, IDs unverified | Prior sets. Standing warning carried forward: **check camera IDs before use** |
-| FIgLib | `CITATION NEEDED — 待人工核验` | Named in the experiment plan as a second-dataset candidate |
+| SmokeFrames / Nemo | 列在原始文件中，ID 未核实 | 既有数据集。原样沿用长期警告：**使用前核查相机 ID** |
+| FIgLib | `CITATION NEEDED — 待人工核验` | 在实验计划中被点名为第二个数据集的候选 |
 
-**Every corpus needs its own GATE-A inventory** (`experiments.md` E-A) before it
-can be used. Being listed here is not evidence that camera IDs exist.
+**每个语料都需要自己的 GATE-A 清单**（`experiments.md` E-A）之后才能
+使用。列在这里并不构成相机 ID 存在的证据。
 
-## C. Slots that need human verification before submission
+## C. 投稿前需要人工核验的位置
 
-| Needed for | Slot |
+| 用在何处 | 位置 |
 |---|---|
-| FIgLib dataset | `CITATION NEEDED — 待人工核验` |
+| FIgLib 数据集 | `CITATION NEEDED — 待人工核验` |
 | SmokeFrames | `CITATION NEEDED — 待人工核验` |
 | Nemo | `CITATION NEEDED — 待人工核验` |
 | YOLOv8 / YOLOv8-nano | `CITATION NEEDED — 待人工核验` |
-| pHash / perceptual hashing (E4) | `CITATION NEEDED — 待人工核验` |
-| Average precision protocol for image-level detection | `CITATION NEEDED — 待人工核验` |
-| Cluster bootstrap for correlated observations | `CITATION NEEDED — 待人工核验` |
-| Group-aware cross-validation / leakage in ML benchmarks generally | `CITATION NEEDED — 待人工核验` |
+| pHash / 感知哈希（E4） | `CITATION NEEDED — 待人工核验` |
+| 图像级检测的 Average precision 协议 | `CITATION NEEDED — 待人工核验` |
+| 相关观测的 Cluster bootstrap | `CITATION NEEDED — 待人工核验` |
+| 一般机器学习基准中的组感知交叉验证 / 划分泄漏 | `CITATION NEEDED — 待人工核验` |
 
-The last one matters more than it looks: split leakage is a general
-methodological literature, and a reviewer will expect the paper to place itself
-in it. Filling that slot is a submission blocker, not a nicety.
+最后一个比看起来更重要：划分泄漏是一篇通用的方法学文献，评审会期望这篇论文
+把自己置于其中。填上那个空缺是投稿的阻塞项，不是可有可无的修饰。
 
-## D. Borrowed from the shared anchors
+## D. 借自共享锚点
 
-| Work | Year | Venue | Why it is relevant here |
+| 工作 | 年份 | 会议 | 为什么在这里相关 |
 |---|---|---|---|
-| Metrics Reloaded | 2024 | Nature Methods | Metric-selection discipline. Cited because the sibling idea `F-022` was **killed** on metric grounds; the same reflex applies to any audit paper that reports a metric property rather than a finding |
+| Metrics Reloaded | 2024 | Nature Methods | 指标选择的纪律。之所以被引用，是因为同胞想法 `F-022` 是在指标层面上被**杀掉**的；同样的条件反射适用于任何报告指标性质而非实质发现的审计论文 |
 
-## E. How the core citations are used in the argument
+## E. 核心引用在论证中的用法
 
-- **PYRONEAR-2025** is cited three times over, for three different jobs: as the
-  source of the event-disjoint protocol, as the corpus candidate, and as the
-  standard H2 argues is insufficient. It must never be cited as though it were
-  merely related work — it is the thing being tested.
-- **The Voxel51 audit** is cited only as a diagnosis, always with the
-  qualification that it reported no retrained mAP. Citing it as evidence of an
-  inflation magnitude would be exactly the error the standing rule forbids.
-- **Metrics Reloaded** is cited defensively in the metrics section.
+- **PYRONEAR-2025** 被引用了三次，承担三个不同的角色：作为按事件划分协议的
+  出处、作为语料候选、以及作为 H2 论证为不够充分的标准。绝不能把它当作
+  普通相关工作来引 —— 它就是被检验的对象。
+- **Voxel51 审计** 只被作为一份诊断来引，并且始终附带"它没有报告重新训练后的 mAP"
+  这一定语。把它当作虚高幅度的证据来引，恰恰就是长期规则所禁止的错误。
+- **Metrics Reloaded** 在指标章节中被防御性地引用。
 
-## F. Deliberately not cited
+## F. 有意不引用的工作
 
-General wildfire-detection method papers (new architectures for smoke
-detection). They are not the subject: this is an audit of evaluation protocol,
-not a comparison of detectors. Citing a pile of them would imply we are claiming
-their numbers are wrong by a specific amount, which `proposal.md` §23 explicitly
-rules out — we do not have those authors' models.
+一般的野火检测方法论文（针对烟雾检测的新架构）。它们不是研究对象：这是一份
+评测协议的审计，不是检测器之间的对比。列出一堆这种论文会暗示我们在声称
+他们的数字在某个具体幅度上是错的，而 `proposal.md` §23 明确排除了这一点 ——
+我们没有那些作者的模型。

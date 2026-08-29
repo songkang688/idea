@@ -1,190 +1,171 @@
-# Idea_02 — Reviewer attacks & answers
+# Idea_02 —— 评审攻击与应答
 
-A-series from the Stage-4 pass recorded in `stage4_reviewer2_cheap5.jsonl` and
-`reviewer_summary.md`. B- and C-series are our own red team. **No attack is
-listed without the evidence that answers it**, and where an attack is only
-partly mitigated it says so.
-
----
-
-## A. The Stage-4 attacks (binding)
-
-### A1. "The blog already diagnosed this"
-
-**The attack.** The Voxel51 Pyro-SDIS audit already reported shared-camera
-near-duplicates. You are writing up a known problem.
-
-**Evidence that shuts it.** **VERIFIED PRIOR WORK**, and the record is precise
-about what it is: `literature.md` files it as *"2026 blog — diagnosis, **no**
-retrained mAP"*. We **retrain under three protocols and quantify the deltas with
-event-clustered CIs**, and we add the confounder split (H4) that the blog does
-not attempt. A diagnosis and a measured inflation with a mechanism are different
-contributions.
-
-**Standing constraint (FACT).** *"Do not cite a peer-reviewed mAP inflation
-number we did not compute."* No such number appears anywhere in this package.
-
-### A2. "Camera identity is just geography" — the fatal one
-
-**The attack.** Different cameras are different places: different terrain,
-vegetation, haze, sun angle. Camera-disjoint scoring lower is ordinary domain
-shift. You have re-measured a known phenomenon and called it leakage.
-
-**Why it is dangerous.** Because it is the default reading, and if it stands the
-paper has no finding.
-
-**Evidence that shuts it.** The **empty-frame memorisation probe (H4)**. Empty
-frames contain **no plume**. A seen-versus-unseen camera gap on negatives cannot
-be a plume-appearance domain shift — there is no plume to shift. It has to be
-the background, i.e. memorisation.
-
-Supporting controls: the detector trains on non-empty frames only, so both sides
-of the comparison are held out under identical conditions; the ImageNet control
-backbone (E3) distinguishes "the detector learned it" from "any backbone
-encodes scene identity".
-
-**FACT.** `proposal.md` is blunt: *"Fatal if we only report camera-disjoint drop
-without H4."* H4 is not a robustness check. It is the paper.
-
-### A3. "Tiny camera N"
-
-**The attack.** With a handful of towers, the camera-disjoint estimate is one
-draw from a tiny population and the CI is meaningless.
-
-**Evidence that shuts it.** Multiple folds; 3 seeds; **event-clustered**
-bootstrap CIs; a camera-count sensitivity ablation showing the gap is not driven
-by one unusual tower. And a hard pre-declared floor: **<10 cameras triggers the
-pivot to event-disjoint only**, which forfeits H2 and sends the idea back for
-re-argument rather than shipping an underpowered claim.
-
-### A4. "PYRONEAR already fixed splits"
-
-**The attack.** Event-disjoint splitting is deployed. The problem is solved.
-
-**Evidence that shuts it.** This is exactly H2, and the code makes it checkable
-rather than assertable. `splits.camera_overlap` and `splits.event_overlap`
-report per-protocol counts, and the self-checks assert the structure:
-event-disjoint shares **0 events but >0 cameras**; camera-disjoint shares
-neither. If event-disjoint turned out camera-disjoint on a real dataset, H2
-would be unfalsifiable there and the pivot fires — stated in advance, not after
-seeing the numbers.
-
-### A5. "mAP is noisy"
-
-**Evidence that shuts it.** 3 seeds; H1 requires a gap exceeding seed std; FAR
-at fixed recall reported alongside AP because it is the operationally meaningful
-number; and the CI method resamples events rather than frames.
+A 系列来自记录在 `stage4_reviewer2_cheap5.jsonl` 与 `reviewer_summary.md` 中的
+Stage-4 环节。B 系列与 C 系列是我们自己的红队。**没有任何攻击会在没有配上
+能回应它的证据的情况下被列出**；凡某条攻击只被部分缓解的地方，都会如实说明。
 
 ---
 
-## B. The attacks that decide whether this is a paper
+## A. Stage-4 的攻击（有约束力）
 
-### B1. "You cannot separate memorisation from domain shift at all"
+### A1. "博客早已经诊断出这一点了"
 
-**The attack.** Even empty frames from a seen camera differ from empty frames
-from an unseen camera in terrain and lighting. The gap could still be shift.
+**攻击内容。** Voxel51 Pyro-SDIS 审计已经报告了共享相机的近重复帧。
+你们只是在把一个已知问题写成论文。
 
-**Why it is dangerous.** It is the sophisticated version of A2 and it partly
-lands.
+**能封嘴的证据。** **VERIFIED PRIOR WORK**，而且记录对它是什么非常精确：
+`literature.md` 将其归档为 *"2026 博客 —— 诊断，**无**重新训练的 mAP"*。
+我们**在三种协议下重新训练，并用在事件上聚类的置信区间量化差值**，
+并加上了该博客未曾尝试的混淆因素划分（H4）。一份诊断与一项带机制的、
+被测量出来的虚高是不同的贡献。
 
-**Evidence that shuts it — and its limit.** The ImageNet control backbone (E3)
-separates "generic scene identity, available to any model" from "identity this
-detector learned". A gap present in the detector backbone and absent in the
-ImageNet backbone is hard to explain as terrain.
+**长期约束（FACT）。** *"不要引用一个我们自己没有计算过的、同行评议的 mAP 虚高数字。"*
+本 package 中任何地方都不出现这种数字。
 
-**Honest limitation.** This does not fully close the attack. A complete answer
-would need empty frames from the *same* camera under different conditions, or a
-matched-terrain camera pairing, neither of which is specified. **Recorded as
-partly mitigated.**
+### A2. "相机身份不过是地理位置" —— 致命的那一条
 
-### B2. "The whole gap is duplicate frames"
+**攻击内容。** 不同的相机就是不同的地方：不同的地形、植被、薄雾、太阳角度。
+按相机划分分数更低只是普通的域偏移。你们把一个已知现象重新测了一遍并称之为泄漏。
 
-**The attack.** Near-duplicate frames across the split, not camera signature.
-The blog already said so.
+**为什么危险。** 因为这是默认的读法，如果它成立，这篇论文就没有任何发现。
 
-**Evidence that shuts it.** Card **E4**: pHash dedup, rebuild all splits, rerun.
-Pre-declared branches — survives dedup → camera signature; disappears → downgrade
-to a near-duplicate audit; shrinks → report both numbers and attribute the share.
-The outcome is pre-committed, so it cannot be spun afterwards.
+**能封嘴的证据。** **空帧记忆探针（H4）**。空帧中**没有羽流**。
+负样本上"见过 vs 未见过"的相机差距不可能是羽流外观的域偏移 ——
+根本没有羽流可以去偏移。它只能是背景造成的，即记忆。
 
-### B3. "There is no reduced version of this paper"
+支持性的对照：检测器只在非空帧上训练，因此对比的两侧都是在完全相同的条件下
+被留出的；ImageNet 对照 backbone（E3）将"检测器学到了它"与"任何 backbone
+都会对场景身份做编码"区分开来。
 
-Not a reviewer attack — a planning fact, recorded because it changes how the
-work should be scheduled.
+**FACT。** `proposal.md` 直言不讳：*"Fatal if we only report camera-disjoint drop
+without H4."* H4 不是一项鲁棒性检查。它就是整篇论文。
 
-**FACT.** The Stage-4 record gives Idea_02 **no downgrade clause**. Its residual
-is a requirement, not an *"else …"* — unlike Idea_01, which was explicitly
-allowed to become an evaluation note. The only documented fallback is the
-<10-camera pivot, which forfeits H2. `stage6_battle.md` §2.2 recorded the
-reading: **Idea_02 is a full paper or a kill.** Do not plan on salvaging a
-partial result.
+### A3. "相机数量 N 极小"
 
----
+**攻击内容。** 只有区区几座塔，按相机划分的估计值只是从小样本总体中的一次抽样，
+置信区间毫无意义。
 
-## C. Our own red team
+**能封嘴的证据。** 多个折叠（folds）；3 个随机种子；**在事件上聚类的**
+bootstrap 置信区间；展示差距并非由单座异常塔驱动的相机数量敏感性消融。
+以及一条硬性的预先声明底线：**<10 台相机触发仅按事件划分的转向**，
+这会放弃 H2 并把该想法送回重新论证，而不是交出一项检验力不足的主张。
 
-### C1. "Your camera-ID probe is memorising fire episodes, not cameras"
+### A4. "PYRONEAR 已经把划分修好了"
 
-**This is a real defect that was present and is now fixed.** On a random split
-the probe can name the camera by recognising the *episode* shared across the
-split. **Measured during W6-T3:** with the camera signature switched off
-entirely, a random-split probe still beat chance by ≈0.17 — pure event leakage.
+**攻击内容。** 按事件划分已经部署了。问题已经解决了。
 
-**Answer.** H3 is evaluated **event-disjoint**, always. Two self-checks pin it:
-one asserts the event-disjoint control sits near chance, the other asserts the
-random-split version *is* confounded, so the rule cannot be silently dropped by
-a later refactor.
+**能封嘴的证据。** 这正是 H2，而代码使它可被核查而不只是被断言。
+`splits.camera_overlap` 与 `splits.event_overlap` 报告每种协议的计数，
+自检断言了其结构：按事件划分共享 **0 个事件但 >0 台相机**；按相机划分
+两者都不共享。如果按事件划分在真实数据集上算出来就是按相机划分，那么 H2
+在那里就不可证伪，转向机制触发 —— 事先写明，而不是看到数字后再定。
 
-### C2. "Your equal-N matching hides the effect"
+### A5. "mAP 充满噪声"
 
-Subsampling the test side to match size and class ratio could remove real
-signal. **Answer:** report matched and unmatched side by side. And
-`match_equal_n` **raises** rather than shipping a comparison whose positive
-ratio it could not match — an unmatched comparison produces no number instead of
-a misleading one.
-
-### C3. "Image-level AP is not detection"
-
-**Answer.** Deliberate, and stated in `proposal.md` §15: the operational
-question for a tower is false alarms at a required recall, not box tightness.
-IoU is secondary. If a reviewer insists, box metrics are an addition, not a
-replacement.
-
-### C4. "Empty frames are not representative negatives"
-
-Frames with no fire anywhere may be trivially easy, making the FPR comparison
-uninformative. **Answer:** report the absolute FPRs alongside the gap, so a
-reader can see whether either side is near the floor. If both are ≈0 the probe
-is uninformative and must be reported as such rather than as a null result for
-H4. **Not fully mitigated** — a harder negative pool (dawn fog, dust, cloud
-shadow) would be a better instrument and is not currently specified.
-
-### C5. "One dataset is not a benchmark claim"
-
-**Answer.** E5 adds a second corpus; `proposal.md` §20 requires H1 and H4 on ≥2
-datasets to CONTINUE. If only one dataset has camera IDs, the title names that
-dataset. Honest scope over implied generality.
-
-### C6. "Your synthetic harness proves nothing"
-
-Correct, and the package says so at runtime. The camera signature was planted by
-`make_corpus`; `run_smoke.py` prints that before any number. E0 checks that H2 is
-*expressible* in code, and nothing else.
-
-### C7. "Publishing camera IDs exposes tower locations"
-
-**Answer.** Camera IDs are released as **opaque indices**, never coordinates.
-No imagery is redistributed — only split indices and derived metrics.
+**能封嘴的证据。** 3 个随机种子；H1 要求差距超过种子标准差；在 AP 之外
+同时报告固定召回下的 FAR，因为那是实际业务上有意义的数字；
+而且置信区间方法在事件上重采样，而不是在帧上。
 
 ---
 
-## Standing discipline
+## B. 决定这究竟算不算一篇论文的攻击
 
-1. Never cite an inflation number we did not compute. The Voxel51 audit is a
-   blog diagnosis with no retrained mAP, and must be described that way.
-2. The probe is always evaluated event-disjoint.
-3. Empty frames are never trained on.
-4. CIs cluster over events, never frames.
-5. Report camera-shared and event-shared counts in every table.
-6. GATE-A before any GPU.
-7. Never relabel EXPECTED as ACTUAL. There is no smoke mAP in Windows6.
+### B1. "你根本无法把记忆与域偏移分离开来"
+
+**攻击内容。** 哪怕是来自见过相机的空帧，与来自未见过相机的空帧在地形和光照上
+也有差异。这个差距依然可能是分布偏移。
+
+**为什么危险。** 它是 A2 的高阶版本，且部分打中了要害。
+
+**能封嘴的证据 —— 以及它的局限。** ImageNet 对照 backbone（E3）将
+"通用场景身份（任何模型都可及）"与"该检测器学到的身份"区分开来。
+若差距在检测器 backbone 中存在而在 ImageNet backbone 中不存在，
+就很难解释为地形原因。
+
+**诚实的局限。** 这并未完全消除该攻击。一个完备的回答需要来自*同一台*相机在
+不同条件下的空帧，或者地形对齐的相机配对，而这两者目前都未被规定。
+**记录为已部分缓解。**
+
+### B2. "全部差距都来自重复帧"
+
+**攻击内容。** 是跨划分的近重复帧，不是相机签名。博客早就这么说了。
+
+**能封嘴的证据。** 卡片 **E4**：pHash 去重，重建所有划分，重跑。
+预先声明的分支 —— 去重后差距存活 → 相机签名；差距消失 → 降级为近重复帧审计；
+差距收窄 → 两个数字都报并归因份额。结论已预先锁定，事后无法粉饰。
+
+### B3. "这篇论文没有缩水版"
+
+这不是一条评审攻击 —— 是一条规划事实，之所以记录是因为它改变了工作的排期方式。
+
+**FACT。** Stage-4 记录给 Idea_02 **没有降级条款**。它的残余是一条硬性要求，
+不是 *"else …"* —— 与 Idea_01 不同，后者被明确允许变成一篇 evaluation note。
+唯一有记录的退路是相机少于 10 台时的转向，而那会放弃 H2。
+`stage6_battle.md` §2.2 记下了这个读法：**Idea_02 要么完整成文，要么杀掉。**
+不要指望能抢救出一个部分结果。
+
+---
+
+## C. 我们自己的红队
+
+### C1. "你的相机 ID 探针是在记忆火灾事件，不是相机"
+
+**这是一个真实存在过、现已被修复的缺陷。** 在随机划分上，探针可以靠
+识别跨划分共享的*事件*来说出相机是哪一台。**W6-T3 期间实测：**
+在把相机签名完全关掉之后，随机划分上的探针仍然比随机水平高出约 0.17 ——
+纯粹是事件泄漏。
+
+**应答。** H3 永远在**按事件划分**下评测。两项自检钉住它：
+一项断言按事件划分的对照接近随机水平，另一项断言随机划分版本*确实*
+被混淆了，因此该规则不可能在以后的重构中被静默丢弃。
+
+### C2. "你的等 N 对齐掩盖了效应"
+
+为了对齐规模和类别比例而对测试侧做下采样，可能会移去真实信号。
+**应答：** 把对齐与未对齐的结果并排报告。而且 `match_equal_n` 在无法对齐
+正样本比例时会**抛异常**，而不是交付一个不可比的对比 —— 未对齐的对比
+产不出数字，而不是产出一个误导性的数字。
+
+### C3. "图像级 AP 不是目标检测"
+
+**应答。** 这是深思熟虑的选择，并在 `proposal.md` §15 中说明：对于瞭望塔而言，
+实际问题是达到要求召回率时的误报率，而不是框有多紧。IoU 是次要的。
+如果评审坚持，框级指标作为补充，而不是替代。
+
+### C4. "空帧不是具有代表性的负样本"
+
+没有任何火灾的帧可能平凡地容易，使得 FPR 对比失去信息量。
+**应答：** 在差距旁边同时报告绝对 FPR，让读者能看出是否有哪一侧接近下限。
+如果两者都 ≈0，则该探针没有信息量，必须如实报告，而不是当作 H4 的零结果。
+**未完全缓解** —— 一个更难的负样本池（晨雾、扬尘、云影）会是更好的测量工具，
+而目前尚未规定。
+
+### C5. "单一数据集不构成基准主张"
+
+**应答。** E5 补入第二个语料；`proposal.md` §20 要求 H1 与 H4 在 ≥2 个数据集上
+成立才能继续。如果只有一个数据集有相机 ID，标题就指名该数据集。
+诚实的范围重于暗示的通用性。
+
+### C6. "你们的合成测试台什么都证明不了"
+
+完全正确，而且 package 在运行时就是这么说的。相机签名是由 `make_corpus`
+植入的；`run_smoke.py` 在打印任何数字之前都会说明这一点。E0 只检查 H2 在
+代码中是否*可被表达*，不证明别的。
+
+### C7. "公开相机 ID 会暴露瞭望塔位置"
+
+**应答。** 相机 ID 以**不透明下标**发布，绝不发布坐标。
+不重新分发任何图像 —— 仅分发划分下标与派生指标。
+
+---
+
+## 长期纪律
+
+1. 绝不引用我们自己没有计算过的虚高数字。Voxel51 审计是一篇没有重新训练出
+   mAP 的博客诊断，必须这样描述它。
+2. 探针一律在按事件划分下评测。
+3. 空帧绝不用于训练。
+4. 置信区间在事件上聚类，绝不在帧上聚类。
+5. 在每张表格中都报告相机共享数与事件共享数。
+6. 先做 GATE-A，再开任何 GPU。
+7. 绝不把 EXPECTED 改标为 ACTUAL。Windows6 中没有烟雾 mAP。

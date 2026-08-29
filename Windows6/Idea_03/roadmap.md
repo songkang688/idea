@@ -1,146 +1,139 @@
-# Idea_03 — Roadmap
+# Idea_03 —— 路线图
 
-All budgets are **HYPOTHESIS** (estimates from
-`selection_history/evolution_summary.md` and `experiments.md`). None is a
-measured runtime. **No VLM has been run**; `Windows6/README.md` records *"no VLM
-eval"*.
+所有预算都是 **HYPOTHESIS**（来自
+`selection_history/evolution_summary.md` 与 `experiments.md` 的估计值）。没有一个是
+实测运行时间。**没有跑过任何 VLM**；`Windows6/README.md` 记录了 *"no VLM eval"*。
 
-Ordering principle: **the clock is the constraint.** Unlike Idea_01 and Idea_02,
-Idea_03's dominant risk is not cost or feasibility — it is that the gap closes
-while we work. The novelty is defined by an absence at confidence ~0.5, and
-`README.md` marks this the highest concurrent-work risk in Windows6. Everything
-below is arranged to reach a defensible result quickly, not to minimise compute.
+排序原则：**时间就是约束。** 与 Idea_01 和 Idea_02 不同，Idea_03 的主要
+风险不是成本或可行性 —— 而是当我们还在做的时候空缺被别人填上了。其新颖性由
+信心约 0.5 的空缺定义，而 `README.md` 将其标为 Windows6 中被并行工作抢先风险
+最高的一个。下面的一切安排都是为了迅速拿到站得住脚的结果，而不是为了把算力降到最低。
 
-> **Scheduling note that cuts across the whole round.** `Windows6/README.md`
-> ranks Idea_01 as *"#1 start here"* on tractability, and that ranking is right
-> for tractability. But **GATE-B and E1 here should not wait for Idea_01 to
-> finish.** They are cheap, they are eval-only, and their value decays. Running
-> Idea_03's gate check in parallel with Idea_01's Phase 0 costs almost nothing.
+> **切过整轮的排期注意事项。** `Windows6/README.md` 在可行性上把 Idea_01
+> 排为 *"#1 start here"*，就可行性而言该排序是对的。但是**这里的 GATE-B
+> 与 E1 不应等待 Idea_01 做完。** 它们很便宜、只做评测，而且它们的价值
+> 随时间衰减。在 Idea_01 的 Phase 0 的同时并行跑 Idea_03 的门禁检查几乎不花成本。
 
-## Phase 0 — GATE-B: checkpoint pair verification (no GPU, hours) — **BLOCKING**
+## Phase 0 —— GATE-B：checkpoint 对核实（无需 GPU，数小时）—— **阻塞项**
 
 | | |
 |---|---|
-| **Work** | Card E-B. For each candidate pair, confirm from configs and model cards: (1) shared vision encoder weights, (2) shared coordinate tokenization, (3) licences permit the comparison |
-| **Cost** | Hours of reading. **No GPU** |
-| **Status** | **NOT RUN. This is GATE-B from `stage6_battle.md` §5, and it is why the Final 3 remain PROVISIONAL** |
-| **Branch** | All three hold → Phase 1 · encoder or tokenization differs → **descope** to a format-artifact study and re-argue the Final-3 slot · licences block → find another pair |
+| **工作** | 卡片 E-B。针对每个候选对，从配置和模型卡中确认：(1) 共享视觉编码器权重，(2) 共享坐标 tokenization，(3) 许可允许该对比 |
+| **成本** | 数小时的阅读。**无需 GPU** |
+| **状态** | **未跑。这就是 `stage6_battle.md` §5 中的 GATE-B，也是 Final 3 保持 PROVISIONAL 的原因** |
+| **分叉** | 三项皆满足 → Phase 1 · 编码器或 tokenization 不同 → **降级（descope）**为格式假象研究并重新论证 Final-3 席位 · 许可受阻 → 找另一对 |
 
-**There is no downstream mitigation for failing this gate.** An unmatched pair
-turns the whole study into a tokenizer comparison, and no amount of careful
-evaluation repairs it.
+**未通过该门禁没有任何下游补救措施。** 不匹配的对会把整项研究变成一次
+分词器（tokenizer）对比，无论多么精细的评测都无法修复它。
 
-## Phase 1 — Harness validation (CPU, done in this package)
-
-| | |
-|---|---|
-| **Work** | Card E0. `python Idea_03/src/run_smoke.py`, `python -m unittest discover -s Idea_03/tests` |
-| **Cost** | CPU seconds |
-| **Exit** | All four planted degradation modes round-trip through `classify_outcome`, and 27 self-checks pass |
-| **Status** | **DONE.** The decision function recovers `none` / `format` / `policy` / `representation` from measurements alone, and refuses to return a verdict when the likelihood mode is missing |
-
-## Phase 2 — Bring-up (first GPU session)
+## Phase 1 —— 测试台验证（CPU，本 package 内已完成）
 
 | | |
 |---|---|
-| **Work** | Load the verified pair; implement the three eval modes against it; build and **freeze** the shared distractor sets; fix the prompt templates |
-| **Cost** | ≈1 GPU-h (**HYPOTHESIS**) |
-| **Exit** | Both checkpoints produce parseable output under constrained decoding on a 50-example subset, and the shared distractor sets are identical across arms |
+| **工作** | 卡片 E0。`python Idea_03/src/run_smoke.py`、`python -m unittest discover -s Idea_03/tests` |
+| **成本** | CPU 数秒 |
+| **退出条件** | 所有四种植入的退化模式都能通过 `classify_outcome` 往返还原，且 27 项自检通过 |
+| **状态** | **已完成。** 决策函数仅凭测量值就能还原 `none` / `format` / `policy` / `representation`，并在缺少似然模式时拒绝给出裁决 |
 
-## Phase 3 — E1 killer (H1 + H2)
+## Phase 2 —— 起机（第一次 GPU 会话）
 
 | | |
 |---|---|
-| **Work** | Card E1: pair 1, ~2k referring expressions, three eval modes, frozen-feature probe. Report parse-failure rate as its own number |
-| **Cost** | ≤8 GPU-h (**HYPOTHESIS**). Eval-only, no training |
-| **Kill if** | No gap survives constrained decoding — formatting confound, pre-registered |
-| **Provisional O1 if** | Likelihood gap ≈ 0 → confirm on pair 2, then write the negative |
-| **Continue if** | Likelihood gap survives → O2 (probe intact) or O3 (probe drops) |
-| **No verdict if** | The likelihood mode was skipped. The code raises |
+| **工作** | 加载已核实的对；针对它实现三种评测模式；构建并**冻结**共享干扰项集合；固定提示模板 |
+| **成本** | 约 1 GPU-h（**HYPOTHESIS**） |
+| **退出条件** | 两个 checkpoint 在 50 个样本的子集上受限解码都能产出可解析输出，且共享干扰项集合跨各臂完全相同 |
 
-**This is the decision point.** ≤8 GPU-h to a defensible three-way answer is why
-this idea survived Stage 4 despite the scoop risk.
+## Phase 3 —— E1 killer（H1 + H2）
 
-## Phase 4 — E2 replication ‖ E3 probe robustness
+| | |
+|---|---|
+| **工作** | 卡片 E1：对 1，约 2k 条指代表达，三种评测模式，冻结特征探针。将解析失败率作为单独数字报告 |
+| **成本** | ≤8 GPU-h（**HYPOTHESIS**）。只做评测，无需训练 |
+| **Kill 条件** | 受限解码下没有差距存活 —— 属于格式混淆因素，已预先注册 |
+| **暂定 O1 条件** | 似然差距 ≈ 0 → 在对 2 上确认，然后写负结果 |
+| **继续条件** | 似然差距存活 → O2（探针完好）或 O3（探针下降） |
+| **无裁决条件** | 似然模式被跳过。代码会抛异常 |
 
-Parallel. E3 needs no second checkpoint pair and is cheap.
+**这是决策点。** ≤8 GPU-h 就能得到一个站得住脚的三分答案，这正是该想法
+在面临抢先风险时仍能通过 Stage 4 的原因。
 
-| Card | Work | Cost (**HYPOTHESIS**) | Branch |
+## Phase 4 —— E2 复现 ‖ E3 探针鲁棒性
+
+并行。E3 不需要第二个 checkpoint 对，且成本低廉。
+
+| 卡片 | 工作 | 成本（**HYPOTHESIS**） | 分叉 |
 |---|---|---|---|
-| **E2** | Repeat E1 on a second GATE-B-verified pair | ≤8 GPU-h | same outcome on both → continue · **likelihood gap ≈ 0 on both → STOP, write O1** · outcome reverses → **kill the general claim**, report pair-specific |
-| **E3** | Probe layer sweep + linear-vs-MLP capacity ablation | ≈2 GPU-h | consistent across layers → H2 robust · one layer only → **downgrade** to a sweep report · linear drops but MLP does not → *"present but not linearly accessible"*, a distinct finding |
+| **E2** | 在第二个经 GATE-B 核实的对上重复 E1 | ≤8 GPU-h | 两者结果一致 → 继续 · **两者似然差距皆 ≈ 0 → 停止，将 O1 写为负结果** · 结果反转 → **杀掉通用主张**，按具体对报告 |
+| **E3** | 探针层扫描 + 线性 vs MLP 容量消融 | 约 2 GPU-h | 跨层一致 → H2 鲁棒 · 仅单层出现 → **降级**为扫描报告 · 线性下降但 MLP 未降 → *"信息仍在但不再线性可及"*，这是一项独立发现 |
 
-## Phase 5 — E4 text-only DPO (H3) — **double-gated**
+## Phase 5 —— E4 纯文本 DPO（H3）—— **双重门禁**
 
 | | |
 |---|---|
-| **Work** | Small LoRA DPO on the base checkpoint using **text-only** preference data, then re-run E1's modes and probe |
-| **Cost** | 1–2 × 24 GB GPUs, days (**HYPOTHESIS**). By far the most expensive card |
-| **Unlock condition** | The observational gap survived format control on **both** pairs. FACT, verbatim: *"Do not run DPO unless observational gap survives format control."* |
-| **Branch** | Gap reproduces → the **objective** is implicated, causal claim available · no effect → report it and **drop the causal framing**; H1+H2 stand alone · tiny effect → report the effect size, do not upgrade it |
+| **工作** | 在 base checkpoint 上用**纯文本**偏好数据做小规模 LoRA DPO，然后重跑 E1 的各种模式与探针 |
+| **成本** | 1–2 张 24 GB GPU，数天（**HYPOTHESIS**）。迄今最昂贵的一张卡片 |
+| **解锁条件** | 观测差距在**两个**对上都经受住了格式控制。FACT 原话：*"Do not run DPO unless observational gap survives format control."* |
+| **分叉** | 差距复现 → 牵涉到了**优化目标**，因果主张成立 · 无效果 → 照实报告并**放弃因果表述**；H1+H2 独立立论 · 微小效果 → 报告效应量，不夸大它 |
 
-Without E4, `proposal.md` §23 forbids the causal claim entirely. That is a
-constraint on what may be written, not a reason to run E4 prematurely.
+没有 E4，`proposal.md` §23 完全禁止因果主张。那是对可写内容的约束，不是过早跑 E4 的理由。
 
-## Phase 6 — Paper & release
+## Phase 6 —— 论文与发布
 
-Analysis paper. Release the eval harness, the prompt templates, the shared
-distractor sets, the probe code, per-example scores, and — most importantly —
-the **pre-registered `classify_outcome` decision function**, so a reader can
-apply our rule to their own numbers.
+分析型论文。发布评测测试台、提示模板、共享干扰项集合、探针代码、
+逐样本得分，以及 —— 最重要的 —— **预先注册的 `classify_outcome` 决策函数**，
+使读者可以把我们的规则套用到他们自己的数字上。
 
-**Immediately before writing:** re-check MDGD, TWIST & SCOUT and
-arXiv 2602.12506 for updates. The last is recent enough that a v2 could contain
-this result.
+**动笔前一刻：** 重新检查 MDGD、TWIST & SCOUT 与 arXiv 2602.12506 的更新。
+最后一篇足够新，以至于 v2 版本就可能包含该结果。
 
-**Candidate titles.** *Which Stage Costs the Box?* · *Format-Controlled
+**候选标题。** *Which Stage Costs the Box?* · *Format-Controlled
 Localization Tax in Aligned VLMs* · *The Box Is Still There: Probing
 Localization After Alignment*
 
-## Budget summary
+## 预算汇总
 
-| Path | Total (**HYPOTHESIS**) |
+| 路径 | 合计（**HYPOTHESIS**） |
 |---|---|
-| Descope at GATE-B | **0 GPU-h** |
-| Kill at E1 | ≈9 GPU-h |
-| Through E2 + E3 | ≈19 GPU-h |
-| With the DPO arm | +1–2 × 24 GB for days |
+| 在 GATE-B 处降级 | **0 GPU-h** |
+| 在 E1 处 kill | 约 9 GPU-h |
+| 做到 E2 + E3 | 约 19 GPU-h |
+| 包含 DPO 臂 | +1–2 张 24 GB 数天 |
 
-Day-1 is ≈8 GPU-h, the figure recorded in `evolution_summary.md` — an estimate,
-not a measurement. Eval-only was originally recorded as *"1 GPU, 1–2 days"*.
+Day-1 是约 8 GPU-h，即 `evolution_summary.md` 中记录的那个数字 —— 是
+估计，不是测量。只做评测原先被记录为 *"1 GPU, 1–2 days"*。
 
-## Standing rules
+## 长期规则
 
-1. **GATE-B before any GPU.**
-2. **Speed matters more here than compute.** Do not queue this behind Idea_01.
-3. Always run all three eval modes; the verdict function refuses without mode 3.
-4. Distractors shared between checkpoints; freeze them before Phase 3.
-5. Parse-failure rate is always its own number.
-6. No causal claim without E4.
-7. Re-check the adjacent literature immediately before writing.
-8. Budgets stay labelled **HYPOTHESIS** wherever quoted.
+1. **先做 GATE-B，再开任何 GPU。**
+2. **在这里速度比算力更重要。** 不要把这个排在 Idea_01 之后。
+3. 始终跑全部三种评测模式；缺少第 3 种模式时裁决函数拒绝工作。
+4. 干扰项在 checkpoint 之间共享；在 Phase 3 之前冻结它们。
+5. 解析失败率永远作为单独数字报告。
+6. 没有 E4 不做因果主张。
+7. 动笔前立即重新核对邻近文献。
+8. 预算无论在哪里被引用都保持标为 **HYPOTHESIS**。
 
-## Dependency graph
+## 依赖图
 
 ```
-Phase 0 (GATE-B, no GPU)  --encoder/tokenizer differ--> DESCOPE to format study
-   |verified pair
-Phase 1 (E0 harness, CPU, DONE)
+Phase 0 (GATE-B, 无需 GPU)  --编码器/分词器不同--> 降级为格式研究
+   |已核实的对
+Phase 1 (E0 测试台, CPU, 已完成)
    |
-Phase 2 (bring-up; freeze shared distractors + templates)
+Phase 2 (起机; 冻结共享干扰项 + 模板)
    |
-Phase 3 (E1 killer) --no gap under constrained decoding--> KILL
-   |                 --likelihood gap ~0--> provisional O1
-   |gap survives
+Phase 3 (E1 killer) --受限解码下无差距--> KILL
+   |                 --似然差距 ~0--> 暂定 O1
+   |差距存活
    +----------------+
    |                |
-Phase 4a (E2 pair 2)  Phase 4b (E3 probe sweep)   <-- parallel
+Phase 4a (E2 对 2)  Phase 4b (E3 探针扫描)   <-- 并行
    |                |
-   |  E2: gap ~0 on both pairs --> STOP, write O1 as a negative
-   |      outcome reverses     --> KILL the general claim
+   |  E2: 两个对差距皆 ~0 --> 停止, 将 O1 写为负结果
+   |      结果反转        --> 杀掉通用主张
    +--------+-------+
-            |gap replicates
-      Phase 5 (E4 text-only DPO)  <-- unlocked only here
+            |差距复现
+      Phase 5 (E4 纯文本 DPO)  <-- 仅在此处解锁
             |
-      Phase 6 (paper + release the decision function)
+      Phase 6 (论文 + 发布决策函数)
 ```

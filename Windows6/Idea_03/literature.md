@@ -1,75 +1,68 @@
-# Idea_03 — Literature (verified entries only)
+# Idea_03 —— 文献（只收已核实的条目）
 
-**Sourcing rule.** An entry appears here only if it already existed in the
-original version of this file or in
-`selection_history/literature_anchors.md` — i.e. only if a Stage-3/4 agent
-actually web-searched it. Nothing was added from memory. Where the argument
-needs a reference that could not be verified against those sources, the slot
-reads `CITATION NEEDED — 待人工核验` rather than a guessed citation.
+**取材规则。** 这里的条目只有在它已经存在于本文件的原始版本中或
+`selection_history/literature_anchors.md` 中时才可以出现在这里 —— 即只有当
+某个 Stage-3/4 agent 真的做过网页检索时才收。没有任何一条是凭记忆添加的。
+凡论证需要某个引用、而它无法与那些来源核对上的地方，该位置写的是
+`CITATION NEEDED — 待人工核验`，而不是一个猜出来的引用。
 
 ---
 
-## A. Core — cite these as attacks, not as background
+## A. 核心 —— 把这些当作攻击点来引，而不是当作背景
 
-| Paper | Year | Venue / ID | Relation |
+| 论文 | 年份 | 会议／ID | 关系 |
 |---|---|---|---|
-| **MDGD** | 2025 | EMNLP Findings | Visual forgetting under instruction tuning. **This is the paper that killed our generic headline at Stage 3.** It must be cited explicitly and early: "MDGD establishes the phenomenon; we ask which stage pays and whether the backbone still contains the box." A related-work mention reads as ignorance |
-| **TWIST & SCOUT** | 2025 | ICCV | Grounding / forget-free tuning. Proposes a **fix**. A fix that works does not tell you which stage paid, which is the gap we occupy |
-| RL-finetuned VLM robustness | 2026 | arXiv 2602.12506 | Adjacent and **recent**. Must be re-checked for scoop immediately before writing — recent enough that a v2 could contain this result |
-| LLaVA / LLaVA-RLHF families | 2023–24 | — | Candidate checkpoint pairs **if licences allow**. Subject to GATE-B verification before use |
+| **MDGD** | 2025 | EMNLP Findings | 指令微调下的视觉遗忘。**正是这篇论文在 Stage 3 杀掉了我们的通用标题。** 它必须被明确且尽早引用："MDGD 确立了该现象；我们追问是哪个阶段付出的代价，以及 backbone 是否仍然包含框。" 仅仅在相关工作中提一句会被读成无知 |
+| **TWIST & SCOUT** | 2025 | ICCV | 接地（grounding） / 无遗忘微调。提出了一种**修复方案**。一个有效的修复方案并不能告诉你到底是哪个阶段付出的代价，这正是我们要填补的空缺 |
+| RL-finetuned VLM robustness | 2026 | arXiv 2602.12506 | 邻近且**最近**。动笔前必须立即重新核对是否被抢先 —— 足够新，以至于 v2 版本就可能包含这一结果 |
+| LLaVA / LLaVA-RLHF 系列 | 2023–24 | — | **在许可允许条件下的**候选 checkpoint 对。使用前须经 GATE-B 核实 |
 
-## B. The gap, and how strong the evidence for it is
+## B. 空缺，以及支持它的证据有多强
 
-**FACT, verbatim from the original file:**
+**FACT，原样照引自原始文件：**
 
 > Stage 3: stage-isolated localization curve was **NOT FOUND** as a standalone
 > paper (EVIDENCE GAP, conf ~0.5).
 
-**This is an absence-defined novelty claim and the file should say so plainly.**
-The evidence is that a search did not find the paper — **confidence ~0.5**, the
-lowest of the Windows6 Final 3 — not that the paper cannot exist.
-`stage3_DE_top10.json.md` independently records E-009 at **0.55** with the note
-*"matched checkpoint localization tax still open"*, and `Windows6/README.md`
-marks Idea_03 *"highest concurrent-work risk"*.
+**这是一项由"空缺"定义的新颖性主张，文件应该直说。**
+证据是一次检索没有找到这篇论文 —— **信心约 0.5**，Windows6 Final 3 中
+最低的 —— 而不是说这篇论文不可能存在。`stage3_DE_top10.json.md` 独立记录了
+E-009 为 **0.55**，并附备注 *"matched checkpoint localization tax still open"*，
+而 `Windows6/README.md` 把 Idea_03 标为 *"highest concurrent-work risk"*。
 
-Absences close without anyone doing anything wrong. `proposal.md` §26.1 treats
-this as a scheduling constraint rather than a caveat.
+空缺会在没有任何人做错任何事的情况下被填上。`proposal.md` §26.1 将其视为
+排期约束，而不是一句免责声明。
 
-## C. Slots that need human verification before submission
+## C. 投稿前需要人工核验的位置
 
-| Needed for | Slot |
+| 用在何处 | 位置 |
 |---|---|
-| Qwen-VL / Qwen-VL-Chat (candidate pair named in the experiment plan) | `CITATION NEEDED — 待人工核验` |
-| RefCOCO / referring-expression benchmark | `CITATION NEEDED — 待人工核验` |
-| DPO (the H3 instrument, card E4) | `CITATION NEEDED — 待人工核验` |
+| Qwen-VL / Qwen-VL-Chat（实验计划中点名的候选对） | `CITATION NEEDED — 待人工核验` |
+| RefCOCO / 指代表达基准 | `CITATION NEEDED — 待人工核验` |
+| DPO（H3 工具，卡片 E4） | `CITATION NEEDED — 待人工核验` |
 | LoRA | `CITATION NEEDED — 待人工核验` |
-| Grammar-constrained decoding (eval mode 2) | `CITATION NEEDED — 待人工核验` |
-| Linear probing of frozen representations (the H2 instrument) | `CITATION NEEDED — 待人工核验` |
-| Alignment tax in language models (the general phenomenon) | `CITATION NEEDED — 待人工核验` |
-| RLHF / instruction tuning for VLMs, as a general reference | `CITATION NEEDED — 待人工核验` |
+| 语法受限解码（评测模式 2） | `CITATION NEEDED — 待人工核验` |
+| 冻结表征的线性探针（H2 工具） | `CITATION NEEDED — 待人工核验` |
+| 语言模型中的对齐税（一般现象） | `CITATION NEEDED — 待人工核验` |
+| VLM 的 RLHF / 指令微调，作为一般参考 | `CITATION NEEDED — 待人工核验` |
 
-The last two matter most: this paper claims a *localization-specific* alignment
-tax, and a reviewer will expect it placed within the general alignment-tax
-literature. Filling those slots is a submission blocker, not a nicety. They are
-left empty on purpose — a plausible-looking bibtex entry reconstructed from
-memory is worse than a visible hole, because the hole gets checked.
+最后两条最重要：这篇论文主张的是*定位特异性*的对齐税，评审会期望把它置于
+通用的对齐税文献中。填上那些空缺是投稿的阻塞项，不是可有可无的修饰。
+它们被有意留空 —— 一个凭记忆重建、看起来合理的 bibtex 条目比一个看得见的
+空洞更糟，因为空洞会被去核查。
 
-## D. How the core citations are used in the argument
+## D. 核心引用在论证中的用法
 
-- **MDGD** appears in the abstract, in §8 novelty, in §9 differentiation, and in
-  `reviewer_attacks.md` A1. It is the single most load-bearing citation in the
-  package, and it is load-bearing *against* us.
-- **TWIST & SCOUT** is cited to draw the diagnose-versus-fix line. It must not
-  be described as "related grounding work"; it is the strongest evidence that
-  the community already considers this cost worth engineering around.
-- **arXiv 2602.12506** is cited as adjacency and re-checked before writing.
-- **LLaVA / LLaVA-RLHF** is cited only as a checkpoint-pair candidate, always
-  with the GATE-B qualification attached.
+- **MDGD** 出现在摘要、§8 新颖性、§9 差异化以及 `reviewer_attacks.md` A1 中。
+  它是本 package 中最承重的单一引用，而且是对我们*不利*方向承重的。
+- **TWIST & SCOUT** 被引用来划清"诊断 vs 修复"的界线。绝不能把它描述为
+  "相关接地工作"；它是证明社区已经认为这项代价值得花工程去规避的最强证据。
+- **arXiv 2602.12506** 作为邻近工作被引用，并在动笔前重新核对。
+- **LLaVA / LLaVA-RLHF** 仅作为 checkpoint 对候选被引用，并始终附带 GATE-B
+  限定条件。
 
-## E. Deliberately not cited
+## E. 有意不引用的工作
 
-General VLM capability benchmarks and leaderboard papers. This is a diagnosis of
-*where* a measured cost originates, not a claim about model quality, and citing
-a pile of benchmarks would imply a comparative claim `proposal.md` §23 rules
-out. Similarly, papers proposing new grounding architectures are out of scope:
-the subject is a measurement protocol, not a method.
+一般的 VLM 能力基准与排行榜论文。这是一项关于测得的代价*源自何处*的诊断，
+不是关于模型质量的主张，列出一堆基准会暗示 `proposal.md` §23 已排除的横向对比主张。
+同样，提出新接地架构的论文也属于范围之外：研究对象是一套测量协议，不是一种方法。

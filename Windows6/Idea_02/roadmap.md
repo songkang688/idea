@@ -1,136 +1,134 @@
-# Idea_02 — Roadmap
+# Idea_02 —— 路线图
 
-All budgets are **HYPOTHESIS** (estimates from
-`selection_history/evolution_summary.md` and `experiments.md`). None is a
-measured runtime. **No detector has been trained**; Windows6 has no smoke mAP.
+所有预算都是 **HYPOTHESIS**（来自
+`selection_history/evolution_summary.md` 与 `experiments.md` 的估计值）。没有一个是
+实测运行时间。**没有训练过任何检测器**；Windows6 没有烟雾 mAP。
 
-Ordering principle: **the free check that can kill the project runs first.**
-Idea_02 is the most expensive member of the Final 3 per unit of evidence — the
-only one requiring training — and its existence depends on a dataset property
-nobody has verified.
+排序原则：**能杀掉项目的免费检查排最前。**
+按每单位证据的成本算，Idea_02 是 Final 3 中最昂贵的成员 —— 唯一需要
+训练的一个 —— 而且它的存在依赖于一个至今无人核实过的数据集性质。
 
-## Phase 0 — GATE-A: camera inventory (no GPU, hours) — **BLOCKING**
-
-| | |
-|---|---|
-| **Work** | Card E-A. Inventory camera IDs on PYRONEAR-2025 / FIgLib: do they exist, how many cameras, how many events per camera, are there empty frames on both sides |
-| **Cost** | Hours of desk work. **No GPU** |
-| **Status** | **NOT RUN. This is GATE-A from `stage6_battle.md` §5, and it is why the Final 3 remain PROVISIONAL** |
-| **Branch** | ≥10 cameras → Phase 1 · 1–9 cameras → **pivot** to event-disjoint only, forfeiting H2, and re-argue the Final-3 slot · no metadata → **KILL** by Idea_02's own stop rule |
-
-**Do not skip to Phase 2 "just to see".** A ≈10 GPU-h run on a corpus without
-camera IDs produces nothing, and the check costs an afternoon.
-
-## Phase 1 — Harness validation (CPU, done in this package)
+## Phase 0 —— GATE-A：相机清点（无需 GPU，数小时）—— **阻塞项**
 
 | | |
 |---|---|
-| **Work** | Card E0. `python Idea_02/src/run_smoke.py`, `python -m unittest discover -s Idea_02/tests` |
-| **Cost** | CPU seconds |
-| **Exit** | Split structure gate PASS and 24 self-checks green |
-| **Status** | **DONE.** It caught two protocol defects — a random-split camera probe that was really measuring event memorisation, and an empty-frame comparison with no seen-camera side. Both would have produced publishable-looking but wrong results. See `experiments.md` E0 |
+| **工作** | 卡片 E-A。清点 PYRONEAR-2025 / FIgLib 上的相机 ID：是否存在、有多少台相机、每台相机多少个事件、两侧是否都有空帧 |
+| **成本** | 数小时的案头工作。**无需 GPU** |
+| **状态** | **未跑。这就是 `stage6_battle.md` §5 中的 GATE-A，也是 Final 3 保持 PROVISIONAL 的原因** |
+| **分叉** | ≥10 台相机 → Phase 1 · 1–9 台相机 → **pivot** 为仅按事件划分，放弃 H2，并重新论证 Final-3 席位 · 无元数据 → 按 Idea_02 自己的停止规则 **KILL** |
 
-## Phase 2 — Bring-up (first GPU session)
+**不要为了"看看效果"直接跳到 Phase 2。** 在一个没有相机 ID 的语料上
+跑约 10 GPU-h 什么都得不到，而这项检查只花半天时间。
+
+## Phase 1 —— 测试台验证（CPU，本 package 内已完成）
 
 | | |
 |---|---|
-| **Work** | Wire `data.load_real_corpus` to the real corpus and `detector.train_real_detector` to YOLOv8n. Both currently raise `NotImplementedError` with instructions rather than returning fake output. Build and **freeze** the three splits; publish the overlap counts before training anything |
-| **Cost** | ≈2 GPU-h (**HYPOTHESIS**) |
-| **Exit** | The three protocols reproduce the E0 overlap structure **on real data**. If event-disjoint comes out camera-disjoint on this corpus, H2 is unfalsifiable here — stop and reconsider the dataset |
+| **工作** | 卡片 E0。`python Idea_02/src/run_smoke.py`、`python -m unittest discover -s Idea_02/tests` |
+| **成本** | CPU 数秒 |
+| **退出条件** | 划分结构门禁 PASS 且 24 项自检全绿 |
+| **状态** | **已完成。** 它抓到了两个协议缺陷 —— 一个实际上是在测事件记忆的随机划分相机探针，和一个没有"见过相机"一侧的空帧对比。两者都会产生看起来可发表但实际上错误的结果。见 `experiments.md` E0 |
 
-## Phase 3 — E1 killer ‖ E3 probe control
+## Phase 2 —— 起机（第一次 GPU 会话）
 
-These run **in parallel**: E3 needs only a frozen ImageNet backbone, no detector
-training, so it costs almost nothing and pre-empts an obvious question.
+| | |
+|---|---|
+| **工作** | 把 `data.load_real_corpus` 接到真实语料，把 `detector.train_real_detector` 接到 YOLOv8n。两者目前都抛 `NotImplementedError` 并给出操作说明，而不是返回假输出。构建并**冻结**三种划分；在训练任何模型之前公布重叠计数 |
+| **成本** | 约 2 GPU-h（**HYPOTHESIS**） |
+| **退出条件** | 三种协议在**真实数据**上复现出 E0 的重叠结构。如果在这个语料上按事件划分算出来就是按相机划分，那么 H2 在这里就不可证伪 —— 停下来重新评估数据集 |
 
-| Card | Work | Cost (**HYPOTHESIS**) | Branch |
+## Phase 3 —— E1 killer ‖ E3 探针对照
+
+这两项**并行**跑：E3 只需要一个冻结的 ImageNet backbone，不需要训练检测器，
+因此几乎零成本，并能先手防范一个显而易见的问题。
+
+| 卡片 | 工作 | 成本（**HYPOTHESIS**） | 分叉 |
 |---|---|---|---|
-| **E1** | 1 seed × 3 protocols + camera probe (event-disjoint) + empty-frame FPR | ≈10 GPU-h | event-disjoint ≈ camera-disjoint → **KILL** · probe at chance → **KILL H3** · no empty-frame gap → **fatal to the framing** |
-| **E3** | Same probe on an ImageNet backbone never trained on smoke | ≈1 GPU-h | detector ≫ ImageNet → strong reading · both high → H3 weakens to "information is available", report honestly · both at chance → **KILL H3** |
+| **E1** | 1 个随机种子 × 3 种协议 + 相机探针（按事件划分） + 空帧 FPR | 约 10 GPU-h | 按事件划分 ≈ 按相机划分 → **KILL** · 探针处于随机水平 → **KILL H3** · 无空帧差距 → **对论文立论是致命的** |
+| **E3** | 在从未在烟雾上训练过的 ImageNet backbone 上跑同样的探针 | 约 1 GPU-h | 检测器 ≫ ImageNet → 强论证 · 两者都高 → H3 弱化为"信息是可及的"，如实报告 · 两者都在随机水平 → **KILL H3** |
 
-**E1 is the decision point.** Do not start Phase 4 before it resolves.
+**E1 是决策点。** 在它出结论之前不要开始 Phase 4。
 
-## Phase 4 — E2 three seeds and honest CIs
-
-| | |
-|---|---|
-| **Work** | Repeat E1 with 3 seeds; bootstrap CIs resampled over **events** |
-| **Cost** | ≈30 GPU-h (**HYPOTHESIS**) |
-| **Continue if** | H1 and H2 gaps survive with CIs excluding 0 |
-| **Stop if** | Gaps inside seed noise **and** probe ≈ chance **and** no empty-FPR gap — confirm with 2 further seeds before declaring |
-| **If CIs are wide** | Add seeds before adding claims |
-
-## Phase 5 — E4 dedup rerun (the confound that could take the paper)
+## Phase 4 —— E2 三个随机种子与诚实的置信区间
 
 | | |
 |---|---|
-| **Work** | pHash dedup, rebuild all splits, rerun E1 |
-| **Cost** | ≈10 GPU-h (**HYPOTHESIS**) |
-| **Branch** | Gap survives → camera signature, strongest form of the result · gap disappears → **downgrade** to a near-duplicate audit, which restates the Voxel51 blog with numbers · gap shrinks → report both and attribute the share |
+| **工作** | 用 3 个随机种子重复 E1；在**事件**上重采样的 bootstrap 置信区间 |
+| **成本** | 约 30 GPU-h（**HYPOTHESIS**） |
+| **继续条件** | H1 与 H2 的差距在置信区间不含 0 的情况下存活 |
+| **停止条件** | 差距落在随机种子噪声内 **且** 探针 ≈ 随机水平 **且** 没有空帧 FPR 差距 —— 在正式宣布之前用另外 2 个随机种子确认 |
+| **若置信区间偏宽** | 先增加随机种子，再增加主张 |
 
-Pre-committing these branches matters: after seeing a shrunken gap it is very
-tempting to describe it as "partially explained by duplicates" and move on.
+## Phase 5 —— E4 去重重跑（可能吃掉整篇论文的混淆因素）
 
-## Phase 6 — E5 second dataset
+| | |
+|---|---|
+| **工作** | pHash 去重，重建所有划分，重跑 E1 |
+| **成本** | 约 10 GPU-h（**HYPOTHESIS**） |
+| **分叉** | 差距存活 → 相机签名，结果的最强形态 · 差距消失 → **降级**为近重复帧审计，这只是用数字复述 Voxel51 博客 · 差距收窄 → 两个数字都报，并归因各自份额 |
 
-≈30 GPU-h (**HYPOTHESIS**). `proposal.md` §20 requires H1 and H4 on ≥2 datasets
-to CONTINUE. Each new corpus needs its own GATE-A inventory first. If only one
-corpus has camera IDs, the title names it — honest scope over implied
-generality.
+预先确定这些分支是有意义的：看到收窄的差距之后，很容易忍不住把它描述成
+"部分由重复帧解释"然后糊弄过去。
 
-## Phase 7 — Paper & release
+## Phase 6 —— E5 第二个数据集
 
-Dataset-audit paper. **The camera-aware re-split indices are the deliverable**,
-alongside the probe and empty-frame protocol as reusable code. Camera IDs are
-released as opaque indices, never coordinates; no imagery is redistributed.
+约 30 GPU-h（**HYPOTHESIS**）。`proposal.md` §20 要求 H1 与 H4 在 ≥2 个数据集上
+成立才能继续。每个新语料都需要先做自己的 GATE-A 清单。如果只有一个语料
+有相机 ID，标题就指名该语料 —— 诚实的范围重于暗示的通用性。
 
-**Candidate titles.** *Event-Disjoint Is Not Camera-Disjoint: Measuring Smoke
+## Phase 7 —— 论文与发布
+
+数据集审计论文。**带相机感知的重划分下标是核心产物**，
+连同探针与空帧协议作为可复用代码一起发布。相机 ID 以不透明下标发布，
+绝不发布坐标；不重新分发任何图像。
+
+**候选标题。** *Event-Disjoint Is Not Camera-Disjoint: Measuring Smoke
 Benchmark Inflation* · *What Do Wildfire Detectors Memorize — Plumes or
 Towers?* · *A Camera-Aware Re-split of Public Smoke Benchmarks*
 
-## Budget summary
+## 预算汇总
 
-| Path | Total (**HYPOTHESIS**) |
+| 路径 | 合计（**HYPOTHESIS**） |
 |---|---|
-| Kill at GATE-A | **0 GPU-h** |
-| Kill at E1 | ≈13 GPU-h |
-| Through E2 | ≈43 GPU-h |
-| Full program with dedup and a second dataset | ≈83 GPU-h |
+| 在 GATE-A 处 kill | **0 GPU-h** |
+| 在 E1 处 kill | 约 13 GPU-h |
+| 做到 E2 | 约 43 GPU-h |
+| 包含去重和第二个数据集的完整方案 | 约 83 GPU-h |
 
-Day-1 is ≈10 GPU-h, the figure recorded in `evolution_summary.md` — an
-estimate, not a measurement.
+Day-1 是约 10 GPU-h，即 `evolution_summary.md` 中记录的那个数字 —— 是
+估计，不是测量。
 
-## Standing rules
+## 长期规则
 
-1. **GATE-A before any GPU.**
-2. Freeze and publish the splits, with overlap counts, before training.
-3. The camera probe is always evaluated event-disjoint.
-4. Empty frames are never trained on.
-5. CIs cluster over events, never frames.
-6. Never cite an inflation number we did not compute.
-7. Budgets stay labelled **HYPOTHESIS** wherever quoted.
+1. **先做 GATE-A，再开任何 GPU。**
+2. 训练前冻结并公布划分及重叠计数。
+3. 相机探针一律在按事件划分下评测。
+4. 空帧绝不用于训练。
+5. 置信区间在事件上聚类，绝不在帧上聚类。
+6. 绝不引用我们自己没有计算过的虚高数字。
+7. 预算无论在哪里被引用都保持标为 **HYPOTHESIS**。
 
-## Dependency graph
+## 依赖图
 
 ```
-Phase 0 (GATE-A inventory, no GPU)  --no camera IDs--> KILL
-   |                                --<10 cameras---> PIVOT (H2 forfeited)
-   |>=10 cameras
-Phase 1 (E0 harness, CPU, DONE)
+Phase 0 (GATE-A 清点, 无需 GPU)  --无相机 ID--> KILL
+   |                              --<10 台相机--> PIVOT (放弃 H2)
+   |>=10 台相机
+Phase 1 (E0 测试台, CPU, 已完成)
    |
-Phase 2 (bring-up; verify overlap structure on REAL data)
+Phase 2 (起机; 在真实数据上验证重叠结构)
    |
    +---------------------+
    |                     |
-Phase 3a (E1 killer)     Phase 3b (E3 probe control)   <-- parallel
+Phase 3a (E1 killer)     Phase 3b (E3 探针对照)   <-- 并行
    |                     |
    +----------+----------+
               |
-      Phase 4 (E2, 3 seeds + CIs) --inside seed noise--> STOP
+      Phase 4 (E2, 3 个种子 + 置信区间) --在种子噪声内--> 停止
               |
-      Phase 5 (E4 dedup) --gap is all duplicates--> DOWNGRADE
+      Phase 5 (E4 去重) --差距全来自重复帧--> 降级
               |
-      Phase 6 (E5 second dataset)
+      Phase 6 (E5 第二个数据集)
               |
-      Phase 7 (paper + re-split release)
+      Phase 7 (论文 + 重划分数据发布)
 ```
