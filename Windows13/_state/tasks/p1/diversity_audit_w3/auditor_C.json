@@ -1,0 +1,187 @@
+{
+  "task_id": "p1_diversity_audit_w3",
+  "role": "auditor_C_adversary",
+  "round": 3,
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "branch": "cursor/p1-diversity-audit-w3-auditor-c-6d01",
+  "audited_at_utc": "2026-08-29T01:40:00Z",
+  "audited_master": {
+    "records": 934,
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w4-e8e2",
+    "source_commit": "2411f9307030b8de4e445d0972a0b624cc451130",
+    "by_letter": {"A": 94, "B": 85, "C": 69, "D": 79, "E": 79, "F": 88, "G": 30, "H": 16, "J": 98, "K": 102, "L": 96, "M": 98},
+    "unique_id_seeds": 934,
+    "novelty_status_unverified": 934
+  },
+  "off_master_audited_read_only": {
+    "gen_n": {"branch": "origin/cursor/p1-gen-n-scaling-memorization-4814", "ideas": 100},
+    "gen_o": {"branch": "origin/cursor/p1-gen-o-hard-domain-acc5", "ideas": 100},
+    "gen_p": {"branch": "origin/cursor/p1-gen-p-constructive-6c3b", "ideas": 104},
+    "gate5_remand": {"path": "Windows13/_state/tasks/p1/wave_b_w3_gate5/remaining_remand.jsonl", "ideas": 127, "by_shard": {"gen_g": 54, "gen_h": 73}},
+    "id_collisions_across_1365_record_pool": 0
+  },
+  "in_flight_awareness": {
+    "wave": "w5_NPO",
+    "judge_A": {"branch": "origin/cursor/p1-wave-b-w5-judge-a-dedup-3de9", "keep": 271, "input": 304},
+    "judge_B": {"branch": "origin/cursor/p1-wave-b-w5-judge-b-feasibility-7e74", "keep": 300, "input": 304},
+    "judge_C_and_consolidator": "pending at audit time",
+    "letters_n_o_p_not_reused_by_this_audit": true
+  },
+  "independence": "full own analysis pass completed before reading Auditor A w3 (origin/cursor/p1-diversity-audit-w3-auditor-a-9a11); no auditor B w3 output on any origin branch at audit time",
+  "attacks": {
+    "A1_permutation_families": {
+      "instrument": "primary = regex over one_line_idea + core_hypothesis + cluster; mention-level regex over all 12 descriptive fields; full pairwise token-Jaccard on one_liner+hypothesis",
+      "families_primary_at_934": {
+        "P9_calibration_uncertainty": {"primary": 68, "mentions": 133, "legacy_w1w2_primary": 59, "post_ban_letters_GHJKLM_primary": 9, "NOP_primary": 6, "verdict": "ban HELD at generation; stock is Stage-2 debt"},
+        "P1_P10_annotation_label_guideline": {"primary": 66, "note": "gen_m 0 primary; gen_p re-feeds subject constructively (26% of shard)"},
+        "iso_budget_null": {"primary": 40, "mentions": 137, "note": "w2 cap fired correctly in w4 (L-074->L-092)"},
+        "P4_metric_harness_strict": {"primary": 35, "mentions": 112},
+        "inheritance_forensics": {"primary": 22, "members_named": ["W13-P1-F-060", "W13-P1-J-038", "W13-P1-J-074", "N-054 (killed into family at w5)", "N-070 (killed into family at w5)"], "status": "NEW cross-wave family"},
+        "scaling_law_form": {"primary_master": 15, "primary_gen_n": 20, "note": "gen_n mandated; watch after w5 merge"},
+        "correlated_errors_ensemble": {"primary": 11, "flag_pair": "D-060 <-> J-086 unflagged on master"}
+      },
+      "surviving_unmerged_pairs_max_jaccard": [
+        {"jaccard": 0.258, "a": "W13-P1-E-029", "b": "W13-P1-E-054", "note": "P2 family; survives THIRD audit unmerged/unflagged"},
+        {"jaccard": 0.224, "a": "W13-P1-C-047", "b": "W13-P1-C-054", "note": "dissent on C-047 only"},
+        {"jaccard": 0.212, "a": "W13-P1-J-051", "b": "W13-P1-J-076", "note": "in-shard gen_j SNR-band concentration; never co-flagged"},
+        {"jaccard": 0.207, "a": "W13-P1-D-060", "b": "W13-P1-J-086", "note": "cross-wave correlated-errors; both unflagged"},
+        {"jaccard": 0.2, "a": "W13-P1-B-060", "b": "W13-P1-B-065"}
+      ],
+      "pairs_over_012_of_435711": 331,
+      "demand": "5 pairs to Stage-2 forced adjudication; add inheritance_forensics and correlated_errors_ensemble as named cap families (<=4 each at 200-cut, slot counts HYPOTHESIS)"
+    },
+    "A2_fingerprint_field_defeated": {
+      "evidence": "394 master records carry family_fingerprint; measurement_family axis has 393 distinct free-text values (698 carriers incl. NOP -> 697 distinct); cap 'cell <= 6' mechanically unenforceable",
+      "paraphrase_buckets_of_698": {"agreement_correlation": 62, "stratified_eval": 55, "linear_probe": 47, "matched_budget": 39, "seed_variance": 24},
+      "consequence": "every judge wave re-derives families manually in its own vocabulary; w1/w2 vs w3/w4 cap censuses cannot be joined (root cause of auditor A caveat a)",
+      "demand": "controlled vocabulary (~30 enums seeded from judge_C template flags) from w5 consolidation onward; Stage-2 back-mapping of 698 existing strings before any slot-cap enforcement"
+    },
+    "A3_genre": {
+      "composite_constructive_at_934": "~17% (waves1-2 at 7.7% per w2 instrument; gen_j self 35/98; KLM judge_C labels 83/273)",
+      "gen_p_self_labels": {"constructive_capability": 100, "characterization_law": 4, "audit_debunk": 0, "spot_read_verdict": "labels honest; P-004/P-027/P-034/P-061/P-065 genuinely constructive"},
+      "post_w5_projection_constructive": "~27%",
+      "adversary_point": "genre conversion is not territory diversification: eval-lexicon one-liners 34.5% at 934 (was 45.5% at 494) but gen_p runs 48% eval-lexicon and 26% annotation-subject BY MANDATE",
+      "gen_n_exact_floor_smell": "constructive self-labels exactly 25/100 = the floor; phrasing instrument reads 48 loose so likely honest-conservative; GATE-6 audit demanded anyway",
+      "demand": "Stage-2 territory caps genre-blind on subject: eval-critique + eval-repair + benchmark-design = ONE eval-subject pool (proposed <= 25% of 200-cut, HYPOTHESIS); annotation pathology + repair = one pool; do NOT relitigate gen_p at judge time"
+    },
+    "A4_gates": {
+      "instrument_note": "kill-language variants unified: 'kill the idea if' (O/P), 'falsified if' (N/G), 'kill if' (J), 'KILL:' (L), 'KILL THRESHOLD (pre-registered)' (K-normalized); earlier audit instruments each missed some variants",
+      "kill_threshold_by_letter": {"A_to_F": "0/494", "G": "20/30", "H": "11/16", "J": "98/98", "K": "97/102", "L": "96/96", "M": "98/98", "gen_n": "100/100", "gen_o": "99/100 (O-007 verbal factor-of-two)", "gen_p": "104/104", "remand_127": "0/127"},
+      "master_totals": {"kill_threshold": 420, "evidence_label": 534, "family_fingerprint": 394, "genre_field": 394, "seg_metric_dependent": 196, "gate4_deferred": 198, "judge_dissent": 105},
+      "qualitative_threshold_residue": "7 gen_k flagged + 15 G/H verbal-exact = 22 records owed numeric retrofit",
+      "remand_ownership_gap": "127 accepted-on-content records appear in NO queue/reserve/task assignment; stale vs 738 records accepted since generation",
+      "demand": "named lane p1_wave_b_w3_gate5_repair_2 (invasive retrofit allowed: judges may WRITE thresholds as EXPECTED RESULT with provenance) OR formal kill-with-decision; bundle wave-2 schema backfill (400), GATE-4 pinning (198), 22 qualitative retrofits into one Stage-2 retrofit lane"
+    },
+    "A5_provenance_spoof_systematic": {
+      "evidence": "gen_n 100/100, gen_o 100/100, gen_p 104/104 pre-fill wave='p1_wave_a_w3' - identical to the gen_m value the w4 consolidator called a provenance spoof and overwrote",
+      "root_cause": "generator commissioning template pre-fills pipeline metadata (4 consecutive shards)",
+      "demand": "w5 consolidator overwrites wave to p1_wave_b_w5 on all appends with wave_label_corrected_from preserved (w4 precedent, now mandatory); strip pipeline-provenance fields from generator schema in all future briefs"
+    },
+    "A6_citation_hygiene": {
+      "master_934": {
+        "citation_bearing_generator_content_records": 14,
+        "all_in": "wave-1 gen_a prior_work_basis",
+        "works": ["Kirillov et al. 2023 SAM", "Ravi et al. 2024 SAM2", "Hu et al. 2021 LoRA", "Ben Zaken et al. 2022 BitFit", "Kornblith et al. 2019 CKA", "Ilharco et al. 2022 task arithmetic", "Wortsman et al. 2022 model soups", "Jia et al. 2022 VPT", "He et al. 2022 MAE", "Geirhos et al. 2019 cue-conflict", "Darcet et al. 2023 registers", "Ke et al. 2023 HQ-SAM", "Carion et al. 2020 DETR", "Goh et al. typographic attacks", "Bolya et al. ToMe"],
+        "added_by_waves_3_4": 0,
+        "false_positives_of_wider_regex_verified_benign": ["W13-P1-B-084", "W13-P1-L-019", "W13-P1-L-025", "W13-P1-L-031", "W13-P1-L-040", "W13-P1-L-060", "W13-P1-M-015", "W13-P1-O-053", "W13-P1-P-024"],
+        "judge_metadata_citation_mentions": ["W13-P1-D-059 (judge speculation, correctly outside content fields)"]
+      },
+      "gen_n_offmaster": {
+        "citation_bearing_records": 24,
+        "record_ids": ["W13-P1-N-001", "W13-P1-N-005", "W13-P1-N-007", "W13-P1-N-008", "W13-P1-N-009", "W13-P1-N-029", "W13-P1-N-032", "W13-P1-N-035", "W13-P1-N-045", "W13-P1-N-048", "W13-P1-N-053", "W13-P1-N-054", "W13-P1-N-058", "W13-P1-N-062", "W13-P1-N-064", "W13-P1-N-065", "W13-P1-N-066", "W13-P1-N-067", "W13-P1-N-068", "W13-P1-N-072", "W13-P1-N-081", "W13-P1-N-088", "W13-P1-N-093", "W13-P1-N-094"],
+        "distinct_works_all_verified_real_and_correctly_paired": ["Hoffmann et al. (Chinchilla)", "Zhai et al. (ViT scaling)", "Cherti et al. (OpenCLIP scaling)", "Udandarao et al. (concept frequency)", "Hernandez et al. (transfer scaling / ossification)", "Muennighoff et al. (data-constrained scaling)", "Schaeffer et al. (emergence mirage)", "Wei et al. (U-shaped scaling)", "McKenzie et al. (inverse-scaling prize)", "Meehan et al. (SSL deja vu)", "Somepalli et al. (diffusion replication)", "Carlini et al. (secret sharer / low-FPR MI / extraction)", "Jagielski et al. (forgetting of memorized examples)", "Shokri et al. (membership inference)", "Maini et al. (dataset inference)", "Yang et al. (ImageNet face obfuscation)"],
+        "labeling": "every instance labeled 'KNOWN PRIOR WORK (model recall, unverified here)' with novel delta marked MODEL SPECULATION - GATE-7 exemplary",
+        "gen_o_gen_p_citation_strings": 0
+      },
+      "verdict": "NO fake citations anywhere in the 1365-record pool; this audit adds none",
+      "demand": "w5 consolidator imports gen_n prior_work_basis labels verbatim; GATE-8 triage STARTS with these 24 (cheapest novelty checks in the pool); gen_n practice becomes commissioning exemplar"
+    },
+    "A7_nop_prejudging_strike": {
+      "collisions_cross_validated_vs_w5_judge_A": [
+        {"pair": "N-054 <-> J-038", "mine": "memorization-knee substrate swap", "judge_A": "killed into J-038/J-074", "status": "convergent"},
+        {"pair": "N-023 <-> F-097", "mine": "mixture-scaling-law on explicitly occupied ground", "judge_A": "keep + master_collision_flag", "status": "convergent"},
+        {"pair": "P-061/P-065 <-> J-009", "mine": "cross-backbone head-transfer triplet", "judge_A": "merged 0.221 + J-009 top-novelty-risk flag", "status": "convergent"},
+        {"pair": "P-004 <-> P-027", "mine": "variance-decomposition benchmark-repair twins", "judge_A": "merged 0.218", "status": "convergent"},
+        {"pair": "N-070 <-> F-060", "mine": "inheritance-forensics adjacency; F-060 = explicitly occupied ground in gen_n guard", "judge_A": "N-070 killed into J-074 family; F-060 adjacency NOWHERE recorded", "status": "MY DELTA - w5 consolidator should record it"}
+      ],
+      "guard_compliance": {
+        "gen_o_smoke_fire_fog_transparent_ban": "RESPECTED - 3 lexical hits (O-015 sonar multipath, O-021 defocus-depth, O-030 phase-contrast halos) are domain-native physics, not banned amorphous-media examples",
+        "gen_o_medical_cap_25pct": "met (~7)",
+        "gen_n_calibration_ban": "met (N-084 is mandated contamination-as-mechanism, constructive)",
+        "gen_p_annotation_pathology_ban": "met as-written (P-034 is repair genre, mandated conversion)",
+        "subcluster_quota": "met by all three (10/10/12 clusters, max share 12-13% < 15%)",
+        "sam_caps": "met (N 1, O 0, P 2 mentions)",
+        "cross_shard_nop_collisions_over_015": 0
+      }
+    },
+    "A8_letters_and_territories": {
+      "letter_registry": {
+        "shards_on_origin": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f", "gen_g", "gen_h", "gen_j", "gen_k", "gen_l", "gen_m", "gen_n", "gen_o", "gen_p"],
+        "retired": ["gen_i"],
+        "policy_blocked_never_use": ["gen_u"],
+        "gen_u_block_recorded_in_canonical_state": false,
+        "free_letters_verified_on_origin": ["gen_q", "gen_r", "gen_s", "gen_t", "gen_v", "gen_w", "gen_x", "gen_y", "gen_z"],
+        "collisions_found": 0,
+        "demand": "w3 audit consolidator decision.json must mark gen_u BLOCKED_NEVER_USE and re-home its territory (gen_i failure mode prevention)"
+      },
+      "missing_territories_at_934": {
+        "cross_field_transfer": {"primary": "0.0% - third consecutive audit at zero", "owner": "gen_r, dispatch condition MET"},
+        "fairness_demographic": {"primary": "0.1%", "owner": "gen_w (NEW letter, inherits blocked gen_u)"},
+        "adversarial_security": {"primary": "0.4%", "note": "gen_n privacy block (25 primary) owns the privacy-attack slice", "owner": "gen_w minus membership-inference"},
+        "psychophysics": {"primary": "0.0% strict", "owner": "fold into gen_q"},
+        "inference_time_compute_non_llm": {"primary": "0.5%", "owner": "gen_q - dispatch condition satisfied (gen_g judged in w3)"},
+        "model_lifecycle_continual": {"primary": "~0.3%", "owner": "gen_v reserve"},
+        "embodied_active": {"primary": "0.2%", "owner": "gen_s reserve"},
+        "industrial_inspection": {"primary": "0.0% master, gen_o adds ~3", "owner": "watch post-w5, no letter"},
+        "filled_off_master": {"gen_o": "underwater/sonar 24, microscopy/histology 25, document 21, remote sensing 19 cluster records", "gen_n": "scaling/memorization/emergence", "gen_p": "constructive genre 17% -> ~27% post-w5"}
+      },
+      "recommended_queue": [
+        {"priority": 1, "generator_id": "gen_r_cross_field_transfer", "guards": "w2 guards kept: both fields + transferred invariance named; no bare apply-X-to-Y"},
+        {"priority": 2, "generator_id": "gen_q_inference_time_compute", "guards": "TTA-critique hard ban kept (accepted G-set + remand G-block define boundary); gen_l anti-overlap sharpened (gen_l owns LLM loops + their iso-budget instrument, L-030/L-092); iso-budget-null framing <= 3"},
+        {"priority": 3, "generator_id": "gen_w_security_fairness", "status": "NEW letter inheriting policy-blocked gen_u territory", "rescope": "fairness/demographic/geographic robustness with mechanism claims + training-pipeline integrity science (backdoor/poisoning DETECTION and attribution, supply-chain forensics extending F-060/F-044) + robustness certification; EXCLUDES membership-inference/extraction (gen_n owns) and attack-recipe optimization (plausible policy trigger); defense/measurement-first framing; occupied-ground check vs H-090 and D-059"},
+        {"priority": 4, "generator_id": "gen_v_model_lifecycle_continual", "status": "reserve, promotion check at post-w5 audit"},
+        {"priority": 5, "generator_id": "gen_s_embodied_interactive_perception", "status": "reserve"},
+        {"priority": 6, "generator_id": "gen_t_efficiency_deployment_science", "status": "reserve, mandate shrunk to non-distillation"}
+      ],
+      "do_not_recommission": ["gen_n/o/p (in flight)", "3D/video, diffusion, detection, VLM, synthetic, domain-shift, restoration, LLM-agent, training-dynamics (owned)", "gen_i (retired)", "gen_u (policy-blocked)"],
+      "capacity_math_HYPOTHESIS": {
+        "master": 934,
+        "w5_expected_accept": "~285-296 (judge A 271, judge B 300; majority-vote lands between)",
+        "post_w5_master": "~1220-1230 - 1000+ target crossed by in-flight wave alone",
+        "remand_upside": "0-127",
+        "conclusion": "generation is no longer the bottleneck; selection integrity is - start Stage-2 lanes (retrofit, GATE-8, fingerprint vocabulary) NOW"
+      }
+    }
+  },
+  "cross_check_vs_auditor_A_w3": {
+    "read_after_own_pass": true,
+    "auditor_A_branch": "origin/cursor/p1-diversity-audit-w3-auditor-a-9a11",
+    "convergences": ["lexical LOW (same 0.258 max on different instruments)", "SAM frozen ~9.6%", "template crowding new dominant axis", "genre improving via gen_p", "cross-field 0.0% third audit", "queue order gen_r/q/w/v/s/t", "n/o/p not reused", "gen_u under fresh letter gen_w", "remand is repair lane not generator slot", "master citations clean"],
+    "adversarial_deltas": [
+      "gen_n 24-record citation surface entering master at w5 (A scanned master only) - all verified real; verbatim-import + GATE-8-priority demands",
+      "family_fingerprint free-text defeat (393/394 unique) is the root cause of A's unjoinable-vocabulary caveat; controlled vocabulary demanded",
+      "systematic provenance spoof: N/O/P all pre-fill gen_m's wrong wave value; template-level root cause; w5 overwrite duty + schema strip",
+      "remand ownership gap: demand named lane-or-kill decision with invasive-retrofit rule change",
+      "genre-blind subject caps: gen_p re-feeds eval/annotation subjects at 48%/26% by mandate; Stage-2 pools critique+repair per subject",
+      "N-070 <-> F-060 unrecorded adjacency; mutual validation of 4/5 collision catches vs w5 judge A",
+      "gen_u block not recorded in canonical state - registry hygiene demand"
+    ],
+    "instrument_variance_notes_not_conflicts": [
+      "constructive share: A loose-regex 10.8% vs my judge-label composite ~17% vs gen_p self 96% - same direction, same conclusion",
+      "P9: my primary 68 vs A mention 16.5% - primary vs mention instruments; my generation-side verdict (ban HELD post-w1) refines",
+      "kill-threshold census 420/934 uses wider kill-language regex than earlier audits (variants documented); earlier instruments undercounted gen_j/gen_l"
+    ]
+  },
+  "no_fake_citations": true,
+  "scope_compliance": {
+    "ideas_master_jsonl_untouched": true,
+    "research_state_json_untouched": true,
+    "research_ledger_md_untouched": true,
+    "window_lock_json_untouched": true,
+    "force_push": false,
+    "writes_confined_to": "Windows13/_state/tasks/p1/diversity_audit_w3/"
+  },
+  "recommended_next_task_type": "p1_diversity_audit_w3_consolidator"
+}

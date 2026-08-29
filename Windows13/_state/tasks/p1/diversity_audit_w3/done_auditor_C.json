@@ -1,0 +1,55 @@
+{
+  "task_id": "p1_diversity_audit_w3",
+  "role": "auditor_C_adversary",
+  "round": 3,
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "completed",
+  "branch": "cursor/p1-diversity-audit-w3-auditor-c-6d01",
+  "completed_at_utc": "2026-08-29T01:45:00Z",
+  "audited_master": {
+    "records": 934,
+    "source_branch": "origin/cursor/p1-wave-b-consolidator-w4-e8e2",
+    "source_commit": "2411f9307030b8de4e445d0972a0b624cc451130"
+  },
+  "output_files": [
+    "Windows13/_state/tasks/p1/diversity_audit_w3/auditor_C.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w3/auditor_C.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w3/done_auditor_C.json"
+  ],
+  "headline_findings": [
+    "permutation families: bans HELD at generation (calibration primary 9/440 post-ban letters; annotation 0 primary in gen_m); surviving stock is Stage-2 debt; 5 unmerged near-dup pairs incl. E-029/E-054 surviving a THIRD audit; NEW cross-wave families inheritance_forensics (22) and correlated_errors_ensemble (11, D-060<->J-086 unflagged)",
+    "family_fingerprint field DEFEATED: 393 distinct free-text measurement_family values on 394 carriers (697/698 incl. NOP) - the cell<=6 cap is mechanically unenforceable; controlled vocabulary demanded from w5 onward + Stage-2 back-mapping",
+    "genre repair landing (7.7% -> ~17% constructive at 934, ~27% projected post-w5; gen_p self-labels honest on spot-read) BUT subject fixation survives conversion: gen_p runs 48% eval-lexicon / 26% annotation-subject by mandate - Stage-2 caps must be genre-blind per subject",
+    "gates: master two-tier (kill thresholds 0/494 legacy vs 420/934 total; evidence_label 534/934); N/O/P near-fully compliant (100/99/104 thresholds); 127-record gen_g/gen_h remand has NO OWNER in any queue - named lane-or-kill decision demanded",
+    "provenance spoof systematic: gen_n/o/p ALL pre-fill wave='p1_wave_a_w3' (the exact value flagged as spoof on gen_m) - template-level root cause; w5 consolidator overwrite duty + strip pipeline fields from generator schema",
+    "citation hygiene CLEAN across all 1365 records: master unchanged (14 gen_a records, all real); waves 3/4 added zero; NEW: gen_n carries 24 citation-bearing records naming ~16 real works, all correctly paired and GATE-7-labeled (KNOWN PRIOR WORK vs MODEL SPECULATION) - largest citation surface in the pipeline, enters master at w5; verbatim-import + GATE-8-first-triage demanded; no fake citations anywhere; none added",
+    "N/O/P pre-judging strike cross-validated vs w5 judge A: 4/5 collision catches convergent (N-054->J-038, N-023<->F-097, P-061/P-065<->J-009, P-004<->P-027); 1 delta: N-070<->F-060 occupied-ground adjacency unrecorded; all N/O/P hard bans verified respected (gen_o smoke/fog hits are domain-native physics)",
+    "letter registry: zero collisions; n/o/p in flight NOT reused; gen_i retired; gen_u policy-blocked but the block is recorded NOWHERE in canonical state - w3 consolidator must mark gen_u BLOCKED_NEVER_USE; free letters verified: q,r,s,t,v,w,x,y,z",
+    "missing territories: cross-field transfer 0.0% (third audit) -> gen_r (condition met); fairness 0.1% + attack science 0.4% -> NEW gen_w inheriting blocked gen_u territory, rescoped defense/measurement-first, EXCLUDING membership-inference (gen_n owns 25 primary privacy records); psychophysics -> gen_q (condition met, gen_g judged)",
+    "capacity (HYPOTHESIS): w5 lands ~1220-1230 - 1000+ crossed by the in-flight wave alone; generation is no longer the bottleneck, selection integrity is; start Stage-2 lanes (retrofit, GATE-8, fingerprint vocabulary) now"
+  ],
+  "recommended_queue_summary": ["gen_r(1)", "gen_q(2, conditions met)", "gen_w(3, NEW, inherits blocked gen_u rescoped)", "gen_v(4, reserve)", "gen_s(5, reserve)", "gen_t(6, reserve, non-distillation)"],
+  "unresolved_items": [
+    "127 gen_g/gen_h remand records (wave_b_w3_gate5/remaining_remand.jsonl) have no assigned owner: consolidator must commission p1_wave_b_w3_gate5_repair_2 (invasive retrofit) or formally kill with a decision",
+    "gen_u policy-block not recorded in canonical state (ledger/decisions still list it as queue priority 4): w3 consolidator decision must mark BLOCKED_NEVER_USE and re-home the territory to gen_w",
+    "w5_NPO judging incomplete at audit time (judge C + consolidator pending): my w5-directed demands (wave-label overwrite, gen_n citation import, N-070<->F-060 adjacency note, GATE-6 audit of gen_n exact-floor labels) land with the w5 consolidator",
+    "family_fingerprint controlled-vocabulary migration + back-mapping of 698 free-text strings: unowned Stage-2 lane",
+    "Stage-2 retrofit lane (wave-2 schema backfill 400 records, GATE-4 pinning 198, 22 qualitative-threshold numeric retrofits) still unowned",
+    "GATE-8 novelty lane overdue (105 dissent-carrying records; w2 73-id list unprocessed; gen_n's 24 self-declaring records are the cheapest starting point)",
+    "5 unmerged near-dup pairs (E-029/E-054, C-047/C-054, J-051/J-076, D-060/J-086, B-060/B-065) owed Stage-2 forced adjudication",
+    "auditor B w3 output did not exist on any origin branch at audit time - consolidator should not block beyond one re-check"
+  ],
+  "recommended_next_task_type": "p1_diversity_audit_w3_consolidator",
+  "canonical_state_untouched": true,
+  "no_fake_citations": true,
+  "force_push": false,
+  "scope_compliance": {
+    "ideas_master_jsonl_untouched": true,
+    "research_state_json_untouched": true,
+    "research_ledger_md_untouched": true,
+    "window_lock_json_untouched": true,
+    "writes_confined_to": "Windows13/_state/tasks/p1/diversity_audit_w3/"
+  }
+}
