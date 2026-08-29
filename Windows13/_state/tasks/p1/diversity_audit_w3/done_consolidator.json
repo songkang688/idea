@@ -1,0 +1,69 @@
+{
+  "task_id": "p1_diversity_audit_w3",
+  "role": "consolidator",
+  "windows_id": "Windows13",
+  "windows_path": "Windows13",
+  "window_locked": true,
+  "status": "done",
+  "completed_at_utc": "2026-08-29T02:05:00Z",
+  "branch": "cursor/p1-diversity-audit-consolidator-w3-2535",
+  "canonical_tip_used": "origin/cursor/p1-wave-b-consolidator-w5-d795 @ 7338e54 (branch re-cut from this tip after the w5_NPO consolidator landed during consolidation, per the clobber guard; the audit itself was conducted over origin/cursor/p1-wave-b-consolidator-w4-e8e2 @ 2411f93, 934 records)",
+  "accepted_count_canonical": 1220,
+  "audited_master_count": 934,
+  "ideas_master_modified": false,
+  "irreconcilable": false,
+  "meta_judge_needed": false,
+  "auditor_inputs": {
+    "A": "origin/cursor/p1-diversity-audit-w3-auditor-a-9a11 @ e6b6d73",
+    "B": "origin/cursor/p1-diversity-audit-w3-auditor-b-f4db @ 1e9643f",
+    "C": "origin/cursor/p1-diversity-audit-w3-auditor-c-6d01 @ a6920f0",
+    "prior": "origin/cursor/p1-diversity-audit-consolidator-w2-942c @ 6f0286f"
+  },
+  "next_task_queue_ids": [
+    "p1_gen_r_cross_field_transfer",
+    "p1_gen_w_security_fairness_measurement",
+    "p1_gen_v_model_lifecycle_continual",
+    "p1_wave_b_w3_gate5_repair_2",
+    "p1_gate8_novelty_triage",
+    "p1_stage2_retrofit_lane"
+  ],
+  "letters_burned_or_in_flight": {
+    "in_master": ["gen_a", "gen_b", "gen_c", "gen_d", "gen_e", "gen_f", "gen_g", "gen_h", "gen_j", "gen_k", "gen_l", "gen_m", "gen_n", "gen_o", "gen_p"],
+    "in_master_via_concurrent_w5": ["gen_n (91)", "gen_o (99)", "gen_p (96)"],
+    "in_flight_generation_unpushed_honored": ["gen_q"],
+    "retired_never_reassign": ["gen_i"],
+    "policy_blocked_never_use": ["gen_u"],
+    "queued_by_this_decision": ["gen_r", "gen_w", "gen_v"],
+    "reserves": ["gen_s", "gen_t"],
+    "contingent": ["gen_x"],
+    "next_fresh_letters": ["gen_y", "gen_z"]
+  },
+  "owners_assigned": {
+    "remaining_remand_127_gh": "p1_wave_b_w3_gate5_repair_2 (invasive threshold-authoring with gate5_threshold_authored_by/authored_at provenance, or formal kill-with-decision; owed before Stage-1 close; pool verified untouched by w5)",
+    "gate8_novelty_lane": "p1_gate8_novelty_triage (head: w5 outvoted kills O-002/O-031 web-verified real prior art + 23 gen_n citation-bearing master records, then w2 73-id list, w4 20-id + w5 27-id watchlists, judge_dissent records, N-070<->F-060 adjacency; must complete before the 200-cut)"
+  },
+  "gen_u_recorded_blocked": true,
+  "gen_q_honored_in_flight": true,
+  "n_o_p_k_l_m_not_recommissioned": true,
+  "w5_clobber_guard_fired": "origin/cursor/p1-wave-b-consolidator-w5-d795 (master 934 -> 1220) found at pre-push re-fetch; branch re-cut from its tip; w5 master preserved byte-for-byte; research_state/ledger edits re-applied additively on the w5 versions",
+  "recommended_next_task_type": [
+    "p1_stage1_completion_auditors (count gate PASSED at 1220; per the w5 decision they run after this audit-wave merge)",
+    "p1_wave_a_more_generators (dispatch gen_r, gen_w, gen_v as diversity plays; gen_q already in flight)",
+    "p1_selection_integrity_lanes (p1_wave_b_w3_gate5_repair_2, p1_gate8_novelty_triage, p1_stage2_retrofit_lane)"
+  ],
+  "no_fake_citations": true,
+  "force_push": false,
+  "output_files": [
+    "Windows13/_state/tasks/p1/diversity_audit_w3/decision.json",
+    "Windows13/_state/tasks/p1/diversity_audit_w3/consolidator.md",
+    "Windows13/_state/tasks/p1/diversity_audit_w3/done_consolidator.json",
+    "Windows13/_state/research_state.json (exploration.diversity_audit_w3 added only; Stage 1 / Windows13 / window_locked / total_ideas 1220 preserved from the w5 tip)",
+    "Windows13/_state/research_ledger.md (append-only rows 26-27, after w5's rows 23-25)"
+  ],
+  "scope_compliance": {
+    "window_lock_json_untouched": true,
+    "ideas_master_jsonl_untouched": true,
+    "generator_shards_not_appended": true,
+    "windows_id_unchanged": "Windows13"
+  }
+}
